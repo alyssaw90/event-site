@@ -1,4 +1,4 @@
-#Event Site Wirefram#
+#Event Site Wireframe#
 
 ## Built with HTML KickStart ##
 
