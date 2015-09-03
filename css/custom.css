@@ -1,0 +1,303 @@
+/*Custom CSS for Plugfest and Events Page*/
+
+@import url(https://fonts.googleapis.com/css?family=Fjalla+One);
+
+body {
+
+}
+
+/*header {
+	position: relative !important;
+	background-image: url(../img/tnw-conference.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+	padding-right: 0 !important;
+	padding-left: 0 !important;
+	max-width: 100%;
+	min-height: 596px;
+}
+*/
+/*header {
+    background-image: url(../img/tnw-conference.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 0;
+    padding-top: 38.28%; /
+}*/
+
+.menu-overlay {
+	background-color: rgba(91, 44, 144, 1);
+}
+
+.menu-overlay-hover {
+	background-color: #68217a;
+}
+
+/*.menu-overlay {
+	vertical-align: bottom;
+}
+
+.bottom-block {
+	position:fixed;
+	bottom:0; 
+}*/
+
+h1 {
+	font-family: 'Fjalla One', sans-serif;
+	color: #505050;
+}
+
+h2 {
+	font-family: 'Fjalla One', sans-serif;
+}
+
+a {
+	text-decoration: none;
+}
+
+.center-block  {
+	margin: 0 0 0 0;
+	/*min-height: 200px;*/
+	width: 25%;
+}
+
+.center-block h2 {
+	color: #FFF;
+	text-align: center;
+}
+
+.left-block-overlay {
+	background-image: url(../img/bill-and-steve.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.left-block {
+	background-color: rgba(218, 59, 1, 0.6);
+	width: 100%;
+}
+
+.left-block-hover {
+	background-color: rgba(218, 59, 1, .8);
+}
+
+.left-center-block-overlay {
+	background-image: url(../img/welcome-taipei.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.left-center-block {
+	background-color: rgba(180, 0, 158, .6);
+	width: 100%;
+}
+
+.left-center-block-hover {
+	background-color: rgba(180, 0, 158, .8);
+}
+
+.right-center-block-overlay {
+	background-image: url(../img/future-events-shanghai.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.right-center-block {
+	background-color: rgba(255, 185, 0, .6);
+	width: 100%;
+}
+
+.right-center-block-hover {
+	background-color: rgba(255, 185, 0, .8);
+}
+
+.right-block-overlay {
+	background-image: url(../img/alfresco-group-2014.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.right-block {
+	background-color: rgba(232, 17, 35, .6);
+	width: 100%;
+}
+
+.right-block-hover {
+	background-color: rgba(232, 17, 35, .8);
+}
+
+.footer-left {
+	background-color: #505050;
+	padding-right: 2.5%
+}
+
+.footer-right {
+	background-color: #d2d2d2;
+	float: right;
+}
+
+.foot li {
+	list-style-type: none;
+	display: inline;
+	font-size: 1.25em;
+	font-weight: bold;
+	padding: 2%;
+}
+
+.foot  {
+	margin: 0 0 0 0;
+	min-height: 100px;
+	width: 50%;
+	padding: 1% 1.5% 0 0;
+}
+
+.bx-wrapper {
+	margin: 0 0 0;
+	padding: 0 0 0 0;
+}
+
+.wrap {
+	  float:left;
+	  clear:none;
+	  overflow:hidden;
+		width: 100px;
+    position: fixed;
+    top: 7.5%;
+    /*left: 95%;*/
+    right: 0%;
+	}
+	.wrap img {
+	  position:relative;
+	  z-index:1;
+	}
+	.wrap .desc {
+	  display:block;
+	  position:absolute;
+	  width:100%;
+	  top:30%;
+	  left:0;
+	  z-index:2;
+	  text-align:center;
+	}
+
+	.slideshow h2 {
+		color: #fff;
+	}
+
+/*	.social {
+		float: right;
+		max-width: 50px;
+		display: block;
+		align: right;
+    position: fixed;
+    top: 50%;
+    left: 97.3%;
+    background-color: red;
+	}
+*/
+	.social {
+    /*background-color: red;*/
+    z-index: 999;
+	}
+
+	.social li {
+    list-style-type: none;
+    margin: 0;
+    padding: 1px 0 0 0;
+    text-align: right;
+	}
+
+	.upcoming-header {
+		text-align: center;	
+		background-color: #b4009e;	
+	}
+
+	.upcoming-header img {
+		max-width: 100%;
+		margin: 1% 0 1% 0;
+	}
+
+	.event-header img {
+		max-width: 100%;
+	}
+
+	.event-header {
+		text-align: center;
+	}
+
+	.event-tabs {
+		max-width: 100%;
+	}
+
+	.events > :first-child {
+		background-image: url(../img/shaking_hands_turquise.jpg);
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+
+	.events > :nth-child(2) {
+		background-image: url(../img/shaking_hands_green.jpg);
+		background-repeat: no-repeat;
+		background-size: contain;
+	} 
+
+	.events > :nth-child(3) {
+		background-image: url(../img/shaking_hands_yellow.jpg);
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+
+	.event_block {
+		background-color: #d2d2d2;
+		min-height: 300px;
+		position: relative;
+    overflow: hidden;
+    margin-bottom: 5%;
+    margin-top: 2%;
+	}
+
+	.event_block div {
+		color: #fff;
+		background-color: #505050;
+		padding: .5% .5% .5% .5%;
+		position: absolute;
+    bottom: -100%; 
+	}
+
+	.event_block p {
+		font-size: 1.5em;
+		padding: 0 1% 1% 1%;
+		text-align: right;
+		position: relative;
+	}
+
+	.event_block h1 {
+		font-size: 2.5em;
+		padding: 0 1% 0 1%;
+	}
+
+	.rising_text p {
+		font-size: 1em;
+		padding: 0;
+		text-align: left;
+	}
+
+	.rising_text a {
+		color: #fff;
+	}
+
+@media all and (max-width: 768px) {
+	.event_block {
+		margin-top:0.5em;
+		margin-bottom:0.5em;
+	}
+}
+
+@media all and (max-width: 1024px) {
+	.social {
+		display: none;
+	}
+}
