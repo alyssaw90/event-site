@@ -58,6 +58,15 @@ a {
 	text-decoration: none;
 }
 
+td:first-child {
+	text-align: center;
+	font-size: 1.5em;
+}
+
+tr > :first-child {
+	max-width: 25px;
+}
+
 .center-block  {
 	margin: 0 0 0 0;
 	/*min-height: 200px;*/
