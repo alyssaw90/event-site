@@ -224,19 +224,6 @@ tr > :first-child {
 		background-color: #b4009e;	
 	}
 
-/*	.upcoming-header img {
-		max-width: 100%;
-		margin: 1% 0 1% 0;
-	}*/
-
-/*	.event-header img {
-		max-width: 100%;
-	}
-
-	.event-header {
-		text-align: center;
-	}*/
-
 	.event-tabs {
 		max-width: 100%;
 	}
@@ -296,6 +283,10 @@ tr > :first-child {
 
 	.rising_text a {
 		color: #fff;
+	}
+
+	.white-bg {
+		background-color: #fff;
 	}
 
 @media all and (max-width: 768px) {
