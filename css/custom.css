@@ -3,6 +3,11 @@
 @import url(https://fonts.googleapis.com/css?family=Fjalla+One);
 
 body {
+	background-image: url(../img/background-stripe.png);
+	background-repeat: no-repeat;
+	background-position: 0% 350px;
+	background-size: 100%
+	opacity: .5;
 
 }
 
@@ -58,9 +63,17 @@ a {
 	text-decoration: none;
 }
 
+td:first-child {
+	text-align: center;
+	font-size: 1.5em;
+}
+
+tr > :first-child {
+	max-width: 25px;
+}
+
 .center-block  {
 	margin: 0 0 0 0;
-	/*min-height: 200px;*/
 	width: 25%;
 }
 
@@ -187,19 +200,7 @@ a {
 		color: #fff;
 	}
 
-/*	.social {
-		float: right;
-		max-width: 50px;
-		display: block;
-		align: right;
-    position: fixed;
-    top: 50%;
-    left: 97.3%;
-    background-color: red;
-	}
-*/
 	.social {
-    /*background-color: red;*/
     z-index: 999;
 	}
 
@@ -210,22 +211,17 @@ a {
     text-align: right;
 	}
 
-	.upcoming-header {
-		text-align: center;	
-		background-color: #b4009e;	
-	}
-
-	.upcoming-header img {
+	.header img {
 		max-width: 100%;
 		margin: 1% 0 1% 0;
 	}
 
-	.event-header img {
-		max-width: 100%;
+	.experts-header {
+		background-color: #7fba00;
 	}
 
-	.event-header {
-		text-align: center;
+	.upcoming-header {
+		background-color: #b4009e;	
 	}
 
 	.event-tabs {
@@ -287,6 +283,10 @@ a {
 
 	.rising_text a {
 		color: #fff;
+	}
+
+	.white-bg {
+		background-color: #fff;
 	}
 
 @media all and (max-width: 768px) {
