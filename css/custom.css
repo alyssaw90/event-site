@@ -3,6 +3,11 @@
 @import url(https://fonts.googleapis.com/css?family=Fjalla+One);
 
 body {
+	background-image: url(../img/background-stripe.png);
+	background-repeat: no-repeat;
+	background-position: 0% 350px;
+	background-size: 100%
+	opacity: .5;
 
 }
 
