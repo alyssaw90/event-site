@@ -74,7 +74,6 @@ tr > :first-child {
 
 .center-block  {
 	margin: 0 0 0 0;
-	/*min-height: 200px;*/
 	width: 25%;
 }
 
@@ -200,20 +199,8 @@ tr > :first-child {
 	.slideshow h2 {
 		color: #fff;
 	}
-
-/*	.social {
-		float: right;
-		max-width: 50px;
-		display: block;
-		align: right;
-    position: fixed;
-    top: 50%;
-    left: 97.3%;
-    background-color: red;
-	}
-*/
+	
 	.social {
-    /*background-color: red;*/
     z-index: 999;
 	}
 
