@@ -63,18 +63,31 @@ a {
 	text-decoration: none;
 }
 
-td:first-child {
+.schedule td:first-child {
 	text-align: center;
 	font-size: 1.5em;
 }
 
-tr > :first-child {
+.schedule tr > :first-child {
 	max-width: 25px;
+}
+
+.community td:first-child {
+	width: 25%;
+}
+
+.bing-logo {
+	float: right;
+	margin-right: 12%;
 }
 
 .center-block  {
 	margin: 0 0 0 0;
 	width: 25%;
+}
+
+.register-button {
+	color: #0078D7;
 }
 
 .center-block h2 {
@@ -218,6 +231,10 @@ tr > :first-child {
 
 	.experts-header {
 		background-color: #7fba00;
+	}
+
+	.community-header {
+		background-color: #40c5af;
 	}
 
 	.upcoming-header {
