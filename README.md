@@ -1,5 +1,7 @@
 #Event Site Wireframe#
 
+[![Build Status](https://travis-ci.org/mb4ms/event-site.svg)](https://travis-ci.org/mb4ms/event-site)
+
 ## Built with HTML KickStart ##
 
 ## HTML KickStart is FREE and Open Source. ##
