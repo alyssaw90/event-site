@@ -241,6 +241,10 @@ a {
 		background-color: #b4009e;	
 	}
 
+	.past-header {
+		background-color: #6dc2e9;
+	}
+
 	.event-tabs {
 		max-width: 100%;
 	}
@@ -292,6 +296,17 @@ a {
 		padding: 0 1% 0 1%;
 	}
 
+	.past_events {
+		background-color: rgba(0, 216, 204, .8);
+		margin-bottom: 5%;
+    margin-top: 2%;
+    padding: 1%;
+	}
+
+	.past_events h2 {
+		color: #fff;
+	}
+
 	.rising_text p {
 		font-size: 1em;
 		padding: 0;
@@ -303,6 +318,10 @@ a {
 	}
 
 	.white-bg {
+		background-color: #fff;
+	}
+
+	#calendar {
 		background-color: #fff;
 	}
 
