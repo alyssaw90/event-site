@@ -325,6 +325,10 @@ a {
 		background-color: #fff;
 	}
 
+	.selected-year {
+		background-color: #4668c5;
+	}
+
 @media all and (max-width: 768px) {
 	.event_block {
 		margin-top:0.5em;
