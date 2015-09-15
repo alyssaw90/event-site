@@ -212,7 +212,7 @@ a {
 	  overflow:hidden;
 		width: 100px;
     position: fixed;
-    top: 7.5%;
+    top: 21.5%;
     /*left: 95%;*/
     right: 0%;
 	}
@@ -229,6 +229,10 @@ a {
 	  z-index:2;
 	  text-align:center;
 	}
+
+.bottom-menu {
+	  overflow:hidden;
+}
 
 	.slideshow h2 {
 		color: #fff;
