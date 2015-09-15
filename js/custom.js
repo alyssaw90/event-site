@@ -36,4 +36,16 @@ $(document).ready(function () {
 		$(this).toggleClass('menu-overlay-hover');
 	});
 
+	$(window).resize(function () {
+		var tallestMenuBlock = $('.bottom-menu').prop('scrollHeight');
+		if ($(window).width() > 780) {
+			$('.center-block').height(tallestMenuBlock);
+			console.log(tallestMenuBlock);
+		} 
+		if ($(window).width <= 780) {
+			$('.center-block').css('height', '');
+		}
+		
+	});	
+
 })
