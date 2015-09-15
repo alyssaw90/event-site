@@ -47,6 +47,7 @@ $(document).ready(function () {
 											</tr></tbody>\
 										</table>';
 		var html = $.parseHTML(schedule);
+		$(this).siblings().removeClass('selected-year');
 		$(this).toggleClass('selected-year');
 		if ($calendar.html() === schedule) {
 			$calendar.empty();
