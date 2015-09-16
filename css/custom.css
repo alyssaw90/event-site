@@ -99,11 +99,11 @@ a {
 	color: #0078D7;
 }
 
-.left-block-overlay {
+/*.left-block-overlay {
 	background-image: url(../img/bill-and-steve.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
-}
+}*/
 
 .left-block {
 	background-color: rgba(218, 59, 1, 0.6);
@@ -114,11 +114,11 @@ a {
 	background-color: rgba(218, 59, 1, .8);
 }
 
-.left-center-block-overlay {
+/*.left-center-block-overlay {
 	background-image: url(../img/welcome-taipei.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
-}
+}*/
 
 .left-center-block {
 	background-color: rgba(180, 0, 158, .6);
@@ -129,11 +129,11 @@ a {
 	background-color: rgba(180, 0, 158, .8);
 }
 
-.right-center-block-overlay {
+/*.right-center-block-overlay {
 	background-image: url(../img/future-events-shanghai.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
-}
+}*/
 
 .right-center-block {
 	background-color: rgba(255, 185, 0, .6);
@@ -144,12 +144,12 @@ a {
 	background-color: rgba(255, 185, 0, .8);
 }
 
-.right-block-overlay {
+/*.right-block-overlay {
 	background-image: url(../img/alfresco-group-2014.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
-
+*/
 .right-block {
 	background-color: rgba(232, 17, 35, .6);
 	width: 100%;
