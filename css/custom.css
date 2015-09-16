@@ -1,6 +1,9 @@
 /*Custom CSS for Plugfest and Events Page*/
 
 @import url(https://fonts.googleapis.com/css?family=Fjalla+One);
+@font-face { font-family: SegoeUI; src: url(./fonts/segoeui.ttf); };
+@font-face { font-family: SegoeUI; font-weight: bold; src: url(./fonts/segoeuib.ttf); }; 
+@font-face { font-family: SegoeUI; font-weight: italic; src: url(./fonts/segoeuib.ttf); };
 
 body {
 	/*background-image: url(../img/background-stripe.png);*/
@@ -8,6 +11,7 @@ body {
 	background-position: 0% 350px;
 	background-size: 100%
 	opacity: .5;
+	font-family: SegoeUI;
 
 }
 
@@ -55,12 +59,12 @@ body {
 }*/
 
 h1 {
-	font-family: 'Fjalla One', sans-serif;
+	font-family: SegoeUI, sans-serif;
 	color: #505050;
 }
 
 h2 {
-	font-family: 'Fjalla One', sans-serif;
+	font-family: SegoeUI, sans-serif;
 }
 
 a {
@@ -106,12 +110,12 @@ a {
 }*/
 
 .left-block {
-	background-color: rgba(218, 59, 1, 0.6);
+	background-color: rgba(218, 59, 1, 1);
 	width: 100%;
 }
 
 .left-block-hover {
-	background-color: rgba(218, 59, 1, .8);
+	background-color: rgba(218, 59, 1, 0.6);
 }
 
 /*.left-center-block-overlay {
@@ -121,12 +125,12 @@ a {
 }*/
 
 .left-center-block {
-	background-color: rgba(180, 0, 158, .6);
+	background-color: rgba(180, 0, 158, 1);
 	width: 100%;
 }
 
 .left-center-block-hover {
-	background-color: rgba(180, 0, 158, .8);
+	background-color: rgba(180, 0, 158, .6);
 }
 
 /*.right-center-block-overlay {
@@ -136,12 +140,12 @@ a {
 }*/
 
 .right-center-block {
-	background-color: rgba(255, 185, 0, .6);
+	background-color: rgba(255, 185, 0, 1);
 	width: 100%;
 }
 
 .right-center-block-hover {
-	background-color: rgba(255, 185, 0, .8);
+	background-color: rgba(255, 185, 0, .6);
 }
 
 /*.right-block-overlay {
@@ -151,12 +155,12 @@ a {
 }
 */
 .right-block {
-	background-color: rgba(232, 17, 35, .6);
+	background-color: rgba(232, 17, 35, 1);
 	width: 100%;
 }
 
 .right-block-hover {
-	background-color: rgba(232, 17, 35, .8);
+	background-color: rgba(232, 17, 35, .6);
 }
 
 .footer-left {
@@ -238,8 +242,62 @@ a {
 		display: none;
 	}
 
+	.slideshow {
+	  float:left;
+	  clear:none;
+	  overflow:hidden;
+		width: 100px;
+    position: fixed;
+	}
+	.slideshow img {
+	  position:relative;
+	  z-index:1;
+	}
+	.slideshow .desc {
+	  display:block;
+	  position:absolute;
+	  width:100%;
+	  top:20%;
+	  left:0;
+	  z-index:2;
+	  text-align:left;
+	  padding-left: 10%;
+	}
+
+	.desc:nth-child(2) {
+		top: 30%;
+		padding-left: 15%;
+	}
+
+	.desc:nth-child(3) {
+		top: 40%;
+		padding-left: 15%;
+	}
+
+	.desc:nth-child(4) {
+		top: 50%;
+		padding-left: 15%;
+	}
+
+	.desc:nth-child(5) {
+		top: 60%;
+		padding-left: 15%;
+	}
+
+	.desc:nth-child(6) {
+		top: 70%;
+		padding-left: 15%;
+	}
+
+	.slideshow h1 {
+		color: #fff;
+		font-weight: bold;
+	}
+
 	.slideshow h2 {
 		color: #fff;
+		font-weight: bold;
+		text-align: left;
 	}
 
 	.social {
