@@ -1,16 +1,15 @@
 'use stict';
 
 $(document).ready(function () {
+	//apply flip animation to social icons
 	$('.social img').hover(function () {
 		$(this).toggleClass('animated flip');
 	});
 
-	// $('.center-block').addClass('animated rotateIn');
-
+	//apply hover effect to main menu blocks
 	$('.left-block').hover(function () {
 		$(this).toggleClass('left-block-hover');
 	});
-
 	$('.left-center-block').hover(function () {
 		$(this).toggleClass('left-center-block-hover');
 	});
@@ -22,7 +21,12 @@ $(document).ready(function () {
 	$('.right-block').hover(function () {
 		$(this).toggleClass('right-block-hover');
 	});
+	//apply hover effect to top menu
+	$('.menu-overlay li').hover(function () {
+		$(this).toggleClass('menu-overlay-hover');
+	});
 
+	//make block slide up effect for upcoming event blocks
 	$('.event_block').hover(
 		function () {
 		$(this).find('div').stop(true, true).animate({'bottom': '0'}, 200);
@@ -30,10 +34,5 @@ $(document).ready(function () {
 		function () {
 			$(this).find('div').stop(true, true).animate({'bottom': '-100%'}, 200)
 		});
-
-	$('.menu-overlay li').hover(function () {
-		// $(this).removeClass('menu-overlay');
-		$(this).toggleClass('menu-overlay-hover');
-	});
 
 })

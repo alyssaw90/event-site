@@ -3,7 +3,7 @@
 @import url(https://fonts.googleapis.com/css?family=Fjalla+One);
 
 body {
-	background-image: url(../img/background-stripe.png);
+	/*background-image: url(../img/background-stripe.png);*/
 	background-repeat: no-repeat;
 	background-position: 0% 350px;
 	background-size: 100%
@@ -35,6 +35,10 @@ body {
 
 .menu-overlay {
 	background-color: rgba(91, 44, 144, 1);
+}
+
+.menu-overlay li {
+	float: right;
 }
 
 .menu-overlay-hover {
@@ -86,20 +90,20 @@ a {
 	width: 25%;
 }
 
-.register-button {
-	color: #0078D7;
-}
-
 .center-block h2 {
 	color: #FFF;
 	text-align: center;
 }
 
-.left-block-overlay {
+.register-button {
+	color: #0078D7;
+}
+
+/*.left-block-overlay {
 	background-image: url(../img/bill-and-steve.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
-}
+}*/
 
 .left-block {
 	background-color: rgba(218, 59, 1, 0.6);
@@ -110,11 +114,11 @@ a {
 	background-color: rgba(218, 59, 1, .8);
 }
 
-.left-center-block-overlay {
+/*.left-center-block-overlay {
 	background-image: url(../img/welcome-taipei.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
-}
+}*/
 
 .left-center-block {
 	background-color: rgba(180, 0, 158, .6);
@@ -125,11 +129,11 @@ a {
 	background-color: rgba(180, 0, 158, .8);
 }
 
-.right-center-block-overlay {
+/*.right-center-block-overlay {
 	background-image: url(../img/future-events-shanghai.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
-}
+}*/
 
 .right-center-block {
 	background-color: rgba(255, 185, 0, .6);
@@ -140,12 +144,12 @@ a {
 	background-color: rgba(255, 185, 0, .8);
 }
 
-.right-block-overlay {
+/*.right-block-overlay {
 	background-image: url(../img/alfresco-group-2014.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
-
+*/
 .right-block {
 	background-color: rgba(232, 17, 35, .6);
 	width: 100%;
@@ -175,8 +179,25 @@ a {
 
 .foot  {
 	margin: 0 0 0 0;
-	min-height: 100px;
+	/*min-height: 100px;*/
 	width: 50%;
+	padding: 1% 1.5% 0 0;
+}
+
+.foot2 li {
+	list-style-type: none;
+	display: inline;
+	font-size: 1.25em;
+	font-weight: bold;
+	padding: 2%;
+}
+
+.foot2  {
+	text-align: center;
+	margin: 0 0 0 0;
+	/*min-height: 100px;*/
+	max-height: 1%;
+	width: 100%;
 	padding: 1% 1.5% 0 0;
 }
 
@@ -191,7 +212,7 @@ a {
 	  overflow:hidden;
 		width: 100px;
     position: fixed;
-    top: 7.5%;
+    top: 21.5%;
     /*left: 95%;*/
     right: 0%;
 	}
@@ -207,6 +228,14 @@ a {
 	  left:0;
 	  z-index:2;
 	  text-align:center;
+	}
+
+	.desktop-menu {
+		  overflow: hidden;
+	}
+
+	.bottom-menu {
+		display: none;
 	}
 
 	.slideshow h2 {
@@ -330,10 +359,33 @@ a {
 		margin-top:0.5em;
 		margin-bottom:0.5em;
 	}
+
+	.desktop-menu {
+		display: none;
+	}
+
+	.bottom-menu {
+		display: inline;
+	}
 }
 
 @media all and (max-width: 1024px) {
 	.social {
 		display: none;
+	}
+}
+
+@media all and (min-width: 765px) and (max-width: 1360px) {
+	.left-block {
+		height: 140px;
+	}
+	.left-center-block {
+		height: 140px;	
+	}
+	.right-center-block {
+		height: 140px;	
+	}
+	.right-block {
+		height: 140px;	
 	}
 }
