@@ -355,6 +355,10 @@ a {
 		margin-top:0.5em;
 		margin-bottom:0.5em;
 	}
+/*
+	.bottom-menu {
+		display: none;
+	}*/
 }
 
 @media all and (max-width: 1024px) {
