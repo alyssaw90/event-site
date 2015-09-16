@@ -90,13 +90,13 @@ a {
 	width: 25%;
 }
 
-.register-button {
-	color: #0078D7;
-}
-
 .center-block h2 {
 	color: #FFF;
 	text-align: center;
+}
+
+.register-button {
+	color: #0078D7;
 }
 
 .left-block-overlay {
@@ -230,9 +230,13 @@ a {
 	  text-align:center;
 	}
 
-.bottom-menu {
-	  overflow: hidden;
-}
+	.desktop-menu {
+		  overflow: hidden;
+	}
+
+	.bottom-menu {
+		display: none;
+	}
 
 	.slideshow h2 {
 		color: #fff;
@@ -355,14 +359,33 @@ a {
 		margin-top:0.5em;
 		margin-bottom:0.5em;
 	}
-/*
-	.bottom-menu {
+
+	.desktop-menu {
 		display: none;
-	}*/
+	}
+
+	.bottom-menu {
+		display: inline;
+	}
 }
 
 @media all and (max-width: 1024px) {
 	.social {
 		display: none;
+	}
+}
+
+@media all and (min-width: 765px) and (max-width: 1360px) {
+	.left-block {
+		height: 140px;
+	}
+	.left-center-block {
+		height: 140px;	
+	}
+	.right-center-block {
+		height: 140px;	
+	}
+	.right-block {
+		height: 140px;	
 	}
 }

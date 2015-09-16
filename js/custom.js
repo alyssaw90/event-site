@@ -35,22 +35,4 @@ $(document).ready(function () {
 			$(this).find('div').stop(true, true).animate({'bottom': '-100%'}, 200)
 		});
 
-	//make main menu dynamically change height
-	var originalHeight = $('.bottom-menu').prop('scrollHeight');
-	$(window).resize(function () {
-		var tallestMenuBlock = $('.bottom-menu').prop('scrollHeight');
-		if ($(window).width <= 780) {
-			$('.center-block').height(originalHeight);
-		}
-		if ($(window).width() > 780 && $(window).height()) {
-			$('.center-block').height(tallestMenuBlock);
-		} 
-		if (!$(window).width() > 780 && !$(window).height()) {
-			$('.center-block').height(originalHeight);
-			$('.bottom-menu').height(originalHeight);
-		}
-			console.log(tallestMenuBlock, 'GGGG', $(window).width(), 'LLL', originalHeight);
-		
-	});	
-
 })
