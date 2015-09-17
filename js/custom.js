@@ -35,4 +35,26 @@ $(document).ready(function () {
 			$(this).find('div').stop(true, true).animate({'bottom': '-100%'}, 200)
 		});
 
+	//make mobile menu appear when it's pressed
+	$('.hamburger-menu').click(function () {
+		$('.mobile-menu').toggleClass('hidden-menu add-padding');
+		$('.mobile-menu:first').toggleClass('add-space');
+	});
+
+	//make box behind slideshow text dynamically resize
+	// $('.slideshow div').each(function () {
+	// 	var newHeight = 0;
+	// 	// var newWidth = $(this).first().width();
+	// 		// newWidth = $(this).width();
+	// 	$(this).children().not(':last-child').each(function (i) {
+	// 		newHeight += $(this).height();
+	// 	});
+
+	// 		console.log(newHeight);
+	// 		$(this).children(':first').css('line-height', newHeight);
+	// 	// $(this).height(newHeight);
+	// 	// $(this).width(newWidth);
+	// 	// $(this).css('left', '100px')
+	// });
+
 })
