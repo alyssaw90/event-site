@@ -36,6 +36,10 @@ body {
     padding-top: 38.28%; /
 }*/
 
+.fa-bars {
+	color: #fff;
+}
+
 .menu-overlay {
 	background-color: rgba(91, 44, 144, 1);
 }
@@ -44,18 +48,33 @@ body {
 	float: right;
 }
 
+.menu-overlay img {
+	padding-top: 1%;
+  margin-bottom: -2%;
+}
+
 .menu-overlay-hover {
 	background-color: #68217a;
 }
 
-/*.menu-overlay {
-	vertical-align: bottom;
+.hamburger-menu {
+	display: none;
 }
 
-.bottom-block {
-	position:fixed;
-	bottom:0; 
-}*/
+.hidden-menu {
+	display: none !important;
+}
+
+.add-padding {
+	padding-left: 60% !important;
+}
+.add-space  {
+	padding-top: 10% !important;
+}
+
+.mobile-menu {
+	float: none !important;
+}
 
 h1 {
 	font-family: SegoeUI, sans-serif;
@@ -501,5 +520,15 @@ a {
 	}
 	.right-block {
 		height: 140px;	
+	}
+}
+
+@media all and (max-width: 780px) {
+	.hamburger-menu {
+		display: inline;
+	}
+
+	.desktop-menu {
+		display: none;
 	}
 }

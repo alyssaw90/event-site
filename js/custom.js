@@ -35,6 +35,12 @@ $(document).ready(function () {
 			$(this).find('div').stop(true, true).animate({'bottom': '-100%'}, 200)
 		});
 
+	//make mobile menu appear when it's pressed
+	$('.hamburger-menu').click(function () {
+		$('.mobile-menu').toggleClass('hidden-menu add-padding');
+		$('.mobile-menu:first').toggleClass('add-space');
+	});
+
 	//make box behind slideshow text dynamically resize
 	// $('.slideshow div').each(function () {
 	// 	var newHeight = 0;
