@@ -61,6 +61,12 @@ body {
 	display: none;
 }
 
+.hamburger-icon {
+	padding: 20% 80% 5% 0; 
+	margin-top: -80%; 
+	float: right;
+}
+
 .hidden-menu {
 	display: none !important;
 }
@@ -527,7 +533,7 @@ a {
 	}
 
 	.desktop-menu {
-		display: none;
+		display: none !important;
 	}
 
 	.mobile-menu span {
@@ -539,4 +545,6 @@ a {
 	.foot {
 		display: none !important;
 	}
+}
+
 }
