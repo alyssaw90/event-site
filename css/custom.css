@@ -10,7 +10,7 @@ body {
 	background-position: 0% 350px;
 	background-size: 100%
 	opacity: .5;
-	font-family: SegoeUI;
+	font-family: SegoeUI !important;
 
 }
 
@@ -73,7 +73,7 @@ body {
 }
 
 .mobile-menu {
-	float: none !important;
+	/*float: none !important;*/
 }
 
 h1 {
@@ -206,21 +206,19 @@ a {
 	padding: 1% 1.5% 0 0;
 }
 
-.foot2 li {
-	list-style-type: none;
-	display: inline;
-	font-size: 1.25em;
-	font-weight: bold;
-	padding: 2%;
+.mobile-foot {
+	width: 100%;
+	margin: 0 0 0 0;
+	padding-left: 25%;
 }
 
-.foot2  {
-	text-align: center;
-	margin: 0 0 0 0;
-	/*min-height: 100px;*/
-	max-height: 1%;
-	width: 100%;
-	padding: 1% 1.5% 0 0;
+.mobile-foot li {
+	list-style-type: none;
+	font-size: 2em;
+	line-height: 140%;
+	font-weight: bold;
+	padding: 2%;
+	background-color: #d2d2d2;
 }
 
 .bx-wrapper {
@@ -523,12 +521,22 @@ a {
 	}
 }
 
-@media all and (max-width: 780px) {
+@media all and (max-width: 768px) {
 	.hamburger-menu {
 		display: inline;
 	}
 
 	.desktop-menu {
 		display: none;
+	}
+
+	.mobile-menu span {
+		font-size: 2.2em;
+		line-height: 150%;
+		float: none !important;
+	}
+
+	.foot {
+		display: none !important;
 	}
 }

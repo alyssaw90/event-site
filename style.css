@@ -7,19 +7,24 @@
 /*---------------------------------
 	IMPORTS
 -----------------------------------*/
-@import url(https://fonts.googleapis.com/css?family=Arimo:400,700);
+/*@import url(https://fonts.googleapis.com/css?family=Arimo:400,700);*/
+/*Custom CSS for Plugfest and Events Page*/
+
+@font-face { font-family: 'SegoeUI'; src: url(./fonts/segoeui.ttf); };
+@font-face { font-family: 'SegoeUI'; font-weight: bold; src: url(./fonts/segoeuib.ttf); }; 
+@font-face { font-family: 'SegoeUI'; font-weight: italic; src: url(./fonts/segoeuib.ttf); };
 
 /*---------------------------------
 	OVERRIDES
 -----------------------------------*/
 h1,h2,h3,h4,h5,h6{
-font-family: "Arimo", arial, verdana, sans-serif;
+font-family: 'SegoeUI';
 font-weight:normal;
 }
 
 thead th,
 tbody th{
-font-family: "Arimo", arial, verdana, sans-serif;
+font-family: 'SegoeUI';
 }
 
 button,
@@ -27,15 +32,15 @@ a.btn,
 input[type="submit"],
 input[type="reset"],
 input[type="button"]{
-font-family: "Arimo", arial, verdana, sans-serif;
+font-family: 'SegoeUI';
 }
 
 .menu{
-font-family: "Arimo", arial, verdana, sans-serif;
+font-family: 'SegoeUI';
 }
 
 blockquote{
-font-family: "Arimo", arial, verdana, sans-serif;
+font-family: 'SegoeUI';
 }
 
 /*---------------------------------
@@ -46,7 +51,7 @@ margin:0;
 padding:0 0 0 0;
 color:#000;
 background:#fff;
-font:normal 0.9em/150% 'Arimo', arial, verdana, sans-serif;
+font:normal 0.9em/150% 'SegoeUI';
 text-shadow: 0 0 1px transparent; /* google font pixelation fix */
 }
 
