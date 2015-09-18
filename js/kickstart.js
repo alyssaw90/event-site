@@ -33,7 +33,7 @@ jQuery(document).ready(function($){
 		mode: 'horizontal', // 'horizontal', 'vertical', 'fade'
 		video: true,
 		useCSS: true,
-		pager: true,
+		pager: false,
 		speed: 1000, // transition time
 		startSlide: 0,
 		infiniteLoop: true,
@@ -42,7 +42,7 @@ jQuery(document).ready(function($){
 		touchEnabled: true,
 		pause: 4000,
 		autoControls: false,
-		controls: false,
+		controls: true,
 		autoStart: true,
 		auto: true
 	});
