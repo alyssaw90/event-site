@@ -63,7 +63,6 @@ body {
 
 .hamburger-icon {
 	padding: 20% 80% 5% 0; 
-	margin-top: -80%; 
 	float: right;
 }
 
@@ -76,10 +75,6 @@ body {
 }
 .add-space  {
 	padding-top: 10% !important;
-}
-
-.mobile-menu {
-	/*float: none !important;*/
 }
 
 h1 {
