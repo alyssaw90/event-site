@@ -41,4 +41,16 @@ $(document).ready(function () {
 		$('.mobile-menu:first').toggleClass('add-space');
 	});
 
+	//make past events buttons full width on mobile
+	function pastEvents () {
+		if ($(window).width() < 768) {
+			$('.past-events-menu').addClass('.flex');
+		}
+		if ($(window).width() > 768) {
+			$('.past-events-menu').removeClass('.flex');
+		}
+		
+	}
+	pastEvents();
+
 })

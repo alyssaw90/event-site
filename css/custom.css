@@ -451,7 +451,7 @@ a {
 
 	.past_events {
 		background-color: rgba(0, 216, 204, .8);
-		margin-bottom: 5%;
+		margin-bottom: 1%;
     margin-top: 2%;
     padding: 1%;
 	}
@@ -532,13 +532,22 @@ a {
 	}
 
 	.mobile-menu span {
-		font-size: 2.2em;
-		line-height: 150%;
+		font-size: 1.6em;
+		line-height: 120%;
 		float: none !important;
 	}
 
 	.foot {
 		display: none !important;
+	}
+
+	.grid.past-events-menu {
+		width:100%;
+		max-width:100%;
+		padding:0;
+		padding:0;
+		margin-right: 0;
+		margin-left: 0;
 	}
 }
 
