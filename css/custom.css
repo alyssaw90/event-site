@@ -499,6 +499,10 @@ a {
 	.slideshow .desc:first-child {
 		font-size: 6.2vw;
 	}
+
+	.subTitle {
+		display: none;
+	}
 }
 
 @media all and (min-width: 765px) and (max-width: 1546px) {
@@ -517,6 +521,11 @@ a {
 }
 
 @media all and (max-width: 768px) {
+
+	.past_events {
+    margin-right: 0;
+    margin-left: 0;
+	}
 
 	.event_block {
 		margin-top:0.5em;
