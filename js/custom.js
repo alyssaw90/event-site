@@ -53,4 +53,34 @@ $(document).ready(function () {
 	}
 	pastEvents();
 
+	//make footer stick to bottom of content or page, whichever is taller
+
+  var heightDiff = $(window).height() - $('body').height();
+  var footerHeight = $('footer').height();
+  if (heightDiff > 0) {
+    $('footer').addClass('stick-footer');
+    $('body').css('margin-bottom', footerHeight);
+  }
+
+  if (heightDiff <= 0) {
+  	$('footer').removeClass('stick-footer');
+  	$('body').css('margin-bottom', 0);
+  }
+
+	$(window).resize(function () {
+
+    var heightDiff = $(window).height() - $('body').height();
+    var footerHeight = $('footer').height();
+    if (heightDiff > 0) {
+      $('footer').addClass('stick-footer');
+      $('body').css('margin-bottom', footerHeight);
+    }
+
+    if (heightDiff <= 0) {
+    	$('footer').removeClass('stick-footer');
+    	$('body').css('margin-bottom', 0);
+    }
+		
+	});
+
 })
