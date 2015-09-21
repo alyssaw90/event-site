@@ -36,6 +36,15 @@ body {
     padding-top: 38.28%; /
 }*/
 
+main {
+	overflow: hidden;
+}
+
+.stick-footer {
+	  position: absolute;
+		bottom: 0;
+	}
+
 .fa-bars {
 	color: #fff;
 }
@@ -478,21 +487,6 @@ a {
 		background-color: #4668c5;
 	}
 
-@media all and (max-width: 768px) {
-	.event_block {
-		margin-top:0.5em;
-		margin-bottom:0.5em;
-	}
-
-	.desktop-menu {
-		display: none;
-	}
-
-	.bottom-menu {
-		display: inline;
-	}
-}
-
 @media all and (max-width: 1024px) {
 	.social {
 		display: none;
@@ -504,6 +498,10 @@ a {
 
 	.slideshow .desc:first-child {
 		font-size: 6.2vw;
+	}
+
+	.sub-title {
+		display: none;
 	}
 }
 
@@ -523,6 +521,25 @@ a {
 }
 
 @media all and (max-width: 768px) {
+
+	.past_events {
+    margin-right: 0;
+    margin-left: 0;
+	}
+
+	.event_block {
+		margin-top:0.5em;
+		margin-bottom:0.5em;
+	}
+
+	.desktop-menu {
+		display: none;
+	}
+
+	.bottom-menu {
+		display: inline;
+	}
+
 	.hamburger-menu {
 		display: inline;
 	}
