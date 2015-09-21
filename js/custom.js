@@ -22,9 +22,9 @@ $(document).ready(function () {
 		$(this).toggleClass('right-block-hover');
 	});
 	//apply hover effect to top menu
-	$('.menu-overlay li').hover(function () {
-		$(this).toggleClass('menu-overlay-hover');
-	});
+	// $('.menu-overlay li').hover(function () {
+	// 	$(this).toggleClass('menu-overlay-hover');
+	// });
 
 	//make block slide up effect for upcoming event blocks
 	$('.event_block').hover(

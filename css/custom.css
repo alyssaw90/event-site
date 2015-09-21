@@ -43,7 +43,7 @@ main {
 .stick-footer {
 	  position: absolute;
 		bottom: 0;
-	}
+}
 
 .fa-bars {
 	color: #fff;
@@ -62,8 +62,26 @@ main {
   margin-bottom: -2%;
 }
 
-.menu-overlay-hover {
+.menu-overlay li:hover {
 	background-color: #68217a;
+}
+
+.gray-menu-overlay {
+	background-color: rgba(0, 0, 0, 1);
+	padding-right: 18%;
+}
+
+.gray-menu-overlay li {
+	float: right;
+}
+
+.gray-menu-overlay li:hover {
+	background-color: rgba(0, 0, 0, .6);
+}
+
+.gray-menu-overlay img {
+	padding-top: 1%;
+  margin-bottom: -2%;
 }
 
 .hamburger-menu {
@@ -119,12 +137,30 @@ a {
 
 .center-block  {
 	margin: 0 0 0 0;
-	width: 25%;
+	width: 22%;
 }
 
 .center-block h2 {
 	color: #FFF;
 	text-align: center;
+	font-size: 2em;
+}
+
+.menu-block {
+	background-color: rgba(80, 80, 80, .6);
+	width: 100%;
+}
+
+.menu-block:hover {
+	background-color: rgba(80, 80, 80, 1);
+}
+
+.menu-block.current-page {
+	background-color: rgba(80, 80, 80, 1);
+}
+
+.home-menu-block {
+	width: 12%;
 }
 
 .register-button {
@@ -505,7 +541,7 @@ a {
 	}
 }
 
-@media all and (min-width: 765px) and (max-width: 1546px) {
+@media all and (min-width: 765px) and (max-width: 1200px) {
 	.left-block {
 		height: 140px;
 	}
@@ -517,6 +553,22 @@ a {
 	}
 	.right-block {
 		height: 140px;	
+	}
+
+	.menu-block {
+		height: 100px;
+	}
+
+	.home-menu-block {
+		height: 100px;
+	}
+
+	.menu li a{
+		font-size:1em;
+	}
+
+	.gray-menu-overlay {
+		padding-right: 9.5%;
 	}
 }
 
