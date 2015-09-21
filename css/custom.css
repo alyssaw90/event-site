@@ -36,6 +36,10 @@ body {
     padding-top: 38.28%; /
 }*/
 
+main {
+	overflow: hidden;
+}
+
 .stick-footer {
 	  position: absolute;
 		bottom: 0;

@@ -54,33 +54,36 @@ $(document).ready(function () {
 	pastEvents();
 
 	//make footer stick to bottom of content or page, whichever is taller
+	$(window).load(function () {
+	  var footerHeight = $('footer').height();
+	  var heightDiff = $(window).height() - $('body').height() + footerHeight;
+	  if ($(window).height() > $('body').outerHeight(true) + footerHeight + 10) {
+	    $('footer').addClass('stick-footer');
+	    $('body').css('margin-bottom', footerHeight);
+	  }
 
-  var footerHeight = $('footer').height();
-  var heightDiff = $(window).height() - $('body').height() - footerHeight;
-  if (heightDiff > 0) {
-    $('footer').addClass('stick-footer');
-  	$('body').css('margin-bottom', 0);
-  }
-
-  if (heightDiff <= 0) {
-  	$('footer').removeClass('stick-footer');
-    $('body').css('margin-bottom', footerHeight);
-  }
+	  if ($(window).height() <= $('body').outerHeight(true) + footerHeight + 10) {
+	  	$('footer').removeClass('stick-footer');
+	  	$('body').css('margin-bottom', 0);
+	  }
+	  console.log('window height', $(window).height(), 'body height', $('body').height(), 'footer height', $('footer').height(), 'document height', $(document).height());
+		
+	})
 
 	$(window).resize(function () {
 
     var footerHeight = $('footer').height();
-    var heightDiff = $(window).height() - $('body').height() - footerHeight;
-    if (heightDiff > 0) {
+    var heightDiff = $(window).height() - $('body').height() + footerHeight;
+    if ($(window).height() > $('body').outerHeight(true) + footerHeight + 10) {
       $('footer').addClass('stick-footer');
+      // $('body').css('margin-bottom', footerHeight);
+    }
+
+    if ($(window).height() <= $('body').outerHeight(true) + footerHeight + 10) {
+    	$('footer').removeClass('stick-footer');
     	$('body').css('margin-bottom', 0);
     }
-
-    if (heightDiff <= 0) {
-    	$('footer').removeClass('stick-footer');
-      $('body').css('margin-bottom', footerHeight);
-    }
-
+		console.log('window height', $(window).height(), 'body height', $('body').outerHeight(), 'footer height', $('footer').height(), 'document height', $(document).height());
 	});
 
 })
