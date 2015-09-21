@@ -51,6 +51,16 @@ main {
 
 .menu-overlay {
 	background-color: rgba(91, 44, 144, 1);
+	padding-right: 18%
+}
+
+.menu-overlay ul {
+	width: 70%;
+  margin: auto;
+}
+
+.menu-overlay img {
+	padding-left: 3%;
 }
 
 .menu-overlay li {
@@ -68,7 +78,15 @@ main {
 
 .gray-menu-overlay {
 	background-color: rgba(0, 0, 0, 1);
-	padding-right: 18%;
+}
+
+.gray-menu-overlay ul {
+	width: 70%;
+  margin: auto;
+}
+
+.gray-menu-overlay img {
+	padding-left: 3%;
 }
 
 .gray-menu-overlay li {
@@ -567,9 +585,6 @@ a {
 		font-size:1em;
 	}
 
-	.gray-menu-overlay {
-		padding-right: 9.5%;
-	}
 }
 
 @media all and (max-width: 768px) {
