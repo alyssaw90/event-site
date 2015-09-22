@@ -441,9 +441,17 @@ a {
     text-align: right;
 	}
 
+	.header {
+		display: none;
+	}
+
 	.header img {
 		max-width: 100%;
 		margin: 1% 0 1% 0;
+	}
+
+	.events a {
+		color: #000;
 	}
 
 	.experts-header {
@@ -593,6 +601,14 @@ a {
 }
 
 @media all and (max-width: 768px) {
+
+	.header {
+		display: inline-block;
+	}
+
+	.rising_text {
+		display: none;
+	}
 
 	.past_events {
     margin-right: 0;

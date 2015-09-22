@@ -35,6 +35,35 @@ $(document).ready(function () {
 			$(this).find('div').stop(true, true).animate({'bottom': '-100%'}, 200)
 		});
 
+	//make upcoming event blocks have equal height
+	$(window).load(function () {
+		var $eventBlock = $('.event_block');
+		var tallestBlock = 0;
+		$eventBlock.each(function () {
+			if ($(this).height() > tallestBlock) {
+				tallestBlock = $(this).height();
+			}
+		})
+
+		$eventBlock.each(function () {
+			$(this).height(tallestBlock);
+		})
+	});
+
+	$(window).resize(function () {
+		var $eventBlock = $('.event_block');
+		var tallestBlock = 0;
+		$eventBlock.each(function () {
+			if ($(this).height() > tallestBlock) {
+				tallestBlock = $(this).height();
+			}
+		})
+
+		$eventBlock.each(function () {
+			$(this).height(tallestBlock);
+		})
+	});
+
 	//make mobile menu appear when it's pressed
 	$('.hamburger-menu').click(function () {
 		$('.mobile-menu').toggleClass('hidden-menu');

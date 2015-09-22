@@ -17,10 +17,9 @@
 <body>
 	<header>
 		<!-- Begin Desktop upper menu -->
-		<nav class="menu-overlay">
+		<nav class="menu-overlay desktop-menu">
 			<a href="./index.html"><img src="../img/Microsoft-logo_rgb_c-wht-small.png" /></a>
 			<ul class="menu desktop-menu">
-				<!-- <li style="float: left;"><a href="./index.html"><img src="../img/Microsoft-logo_rgb_c-wht-small.png" /></a></li> -->
 				<li><a href="">Oceania</a></li>
 				<li><a href="">Africa</a>
 				<li><a href="">Europe</a></li>
@@ -32,14 +31,21 @@
 		<!-- Begin Mobile "Hambureger Menu" -->
 		<nav class="menu-overlay">
 			<ul class="menu vertical hamburger-menu">
-				<li class="current" style="float: left;"><a href="https://msdn.microsoft.com/en-us/openspecifications/cc721659.aspx"><img src="../img/Microsoft-logo_rgb_c-wht-small.png" /></a></li>
+				<li class="current" style="float: left;"><a href="../"><img src="../img/Microsoft-logo_rgb_c-wht-small.png" /></a></li>
 				<li><i class="fa fa-bars fa-3x hamburger-icon"></i></li>
-				<li class="mobile-menu hidden-menu"><a href="../"><span>Home</span></a></li>
-				<li class="mobile-menu hidden-menu"><a href=""><span>Connect</span></a></li>
-				<li class="mobile-menu hidden-menu"><a href=""><span>About</span></a></li>
+				<li class="mobile-menu hidden-menu"><a href="../"><span class="home">Home</span></a></li>
+				<li class="mobile-menu hidden-menu"><a href="./experts.html"><span>Learn from Experts</span></a></li>
+				<li class="mobile-menu hidden-menu"><a href="./join-the-community.html"><span>Join the Community</span></a></li>
+				<li class="mobile-menu hidden-menu"><a href="./upcoming-events.html"><span>Upcoming Events</span></a></li>
+				<li class="mobile-menu hidden-menu"><a href="./past-events.html"><span>Past Events</span></a></li>
+				<li class="mobile-menu hidden-menu"><a href=""><span>North & South America</span></a></li>
+				<li class="mobile-menu hidden-menu"><a href=""><span>Asia</span></a></li>
+				<li class="mobile-menu hidden-menu"><a href=""><span>Europe</span></a></li>
+				<li class="mobile-menu hidden-menu"><a href=""><span>Africa</span></a></li>
+				<li class="mobile-menu hidden-menu"><a href=""><span>Oceania</span></a></li>
 			</ul>
 		</nav>
-		<!-- End "Hanburger" Menu -->
+		<!-- End "Hamburger" Menu -->
 		<!-- begin Desktop Main menu -->
 <!-- 		<nav class="grid flex desktop-menu">
 			<div class="col_3 center-block">
@@ -59,7 +65,7 @@
 		<!-- begin Gray Desktop Main menu -->
 		<nav class="grid flex desktop-menu">
 			<div class="col_2 center-block home-menu-block">
-				<div class="col_4 center-block menu-block current-page"><a href="../index.html"><h2>Home</h2></a></div>
+				<div class="col_4 center-block menu-block"><a href="../index.html"><h2>Home</h2></a></div>
 			</div>
 			<div class="col_2 center-block">
 				<div class="col_2 center-block menu-block"><a href="./experts.html"><h2>Learn from Experts</h2></a></div>
@@ -68,7 +74,7 @@
 				<div class="col_2 center-block menu-block"><a href="./join-the-community.html"><h2>Join the Community</h2></a></div>
 			</div>
 			<div class="col_2 center-block">
-				<div class="col_2 center-block menu-block"><a href="./upcoming-events.html"><h2>Upcoming Events</h2></a></div>
+				<div class="col_2 center-block menu-block current-page"><a href="./upcoming-events.html"><h2>Upcoming Events</h2></a></div>
 			</div>
 			<div class="col_2 center-block">
 				<div class="col_2 center-block menu-block"><a href="./past-events.html"><h2>Past Events</h2></a></div>
@@ -77,9 +83,9 @@
 		<!-- end gray desktop main menu -->
 	</header>
 		<!-- begin header image -->
-<!-- 		<div class="header upcoming-header center">
+		<div class="header upcoming-header center">
 			<img src="../img/upcoming-event-header.png">
-		</div> -->
+		</div>
 		<!-- end header image -->
 	</header>
 	<!-- social icons -->
@@ -95,9 +101,11 @@
 	<!-- beging upcoming events grid  -->
 	<main class="events">
 		<div class="col_4 event_block">
-			<h1>Santa Clara, CA</h1>
-			<p>SNIA Storage Developer Conference 2015</p>
-			<p>September 20-24, 2015</p>
+			<a href="./future-events/santa-clara-2015.html">
+				<h1>Santa Clara, CA</h1>
+				<p>SNIA Storage Developer Conference 2015</p>
+				<p>September 20-24, 2015</p>
+			</a>
 			<div class="rising_text">
 				<a href="./future-events/santa-clara-2015.html"><p>Produced since 1998, Storage Developer Conference (SDC) 2015 is scheduled for September 21-24, 2015 in Santa Clara, CA, and is again expected to attract more than 400 developers, technical professionals, and engineers from the worldwide storage community.  - See more at: http://www.snia.org/events/storage-developer#sthash.zjpALYQ8.dpuf</p>
 	
@@ -105,9 +113,11 @@
 			</div>
 		</div>
 		<div class="col_4 event_block">
-			<h1>Shanghai, China</h1>
-			<p>Shanghai Interop Dev Days 2015</p>
-			<p>October 20-21, 2015</p>
+			<a href="#">
+				<h1>Shanghai, China</h1>
+				<p>Shanghai Interop Dev Days 2015</p>
+				<p>October 20-21, 2015</p>
+			</a>
 			<div class="rising_text">
 				<a href="#"><p>Connect with Microsoft and other developers. Build new apps or work on existing apps. Interoperate with one of the fastest growing Microsoft productivity platforms and develop new solutions. </p>
 	
@@ -115,9 +125,11 @@
 			</div>
 		</div>
 		<div class="col_4 event_block">
-			<h1>Paris, France</h1>
-			<p>Europe Protocols Plugfest</p>
-			<p>May 16 - 18, 2016</p>
+			<a href="#">
+				<h1>Paris, France</h1>
+				<p>Europe Protocols Plugfest</p>
+				<p>May 16 - 18, 2016</p>
+			</a>
 			<div class="rising_text">
 				<a href="#"><p>The schedule for this event is not yet decided, but it's Paris. Do you really need a reason? Come see Paris in the Spring!</p>
 	
