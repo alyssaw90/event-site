@@ -22,9 +22,9 @@ $(document).ready(function () {
 		$(this).toggleClass('right-block-hover');
 	});
 	//apply hover effect to top menu
-	$('.menu-overlay li').hover(function () {
-		$(this).toggleClass('menu-overlay-hover');
-	});
+	// $('.menu-overlay li').hover(function () {
+	// 	$(this).toggleClass('menu-overlay-hover');
+	// });
 
 	//make block slide up effect for upcoming event blocks
 	$('.event_block').hover(
@@ -35,19 +35,50 @@ $(document).ready(function () {
 			$(this).find('div').stop(true, true).animate({'bottom': '-100%'}, 200)
 		});
 
+	//make upcoming event blocks have equal height
+	$(window).load(function () {
+		var $eventBlock = $('.event_block');
+		var tallestBlock = 0;
+		$eventBlock.each(function () {
+			if ($(this).height() > tallestBlock) {
+				tallestBlock = $(this).height();
+			}
+		})
+
+		$eventBlock.each(function () {
+			$(this).height(tallestBlock);
+		})
+	});
+
+	$(window).resize(function () {
+		var $eventBlock = $('.event_block');
+		var tallestBlock = 0;
+		$eventBlock.each(function () {
+			if ($(this).height() > tallestBlock) {
+				tallestBlock = $(this).height();
+			}
+		})
+
+		$eventBlock.each(function () {
+			$(this).height(tallestBlock);
+		})
+	});
+
 	//make mobile menu appear when it's pressed
 	$('.hamburger-menu').click(function () {
-		$('.mobile-menu').toggleClass('hidden-menu add-padding');
+		$('.mobile-menu').toggleClass('hidden-menu');
 		$('.mobile-menu:first').toggleClass('add-space');
 	});
 
-	//make past events buttons full width on mobile
+	//make past events buttons and homepage content full width on mobile
 	$(window).load(function () {
 		if ($(window).width() < 768) {
 			$('.past-events-menu').addClass('.flex');
+			$('.main-page-content').addClass('.flex');
 		}
 		if ($(window).width() > 768) {
 			$('.past-events-menu').removeClass('.flex');
+			$('.main-page-content').removeClass('.flex');
 		}
 		
 	});
