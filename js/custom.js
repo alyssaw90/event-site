@@ -95,33 +95,36 @@ $(document).ready(function () {
 
 
 	//make footer stick to bottom of content or page, whichever is taller
-	$(window).load(function () {
-	  var footerHeight = $('footer').height();
-	  var heightDiff = $(window).height() - $('body').height() + footerHeight;
-	  if ($(window).height() > $('body').outerHeight(true) + footerHeight + 20) {
-	    $('footer').addClass('stick-footer');
-	    $('body').css('margin-bottom', footerHeight);
-	  }
+	setTimeOut(function () {
+		$(window).load(function () {
+		  var footerHeight = $('footer').height();
+		  var heightDiff = $(window).height() - $('body').height() + footerHeight;
+		  if ($(window).height() > $('body').outerHeight(true) + footerHeight + 20) {
+		    $('footer').addClass('stick-footer');
+		    $('body').css('margin-bottom', footerHeight);
+		  }
 
-	  if ($(window).height() <= $('body').outerHeight(true) + footerHeight + 20) {
-	  	$('footer').removeClass('stick-footer');
-	  	$('body').css('margin-bottom', 0);
-	  }
-	});
+		  if ($(window).height() <= $('body').outerHeight(true) + footerHeight + 20) {
+		  	$('footer').removeClass('stick-footer');
+		  	$('body').css('margin-bottom', 0);
+		  }
+		});
 
-	$(window).resize(function () {
+		$(window).resize(function () {
 
-    var footerHeight = $('footer').height();
-    var heightDiff = $(window).height() - $('body').height() + footerHeight;
-    if ($(window).height() > $('body').outerHeight(true) + footerHeight + 20) {
-      $('footer').addClass('stick-footer');
-      $('body').css('margin-bottom', footerHeight);
-    }
+	    var footerHeight = $('footer').height();
+	    var heightDiff = $(window).height() - $('body').height() + footerHeight;
+	    if ($(window).height() > $('body').outerHeight(true) + footerHeight + 20) {
+	      $('footer').addClass('stick-footer');
+	      $('body').css('margin-bottom', footerHeight);
+	    }
 
-    if ($(window).height() <= $('body').outerHeight(true) + footerHeight + 20) {
-    	$('footer').removeClass('stick-footer');
-    	$('body').css('margin-bottom', 0);
-    }
-	});
+	    if ($(window).height() <= $('body').outerHeight(true) + footerHeight + 20) {
+	    	$('footer').removeClass('stick-footer');
+	    	$('body').css('margin-bottom', 0);
+	    }
+		});
+		
+	}, 2000);
 
 })
