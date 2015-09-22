@@ -70,13 +70,15 @@ $(document).ready(function () {
 		$('.mobile-menu:first').toggleClass('add-space');
 	});
 
-	//make past events buttons full width on mobile
+	//make past events buttons and homepage content full width on mobile
 	$(window).load(function () {
 		if ($(window).width() < 768) {
 			$('.past-events-menu').addClass('.flex');
+			$('.main-page-content').addClass('.flex');
 		}
 		if ($(window).width() > 768) {
 			$('.past-events-menu').removeClass('.flex');
+			$('.main-page-content').removeClass('.flex');
 		}
 		
 	});
