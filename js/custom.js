@@ -96,15 +96,15 @@ $(document).ready(function () {
 
 	//make footer stick to bottom of content or page, whichever is taller
 	$(window).load(function () {
-	  var footerHeight = $('footer').height();
+	  var footerHeight = $('.footer-at-bottom').height();
 	  var heightDiff = $(window).height() - $('body').height() + footerHeight;
 	  if ($(window).height() > $('body').outerHeight(true) + footerHeight + 20) {
-	    $('footer').addClass('stick-footer');
+	    $('.footer-at-bottom').addClass('stick-footer');
 	    $('body').css('margin-bottom', footerHeight);
 	  }
 
 	  if ($(window).height() <= $('body').outerHeight(true) + footerHeight + 20) {
-	  	$('footer').removeClass('stick-footer');
+	  	$('.footer-at-bottom').removeClass('stick-footer');
 	  	$('body').css('margin-bottom', 0);
 	  }
 	});
@@ -114,12 +114,12 @@ $(document).ready(function () {
     var footerHeight = $('footer').height();
     var heightDiff = $(window).height() - $('body').height() + footerHeight;
     if ($(window).height() > $('body').outerHeight(true) + footerHeight + 20) {
-      $('footer').addClass('stick-footer');
+      $('.footer-at-bottom').addClass('stick-footer');
       $('body').css('margin-bottom', footerHeight);
     }
 
     if ($(window).height() <= $('body').outerHeight(true) + footerHeight + 20) {
-    	$('footer').removeClass('stick-footer');
+    	$('.footer-at-bottom').removeClass('stick-footer');
     	$('body').css('margin-bottom', 0);
     }
 	});
