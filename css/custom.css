@@ -559,7 +559,7 @@ a {
 	}
 }
 
-@media all and (min-width: 765px) and (max-width: 1200px) {
+@media all and (min-width: 765px) and (max-width: 1250px) {
 	.left-block {
 		height: 140px;
 	}
@@ -581,9 +581,14 @@ a {
 		height: 100px;
 	}
 
-	.menu li a{
+	.menu li:first-child a{
 		font-size:1em;
 	}
+
+	.menu-overlay ul {
+	width: 115%;
+  margin: auto;
+}
 
 }
 
@@ -599,10 +604,6 @@ a {
 		margin-bottom:0.5em;
 	}
 
-	.desktop-menu {
-		display: none;
-	}
-
 	.bottom-menu {
 		display: inline;
 	}
@@ -611,14 +612,23 @@ a {
 		display: inline;
 	}
 
+	.hamburger-menu li:last-child {
+		padding-bottom: 6%;
+	}
+
 	.desktop-menu {
 		display: none !important;
 	}
 
 	.mobile-menu span {
+		line-height: 130%;
+		float: left !important;
+		width: 270px;
+		padding: 3% 3% 3% 3%;
+	}
+
+	.home {
 		font-size: 1.6em;
-		line-height: 120%;
-		float: none !important;
 	}
 
 	.foot {

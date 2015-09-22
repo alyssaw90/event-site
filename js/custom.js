@@ -37,7 +37,7 @@ $(document).ready(function () {
 
 	//make mobile menu appear when it's pressed
 	$('.hamburger-menu').click(function () {
-		$('.mobile-menu').toggleClass('hidden-menu add-padding');
+		$('.mobile-menu').toggleClass('hidden-menu');
 		$('.mobile-menu:first').toggleClass('add-space');
 	});
 

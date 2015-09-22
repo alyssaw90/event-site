@@ -86,7 +86,7 @@ position:relative;z-index:1000;}
 		.menu li a:hover,
 		.menu li.hover>a{
 		/*background: rgba(91, 44, 144, 1);*/
-		line-height: 1.5em;
+		/*line-height: 1.5em;*/
 		}
 
 	/* sub menus */
