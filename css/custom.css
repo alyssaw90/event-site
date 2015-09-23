@@ -1,6 +1,6 @@
 /*Custom CSS for Plugfest and Events Page*/
 
-@font-face { font-family: SegoeUI; src: url(./fonts/segoeui.ttf); };
+@font-face { font-family: SegoeUI; src: url(./fonts/segoeuil.ttf); };
 @font-face { font-family: SegoeUI; font-weight: bold; src: url(./fonts/segoeuib.ttf); }; 
 @font-face { font-family: SegoeUI; font-weight: italic; src: url(./fonts/segoeuib.ttf); };
 
@@ -53,6 +53,10 @@ main {
 	border-radius:5px;
 }
 
+.float-left {
+	float: left;
+}
+
 .map {
 	background-color: #7d489c;
 	width: 100%;
@@ -83,31 +87,30 @@ main {
 
 .menu-overlay {
 	background-color: rgba(91, 44, 144, 1);
-	padding-right: 18%
+	padding-right: 18%;
 }
 
 .menu-overlay ul {
-	width: 70%;
-  margin: auto;
+	width: 115%;
+	padding-right: 20%;
 }
 
-.menu-overlay img {
-	padding-left: 3%;
-}
+
 
 .menu-overlay li {
 	float: right;
 }
 
 .menu-overlay img {
-	padding-top: 1%;
-  margin-bottom: -2%;
+	/*padding-top: 1%;*/
+/*  margin-bottom: -3%;
+	padding-left: 3%;*/
 }
 
 .menu-overlay li:hover {
 	background-color: #68217a;
 }
-
+/*
 .gray-menu-overlay {
 	background-color: rgba(0, 0, 0, 1);
 }
@@ -132,14 +135,14 @@ main {
 .gray-menu-overlay img {
 	padding-top: 1%;
   margin-bottom: -2%;
-}
+}*/
 
 .hamburger-menu {
 	display: none;
 }
 
 .hamburger-icon {
-	padding: 20% 50% 5% 0; 
+	padding: 20% 30% 5% 0; 
 	float: right;
 }
 
@@ -163,6 +166,22 @@ h2 {
 	font-family: SegoeUI, sans-serif;
 }
 
+h3 {
+	font-family: SegoeUI, sans-serif;
+}
+
+h4 {
+	font-family: SegoeUI, sans-serif;
+}
+
+h5 {
+	font-family: SegoeUI, sans-serif;
+}
+
+h6 {
+	font-family: SegoeUI, sans-serif;
+}
+
 p {
 	font-family: SegoeUI, sans-serif;
 }
@@ -173,6 +192,7 @@ li {
 
 a {
 	text-decoration: none;
+	font-family: SegoeUI, sans-serif;
 }
 
 .schedule td:first-child {
@@ -393,23 +413,39 @@ a {
 		color: #d2d2d2;
 	}
 
-	.slideshow h1 {
+/*	.slideshow h1 {
 		color: #fff;
 		font-weight: bold;
 		font-size: 3.2vw;
-		/*line-height: 1.809em;*/
+		line-height: 1.809em;
 		margin-left: 10%;
 		background-color: rgba(0, 0, 0, 0.5);
-	}
+	}*/
 
 	.slideshow h2 {
 		color: #fff;
 		font-weight: bold;
 		text-align: left;
-		font-size: 3vw;
+		font-size: 1.5vw;
 		margin-left: 5%;
 		padding-bottom: 2.5%;
-		background-color: rgba(0, 0, 0, 0.5);
+		/*background-color: rgba(0, 0, 0, 0.5);*/
+	}
+
+	.slideshow li:nth-child(2) h2 {
+		background-color: rgba(16, 124, 16, .5);
+	}
+
+	.slideshow li:nth-child(3) h2 {
+		background-color: rgba(92, 45, 145, .5);
+	}
+
+	.slideshow li:nth-child(4) h2 {
+		background-color: rgba(0, 120, 215, .5);
+	}
+
+	.blue.button {
+		margin-top: 4%;
 	}
 
 	.slideshow p {
@@ -464,10 +500,11 @@ a {
 
 
 	.slide-title {
-		background-color: rgba(0, 0, 0, 0.2);
 		margin-top: 10% auto auto 10%;
 		position: relative;
 		float: left;
+		font-size: 2.5vw;
+		line-height: 120%;
 	}
 
 	.social {
@@ -617,7 +654,7 @@ a {
 	}
 
 	.slideshow .desc:first-child {
-		font-size: 6.2vw;
+		font-size: 4vw;
 	}
 
 	.sub-title {
@@ -631,6 +668,11 @@ a {
 }
 
 @media all and (min-width: 765px) and (max-width: 1250px) {
+
+	.menu-overlay img {
+		padding-bottom: 10px;
+	}
+
 	.left-block {
 		height: 140px;
 	}
@@ -656,10 +698,9 @@ a {
 		font-size:1em;
 	}
 
-	.menu-overlay ul {
-	width: 115%;
-  margin: auto;
-}
+	.menu-overlay.desktop-menu a {
+		font-size: 1.2em;
+	}
 
 }
 
@@ -689,6 +730,7 @@ a {
 
 	.hamburger-menu {
 		display: inline;
+		padding-left: 5%;
 	}
 
 	.hamburger-menu li:last-child {
@@ -703,7 +745,11 @@ a {
 		line-height: 130%;
 		float: left !important;
 		width: 270px;
-		padding: 3% 3% 3% 20%;
+		padding: 3% 3% 3% 30%;
+	}
+
+	.adjust-menu-height {
+		height: 67px;
 	}
 
 	.home {
