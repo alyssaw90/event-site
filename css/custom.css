@@ -1,6 +1,6 @@
 /*Custom CSS for Plugfest and Events Page*/
 
-@font-face { font-family: SegoeUI; src: url(./fonts/segoeui.ttf); };
+@font-face { font-family: SegoeUI; src: url(./fonts/segoeuil.ttf); };
 @font-face { font-family: SegoeUI; font-weight: bold; src: url(./fonts/segoeuib.ttf); }; 
 @font-face { font-family: SegoeUI; font-weight: italic; src: url(./fonts/segoeuib.ttf); };
 
@@ -53,6 +53,10 @@ main {
 	border-radius:5px;
 }
 
+.float-left {
+	float: left;
+}
+
 .map {
 	background-color: #7d489c;
 	width: 100%;
@@ -83,31 +87,30 @@ main {
 
 .menu-overlay {
 	background-color: rgba(91, 44, 144, 1);
-	padding-right: 18%
+	padding-right: 18%;
 }
 
 .menu-overlay ul {
-	width: 70%;
-  margin: auto;
+	width: 115%;
+	padding-right: 20%;
 }
 
-.menu-overlay img {
-	padding-left: 3%;
-}
+
 
 .menu-overlay li {
 	float: right;
 }
 
 .menu-overlay img {
-	padding-top: 1%;
-  margin-bottom: -2%;
+	/*padding-top: 1%;*/
+/*  margin-bottom: -3%;
+	padding-left: 3%;*/
 }
 
 .menu-overlay li:hover {
 	background-color: #68217a;
 }
-
+/*
 .gray-menu-overlay {
 	background-color: rgba(0, 0, 0, 1);
 }
@@ -132,7 +135,7 @@ main {
 .gray-menu-overlay img {
 	padding-top: 1%;
   margin-bottom: -2%;
-}
+}*/
 
 .hamburger-menu {
 	display: none;
@@ -631,6 +634,11 @@ a {
 }
 
 @media all and (min-width: 765px) and (max-width: 1250px) {
+
+	.menu-overlay img {
+		padding-bottom: 10px;
+	}
+
 	.left-block {
 		height: 140px;
 	}
@@ -656,10 +664,9 @@ a {
 		font-size:1em;
 	}
 
-	.menu-overlay ul {
-	width: 115%;
-  margin: auto;
-}
+	.menu-overlay.desktop-menu a {
+		font-size: 1.2em;
+	}
 
 }
 
@@ -704,6 +711,10 @@ a {
 		float: left !important;
 		width: 270px;
 		padding: 3% 3% 3% 20%;
+	}
+
+	.adjust-menu-height {
+		height: 67px;
 	}
 
 	.home {
