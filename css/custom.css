@@ -360,6 +360,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e53c16', end
 	background-color: rgba(232, 17, 35, .6);
 }
 
+footer a {
+	color: #000;
+}
+
 .footer-left {
 	background-color: #505050;
 	padding-right: 2.5%
@@ -619,7 +623,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e53c16', end
 	}
 
 	.upcoming-header {
-		background-color: #b4009e;	
+		background-color: #9b4f97;	
 	}
 
 	.past-header {
