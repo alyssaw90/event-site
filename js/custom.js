@@ -64,7 +64,6 @@ $(document).ready(function () {
 	//make past events buttons and homepage content full width on mobile
 
 	function fullWidthMobile(div) {
-		console.log($(window).width());
 		if ($(window).width() < 768) {
 			div.addClass('flex');
 		}
@@ -75,9 +74,9 @@ $(document).ready(function () {
 	}
 
 	$(window).resize(fullWidthMobile($('.past-events-menu')));
-	$(window).load(fullWidthMobile($('.past-events-menu')));
+	// $(window).load(fullWidthMobile($('.past-events-menu')));
 	$(window).resize(fullWidthMobile($('.main-page-content')));
-	$(window).load(fullWidthMobile($('.main-page-content')));
+	// $(window).load(fullWidthMobile($('.main-page-content')));
 
 	//make footer stick to bottom of content or page, whichever is taller
 
@@ -98,5 +97,20 @@ $(document).ready(function () {
 	$(window).load(stickyFooter($('.footer-at-bottom')));
 
 	$(window).resize(stickyFooter($('.footer-at-bottom')));
+
+	//hide slider on phones
+
+	function hidePhone(div) {
+		if ($(window).width() < 768) {
+			div.css('display', 'none');
+		}
+		if ($(window).width() > 768) {
+			div.css('display', 'inline');
+		}
+		
+	}
+
+	$(window).load(hidePhone($('.slider')));
+	$(window).resize(hidePhone($('.slider')));
 
 })

@@ -57,6 +57,10 @@ main {
 	float: left;
 }
 
+.float-right {
+	float: right;
+}
+
 .map {
 	background-color: #7d489c;
 	width: 100%;
@@ -248,6 +252,53 @@ a {
 	border-radius: 10%;
 	margin-left: 10%;
 }
+
+.mobile-register-button {
+	padding-top: 2% !important;
+}
+
+.meetup-button {
+	background-color: red !important;
+}
+
+/*---------------------------------
+	RED
+-----------------------------------*/
+button.red,
+a.btn.red,
+a.button.red,
+input[type=submit].red,
+input[type=reset].red,
+input[type=button].red{
+text-shadow:0 -1px 0 #B21203;
+color:#fff;
+border:1px solid #B21203;
+background: rgb(229,60,22); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(229,60,22,1) 0%, rgba(207,4,4,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(229,60,22,1)), color-stop(100%,rgba(207,4,4,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, rgba(229,60,22,1) 0%,rgba(207,4,4,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, rgba(229,60,22,1) 0%,rgba(207,4,4,1) 100%); /* Opera 11.10+ */
+background: linear-gradient(top, rgba(229,60,22,1) 0%,rgba(207,4,4,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e53c16', endColorstr='#cf0404',GradientType=0 ); /* IE6-9 */
+}
+
+	button.red:hover,
+	a.btn.red:hover,
+	a.button.red:hover{
+	text-shadow:0 1px 0 #B21203;
+	border:1px solid #B21203;
+	background: rgb(238,106,76); /* Old browsers */
+	background: -moz-linear-gradient(top, rgba(238,106,76,1) 0%, rgba(251,33,33,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(238,106,76,1)), color-stop(100%,rgba(251,33,33,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, rgba(238,106,76,1) 0%,rgba(251,33,33,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, rgba(238,106,76,1) 0%,rgba(251,33,33,1) 100%); /* Opera 11.10+ */
+	background: linear-gradient(top, rgba(238,106,76,1) 0%,rgba(251,33,33,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ee6a4c', endColorstr='#fb2121',GradientType=0 ); /* IE6-9 */
+	}
+
+	.fa {
+		color: #000;
+	}
 
 /*.left-block-overlay {
 	background-image: url(../img/bill-and-steve.jpg);
