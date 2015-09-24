@@ -35,34 +35,25 @@ $(document).ready(function () {
 			$(this).find('div').stop(true, true).animate({'bottom': '-100%'}, 200)
 		});
 
-	//make upcoming event blocks have equal height
-	$(window).load(function () {
-		var $eventBlock = $('.event_block');
+	function changeSize (div) {
+		// var $eventBlock = $('.event_block');
 		var tallestBlock = 0;
-		$eventBlock.each(function () {
+		div.each(function () {
 			if ($(this).height() > tallestBlock) {
 				tallestBlock = $(this).height();
 			}
 		})
 
-		$eventBlock.each(function () {
+		div.each(function () {
 			$(this).height(tallestBlock);
 		})
-	});
+	}
 
-	$(window).resize(function () {
-		var $eventBlock = $('.event_block');
-		var tallestBlock = 0;
-		$eventBlock.each(function () {
-			if ($(this).height() > tallestBlock) {
-				tallestBlock = $(this).height();
-			}
-		})
+	$(window).resize(changeSize($('.event_block')));
+	$(window).load(changeSize($('.event_block')));
+	$(window).resize(changeSize($('.past_events')));
+	$(window).load(changeSize($('.past_events')));
 
-		$eventBlock.each(function () {
-			$(this).height(tallestBlock);
-		})
-	});
 
 	//make mobile menu appear when it's pressed
 	$('.hamburger-menu').click(function () {
@@ -71,57 +62,55 @@ $(document).ready(function () {
 	});
 
 	//make past events buttons and homepage content full width on mobile
-	$(window).load(function () {
+
+	function fullWidthMobile(div) {
 		if ($(window).width() < 768) {
-			$('.past-events-menu').addClass('.flex');
-			$('.main-page-content').addClass('.flex');
+			div.addClass('flex');
 		}
 		if ($(window).width() > 768) {
-			$('.past-events-menu').removeClass('.flex');
-			$('.main-page-content').removeClass('.flex');
+			div.removeClass('flex');
 		}
 		
-	});
+	}
 
-	$(window).resize(function () {
-		if ($(window).width() < 768) {
-			$('.past-events-menu').addClass('.flex');
-		}
-		if ($(window).width() > 768) {
-			$('.past-events-menu').removeClass('.flex');
-		}
-		
-	});
-
+	$(window).resize(fullWidthMobile($('.past-events-menu')));
+	// $(window).load(fullWidthMobile($('.past-events-menu')));
+	$(window).resize(fullWidthMobile($('.main-page-content')));
+	// $(window).load(fullWidthMobile($('.main-page-content')));
 
 	//make footer stick to bottom of content or page, whichever is taller
-	$(window).load(function () {
-	  var footerHeight = $('.footer-at-bottom').height();
+
+	function stickyFooter(foot) {
+	  var footerHeight = foot.height();
 	  var heightDiff = $(window).height() - $('body').height() + footerHeight;
 	  if ($(window).height() > $('body').outerHeight(true) + footerHeight + 20) {
-	    $('.footer-at-bottom').addClass('stick-footer');
+	    foot.addClass('stick-footer');
 	    $('body').css('margin-bottom', footerHeight);
 	  }
 
 	  if ($(window).height() <= $('body').outerHeight(true) + footerHeight + 20) {
-	  	$('.footer-at-bottom').removeClass('stick-footer');
+	  	foot.removeClass('stick-footer');
 	  	$('body').css('margin-bottom', 0);
 	  }
-	});
+	}
 
-	$(window).resize(function () {
+	$(window).load(stickyFooter($('.footer-at-bottom')));
 
-    var footerHeight = $('footer').height();
-    var heightDiff = $(window).height() - $('body').height() + footerHeight;
-    if ($(window).height() > $('body').outerHeight(true) + footerHeight + 20) {
-      $('.footer-at-bottom').addClass('stick-footer');
-      $('body').css('margin-bottom', footerHeight);
-    }
+	$(window).resize(stickyFooter($('.footer-at-bottom')));
 
-    if ($(window).height() <= $('body').outerHeight(true) + footerHeight + 20) {
-    	$('.footer-at-bottom').removeClass('stick-footer');
-    	$('body').css('margin-bottom', 0);
-    }
-	});
+	//hide slider on phones
+
+	function hidePhone(div) {
+		if ($(window).width() < 768) {
+			div.css('display', 'none');
+		}
+		if ($(window).width() > 768) {
+			div.css('display', 'inline');
+		}
+		
+	}
+
+	$(window).load(hidePhone($('.slider')));
+	$(window).resize(hidePhone($('.slider')));
 
 })

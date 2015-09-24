@@ -57,6 +57,10 @@ main {
 	float: left;
 }
 
+.float-right {
+	float: right;
+}
+
 .map {
 	background-color: #7d489c;
 	width: 100%;
@@ -88,6 +92,7 @@ main {
 .menu-overlay {
 	background-color: rgba(91, 44, 144, 1);
 	padding-right: 18%;
+	/*height: 65px;*/
 }
 
 .menu-overlay ul {
@@ -142,7 +147,7 @@ main {
 }
 
 .hamburger-icon {
-	padding: 20% 30% 5% 0; 
+	padding-top: 15px; 
 	float: right;
 }
 
@@ -242,8 +247,58 @@ a {
 }
 
 .register-button {
-	color: #0078D7;
+	background-color: #0078D7 !important;
+	color: #fff !important;
+	border-radius: 10%;
+	margin-left: 10%;
 }
+
+.mobile-register-button {
+	padding-top: 2% !important;
+}
+
+.meetup-button {
+	background-color: red !important;
+}
+
+/*---------------------------------
+	RED
+-----------------------------------*/
+button.red,
+a.btn.red,
+a.button.red,
+input[type=submit].red,
+input[type=reset].red,
+input[type=button].red{
+text-shadow:0 -1px 0 #B21203;
+color:#fff;
+border:1px solid #B21203;
+background: rgb(229,60,22); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(229,60,22,1) 0%, rgba(207,4,4,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(229,60,22,1)), color-stop(100%,rgba(207,4,4,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, rgba(229,60,22,1) 0%,rgba(207,4,4,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, rgba(229,60,22,1) 0%,rgba(207,4,4,1) 100%); /* Opera 11.10+ */
+background: linear-gradient(top, rgba(229,60,22,1) 0%,rgba(207,4,4,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e53c16', endColorstr='#cf0404',GradientType=0 ); /* IE6-9 */
+}
+
+	button.red:hover,
+	a.btn.red:hover,
+	a.button.red:hover{
+	text-shadow:0 1px 0 #B21203;
+	border:1px solid #B21203;
+	background: rgb(238,106,76); /* Old browsers */
+	background: -moz-linear-gradient(top, rgba(238,106,76,1) 0%, rgba(251,33,33,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(238,106,76,1)), color-stop(100%,rgba(251,33,33,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, rgba(238,106,76,1) 0%,rgba(251,33,33,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, rgba(238,106,76,1) 0%,rgba(251,33,33,1) 100%); /* Opera 11.10+ */
+	background: linear-gradient(top, rgba(238,106,76,1) 0%,rgba(251,33,33,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ee6a4c', endColorstr='#fb2121',GradientType=0 ); /* IE6-9 */
+	}
+
+	.fa {
+		color: #000;
+	}
 
 /*.left-block-overlay {
 	background-image: url(../img/bill-and-steve.jpg);
@@ -305,6 +360,10 @@ a {
 	background-color: rgba(232, 17, 35, .6);
 }
 
+footer a {
+	color: #000;
+}
+
 .footer-left {
 	background-color: #505050;
 	padding-right: 2.5%
@@ -332,10 +391,12 @@ a {
 
 .mobile-foot {
 	width: 100%;
+	/*height: 50px;*/
 	margin: 0 0 0 0;
-	padding-left: 25%;
+	padding: 2% 0 5% 0;
+	/*padding-left: 25%;*/
 }
-
+/*
 .mobile-foot li {
 	list-style-type: none;
 	font-size: 2em;
@@ -343,6 +404,10 @@ a {
 	font-weight: bold;
 	padding: 2%;
 	background-color: #d2d2d2;
+}*/
+
+.mobile-foot p {
+	text-align: center;
 }
 
 .bx-wrapper {
@@ -444,7 +509,7 @@ a {
 		background-color: rgba(0, 120, 215, .5);
 	}
 
-	.blue.button {
+	.desktop-menu .blue.button {
 		margin-top: 4%;
 	}
 
@@ -558,7 +623,7 @@ a {
 	}
 
 	.upcoming-header {
-		background-color: #b4009e;	
+		background-color: #9b4f97;	
 	}
 
 	.past-header {
@@ -567,6 +632,10 @@ a {
 
 	.event-tabs {
 		max-width: 100%;
+	}
+
+	.event-tabs span {
+		font-size: 1em;
 	}
 
 	.events > :first-child {
@@ -653,8 +722,16 @@ a {
 		display: none;
 	}
 
-	.slideshow .desc:first-child {
+	 .desc .span:first-child {
+		/*font-size: 10em;*/
+	}
+
+	.slide-title {
 		font-size: 4vw;
+	}
+
+	.slideshow p {
+		font-size: 3vw;
 	}
 
 	.sub-title {
@@ -670,7 +747,7 @@ a {
 @media all and (min-width: 765px) and (max-width: 1250px) {
 
 	.menu-overlay img {
-		padding-bottom: 10px;
+		/*padding-bottom: 10px;*/
 	}
 
 	.left-block {
@@ -720,8 +797,7 @@ a {
 	}
 
 	.event_block {
-		margin-top:0.5em;
-		margin-bottom:0.5em;
+		margin: 0.5em 0 0.5em 0;
 	}
 
 	.bottom-menu {
