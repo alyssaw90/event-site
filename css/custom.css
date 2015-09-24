@@ -243,7 +243,10 @@ a {
 }
 
 .register-button {
-	color: #0078D7;
+	background-color: #0078D7 !important;
+	color: #fff !important;
+	border-radius: 10%;
+	margin-left: 10%;
 }
 
 /*.left-block-overlay {
@@ -451,7 +454,7 @@ a {
 		background-color: rgba(0, 120, 215, .5);
 	}
 
-	.blue.button {
+	.desktop-menu .blue.button {
 		margin-top: 4%;
 	}
 
@@ -574,6 +577,10 @@ a {
 
 	.event-tabs {
 		max-width: 100%;
+	}
+
+	.event-tabs span {
+		font-size: 1em;
 	}
 
 	.events > :first-child {
