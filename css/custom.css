@@ -667,8 +667,16 @@ a {
 		display: none;
 	}
 
-	.slideshow .desc:first-child {
+	 .desc .span:first-child {
+		/*font-size: 10em;*/
+	}
+
+	.slide-title {
 		font-size: 4vw;
+	}
+
+	.slideshow p {
+		font-size: 3vw;
 	}
 
 	.sub-title {
