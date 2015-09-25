@@ -1,8 +1,8 @@
 /*Custom CSS for Plugfest and Events Page*/
 
-@font-face { font-family: SegoeUI; src: url(./fonts/segoeuil.ttf); };
-@font-face { font-family: SegoeUI; font-weight: bold; src: url(./fonts/segoeuib.ttf); }; 
-@font-face { font-family: SegoeUI; font-weight: italic; src: url(./fonts/segoeuib.ttf); };
+@font-face { font-family: SegoeUILight; src: url(./fonts/segoeuil.ttf); };
+@font-face { font-family: SegoeUILight; font-weight: bold; src: url(./fonts/segoeuib.ttf); }; 
+@font-face { font-family: SegoeUILight; font-weight: italic; src: url(./fonts/segoeuib.ttf); };
 
 body {
 	/*background-image: url(../img/background-stripe.png);*/
@@ -10,7 +10,7 @@ body {
 	background-position: 0% 350px;
 	background-size: 100%
 	opacity: .5;
-	font-family: SegoeUI !important;
+	font-family: SegoeUILight !important;
 
 }
 
@@ -148,6 +148,7 @@ main {
 .hamburger-icon {
 	padding-top: 15px; 
 	float: right;
+	color: #fff;
 }
 
 .hidden-menu {
@@ -162,41 +163,41 @@ main {
 }
 
 h1 {
-	font-family: SegoeUI, sans-serif;
+	font-family: SegoeUILight, sans-serif;
 	color: #505050;
 }
 
 h2 {
-	font-family: SegoeUI, sans-serif;
+	font-family: SegoeUILight, sans-serif;
 }
 
 h3 {
-	font-family: SegoeUI, sans-serif;
+	font-family: SegoeUILight, sans-serif;
 }
 
 h4 {
-	font-family: SegoeUI, sans-serif;
+	font-family: SegoeUILight, sans-serif;
 }
 
 h5 {
-	font-family: SegoeUI, sans-serif;
+	font-family: SegoeUILight, sans-serif;
 }
 
 h6 {
-	font-family: SegoeUI, sans-serif;
+	font-family: SegoeUILight, sans-serif;
 }
 
 p {
-	font-family: SegoeUI, sans-serif;
+	font-family: SegoeUILight, sans-serif;
 }
 
 li {
-	font-family: SegoeUI, sans-serif;
+	font-family: SegoeUILight, sans-serif;
 }
 
 a {
 	text-decoration: none;
-	font-family: SegoeUI, sans-serif;
+	font-family: SegoeUILight, sans-serif;
 }
 
 .schedule td:first-child {
@@ -295,7 +296,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e53c16', end
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ee6a4c', endColorstr='#fb2121',GradientType=0 ); /* IE6-9 */
 	}
 
-	.fa {
+	.social-icons .fa {
 		color: #000;
 	}
 
