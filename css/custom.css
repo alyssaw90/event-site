@@ -1,9 +1,9 @@
 /*Custom CSS for Plugfest and Events Page*/
 
-@font-face { font-family: SegoeUI; src: url(./fonts/segoeuil.ttf); };
-@font-face { font-family: SegoeUI; font-weight: bold; src: url(./fonts/segoeuib.ttf); }; 
-@font-face { font-family: SegoeUI; font-weight: italic; src: url(./fonts/segoeuib.ttf); };
-
+@font-face { font-family: SegoeUILight; src: url(./fonts/segoeuil.ttf)};
+@font-face { font-family: SegoeUI; src: url(./fonts/segoeuil.ttf)};
+@font-face { font-family: SegoeUILight; font-weight: bold; src: url(./fonts/segoeuib.ttf)}; 
+@font-face { font-family: SegoeUILight; font-style: italic; src: url(./fonts/segoeuib.ttf)};
 
 body {
 	/*background-image: url(../img/background-stripe.png);*/
@@ -11,7 +11,7 @@ body {
 	background-position: 0% 350px;
 	background-size: 100%
 	opacity: .5;
-	font-family: SegoeUI !important;
+	font-family: SegoeUILight !important;
 
 }
 
@@ -149,6 +149,7 @@ main {
 .hamburger-icon {
 	padding-top: 15px; 
 	float: right;
+	color: #fff;
 }
 
 .hidden-menu {
@@ -163,41 +164,45 @@ main {
 }
 
 h1 {
-	font-family: SegoeUI, sans-serif;
+	font-family: SegoeUILight, sans-serif;
 	color: #505050;
 }
 
 h2 {
-	font-family: SegoeUI, sans-serif;
+	font-family: SegoeUILight, sans-serif;
 }
 
 h3 {
-	font-family: SegoeUI, sans-serif;
+	font-family: SegoeUILight, sans-serif;
 }
 
 h4 {
-	font-family: SegoeUI, sans-serif;
+	font-family: SegoeUILight, sans-serif;
 }
 
 h5 {
-	font-family: SegoeUI, sans-serif;
+	font-family: SegoeUILight, sans-serif;
 }
 
 h6 {
-	font-family: SegoeUI, sans-serif;
+	font-family: SegoeUILight, sans-serif;
 }
 
 p {
-	font-family: SegoeUI, sans-serif;
+	font-family: SegoeUILight, sans-serif;
 }
 
 li {
-	font-family: SegoeUI, sans-serif;
+	font-family: SegoeUILight, sans-serif;
 }
 
 a {
 	text-decoration: none;
-	font-family: SegoeUI, sans-serif;
+	font-family: SegoeUILight, sans-serif;
+}
+
+table {
+	font-family: SegoeUILight, sans-serif;
 }
 
 .schedule td:first-child {
@@ -296,7 +301,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e53c16', end
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ee6a4c', endColorstr='#fb2121',GradientType=0 ); /* IE6-9 */
 	}
 
-	.fa {
+	.social-icons .fa {
 		color: #000;
 	}
 
@@ -362,6 +367,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e53c16', end
 
 footer a {
 	color: #000;
+}
+
+.footer-right a:hover {
+  text-shadow: 0 0 10px rgba(80, 80, 80, 1);
+}
+
+.footer-left a:hover {
+  text-shadow: 0 0 10px rgba(210, 210, 210, 1);
 }
 
 .footer-left {
@@ -583,16 +596,15 @@ footer a {
     text-align: right;
 	}
 
-	.header {
+	.header-image {
 		display: none;
 		text-align: center;
 		width: 100%;
 	}
 
-	.header img {
+	.header-image img {
 		max-width: 100%;
 		max-height: 70px;
-		/*margin: 1% 0 1% 0;*/
 		margin-top: 1%;
 		margin-bottom: 1%;
 	}
@@ -713,6 +725,15 @@ footer a {
 		background-color: #4668c5;
 	}
 
+.scroll-button {
+	text-align: right;
+}
+
+.scroll-button p {
+	font-size: .5em;
+	font-weight: bold;
+}
+
 @media all and (max-width: 1028px) {
 	.social {
 		display: none;
@@ -783,7 +804,7 @@ footer a {
 
 @media all and (max-width: 768px) {
 
-	.header {
+	.header-image {
 		display: inline-block;
 	}
 
@@ -843,6 +864,34 @@ footer a {
 		padding:0;
 		margin-right: 0;
 		margin-left: 0;
+	}
+
+}
+
+@media all and (min-width: 769px) {
+	.events {
+		max-width: 90% !important;
+	}
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+/* IE10+ CSS styles go here */
+	body {
+		width: 100%;
+	}
+
+	.col_12 {
+		width: 70%;
+		margin-right: 15%;
+		margin-left: 15%;
+	}
+	/*below isn't working in IE*/
+	.events {
+		width: 70px !important;
+	}
+
+	.stick-footer {
+		position: relative;
 	}
 }
 

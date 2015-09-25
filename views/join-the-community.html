@@ -29,23 +29,27 @@
 			</ul>
 		</nav>
 		<!-- End Desktop upper menu -->
-		<!-- Begin Mobile "Hambureger Menu" -->
+		<!-- Begin Mobile "Hamburger Menu" -->
 		<nav class="menu-overlay">
 			<ul class="menu vertical hamburger-menu">
 				<li class="current" style="float: left;"><a href="../"><img src="../img/Microsoft-logo_rgb_c-wht-small.png" /></a></li>
 				<li style="float: left;" class="mobile-register-button"><a class="blue button" href="https://msevents.microsoft.com/CUI/EventDetail.aspx?EventID=103265323&Culture=en-CN&community=1">Register</a></li></li>
 				<li><i class="fa fa-bars fa-3x hamburger-icon"></i></li>
-				<li class="mobile-menu hidden-menu"><a href="../"><span class="home">Home</span></a></li>
-				<li class="mobile-menu hidden-menu"><a href="./experts.html"><span>Learn from Experts</span></a></li>
-				<li class="mobile-menu hidden-menu"><a href="./join-the-community.html"><span>Join the Community</span></a></li>
-				<li class="mobile-menu hidden-menu"><a href="./upcoming-events.html"><span>Upcoming Events</span></a></li>
-				<li class="mobile-menu hidden-menu"><a href="./past-events.html"><span>Past Events</span></a></li>
-				<li class="mobile-menu hidden-menu"><a href="./world-map.html"><span>North & South America</span></a></li>
-				<li class="mobile-menu hidden-menu"><a href="./world-map.html"><span>Asia</span></a></li>
-				<li class="mobile-menu hidden-menu"><a href="./world-map.html"><span>Europe</span></a></li>
-				<li class="mobile-menu hidden-menu"><a href="./world-map.html"><span>Africa</span></a></li>
-				<li class="mobile-menu hidden-menu"><a href="./world-map.html"><span>Oceania</span></a></li>
 			</ul>
+			<div class="hidden-div" style="display: none">
+				<ul class="menu vertical hamburger-menu">
+					<li class="mobile-menu"><a href="../"><span class="home">Home</span></a></li>
+					<li class="mobile-menu"><a href="./experts.html"><span>Learn from Experts</span></a></li>
+					<li class="mobile-menu"><a href="./join-the-community.html"><span>Join the Community</span></a></li>
+					<li class="mobile-menu"><a href="./upcoming-events.html"><span>Upcoming Events</span></a></li>
+					<li class="mobile-menu"><a href="./past-events.html"><span>Past Events</span></a></li>
+					<li class="mobile-menu"><a href="./world-map.html"><span>North & South America</span></a></li>
+					<li class="mobile-menu"><a href="./world-map.html"><span>Asia</span></a></li>
+					<li class="mobile-menu"><a href="./world-map.html"><span>Europe</span></a></li>
+					<li class="mobile-menu"><a href="./world-map.html"><span>Africa</span></a></li>
+					<li class="mobile-menu"><a href="./world-map.html"><span>Oceania</span></a></li>
+				</ul>
+			</div>
 		</nav>
 		<!-- End "Hamburger" Menu -->
 		<!-- begin Gray Desktop Main menu -->
@@ -68,7 +72,7 @@
 		</nav>
 		<!-- end gray desktop main menu -->
 		<!-- begin header image -->
-		<div class="header community-header center">
+		<div class="header-image community-header center">
 			<img src="../img/join-the-community-header.jpg">
 		</div>
 		<!-- end header image -->
@@ -84,11 +88,11 @@
 	</div> -->
 	<!-- end of social icons -->
 	<!-- begin main section -->
-	<main class="grid white-bg">
-		<section>
+	<main class="grid white-bg main-page-content">
+		<section class="col_12">
 		<h2>Become a Part of the Interoperability Community</h2>
 		<!-- Begin Social Icons -->
-		<section class="col_12">
+		<section class="col_12 social-icons">
 			<a href="http://www.meetup.com/Shanghai-Interop-Dev-Days-2015/"><img src="../img/meetup-logo.jpg"></a>
 			<a href="https://twitter.com/OSpecifications"><i class="fa fa-twitter-square fa-3x"></i></a>
 			<a href="http://blogs.msdn.com/b/officeinteroperability/default.aspx?wa=wsignin1.0"><i class="fa fa-rss-square fa-3x"></i></a>
@@ -105,14 +109,14 @@
 			<div id="tabc1" class="tab-content">
 				<div class="col_4">
 					<!-- Twitter Feed -->
-					<a id="twitter-widget-1" class="twitter-timeline" href="https://twitter.com/OSpecifications" data-widget-id="646806018907738115">Tweets by @OSpecifications</a>
+					<a id="twitter-widget-1" class="twitter-timeline" href="https://twitter.com/OSpecifications" data-widget-id="622196778129985537">Tweets by @OSpecifications</a>
 					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 					<!-- End Twitter Feed -->
 				</div>
 				<div class="col_8">
 				<p>The following posts are consolidated from the latest <a href="http://blogs.msdn.com/b/officeinteroperability/">Office Interoperability</a>, <a href="http://blogs.msdn.com/b/openspecification/">Microsoft Open Specifications Support</a>, and <a href="http://openness.microsoft.com/blog">Microsoft Openness</a> news.</p>
 				<!-- start feedwind code -->
-				<script type="text/javascript">document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document.location.protocol ? 'https://' : 'http://') + 'feed.mikle.com/js/rssmikle.js">\x3C/script>');</script><script type="text/javascript">(function() {var params = {rssmikle_url: "http://sxp.microsoft.com/feeds/3.0/msdntn/MSDNOpenSpecificationFeeds/",rssmikle_frame_width: "1170",rssmikle_frame_height: "500",frame_height_by_article: "10",rssmikle_target: "_blank",rssmikle_font: "Arial, Helvetica, sans-serif",rssmikle_font_size: "12",rssmikle_border: "off",responsive: "on",rssmikle_css_url: "",text_align: "left",text_align2: "left",corner: "off",scrollbar: "on",autoscroll: "off",scrolldirection: "up",scrollstep: "3",mcspeed: "20",sort: "New",rssmikle_title: "on",rssmikle_title_sentence: "Recent News",rssmikle_title_link: "",rssmikle_title_bgcolor: "#000000",rssmikle_title_color: "#FFFFFF",rssmikle_title_bgimage: "",rssmikle_item_bgcolor: "#FFFFFF",rssmikle_item_bgimage: "",rssmikle_item_title_length: "55",rssmikle_item_title_color: "#000000",rssmikle_item_border_bottom: "on",rssmikle_item_description: "on",item_link: "off",rssmikle_item_description_length: "150",rssmikle_item_description_color: "#505050",rssmikle_item_date: "gl1",rssmikle_timezone: "Etc/GMT",datetime_format: "%b %e, %Y %l:%M %p",item_description_style: "text+tn",item_thumbnail: "full",item_thumbnail_selection: "auto",article_num: "15",rssmikle_item_podcast: "off",keyword_inc: "",keyword_exc: ""};feedwind_show_widget_iframe(params);})();</script><div style="font-size:10px; text-align:center; "><a href="http://feed.mikle.com/" target="_blank" style="color:#CCCCCC;">RSS Feed Widget</a><!--Please display the above link in your web page according to Terms of Service.--></div>
+				<script type="text/javascript">document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document.location.protocol ? 'https://' : 'http://') + 'feed.mikle.com/js/rssmikle.js">\x3C/script>');</script><script type="text/javascript">(function() {var params = {rssmikle_url: "http://sxp.microsoft.com/feeds/3.0/msdntn/MSDNOpenSpecificationFeeds/",rssmikle_frame_width: "1170",rssmikle_frame_height: "500",frame_height_by_article: "10",rssmikle_target: "_blank",rssmikle_font: "SegoeUILight, sans-serif",rssmikle_font_size: "12",rssmikle_border: "off",responsive: "on",rssmikle_css_url: "",text_align: "left",text_align2: "left",corner: "off",scrollbar: "on",autoscroll: "off",scrolldirection: "up",scrollstep: "3",mcspeed: "20",sort: "New",rssmikle_title: "on",rssmikle_title_sentence: "Recent News",rssmikle_title_link: "",rssmikle_title_bgcolor: "#000000",rssmikle_title_color: "#FFFFFF",rssmikle_title_bgimage: "",rssmikle_item_bgcolor: "#FFFFFF",rssmikle_item_bgimage: "",rssmikle_item_title_length: "55",rssmikle_item_title_color: "#000000",rssmikle_item_border_bottom: "on",rssmikle_item_description: "on",item_link: "off",rssmikle_item_description_length: "150",rssmikle_item_description_color: "#505050",rssmikle_item_date: "gl1",rssmikle_timezone: "Etc/GMT",datetime_format: "%b %e, %Y %l:%M %p",item_description_style: "text+tn",item_thumbnail: "full",item_thumbnail_selection: "auto",article_num: "15",rssmikle_item_podcast: "off",keyword_inc: "",keyword_exc: ""};feedwind_show_widget_iframe(params);})();</script><div style="font-size:10px; text-align:center; "><a href="http://feed.mikle.com/" target="_blank" style="color:#CCCCCC;">RSS Feed Widget</a><!--Please display the above link in your web page according to Terms of Service.--></div>
 				<!-- end feedwind code -->
 			</div>
 			</div>
@@ -230,25 +234,12 @@
 					</form>
 				<hr />
 			</div>
+			<section class="col_12 scroll-button">
+				<i class="fa fa-chevron-up fa-3x"><p>Back to Top</p></i>
+			</section>
 		</section>
 	</main>
 	<!-- end main section -->
-	<!-- begin bottom menu -->
-	<!-- <div class="grid flex bottom-menu">
-		<div class="col_3 center-block left-block-overlay">
-			<div class="col_3 center-block left-block"><a href="./experts.html"><h2>Learn from <br />Experts</h2></a></div>
-		</div>
-		<div class="col_3 center-block left-center-block-overlay">
-			<div class="col_3 center-block left-center-block"><a href="./join-the-community.html"><h2>Join the <br />Community</h2></a></div>
-		</div>
-		<div class="col_3 center-block right-center-block-overlay">
-			<div class="col_3 center-block right-center-block"><a href="./upcoming-events.html"><h2>Upcoming<br />Events</h2></a></div>
-		</div>
-		<div class="col_3 center-block right-block-overlay">
-			<div class="col_3 center-block right-block"><a href="./past-events.html"><h2>Past <br />Events</h2></a></div>
-		</div>
-	</div> -->
-	<!-- end bottom menu -->
 	<!-- begin mobile footer -->
 	<footer class="grid flex footer-at-bottom">
 			<div class=" col_12 hamburger-menu footer-right mobile-foot">

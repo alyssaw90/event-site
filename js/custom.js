@@ -55,10 +55,15 @@ $(document).ready(function () {
 	$(window).load(changeSize($('.past_events')));
 
 
-	//make mobile menu appear when it's pressed
+	//make mobile menu slide down when it's pressed
+
 	$('.hamburger-menu').click(function () {
-		$('.mobile-menu').toggleClass('hidden-menu');
 		$('.mobile-menu:first').toggleClass('add-space');
+  	if ($('.hidden-div').is(':hidden')) {
+  	  $('.hidden-div').slideDown('slow');
+  	} else {
+  	  $('.hidden-div').slideUp('slow');
+  	}
 	});
 
 	//make past events buttons and homepage content full width on mobile
@@ -112,5 +117,10 @@ $(document).ready(function () {
 
 	$(window).load(hidePhone($('.slider')));
 	$(window).resize(hidePhone($('.slider')));
+
+	//make bottom button scroll to top
+	$(".scroll-button .fa-chevron-up").click( function() {
+   $(window).scrollTop(0);
+ 	});
 
 })
