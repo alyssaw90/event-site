@@ -1,6 +1,7 @@
 /*Custom CSS for Plugfest and Events Page*/
 
 @font-face { font-family: SegoeUILight; src: url(./fonts/segoeuil.ttf); };
+@font-face { font-family: SegoeUI; src: url(./fonts/segoeuil.ttf); };
 @font-face { font-family: SegoeUILight; font-weight: bold; src: url(./fonts/segoeuib.ttf); }; 
 @font-face { font-family: SegoeUILight; font-weight: italic; src: url(./fonts/segoeuib.ttf); };
 
@@ -197,6 +198,10 @@ li {
 
 a {
 	text-decoration: none;
+	font-family: SegoeUILight, sans-serif;
+}
+
+table {
 	font-family: SegoeUILight, sans-serif;
 }
 
