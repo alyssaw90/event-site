@@ -1,9 +1,9 @@
 /*Custom CSS for Plugfest and Events Page*/
 
-@font-face { font-family: SegoeUILight; src: url(./fonts/segoeuil.ttf); };
-@font-face { font-family: SegoeUI; src: url(./fonts/segoeuil.ttf); };
-@font-face { font-family: SegoeUILight; font-weight: bold; src: url(./fonts/segoeuib.ttf); }; 
-@font-face { font-family: SegoeUILight; font-weight: italic; src: url(./fonts/segoeuib.ttf); };
+@font-face { font-family: SegoeUILight; src: url(./fonts/segoeuil.ttf)};
+@font-face { font-family: SegoeUI; src: url(./fonts/segoeuil.ttf)};
+@font-face { font-family: SegoeUILight; font-weight: bold; src: url(./fonts/segoeuib.ttf)}; 
+@font-face { font-family: SegoeUILight; font-style: italic; src: url(./fonts/segoeuib.ttf)};
 
 body {
 	/*background-image: url(../img/background-stripe.png);*/
@@ -596,16 +596,15 @@ footer a {
     text-align: right;
 	}
 
-	.header {
+	.header-image {
 		display: none;
 		text-align: center;
 		width: 100%;
 	}
 
-	.header img {
+	.header-image img {
 		max-width: 100%;
 		max-height: 70px;
-		/*margin: 1% 0 1% 0;*/
 		margin-top: 1%;
 		margin-bottom: 1%;
 	}
@@ -728,7 +727,6 @@ footer a {
 
 .scroll-button {
 	text-align: right;
-	display: none;
 }
 
 .scroll-button p {
@@ -806,7 +804,7 @@ footer a {
 
 @media all and (max-width: 768px) {
 
-	.header {
+	.header-image {
 		display: inline-block;
 	}
 
@@ -868,8 +866,32 @@ footer a {
 		margin-left: 0;
 	}
 
-	.scroll-button {
-		display: inline;
+}
+
+@media all and (min-width: 769px) {
+	.events {
+		max-width: 90% !important;
+	}
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+/* IE10+ CSS styles go here */
+	body {
+		width: 100%;
+	}
+
+	.col_12 {
+		width: 70%;
+		margin-right: 15%;
+		margin-left: 15%;
+	}
+	/*below isn't working in IE*/
+	.events {
+		width: 70px !important;
+	}
+
+	.stick-footer {
+		position: relative;
 	}
 }
 

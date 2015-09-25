@@ -121,6 +121,6 @@ $(document).ready(function () {
 	//make bottom button scroll to top
 	$(".scroll-button .fa-chevron-up").click( function() {
    $(window).scrollTop(0);
- });
+ 	});
 
 })
