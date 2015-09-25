@@ -60,9 +60,9 @@ $(document).ready(function () {
 	$('.hamburger-menu').click(function () {
 		$('.mobile-menu:first').toggleClass('add-space');
   	if ($('.hidden-div').is(':hidden')) {
-  	  $('.hidden-div').slideDown('fast');
+  	  $('.hidden-div').slideDown('slow');
   	} else {
-  	  $('.hidden-div').slideUp('fast');
+  	  $('.hidden-div').slideUp('slow');
   	}
 	});
 
@@ -117,5 +117,10 @@ $(document).ready(function () {
 
 	$(window).load(hidePhone($('.slider')));
 	$(window).resize(hidePhone($('.slider')));
+
+	//make bottom button scroll to top
+	$(".scroll-button .fa-chevron-up").click( function() {
+   $(window).scrollTop(0);
+ });
 
 })

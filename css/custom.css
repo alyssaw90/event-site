@@ -721,6 +721,16 @@ footer a {
 		background-color: #4668c5;
 	}
 
+.scroll-button {
+	text-align: right;
+	display: none;
+}
+
+.scroll-button p {
+	font-size: .5em;
+	font-weight: bold;
+}
+
 @media all and (max-width: 1028px) {
 	.social {
 		display: none;
@@ -851,6 +861,10 @@ footer a {
 		padding:0;
 		margin-right: 0;
 		margin-left: 0;
+	}
+
+	.scroll-button {
+		display: inline;
 	}
 }
 
