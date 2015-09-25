@@ -5,6 +5,8 @@
 @font-face { font-family: SegoeUI; font-weight: italic; src: url(./fonts/segoeuib.ttf); };
 
 
+
+
 body {
 	/*background-image: url(../img/background-stripe.png);*/
 	background-repeat: no-repeat;
@@ -847,3 +849,8 @@ footer a {
 }
 
 }
+/*
+.hidden-div {
+    display: none !important;
+    float: left !important;
+  }*/

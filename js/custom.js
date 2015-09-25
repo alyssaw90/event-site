@@ -55,10 +55,15 @@ $(document).ready(function () {
 	$(window).load(changeSize($('.past_events')));
 
 
-	//make mobile menu appear when it's pressed
+	//make mobile menu slide down when it's pressed
+
 	$('.hamburger-menu').click(function () {
-		$('.mobile-menu').toggleClass('hidden-menu');
 		$('.mobile-menu:first').toggleClass('add-space');
+  	if ($('.hidden-div').is(':hidden')) {
+  	  $('.hidden-div').slideDown('fast');
+  	} else {
+  	  $('.hidden-div').slideUp('fast');
+  	}
 	});
 
 	//make past events buttons and homepage content full width on mobile
