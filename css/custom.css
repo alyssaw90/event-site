@@ -4,9 +4,6 @@
 @font-face { font-family: SegoeUI; font-weight: bold; src: url(./fonts/segoeuib.ttf); }; 
 @font-face { font-family: SegoeUI; font-weight: italic; src: url(./fonts/segoeuib.ttf); };
 
-
-
-
 body {
 	/*background-image: url(../img/background-stripe.png);*/
 	background-repeat: no-repeat;
@@ -364,6 +361,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e53c16', end
 
 footer a {
 	color: #000;
+}
+
+.footer-right a:hover {
+  text-shadow: 0 0 10px rgba(80, 80, 80, 1);
+}
+
+.footer-left a:hover {
+  text-shadow: 0 0 10px rgba(210, 210, 210, 1);
 }
 
 .footer-left {
@@ -849,8 +854,3 @@ footer a {
 }
 
 }
-/*
-.hidden-div {
-    display: none !important;
-    float: left !important;
-  }*/
