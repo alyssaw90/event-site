@@ -61,26 +61,28 @@ $(document).ready(function () {
 		$('.mobile-menu:first').toggleClass('add-space');
   	if ($('.hidden-div').is(':hidden')) {
   	  $('.hidden-div').slideDown('slow');
+  	  $('.menu-overlay').css('height', '100%');
   	} else {
   	  $('.hidden-div').slideUp('slow');
+  	  $('.menu-overlay').css('height', '65px');
   	}
 	});
 
 	//make past events buttons and homepage content full width on mobile
 
-	function fullWidthMobile(div) {
-		if ($(window).width() < 768) {
-			div.addClass('flex');
-		}
-		if ($(window).width() > 768) {
-			div.removeClass('flex');
-		}
+	// function fullWidthMobile(div) {
+	// 	if ($(window).width() < 768) {
+	// 		div.addClass('flex');
+	// 	}
+	// 	if ($(window).width() > 768) {
+	// 		div.removeClass('flex');
+	// 	}
 		
-	}
+	// }
 
-	$(window).resize(fullWidthMobile($('.past-events-menu')));
+	// $(window).resize(fullWidthMobile($('.past-events-menu')));
 	// $(window).load(fullWidthMobile($('.past-events-menu')));
-	$(window).resize(fullWidthMobile($('.main-page-content')));
+	// $(window).resize(fullWidthMobile($('.main-page-content')));
 	// $(window).load(fullWidthMobile($('.main-page-content')));
 
 	//make footer stick to bottom of content or page, whichever is taller
