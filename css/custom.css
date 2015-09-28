@@ -893,6 +893,7 @@ footer a {
 }
 /*IE10+ CSS for desktop only*/
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active), (min-width: 768px) {
+	/*upcoming events padding fix*/
 	.events .col_4:first-child {
 		margin-left: 15%;
 	}
@@ -905,7 +906,18 @@ footer a {
 	.event_block {
 		max-width: 22%;
 	}
-	
+
+	/*past events padding fix*/
+	.past_events {
+		width: 22%;
+		/*padding-left: 100px;*/
+	}
+
+	.past_events:nth-of-type(1) {
+		background-color: red !important;
+	}
+
+
 }
 
 }
