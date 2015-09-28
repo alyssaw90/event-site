@@ -885,14 +885,27 @@ footer a {
 		margin-right: 15%;
 		margin-left: 15%;
 	}
-	/*below isn't working in IE*/
-	.events {
-		width: 70px !important;
-	}
 
 	.stick-footer {
 		position: relative;
 	}
+
+}
+/*IE10+ CSS for desktop only*/
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active), (min-width: 768px) {
+	.events .col_4:first-child {
+		margin-left: 15%;
+	}
+
+	.events .col_4:last-child {
+		margin-right: 10%;
+	}
+
+
+	.event_block {
+		max-width: 22%;
+	}
+	
 }
 
 }
