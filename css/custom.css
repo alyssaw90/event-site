@@ -253,17 +253,26 @@ table {
 
 .register-button {
 	background-color: #0078D7 !important;
-	color: #fff !important;
-	border-radius: 10%;
-	margin-left: 10%;
+	margin-top: 3% !important;
+	margin-left: 100px !important;
+	padding-bottom: 2%;
+	border-radius: 10px;
+}
+
+.register-button a {
+	line-height: 11px !important;
+
 }
 
 .mobile-register-button {
 	padding-top: 2% !important;
+	padding-left: 5% !important;
+	padding-right: 7% !important;
 }
 
 .meetup-button {
 	background-color: red !important;
+
 }
 
 /*---------------------------------
@@ -909,12 +918,8 @@ footer a {
 
 	/*past events padding fix*/
 	.past_events {
-		width: 22%;
-		/*padding-left: 100px;*/
-	}
-
-	.past_events:nth-of-type(1) {
-		background-color: red !important;
+/*		width: 25%;
+		padding-left: 100px;*/
 	}
 
 
