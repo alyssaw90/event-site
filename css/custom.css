@@ -92,7 +92,6 @@ main {
 .menu-overlay {
 	background-color: rgba(91, 44, 144, 1);
 	padding-right: 18%;
-	/*height: 65px;*/
 }
 
 .menu-overlay ul {
@@ -114,6 +113,10 @@ main {
 
 .menu-overlay li:hover {
 	background-color: #68217a;
+}
+
+.map-menu {
+	margin: 0 auto;
 }
 /*
 .gray-menu-overlay {
@@ -147,9 +150,10 @@ main {
 }
 
 .hamburger-icon {
-	padding-top: 15px; 
+	padding-top: 8px; 
 	float: right;
 	color: #fff;
+	margin-right: -50%;
 }
 
 .hidden-menu {
@@ -263,12 +267,12 @@ table {
 	line-height: 11px !important;
 
 }
-
+/*
 .mobile-register-button {
 	padding-top: 2% !important;
 	padding-left: 5% !important;
 	padding-right: 7% !important;
-}
+}*/
 
 .meetup-button {
 	background-color: red !important;
@@ -310,8 +314,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e53c16', end
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ee6a4c', endColorstr='#fb2121',GradientType=0 ); /* IE6-9 */
 	}
 
-	.social-icons .fa {
-		color: #000;
+	.social-icons img {
+		margin-right: -35px;
 	}
 
 /*.left-block-overlay {
@@ -531,9 +535,9 @@ footer a {
 		background-color: rgba(0, 120, 215, .5);
 	}
 
-	.desktop-menu .blue.button {
+/*	.desktop-menu .blue.button {
 		margin-top: 4%;
-	}
+	}*/
 
 	.slideshow p {
 		text-align: right;
@@ -593,17 +597,17 @@ footer a {
 		font-size: 2.5vw;
 		line-height: 120%;
 	}
-
+/*
 	.social {
     z-index: 999;
-	}
-
+	}*/
+/*
 	.social li {
     list-style-type: none;
     margin: 0;
     padding: 1px 0 0 0;
     text-align: right;
-	}
+	}*/
 
 	.header-image {
 		display: none;
@@ -744,10 +748,10 @@ footer a {
 }
 
 @media all and (max-width: 1028px) {
-	.social {
+/*	.social {
 		display: none;
 	}
-
+*/
 	.slideshow .desc:not(:first-child) {
 		display: none;
 	}
@@ -809,6 +813,10 @@ footer a {
 		font-size: 1.2em;
 	}
 
+}
+
+.register-button {
+	margin-right: 100px;
 }
 
 @media all and (max-width: 768px) {
@@ -875,11 +883,52 @@ footer a {
 		margin-left: 0;
 	}
 
+	.social-icons img {
+		height: 30px;
+	}
+
+	.register-button {
+		max-height: 50% !important;
+	}
+
+	.menu-overlay {
+		height: 65px;
+	}
+
 }
 
 @media all and (min-width: 769px) {
 	.events {
 		max-width: 90% !important;
+	}
+}
+
+@media all and (max-width: 641px) {
+	.hamburger-icon {
+		padding-top: 0;
+		margin-top: -10px;
+	}
+
+	.menu-overlay {
+		overflow: hidden;
+		padding-bottom: 85px;
+	}
+}
+
+@media all and (max-width: 481px) {
+	.hamburger-icon {
+		margin-left: 70px;
+		margin-top: -50px;
+	}
+}
+
+@media all and (max-width: 321px) {
+	.menu-overlay {
+		height: 150px;
+	}
+
+	.hamburger-icon {
+		padding-right: 40px;
 	}
 }
 
