@@ -111,7 +111,7 @@ main {
 	padding-left: 3%;*/
 }
 
-.menu-overlay li:hover {
+.menu-overlay a:hover {
 	background-color: #68217a;
 }
 
@@ -319,6 +319,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e53c16', end
 		margin-right: -35px;
 	}
 
+	.social-icons a {
+		background-color: transparent !important;
+	}
+
 /*.left-block-overlay {
 	background-image: url(../img/bill-and-steve.jpg);
 	background-repeat: no-repeat;
@@ -398,29 +402,29 @@ footer a {
 
 .footer-right {
 	background-color: #d2d2d2;
-	float: right;
+	/*float: right;*/
 }
 
 .foot li {
-	list-style-type: none;
-	display: inline;
-	font-size: 1.25em;
-	font-weight: bold;
-	padding: 2%;
+	/*list-style-type: none;*/
+	/*display: inline;*/
+	/*font-size: 1.25em;*/
+	/*font-weight: bold;*/
+	/*padding: 2%;*/
 }
 
 .foot  {
-	margin: 0 0 0 0;
+	/*margin: 0 0 0 0;*/
 	/*min-height: 100px;*/
-	width: 50%;
-	padding: 1% 1.5% 0 0;
+	/*width: 50%;*/
+/*	padding: 1% 1.5% 0 0;*/
 }
 
 .mobile-foot {
 	width: 100%;
 	/*height: 50px;*/
 	margin: 0 0 0 0;
-	padding: 2% 0 5% 0;
+	padding: 5px 0 5px 0;
 	/*padding-left: 25%;*/
 }
 /*
@@ -870,10 +874,10 @@ footer a {
 	.home {
 		font-size: 1.6em;
 	}
-
+/*
 	.foot {
 		display: none !important;
-	}
+	}*/
 
 	.grid.past-events-menu {
 		width:100%;
