@@ -163,10 +163,10 @@ main {
 .add-padding {
 	padding-left: 60% !important;
 }
-.add-space  {
+/*.add-space  {
 	padding-top: 10% !important;
 }
-
+*/
 h1 {
 	font-family: SegoeUILight, sans-serif;
 	color: #505050;
@@ -703,11 +703,16 @@ footer a {
     bottom: -100%; 
 	}
 
-	.event_block p {
+	.event_block h3 {
 		font-size: 1.5em;
+		font-weight: normal;
 		padding: 0 1% 1% 1%;
-		text-align: right;
+		margin-left: 10%;
+		/*text-align: right;*/
 		position: relative;
+		line-height: 2em;
+		color: #fff;
+		background-color: rgba(0, 0, 0, .6);
 	}
 
 	.event_block h1 {
@@ -920,10 +925,21 @@ footer a {
 	}
 }
 
-@media all and (max-width: 481px) {
+@media all and (max-width: 520px) {
 	.hamburger-icon {
-		margin-left: 70px;
-		margin-top: -50px;
+		margin-right: -70px;
+		/*margin-top: -10px;*/
+	}
+}
+
+@media all and (max-width: 470px) {
+	.menu-overlay {
+		height: 140px;
+	}
+
+	.hamburger-icon {
+		padding-right: 20px;
+		padding-top: 10px;
 	}
 }
 

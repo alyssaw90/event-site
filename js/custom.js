@@ -58,7 +58,7 @@ $(document).ready(function () {
 	//make mobile menu slide down when it's pressed
 
 	$('.hamburger-menu').click(function () {
-		$('.mobile-menu:first').toggleClass('add-space');
+		// $('.mobile-menu:first').toggleClass('add-space');
   	if ($('.hidden-div').is(':hidden')) {
   	  $('.hidden-div').slideDown('slow');
   	  $('.menu-overlay').css('height', '100%');
