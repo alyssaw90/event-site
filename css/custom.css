@@ -861,6 +861,7 @@ footer a {
 		padding-bottom: 6%;
 	}
 
+
 	.desktop-menu {
 		display: none !important;
 	}
@@ -913,6 +914,14 @@ footer a {
 	}
 }
 
+@media all and (max-width: 655px) {
+
+	.hamburger-icon {
+		margin-top: -20px;
+	}
+	
+}
+
 @media all and (max-width: 641px) {
 	.hamburger-icon {
 		padding-top: 0;
@@ -925,14 +934,14 @@ footer a {
 	}
 }
 
-@media all and (max-width: 520px) {
+@media all and (max-width: 610px) {
 	.hamburger-icon {
 		margin-right: -70px;
 		/*margin-top: -10px;*/
 	}
 }
 
-@media all and (max-width: 470px) {
+@media all and (max-width: 530px) {
 	.menu-overlay {
 		height: 140px;
 	}
