@@ -131,6 +131,7 @@ $(document).ready(function () {
    $(window).scrollTop(0);
  	});
 
+ 	// show upcoming sub-menu when hovered
  	$('.upcoming-menu').hover(function () {
  		$('.upcoming-sub-menu').toggleClass('hidden-menu');
  	})
