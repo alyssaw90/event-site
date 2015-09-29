@@ -52,13 +52,10 @@ $(document).ready(function () {
 	$(window).resize(changeSize($('.event_block')));
 	$(window).load(changeSize($('.event_block')));
 	$(window).resize(changeSize($('.past_events')));
-	$(window).load(changeSize($('.past_events')));
-	$(window).resize(changeSize($('.home-page-experts img')));
-	$(window).load(changeSize($('.home-page-experts img')));
-	$(window).resize(changeSize($('.individual-homepage-expert')));
-	$(window).load(changeSize($('.individual-homepage-expert')));
-	$(window).resize(changeSize($('.home-page-experts a')));
-	$(window).load(changeSize($('.home-page-experts a')));
+	$(window).onload(changeSize($('.past_events')));
+	$(window).onload(changeSize($('.home-page-experts img')));
+	$(window).onload(changeSize($('.individual-homepage-expert')));
+	$(window).onload(changeSize($('.home-page-experts a')));
 
 
 	//make mobile menu slide down when it's pressed
