@@ -60,12 +60,27 @@ $(document).ready(function () {
 	$(window).resize(changeSize($('.event_block')));
 	$(window).load(changeSize($('.event_block')));
 	$(window).resize(changeSize($('.past_events')));
-	$(window).onload(changeSize($('.past_events')));
-	$(window).onload(changeSize($('.home-page-experts img')));
-	$(window).onload(changeSize($('.individual-homepage-expert')));
-	$(window).onload(changeSize($('.home-page-experts a')));
+	$(window).load(changeSize($('.past_events')));
+	// $(window).load(changeSize($('.home-page-experts img')));
+	// $(window).load(changeSize($('.individual-homepage-expert')));
+	// $(window).load(changeSize($('.home-page-experts a')));
 
+	// resize front page bios depending on height of image or content, whichever is taller
+/*	if ($(window).width() > 768) {
 
+		$(window).load(changeSize($('.individual-homepage-expert')));
+	} 
+	if ($(window).width() <= 768 && $('.individual-homepage-expert').height() < $('.individual-homepage-expert img').height()) {
+		console.log($('.individual-homepage-expert img').height());
+		$('.individual-homepage-expert').height($('.individual-homepage-expert img').height());
+	}
+
+	if ($(window).width() <= 768 && $('.individual-homepage-expert').height() > $('.individual-homepage-expert img').height()) {
+		console.log($('.individual-homepage-expert img').height());
+		$('.individual-homepage-expert').height($('.individual-homepage-expert img').height());
+	}*/
+
+	$(window).load(changeSize($('.individual-homepage-expert')));
 	//make mobile menu slide down when it's pressed
 
 	$('.hamburger-menu').click(function () {
