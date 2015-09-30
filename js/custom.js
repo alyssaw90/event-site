@@ -49,6 +49,38 @@ $(document).ready(function () {
 		})
 	}
 
+ 	// show upcoming sub-menu when hovered
+ 	$('.upcoming-menu').hover(function () {
+ 		$('.upcoming-sub-menu').toggleClass('hidden-menu');
+ 	})
+
+ 	$('.upcoming-sub-menu').hover(function () {
+ 		$('.upcoming-sub-menu').toggleClass('hidden-menu');
+ 	})
+	$(window).resize(changeSize($('.event_block')));
+	$(window).load(changeSize($('.event_block')));
+	$(window).resize(changeSize($('.past_events')));
+	$(window).load(changeSize($('.past_events')));
+	// $(window).load(changeSize($('.home-page-experts img')));
+	// $(window).load(changeSize($('.individual-homepage-expert')));
+	// $(window).load(changeSize($('.home-page-experts a')));
+
+	// resize front page bios depending on height of image or content, whichever is taller
+/*	if ($(window).width() > 768) {
+
+		$(window).load(changeSize($('.individual-homepage-expert')));
+	} 
+	if ($(window).width() <= 768 && $('.individual-homepage-expert').height() < $('.individual-homepage-expert img').height()) {
+		console.log($('.individual-homepage-expert img').height());
+		$('.individual-homepage-expert').height($('.individual-homepage-expert img').height());
+	}
+
+	if ($(window).width() <= 768 && $('.individual-homepage-expert').height() > $('.individual-homepage-expert img').height()) {
+		console.log($('.individual-homepage-expert img').height());
+		$('.individual-homepage-expert').height($('.individual-homepage-expert img').height());
+	}*/
+
+	$(window).load(changeSize($('.individual-homepage-expert')));
 	//make mobile menu slide down when it's pressed
 
 	$('.hamburger-menu').click(function () {
@@ -61,23 +93,6 @@ $(document).ready(function () {
   	  $('.menu-overlay').css('height', '65px');
   	}
 	});
-
- 	// show upcoming sub-menu when hovered
- 	$('.upcoming-menu').hover(function () {
- 		$('.upcoming-sub-menu').toggleClass('hidden-menu');
- 	})
-
- 	$('.upcoming-sub-menu').hover(function () {
- 		$('.upcoming-sub-menu').toggleClass('hidden-menu');
- 	})
-	$(window).resize(changeSize($('.event_block')));
-	$(window).load(changeSize($('.event_block')));
-	$(window).resize(changeSize($('.past_events')));
-	$(window).onload(changeSize($('.past_events')));
-	$(window).onload(changeSize($('.home-page-experts img')));
-	$(window).onload(changeSize($('.individual-homepage-expert')));
-	$(window).onload(changeSize($('.home-page-experts a')));
-
 
 	//make past events buttons and homepage content full width on mobile
 
