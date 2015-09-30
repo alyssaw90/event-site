@@ -165,6 +165,7 @@ main {
 
 .hidden-menu {
 	display: none !important;
+	position: absolute;
 }
 
 .add-padding {
@@ -484,7 +485,7 @@ footer a {
 	.bottom-menu {
 		display: none;
 	}
-
+	
 	.slideshow {
 	  float:left;
 	  clear:none;

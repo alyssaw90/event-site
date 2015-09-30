@@ -49,6 +49,14 @@ $(document).ready(function () {
 		})
 	}
 
+ 	// show upcoming sub-menu when hovered
+ 	$('.upcoming-menu').hover(function () {
+ 		$('.upcoming-sub-menu').toggleClass('hidden-menu');
+ 	})
+
+ 	$('.upcoming-sub-menu').hover(function () {
+ 		$('.upcoming-sub-menu').toggleClass('hidden-menu');
+ 	})
 	$(window).resize(changeSize($('.event_block')));
 	$(window).load(changeSize($('.event_block')));
 	$(window).resize(changeSize($('.past_events')));
@@ -128,13 +136,5 @@ $(document).ready(function () {
    $(window).scrollTop(0);
  	});
 
- 	// show upcoming sub-menu when hovered
- 	$('.upcoming-menu').hover(function () {
- 		$('.upcoming-sub-menu').toggleClass('hidden-menu');
- 	})
-
- 	$('.upcoming-sub-menu').hover(function () {
- 		$('.upcoming-sub-menu').toggleClass('hidden-menu');
- 	})
 
 })
