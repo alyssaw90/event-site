@@ -49,16 +49,27 @@ $(document).ready(function () {
 		})
 	}
 
+ 	// show upcoming sub-menu when hovered
+ 	$('.upcoming-menu').hover(function () {
+ 		$('.upcoming-sub-menu').toggleClass('hidden-menu');
+ 	})
+
+ 	$('.upcoming-sub-menu').hover(function () {
+ 		$('.upcoming-sub-menu').toggleClass('hidden-menu');
+ 	})
 	$(window).resize(changeSize($('.event_block')));
 	$(window).load(changeSize($('.event_block')));
 	$(window).resize(changeSize($('.past_events')));
-	$(window).load(changeSize($('.past_events')));
+	$(window).onload(changeSize($('.past_events')));
+	$(window).onload(changeSize($('.home-page-experts img')));
+	$(window).onload(changeSize($('.individual-homepage-expert')));
+	$(window).onload(changeSize($('.home-page-experts a')));
 
 
 	//make mobile menu slide down when it's pressed
 
 	$('.hamburger-menu').click(function () {
-		$('.mobile-menu:first').toggleClass('add-space');
+		// $('.mobile-menu:first').toggleClass('add-space');
   	if ($('.hidden-div').is(':hidden')) {
   	  $('.hidden-div').slideDown('slow');
   	  $('.menu-overlay').css('height', '100%');
@@ -124,5 +135,6 @@ $(document).ready(function () {
 	$(".scroll-button .fa-chevron-up").click( function() {
    $(window).scrollTop(0);
  	});
+
 
 })
