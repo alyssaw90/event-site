@@ -49,6 +49,19 @@ $(document).ready(function () {
 		})
 	}
 
+	//make mobile menu slide down when it's pressed
+
+	$('.hamburger-menu').click(function () {
+		// $('.mobile-menu:first').toggleClass('add-space');
+  	if ($('.hidden-div').is(':hidden')) {
+  	  $('.hidden-div').slideDown('slow');
+  	  $('.menu-overlay').css('height', '100%');
+  	} else {
+  	  $('.hidden-div').slideUp('slow');
+  	  $('.menu-overlay').css('height', '65px');
+  	}
+	});
+
  	// show upcoming sub-menu when hovered
  	$('.upcoming-menu').hover(function () {
  		$('.upcoming-sub-menu').toggleClass('hidden-menu');
@@ -65,19 +78,6 @@ $(document).ready(function () {
 	$(window).onload(changeSize($('.individual-homepage-expert')));
 	$(window).onload(changeSize($('.home-page-experts a')));
 
-
-	//make mobile menu slide down when it's pressed
-
-	$('.hamburger-menu').click(function () {
-		// $('.mobile-menu:first').toggleClass('add-space');
-  	if ($('.hidden-div').is(':hidden')) {
-  	  $('.hidden-div').slideDown('slow');
-  	  $('.menu-overlay').css('height', '100%');
-  	} else {
-  	  $('.hidden-div').slideUp('slow');
-  	  $('.menu-overlay').css('height', '65px');
-  	}
-	});
 
 	//make past events buttons and homepage content full width on mobile
 

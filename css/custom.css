@@ -37,10 +37,6 @@ body {
     padding-top: 38.28%; /
 }*/
 
-main {
-	overflow: hidden;
-}
-
 .home-page-experts a{
 	display:inline-block;
 	position:relative;
@@ -838,6 +834,14 @@ footer a {
 }
 
 @media all and (max-width: 768px) {
+
+	main {
+		min-width: 90%;
+	}
+
+	.slider {
+		display: none !important;
+	}
 
 	.header-image {
 		display: inline-block;
