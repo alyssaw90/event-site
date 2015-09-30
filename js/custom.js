@@ -51,36 +51,30 @@ $(document).ready(function () {
 
  	// show upcoming sub-menu when hovered
  	$('.upcoming-menu').hover(function () {
+ 		var $menuHeight = $('.upcoming-menu').height();
+ 		var $menuWidth  = $('.upcoming-menu').width();
  		$('.upcoming-sub-menu').toggleClass('hidden-menu');
+ 		$('.upcoming-sub-menu:first').css('margin-top', $menuHeight);
+ 		$('.expanding-menu').height($(this).parent());
+ 		$('.expanding-menu').width($menuWidth);
+
  	})
 
  	$('.upcoming-sub-menu').hover(function () {
+ 		var $menuHeight = $('.upcoming-menu').height();
+ 		var $menuWidth  = $('.upcoming-menu').width();
  		$('.upcoming-sub-menu').toggleClass('hidden-menu');
+ 		$('.upcoming-sub-menu:first').css('margin-top', $menuHeight);
+ 		$('.expanding-menu').height($(this).parent());
+ 		$('.expanding-menu').width($menuWidth);
  	})
+
 	$(window).resize(changeSize($('.event_block')));
 	$(window).load(changeSize($('.event_block')));
 	$(window).resize(changeSize($('.past_events')));
 	$(window).load(changeSize($('.past_events')));
-	// $(window).load(changeSize($('.home-page-experts img')));
-	// $(window).load(changeSize($('.individual-homepage-expert')));
-	// $(window).load(changeSize($('.home-page-experts a')));
-
-	// resize front page bios depending on height of image or content, whichever is taller
-/*	if ($(window).width() > 768) {
-
-		$(window).load(changeSize($('.individual-homepage-expert')));
-	} 
-	if ($(window).width() <= 768 && $('.individual-homepage-expert').height() < $('.individual-homepage-expert img').height()) {
-		console.log($('.individual-homepage-expert img').height());
-		$('.individual-homepage-expert').height($('.individual-homepage-expert img').height());
-	}
-
-	if ($(window).width() <= 768 && $('.individual-homepage-expert').height() > $('.individual-homepage-expert img').height()) {
-		console.log($('.individual-homepage-expert img').height());
-		$('.individual-homepage-expert').height($('.individual-homepage-expert img').height());
-	}*/
-
 	$(window).load(changeSize($('.individual-homepage-expert')));
+
 	//make mobile menu slide down when it's pressed
 
 	$('.hamburger-menu').click(function () {

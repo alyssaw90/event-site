@@ -178,6 +178,27 @@ body {
 	position: absolute;
 }
 
+.upcoming-menu {
+	position: relative;
+	z-index: 1001;
+}
+
+/*.upcoming-sub-menu {
+	position:absolute;
+  z-index:99;
+  width:100%;
+}*/
+
+
+.expanding-menu {
+	position: absolute;
+	z-index: 1000;
+}
+
+.upcoming-sub-menu {
+	
+}
+
 .add-padding {
 	padding-left: 60% !important;
 }
@@ -257,7 +278,7 @@ table {
 }
 
 .menu-block {
-	background-color: rgba(80, 80, 80, .6);
+	background-color: rgba(210, 210, 210, 1);
 	width: 100%;
 }
 
