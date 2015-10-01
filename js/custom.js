@@ -84,7 +84,7 @@ $(document).ready(function () {
   	  $('.menu-overlay').css('height', '100%');
   	} else {
   	  $('.hidden-div').slideUp('slow');
-  	  $('.menu-overlay').css('height', '65px');
+  	  $('.menu-overlay').css('height', '');
   	}
 	});
 
