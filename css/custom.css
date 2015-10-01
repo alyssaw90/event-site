@@ -293,12 +293,25 @@ table {
 	width: 100%;
 }
 
+.menu-block h2 {
+	color: rgba(80, 80, 80, 1);
+}
+
 .menu-block:hover {
 	background-color: rgba(80, 80, 80, 1);
 }
 
 .menu-block.current-page {
 	background-color: rgba(80, 80, 80, 1);
+	color: #fff;
+}
+
+.menu-block:hover h2 {
+	color: #fff;
+}
+
+.menu-block.current-page h2 {
+	color: #fff;
 }
 
 .gray-menu {
