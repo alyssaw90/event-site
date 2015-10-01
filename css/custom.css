@@ -1046,7 +1046,8 @@ footer a {
 	}
 
 	.hamburger-icon {
-		margin-top: -20px;
+		/*margin-top: -20px;*/
+		padding-top: 12px;
 	}
 
 	.menu-overlay {
@@ -1060,11 +1061,6 @@ footer a {
 	.events {
 		max-width: 90% !important;
 	}
-}
-
-@media all and (max-width: 655px) {
-
-	
 }
 
 @media all and (max-width: 641px) {
