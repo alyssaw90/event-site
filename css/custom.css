@@ -207,7 +207,7 @@ body {
 }
 
 .upcoming-sub-menu {
-	
+	display: none;
 }
 
 .add-padding {

@@ -50,24 +50,67 @@ $(document).ready(function () {
 	}
 
  	// show upcoming sub-menu when hovered
- 	$('.upcoming-menu').hover(function () {
+ 	$('.upcoming-menu').hover(
+ 		function () {
  		var $menuHeight = $('.upcoming-menu').height();
  		var $menuWidth  = $('.upcoming-menu').width();
- 		$('.upcoming-sub-menu').toggleClass('hidden-menu');
  		$('.upcoming-sub-menu:first').css('margin-top', $menuHeight);
  		$('.expanding-menu').height($(this).parent());
  		$('.expanding-menu').width($menuWidth);
+ 		$('.upcoming-sub-menu').slideDown('fast');
+ 		$('.upcoming-sub-menu').css('display', 'inline');
+ 		},
+ 		function () {
 
- 	})
+ 			if ($('.expanding-menu').is(':hover')) {
+ 				$('.upcoming-sub-menu').css('display', 'inline');
+ 			} else {
+ 				$('.upcoming-sub-menu').slideUp('fast');
+ 			}
+ 		}
+	);
 
- 	$('.upcoming-sub-menu').hover(function () {
- 		var $menuHeight = $('.upcoming-menu').height();
- 		var $menuWidth  = $('.upcoming-menu').width();
- 		$('.upcoming-sub-menu').toggleClass('hidden-menu');
- 		$('.upcoming-sub-menu:first').css('margin-top', $menuHeight);
- 		$('.expanding-menu').height($(this).parent());
- 		$('.expanding-menu').width($menuWidth);
- 	})
+	$('.expanding-menu').hover(function () {
+		$('.upcoming-sub-menu').css('display', 'inline');
+		},
+		function () {
+			$('.upcoming-sub-menu').slideUp('fast');
+		}
+	)
+
+	// $('.upcoming-sub-menu').hover(
+ // 		function () {
+ // 		var $menuHeight = $('.upcoming-menu').height();
+ // 		var $menuWidth  = $('.upcoming-menu').width();
+ // 		$('.upcoming-sub-menu:first').css('margin-top', $menuHeight);
+ // 		$('.expanding-menu').height($(this).parent());
+ // 		$('.expanding-menu').width($menuWidth);
+ // 		$('.upcoming-sub-menu').css('display', 'inline');
+ // 		},
+ // 		function () {
+ // 			$('.upcoming-sub-menu:first').css('margin-top', '');
+ // 			$('.expanding-menu').height('');
+ // 			$('.expanding-menu').width('');
+ // 			$('.upcoming-sub-menu').slideUp('fast');
+ // 		}
+	// );
+
+ // 	$('.upcoming-sub-menu').hover(
+ // 		function () {
+ // 		var $menuHeight = $('.upcoming-menu').height();
+ // 		var $menuWidth  = $('.upcoming-menu').width();
+ // 		// $('.upcoming-sub-menu:first').css('margin-top', $menuHeight);
+ // 		// $('.expanding-menu').height($(this).parent());
+ // 		// $('.expanding-menu').width($menuWidth);
+ // 		$('.upcoming-sub-menu').css('display', 'inline-block');
+ // 		},
+ // 		function () {
+ // 			// $('.upcoming-sub-menu:first').css('margin-top', '');
+ // 			// $('.expanding-menu').height('');
+ // 			// $('.expanding-menu').width('');
+ // 			$('.upcoming-sub-menu').css('display', 'hide');
+ // 		}	
+	// )
 
 	$(window).resize(changeSize($('.event_block')));
 	$(window).load(changeSize($('.event_block')));
@@ -75,7 +118,7 @@ $(document).ready(function () {
 	$(window).load(changeSize($('.past_events')));
 	$(window).load(changeSize($('.individual-homepage-expert')));
 
-	//make mobile menu slide down when it's pressed
+	//make mobile menu slide up and down when it's pressed
 
 	$('.hamburger-menu').click(function () {
 		// $('.mobile-menu:first').toggleClass('add-space');
@@ -127,18 +170,18 @@ $(document).ready(function () {
 
 	//hide slider on phones
 
-	function addCSS(div, cssProp, smallScreenVal, largeScreenVal) {
-		if ($(window).width() < 768) {
+	function addCSS(changeWidth, div, cssProp, smallScreenVal, largeScreenVal) {
+		if ($(window).width() < changeWidth) {
 			div.css(cssProp, smallScreenVal);
 		}
-		if ($(window).width() > 768) {
+		if ($(window).width() > changeWidth) {
 			div.css(cssProp, largeScreenVal);
 		}
 		
 	}
 
-	$(window).load(addCSS($('.slider'), 'display', 'none', 'inline'));
-	$(window).resize(addCSS($('.slider'), 'display', 'none', 'inline'));
+	$(window).load(addCSS(768, $('.slider'), 'display', 'none', 'inline'));
+	$(window).resize(addCSS(768, $('.slider'), 'display', 'none', 'inline'));
 
 	//make bottom button scroll to top
 	$(".scroll-button .fa-chevron-up").click( function() {
