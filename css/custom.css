@@ -855,7 +855,7 @@ footer a {
 
 }
 
-@media all and (max-width: 1028px) {
+@media all and (max-width: 1074px) {
 
 	.map-menu {
 		/*margin-left: 5% !important;*/
@@ -906,27 +906,6 @@ footer a {
 		/*padding-bottom: 10px;*/
 	}
 
-	.left-block {
-		height: 140px;
-	}
-	.left-center-block {
-		height: 140px;	
-	}
-	.right-center-block {
-		height: 140px;	
-	}
-	.right-block {
-		height: 140px;	
-	}
-
-	.menu-block {
-		height: 100px;
-	}
-
-	.home-menu-block {
-		height: 100px;
-	}
-
 	.menu li:first-child a{
 		font-size:1em;
 	}
@@ -941,14 +920,50 @@ footer a {
 	margin-right: 100px;
 }
 
-@media all and (max-width: 768px) {
+@media all and (max-width: 900px) {
 
-	.header-image {
-		display: inline-block;
+	.menu-block {
+		/*height: 100px;*/
 	}
 
-	.rising_text {
-		display: none;
+	.home-menu-block {
+		/*height: 100px;*/
+	}
+
+	.social-icons {
+		margin-left: -40px !important;
+	}
+
+	.social-icons img {
+		height: 20px;
+		margin-right: -30px !important;
+	}
+
+	.social-icons {
+		float: left;
+	}
+
+	/*.left-block {
+		height: 140px;
+	}
+	.left-center-block {
+		height: 140px;	
+	}
+	.right-center-block {
+		height: 140px;	
+	}
+	.right-block {
+		height: 140px;	
+	}*/
+	.center-block h2 {
+		font-size: 1.5em;
+	}
+}
+
+@media all and (max-width: 768px) {
+
+	.social-icons {
+		padding-left: 40px;
 	}
 
 	.past_events {
@@ -1030,6 +1045,14 @@ footer a {
 		max-width: 165px;
 	}
 
+	.hamburger-icon {
+		margin-top: -20px;
+	}
+
+	.menu-overlay {
+		overflow: hidden;
+		padding-bottom: 85px;
+	}
 
 }
 
@@ -1041,9 +1064,6 @@ footer a {
 
 @media all and (max-width: 655px) {
 
-	.hamburger-icon {
-		margin-top: -20px;
-	}
 	
 }
 
@@ -1051,11 +1071,6 @@ footer a {
 	.hamburger-icon {
 		padding-top: 0;
 		margin-top: -10px;
-	}
-
-	.menu-overlay {
-		overflow: hidden;
-		padding-bottom: 85px;
 	}
 }
 

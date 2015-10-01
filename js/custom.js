@@ -127,18 +127,18 @@ $(document).ready(function () {
 
 	//hide slider on phones
 
-	function hidePhone(div) {
+	function addCSS(div, cssProp, smallScreenVal, largeScreenVal) {
 		if ($(window).width() < 768) {
-			div.css('display', 'none');
+			div.css(cssProp, smallScreenVal);
 		}
 		if ($(window).width() > 768) {
-			div.css('display', 'inline');
+			div.css(cssProp, largeScreenVal);
 		}
 		
 	}
 
-	$(window).load(hidePhone($('.slider')));
-	$(window).resize(hidePhone($('.slider')));
+	$(window).load(addCSS($('.slider'), 'display', 'none', 'inline'));
+	$(window).resize(addCSS($('.slider'), 'display', 'none', 'inline'));
 
 	//make bottom button scroll to top
 	$(".scroll-button .fa-chevron-up").click( function() {
