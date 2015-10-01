@@ -108,7 +108,7 @@ body {
 
 .menu-overlay {
 	background-color: rgba(91, 44, 144, 1);
-	padding-right: 18%;
+	/*padding-right: 18%;*/
 }
 
 .menu-overlay ul {
@@ -133,8 +133,19 @@ body {
 }
 
 .map-menu {
-	margin: 0 auto;
+	/*margin: 0 auto;*/
+	margin-top: 0.5% !important;
+	margin-right: 13% !important;
+	/*margin-left: -15% !important;*/
+	/*padding-top: 4% !important;*/
+	/*font-size: 1.3vw !important;*/
 }
+
+.map-menu:last-child {
+	margin-top: 1%;
+	padding-bottom: 0;
+}
+
 /*
 .gray-menu-overlay {
 	background-color: rgba(0, 0, 0, 1);
@@ -196,7 +207,7 @@ body {
 }
 
 .upcoming-sub-menu {
-	
+	display: none;
 }
 
 .add-padding {
@@ -268,7 +279,7 @@ table {
 
 .center-block  {
 	margin: 0 0 0 0;
-	width: 22%;
+	width: 20.8%;
 }
 
 .center-block h2 {
@@ -282,16 +293,33 @@ table {
 	width: 100%;
 }
 
+.menu-block h2 {
+	color: rgba(80, 80, 80, 1);
+}
+
 .menu-block:hover {
 	background-color: rgba(80, 80, 80, 1);
 }
 
 .menu-block.current-page {
 	background-color: rgba(80, 80, 80, 1);
+	color: #fff;
+}
+
+.menu-block:hover h2 {
+	color: #fff;
+}
+
+.menu-block.current-page h2 {
+	color: #fff;
+}
+
+.gray-menu {
+	background-color: rgba(210, 210, 210, 1);
 }
 
 .home-menu-block {
-	width: 12%;
+	/*width: 12%;*/
 }
 
 .register-button {
@@ -510,7 +538,7 @@ footer a {
 	}
 
 	.desktop-menu {
-		  overflow: hidden;
+	  overflow: hidden;
 	}
 
 	.bottom-menu {
@@ -796,11 +824,73 @@ footer a {
 	font-weight: bold;
 }
 
-@media all and (max-width: 1028px) {
-/*	.social {
-		display: none;
+.ms-logo {
+	float: left;
+	margin: 1% auto auto 1%;;
+}
+
+@media all and (max-width: 1550px) {
+/*	.map-menu {
+		margin-top: -3.5% !important;
 	}
-*/
+
+	.map-menu a {
+		font-size: 1.3vw;
+	}*/
+
+	.map-menu {
+	/*margin: 0 auto;*/
+	margin-top: -3.5%;
+	margin-right: 6% !important;
+	/*margin-left: auto !important;*/
+	/*padding-top: 4% !important;*/
+	/*font-size: 1.3vw !important;*/
+	}
+
+	.map-menu img {
+		width: 90%;
+	}
+
+
+}
+
+@media all and (max-width: 1280px) {
+
+	.map-menu {
+		/*margin-right: 6% !important;*/
+		/*margin-top: -3% !important;*/
+	}
+
+	.map-menu a {
+		/*margin-top: -1% !important;*/
+		font-size: 1.6vw !important;
+	}
+
+	.social-icons img {
+		height: 30px;
+	}
+
+}
+
+@media all and (max-width: 1074px) {
+
+	.map-menu {
+		/*margin-left: 5% !important;*/
+		margin-top: -4% !important;
+	}
+
+	.map-menu a:first-child {
+		margin-left: 20% !important;
+	}
+
+	.map-menu a:not(:first-child) {
+		margin-left: -5% !important;
+	}
+
+	.map-menu a:last-child {
+		margin-left: 0% !important;
+	}
+
 	.slideshow .desc:not(:first-child) {
 		display: none;
 	}
@@ -833,27 +923,6 @@ footer a {
 		/*padding-bottom: 10px;*/
 	}
 
-	.left-block {
-		height: 140px;
-	}
-	.left-center-block {
-		height: 140px;	
-	}
-	.right-center-block {
-		height: 140px;	
-	}
-	.right-block {
-		height: 140px;	
-	}
-
-	.menu-block {
-		height: 100px;
-	}
-
-	.home-menu-block {
-		height: 100px;
-	}
-
 	.menu li:first-child a{
 		font-size:1em;
 	}
@@ -868,14 +937,50 @@ footer a {
 	margin-right: 100px;
 }
 
-@media all and (max-width: 768px) {
+@media all and (max-width: 900px) {
 
-	.header-image {
-		display: inline-block;
+	.menu-block {
+		/*height: 100px;*/
 	}
 
-	.rising_text {
-		display: none;
+	.home-menu-block {
+		/*height: 100px;*/
+	}
+
+	.social-icons {
+		margin-left: -40px !important;
+	}
+
+	.social-icons img {
+		height: 20px;
+		margin-right: -30px !important;
+	}
+
+	.social-icons {
+		float: left;
+	}
+
+	/*.left-block {
+		height: 140px;
+	}
+	.left-center-block {
+		height: 140px;	
+	}
+	.right-center-block {
+		height: 140px;	
+	}
+	.right-block {
+		height: 140px;	
+	}*/
+	.center-block h2 {
+		font-size: 1.5em;
+	}
+}
+
+@media all and (max-width: 768px) {
+
+	.social-icons {
+		padding-left: 40px;
 	}
 
 	.past_events {
@@ -898,6 +1003,10 @@ footer a {
 
 	.hamburger-menu li:last-child {
 		padding-bottom: 6%;
+	}
+
+	.menu-overlay {
+		padding-right: 18%;
 	}
 
 
@@ -953,6 +1062,15 @@ footer a {
 		max-width: 165px;
 	}
 
+	.hamburger-icon {
+		/*margin-top: -20px;*/
+		padding-top: 12px;
+	}
+
+	.menu-overlay {
+		overflow: hidden;
+		padding-bottom: 85px;
+	}
 
 }
 
@@ -962,23 +1080,10 @@ footer a {
 	}
 }
 
-@media all and (max-width: 655px) {
-
-	.hamburger-icon {
-		margin-top: -20px;
-	}
-	
-}
-
 @media all and (max-width: 641px) {
 	.hamburger-icon {
 		padding-top: 0;
 		margin-top: -10px;
-	}
-
-	.menu-overlay {
-		overflow: hidden;
-		padding-bottom: 85px;
 	}
 }
 
