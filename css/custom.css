@@ -279,7 +279,7 @@ table {
 
 .center-block  {
 	margin: 0 0 0 0;
-	width: 22%;
+	width: 25%;
 }
 
 .center-block h2 {
@@ -301,8 +301,12 @@ table {
 	background-color: rgba(80, 80, 80, 1);
 }
 
+.gray-menu {
+	background-color: rgba(210, 210, 210, 1);
+}
+
 .home-menu-block {
-	width: 12%;
+	/*width: 12%;*/
 }
 
 .register-button {
@@ -521,7 +525,7 @@ footer a {
 	}
 
 	.desktop-menu {
-		  overflow: hidden;
+	  overflow: hidden;
 	}
 
 	.bottom-menu {
