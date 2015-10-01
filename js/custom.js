@@ -184,8 +184,8 @@ $(document).ready(function () {
 	$(window).resize(addCSS(768, $('.slider'), 'display', 'none', 'inline'));
 
 	//make bottom button scroll to top
-	$(".scroll-button .fa-chevron-up").click( function() {
-   $(window).scrollTop(0);
+	$('.scroll-button .fa-chevron-up').click( function() {
+   $('html, body').animate({ scrollTop: 0 }, 'fast');
  	});
 
 
