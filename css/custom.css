@@ -1079,6 +1079,11 @@ footer a {
 		padding-bottom: 85px;
 	}
 
+	.event_block h1 {
+		margin-top: 0;
+		font-size: 9vw;
+	}
+
 }
 
 @media all and (min-width: 769px) {
