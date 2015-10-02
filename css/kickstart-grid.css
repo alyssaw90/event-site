@@ -52,6 +52,7 @@ clear:both;
 .col_11 { width: 90%; }
 .col_12 { width: 98.333333333333%; }
 .col_custom-14 { width: 13.3%; }
+.col_custom-menu { width: 18%;}
 
 *[class*="col_"]{
 margin-left: 0.83333333333333%;

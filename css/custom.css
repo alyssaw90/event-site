@@ -279,7 +279,7 @@ table {
 
 .center-block  {
 	margin: 0 0 0 0;
-	width: 20.8%;
+	width: 20%;
 }
 
 .center-block h2 {
@@ -396,14 +396,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e53c16', end
 	background-size: cover;
 }*/
 
-.left-block {
+/*.left-block {
 	background-color: rgba(218, 59, 1, 1);
 	width: 100%;
-}
+}*/
 
-.left-block-hover {
+/*.left-block-hover {
 	background-color: rgba(218, 59, 1, 0.6);
-}
+}*/
 
 /*.left-center-block-overlay {
 	background-image: url(../img/welcome-taipei.jpg);
@@ -411,29 +411,29 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e53c16', end
 	background-size: cover;
 }*/
 
-.left-center-block {
+/*.left-center-block {
 	background-color: rgba(180, 0, 158, 1);
 	width: 100%;
-}
+}*/
 
-.left-center-block-hover {
+/*.left-center-block-hover {
 	background-color: rgba(180, 0, 158, .6);
 }
-
+*/
 /*.right-center-block-overlay {
 	background-image: url(../img/future-events-shanghai.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 }*/
 
-.right-center-block {
+/*.right-center-block {
 	background-color: rgba(255, 185, 0, 1);
 	width: 100%;
 }
-
-.right-center-block-hover {
+*/
+/*.right-center-block-hover {
 	background-color: rgba(255, 185, 0, .6);
-}
+}*/
 
 /*.right-block-overlay {
 	background-image: url(../img/alfresco-group-2014.jpg);
@@ -441,14 +441,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e53c16', end
 	background-size: cover;
 }
 */
-.right-block {
+/*.right-block {
 	background-color: rgba(232, 17, 35, 1);
 	width: 100%;
-}
+}*/
 
-.right-block-hover {
+/*.right-block-hover {
 	background-color: rgba(232, 17, 35, .6);
-}
+}*/
 
 footer a {
 	color: #000;
