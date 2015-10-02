@@ -63,7 +63,7 @@ body {
 	float: right;
 }
 
-.map {
+/*.map {
 	background-color: #7d489c;
 	width: 100%;
 	height: 100%;
@@ -72,7 +72,7 @@ body {
 
 .map h1 {
 	color: #fff;
-}
+}*/
 
 .filler {
 	visibility: hidden;
