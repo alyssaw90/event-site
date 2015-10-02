@@ -64,13 +64,15 @@ $(document).ready(function () {
 		})
 	}
 
-	changeWidth($('.menu-block'))
+	$(window).load(changeWidth($('.menu-block')));
+	$(window).resize(changeWidth($('.menu-block')));
 
 	$('.expanding-menu').hover(function () {
-		var $menuHeight = $('.upcoming-menu').height();
+		var $menuHeight = $(this).parent().height();
  		var $menuWidth  = $('.upcoming-menu').width();
  		// $('.upcoming-sub-menu:first').css('margin-top', $menuHeight);
- 		$('.expanding-menu').height($(this).parent());
+ 		$('.expanding-menu').css({'height': $menuHeight, 'width': $menuWidth})
+ 		$('.expanding-menu').height($menuHeight);
  		$('.expanding-menu').width($menuWidth);
  		$('.upcoming-sub-menu').slideDown('fast');
 		$('.upcoming-sub-menu').css('display', 'inline');
