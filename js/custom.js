@@ -138,7 +138,7 @@ $(document).ready(function () {
 
 	$(window).resize(stickyFooter($('.footer-at-bottom')));
 
-	//hide slider on phones
+	//function to add and remove CSS properties depending on screen size
 
 	function addCSS(changeWidth, div, cssProp, smallScreenVal, largeScreenVal) {
 		if ($(window).width() < changeWidth) {
@@ -150,6 +150,7 @@ $(document).ready(function () {
 		
 	}
 
+	//hide slider on screens larger than 768px
 	$(window).load(addCSS(768, $('.slider'), 'display', 'none', 'inline'));
 	$(window).resize(addCSS(768, $('.slider'), 'display', 'none', 'inline'));
 
