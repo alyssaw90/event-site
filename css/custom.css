@@ -736,21 +736,27 @@ footer a {
 	}
 
 	.events > :first-child {
-		background-image: url(../img/shaking_hands_turquise.jpg);
+		/*background-image: url(../img/shaking_hands_turquise.jpg);*/
+		background-image: url(../img/santa-clara-convention-center-2.jpg);
 		background-repeat: no-repeat;
-		background-size: contain;
+		/*background-size: contain;*/
+		background-position: bottom right;
 	}
 
 	.events > :nth-child(2) {
-		background-image: url(../img/shaking_hands_green.jpg);
+		/*background-image: url(../img/shaking_hands_green.jpg);*/
+		background-image: url(../img/shanghai-skyline-2.jpg);
 		background-repeat: no-repeat;
-		background-size: contain;
+		/*background-size: contain;*/
+		background-position: bottom right;
 	} 
 
 	.events > :nth-child(3) {
-		background-image: url(../img/shaking_hands_yellow.jpg);
+		/*background-image: url(../img/shaking_hands_yellow.jpg);*/
+		background-image: url(../img/arc-de-triomphe.jpg);
 		background-repeat: no-repeat;
-		background-size: contain;
+		/*background-size: contain;*/
+		background-position: bottom right;
 	}
 
 	.event_block {
@@ -784,6 +790,7 @@ footer a {
 
 	.event_block h1 {
 		padding: 0 1% 0 1%;
+		/*font-size: 2.5vw;*/
 	}
 
 	.past_events {
@@ -1076,8 +1083,14 @@ footer a {
 
 @media all and (min-width: 769px) {
 	.events {
-		max-width: 90% !important;
+		max-width: 95% !important;
+
 	}
+
+	.event_block h1 {
+		font-size: 2.5vw;
+	}
+
 }
 
 @media all and (max-width: 641px) {
@@ -1136,16 +1149,16 @@ footer a {
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active), (min-width: 768px) {
 	/*upcoming events padding fix*/
 	.events .col_4:first-child {
-		margin-left: 15%;
+		/*margin-left: 15%;*/
 	}
 
 	.events .col_4:last-child {
-		margin-right: 10%;
+		/*margin-right: 10%;*/
 	}
 
 
 	.event_block {
-		max-width: 22%;
+		/*max-width: 22%;*/
 	}
 
 	/*past events padding fix*/
