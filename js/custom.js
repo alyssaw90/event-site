@@ -103,20 +103,20 @@ $(document).ready(function () {
 
 	//make past events buttons and homepage content full width on mobile
 
-	// function fullWidthMobile(div) {
-	// 	if ($(window).width() < 768) {
-	// 		div.addClass('flex');
-	// 	}
-	// 	if ($(window).width() > 768) {
-	// 		div.removeClass('flex');
-	// 	}
+	function fullWidthMobile(div) {
+		if ($(window).width() < 768) {
+			div.addClass('flex');
+		}
+		if ($(window).width() > 768) {
+			div.removeClass('flex');
+		}
 		
-	// }
+	}
 
-	// $(window).resize(fullWidthMobile($('.past-events-menu')));
-	// $(window).load(fullWidthMobile($('.past-events-menu')));
-	// $(window).resize(fullWidthMobile($('.main-page-content')));
-	// $(window).load(fullWidthMobile($('.main-page-content')));
+	$(window).resize(fullWidthMobile($('.past-events-menu')));
+	$(window).load(fullWidthMobile($('.past-events-menu')));
+	$(window).resize(fullWidthMobile($('.main-page-content')));
+	$(window).load(fullWidthMobile($('.main-page-content')));
 
 	//make footer stick to bottom of content or page, whichever is taller
 
@@ -158,6 +158,10 @@ $(document).ready(function () {
 	$('.scroll-button .fa-chevron-up').click( function() {
    $('html, body').animate({ scrollTop: 0 }, 'fast');
  	});
+
+ 	// make clickable map have correct coordinates when resized
+
+ 	$('img[usemap]').rwdImageMaps();
 
 
 })

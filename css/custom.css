@@ -63,7 +63,7 @@ body {
 	float: right;
 }
 
-.map {
+/*.map {
 	background-color: #7d489c;
 	width: 100%;
 	height: 100%;
@@ -72,7 +72,7 @@ body {
 
 .map h1 {
 	color: #fff;
-}
+}*/
 
 .filler {
 	visibility: hidden;
@@ -1088,9 +1088,15 @@ footer a {
 	}
 
 	.event_block h1 {
-		font-size: 2.5vw;
+		font-size: 3.5vw;
 	}
 
+}
+
+@media all and (min-width: 1450px) {
+	.event_block h1 {
+		font-size: 3.5em;
+	}
 }
 
 @media all and (max-width: 641px) {
@@ -1116,6 +1122,12 @@ footer a {
 		padding-right: 20px;
 		padding-top: 10px;
 	}
+
+	.event_block h1 {
+		margin-top: 0;
+		font-size: 12vw;
+	}
+
 }
 
 @media all and (max-width: 321px) {

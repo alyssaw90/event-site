@@ -18,7 +18,8 @@
  */
  
 .grid{
-max-width:1220px;
+/*max-width:1220px;*/
+max-width: 80%;
 margin:0 auto;
 padding:0 2em;
 }
@@ -26,6 +27,15 @@ padding:0 2em;
 .grid.flex{
 width:100%;
 max-width:100%;
+padding:0;
+padding:0;
+}
+
+/*limit grid flex to 90% for main-page-content*/
+
+.grid.flex.main-page-content{
+width:90%;
+max-width:90%;
 padding:0;
 padding:0;
 }
