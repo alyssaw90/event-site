@@ -27,6 +27,14 @@ box-shadow: 0 0 3px #555;
 *background:#212121;
 }
 
+#tiptip_content a {
+	color: #fff;
+}
+
+#tiptip_content a:hover {
+	color: #008272;
+}
+
 #tiptip_arrow, #tiptip_arrow_inner {
 position: absolute;
 border-color: transparent;
