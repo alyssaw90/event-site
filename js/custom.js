@@ -53,9 +53,10 @@ $(document).ready(function () {
 	// function to set divs with equal width
 	function changeWidth (div) {
 		var widestBlock = 0;
+		// console.log($(this).actual('width'));
 		div.each(function () {
-			if ($(this).width() > widestBlock) {
-				widestBlock = $(this).width();
+			if ($(this).actual('width') > widestBlock) {
+				widestBlock = $(this).actual('width');
 			}
 		})
 
@@ -86,6 +87,7 @@ $(document).ready(function () {
 	$(window).load(changeHeight($('.event_block')));
 	$(window).resize(changeHeight($('.past_events')));
 	$(window).load(changeHeight($('.past_events')));
+	$(window).resize(changeHeight($('.individual-homepage-expert')));
 	$(window).load(changeHeight($('.individual-homepage-expert')));
 
 	//make mobile menu slide up and down when it's pressed
@@ -174,7 +176,24 @@ $(document).ready(function () {
  	}
 
  	$('.pointer').hover(locateTip);
- 	// $('#santaclara-pointer').hover(locateTip);
- 	// $('#lasvegas-pointer').hover(locateTip);
  	
+})
+
+$(document).on('pageinit', function(){
+	//make past events buttons and homepage content full width on mobile
+
+	function fullWidthMobile(div) {
+		if ($(window).width() < 768) {
+			div.addClass('flex');
+		}
+		if ($(window).width() > 768) {
+			div.removeClass('flex');
+		}
+		
+	}
+
+	$(window).resize(fullWidthMobile($('.past-events-menu')));
+	$(window).load(fullWidthMobile($('.past-events-menu')));
+	$(window).resize(fullWidthMobile($('.main-page-content')));
+	$(window).load(fullWidthMobile($('.main-page-content')));
 })
