@@ -86,8 +86,13 @@ $(document).ready(function () {
 	$(window).load(changeHeight($('.event_block')));
 	$(window).resize(changeHeight($('.past_events')));
 	$(window).load(changeHeight($('.past_events')));
-	$(window).load(changeHeight($('.individual-homepage-expert')));
 
+	//make individual-homepage-expert divs wait for entire page to load before firing
+	$(window).bind('load', function(){
+	$(window).resize(changeHeight($('.individual-homepage-expert')));
+	$(window).load(changeHeight($('.individual-homepage-expert')));
+	
+	})
 	//make mobile menu slide up and down when it's pressed
 
 	$('.hamburger-menu').click(function () {
@@ -174,7 +179,5 @@ $(document).ready(function () {
  	}
 
  	$('.pointer').hover(locateTip);
- 	// $('#santaclara-pointer').hover(locateTip);
- 	// $('#lasvegas-pointer').hover(locateTip);
  	
 })
