@@ -163,5 +163,18 @@ $(document).ready(function () {
 
  	$('img[usemap]').rwdImageMaps();
 
+ 	//position tooltips on map
 
+ 	var locateTip = function (e) {
+ 		console.log('X posion : ', e.pageX, 'Y position : ', e.pageY);
+		$('#tiptip_holder').css('margin-top', (e.pageY - 100));
+  	$('#tiptip_holder').css('margin-left', (e.pageX - 100));
+  	$('#tiptip_holder').css('max-width', '100%');
+  	$('#tiptip_arrow').css('display', 'none');
+ 	}
+
+ 	$('.pointer').hover(locateTip);
+ 	// $('#santaclara-pointer').hover(locateTip);
+ 	// $('#lasvegas-pointer').hover(locateTip);
+ 	
 })

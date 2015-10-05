@@ -37,6 +37,10 @@ body {
     padding-top: 38.28%; /
 }*/
 
+.tooltip-content {
+	background-color: #fff !important;
+}
+
 .individual-homepage-expert {
 	display:inline-block;
 	position:relative;
