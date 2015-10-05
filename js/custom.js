@@ -38,8 +38,8 @@ $(document).ready(function () {
 	$(window).load(changeHeight($('.event_block')));
 	$(window).resize(changeHeight($('.past_events')));
 	$(window).load(changeHeight($('.past_events')));
-	$(window).resize(changeHeight($('.individual-homepage-expert')));
-	$(window).load(changeHeight($('.individual-homepage-expert')));
+	// $(window).resize(changeHeight($('.individual-homepage-expert')));
+	// $(window).load(changeHeight($('.individual-homepage-expert')));
 
 	//function to set divs with equal height
 	function changeHeight (div) {
