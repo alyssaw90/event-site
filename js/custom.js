@@ -34,19 +34,12 @@ $(document).ready(function () {
 		function () {
 			$(this).find('div').stop(true, true).animate({'bottom': '-100%'}, 200)
 		});
-	$(window).resize(changeHeight($('.event_block')));
-	$(window).load(changeHeight($('.event_block')));
-	$(window).resize(changeHeight($('.past_events')));
-	$(window).load(changeHeight($('.past_events')));
-	// $(window).resize(changeHeight($('.individual-homepage-expert')));
-	// $(window).load(changeHeight($('.individual-homepage-expert')));
 
 	//function to set divs with equal height
 	function changeHeight (div) {
 		// var $eventBlock = $('.event_block');
 		var tallestBlock = 0;
 		div.each(function () {
-			console.log('Height : ', $(this).height())
 			if ($(this).height() > tallestBlock) {
 				tallestBlock = $(this).height();
 			}
@@ -89,7 +82,17 @@ $(document).ready(function () {
 		}
 	);
 
+	$(window).resize(changeHeight($('.event_block')));
+	$(window).load(changeHeight($('.event_block')));
+	$(window).resize(changeHeight($('.past_events')));
+	$(window).load(changeHeight($('.past_events')));
 
+	//make individual-homepage-expert divs wait for entire page to load before firing
+	$(window).bind('load', function(){
+	$(window).resize(changeHeight($('.individual-homepage-expert')));
+	$(window).load(changeHeight($('.individual-homepage-expert')));
+	
+	})
 	//make mobile menu slide up and down when it's pressed
 
 	$('.hamburger-menu').click(function () {
