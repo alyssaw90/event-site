@@ -1,8 +1,8 @@
-'use stict';
+'use strict';
 
 $(document).ready(function () {
 	//apply flip animation to social icons
-	$('.social img').hover(function () {
+/*	$('.social img').hover(function () {
 		$(this).toggleClass('animated flip');
 	});
 
@@ -20,7 +20,7 @@ $(document).ready(function () {
 
 	$('.right-block').hover(function () {
 		$(this).toggleClass('right-block-hover');
-	});
+	});*/
 	//apply hover effect to top menu
 	// $('.menu-overlay li').hover(function () {
 	// 	$(this).toggleClass('menu-overlay-hover');
@@ -145,12 +145,12 @@ $(document).ready(function () {
 
 	//function to add and remove CSS properties depending on screen size
 
-	function addCSS(changeWidth, div, cssProp, smallScreenVal, largeScreenVal) {
+	function addCSS(changeWidth, div, cssPropKey, smallScreenVal, largeScreenVal) {
 		if ($(window).width() < changeWidth) {
-			div.css(cssProp, smallScreenVal);
+			div.css(cssPropKey, smallScreenVal);
 		}
 		if ($(window).width() > changeWidth) {
-			div.css(cssProp, largeScreenVal);
+			div.css(cssPropKey, largeScreenVal);
 		}
 		
 	}
@@ -164,9 +164,6 @@ $(document).ready(function () {
    $('html, body').animate({ scrollTop: 0 }, 'fast');
  	});
 
- 	// make clickable map have correct coordinates when resized
-
- 	$('img[usemap]').rwdImageMaps();
 
  	//position tooltips on map
 

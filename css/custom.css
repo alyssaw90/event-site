@@ -302,6 +302,7 @@ table {
 	color: rgba(80, 80, 80, 1);
 	text-align: center;
 	font-size: 1em;
+	line-height: 1.2em;
 }
 
 .upcoming-menu h4:hover {
@@ -1006,6 +1007,10 @@ footer a {
 
 @media all and (max-width: 768px) {
 
+	.header-image {
+		display: block;
+	}
+
 	.social-icons {
 		padding-left: 40px;
 	}
@@ -1064,9 +1069,8 @@ footer a {
 		width:100%;
 		max-width:100%;
 		padding:0;
-		padding:0;
 		margin-right: 0;
-		margin-left: 0;
+		/*margin-left: 0;*/
 	}
 
 	.social-icons img {
