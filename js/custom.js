@@ -145,12 +145,12 @@ $(document).ready(function () {
 
 	//function to add and remove CSS properties depending on screen size
 
-	function addCSS(changeWidth, div, cssProp, smallScreenVal, largeScreenVal) {
+	function addCSS(changeWidth, div, cssPropKey, smallScreenVal, largeScreenVal) {
 		if ($(window).width() < changeWidth) {
-			div.css(cssProp, smallScreenVal);
+			div.css(cssPropKey, smallScreenVal);
 		}
 		if ($(window).width() > changeWidth) {
-			div.css(cssProp, largeScreenVal);
+			div.css(cssPropKey, largeScreenVal);
 		}
 		
 	}

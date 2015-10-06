@@ -6,6 +6,7 @@ var port = process.env.PORT || 3000;
 var time = new Date();
 
 app.use(express.static(__dirname + '/'));
+app.use('/map', express.static(__dirname + '/views/world-map.html'));
 
 app.listen(port, function () {
 	console.log('server started on port ' + port + ' at ' + time);
