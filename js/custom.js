@@ -1,4 +1,4 @@
-'use stict';
+'use strict';
 
 $(document).ready(function () {
 	//apply flip animation to social icons
@@ -164,9 +164,6 @@ $(document).ready(function () {
    $('html, body').animate({ scrollTop: 0 }, 'fast');
  	});
 
- 	// make clickable map have correct coordinates when resized
-
- 	$('img[usemap]').rwdImageMaps();
 
  	//position tooltips on map
 
