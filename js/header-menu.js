@@ -87,7 +87,6 @@
 
 		var headerMenu = $.parseHTML(menu);
 		$header.prepend(headerMenu);
-		console.log('URL : ', window.location.pathname);
 		if (window.location.pathname === '/') {
 			$('.home-menu-button').addClass('current-page');
 		}
