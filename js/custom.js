@@ -2,7 +2,7 @@
 
 $(document).ready(function () {
 	//apply flip animation to social icons
-	$('.social img').hover(function () {
+/*	$('.social img').hover(function () {
 		$(this).toggleClass('animated flip');
 	});
 
@@ -20,7 +20,7 @@ $(document).ready(function () {
 
 	$('.right-block').hover(function () {
 		$(this).toggleClass('right-block-hover');
-	});
+	});*/
 	//apply hover effect to top menu
 	// $('.menu-overlay li').hover(function () {
 	// 	$(this).toggleClass('menu-overlay-hover');
