@@ -89,10 +89,13 @@ $(document).ready(function () {
 
 	//make individual-homepage-expert divs wait for entire page to load before firing
 	$(window).bind('load', function(){
-	$(window).resize(changeHeight($('.individual-homepage-expert')));
-	$(window).load(changeHeight($('.individual-homepage-expert')));
+		$(window).resize(changeHeight($('.individual-homepage-expert')));
+		$(window).load(changeHeight($('.individual-homepage-expert')));
 	
 	})
+
+	// 100% image width for homepage team members if parent is more than 165px wide
+
 	//make mobile menu slide up and down when it's pressed
 
 	$('.hamburger-menu').click(function () {
