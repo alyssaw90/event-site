@@ -114,7 +114,7 @@ position:relative;z-index:1000;}
 
 .menu li:first-child a{
 	float: left;
-	background-color: #666666 !important;
+	/*background-color: #666666;*/
 }
 
 
