@@ -875,6 +875,8 @@ footer a {
 	margin-right: 100px;
 }
 
+
+/*Begin Media Queries*/
 @media all and (max-width: 1550px) {
 /*	.map-menu {
 		margin-top: -3.5% !important;

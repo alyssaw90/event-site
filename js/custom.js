@@ -179,5 +179,29 @@ $(document).ready(function () {
  	}
 
  	$('.pointer').hover(locateTip);
+
+ 	// find users using IE
+ 	(function () {
+	 	var ms_ie = false;
+	  var ua = window.navigator.userAgent;
+	  var old_ie = ua.indexOf('MSIE ');
+	  var new_ie = ua.indexOf('Trident/');
+	  var openDiv = $.parseHTML('<div>');
+	  var closeDiv = $.parseHTML('</div>');
+
+	  if (old_ie > -1 || new_ie > -1) {
+      ms_ie = true;
+	  }
+
+	  if (ms_ie) {
+	      //IE specific code goes here
+	      // $('main').removeClass('grid main-page-content');
+	      // $('main').wrapInner('<div class="grid main-page-content"></div>')
+	      // $('main').wrap('<div></div>');
+	      // $('main').append(closeDiv);
+	      console.log('body width : ', $('body').width(), new_ie, 'test width: ', $('.test').width(), 'Footer width : ', $('footer').width(), 'header width : ', $('header').width());
+	  }
+ 		
+ 	}());
  	
 })
