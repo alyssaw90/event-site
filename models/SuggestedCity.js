@@ -17,7 +17,9 @@ var SuggestedCity = module.exports = sql.define('SuggestedCity', {
   email: Sql.INTEGER
 	});
 
-SuggestedCity.sync();
+// SuggestedCity.sync();
+
+
 // SuggestedCity.sync({force: true})
 // .then(function () {
 //   // Table created
