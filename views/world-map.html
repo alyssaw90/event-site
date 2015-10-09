@@ -22,7 +22,15 @@
 			<h1>Find an Event Near You</h1>
 			</section>
 			<section class="col_12">
-				<p>Microsoft Plugfests & Events happen around the world. Whether you're in China and want to build Add-Ins for Word or you're in Africa and want to learn more about SQL, there's an event for you. Just click on your region below and check out the events in your area.</p>
+				<p>Microsoft Plugfests & Events happen around the world. Just click on a city on the map below and check out the events.</p>
+				<p>Would you like us to come to your city? Send us your suggestions below!</p>
+				<form action="/map" method="POST">
+					<label for="suggestedlocation">Where would you like us to visit?</label>
+					<input id="suggestedlocation" name="suggestedlocation" type="text" placeholder="Location" type="submit"/>
+					<input id="email" name="email" type="text" placeholder="Email" type="submit"/>
+					<label for="email">*Optional</label>
+					<button class="medium" type="submit">Submit</button>
+				</form>
 				<img id="world-map" src="../img/world-map.png" alt="" usemap="#Map" id="world-map" width="1400px" height="867px"/>
 				<map name="Map" id="Map">
   			<area alt="Redmond, WA" title="Redmond, WA" href="#" class="tooltip pointer" data-content="#redmond" shape="poly" coords="130,262,121,249,119,238,127,233,138,238,138,247,129,260" />

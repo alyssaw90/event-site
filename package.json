@@ -10,7 +10,10 @@
   "author": "Michael Bowen",
   "license": "MS-PL",
   "dependencies": {
-    "express": "^4.13.3"
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "sequelize": "^3.11.0",
+    "tedious": "^1.12.3"
   },
   "devDependencies": {
     "chai": "^3.2.0",
