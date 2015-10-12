@@ -32,16 +32,6 @@ app.use(bodyParser.json());
     console.log('DB : ', db);
 
 app.use(express.static(__dirname + '/'));
-// app.use('/map', express.static(__dirname + '/views/world-map.html'));
-app.use('/find-an-event', express.static(__dirname + '/views/find-an-event.html'));
-app.use('/past-events', express.static(__dirname + '/views/past-events.html'));
-app.use('/media', express.static(__dirname + '/views/media.html'));
-app.use('/latest-news', express.static(__dirname + '/views/latest-news.html'));
-app.use('/faq', express.static(__dirname + '/views/faq.html'));
-app.use('/meet-the-team', express.static(__dirname + '/views/meet-the-team.html'));
-app.use('/contact', express.static(__dirname + '/views/contact.html'));
-app.use('/about', express.static(__dirname + '/views/about.html'));
-app.use('/santa-clara-2015', express.static(__dirname + '/views/events/santa-clara-2015.html'));
 
 // homepage routes
 app.route('/')
@@ -60,13 +50,13 @@ app.route('/map')
   res.sendFile(path.join(__dirname, '/views/world-map.html'));
 })
 .post(function (req, res) {
-	res.sendFile(path.join(__dirname, '/views/world-map.html'));
-	// res.send(req.body);
-	// res.json(res);
+  res.sendFile(path.join(__dirname, '/views/world-map.html'));
+  // res.send(req.body);
+  // res.json(res);
     console.log('req.body : ', req.body);
     // fs.writeFile('./db/filename' + '.JSON', 'Hello World 2', function (err) {
-    // 	if (err) {console.error(err)};
-    // 	console.log('file saved');
+    //  if (err) {console.error(err)};
+    //  console.log('file saved');
     // })
     // Add these values to your MySQL database here
     sql.sync()
@@ -80,6 +70,51 @@ app.route('/map')
         res.status(500).json({msg: 'internal server error'});
       })
     })
+});
+
+app.route('/find-an-event')
+.get(function (req, res) {
+  res.sendFile(path.join(__dirname, '/views/find-an-event.html'));
+});
+
+app.route('/past-events')
+.get(function (req, res) {
+  res.sendFile(path.join(__dirname, '/views/past-events.html'));
+});
+
+app.route('/media')
+.get(function (req, res) {
+  res.sendFile(path.join(__dirname, '/views/media.html'));
+});
+
+app.route('/latest-news')
+.get(function (req, res) {
+  res.sendFile(path.join(__dirname, '/views/latest-news.html'));
+});
+
+app.route('/faq')
+.get(function (req, res) {
+  res.sendFile(path.join(__dirname, '/views/faq.html'));
+});
+
+app.route('/meet-the-team')
+.get(function (req, res) {
+  res.sendFile(path.join(__dirname, '/views/meet-the-team.html'));
+});
+
+app.route('/contact')
+.get(function (req, res) {
+  res.sendFile(path.join(__dirname, '/views/contact.html'));
+});
+
+app.route('/about')
+.get(function (req, res) {
+  res.sendFile(path.join(__dirname, '/views/about.html'));
+});
+
+app.route('/santa-clara-2015')
+.get(function (req, res) {
+  res.sendFile(path.join(__dirname, '/views/events/santa-clara-2015.html'));
 });
 
 app.listen(port, function () {
