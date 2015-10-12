@@ -22,39 +22,39 @@
 			<h1>Find an Event Near You</h1>
 			</section>
 			<section class="col_12">
-				<p>Microsoft Plugfests & Events happen around the world. Whether you're in China and want to build Add-Ins for Word or you're in Africa and want to learn more about SQL, there's an event for you. Just click on your region below and check out the events in your area.</p>
+				<p>Microsoft Plugfests & Events happen around the world. Just click on a city on the map below and check out the events.</p>
+				<p>Would you like us to come to your city? Send us your suggestions below!</p>
+				<form action="/map" method="POST">
+					<label for="suggestedlocation">Where would you like us to visit?</label>
+					<input id="suggestedlocation" name="suggestedlocation" type="text" placeholder="Location" type="submit"/>
+					<input id="email" name="email" type="text" placeholder="Email" type="submit"/>
+					<label for="email">*Optional</label>
+					<button class="medium" type="submit">Submit</button>
+				</form>
 				<img id="world-map" src="../img/world-map.png" alt="" usemap="#Map" id="world-map" width="1400px" height="867px"/>
 				<map name="Map" id="Map">
-  			<area alt="Redmond, WA" title="Redmond, WA" href="#" class="tooltip pointer" data-content="#redmond" shape="poly" coords="130,262,121,249,119,238,127,233,138,238,138,247,129,260" />
-  			<area alt="Santa Clara, CA" title="Santa Clara, CA" href="#" class="tooltip" data-content="#santaclara" shape="poly" coords="111,314,105,300,101,289,108,280,116,283,118,294,114,304,111,307" />
-  			<area alt="Las Vegas, NV" title="Las Vegas, NV" href="#" class="tooltip pointer" data-content="#lasvegas" shape="poly" coords="136,333,129,320,135,309,146,311,149,320,143,330,140,340" />
-  			<area alt="Cambridge, MA" title="Cambridge, MA" href="#" class="tooltip pointer" data-content="#cambridge" shape="poly" coords="322,281,321,265,331,262,339,272,336,284,332,297" />
-  			<area alt="London, UK" title="London, UK"  href="#" class="tooltip pointer"  data-content="#london" shape="poly" coords="628,225,622,213,625,199,638,204,637,215" />
-  			<area alt="Zaragoza, Spain" title="Zaragoza, Spain"  href="#" class="tooltip pointer"  data-content="#zaragoza" shape="poly" coords="638,288,628,269,628,256,642,254,647,266" />
-  			<area alt="Göttingen, Germany" title="Göttingen, Germany"  href="#" class="tooltip pointer"  data-content="#gottingen" shape="poly" coords="673,215,666,202,674,193,683,197,683,211,677,220" />
-  			<area alt="Brussels, Belgium" title="Brussels, Belgium"  href="#" class="tooltip pointer"  data-content="#brussels" shape="poly" coords="657,238,648,222,651,208,663,209,662,228" />
-  			<area alt="Berlin, Germany" title="Berlin, Germany"  href="#" class="tooltip pointer"  data-content="#berlin" shape="poly" coords="695,222,688,210,686,199,693,194,701,197,701,212" />
-  			<area alt="Munich, Germany" title="Munich, Germany"  href="#" class="tooltip pointer"  data-content="#munich" shape="poly" coords="687,249,678,237,674,226,687,220,695,229" />
-  			<area alt="Seoul, Korea" title="Seoul, Korea"  href="#" class="tooltip pointer"  data-content="#seoul" shape="poly" coords="1181,280,1172,264,1175,253,1184,252,1187,270" />
-  			<area alt="Tokyo, Japan" title="Tokyo, Japan"  href="#" class="tooltip pointer"  data-content="#tokyo" shape="poly" coords="1242,295,1232,277,1231,264,1242,260,1255,267,1250,282" />
+  			<area alt="Redmond, WA" title="Redmond, WA" href="#" class="tooltip pointer" data-content="#redmond" data-delay="300" shape="poly" coords="130,262,121,249,119,238,127,233,138,238,138,247,129,260" />
+  			<area alt="Santa Clara, CA" title="Santa Clara, CA" shape="poly" coords="111,314,105,300,101,289,108,280,116,283,118,294,114,304,111,307" />
+  			<area alt="Las Vegas, NV" title="Las Vegas, NV" shape="poly" coords="136,333,129,320,135,309,146,311,149,320,143,330,140,340" />
+  			<area alt="Cambridge, MA" title="Cambridge, MA" shape="poly" coords="322,281,321,265,331,262,339,272,336,284,332,297" />
+  			<area alt="London, UK" title="London, UK"  shape="poly" coords="628,225,622,213,625,199,638,204,637,215" />
+  			<area alt="Zaragoza, Spain" title="Zaragoza, Spain" shape="poly" coords="638,288,628,269,628,256,642,254,647,266" />
+  			<area alt="Göttingen, Germany" title="Göttingen, Germany" shape="poly" coords="673,215,666,202,674,193,683,197,683,211,677,220" />
+  			<area alt="Brussels, Belgium" title="Brussels, Belgium" shape="poly" coords="657,238,648,222,651,208,663,209,662,228" />
+  			<area alt="Berlin, Germany" title="Berlin, Germany" shape="poly" coords="695,222,688,210,686,199,693,194,701,197,701,212" />
+  			<area alt="Munich, Germany" title="Munich, Germany" shape="poly" coords="687,249,678,237,674,226,687,220,695,229" />
+  			<area alt="Seoul, Korea" title="Seoul, Korea" shape="poly" coords="1181,280,1172,264,1175,253,1184,252,1187,270" />
+  			<area alt="Tokyo, Japan" title="Tokyo, Japan" shape="poly" coords="1242,295,1232,277,1231,264,1242,260,1255,267,1250,282" />
   			<area alt="Shanghai, China" title="Shanghai, China"  href="#" class="tooltip pointer"  data-content="#shanghai" shape="poly" coords="1164,327,1156,316,1154,303,1166,297,1174,304,1173,320" />
-  			<area alt="Beijing, China" title="Beijing, China"  href="#" class="tooltip pointer"  data-content="#beijing" shape="poly" coords="1126,262,1117,246,1121,233,1127,228,1137,237,1135,252" />
-  			<area alt="Taipei, Taiwan" title="Taipei, Taiwan"  href="#" class="tooltip pointer"  data-content="#taipei" shape="poly" coords="1200,390,1189,375,1187,364,1199,358,1209,364,1210,372,1202,381" />
+  			<area alt="Beijing, China" title="Beijing, China" shape="poly" coords="1126,262,1117,246,1121,233,1127,228,1137,237,1135,252" />
+  			<area alt="Taipei, Taiwan" title="Taipei, Taiwan" href="#" class="tooltip pointer"  data-content="#taipei" shape="poly" coords="1200,390,1189,375,1187,364,1199,358,1209,364,1210,372,1202,381" />
   			<div class="tooltip-content" id="redmond">
   				<h3>Redmond, WA</h3>
 					<ul>
 						<li><h5><a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/Redmond-Interoperability-Protocols-Plugfest-2015">Redmond Interoperability Protocols Plugfest 2015</a></h5></li>
-						<li><h5><a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/RDP-Protocols-Plugfest-2014">RDP Protocols Plugfest 2014</a></h5></li>
-						<li><h5><a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/Redmond-Interoperability-Protocols-Plugfest-2014">Redmond Interoperability Protocols Plugfest 2014</a></h5></li>
-						<li><h5><a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/Redmond-Interoperability-Protocols-Plugfest-2013">Redmond Interoperability Protocols Plugfest 2013</a></h5></li>
-						<li><h5><a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/Windows-Identity-and-Exchange-Protocols-Plugfest-2012">Windows Identity and Exchange Protocols Plugfest 2012</a></h5></li>
-						<li><h5><a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/Odata-Meetup-2012">OData Meetup 2012</a></h5></li>
-						<li><h5><a href="https://msdn.microsoft.com/en-us/openspecifications/dn767917#tile=event091809">Document Interoperability Initiative (DII) Workshop on MCE</a></h5></li>
-						<li><h5><a href="https://msdn.microsoft.com/en-us/openspecifications/dn786371#tile=event102308">DII Workshop</a></h5></li>
-						<li><h5><a href="https://msdn.microsoft.com/en-us/openspecifications/dn786371#tile=event073108">DII Workshop on on ODF 1.1 </a></h5></li>
 					</ul>
 				</div>
-				<div class="tooltip-content" id="santaclara">
+<!-- 				<div class="tooltip-content" id="santaclara">
   				<h3>Santa Clara, CA</h3>
 					<ul>
 						<li><h5><a href="">Storage Developer Conference 2014</a></h5></li>
@@ -62,91 +62,88 @@
 						<li><h5><a href="http://www.snia.org/events/storage-developer2012/presentations12">Storage Developer Conference 2012</a></h5></li>
 						<li><h5><a href="http://www.snia.org/events/storage-developer2011">Storage Developer Conference 2011</a></h5></li>
 					</ul>
-				</div>
-				<div class="tooltip-content" id="lasvegas">
+				</div> -->
+<!-- 				<div class="tooltip-content" id="lasvegas">
   				<h3>Las Vegas, NV</h3>
 					<ul>
-						<!-- <img src="http://www.interop.com/sites/default/files/styles/homepage_slider_style/public/ILV15_1504150_Sliders_ItsAWrap-741x325_0.jpg?itok=jqQtdk8o" /> -->
+						<img src="http://www.interop.com/sites/default/files/styles/homepage_slider_style/public/ILV15_1504150_Sliders_ItsAWrap-741x325_0.jpg?itok=jqQtdk8o" />
 						<li><h5><a href="http://www.interop.com/lasvegas/">Interop.com 2012</a></h5></li>
 					</ul>
-				</div>
-				<div class="tooltip-content" id="cambridge">
+				</div> -->
+	<!-- 			<div class="tooltip-content" id="cambridge">
   				<h3>Cambridge, MA</h3>
 					<ul>
 						<li><h5><a href="http://www.kerberos.org/events/2011conf-interop/">2011 Kerberos Conference and Interop Event</a></h5></li>
 					</ul>
-				</div>
-				<div class="tooltip-content" id="london">
+				</div> -->
+<!-- 				<div class="tooltip-content" id="london">
   				<h3>London, UK</h3>
 					<ul>
 						<li><h5><a href="https://msdn.microsoft.com/en-us/openspecifications/dn767917#tile=event051809">DII Workshop on the Fraunhofer FOKUS Validator</a></h5></li>
 					</ul>
-				</div>
-				<div class="tooltip-content" id="zaragoza">
+				</div> -->
+<!-- 				<div class="tooltip-content" id="zaragoza">
   				<h3>Zaragoza, Spain</h3>
 					<ul>
 						<li><h5><a href="http://www.protocolsplugfest.com/europe/">Protocols Plugfest Europe 2015</a></h5></li>
 					</ul>
-				</div>
-				<div class="tooltip-content" id="gottingen">
+				</div> -->
+<!-- 				<div class="tooltip-content" id="gottingen">
   				<h3>Göttingen, Germany</h3>
 					<ul>
 						<li><h5><a href="http://www.sambaxp.org/">sambaXP 2015</a></h5></li>
 						<li><h5><a href="http://www.sambaxp.org/">sambaXP 2012</a></h5></li>
 					</ul>
-				</div>
-				<div class="tooltip-content" id="brussels">
+				</div> -->
+<!-- 				<div class="tooltip-content" id="brussels">
   				<h3>Brussels, Belgium</h3>
 					<ul>
 						<li><h5><a href="https://msdn.microsoft.com/en-us/openspecifications/dn767917#tile=event111209">Document Interoperability Initiative (DII) Workshop</a></h5></li>
 						<li><h5><a href="https://msdn.microsoft.com/en-us/openspecifications/dn786371#tile=event120208">Document Interoperability Initiative (DII) Workshop on Translators</a></h5></li>
 					</ul>
-				</div>
-				<div class="tooltip-content" id="berlin">
+				</div> -->
+<!-- 				<div class="tooltip-content" id="berlin">
   				<h3>Berlin, Germany</h3>
 					<ul>
 						<li><h5><a href="https://msdn.microsoft.com/en-us/openspecifications/dn767917#tile=event063009">Document Interoperability Initiative (DII) Workshop</a></h5></li>
 					</ul>
-				</div>
-				<div class="tooltip-content" id="munich">
+				</div> -->
+<!-- 				<div class="tooltip-content" id="munich">
   				<h3>Munich, Germany</h3>
 					<ul>
 						<li><h5><a href="https://msdn.microsoft.com/en-us/openspecifications/dn786371#tile=event061008">DII Workshop on Accessibility</a></h5></li>
 					</ul>
-				</div>
-				<div class="tooltip-content" id="seoul">
+				</div> -->
+<!-- 				<div class="tooltip-content" id="seoul">
   				<h3>Seoul, Korea</h3>
 					<ul>
 						<li><h5><a href="https://msdn.microsoft.com/en-us/openspecifications/dn786371#tile=event031208">DII Workshop on Translation</a></h5></li>
 					</ul>
-				</div>
-				<div class="tooltip-content" id="tokyo">
+				</div> -->
+<!-- 				<div class="tooltip-content" id="tokyo">
   				<h3>Tokyo, Japan</h3>
 					<ul>
 						<li><h5><a href="https://msdn.microsoft.com/en-us/openspecifications/dn786371#tile=event073008">DII Workshop by wipse (Windows + Services Consortium)</a></h5></li>
 					</ul>
-				</div>
+				</div> -->
 				<div class="tooltip-content" id="shanghai">
   				<h3>Shanghai, China</h3>
 					<ul>
 						<li><h5><a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/Shanghai-Interoperability-Protocols-Seminar-2013">Shanghai Interoperability Protocols Seminar 2013</a></h5></li>
 					</ul>
 				</div>
-				<div class="tooltip-content" id="beijing">
+<!-- 				<div class="tooltip-content" id="beijing">
   				<h3>Beijing, China</h3>
 					<ul>
 						<li><h5><a href="http://connect.microsoft.com/site216/Downloads/DownloadDetails.aspx?DownloadID=57585">Beijing Interop Seminar 2015</a></h5></li>
 						<li><h5><a href="https://msdn.microsoft.com/en-us/openspecifications/dn768081#tile=event022510">Document Interoperability Initiative (DII) Event</a></h5></li>
 						<li><h5><a href="https://msdn.microsoft.com/en-us/openspecifications/dn767917#tile=event052509">DII Workshop on Open XML / UOF Translator</a></h5></li>
 					</ul>
-				</div>
+				</div> -->
 				<div class="tooltip-content" id="taipei">
   				<h3>Taipei, Taiwan</h3>
 					<ul>
 						<li><h5><a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/Taipei-Interoperability-Plugfest-and-Server-TechFest-2015">Taipei Interoperability Plugfest and Server TechFest 2015</a></h5></li>
-						<li><h5><a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/Taipei-Interoperability-Protocols-Plugfest-2014">Taipei Interoperability Protocols Plugfest 2014</a></h5></li>
-						<li><h5><a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/Taipei-Interoperability-Protocols-Plugfest-2013">Taipei Interoperability Protocols Plugfest 2013</a></h5></li>
-						<li><h5><a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/Taipei-Communication-Protocols-Plugfest-2012">Taipei Communication Protocols Plugfest 2012</a></h5></li>
 					</ul>
 				</div>
 			</section>
