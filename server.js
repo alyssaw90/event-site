@@ -5,10 +5,10 @@ var app = express();
 var bodyParser = require('body-parser');
 var path = require('path');
 var Sql = require('sequelize');
-// var sql = new Sql('events_page', 'eventsUser', 'I@m@pr0gr@mm3r', {dialect: 'mssql'});
+// var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {dialect: 'mssql'});
 // var connectionstring="Data Source=server.js;Initial Catalog=events_page;User ID=REDMOND\\v-mibowe;Password=I@m@pr0gr@mm3r;Provider=SQLOLEDB";
-var sql = new Sql('events_page', 'test1', 'p@ssw0rd1', {
-  host: 'localhost/events_page',
+var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
+  host: 'localhost',
   dialect: 'mssql',
 
   pool: {
@@ -41,7 +41,7 @@ app.route('/')
 .post(function (req, res) {
   res.sendFile(path.join(__dirname, '/index.html'));
 
-  console.log('req.body - homepage : ', req.body);
+  // console.log('req.body - homepage : ', req.body);
 });
 
 // /map routes
@@ -53,7 +53,7 @@ app.route('/map')
   res.sendFile(path.join(__dirname, '/views/world-map.html'));
   // res.send(req.body);
   // res.json(res);
-    console.log('req.body : ', req.body);
+    // console.log('req.body : ', req.body);
     // fs.writeFile('./db/filename' + '.JSON', 'Hello World 2', function (err) {
     //  if (err) {console.error(err)};
     //  console.log('file saved');
@@ -63,6 +63,7 @@ app.route('/map')
     .then(function () {
       SuggestedCity.create(req.body)
       .then(function (data) {
+        console.log('DATA : ', data);
         res.json(data);
       })
       .error(function (err) {

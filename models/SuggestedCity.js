@@ -1,7 +1,7 @@
 'use strict'
 
 var Sql = require('sequelize');
-var sql = new Sql('events_page', 'test1', 'p@ssw0rd1', {
+var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
   host: 'localhost',
   dialect: 'mssql',
 
@@ -14,17 +14,17 @@ var sql = new Sql('events_page', 'test1', 'p@ssw0rd1', {
 
 var SuggestedCity = module.exports = sql.define('SuggestedCity', {
   city: Sql.STRING,
-  email: Sql.INTEGER
+  email: Sql.STRING
 	});
 
 // SuggestedCity.sync();
 
 
-// SuggestedCity.sync({force: true})
-// .then(function () {
-//   // Table created
-//   return SuggestedCity.create({
-//     city:'Seattle',
-//   email: 'test@example.com'
-//   });
-// });
+SuggestedCity.sync({force: true})
+.then(function () {
+  // Table created
+  return SuggestedCity.create({
+    city:'Seattle',
+  email: 'test@example.com'
+  });
+});
