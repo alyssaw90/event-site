@@ -42,6 +42,18 @@ app.use('/meet-the-team', express.static(__dirname + '/views/meet-the-team.html'
 app.use('/contact', express.static(__dirname + '/views/contact.html'));
 app.use('/about', express.static(__dirname + '/views/about.html'));
 app.use('/santa-clara-2015', express.static(__dirname + '/views/events/santa-clara-2015.html'));
+
+// homepage routes
+app.route('/')
+.get(function (req, res) {
+  res.sendFile(path.join(__dirname, '/index.html'));
+})
+.post(function (req, res) {
+  res.sendFile(path.join(__dirname, '/index.html'));
+
+  console.log('req.body - homepage : ', req.body);
+});
+
 // /map routes
 app.route('/map')
 .get(function (req, res) {
@@ -59,7 +71,7 @@ app.route('/map')
     // Add these values to your MySQL database here
     sql.sync()
     .then(function () {
-      Team.create(req.body)
+      SuggestedCity.create(req.body)
       .then(function (data) {
         res.json(data);
       })
@@ -73,3 +85,4 @@ app.route('/map')
 app.listen(port, function () {
 	console.log('server started on port ' + port + ' at ' + time);
 });
+;
