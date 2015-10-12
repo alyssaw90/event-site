@@ -5,8 +5,6 @@ var app = express();
 var bodyParser = require('body-parser');
 var path = require('path');
 var Sql = require('sequelize');
-// var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {dialect: 'mssql'});
-// var connectionstring="Data Source=server.js;Initial Catalog=events_page;User ID=REDMOND\\v-mibowe;Password=I@m@pr0gr@mm3r;Provider=SQLOLEDB";
 var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
   host: 'localhost',
   dialect: 'mssql',
@@ -18,6 +16,7 @@ var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
   }
 });
 var SuggestedCity = require('./models/SuggestedCity.js');
+var NewsletterSignup = require('./models/NewsletterSignup.js');
 var fs = require('fs');
 var port = process.env.PORT || 3000;
 var time = new Date();
@@ -39,7 +38,15 @@ app.route('/')
   res.sendFile(path.join(__dirname, '/index.html'));
 })
 .post(function (req, res) {
-  res.sendFile(path.join(__dirname, '/index.html'));
+  sql.sync()
+  .then(function (data) {
+    NewsletterSignup.create(req.body);
+    res.sendFile(path.join(__dirname, '/index.html'));
+  })
+  .error(function (err) {
+    console.log(err);
+    res.status(500).json({msg: 'internal server error'});
+  })
 
   // console.log('req.body - homepage : ', req.body);
 });
@@ -50,7 +57,7 @@ app.route('/map')
   res.sendFile(path.join(__dirname, '/views/world-map.html'));
 })
 .post(function (req, res) {
-  res.sendFile(path.join(__dirname, '/views/world-map.html'));
+  // res.sendFile(path.join(__dirname, '/views/world-map.html'));
   // res.send(req.body);
   // res.json(res);
     // console.log('req.body : ', req.body);
@@ -63,8 +70,9 @@ app.route('/map')
     .then(function () {
       SuggestedCity.create(req.body)
       .then(function (data) {
-        console.log('DATA : ', data);
-        res.json(data);
+        // console.log('DATA : ', data);
+        // res.json(data);
+        res.sendFile(path.join(__dirname, '/views/world-map.html'));
       })
       .error(function (err) {
         console.log(err);

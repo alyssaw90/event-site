@@ -12,12 +12,14 @@ var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
   }
 });
 
-var SuggestedCity = module.exports = sql.define('SuggestedCity', {
-  city: Sql.STRING,
-  email: Sql.STRING
+var NewsletterSignup = module.exports = sql.define('NewsletterSignup', {
+  email: Sql.STRING,
+  fullName: Sql.STRING,
+  title: Sql.STRING,
+  bizName: Sql.STRING
 	});
 
-SuggestedCity.sync();
+NewsletterSignup.sync();
 
 
 // force creation of table if it doesn't exist already
