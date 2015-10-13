@@ -145,18 +145,21 @@
 				<h4>Sign Up for the Newsletter</h4>
 					<form action="/latest-news" method="POST" class="vertical">
 						<div class="col_6">
-							<label for="fullName">Name *</label>
-							<input id="fullName" name="fullName" type="text submit" />
+							<label for="firstName">First Name *</label>
+							<input id="firstName" name="firstName" type="text submit" />
+							<label for="lastName">Last Name *</label>
+							<input id="lastName" name="lastName" type="text submit" />
 							<label for="title">Title *</label>
 							<input id="title" name="title" type="text submit" />
-							<p>*Optional</p>
+							<button class="medium" type="submit">Submit</button>
 						</div>
 						<div class="col_6">
 							<label for="email">Email Address</label>
 							<input id="email" name="email" type="text submit" />
 							<label for="bizName">Company Name *</label>
 							<input id="bizName" name="bizName" type="text submit" />
-							<button class="medium" type="submit">Submit</button>
+							<br />
+							<p>*Optional</p>
 						</div>
 						<hr>
 					</form>

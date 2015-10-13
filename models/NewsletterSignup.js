@@ -14,7 +14,8 @@ var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
 
 var NewsletterSignup = module.exports = sql.define('NewsletterSignup', {
   email: Sql.STRING,
-  fullName: Sql.STRING,
+  firstName: Sql.STRING,
+  lastName: Sql.STRING,
   title: Sql.STRING,
   bizName: Sql.STRING
 	});
