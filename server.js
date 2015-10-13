@@ -2,6 +2,7 @@
 
 var express = require('express');
 var app = express();
+var $ = require('cheerio');
 var bodyParser = require('body-parser');
 var path = require('path');
 var Sql = require('sequelize');
@@ -113,14 +114,44 @@ app.route('/contact')
   res.sendFile(path.join(__dirname, '/views/contact.html'));
 });
 
-app.route('/about')
-.get(function (req, res) {
-  res.sendFile(path.join(__dirname, '/views/about.html'));
-});
+// app.route('/about')
+// .get(function (req, res) {
+//   res.sendFile(path.join(__dirname, '/views/about.html'));
+// });
 
 app.route('/santa-clara-2015')
 .get(function (req, res) {
   res.sendFile(path.join(__dirname, '/views/events/santa-clara-2015.html'));
+});
+
+// var about = $.load('/views/about.html');
+
+app.route('/about')
+.get(function (req, res) {
+  fs.readFile(path.join(__dirname, '/views/about.html'), function (err, data) {
+    var about = data.toString();
+    var newAboutText = '<h2>About Us</h2>';
+    if (err) {
+      console.log(err);
+    }
+    sql.sync()
+    .then(function () {
+      SuggestedCity.all()
+      .then(function (data) {
+        $(data).each(function (i, elem) {
+          newAboutText += '<h2>' + elem.city + '</h2>' + '<h2>' + elem.email + '</h2>';
+        })
+        console.log(newAboutText);
+        var newAbout = about.replace('<h2>About Us</h2>', newAboutText);        
+        res.send(newAbout)
+      })
+      .error(function (err) {
+        console.log(err);
+        res.status(500).json({msg: 'internal server error'});
+      })
+    })
+  });
+  // console.log(about);
 });
 
 app.listen(port, function () {
