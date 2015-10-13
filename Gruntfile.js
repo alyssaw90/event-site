@@ -11,7 +11,7 @@ module.exports = function (grunt) {
     jshint: {
       dev: {
         // tell jshint what check
-        src: ['Gruntfile.js', 'server.js', 'js/**/*.js', 'models/**/*.js', 'routes/**/*.js', '!build/**', '!tests/client/bundle.js', '!tests/karma_tests/bundle.js'],
+        src: ['Gruntfile.js', 'server.js', 'js/**/*.js', 'models/**/*.js', 'routes/**/*.js', '!build/**', '!tests/client/bundle.js', '!tests/karma_tests/bundle.js', '!js/imageMapResizer.min.js', '!js/kickstart.js'],
         options: {
           node: true,
           globals: {
@@ -97,7 +97,7 @@ module.exports = function (grunt) {
 	});
 	
 	// register linting task
-  grunt.registerTask('lint', ['jshint:dev', 'jshint:mocha', 'jshint:jasmine']);
+  grunt.registerTask('lint', ['jshint:dev', 'jshint:mocha'/*, 'jshint:jasmine'*/]);
 	// register mocha test task
 	grunt.registerTask('test', ['simplemocha:dev']);
 	grunt.registerTask('default', ['test']);

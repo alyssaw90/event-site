@@ -1,4 +1,9 @@
 'use strict';
+/*global $ */
+/*global document */
+/*global window */
+/*jshint multistr: true */ 
+
  $(document).ready(function () {
  	
  	var $header = $('header');
@@ -102,4 +107,4 @@
 		if (window.location.pathname === '/past-events') {
 			$('.past-events-header-menu-block').addClass('current-page');
 		}
- })
+ });

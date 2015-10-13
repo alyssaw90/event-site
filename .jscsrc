@@ -16,6 +16,7 @@
     "requireLineFeedAtFileEnd": true,
     "requireCapitalizedConstructors": true,
     "requireDotNotation": true,
+    "disallowMultipleLineStrings": false,
     "requireCurlyBraces": [
         "do"
     ],

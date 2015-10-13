@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 var Sql = require('sequelize');
 var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {

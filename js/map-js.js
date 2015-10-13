@@ -1,4 +1,7 @@
-'use strict' 
+'use strict'; 
+/*global $ */
+/*global document */
+/*global window */
 
 $(document).ready(function () {
 	
@@ -8,4 +11,4 @@ $(document).ready(function () {
  	// $('#world-map[usemap]').rwdImageMaps();
  	$('map').imageMapResize();
  	
-})
+});

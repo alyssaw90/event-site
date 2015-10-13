@@ -26,8 +26,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 (function () {
-    if (sql === true) {console.log('success')};
-}())
+    if (sql === true) {console.log('success');}
+}());
     console.log('DB : ', db);
 
 app.use(express.static(__dirname + '/'));
@@ -46,7 +46,7 @@ app.route('/')
   .error(function (err) {
     console.log(err);
     res.status(500).json({msg: 'internal server error'});
-  })
+  });
 });
 
 //map routes
@@ -58,13 +58,13 @@ app.route('/map')
     // Add these values to your MySQL database here
     sql.sync()
     .then(function (data) {
-      SuggestedCity.create(req.body)
-      res.sendFile(path.join(__dirname, '/views/world-map.html'))
+      SuggestedCity.create(req.body);
+      res.sendFile(path.join(__dirname, '/views/world-map.html'));
     })
     .error(function (err) {
       console.log(err);
       res.status(500).json({msg: 'internal server error'});
-    })
+    });
 });
 
 app.route('/latest-news')
@@ -80,7 +80,7 @@ app.route('/latest-news')
   .error(function (err) {
     console.log(err);
     res.status(500).json({msg: 'internal server error'});
-  })
+  });
 });
 
 app.route('/find-an-event')
@@ -126,4 +126,3 @@ app.route('/santa-clara-2015')
 app.listen(port, function () {
 	console.log('server started on port ' + port + ' at ' + time);
 });
-;

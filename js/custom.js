@@ -1,4 +1,7 @@
 'use strict';
+/*global $ */
+/*global document */
+/*global window */
 
 $(document).ready(function () {
 	//apply flip animation to social icons
@@ -32,7 +35,7 @@ $(document).ready(function () {
 		$(this).find('div').stop(true, true).animate({'bottom': '0'}, 200);
 		},
 		function () {
-			$(this).find('div').stop(true, true).animate({'bottom': '-100%'}, 200)
+			$(this).find('div').stop(true, true).animate({'bottom': '-100%'}, 200);
 		});
 
 	//function to set divs with equal height
@@ -43,11 +46,11 @@ $(document).ready(function () {
 			if ($(this).height() > tallestBlock) {
 				tallestBlock = $(this).height();
 			}
-		})
+		});
 
 		div.each(function () {
 			$(this).height(tallestBlock);
-		})
+		});
 	}
 
 	// function to set divs with equal width
@@ -57,11 +60,11 @@ $(document).ready(function () {
 			if ($(this).width() > widestBlock) {
 				widestBlock = $(this).width();
 			}
-		})
+		});
 
 		div.each(function () {
 			$(this).width(widestBlock);
-		})
+		});
 	}
 
 	$(window).load(changeWidth($('.menu-block')));
@@ -71,7 +74,7 @@ $(document).ready(function () {
 		var $menuHeight = $(this).parent().height();
  		var $menuWidth  = $('.upcoming-menu').width();
  		// $('.upcoming-sub-menu:first').css('margin-top', $menuHeight);
- 		$('.expanding-menu').css({'height': $menuHeight, 'width': $menuWidth})
+ 		$('.expanding-menu').css({'height': $menuHeight, 'width': $menuWidth});
  		$('.expanding-menu').height($menuHeight);
  		$('.expanding-menu').width($menuWidth);
  		$('.upcoming-sub-menu').slideDown('fast');
@@ -92,7 +95,7 @@ $(document).ready(function () {
 		$(window).resize(changeHeight($('.individual-homepage-expert')));
 		$(window).load(changeHeight($('.individual-homepage-expert')));
 	
-	})
+	});
 
 	// 100% image width for homepage team members if parent is more than 165px wide
 
@@ -176,7 +179,7 @@ $(document).ready(function () {
   	$('#tiptip_holder').css('margin-left', (e.pageX - 100));
   	$('#tiptip_holder').css('max-width', '100%');
   	$('#tiptip_arrow').css('display', 'none');
- 	}
+ 	};
 
  	$('.pointer').hover(locateTip);
 
@@ -204,4 +207,4 @@ $(document).ready(function () {
  		
  	}());
  	
-})
+});
