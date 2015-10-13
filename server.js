@@ -47,38 +47,40 @@ app.route('/')
     console.log(err);
     res.status(500).json({msg: 'internal server error'});
   })
-
-  // console.log('req.body - homepage : ', req.body);
 });
 
-// /map routes
+//map routes
 app.route('/map')
 .get(function (req, res) {
   res.sendFile(path.join(__dirname, '/views/world-map.html'));
 })
 .post(function (req, res) {
-  // res.sendFile(path.join(__dirname, '/views/world-map.html'));
-  // res.send(req.body);
-  // res.json(res);
-    // console.log('req.body : ', req.body);
-    // fs.writeFile('./db/filename' + '.JSON', 'Hello World 2', function (err) {
-    //  if (err) {console.error(err)};
-    //  console.log('file saved');
-    // })
     // Add these values to your MySQL database here
     sql.sync()
-    .then(function () {
+    .then(function (data) {
       SuggestedCity.create(req.body)
-      .then(function (data) {
-        // console.log('DATA : ', data);
-        // res.json(data);
-        res.sendFile(path.join(__dirname, '/views/world-map.html'));
-      })
-      .error(function (err) {
-        console.log(err);
-        res.status(500).json({msg: 'internal server error'});
-      })
+      res.sendFile(path.join(__dirname, '/views/world-map.html'))
     })
+    .error(function (err) {
+      console.log(err);
+      res.status(500).json({msg: 'internal server error'});
+    })
+});
+
+app.route('/latest-news')
+.get(function (req, res) {
+  res.sendFile(path.join(__dirname, '/views/latest-news.html'));
+})
+.post(function (req, res) {
+  sql.sync()
+  .then(function (data) {
+    NewsletterSignup.create(req.body);
+    res.sendFile(path.join(__dirname, '/views/latest-news.html'));
+  })
+  .error(function (err) {
+    console.log(err);
+    res.status(500).json({msg: 'internal server error'});
+  })
 });
 
 app.route('/find-an-event')
@@ -94,11 +96,6 @@ app.route('/past-events')
 app.route('/media')
 .get(function (req, res) {
   res.sendFile(path.join(__dirname, '/views/media.html'));
-});
-
-app.route('/latest-news')
-.get(function (req, res) {
-  res.sendFile(path.join(__dirname, '/views/latest-news.html'));
 });
 
 app.route('/faq')

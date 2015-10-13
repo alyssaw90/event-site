@@ -143,19 +143,20 @@
 				</ul>
 			<hr />
 				<h4>Sign Up for the Newsletter</h4>
-					<form class="vertical">
+					<form action="/latest-news" method="POST" class="vertical">
 						<div class="col_6">
-							<label for="full-name">Name</label>
-							<input id="full-name" type="text" />
-							<label for="title">Title</label>
-							<input id="title" type="text" />
-						<button class="medium" type="submit">Submit</button>
+							<label for="fullName">Name *</label>
+							<input id="fullName" name="fullName" type="text submit" />
+							<label for="title">Title *</label>
+							<input id="title" name="title" type="text submit" />
+							<p>*Optional</p>
 						</div>
 						<div class="col_6">
 							<label for="email">Email Address</label>
-							<input id="email" type="text" />
-							<label for="biz-name">Company Name</label>
-							<input id="biz-name" type="text" />
+							<input id="email" name="email" type="text submit" />
+							<label for="bizName">Company Name *</label>
+							<input id="bizName" name="bizName" type="text submit" />
+							<button class="medium" type="submit">Submit</button>
 						</div>
 						<hr>
 					</form>
