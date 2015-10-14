@@ -14,8 +14,14 @@ var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
 
 var SuggestedCity = module.exports = sql.define('SuggestedCity', {
   city: Sql.STRING,
-  email: Sql.STRING
-	});
+  email: {
+    type: Sql.STRING,
+    allowNull: true,
+    validate:  {
+      isEmail: true
+    }
+  }
+});
 
 SuggestedCity.sync();
 

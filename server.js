@@ -18,6 +18,7 @@ var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
 });
 var SuggestedCity = require('./models/SuggestedCity.js');
 var NewsletterSignup = require('./models/NewsletterSignup.js');
+var NewsletterSignup = require('./models/Speaker.js');
 var fs = require('fs');
 var port = process.env.PORT || 3000;
 var time = new Date();
