@@ -26,9 +26,11 @@ var aboutUs = require('./views/about')();
 var mapRouter = express.Router();
 var homeRouter = express.Router();
 var latestNewsRouter = express.Router();
+var findEventsRouter = express.Router();
 require('./routes/home-routes')(homeRouter);
 require('./routes/world-map-routes')(mapRouter);
 require('./routes/latest-news-routes')(latestNewsRouter);
+require('./routes/find-an-event-routes')(findEventsRouter);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -37,28 +39,8 @@ app.use(express.static(__dirname + '/'));
 app.use('/', homeRouter);
 app.use('/', mapRouter);
 app.use('/', latestNewsRouter);
+app.use('/', findEventsRouter);
 
-
-/*app.route('/latest-news')
-.get(function (req, res) {
-  res.sendFile(path.join(__dirname, '/views/latest-news.html'));
-})
-.post(function (req, res) {
-  sql.sync()
-  .then(function (data) {
-    NewsletterSignup.create(req.body);
-    res.sendFile(path.join(__dirname, '/views/latest-news.html'));
-  })
-  .error(function (err) {
-    console.log(err);
-    res.status(500).json({msg: 'internal server error'});
-  });
-});*/
-
-app.route('/find-an-event')
-.get(function (req, res) {
-  res.sendFile(path.join(__dirname, '/views/find-an-event.html'));
-});
 
 app.route('/past-events')
 .get(function (req, res) {
