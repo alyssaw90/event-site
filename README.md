@@ -1,4 +1,4 @@
-#Event Site Wireframe#
+#Events Site Wireframe#
 
 [![Build Status](https://travis-ci.org/mb4ms/event-site.svg)](https://travis-ci.org/mb4ms/event-site)
 
