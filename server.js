@@ -2,42 +2,33 @@
 
 var express = require('express');
 var app = express();
-var $ = require('cheerio');
-var bodyParser = require('body-parser');
-var path = require('path');
-var Sql = require('sequelize');
-var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
-  host: 'localhost',
-  dialect: 'mssql',
-
-  pool: {
-    max: 5,
-    min: 0,
-    idle: 10000
-  }
-});
-var SuggestedCity = require('./models/SuggestedCity');
-var NewsletterSignup = require('./models/NewsletterSignup');
-var Contact = require('./models/Contact.js');
-var fs = require('fs');
 var port = process.env.PORT || 3000;
 var time = new Date();
-var aboutUs = require('./views/about')();
 var mapRouter = express.Router();
 var homeRouter = express.Router();
 var latestNewsRouter = express.Router();
 var findEventsRouter = express.Router();
 var pastEventsRouter = express.Router();
 var mediaRouter = express.Router();
+var faqRouter = express.Router();
+var meetTheTeamRouter = express.Router();
+var contactRouter = express.Router();
+var futureEventsRouter = express.Router();
+var aboutRouter = express.Router();
 require('./routes/home-routes')(homeRouter);
 require('./routes/world-map-routes')(mapRouter);
 require('./routes/latest-news-routes')(latestNewsRouter);
 require('./routes/find-an-event-routes')(findEventsRouter);
 require('./routes/past-events-routes')(pastEventsRouter);
 require('./routes/media-routes')(mediaRouter);
+require('./routes/faq-routes')(faqRouter);
+require('./routes/meet-the-team-routes')(meetTheTeamRouter);
+require('./routes/contact-routes')(contactRouter);
+require('./routes/future-events-routes')(futureEventsRouter);
+require('./routes/about-routes')(aboutRouter);
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
 
 app.use(express.static(__dirname + '/'));
 app.use('/', homeRouter);
@@ -46,81 +37,11 @@ app.use('/', latestNewsRouter);
 app.use('/', findEventsRouter);
 app.use('/', pastEventsRouter);
 app.use('/', mediaRouter);
-
-app.route('/faq')
-.get(function (req, res) {
-  res.sendFile(path.join(__dirname, '/views/faq.html'));
-});
-
-app.route('/meet-the-team')
-.get(function (req, res) {
-  res.sendFile(path.join(__dirname, '/views/meet-the-team.html'));
-});
-
-app.route('/contact')
-.get(function (req, res) {
-  res.sendFile(path.join(__dirname, '/views/contact.html'));
-});
-
-// app.route('/about')
-// .get(function (req, res) {
-//   res.sendFile(path.join(__dirname, '/views/about.html'));
-// });
-
-app.route('/santa-clara-2015')
-.get(function (req, res) {
-  res.sendFile(path.join(__dirname, '/views/events/santa-clara-2015.html'));
-});
-
-// var about = $.load('/views/about.html');
-
-app.route('/about')
-.get(function (req, res) {
-  var start = new Date().getTime();
-  console.log('start time : ', start);
-  fs.readFile(path.join(__dirname, '/blank.html'), function (err, data) {
-    var about = data.toString();
-    var newAboutText = '<div class="container-div">' + aboutUs;
-    if (err) {
-      console.log(err);
-    }
-    sql.sync()
-    .then(function () {
-      SuggestedCity.all()
-      .then(function (data) {
-        $(data).each(function (i, elem) {
-          newAboutText += '<h2>' + elem.city + '</h2>' + '<h2>' + elem.email + '</h2>';
-        })
-        console.log(newAboutText);
-        var newAbout = about.replace('<div class="container-div">', newAboutText);        
-        res.send(newAbout)
-        var end = new Date().getTime();
-        console.log('end time : ', end);
-      })
-      .error(function (err) {
-        console.log(err);
-        res.status(500).json({msg: 'internal server error'});
-      })
-    })
-  });
-  // console.log(about);
-});
-
-/*app.get('/about', function (req, res) {
-    sql.sync()
-    .then(function () {
-      SuggestedCity.all()
-      .then(function (data) {        
-        res.json(data)
-        var end = new Date().getTime();
-        console.log('end time : ', end);
-      })
-      .error(function (err) {
-        console.log(err);
-        res.status(500).json({msg: 'internal server error'});
-      })
-    })
-  });*/
+app.use('/', faqRouter);
+app.use('/', meetTheTeamRouter);
+app.use('/', contactRouter);
+app.use('/', futureEventsRouter);
+app.use('/', aboutRouter);
 
 app.listen(port, function () {
 	console.log('server started on port ' + port + ' at ' + time);
