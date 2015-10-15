@@ -54,32 +54,33 @@ app.route('/map')
 .post(function (req, res) {
     // Add these values to your MySQL database here
     sql.sync()
-    .then(function (data) {
-      SuggestedCity.create(req.body);
-    })
     .then(function () {
       Contact.find({where: {email: req.body.email}})
       .then(function (data) {
-      console.log('DATA : ', data);
-      if (data) {
-        data.updateAttributes({
-          recommendedCity: req.body.city
-        })        
-      } else {
-        console.log('Else Statement reached');
-        Contact.create(req.body);
+      if (!data) {
+      console.log('IF STATEMENT REACHED');
+        Contact.create({
+          email: req.body.email
+        });
       }
 
       })
     })
-    // .success(function (data) {
-    //   data.updateAttributes({
-    //     recommendedCity: req.body.city
-    //   })
-    // })
+    .then(function () {
+      SuggestedCity.create(req.body)
+      .then(function (data) {
+        var theCity = data;
+        Contact.findOne({where: {email: req.body.email}})
+        .then(function (data2) {
+        // console.log('DATA : ', data2.recommendedCity)
+          data2.updateAttributes({
+            recommendedCity: data2.recommendedCity+ ' | ' + req.body.city +  ', SuggestedCity Id : ' + data.id
+          })
+        })
+      })
+    })
     .then(function () {
       res.sendFile(path.join(__dirname, '/views/world-map.html'));
-
     })
     .error(function (err) {
       console.log(err);

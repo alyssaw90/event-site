@@ -20,7 +20,7 @@ var NewsletterSignup = module.exports = sql.define('NewsletterSignup', {
   bizName: Sql.STRING
 	});
 
-NewsletterSignup.sync();
+NewsletterSignup.sync({force: false});
 
 
 // force creation of table if it doesn't exist already

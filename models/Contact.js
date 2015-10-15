@@ -16,7 +16,7 @@ var Contact = module.exports = sql.define('Contact', {
   firstName: Sql.STRING,
   lastName: Sql.STRING,
   email: Sql.STRING,
-  divId: {type: Sql.STRING, unique: true},
+  divId: Sql.STRING,
   description: Sql.STRING,
   role: Sql.STRING,
   headShot: Sql.STRING,
@@ -26,7 +26,7 @@ var Contact = module.exports = sql.define('Contact', {
   recommendedCity: Sql.STRING
 });
 
-Contact.sync();
+Contact.sync({force: false});
 
 
 
