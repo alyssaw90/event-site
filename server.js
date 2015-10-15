@@ -23,12 +23,14 @@ var fs = require('fs');
 var port = process.env.PORT || 3000;
 var time = new Date();
 var aboutUs = require('./views/about')();
+var mapRouter = express.Router();
+require('./routes/world-map-router.js')(mapRouter);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(express.static(__dirname + '/'));
-
+app.use('/', mapRouter);
 // homepage routes
 app.route('/')
 .get(function (req, res) {
@@ -47,7 +49,7 @@ app.route('/')
 });
 
 //map routes
-app.route('/map')
+/*app.route('/map')
 .get(function (req, res) {
   res.sendFile(path.join(__dirname, '/views/world-map.html'));
 })
@@ -86,7 +88,7 @@ app.route('/map')
       console.log(err);
       res.status(500).json({msg: 'internal server error'});
     });
-});
+});*/
 
 app.route('/latest-news')
 .get(function (req, res) {
