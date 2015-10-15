@@ -43,7 +43,7 @@ module.exports = function (router) {
         Contact.findOne({where: {email: req.body.email}})
         .then(function (data2) {
           data2.updateAttributes({
-            recommendedCity: data2.recommendedCity+ ' | ' + req.body.city +  ', SuggestedCity Id : ' + data.id
+            recommendedCity: data2.recommendedCity + ' | ' + req.body.city +  ', SuggestedCity Id : ' + data.id
           });
         });
       });

@@ -25,9 +25,15 @@ module.exports = function (router) {
   })
   .post(function (req, res) {
     sql.sync()
-    .then(function (data) {
+    .then(function () {
       NewsletterSignup.create(req.body);
+      // res.sendFile(path.join(__dirname, '../index.html'));
       res.sendFile(path.join(__dirname, '../index.html'));
+    })
+    .then(function (data) {
+      console.log('DATA : ', data);
+    })
+    .then(function () {
     })
     .error(function (err) {
       console.log(err);
