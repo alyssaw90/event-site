@@ -19,15 +19,15 @@ var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
 module.exports = function (router) {
   router.use(bodyparser.json());
 
-  router.route('/')
+  router.route('/latest-news')
   .get(function (req, res) {
-    res.sendFile(path.join(__dirname, '../index.html'))
+    res.sendFile(path.join(__dirname, '../views/latest-news.html'));
   })
   .post(function (req, res) {
     sql.sync()
     .then(function (data) {
       NewsletterSignup.create(req.body);
-      res.sendFile(path.join(__dirname, '../index.html'));
+      res.sendFile(path.join(__dirname, '../views/latest-news.html'));
     })
     .error(function (err) {
       console.log(err);

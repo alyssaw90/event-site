@@ -25,8 +25,10 @@ var time = new Date();
 var aboutUs = require('./views/about')();
 var mapRouter = express.Router();
 var homeRouter = express.Router();
+var latestNewsRouter = express.Router();
 require('./routes/home-routes')(homeRouter);
 require('./routes/world-map-routes')(mapRouter);
+require('./routes/latest-news-routes')(latestNewsRouter);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -34,9 +36,10 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/'));
 app.use('/', homeRouter);
 app.use('/', mapRouter);
+app.use('/', latestNewsRouter);
 
 
-app.route('/latest-news')
+/*app.route('/latest-news')
 .get(function (req, res) {
   res.sendFile(path.join(__dirname, '/views/latest-news.html'));
 })
@@ -50,7 +53,7 @@ app.route('/latest-news')
     console.log(err);
     res.status(500).json({msg: 'internal server error'});
   });
-});
+});*/
 
 app.route('/find-an-event')
 .get(function (req, res) {
