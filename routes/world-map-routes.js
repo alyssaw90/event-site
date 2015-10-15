@@ -21,16 +21,14 @@ module.exports = function (router) {
 
   router.route('/map')
   .get(function (req, res) {
-  res.sendFile(path.join(__dirname, '../views/world-map.html'));
+    res.sendFile(path.join(__dirname, '../views/world-map.html'));
   })
   .post(function (req, res) {
-    // Add these values to your MySQL database here
     sql.sync()
     .then(function () {
       Contact.find({where: {email: req.body.email}})
       .then(function (data) {
       if (!data) {
-      console.log('IF STATEMENT REACHED');
         Contact.create({
           email: req.body.email
         });
@@ -44,7 +42,6 @@ module.exports = function (router) {
         var theCity = data;
         Contact.findOne({where: {email: req.body.email}})
         .then(function (data2) {
-        // console.log('DATA : ', data2.recommendedCity)
           data2.updateAttributes({
             recommendedCity: data2.recommendedCity+ ' | ' + req.body.city +  ', SuggestedCity Id : ' + data.id
           })

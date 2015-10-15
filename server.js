@@ -16,79 +16,25 @@ var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
     idle: 10000
   }
 });
-var SuggestedCity = require('./models/SuggestedCity.js');
-var NewsletterSignup = require('./models/NewsletterSignup.js');
+var SuggestedCity = require('./models/SuggestedCity');
+var NewsletterSignup = require('./models/NewsletterSignup');
 var Contact = require('./models/Contact.js');
 var fs = require('fs');
 var port = process.env.PORT || 3000;
 var time = new Date();
 var aboutUs = require('./views/about')();
 var mapRouter = express.Router();
-require('./routes/world-map-routes.js')(mapRouter);
+var homeRouter = express.Router();
+require('./routes/home-routes')(homeRouter);
+require('./routes/world-map-routes')(mapRouter);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(express.static(__dirname + '/'));
+app.use('/', homeRouter);
 app.use('/', mapRouter);
-// homepage routes
-app.route('/')
-.get(function (req, res) {
-  res.sendFile(path.join(__dirname, '/index.html'));
-})
-.post(function (req, res) {
-  sql.sync()
-  .then(function (data) {
-    NewsletterSignup.create(req.body);
-    res.sendFile(path.join(__dirname, '/index.html'));
-  })
-  .error(function (err) {
-    console.log(err);
-    res.status(500).json({msg: 'internal server error'});
-  });
-});
 
-//map routes
-/*app.route('/map')
-.get(function (req, res) {
-  res.sendFile(path.join(__dirname, '/views/world-map.html'));
-})
-.post(function (req, res) {
-    // Add these values to your MySQL database here
-    sql.sync()
-    .then(function () {
-      Contact.find({where: {email: req.body.email}})
-      .then(function (data) {
-      if (!data) {
-      console.log('IF STATEMENT REACHED');
-        Contact.create({
-          email: req.body.email
-        });
-      }
-
-      })
-    })
-    .then(function () {
-      SuggestedCity.create(req.body)
-      .then(function (data) {
-        var theCity = data;
-        Contact.findOne({where: {email: req.body.email}})
-        .then(function (data2) {
-        // console.log('DATA : ', data2.recommendedCity)
-          data2.updateAttributes({
-            recommendedCity: data2.recommendedCity+ ' | ' + req.body.city +  ', SuggestedCity Id : ' + data.id
-          })
-        })
-      })
-    })
-    .then(function () {
-      res.sendFile(path.join(__dirname, '/views/world-map.html'));
-    })
-    .error(function (err) {
-      console.log(err);
-      res.status(500).json({msg: 'internal server error'});
-    });
-});*/
 
 app.route('/latest-news')
 .get(function (req, res) {
