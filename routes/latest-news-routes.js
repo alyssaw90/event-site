@@ -34,4 +34,4 @@ module.exports = function (router) {
       res.status(500).json({msg: 'internal server error'});
     });
   });
-}
+};

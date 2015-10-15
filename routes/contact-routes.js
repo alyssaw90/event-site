@@ -23,4 +23,4 @@ module.exports = function (router) {
   .get(function (req, res) {
    res.sendFile(path.join(__dirname, '../views/events/santa-clara-2015.html'));
   }); 
-}
+};

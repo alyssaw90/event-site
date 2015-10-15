@@ -34,7 +34,7 @@ module.exports = function (router) {
         });
       }
 
-      })
+      });
     })
     .then(function () {
       SuggestedCity.create(req.body)
@@ -44,9 +44,9 @@ module.exports = function (router) {
         .then(function (data2) {
           data2.updateAttributes({
             recommendedCity: data2.recommendedCity+ ' | ' + req.body.city +  ', SuggestedCity Id : ' + data.id
-          })
-        })
-      })
+          });
+        });
+      });
     })
     .then(function () {
       res.sendFile(path.join(__dirname, '../views/world-map.html'));
@@ -56,4 +56,4 @@ module.exports = function (router) {
       res.status(500).json({msg: 'internal server error'});
     });
   });
-}
+};

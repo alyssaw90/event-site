@@ -21,7 +21,7 @@ module.exports = function (router) {
 
   router.route('/')
   .get(function (req, res) {
-    res.sendFile(path.join(__dirname, '../index.html'))
+    res.sendFile(path.join(__dirname, '../index.html'));
   })
   .post(function (req, res) {
     sql.sync()
@@ -34,4 +34,4 @@ module.exports = function (router) {
       res.status(500).json({msg: 'internal server error'});
     });
   });
-}
+};

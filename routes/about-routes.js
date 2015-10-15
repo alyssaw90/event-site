@@ -46,18 +46,18 @@ router.route('/about')
         .then(function (data) {
           $(data).each(function (i, elem) {
             newAboutText += '<h2>' + elem.city + '</h2>' + '<h2>' + elem.email + '</h2>';
-          })
+          });
           console.log(newAboutText);
           var newAbout = about.replace('<div class="container-div">', newAboutText);        
-          res.send(newAbout)
+          res.send(newAbout);
           var end = new Date().getTime();
           console.log('end time : ', end);
         })
         .error(function (err) {
           console.log(err);
           res.status(500).json({msg: 'internal server error'});
-        })
-      })
+        });
+      });
     });
     // console.log(about);
   });
@@ -77,4 +77,4 @@ router.route('/about')
         })
       })
     });*/ 
-}
+};
