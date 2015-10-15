@@ -27,10 +27,14 @@ var mapRouter = express.Router();
 var homeRouter = express.Router();
 var latestNewsRouter = express.Router();
 var findEventsRouter = express.Router();
+var pastEventsRouter = express.Router();
+var mediaRouter = express.Router();
 require('./routes/home-routes')(homeRouter);
 require('./routes/world-map-routes')(mapRouter);
 require('./routes/latest-news-routes')(latestNewsRouter);
 require('./routes/find-an-event-routes')(findEventsRouter);
+require('./routes/past-events-routes')(pastEventsRouter);
+require('./routes/media-routes')(mediaRouter);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -40,17 +44,8 @@ app.use('/', homeRouter);
 app.use('/', mapRouter);
 app.use('/', latestNewsRouter);
 app.use('/', findEventsRouter);
-
-
-app.route('/past-events')
-.get(function (req, res) {
-  res.sendFile(path.join(__dirname, '/views/past-events.html'));
-});
-
-app.route('/media')
-.get(function (req, res) {
-  res.sendFile(path.join(__dirname, '/views/media.html'));
-});
+app.use('/', pastEventsRouter);
+app.use('/', mediaRouter);
 
 app.route('/faq')
 .get(function (req, res) {
