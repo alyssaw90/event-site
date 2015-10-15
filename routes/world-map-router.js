@@ -20,10 +20,10 @@ module.exports = function (router) {
   router.use(bodyparser.json());
 
   router.route('/map')
-.get(function (req, res) {
+  .get(function (req, res) {
   res.sendFile(path.join(__dirname, '../views/world-map.html'));
-})
-.post(function (req, res) {
+  })
+  .post(function (req, res) {
     // Add these values to your MySQL database here
     sql.sync()
     .then(function () {
@@ -58,6 +58,5 @@ module.exports = function (router) {
       console.log(err);
       res.status(500).json({msg: 'internal server error'});
     });
-});
-
+  });
 }
