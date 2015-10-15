@@ -24,7 +24,7 @@ var port = process.env.PORT || 3000;
 var time = new Date();
 var aboutUs = require('./views/about')();
 var mapRouter = express.Router();
-require('./routes/world-map-router.js')(mapRouter);
+require('./routes/world-map-routes.js')(mapRouter);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
