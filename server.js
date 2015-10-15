@@ -18,19 +18,14 @@ var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
 });
 var SuggestedCity = require('./models/SuggestedCity.js');
 var NewsletterSignup = require('./models/NewsletterSignup.js');
-var NewsletterSignup = require('./models/Speaker.js');
+var Contact = require('./models/Contact.js');
 var fs = require('fs');
 var port = process.env.PORT || 3000;
 var time = new Date();
-var db = sql.connection;
+var aboutUs = require('./views/about')();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
-(function () {
-    if (sql === true) {console.log('success');}
-}());
-    console.log('DB : ', db);
 
 app.use(express.static(__dirname + '/'));
 
@@ -61,7 +56,30 @@ app.route('/map')
     sql.sync()
     .then(function (data) {
       SuggestedCity.create(req.body);
+    })
+    .then(function () {
+      Contact.find({where: {email: req.body.email}})
+      .then(function (data) {
+      console.log('DATA : ', data);
+      if (data) {
+        data.updateAttributes({
+          recommendedCity: req.body.city
+        })        
+      } else {
+        console.log('Else Statement reached');
+        Contact.create(req.body);
+      }
+
+      })
+    })
+    // .success(function (data) {
+    //   data.updateAttributes({
+    //     recommendedCity: req.body.city
+    //   })
+    // })
+    .then(function () {
       res.sendFile(path.join(__dirname, '/views/world-map.html'));
+
     })
     .error(function (err) {
       console.log(err);
@@ -129,9 +147,11 @@ app.route('/santa-clara-2015')
 
 app.route('/about')
 .get(function (req, res) {
-  fs.readFile(path.join(__dirname, '/views/about.html'), function (err, data) {
+  var start = new Date().getTime();
+  console.log('start time : ', start);
+  fs.readFile(path.join(__dirname, '/blank.html'), function (err, data) {
     var about = data.toString();
-    var newAboutText = '<h2>About Us</h2>';
+    var newAboutText = '<div class="container-div">' + aboutUs;
     if (err) {
       console.log(err);
     }
@@ -143,8 +163,10 @@ app.route('/about')
           newAboutText += '<h2>' + elem.city + '</h2>' + '<h2>' + elem.email + '</h2>';
         })
         console.log(newAboutText);
-        var newAbout = about.replace('<h2>About Us</h2>', newAboutText);        
+        var newAbout = about.replace('<div class="container-div">', newAboutText);        
         res.send(newAbout)
+        var end = new Date().getTime();
+        console.log('end time : ', end);
       })
       .error(function (err) {
         console.log(err);
@@ -154,6 +176,22 @@ app.route('/about')
   });
   // console.log(about);
 });
+
+/*app.get('/about', function (req, res) {
+    sql.sync()
+    .then(function () {
+      SuggestedCity.all()
+      .then(function (data) {        
+        res.json(data)
+        var end = new Date().getTime();
+        console.log('end time : ', end);
+      })
+      .error(function (err) {
+        console.log(err);
+        res.status(500).json({msg: 'internal server error'});
+      })
+    })
+  });*/
 
 app.listen(port, function () {
 	console.log('server started on port ' + port + ' at ' + time);
