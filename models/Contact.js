@@ -16,12 +16,12 @@ var Contact = module.exports = sql.define('Contact', {
   firstName: Sql.STRING,
   lastName: Sql.STRING,
   email: Sql.STRING,
+  newsletterSubscription: Sql.BOOLEAN,
   divId: Sql.STRING,
   description: Sql.STRING,
   role: Sql.STRING,
   headShot: Sql.STRING,
   company: Sql.STRING,
-  newsletterSubscription: Sql.BOOLEAN,
   address: Sql.STRING,
   recommendedCity: Sql.STRING
 });
