@@ -1,6 +1,6 @@
-#Event Site Wireframe#
+#Events Site Wireframe#
 
-[![Build Status](https://travis-ci.org/mb4ms/event-site.svg)](https://travis-ci.org/mb4ms/event-site)
+[![Build Status](https://travis-ci.org/mrbgit/event-site.svg)](https://travis-ci.org/mb4ms/event-site)
 
 ## Built with HTML KickStart ##
 
