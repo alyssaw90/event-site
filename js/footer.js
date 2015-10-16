@@ -1,4 +1,8 @@
 'use strict';
+/*global $ */
+/*global document */
+/*global window */
+/*jshint multistr: true */ 
 
 $(document).ready(function () {
 
@@ -9,4 +13,4 @@ $(document).ready(function () {
 
 	var footerMenu = $.parseHTML(footerMenuHTML);
 	$footer.append(footerMenu);
-})
+});

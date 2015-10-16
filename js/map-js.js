@@ -1,4 +1,7 @@
-'use strict' 
+'use strict'; 
+/*global $ */
+/*global document */
+/*global window */
 
 $(document).ready(function () {
 	
@@ -7,4 +10,4 @@ $(document).ready(function () {
 
  	$('map').imageMapResize();
  	
-})
+});

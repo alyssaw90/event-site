@@ -1,4 +1,8 @@
 'use strict';
+/*global $ */
+/*global document */
+/*global window */
+/*jshint multistr: true */ 
 
 $(document).ready(function () {
 	var $calendar = $('#calendar');
@@ -52,4 +56,4 @@ $(document).ready(function () {
 
 	});
 
-})
+});
