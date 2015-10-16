@@ -18,6 +18,9 @@ var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
 
 module.exports = function (router) {
   router.use(bodyparser.json());
+  router.use(bodyparser.urlencoded({
+    extended: true
+  }));
 
   router.route('/')
   .get(function (req, res) {
@@ -26,16 +29,24 @@ module.exports = function (router) {
   .post(function (req, res) {
     sql.sync()
     .then(function () {
-      NewsletterSignup.create(req.body);
-      // res.sendFile(path.join(__dirname, '../index.html'));
-      res.sendFile(path.join(__dirname, '../index.html'));
-    })
-    .then(function (data) {
-      console.log('DATA : ', data);
+      // NewsletterSignup.create(req.body)
+      Contact.find({where: {email: req.body.email}})
+      .then(function (data) {
+        if (!data) {
+          console.log('if statement reached', req.body);
+          Contact.create(req.body);
+        }
+        if (data) {
+          data.updateAttributes(req.body);
+        }
+        console.log('DATA : ', data);
+      })
     })
     .then(function () {
+      res.sendFile(path.join(__dirname, '../index.html'));
     })
     .error(function (err) {
+      router.alert(err);
       console.log(err);
       res.status(500).json({msg: 'internal server error'});
     });

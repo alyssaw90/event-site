@@ -4,6 +4,17 @@ var express = require('express');
 var app = express();
 var port = process.env.PORT || 3000;
 var time = new Date();
+/*var Sql = require('sequelize');
+var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
+  host: 'localhost',
+  dialect: 'mssql',
+
+  pool: {
+    max: 5,
+    min: 0,
+    idle: 10000
+  }
+});*/
 var mapRouter = express.Router();
 var homeRouter = express.Router();
 var latestNewsRouter = express.Router();
@@ -26,6 +37,7 @@ require('./routes/meet-the-team-routes')(meetTheTeamRouter);
 require('./routes/contact-routes')(contactRouter);
 require('./routes/future-events-routes')(futureEventsRouter);
 require('./routes/about-routes')(aboutRouter);
+
 
 // app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(bodyParser.json());

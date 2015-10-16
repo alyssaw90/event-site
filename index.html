@@ -78,7 +78,7 @@
 					<h4>Sign Up for the Newsletter</h4>
 					<form action="/" method="POST" class="vertical">
 						<label for="email">Email Address</label>
-						<input id="email" name="email" type="text" type="submit" />
+						<input id="email" name="email" type="email" type="submit" />
 						<p></p>
 						<label for="firstName">First Name *</label>
 						<input id="firstName" name="firstName" type="text" type="submit" />
@@ -88,6 +88,8 @@
 						<input id="title" name="title" type="text" type="submit" />
 						<label for="bizName">Company Name *</label>
 						<input id="bizName" name="bizName" type="text" type="submit" />
+						<label for="newsletterSubscription">I would like to receive the newsletter</label>
+						<input id="newsletterSubscription" type="checkbox" name="newsletterSubscription" value="true" checked>
 						<p>*Optional</p>
 						<button class="medium" type="submit">Submit</button>
 						<hr>
@@ -215,9 +217,11 @@
 	</footer>
 	<!-- JavaScript -->
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
 	<script type="text/javascript" src="./js/kickstart.js"></script>
 	<script type="text/javascript" src="./js/header-menu.js"></script>
 	<script type="text/javascript" src="./js/footer.js"></script>
 	<script type="text/javascript" src="./js/custom.js"></script>
+	<script type="text/javascript" src="./js/form-validator.js"></script>
 </body>
 </html>

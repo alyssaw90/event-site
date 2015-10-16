@@ -22,6 +22,9 @@ var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
 
 module.exports = function (router) {
   router.use(bodyparser.json());
+  router.use(bodyparser.urlencoded({
+    extended: true
+  }));
 
   // app.route('/about')
 // .get(function (req, res) {
@@ -42,12 +45,13 @@ router.route('/about')
       }
       sql.sync()
       .then(function () {
-        SuggestedCity.all()
+        SuggestedCity.findAll({where: {email: 'test@example.com'}})
         .then(function (data) {
+            console.log('ELEM : ', data);
           $(data).each(function (i, elem) {
             newAboutText += '<h2>' + elem.city + '</h2>' + '<h2>' + elem.email + '</h2>';
           });
-          console.log(newAboutText);
+          // console.log(newAboutText);
           var newAbout = about.replace('<div class="container-div">', newAboutText);        
           res.send(newAbout);
           var end = new Date().getTime();

@@ -15,7 +15,12 @@ var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
 var Contact = module.exports = sql.define('Contact', {
   firstName: Sql.STRING,
   lastName: Sql.STRING,
-  email: Sql.STRING,
+  email: {
+    type: Sql.STRING,
+    validate: {
+      isEmail: true
+    }
+  },
   newsletterSubscription: Sql.BOOLEAN,
   divId: Sql.STRING,
   description: Sql.STRING,
