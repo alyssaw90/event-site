@@ -17,6 +17,7 @@ var Contact = module.exports = sql.define('Contact', {
   lastName: Sql.STRING,
   email: {
     type: Sql.STRING,
+    // unique: true,
     validate: {
       isEmail: true
     }
@@ -25,10 +26,14 @@ var Contact = module.exports = sql.define('Contact', {
   divId: Sql.STRING,
   description: Sql.STRING,
   role: Sql.STRING,
+  msTeamMember: Sql.BOOLEAN,
+  showOnHomePage: Sql.BOOLEAN,
   headShot: Sql.STRING,
   company: Sql.STRING,
   address: Sql.STRING,
-  recommendedCity: Sql.STRING
+  country: Sql.STRING,
+  recommendedCity: Sql.STRING,
+  interestId: Sql.INTEGER
 });
 
 Contact.sync({force: false});

@@ -39,7 +39,6 @@ module.exports = function (router) {
     .then(function () {
       SuggestedCity.create(req.body)
       .then(function (data) {
-        var theCity = data;
         Contact.findOne({where: {email: req.body.email}})
         .then(function (data2) {
           data2.updateAttributes({
