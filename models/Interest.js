@@ -25,7 +25,16 @@ var Interest = module.exports = sql.define('Interest', {
   bringYourOwnDevice: Sql.BOOLEAN,
   sqlServer: Sql.BOOLEAN,
   oDataREST: Sql.BOOLEAN,
-  otherProtocol: Sql.BOOLEAN
+  otherProtocol: Sql.BOOLEAN,
+  windows: Sql.BOOLEAN,
+  ios: Sql.BOOLEAN,
+  unix: Sql.BOOLEAN,
+  linux: Sql.BOOLEAN,
+  otherOS: Sql.BOOLEAN,
+  intel: Sql.BOOLEAN,
+  arm: Sql.BOOLEAN,
+  openComputePlatform : Sql.BOOLEAN,
+  otherHardware: Sql.BOOLEAN
 });
 
 Interest.sync({force: false});
