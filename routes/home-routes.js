@@ -2,6 +2,10 @@
 
 var Contact = require('../models/Contact');
 var NewsletterSignup = require('../models/NewsletterSignup');
+var Interest = require('../models/Interest');
+var Event = require('../models/Event');
+var EventAttendee = require('../models/EventAttendee');
+var EventSpeaker = require('../models/EventSpeaker');
 var bodyparser = require('body-parser');
 var path = require('path');
 var Sql = require('sequelize');
@@ -33,13 +37,26 @@ module.exports = function (router) {
       Contact.find({where: {email: req.body.email}})
       .then(function (data) {
         if (!data) {
-          console.log('if statement reached', req.body);
           Contact.create(req.body);
         }
         if (data) {
           data.updateAttributes(req.body);
         }
-        console.log('DATA : ', data);
+/*        Interest.findOne({where: {contactId: data.id}})
+        .then(function (data2) {
+          
+          console.log('DATA : ', data.id);
+          if (!data2) {
+            Interest.create(req.body)
+            .then(function (interests) {
+              console.log(interests, 'Interest')
+              interests.findOne({where: {id: interests.id}})
+            })
+          }
+          if (data2) {
+            data2.updateAttributes(req.body);
+          }
+        })*/
       })
     })
     .then(function () {

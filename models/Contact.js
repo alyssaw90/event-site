@@ -17,6 +17,7 @@ var Contact = module.exports = sql.define('Contact', {
   lastName: Sql.STRING,
   email: {
     type: Sql.STRING,
+    // unique: true,
     validate: {
       isEmail: true
     }
@@ -24,13 +25,21 @@ var Contact = module.exports = sql.define('Contact', {
   newsletterSubscription: Sql.BOOLEAN,
   divId: Sql.STRING,
   description: Sql.STRING,
-  role: Sql.STRING,
+  role: Sql.ENUM('speaker', 'attendee'),
+  msTeamMember: Sql.BOOLEAN,
+  showOnHomePage: Sql.BOOLEAN,
   headShot: Sql.STRING,
   company: Sql.STRING,
   address: Sql.STRING,
-  recommendedCity: Sql.STRING
+  country: Sql.STRING,
+  recommendedCity: Sql.STRING,
+  interestId: Sql.INTEGER,
+  attendedEvent: Sql.INTEGER,
+  allowNotifications: Sql.BOOLEAN,
+  allowPersonalInfoSharing: Sql.BOOLEAN
 });
 
+// create table if it doesn't already exist ```({force: true})``` will cause the table to be deleted and created regardless of if it exists already
 Contact.sync({force: false});
 
 

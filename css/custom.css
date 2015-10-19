@@ -908,6 +908,14 @@ footer a {
 	margin-right: 100px;
 }
 
+.scrolling-box { 
+	/*border:2px solid #ccc; */
+	margin-top: 5px;
+	width:100%; 
+	height: 100px; 
+	overflow-y: scroll; 
+}
+
 
 /*Begin Media Queries*/
 @media all and (max-width: 1550px) {
