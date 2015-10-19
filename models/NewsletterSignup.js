@@ -1,4 +1,4 @@
-'use strict';
+/*'use strict';
 
 var Sql = require('sequelize');
 var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
@@ -20,7 +20,7 @@ var NewsletterSignup = module.exports = sql.define('NewsletterSignup', {
   bizName: Sql.STRING
 	});
 
-NewsletterSignup.sync({force: false});
+NewsletterSignup.sync({force: false});*/
 
 
 // force creation of table if it doesn't exist already
