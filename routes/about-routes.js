@@ -53,7 +53,8 @@ router.route('/about')
           });
           // console.log(newAboutText);
           var newAbout = about.replace('<div class="container-div">', newAboutText);        
-          res.send(newAbout);
+          // res.send(newAbout);
+          res.json(data);
           var end = new Date().getTime();
           console.log('end time : ', end);
         })
