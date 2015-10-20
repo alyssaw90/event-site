@@ -45,17 +45,19 @@ router.route('/about')
       }
       sql.sync()
       .then(function () {
-        SuggestedCity.findAll({where: {email: 'test@example.com'}})
+        SuggestedCity.findAll({where: {email: 'test87@example.com'}})
         .then(function (data) {
             console.log('ELEM : ', data);
-          $(data).each(function (i, elem) {
+          /*$(data).each(function (i, elem) {
             newAboutText += '<h2>' + elem.city + '</h2>' + '<h2>' + elem.email + '</h2>';
           });
           // console.log(newAboutText);
           var newAbout = about.replace('<div class="container-div">', newAboutText);        
           res.send(newAbout);
           var end = new Date().getTime();
-          console.log('end time : ', end);
+          console.log('end time : ', end);*/
+          res.json(data[0].email);
+          res.sendFile(path.join(__dirname, '../views/about.html'))
         })
         .error(function (err) {
           console.log(err);

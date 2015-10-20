@@ -4,30 +4,6 @@
 /*global window */
 
 $(document).ready(function () {
-	//apply flip animation to social icons
-/*	$('.social img').hover(function () {
-		$(this).toggleClass('animated flip');
-	});
-
-	//apply hover effect to main menu blocks
-	$('.left-block').hover(function () {
-		$(this).toggleClass('left-block-hover');
-	});
-	$('.left-center-block').hover(function () {
-		$(this).toggleClass('left-center-block-hover');
-	});
-
-	$('.right-center-block').hover(function () {
-		$(this).toggleClass('right-center-block-hover');
-	});
-
-	$('.right-block').hover(function () {
-		$(this).toggleClass('right-block-hover');
-	});*/
-	//apply hover effect to top menu
-	// $('.menu-overlay li').hover(function () {
-	// 	$(this).toggleClass('menu-overlay-hover');
-	// });
 
 	//make block slide up effect for upcoming event blocks
 	$('.event_block').hover(
@@ -182,6 +158,22 @@ $(document).ready(function () {
  	};
 
  	$('.pointer').hover(locateTip);
+
+ 	//write data to faq page
+ 	$('#testDiv').on('click', function(e) {
+ 		$.get( "/about", function( data ) {
+  	$( ".main-page-content" ).html( data );
+  	for (var i = 0; i < data.length; i++) {
+  	console.log(data[i]);
+  		
+  	}
+});
+
+ /* $.get('/about', function(r) {
+    $('#testDiv').prepend(r);
+  });
+  e.preventDefaults();*/
+});
 
  	// find users using IE
  	(function () {
