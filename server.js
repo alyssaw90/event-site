@@ -26,6 +26,7 @@ var meetTheTeamRouter = express.Router();
 var contactRouter = express.Router();
 var futureEventsRouter = express.Router();
 var aboutRouter = express.Router();
+var showTeamRouter = express.Router();
 require('./routes/home-routes')(homeRouter);
 require('./routes/world-map-routes')(mapRouter);
 require('./routes/latest-news-routes')(latestNewsRouter);
@@ -37,6 +38,7 @@ require('./routes/meet-the-team-routes')(meetTheTeamRouter);
 require('./routes/contact-routes')(contactRouter);
 require('./routes/future-events-routes')(futureEventsRouter);
 require('./routes/about-routes')(aboutRouter);
+require('./routes/show-team-routes')(showTeamRouter);
 
 
 // app.use(bodyParser.urlencoded({ extended: true }));
@@ -54,6 +56,7 @@ app.use('/', meetTheTeamRouter);
 app.use('/', contactRouter);
 app.use('/', futureEventsRouter);
 app.use('/', aboutRouter);
+app.use('/api', showTeamRouter);
 
 app.listen(port, function () {
 	console.log('server started on port ' + port + ' at ' + time);

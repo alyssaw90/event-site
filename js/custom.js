@@ -159,22 +159,6 @@ $(document).ready(function () {
 
  	$('.pointer').hover(locateTip);
 
- 	//write data to faq page
- 	$('#testDiv').on('click', function(e) {
- 		$.get( "/about", function( data ) {
-  	$( ".main-page-content" ).html( data );
-  	for (var i = 0; i < data.length; i++) {
-  	console.log(data[i]);
-  		
-  	}
-});
-
- /* $.get('/about', function(r) {
-    $('#testDiv').prepend(r);
-  });
-  e.preventDefaults();*/
-});
-
  	// find users using IE
  	(function () {
 	 	var ms_ie = false;
