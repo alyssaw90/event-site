@@ -1,7 +1,7 @@
 'use strict';
 
 $(document).ready(function () {
-	$.get('/api/showfullteam', function (data) {
+	$.get('/showfullteam', function (data) {
 		var theTeam = '';
 		// console.log('HELLO WORLD', data[0].divId);
 		$(data).each(function (i, elem) {
