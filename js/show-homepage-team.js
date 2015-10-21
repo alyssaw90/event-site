@@ -6,13 +6,9 @@ $(document).ready(function () {
 		// console.log('HELLO WORLD', data[0].divId);
 		$(data).each(function (i, elem) {
 			// console.log(elem.headShot);
-			theHomepageTeam += '<div class="col_3 individual-homepage-expert"><a href="/meet-the-team#' + elem.divId + '"><img class="pull-left" title="' + elem.msTeamTitle + '" src="./img/' + elem.headShot + '" /><h6>' + elem.firstName + ' ' + elem.lastName + '</h6><p>' + elem.msTeamTitle + '</p></a></div>';
+			theHomepageTeam += '<div class="col_3 individual-homepage-expert"><a href="/meet-the-team#' + elem.divId + '"><img class="pull-left" title="' + elem.msTeamTitle + '" src="data:image;base64,' + elem.headShot + '" /><h6>' + elem.firstName + ' ' + elem.lastName + '</h6><p>' + elem.msTeamTitle + '</p></a></div>';
 		})
 		// console.log(theTeam);
 		$('.home-page-experts').append(theHomepageTeam);
 	})
 })
-
-
-
-
