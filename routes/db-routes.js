@@ -61,6 +61,59 @@ module.exports = function (router) {
   	})
   })
 
+  router.route('/newsletter')
+  .post(function (req, res) {
+    sql.sync()
+    .then(function () {
+      Contact.findOne({where: {email: req.body.email}})
+      .then(function (data) {
+        if (!data) {
+          Contact.create(req.body)
+          .then(function (newContact) {
+            Interest.create(req.body)
+            .then(function (newInterests) {
+              newInterests.updateAttributes({contactId: newContact.id})
+              .then(function () {
+                newContact.updateAttributes({interestId: newInterests.id})
+              })
+            })
+          })
+        }
+        if (data) {
+          data.updateAttributes(req.body)
+          // data.updateAttributes({newsletterSubscription: req.body.newsletterSubscription});
+          .then(function () {
+            Interest.findOne({where: {contactId: data.id}})
+            .then(function (data2) {   
+              if (!data2) {
+                Interest.create(req.body)
+                .then(function (interests) {
+                  // console.log('INTERESTS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! : ', interests);
+                  interests.updateAttributes({contactId: data.id});
+                })
+                .then(function () {
+                  data.updateAttributes({interestId: interests.id});
+                })
+              }
+              if (data2) {
+                data2.updateAttributes(req.body);
+              }
+            })
+            
+          })
+        }
+      })
+      .then(
+        res.sendFile(path.join(__dirname, '../views/thank-you.html'))
+      )
+    })
+    .error(function (err) {
+      router.alert(err);
+      console.log(err);
+      res.status(500).json({msg: 'internal server error'});
+    });
+  });
+
   /*router.route('/addcontact')
   .post(function (req, res) {
     sql.sync()
