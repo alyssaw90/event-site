@@ -3,6 +3,7 @@
 var Contact = require('../models/Contact');
 var NewsletterSignup = require('../models/NewsletterSignup');
 var SuggestedCity = require('../models/SuggestedCity');
+var Interest = require('../models/Interest');
 var aboutUs = require('../views/about')();
 var fs = require('fs');
 var $ = require('cheerio');
@@ -60,11 +61,12 @@ module.exports = function (router) {
   	})
   })
 
-  router.route('/addcontact')
+  /*router.route('/addcontact')
   .post(function (req, res) {
     sql.sync()
     .then(function () {
       // NewsletterSignup.create(req.body)
+          console.log('DATA : ', req);
       Contact.find({where: {email: req.body.email}})
       .then(function (data) {
         if (!data) {
@@ -73,10 +75,9 @@ module.exports = function (router) {
         if (data) {
           data.updateAttributes(req.body);
         }
-/*        Interest.findOne({where: {contactId: data.id}})
+        Interest.findOne({where: {contactId: data.id}})
         .then(function (data2) {
           
-          console.log('DATA : ', data.id);
           if (!data2) {
             Interest.create(req.body)
             .then(function (interests) {
@@ -87,7 +88,7 @@ module.exports = function (router) {
           if (data2) {
             data2.updateAttributes(req.body);
           }
-        })*/
+        })
       })
       .then(
         res.sendFile(path.join(__dirname, '../index.html'))
@@ -98,5 +99,5 @@ module.exports = function (router) {
       console.log(err);
       res.status(500).json({msg: 'internal server error'});
     });
-  });
+  });*/
 };
