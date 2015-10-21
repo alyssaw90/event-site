@@ -93,6 +93,7 @@ module.exports = function (router) {
                 })
                 .then(function () {
                   data.updateAttributes({interestId: interests.id});
+                  console.log('DATA@!!!!!!!!!!!!!!!!!!!!!!!!!!  ', data.divId);
                 })
               }
               if (data2) {
