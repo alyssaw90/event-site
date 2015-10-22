@@ -172,11 +172,6 @@ fs.readFile(path.join(__dirname, '../views/blank-event.html'), function (err, da
         theSpeakers +='<h2>2015 Storage Developer Conference Speakers</h2><hr /><h4>' + data2[j].firstName + ' ' + data2[j].lastName + '</h4><h5>' + data2[j].msTeamTitle + '</h5><p><img class="pull-left" src="data:image;base64,' + data2[j].headShot + '" />' + data2[j].contactDescription + '</p><hr />';        newHtml = theHtml.replace('<div id="eventSpeakers" class="tab-content">', theSpeakers);
         router.get(name, function (req, res) {
           res.send(newHtml);
-          /*fs.readFile(path.join(__dirname, '../views/blank-event.html'), function (err, data2) {
-            var theHtml = data2.toString();
-            var theSpeakers = '<div id="eventSpeakers" class="tab-content">';
-      console.log('ELEM!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', data2);
-          })*/
         })
       }
     });
