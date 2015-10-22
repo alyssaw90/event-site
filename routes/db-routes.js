@@ -113,6 +113,44 @@ module.exports = function (router) {
     });
   });
 
+  router.route('/suggestacity')
+  .post(function (req, res) {
+    sql.sync()
+    .then(function () {
+      Contact.find({where: {email: req.body.email}})
+      .then(function (data) {
+      if (!data) {
+        Contact.create({
+          email: req.body.email
+        });
+      }
+
+      });
+    })
+    .then(function () {
+      SuggestedCity.create(req.body)
+      .then(function (data) {
+        Contact.findOne({where: {email: req.body.email}})
+        .then(function (data2) {
+          if (data2.recommendedCity === null) {
+            data2.updateAttributes({recommendedCity: req.body.city +  ', SuggestedCity Id : ' + data.id}); 
+          } else {
+            data2.updateAttributes({
+              recommendedCity: data2.recommendedCity + ' | ' + req.body.city +  ', SuggestedCity Id : ' + data.id
+            })
+          }
+        });
+      });
+    })
+    .then(function () {
+      res.sendFile(path.join(__dirname, '../views/thank-you.html'));
+    })
+    .error(function (err) {
+      console.log(err);
+      res.status(500).json({msg: 'internal server error'});
+    });
+  });
+
   /*router.route('/addcontact')
   .post(function (req, res) {
     sql.sync()
