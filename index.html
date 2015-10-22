@@ -68,16 +68,15 @@
 						<a href="http://blogs.msdn.com/b/officeinteroperability/default.aspx?wa=wsignin1.0"><i class="fa fa-rss-square fa-3x"></i></a>
 						<a href="mailto:mailto:plugfests@microsoft.com"><i class="fa fa-envelope fa-3x"></i></a>
 					</span> -->
-					<p>Bacon ipsum dolor amet lorem porchetta pastrami anim fatback reprehenderit. Meatloaf corned beef filet mignon id frankfurter aliqua consequat picanha ground round esse beef nostrud pig nulla. Laboris reprehenderit sirloin andouille, fugiat spare ribs chuck filet mignon enim in pastrami mollit ut. In ipsum meatloaf, rump cow ham hock turkey anim. Doner in cillum quis. Occaecat ad landjaeger pork belly, officia excepteur anim est beef ribs flank elit doner laboris boudin. Lorem capicola beef porchetta consectetur, ullamco et fugiat tri-tip pancetta turkey short loin anim pig.</p>
+					<p>Bacon ipsum dolor amet lorem porchetta pastrami anim fatback reprehenderit. Meatloaf corned beef filet mignon id frankfurter aliqua consequat picanha ground round esse beef nostrud pig nulla. Laboris reprehenderit sirloin andouille, fugiat spare ribs chuck filet mignon enim in pastrami mollit ut. In ipsum meatloaf, rump cow ham hock turkey anim. Doner in cillum quis. Occaecat ad landjaeger pork belly, officia excepteur anim est beef ribs flank elit doner laboris boudin. Lorem capicola beef porchetta consectetur ullamco et fugiat tri-tip pancetta turkey short loin anim pig.</p>
 					<p>Turducken velit anim id pork belly laboris ham hock nisi capicola frankfurter. Strip steak fatback jowl beef ribs tri-tip, shank esse pork loin prosciutto quis bresaola drumstick turducken aute est. Aliqua voluptate meatloaf pork chop kielbasa, mollit flank est irure sausage minim nisi doner filet mignon. Adipisicing nisi in, cow cillum pig ad ipsum turducken capicola. Ullamco elit laborum t-bone. Spare ribs adipisicing rump porchetta exercitation ham pork chop ball tip ea kielbasa leberkas veniam shank irure.</p>
 					<p>Culpa in cupidatat, jowl labore landjaeger ut incididunt turducken nostrud quis. Turkey labore chicken consequat, rump tongue laboris ut proident in landjaeger esse cow ea alcatra. Porchetta andouille shoulder id, filet mignon in hamburger tempor swine velit shankle nisi. Eiusmod tongue pancetta meatball ribeye, do ut porchetta. Tongue sed frankfurter chicken venison ea dolor incididunt. Turkey short loin elit pork loin swine ea.</p>
 					<p>Nulla magna ea do lorem capicola. Rump shankle quis, irure enim mollit culpa shoulder sed bacon cow salami. Consequat mollit tempor prosciutto beef velit duis. Minim ham hock strip steak exercitation, pig kielbasa est tri-tip capicola pastrami tenderloin proident dolore beef. Alcatra kielbasa aute tongue officia ad.</p>
 					<p>Est eu ball tip nostrud anim cow cupidatat pig adipisicing aliqua chuck bacon id. Ullamco cillum shankle, tongue lorem do sed. Kevin pork beef culpa flank bresaola in nostrud picanha tenderloin drumstick salami id ullamco. Strip steak pork chop andouille pastrami.</p>
 				</section>
 				<section class="col_4">
-					<div class="newsletter-signup">
 					<h4>Sign Up for the Newsletter</h4>
-					<form action="/addcontact" method="POST" class="vertical">
+					<form action="/newsletter" method="POST" class="vertical">
 						<label for="email">Email Address</label>
 						<input id="email" name="email" type="email" type="submit" required />
 						<p></p>
@@ -89,38 +88,38 @@
 						<input id="title" name="title" type="text" type="submit" />
 						<label>Which protocols are you interested in? *</label>
 						<fieldset class="scrolling-box">
-							<input type="checkbox" id="sharePointFileOperations" value="true" /> <label for="check1" class="inline">SharePoint file Operations</label>
+							<input type="checkbox" id="sharePointFileOperations" name="sharePointFileOperations" value="true" /> <label for="sharePointFileOperations" class="inline">SharePoint file Operations</label>
 							<br />
-							<input type="checkbox" id="officeClient" value="true" /> <label for="check2" class="inline">Office Client</label>
+							<input type="checkbox" id="officeClient" name="officeClient" value="true" /> <label for="officeClient" class="inline">Office Client</label>
 							<br />
-							<input type="checkbox" id="windowsFileSharingProtocols" value="Windows File Sharing Protocols (SMB2&3 family)" value="true"/> <label for="check3" class="inline">Windows File Sharing Protocols (SMB2&3 family)</label>
+							<input type="checkbox" id="windowsFileSharingProtocols" value="true" name="windowsFileSharingProtocols" value="true"/> <label for="windowsFileSharingProtocols" class="inline">Windows File Sharing Protocols (SMB2&3 family)</label>
 							<br />
-							<input type="checkbox" id="windowsIdentityActiveDirectoryAndAuthenticationProtocols" value="Windows Identity (ActiveDirectory) and Authentication Protocols" value="true"/> <label for="check3" class="inline">Windows Identity (ActiveDirectory) and Authentication Protocols</label>
+							<input type="checkbox" id="windowsIdentityActiveDirectoryAndAuthenticationProtocols" value="true" name="windowsIdentityActiveDirectoryAndAuthenticationProtocols" value="true"/> <label for="windowsIdentityActiveDirectoryAndAuthenticationProtocols" class="inline">Windows Identity (ActiveDirectory) and Authentication Protocols</label>
 							<br />
-							<input type="checkbox" id="kerberosAuthentication" value="true" /> <label for="check3" class="inline">Kerberos Authentication</label>
+							<input type="checkbox" id="kerberosAuthentication" name="kerberosAuthentication" value="true" /> <label for="kerberosAuthentication" class="inline">Kerberos Authentication</label>
 							<br />
-							<input type="checkbox" id="exchangeRPC" value="true" /> <label for="check3" class="inline">Exchange RPC</label>
+							<input type="checkbox" id="exchangeRPC" name="exchangeRPC" value="true" /> <label for="exchangeRPC" class="inline">Exchange RPC</label>
 							<br />
-							<input type="checkbox" id="exchangeWebServices" value="Exchange Web Services (EWS)" value="true" /> <label for="check3" class="inline">Exchange Web Services (EWS)</label>
+							<input type="checkbox" id="exchangeWebServices" value="true" /> <label for="exchangeWebServices" class="inline">Exchange Web Services (EWS)</label>
 							<br />
-							<input type="checkbox" id="exchangeActiveSync" value="Exchange ActiveSync (EAS)" /> <label for="check3" class="inline">Exchange ActiveSync (EAS)</label>
+							<input type="checkbox" id="exchangeActiveSync" name="exchangeActiveSync" value="true" /> <label for="exchangeActiveSync" class="inline">Exchange ActiveSync (EAS)</label>
 							<br />
-							<input type="checkbox" id="bringYourOwnDevice" value="true" /> <label for="check3" class="inline">Bring your own device (BYOD)</label>
+							<input type="checkbox" id="bringYourOwnDevice" name="bringYourOwnDevice" value="true" /> <label for="bringYourOwnDevice" class="inline">Bring your own device (BYOD)</label>
 							<br />
-							<input type="checkbox" id="sqlServer" value="true" /> <label for="check3" class="inline">SQL Server</label>
+							<input type="checkbox" id="sqlServer" name="sqlServer" value="true" /> <label for="sqlServer" class="inline">SQL Server</label>
 							<br />
-							<input type="checkbox" id="oDataREST" value="true" /> <label for="check3" class="inline">OData / REST</label>
+							<input type="checkbox" id="oDataREST" name="oDataREST" value="true" /> <label for="oDataREST" class="inline">OData / REST</label>
 							<br />
-							<input type="checkbox" id="otherProtocol" value="true" /> <label for="check3" class="inline">Other</label>
+							<input type="checkbox" id="otherProtocol" name="otherProtocol" value="true" /> <label for="otherProtocol" class="inline">Other</label>
 						</fieldset>
 						<input id="" name="" type="text" type="submit" />
 						<label for="newsletterSubscription">I would like to receive the newsletter</label>
+						<!-- <input type="hidden" name="newsletterSubscription" value="false"> -->
 						<input id="newsletterSubscription" type="checkbox" name="newsletterSubscription" value="true" checked>
 						<p>*Optional</p>
 						<button class="medium" type="submit">Submit</button>
 						<hr>
 					</form>
-				</div>
 					<!-- Twitter Feed -->
 					<a id="twitter-widget-1" class="twitter-timeline" href="https://twitter.com/OSpecifications" data-widget-id="646806018907738115">Tweets by @OSpecifications</a>
 					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>

@@ -146,6 +146,12 @@ $(document).ready(function () {
    $('html, body').animate({ scrollTop: 0 }, 'fast');
  	});
 
+ 		// make return to previous page button
+	$('.previous-page-button').click(function () {
+		var oldURL = document.referrer;
+		window.location = oldURL;
+	});
+
 
  	//position tooltips on map
 

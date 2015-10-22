@@ -1,4 +1,8 @@
 'use strict';
+/*global $ */
+/*global document */
+/*global window */
+/*jshint multistr: true */ 
 
 $(document).ready(function () {
 	$('.newsletter-signup').html(
@@ -46,14 +50,14 @@ $(document).ready(function () {
 			<button class="medium" type="submit">Submit</button>\
 			<hr>\
 		</form>'
-		)
+		);
 	function resetForm () {
 		$('form').on('submit', function () {
 			console.log('hello world');
 			$('form').get(0).reset();
-		})
+		});
 		
 	}
 	resetForm();
-})
+});
 
