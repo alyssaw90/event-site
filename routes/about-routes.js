@@ -66,6 +66,26 @@ router.route('/about')
     });
     // console.log(about);
   });
+
+
+/*sql.sync()
+.then(function () {
+var contactEndpoints = [];
+  Contact.findAll({where: {role: 'speaker'}})
+  .then(function (data) {
+    for (var i = 0; i < data.length; i++) {
+      contactEndpoints.push('/' + data[i].divId);
+    }
+    for (var i = 0; i < contactEndpoints.length; i++) {
+      var name = contactEndpoints[i];
+      router.get(name, function (req, res) {
+        res.sendFile(path.join(__dirname, '../blank.html'));
+      })
+    }
+    console.log('ELEM!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', contactEndpoints);
+  });
+});*/
+
   
   /*app.get('/about', function (req, res) {
       sql.sync()
