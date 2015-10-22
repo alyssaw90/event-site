@@ -150,7 +150,7 @@ $(document).ready(function () {
 	$('.previous-page-button').click(function () {
 		var oldURL = document.referrer;
 		window.location = oldURL;
-	})
+	});
 
 
  	//position tooltips on map
