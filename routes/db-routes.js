@@ -4,6 +4,7 @@ var Contact = require('../models/Contact');
 var NewsletterSignup = require('../models/NewsletterSignup');
 var SuggestedCity = require('../models/SuggestedCity');
 var Interest = require('../models/Interest');
+var Event = require('../models/Event')
 var aboutUs = require('../views/about')();
 var fs = require('fs');
 var $ = require('cheerio');
@@ -150,6 +151,37 @@ module.exports = function (router) {
       res.status(500).json({msg: 'internal server error'});
     });
   });
+
+// make dynamic routes for events
+
+fs.readFile(path.join(__dirname, '../views/blank-event.html'), function (err, data) {
+          var theHtml = data.toString();
+          var theSpeakers = '<div id="eventSpeakers" class="tab-content">';
+          var newHtml = '';
+  sql.sync()
+  .then(function () {
+  var eventEndpoints = [];
+    Contact.findAll({where: {role: 'speaker'}})
+    .then(function (data2) {
+      for (var i = 0; i < data2.length; i++) {
+        eventEndpoints.push('/' + data2[i].divId);
+      }
+      for (var j = 0; j < eventEndpoints.length; j++) {
+    console.log('ELEM!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', theHtml);
+        var name = eventEndpoints[j];
+        theSpeakers +='<h2>2015 Storage Developer Conference Speakers</h2><hr /><h4>' + data2[j].firstName + ' ' + data2[j].lastName + '</h4><h5>' + data2[j].msTeamTitle + '</h5><p><img class="pull-left" src="data:image;base64,' + data2[j].headShot + '" />' + data2[j].contactDescription + '</p><hr />';        newHtml = theHtml.replace('<div id="eventSpeakers" class="tab-content">', theSpeakers);
+        router.get(name, function (req, res) {
+          res.send(newHtml);
+          /*fs.readFile(path.join(__dirname, '../views/blank-event.html'), function (err, data2) {
+            var theHtml = data2.toString();
+            var theSpeakers = '<div id="eventSpeakers" class="tab-content">';
+      console.log('ELEM!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', data2);
+          })*/
+        })
+      }
+    });
+  });
+        })
 
   /*router.route('/addcontact')
   .post(function (req, res) {
