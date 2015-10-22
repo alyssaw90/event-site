@@ -52,14 +52,14 @@ module.exports = function (router) {
   	.then(function () {
   		Contact.findAll({where: {showOnHomePage: true}})
   		.then(function (data) {
-  			res.json(data)
+  			res.json(data);
   		})
   		.error(function (err) {
   			console(err);
   			res.status(500).json({msg: 'internal server error'});
-  		})
-  	})
-  })
+  		});
+  	});
+  });
 
   router.route('/newsletter')
   .post(function (req, res) {
@@ -74,10 +74,10 @@ module.exports = function (router) {
             .then(function (newInterests) {
               newInterests.updateAttributes({contactId: newContact.id})
               .then(function () {
-                newContact.updateAttributes({interestId: newInterests.id})
-              })
-            })
-          })
+                newContact.updateAttributes({interestId: newInterests.id});
+              });
+            });
+          });
         }
         if (data) {
           data.updateAttributes(req.body)
@@ -88,25 +88,23 @@ module.exports = function (router) {
               if (!data2) {
                 Interest.create(req.body)
                 .then(function (interests) {
-                  // console.log('INTERESTS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! : ', interests);
                   interests.updateAttributes({contactId: data.id});
                 })
                 .then(function () {
                   data.updateAttributes({interestId: interests.id});
-                  console.log('DATA@!!!!!!!!!!!!!!!!!!!!!!!!!!  ', data.divId);
-                })
+                });
               }
               if (data2) {
                 data2.updateAttributes(req.body);
               }
-            })
+            });
             
-          })
+          });
         }
       })
       .then(
         res.sendFile(path.join(__dirname, '../views/thank-you.html'))
-      )
+      );
     })
     .error(function (err) {
       router.alert(err);
