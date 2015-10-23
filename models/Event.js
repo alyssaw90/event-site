@@ -40,7 +40,7 @@ Event.sync({force: false})
       var backgroundImage = data2.toString('base64');
       return Event.create({
       eventName: 'Storage Developer Conference',
-      eventStartDate: new Date(2016, 1, 1),
+      eventStartDate: new Date(2020, 1, 1),
       eventLocation: 'Santa Clara, CA',
       eventHeaderImage: headerImage, 
       eventBackgroundImage: backgroundImage, 
