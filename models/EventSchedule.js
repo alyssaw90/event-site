@@ -14,9 +14,8 @@ var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
 
 var EventSchedule = module.exports = sql.define('EventSchedule', {
 	eventId: Sql.INTEGER,
-  eventName: Sql.STRING,
-	day: Sql.STRING,
-	time: Sql.STRING,
+	scheduleDay: Sql.STRING,
+	scheduleTime: Sql.STRING,
   description: Sql.TEXT
 })
 

@@ -15,7 +15,8 @@ var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
 var EventAttendee = module.exports = sql.define('EventAttendee', {
   eventName: Sql.STRING,
   eventId: Sql.INTEGER,
-  attendeeId: Sql.INTEGER
+  attendeeId: Sql.INTEGER,
+  eventAttendeeRole: Sql.ENUM('speaker', 'attendee'),
 });
 
 EventAttendee.sync({force: false});

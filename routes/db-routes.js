@@ -154,29 +154,53 @@ module.exports = function (router) {
 
 // make dynamic routes for events
 
-fs.readFile(path.join(__dirname, '../views/blank-event.html'), function (err, data) {
-          var theHtml = data.toString();
-          var theSpeakers = '<div id="eventSpeakers" class="tab-content">';
-          var newHtml = '';
+/*fs.readFile(path.join(__dirname, '../views/blank-event.html'), function (err, data) {
+  var theHtml = data.toString();
+  var theSpeakers = '<div id="eventSpeakers" class="tab-content"><h2>2015 Storage Developer Conference Speakers</h2><hr /><h4>';
+  var newHtml = '';
   sql.sync()
   .then(function () {
   var eventEndpoints = [];
     Contact.findAll({where: {role: 'speaker'}})
-    .then(function (data2) {
-      for (var i = 0; i < data2.length; i++) {
-        eventEndpoints.push('/' + data2[i].divId);
+    .then(function (speakers) {
+      for (var i = 0; i < speakers.length; i++) {
+        eventEndpoints.push('/' + speakers[i].divId);
       }
       for (var j = 0; j < eventEndpoints.length; j++) {
-    console.log('ELEM!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', theHtml);
+    // console.log('ELEM!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', theHtml);
         var name = eventEndpoints[j];
-        theSpeakers +='<h2>2015 Storage Developer Conference Speakers</h2><hr /><h4>' + data2[j].firstName + ' ' + data2[j].lastName + '</h4><h5>' + data2[j].msTeamTitle + '</h5><p><img class="pull-left" src="data:image;base64,' + data2[j].headShot + '" />' + data2[j].contactDescription + '</p><hr />';        newHtml = theHtml.replace('<div id="eventSpeakers" class="tab-content">', theSpeakers);
+        theSpeakers += speakers[j].firstName + ' ' + speakers[j].lastName + '</h4><h5>' + speakers[j].msTeamTitle + '</h5><p><img class="pull-left" src="data:image;base64,' + speakers[j].headShot + '" />' + speakers[j].contactDescription + '</p><hr />';        newHtml = theHtml.replace('<div id="eventSpeakers" class="tab-content">', theSpeakers);
         router.get(name, function (req, res) {
           res.send(newHtml);
         })
       }
     });
   });
+});*/
+
+fs.readFile(path.join(__dirname, '../views/blank-event.html'), function (err, data) {
+  var theHtml = data.toString();
+  var theSpeakers = '<div id="eventSpeakers" class="tab-content"><h2>2015 Storage Developer Conference Speakers</h2><hr /><h4>';
+  var newHtml = '';
+  sql.sync()
+  .then(function () {
+  var eventEndpoints = [];
+    Event.findAll()
+    .then(function (events) {
+      for (var i = 0; i < events.length; i++) {
+        eventEndpoints.push('/' + events[i].eventUrl);
+        console.log('EVENT URL ::::::: ', events[i].eventUrl)
+      }
+      for (var j = 0; j < eventEndpoints.length; j++) {
+    // console.log('ELEM!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', theHtml);
+        var name = eventEndpoints[j];
+        router.get(name, function (req, res) {
+          res.send(newHtml);
         })
+      }
+    });
+  });
+});
 
   /*router.route('/addcontact')
   .post(function (req, res) {
