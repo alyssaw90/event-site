@@ -4,10 +4,13 @@ var Contact = require('../models/Contact');
 var NewsletterSignup = require('../models/NewsletterSignup');
 var SuggestedCity = require('../models/SuggestedCity');
 var Interest = require('../models/Interest');
-var Event = require('../models/Event')
+var Event = require('../models/Event');
+var EventOverview = require('../models/EventOverview');
+var EventSchedule = require('../models/EventSchedule');
+var EventAttendee = require('../models/EventAttendee');
 var aboutUs = require('../views/about')();
 var fs = require('fs');
-var $ = require('cheerio');
+// var $ = require('cheerio');
 var bodyparser = require('body-parser');
 var path = require('path');
 var Sql = require('sequelize');
@@ -181,13 +184,21 @@ module.exports = function (router) {
 fs.readFile(path.join(__dirname, '../views/blank-event.html'), function (err, data) {
   var theHtml = data.toString();
   var theSpeakers = '<div id="eventSpeakers" class="tab-content"><h2>2015 Storage Developer Conference Speakers</h2><hr /><h4>';
-  var newHtml = '';
+  // var newHtml = '';
   sql.sync()
   .then(function () {
   var eventEndpoints = [];
-    Event.findAll()
+  var newHtml = [];
+  var today = new Date();
+    Event.findAll({where: {eventStartDate: {$gte: new Date()}}})
     .then(function (events) {
-      for (var i = 0; i < events.length; i++) {
+
+    });
+  });
+});
+
+
+/*      for (var i = 0; i < events.length; i++) {
         eventEndpoints.push('/' + events[i].eventUrl);
         console.log('EVENT URL ::::::: ', events[i].eventUrl)
       }
@@ -197,10 +208,8 @@ fs.readFile(path.join(__dirname, '../views/blank-event.html'), function (err, da
         router.get(name, function (req, res) {
           res.send(newHtml);
         })
-      }
-    });
-  });
-});
+      }*/
+
 
   /*router.route('/addcontact')
   .post(function (req, res) {
