@@ -183,20 +183,107 @@ module.exports = function (router) {
 
 fs.readFile(path.join(__dirname, '../views/blank-event.html'), function (err, data) {
   var theHtml = data.toString();
-  var theSpeakers = '<div id="eventSpeakers" class="tab-content"><h2>2015 Storage Developer Conference Speakers</h2><hr /><h4>';
-  // var newHtml = '';
+  var theSpeakersHtml = '<div id="eventSpeakers" class="tab-content"><h2>2015 Storage Developer Conference Speakers</h2><hr /><h4>';
+  var theOverViewHtml = '<div id="event-overview" class="tab-content">';
+  var theScheduleUl = '<div id="event-schedule" class="tab-content"><ul class="tabs center">';
+  var theScheduleTable = '';
+  var theScheduleTableBody = '';
   sql.sync()
   .then(function () {
   var eventEndpoints = [];
   var newHtml = [];
-  var today = new Date();
     Event.findAll({where: {eventStartDate: {$gte: new Date()}}})
-    .then(function (events) {
+    .then(function (eventsTable) {
+      for (var i = 0; i < eventsTable.length; i++) {
+        var thisEventName = eventsTable[i].eventName;
+        // console.log('IIIIIIIIIII ::::::::::: ', eventsTable[i].eventUrl);
+        EventOverview.findAll({where: {eventId: eventsTable[i].id}})
+        .then(function (overviewTable) {
+          theOverViewHtml += '<h2>' + thisEventName + '</h2>';
+          for (var j = 0; j < overviewTable.length; j++) {
+            theOverViewHtml += '<h3>' + overviewTable[j].headingText + '</h3><p>' + overviewTable[j].paragraphText + '</p>';
+            // console.log(overviewTable[j].paragraphText);
+          }
+          theHtml = theHtml.replace('<div id="event-overview" class="tab-content">', theOverViewHtml);
+          // console.log('IIIIIIIIIII ::::::::::: ', i)
+          EventSchedule.findAll({where: {eventId: eventsTable[i - 1].id}})
+          .then(function (scheduleTable) {
+            var dayTestArr = [];
+            for (var k = 0; k < scheduleTable.length; k++) {
+              theScheduleTableBody += '<tr><td>' + scheduleTable[k].scheduleTime + '</td><td>' + scheduleTable[k].description + '</td></tr>';
+              if (dayTestArr.indexOf(scheduleTable[k].scheduleDay) === -1) {
+                theScheduleTableBody += '</tr></tbody></table></div><div id="tabr' + scheduleTable[k].scheduleDay + '" class="tab-content">';
+                theScheduleUl += '<li><a href="#tabr' + scheduleTable[k].scheduleDay + '"><h5>' + scheduleTable[k].scheduleDay + '</h5></a></li>';
+                theScheduleTable += '<div id="tabr' + scheduleTable[k].scheduleDay + '" class="tab-content"><table cellspacing="0" cellpadding="0" class="striped schedule"><thead><tr><th><h3>' + scheduleTable[k].scheduleDay + '</h3></th></tr></thead><tbody></tbody></table></div>';
+              }
+              dayTestArr.push(scheduleTable[k].scheduleDay);
 
+            }
+            theScheduleUl += '</ul>';
+            console.log(theScheduleTable);
+            theHtml = theHtml.replace('<div id="event-schedule" class="tab-content">', theScheduleUl);
+
+          // console.log(scheduleTable[0].scheduleDay);
+            EventAttendee.findAll({where: {$and: {eventId: eventsTable[i - 1].id, eventAttendeeRole: 'speaker'}}})
+            .then(function (attendeeTable) {
+              for (var l = 0; l < attendeeTable.length; l++) {
+                Contact.findAll({where: {id: attendeeTable[l].attendeeId}})
+                .then(function (speakersTable) {
+                  for (var m = 0; m < speakersTable.length; m++) {
+                    theSpeakersHtml += speakersTable[m].firstName + ' ' + speakersTable[m].lastName + '</h4><h5>' + speakersTable[m].msTeamTitle + '</h5><p><img class="pull-left" src="data:image;base64,' + speakersTable[m].headShot + '" />' + speakersTable[m].contactDescription + '</p><hr />';
+                  }
+                  // console.log('JJJJJJJJJJJ ::::::::  ', theOverViewHtml);                    
+                  theHtml = theHtml.replace('<div id="eventSpeakers" class="tab-content">', theSpeakersHtml);
+                  router.get('/' + eventsTable[i - 1].eventUrl, function (req, res) {
+                    res.send(theHtml);
+                  });
+                });
+              }
+            });
+          });
+        });
+      }
     });
   });
 });
 
+/*        EventAttendee.findAll({where: {$and: {eventId: eventsTable[i].id, eventAttendeeRole: 'speaker'}}})
+        .then(function (speakersTable) {
+          for (var j = 0; j < speakersTable.length; j++) {
+            Contact.findAll({where: {id: speakersTable[j].attendeeId}})
+            .then(function (contactsTable) {
+              EventOverview.findAll({where: {eventId: eventsTable[i - 1].id}})
+              .then(function (overviewTable) {
+                EventSchedule.findAll({where: {eventId: eventsTable[i - 1].id}})
+                .then(function (scheduleTable) {
+                  console.log(scheduleTable);
+                })
+              })
+            })
+          }
+        })*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*              for (var k = 0; k < contactsTable.length; k++) {
+                theSpeakersHtml += contactsTable[k].firstName + ' ' + contactsTable[k].lastName + '</h4><h5>' + contactsTable[k].msTeamTitle + '</h5><p><img class="pull-left" src="data:image;base64,' + contactsTable[k].headShot + '" />' + contactsTable[k].contactDescription + '</p><hr />';
+              }
+              newHtml = theHtml.replace('<div id="eventSpeakers" class="tab-content">', theSpeakersHtml);
+              // console.log(newHtml);
+              console.log('EVENT URL ::::::: ', eventsTable[i - 1].eventUrl);*/
+              /*router.get('/' + eventsTable[i - 1].eventUrl, function (req, res) {
+                res.send(newHtml);
+              })*/
 
 /*      for (var i = 0; i < events.length; i++) {
         eventEndpoints.push('/' + events[i].eventUrl);
