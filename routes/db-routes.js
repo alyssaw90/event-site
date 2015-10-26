@@ -8,6 +8,11 @@ var Event = require('../models/Event');
 var EventOverview = require('../models/EventOverview');
 var EventSchedule = require('../models/EventSchedule');
 var EventAttendee = require('../models/EventAttendee');
+var EventSponsorInfo = require('../models/EventSponsorInfo');
+var EventPlatinumSponsor = require('../models/EventPlatinumSponsor');
+var EventGoldSponsor = require('../models/EventGoldSponsor');
+var EventSilverSponsor = require('../models/EventSilverSponsor');
+var EventBronzeSponsor = require('../models/EventBronzeSponsor');
 var aboutUs = require('../views/about')();
 var fs = require('fs');
 // var $ = require('cheerio');
@@ -156,30 +161,6 @@ module.exports = function (router) {
   });
 
 // make dynamic routes for events
-
-/*fs.readFile(path.join(__dirname, '../views/blank-event.html'), function (err, data) {
-  var theHtml = data.toString();
-  var theSpeakers = '<div id="eventSpeakers" class="tab-content"><h2>2015 Storage Developer Conference Speakers</h2><hr /><h4>';
-  var newHtml = '';
-  sql.sync()
-  .then(function () {
-  var eventEndpoints = [];
-    Contact.findAll({where: {role: 'speaker'}})
-    .then(function (speakers) {
-      for (var i = 0; i < speakers.length; i++) {
-        eventEndpoints.push('/' + speakers[i].divId);
-      }
-      for (var j = 0; j < eventEndpoints.length; j++) {
-    // console.log('ELEM!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', theHtml);
-        var name = eventEndpoints[j];
-        theSpeakers += speakers[j].firstName + ' ' + speakers[j].lastName + '</h4><h5>' + speakers[j].msTeamTitle + '</h5><p><img class="pull-left" src="data:image;base64,' + speakers[j].headShot + '" />' + speakers[j].contactDescription + '</p><hr />';        newHtml = theHtml.replace('<div id="eventSpeakers" class="tab-content">', theSpeakers);
-        router.get(name, function (req, res) {
-          res.send(newHtml);
-        })
-      }
-    });
-  });
-});*/
 //Read the blank html file to us for a template
 fs.readFile(path.join(__dirname, '../views/blank-event.html'), function (err, data) {
   var theHtml = data.toString();
@@ -187,6 +168,7 @@ fs.readFile(path.join(__dirname, '../views/blank-event.html'), function (err, da
   var theOverViewHtml = '<div id="event-overview" class="tab-content">';
   var theScheduleUl = '<div id="event-schedule" class="tab-content"><ul class="tabs center">';
   var theScheduleTableBody = '';
+  var mediaSponsorTab = '<div id="eventSponsors" class="tab-content">';
   //sync database
   sql.sync()
   //then 
@@ -200,8 +182,9 @@ fs.readFile(path.join(__dirname, '../views/blank-event.html'), function (err, da
       for (var i = 0; i < eventsTable.length; i++) {
         //declare variable to hold event name
         var thisEventName = eventsTable[i].eventName;
+        var thisEventId = eventsTable[i].id; 
         //search for EventOverview table that has the id as the current event
-        EventOverview.findAll({where: {eventId: eventsTable[i].id}})
+        EventOverview.findAll({where: {eventId: thisEventId}})
         .then(function (overviewTable) {
           //insert the current event name in h2 tags
           theOverViewHtml += '<h2>' + thisEventName + '</h2>';
@@ -212,7 +195,7 @@ fs.readFile(path.join(__dirname, '../views/blank-event.html'), function (err, da
           //replace the empty div in the template string with the new event overview string
           theHtml = theHtml.replace('<div id="event-overview" class="tab-content">', theOverViewHtml);
           //find EventSchedule tables with the current event (i has been indexed up one, so it needs 1 subtracted to have the right index)
-          EventSchedule.findAll({where: {eventId: eventsTable[i - 1].id}})
+          EventSchedule.findAll({where: {eventId: thisEventId}})
           .then(function (scheduleTable) {
             //declare array to hold day names and object to hold daily schedules
             var dayTestArr = [];
@@ -248,7 +231,7 @@ fs.readFile(path.join(__dirname, '../views/blank-event.html'), function (err, da
             //replace the empty div with the created string
             theHtml = theHtml.replace('<div id="event-schedule" class="tab-content">', theScheduleUl);
             //find all event attendees who are speakers and attendees of the currect event
-            EventAttendee.findAll({where: {$and: {eventId: eventsTable[i - 1].id, eventAttendeeRole: 'speaker'}}})
+            EventAttendee.findAll({where: {$and: {eventId: thisEventId, eventAttendeeRole: 'speaker'}}})
             .then(function (attendeeTable) {
               //loop over the Contacts table to find the speakers of the current event
               for (var m = 0; m < attendeeTable.length; m++) {
@@ -260,11 +243,24 @@ fs.readFile(path.join(__dirname, '../views/blank-event.html'), function (err, da
                   }
                   // Replace the empty div for the speakers with the string containing the content                  
                   theHtml = theHtml.replace('<div id="eventSpeakers" class="tab-content">', theSpeakersHtml);
-                  router.get('/' + eventsTable[i - 1].eventUrl, function (req, res) {
-                    res.send(theHtml);
-                  });
+
                 });
               }
+              EventSponsorInfo.findAll({where: {eventId: thisEventId}})
+              .then(function (sponsorInfo) {
+                for (var ii = 0; ii < sponsorInfo.length; ii++) {
+                  mediaSponsorTab += '<h2>' + sponsorInfo[ii].sponsorshipHeading + '</h2><hr class="alt1" /><p>' + sponsorInfo[ii].sponsorshipParagraph + '</p><ht class="alt1" />';
+                }
+                EventPlatinumSponsor.findAll({where: {eventId: thisEventId}})
+                .then(function (platinumSponsors) {
+                  
+                  theHtml = theHtml.replace('<div id="eventSponsors" class="tab-content">', mediaSponsorTab);
+                  //send string of thml with all info to client
+                  router.get('/' + eventsTable[i - 1].eventUrl, function (req, res) {
+                    res.send(theHtml);
+                })
+                });
+              })
             });
           });
         });
