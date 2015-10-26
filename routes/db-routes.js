@@ -249,16 +249,44 @@ fs.readFile(path.join(__dirname, '../views/blank-event.html'), function (err, da
               EventSponsorInfo.findAll({where: {eventId: thisEventId}})
               .then(function (sponsorInfo) {
                 for (var ii = 0; ii < sponsorInfo.length; ii++) {
-                  mediaSponsorTab += '<h2>' + sponsorInfo[ii].sponsorshipHeading + '</h2><hr class="alt1" /><p>' + sponsorInfo[ii].sponsorshipParagraph + '</p><ht class="alt1" />';
+                  mediaSponsorTab += '<h2>' + sponsorInfo[ii].sponsorshipHeading + '</h2><hr class="alt1" /><p>' + sponsorInfo[ii].sponsorshipParagraph + '</p><hr class="alt1" />';
                 }
                 EventPlatinumSponsor.findAll({where: {eventId: thisEventId}})
                 .then(function (platinumSponsors) {
-                  
-                  theHtml = theHtml.replace('<div id="eventSponsors" class="tab-content">', mediaSponsorTab);
-                  //send string of thml with all info to client
-                  router.get('/' + eventsTable[i - 1].eventUrl, function (req, res) {
-                    res.send(theHtml);
-                })
+                  mediaSponsorTab += '<h3>Platinum Sponsors</h3>';
+                  for (var jj = 0; jj < platinumSponsors.length; jj++) {
+                    mediaSponsorTab += '<div class="col_6"><img src="../../img/' + platinumSponsors[jj].sponsorLogo + '"><h4>' + platinumSponsors[jj].sponsorName + '</h4><p>' + platinumSponsors[jj].sponsorDesc + '</p></div>';
+                  }
+                  mediaSponsorTab += '<hr class="alt1" />';
+                  EventGoldSponsor.findAll({where: {eventId: thisEventId}})
+                  .then(function (goldSponsors) {
+                    mediaSponsorTab += '<h3>Gold Sponsors</h3>';
+                    for (var kk = 0; kk < goldSponsors.length; kk++) {
+                    mediaSponsorTab += '<div class="col_6"><img src="../../img/' + goldSponsors[kk].sponsorLogo + '"><h4>' + goldSponsors[kk].sponsorName + '</h4><p>' + goldSponsors[kk].sponsorDesc + '</p></div>';
+                    }
+                    mediaSponsorTab += '<hr class="alt1" />';
+                    EventSilverSponsor.findAll({where: {eventId: thisEventId}})
+                    .then(function (silverSponsors) {
+                      mediaSponsorTab += '<h3>Silver Sponsors</h3>';
+                      for (var ll = 0; ll < silverSponsors.length; ll++) {
+                        mediaSponsorTab += '<div class="col_6"><img src="../../img/' + silverSponsors[ll].sponsorLogo + '"><h4>' + silverSponsors[ll].sponsorName + '</h4><p>' + silverSponsors[ll].sponsorDesc + '</p></div>';
+                      }
+                      mediaSponsorTab += '<hr class="alt1" />';
+                      EventBronzeSponsor.findAll({where: {eventId: thisEventId}})
+                      .then(function (bronzeSponsors) {
+                        mediaSponsorTab += '<h3>Bronze Sponsors</h3>';
+                        for (var mm = 0; mm < bronzeSponsors.length; mm++) {
+                          mediaSponsorTab += '<div class="col_6"><img src="../../img/' + bronzeSponsors[mm].sponsorLogo + '"><h4>' + bronzeSponsors[mm].sponsorName + '</h4><p>' + bronzeSponsors[mm].sponsorDesc + '</p></div>';
+                        }
+                        mediaSponsorTab += '</div>';
+                        theHtml = theHtml.replace('<div id="eventSponsors" class="tab-content">', mediaSponsorTab);
+                        //send string of thml with all info to client
+                        router.get('/' + eventsTable[i - 1].eventUrl, function (req, res) {
+                          res.send(theHtml);
+                        })
+                      })
+                    })
+                  })
                 });
               })
             });
