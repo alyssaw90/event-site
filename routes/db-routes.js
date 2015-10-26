@@ -180,59 +180,85 @@ module.exports = function (router) {
     });
   });
 });*/
-
+//Read the blank html file to us for a template
 fs.readFile(path.join(__dirname, '../views/blank-event.html'), function (err, data) {
   var theHtml = data.toString();
   var theSpeakersHtml = '<div id="eventSpeakers" class="tab-content"><h2>2015 Storage Developer Conference Speakers</h2><hr /><h4>';
   var theOverViewHtml = '<div id="event-overview" class="tab-content">';
   var theScheduleUl = '<div id="event-schedule" class="tab-content"><ul class="tabs center">';
-  var theScheduleTable = '';
   var theScheduleTableBody = '';
+  //sync database
   sql.sync()
+  //then 
   .then(function () {
-  var eventEndpoints = [];
-  var newHtml = [];
+    //declare array to hold endpoint urls for all events
+    var eventEndpoints = [];
+    //find all events happening in the future
     Event.findAll({where: {eventStartDate: {$gte: new Date()}}})
     .then(function (eventsTable) {
+      //loop over the events table
       for (var i = 0; i < eventsTable.length; i++) {
+        //declare variable to hold event name
         var thisEventName = eventsTable[i].eventName;
-        // console.log('IIIIIIIIIII ::::::::::: ', eventsTable[i].eventUrl);
+        //search for EventOverview table that has the id as the current event
         EventOverview.findAll({where: {eventId: eventsTable[i].id}})
         .then(function (overviewTable) {
+          //insert the current event name in h2 tags
           theOverViewHtml += '<h2>' + thisEventName + '</h2>';
+          //loop over overview table and put headings in h3 tags and paragraph txt in p tags
           for (var j = 0; j < overviewTable.length; j++) {
             theOverViewHtml += '<h3>' + overviewTable[j].headingText + '</h3><p>' + overviewTable[j].paragraphText + '</p>';
-            // console.log(overviewTable[j].paragraphText);
           }
+          //replace the empty div in the template string with the new event overview string
           theHtml = theHtml.replace('<div id="event-overview" class="tab-content">', theOverViewHtml);
-          // console.log('IIIIIIIIIII ::::::::::: ', i)
+          //find EventSchedule tables with the current event (i has been indexed up one, so it needs 1 subtracted to have the right index)
           EventSchedule.findAll({where: {eventId: eventsTable[i - 1].id}})
           .then(function (scheduleTable) {
+            //declare array to hold day names and object to hold daily schedules
             var dayTestArr = [];
+            var dailySchedule = {};
+            //loop over the EventSchedule table and add each unique day to the tabs ul and the dayTestArr
             for (var k = 0; k < scheduleTable.length; k++) {
-              theScheduleTableBody += '<tr><td>' + scheduleTable[k].scheduleTime + '</td><td>' + scheduleTable[k].description + '</td></tr>';
               if (dayTestArr.indexOf(scheduleTable[k].scheduleDay) === -1) {
-                theScheduleTableBody += '</tr></tbody></table></div><div id="tabr' + scheduleTable[k].scheduleDay + '" class="tab-content">';
                 theScheduleUl += '<li><a href="#tabr' + scheduleTable[k].scheduleDay + '"><h5>' + scheduleTable[k].scheduleDay + '</h5></a></li>';
-                theScheduleTable += '<div id="tabr' + scheduleTable[k].scheduleDay + '" class="tab-content"><table cellspacing="0" cellpadding="0" class="striped schedule"><thead><tr><th><h3>' + scheduleTable[k].scheduleDay + '</h3></th></tr></thead><tbody></tbody></table></div>';
-              }
               dayTestArr.push(scheduleTable[k].scheduleDay);
-
+              dailySchedule[scheduleTable[k].scheduleDay] = {};
+              }              
             }
+            //add the description to the times created in the dailySchedule object
+            for (var l = 0; l < scheduleTable.length; l++) {
+              dailySchedule[scheduleTable[l].scheduleDay][scheduleTable[l].scheduleTime] = scheduleTable[l].description;
+            }
+            //for each key in the dailySchedule object create an table header
+            for (var key in dailySchedule) {
+              var tmpSchedule = ''
+              theScheduleTableBody += '<div id="tabr' + key + '" class="tab-content"><table cellspacing="0" cellpadding="0" class="striped schedule"><thead><tr><th><h3>' + key + '</h3></th></tr></thead><tbody>' + key + '</tbody></table></div>';
+              // loop over keys in daily sub objects of dailySchedule object and create a table row to insert in the table body
+              for (var key2 in dailySchedule[key]) {
+                tmpSchedule += '<tr><td>' + key2 + '</td><td>' + dailySchedule[key][key2] + '</td></tr>';
+              }
+              //replace the empty table body (determined by matching the innner key to the right day) with the tmpSchedule string
+              theScheduleTableBody = theScheduleTableBody.replace('<tbody>' + key + '</tbody>', tmpSchedule);
+            }
+            //close the schedule body and schedul ul strings
+            theScheduleTableBody += '</div>';
             theScheduleUl += '</ul>';
-            console.log(theScheduleTable);
+            //combine the theScheduleUl and theScheduleTableBody strings
+            theScheduleUl += theScheduleTableBody;
+            //replace the empty div with the created string
             theHtml = theHtml.replace('<div id="event-schedule" class="tab-content">', theScheduleUl);
-
-          // console.log(scheduleTable[0].scheduleDay);
+            //find all event attendees who are speakers and attendees of the currect event
             EventAttendee.findAll({where: {$and: {eventId: eventsTable[i - 1].id, eventAttendeeRole: 'speaker'}}})
             .then(function (attendeeTable) {
-              for (var l = 0; l < attendeeTable.length; l++) {
-                Contact.findAll({where: {id: attendeeTable[l].attendeeId}})
+              //loop over the Contacts table to find the speakers of the current event
+              for (var m = 0; m < attendeeTable.length; m++) {
+                Contact.findAll({where: {id: attendeeTable[m].attendeeId}})
                 .then(function (speakersTable) {
+                  //loop over speakersTable and create a string of html to output
                   for (var m = 0; m < speakersTable.length; m++) {
                     theSpeakersHtml += speakersTable[m].firstName + ' ' + speakersTable[m].lastName + '</h4><h5>' + speakersTable[m].msTeamTitle + '</h5><p><img class="pull-left" src="data:image;base64,' + speakersTable[m].headShot + '" />' + speakersTable[m].contactDescription + '</p><hr />';
                   }
-                  // console.log('JJJJJJJJJJJ ::::::::  ', theOverViewHtml);                    
+                  // Replace the empty div for the speakers with the string containing the content                  
                   theHtml = theHtml.replace('<div id="eventSpeakers" class="tab-content">', theSpeakersHtml);
                   router.get('/' + eventsTable[i - 1].eventUrl, function (req, res) {
                     res.send(theHtml);
