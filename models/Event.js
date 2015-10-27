@@ -48,8 +48,8 @@ Event.sync({force: false})
       });
     });
   });
-});*/
-
+});
+*/
 /*var headerImage = fs.readFileSync(path.join(__dirname, '../img/SDC15_WebHeader3_999x188.png')).toString('base64');
 var backgroundImage = fs.readFileSync(path.join(__dirname, '../img/santa-clara-convention-center-2.jpg')).toString('base64');
 Event.sync({force: false})
