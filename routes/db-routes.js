@@ -13,6 +13,7 @@ var EventPlatinumSponsor = require('../models/EventPlatinumSponsor');
 var EventGoldSponsor = require('../models/EventGoldSponsor');
 var EventSilverSponsor = require('../models/EventSilverSponsor');
 var EventBronzeSponsor = require('../models/EventBronzeSponsor');
+var EventTravelMap = require('../models/EventTravelMap');
 var aboutUs = require('../views/about')();
 var fs = require('fs');
 // var $ = require('cheerio');
@@ -36,7 +37,7 @@ module.exports = function (router) {
     extended: true
   }));
 
-	router.route('/showfullteam')
+  router.route('/showfullteam')
   .get(function (req, res) {
     var start = new Date().getTime();
     console.log('start time : ', start);
@@ -57,17 +58,17 @@ module.exports = function (router) {
 
   router.route('/homepageteam')
   .get(function (req, res) {
-  	sql.sync()
-  	.then(function () {
-  		Contact.findAll({where: {showOnHomePage: true}})
-  		.then(function (data) {
-  			res.json(data);
-  		})
-  		.error(function (err) {
-  			console(err);
-  			res.status(500).json({msg: 'internal server error'});
-  		});
-  	});
+    sql.sync()
+    .then(function () {
+      Contact.findAll({where: {showOnHomePage: true}})
+      .then(function (data) {
+        res.json(data);
+      })
+      .error(function (err) {
+        console(err);
+        res.status(500).json({msg: 'internal server error'});
+      });
+    });
   });
 
   router.route('/newsletter')
@@ -164,11 +165,12 @@ module.exports = function (router) {
 //Read the blank html file to us for a template
 fs.readFile(path.join(__dirname, '../views/blank-event.html'), function (err, data) {
   var theHtml = data.toString();
-  var theSpeakersHtml = '<div id="eventSpeakers" class="tab-content"><h2>2015 Storage Developer Conference Speakers</h2><hr /><h4>';
+  var theSpeakersHtml = '<div id="eventSpeakers" class="tab-content">';
   var theOverViewHtml = '<div id="event-overview" class="tab-content">';
   var theScheduleUl = '<div id="event-schedule" class="tab-content"><ul class="tabs center">';
   var theScheduleTableBody = '';
   var mediaSponsorTab = '<div id="eventSponsors" class="tab-content">';
+  var mapTab = '<div id="travelTab" class="tab-content">';
   //sync database
   sql.sync()
   //then 
@@ -178,9 +180,11 @@ fs.readFile(path.join(__dirname, '../views/blank-event.html'), function (err, da
     //find all events happening in the future
     Event.findAll({where: {eventStartDate: {$gte: new Date()}}})
     .then(function (eventsTable) {
+      console.log(eventsTable)
       //loop over the events table
       for (var i = 0; i < eventsTable.length; i++) {
         //declare variable to hold event name
+        console.log(eventsTable[i].eventUrl)
         var thisEventName = eventsTable[i].eventName;
         var thisEventId = eventsTable[i].id; 
         //search for EventOverview table that has the id as the current event
@@ -233,19 +237,19 @@ fs.readFile(path.join(__dirname, '../views/blank-event.html'), function (err, da
             //find all event attendees who are speakers and attendees of the currect event
             EventAttendee.findAll({where: {$and: {eventId: thisEventId, eventAttendeeRole: 'speaker'}}})
             .then(function (attendeeTable) {
+              var speakerIdArr = [];
               //loop over the Contacts table to find the speakers of the current event
               for (var m = 0; m < attendeeTable.length; m++) {
-                Contact.findAll({where: {id: attendeeTable[m].attendeeId}})
-                .then(function (speakersTable) {
-                  //loop over speakersTable and create a string of html to output
-                  for (var m = 0; m < speakersTable.length; m++) {
-                    theSpeakersHtml += speakersTable[m].firstName + ' ' + speakersTable[m].lastName + '</h4><h5>' + speakersTable[m].msTeamTitle + '</h5><p><img class="pull-left" src="data:image;base64,' + speakersTable[m].headShot + '" />' + speakersTable[m].contactDescription + '</p><hr />';
-                  }
-                  // Replace the empty div for the speakers with the string containing the content                  
-                  theHtml = theHtml.replace('<div id="eventSpeakers" class="tab-content">', theSpeakersHtml);
-
-                });
+                speakerIdArr.push(attendeeTable[m].attendeeId);
               }
+              Contact.findAll({where: {id: speakerIdArr}})
+              .then(function (speakersTable) {
+                theSpeakersHtml += '<h2>' + thisEventName + '</h2><hr />'
+                for (var mm = 0; mm < speakersTable.length; mm++) {
+                  theSpeakersHtml += '<h4>' + speakersTable[mm].firstName + ' ' + speakersTable[mm].lastName + '</h4><h5>' + speakersTable[mm].msTeamTitle + '</h5><p><img class="pull-left" src="data:image;base64,' + speakersTable[mm].headShot + '" />' + speakersTable[mm].contactDescription + '</p><hr />';
+                }
+                  theHtml = theHtml.replace('<div id="eventSpeakers" class="tab-content">', theSpeakersHtml);
+              })
               EventSponsorInfo.findAll({where: {eventId: thisEventId}})
               .then(function (sponsorInfo) {
                 for (var ii = 0; ii < sponsorInfo.length; ii++) {
@@ -280,15 +284,22 @@ fs.readFile(path.join(__dirname, '../views/blank-event.html'), function (err, da
                         }
                         mediaSponsorTab += '</div>';
                         theHtml = theHtml.replace('<div id="eventSponsors" class="tab-content">', mediaSponsorTab);
-                        //send string of thml with all info to client
-                        router.get('/' + eventsTable[i - 1].eventUrl, function (req, res) {
-                          res.send(theHtml);
+                        EventTravelMap.findAll({where: {eventId: thisEventId}})
+                        .then(function (map) {
+                          for (var nn = 0; nn < map.length; nn++) {
+                            mapTab += '<h2>' + map[nn].aboveMapHeader + '</h2>' + map[nn].mapImapHtml;
+                          }
+                          theHtml = theHtml.replace('<div id="travelTab" class="tab-content">', mapTab);
+                          router.get('/' + eventsTable[i - 1].eventUrl, function (req, res) {
+                            res.send(theHtml);
+                          })
                         })
+                        //send string of thml with all info to client
                       })
                     })
                   })
                 });
-              })
+              });
             });
           });
         });

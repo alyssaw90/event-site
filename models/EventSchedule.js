@@ -20,7 +20,7 @@ var EventSchedule = module.exports = sql.define('EventSchedule', {
 })
 
 EventSchedule.sync({force: false})
-  /*.then(function () {
+ /* .then(function () {
     return EventSchedule.create({
       eventId: 1,
       scheduleDay: 'Friday',
