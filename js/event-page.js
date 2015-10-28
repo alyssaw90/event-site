@@ -6,7 +6,7 @@
 
 $(document).ready(function () {
 	$.get('/events', function (data) {
-		var pathname = window.location.pathname.slice(1);
+		var pathname = window.location.pathname.slice(7);
 		var eventsObj = {};
 		$(data).each(function (i, elem) {
 			eventsObj[elem.id] = {};
@@ -92,6 +92,7 @@ $(document).ready(function () {
 										}
 									}
 									for (var key in eventsObj) {
+										console.log(pathname)
 										if (pathname === eventsObj[key].eventUrl) {
 											$('#event-overview').append(eventsObj[key].overviewHtml); 
 										}
