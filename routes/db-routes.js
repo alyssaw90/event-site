@@ -161,9 +161,56 @@ module.exports = function (router) {
     });
   });
 
+router.route('/events')
+  .get(function (req, res) {
+    sql.sync()
+    .then(function () {
+      Event.findAll({where: {eventStartDate:{ $gte: new Date()}}})
+      .then(function (data) {
+        res.json(data);
+      })
+    })
+  })
+
+router.route('/eventoverviews')
+  .get(function (req, res) {
+    sql.sync()
+    .then(function () {
+      EventOverview.findAll()
+      .then(function (data) {
+        res.json(data);
+      })
+    })
+  })
+
+    //This route has to be last or it will override the other routes
+  router.route('/:eventName')
+  .get(function (req, res) {
+    // var cat = req.params.eventName.toLowerCase().replace(/\s+/g, '');
+    var theParam = req.params.eventName.toLowerCase().slice(1);
+    sql.sync()
+    .then(function () {
+      Event.findAll()
+      .then(function (data) {
+        var testArr = [];
+        for (var i = 0; i < data.length; i++) {
+          testArr.push(data[i].eventUrl);
+        }
+        if (testArr.indexOf(req.params.eventName) !== -1) {
+          res.sendFile(path.join(__dirname, '../views/blank-event.html'));  
+        } 
+        if (testArr.indexOf(req.params.eventName) === -1) {
+          res.status(404);
+          res.sendFile(path.join(__dirname, '../views/thank-you.html')); //I need to make a 404 page
+        }
+      })
+    })
+  })
+
+
 // make dynamic routes for events
 //Read the blank html file to us for a template
-fs.readFile(path.join(__dirname, '../views/blank-event.html'), function (err, data) {
+/*fs.readFile(path.join(__dirname, '../views/blank-event.html'), function (err, data) {
   var theHtml = data.toString();
   var theSpeakersHtml = '<div id="eventSpeakers" class="tab-content">';
   var theOverViewHtml = '<div id="event-overview" class="tab-content">';
@@ -180,11 +227,10 @@ fs.readFile(path.join(__dirname, '../views/blank-event.html'), function (err, da
     //find all events happening in the future
     Event.findAll({where: {eventStartDate: {$gte: new Date()}}})
     .then(function (eventsTable) {
-      console.log(eventsTable)
       //loop over the events table
       for (var i = 0; i < eventsTable.length; i++) {
         //declare variable to hold event name
-        console.log(eventsTable[i].eventUrl)
+        // console.log(eventsTable[i].eventUrl)
         var thisEventName = eventsTable[i].eventName;
         var thisEventId = eventsTable[i].id; 
         //search for EventOverview table that has the id as the current event
@@ -192,6 +238,7 @@ fs.readFile(path.join(__dirname, '../views/blank-event.html'), function (err, da
         .then(function (overviewTable) {
           //insert the current event name in h2 tags
           theOverViewHtml += '<h2>' + thisEventName + '</h2>';
+          // console.log('CONSOLE LOG :::::::  ', theOverViewHtml);
           //loop over overview table and put headings in h3 tags and paragraph txt in p tags
           for (var j = 0; j < overviewTable.length; j++) {
             theOverViewHtml += '<h3>' + overviewTable[j].headingText + '</h3><p>' + overviewTable[j].paragraphText + '</p>';
@@ -290,6 +337,7 @@ fs.readFile(path.join(__dirname, '../views/blank-event.html'), function (err, da
                             mapTab += '<h2>' + map[nn].aboveMapHeader + '</h2>' + map[nn].mapImapHtml;
                           }
                           theHtml = theHtml.replace('<div id="travelTab" class="tab-content">', mapTab);
+                          console.log(eventEndpoints);
                           router.get('/' + eventsTable[i - 1].eventUrl, function (req, res) {
                             res.send(theHtml);
                           })
@@ -306,7 +354,38 @@ fs.readFile(path.join(__dirname, '../views/blank-event.html'), function (err, da
       }
     });
   });
-});
+});*/
+
+/*fs.readFile(path.join(__dirname, '../views/blank-event.html'), function (err, data) {
+  var theHtml = data.toString();
+  var index = 0;
+  sql.sync()
+  .then(function () {
+    Event.findAll({where: {eventStartDate: {$gte: new Date()}}})
+    .then(function (events) {
+      var eventEndpoints = [];
+      for (var i = 0; i < events.length; i++) {
+        eventEndpoints.push(events[i].eventUrl);
+      }
+      for (var j = 0; j < events.length; j++) {
+        EventOverview.findAll({where: {eventId: events[j].id}})
+        .then(function (overviews) {
+          var overviewHeadings = '<div id="event-overview" class="tab-content">';
+          for (var k = 0; k < overviews.length; k++) {
+        overviewHeadings += '<h2>' + overviews[k].headingText + '</h2>';
+            
+          }
+        theHtml.replace('<div id="event-overview" class="tab-content">',  overviewHeadings);
+        console.log(overviewHeadings);
+        })
+        router.get('/' + events[j].eventUrl, function (req, res) {
+          res.send(theHtml);
+        });
+      }
+      
+    })
+  })
+});*/
 
 /*        EventAttendee.findAll({where: {$and: {eventId: eventsTable[i].id, eventAttendeeRole: 'speaker'}}})
         .then(function (speakersTable) {
