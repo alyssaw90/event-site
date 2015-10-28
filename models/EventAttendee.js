@@ -19,7 +19,7 @@ var EventAttendee = module.exports = sql.define('EventAttendee', {
 });
 
 EventAttendee.sync({force: false})
-/*  .then(function () {
+  /*.then(function () {
     return EventAttendee.create({
       eventId: 1,
       attendeeId: 1,
@@ -51,6 +51,41 @@ EventAttendee.sync({force: false})
     return EventAttendee.create({
       eventId: 1,
       attendeeId: 22,
+      eventAttendeeRole: 'attendee'
+    })
+  })
+  .then(function () {
+    return EventAttendee.create({
+      eventId: 2,
+      attendeeId: 5,
+      eventAttendeeRole: 'speaker'
+    })
+  })
+  .then(function () {
+    return EventAttendee.create({
+      eventId: 2,
+      attendeeId: 6,
+      eventAttendeeRole: 'speaker'
+    })
+  })
+  .then(function () {
+    return EventAttendee.create({
+      eventId: 2,
+      attendeeId: 7,
+      eventAttendeeRole: 'speaker'
+    })
+  })
+  .then(function () {
+    return EventAttendee.create({
+      eventId: 2,
+      attendeeId: 8,
+      eventAttendeeRole: 'speaker'
+    })
+  })
+  .then(function () {
+    return EventAttendee.create({
+      eventId: 2,
+      attendeeId: 1,
       eventAttendeeRole: 'attendee'
     })
   })*/
