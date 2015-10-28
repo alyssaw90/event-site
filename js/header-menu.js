@@ -95,7 +95,24 @@
 			menu = menu.replace('<div class="col_2 center-block menu-block upcoming-menu"><a href="/find-an-event"><h2>Find an Event</h2></a></div>', upcomingMenu);
 			var headerMenu = $.parseHTML(menu);
 			$header.prepend(headerMenu);
+			$('.expanding-menu').hover(function () {
+				console.log('hola mundo');
+				var $menuHeight = $(this).parent().height();
+	 			var $menuWidth  = $('.upcoming-menu').width();
+	 			// $('.upcoming-sub-menu:first').css('margin-top', $menuHeight);
+	 			$('.expanding-menu').css({'height': $menuHeight, 'width': $menuWidth});
+	 			$('.expanding-menu').height($menuHeight);
+	 			$('.expanding-menu').width($menuWidth);
+	 			$('.upcoming-sub-menu').slideDown('fast');
+				$('.upcoming-sub-menu').css('display', 'inline');
+				},
+				function () {
+					$('.upcoming-sub-menu').slideUp('fast');
+				}
+			);
 		})
+
+
 
 		if (window.location.pathname === '/') {
 			$('.home-menu-button').addClass('current-page');
