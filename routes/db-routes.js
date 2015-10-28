@@ -162,127 +162,157 @@ module.exports = function (router) {
   });
 
 router.route('/events')
-  .get(function (req, res) {
-    sql.sync()
-    .then(function () {
-      Event.findAll({where: {eventStartDate:{ $gte: new Date()}}})
-      .then(function (data) {
-        res.json(data);
-      })
+.get(function (req, res) {
+  sql.sync()
+  .then(function () {
+    Event.findAll({where: {eventStartDate:{ $gte: new Date()}}})
+    .then(function (data) {
+      res.json(data);
     })
   })
+})
 
 router.route('/eventoverviews')
-  .get(function (req, res) {
-    sql.sync()
-    .then(function () {
-      EventOverview.findAll()
-      .then(function (data) {
-        res.json(data);
-      })
+.get(function (req, res) {
+  sql.sync()
+  .then(function () {
+    EventOverview.findAll()
+    .then(function (data) {
+      res.json(data);
     })
   })
+})
 
 router.route('/eventschedules')
-  .get(function (req, res) {
-    sql.sync()
-    .then(function () {
-      EventSchedule.findAll()
-      .then(function (data) {
-        res.json(data);
-      })
+.get(function (req, res) {
+  sql.sync()
+  .then(function () {
+    EventSchedule.findAll()
+    .then(function (data) {
+      res.json(data);
     })
   })
+})
 
 router.route('/sponsors')
-  .get(function (req, res) {
-    var allSponsors = []
-    sql.sync()
-    .then(function () {
-      EventPlatinumSponsor.findAll()
-      .then(function (platinumSponsors) {
-        EventGoldSponsor.findAll()
-        .then(function (goldSponsors) {
-          EventSilverSponsor.findAll()
-          .then(function (silverSponsors) {
-            EventBronzeSponsor.findAll()
-            .then(function (bronzeSponsors) {
-              allSponsors.push(platinumSponsors, goldSponsors, silverSponsors, bronzeSponsors);
-              res.json(allSponsors);
-            })
+.get(function (req, res) {
+  var allSponsors = []
+  sql.sync()
+  .then(function () {
+    EventPlatinumSponsor.findAll()
+    .then(function (platinumSponsors) {
+      EventGoldSponsor.findAll()
+      .then(function (goldSponsors) {
+        EventSilverSponsor.findAll()
+        .then(function (silverSponsors) {
+          EventBronzeSponsor.findAll()
+          .then(function (bronzeSponsors) {
+            allSponsors.push(platinumSponsors, goldSponsors, silverSponsors, bronzeSponsors);
+            res.json(allSponsors);
           })
         })
       })
     })
   })
+})
 
 router.route('/contacts')
-  .get(function (req, res) {
-    sql.sync()
-    .then(function () {
-      Contact.findAll()
-      .then(function (data) {
-        res.json(data);
-      })
+.get(function (req, res) {
+  sql.sync()
+  .then(function () {
+    Contact.findAll()
+    .then(function (data) {
+      res.json(data);
     })
   })
+})
 
 router.route('/attendees')
-  .get(function (req, res) {
-    sql.sync()
-    .then(function () {
-      EventAttendee.findAll()
-      .then(function (data) {
-        res.json(data);
-      })
+.get(function (req, res) {
+  sql.sync()
+  .then(function () {
+    EventAttendee.findAll()
+    .then(function (data) {
+      res.json(data);
     })
   })
+})
 
 router.route('/sponsorintro')
-  .get(function (req, res) {
-    sql.sync()
-    .then(function () {
-      EventSponsorInfo.findAll()
-      .then(function (data) {
-        res.json(data);
-      })
+.get(function (req, res) {
+  sql.sync()
+  .then(function () {
+    EventSponsorInfo.findAll()
+    .then(function (data) {
+      res.json(data);
     })
   })
+})
 
 router.route('/travelmaps')
-  .get(function (req, res) {
-    sql.sync()
-    .then(function () {
-      EventTravelMap.findAll()
-      .then(function (data) {
-        res.json(data);
-      })
+.get(function (req, res) {
+  sql.sync()
+  .then(function () {
+    EventTravelMap.findAll()
+    .then(function (data) {
+      res.json(data);
     })
   })
+})
 
-    //This route has to be last or it will override the other routes
-  router.route('/:eventName')
-  .get(function (req, res) {
-    // var cat = req.params.eventName.toLowerCase().replace(/\s+/g, '');
-    var theParam = req.params.eventName.toLowerCase().slice(1);
-    sql.sync()
-    .then(function () {
-      Event.findAll()
-      .then(function (data) {
-        var testArr = [];
-        for (var i = 0; i < data.length; i++) {
-          testArr.push(data[i].eventUrl);
-        }
-        if (testArr.indexOf(req.params.eventName) !== -1) {
-          res.sendFile(path.join(__dirname, '../views/blank-event.html'));  
-        } 
-        if (testArr.indexOf(req.params.eventName) === -1) {
-          res.status(404);
-          res.sendFile(path.join(__dirname, '../views/thank-you.html')); //I need to make a 404 page
-        }
-      })
+router.route('/upcomingeventurls')
+.get(function (req, res) {
+  sql.sync()
+  .then(function () {
+    Event.findAll({where: {eventStartDate: {$gte: new Date()}}})
+    .then(function (data) {
+      var theUrls = [];
+      console.log(data)
+      for (var i = 0; i < data.length; i++) {
+        theUrls.push(data[i].eventUrl);
+      }
+      res.json(theUrls);
     })
   })
+})
+
+sql.sync()
+.then(function () {
+  Event.findAll()
+  .then(function (data) {
+    var testArr = [];
+    for (var i = 0; i < data.length; i++) {
+      testArr.push(data[i].eventUrl);
+    }
+  })
+})
+
+//This route has to be last or it will override the other routes
+router.route('/event/:eventName')
+.get(function (req, res) {
+  // var cat = req.params.eventName.toLowerCase().replace(/\s+/g, '');
+  var theParam = req.params.eventName.toLowerCase().slice(1);
+  sql.sync()
+  .then(function () {
+    Event.findAll()
+    .then(function (data) {
+      var testArr = [];
+      for (var i = 0; i < data.length; i++) {
+        testArr.push(data[i].eventUrl);
+      }
+      console.log(req.url)
+      if (testArr.indexOf(req.params.eventName) !== -1) {
+        res.sendFile(path.join(__dirname, '../views/blank-event.html'));  
+      } 
+      if (testArr.indexOf(req.params.eventName) === -1) {
+        res.status(404);
+        res.send(path.join(__dirname, '../views/thank-you.html')); //I need to make a 404 page
+      }
+    })
+  })
+})
+
+
 
 
 // make dynamic routes for events
