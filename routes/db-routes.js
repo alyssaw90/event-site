@@ -267,10 +267,13 @@ router.route('/upcomingeventurls')
     Event.findAll({where: {eventStartDate: {$gte: new Date()}}})
     .then(function (data) {
       var theUrls = [];
-      console.log(data)
       for (var i = 0; i < data.length; i++) {
-        theUrls.push(data[i].eventUrl);
+        var tmpObj = {};
+        tmpObj.url = data[i].eventUrl;
+        tmpObj.eventName = data[i].eventName;
+        theUrls.push(tmpObj);
       }
+      console.log(theUrls)
       res.json(theUrls);
     })
   })
@@ -300,7 +303,6 @@ router.route('/event/:eventName')
       for (var i = 0; i < data.length; i++) {
         testArr.push(data[i].eventUrl);
       }
-      console.log(req.url)
       if (testArr.indexOf(req.params.eventName) !== -1) {
         res.sendFile(path.join(__dirname, '../views/blank-event.html'));  
       } 

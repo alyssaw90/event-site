@@ -71,9 +71,6 @@
 				<div class="col_2 center-block">\
 					<div class="expanding-menu upcoming-menu">\
 						<div class="col_2 center-block menu-block upcoming-menu"><a href="/find-an-event"><h2>Find an Event</h2></a></div>\
-						<div class="col_2 center-block menu-block upcoming-sub-menu"><a href="/santa-clara-2015"><h2>SNIA Storage Developer Conference 2015, Santa Clara, CA</h2></a></div>\
-						<div class="col_2 center-block menu-block upcoming-sub-menu"><a href="/santa-clara-2015"><h2>Shanghai Interop Dev Days 2015</h2></a></div>\
-						<div class="col_2 center-block menu-block upcoming-sub-menu"><a href="/santa-clara-2015"><h2>Europe Protocols Plugfest</h2></a></div>\
 					</div>\
 				</div>\
 			<div class="col_custom-menu">\
@@ -90,12 +87,16 @@
 		</nav>\
 		<!-- End gray desktop menu -->';
 
-		$.get('/eventschedules', function (data) {
-			console.log(data);
+		$.get('/upcomingeventurls', function (data) {
+			var upcomingMenu = '<div class="col_2 center-block menu-block upcoming-menu"><a href="/find-an-event"><h2>Find an Event</h2></a></div>';
+			$(data).each(function (i, elem) {
+				upcomingMenu += '<div class="col_2 center-block menu-block upcoming-menu"><a href="/event/' + elem['url'] + '"><h2>' + elem['eventName'] + '</h2></a></div>';
+			})
+			menu = menu.replace('<div class="col_2 center-block menu-block upcoming-menu"><a href="/find-an-event"><h2>Find an Event</h2></a></div>', upcomingMenu);
+			var headerMenu = $.parseHTML(menu);
+			$header.prepend(headerMenu);
 		})
 
-		var headerMenu = $.parseHTML(menu);
-		$header.prepend(headerMenu);
 		if (window.location.pathname === '/') {
 			$('.home-menu-button').addClass('current-page');
 		}
@@ -111,4 +112,14 @@
 		if (window.location.pathname === '/past-events') {
 			$('.past-events-header-menu-block').addClass('current-page');
 		}
+					
  });
+			
+/*
+<div class="expanding-menu upcoming-menu">\
+						<div class="col_2 center-block menu-block upcoming-menu"><a href="/find-an-event"><h2>Find an Event</h2></a></div>\
+						<div class="col_2 center-block menu-block upcoming-sub-menu"><a href="/santa-clara-2015"><h2>SNIA Storage Developer Conference 2015, Santa Clara, CA</h2></a></div>\
+						<div class="col_2 center-block menu-block upcoming-sub-menu"><a href="/santa-clara-2015"><h2>Shanghai Interop Dev Days 2015</h2></a></div>\
+						<div class="col_2 center-block menu-block upcoming-sub-menu"><a href="/santa-clara-2015"><h2>Europe Protocols Plugfest</h2></a></div>\
+					</div>*/
+

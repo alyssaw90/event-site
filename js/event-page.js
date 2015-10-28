@@ -92,7 +92,6 @@ $(document).ready(function () {
 										}
 									}
 									for (var key in eventsObj) {
-										console.log(pathname)
 										if (pathname === eventsObj[key].eventUrl) {
 											$('#event-overview').append(eventsObj[key].overviewHtml); 
 										}
