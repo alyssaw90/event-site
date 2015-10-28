@@ -21,7 +21,7 @@ var EventTravelMap = module.exports = sql.define('EventTravelMap', {
 })
 
 EventTravelMap.sync({force: false})
-/*  .then(function () {
+ /* .then(function () {
     return EventTravelMap.create({
       eventId: 1,
       aboveMapHeader: 'Santa Clara, CA',

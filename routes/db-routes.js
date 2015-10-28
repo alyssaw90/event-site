@@ -183,6 +183,83 @@ router.route('/eventoverviews')
     })
   })
 
+router.route('/eventschedules')
+  .get(function (req, res) {
+    sql.sync()
+    .then(function () {
+      EventSchedule.findAll()
+      .then(function (data) {
+        res.json(data);
+      })
+    })
+  })
+
+router.route('/sponsors')
+  .get(function (req, res) {
+    var allSponsors = []
+    sql.sync()
+    .then(function () {
+      EventPlatinumSponsor.findAll()
+      .then(function (platinumSponsors) {
+        EventGoldSponsor.findAll()
+        .then(function (goldSponsors) {
+          EventSilverSponsor.findAll()
+          .then(function (silverSponsors) {
+            EventBronzeSponsor.findAll()
+            .then(function (bronzeSponsors) {
+              allSponsors.push(platinumSponsors, goldSponsors, silverSponsors, bronzeSponsors);
+              res.json(allSponsors);
+            })
+          })
+        })
+      })
+    })
+  })
+
+router.route('/contacts')
+  .get(function (req, res) {
+    sql.sync()
+    .then(function () {
+      Contact.findAll()
+      .then(function (data) {
+        res.json(data);
+      })
+    })
+  })
+
+router.route('/attendees')
+  .get(function (req, res) {
+    sql.sync()
+    .then(function () {
+      EventAttendee.findAll()
+      .then(function (data) {
+        res.json(data);
+      })
+    })
+  })
+
+router.route('/sponsorintro')
+  .get(function (req, res) {
+    sql.sync()
+    .then(function () {
+      EventSponsorInfo.findAll()
+      .then(function (data) {
+        res.json(data);
+      })
+    })
+  })
+
+router.route('/travelmaps')
+  .get(function (req, res) {
+    sql.sync()
+    .then(function () {
+      EventTravelMap.findAll()
+      .then(function (data) {
+        res.json(data);
+      })
+    })
+  })
+
     //This route has to be last or it will override the other routes
   router.route('/:eventName')
   .get(function (req, res) {
