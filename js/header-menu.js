@@ -87,10 +87,24 @@
 		</nav>\
 		<!-- End gray desktop menu -->';
 
+			function changeWidth (div) {
+			var widestBlock = 0;
+			div.each(function () {
+				if ($(this).width() > widestBlock) {
+					widestBlock = $(this).width();
+				}
+			});
+	
+			div.each(function () {
+				$(this).width(widestBlock);
+			});
+		}
+
+
 		$.get('/upcomingeventurls', function (data) {
 			var upcomingMenu = '<div class="col_2 center-block menu-block upcoming-menu"><a href="/find-an-event"><h2>Find an Event</h2></a></div>';
 			$(data).each(function (i, elem) {
-				upcomingMenu += '<div class="col_2 center-block menu-block upcoming-menu"><a href="/event/' + elem['url'] + '"><h2>' + elem['eventName'] + '</h2></a></div>';
+				upcomingMenu += '<div class="col_2 center-block menu-block upcoming-menu upcoming-sub-menu"><a href="/event/' + elem['url'] + '"><h2>' + elem['eventName'] + '</h2></a></div>';
 			})
 			menu = menu.replace('<div class="col_2 center-block menu-block upcoming-menu"><a href="/find-an-event"><h2>Find an Event</h2></a></div>', upcomingMenu);
 			var headerMenu = $.parseHTML(menu);
@@ -110,6 +124,8 @@
 					$('.upcoming-sub-menu').slideUp('fast');
 				}
 			);
+			$(window).load(changeWidth($('.menu-block')));
+			$(window).resize(changeWidth($('.menu-block')));
 		})
 
 
