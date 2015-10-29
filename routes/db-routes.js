@@ -21,6 +21,7 @@ var AdditionalTravelSection = require('../models/AdditionalTravelSection');
 var aboutUs = require('../views/about')();
 var fs = require('fs');
 // var $ = require('cheerio');
+var clc = require('cli-color');
 var bodyparser = require('body-parser');
 var path = require('path');
 var Sql = require('sequelize');
@@ -34,7 +35,7 @@ var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
     idle: 10000
   }
 });
-
+console.log(clc.red('Text in red'));
 module.exports = function (router) {
   router.use(bodyparser.json());
   router.use(bodyparser.urlencoded({
