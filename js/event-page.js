@@ -6,7 +6,7 @@
 
 $(document).ready(function () {
 	$.get('/events', function (data) {
-		var pathname = window.location.pathname.slice(1);
+		var pathname = window.location.pathname.slice(7);
 		var eventsObj = {};
 		$(data).each(function (i, elem) {
 			eventsObj[elem.id] = {};
