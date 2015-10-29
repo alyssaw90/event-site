@@ -147,12 +147,3 @@
 		}
 					
  });
-			
-/*
-<div class="expanding-menu upcoming-menu">\
-						<div class="col_2 center-block menu-block upcoming-menu"><a href="/find-an-event"><h2>Find an Event</h2></a></div>\
-						<div class="col_2 center-block menu-block upcoming-sub-menu"><a href="/santa-clara-2015"><h2>SNIA Storage Developer Conference 2015, Santa Clara, CA</h2></a></div>\
-						<div class="col_2 center-block menu-block upcoming-sub-menu"><a href="/santa-clara-2015"><h2>Shanghai Interop Dev Days 2015</h2></a></div>\
-						<div class="col_2 center-block menu-block upcoming-sub-menu"><a href="/santa-clara-2015"><h2>Europe Protocols Plugfest</h2></a></div>\
-					</div>*/
-
