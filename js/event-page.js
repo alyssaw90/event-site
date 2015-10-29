@@ -78,12 +78,23 @@ $(document).ready(function () {
 									eventsObj[elem.eventId].sponsorIntroHeading = elem.sponsorshipHeading;
 									eventsObj[elem.eventId].sponsorIntroParagraph = elem.sponsorshipParagraph;
 								})
-								$.get('/travelmaps', function (travelmaps) {
-									$(travelmaps).each(function (i, elem) {
+								$.get('/travelinfo', function (travelinfo) {
+									console.log(travelinfo);
+									$(travelinfo).each(function (i, elem) {
 										eventsObj[elem.eventId]['aboveMapHeader'] = elem.aboveMapHeader;
 										eventsObj[elem.eventId]['belowMapHeading'] = elem.belowMapHeading;
 										eventsObj[elem.eventId]['mapDesc'] = elem.mapDesc;
-										eventsObj[elem.eventId]['mapImapHtml'] = elem.mapImapHtml;								
+										eventsObj[elem.eventId]['mapImapHtml'] = elem.mapImapHtml;
+										eventsObj[elem.eventId]['venueName'] = elem.venueName;
+										eventsObj[elem.eventId]['venueStreetAddress'] = elem.venueStreetAddress;
+										eventsObj[elem.eventId]['venueCityName'] = elem.venueCityName;
+										eventsObj[elem.eventId]['venueDesc'] = elem.venueDesc;
+										eventsObj[elem.eventId]['venueImage'] = elem.venueImage;
+										eventsObj[elem.eventId]['travelHeading'] = elem.travelHeading;
+										eventsObj[elem.eventId]['travelDesc'] = elem.travelDesc;
+										eventsObj[elem.eventId]['travelImage'] = elem.travelImage;
+										eventsObj[elem.eventId]['accommodationHeading'] = elem.accommodationHeading;
+										eventsObj[elem.eventId]['accommodationParagraph'] = elem.accommodationParagraph;								
 									})
 									for (var key in eventsObj) {
 										eventsObj[key].overviewHtml += '<h2>' + eventsObj[key].eventName + '</h2>';
