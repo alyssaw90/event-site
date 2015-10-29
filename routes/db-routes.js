@@ -13,7 +13,11 @@ var EventPlatinumSponsor = require('../models/EventPlatinumSponsor');
 var EventGoldSponsor = require('../models/EventGoldSponsor');
 var EventSilverSponsor = require('../models/EventSilverSponsor');
 var EventBronzeSponsor = require('../models/EventBronzeSponsor');
-var EventTravelMap = require('../models/EventTravelMap');
+var EventTravel = require('../models/EventTravel');
+var TravelAccommodation = require('../models/TravelAccommodation');
+var TravelRestaurant = require('../models/TravelRestaurant');
+var TravelTip = require('../models/TravelTip');
+var AdditionalTravelSection = require('../models/AdditionalTravelSection');
 var aboutUs = require('../views/about')();
 var fs = require('fs');
 // var $ = require('cheerio');
@@ -249,11 +253,11 @@ router.route('/sponsorintro')
   })
 })
 
-router.route('/travelmaps')
+router.route('/travelinfo')
 .get(function (req, res) {
   sql.sync()
   .then(function () {
-    EventTravelMap.findAll()
+    EventTravel.findAll()
     .then(function (data) {
       res.json(data);
     })
@@ -440,7 +444,7 @@ router.route('/event/:eventName')
                         }
                         mediaSponsorTab += '</div>';
                         theHtml = theHtml.replace('<div id="eventSponsors" class="tab-content">', mediaSponsorTab);
-                        EventTravelMap.findAll({where: {eventId: thisEventId}})
+                        EventTravel.findAll({where: {eventId: thisEventId}})
                         .then(function (map) {
                           for (var nn = 0; nn < map.length; nn++) {
                             mapTab += '<h2>' + map[nn].aboveMapHeader + '</h2>' + map[nn].mapImapHtml;
