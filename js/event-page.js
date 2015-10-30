@@ -15,6 +15,7 @@ $(document).ready(function () {
 			eventsObj[data[i].id]['overviewHtml'] = '';
 			eventsObj[data[i].id]['scheduleDaysHtml'] = '<ul class="tabs center">';
 			eventsObj[data[i].id]['speakersHtml'] = '';
+			eventsObj[data[i].id]['travelHtml'] = '<h2>locationTitle</h2><div class="flexible-container">theMap</div><hr class="alt1" /><ul class="tabs left"><li class="current"><a href="#venue-tab"><h5>Venue</h5></a></li><li><a href="#travel-tab"><h5>Travel</h5></a></li><li><a href="#accomodations-tab"><h5>Accomodations</h5></a></li><li><a href="#tips-tab"><h5>Tips & Tricks</h5></a></li><li><a href="#eat-drink"><h5>Where to Eat & Drink</h5></a></li></ul><div id="venue-tab" class="tab-content" style="display:block;"><img src="data:image;base64,VenueImage" /><h3>VenueDivHeader</h3><p>VenueDescription</p></div><div id="travel-tab" class="tab-content" style="display:none;"><img src="data:image;base64,TravelImage" /><h3>TravelDivHeader</h3><p>TravelDivDescription</p></div><div id="accomodations-tab" class="tab-content" style="display:none;"><h3>AccommodationsDivHeader</h3><p>AccommodationsDivDescription</p><p>AccommodationsDivList</p></div><div id="tips-tab" class="tab-content" style="display:none;"><h3>TipsDivHeader</h3><p>TipsDivDescription</p><p>TipsDivList</p></div><div id="eat-drink" class="tab-content" style="display:none;"><h3>eatDrinkDivHeader</h3><p>eatDrinkDivDescription</p><p>eatDrinkDivList</p></div>';
 			eventsObj[data[i].id]['dailyScheduleHtml'] = '';
 			eventsObj[data[i].id]['eventUrl'] = data[i].eventUrl;
 			eventsObj[data[i].id]['eventStartDate'] = data[i].eventStartDate;
@@ -35,6 +36,8 @@ $(document).ready(function () {
 			eventsObj[data[i].id]['belowMapHeading'] = '';
 			eventsObj[data[i].id]['mapDesc'] = '';
 			eventsObj[data[i].id]['mapImapHtml'] = '';
+			eventsObj[data[i].id]['tipHeading'] = [];
+			eventsObj[data[i].id]['tipParagraph'] = [];
 			/*eventsObj[data[i].id]['scheduleTimes'] = [];
 			eventsObj[data[i].id]['scheduleDescriptions'] = [];*/
 		}
@@ -114,10 +117,12 @@ $(document).ready(function () {
 													eventsObj[travelrestaurants[i].eventId]['restaurantName'] = travelrestaurants[i].restaurantName;
 													eventsObj[travelrestaurants[i].eventId]['restaurantDesc'] = travelrestaurants[i].restaurantDesc;
 												}
-												//create string for overview elements
 												for (var key in eventsObj) {
 													var daysLength = eventsObj[key].scheduleDays.length;
 													var scheduleInfoObj = {};
+													//create string of html for events tab
+													eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('locationTitle', eventsObj[key].aboveMapHeader).replace('theMap', eventsObj[key].mapImapHtml).replace('VenueDivHeader', eventsObj[key].venueName).replace('VenueDescription', eventsObj[key].venueDesc).replace('VenueImage', eventsObj[key].venueImage).replace('TravelImage', eventsObj[key].travelImage).replace('TravelDivHeader', eventsObj[key].travelHeading).replace('TravelDivDescription', eventsObj[key].travelDesc).replace('AccommodationsDivHeader', eventsObj[key].accommodationHeading).replace('AccommodationsDivDescription', eventsObj[key].accommodationParagraph);
+													console.log(eventsObj[key].travelHtml);
 													//loop over the speakers array and create html for speakers tab
 													for (var i = 0, j = eventsObj[key].speakers.length; i < j; i++) {
 														eventsObj[key].speakersHtml += '<h4>' + eventsObj[key].speakers[i].firstName + ' ' + eventsObj[key].speakers[i].lastName + '</h4><h5>' + eventsObj[key].speakers[i].msTeamTitle + '</h5><p><img class="pull-left" src="data:image;base64,' + eventsObj[key].speakers[i].headShot + '" />' + eventsObj[key].speakers[i].contactDescription + '</p><hr />';
@@ -177,6 +182,7 @@ $(document).ready(function () {
 													//combine schedule header list and schedule body
 													eventsObj[key].scheduleDaysHtml += eventsObj[key].dailyScheduleHtml;
 												}
+												// console.log(eventsObj[key].travelHtml);
 												//add elements to DOM
 												for (var key in eventsObj) {
 													if (pathname === eventsObj[key].eventUrl) {
@@ -184,6 +190,7 @@ $(document).ready(function () {
 														$('#event-overview').append(eventsObj[key].overviewHtml); 
 														$('#event-schedule').append(eventsObj[key].scheduleDaysHtml);
 														$('#eventSpeakers').append(eventsObj[key].speakersHtml);
+														$('#travelTab').append(eventsObj[key].travelHtml);
 														console.log('End   :: ', $.now());
 													}
 												}
