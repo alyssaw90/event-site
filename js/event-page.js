@@ -38,6 +38,11 @@ $(document).ready(function () {
 			eventsObj[data[i].id]['mapImapHtml'] = '';
 			eventsObj[data[i].id]['tipHeading'] = [];
 			eventsObj[data[i].id]['tipParagraph'] = [];
+			eventsObj[data[i].id]['accommodationName'] = [];
+			eventsObj[data[i].id]['accommodationDesc'] = [];
+			eventsObj[data[i].id]['accommodationUrl'] = [];
+			eventsObj[data[i].id]['restaurantName'] = [];
+			eventsObj[data[i].id]['restaurantDesc'] = [];
 			/*eventsObj[data[i].id]['scheduleTimes'] = [];
 			eventsObj[data[i].id]['scheduleDescriptions'] = [];*/
 		}
@@ -103,9 +108,9 @@ $(document).ready(function () {
 									}
 									$.get('/accommodationinfo', function (accommodationinfo) {
 										for (var i = 0, j = accommodationinfo.length; i < j; i++) {
-											eventsObj[accommodationinfo[i].eventId]['accommodationName'] = accommodationinfo[i].accommodationName;
-											eventsObj[accommodationinfo[i].eventId]['accommodationDesc'] = accommodationinfo[i].accommodationDesc;
-											eventsObj[accommodationinfo[i].eventId]['accommodationUrl'] = accommodationinfo[i].accommodationUrl;
+											eventsObj[accommodationinfo[i].eventId]['accommodationName'].push(accommodationinfo[i].accommodationName);
+											eventsObj[accommodationinfo[i].eventId]['accommodationDesc'].push(accommodationinfo[i].accommodationDesc);
+											eventsObj[accommodationinfo[i].eventId]['accommodationUrl'].push(accommodationinfo[i].accommodationUrl);
 										}
 										$.get('/traveltips', function (traveltips) {
 											for (var i = 0, j = traveltips.length; i < j; i++) {
@@ -114,8 +119,8 @@ $(document).ready(function () {
 											}
 											$.get('/travelrestaurants', function (travelrestaurants) {
 												for (var i = 0, j = travelrestaurants.length; i < j; i++) {
-													eventsObj[travelrestaurants[i].eventId]['restaurantName'] = travelrestaurants[i].restaurantName;
-													eventsObj[travelrestaurants[i].eventId]['restaurantDesc'] = travelrestaurants[i].restaurantDesc;
+													eventsObj[travelrestaurants[i].eventId]['restaurantName'].push(travelrestaurants[i].restaurantName);
+													eventsObj[travelrestaurants[i].eventId]['restaurantDesc'].push(travelrestaurants[i].restaurantDesc);
 												}
 												for (var key in eventsObj) {
 													var daysLength = eventsObj[key].scheduleDays.length;
