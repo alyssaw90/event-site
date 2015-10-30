@@ -120,6 +120,7 @@ $(document).ready(function () {
 												//create string for overview elements
 												for (var key in eventsObj) {
 													var daysLength = eventsObj[key].scheduleDays.length;
+													var scheduleInfoObj = {};
 													//add event name to overview html
 													eventsObj[key].overviewHtml += '<h2>' + eventsObj[key].eventName + '</h2>';
 													//create html for over subheads and paragraphs
@@ -139,20 +140,44 @@ $(document).ready(function () {
 														}
 													});
 													$(eventsObj[key].scheduleDays).each(function (i, elem) {
-														console.log(i);
 														if (i === 0) {
 															eventsObj[key].dailyScheduleHtml += '<div id="tabr' + elem + '" class="tab-content" style="display:block;"><table cellspacing="0" cellpadding="0" class="striped schedule"><thead><tr><th><h3>' + elem + '</h3></th></tr></thead>' + elem + 'Placeholder</table></div>';
 														}
 														if (i > 0) {
-															eventsObj[key].dailyScheduleHtml += '<div id="tabr' + elem + '" class="tab-content" style="display:none;"><table cellspacing="0" cellpadding="0" class="striped schedule"><thead><tr><th><h3>' + elem + '</h3></th></tr></thead>' + elem + 'Placeholder</table></div>';
+															eventsObj[key].dailyScheduleHtml += '<div id="tabr' + elem + '" class="tab-content" style="display:none;"><table cellspacing="0" cellpadding="0" class="striped schedule"><thead><tr><th><h3>' + elem + '</h3></th></tr></thead><tbody>' + elem + 'Placeholder</tbody></table></div>';
 														}
 													});
+													for (var i = 0, j = eventsObj[key].scheduleInfo.length; i < j; i++) {
+														console.log(scheduleInfoObj[eventsObj[key].scheduleInfo[i].scheduleDay + 'Placeholder']);
+														if (!scheduleInfoObj[eventsObj[key].scheduleInfo[i].scheduleDay + 'Placeholder']) {
+															scheduleInfoObj[eventsObj[key].scheduleInfo[i].scheduleDay + 'Placeholder'] = '';
+														}
+														if (i <= 0) {
+															scheduleInfoObj[eventsObj[key].scheduleInfo[i].scheduleDay + 'Placeholder'] += '<tr class="first"><td>' + eventsObj[key].scheduleInfo[i].scheduleTime + '</td><td>' +  eventsObj[key].scheduleInfo[i].description + '</td></tr>';
+														}
+														if (i > 0 && i < j - 1 && i % 2 !== 0) {
+															scheduleInfoObj[eventsObj[key].scheduleInfo[i].scheduleDay + 'Placeholder'] += '<tr class="alt"><td>' + eventsObj[key].scheduleInfo[i].scheduleTime + '</td><td>' +  eventsObj[key].scheduleInfo[i].description + '</td></tr>';															
+														}
+														if (i > 0 && i < j - 1 && i % 2 === 0) {
+															scheduleInfoObj[eventsObj[key].scheduleInfo[i].scheduleDay + 'Placeholder'] += '<tr><td>' + eventsObj[key].scheduleInfo[i].scheduleTime + '</td><td>' +  eventsObj[key].scheduleInfo[i].description + '</td></tr>';															
+														}
+														if (i === j - 1 && i % 2 !== 0) {
+															scheduleInfoObj[eventsObj[key].scheduleInfo[i].scheduleDay + 'Placeholder'] += '<tr class="alt last"><td>' + eventsObj[key].scheduleInfo[i].scheduleTime + '</td><td>' +  eventsObj[key].scheduleInfo[i].description + '</td></tr>';
+														}
+														if (i === j - 1 && i % 2 === 0) {
+															scheduleInfoObj[eventsObj[key].scheduleInfo[i].scheduleDay + 'Placeholder'] += '<tr class="last"><td>' + eventsObj[key].scheduleInfo[i].scheduleTime + '</td><td>' +  eventsObj[key].scheduleInfo[i].description + '</td></tr>';
+														}
+													}
+													$(eventsObj[key].scheduleInfo).each(function (i, elem) {
+													});
+													for (var key3 in scheduleInfoObj) {
+														eventsObj[key].dailyScheduleHtml = eventsObj[key].dailyScheduleHtml.replace(key3, scheduleInfoObj[key3]);
+													}
 													//combine schedule header list and schedule body
 													eventsObj[key].scheduleDaysHtml += eventsObj[key].dailyScheduleHtml;
 												}
 												//add elements to DOM
 												for (var key in eventsObj) {
-													// console.log(eventsObj[key].scheduleDaysHtml)
 													if (pathname === eventsObj[key].eventUrl) {
 														$('#event-overview').append(eventsObj[key].overviewHtml); 
 														$('#event-schedule').append(eventsObj[key].scheduleDaysHtml);
