@@ -119,10 +119,9 @@ $(document).ready(function () {
 													var daysLength = eventsObj[key].scheduleDays.length;
 													var scheduleInfoObj = {};
 													//loop over the speakers array and create html for speakers tab
-													$(eventsObj[key].speakers).each(function (i, elem) {
-														console.log(elem);
-														eventsObj[key].speakersHtml += '<h4>' + elem.firstName + ' ' + elem.lastName + '</h4><h5>' + elem.msTeamTitle + '</h5><p><img class="pull-left" src="data:image;base64,' + elem.headShot + '" />' + elem.contactDescription + '</p><hr />';
-													})
+													for (var i = 0, j = eventsObj[key].speakers.length; i < j; i++) {
+														eventsObj[key].speakersHtml += '<h4>' + eventsObj[key].speakers[i].firstName + ' ' + eventsObj[key].speakers[i].lastName + '</h4><h5>' + eventsObj[key].speakers[i].msTeamTitle + '</h5><p><img class="pull-left" src="data:image;base64,' + eventsObj[key].speakers[i].headShot + '" />' + eventsObj[key].speakers[i].contactDescription + '</p><hr />';
+													}
 													//add event name to overview html
 													eventsObj[key].overviewHtml += '<h2>' + eventsObj[key].eventName + '</h2>';
 													//create html for over subheads and paragraphs
@@ -185,7 +184,7 @@ $(document).ready(function () {
 														$('#event-overview').append(eventsObj[key].overviewHtml); 
 														$('#event-schedule').append(eventsObj[key].scheduleDaysHtml);
 														$('#eventSpeakers').append(eventsObj[key].speakersHtml);
-														console.log('End :: ', $.now());
+														console.log('End   :: ', $.now());
 													}
 												}
 												console.log(eventsObj);

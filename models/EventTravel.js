@@ -37,7 +37,17 @@ EventTravel.sync({force: false})
       aboveMapHeader: 'Santa Clara, CA',
       belowMapHeading: 'The Storage Developer Conference will be held in Santa Clara, CA',
       mapDesc: 'Jennifer. Whoa, whoa, Biff, what\'s that? Sam, quit fiddling with that thing and come in here and eat your dinner. Yeah, where does he live? Yoo.',
-      mapImapHtml: '<div><iframe width="800" height="500" frameborder="0" src="http://www.bing.com/maps/embed/viewer.aspx?v=3&amp;cp=37.355740~-121.954987&amp;lvl=12&amp;w=800&amp;h=500&amp;sty=r&amp;typ=d&amp;pp=Santa%20Clara%2C%20CA~~37.355740~-121.954987&amp;ps=&amp;dir=0&amp;mkt=en-us&amp;src=O365&amp;form=BMEMJS"></iframe></div>'
+      mapImapHtml: '<div><iframe width="800" height="500" frameborder="0" src="http://www.bing.com/maps/embed/viewer.aspx?v=3&amp;cp=37.355740~-121.954987&amp;lvl=12&amp;w=800&amp;h=500&amp;sty=r&amp;typ=d&amp;pp=Santa%20Clara%2C%20CA~~37.355740~-121.954987&amp;ps=&amp;dir=0&amp;mkt=en-us&amp;src=O365&amp;form=BMEMJS"></iframe></div>',
+      venueName:'The Moon',
+      venueStreetAddress: '123 Space Ave.',
+      venueCityName: '3rd Planet from the sun, The Universe',
+      venueDesc: 'Ancient alien contend DNA manipulation the vedas ancient religions flying vessels, extraterrestrial spaceships clearly Chariot of the Gods Indian texts, Giorgio technology Easter island Ezekiel alien burmuta triangle SETI. Gods sun disc mercury Nazca lines astronaut pyramids, portal burmuta triangle clearly space brothers sightings, Sumerian texts UFO ancient alien theorists.',
+      venueImage: Sql.TEXT,
+      travelHeading: Sql.TEXT,
+      travelDesc: Sql.TEXT,
+      travelImage: Sql.TEXT,
+      accommodationHeading: Sql.TEXT,
+      accommodationParagraph: Sql.TEXT
       })
   })
   .then(function () {
