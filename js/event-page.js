@@ -12,6 +12,8 @@ $(document).ready(function () {
 			eventsObj[elem.id] = {};
 			eventsObj[elem.id]['eventName'] = elem.eventName;
 			eventsObj[elem.id]['overviewHtml'] = '';
+			eventsObj[elem.id]['scheduleDaysHtml'] = '<ul class="tabs center">';
+			eventsObj[elem.id]['dailyScheduleHtml'] = '';
 			eventsObj[elem.id]['eventUrl'] = elem.eventUrl;
 			eventsObj[elem.id]['eventStartDate'] = elem.eventStartDate;
 			eventsObj[elem.id]['eventEndDate'] = elem.eventEndDate;
@@ -20,8 +22,8 @@ $(document).ready(function () {
 			eventsObj[elem.id]['eventSlideUpText'] = elem.eventSlideUpText;
 			eventsObj[elem.id]['overviewParagraphText'] = [];
 			eventsObj[elem.id]['overviewHeadingText'] = [];
-			eventsObj[elem.id]['scheduleHtml'] = '';
 			eventsObj[elem.id]['scheduleDays'] = [];
+			eventsObj[elem.id]['scheduleInfo'] = [];
 			eventsObj[elem.id]['sponsorIntroHeading'] = '';
 			eventsObj[elem.id]['sponsorIntroParagraph'] = '';
 			eventsObj[elem.id]['sponsors'] = [];
@@ -41,13 +43,17 @@ $(document).ready(function () {
 			})
 			$.get('/eventschedules', function (schedules) {
 				$(schedules).each(function (i, elem) {
-					if (!eventsObj[elem.eventId]['scheduleDays'][elem.scheduleDay]) {
+					eventsObj[elem.eventId]['scheduleInfo'].push(elem);
+					if (eventsObj[elem.eventId]['scheduleDays'].indexOf(elem.scheduleDay) === -1) {
+						eventsObj[elem.eventId]['scheduleDays'].push(elem.scheduleDay);
+					}
+					/*if (!eventsObj[elem.eventId]['scheduleDays'][elem.scheduleDay]) {
 						eventsObj[elem.eventId]['scheduleDays'][elem.scheduleDay] = {};
 						eventsObj[elem.eventId]['scheduleDays'][elem.scheduleDay]['scheduleTimes'] = [];
 						eventsObj[elem.eventId]['scheduleDays'][elem.scheduleDay]['scheduleDescriptions'] = [];
-					}
-					eventsObj[elem.eventId]['scheduleDays'][elem.scheduleDay]['scheduleTimes'].push(elem.scheduleTime);
-						eventsObj[elem.eventId]['scheduleDays'][elem.scheduleDay]['scheduleDescriptions'].push(elem.description);
+					}*/
+				/*	eventsObj[elem.eventId]['scheduleDays'][elem.scheduleDay]['scheduleTimes'].push(elem.scheduleTime);
+						eventsObj[elem.eventId]['scheduleDays'][elem.scheduleDay]['scheduleDescriptions'].push(elem.description);*/
 				})
 				$.get('/sponsors', function (sponsors) {
 					$(sponsors).each(function (i, elem) {
@@ -79,7 +85,6 @@ $(document).ready(function () {
 									eventsObj[elem.eventId].sponsorIntroParagraph = elem.sponsorshipParagraph;
 								})
 								$.get('/travelinfo', function (travelinfo) {
-									console.log(travelinfo);
 									$(travelinfo).each(function (i, elem) {
 										eventsObj[elem.eventId]['aboveMapHeader'] = elem.aboveMapHeader;
 										eventsObj[elem.eventId]['belowMapHeading'] = elem.belowMapHeading;
@@ -96,24 +101,74 @@ $(document).ready(function () {
 										eventsObj[elem.eventId]['accommodationHeading'] = elem.accommodationHeading;
 										eventsObj[elem.eventId]['accommodationParagraph'] = elem.accommodationParagraph;								
 									})
-									for (var key in eventsObj) {
-										eventsObj[key].overviewHtml += '<h2>' + eventsObj[key].eventName + '</h2>';
-										for (var i = 0; i < eventsObj[key].overviewHeadingText.length; i++) {
-											eventsObj[key].overviewHtml += '<h3>' + eventsObj[key].overviewHeadingText[i] + '</h3>' + '<p>' + eventsObj[key].overviewParagraphText[i] + '</p>';
-										}
-									}
-									for (var key in eventsObj) {
-										if (pathname === eventsObj[key].eventUrl) {
-											$('#event-overview').append(eventsObj[key].overviewHtml); 
-										}
-									}
-									console.log(eventsObj);
-								})
-							})
-						})
-					})
-				})
-			})
-		})
-	})
-})
+									$.get('/accommodationinfo', function (accommodationinfo) {
+										$(accommodationinfo).each(function (i, elem) {
+											eventsObj[elem.eventId]['accommodationName'] = elem.accommodationName;
+											eventsObj[elem.eventId]['accommodationDesc'] = elem.accommodationDesc;
+											eventsObj[elem.eventId]['accommodationUrl'] = elem.accommodationUrl;	
+										})
+										$.get('/traveltips', function (traveltips) {
+											$(traveltips).each(function (i, elem) {
+												eventsObj[elem.eventId]['tipHeading'] = elem.tipHeading;
+												eventsObj[elem.eventId]['tipParagraph'] = elem.tipParagraph;
+											})
+											$.get('/travelrestaurants', function (travelrestaurants) {
+												$(travelrestaurants).each(function (i, elem) {
+													eventsObj[elem.eventId]['restaurantName'] = elem.restaurantName;
+													eventsObj[elem.eventId]['restaurantDesc'] = elem.restaurantDesc;
+												})
+												//create string for overview elements
+												for (var key in eventsObj) {
+													var daysLength = eventsObj[key].scheduleDays.length;
+													//add event name to overview html
+													eventsObj[key].overviewHtml += '<h2>' + eventsObj[key].eventName + '</h2>';
+													//create html for over subheads and paragraphs
+													for (var key2 in eventsObj[key].overviewHeadingText) {
+														eventsObj[key].overviewHtml += '<h3>' + eventsObj[key].overviewHeadingText[key2] + '</h3>' + '<p>' + eventsObj[key].overviewParagraphText[key2] + '</p>';
+													} 
+													//loop over scheduleDays array and add each Day name to the UL for the schedule tab
+													$(eventsObj[key].scheduleDays).each(function (i, elem) {
+														if (i === 0) {
+															eventsObj[key].scheduleDaysHtml += '<li class="current"><a href="#tabr' + elem + '"><h5>' + elem + '</h5></a></li>';
+														}
+														if (i > 0) {
+															eventsObj[key].scheduleDaysHtml += '<li><a href="#tabr' + elem + '"><h5>' + elem + '</h5></a></li>';
+														}
+														if (i >= daysLength -1) {
+															eventsObj[key].scheduleDaysHtml += '</ul>';
+														}
+													});
+													$(eventsObj[key].scheduleDays).each(function (i, elem) {
+														console.log(i);
+														if (i === 0) {
+															eventsObj[key].dailyScheduleHtml += '<div id="tabr' + elem + '" class="tab-content" style="display:block;"><table cellspacing="0" cellpadding="0" class="striped schedule"><thead><tr><th><h3>' + elem + '</h3></th></tr></thead>' + elem + 'Placeholder</table></div>';
+														}
+														if (i > 0) {
+															eventsObj[key].dailyScheduleHtml += '<div id="tabr' + elem + '" class="tab-content" style="display:none;"><table cellspacing="0" cellpadding="0" class="striped schedule"><thead><tr><th><h3>' + elem + '</h3></th></tr></thead>' + elem + 'Placeholder</table></div>';
+														}
+													});
+													//combine schedule header list and schedule body
+													eventsObj[key].scheduleDaysHtml += eventsObj[key].dailyScheduleHtml;
+												}
+												//add elements to DOM
+												for (var key in eventsObj) {
+													// console.log(eventsObj[key].scheduleDaysHtml)
+													if (pathname === eventsObj[key].eventUrl) {
+														$('#event-overview').append(eventsObj[key].overviewHtml); 
+														$('#event-schedule').append(eventsObj[key].scheduleDaysHtml);
+												// console.log($.now());
+													}
+												}
+												console.log(eventsObj);
+											});
+										});
+									});
+								});
+							});
+						});
+					});
+				});
+			});
+		});
+	});
+});
