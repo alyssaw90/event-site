@@ -21,6 +21,7 @@ var AdditionalTravelSection = require('../models/AdditionalTravelSection');
 var aboutUs = require('../views/about')();
 var fs = require('fs');
 // var $ = require('cheerio');
+var clc = require('cli-color');
 var bodyparser = require('body-parser');
 var path = require('path');
 var Sql = require('sequelize');
@@ -264,6 +265,51 @@ router.route('/travelinfo')
   })
 })
 
+router.route('/accommodationinfo')
+.get(function (req, res) {
+  sql.sync()
+  .then(function () {
+    TravelAccommodation.findAll()
+    .then(function (data) {
+      res.json(data);
+    })
+  })
+})
+
+router.route('/traveltips')
+.get(function (req, res) {
+  sql.sync()
+  .then(function () {
+    TravelTip.findAll()
+    .then(function (data) {
+      res.json(data);
+    })
+  })
+})
+
+router.route('/travelrestaurants')
+.get(function (req, res) {
+  sql.sync()
+  .then(function () {
+    TravelRestaurant.findAll()
+    .then(function (data) {
+      res.json(data);
+    })
+  })
+})
+
+router.route('/extratravelsections')
+.get(function (req, res) {
+  sql.sync()
+  .then(function () {
+    AdditionalTravelSection.findAll()
+    .then(function (data) {
+      console.log(clc.green.bold(data));
+      res.json(data);
+    })
+  })
+})
+
 router.route('/upcomingeventurls')
 .get(function (req, res) {
   sql.sync()
@@ -277,13 +323,12 @@ router.route('/upcomingeventurls')
         tmpObj.eventName = data[i].eventName;
         theUrls.push(tmpObj);
       }
-      console.log(theUrls)
       res.json(theUrls);
     })
   })
 })
 
-sql.sync()
+/*sql.sync()
 .then(function () {
   Event.findAll()
   .then(function (data) {
@@ -293,7 +338,7 @@ sql.sync()
     }
   })
 })
-
+*/
 //This route has to be last or it will override the other routes
 router.route('/event/:eventName')
 .get(function (req, res) {
