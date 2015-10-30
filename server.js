@@ -2,6 +2,7 @@
 
 var express = require('express');
 var app = express();
+var clc = require('cli-color');
 var port = process.env.PORT || 3000;
 var time = new Date();
 /*var Sql = require('sequelize');
@@ -33,5 +34,5 @@ app.use('/', dbRouter);
 app.use('/', viewRouter);
 
 app.listen(port, function () {
-	console.log('server started on port ' + port + ' at ' + time);
+	console.log(clc.cyanBright('server started on port ' + port + ' at ' + time));
 });
