@@ -30,7 +30,7 @@ require('./routes/admin-routes')(adminRouter);
 // app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(bodyParser.json());
 
-app.use(__dirname + '/admin');
+// app.use(__dirname + '/admin');
 app.use(express.static(__dirname + '/'));
 app.use('/', aboutRouter);
 app.use('/', dbRouter);
