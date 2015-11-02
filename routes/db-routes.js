@@ -8,7 +8,6 @@ var Event = require('../models/Event');
 var EventOverview = require('../models/EventOverview');
 var EventSchedule = require('../models/EventSchedule');
 var EventAttendee = require('../models/EventAttendee');
-var EventSponsorInfo = require('../models/EventSponsorInfo');
 var EventPlatinumSponsor = require('../models/EventPlatinumSponsor');
 var EventGoldSponsor = require('../models/EventGoldSponsor');
 var EventSilverSponsor = require('../models/EventSilverSponsor');
@@ -237,17 +236,6 @@ router.route('/attendees')
   sql.sync()
   .then(function () {
     EventAttendee.findAll()
-    .then(function (data) {
-      res.json(data);
-    })
-  })
-})
-
-router.route('/sponsorintro')
-.get(function (req, res) {
-  sql.sync()
-  .then(function () {
-    EventSponsorInfo.findAll()
     .then(function (data) {
       res.json(data);
     })
