@@ -20,7 +20,7 @@ var Event = module.exports = sql.define('Event', {
   eventStartDate: Sql.DATE, //the start date...
   eventEndDate: Sql.DATE, // the end date...
   eventHeaderImage: Sql.TEXT, //bas64 string of header image
-  eventBackgroundImage: Sql.TEXT, //image to appear on event block on future events page
+  eventBackgroundImage: Sql.TEXT, //image to appear on event slide on homepage
   eventSlideUpText: Sql.TEXT, //slide up text for future events page
   sponsorsHeading: Sql.TEXT, //heading for sponsors section
   sponsorsParagraph: Sql.TEXT, // paragraph below heading on sponsors section

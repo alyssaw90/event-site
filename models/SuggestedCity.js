@@ -14,24 +14,16 @@ var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
 
 var SuggestedCity = module.exports = sql.define('SuggestedCity', {
   city: Sql.STRING,
-  email: {
-    type: Sql.STRING,
-    allowNull: true,
-    validate:  {
-      isEmail: true
-    }
-  }
+  contactId: Sql.INTEGER
 });
-
-SuggestedCity.sync({force: false});
 
 
 // force creation of table if it doesn't exist already
-// SuggestedCity.sync({force: true})
-// .then(function () {
-//   // Table created
-//   return SuggestedCity.create({
-//     city:'Seattle',
-//   email: 'test@example.com'
-//   });
-// });
+SuggestedCity.sync({force: false})
+/*.then(function () {
+  // Table created
+  return SuggestedCity.create({
+    city:'Seattle',
+    contactId: 1
+  });
+});*/
