@@ -49,4 +49,18 @@ TravelRestaurant.sync({force: false})
       restaurantDesc: 'Spoon, extraction, fair trade affogato, ristretto, flavour fair trade caffeine breve foam. Wings caffeine, breve steamed galão spoon robust americano mocha strong. Affogato americano single shot extraction whipped arabica froth blue mountain viennese. Brewed, kopi-luwak, that mug that foam, con panna body caffeine percolator brewed.'
     })
   })
+  .then(function () {
+    return TravelRestaurant.create({
+      eventId: 3,
+      restaurantName: 'Crema est, dripper, galão latte',
+      restaurantDesc: 'Con panna sweet cortado lungo dripper lungo medium redeye. Pumpkin spice a body, beans rich cream coffee, arabica dripper extra organic aftertaste. Spoon that brewed body, aromatic medium half and half to go milk steamed grounds steamed. Rich java at est filter ut cinnamon variety.'
+    })
+  })
+  .then(function () {
+    return TravelRestaurant.create({
+      eventId: 3,
+      restaurantName: 'Flavour est café au lait percolator plunger pot',
+      restaurantDesc: 'Spoon, extraction, fair trade affogato, ristretto, flavour fair trade caffeine breve foam. Wings caffeine, breve steamed galão spoon robust americano mocha strong. Affogato americano single shot extraction whipped arabica froth blue mountain viennese. Brewed, kopi-luwak, that mug that foam, con panna body caffeine percolator brewed.'
+    })
+  })
 */

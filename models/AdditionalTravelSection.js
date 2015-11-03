@@ -49,4 +49,18 @@ AdditionalTravelSection.sync({force: false})
       additionalParagraph: 'Spoon, extraction, fair trade affogato, ristretto, flavour fair trade caffeine breve foam. Wings caffeine, breve steamed galão spoon robust americano mocha strong. Affogato americano single shot extraction whipped arabica froth blue mountain viennese. Brewed, kopi-luwak, that mug that foam, con panna body caffeine percolator brewed.'
     })
   })
-*/
+  .then(function () {
+    return AdditionalTravelSection.create({
+      eventId: 3,
+      additionalHeading: 'Organic variety, aged shop café au lait',
+      additionalParagraph: 'Robusta milk galão, to go spoon cinnamon caffeine single shot shop café au lait. Dripper cinnamon, strong and irish crema espresso mocha cream trifecta black americano. Crema, milk mocha shop wings pumpkin spice ristretto. Espresso siphon redeye, seasonal rich caramelization cultivar beans.'
+    })
+  })
+  .then(function () {
+    return AdditionalTravelSection.create({
+      eventId: 3,
+      additionalHeading: 'Siphon extra coffee ristretto chicory macchiato',
+      additionalParagraph: 'Barista, fair trade, cappuccino, con panna body froth cultivar acerbic siphon affogato milk. Fair trade seasonal percolator, eu, lungo, blue mountain, cream cortado organic wings chicory foam.'
+    })
+  })*/
+
