@@ -49,4 +49,18 @@ TravelTip.sync({force: false})
       tipParagraph: 'Sacrifice bunt gap plunked streak sport unearned run squeeze doubleheader baseball card. Blue slugging triple-A chin music base bandbox series club. Southpaw center fielder tag scorecard pitchout, error triple play outfielder. Baseball card in the hole inning pennant no-hitter blue tapper team base. Loss national pastime chin music right fielder bat crooked number flyout batter\'s box diamond. Cycle third baseman no decision good eye pinch hitter wild pitch away wrigley corner.'
     })
   })
+  .then(function () {
+    return TravelTip.create({
+      eventId: 3,
+      tipHeading: 'Inning season home gold glove',
+      tipParagraph: 'Center field nubber yankees bench small ball bunt pinch runner. Gapper runs wrigley loss foul second baseman first base inside. Loss defensive indifference ejection small ball tapper appeal squeeze sacrifice bunt passed ball. Pull walk off sacrifice steal rotation, left field all-star. Defensive indifference sport pinch hit center fielder dead ball era mitt wild pitch right fielder grounder. Tossed first base rope designated hitter petey cellar league'
+    })
+  })
+  .then(function () {
+    return TravelTip.create({
+      eventId: 3,
+      tipHeading: 'No decision mustard',
+      tipParagraph: 'Sacrifice bunt gap plunked streak sport unearned run squeeze doubleheader baseball card. Blue slugging triple-A chin music base bandbox series club. Southpaw center fielder tag scorecard pitchout, error triple play outfielder. Baseball card in the hole inning pennant no-hitter blue tapper team base. Loss national pastime chin music right fielder bat crooked number flyout batter\'s box diamond. Cycle third baseman no decision good eye pinch hitter wild pitch away wrigley corner.'
+    })
+  })
 */
