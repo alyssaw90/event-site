@@ -5,17 +5,6 @@ var app = express();
 var clc = require('cli-color');
 var port = process.env.PORT || 3000;
 var time = new Date();
-/*var Sql = require('sequelize');
-var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
-  host: 'localhost',
-  dialect: 'mssql',
-
-  pool: {
-    max: 5,
-    min: 0,
-    idle: 10000
-  }
-});*/
 
 var aboutRouter = express.Router();
 var dbRouter = express.Router();
@@ -30,12 +19,11 @@ require('./routes/admin-routes')(adminRouter);
 // app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(bodyParser.json());
 
-// app.use(__dirname + '/admin');
 app.use(express.static(__dirname + '/'));
 app.use('/', aboutRouter);
 app.use('/', dbRouter);
 app.use('/', viewRouter);
-app.use('/admin', adminRouter);
+app.use('/', adminRouter);
 
 app.listen(port, function () {
 	console.log(clc.cyanBright('server started on port ' + port + ' at ' + time));

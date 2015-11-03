@@ -138,7 +138,7 @@ module.exports = function (router) {
           email: req.body.email
         });
       }
-
+  
       });
     })
     .then(function () {
@@ -164,175 +164,159 @@ module.exports = function (router) {
       res.status(500).json({msg: 'internal server error'});
     });
   });
-
-router.route('/events')
-.get(function (req, res) {
-  sql.sync()
-  .then(function () {
-    Event.findAll({where: {eventStartDate:{ $gte: new Date()}}})
-    .then(function (data) {
-      res.json(data);
+  
+  router.route('/events')
+  .get(function (req, res) {
+    sql.sync()
+    .then(function () {
+      Event.findAll({where: {eventStartDate:{ $gte: new Date()}}})
+      .then(function (data) {
+        res.json(data);
+      })
     })
   })
-})
-
-router.route('/eventoverviews')
-.get(function (req, res) {
-  sql.sync()
-  .then(function () {
-    EventOverview.findAll()
-    .then(function (data) {
-      res.json(data);
+  
+  router.route('/eventoverviews')
+  .get(function (req, res) {
+    sql.sync()
+    .then(function () {
+      EventOverview.findAll()
+      .then(function (data) {
+        res.json(data);
+      })
     })
   })
-})
-
-router.route('/eventschedules')
-.get(function (req, res) {
-  sql.sync()
-  .then(function () {
-    EventSchedule.findAll()
-    .then(function (data) {
-      res.json(data);
+  
+  router.route('/eventschedules')
+  .get(function (req, res) {
+    sql.sync()
+    .then(function () {
+      EventSchedule.findAll()
+      .then(function (data) {
+        res.json(data);
+      })
     })
   })
-})
-
-router.route('/sponsors')
-.get(function (req, res) {
-  var allSponsors = []
-  sql.sync()
-  .then(function () {
-    EventPlatinumSponsor.findAll()
-    .then(function (platinumSponsors) {
-      EventGoldSponsor.findAll()
-      .then(function (goldSponsors) {
-        EventSilverSponsor.findAll()
-        .then(function (silverSponsors) {
-          EventBronzeSponsor.findAll()
-          .then(function (bronzeSponsors) {
-            allSponsors.push(platinumSponsors, goldSponsors, silverSponsors, bronzeSponsors);
-            res.json(allSponsors);
+  
+  router.route('/sponsors')
+  .get(function (req, res) {
+    var allSponsors = []
+    sql.sync()
+    .then(function () {
+      EventPlatinumSponsor.findAll()
+      .then(function (platinumSponsors) {
+        EventGoldSponsor.findAll()
+        .then(function (goldSponsors) {
+          EventSilverSponsor.findAll()
+          .then(function (silverSponsors) {
+            EventBronzeSponsor.findAll()
+            .then(function (bronzeSponsors) {
+              allSponsors.push(platinumSponsors, goldSponsors, silverSponsors, bronzeSponsors);
+              res.json(allSponsors);
+            })
           })
         })
       })
     })
   })
-})
-
-router.route('/contacts')
-.get(function (req, res) {
-  sql.sync()
-  .then(function () {
-    Contact.findAll()
-    .then(function (data) {
-      res.json(data);
+  
+  router.route('/contacts')
+  .get(function (req, res) {
+    sql.sync()
+    .then(function () {
+      Contact.findAll()
+      .then(function (data) {
+        res.json(data);
+      })
     })
   })
-})
-
-router.route('/attendees')
-.get(function (req, res) {
-  sql.sync()
-  .then(function () {
-    EventAttendee.findAll()
-    .then(function (data) {
-      res.json(data);
+  
+  router.route('/attendees')
+  .get(function (req, res) {
+    sql.sync()
+    .then(function () {
+      EventAttendee.findAll()
+      .then(function (data) {
+        res.json(data);
+      })
     })
   })
-})
-
-router.route('/travelinfo')
-.get(function (req, res) {
-  sql.sync()
-  .then(function () {
-    EventTravel.findAll()
-    .then(function (data) {
-      res.json(data);
+  
+  router.route('/travelinfo')
+  .get(function (req, res) {
+    sql.sync()
+    .then(function () {
+      EventTravel.findAll()
+      .then(function (data) {
+        res.json(data);
+      })
     })
   })
-})
-
-router.route('/accommodationinfo')
-.get(function (req, res) {
-  sql.sync()
-  .then(function () {
-    TravelAccommodation.findAll()
-    .then(function (data) {
-      res.json(data);
+  
+  router.route('/accommodationinfo')
+  .get(function (req, res) {
+    sql.sync()
+    .then(function () {
+      TravelAccommodation.findAll()
+      .then(function (data) {
+        res.json(data);
+      })
     })
   })
-})
-
-router.route('/traveltips')
-.get(function (req, res) {
-  sql.sync()
-  .then(function () {
-    TravelTip.findAll()
-    .then(function (data) {
-      res.json(data);
+  
+  router.route('/traveltips')
+  .get(function (req, res) {
+    sql.sync()
+    .then(function () {
+      TravelTip.findAll()
+      .then(function (data) {
+        res.json(data);
+      })
     })
   })
-})
-
-router.route('/travelrestaurants')
-.get(function (req, res) {
-  sql.sync()
-  .then(function () {
-    TravelRestaurant.findAll()
-    .then(function (data) {
-      res.json(data);
+  
+  router.route('/travelrestaurants')
+  .get(function (req, res) {
+    sql.sync()
+    .then(function () {
+      TravelRestaurant.findAll()
+      .then(function (data) {
+        res.json(data);
+      })
     })
   })
-})
-
-router.route('/extratravelsections')
-.get(function (req, res) {
-  sql.sync()
-  .then(function () {
-    AdditionalTravelSection.findAll()
-    .then(function (data) {
-      console.log(clc.green.bold(data));
-      res.json(data);
+  
+  router.route('/extratravelsections')
+  .get(function (req, res) {
+    sql.sync()
+    .then(function () {
+      AdditionalTravelSection.findAll()
+      .then(function (data) {
+        console.log(clc.green.bold(data));
+        res.json(data);
+      })
     })
   })
-})
-
-router.route('/upcomingeventurls')
-.get(function (req, res) {
-  sql.sync()
-  .then(function () {
-    Event.findAll({where: {eventStartDate: {$gte: new Date()}}})
-    .then(function (data) {
-      var theUrls = [];
-      for (var i = 0; i < data.length; i++) {
-        var tmpObj = {};
-        tmpObj.url = data[i].eventUrl;
-        tmpObj.eventName = data[i].eventName;
-        theUrls.push(tmpObj);
-      }
-      res.json(theUrls);
+  
+  router.route('/upcomingeventurls')
+  .get(function (req, res) {
+    sql.sync()
+    .then(function () {
+      Event.findAll({where: {eventStartDate: {$gte: new Date()}}})
+      .then(function (data) {
+        var theUrls = [];
+        for (var i = 0; i < data.length; i++) {
+          var tmpObj = {};
+          tmpObj.url = data[i].eventUrl;
+          tmpObj.eventName = data[i].eventName;
+          theUrls.push(tmpObj);
+        }
+        res.json(theUrls);
+      })
     })
   })
-})
-
-/*sql.sync()
-.then(function () {
-  Event.findAll()
-  .then(function (data) {
-    var testArr = [];
-    for (var i = 0; i < data.length; i++) {
-      testArr.push(data[i].eventUrl);
-    }
-  })
-})
-*/
-//This route has to be last or it will override the other routes
-router.route('/event/:eventName')
-.get(function (req, res) {
-  // var cat = req.params.eventName.toLowerCase().replace(/\s+/g, '');
-  var theParam = req.params.eventName.toLowerCase().slice(1);
-  sql.sync()
+  
+  /*sql.sync()
   .then(function () {
     Event.findAll()
     .then(function (data) {
@@ -340,18 +324,61 @@ router.route('/event/:eventName')
       for (var i = 0; i < data.length; i++) {
         testArr.push(data[i].eventUrl);
       }
-      if (testArr.indexOf(req.params.eventName) !== -1) {
-        res.sendFile(path.join(__dirname, '../views/blank-event.html'));  
-      } 
-      if (testArr.indexOf(req.params.eventName) === -1) {
-        res.status(404);
-        res.send(path.join(__dirname, '../views/thank-you.html')); //I need to make a 404 page
-      }
     })
   })
-})
+  */
+  //This route has to be last or it will override the other routes
+  router.route('/event/:eventName')
+  .get(function (req, res) {
+    // var cat = req.params.eventName.toLowerCase().replace(/\s+/g, '');
+    var theParam = req.params.eventName.toLowerCase().slice(1);
+    sql.sync()
+    .then(function () {
+      Event.findAll()
+      .then(function (data) {
+        var testArr = [];
+        for (var i = 0; i < data.length; i++) {
+          testArr.push(data[i].eventUrl);
+        }
+        if (testArr.indexOf(req.params.eventName) !== -1) {
+          res.sendFile(path.join(__dirname, '../views/blank-event.html'));  
+        } 
+        if (testArr.indexOf(req.params.eventName) === -1) {
+          res.status(404);
+          res.send(path.join(__dirname, '../views/thank-you.html')); //I need to make a 404 page
+        }
+      })
+    })
+  })
+  
+/*  router.route('/futureevents')
+  .get(function (req, res) {
+    var theEvents = {};
+    sql.sync()
+    .then(function () {
+      Event.findAll({where: {eventStartDate: {$gte: new Date()}}})
+      .then(function (eventsData) {
+        for (var key in eventsData) {
+          theEvents[eventsData[key].id] = eventsData[key];
+        }
+        for (var key2 in theEvents) {
+          EventAttendee.findAll({where: {eventId: theEvents[key2].id, eventAttendeeRole: 'speaker'}})
+          .then(function (speakersIds) {
+            for (var key3 in speakersIds) {
+              Contact.findAll({where: {id: speakersIds[key3].attendeeId}})
+              .then(function (theSpeakers) {
+                theEvents[key].speakers = theEvents[key].speakers;
+                console.log(clc.green('!!!!!!!!! :::::::::::::::   '),  theEvents[key].speakers);
+                res.json(theEvents);
+                
+              })
+            }
 
-
+          })
+        }
+      })
+    })
+  })*/
 
 
 // make dynamic routes for events
