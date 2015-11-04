@@ -146,13 +146,10 @@ module.exports = function (router) {
       .then(function (data) {
         Contact.findOne({where: {email: req.body.email}})
         .then(function (data2) {
-          if (data2.recommendedCity === null) {
-            data2.updateAttributes({recommendedCity: req.body.city +  ', SuggestedCity Id : ' + data.id}); 
-          } else {
-            data2.updateAttributes({
-              recommendedCity: data2.recommendedCity + ' | ' + req.body.city +  ', SuggestedCity Id : ' + data.id
-            })
-          }
+          data.contactId = data2.id;
+          data.save().then(function() {
+            ContactsSuggestedCity.create({suggestedCity: req.body.city, contactId: data2.id});            
+          })
         });
       });
     })
