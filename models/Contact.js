@@ -34,7 +34,6 @@ var Contact = module.exports = sql.define('Contact', {
   address: Sql.STRING,
   country: Sql.STRING,
   interestId: Sql.INTEGER,
-  attendedEventsId: Sql.INTEGER,
   allowNotifications: Sql.BOOLEAN,
   allowPersonalInfoSharing: Sql.BOOLEAN
 },
