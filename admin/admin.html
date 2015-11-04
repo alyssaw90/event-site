@@ -15,22 +15,67 @@
 </head>
 <body>
 <div class="grid">
-  <div class="col_12">
+  <header class="col_12">
+    <!-- <button>Hola</button> -->
     <!-- Menu Horizontal -->
     <ul class="menu">
-      <li class="current"><a href="">Home</a></li>
-      <li><a href=""></i>Add Event</a></li>
-      <li><a href="">Edit Event</a></li>
-      <li><a href="">Logout</a></li>
+      <li class="current" id="admin-home-menu-tab"><a >Home</a></li>
+      <li id="add-event-menu-tab"><a >Add Event</a></li>
+      <li id="edit-event-menu-tab"><a >Edit Event</a></li>
+      <li><a >Logout</a></li>
     </ul>
-    <p><i class="fa fa-fire"></i></p>
-    <h1>This example is blank</h1>
-    <h4 style="color:#999;margin-bottom:40px;" class="center">Add some HTML KickStart Elements to see the magic happen</h4>
-  </div>
+  </header>
+  <main id="main-admin" style="display: block;">
+  <section class="col_12" id="admin-home">
+    <h1>Admin Home Tab</h1>
+  </section>
+    <section class="col_12">
+      <form id="chooseEvent">
+        <label for="eventNames">Select Event Schedule</label>
+        <select id="eventNames" name="eventNames">
+        </select>
+        <br />
+        <br />
+        <button class="medium" id="chooseEventButton" type="submit">Next</button>
+      </form>
+  <!--     <form>
+        <label class="col_4" for="eventName">New Event Name</label>
+        <input class="col_8" id="eventName" name="eventName" type="text" placeholder="Event Name" />
+        <label class="col_4" for="eventStartTime">Start Date</label>
+        <input class="col_8" id="eventStartTime" name="eventStartTime" type="date" />
+        <br />
+        <br />
+        <button class="medium" id="newEventButton" type="submit">Create New Event</button>
+      </form> -->
+      <form action="/addschedule" id="scheduleForm" method="POST" style="display: none;">
+        <label for="day">Select Event Schedule</label>
+          <select id="day">
+          <option value="day1">day1</option>
+          <option value="day2">day2</option>
+          <option value="day3">day3</option>
+          <option value="day4">day4</option>
+          <option value="day5">day5</option>
+          <option value="day6">day6</option>
+          <option value="day7">day7</option>
+        </select>
+        <label class="col_4" for="time">Scheduled Time</label>
+        <input class="col_8" id="time" name="time" type="text submit" placeholder="Location" required/>
+        <label class="col_4 disabled" for="email">*Optional</label>
+        <input class="col_8" id="email" name="email" type="email" placeholder="Email" />
+        <br />
+        <br />
+        <button class="medium" type="submit">Submit</button>
+      </form>
+    </section>
+    <section class="col_12" id="edit-event" style="display: none;">
+      <h1>Edit Event Tab</h1>
+    </section>
+  </main>
 </div> <!-- End Grid -->
 <!-- JavaScript -->
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script type="text/javascript" src="../js/kickstart.js"></script>
+  <script type="text/javascript" src="../admin/js/kickstart.js"></script>
+  <script type="text/javascript" src="../admin/js/admin-page.js"></script>
 </body>
 </html>
 
