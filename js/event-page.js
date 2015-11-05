@@ -71,17 +71,17 @@ $(document).ready(function () {
 							for (var i = 0, j = attendees.length; i < j; i++) {
 								if (attendees[i].eventAttendeeRole === 'speaker') {
 									for (var ii = 0, jj = contacts.length; ii < jj; ii++) {
-										if (contacts[ii].id === attendees[i].attendeeId) {
+										console.log(contacts[ii].id, attendees[i]);
+										if (contacts[ii].id === attendees[i].contactId) {
 											eventsObj[attendees[i].eventId].speakers.push(contacts[ii]);
 										}
 									}
 								}
 								if (attendees[i].eventAttendeeRole === 'attendee') {
 									for (var iii = 0, jjj = contacts.length; iii < jjj; iii++) {
-										if (contacts[iii].id === attendees[i].attendeeId) {
+										if (contacts[iii].id === attendees[i].contactId) {
 											eventsObj[attendees[i].eventId].attendees.push(contacts[iii]);
 										}
-
 									}
 								}
 							}
@@ -257,8 +257,8 @@ $(document).ready(function () {
 												//combine schedule header list and schedule body
 												eventsObj[key].scheduleDaysHtml += eventsObj[key].dailyScheduleHtml;
 											}
-											// console.log(travelHtml);
 											//add elements to DOM
+											console.log(eventsObj[key].speakersHtml);
 											for (var key in eventsObj) {
 												if (pathname === eventsObj[key].eventUrl) {
 													document.title = eventsObj[key].eventName;
