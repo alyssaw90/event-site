@@ -83,8 +83,12 @@
       <div id="currentSchedule">
       </div>
     </section>
-    <section class="col_12" id="editOverviewSection" style="display: none;">
-      <h1>Edit Overview Tab</h1>
+    <section class="col_12" id="addEventSection" style="display: none;">
+      <h1>Add Event Section Tab</h1>
+      <form action="/createevent" id="createEventForm" method="post">
+        <label class="col_4" for="newEventName">Event Name</label>
+        <input class="col_8" id="newEventName" name="eventName" type="text submit" placeholder="Event Name" />
+      </form>
     </section>
   </main>
 </div> <!-- End Grid -->
@@ -92,6 +96,7 @@
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script type="text/javascript" src="../admin/js/kickstart.js"></script>
   <script type="text/javascript" src="../admin/js/edit-event.js"></script>
+  <script type="text/javascript" src="../admin/js/create-event.js"></script>
 </body>
 </html>
 
