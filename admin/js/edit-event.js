@@ -21,6 +21,8 @@ $(document).ready(function () {
 
 	$('#edit-event-menu-tab').click(function () {
 		$editPageMenu.show();
+		$adminHeader.html('<h1>What would you like to edit?</h1>');
+		$('#mainAdmin').children().hide();
 	});
 
 	$('#editSchedule').click(function () {
@@ -95,6 +97,3 @@ $(document).ready(function () {
 	})
 
 })
-
-
-// '<input type="checkbox" name="scheduleId" value="' + eventschedules[i].id + '" id="scheduleDay' + eventschedules[i].id + '/><label for="scheduleDay' + eventschedules[i].id + '" class="inline">Checkbox Field</label>
