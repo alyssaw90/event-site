@@ -172,6 +172,25 @@ module.exports = function (router) {
       })
     })
   })
+
+  router.route('/addschedule') 
+  .post(function (req, res) {
+    sql.sync()
+    .then(function () {
+      EventSchedule.create(req.body)
+      res.redirect('/admin');
+    })
+  })
+
+  router.route('/deleteschedule')
+  .post(function (req, res) {
+    console.log(clc.green('REQ ::::::::::::::::::  '), req.body);
+    sql.sync()
+    .then(function () {
+      EventSchedule.destroy({where: {id: req.body.scheduleId}});
+      res.redirect('/admin');
+    })
+  })
   
   router.route('/eventoverviews')
   .get(function (req, res) {
