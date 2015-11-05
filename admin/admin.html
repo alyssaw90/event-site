@@ -20,16 +20,24 @@
     <!-- Menu Horizontal -->
     <ul class="menu">
       <li class="current" id="admin-home-menu-tab"><a >Home</a></li>
-      <li id="add-event-menu-tab"><a >Add Event</a></li>
-      <li id="edit-event-menu-tab"><a >Edit Event</a></li>
+      <li><a id="add-event-menu-tab">Add Event</a></li>
+      <li><a  id="edit-event-menu-tab">Edit Event</a></li>
       <li><a >Logout</a></li>
     </ul>
   </header>
-  <main id="main-admin" style="display: block;">
-  <section class="col_12" id="admin-home">
+  <section class="col_12" id="admin-header">
     <h1>Admin Home Tab</h1>
   </section>
-    <section class="col_12">
+  <section id="editPageMenu" class="col_12" style="display: none;">
+    <ul class="button-bar">
+      <li><a id="editOVerview">Edit Overview</a></li>
+      <li><a id="editSchedule">Edit Schedule</a></li>
+      <li><a >Edit Days</a></li>
+      <li><a >Edit Sponsors</a></li>
+    </ul>
+  </section>
+  <main id="mainAdmin" style="display: block;">
+    <section class="col_12" id="chooseEventToEdit" style="display: none;">
       <form id="chooseEvent">
         <label for="eventNames">Select Event Schedule</label>
         <select id="eventNames" name="eventNames">
@@ -38,6 +46,7 @@
         <br />
         <button class="medium" id="chooseEventButton" type="submit">Next</button>
       </form>
+    </section>
   <!--     <form>
         <label class="col_4" for="eventName">New Event Name</label>
         <input class="col_8" id="eventName" name="eventName" type="text" placeholder="Event Name" />
@@ -47,35 +56,47 @@
         <br />
         <button class="medium" id="newEventButton" type="submit">Create New Event</button>
       </form> -->
-      <form action="/addschedule" id="scheduleForm" method="POST" style="display: none;">
-        <label for="day">Select Event Schedule</label>
-          <select id="day">
-          <option value="day1">day1</option>
+    <section id="dailySchedule" style="display: none;">
+      <h3>Add Item to schedule</h3>
+      <form action="/addschedule" id="scheduleForm" method="POST">
+        <label class="col_4" for="scheduleDay">Select Day</label>
+        <br />
+        <select class="col_8" id="scheduleDay" name="scheduleDay">
+          <!-- <option value="day1">day1</option>
           <option value="day2">day2</option>
           <option value="day3">day3</option>
           <option value="day4">day4</option>
           <option value="day5">day5</option>
           <option value="day6">day6</option>
-          <option value="day7">day7</option>
+          <option value="day7">day7</option> -->
         </select>
-        <label class="col_4" for="time">Scheduled Time</label>
-        <input class="col_8" id="time" name="time" type="text submit" placeholder="Location" required/>
-        <label class="col_4 disabled" for="email">*Optional</label>
-        <input class="col_8" id="email" name="email" type="email" placeholder="Email" />
         <br />
         <br />
-        <button class="medium" type="submit">Submit</button>
+        <label class="col_4" for="scheduleTime">Pick a Time</label>
+        <input class="col_8" id="scheduleTime" name="scheduleTime" type="text submit" placeholder="Time" required/>
+        <label class="col_4" for="description">Describe the Scheduled Item</label>
+        <input class="col_8" id="description" name="description" type="text submit" placeholder="description" />
+        <br />
+        <br />
+        <button class="medium" id="submitScheduleItemButton" type="submit">Submit</button>
       </form>
+      <div id="currentSchedule">
+      </div>
     </section>
-    <section class="col_12" id="edit-event" style="display: none;">
-      <h1>Edit Event Tab</h1>
+    <section class="col_12" id="addEventSection" style="display: none;">
+      <h1>Add Event Section Tab</h1>
+      <form action="/createevent" id="createEventForm" method="post">
+        <label class="col_4" for="newEventName">Event Name</label>
+        <input class="col_8" id="newEventName" name="eventName" type="text submit" placeholder="Event Name" />
+      </form>
     </section>
   </main>
 </div> <!-- End Grid -->
 <!-- JavaScript -->
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script type="text/javascript" src="../admin/js/kickstart.js"></script>
-  <script type="text/javascript" src="../admin/js/admin-page.js"></script>
+  <script type="text/javascript" src="../admin/js/edit-event.js"></script>
+  <script type="text/javascript" src="../admin/js/create-event.js"></script>
 </body>
 </html>
 
