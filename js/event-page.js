@@ -143,7 +143,6 @@ $(document).ready(function () {
 												var silverColDiv = '<div class="col_';
 												var bronzeColDiv = '<div class="col_';
 												var sponsorsStr = '<h3>Platinum Sponsors</h3>platinumSponsorsPlaceholder<hr class="alt1" /><h3>Gold Sponsors</h3>goldSponsorPlaceholder<hr class="alt1" /><h3>Silver Sponsors</h3>silverSponsorsPlaceholder<hr class="alt1" /><h3>Bronze Sponsors</h3>bronzeSponsorPlaceholder<hr class="alt1" />';
-												// var travelHtml = '<h2>locationTitle</h2><div class="flexible-container">theMap</div><hr class="alt1" /><ul class="tabs left"><li class="current"><a href="#venue-tab"><h5>Venue</h5></a></li><li><a href="#travel-tab"><h5>Travel</h5></a></li><li><a href="#accomodations-tab"><h5>Accomodations</h5></a></li><li><a href="#tips-tab"><h5>Tips & Tricks</h5></a></li><li><a href="#eat-drink"><h5>Where to Eat & Drink</h5></a></li></ul><div id="venue-tab" class="tab-content" style="display:block;"><img src="data:image;base64,VenueImage" /><h3>VenueDivHeader</h3><p>VenueDescription</p></div><div id="travel-tab" class="tab-content" style="display:none;"><img src="data:image;base64,TravelImage" /><h3>TravelDivHeader</h3><p>TravelDivDescription</p></div><div id="accomodations-tab" class="tab-content" style="display:none;"><h3>AccommodationsDivHeader</h3><p>AccommodationsDivDescription</p><p>AccommodationsDivList</p></div><div id="tips-tab" class="tab-content" style="display:none;"><h3>TipsDivHeader</h3><p>TipsDivDescription</p><p>TipsDivList</p></div><div id="eat-drink" class="tab-content" style="display:none;"><h3>eatDrinkDivHeader</h3><p>eatDrinkDivList</p></div>';
 												eventsObj[key].sponsorsDivStr = '<h3>' + eventsObj[key].sponsorsHeading + '</h3><p>' + eventsObj[key].sponsorsParagraph + '</p><hr class="alt1" />';
 												for (var key2 in eventsObj[key].sponsors) {
 													if (eventsObj[key].sponsors[key2].platinumSponsorName) {
@@ -260,7 +259,7 @@ $(document).ready(function () {
 											//add elements to DOM
 											for (var key in eventsObj) {
 												if (pathname === eventsObj[key].eventUrl) {
-												console.log('HELLO :::::::::::: ', eventsObj[key].travelHtml);
+												console.log('HELLO :::::::::::: ', eventsObj[key].sponsorsHeading);
 													document.title = eventsObj[key].eventName;
 													if (eventsObj[key].overviewHtml !== '<ul class="tabs center">') {
 														$('#eventOverviewTabLink').show();
@@ -278,11 +277,11 @@ $(document).ready(function () {
 														$('#travelTabLink').show();
 														$('#travelTab').append(eventsObj[key].travelHtml);
 													}
-													if (eventsObj[key].sponsors.length !== 0) {
+													if (eventsObj[key].sponsorsHeading) {
 														$('#sponsorsTabLink').show();
 														$('#eventSponsors').append(eventsObj[key].sponsorsDivStr);														
 													}
-													$('#eventHeader').html('<img src="data:image;base64,' + eventsObj[key].eventHeaderImage + '" />')
+													$('#eventHeader').html('<img src="../uploads/' + eventsObj[key].eventHeaderImage + '" />')
 													console.log('End   :: ', $.now());
 												}
 											}

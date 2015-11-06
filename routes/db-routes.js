@@ -22,8 +22,9 @@ var fs = require('fs');
 // var $ = require('cheerio');
 var clc = require('cli-color');
 var multer = require('multer');
-var storage = multer.memoryStorage();
-var upload = multer({ storage: storage });
+// var storage = multer.memoryStorage();
+// var upload = multer({ storage: storage });
+var upload = multer({ dest: 'uploads/' })
 var bodyparser = require('body-parser');
 var path = require('path');
 var Sql = require('sequelize');
@@ -195,13 +196,15 @@ module.exports = function (router) {
     .then(function () {
       Event.create(req.body)
       .then(function (newEvent) {
+        console.log(clc.magenta('HELLO ::::::::::::::  '), req.files[0], req.files[0].mimetype.replace('image/', ''))
       /*  newEvent.eventHeaderImage = req.files[0].buffer.toString('base64');
         newEvent.eventBackgroundImage = req.files[1].buffer.toString('base64');
-        newEvent.eventSliderImage = req.files[2].buffer.toString('base64');*/
+        newEvent.eventSliderImage = req.files[2].buffer.toString('base64');
+        newEvent.save({fields: ['eventHeaderImage', 'eventBackgroundImage', 'eventSliderImage']})*/
         newEvent.update({
-          eventHeaderImage: req.files[0].buffer.toString('base64'),
-          eventBackgroundImage: req.files[1].buffer.toString('base64'),
-          eventSliderImage: req.files[2].buffer.toString('base64')
+          eventHeaderImage: req.files[0].filename,
+          eventBackgroundImage: req.files[1].filename,
+          eventSliderImage: req.files[2].filename
         })
         .then(function (eventWithPics) {
           res.redirect('/admin');
