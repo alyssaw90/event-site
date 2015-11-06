@@ -186,29 +186,29 @@ module.exports = function (router) {
   // var eventImages = upload.fields([{ name: 'eventHeaderImage', maxCount: 1 }, { name: 'eventBackgroundImage', maxCount: 1 }, {name: 'eventSliderImage', maxCount: 1}]);
   router.route('/createevent')
   .post(upload.array('images', 3), function (req, res, next) {
-    for (var i = 0, j = req.files.length; i < j; i++) {
-      console.log(clc.magenta('req.files'), req.files[i]);
-    }
-          console.log(clc.magenta('req.files'), req.files.eventHeaderImage['buffer']);
+    // for (var i = 0, j = req.files.length; i < j; i++) {
+    //   console.log(clc.magenta('req.files'), req.files[i]);
+    // }
+          // console.log(clc.magenta('req.files'), req.files.eventHeaderImage['buffer']);
+          // res.redirect('/admin');
+    sql.sync()
+    .then(function () {
+      Event.create(req.body)
+      .then(function (newEvent) {
+      /*  newEvent.eventHeaderImage = req.files[0].buffer.toString('base64');
+        newEvent.eventBackgroundImage = req.files[1].buffer.toString('base64');
+        newEvent.eventSliderImage = req.files[2].buffer.toString('base64');*/
+        newEvent.update({
+          eventHeaderImage: req.files[0].buffer.toString('base64'),
+          eventBackgroundImage: req.files[1].buffer.toString('base64'),
+          eventSliderImage: req.files[2].buffer.toString('base64')
+        })
+        .then(function (eventWithPics) {
           res.redirect('/admin');
-    // sql.sync()
-    // .then(function () {
-    //   Event.create(req.body)
-    //   .then(function (newEvent) {
-    //   /*  newEvent.eventHeaderImage = req.files[0].buffer.toString('base64');
-    //     newEvent.eventBackgroundImage = req.files[1].buffer.toString('base64');
-    //     newEvent.eventSliderImage = req.files[2].buffer.toString('base64');*/
-    //     newEvent.update({
-    //       eventHeaderImage: req.files[0].buffer.toString('base64'),
-    //       eventBackgroundImage: req.files[1].buffer.toString('base64'),
-    //       eventSliderImage: req.files[2].buffer.toString('base64')
-    //     })
-    //     .then(function (eventWithPics) {
-    //       res.redirect('/admin');
           
-    //     })
-    //   })
-    // })
+        })
+      })
+    })
   })
   
   router.route('/events')

@@ -29,6 +29,8 @@ $(document).ready(function () {
 			eventsObj[data[i].id]['scheduleDays'] = [];
 			eventsObj[data[i].id]['scheduleInfo'] = [];
 			eventsObj[data[i].id]['sponsors'] = [];
+			eventsObj[data[i].id]['sponsorsDivStr'] = '';
+			eventsObj[data[i].id]['travelHtml'] = '<h2>locationTitle</h2><div class="flexible-container">theMap</div><hr class="alt1" /><ul class="tabs left"><li class="current"><a href="#venue-tab"><h5>Venue</h5></a></li><li><a href="#travel-tab"><h5>Travel</h5></a></li><li><a href="#accomodations-tab"><h5>Accomodations</h5></a></li><li><a href="#tips-tab"><h5>Tips & Tricks</h5></a></li><li><a href="#eat-drink"><h5>Where to Eat & Drink</h5></a></li></ul><div id="venue-tab" class="tab-content" style="display:block;"><img src="data:image;base64,VenueImage" /><h3>VenueDivHeader</h3><p>VenueDescription</p></div><div id="travel-tab" class="tab-content" style="display:none;"><img src="data:image;base64,TravelImage" /><h3>TravelDivHeader</h3><p>TravelDivDescription</p></div><div id="accomodations-tab" class="tab-content" style="display:none;"><h3>AccommodationsDivHeader</h3><p>AccommodationsDivDescription</p><p>AccommodationsDivList</p></div><div id="tips-tab" class="tab-content" style="display:none;"><h3>TipsDivHeader</h3><p>TipsDivDescription</p><p>TipsDivList</p></div><div id="eat-drink" class="tab-content" style="display:none;"><h3>eatDrinkDivHeader</h3><p>eatDrinkDivList</p></div>';
 			eventsObj[data[i].id]['speakers'] = [];
 			eventsObj[data[i].id]['attendees'] = [];
 			eventsObj[data[i].id]['aboveMapHeader'] = '';
@@ -85,7 +87,6 @@ $(document).ready(function () {
 								}
 							}
 							$.get('/travelinfo', function (travelinfo) {
-								console.log(travelinfo);
 								for (var i = 0, j = travelinfo.length; i < j; i++) {
 									eventsObj[travelinfo[i].eventId]['aboveMapHeader'] = travelinfo[i].aboveMapHeader;
 									eventsObj[travelinfo[i].eventId]['belowMapHeading'] = travelinfo[i].belowMapHeading;
@@ -129,7 +130,6 @@ $(document).ready(function () {
 												var accommodationStr = '';
 												var tipsStr = '';
 												var eatDrinkStr = '';
-												var sponsorsDivStr = '';
 												var platinumSponsorsStr = '<div class="col_12">';
 												var goldSponsorsStr = '<div class="col_12">';
 												var silverSponsorsStr = '<div class="col_12">';
@@ -143,8 +143,8 @@ $(document).ready(function () {
 												var silverColDiv = '<div class="col_';
 												var bronzeColDiv = '<div class="col_';
 												var sponsorsStr = '<h3>Platinum Sponsors</h3>platinumSponsorsPlaceholder<hr class="alt1" /><h3>Gold Sponsors</h3>goldSponsorPlaceholder<hr class="alt1" /><h3>Silver Sponsors</h3>silverSponsorsPlaceholder<hr class="alt1" /><h3>Bronze Sponsors</h3>bronzeSponsorPlaceholder<hr class="alt1" />';
-												var travelHtml = '<h2>locationTitle</h2><div class="flexible-container">theMap</div><hr class="alt1" /><ul class="tabs left"><li class="current"><a href="#venue-tab"><h5>Venue</h5></a></li><li><a href="#travel-tab"><h5>Travel</h5></a></li><li><a href="#accomodations-tab"><h5>Accomodations</h5></a></li><li><a href="#tips-tab"><h5>Tips & Tricks</h5></a></li><li><a href="#eat-drink"><h5>Where to Eat & Drink</h5></a></li></ul><div id="venue-tab" class="tab-content" style="display:block;"><img src="data:image;base64,VenueImage" /><h3>VenueDivHeader</h3><p>VenueDescription</p></div><div id="travel-tab" class="tab-content" style="display:none;"><img src="data:image;base64,TravelImage" /><h3>TravelDivHeader</h3><p>TravelDivDescription</p></div><div id="accomodations-tab" class="tab-content" style="display:none;"><h3>AccommodationsDivHeader</h3><p>AccommodationsDivDescription</p><p>AccommodationsDivList</p></div><div id="tips-tab" class="tab-content" style="display:none;"><h3>TipsDivHeader</h3><p>TipsDivDescription</p><p>TipsDivList</p></div><div id="eat-drink" class="tab-content" style="display:none;"><h3>eatDrinkDivHeader</h3><p>eatDrinkDivList</p></div>';
-												sponsorsDivStr = '<h3>' + eventsObj[key].sponsorsHeading + '</h3><p>' + eventsObj[key].sponsorsParagraph + '</p><hr class="alt1" />';
+												// var travelHtml = '<h2>locationTitle</h2><div class="flexible-container">theMap</div><hr class="alt1" /><ul class="tabs left"><li class="current"><a href="#venue-tab"><h5>Venue</h5></a></li><li><a href="#travel-tab"><h5>Travel</h5></a></li><li><a href="#accomodations-tab"><h5>Accomodations</h5></a></li><li><a href="#tips-tab"><h5>Tips & Tricks</h5></a></li><li><a href="#eat-drink"><h5>Where to Eat & Drink</h5></a></li></ul><div id="venue-tab" class="tab-content" style="display:block;"><img src="data:image;base64,VenueImage" /><h3>VenueDivHeader</h3><p>VenueDescription</p></div><div id="travel-tab" class="tab-content" style="display:none;"><img src="data:image;base64,TravelImage" /><h3>TravelDivHeader</h3><p>TravelDivDescription</p></div><div id="accomodations-tab" class="tab-content" style="display:none;"><h3>AccommodationsDivHeader</h3><p>AccommodationsDivDescription</p><p>AccommodationsDivList</p></div><div id="tips-tab" class="tab-content" style="display:none;"><h3>TipsDivHeader</h3><p>TipsDivDescription</p><p>TipsDivList</p></div><div id="eat-drink" class="tab-content" style="display:none;"><h3>eatDrinkDivHeader</h3><p>eatDrinkDivList</p></div>';
+												eventsObj[key].sponsorsDivStr = '<h3>' + eventsObj[key].sponsorsHeading + '</h3><p>' + eventsObj[key].sponsorsParagraph + '</p><hr class="alt1" />';
 												for (var key2 in eventsObj[key].sponsors) {
 													if (eventsObj[key].sponsors[key2].platinumSponsorName) {
 														platinumSponsorCount++;															
@@ -186,7 +186,7 @@ $(document).ready(function () {
 												silverSponsorsStr += '<hr class="alt1" /></div>';
 												bronzeSponsorsStr += '<hr class="alt1" /></div>';
 												sponsorsStr.replace('platinumSponsorsPlaceholder', platinumSponsorsStr).replace('goldSponsorPlaceholder', goldSponsorsStr).replace('silverSponsorsPlaceholder', silverSponsorsStr).replace('bronzeSponsorPlaceholder', bronzeSponsorsStr);
-												sponsorsDivStr += platinumSponsorsStr + goldSponsorsStr + silverSponsorsStr + bronzeSponsorsStr;
+												eventsObj[key].sponsorsDivStr += platinumSponsorsStr + goldSponsorsStr + silverSponsorsStr + bronzeSponsorsStr;
 												for (var i = 0, j = eventsObj[key].accommodationName.length; i < j; i++) {
 													accommodationStr += '<a href="' + eventsObj[key].accommodationUrl[i] + ' "><h4>' + eventsObj[key].accommodationName[i] + '</h4></a><p>' + eventsObj[key].accommodationDesc[i] + '</p><p>email: <a href="mailto:' + eventsObj[key].accommodationEmail[i] + '"> ' + eventsObj[key].accommodationEmail[i] + '</a></p><p>Phone: <a href="tel:' + eventsObj[key].accommodationPhone[i] + '">' + eventsObj[key].accommodationPhone[i] + '</a></p>';
 												}
@@ -197,7 +197,7 @@ $(document).ready(function () {
 													eatDrinkStr += '<h4>' + eventsObj[key].restaurantName[i] + '</h4><p>' + eventsObj[key].restaurantDesc + '</p>';
 												}
 												//create string of html for events tab
-												travelHtml = travelHtml.replace('locationTitle', eventsObj[key].aboveMapHeader).replace('theMap', eventsObj[key].mapImapHtml).replace('VenueDivHeader', eventsObj[key].venueName).replace('VenueDescription', eventsObj[key].venueDesc).replace('VenueImage', eventsObj[key].venueImage).replace('TravelImage', eventsObj[key].travelImage).replace('TravelDivHeader', eventsObj[key].travelHeading).replace('TravelDivDescription', eventsObj[key].travelDesc).replace('AccommodationsDivHeader', eventsObj[key].accommodationHeading).replace('AccommodationsDivDescription', eventsObj[key].accommodationParagraph).replace('AccommodationsDivList', accommodationStr).replace('TipsDivHeader', eventsObj[key].tipsDivHeading).replace('TipsDivDescription', eventsObj[key].tipsDivParagraph).replace('TipsDivList', tipsStr).replace('eatDrinkDivHeader', eventsObj[key].eatAndDrinkHeading).replace('eatDrinkDivList', eatDrinkStr);
+												eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('locationTitle', eventsObj[key].aboveMapHeader).replace('theMap', eventsObj[key].mapImapHtml).replace('VenueDivHeader', eventsObj[key].venueName).replace('VenueDescription', eventsObj[key].venueDesc).replace('VenueImage', eventsObj[key].venueImage).replace('TravelImage', eventsObj[key].travelImage).replace('TravelDivHeader', eventsObj[key].travelHeading).replace('TravelDivDescription', eventsObj[key].travelDesc).replace('AccommodationsDivHeader', eventsObj[key].accommodationHeading).replace('AccommodationsDivDescription', eventsObj[key].accommodationParagraph).replace('AccommodationsDivList', accommodationStr).replace('TipsDivHeader', eventsObj[key].tipsDivHeading).replace('TipsDivDescription', eventsObj[key].tipsDivParagraph).replace('TipsDivList', tipsStr).replace('eatDrinkDivHeader', eventsObj[key].eatAndDrinkHeading).replace('eatDrinkDivList', eatDrinkStr);
 												//loop over the speakers array and create html for speakers tab
 												for (var i = 0, j = eventsObj[key].speakers.length; i < j; i++) {
 													eventsObj[key].speakersHtml += '<h4>' + eventsObj[key].speakers[i].firstName + ' ' + eventsObj[key].speakers[i].lastName + '</h4><h5>' + eventsObj[key].speakers[i].msTeamTitle + '</h5><p><img class="pull-left" src="data:image;base64,' + eventsObj[key].speakers[i].headShot + '" />' + eventsObj[key].speakers[i].contactDescription + '</p><hr />';
@@ -260,12 +260,28 @@ $(document).ready(function () {
 											//add elements to DOM
 											for (var key in eventsObj) {
 												if (pathname === eventsObj[key].eventUrl) {
+												console.log('HELLO :::::::::::: ', eventsObj[key].travelHtml);
 													document.title = eventsObj[key].eventName;
-													$('#event-overview').append(eventsObj[key].overviewHtml); 
-													$('#event-schedule').append(eventsObj[key].scheduleDaysHtml);
-													$('#eventSpeakers').append(eventsObj[key].speakersHtml);
-													$('#travelTab').append(travelHtml);
-													$('#eventSponsors').append(sponsorsDivStr);
+													if (eventsObj[key].overviewHtml !== '<ul class="tabs center">') {
+														$('#eventOverviewTabLink').show();
+														$('#event-overview').append(eventsObj[key].overviewHtml); 
+													}
+													if (eventsObj[key].scheduleDaysHtml !== '<ul class="tabs center">') {
+														$('#eventScheduleTabLink').show();
+														$('#event-schedule').append(eventsObj[key].scheduleDaysHtml);
+													}
+													if (eventsObj[key].speakers.length !== 0) {
+														$('#eventSpeakersTabLink').show();
+														$('#eventSpeakers').append(eventsObj[key].speakersHtml);
+													}
+													if (eventsObj[key].travelHtml !== '<h2>locationTitle</h2><div class="flexible-container">theMap</div><hr class="alt1" /><ul class="tabs left"><li class="current"><a href="#venue-tab"><h5>Venue</h5></a></li><li><a href="#travel-tab"><h5>Travel</h5></a></li><li><a href="#accomodations-tab"><h5>Accomodations</h5></a></li><li><a href="#tips-tab"><h5>Tips & Tricks</h5></a></li><li><a href="#eat-drink"><h5>Where to Eat & Drink</h5></a></li></ul><div id="venue-tab" class="tab-content" style="display:block;"><img src="data:image;base64,VenueImage" /><h3>VenueDivHeader</h3><p>VenueDescription</p></div><div id="travel-tab" class="tab-content" style="display:none;"><img src="data:image;base64,TravelImage" /><h3>TravelDivHeader</h3><p>TravelDivDescription</p></div><div id="accomodations-tab" class="tab-content" style="display:none;"><h3>AccommodationsDivHeader</h3><p>AccommodationsDivDescription</p><p>AccommodationsDivList</p></div><div id="tips-tab" class="tab-content" style="display:none;"><h3>TipsDivHeader</h3><p>TipsDivDescription</p><p>TipsDivList</p></div><div id="eat-drink" class="tab-content" style="display:none;"><h3>eatDrinkDivHeader</h3><p>eatDrinkDivList</p></div>') {
+														$('#travelTabLink').show();
+														$('#travelTab').append(eventsObj[key].travelHtml);
+													}
+													if (eventsObj[key].sponsors.length !== 0) {
+														$('#sponsorsTabLink').show();
+														$('#eventSponsors').append(eventsObj[key].sponsorsDivStr);														
+													}
 													$('#eventHeader').html('<img src="data:image;base64,' + eventsObj[key].eventHeaderImage + '" />')
 													console.log('End   :: ', $.now());
 												}
