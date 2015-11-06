@@ -46,7 +46,7 @@ $(document).ready(function () {
 			eventsObj[data[i].id]['restaurantDesc'] = [];
 			/*eventsObj[data[i].id]['scheduleTimes'] = [];
 			eventsObj[data[i].id]['scheduleDescriptions'] = [];*/
-		}
+		} console.log(data);
 		$.get('/eventoverviews', function (overviews) {
 			for (var i = 0, j = overviews.length; i < j; i++) {
 				eventsObj[overviews[i].eventId]['overviewHeadingText'].push(overviews[i].headingText);
@@ -71,7 +71,6 @@ $(document).ready(function () {
 							for (var i = 0, j = attendees.length; i < j; i++) {
 								if (attendees[i].eventAttendeeRole === 'speaker') {
 									for (var ii = 0, jj = contacts.length; ii < jj; ii++) {
-										console.log(contacts[ii].id, attendees[i]);
 										if (contacts[ii].id === attendees[i].contactId) {
 											eventsObj[attendees[i].eventId].speakers.push(contacts[ii]);
 										}
@@ -86,6 +85,7 @@ $(document).ready(function () {
 								}
 							}
 							$.get('/travelinfo', function (travelinfo) {
+								console.log(travelinfo);
 								for (var i = 0, j = travelinfo.length; i < j; i++) {
 									eventsObj[travelinfo[i].eventId]['aboveMapHeader'] = travelinfo[i].aboveMapHeader;
 									eventsObj[travelinfo[i].eventId]['belowMapHeading'] = travelinfo[i].belowMapHeading;
@@ -258,7 +258,6 @@ $(document).ready(function () {
 												eventsObj[key].scheduleDaysHtml += eventsObj[key].dailyScheduleHtml;
 											}
 											//add elements to DOM
-											console.log(eventsObj[key].speakersHtml);
 											for (var key in eventsObj) {
 												if (pathname === eventsObj[key].eventUrl) {
 													document.title = eventsObj[key].eventName;
@@ -267,6 +266,7 @@ $(document).ready(function () {
 													$('#eventSpeakers').append(eventsObj[key].speakersHtml);
 													$('#travelTab').append(travelHtml);
 													$('#eventSponsors').append(sponsorsDivStr);
+													$('#eventHeader').html('<img src="data:image;base64,' + eventsObj[key].eventHeaderImage + '" />')
 													console.log('End   :: ', $.now());
 												}
 											}
