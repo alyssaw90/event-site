@@ -196,18 +196,24 @@ module.exports = function (router) {
     .then(function () {
       Event.create(req.body)
       .then(function (newEvent) {
-        console.log(clc.magenta('HELLO ::::::::::::::  '), req.files[0], req.files[0].mimetype.replace('image/', ''))
-      /*  newEvent.eventHeaderImage = req.files[0].buffer.toString('base64');
-        newEvent.eventBackgroundImage = req.files[1].buffer.toString('base64');
-        newEvent.eventSliderImage = req.files[2].buffer.toString('base64');
-        newEvent.save({fields: ['eventHeaderImage', 'eventBackgroundImage', 'eventSliderImage']})*/
+        // console.log(clc.magenta('HELLO ::::::::::::::  '), req.files[0], req.files[0].mimetype.replace('image/', ''))
         newEvent.update({
           eventHeaderImage: req.files[0].filename,
           eventBackgroundImage: req.files[1].filename,
           eventSliderImage: req.files[2].filename
         })
         .then(function (eventWithPics) {
-          res.redirect('/admin');
+          fs.readFile(path.join(__dirname, '../admin/admin.html'), function (err, data) {
+            if (err) {
+              console.log(err);
+              res.json({msg: 'internal server error'});
+            }
+            var theHtml = data.toString();
+            theHtml.replace('<section class="col_12" id="chooseEventToEdit" style="display: none;">', '<section class="col_12" id="chooseEventToEdit" style="display: block;">');
+            theHtml.replace('<select id="eventNames" name="eventNames">', 'Hello replacement!!!!!!s')
+            console.log(clc.magenta('HOLA ::::::::::  '),  theHtml);
+            res.send(theHtml);
+          })
           
         })
       })

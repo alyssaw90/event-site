@@ -18,8 +18,8 @@ var EventAttendee = module.exports = sql.define('EventAttendee', {
   eventAttendeeRole: Sql.ENUM('speaker', 'attendee', 'technical support', 'audio visual support'),
 });
 
-EventAttendee.sync({force: false})
-/*  .then(function () {
+EventAttendee.sync({force: true})
+  .then(function () {
     return EventAttendee.create({
       eventId: 1,
       contactId: 1,
@@ -57,21 +57,7 @@ EventAttendee.sync({force: false})
   .then(function () {
     return EventAttendee.create({
       eventId: 2,
-      contactId: 5,
-      eventAttendeeRole: 'speaker'
-    })
-  })
-  .then(function () {
-    return EventAttendee.create({
-      eventId: 2,
-      contactId: 6,
-      eventAttendeeRole: 'speaker'
-    })
-  })
-  .then(function () {
-    return EventAttendee.create({
-      eventId: 2,
-      contactId: 7,
+      contactId: 2,
       eventAttendeeRole: 'speaker'
     })
   })
@@ -86,13 +72,48 @@ EventAttendee.sync({force: false})
     return EventAttendee.create({
       eventId: 2,
       contactId: 4,
-      eventAttendeeRole: 'attendee'
+      eventAttendeeRole: 'speaker'
+    })
+  })
+  .then(function () {
+    return EventAttendee.create({
+      eventId: 2,
+      contactId: 5,
+      eventAttendeeRole: 'speaker'
+    })
+  })
+  .then(function () {
+    return EventAttendee.create({
+      eventId: 2,
+      contactId: 3,
+      eventAttendeeRole: 'speaker'
+    })
+  })
+  .then(function () {
+    return EventAttendee.create({
+      eventId: 2,
+      contactId: 6,
+      eventAttendeeRole: 'speaker'
+    })
+  })
+  .then(function () {
+    return EventAttendee.create({
+      eventId: 2,
+      contactId: 16,
+      eventAttendeeRole: 'speaker'
     })
   })
   .then(function () {
     return EventAttendee.create({
       eventId: 3,
       contactId: 7,
+      eventAttendeeRole: 'speaker'
+    })
+  })
+  .then(function () {
+    return EventAttendee.create({
+      eventId: 2,
+      contactId: 9,
       eventAttendeeRole: 'speaker'
     })
   })
@@ -123,4 +144,4 @@ EventAttendee.sync({force: false})
       contactId: 1,
       eventAttendeeRole: 'attendee'
     })
-  })*/
+  })

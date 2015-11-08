@@ -311,14 +311,14 @@ table {
 	font-family: SegoeUILight, sans-serif;
 }
 
-.schedule td:first-child {
+/*.schedule td:first-child {
 	text-align: center;
-	font-size: 1.5em;
+	font-size: 1em;
 }
 
 .schedule tr > :first-child {
 	max-width: 25px;
-}
+}*/
 
 .community td:first-child {
 	width: 25%;
