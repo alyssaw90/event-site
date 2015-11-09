@@ -24,7 +24,7 @@ module.exports = function (router) {
 
 	router.route('/')
   .get(function (req, res) {
-    res.sendFile(path.join(__dirname, '../views/home.html'));
+    res.sendFile(path.join(__dirname, '../index.html'));
   });
 
   router.route('/past-events')
