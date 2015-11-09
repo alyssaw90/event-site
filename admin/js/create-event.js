@@ -4,7 +4,9 @@ $(document).ready(function () {
 	var $adminHeader = $('#admin-header');
 	$('#add-event-menu-tab').click(function () {
 		$('#mainAdmin').children().hide();
-		$adminHeader.html('<h1>Give your event a name</h1>');
+		$adminHeader.html('<h1>Create Your Event</h1>');
 		$addEventMenuTab.show();
 	});
+
+	$('')
 })

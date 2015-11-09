@@ -1,9 +1,16 @@
 /*Custom CSS for Plugfest and Events Page*/
 
-@font-face { font-family: SegoeUILight; src: url(./fonts/segoeuil.ttf)};
+/*@font-face { font-family: SegoeUILight; src: url(./fonts/segoeuil.ttf)};
 @font-face { font-family: SegoeUI; src: url(./fonts/segoeuil.ttf)};
 @font-face { font-family: SegoeUILight; font-weight: bold; src: url(./fonts/segoeuib.ttf)}; 
-@font-face { font-family: SegoeUILight; font-style: italic; src: url(./fonts/segoeuib.ttf)};
+@font-face { font-family: SegoeUILight; font-style: italic; src: url(./fonts/segoeuib.ttf)};*/
+@font-face {
+	font-family: 'SegoeUILight';
+	src: url('fonts/segoeuil.eot');
+	src: local('☺'), url('fonts/segoeuil.woff') format('woff'), url('fonts/segoeuil.ttf') format('truetype'), url('fonts/segoeuil.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
 
 body {
 	/*background-image: url(../img/background-stripe.png);*/
@@ -265,7 +272,6 @@ body {
 */
 h1 {
 	font-family: SegoeUILight, sans-serif;
-	color: #505050;
 }
 
 h2 {
@@ -305,14 +311,14 @@ table {
 	font-family: SegoeUILight, sans-serif;
 }
 
-.schedule td:first-child {
+/*.schedule td:first-child {
 	text-align: center;
-	font-size: 1.5em;
+	font-size: 1em;
 }
 
 .schedule tr > :first-child {
 	max-width: 25px;
-}
+}*/
 
 .community td:first-child {
 	width: 25%;

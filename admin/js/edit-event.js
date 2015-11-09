@@ -65,7 +65,7 @@ $(document).ready(function () {
 	  			var formDays = '';
   				$adminHeader.html('<h1>' + eventsData[i].eventName + '</h1>');
   				numDays = Math.round(Math.abs((startDate.getTime() - endDate.getTime()) / oneDay));
-  				for (var i = 0; i < numDays; i++) {
+  				for (var i = 0; i <= numDays; i++) {
   					if (startDate.getDay() + i <= 6) {
   						dayOptions += '<option value="' + daysOfWeek[startDate.getDay() + i] + '">' + daysOfWeek[startDate.getDay() + i] + '</option>';
   					}

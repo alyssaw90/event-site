@@ -84,10 +84,36 @@
       </div>
     </section>
     <section class="col_12" id="addEventSection" style="display: none;">
-      <h1>Add Event Section Tab</h1>
-      <form action="/createevent" id="createEventForm" method="post">
+      <form action="/createevent" id="createEventForm" method="post" enctype="multipart/form-data">
         <label class="col_4" for="newEventName">Event Name</label>
-        <input class="col_8" id="newEventName" name="eventName" type="text submit" placeholder="Event Name" />
+        <input class="col_8" id="newEventName" name="eventName" type="text" placeholder="Event Name" />
+        <label class="col_4" for="newEventLocation">Event Location</label>
+        <input class="col_8" id="newEventLocation" name="eventLocation" type="text" placeholder="Event Location" />
+        <label class="col_4" for="newEventStartDate">Start Date</label>
+        <input class="col_8" id="newEventStartDate" name="eventStartDate" type="date" placeholder="Event Start Date" />
+        <label class="col_4" for="newEventEndDate">End Date</label>
+        <input class="col_8" id="newEventEndDate" name="eventEndDate" type="date" placeholder="Event End Date" />
+        <label class="col_4" for="newEventHeaderImage">Header Image</label>
+        <input class="col_8" id="newEventHeaderImage" name="images" type="file" placeholder="Header Image" />
+        <label class="col_4" for="newEventBackgroundImage">Future Page Image</label>
+        <input class="col_8" id="newEventBackgroundImage" name="images" type="file" placeholder="Image for Future Events Page" />
+        <label class="col_4" for="newEventSlideUpText">Future Page Text</label>
+        <input class="col_8" id="newEventSlideUpText" name="eventSlideUpText" type="text" placeholder="Text for Future Events Page" />
+        <label class="col_4" for="newSponsorsHeading">Sponsor Tab Heading</label>
+        <input class="col_8" id="newSponsorsHeading" name="sponsorsHeading" type="text" placeholder="Heading for Sponsor Tab" />
+        <label class="col_4" for="newSponsorsParagraph">Sponsor Tab Intro Paragraph</label>
+        <input class="col_8" id="newSponsorsParagraph" name="sponsorsParagraph" type="text" placeholder="Intro Paragraph for Sponsor Tab" />
+        <label class="col_4" for="newEventSliderImage">Image for Homepage slider</label>
+        <input class="col_8" id="newEventSliderImage" name="images" type="file" placeholder="Image for Homepage slider" />
+        <label class="col_4" for="newHomepageBulletOne">Homepage Bullet One</label>
+        <input class="col_8" id="newHomepageBulletOne" name="homepageBulletOne" type="text" placeholder="Heading for Sponsor Tab" />
+        <label class="col_4" for="newHomepageBulletTwo">Homepage Bullet Two</label>
+        <input class="col_8" id="newHomepageBulletTwo" name="homepageBulletTwo" type="text" placeholder="Heading for Sponsor Tab" />
+        <label class="col_4" for="newHomepageBulletThree">Homepage Bullet Three</label>
+        <input class="col_8" id="newHomepageBulletThree" name="homepageBulletThree" type="text" placeholder="Heading for Sponsor Tab" />
+        <br />
+        <br />
+        <button class="medium" id="createEventButton" type="submit">Create Event</button>
       </form>
     </section>
   </main>

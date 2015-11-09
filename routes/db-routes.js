@@ -21,6 +21,10 @@ var aboutUs = require('../views/about')();
 var fs = require('fs');
 // var $ = require('cheerio');
 var clc = require('cli-color');
+var multer = require('multer');
+// var storage = multer.memoryStorage();
+// var upload = multer({ storage: storage });
+var upload = multer({ dest: 'uploads/' })
 var bodyparser = require('body-parser');
 var path = require('path');
 var Sql = require('sequelize');
@@ -161,17 +165,6 @@ module.exports = function (router) {
       res.status(500).json({msg: 'internal server error'});
     });
   });
-  
-  router.route('/events')
-  .get(function (req, res) {
-    sql.sync()
-    .then(function () {
-      Event.findAll({where: {eventStartDate:{ $gte: new Date()}}})
-      .then(function (data) {
-        res.json(data);
-      })
-    })
-  })
 
   router.route('/addschedule') 
   .post(function (req, res) {
@@ -184,11 +177,57 @@ module.exports = function (router) {
 
   router.route('/deleteschedule')
   .post(function (req, res) {
-    console.log(clc.green('REQ ::::::::::::::::::  '), req.body);
     sql.sync()
     .then(function () {
       EventSchedule.destroy({where: {id: req.body.scheduleId}});
       res.redirect('/admin');
+    })
+  })
+
+  // var eventImages = upload.fields([{ name: 'eventHeaderImage', maxCount: 1 }, { name: 'eventBackgroundImage', maxCount: 1 }, {name: 'eventSliderImage', maxCount: 1}]);
+  router.route('/createevent')
+  .post(upload.array('images', 3), function (req, res, next) {
+    // for (var i = 0, j = req.files.length; i < j; i++) {
+    //   console.log(clc.magenta('req.files'), req.files[i]);
+    // }
+          // console.log(clc.magenta('req.files'), req.files.eventHeaderImage['buffer']);
+          // res.redirect('/admin');
+    sql.sync()
+    .then(function () {
+      Event.create(req.body)
+      .then(function (newEvent) {
+        // console.log(clc.magenta('HELLO ::::::::::::::  '), req.files[0], req.files[0].mimetype.replace('image/', ''))
+        newEvent.update({
+          eventHeaderImage: req.files[0].filename,
+          eventBackgroundImage: req.files[1].filename,
+          eventSliderImage: req.files[2].filename
+        })
+        .then(function (eventWithPics) {
+          fs.readFile(path.join(__dirname, '../admin/admin.html'), function (err, data) {
+            if (err) {
+              console.log(err);
+              res.json({msg: 'internal server error'});
+            }
+            var theHtml = data.toString();
+            theHtml.replace('<section class="col_12" id="chooseEventToEdit" style="display: none;">', '<section class="col_12" id="chooseEventToEdit" style="display: block;">');
+            theHtml.replace('<select id="eventNames" name="eventNames">', 'Hello replacement!!!!!!s')
+            console.log(clc.magenta('HOLA ::::::::::  '),  theHtml);
+            res.send(theHtml);
+          })
+          
+        })
+      })
+    })
+  })
+  
+  router.route('/events')
+  .get(function (req, res) {
+    sql.sync()
+    .then(function () {
+      Event.findAll({where: {eventStartDate:{ $gte: new Date()}}})
+      .then(function (data) {
+        res.json(data);
+      })
     })
   })
   
