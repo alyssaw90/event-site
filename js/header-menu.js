@@ -110,7 +110,6 @@
 			var headerMenu = $.parseHTML(menu);
 			$header.prepend(headerMenu);
 			$('.expanding-menu').hover(function () {
-				console.log('hola mundo');
 				var $menuHeight = $(this).parent().height();
 	 			var $menuWidth  = $('.upcoming-menu').width();
 	 			// $('.upcoming-sub-menu:first').css('margin-top', $menuHeight);

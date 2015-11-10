@@ -105,6 +105,48 @@ EventAttendee.sync({force: true})
   })
   .then(function () {
     return EventAttendee.create({
+      eventId: 2,
+      contactId: 22,
+      eventAttendeeRole: 'speaker'
+    })
+  })
+  .then(function () {
+    return EventAttendee.create({
+      eventId: 2,
+      contactId: 23,
+      eventAttendeeRole: 'speaker'
+    })
+  })
+  .then(function () {
+    return EventAttendee.create({
+      eventId: 2,
+      contactId: 24,
+      eventAttendeeRole: 'speaker'
+    })
+  })
+  .then(function () {
+    return EventAttendee.create({
+      eventId: 2,
+      contactId: 25,
+      eventAttendeeRole: 'speaker'
+    })
+  })
+  .then(function () {
+    return EventAttendee.create({
+      eventId: 2,
+      contactId: 26,
+      eventAttendeeRole: 'speaker'
+    })
+  })
+  .then(function () {
+    return EventAttendee.create({
+      eventId: 2,
+      contactId: 27,
+      eventAttendeeRole: 'speaker'
+    })
+  })
+  .then(function () {
+    return EventAttendee.create({
       eventId: 3,
       contactId: 7,
       eventAttendeeRole: 'speaker'

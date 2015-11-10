@@ -2,6 +2,7 @@
 
 var Contact = require('../models/Contact');
 var NewsletterSignup = require('../models/NewsletterSignup');
+var clc = require('cli-color');
 var bodyparser = require('body-parser');
 var path = require('path');
 var Sql = require('sequelize');
@@ -24,7 +25,7 @@ module.exports = function (router) {
 
 	router.route('/')
   .get(function (req, res) {
-    res.sendFile(path.join(__dirname, '../views/home.html'));
+    res.sendFile(path.join(__dirname, '../index.html'));
   });
 
   router.route('/past-events')
@@ -70,6 +71,12 @@ module.exports = function (router) {
   router.route('/map')
   .get(function (req, res) {
     res.sendFile(path.join(__dirname, '../views/world-map.html'));
+  });
+
+  router.route('/survey/:eventId')
+  .get(function (req, res) {
+    // console.log(clc.magenta('HHHHHHHHHHHH :::::::::::::: '), req.params.eventId);
+    res.sendFile(path.join(__dirname, '../views/survey.html'));
   });
 
 }
