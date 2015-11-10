@@ -48,7 +48,7 @@ $(document).ready(function () {
 			eventsObj[data[i].id]['restaurantDesc'] = [];
 			/*eventsObj[data[i].id]['scheduleTimes'] = [];
 			eventsObj[data[i].id]['scheduleDescriptions'] = [];*/
-		} console.log(data);
+		}
 		$.get('/eventoverviews', function (overviews) {
 			for (var i = 0, j = overviews.length; i < j; i++) {
 				eventsObj[overviews[i].eventId]['overviewHeadingText'].push(overviews[i].headingText);
@@ -62,6 +62,7 @@ $(document).ready(function () {
 					}
 				}
 				$.get('/sponsors', function (sponsors) {
+												console.log('Now :: ', $.now());
 					for (var i = 0, j = sponsors.length; i < j; i++) {
 						for (var ii = 0, jj = sponsors[i].length; ii < jj; ii++) {
 							sponsors[i][ii]
@@ -88,7 +89,6 @@ $(document).ready(function () {
 							}
 							$.get('/travelinfo', function (travelinfo) {
 								for (var i = 0, j = travelinfo.length; i < j; i++) {
-									console.log('This', travelinfo[i].venueDesc)
 									eventsObj[travelinfo[i].eventId]['aboveMapHeader'] = travelinfo[i].aboveMapHeader;
 									eventsObj[travelinfo[i].eventId]['belowMapHeading'] = travelinfo[i].belowMapHeading;
 									eventsObj[travelinfo[i].eventId]['mapDesc'] = travelinfo[i].mapDesc;
@@ -170,16 +170,16 @@ $(document).ready(function () {
 												bronzeSponsorsStr += '<h3>Bronze Sponsor</h3>' + bronzeColDiv;
 												for (var key2 in eventsObj[key].sponsors){
 													if (eventsObj[key].sponsors[key2].platinumSponsorDesc) {
-														platinumSponsorsStr +='<img src="data:image;base64,' + eventsObj[key].sponsors[key2].platinumSponsorLogo + '" /><h4>' + eventsObj[key].sponsors[key2].platinumSponsorName + '</h4></div>';
+														platinumSponsorsStr +='<img src="../uploads/' + eventsObj[key].sponsors[key2].platinumSponsorLogo + '" /><h4>' + eventsObj[key].sponsors[key2].platinumSponsorName + '</h4></div>';
 													}
 													if (eventsObj[key].sponsors[key2].goldSponsorDesc) {
-														goldSponsorsStr += '<img src="data:image;base64,' + eventsObj[key].sponsors[key2].goldSponsorLogo + '" /><h4>' + eventsObj[key].sponsors[key2].goldSponsorName + '</h4></div>';
+														goldSponsorsStr += '<img src="../uploads/' + eventsObj[key].sponsors[key2].goldSponsorLogo + '" /><h4>' + eventsObj[key].sponsors[key2].goldSponsorName + '</h4></div>';
 													}
 													if (eventsObj[key].sponsors[key2].silverSponsorDesc) {
-														silverSponsorsStr += '<img src="data:image;base64,' + eventsObj[key].sponsors[key2].silverSponsorLogo + '" /><h4>' + eventsObj[key].sponsors[key2].silverSponsorName + '</h4></div>';
+														silverSponsorsStr += '<img src="../uploads/' + eventsObj[key].sponsors[key2].silverSponsorLogo + '" /><h4>' + eventsObj[key].sponsors[key2].silverSponsorName + '</h4></div>';
 													}
 													if (eventsObj[key].sponsors[key2].bronzeSponsorDesc) {
-														bronzeSponsorsStr += '<img src="data:image;base64,' + eventsObj[key].sponsors[key2].bronzeSponsorLogo + '" /><h4>' + eventsObj[key].sponsors[key2].bronzeSponsorName + '</h4></div>';
+														bronzeSponsorsStr += '<img src="../uploads/' + eventsObj[key].sponsors[key2].bronzeSponsorLogo + '" /><h4>' + eventsObj[key].sponsors[key2].bronzeSponsorName + '</h4></div>';
 													}
 												}
 												platinumSponsorsStr += '<hr class="alt1" /></div>';
@@ -202,12 +202,114 @@ $(document).ready(function () {
 													eventsObj[key].travelHtml += '<h2>locationTitle</h2>';
 													
 												}*/
-												eventsObj[key].travelHtml = '<h2>locationTitle</h2><div id="imapDiv" class="flexible-container">theMap</div><hr class="alt1" /><ul id="travelTabsMenu" class="tabs left"><li id=venueTabLi" style="display:none;"><a href="#venue-tab" style="display:none;"><h5>Venue</h5></a></li><li><a href="#travel-tab"><h5>Travel</h5></a></li><li><a href="#accomodations-tab"><h5>Accomodations</h5></a></li><li><a href="#tips-tab"><h5>Tips & Tricks</h5></a></li><li><a href="#eat-drink"><h5>Where to Eat & Drink</h5></a></li></ul><div id="venue-tab" class="tab-content" style="display:none;"><img src="../uploads/VenueImage" /><h3>VenueDivHeader</h3><p>VenueDescription</p></div><div id="travel-tab" class="tab-content" style="display:none;"><img src="data:image;base64,TravelImage" /><h3>TravelDivHeader</h3><p>TravelDivDescription</p></div><div id="accomodations-tab" class="tab-content" style="display:none;"><h3>AccommodationsDivHeader</h3><p>AccommodationsDivDescription</p><p>AccommodationsDivList</p></div><div id="tips-tab" class="tab-content" style="display:none;"><h3>TipsDivHeader</h3><p>TipsDivDescription</p><p>TipsDivList</p></div><div id="eat-drink" class="tab-content" style="display:none;"><h3>eatDrinkDivHeader</h3><p>eatDrinkDivList</p></div>'
+												eventsObj[key].travelHtml = '<h2>locationTitle</h2><div id="imapDiv" class="flexible-container">theMap</div><hr class="alt1" /><ul id="travelTabsMenu" class="tabs left"><li class="current"><a href="#venue-tab"><h5>Venue</h5></a></li><li><a href="#travel-tab"><h5>Travel</h5></a></li><li><a href="#accomodations-tab"><h5>Accomodations</h5></a></li><li><a href="#tips-tab"><h5>Tips & Tricks</h5></a></li><li><a href="#eat-drink"><h5>Where to Eat & Drink</h5></a></li></ul><div id="venue-tab" class="tab-content" style="display:none;"><img src="../uploads/VenueImage" /><h3>VenueDivHeader</h3><p>VenueDescription</p></div><div id="travel-tab" class="tab-content" style="display:none;"><img src="../uploads/TravelImage" /><h3>TravelDivHeader</h3><p>TravelDivDescription</p></div><div id="accomodations-tab" class="tab-content" style="display:none;"><h3>AccommodationsDivHeader</h3><p>AccommodationsDivDescription</p><p>AccommodationsDivList</p></div><div id="tips-tab" class="tab-content" style="display:none;"><h3>TipsDivHeader</h3><p>TipsDivDescription</p><p>TipsDivList</p></div><div id="eat-drink" class="tab-content" style="display:none;"><h3>eatDrinkDivHeader</h3><p>eatDrinkDivList</p></div>'
 												if (eventsObj[key].mapImapHtml === null) {
 													eventsObj[key].mapImapHtml = '';
 												}
+												if (eventsObj[key].aboveMapHeader !== null) {
+													$('#travelTabLink').show();
+													eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('locationTitle', eventsObj[key].aboveMapHeader);
+												}
+												if (eventsObj[key].aboveMapHeader === null) {
+													eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('<h2>locationTitle</h2>', '');
+												}
+												if (eventsObj[key].mapImapHtml !== null) {
+													eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('theMap', eventsObj[key].mapImapHtml);
+												}
+												if (eventsObj[key].mapImapHtml === null) {
+													eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('<div id="imapDiv" class="flexible-container">theMap</div>', '');
+												}
+												if (eventsObj[key].venueName === null && eventsObj[key].venueDesc === null && eventsObj[key].venueImage === null) {
+													eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('<li class="current"><a href="#venue-tab"><h5>Venue</h5></a></li>', '').replace('<div id="venue-tab" class="tab-content" style="display:none;"><img src="../uploads/VenueImage" /><h3>VenueDivHeader</h3><p>VenueDescription</p></div>', '');
+												}
+												if (eventsObj[key].venueName !== null) {
+													eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('VenueDivHeader', eventsObj[key].venueName);
+												}
+												if (eventsObj[key].venueDesc !== null) {
+													eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('VenueDescription', eventsObj[key].venueDesc);
+												}
+												if (eventsObj[key].venueImage !== null) {
+													eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('VenueImage', eventsObj[key].venueImage);
+												}
+												if (eventsObj[key].travelImage === null && eventsObj[key].travelHeading === null) {
+													eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('<li><a href="#accomodations-tab"><h5>Accomodations</h5></a></li>', '').replace('<div id="travel-tab" class="tab-content" style="display:none;"><img src="../uploads/TravelImage" /><h3>TravelDivHeader</h3><p>TravelDivDescription</p></div>', '');
+												}
+												if (eventsObj[key].travelImage === null) {
+													eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('<img src="../uploads/TravelImage" />', '');
+												}
+												if (eventsObj[key].travelImage !== null) {
+													eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('TravelImage', eventsObj[key].travelImage)
+												}
+												if (eventsObj[key].travelHeading !== null) {
+													eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('TravelDivHeader', eventsObj[key].travelHeading);
+												}
+												if (eventsObj[key].travelDesc === null) {
+													eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('<p>TravelDivDescription</p>', '');
+												}
+												if (eventsObj[key].travelDesc !== null) {
+													eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('TravelDivDescription', eventsObj[key].travelDesc);
+												}
+												if (eventsObj[key].accommodationHeading === null) {
+													eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('<li><a href="#accomodations-tab"><h5>Accomodations</h5></a></li>', '');
+												}
+												if (eventsObj[key].accommodationHeading !== null) {
+													eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('AccommodationsDivHeader', eventsObj[key].accommodationHeading);
+												}
+												if (eventsObj[key].accommodationParagraph === null) {
+													eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('<p>AccommodationsDivDescription</p>', '');
+												}
+												if (eventsObj[key].accommodationParagraph !== null) {
+													eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('AccommodationsDivDescription', eventsObj[key].accommodationParagraph);
+												}
+												if (eventsObj[key].accommodationName.length === 0) {
+													eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('<p>AccommodationsDivList</p>');
+												}
+												if (eventsObj[key].accommodationName.length !== 0) {
+													eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('AccommodationsDivList', accommodationStr);
+												}
+												if (eventsObj[key].tipsDivHeading === null) {
+													eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('<li><a href="#tips-tab"><h5>Tips & Tricks</h5></a></li>', '');
+												}
+												if (eventsObj[key].tipsDivHeading !== null) {
+													eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('TipsDivHeader', eventsObj[key].tipsDivHeading);
+												}
+												if (eventsObj[key].tipsDivParagraph === null) {
+													eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('<p>TipsDivDescription</p>', '');
+												}
+												if (eventsObj[key].tipsDivParagraph !== null) {
+													eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('TipsDivDescription', eventsObj[key].tipsDivParagraph);
+												}
+												if (eventsObj[key].tipHeading.length === 0) {
+													eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('<p>TipsDivList</p>', '');
+												}
+												if (eventsObj[key].tipHeading.length !== 0) {
+													eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('TipsDivList', tipsStr);
+												}
+												if (eventsObj[key].eatAndDrinkHeading === null) {
+													eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('<li><a href="#eat-drink"><h5>Where to Eat & Drink</h5></a></li>', '');
+												}
+												if (eventsObj[key].eatAndDrinkHeading !== null) {
+													eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('eatDrinkDivHeader', eventsObj[key].eatAndDrinkHeading);
+												}
+												if (eventsObj[key].restaurantName.length === 0) {
+													eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('<p>eatDrinkDivList</p>', '');
+												}
+												if (eventsObj[key].restaurantName.length !== 0) {
+													eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('eatDrinkDivList', eatDrinkStr);
+												}
 
-												eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('locationTitle', eventsObj[key].aboveMapHeader).replace('theMap', eventsObj[key].mapImapHtml).replace('VenueDivHeader', eventsObj[key].venueName).replace('VenueDescription', eventsObj[key].venueDesc).replace('VenueImage', eventsObj[key].venueImage).replace('TravelImage', eventsObj[key].travelImage).replace('TravelDivHeader', eventsObj[key].travelHeading).replace('TravelDivDescription', eventsObj[key].travelDesc).replace('AccommodationsDivHeader', eventsObj[key].accommodationHeading).replace('AccommodationsDivDescription', eventsObj[key].accommodationParagraph).replace('AccommodationsDivList', accommodationStr).replace('TipsDivHeader', eventsObj[key].tipsDivHeading).replace('TipsDivDescription', eventsObj[key].tipsDivParagraph).replace('TipsDivList', tipsStr).replace('eatDrinkDivHeader', eventsObj[key].eatAndDrinkHeading).replace('eatDrinkDivList', eatDrinkStr);
+												/*eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('locationTitle', eventsObj[key].aboveMapHeader).replace('theMap', eventsObj[key].mapImapHtml).replace('VenueDivHeader', eventsObj[key].venueName).replace('VenueDescription', eventsObj[key].venueDesc).replace('VenueImage', eventsObj[key].venueImage).replace('TravelImage', eventsObj[key].travelImage)
+
+												.replace('TravelDivHeader', eventsObj[key].travelHeading)
+												.replace('TravelDivDescription', eventsObj[key].travelDesc)
+												.replace('AccommodationsDivHeader', eventsObj[key].accommodationHeading)
+												.replace('AccommodationsDivDescription', eventsObj[key].accommodationParagraph)
+												.replace('AccommodationsDivList', accommodationStr)
+												.replace('TipsDivHeader', eventsObj[key].tipsDivHeading)
+												.replace('TipsDivDescription', eventsObj[key].tipsDivParagraph)
+												.replace('TipsDivList', tipsStr)
+												.replace('eatDrinkDivHeader', eventsObj[key].eatAndDrinkHeading)
+												.replace('eatDrinkDivList', eatDrinkStr);*/
 												//loop over the speakers array and create html for speakers tab
 												for (var i = 0, j = eventsObj[key].speakers.length; i < j; i++) {
 													eventsObj[key].speakersHtml += '<h4>' + eventsObj[key].speakers[i].firstName + ' ' + eventsObj[key].speakers[i].lastName + '</h4>';
@@ -293,20 +395,22 @@ $(document).ready(function () {
 														$('#eventSpeakersTabLink').show();
 														$('#eventSpeakers').append(eventsObj[key].speakersHtml);
 													}
-													if (eventsObj[key].travelHtml !== '<h2>locationTitle</h2><div id="imapDiv" class="flexible-container">theMap</div><hr class="alt1" /><ul id="travelTabsMenu" class="tabs left"><li id=venueTabLi" style="display:none;"><a href="#venue-tab" style="display:none;"><h5>Venue</h5></a></li><li><a href="#travel-tab"><h5>Travel</h5></a></li><li><a href="#accomodations-tab"><h5>Accomodations</h5></a></li><li><a href="#tips-tab"><h5>Tips & Tricks</h5></a></li><li><a href="#eat-drink"><h5>Where to Eat & Drink</h5></a></li></ul><div id="venue-tab" class="tab-content" style="display:none;"><img src="../uploads/VenueImage" /><h3>VenueDivHeader</h3><p>VenueDescription</p></div><div id="travel-tab" class="tab-content" style="display:none;"><img src="data:image;base64,TravelImage" /><h3>TravelDivHeader</h3><p>TravelDivDescription</p></div><div id="accomodations-tab" class="tab-content" style="display:none;"><h3>AccommodationsDivHeader</h3><p>AccommodationsDivDescription</p><p>AccommodationsDivList</p></div><div id="tips-tab" class="tab-content" style="display:none;"><h3>TipsDivHeader</h3><p>TipsDivDescription</p><p>TipsDivList</p></div><div id="eat-drink" class="tab-content" style="display:none;"><h3>eatDrinkDivHeader</h3><p>eatDrinkDivList</p></div>') {
+											/*		if (eventsObj[key].travelHtml !== '<h2>locationTitle</h2><div id="imapDiv" class="flexible-container">theMap</div><hr class="alt1" /><ul id="travelTabsMenu" class="tabs left"><li class="current"><a href="#venue-tab"><h5>Venue</h5></a></li><li><a href="#travel-tab"><h5>Travel</h5></a></li><li><a href="#accomodations-tab"><h5>Accomodations</h5></a></li><li><a href="#tips-tab"><h5>Tips & Tricks</h5></a></li><li><a href="#eat-drink"><h5>Where to Eat & Drink</h5></a></li></ul><div id="venue-tab" class="tab-content" style="display:none;"><img src="../uploads/VenueImage" /><h3>VenueDivHeader</h3><p>VenueDescription</p></div><div id="travel-tab" class="tab-content" style="display:none;"><img src="data:image;base64,TravelImage" /><h3>TravelDivHeader</h3><p>TravelDivDescription</p></div><div id="accomodations-tab" class="tab-content" style="display:none;"><h3>AccommodationsDivHeader</h3><p>AccommodationsDivDescription</p><p>AccommodationsDivList</p></div><div id="tips-tab" class="tab-content" style="display:none;"><h3>TipsDivHeader</h3><p>TipsDivDescription</p><p>TipsDivList</p></div><div id="eat-drink" class="tab-content" style="display:none;"><h3>eatDrinkDivHeader</h3><p>eatDrinkDivList</p></div>') {
 														$('#travelTabLink').show();
 														$('#travelTab').append(eventsObj[key].travelHtml);
-													}
+													}*/
+													// $('#travelTabLink').show();
+													$('#travelTab').append(eventsObj[key].travelHtml);
 													if ($('#imapDiv').text().length === 0) {
 														$('#imapDiv').hide();
 													}
-													console.log('HOla', $('#venueTabLi').text())
 													if ($('#venue-tab').text() !== 'nullnull') {
 														$('#venueTabLi').show();
 														$('#venue-tab').show();
 
 													}
-													$('#travelTabsMenu').first(':visible').addClass('current');
+													// $('ul li:first-child:visible').addClass('current');
+													// $('ul').find('li:visible:first').addClass('current');
 													if (eventsObj[key].sponsorsHeading) {
 														$('#sponsorsTabLink').show();
 														$('#eventSponsors').append(eventsObj[key].sponsorsDivStr);														
