@@ -16,6 +16,8 @@ var EventTravel = require('../models/EventTravel');
 var TravelAccommodation = require('../models/TravelAccommodation');
 var TravelRestaurant = require('../models/TravelRestaurant');
 var TravelTip = require('../models/TravelTip');
+var SurveyQuestion = require('../models/SurveyQuestion');
+var SurveyAnswer = require('../models/SurveyAnswer');
 var AdditionalTravelSection = require('../models/AdditionalTravelSection');
 var aboutUs = require('../views/about')();
 var fs = require('fs');
@@ -165,6 +167,29 @@ module.exports = function (router) {
       res.status(500).json({msg: 'internal server error'});
     });
   });
+
+router.route('/findsurvey')
+  .get(function (req, res) {
+    sql.sync()
+    .then(function () {
+      SurveyQuestion.findAll()
+      .then(function (data) {
+        res.json(data);
+      })
+    })
+  })
+
+router.route('/answersurvey')
+.post(function (req, res) {
+  sql.sync()
+  .then(function () {
+    console.log(clc.magenta('GVVBUGVIUVG ::::::::: '), req.body)
+    for (var i = 0, j = req.body.answer.length; i < j; i++) {
+      SurveyAnswer.create({answer: req.body.answer[i], surveyQuestionId: req.body.surveyQuestionId[i], question: req.body.question[i]});
+    }
+    res.end();
+  })
+})
 
   router.route('/addschedule') 
   .post(function (req, res) {

@@ -23,8 +23,8 @@ var TravelAccommodation = module.exports = sql.define('TravelAccommodation', {
 
 
 // force creation of table if it doesn't exist already
-TravelAccommodation.sync({force: false})
-/*.then(function () {
+TravelAccommodation.sync({force: true})
+.then(function () {
     return TravelAccommodation.create({
       eventId: 1,
       accommodationName: 'Baseball!',
@@ -44,7 +44,7 @@ TravelAccommodation.sync({force: false})
       accommodationEmail: 'hote2@example.com'
     })
   })
-  .then(function () {
+/*  .then(function () {
     return TravelAccommodation.create({
       eventId: 2,
       accommodationName: 'Inning season home gold glove',
@@ -57,26 +57,6 @@ TravelAccommodation.sync({force: false})
   .then(function () {
     return TravelAccommodation.create({
       eventId: 2,
-      accommodationName: 'No decision mustard',
-      accommodationDesc: 'Sacrifice bunt gap plunked streak sport unearned run squeeze doubleheader baseball card. Blue slugging triple-A chin music base bandbox series club. Southpaw center fielder tag scorecard pitchout, error triple play outfielder. Baseball card in the hole inning pennant no-hitter blue tapper team base. Loss national pastime chin music right fielder bat crooked number flyout batter\'s box diamond. Cycle third baseman no decision good eye pinch hitter wild pitch away wrigley corner.',
-      accommodationUrl: 'http://www.hobbitontours.com/',
-      accommodationPhone: 2014441313,
-      accommodationEmail: 'hotel4@example.com'
-    })
-  })
-  .then(function () {
-    return TravelAccommodation.create({
-      eventId: 3,
-      accommodationName: 'Inning season home gold glove',
-      accommodationDesc: 'Center field nubber yankees bench small ball bunt pinch runner. Gapper runs wrigley loss foul second baseman first base inside. Loss defensive indifference ejection small ball tapper appeal squeeze sacrifice bunt passed ball. Pull walk off sacrifice steal rotation, left field all-star. Defensive indifference sport pinch hit center fielder dead ball era mitt wild pitch right fielder grounder. Tossed first base rope designated hitter petey cellar league',
-      accommodationUrl: 'http://www.dpm.org.cn/index1024768.html',
-      accommodationPhone: 2069998888,
-      accommodationEmail: 'hotel3@example.com'
-    })
-  })
-  .then(function () {
-    return TravelAccommodation.create({
-      eventId: 3,
       accommodationName: 'No decision mustard',
       accommodationDesc: 'Sacrifice bunt gap plunked streak sport unearned run squeeze doubleheader baseball card. Blue slugging triple-A chin music base bandbox series club. Southpaw center fielder tag scorecard pitchout, error triple play outfielder. Baseball card in the hole inning pennant no-hitter blue tapper team base. Loss national pastime chin music right fielder bat crooked number flyout batter\'s box diamond. Cycle third baseman no decision good eye pinch hitter wild pitch away wrigley corner.',
       accommodationUrl: 'http://www.hobbitontours.com/',
@@ -84,3 +64,23 @@ TravelAccommodation.sync({force: false})
       accommodationEmail: 'hotel4@example.com'
     })
   })*/
+  .then(function () {
+    return TravelAccommodation.create({
+      eventId: 3,
+      accommodationName: 'Inning season home gold glove',
+      accommodationDesc: 'Center field nubber yankees bench small ball bunt pinch runner. Gapper runs wrigley loss foul second baseman first base inside. Loss defensive indifference ejection small ball tapper appeal squeeze sacrifice bunt passed ball. Pull walk off sacrifice steal rotation, left field all-star. Defensive indifference sport pinch hit center fielder dead ball era mitt wild pitch right fielder grounder. Tossed first base rope designated hitter petey cellar league',
+      accommodationUrl: 'http://www.dpm.org.cn/index1024768.html',
+      accommodationPhone: 2069998888,
+      accommodationEmail: 'hotel3@example.com'
+    })
+  })
+  .then(function () {
+    return TravelAccommodation.create({
+      eventId: 3,
+      accommodationName: 'No decision mustard',
+      accommodationDesc: 'Sacrifice bunt gap plunked streak sport unearned run squeeze doubleheader baseball card. Blue slugging triple-A chin music base bandbox series club. Southpaw center fielder tag scorecard pitchout, error triple play outfielder. Baseball card in the hole inning pennant no-hitter blue tapper team base. Loss national pastime chin music right fielder bat crooked number flyout batter\'s box diamond. Cycle third baseman no decision good eye pinch hitter wild pitch away wrigley corner.',
+      accommodationUrl: 'http://www.hobbitontours.com/',
+      accommodationPhone: 2014441313,
+      accommodationEmail: 'hotel4@example.com'
+    })
+  })
