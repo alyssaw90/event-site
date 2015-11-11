@@ -12,7 +12,7 @@ $(document).ready(function () {
 			surveyHtml += '<fieldset><legend>' + data[i].question + '</legend>';
 				var optionsArr = data[i].options.split(',');
 				for (var ii = 0, jj = optionsArr.length; ii < jj; ii++) {
-					surveyHtml += '<input type="checkbox" id="answer" name="answer" value="' + optionsArr[ii] + '"/> <label for="answer" class="inline">' +	optionsArr[ii] + '</label><br />';
+					surveyHtml += '<input type="checkbox" id="' + optionsArr[ii] + '" name="answer" value="' + optionsArr[ii] + '"/> <label for="' + optionsArr[ii] + '" class="inline">' +	optionsArr[ii] + '</label><br />';
 				}
 				surveyHtml += '<input type="hidden" name="surveyQuestionId" value="' + data[i].id + '"><input type="hidden" name="question" value="' + data[i].question + '"></fieldset>'
 			}
