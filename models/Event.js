@@ -62,7 +62,6 @@ Event.sync({force: true})
   eventEndDate: new Date('2026-10-22T08:00:00'),
   eventLocation: 'Shanghai, China',
   eventHeaderImage: '2b98dc94-eabb-49a9-a419-3aaa25d540bc.jpg', 
-  eventBackgroundImage: '', 
   eventSlideUpText: 'Produced since 1998, Storage Developer Conference (SDC) 2015 is scheduled for September 21-24, 2015 in Santa Clara, CA, and is again expected to attract more than 400 developers, technical professionals, and engineers from the worldwide storage community. Attend and learn about leading storage development topics including File Systems, Software Defined Storage, SMB, Security, Performance, and more.',
   homepageBulletOne: 'O365 APIs',
   homepageBulletTwo: 'Word, Excel, Outlook, & PowerPoint Add-ins',

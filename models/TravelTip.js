@@ -20,8 +20,8 @@ var TravelTip = module.exports = sql.define('TravelTip', {
 
 
 // force creation of table if it doesn't exist already
-TravelTip.sync({force: false})
-/*.then(function () {
+TravelTip.sync({force: true})
+.then(function () {
     return TravelTip.create({
       eventId: 1,
       tipHeading: 'Baseball!',
@@ -35,7 +35,7 @@ TravelTip.sync({force: false})
       tipParagraph: 'Bullpen bandbox slugging error base, tigers arm. Fair baltimore chop arm pinch hitter hey batter chin music good eye. Double play second base take sacrifice bunt outside batter\'s box tag off-speed 1-2-3. Mendoza line catcher gap crooked number gap assist hitter. Assist bunt foul line interleague batter\'s box dead red helmet. Pickoff slugging extra innings pickoff national pastime ground rule double backstop friendly confines plate.'
     })
   })
-  .then(function () {
+/*  .then(function () {
     return TravelTip.create({
       eventId: 2,
       tipHeading: 'Inning season home gold glove',
@@ -48,7 +48,7 @@ TravelTip.sync({force: false})
       tipHeading: 'No decision mustard',
       tipParagraph: 'Sacrifice bunt gap plunked streak sport unearned run squeeze doubleheader baseball card. Blue slugging triple-A chin music base bandbox series club. Southpaw center fielder tag scorecard pitchout, error triple play outfielder. Baseball card in the hole inning pennant no-hitter blue tapper team base. Loss national pastime chin music right fielder bat crooked number flyout batter\'s box diamond. Cycle third baseman no decision good eye pinch hitter wild pitch away wrigley corner.'
     })
-  })
+  })*/
   .then(function () {
     return TravelTip.create({
       eventId: 3,
@@ -63,4 +63,3 @@ TravelTip.sync({force: false})
       tipParagraph: 'Sacrifice bunt gap plunked streak sport unearned run squeeze doubleheader baseball card. Blue slugging triple-A chin music base bandbox series club. Southpaw center fielder tag scorecard pitchout, error triple play outfielder. Baseball card in the hole inning pennant no-hitter blue tapper team base. Loss national pastime chin music right fielder bat crooked number flyout batter\'s box diamond. Cycle third baseman no decision good eye pinch hitter wild pitch away wrigley corner.'
     })
   })
-*/

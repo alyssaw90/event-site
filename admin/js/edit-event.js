@@ -74,14 +74,14 @@ $(document).ready(function () {
   						dayOptions += '<option value="' + daysOfWeek[startDate.getDay() + i - multiplier] + '">' + daysOfWeek[startDate.getDay() + i - multiplier] + '</option>';
   					}
   				}
-  				console.log(dayOptions);
+  				// console.log(dayOptions);
   				$('#scheduleDay').append(dayOptions);
   			}
 
   		}
 
   		$.get('/eventschedules', function (eventschedules) {
-  			console.log($theEventId);
+  			// console.log($theEventId);
   			var scheduleHtml = '<form action="/deleteschedule" id="deleteScheduleForm" method="POST"><table cellspacing="0" cellpadding="0"><thead><tr><th>Day</th><th>Time</th><th>Description</th></tr></thead><tbody>';
   			for (var i = 0, j = eventschedules.length; i < j; i++) {
   				if (eventschedules[i].eventId == $theEventId) {
@@ -93,7 +93,7 @@ $(document).ready(function () {
   		})
 
   	})
-		console.log(eventsData, eventsData.length);
+		// console.log(eventsData, eventsData.length);
 	})
 
 })
