@@ -21,11 +21,11 @@ $(document).ready(function () {
 
 	$('#edit-event-menu-tab').click(function () {
 		$editPageMenu.show();
-		$adminHeader.html('<h1>What would you like to edit?</h1>');
+		$adminHeader.html('<h1>What would you like to do?</h1>');
 		$('#mainAdmin').children().hide();
 	});
 
-	$('#editSchedule').click(function () {
+	$('#editSchedule, #editOVerview').click(function () {
 		$chooseEventToEdit.siblings().hide();
 		$chooseEventToEdit.show();
 		$adminHeader.html('<h1>Pick an Event</h1>');
@@ -50,14 +50,15 @@ $(document).ready(function () {
 			$editPageMenu.show();
 			$dailySchedule.siblings().hide();
   		event.preventDefault();
-			var theOptions = '';
+			/*var theOptions = '';
 			for (var i = 0, j = eventsData.length; i < j; i++) {
 				theOptions += '<option value="' + eventsData[i].id + '" data-eventName="' +  eventsData[i].eventName + '">' + eventsData[i].eventName + '</option>';
-			}
+			}*/
 
 			$('#description').append('<input class="col_8" id="eventId" name="eventId" type="text submit" value="' + $theEventId + '" />')
 
-			$('#eventNames').append(theOptions);
+			// $('#eventNames').append(theOptions);
+
   		for (var i = 0, j = eventsData.length; i < j; i++) {
   			if (eventsData[i].id == $theEventId) {
 	  			var startDate = new Date(eventsData[i].eventStartDate);
