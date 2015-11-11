@@ -8,5 +8,5 @@ $(document).ready(function () {
 		$addEventMenuTab.show();
 	});
 
-	$('')
+	// $('#createEventButton').click(alert('hola'));
 })

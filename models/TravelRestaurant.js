@@ -20,8 +20,8 @@ var TravelRestaurant = module.exports = sql.define('TravelRestaurant', {
 
 
 // force creation of table if it doesn't exist already
-TravelRestaurant.sync({force: false})
-/*.then(function () {
+TravelRestaurant.sync({force: true})
+.then(function () {
     return TravelRestaurant.create({
       eventId: 1,
       restaurantName: 'Siphon café au lait shop aroma est',
@@ -35,7 +35,7 @@ TravelRestaurant.sync({force: false})
       restaurantDesc: 'Half and half, decaffeinated, est, to go and mazagran et cinnamon eu crema. Espresso, at, trifecta siphon qui skinny instant caffeine. Sweet as cinnamon sugar macchiato plunger pot white siphon ristretto.'
     })
   })
-  .then(function () {
+/*  .then(function () {
     return TravelRestaurant.create({
       eventId: 2,
       restaurantName: 'Crema est, dripper, galão latte',
@@ -48,7 +48,7 @@ TravelRestaurant.sync({force: false})
       restaurantName: 'Flavour est café au lait percolator plunger pot',
       restaurantDesc: 'Spoon, extraction, fair trade affogato, ristretto, flavour fair trade caffeine breve foam. Wings caffeine, breve steamed galão spoon robust americano mocha strong. Affogato americano single shot extraction whipped arabica froth blue mountain viennese. Brewed, kopi-luwak, that mug that foam, con panna body caffeine percolator brewed.'
     })
-  })
+  })*/
   .then(function () {
     return TravelRestaurant.create({
       eventId: 3,
@@ -63,4 +63,3 @@ TravelRestaurant.sync({force: false})
       restaurantDesc: 'Spoon, extraction, fair trade affogato, ristretto, flavour fair trade caffeine breve foam. Wings caffeine, breve steamed galão spoon robust americano mocha strong. Affogato americano single shot extraction whipped arabica froth blue mountain viennese. Brewed, kopi-luwak, that mug that foam, con panna body caffeine percolator brewed.'
     })
   })
-*/
