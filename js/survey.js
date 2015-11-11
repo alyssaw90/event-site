@@ -2,27 +2,22 @@
 
 $(document).ready(function () {
 	$.get('/findsurvey', function (data) {
-		console.log(data);
 		var eventId = window.location.pathname.slice(8);
-		var surveyHtml = ''
+		var surveyHtml = '';
 		for (var i = 0, j = data.length; i < j; i++) {
-			if (data[i].eventId == eventId) {
-				if (data[i].options == null) {
-
+			if (data[i].eventId == eventId && data[i].options === null) {
 				surveyHtml += '<label for="answer">' + data[i].question + '</label><input id="answer" name="answer" type="text submit" /><input type="hidden" name="surveyQuestionId" value="' + data[i].id + '"><input type="hidden" name="question" value="' + data[i].question + '">';
+			}
+			if (data[i].eventId == eventId && data[i].options !== null) {
+			surveyHtml += '<fieldset><legend>' + data[i].question + '</legend>';
+				var optionsArr = data[i].options.split(',');
+				for (var ii = 0, jj = optionsArr.length; ii < jj; ii++) {
+					surveyHtml += '<input type="checkbox" id="answer" value="' + optionsArr[ii] + '/> <label for="answer" class="inline">' +	optionsArr[ii] + '</label><br />';
 				}
-				if (data[i].options != null) {
-				console.log(optionsArr)
-				surveyHtml += '<fieldset><legend>' + data[i].question + '</legend>';
-					var optionsArr = data[i].options.split(',');
-					for (var i = 0, j = optionsArr.length; i < j; i++) {
-						surveyHtml += '<input type="checkbox" id="answer" /> <label for="answer" class="inline">' +	optionsArr[i] + '</label><br />';
-					}
-					surveyHtml += '<input type="hidden" name="surveyQuestionId" value="' + data[i].id + '"><input type="hidden" name="question" value="' + data[i].question + '"></fieldset>'
-				}
+				surveyHtml += '<input type="hidden" name="surveyQuestionId" value="' + data[i].id + '"><input type="hidden" name="question" value="' + data[i].question + '"></fieldset>'
 			}
 		}
-		$('#mainSurvey').append(surveyHtml);
+		$('#mainSurvey').prepend(surveyHtml);
 	})
 })
 

@@ -184,10 +184,10 @@ router.route('/answersurvey')
   sql.sync()
   .then(function () {
     console.log(clc.magenta('GVVBUGVIUVG ::::::::: '), req.body)
-    for (var i = 0, j = req.body.answer.length; i < j; i++) {
+    for (var i = 0, j = req.body.surveyQuestionId.length; i < j; i++) {
       SurveyAnswer.create({answer: req.body.answer[i], surveyQuestionId: req.body.surveyQuestionId[i], question: req.body.question[i]});
     }
-    res.end();
+    res.sendFile(path.join(__dirname, '../views/thank-you.html'));
   })
 })
 
