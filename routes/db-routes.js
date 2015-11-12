@@ -210,7 +210,7 @@ router.route('/answersurvey')
   })
 
   // var eventImages = upload.fields([{ name: 'eventHeaderImage', maxCount: 1 }, { name: 'eventBackgroundImage', maxCount: 1 }, {name: 'eventSliderImage', maxCount: 1}]);
-  router.route('/createevent')
+  router.route('/admin/createevent')
   .post(upload.array('images', 3), function (req, res, next) {
     // for (var i = 0, j = req.files.length; i < j; i++) {
     //   console.log(clc.magenta('req.files'), req.files[i]);
@@ -221,26 +221,39 @@ router.route('/answersurvey')
     .then(function () {
       Event.create(req.body)
       .then(function (newEvent) {
-        // console.log(clc.magenta('HELLO ::::::::::::::  '), req.files[0], req.files[0].mimetype.replace('image/', ''))
-        newEvent.update({
-          eventHeaderImage: req.files[0].filename,
-          eventBackgroundImage: req.files[1].filename,
-          eventSliderImage: req.files[2].filename
-        })
-        .then(function (eventWithPics) {
+        if (req.files === true) {
+          newEvent.update({
+            eventHeaderImage: req.files[0].filename,
+            eventBackgroundImage: req.files[1].filename,
+            eventSliderImage: req.files[2].filename
+          })
+          .then(function (eventWithPics) {
+            fs.readFile(path.join(__dirname, '../admin/admin.html'), function (err, data) {
+              if (err) {
+                console.log(err);
+                res.json({msg: 'internal server error'});
+              }
+              var theHtml = data.toString();
+              theHtml.replace('<section id="editPageMenu" class="col_12" style="display: none;">', '<section id="editPageMenu" class="col_12" style="display: block;">');
+              // theHtml.replace('<select id="eventNames" name="eventNames">', 'Hello replacement!!!!!!s')
+              // console.log(clc.magenta('HOLA ::::::::::  '),  theHtml);
+              res.send(theHtml);
+            })
+            
+          })          
+        } else {
           fs.readFile(path.join(__dirname, '../admin/admin.html'), function (err, data) {
             if (err) {
               console.log(err);
               res.json({msg: 'internal server error'});
             }
             var theHtml = data.toString();
-            theHtml.replace('<section class="col_12" id="chooseEventToEdit" style="display: none;">', '<section class="col_12" id="chooseEventToEdit" style="display: block;">');
-            theHtml.replace('<select id="eventNames" name="eventNames">', 'Hello replacement!!!!!!s')
+            theHtml = theHtml.replace('<section class="col_12" id="chooseEventToEdit" style="display: none;">', '<section class="col_12" id="chooseEventToEdit" style="display: block;">');
+            // theHtml = theHtml.replace('<select id="eventNames" name="eventNames">', 'Hello replacement!!!!!!s')
             console.log(clc.magenta('HOLA ::::::::::  '),  theHtml);
             res.send(theHtml);
           })
-          
-        })
+        }
       })
     })
   })

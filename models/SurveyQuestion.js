@@ -36,31 +36,31 @@ SurveyQuestion.sync({force: true})
 .then(function () {
 	return SurveyQuestion.create({
 		eventId: 2,
-		question: 'Name',
+		question: 'Name &#21517;&#23383;',
 	})
 })
 .then(function () {
 	return SurveyQuestion.create({
 		eventId: 2,
-		question: 'Company',
+		question: 'Company &#20844;&#21496;',
 	})
 })
 .then(function () {
 	return SurveyQuestion.create({
 		eventId: 2,
-		question: 'Role',
+		question: 'Role &#32844;&#21153;',
 	})
 })
 .then(function () {
 	return SurveyQuestion.create({
 		eventId: 2,
-		question: 'Phone Number',
+		question: 'Phone Number &#30005;&#35805;&#21495;&#30721;',
 	})
 })
 .then(function () {
 	return SurveyQuestion.create({
 		eventId: 2,
-		question: 'Email Address',
+		question: 'Email Address &#30005;&#23376;&#37038;&#20214;&#22320;&#22336;',
 	})
 })
 .then(function () {

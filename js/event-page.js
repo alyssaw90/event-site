@@ -197,11 +197,6 @@ $(document).ready(function () {
 												for (var i = 0, j = eventsObj[key].restaurantName.length; i < j; i++) {
 													eatDrinkStr += '<h4>' + eventsObj[key].restaurantName[i] + '</h4><p>' + eventsObj[key].restaurantDesc + '</p>';
 												}
-												//create string of html for events tab
-												/*if (eventsObj[key].travelHtml) {
-													eventsObj[key].travelHtml += '<h2>locationTitle</h2>';
-													
-												}*/
 												eventsObj[key].travelHtml = '<h2>locationTitle</h2><div id="imapDiv" class="flexible-container">theMap</div><hr class="alt1" /><ul id="travelTabsMenu" class="tabs left"><li class="current"><a href="#venue-tab"><h5>Venue</h5></a></li><li><a href="#travel-tab"><h5>Travel</h5></a></li><li><a href="#accomodations-tab"><h5>Accomodations</h5></a></li><li><a href="#tips-tab"><h5>Tips & Tricks</h5></a></li><li><a href="#eat-drink"><h5>Where to Eat & Drink</h5></a></li></ul><div id="venue-tab" class="tab-content" style="display:none;"><img src="../uploads/VenueImage" /><h3>VenueDivHeader</h3><p>VenueDescription</p></div><div id="travel-tab" class="tab-content" style="display:none;"><img src="../uploads/TravelImage" /><h3>TravelDivHeader</h3><p>TravelDivDescription</p></div><div id="accomodations-tab" class="tab-content" style="display:none;"><h3>AccommodationsDivHeader</h3><p>AccommodationsDivDescription</p><p>AccommodationsDivList</p></div><div id="tips-tab" class="tab-content" style="display:none;"><h3>TipsDivHeader</h3><p>TipsDivDescription</p><p>TipsDivList</p></div><div id="eat-drink" class="tab-content" style="display:none;"><h3>eatDrinkDivHeader</h3><p>eatDrinkDivList</p></div>'
 												if (eventsObj[key].mapImapHtml === null) {
 													eventsObj[key].mapImapHtml = '';
@@ -232,7 +227,7 @@ $(document).ready(function () {
 													eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('VenueImage', eventsObj[key].venueImage);
 												}
 												if (eventsObj[key].travelImage === null && eventsObj[key].travelHeading === null) {
-													eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('<li><a href="#accomodations-tab"><h5>Accomodations</h5></a></li>', '').replace('<div id="travel-tab" class="tab-content" style="display:none;"><img src="../uploads/TravelImage" /><h3>TravelDivHeader</h3><p>TravelDivDescription</p></div>', '');
+													eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('<li><a href="#travel-tab"><h5>Travel</h5></a></li>', '').replace('<div id="travel-tab" class="tab-content" style="display:none;"><img src="../uploads/TravelImage" /><h3>TravelDivHeader</h3><p>TravelDivDescription</p></div>', '');
 												}
 												if (eventsObj[key].travelImage === null) {
 													eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('<img src="../uploads/TravelImage" />', '');
@@ -298,18 +293,6 @@ $(document).ready(function () {
 													eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('eatDrinkDivList', eatDrinkStr);
 												}
 
-												/*eventsObj[key].travelHtml = eventsObj[key].travelHtml.replace('locationTitle', eventsObj[key].aboveMapHeader).replace('theMap', eventsObj[key].mapImapHtml).replace('VenueDivHeader', eventsObj[key].venueName).replace('VenueDescription', eventsObj[key].venueDesc).replace('VenueImage', eventsObj[key].venueImage).replace('TravelImage', eventsObj[key].travelImage)
-
-												.replace('TravelDivHeader', eventsObj[key].travelHeading)
-												.replace('TravelDivDescription', eventsObj[key].travelDesc)
-												.replace('AccommodationsDivHeader', eventsObj[key].accommodationHeading)
-												.replace('AccommodationsDivDescription', eventsObj[key].accommodationParagraph)
-												.replace('AccommodationsDivList', accommodationStr)
-												.replace('TipsDivHeader', eventsObj[key].tipsDivHeading)
-												.replace('TipsDivDescription', eventsObj[key].tipsDivParagraph)
-												.replace('TipsDivList', tipsStr)
-												.replace('eatDrinkDivHeader', eventsObj[key].eatAndDrinkHeading)
-												.replace('eatDrinkDivList', eatDrinkStr);*/
 												//loop over the speakers array and create html for speakers tab
 												for (var i = 0, j = eventsObj[key].speakers.length; i < j; i++) {
 													eventsObj[key].speakersHtml += '<h4>' + eventsObj[key].speakers[i].firstName + ' ' + eventsObj[key].speakers[i].lastName + '</h4>';
@@ -395,11 +378,6 @@ $(document).ready(function () {
 														$('#eventSpeakersTabLink').show();
 														$('#eventSpeakers').append(eventsObj[key].speakersHtml);
 													}
-											/*		if (eventsObj[key].travelHtml !== '<h2>locationTitle</h2><div id="imapDiv" class="flexible-container">theMap</div><hr class="alt1" /><ul id="travelTabsMenu" class="tabs left"><li class="current"><a href="#venue-tab"><h5>Venue</h5></a></li><li><a href="#travel-tab"><h5>Travel</h5></a></li><li><a href="#accomodations-tab"><h5>Accomodations</h5></a></li><li><a href="#tips-tab"><h5>Tips & Tricks</h5></a></li><li><a href="#eat-drink"><h5>Where to Eat & Drink</h5></a></li></ul><div id="venue-tab" class="tab-content" style="display:none;"><img src="../uploads/VenueImage" /><h3>VenueDivHeader</h3><p>VenueDescription</p></div><div id="travel-tab" class="tab-content" style="display:none;"><img src="data:image;base64,TravelImage" /><h3>TravelDivHeader</h3><p>TravelDivDescription</p></div><div id="accomodations-tab" class="tab-content" style="display:none;"><h3>AccommodationsDivHeader</h3><p>AccommodationsDivDescription</p><p>AccommodationsDivList</p></div><div id="tips-tab" class="tab-content" style="display:none;"><h3>TipsDivHeader</h3><p>TipsDivDescription</p><p>TipsDivList</p></div><div id="eat-drink" class="tab-content" style="display:none;"><h3>eatDrinkDivHeader</h3><p>eatDrinkDivList</p></div>') {
-														$('#travelTabLink').show();
-														$('#travelTab').append(eventsObj[key].travelHtml);
-													}*/
-													// $('#travelTabLink').show();
 													$('#travelTab').append(eventsObj[key].travelHtml);
 													if ($('#imapDiv').text().length === 0) {
 														$('#imapDiv').hide();
