@@ -39,12 +39,13 @@
   <main id="mainAdmin" style="display: block;">
     <section class="col_12" id="chooseEventToEdit" style="display: none;">
       <form id="chooseEvent">
-        <label for="eventNames">Select Event Schedule</label>
+        <label for="eventNames">Select Event</label>
         <select id="eventNames" name="eventNames">
         </select>
         <br />
         <br />
-        <button class="medium" id="chooseEventButton" type="submit">Next</button>
+        <button class="medium" id="editOverButton" type="submit" style="display: none;">Next</button>
+        <button class="medium" id="editScheduleButton" type="submit" style="display: none;">Next</button>
       </form>
     </section>
   <!--     <form>
@@ -58,7 +59,7 @@
       </form> -->
     <section id="dailySchedule" style="display: none;">
       <h3>Add Item to schedule</h3>
-      <form action="/addschedule" id="scheduleForm" method="POST">
+      <form action="/addschedule" id="scheduleForm">
         <label class="col_4" for="scheduleDay">Select Day</label>
         <br />
         <select class="col_8" id="scheduleDay" name="scheduleDay">
