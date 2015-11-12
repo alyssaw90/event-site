@@ -1,12 +1,30 @@
 'use strict';
+
 $(document).ready(function () {
-	var $addEventMenuTab = $('#addEventSection');
+	var $addEventSection = $('#addEventSection');
 	var $adminHeader = $('#admin-header');
-	$('#add-event-menu-tab').click(function () {
+	var $addEventMenuTab = $('#add-event-menu-tab');
+	var $createEventForm = $('#createEventForm');
+	var $editPageMenu = $('#editPageMenu');
+
+	$addEventMenuTab.click(function () {
 		$('#mainAdmin').children().hide();
 		$adminHeader.html('<h1>Create Your Event</h1>');
-		$addEventMenuTab.show();
+		$addEventSection.show();
 	});
 
-	// $('#createEventButton').click(alert('hola'));
-})
+	$createEventForm.submit(function (event) {
+		event.preventDefault();
+		console.log('hello');
+		var $form = $(this);
+		var $formData = $form.serialize();
+		var $url = $form.attr('action');
+
+		$.post($url, $formData)
+		.done(function (data) {
+			$editPageMenu.show();
+			$adminHeader.html('<h1>What would you like to do?</h1>');
+			$('#mainAdmin').children().hide();
+		});
+	});
+});
