@@ -8,6 +8,9 @@ $(document).ready(function () {
 	var $chooseEventButton = $('#chooseEventButton');
 	var $editScheduleButton = $('#editScheduleButton');
 	var $editOverviewButton = $('#editOverviewButton');
+	var $editMenuTab = $('#edit-event-menu-tab');
+	var $editScheduleTab = $('#editSchedule');
+	var $editOVerviewTab = $('#editOVerview');
 
 	$('.menu').children().click(function () {
 		$('.menu').children().removeClass('current');
@@ -18,24 +21,29 @@ $(document).ready(function () {
 		location.reload();
 	});
 
-	$('#edit-event-menu-tab').click(function () {
+	$editMenuTab.click(function () {
 		$editPageMenu.show();
 		$adminHeader.html('<h1>What would you like to do?</h1>');
 		$('#mainAdmin').children().hide();
 	});
 
 	$('#editSchedule, #editOVerview').click(function (e) {
-		console.log($(this).attr('id') === 'editSchedule');
-		// $(this).append(" Clicked");
+
 		$chooseEventToEdit.siblings().hide();
 		$chooseEventToEdit.show();
 		$adminHeader.html('<h1>Pick an Event</h1>');
 		if ($(this).attr('id') === 'editSchedule') {
-			// $chooseEventButton.attr('id', 'editScheduleButton');
+			$editScheduleTab.parent().addClass('highlight');
+			$editScheduleTab.parent().siblings().removeClass('highlight');
+			$editScheduleButton.siblings('button').hide()
 			$editScheduleButton.show();
 		}
 		if ($(this).attr('id') === 'editOVerview') {
+			$editOVerviewTab.parent().addClass('highlight');
+			$editOVerviewTab.parent().siblings().removeClass('highlight');
+			$editOverviewButton.siblings('button').hide();
 			$editOverviewButton.show();
 		}
 	});
 })
+

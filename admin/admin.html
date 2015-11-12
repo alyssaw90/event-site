@@ -10,6 +10,7 @@
   <!-- CSS -->
   <link rel="stylesheet" type="text/css" href="./css/kickstart.css" media="all" />
   <link rel="stylesheet" type="text/css" href="./style.css" media="all" />
+  <link rel="stylesheet" type="text/css" href="./css/custom-admin.css" media="all" />
   <!-- <link rel="stylesheet" type="text/css" href="./css/admin.css" media="all" /> -->
   <!-- <link rel="stylesheet" type="text/css" href="./css/animate.css" media="all" /> -->
 </head>
@@ -22,7 +23,7 @@
       <li class="current" id="admin-home-menu-tab"><a >Home</a></li>
       <li><a id="add-event-menu-tab">Add Event</a></li>
       <li><a  id="edit-event-menu-tab">Edit Event</a></li>
-      <li><a >Logout</a></li>
+      <li><a id="logoutTab">Logout</a></li>
     </ul>
   </header>
   <section class="col_12" id="admin-header">
@@ -32,7 +33,7 @@
     <ul class="button-bar">
       <li><a id="editOVerview">Add/Edit Overview</a></li>
       <li><a id="editSchedule">Add/Edit Schedule</a></li>
-      <li><a >Add/Edit Days</a></li>
+      <li><a id="editTravel">Add/Edit Travel</a></li>
       <li><a >Add/Edit Sponsors</a></li>
     </ul>
   </section>
@@ -87,7 +88,7 @@
       </div>
     </section>
     <section class="col_12" id="addEventSection" style="display: none;">
-      <form action="/admin/createevent" id="createEventForm" method="post" enctype="multipart/form-data">
+      <form action="/createevent" id="createEventForm" method="POST" enctype="multipart/form-data">
         <label class="col_4" for="newEventName">Event Name</label>
         <input class="col_8" id="newEventName" name="eventName" type="text" placeholder="Event Name" />
         <label class="col_4" for="newEventLocation">Event Location</label>
@@ -120,12 +121,19 @@
       </form>
     </section>
   </main>
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
 </div> <!-- End Grid -->
 <!-- JavaScript -->
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script type="text/javascript" src="../admin/js/kickstart.js"></script>
-  <script type="text/javascript" src="../admin/js/edit-event-schedule.js"></script>
   <script type="text/javascript" src="../admin/js/create-event.js"></script>
+  <script type="text/javascript" src="../admin/js/edit-event-schedule.js"></script>
+  <script type="text/javascript" src="../admin/js/edit-event-overview.js"></script>
   <script type="text/javascript" src="../admin/js/custom-admin.js"></script>
 </body>
 </html>
