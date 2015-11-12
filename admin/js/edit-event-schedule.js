@@ -9,13 +9,13 @@ $(document).ready(function () {
 	var $homeButton = $('#admin-home-menu-tab');
 	var $chooseEventButton = $('#chooseEventButton');
 	var $editScheduleButton = $('#editScheduleButton');
-	var $editOverButton = $('#editOverButton');
+	var $editOverviewButton = $('#editOverviewButton');
 	var $eventNames = $('#eventNames');
 	var $scheduleForm = $('#scheduleForm');
 	/*$('#add-event-menu').children().click(function () {
 		$(this).toggle();
 	})*/
-	$('.menu').children().click(function () {
+	/*$('.menu').children().click(function () {
 		$('.menu').children().removeClass('current');
 		$(this).addClass('current');
 	});
@@ -32,7 +32,7 @@ $(document).ready(function () {
 
 	$('#editSchedule, #editOVerview').click(function (e) {
 		console.log($(this).attr('id') === 'editSchedule');
-		$(this).append(" Clicked");
+		// $(this).append(" Clicked");
 		$chooseEventToEdit.siblings().hide();
 		$chooseEventToEdit.show();
 		$adminHeader.html('<h1>Pick an Event</h1>');
@@ -41,9 +41,9 @@ $(document).ready(function () {
 			$editScheduleButton.show();
 		}
 		if ($(this).attr('id') === 'editOVerview') {
-			$editOverButton.show();
+			$editOverviewButton.show();
 		}
-	});
+	});*/
 
 
 	$.get('/events', function (eventsData) {
