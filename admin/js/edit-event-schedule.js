@@ -4,13 +4,10 @@ $(document).ready(function () {
 	var daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 	var oneDay = 24 * 60 * 60 * 1000;
 	var $adminHeader = $('#admin-header');
-	var $chooseEventToEdit = $('#chooseEventToEdit');
 	var $editPageMenu = $('#editPageMenu');
-	var $homeButton = $('#admin-home-menu-tab');
-	var $chooseEventButton = $('#chooseEventButton');
 	var $editScheduleButton = $('#editScheduleButton');
-	var $editOverviewButton = $('#editOverviewButton');
-	var $eventNames = $('#eventNames');
+/*	var $editOverviewButton = $('#editOverviewButton');
+*/	var $eventNames = $('#eventNames');
 	var $scheduleForm = $('#scheduleForm');
 	/*$('#add-event-menu').children().click(function () {
 		$(this).toggle();
