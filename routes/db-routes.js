@@ -205,7 +205,7 @@ router.route('/answersurvey')
     sql.sync()
     .then(function () {
       EventSchedule.destroy({where: {id: req.body.scheduleId}});
-      res.redirect('/admin');
+      res.end();
     })
   })
 

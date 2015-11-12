@@ -6,9 +6,11 @@ $(document).ready(function () {
 	var $adminHeader = $('#admin-header');
 	var $editPageMenu = $('#editPageMenu');
 	var $editScheduleButton = $('#editScheduleButton');
+	var $deleteScheduleForm = $('#deleteScheduleForm');
 /*	var $editOverviewButton = $('#editOverviewButton');
 */	var $eventNames = $('#eventNames');
 	var $scheduleForm = $('#scheduleForm');
+	var $currentSchedule = $('#currentSchedule')
 	/*$('#add-event-menu').children().click(function () {
 		$(this).toggle();
 	})*/
@@ -41,6 +43,29 @@ $(document).ready(function () {
 			$editOverviewButton.show();
 		}
 	});*/
+
+function loadScheduleForm () {
+	event.preventDefault();
+	var $theEventId = $eventNames.val();
+	var $form = $(this);
+	var $formData = $form.serialize();
+	var $url = $form.attr('action');
+	$.post($url, $formData)
+	.done(function (data) {
+		 $scheduleForm[0].reset()
+		$.get('/eventschedules', function (eventschedules) {
+			// console.log($theEventId);
+			var scheduleHtml = '<table cellspacing="0" cellpadding="0"><thead><tr><th>Day</th><th>Time</th><th>Description</th></tr></thead><tbody>';
+			for (var i = 0, j = eventschedules.length; i < j; i++) {
+				if (eventschedules[i].eventId == $theEventId) {
+					scheduleHtml += '<tr><td><input type="checkbox" name="scheduleId" value="' + eventschedules[i].id + '" />&nbsp;</td><td>' + eventschedules[i].scheduleDay + '</td><td>' + eventschedules[i].scheduleTime + '</td><td>' + eventschedules[i].description + '</td></tr>';
+				}
+			}
+			scheduleHtml += '</tbody></table><button class="medium" id="deleteScheduleItem" type="submit">Delete</button>';
+			$deleteScheduleForm.empty().append(scheduleHtml);
+		})
+	})
+}
 
 
 	$.get('/events', function (eventsData) {
@@ -100,31 +125,12 @@ $(document).ready(function () {
   				}
   			}
   			scheduleHtml += '</tbody></table><button class="medium" id="deleteScheduleItem" type="submit">Delete</button></form>';
-  			$('#currentSchedule').append(scheduleHtml);
+  			$deleteScheduleForm.append(scheduleHtml);
   		})
 
-  		 $scheduleForm.submit(function (e) {
-  			e.preventDefault();
-  			var $form = $(this);
-  			var $formData = $form.serialize();
-  			var $url = $form.attr('action');
-  			$.post($url, $formData)
-  			.done(function (data) {
-  				 $scheduleForm[0].reset()
-  				$.get('/eventschedules', function (eventschedules) {
-  					// console.log($theEventId);
-  					var scheduleHtml = '<form action="/deleteschedule" id="deleteScheduleForm" method="POST"><table cellspacing="0" cellpadding="0"><thead><tr><th>Day</th><th>Time</th><th>Description</th></tr></thead><tbody>';
-  					for (var i = 0, j = eventschedules.length; i < j; i++) {
-  						if (eventschedules[i].eventId == $theEventId) {
-  							scheduleHtml += '<tr><td><input type="checkbox" name="scheduleId" value="' + eventschedules[i].id + '" />&nbsp;</td><td>' + eventschedules[i].scheduleDay + '</td><td>' + eventschedules[i].scheduleTime + '</td><td>' + eventschedules[i].description + '</td></tr>';
-  						}
-  					}
-  					scheduleHtml += '</tbody></table><button class="medium" id="deleteScheduleItem" type="submit">Delete</button></form>';
-  					$('#currentSchedule').empty().append(scheduleHtml);
-  				})
-  			})
-  			// var $posting = $.post(url)
-  		})
+  		 $scheduleForm.submit(loadScheduleForm);
+
+			$deleteScheduleForm.submit(loadScheduleForm);
 
   	})
 		// console.log(eventsData, eventsData.length);
