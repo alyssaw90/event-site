@@ -196,7 +196,7 @@ router.route('/answersurvey')
     sql.sync()
     .then(function () {
       EventSchedule.create(req.body)
-      res.redirect('/admin');
+      res.end();
     })
   })
 
@@ -205,18 +205,13 @@ router.route('/answersurvey')
     sql.sync()
     .then(function () {
       EventSchedule.destroy({where: {id: req.body.scheduleId}});
-      res.redirect('/admin');
+      res.end();
     })
   })
 
-  // var eventImages = upload.fields([{ name: 'eventHeaderImage', maxCount: 1 }, { name: 'eventBackgroundImage', maxCount: 1 }, {name: 'eventSliderImage', maxCount: 1}]);
-  router.route('/admin/createevent')
+  
+  router.route('/createevent')
   .post(upload.array('images', 3), function (req, res, next) {
-    // for (var i = 0, j = req.files.length; i < j; i++) {
-    //   console.log(clc.magenta('req.files'), req.files[i]);
-    // }
-          // console.log(clc.magenta('req.files'), req.files.eventHeaderImage['buffer']);
-          // res.redirect('/admin');
     sql.sync()
     .then(function () {
       Event.create(req.body)
@@ -227,7 +222,8 @@ router.route('/answersurvey')
             eventBackgroundImage: req.files[1].filename,
             eventSliderImage: req.files[2].filename
           })
-          .then(function (eventWithPics) {
+          res.end();
+          /*.then(function (eventWithPics) {
             fs.readFile(path.join(__dirname, '../admin/admin.html'), function (err, data) {
               if (err) {
                 console.log(err);
@@ -240,9 +236,10 @@ router.route('/answersurvey')
               res.send(theHtml);
             })
             
-          })          
+          }) */         
         } else {
-          fs.readFile(path.join(__dirname, '../admin/admin.html'), function (err, data) {
+          res.end();
+         /* fs.readFile(path.join(__dirname, '../admin/admin.html'), function (err, data) {
             if (err) {
               console.log(err);
               res.json({msg: 'internal server error'});
@@ -252,7 +249,7 @@ router.route('/answersurvey')
             // theHtml = theHtml.replace('<select id="eventNames" name="eventNames">', 'Hello replacement!!!!!!s')
             console.log(clc.magenta('HOLA ::::::::::  '),  theHtml);
             res.send(theHtml);
-          })
+          })*/
         }
       })
     })
