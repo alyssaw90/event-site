@@ -222,36 +222,30 @@ router.route('/answersurvey')
             eventBackgroundImage: req.files[1].filename,
             eventSliderImage: req.files[2].filename
           })
-          res.end();
-          /*.then(function (eventWithPics) {
-            fs.readFile(path.join(__dirname, '../admin/admin.html'), function (err, data) {
-              if (err) {
-                console.log(err);
-                res.json({msg: 'internal server error'});
-              }
-              var theHtml = data.toString();
-              theHtml.replace('<section id="editPageMenu" class="col_12" style="display: none;">', '<section id="editPageMenu" class="col_12" style="display: block;">');
-              // theHtml.replace('<select id="eventNames" name="eventNames">', 'Hello replacement!!!!!!s')
-              // console.log(clc.magenta('HOLA ::::::::::  '),  theHtml);
-              res.send(theHtml);
-            })
-            
-          }) */         
+          res.end();        
         } else {
           res.end();
-         /* fs.readFile(path.join(__dirname, '../admin/admin.html'), function (err, data) {
-            if (err) {
-              console.log(err);
-              res.json({msg: 'internal server error'});
-            }
-            var theHtml = data.toString();
-            theHtml = theHtml.replace('<section class="col_12" id="chooseEventToEdit" style="display: none;">', '<section class="col_12" id="chooseEventToEdit" style="display: block;">');
-            // theHtml = theHtml.replace('<select id="eventNames" name="eventNames">', 'Hello replacement!!!!!!s')
-            console.log(clc.magenta('HOLA ::::::::::  '),  theHtml);
-            res.send(theHtml);
-          })*/
         }
       })
+    })
+  })
+
+  router.route('/addoverview')
+  .post(function (req, res) {
+    sql.sync()
+    .then(function () {
+      EventOverview.create(req.body)
+      res.end();
+    })
+  })
+
+  router.route('/deleteoverview')
+  .post(function (req, res) {
+    sql.sync()
+    .then(function () {
+      console.log(clc.magenta('LLLLLLLLLLLLLLL :::::::::::   '), req.body);
+      EventOverview.destroy({where: {id: req.body.overviewId}});
+      res.end();
     })
   })
   
