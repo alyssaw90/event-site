@@ -19,7 +19,7 @@ function loadScheduleForm () {
 	var $url = $form.attr('action');
 	$.post($url, $formData)
 	.done(function (data) {
-		 $scheduleForm[0].reset()
+	 	$scheduleForm[0].reset();
 		$.get('/eventschedules', function (eventschedules) {
 			var scheduleHtml = '<table cellspacing="0" cellpadding="0"><thead><tr><th>Day</th><th>Time</th><th>Description</th></tr></thead><tbody>';
 			for (var i = 0, j = eventschedules.length; i < j; i++) {
@@ -35,12 +35,6 @@ function loadScheduleForm () {
 
 
 	$.get('/events', function (eventsData) {
-		//add current events to form 
-		var theOptions = '';
-		for (var i = 0, j = eventsData.length; i < j; i++) {
-			theOptions += '<option value="' + eventsData[i].id + '" data-eventName="' +  eventsData[i].eventName + '">' + eventsData[i].eventName + '</option>';
-		}
-		$eventNames.append(theOptions);
 
 		$editScheduleButton.click(function (e) {
 			var $theEventId = $eventNames.val();
