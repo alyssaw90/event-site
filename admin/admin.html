@@ -58,6 +58,20 @@
         <br />
         <button class="medium" id="newEventButton" type="submit">Create New Event</button>
       </form> -->
+    <section id="overviewSection" style="display: none;">
+      <form action="/addoverview" id="addOverviewForm" method="POST">
+        <label class="col_12" for="overviewHeading">Overview heading text</label>
+        <input class="col_12" id="overviewHeading" name="headingText" type="text" placeholder="Heading" />
+        <label class="col_12" for="overviewParagraph">Overview paragraph text</label>
+        <textarea class="col_12" id="overviewParagraph" name="paragraphText" type="text" placeholder="Paragraph"></textarea>
+      <!--   <textarea id="textarea1" placeholder="Placeholder Text"></textarea> -->
+        <br />
+        <br />
+        <button class="medium" id="submitNewOverviewButton" type="submit">Submit</button>
+      </form>
+      <form action="/deleteoverview" id="deleteOverviewForm" method="POST">
+      </form>
+    </section>
     <section id="dailySchedule" style="display: none;">
       <h3>Add Item to schedule</h3>
       <form action="/addschedule" id="scheduleForm">
@@ -131,10 +145,10 @@
 <!-- JavaScript -->
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script type="text/javascript" src="../admin/js/kickstart.js"></script>
+  <script type="text/javascript" src="../admin/js/custom-admin.js"></script>
   <script type="text/javascript" src="../admin/js/create-event.js"></script>
   <script type="text/javascript" src="../admin/js/edit-event-schedule.js"></script>
   <script type="text/javascript" src="../admin/js/edit-event-overview.js"></script>
-  <script type="text/javascript" src="../admin/js/custom-admin.js"></script>
 </body>
 </html>
 
