@@ -83,12 +83,13 @@ function loadScheduleForm () {
   			$deleteScheduleForm.append(scheduleHtml);
   		})
 
-  		 $scheduleForm.submit(loadScheduleForm);
-
-			$deleteScheduleForm.submit(loadScheduleForm);
 
   	})
 
 	})
+
+	$scheduleForm.submit(loadScheduleForm);
+
+	$deleteScheduleForm.submit(loadScheduleForm);
 
 })

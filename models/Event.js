@@ -49,7 +49,7 @@ Event.sync({force: true})
   eventBackgroundImage: '', 
   eventSlideUpText: 'Produced since 1998, Storage Developer Conference (SDC) 2015 is scheduled for September 21-24, 2015 in Santa Clara, CA, and is again expected to attract more than 400 developers, technical professionals, and engineers from the worldwide storage community. Attend and learn about leading storage development topics including File Systems, Software Defined Storage, SMB, Security, Performance, and more.',
   sponsorsHeading: 'These are our sponsors',
-  sponsorsParagraph: 'Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby.',
+  sponsorsParagraph: 'Produced since 1998, Storage Developer Conference (SDC) 2015 is scheduled for September 21-24, 2015 in Santa Clara, CA, and is again expected to attract more than 400 developers, technical professionals, and engineers from the worldwide storage community. Attend and learn about leading storage development topics including File Systems, Software Defined Storage, SMB, Security, Performance, and more.',
   homepageBulletOne: 'Persistent Memory',
   homepageBulletTwo: 'Object Drives',
   homepageBulletThree: 'SMR Drives'
@@ -83,6 +83,15 @@ Event.sync({force: true})
   homepageBulletTwo: 'Style',
   homepageBulletThree: 'General Frenchiness'
   });
+})
+.then(function () {
+  return Event.create({
+    eventName: 'Taipei Interop Dev Days 2016',
+    eventStartDate: new Date('April 20, 2016 01:00:00'),
+    eventEndDate: new Date('April 21, 2016 11:59:00'),
+    eventLocation: 'Taipei, Taiwan',
+    eventHeaderImage: 'taipei-logo-2016.jpg'
+  })
 })
 
 

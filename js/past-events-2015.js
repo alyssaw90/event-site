@@ -20,6 +20,12 @@ $(document).ready(function () {
 											<th>Related Materials</th>\
 										</tr></thead>\
 										<tbody><tr>\
+											<td><a href="/event/shanghaiinteropdevdays2015-2026">Shanghai Interop Dev Days 2015 – Shanghai, China</a></td>\
+											<td>October 21 - 22, 2015</td>\
+											<td> - </td>\
+											<td>File Systems, Software Defined Storage, SMB, Security, Performance, and more.</td>\
+											<td><a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/Shanghai-Interop-Dev-Days">Videos</a></td>\
+										</tr><tr>\
 											<td>Redmond Interoperability Protocols Plugfest 2015 – Redmond, WA</td>\
 											<td>June 22-26, 2015</td>\
 											<td> - </td>\
