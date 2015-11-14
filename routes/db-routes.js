@@ -19,6 +19,7 @@ var TravelTip = require('../models/TravelTip');
 var SurveyQuestion = require('../models/SurveyQuestion');
 var SurveyAnswer = require('../models/SurveyAnswer');
 var AdditionalTravelSection = require('../models/AdditionalTravelSection');
+// var User = require('../models/User');
 var aboutUs = require('../views/about')();
 var fs = require('fs');
 // var $ = require('cheerio');
@@ -232,6 +233,7 @@ router.route('/answersurvey')
 
   router.route('/addoverview')
   .post(function (req, res) {
+    console.log(clc.magenta( '::::::::::::::::::::::::::'  ), req.body)
     sql.sync()
     .then(function () {
       EventOverview.create(req.body)

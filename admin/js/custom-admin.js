@@ -13,6 +13,8 @@ $(document).ready(function () {
 	var $editOVerviewTab = $('#editOVerview');
 	var $eventNames = $('#eventNames');
 
+	tinymce.init({selector:'textarea'});
+
 	$('.menu').children().click(function () {
 		$('.menu').children().removeClass('current');
 		$(this).addClass('current');

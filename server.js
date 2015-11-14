@@ -1,10 +1,12 @@
 'use strict';
 
+require('dotenv').load();
 var express = require('express');
 var app = express();
 var clc = require('cli-color');
 var port = process.env.PORT || 3000;
 var time = new Date();
+process.env.SECRET_KEY = process.env.SECRET_KEY || 'change this change this change this!!!';
 
 var aboutRouter = express.Router();
 var dbRouter = express.Router();
@@ -18,6 +20,7 @@ require('./routes/admin-routes')(adminRouter);
 
 // app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(bodyParser.json());
+console.log(clc.magenta('LLLLLLLLLLL ::::::::::::::  '), process.env.SECRET_KEY)
 
 app.use(express.static(__dirname + '/'));
 app.use('/', aboutRouter);
