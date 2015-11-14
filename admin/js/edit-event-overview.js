@@ -11,12 +11,21 @@ $(document).ready(function () {
 	var $deleteOverviewForm = $('#deleteOverviewForm');
 	var $overviewParagraph = $('#overviewParagraph');
 
+/*	$.getScript('./js/jquery.tinymce.min.js', function(){
+
+   alert("Script loaded but not necessarily executed.");
+
+	})*/
+
+
 	function refreshOverviews () {
 		event.preventDefault();
+		tinyMCE.triggerSave();
 		var $theEventId = $eventNames.val();
 		var $form = $(this);
 		var $formData = $form.serialize();
 		var $url = $form.attr('action');
+		// $overviewParagraph.tinymce().save();
 		$.post($url, $formData)
 		.done(function (data) {
 			$addOverviewForm[0].reset();
@@ -60,10 +69,10 @@ $(document).ready(function () {
 
 				$deleteOverviewForm.empty().append(overViewsHtml);
 
-				$addOverviewForm.submit(refreshOverviews);
-				$deleteOverviewForm.submit(refreshOverviews);
 			})
 		})
+		$addOverviewForm.submit(refreshOverviews);
+		$deleteOverviewForm.submit(refreshOverviews);
 
 	// })
 })

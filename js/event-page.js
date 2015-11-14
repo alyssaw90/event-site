@@ -107,6 +107,7 @@ $(document).ready(function () {
 									eventsObj[travelinfo[i].eventId]['tipsDivParagraph'] = travelinfo[i].tipsDivParagraph;
 									eventsObj[travelinfo[i].eventId]['eatAndDrinkHeading'] = travelinfo[i].eatAndDrinkHeading;
 								}
+								console.log('travel info :::::::::::::: ', travelinfo);
 								//set null values to empty strings
 								$.get('/accommodationinfo', function (accommodationinfo) {
 									for (var i = 0, j = accommodationinfo.length; i < j; i++) {
