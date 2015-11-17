@@ -17,6 +17,17 @@ $(document).ready(function () {
 		var $travelTab = $('#travelTab');
 		var $venueTab = $('#venue-tab');
 		var $travelUlLinks = $('#travelUlLinks');
+		var $travelTravelTabLink = $('#travelTravelTabLink');
+		var $travelTravelTab = $('#travel-tab');
+		var $travelAccommodationsTabLink = $('#travelAccommodationsTabLink');
+		var $accommodationsTab = $('#accomodations-tab');
+		var $travelTipsTabLink = $('#travelTipsTabLink');
+		var $travelTipsTab = $('#tips-tab');
+		var $travelEatTabLink = $('#travelEatTabLink');
+		var $travelEatTab = $('#eat-drink');
+		var $sponsorsTabLink = $('#sponsorsTabLink');
+		var $spondsorTabDiv = $('#eventSponsors');
+		var $registerButton = $('#registerButton');
 
 		//create object containing all current events
 		for (var i = 0, j = events.length; i < j; i++) {
@@ -37,6 +48,7 @@ $(document).ready(function () {
 			eventsObj[events[i].id]['travelTipsTab'] = events[i]['travelTipsTab'];
 			eventsObj[events[i].id]['travelEatDrinkTab'] = events[i]['travelEatDrinkTab'];
 			eventsObj[events[i].id]['eventMediaTab'] = events[i]['eventMediaTab'];
+			eventsObj[events[i].id]['travelTabHeaderImage'] = events[i]['travelTabHeaderImage'];
 			eventsObj[events[i].id]['scheduleDays'] = [];
 			eventsObj[events[i].id]['scheduleInfo'] = [];
 			eventsObj[events[i].id]['speakers'] = [];
@@ -90,6 +102,7 @@ $(document).ready(function () {
 							eventsObj[key].speakersHtml += '<hr class="alt1" />'
 						}
 
+						//if the pathname matches the eventObj URL, render the elements to the dom
 						if (pathname === eventsObj[key].eventUrl) {
 							var firstTabDivSet = false;
 							var travelTabDivSet = false;
@@ -100,46 +113,105 @@ $(document).ready(function () {
 								$eventTabLinks.show();
 								$eventOverviewTabLink.show();
 								$eventOverview.html(eventsObj[key].eventOverviewTab);
+							} else if (!eventsObj[key].eventOverviewTab) {
+								$eventOverviewTabLink.remove();
+								$eventOverview.remove();
+							}
+
+							if (eventsObj[key].eventRegistrationLink) {
+								$eventTabLinks.show();
+								$registerButton.show();
+								$registerButton.attr('href', eventsObj[key].eventRegistrationLink);
+							} else if (!eventsObj[key].eventRegistrationLink) {
+								$registerButton.remove();
 							}
 
 							if (eventsObj[key].speakers.length > 0) {
 								$eventTabLinks.show();
 								$eventSpeakersTabLink.show();
 								$eventSpeakers.html(eventsObj[key].speakersHtml);
+							} else if (eventsObj[key].speakers.length <= 0) {
+								$eventSpeakersTabLink.remove();
+								$eventSpeakers.remove();
+							}
+
+							if (eventsObj[key].eventMediaTab) {
+								$eventTabLinks.show();
+								$sponsorsTabLink.show();
+								$spondsorTabDiv.html(eventsObj[key].eventMediaTab);
+							} else if (!eventsObj[key].eventMediaTab) {
+								$sponsorsTabLink.remove();
+								$spondsorTabDiv.remove();
 							}
 
 							if (eventsObj[key].eventHeaderImage) {
 								$eventHeader.html('<img src="../uploads/' + eventsObj[key].eventHeaderImage + '" />');
+							} else if (!eventsObj[key].eventHeaderImage) {
+								$eventHeader.remove();
+							}
+
+							if (eventsObj[key].travelTabHeaderImage) {
+								$travelTabLink.show();
+								$travelTab.prepend('<img style="width: 90%; padding-left: 10%;" src="../uploads/' + eventsObj[key].travelTabHeaderImage + '" />');
 							}
 
 							if (eventsObj[key].travelVenueTab || eventsObj[key].travelTravelTab || eventsObj[key].travelAccomodationsTab || eventsObj[key].travelTipsTab || eventsObj[key].travelEatDrinkTab) {
-								$travelTabLink.show()
+								$travelTabLink.show();
 								$travelTab.prepend('<h2>' + eventsObj[key].eventLocation + '</h2>');
+							} else {
+								$travelTabLink.remove();
+								$travelTab.remove();
 							}
 
 							if (eventsObj[key].travelVenueTab) {
-								console.log(eventsObj[key].travelVenueTab);
 								$travelUlLinks.show();
 								$venueTabLink.show();
 								$venueTab.html(eventsObj[key].travelVenueTab);
+							} else if (!eventsObj[key].travelVenueTab) {
+								$venueTabLink.remove();
+								$venueTab.remove();
 							}
 
-							$eventTabLinks.children().each(function (i) {
-								// console.log(firstTabDivSet);
-								// console.log(firstTabDivSet == false, firstTabDivSet === false)
-								if ($(this).is(':visible') && firstTabDivSet === false) {
-									firstTabDivSet = true;
-									$(this).siblings().removeClass('current');
-									$(this).addClass('first current');
-									$($('a', this).attr('href')).show();
-								}
-							})
+							if (eventsObj[key].travelTravelTab) {
+								$travelUlLinks.show();
+								$travelTravelTabLink.show();
+								$travelTravelTab.html(eventsObj[key].travelTravelTab)
+							} else if (!eventsObj[key].travelTravelTab) {
+								$travelTravelTabLink.remove();
+								$travelTravelTab.remove();
+							}
 
-							$travelUlLinks.children().each(function (i) {
-								// console.log(firstTabDivSet);
-								// console.log(firstTabDivSet == false, firstTabDivSet === false)
-								if ($(this).is(':visible') && travelTabDivSet === false) {
-									travelTabDivSet = true;
+							if (eventsObj[key].travelAccomodationsTab) {
+								$travelUlLinks.show();
+								$travelAccommodationsTabLink.show();
+								$accommodationsTab.html(eventsObj[key].travelAccomodationsTab);
+							} else if (!eventsObj[key].travelAccomodationsTab) {
+								$travelAccommodationsTabLink.remove();
+								$accommodationsTab.remove();
+							}
+
+							if (eventsObj[key].travelTravelTab) {
+								$travelUlLinks.show();
+								$travelTipsTabLink.show();
+								$travelTipsTab.html(eventsObj[key].travelTravelTab);
+							} else if (!eventsObj[key].travelTravelTab) {
+								$travelTipsTabLink.remove();
+								$travelTipsTab.remove();
+							}
+
+							if (eventsObj[key].travelEatDrinkTab) {
+								$travelUlLinks.show();
+								$travelEatTabLink.show();
+								$travelEatTab.html(eventsObj[key].travelEatDrinkTab);
+							} else if (!eventsObj[key].travelEatDrinkTab) {
+								$travelEatTabLink.remove();
+								$travelEatTab.remove();
+							}
+
+							//assign first and current classes to first tab li(s) so they display correctly
+							$('.tabs').children().each(function (i) {
+								if ($(this).is(':first-child')) {
+									firstTabDivSet = true;
 									$(this).siblings().removeClass('current');
 									$(this).addClass('first current');
 									$($('a', this).attr('href')).show();
