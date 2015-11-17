@@ -5,20 +5,20 @@ var NewsletterSignup = require('../models/NewsletterSignup');
 var SuggestedCity = require('../models/SuggestedCity');
 var Interest = require('../models/Interest');
 var Event = require('../models/Event');
-var EventOverview = require('../models/EventOverview');
+// var EventOverview = require('../models/EventOverview');
 var EventSchedule = require('../models/EventSchedule');
 var EventAttendee = require('../models/EventAttendee');
-var EventPlatinumSponsor = require('../models/EventPlatinumSponsor');
-var EventGoldSponsor = require('../models/EventGoldSponsor');
-var EventSilverSponsor = require('../models/EventSilverSponsor');
-var EventBronzeSponsor = require('../models/EventBronzeSponsor');
-var EventTravel = require('../models/EventTravel');
-var TravelAccommodation = require('../models/TravelAccommodation');
-var TravelRestaurant = require('../models/TravelRestaurant');
-var TravelTip = require('../models/TravelTip');
+// var EventPlatinumSponsor = require('../models/EventPlatinumSponsor');
+// var EventGoldSponsor = require('../models/EventGoldSponsor');
+// var EventSilverSponsor = require('../models/EventSilverSponsor');
+// var EventBronzeSponsor = require('../models/EventBronzeSponsor');
+// var EventTravel = require('../models/EventTravel');
+// var TravelAccommodation = require('../models/TravelAccommodation');
+// var TravelRestaurant = require('../models/TravelRestaurant');
+// var TravelTip = require('../models/TravelTip');
 var SurveyQuestion = require('../models/SurveyQuestion');
 var SurveyAnswer = require('../models/SurveyAnswer');
-var AdditionalTravelSection = require('../models/AdditionalTravelSection');
+// var AdditionalTravelSection = require('../models/AdditionalTravelSection');
 // var User = require('../models/User');
 var aboutUs = require('../views/about')();
 var fs = require('fs');
@@ -231,7 +231,7 @@ router.route('/answersurvey')
     })
   })
 
-  router.route('/addoverview')
+/*  router.route('/addoverview')
   .post(function (req, res) {
     console.log(clc.magenta( '::::::::::::::::::::::::::'  ), req.body)
     sql.sync()
@@ -239,9 +239,9 @@ router.route('/answersurvey')
       EventOverview.create(req.body)
       res.end();
     })
-  })
+  })*/
 
-  router.route('/deleteoverview')
+/*  router.route('/deleteoverview')
   .post(function (req, res) {
     sql.sync()
     .then(function () {
@@ -249,7 +249,7 @@ router.route('/answersurvey')
       EventOverview.destroy({where: {id: req.body.overviewId}});
       res.end();
     })
-  })
+  })*/
   
   router.route('/events')
   .get(function (req, res) {
@@ -262,7 +262,7 @@ router.route('/answersurvey')
     })
   })
   
-  router.route('/eventoverviews')
+/*  router.route('/eventoverviews')
   .get(function (req, res) {
     sql.sync()
     .then(function () {
@@ -271,7 +271,7 @@ router.route('/answersurvey')
         res.json(data);
       })
     })
-  })
+  })*/
   
   router.route('/eventschedules')
   .get(function (req, res) {
@@ -284,7 +284,7 @@ router.route('/answersurvey')
     })
   })
   
-  router.route('/sponsors')
+/*  router.route('/sponsors')
   .get(function (req, res) {
     var allSponsors = []
     sql.sync()
@@ -304,7 +304,7 @@ router.route('/answersurvey')
         })
       })
     })
-  })
+  })*/
   
   router.route('/contacts')
   .get(function (req, res) {
@@ -328,7 +328,7 @@ router.route('/answersurvey')
     })
   })
   
-  router.route('/travelinfo')
+/*  router.route('/travelinfo')
   .get(function (req, res) {
     sql.sync()
     .then(function () {
@@ -337,9 +337,9 @@ router.route('/answersurvey')
         res.json(data);
       })
     })
-  })
+  })*/
   
-  router.route('/accommodationinfo')
+ /* router.route('/accommodationinfo')
   .get(function (req, res) {
     sql.sync()
     .then(function () {
@@ -348,20 +348,20 @@ router.route('/answersurvey')
         res.json(data);
       })
     })
-  })
+  })*/
   
-  router.route('/traveltips')
-  .get(function (req, res) {
-    sql.sync()
-    .then(function () {
-      TravelTip.findAll()
-      .then(function (data) {
-        res.json(data);
-      })
-    })
-  })
+  // router.route('/traveltips')
+  // .get(function (req, res) {
+  //   sql.sync()
+  //   .then(function () {
+  //     TravelTip.findAll()
+  //     .then(function (data) {
+  //       res.json(data);
+  //     })
+  //   })
+  // })
   
-  router.route('/travelrestaurants')
+/*  router.route('/travelrestaurants')
   .get(function (req, res) {
     sql.sync()
     .then(function () {
@@ -370,9 +370,9 @@ router.route('/answersurvey')
         res.json(data);
       })
     })
-  })
+  })*/
   
-  router.route('/extratravelsections')
+/*  router.route('/extratravelsections')
   .get(function (req, res) {
     sql.sync()
     .then(function () {
@@ -383,7 +383,7 @@ router.route('/answersurvey')
       })
     })
   })
-  
+  */
   router.route('/upcomingeventurls')
   .get(function (req, res) {
     sql.sync()
