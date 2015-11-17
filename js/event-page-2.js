@@ -61,6 +61,7 @@ $(document).ready(function () {
 		}	
 		//get scheduled items and add them to event
 		$.get('/eventschedules', function (schedules) {
+			console.log(schedules);
 			for (var i = 0, j = schedules.length; i < j; i++) {
 				eventsObj[schedules[i].eventId]['scheduleInfo'].push(schedules[i]);
 				if (eventsObj[schedules[i].eventId]['scheduleDays'].indexOf(schedules[i].scheduleDay) === -1) {
