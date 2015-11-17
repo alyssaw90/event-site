@@ -1,4 +1,4 @@
-'use strict';
+/*'use strict';
 
 var Sql = require('sequelize');
 var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
@@ -51,4 +51,4 @@ EventSilverSponsor.sync({force: true})
       silverSponsorLogo: 'logo1.png',
       silverSponsorDesc: 'Knock over christmas tree kitty power! so burrow under covers, or chase ball of string, spread kitty litter all over house, stare at ceiling.'
     })
-  })
+  })*/

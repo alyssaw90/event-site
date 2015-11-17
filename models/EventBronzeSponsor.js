@@ -1,4 +1,4 @@
-'use strict';
+/*'use strict';
 
 var Sql = require('sequelize');
 var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
@@ -67,4 +67,4 @@ EventBronzeSponsor.sync({force: true})
       bronzeSponsorLogo: 'logo1.png',
       bronzeSponsorDesc: 'If it fits, i sits refuse to leave cardboard box but bathe private parts with tongue then lick owner\'s face meow all night having their mate disturbing sleeping humans so leave dead animals as gifts stare at ceiling. Sit in box meowzer!'
     })
-  })
+  })*/
