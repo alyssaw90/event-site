@@ -1,4 +1,4 @@
-'use strict';
+/*'use strict';
 
 var Sql = require('sequelize');
 var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
@@ -67,4 +67,4 @@ EventGoldSponsor.sync({force: true})
       goldSponsorLogo: 'logo1.png',
       goldSponsorDesc: 'Chirp at birds why must they do that hopped up on catnip find something else more interesting, for lick butt.'
     })
-  })
+  })*/

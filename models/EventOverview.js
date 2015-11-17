@@ -1,4 +1,4 @@
-'use strict';
+/*'use strict';
 
 var Sql = require('sequelize');
 var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
@@ -53,4 +53,4 @@ EventOverview.sync({force: true})
       headingText: 'Because it is almost lunch',
       paragraphText: 'Cauliflower cheese smelly cheese rubber cheese. Babybel hard cheese cottage cheese rubber cheese babybel croque monsieur manchego edam. Halloumi cheese slices babybel emmental boursin bocconcini bavarian bergkase halloumi. Croque monsieur caerphilly st. agur blue cheese cheese slices'
     })
-  })
+  })*/

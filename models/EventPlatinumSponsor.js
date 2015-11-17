@@ -1,4 +1,4 @@
-'use strict';
+/*'use strict';
 
 var Sql = require('sequelize');
 var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
@@ -67,4 +67,4 @@ EventPlatinumSponsor.sync({force: true})
       platinumSponsorLogo: 'logo1.png',
       platinumSponsorDesc: 'Curl into a furry donut meow. Then cats take over the world spot something, big eyes, big eyes, crouch, shake butt, prepare to pounce or jump around on couch, meow constantly until given food, see owner, run in terror.'
     })
-  })
+  })*/

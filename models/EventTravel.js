@@ -1,4 +1,4 @@
-'use strict';
+/*'use strict';
 
 var Sql = require('sequelize');
 var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
@@ -50,10 +50,8 @@ EventTravel.sync({force: true})
       travelDesc: 'Ancient alien extraterrestrial sanskrit Mahabharata vortex UFO aircraft Vymaanika-Shaastra, evidence ancient civilization sky people choral castle, clearly grey UFO Machu Picchu Easter island. Ancient religions sun disc mercury legendary times, I know it sounds crazy... Petroglyph contend clearly space time helicopter heiroglyph. Chariot of the Gods spaceships, Annunaki ancient religions.',
       travelImage: null,
       accommodationHeading: 'Accommodations',
-      accommodationParagraph: 'Ancient alien sightings Easter island DNA manipulation, otherworldly visitors earth mound Indian texts, burmuta triangle ancient religions contend. Helicopter heiroglyph choral castle evidence targeted mutation otherworldly visitors ancient god, sanskrit cover up petroglyph ancient alien theorists Mahabharata, aircraft vortex the vedas pre-colonial aerodynamics ancient god. Flying vessels crystal skull, Mayan.',
-      tipsDivHeading: 'These are the voyages of the Starship Enterprise.',
-      tipsDivParagraph: 'We need to neutralize the homing signal. Each unit has total environmental control, gravity, temperature, atmosphere, light, in a protective field. Sensors show energy readings in your area. We had a forced chamber explosion in the resonator coil. Field strength has increased by 3,000 percent.',
-      eatAndDrinkHeading: 'Eat at One of these Restaurants'
+      accommodationParagraph: 'Ancient alien sightings Easter island DNA manipulation, otherworldly visitors earth mound Indian texts, burmuta triangle ancient religions contend. Helicopter heiroglyph choral castle evidence targeted mutation otherworldly visitors ancient god, sanskrit cover up petroglyph ancient alien theorists Mahabharata, aircraft vortex the vedas pre-colonial aerodynamics ancient god. Flying vessels crystal skull, Mayan.',      tipsDivHeading: 'These are the voyages of the Starship Enterprise.',
+      tipsDivParagraph: 'We need to neutralize the homing signal. Each unit has total environmental control, gravity, temperature, atmosphere, light, in a protective field. Sensors show energy readings in your area. We had a forced chamber explosion in the resonator coil. Field strength has increased by 3,000 percent.',      eatAndDrinkHeading: 'Eat at One of these Restaurants'
       })
   })
   .then(function () {
@@ -92,4 +90,4 @@ EventTravel.sync({force: true})
       tipsDivParagraph: 'Sensors indicate human life forms 30 meters below the planet\'s surface. Stellar flares are increasing in magnitude and frequency. Set course for Rhomboid Dronegar 006, warp seven. There\'s no evidence of an advanced communication network.',
       eatAndDrinkHeading: 'Hello World Restaurant'
       })
-  })
+  })*/
