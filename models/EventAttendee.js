@@ -148,42 +148,92 @@ EventAttendee.sync({force: true})
   .then(function () {
     return EventAttendee.create({
       eventId: 3,
+      contactId: 1,
+      eventAttendeeRole: 'speaker'
+    })
+  })
+  .then(function () {
+    return EventAttendee.create({
+      eventId: 3,
+      contactId: 2,
+      eventAttendeeRole: 'speaker'
+    })
+  })
+  .then(function () {
+    return EventAttendee.create({
+      eventId: 3,
       contactId: 7,
       eventAttendeeRole: 'speaker'
     })
   })
   .then(function () {
     return EventAttendee.create({
-      eventId: 2,
-      contactId: 9,
+      eventId: 3,
+      contactId: 5,
       eventAttendeeRole: 'speaker'
     })
   })
   .then(function () {
     return EventAttendee.create({
       eventId: 3,
-      contactId: 9,
+      contactId: 4,
       eventAttendeeRole: 'speaker'
     })
   })
   .then(function () {
     return EventAttendee.create({
       eventId: 3,
-      contactId: 10,
+      contactId: 15,
       eventAttendeeRole: 'speaker'
     })
   })
   .then(function () {
     return EventAttendee.create({
       eventId: 3,
-      contactId: 11,
+      contactId: 8,
       eventAttendeeRole: 'speaker'
     })
   })
+
   .then(function () {
     return EventAttendee.create({
-      eventId: 3,
+      eventId: 4,
       contactId: 1,
-      eventAttendeeRole: 'attendee'
+      eventAttendeeRole: 'speaker'
+    })
+  })
+  .then(function () {
+    return EventAttendee.create({
+      eventId: 4,
+      contactId: 2,
+      eventAttendeeRole: 'speaker'
+    })
+  })
+  .then(function () {
+    return EventAttendee.create({
+      eventId: 4,
+      contactId: 5,
+      eventAttendeeRole: 'speaker'
+    })
+  })
+  .then(function () {
+    return EventAttendee.create({
+      eventId: 4,
+      contactId: 3,
+      eventAttendeeRole: 'speaker'
+    })
+  })
+  .then(function () {
+    return EventAttendee.create({
+      eventId: 4,
+      contactId: 4,
+      eventAttendeeRole: 'speaker'
+    })
+  })
+  .then(function () {
+    return EventAttendee.create({
+      eventId: 4,
+      contactId: 15,
+      eventAttendeeRole: 'speaker'
     })
   })
