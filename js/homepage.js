@@ -5,7 +5,7 @@
 /*jshint multistr: true */ 
 
 
-//This function is now in the kickstart.js file
+//This function is now in the kickstart.js file line 50
 
 
 // $(document).ready(function () {

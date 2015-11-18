@@ -17,6 +17,19 @@ $(document).ready(function () {
 		var $travelTab = $('#travelTab');
 		var $venueTab = $('#venue-tab');
 		var $travelUlLinks = $('#travelUlLinks');
+		var $travelTravelTabLink = $('#travelTravelTabLink');
+		var $travelTravelTab = $('#travel-tab');
+		var $travelAccommodationsTabLink = $('#travelAccommodationsTabLink');
+		var $accommodationsTab = $('#accomodations-tab');
+		var $travelTipsTabLink = $('#travelTipsTabLink');
+		var $travelTipsTab = $('#tips-tab');
+		var $travelEatTabLink = $('#travelEatTabLink');
+		var $travelEatTab = $('#eat-drink');
+		var $sponsorsTabLink = $('#sponsorsTabLink');
+		var $spondsorTabDiv = $('#eventSponsors');
+		var $registerButton = $('#registerButton');
+		var $eventScheduleTabLink = $('#eventScheduleTabLink');
+		var $eventTabDiv = $('#event-schedule');
 
 		//create object containing all current events
 		for (var i = 0, j = events.length; i < j; i++) {
@@ -37,14 +50,18 @@ $(document).ready(function () {
 			eventsObj[events[i].id]['travelTipsTab'] = events[i]['travelTipsTab'];
 			eventsObj[events[i].id]['travelEatDrinkTab'] = events[i]['travelEatDrinkTab'];
 			eventsObj[events[i].id]['eventMediaTab'] = events[i]['eventMediaTab'];
+			eventsObj[events[i].id]['travelTabHeaderImage'] = events[i]['travelTabHeaderImage'];
 			eventsObj[events[i].id]['scheduleDays'] = [];
 			eventsObj[events[i].id]['scheduleInfo'] = [];
 			eventsObj[events[i].id]['speakers'] = [];
 			eventsObj[events[i].id]['attendees'] = [];
 			eventsObj[events[i].id]['speakersHtml'] = '';
+			eventsObj[events[i].id]['dailyScheduleHtml'] = '';
+			eventsObj[events[i].id]['scheduleDaysHtml'] = '<ul class="tabs center">';
 		}	
 		//get scheduled items and add them to event
 		$.get('/eventschedules', function (schedules) {
+			console.log(schedules);
 			for (var i = 0, j = schedules.length; i < j; i++) {
 				eventsObj[schedules[i].eventId]['scheduleInfo'].push(schedules[i]);
 				if (eventsObj[schedules[i].eventId]['scheduleDays'].indexOf(schedules[i].scheduleDay) === -1) {
@@ -72,9 +89,11 @@ $(document).ready(function () {
 						}
 					}
 
-
 					//if the pathname matches the URL of the eventObj, add its elements to the dom
 					for (var key in eventsObj) {
+						var scheduleInfoObj = {};
+						var daysLength = eventsObj[key].scheduleDays.length;
+
 						//loop over the speakers array and create html for speakers tab
 						for (var i = 0, j = eventsObj[key].speakers.length; i < j; i++) {
 							eventsObj[key].speakersHtml += '<h4>' + eventsObj[key].speakers[i].firstName + ' ' + eventsObj[key].speakers[i].lastName + '</h4>';
@@ -90,56 +109,171 @@ $(document).ready(function () {
 							eventsObj[key].speakersHtml += '<hr class="alt1" />'
 						}
 
+						//loop over scheduleDays array and add each Day name to the UL for the schedule tab
+						for (var i = 0, j = eventsObj[key].scheduleDays.length; i < j; i++) {
+							if (i === 0) {
+								eventsObj[key].scheduleDaysHtml += '<li class="current"><a href="#tabr' + eventsObj[key].scheduleDays[i] + '"><h5>' + eventsObj[key].scheduleDays[i] + '</h5></a></li>';
+							}
+							if (i > 0) {
+								eventsObj[key].scheduleDaysHtml += '<li><a href="#tabr' + eventsObj[key].scheduleDays[i] + '"><h5>' + eventsObj[key].scheduleDays[i] + '</h5></a></li>';
+							}
+							if (i >= daysLength -1) {
+								eventsObj[key].scheduleDaysHtml += '</ul>';
+							}
+						}
+						//create tab-content div for each day with a placeholder for that days schedule UL
+						for (var i = 0, j = eventsObj[key].scheduleDays.length; i < j; i++) {
+							if (i === 0) {
+								eventsObj[key].dailyScheduleHtml += '<div id="tabr' + eventsObj[key].scheduleDays[i] + '" class="tab-content" style="display:block;"><table cellspacing="0" cellpadding="0" class="striped schedule"><thead><tr><th><h3>' + eventsObj[key].scheduleDays[i] + '</h3></th></tr></thead>' + eventsObj[key].scheduleDays[i] + 'Placeholder</table></div>';
+							}
+							if (i > 0) {
+								eventsObj[key].dailyScheduleHtml += '<div id="tabr' + eventsObj[key].scheduleDays[i] + '" class="tab-content" style="display:none;"><table cellspacing="0" cellpadding="0" class="striped schedule"><thead><tr><th><h3>' + eventsObj[key].scheduleDays[i] + '</h3></th></tr></thead><tbody>' + eventsObj[key].scheduleDays[i] + 'Placeholder</tbody></table></div>';
+							}
+						}
+						//search the dailyScheduleHtml for the placeholder and add an LI with the correct class depending on its postion in the list and insert it into the scheduleInfoObj object declared above
+						for (var i = 0, j = eventsObj[key].scheduleInfo.length; i < j; i++) {
+							if (!scheduleInfoObj[eventsObj[key].scheduleInfo[i].scheduleDay + 'Placeholder']) {
+								scheduleInfoObj[eventsObj[key].scheduleInfo[i].scheduleDay + 'Placeholder'] = '';
+							}
+							if (i <= 0) {
+								scheduleInfoObj[eventsObj[key].scheduleInfo[i].scheduleDay + 'Placeholder'] += '<tr class="first"><td>' + eventsObj[key].scheduleInfo[i].scheduleTime + '</td><td>' +  eventsObj[key].scheduleInfo[i].description + '</td></tr>';
+							}
+							if (i > 0 && i < j - 1 && i % 2 !== 0) {
+								scheduleInfoObj[eventsObj[key].scheduleInfo[i].scheduleDay + 'Placeholder'] += '<tr class="alt"><td>' + eventsObj[key].scheduleInfo[i].scheduleTime + '</td><td>' +  eventsObj[key].scheduleInfo[i].description + '</td></tr>';															
+							}
+							if (i > 0 && i < j - 1 && i % 2 === 0) {
+								scheduleInfoObj[eventsObj[key].scheduleInfo[i].scheduleDay + 'Placeholder'] += '<tr><td>' + eventsObj[key].scheduleInfo[i].scheduleTime + '</td><td>' +  eventsObj[key].scheduleInfo[i].description + '</td></tr>';															
+							}
+							if (i === j - 1 && i % 2 !== 0) {
+								scheduleInfoObj[eventsObj[key].scheduleInfo[i].scheduleDay + 'Placeholder'] += '<tr class="alt last"><td>' + eventsObj[key].scheduleInfo[i].scheduleTime + '</td><td>' +  eventsObj[key].scheduleInfo[i].description + '</td></tr>';
+							}
+							if (i === j - 1 && i % 2 === 0) {
+								scheduleInfoObj[eventsObj[key].scheduleInfo[i].scheduleDay + 'Placeholder'] += '<tr class="last"><td>' + eventsObj[key].scheduleInfo[i].scheduleTime + '</td><td>' +  eventsObj[key].scheduleInfo[i].description + '</td></tr>';
+							}
+						}
+						//loop over the dailyScheduleHtml HTML and replace the placeholder with the content to replace it
+						for (var key3 in scheduleInfoObj) {
+							eventsObj[key].dailyScheduleHtml = eventsObj[key].dailyScheduleHtml.replace(key3, scheduleInfoObj[key3]);
+						}
+						//combine schedule header list and schedule body
+						eventsObj[key].scheduleDaysHtml += eventsObj[key].dailyScheduleHtml;
+
+						//if the pathname matches the eventObj URL, render the elements to the dom or remove them if they don't exist on the current eventObj
 						if (pathname === eventsObj[key].eventUrl) {
-							var firstTabDivSet = false;
-							var travelTabDivSet = false;
 							document.title = eventsObj[key].eventName;
 							$eventTabs.children().hide();
+
+							if (eventsObj[key].eventHeaderImage) {
+								$eventHeader.html('<img src="../uploads/' + eventsObj[key].eventHeaderImage + '" />');
+							} else if (!eventsObj[key].eventHeaderImage) {
+								$eventHeader.remove();
+							}
 
 							if (eventsObj[key].eventOverviewTab) {
 								$eventTabLinks.show();
 								$eventOverviewTabLink.show();
 								$eventOverview.html(eventsObj[key].eventOverviewTab);
+							} else if (!eventsObj[key].eventOverviewTab) {
+								$eventOverviewTabLink.remove();
+								$eventOverview.remove();
+							}
+
+							if (eventsObj[key].eventRegistrationLink) {
+								$eventTabLinks.show();
+								$registerButton.show();
+								$registerButton.attr('href', eventsObj[key].eventRegistrationLink);
+							} else if (!eventsObj[key].eventRegistrationLink) {
+								$registerButton.remove();
 							}
 
 							if (eventsObj[key].speakers.length > 0) {
 								$eventTabLinks.show();
 								$eventSpeakersTabLink.show();
 								$eventSpeakers.html(eventsObj[key].speakersHtml);
+							} else if (eventsObj[key].speakers.length <= 0) {
+								$eventSpeakersTabLink.remove();
+								$eventSpeakers.remove();
 							}
 
-							if (eventsObj[key].eventHeaderImage) {
-								$eventHeader.html('<img src="../uploads/' + eventsObj[key].eventHeaderImage + '" />');
+							if (eventsObj[key].scheduleDays.length > 0) {
+								$eventTabLinks.show();
+								$eventScheduleTabLink.show();
+								$eventTabDiv.html(eventsObj[key].scheduleDaysHtml);
+							} else if (eventsObj[key].scheduleDays.length <= 0) {
+								$eventScheduleTabLink.remove();
+								$eventTabDiv.remove();
+							}
+
+							if (eventsObj[key].eventMediaTab) {
+								$eventTabLinks.show();
+								$sponsorsTabLink.show();
+								$spondsorTabDiv.html(eventsObj[key].eventMediaTab);
+							} else if (!eventsObj[key].eventMediaTab) {
+								$sponsorsTabLink.remove();
+								$spondsorTabDiv.remove();
+							}
+
+							if (eventsObj[key].travelTabHeaderImage) {
+								$travelTabLink.show();
+								$travelTab.prepend('<img style="width: 90%; padding-left: 10%;" src="../uploads/' + eventsObj[key].travelTabHeaderImage + '" />');
 							}
 
 							if (eventsObj[key].travelVenueTab || eventsObj[key].travelTravelTab || eventsObj[key].travelAccomodationsTab || eventsObj[key].travelTipsTab || eventsObj[key].travelEatDrinkTab) {
-								$travelTabLink.show()
+								$travelTabLink.show();
 								$travelTab.prepend('<h2>' + eventsObj[key].eventLocation + '</h2>');
+							} else {
+								$travelTabLink.remove();
+								$travelTab.remove();
 							}
 
 							if (eventsObj[key].travelVenueTab) {
-								console.log(eventsObj[key].travelVenueTab);
 								$travelUlLinks.show();
 								$venueTabLink.show();
 								$venueTab.html(eventsObj[key].travelVenueTab);
+							} else if (!eventsObj[key].travelVenueTab) {
+								$venueTabLink.remove();
+								$venueTab.remove();
 							}
 
-							$eventTabLinks.children().each(function (i) {
-								// console.log(firstTabDivSet);
-								// console.log(firstTabDivSet == false, firstTabDivSet === false)
-								if ($(this).is(':visible') && firstTabDivSet === false) {
-									firstTabDivSet = true;
-									$(this).siblings().removeClass('current');
-									$(this).addClass('first current');
-									$($('a', this).attr('href')).show();
-								}
-							})
+							if (eventsObj[key].travelTravelTab) {
+								$travelUlLinks.show();
+								$travelTravelTabLink.show();
+								$travelTravelTab.html(eventsObj[key].travelTravelTab)
+							} else if (!eventsObj[key].travelTravelTab) {
+								$travelTravelTabLink.remove();
+								$travelTravelTab.remove();
+							}
 
-							$travelUlLinks.children().each(function (i) {
-								// console.log(firstTabDivSet);
-								// console.log(firstTabDivSet == false, firstTabDivSet === false)
-								if ($(this).is(':visible') && travelTabDivSet === false) {
-									travelTabDivSet = true;
+							if (eventsObj[key].travelAccomodationsTab) {
+								$travelUlLinks.show();
+								$travelAccommodationsTabLink.show();
+								$accommodationsTab.html(eventsObj[key].travelAccomodationsTab);
+							} else if (!eventsObj[key].travelAccomodationsTab) {
+								$travelAccommodationsTabLink.remove();
+								$accommodationsTab.remove();
+							}
+
+							if (eventsObj[key].travelTravelTab) {
+								$travelUlLinks.show();
+								$travelTipsTabLink.show();
+								$travelTipsTab.html(eventsObj[key].travelTravelTab);
+							} else if (!eventsObj[key].travelTravelTab) {
+								$travelTipsTabLink.remove();
+								$travelTipsTab.remove();
+							}
+
+							if (eventsObj[key].travelEatDrinkTab) {
+								$travelUlLinks.show();
+								$travelEatTabLink.show();
+								$travelEatTab.html(eventsObj[key].travelEatDrinkTab);
+							} else if (!eventsObj[key].travelEatDrinkTab) {
+								$travelEatTabLink.remove();
+								$travelEatTab.remove();
+							}
+
+							//assign first and current classes to first tab li(s) so they display correctly
+							$('.tabs').children().each(function (i) {
+								if ($(this).is(':first-child')) {
 									$(this).siblings().removeClass('current');
 									$(this).addClass('first current');
 									$($('a', this).attr('href')).show();

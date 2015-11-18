@@ -38,29 +38,37 @@ jQuery(document).ready(function($){
 		startSlide: 0,
 		infiniteLoop: true,
 		captions: true,
-		adaptiveHeight: false,
+		adaptiveHeight: true,
 		touchEnabled: true,
 		pause: 4000,
 		autoControls: false,
 		controls: true,
 		autoStart: true,
-		auto: true
+		auto: true,
+		onSliderLoad: function(){
+    	// do funky JS stuff here
+    	$('#slideImageOne').attr('src', './img/santa-clara-convention-center-2-homepage.jpg');
+    	$('#slideImageTwo').attr('src', './img/shanghai-2015-slideshow.jpg');
+    	$('#slideImageThree').attr('src', './img/img-taipei-slideshow.jpg');
+	// $('.slideshow').bxSlider().reloadSlider();
+  	}
 	});
+
 
 	$.get('/homepageteam', function (homepageTeam) {
 		$.get('/events', function (homepageEvents) {
 			console.log('Homepage Experts comes from kickstart.js');
 			var theHomepageTeam = '<h2>Meet the Team</h2>';
 			var theHomepageSlider = '';
-			for (var i = 0, j = homepageEvents.length; i < j; i++) {
-				theHomepageSlider += '<li><a href="/' + homepageEvents[i].eventUrl + '"><h2 class="desc"><span class="slide-title">'+ homepageEvents[i].eventName + '</span><br /><br /><span class="sub-title slideshow-city">' + homepageEvents[i].eventLocation + '</span><span class="sub-title slideshow-date">' + homepageEvents[i].eventStartDate + '</span><br /><br /><span class="sub-title"><i class="fa fa-code"></i>'+ homepageEvents[i].homepageBulletOne + '</span><br /><span class="sub-title"><i class="fa fa-code"></i>' + homepageEvents[i].homepageBulletTwo + '</span><br /><span class="sub-title"><i class="fa fa-code"></i>' + homepageEvents[i].homepageBulletThree + '</h2></span></a><img src="data:image;base64,' + homepageEvents[i].eventBackgroundImage + '" /></li>';
-			}
+			// for (var i = 0, j = homepageEvents.length; i < j; i++) {
+			// 	theHomepageSlider += '<li><a href="/' + homepageEvents[i].eventUrl + '"><h2 class="desc"><span class="slide-title">'+ homepageEvents[i].eventName + '</span><br /><br /><span class="sub-title slideshow-city">' + homepageEvents[i].eventLocation + '</span><span class="sub-title slideshow-date">' + homepageEvents[i].eventStartDate + '</span><br /><br /><span class="sub-title"><i class="fa fa-code"></i>'+ homepageEvents[i].homepageBulletOne + '</span><br /><span class="sub-title"><i class="fa fa-code"></i>' + homepageEvents[i].homepageBulletTwo + '</span><br /><span class="sub-title"><i class="fa fa-code"></i>' + homepageEvents[i].homepageBulletThree + '</h2></span></a><img src="data:image;base64,' + homepageEvents[i].eventBackgroundImage + '" /></li>';
+			// }
 
 			for (var i = 0, j = homepageTeam.length; i < j; i++) {
 				theHomepageTeam += '<div class="col_3 individual-homepage-expert"><a href="/meet-the-team#' + homepageTeam[i].divId + '"><img class="pull-left" title="' + homepageTeam[i].msTeamTitle + '" src="/uploads/' + homepageTeam[i].headShot + '" /><h6>' + homepageTeam[i].firstName + ' ' + homepageTeam[i].lastName + '</h6><p>' + homepageTeam[i].msTeamTitle + '</p></a></div>';
 			}
-			$('#frontpage-slideshow').append(theHomepageSlider);
-			$('.home-page-experts').append(theHomepageTeam);
+			// $('#frontpage-slideshow').append(theHomepageSlider);
+			$('.home-page-experts').prepend(theHomepageTeam);
 		})
 	});
 

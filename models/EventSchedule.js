@@ -284,9 +284,137 @@ EventSchedule.sync({force: true})
       description: 'Overview of Microsoft File Formats'
     })
   })
-
-
   .then(function () {
+    return EventSchedule.create({
+      eventId: 2,
+      scheduleDay: 'Wednesday',
+      scheduleTime: '3:30-4:30',
+      description: 'Overview of Microsoft File Formats'
+    })
+  })
+  .then(function () {
+    return EventSchedule.create({
+      eventId: 4,
+      scheduleDay: 'Wednesday',
+      scheduleTime: '9am -10:30am',
+      description: 'Presentations'
+    })
+  })
+  .then(function () {
+    return EventSchedule.create({
+      eventId: 4,
+      scheduleDay: 'Wednesday',
+      scheduleTime: '10:30-10:45 ',
+      description: 'Break'
+    })
+  })
+  .then(function () {
+    return EventSchedule.create({
+      eventId: 4,
+      scheduleDay: 'Wednesday',
+      scheduleTime: '10:45- 12pm ',
+      description: 'Presentations'
+    })
+  })
+  .then(function () {
+    return EventSchedule.create({
+      eventId: 4,
+      scheduleDay: 'Wednesday',
+      scheduleTime: '12-1pm ',
+      description: 'Lunch'
+    })
+  })
+  .then(function () {
+    return EventSchedule.create({
+      eventId: 4,
+      scheduleDay: 'Wednesday',
+      scheduleTime: '1-2:30 ',
+      description: 'Presentations & Hackathon'
+    })
+  })
+  .then(function () {
+    return EventSchedule.create({
+      eventId: 4,
+      scheduleDay: 'Wednesday',
+      scheduleTime: '2:30-2:45 ',
+      description: 'Break'
+    })
+  })
+  .then(function () {
+    return EventSchedule.create({
+      eventId: 4,
+      scheduleDay: 'Wednesday',
+      scheduleTime: '2:45-5pm ',
+      description: 'Presentations & Hackathon'
+    })
+  })
+  .then(function () {
+    return EventSchedule.create({
+      eventId: 4,
+      scheduleDay: 'Thursday',
+      scheduleTime: '9am -10:30am ',
+      description: 'Presentations & Hackathon'
+    })
+  })
+  .then(function () {
+    return EventSchedule.create({
+      eventId: 4,
+      scheduleDay: 'Thursday',
+      scheduleTime: '10:30-10:45 ',
+      description: 'Break'
+    })
+  })
+  .then(function () {
+    return EventSchedule.create({
+      eventId: 4,
+      scheduleDay: 'Thursday',
+      scheduleTime: '10:45- 12pm ',
+      description: 'Presentations & Hackathon'
+    })
+  })
+  .then(function () {
+    return EventSchedule.create({
+      eventId: 4,
+      scheduleDay: 'Thursday',
+      scheduleTime: '12-1pm ',
+      description: 'Lunch'
+    })
+  })
+  .then(function () {
+    return EventSchedule.create({
+      eventId: 4,
+      scheduleDay: 'Thursday',
+      scheduleTime: '1-2:30 ',
+      description: 'Presentations & Hackathon'
+    })
+  })
+  .then(function () {
+    return EventSchedule.create({
+      eventId: 4,
+      scheduleDay: 'Thursday',
+      scheduleTime: '2:30-2:45 ',
+      description: 'Break'
+    })
+  })
+  .then(function () {
+    return EventSchedule.create({
+      eventId: 4,
+      scheduleDay: 'Thursday',
+      scheduleTime: '2:45-4pm ',
+      description: 'Presentations & Hackathon'
+    })
+  })
+  .then(function () {
+    return EventSchedule.create({
+      eventId: 4,
+      scheduleDay: 'Thursday',
+      scheduleTime: '4-5pm ',
+      description: 'Closing & Awards'
+    })
+  })
+
+
+ /* .then(function () {
     return EventSchedule.create({
       eventId: 3,
       scheduleDay: 'Friday',
@@ -381,4 +509,4 @@ EventSchedule.sync({force: true})
       scheduleTime: '3 - 6',
       description: 'watch Mad Max'
     })
-  })
+  })*/
