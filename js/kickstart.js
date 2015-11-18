@@ -38,14 +38,22 @@ jQuery(document).ready(function($){
 		startSlide: 0,
 		infiniteLoop: true,
 		captions: true,
-		adaptiveHeight: false,
+		adaptiveHeight: true,
 		touchEnabled: true,
 		pause: 4000,
 		autoControls: false,
 		controls: true,
 		autoStart: true,
-		auto: true
+		auto: true,
+		onSliderLoad: function(){
+    	// do funky JS stuff here
+    	$('#slideImageOne').attr('src', './img/santa-clara-convention-center-2-homepage.jpg');
+    	$('#slideImageTwo').attr('src', './img/shanghai-2015-slideshow.jpg');
+    	$('#slideImageThree').attr('src', './img/img-taipei-slideshow.jpg');
+	// $('.slideshow').bxSlider().reloadSlider();
+  	}
 	});
+
 
 	$.get('/homepageteam', function (homepageTeam) {
 		$.get('/events', function (homepageEvents) {
