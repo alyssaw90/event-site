@@ -2,6 +2,7 @@
 
 var Contact = require('../models/Contact');
 var NewsletterSignup = require('../models/NewsletterSignup');
+var fs = require('fs');
 var clc = require('cli-color');
 var bodyparser = require('body-parser');
 var path = require('path');
@@ -23,10 +24,10 @@ module.exports = function (router) {
     extended: true
   }));
 
-	router.route('/')
+/*	router.route('/')
   .get(function (req, res) {
     res.sendFile(path.join(__dirname, '../index.html'));
-  });
+  });*/
 
   router.route('/past-events')
   .get(function (req, res) {
