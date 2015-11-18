@@ -285,25 +285,30 @@ router.route('/answersurvey')
           for (var i = 0, j = frontPageEvents.length; i < j; i++) {
           
             frontPageEvents[i]
-            slides += '<li><a href="/events/' + frontPageEvents[i].eventUrl + '"><h2 class="desc"><span class="slide-title">' + frontPageEvents[i].eventName + '</span><br /><br /><span class="sub-title slideshow-city">' + frontPageEvents[i].eventLocation + '</span><span class="sub-title slideshow-date">' + months[frontPageEvents[i].eventStartDate.getMonth()] + ' ' + frontPageEvents[i].eventStartDate.getDate() + ' - ' + frontPageEvents[i].eventEndDate.getDate() + ', ' + frontPageEvents[i].eventEndDate.getFullYear() + '</span>';
+            slides += '<li><a href="/event/' + frontPageEvents[i].eventUrl + '"><h2 class="desc"><span class="slide-title">' + frontPageEvents[i].eventName + '</span><br /><br /><span class="sub-title slideshow-city">' + frontPageEvents[i].eventLocation + '</span><span class="sub-title slideshow-date">' + months[frontPageEvents[i].eventStartDate.getMonth()] + ' ' + frontPageEvents[i].eventStartDate.getDate() + ' - ' + frontPageEvents[i].eventEndDate.getDate() + ', ' + frontPageEvents[i].eventEndDate.getFullYear() + '</span>';
             if (frontPageEvents[i].homepageBulletOne) {
               slides += '<br /><br /><span class="sub-title"><i class="fa fa-code"></i> ' + frontPageEvents[i].homepageBulletOne + '</span>';
+            } else if (!frontPageEvents[i].homepageBulletOne) {
+              slides += '<br /><span class="sub-title"></span>';
             }
             if (frontPageEvents[i].homepageBulletTwo) {
               slides += '<br /><span class="sub-title"><i class="fa fa-code"></i> ' + frontPageEvents[i].homepageBulletTwo + '</span>';
+            } else if (!frontPageEvents[i].homepageBulletTwo) {
+              slides += '<br /><span class="sub-title"></span>';
             }
             if (frontPageEvents[i].homepageBulletThree) {
               slides += '<br /><span class="sub-title"><i class="fa fa-code"></i> ' + frontPageEvents[i].homepageBulletThree + '</span>';
+            } else if (!frontPageEvents[i].homepageBulletThree) {
+              slides += '<br /><span class="sub-title"></span>';
             }
             slides += '</h2></a><img src="./uploads/' + frontPageEvents[i].eventSlideshowImage + '" /></li>';
           }
-          console.log(clc.magenta('HHHHHHHHHHHHHHHHH :::::::::::::::::  '), slides);
-      newHtml = html.toString().replace('<ul class="slideshow">', slides);
-      res.send(newHtml);
-        })
-      })
+          newHtml = html.toString().replace('<ul class="slideshow">', slides);
+          res.send(newHtml);
+        });
+      });
     });
-  })
+  });
   
 /*  router.route('/eventoverviews')
   .get(function (req, res) {
