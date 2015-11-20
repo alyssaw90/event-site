@@ -42,6 +42,8 @@ var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
   }
 });
 
+var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
 module.exports = function (router) {
   router.use(bodyparser.json());
   router.use(bodyparser.urlencoded({
@@ -56,7 +58,6 @@ module.exports = function (router) {
     .then(function () {
       Contact.findAll({where: {msTeamMember: true}})
       .then(function (data) {
-        // console.log(newAboutText);
         res.json(data);
       })
       .error(function (err) {
@@ -64,7 +65,6 @@ module.exports = function (router) {
         res.status(500).json({msg: 'internal server error'});
       });
     });
-    // console.log(about);
   });
 
   router.route('/homepageteam')
@@ -250,6 +250,54 @@ router.route('/answersurvey')
       res.end();
     })
   })*/
+
+  router.route('/')
+  .get(function (req, res) {
+    var slides = '<ul class="slideshow">';
+    var newHtml = '';
+    fs.readFile(path.join(__dirname, '../views/index.html'), function (err, html) {
+      if (err) {
+        console.log(err);
+        res.status(500).json({msg: 'internal server error'});
+      }
+      sql.sync()
+      .then(function () {
+        Event.findAll({where: {
+          eventStartDate: {
+            $gte: new Date()
+          },
+          eventSlideshowImage: {
+            $ne: null
+          }
+        }})
+        .then(function (frontPageEvents) {
+          for (var i = 0, j = frontPageEvents.length; i < j; i++) {
+          
+            frontPageEvents[i]
+            slides += '<li><a href="/event/' + frontPageEvents[i].eventUrl + '"><h2 class="desc"><span class="slide-title">' + frontPageEvents[i].eventName + '</span><br /><br /><span class="sub-title slideshow-city">' + frontPageEvents[i].eventLocation + '</span><span class="sub-title slideshow-date">' + months[frontPageEvents[i].eventStartDate.getMonth()] + ' ' + frontPageEvents[i].eventStartDate.getDate() + ' - ' + frontPageEvents[i].eventEndDate.getDate() + ', ' + frontPageEvents[i].eventEndDate.getFullYear() + '</span>';
+            if (frontPageEvents[i].homepageBulletOne) {
+              slides += '<br /><br /><span class="sub-title"><i class="fa fa-code"></i> ' + frontPageEvents[i].homepageBulletOne + '</span>';
+            } else if (!frontPageEvents[i].homepageBulletOne) {
+              slides += '<br /><span class="sub-title"></span>';
+            }
+            if (frontPageEvents[i].homepageBulletTwo) {
+              slides += '<br /><span class="sub-title"><i class="fa fa-code"></i> ' + frontPageEvents[i].homepageBulletTwo + '</span>';
+            } else if (!frontPageEvents[i].homepageBulletTwo) {
+              slides += '<br /><span class="sub-title"></span>';
+            }
+            if (frontPageEvents[i].homepageBulletThree) {
+              slides += '<br /><span class="sub-title"><i class="fa fa-code"></i> ' + frontPageEvents[i].homepageBulletThree + '</span>';
+            } else if (!frontPageEvents[i].homepageBulletThree) {
+              slides += '<br /><span class="sub-title"></span>';
+            }
+            slides += '</h2></a><img src="./uploads/' + frontPageEvents[i].eventSlideshowImage + '" /></li>';
+          }
+          newHtml = html.toString().replace('<ul class="slideshow">', slides);
+          res.send(newHtml);
+        });
+      });
+    });
+  });
   
   router.route('/events')
   .get(function (req, res) {
@@ -261,6 +309,33 @@ router.route('/answersurvey')
       })
     })
   })
+
+router.route('/allevents/:eventId')
+.get(function (req, res) {
+  var picsHtml = '<div class="col_12 gallery">';
+  var returnObj = {};
+  sql.sync()
+  .then(function () {
+    Event.findOne({where: {id: req.params.eventId}})
+    .then(function (data) {
+      fs.readdir(path.join(__dirname, '../uploads/' + data.eventUrl), function (err, files) {
+        for (var key in files) {
+          picsHtml += '<a href="../uploads/' + data.eventUrl + '/' + files[key] + '" class="fancybox" type="image" ><img src="../uploads/' + data.eventUrl + '/' + files[key] + '" width="100" height="100" /></a>';
+        }
+        picsHtml += '</div>';
+        for (var i = 0, j = files.length; i < j; i++) {
+          files[i] = '../uploads/' + data.eventUrl + '/' + files[i];
+        }
+        console.log(clc.magenta('ffffffff ::::::::::  '), files);
+        var testHtml = '<div class="col_12 gallery"><a href="../uploads/shanghaiinteropdevdays2015-2026/_MG_3990.JPG" rel="gallery"><img src="../uploads/shanghaiinteropdevdays2015-2026/_MG_3990.JPG" width="100" height="100" /></a><a href="../uploads/shanghaiinteropdevdays2015-2026/_MG_3990.JPG" rel="gallery"><img src="../uploads/shanghaiinteropdevdays2015-2026/_MG_4077.JPG" width="100" height="100" /></a></div>';
+        returnObj.picsHtml = picsHtml;
+        returnObj.files = files;
+        res.json(returnObj);
+      })
+    })
+  })
+})
+
   
 /*  router.route('/eventoverviews')
   .get(function (req, res) {

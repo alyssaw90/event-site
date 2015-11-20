@@ -24,7 +24,7 @@ $(document).ready(function () {
 											<td>October 21 - 22, 2015</td>\
 											<td> - </td>\
 											<td>File Systems, Software Defined Storage, SMB, Security, Performance, and more.</td>\
-											<td><a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/Shanghai-Interop-Dev-Days">Videos</a></td>\
+											<td><a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/Shanghai-Interop-Dev-Days">Videos</a>, <a id="shanghai2015" href="#">Pictures</a></td>\
 										</tr><tr>\
 											<td>Redmond Interoperability Protocols Plugfest 2015 – Redmond, WA</td>\
 											<td>June 22-26, 2015</td>\
@@ -57,6 +57,7 @@ $(document).ready(function () {
 											<td><a href="http://connect.microsoft.com/site216/Downloads/DownloadDetails.aspx?DownloadID=57585">Presentation handouts</a></td>\
 										</tr></tbody>\
 										</table>';
+
 		var html = $.parseHTML(schedule);
 		$(this).siblings().removeClass('selected-year');
 		$(this).toggleClass('selected-year');
@@ -66,6 +67,79 @@ $(document).ready(function () {
 			$calendar.empty();
 			$calendar.append(html);
 		}
+	/*	$.get('/allevents/2', function (data) {
+			console.log(data)
+			$('#shanghai2015').click(function () {
+				// alert('hola');
+				$calendar.append(data);
+			})
+		});*/
+
+		$('#shanghai2015').click(function (e) {
+			$.get('/allevents/2', function (data) {
+				$calendar.fancybox(
+					{
+						type: 'image',
+						href: '/uploads/shanghaiinteropdevdays2015-2026/_MG_4077.JPG',
+						onStart: function (current, previous) {
+							alert('hola');
+						console.info( 'Current: ', current[0] );        
+        		console.info( 'Previous: ', /*(previous ? previous.href : '-')*/previous );
+        		
+        		/*if (previous) {
+        		    console.info( 'Navigating: ' + (current.index > previous.index ? 'right' : 'left') );     
+        		}*/
+						}
+					},
+					{
+						type: 'image',
+						href: '/uploads/shanghaiinteropdevdays2015-2026/_MG_3991.JPG'
+					},
+					{
+						// afterLoad: function (current, previous) {
+						// console.info( 'Current: ', current.href );        
+      //   		console.info( 'Previous: ', (previous ? previous.href : '-') );
+        		
+      //   		/*if (previous) {
+      //   		    console.info( 'Navigating: ' + (current.index > previous.index ? 'right' : 'left') );     
+      //   		}*/
+						// }
+					}
+				)
+				$calendar.prepend(data.picsHtml);
+			})
+			/*.done(function (data2) {
+				$calendar.fancybox(
+        	{
+            href : '/uploads/shanghaiinteropdevdays2015-2026/_MG_3991.JPG',
+           	type: 'image',
+           	onStart: function(selectedArray, selectedIndex, selectedOptions){
+           		console.log('HHHHHHHHHHHHHHHHH ::::::::::: ', $(this));
+							return {
+								href : "videos/" + selectedArray[selectedIndex].name
+							}
+						},
+           	onComplete: function(){
+							console.log($(this)[0].href);
+						}
+
+        	},
+					{
+            href : '/uploads/shanghaiinteropdevdays2015-2026/_MG_4077.JPG',
+            type: 'image'
+        	},
+        	{
+						onComplete: function(){
+							alert("complete!");
+						}
+					}
+        );
+				$calendar.prepend(data2.picsHtml);
+
+			})*/
+		})
+
+
 
 	});
 

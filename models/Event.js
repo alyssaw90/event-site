@@ -21,9 +21,9 @@ var Event = module.exports = sql.define('Event', {
   eventStartDate: Sql.DATE, //the start date...
   eventEndDate: Sql.DATE, // the end date...
   eventHeaderImage: Sql.TEXT, //link to header image
-  eventBackgroundImage: Sql.TEXT, //image to appear on event slide on homepage
-  eventSlideUpText: Sql.TEXT, //slide up text for future events page
-  eventSliderImage: Sql.TEXT, //image for front page slider
+  eventFuturePageImage: Sql.TEXT, //image to appear on event slide on homepage
+  eventFuturePageText: Sql.TEXT, //slide up text for future events page
+  eventSlideshowImage: Sql.TEXT, //image for front page slider
   homepageBulletOne: Sql.STRING,
   homepageBulletTwo: Sql.STRING,
   homepageBulletThree: Sql.STRING,
@@ -52,11 +52,12 @@ Event.sync({force: true})
   return Event.create({
   eventName: 'Storage Developer Conference',
   eventRegistrationLink: 'http://www.example.com',
-  eventStartDate: new Date(2020, 1, 1),
-  eventEndDate: new Date(2020, 1, 15),
+  eventStartDate: new Date('2020-01-01:00:01:00'),
+  eventEndDate: new Date('2020-01-04:23:59:00'),
   eventLocation: 'Santa Clara, CA',
   eventHeaderImage: '2b98dc94-eabb-49a9-a419-3aaa25d540bc.jpg', 
-  eventSlideUpText: 'Produced since 1998, Storage Developer Conference (SDC) 2015 is scheduled for September 21-24, 2015 in Santa Clara, CA, and is again expected to attract more than 400 developers, technical professionals, and engineers from the worldwide storage community. Attend and learn about leading storage development topics including File Systems, Software Defined Storage, SMB, Security, Performance, and more.',
+  eventFuturePageText: 'Produced since 1998, Storage Developer Conference (SDC) 2015 is scheduled for September 21-24, 2015 in Santa Clara, CA, and is again expected to attract more than 400 developers, technical professionals, and engineers from the worldwide storage community. Attend and learn about leading storage development topics including File Systems, Software Defined Storage, SMB, Security, Performance, and more.',
+  eventSlideshowImage: 'santa-clara-convention-center-2-homepage.jpg',
   homepageBulletOne: 'Persistent Memory',
   homepageBulletTwo: 'Object Drives',
   homepageBulletThree: 'SMR Drives',
@@ -80,12 +81,12 @@ Event.sync({force: true})
   eventStartDate: new Date('2026-10-21T08:00:00'), //the start date...
   eventEndDate: new Date('2026-10-22T08:00:00'), // the end date...
   eventHeaderImage: '2b98dc94-eabb-49a9-a419-3aaa25d540bc.jpg', 
-  // eventBackgroundImage: Sql.TEXT, //image to appear on event slide on homepage
-  // eventSlideUpText: Sql.TEXT, //slide up text for future events page
-  // eventSliderImage: Sql.TEXT, //image for front page slider
-  // homepageBulletOne: Sql.STRING,
-  // homepageBulletTwo: Sql.STRING,
-  // homepageBulletThree: Sql.STRING,
+  // eventFuturePageImage: Sql.TEXT, //image to appear on event slide on homepage
+  // eventFuturePageText: Sql.TEXT, //slide up text for future events page
+  eventSlideshowImage: 'shanghai-2015-slideshow.jpg', //image for front page slider
+  homepageBulletOne: 'O365 APIs',
+  homepageBulletTwo: 'Word, Excel, Outlook, & PowerPoint Add-ins',
+  homepageBulletThree: 'Exchange and SharePoint protocols',
   // eventSponsorsTab: Sql.TEXT, //copy for Sponsors Tab
   eventOverviewTab: '<h2>Shanghai Interop Dev Days 2015</h2><p>Shanghai was the first city to host Interop Dev Days. Different from the traditional Plugfest, Dev Days focuses on Microsoft development opportunities for professional, independent, and student developers. Interop Dev Days highlights the opportunities of developing with Office 365. In addition to familiar topics such as O365 development and Open Specifications, OData played a crucial role in Shanghai’s Dev Days, illustrating the value in creating and using interoperable RESTful APIs. The event offered a full range of presentations, live demonstrations, and Q&A sessions. Attendees also received one-on-one assistance and a free Microsoft developer account.</p><p>The combination of O365 development, OData, and the traditional protocol implementation allowed for Interop Dev Days to reach a new audience, introduce fresh content, and explore a different event structure. Sessions included step-by-step instructions for setting up an O365 developer account, an interactive Office Add-in brainstorm session, and an Office dev hack session. Shanghai Interop Dev Days gave attendees a well-rounded experience from brainstorming, to building, to completing a product. Engaged, enthusiastic attendees actively developed with Office 365, created tangible results, and built stronger relationships with Microsoft.</p>', 
   // travelTabMap: Sql.TEXT, //Bing Imap of location
@@ -106,9 +107,9 @@ Event.sync({force: true})
   eventStartDate: new Date('2016-05-16:00:00:01'), //the start date...
   eventEndDate: new Date('2016-05-18:23:59:00'), // the end date...
   eventHeaderImage: 'paris-logo-2016.jpg', //link to header image
-  // eventBackgroundImage: Sql.TEXT, //image to appear on event slide on homepage
-  // eventSlideUpText: Sql.TEXT, //slide up text for future events page
-  // eventSliderImage: Sql.TEXT, //image for front page slider
+  // eventFuturePageImage: Sql.TEXT, //image to appear on event slide on homepage
+  // eventFuturePageText: Sql.TEXT, //slide up text for future events page
+  // eventSlideshowImage: Sql.TEXT, //image for front page slider
   // homepageBulletOne: Sql.STRING,
   // homepageBulletTwo: Sql.STRING,
   // homepageBulletThree: Sql.STRING,
@@ -131,9 +132,9 @@ Event.sync({force: true})
     eventEndDate: new Date('2016-04-21:23:00:00'),
     eventLocation: 'Taipei, Taiwan',
     eventHeaderImage: 'taipei-logo-2016.jpg',
-    // eventBackgroundImage: Sql.TEXT, //image to appear on event slide on homepage
-    // eventSlideUpText: Sql.TEXT, //slide up text for future events page
-    // eventSliderImage: Sql.TEXT, //image for front page slider
+    // eventFuturePageImage: Sql.TEXT, //image to appear on event slide on homepage
+    // eventFuturePageText: Sql.TEXT, //slide up text for future events page
+    // eventSlideshowImage: Sql.TEXT, //image for front page slider
     // homepageBulletOne: Sql.STRING,
     // homepageBulletTwo: Sql.STRING,
     // homepageBulletThree: Sql.STRING,
@@ -157,9 +158,9 @@ Event.sync({force: true})
   eventStartDate: new Date('2016-06-20:00:01:00'), //the start date...
   eventEndDate: new Date('2016-06-24:23:59:00'), // the end date...
   eventHeaderImage: 'redmond-logo-2016.jpg', //link to header image
-  // eventBackgroundImage: Sql.TEXT, //image to appear on event slide on homepage
-  // eventSlideUpText: Sql.TEXT, //slide up text for future events page
-  // eventSliderImage: Sql.TEXT, //image for front page slider
+  // eventFuturePageImage: Sql.TEXT, //image to appear on event slide on homepage
+  // eventFuturePageText: Sql.TEXT, //slide up text for future events page
+  // eventSlideshowImage: Sql.TEXT, //image for front page slider
   // homepageBulletOne: Sql.STRING,
   // homepageBulletTwo: Sql.STRING,
   // homepageBulletThree: Sql.STRING,
