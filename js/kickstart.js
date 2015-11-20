@@ -47,9 +47,9 @@ jQuery(document).ready(function($){
 		auto: true,
 		onSliderLoad: function(){
     	// do funky JS stuff here
-    	$('#slideImageOne').attr('src', './img/santa-clara-convention-center-2-homepage.jpg');
+    	/*$('#slideImageOne').attr('src', './img/santa-clara-convention-center-2-homepage.jpg');
     	$('#slideImageTwo').attr('src', './img/shanghai-2015-slideshow.jpg');
-    	$('#slideImageThree').attr('src', './img/img-taipei-slideshow.jpg');
+    	$('#slideImageThree').attr('src', './img/img-taipei-slideshow.jpg');*/
 	// $('.slideshow').bxSlider().reloadSlider();
   	}
 	});
