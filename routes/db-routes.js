@@ -250,17 +250,6 @@ router.route('/answersurvey')
       res.end();
     })
   })*/
-  
-  router.route('/events')
-  .get(function (req, res) {
-    sql.sync()
-    .then(function () {
-      Event.findAll({where: {eventStartDate:{ $gte: new Date()}}})
-      .then(function (data) {
-        res.json(data);
-      })
-    })
-  })
 
   router.route('/')
   .get(function (req, res) {
@@ -309,6 +298,44 @@ router.route('/answersurvey')
       });
     });
   });
+  
+  router.route('/events')
+  .get(function (req, res) {
+    sql.sync()
+    .then(function () {
+      Event.findAll({where: {eventStartDate:{ $gte: new Date()}}})
+      .then(function (data) {
+        res.json(data);
+      })
+    })
+  })
+
+router.route('/allevents/:eventId')
+.get(function (req, res) {
+  var picsHtml = '<div class="col_12 gallery">';
+  var returnObj = {};
+  sql.sync()
+  .then(function () {
+    Event.findOne({where: {id: req.params.eventId}})
+    .then(function (data) {
+      fs.readdir(path.join(__dirname, '../uploads/' + data.eventUrl), function (err, files) {
+        for (var key in files) {
+          picsHtml += '<a href="../uploads/' + data.eventUrl + '/' + files[key] + '" class="fancybox" type="image" ><img src="../uploads/' + data.eventUrl + '/' + files[key] + '" width="100" height="100" /></a>';
+        }
+        picsHtml += '</div>';
+        for (var i = 0, j = files.length; i < j; i++) {
+          files[i] = '../uploads/' + data.eventUrl + '/' + files[i];
+        }
+        console.log(clc.magenta('ffffffff ::::::::::  '), files);
+        var testHtml = '<div class="col_12 gallery"><a href="../uploads/shanghaiinteropdevdays2015-2026/_MG_3990.JPG" rel="gallery"><img src="../uploads/shanghaiinteropdevdays2015-2026/_MG_3990.JPG" width="100" height="100" /></a><a href="../uploads/shanghaiinteropdevdays2015-2026/_MG_3990.JPG" rel="gallery"><img src="../uploads/shanghaiinteropdevdays2015-2026/_MG_4077.JPG" width="100" height="100" /></a></div>';
+        returnObj.picsHtml = picsHtml;
+        returnObj.files = files;
+        res.json(returnObj);
+      })
+    })
+  })
+})
+
   
 /*  router.route('/eventoverviews')
   .get(function (req, res) {

@@ -22,6 +22,16 @@ body {
 
 }
 
+p {
+	font-size: 1.15em;
+	line-height: 1.4em;
+}
+
+li {
+	font-size: 1.15em;
+	line-height: 1.4em;
+}
+
 /*header {
 	position: relative !important;
 	background-image: url(../img/tnw-conference.jpg);
@@ -145,7 +155,7 @@ body {
 .home-page-experts p {
 	display:block;
 	margin-top:3px;
-	font-size:0.8em;
+	font-size:1em;
 	color:#666;
 	padding:0px 5px;
 }
