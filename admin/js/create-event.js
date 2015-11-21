@@ -6,6 +6,23 @@ $(document).ready(function () {
 	var $addEventMenuTab = $('#add-event-menu-tab');
 	var $createEventForm = $('#createEventForm');
 	var $editPageMenu = $('#editPageMenu');
+	var $addImageForm = $('#addImageForm');
+
+	function submitForm(formId, submitUrl) {
+    var fd = new FormData(document.getElementById(formId));
+    fd.append('label', 'WEBUPLOAD');
+    $.ajax({
+      url: submitUrl,
+      type: 'POST',
+      data: fd,
+      enctype: 'multipart/form-data',
+      processData: false,  // tell jQuery not to process the data
+      contentType: false   // tell jQuery not to set contentType
+    }).done(function( data ) {
+        console.log('Node Output:');
+        console.log( data );
+    });
+	}
 
 	$addEventMenuTab.click(function () {
 		$('#mainAdmin').children().hide();
@@ -15,7 +32,8 @@ $(document).ready(function () {
 
 	$createEventForm.submit(function (event) {
 		event.preventDefault();
-		console.log('hello');
+		tinyMCE.triggerSave();
+		submitForm('createEventForm', '/createevent');
 		var $form = $(this);
 		var $formData = $form.serialize();
 		var $url = $form.attr('action');
@@ -27,4 +45,10 @@ $(document).ready(function () {
 			$('#mainAdmin').children().hide();
 		});
 	});
+
+
+	$addImageForm.submit(function (event) {
+		event.preventDefault();
+		submitForm('addImageForm', '/addimage');
+	})
 });

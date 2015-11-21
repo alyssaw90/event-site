@@ -77,12 +77,14 @@ $(document).ready(function () {
 
 		$('#shanghai2015').click(function (e) {
 			$.get('/allevents/2', function (data) {
-				$calendar.fancybox(
+				$calendar.fancybox('/allevents/2',
 					{
 						type: 'image',
 						href: '/uploads/shanghaiinteropdevdays2015-2026/_MG_4077.JPG',
-						onStart: function (current, previous) {
-							alert('hola');
+						onComplete: function (current, previous) {
+							for (var key in this) {
+								console.log('KEY :::::::::::   ', key,'     THIS[KEY] :::::::::::::  ', this[key]);
+							}
 						console.info( 'Current: ', current[0] );        
         		console.info( 'Previous: ', /*(previous ? previous.href : '-')*/previous );
         		
@@ -106,7 +108,7 @@ $(document).ready(function () {
 						// }
 					}
 				)
-				$calendar.prepend(data.picsHtml);
+				$calendar.prepend(data);
 			})
 			/*.done(function (data2) {
 				$calendar.fancybox(
