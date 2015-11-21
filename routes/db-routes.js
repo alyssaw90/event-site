@@ -251,6 +251,15 @@ router.route('/answersurvey')
     })
   })
 
+router.route('/showimages')
+.get(function (req, res) {
+  EventImage.findAll()
+  .then(function (data) {
+    console.log(clc.yellow('GGGGGG :::::::::::  '), data);
+    res.json(data);
+  })
+})
+
   router.route('/addimage')
   .post(upload.array('image', 2), function (req, res, next) {
     console.log(clc.yellow('FFFFFFFFFFFFFFFFF ::::::::   '), req.files)
