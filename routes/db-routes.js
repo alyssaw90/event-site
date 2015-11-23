@@ -20,6 +20,7 @@ var SurveyQuestion = require('../models/SurveyQuestion');
 var SurveyAnswer = require('../models/SurveyAnswer');
 // var AdditionalTravelSection = require('../models/AdditionalTravelSection');
 // var User = require('../models/User');
+var EventImage = require('../models/EventImage');
 var aboutUs = require('../views/about')();
 var fs = require('fs');
 // var $ = require('cheerio');
@@ -27,7 +28,13 @@ var clc = require('cli-color');
 var multer = require('multer');
 // var storage = multer.memoryStorage();
 // var upload = multer({ storage: storage });
-var upload = multer({ dest: 'uploads/' })
+var storage = multer.diskStorage({
+  destination: 'uploads/',
+  filename: function (req, file, callback) {
+    callback(null, Date.now() + '-' + file.originalname)
+  }
+})
+var upload = multer({ storage: storage });
 var bodyparser = require('body-parser');
 var path = require('path');
 var Sql = require('sequelize');
@@ -212,23 +219,51 @@ router.route('/answersurvey')
 
   
   router.route('/createevent')
-  .post(upload.array('images', 3), function (req, res, next) {
+  .post(upload.array('images', 4), function (req, res, next) {
     sql.sync()
     .then(function () {
-      Event.create(req.body)
-      .then(function (newEvent) {
-        if (req.files === true) {
-          newEvent.update({
-            eventHeaderImage: req.files[0].filename,
-            eventBackgroundImage: req.files[1].filename,
-            eventSliderImage: req.files[2].filename
-          })
-          res.end();        
-        } else {
-          res.end();
-        }
+          console.log(clc.yellow('FFFFFFFFFFFFFFFFF ::::::::   '), req.files[0].filename)
+      // Event.create(req.body)
+      Event.create({
+        eventName: req.body.eventName,
+        eventRegistrationLink: req.body.eventRegistrationLink, //link to registrationfor event
+        eventLocation: req.body.eventLocation,
+        eventStartDate: req.body.eventStartDate, //the start date...
+        eventEndDate: req.body.eventEndDate, // the end date...
+        eventHeaderImage: req.files[0].filename, //link to header image
+        eventFuturePageImage: req.files[1].filename, //image to appear on event slide on homepage
+        eventFuturePageText: req.body.eventFuturePageText, //slide up text for future events page
+        eventSlideshowImage: req.files[2].filename, //image for front page slider
+        homepageBulletOne: req.body.homepageBulletOne,
+        homepageBulletTwo: req.body.homepageBulletTwo,
+        homepageBulletThree: req.body.homepageBulletThree,
+        eventSponsorsTab: req.body.eventSponsorsTab, //copy for Sponsors Tab
+        eventOverviewTab: req.body.eventOverviewTab, //copy for Overview Tab
+        travelTabHeaderImage: req.files[3].filename, //image to appear above travel tabs
+        travelVenueTab: req.body.travelVenueTab, //copy for travel venue sub tab
+        travelTravelTab: req.body.travelTravelTab, //copy for trave travel sub tab
+        travelAccomodationsTab: req.body.travelAccomodationsTab, //copy for travel accommodations sub tab
+        travelTipsTab: req.body.travelTipsTab, //copy for travel Tips and Tricks sub tab
+        travelEatDrinkTab: req.body.travelEatDrinkTab, //copy for travel eat and drink sub tab
+        eventMediaTab: req.body.eventMediaTab //copy for media tab
       })
+      res.end()
     })
+  })
+
+router.route('/showimages')
+.get(function (req, res) {
+  EventImage.findAll()
+  .then(function (data) {
+    console.log(clc.yellow('GGGGGG :::::::::::  '), data);
+    res.json(data);
+  })
+})
+
+  router.route('/addimage')
+  .post(upload.array('image', 2), function (req, res, next) {
+    console.log(clc.yellow('FFFFFFFFFFFFFFFFF ::::::::   '), req.files)
+    res.json(req.files);
   })
 
 /*  router.route('/addoverview')
@@ -327,10 +362,10 @@ router.route('/allevents/:eventId')
           files[i] = '../uploads/' + data.eventUrl + '/' + files[i];
         }
         console.log(clc.magenta('ffffffff ::::::::::  '), files);
-        var testHtml = '<div class="col_12 gallery"><a href="../uploads/shanghaiinteropdevdays2015-2026/_MG_3990.JPG" rel="gallery"><img src="../uploads/shanghaiinteropdevdays2015-2026/_MG_3990.JPG" width="100" height="100" /></a><a href="../uploads/shanghaiinteropdevdays2015-2026/_MG_3990.JPG" rel="gallery"><img src="../uploads/shanghaiinteropdevdays2015-2026/_MG_4077.JPG" width="100" height="100" /></a></div>';
+        var testHtml = '<div class="col_12 gallery"><a href="../uploads/shanghaiinteropdevdays2015-2026/_MG_3990.JPG" rel="gallery"><img src="../uploads/shanghaiinteropdevdays2015-2026/_MG_3990.JPG" width="100" height="100" /></a><a href="../uploads/shanghaiinteropdevdays2015-2026/_MG_4077.JPG" rel="gallery"><img src="../uploads/shanghaiinteropdevdays2015-2026/_MG_4077.JPG" width="100" height="100" /></a></div>';
         returnObj.picsHtml = picsHtml;
         returnObj.files = files;
-        res.json(returnObj);
+        res.json(testHtml);
       })
     })
   })
