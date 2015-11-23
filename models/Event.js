@@ -108,7 +108,7 @@ Event.sync({force: true})
   eventStartDate: new Date('2016-05-16:00:00:01'), //the start date...
   eventEndDate: new Date('2016-05-18:23:59:00'), // the end date...
   eventHeaderImage: 'paris-logo-2016.jpg', //link to header image
-  eventFuturePageImage: 'shaking_hands_yellow.jpg', //image to appear on event slide on homepage
+  // eventFuturePageImage: Sql.TEXT, //image to appear on event slide on homepage
   // eventFuturePageText: Sql.TEXT, //slide up text for future events page
   // eventSlideshowImage: Sql.TEXT, //image for front page slider
   // homepageBulletOne: Sql.STRING,
@@ -135,10 +135,10 @@ Event.sync({force: true})
     eventHeaderImage: 'taipei-logo-2016.jpg',
     // eventFuturePageImage: Sql.TEXT, //image to appear on event slide on homepage
     // eventFuturePageText: Sql.TEXT, //slide up text for future events page
-    // eventSlideshowImage: Sql.TEXT, //image for front page slider
-    // homepageBulletOne: Sql.STRING,
-    // homepageBulletTwo: Sql.STRING,
-    // homepageBulletThree: Sql.STRING,
+    eventSlideshowImage: 'taipei-sample-slideshow-img.jpg', //image for front page slider
+    homepageBulletOne: 'SQL Serve',
+    homepageBulletTwo: 'PowerBI',
+    homepageBulletThree: 'Big Data Stores, and Data Analytics',
     // eventSponsorsTab: Sql.TEXT, //copy for Sponsors Tab
     eventOverviewTab: '<h2>Taipei Interop Dev Days 2016</h2><p>Join Microsoft Office and Data Platform Interoperability teams April 20-21, 2016 for their 4th event in Taipei, Taiwan. Taipei 2016 will focus on Microsoft Office 365 developer opportunities, Data Platform, and interoperability.</p><br /><ul><li>Discover the potential of connecting to Office 365 services by building and selling apps that extend the most widely used productivity platform on the planet.</li><li>Learn what’s new in Data Platform including SQL Server, PowerBI, Cortana Analytics, machine learning, big data stores, and data analytics.</li><li>Experience Microsoft’s commitment to interoperability while learning about protocol documentation, available protocol tools, and customer engagement opportunities that are available to implementers and developers looking to connect with Microsoft clients and servers.</li></ul><br /><p>Attendees can look forward to presentations from subject matter experts, interactive developer sessions, hackathons, and one-on-one collaboration with Microsoft engineers. Taipei 2016 will be launched in January 2016 when more details and event registration will be released. If you would like to reserve your seat early, please email <a href="mailto:plugfests@microsoft.com" >plugfests@microsoft.com</a>.</p><br /><p>*Content is subject to change</p>', //copy for Overview Tab
     // travelTabMap: Sql.TEXT, //Bing Imap of location
