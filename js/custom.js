@@ -4,6 +4,9 @@
 /*global window */
 
 $(document).ready(function () {
+	var $body = $('body');
+	var $footer = $('footer');
+	var $backToTopButton = $('.scroll-button .fa-chevron-up');
 
 /*	//make block slide up effect for upcoming event blocks -- moved to future-events.js
 	$('.event_block').hover(
@@ -107,23 +110,31 @@ $(document).ready(function () {
 
 	//make footer stick to bottom of content or page, whichever is taller
 
-	function stickyFooter(foot) {
+/*	function stickyFooter(foot) {
 	  var footerHeight = foot.height();
-	  var heightDiff = $(window).height() - $('body').height() + footerHeight;
-	  if ($(window).height() > $('body').outerHeight(true) + footerHeight + 20) {
+	  var heightDiff = $(window).height() - $body.height() + footerHeight;
+	  if ($(window).height() > $(document).height()) {
 	    foot.addClass('stick-footer');
-	    $('body').css('margin-bottom', footerHeight);
+	    $body.css('margin-bottom', footerHeight);
 	  }
 
-	  if ($(window).height() <= $('body').outerHeight(true) + footerHeight + 20) {
+	  if ($(window).height() <= $(document).height()) {
 	  	foot.removeClass('stick-footer');
-	  	$('body').css('margin-bottom', 0);
+	  	$body.css('margin-bottom', 0);
 	  }
 	}
 
 	$(window).load(stickyFooter($('.footer-at-bottom')));
 
-	$(window).resize(stickyFooter($('.footer-at-bottom')));
+	$(window).resize(stickyFooter($('.footer-at-bottom')));*/
+	 console.log($(window).height(), $(document).height())
+	 $(window).load(function () {
+		if ($(window).height() >= $(document).height()) {
+			$backToTopButton.hide();
+			$footer.addClass('stick-footer');
+		}
+	 	
+	 })
 
 	//function to add and remove CSS properties depending on screen size
 
@@ -142,7 +153,7 @@ $(document).ready(function () {
 	$(window).resize(addCSS(768, $('.slider'), 'display', 'none', 'inline'));
 
 	//make bottom button scroll to top
-	$('.scroll-button .fa-chevron-up').click( function() {
+	$backToTopButton.click( function() {
    $('html, body').animate({ scrollTop: 0 }, 'fast');
  	});
 
