@@ -845,32 +845,29 @@ footer a {
 		font-size: 1em;
 	}
 
-	.events > :first-child {
-		/*background-image: url(../img/shaking_hands_turquise.jpg);*/
+	/*.events > :first-child {
 		background-image: url(../img/santa-clara-convention-center-2.jpg);
 		background-repeat: no-repeat;
-		/*background-size: contain;*/
 		background-position: bottom right;
 	}
 
 	.events > :nth-child(2) {
-		/*background-image: url(../img/shaking_hands_green.jpg);*/
 		background-image: url(../img/shanghai-skyline-2.jpg);
 		background-repeat: no-repeat;
-		/*background-size: contain;*/
 		background-position: bottom right;
 	} 
 
 	.events > :nth-child(3) {
-		/*background-image: url(../img/shaking_hands_yellow.jpg);*/
 		background-image: url(../img/arc-de-triomphe.jpg);
 		background-repeat: no-repeat;
-		/*background-size: contain;*/
 		background-position: bottom right;
-	}
+	}*/
 
 	.event_block {
 		background-color: #d2d2d2;
+		background-repeat: no-repeat;
+		background-position: bottom right;
+		background-size: contain;
 		min-height: 300px;
 		position: relative;
     overflow: hidden;

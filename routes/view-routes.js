@@ -43,11 +43,11 @@ module.exports = function (router) {
   .get(function (req, res) {
     res.sendFile(path.join(__dirname, '../views/media.html'));
   });
-
+/*
 	router.route('/find-an-event')
   .get(function (req, res) {
     res.sendFile(path.join(__dirname, '../views/find-an-event.html'));
-  });
+  });*/
 
 	router.route('/faq')
   .get(function (req, res) {
@@ -58,11 +58,6 @@ module.exports = function (router) {
   .get(function (req, res) {
    res.sendFile(path.join(__dirname, '../views/events/santa-clara-2015.html'));
   }); 
-
-	router.route('/santa-clara-2015')
-  .get(function (req, res) {
-   res.sendFile(path.join(__dirname, '../views/events/santa-clara-2015.html'));
-  });
 
   router.route('/latest-news')
   .get(function (req, res) {

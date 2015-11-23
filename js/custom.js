@@ -5,7 +5,7 @@
 
 $(document).ready(function () {
 
-	//make block slide up effect for upcoming event blocks
+/*	//make block slide up effect for upcoming event blocks -- moved to future-events.js
 	$('.event_block').hover(
 		function () {
 		$(this).find('div').stop(true, true).animate({'bottom': '0'}, 200);
@@ -13,7 +13,7 @@ $(document).ready(function () {
 		function () {
 			$(this).find('div').stop(true, true).animate({'bottom': '-100%'}, 200);
 		});
-
+*/
 	//function to set divs with equal height
 	function changeHeight (div) {
 		// var $eventBlock = $('.event_block');

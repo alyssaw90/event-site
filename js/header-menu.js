@@ -30,7 +30,7 @@
 						<div class="register-button"><a href="https://msevents.microsoft.com/CUI/EventDetail.aspx?EventID=103265323&Culture=en-CN&community=1">Register</a>\
 						</div>\
 					</li>\
-					<li class="mobile-menu"><a href="/find-an-event"><span>Find an Event</a></span></a></li>\
+					<li class="mobile-menu"><a href="/future-events"><span>Find an Event</a></span></a></li>\
 					<li class="mobile-menu"><a href="/latest-news"><span>Get the Latest</span></a></li>\
 					<li class="mobile-menu"><a href="/meet-the-team"><span>Meet the Team</a></span></a></li>\
 					<li class="mobile-menu"><a href="/past-events"><span>Past Events</span></a></li>\
@@ -70,7 +70,7 @@
 			</div>\
 				<div class="col_2 center-block">\
 					<div class="expanding-menu upcoming-menu">\
-						<div class="col_2 center-block menu-block upcoming-menu"><a href="/find-an-event"><h2>Find an Event</h2></a></div>\
+						<div class="col_2 center-block menu-block upcoming-menu"><a href="/future-events"><h2>Find an Event</h2></a></div>\
 					</div>\
 				</div>\
 			<div class="col_custom-menu">\
@@ -102,11 +102,11 @@
 
 
 		$.get('/upcomingeventurls', function (data) {
-			var upcomingMenu = '<div class="col_2 center-block menu-block upcoming-menu"><a href="/find-an-event"><h2>Find an Event</h2></a></div>';
+			var upcomingMenu = '<div class="col_2 center-block menu-block upcoming-menu"><a href="/future-events"><h2>Find an Event</h2></a></div>';
 			$(data).each(function (i, elem) {
 				upcomingMenu += '<div class="col_2 center-block menu-block upcoming-menu upcoming-sub-menu"><a href="/event/' + elem['url'] + '"><h2>' + elem['eventName'] + '</h2></a></div>';
 			})
-			menu = menu.replace('<div class="col_2 center-block menu-block upcoming-menu"><a href="/find-an-event"><h2>Find an Event</h2></a></div>', upcomingMenu);
+			menu = menu.replace('<div class="col_2 center-block menu-block upcoming-menu"><a href="/future-events"><h2>Find an Event</h2></a></div>', upcomingMenu);
 			var headerMenu = $.parseHTML(menu);
 			$header.prepend(headerMenu);
 			$('.expanding-menu').hover(function () {
@@ -132,7 +132,7 @@
 		if (window.location.pathname === '/') {
 			$('.home-menu-button').addClass('current-page');
 		}
-		if (window.location.pathname === '/find-an-event') {
+		if (window.location.pathname === '/future-events') {
 			$('.upcoming-menu').addClass('current-page');
 		}
 		if (window.location.pathname === '/latest-news') {

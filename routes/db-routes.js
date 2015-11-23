@@ -333,6 +333,36 @@ router.route('/showimages')
       });
     });
   });
+
+router.route('/future-events')
+.get(function (req, res) {
+  var eventBlocksHtml = '<main class="events grid flex">';
+  var newHtml = '';
+  var colNum = 4;
+  fs.readFile(path.join(__dirname, '../views/future-events.html'), function (err, html) {
+    if (err) {
+      console.log(err);
+      res.status(500).json({msg: 'internal server error'});
+    }
+    sql.sync()
+    .then(function () {
+      Event.findAll({where: {eventStartDate: {$gte: new Date()}}})
+      .then(function (upcomingEvent) {
+        for (var i = 0, j = upcomingEvent.length; i < j; i++) {
+          if (!upcomingEvent[i].eventFuturePageImage) {
+            upcomingEvent[i].eventFuturePageImage = '';
+          }
+          if (!upcomingEvent[i].eventFuturePageText) {
+            upcomingEvent[i].eventFuturePageText = '';
+          }
+          eventBlocksHtml += '<div class="col_4 event_block" style="background-image: url(../uploads/' + upcomingEvent[i].eventFuturePageImage + ');"><a href="/' + upcomingEvent[i].eventUrl + '"><h1>' + upcomingEvent[i].eventLocation + '</h1><h3>' + upcomingEvent[i].eventName + '<br />' + months[upcomingEvent[i].eventStartDate.getMonth()] + ' ' + upcomingEvent[i].eventStartDate.getDate() + ' - ' + upcomingEvent[i].eventEndDate.getDate() + ', ' + upcomingEvent[i].eventEndDate.getFullYear() + '</h3></a><div class="rising_text"><a href="/' + upcomingEvent[i].eventUrl + '">' + upcomingEvent[i].eventFuturePageText + '</div></div>';
+        }
+        newHtml = html.toString().replace('<main class="events grid flex">', eventBlocksHtml);
+        res.send(newHtml);
+      })
+    })
+  })
+})
   
   router.route('/events')
   .get(function (req, res) {

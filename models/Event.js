@@ -56,7 +56,8 @@ Event.sync({force: true})
   eventEndDate: new Date('2020-01-04:23:59:00'),
   eventLocation: 'Santa Clara, CA',
   eventHeaderImage: '2b98dc94-eabb-49a9-a419-3aaa25d540bc.jpg', 
-  eventFuturePageText: 'Produced since 1998, Storage Developer Conference (SDC) 2015 is scheduled for September 21-24, 2015 in Santa Clara, CA, and is again expected to attract more than 400 developers, technical professionals, and engineers from the worldwide storage community. Attend and learn about leading storage development topics including File Systems, Software Defined Storage, SMB, Security, Performance, and more.',
+  eventFuturePageImage: 'santa-clara-convention-center-2.jpg',
+  eventFuturePageText: '<p>Produced since 1998, Storage Developer Conference (SDC) 2015 is scheduled for September 21-24, 2015 in Santa Clara, CA, and is again expected to attract more than 400 developers, technical professionals, and engineers from the worldwide storage community.</p><p>Attend and learn about leading storage development topics including File Systems, Software Defined Storage, SMB, Security, Performance, and more.</p>',
   eventSlideshowImage: 'santa-clara-convention-center-2-homepage.jpg',
   homepageBulletOne: 'Persistent Memory',
   homepageBulletTwo: 'Object Drives',
@@ -81,8 +82,8 @@ Event.sync({force: true})
   eventStartDate: new Date('2026-10-21T08:00:00'), //the start date...
   eventEndDate: new Date('2026-10-22T08:00:00'), // the end date...
   eventHeaderImage: '2b98dc94-eabb-49a9-a419-3aaa25d540bc.jpg', 
-  // eventFuturePageImage: Sql.TEXT, //image to appear on event slide on homepage
-  // eventFuturePageText: Sql.TEXT, //slide up text for future events page
+  eventFuturePageImage: 'shanghai-2015-future-page.jpg', //image to appear on event slide on homepage
+  eventFuturePageText: '<p>Shanghai was the first city to host Interop Dev Days and they continue to be one of the most important hubs of innovation with Microsoft products.</p><p>Dev Days focuses on Microsoft development opportunities for professional, independent, and student developers. Join us and start innovating with Microsoft!</p>', //slide up text for future events page
   eventSlideshowImage: 'shanghai-2015-slideshow.jpg', //image for front page slider
   homepageBulletOne: 'O365 APIs',
   homepageBulletTwo: 'Word, Excel, Outlook, & PowerPoint Add-ins',
@@ -107,7 +108,7 @@ Event.sync({force: true})
   eventStartDate: new Date('2016-05-16:00:00:01'), //the start date...
   eventEndDate: new Date('2016-05-18:23:59:00'), // the end date...
   eventHeaderImage: 'paris-logo-2016.jpg', //link to header image
-  // eventFuturePageImage: Sql.TEXT, //image to appear on event slide on homepage
+  eventFuturePageImage: 'shaking_hands_yellow.jpg', //image to appear on event slide on homepage
   // eventFuturePageText: Sql.TEXT, //slide up text for future events page
   // eventSlideshowImage: Sql.TEXT, //image for front page slider
   // homepageBulletOne: Sql.STRING,
