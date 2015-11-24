@@ -56,7 +56,8 @@ Event.sync({force: true})
   eventEndDate: new Date('2020-01-04:23:59:00'),
   eventLocation: 'Santa Clara, CA',
   eventHeaderImage: '2b98dc94-eabb-49a9-a419-3aaa25d540bc.jpg', 
-  eventFuturePageText: 'Produced since 1998, Storage Developer Conference (SDC) 2015 is scheduled for September 21-24, 2015 in Santa Clara, CA, and is again expected to attract more than 400 developers, technical professionals, and engineers from the worldwide storage community. Attend and learn about leading storage development topics including File Systems, Software Defined Storage, SMB, Security, Performance, and more.',
+  eventFuturePageImage: 'santa-clara-convention-center-2.jpg',
+  eventFuturePageText: '<p>Produced since 1998, Storage Developer Conference (SDC) 2015 is scheduled for September 21-24, 2015 in Santa Clara, CA, and is again expected to attract more than 400 developers, technical professionals, and engineers from the worldwide storage community.</p><p>Attend and learn about leading storage development topics including File Systems, Software Defined Storage, SMB, Security, Performance, and more.</p>',
   eventSlideshowImage: 'santa-clara-convention-center-2-homepage.jpg',
   homepageBulletOne: 'Persistent Memory',
   homepageBulletTwo: 'Object Drives',
@@ -81,8 +82,8 @@ Event.sync({force: true})
   eventStartDate: new Date('2026-10-21T08:00:00'), //the start date...
   eventEndDate: new Date('2026-10-22T08:00:00'), // the end date...
   eventHeaderImage: '2b98dc94-eabb-49a9-a419-3aaa25d540bc.jpg', 
-  // eventFuturePageImage: Sql.TEXT, //image to appear on event slide on homepage
-  // eventFuturePageText: Sql.TEXT, //slide up text for future events page
+  eventFuturePageImage: 'shanghai-2015-future-page.jpg', //image to appear on event slide on homepage
+  eventFuturePageText: '<p>Shanghai was the first city to host Interop Dev Days and they continue to be one of the most important hubs of innovation with Microsoft products.</p><p>Dev Days focuses on Microsoft development opportunities for professional, independent, and student developers. Join us and start innovating with Microsoft!</p>', //slide up text for future events page
   eventSlideshowImage: 'shanghai-2015-slideshow.jpg', //image for front page slider
   homepageBulletOne: 'O365 APIs',
   homepageBulletTwo: 'Word, Excel, Outlook, & PowerPoint Add-ins',
@@ -134,10 +135,10 @@ Event.sync({force: true})
     eventHeaderImage: 'taipei-logo-2016.jpg',
     // eventFuturePageImage: Sql.TEXT, //image to appear on event slide on homepage
     // eventFuturePageText: Sql.TEXT, //slide up text for future events page
-    // eventSlideshowImage: Sql.TEXT, //image for front page slider
-    // homepageBulletOne: Sql.STRING,
-    // homepageBulletTwo: Sql.STRING,
-    // homepageBulletThree: Sql.STRING,
+    eventSlideshowImage: 'taipei-sample-slideshow-img.jpg', //image for front page slider
+    homepageBulletOne: 'SQL Serve',
+    homepageBulletTwo: 'PowerBI',
+    homepageBulletThree: 'Big Data Stores, and Data Analytics',
     // eventSponsorsTab: Sql.TEXT, //copy for Sponsors Tab
     eventOverviewTab: '<h2>Taipei Interop Dev Days 2016</h2><p>Join Microsoft Office and Data Platform Interoperability teams April 20-21, 2016 for their 4th event in Taipei, Taiwan. Taipei 2016 will focus on Microsoft Office 365 developer opportunities, Data Platform, and interoperability.</p><br /><ul><li>Discover the potential of connecting to Office 365 services by building and selling apps that extend the most widely used productivity platform on the planet.</li><li>Learn what’s new in Data Platform including SQL Server, PowerBI, Cortana Analytics, machine learning, big data stores, and data analytics.</li><li>Experience Microsoft’s commitment to interoperability while learning about protocol documentation, available protocol tools, and customer engagement opportunities that are available to implementers and developers looking to connect with Microsoft clients and servers.</li></ul><br /><p>Attendees can look forward to presentations from subject matter experts, interactive developer sessions, hackathons, and one-on-one collaboration with Microsoft engineers. Taipei 2016 will be launched in January 2016 when more details and event registration will be released. If you would like to reserve your seat early, please email <a href="mailto:plugfests@microsoft.com" >plugfests@microsoft.com</a>.</p><br /><p>*Content is subject to change</p>', //copy for Overview Tab
     // travelTabMap: Sql.TEXT, //Bing Imap of location
