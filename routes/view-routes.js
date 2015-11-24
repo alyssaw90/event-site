@@ -39,6 +39,11 @@ module.exports = function (router) {
     res.sendFile(path.join(__dirname, '../views/meet-the-team.html'));
   });
 
+  router.route('/contactus')
+  .get(function (req, res) {
+    res.sendFile(path.join(__dirname, '../views/contact.html'));
+  })
+
   router.route('/media')
   .get(function (req, res) {
     res.sendFile(path.join(__dirname, '../views/media.html'));

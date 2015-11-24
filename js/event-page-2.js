@@ -1,6 +1,9 @@
 'use strict';
 
-$(document).ready(function () {
+$(document).ready(function () {\
+	var $footer = $('footer');
+
+	$footer.css('bottom: 0;')
 
 	$.get('/events', function (events) {
 		var pathname = window.location.pathname.slice(7);

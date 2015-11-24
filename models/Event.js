@@ -48,7 +48,7 @@ var Event = module.exports = sql.define('Event', {
 
 
 Event.sync({force: true})
-.then(function () {
+/*.then(function () {
   return Event.create({
   eventName: 'Storage Developer Conference',
   eventRegistrationLink: 'http://www.example.com',
@@ -73,11 +73,11 @@ Event.sync({force: true})
   travelEatDrinkTab: '<h2>Eat & Drink</h2><p>Do cupidatat aliquip ribeye meatball beef ribs. Cillum meatloaf beef, filet mignon ham hock lorem culpa. Sirloin laboris dolore shank, pork belly aliquip cillum. Excepteur lorem beef jerky doner.</p>', //copy for travel eat and drink sub tab
   eventMediaTab: 'Produced since 1998, Storage Developer Conference (SDC) 2015 is scheduled for September 21-24, 2015 in Santa Clara, CA, and is again expected to attract more than 400 developers, technical professionals, and engineers from the worldwide storage community. Attend and learn about leading storage development topics including File Systems, Software Defined Storage, SMB, Security, Performance, and more.' //copy for media tab
   });
-})
+})*/
 .then(function () {
   return Event.create({
   eventName: 'Shanghai Interop Dev Days 2015',
-  // eventRegistrationLink: Sql.STRING, //link to registrationfor event
+  eventRegistrationLink: 'http://www.example.com', //link to registrationfor event
   eventLocation: 'Shanghai, China',
   eventStartDate: new Date('2026-10-21T08:00:00'), //the start date...
   eventEndDate: new Date('2026-10-22T08:00:00'), // the end date...

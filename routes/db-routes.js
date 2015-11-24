@@ -300,13 +300,18 @@ router.route('/showimages')
         Event.findAll({where: {eventStartDate: {$gte: new Date()}}})
         .then(function (frontPageEvents) {
           for (var i = 0, j = frontPageEvents.length; i < j; i++) {
+              console.log(clc.magenta('LLLLLLLLLLLL ::::::::::: '), frontPageEvents[i].eventRegistrationLink);
             if (!frontPageEvents[i].eventSlideshowImage) {
-              console.log(clc.magenta(Math.floor(Math.random() * 4)));
               frontPageEvents[i].eventSlideshowImage = randomTabImages[Math.floor(Math.random() * 4)];
             }
           
-            slides += '<li><a href="/event/' + frontPageEvents[i].eventUrl + '"><h2 class="desc"><span class="slide-title">' + frontPageEvents[i].eventName + '</span><br /><br /><span class="sub-title slideshow-city">' + frontPageEvents[i].eventLocation + '</span><span class="sub-title slideshow-date">' + months[frontPageEvents[i].eventStartDate.getMonth()] + ' ' + frontPageEvents[i].eventStartDate.getDate() + ' - ' + frontPageEvents[i].eventEndDate.getDate() + ', ' + frontPageEvents[i].eventEndDate.getFullYear() + '</span>';
-            if (frontPageEvents[i].homepageBulletOne) {
+            slides += '<li><span class="slideshowWrapper"><a href="/event/' + frontPageEvents[i].eventUrl + '"><h2 class="desc"><span class="slide-title">' + frontPageEvents[i].eventName + '</span><br /><br /><span class="sub-title slideshow-city">' + frontPageEvents[i].eventLocation + '</span><br /><span class="sub-title slideshow-date">' + months[frontPageEvents[i].eventStartDate.getMonth()] + ' ' + frontPageEvents[i].eventStartDate.getDate() + ' - ' + frontPageEvents[i].eventEndDate.getDate() + ', ' + frontPageEvents[i].eventEndDate.getFullYear() + '</span>';
+            if (frontPageEvents[i].eventRegistrationLink) {
+              slides += '<div class="sliderRegisterButton clearfix"><a href="' + frontPageEvents[i].eventRegistrationLink + '">Register Now!</a></div>';
+            } else if (!frontPageEvents[i].eventRegistrationLink) {
+              slides += '<div class="sliderRegisterButton clearfix" style="visibility: hidden;"><a href="' + frontPageEvents[i].eventRegistrationLink + '">Register Now!</a></div>';
+            }
+            /*if (frontPageEvents[i].homepageBulletOne) {
               slides += '<br /><br /><span class="sub-title"><i class="fa fa-code"></i> ' + frontPageEvents[i].homepageBulletOne + '</span>';
             } else if (!frontPageEvents[i].homepageBulletOne) {
               slides += '<br /><span class="sub-title"></span>';
@@ -320,9 +325,10 @@ router.route('/showimages')
               slides += '<br /><span class="sub-title"><i class="fa fa-code"></i> ' + frontPageEvents[i].homepageBulletThree + '</span>';
             } else if (!frontPageEvents[i].homepageBulletThree) {
               slides += '<br /><br /><span class="sub-title"></span>';
-            }
-            slides += '</h2></a><img src="./uploads/' + frontPageEvents[i].eventSlideshowImage + '" /></li>';
+            }*/
+            slides += '</h2></a></span><img src="./uploads/' + frontPageEvents[i].eventSlideshowImage + '" /></li>';
           }
+          console.log(slides);
           newHtml = html.toString().replace('<ul class="slideshow">', slides);
           res.send(newHtml);
         });
