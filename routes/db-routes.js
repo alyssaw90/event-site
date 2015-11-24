@@ -50,6 +50,7 @@ var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
 });
 
 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+var randomTabImages = ['alt-slide-1.jpg', 'alt-slide-2.jpg', 'alt-slide-3.jpg', 'alt-slide-4.jpg'];
 
 module.exports = function (router) {
   router.use(bodyparser.json());
@@ -191,7 +192,6 @@ router.route('/answersurvey')
 .post(function (req, res) {
   sql.sync()
   .then(function () {
-    console.log(clc.magenta('GVVBUGVIUVG ::::::::: '), req.body)
     for (var i = 0, j = req.body.surveyQuestionId.length; i < j; i++) {
       SurveyAnswer.create({answer: req.body.answer[i], surveyQuestionId: req.body.surveyQuestionId[i], question: req.body.question[i]});
     }
@@ -297,18 +297,14 @@ router.route('/showimages')
       }
       sql.sync()
       .then(function () {
-        Event.findAll({where: {
-          eventStartDate: {
-            $gte: new Date()
-          },
-          eventSlideshowImage: {
-            $ne: null
-          }
-        }})
+        Event.findAll({where: {eventStartDate: {$gte: new Date()}}})
         .then(function (frontPageEvents) {
           for (var i = 0, j = frontPageEvents.length; i < j; i++) {
+            if (!frontPageEvents[i].eventSlideshowImage) {
+              console.log(clc.magenta(Math.floor(Math.random() * 4)));
+              frontPageEvents[i].eventSlideshowImage = randomTabImages[Math.floor(Math.random() * 4)];
+            }
           
-            frontPageEvents[i]
             slides += '<li><a href="/event/' + frontPageEvents[i].eventUrl + '"><h2 class="desc"><span class="slide-title">' + frontPageEvents[i].eventName + '</span><br /><br /><span class="sub-title slideshow-city">' + frontPageEvents[i].eventLocation + '</span><span class="sub-title slideshow-date">' + months[frontPageEvents[i].eventStartDate.getMonth()] + ' ' + frontPageEvents[i].eventStartDate.getDate() + ' - ' + frontPageEvents[i].eventEndDate.getDate() + ', ' + frontPageEvents[i].eventEndDate.getFullYear() + '</span>';
             if (frontPageEvents[i].homepageBulletOne) {
               slides += '<br /><br /><span class="sub-title"><i class="fa fa-code"></i> ' + frontPageEvents[i].homepageBulletOne + '</span>';
@@ -323,7 +319,7 @@ router.route('/showimages')
             if (frontPageEvents[i].homepageBulletThree) {
               slides += '<br /><span class="sub-title"><i class="fa fa-code"></i> ' + frontPageEvents[i].homepageBulletThree + '</span>';
             } else if (!frontPageEvents[i].homepageBulletThree) {
-              slides += '<br /><span class="sub-title"></span>';
+              slides += '<br /><br /><span class="sub-title"></span>';
             }
             slides += '</h2></a><img src="./uploads/' + frontPageEvents[i].eventSlideshowImage + '" /></li>';
           }
@@ -333,6 +329,40 @@ router.route('/showimages')
       });
     });
   });
+
+router.route('/future-events')
+.get(function (req, res) {
+  var eventBlocksHtml = '<main class="events grid flex">';
+  var newHtml = '';
+  var colNum = 4;
+  fs.readFile(path.join(__dirname, '../views/future-events.html'), function (err, html) {
+    if (err) {
+      console.log(err);
+      res.status(500).json({msg: 'internal server error'});
+    }
+    sql.sync()
+    .then(function () {
+      Event.findAll({where: {eventStartDate: {$gte: new Date()}}})
+      .then(function (upcomingEvent) {
+        for (var i = 0, j = upcomingEvent.length; i < j; i++) {
+          var risingText = '';
+          if (!upcomingEvent[i].eventFuturePageImage && upcomingEvent[i].eventSlideshowImage) {
+            upcomingEvent[i].eventFuturePageImage = upcomingEvent[i].eventSlideshowImage;
+          }
+          if (!upcomingEvent[i].eventFuturePageImage && !upcomingEvent[i].eventSlideshowImage) {
+            upcomingEvent[i].eventFuturePageImage = randomTabImages[Math.floor(Math.random() * 4)];
+          }
+          if (upcomingEvent[i].eventFuturePageText) {
+            risingText = '<div class="rising_text"><a href="/event/' + upcomingEvent[i].eventUrl + '">' + upcomingEvent[i].eventFuturePageText + '</div>';
+          }
+          eventBlocksHtml += '<div class="col_4 event_block" style="background-image: url(../uploads/' + upcomingEvent[i].eventFuturePageImage + ');"><a href="/event/' + upcomingEvent[i].eventUrl + '"><h1>' + upcomingEvent[i].eventLocation + '</h1><h3>' + upcomingEvent[i].eventName + '<br />' + months[upcomingEvent[i].eventStartDate.getMonth()] + ' ' + upcomingEvent[i].eventStartDate.getDate() + ' - ' + upcomingEvent[i].eventEndDate.getDate() + ', ' + upcomingEvent[i].eventEndDate.getFullYear() + '</h3></a>' + risingText + '</div>';
+        }
+        newHtml = html.toString().replace('<main class="events grid flex">', eventBlocksHtml);
+        res.send(newHtml);
+      })
+    })
+  })
+})
   
   router.route('/events')
   .get(function (req, res) {
