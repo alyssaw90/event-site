@@ -7,6 +7,7 @@
  $(document).ready(function () {
  	
  	var $header = $('header');
+ 	var $menuBlock = $('.menu-block');
  	var menu = '<!-- Begin upper purple menu -->\
 		<nav class="menu-overlay">\
 		<!-- Begin Mobile "Hamburger Menu" -->\
