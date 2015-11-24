@@ -46,4 +46,6 @@ $(document).ready(function () {
 			msColors = ['rgba(216, 59, 1, .8)', 'rgba(232, 17, 35, .8)', 'rgba(180, 0, 158, .8)', 'rgba(92, 45, 145, .8)', 'rgba(0, 120, 215, .8)', 'rgba(0, 130, 114, .8)', 'rgba(16, 124, 16, .8)'];
 		}
 	});
+
+	console.log($('.sliderRegisterButton').css())
 });
