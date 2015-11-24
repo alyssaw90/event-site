@@ -109,6 +109,7 @@
 			menu = menu.replace('<div class="col_2 center-block menu-block upcoming-menu"><a href="/future-events"><h2>Find an Event</h2></a></div>', upcomingMenu);
 			var headerMenu = $.parseHTML(menu);
 			$header.prepend(headerMenu);
+			//make future events tab expand when hovered
 			$('.expanding-menu').hover(function () {
 				var $menuHeight = $(this).parent().height();
 	 			var $menuWidth  = $('.upcoming-menu').width();
@@ -125,6 +126,17 @@
 			);
 			$(window).load(changeWidth($('.menu-block')));
 			$(window).resize(changeWidth($('.menu-block')));
+			//make mobile menu slide up and down when it's pressed
+			$('.hamburger-menu').click(function () {
+				// $('.mobile-menu:first').toggleClass('add-space');
+  			if ($('.hidden-div').is(':hidden')) {
+  			  $('.hidden-div').slideDown('slow');
+  			  $('.menu-overlay').css('height', '100%');
+  			} else {
+  			  $('.hidden-div').slideUp('slow');
+  			  $('.menu-overlay').css('height', '');
+  			}
+			});
 		})
 
 

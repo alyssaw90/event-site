@@ -7,6 +7,7 @@ $(document).ready(function () {
 	var $body = $('body');
 	var $footer = $('footer');
 	var $backToTopButton = $('.scroll-button .fa-chevron-up');
+	var $travelUlLinks = $('.travelUlLinks');
 
 /*	//make block slide up effect for upcoming event blocks -- moved to future-events.js
 	$('.event_block').hover(
@@ -80,7 +81,8 @@ $(document).ready(function () {
 
 	//make mobile menu slide up and down when it's pressed
 
-	$('.hamburger-menu').click(function () {
+	/*$('.hamburger-menu').click(function () {
+		alert('hello')
 		// $('.mobile-menu:first').toggleClass('add-space');
   	if ($('.hidden-div').is(':hidden')) {
   	  $('.hidden-div').slideDown('slow');
@@ -89,7 +91,7 @@ $(document).ready(function () {
   	  $('.hidden-div').slideUp('slow');
   	  $('.menu-overlay').css('height', '');
   	}
-	});
+	});*/
 
 	//make past events buttons and homepage content full width on mobile
 
@@ -110,11 +112,11 @@ $(document).ready(function () {
 
 	//make footer stick to bottom of content or page, whichever is taller
 
-/*	function stickyFooter(foot) {
-	  var footerHeight = foot.height();
+	function stickyFooter() {
+	  var footerHeight = $footer.height();
 	  var heightDiff = $(window).height() - $body.height() + footerHeight;
 	  if ($(window).height() > $(document).height()) {
-	    foot.addClass('stick-footer');
+	    $footer.addClass('stick-footer');
 	    $body.css('margin-bottom', footerHeight);
 	  }
 
@@ -124,17 +126,18 @@ $(document).ready(function () {
 	  }
 	}
 
-	$(window).load(stickyFooter($('.footer-at-bottom')));
+	$(window).load(stickyFooter();
 
-	$(window).resize(stickyFooter($('.footer-at-bottom')));*/
-	 console.log($(window).height(), $(document).height())
-	 $(window).load(function () {
+	$(window).onresize = stickyFooter;
+
+ 	$(window).load(function () {
 		if ($(window).height() >= $(document).height()) {
 			$backToTopButton.hide();
 			$footer.addClass('stick-footer');
 		}
-	 	
-	 })
+ 	});
+
+ 	$(window.)
 
 	//function to add and remove CSS properties depending on screen size
 
@@ -145,7 +148,7 @@ $(document).ready(function () {
 		if ($(window).width() > changeWidth) {
 			div.css(cssPropKey, largeScreenVal);
 		}
-		
+
 	}
 
 	//hide slider on screens larger than 768px
