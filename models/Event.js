@@ -69,7 +69,7 @@ Event.sync({force: true})
   eventRegistrationLink: 'http://www.example.com',
   eventStartDate: new Date('2010-01-01:00:01:00'),
   eventEndDate: new Date('2010-01-04:23:59:00'),
-  eventLocation: 'Santa Clara, CA',
+  eventLocation: 'Santa Clara',
   eventHeaderImage: '2b98dc94-eabb-49a9-a419-3aaa25d540bc.jpg', 
   eventFuturePageImage: 'santa-clara-convention-center-2.jpg',
   eventFuturePageText: '<p>Produced since 1998, Storage Developer Conference (SDC) 2015 is scheduled for September 21-24, 2015 in Santa Clara, CA, and is again expected to attract more than 400 developers, technical professionals, and engineers from the worldwide storage community.</p><p>Attend and learn about leading storage development topics including File Systems, Software Defined Storage, SMB, Security, Performance, and more.</p>',

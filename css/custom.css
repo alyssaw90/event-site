@@ -175,8 +175,8 @@ li {
 }
 
 .menu-overlay ul {
-	width: 115%;
-	padding-right: 20%;
+	/*width: 115%;*/
+	padding-right: 2%;
 }
 
 
@@ -198,7 +198,7 @@ li {
 .purpleEventMenu {
 	/*margin: 0 auto;*/
 	margin-top: 0.5% !important;
-	margin-right: 13% !important;
+	/*margin-right: 13% !important;*/
 	/*margin-left: -15% !important;*/
 	/*padding-top: 4% !important;*/
 	/*font-size: 1.3vw !important;*/
@@ -1036,8 +1036,7 @@ footer a {
 
 @media all and (max-width: 1074px) {
 
-	.purpleEventMenu {
-		/*margin-left: 5% !important;*/
+/*	.purpleEventMenu {
 		margin-top: -4% !important;
 	}
 
@@ -1051,6 +1050,11 @@ footer a {
 
 	.purpleEventMenu a:last-child {
 		margin-left: 0% !important;
+	}*/
+
+	.menu-overlay ul {
+		width: 115%;
+		padding-right: 20%;
 	}
 
 	.slideshow .desc:not(:first-child) {

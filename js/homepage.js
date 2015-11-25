@@ -39,7 +39,6 @@ $(document).ready(function () {
 	$('.slideshow li').each(function (i) {
 		var randomNum = Math.floor(Math.random() * (7 - count));
 		count++
-		console.log(msColors[randomNum], msColors[randomNum]);
 		if (i > 0) {
 			$(this).children().children().css('background-color', msColors[randomNum]);
 			// $('.sliderRegisterButton').css('background-color', msColors[randomNum].replace('.8', '1'))
