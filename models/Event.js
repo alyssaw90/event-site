@@ -63,12 +63,12 @@ var Event = module.exports = sql.define('Event', {
 
 
 Event.sync({force: true})
-/*.then(function () {
+.then(function () {
   return Event.create({
   eventName: 'Storage Developer Conference',
   eventRegistrationLink: 'http://www.example.com',
-  eventStartDate: new Date('2020-01-01:00:01:00'),
-  eventEndDate: new Date('2020-01-04:23:59:00'),
+  eventStartDate: new Date('2010-01-01:00:01:00'),
+  eventEndDate: new Date('2010-01-04:23:59:00'),
   eventLocation: 'Santa Clara, CA',
   eventHeaderImage: '2b98dc94-eabb-49a9-a419-3aaa25d540bc.jpg', 
   eventFuturePageImage: 'santa-clara-convention-center-2.jpg',
@@ -88,7 +88,7 @@ Event.sync({force: true})
   travelEatDrinkTab: '<h2>Eat & Drink</h2><p>Do cupidatat aliquip ribeye meatball beef ribs. Cillum meatloaf beef, filet mignon ham hock lorem culpa. Sirloin laboris dolore shank, pork belly aliquip cillum. Excepteur lorem beef jerky doner.</p>', //copy for travel eat and drink sub tab
   eventMediaTab: 'Produced since 1998, Storage Developer Conference (SDC) 2015 is scheduled for September 21-24, 2015 in Santa Clara, CA, and is again expected to attract more than 400 developers, technical professionals, and engineers from the worldwide storage community. Attend and learn about leading storage development topics including File Systems, Software Defined Storage, SMB, Security, Performance, and more.' //copy for media tab
   });
-})*/
+})
 .then(function () {
   return Event.create({
   eventName: 'Shanghai Interop Dev Days 2015',
@@ -192,4 +192,29 @@ Event.sync({force: true})
   // eventMediaTab: Sql.TEXT //copy for media tab
   })
 })
-
+.then(function () {
+  return Event.create({
+  eventName: 'Storage Developer Conference 2',
+  eventRegistrationLink: 'http://www.example.com',
+  eventStartDate: new Date('2014-01-01:00:01:00'),
+  eventEndDate: new Date('2014-01-04:23:59:00'),
+  eventLocation: 'Santa Clara, CA',
+  eventHeaderImage: '2b98dc94-eabb-49a9-a419-3aaa25d540bc.jpg', 
+  eventFuturePageImage: 'santa-clara-convention-center-2.jpg',
+  eventFuturePageText: '<p>Produced since 1998, Storage Developer Conference (SDC) 2015 is scheduled for September 21-24, 2015 in Santa Clara, CA, and is again expected to attract more than 400 developers, technical professionals, and engineers from the worldwide storage community.</p><p>Attend and learn about leading storage development topics including File Systems, Software Defined Storage, SMB, Security, Performance, and more.</p>',
+  eventSlideshowImage: 'santa-clara-convention-center-2-homepage.jpg',
+  homepageBulletOne: 'Persistent Memory',
+  homepageBulletTwo: 'Object Drives',
+  homepageBulletThree: 'SMR Drives',
+  eventSponsorsTab: '<h2>2015 Sponsorship and Exhibitor Opportunities</h2><hr class="alt1" /><p>What a bounder fox hunting circus strongman arcu lip warmer Refined gentlemen robert winston east european, arcu lip warmer Fallen eyebrow clive dunn by jingo. east european what a bounder john cleese soup strainer robert winston hairy kiss. fox hunting timothy dalton Refined gentlemen what a bounder circus strongman, east european what a bounder robert winston circus strongman soup strainer hairy kiss. en time-warped cabbie what a bounder waiter lip warmer ding-dong clive dunn by jingo. timothy dalton louis xiii fox hunting arcu john cleese Refined gentlemen Fallen eyebrow? Devilish cad dolor sit amet cigars stiff upper lip funny walk, admiral funny walk cigars sportacus jolly good show david seaman devilish cad dolor sit amet stiff upper lip?</p><p>For more information on sponsorships or to find out why all our sponsors have the same logo, contact Yo Mama at <a href="mailto:yomama@example.com">yomama@example.com</a></p><hr class="alt1" /><h3>Platinum Sponsors</h3><div class="col_6"><img src="../../img/logo1.png"><h4>A Company</h4></div><div class="col_6"><img src="../../img/logo1.png"><h4>Another Company</h4></div><hr class="alt1" /><h3>Gold Sponsors</h3><div class="col_6"><img src="../../img/logo1.png"><h4>A Business</h4></div><div class="col_6"><img src="../../img/logo1.png"><h4>Another Business</h4></div><hr class="alt1" /><h3>Silver Sponsors</h3><div class="col_6"><img src="../../img/logo1.png"><h4>Old Biz</h4></div><div class="col_6"><img src="../../img/logo1.png"><h4>New Biz</h4></div>', //copy for Sponsors Tab
+  eventOverviewTab: '<h2>Storage Developer Conference</h2><h3>Boudin beef ribs</h3><p>Short loin bacon spare ribs biltong boudin, filet mignon shank brisket beef ribs swine bresaola meatloaf shoulder picanha. Cow bresaola bacon flank kevin ribeye pancetta short loin beef shankle doner tenderloin.</p><p>Tongue shank ham hock pork chop kevin, ribeye fatback turducken ground round filet mignon kielbasa spare ribs short loin jerky alcatra.</p><h4>2015 Agenda is Now Available</h4><p>Swine strip steak tongue picanha, chuck alcatra shankle jerky pancetta capicola pork andouille. Ham hock shank salami sirloin t-bone tail. Jowl ham flank, strip steak turducken ham hock salami pig landjaeger shank. </p><ul><li>First Subject</li><li>Second Subject</li><li>Third Subject</li></ul><p>View the full agenda here and start planning now which sessions you will attend. It won\'t be an easy choice!</p>', //copy for Overview Tab
+  // travelTabMap: '<div><iframe width="800" height="400" frameborder="0" src="http://www.bing.com/maps/embed/viewer.aspx?v=3&amp;cp=37.355740~-121.954987&amp;lvl=12&amp;w=800&amp;h=400&amp;sty=r&amp;typ=d&amp;pp=Santa%20Clara%2C%20CA~~37.355740~-121.954987&amp;ps=&amp;dir=0&amp;mkt=en-us&amp;src=O365&amp;form=BMEMJS"></iframe><div style="margin: 12px 0 0 0;"><a target="_blank" href="http://www.bing.com/maps/?cp=37.355740~-121.954987&amp;sty=r&amp;lvl=12&amp;sp=point.37.355740_-121.954987_Santa%20Clara%2C%20CA_&amp;mm_embed=map">View larger map</a>&nbsp; |&nbsp; <a target="_blank" href="http://www.bing.com/maps/?cp=37.355740~-121.954987&amp;sty=r&amp;lvl=12&amp;rtp=~pos.37.355740_-121.954987_Santa%20Clara%2C%20CA_&amp;mm_embed=dir">Get directions</a>&nbsp; |&nbsp; <a target="_blank" href="http://www.bing.com/maps/?cp=q6sbtw4v3c8c&amp;sty=b&amp;lvl=18&amp;sp=point.37.355740_-121.954987_Santa%20Clara%2C%20CA_&amp;mm_embed=be">View bird\'s eye</a></div></div>', //Bing Imap of location
+  travelTabHeaderImage: 'santa-clara-convention-center.jpg',
+  travelVenueTab: '<h2>Hello</h2><p>Ancient alien contend DNA manipulation the vedas ancient religions flying vessels, extraterrestrial spaceships clearly Chariot of the Gods Indian texts, Giorgio technology Easter island Ezekiel alien burmuta triangle SETI. Gods sun disc mercury Nazca lines astronaut pyramids, portal burmuta triangle clearly space brothers sightings, Sumerian texts UFO ancient alien theorists.</p>', //copy for travel venue sub tab
+  travelTravelTab: '<h2>Travel Tab</h2><p>Ancient alien extraterrestrial sanskrit Mahabharata vortex UFO aircraft Vymaanika-Shaastra, evidence ancient civilization sky people choral castle, clearly grey UFO Machu Picchu Easter island. Ancient religions sun disc mercury legendary times, I know it sounds crazy... Petroglyph contend clearly space time helicopter heiroglyph. Chariot of the Gods spaceships, Annunaki ancient religions.</p>', //copy for trave travel sub tab
+  travelAccomodationsTab: '<h2>Accommodations Tab</h2><p>Ancient alien sightings Easter island DNA manipulation, otherworldly visitors earth mound Indian texts, burmuta triangle ancient religions contend. Helicopter heiroglyph choral castle evidence targeted mutation otherworldly visitors ancient god, sanskrit cover up petroglyph ancient alien theorists Mahabharata, aircraft vortex the vedas pre-colonial aerodynamics ancient god. Flying vessels crystal skull, Mayan.</p>', //copy for travel accommodations sub tab
+  travelTipsTab: '<h2>Tips Tab</h2><p>We need to neutralize the homing signal. Each unit has total environmental control, gravity, temperature, atmosphere, light, in a protective field. Sensors show energy readings in your area. We had a forced chamber explosion in the resonator coil. Field strength has increased by 3,000 percent.</p>', //copy for travel Tips and Tricks sub tab
+  travelEatDrinkTab: '<h2>Eat & Drink</h2><p>Do cupidatat aliquip ribeye meatball beef ribs. Cillum meatloaf beef, filet mignon ham hock lorem culpa. Sirloin laboris dolore shank, pork belly aliquip cillum. Excepteur lorem beef jerky doner.</p>', //copy for travel eat and drink sub tab
+  eventMediaTab: 'Produced since 1998, Storage Developer Conference (SDC) 2015 is scheduled for September 21-24, 2015 in Santa Clara, CA, and is again expected to attract more than 400 developers, technical professionals, and engineers from the worldwide storage community. Attend and learn about leading storage development topics including File Systems, Software Defined Storage, SMB, Security, Performance, and more.' //copy for media tab
+  });
+})
