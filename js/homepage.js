@@ -39,13 +39,19 @@ $(document).ready(function () {
 	$('.slideshow li').each(function (i) {
 		var randomNum = Math.floor(Math.random() * (7 - count));
 		count++
-		$(this).children().children().css('background-color', msColors[randomNum]);
-		msColors.splice(randomNum, 1);
-		if (msColors.length <= 0) {
-			count = 0;
-			msColors = ['rgba(216, 59, 1, .8)', 'rgba(232, 17, 35, .8)', 'rgba(180, 0, 158, .8)', 'rgba(92, 45, 145, .8)', 'rgba(0, 120, 215, .8)', 'rgba(0, 130, 114, .8)', 'rgba(16, 124, 16, .8)'];
+		console.log(msColors[randomNum], msColors[randomNum]);
+		if (i > 0) {
+			$(this).children().children().css('background-color', msColors[randomNum]);
+			// $('.sliderRegisterButton').css('background-color', msColors[randomNum].replace('.8', '1'))
+			msColors.splice(randomNum, 1);
+			if (msColors.length <= 0) {
+				count = 0;
+				msColors = ['rgba(216, 59, 1, .8)', 'rgba(232, 17, 35, .8)', 'rgba(180, 0, 158, .8)', 'rgba(92, 45, 145, .8)', 'rgba(0, 120, 215, .8)', 'rgba(0, 130, 114, .8)', 'rgba(16, 124, 16, .8)'];
+			}	
+		} else if (i <= 0) {
+			$(this).children().children().css('background-color', 'transparent');
 		}
 	});
 
-	console.log($('.sliderRegisterButton').css())
+	// console.log($('.sliderRegisterButton').css('background-color'));
 });

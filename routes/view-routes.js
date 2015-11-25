@@ -29,6 +29,11 @@ module.exports = function (router) {
     res.sendFile(path.join(__dirname, '../index.html'));
   });*/
 
+  router.route('/test')
+  .get(function (req, res) {
+    res.sendFile(path.join(__dirname, '../views/test.html'));
+  })
+
   router.route('/past-events')
   .get(function (req, res) {
     res.sendFile(path.join(__dirname, '../views/past-events.html'));

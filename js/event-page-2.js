@@ -1,6 +1,6 @@
 'use strict';
 
-$(document).ready(function () {\
+$(document).ready(function () {
 	var $footer = $('footer');
 
 	$footer.css('bottom: 0;')

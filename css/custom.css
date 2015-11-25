@@ -195,7 +195,7 @@ li {
 	background-color: #68217a;
 }
 
-.map-menu {
+.purpleEventMenu {
 	/*margin: 0 auto;*/
 	margin-top: 0.5% !important;
 	margin-right: 13% !important;
@@ -204,7 +204,7 @@ li {
 	/*font-size: 1.3vw !important;*/
 }
 
-.map-menu:last-child {
+.purpleEventMenu:last-child {
 	margin-top: 1%;
 	padding-bottom: 0;
 }
@@ -529,6 +529,10 @@ footer a {
 	color: #000;
 }
 
+.footer-at-bottom {
+	position: relative;
+}
+
 .footer-right {
 	background-color: #d2d2d2;
 	float: right;
@@ -731,6 +735,10 @@ footer a {
     text-align: center;
 	}
 
+	.sliderRegisterButton:hover {
+		background-color: inherit;
+	}
+
 /*	.slideshow p {
 		padding-right: 20%;
 		padding-left: 10%;
@@ -739,6 +747,7 @@ footer a {
 
 	.slide-title {
 		padding-left: 10%;
+		padding-top: 3%;
 	}
 
 	.slideshow .desc:last-child {
@@ -972,15 +981,15 @@ footer a {
 
 /*Begin Media Queries*/
 @media all and (max-width: 1550px) {
-/*	.map-menu {
+/*	.purpleEventMenu {
 		margin-top: -3.5% !important;
 	}
 
-	.map-menu a {
+	.purpleEventMenu a {
 		font-size: 1.3vw;
 	}*/
 
-	.map-menu {
+	.purpleEventMenu {
 	/*margin: 0 auto;*/
 	margin-top: -3.5%;
 	margin-right: 6% !important;
@@ -989,7 +998,7 @@ footer a {
 	/*font-size: 1.3vw !important;*/
 	}
 
-	.map-menu img {
+	.purpleEventMenu img {
 		width: 90%;
 	}
 
@@ -1009,12 +1018,12 @@ footer a {
 
 @media all and (max-width: 1280px) {
 
-	.map-menu {
+	.purpleEventMenu {
 		/*margin-right: 6% !important;*/
 		/*margin-top: -3% !important;*/
 	}
 
-	.map-menu a {
+	.purpleEventMenu a {
 		/*margin-top: -1% !important;*/
 		font-size: 1.6vw !important;
 	}
@@ -1027,20 +1036,20 @@ footer a {
 
 @media all and (max-width: 1074px) {
 
-	.map-menu {
+	.purpleEventMenu {
 		/*margin-left: 5% !important;*/
 		margin-top: -4% !important;
 	}
 
-	.map-menu a:first-child {
+	.purpleEventMenu a:first-child {
 		margin-left: 20% !important;
 	}
 
-	.map-menu a:not(:first-child) {
+	.purpleEventMenu a:not(:first-child) {
 		margin-left: -5% !important;
 	}
 
-	.map-menu a:last-child {
+	.purpleEventMenu a:last-child {
 		margin-left: 0% !important;
 	}
 

@@ -27,10 +27,6 @@
 			<div class="hidden-div" style="display: none">\
 				<ul class="menu vertical hamburger-menu">\
 					<li class="mobile-menu"><a href="/"><span class="home">Home</span></a></li>\
-					<li class="mobile-menu">\
-						<div class="register-button"><a href="https://msevents.microsoft.com/CUI/EventDetail.aspx?EventID=103265323&Culture=en-CN&community=1">Register</a>\
-						</div>\
-					</li>\
 					<li class="mobile-menu"><a href="/future-events"><span>Find an Event</a></span></a></li>\
 					<li class="mobile-menu"><a href="/latest-news"><span>Get the Latest</span></a></li>\
 					<li class="mobile-menu"><a href="/meet-the-team"><span>Meet the Team</a></span></a></li>\
@@ -52,14 +48,7 @@
 						<a href="mailto:mailto:plugfests@microsoft.com"><img src="data:image;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAoCAMAAABkbjJAAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RDQyMEJDQTI2NjE5MTFFNTg4MEQ5QzRDMERGMEU2NEMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RDQyMEJDQTM2NjE5MTFFNTg4MEQ5QzRDMERGMEU2NEMiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpENDIwQkNBMDY2MTkxMUU1ODgwRDlDNEMwREYwRTY0QyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpENDIwQkNBMTY2MTkxMUU1ODgwRDlDNEMwREYwRTY0QyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pmm86eUAAADJUExURUpKSgEBAT4+Pvb29oiIiJ2dnQIBAyIiIgcGBxUVFREPET8/PyIhIxAQENTU1NXV1ScnJ9fX15OTk1ZWVpGRkeDg4KqpqkJBQqmpqWhoaOjn6fj4+OHh4rW1tZSUlI6OjsjIyOfn6C0tLoWFhTQ0NAsLC7Oytb28vU1NTQkJCaWlpaqrqWRjZQoKCt3d3aenp+zs7P7+/sHBwUxKTdzc3cDAwMvLy7OytFtbW35+fnd3dxYWFg8PD0xLTUxMTvDw8P///wAAAP///2C42KgAAABDdFJOU////////////////////////////////////////////////////////////////////////////////////////wBBYgTvAAABO0lEQVR42uSV13KDQAxFAYN777333muKzP9/VICLHeKAQXnyTPS0XN2zDIukFVR+CKp65YXO+K9cSOC+5uWZAhMpaMyByRw0hhYsZEE6Q2MGMiYwVPSMFOnGUKrkiSil6JshOiVdieQJVo2ZYLVsuyDtJYwT/Z8qZWPd+hCfEOJ7y3CVFdRBNIcdBkFHJDiAJRe91c5lCmV7dkDOWximF0u9HfsQ5a4N0ZWR7B8falSB7os8fpUY8SGl/K7r7NzIrHajH8hotzL0edauF0Jx7LcPW5DwHmI8ZN8/sQzyVfkuyVVImZhjzw3zsKQl41FK4zE/fNqnDbioFngL1Mx1w623OwnzAD/N40p03OdBr0nWaPa8zJDZpnInKpuZx7kj1dcGsa5LnFkl6PFvZu8rM9y70f/HO5gfXwIMAN708dmhZPsCAAAAAElFTkSuQmCC000000"></i></a>\
 					</div>\
 				</li>\
-				<li class="map-menu">\
-					<a href="/map">Oceania</a>\
-					<a href="/map">Africa</a>\
-					<a href="/map">Europe</a>\
-					<a href="/map">Asia</a>\
-					<a href="/map">Americas</a>\
-					<a style="margin-bottom:2%" class="button large blue" href="https://msevents.microsoft.com/CUI/EventDetail.aspx?EventID=103265323&Culture=en-CN&community=1">Register</a>\
-				</li>\
+				<li class="purpleEventMenu"></li>\
 			</ul>\
 		</nav>\
 		<!-- End Purple desktop menu -->\
@@ -102,12 +91,16 @@
 		}
 
 
-		$.get('/upcomingeventurls', function (data) {
+		$.get('/events', function (data) {
 			var upcomingMenu = '<div class="col_2 center-block menu-block upcoming-menu"><a href="/future-events"><h2>Find an Event</h2></a></div>';
+			var purpleUpcomingMargin = 100 / data.length;
+			var upcomingPurpleMenu = '<li class="purpleEventMenu" style="margin-right:" '+ purpleUpcomingMargin + ' %">';
 			$(data).each(function (i, elem) {
-				upcomingMenu += '<div class="col_2 center-block menu-block upcoming-menu upcoming-sub-menu"><a href="/event/' + elem['url'] + '"><h2>' + elem['eventName'] + '</h2></a></div>';
+				upcomingMenu += '<div class="col_2 center-block menu-block upcoming-menu upcoming-sub-menu"><a href="/event/' + elem.eventUrl + '"><h2>' + elem.eventName + '</h2></a></div>';
+				upcomingPurpleMenu += '<a href="/event/' + elem.eventUrl + '">' + elem.eventLocation + '</a>'
 			})
-			menu = menu.replace('<div class="col_2 center-block menu-block upcoming-menu"><a href="/future-events"><h2>Find an Event</h2></a></div>', upcomingMenu);
+			upcomingPurpleMenu += '</li>';
+			menu = menu.replace('<div class="col_2 center-block menu-block upcoming-menu"><a href="/future-events"><h2>Find an Event</h2></a></div>', upcomingMenu).replace('<li class="purpleEventMenu"></li>', upcomingPurpleMenu);
 			var headerMenu = $.parseHTML(menu);
 			$header.prepend(headerMenu);
 			//make future events tab expand when hovered

@@ -50,7 +50,7 @@ var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
 });
 
 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-var randomTabImages = ['alt-slide-1.jpg', 'alt-slide-2.jpg', 'alt-slide-3.jpg', 'alt-slide-4.jpg'];
+var randomTabImages = ['alt-slide-1.jpg', 'alt-slide-2.jpg', 'alt-slide-3.jpg', 'alt-slide-4.jpg', 'alt-slide-5.jpg', 'alt-slide-6.jpg'];
 
 module.exports = function (router) {
   router.use(bodyparser.json());
@@ -300,12 +300,11 @@ router.route('/showimages')
         Event.findAll({where: {eventStartDate: {$gte: new Date()}}})
         .then(function (frontPageEvents) {
           for (var i = 0, j = frontPageEvents.length; i < j; i++) {
-              console.log(clc.magenta('LLLLLLLLLLLL ::::::::::: '), frontPageEvents[i].eventRegistrationLink);
-            if (!frontPageEvents[i].eventSlideshowImage) {
+           /* if (!frontPageEvents[i].eventSlideshowImage) {
               frontPageEvents[i].eventSlideshowImage = randomTabImages[Math.floor(Math.random() * 4)];
-            }
+            }*/
           
-            slides += '<li><span class="slideshowWrapper"><a href="/event/' + frontPageEvents[i].eventUrl + '"><h2 class="desc"><span class="slide-title">' + frontPageEvents[i].eventName + '</span><br /><br /><span class="sub-title slideshow-city">' + frontPageEvents[i].eventLocation + '</span><br /><span class="sub-title slideshow-date">' + months[frontPageEvents[i].eventStartDate.getMonth()] + ' ' + frontPageEvents[i].eventStartDate.getDate() + ' - ' + frontPageEvents[i].eventEndDate.getDate() + ', ' + frontPageEvents[i].eventEndDate.getFullYear() + '</span>';
+            slides += '<li><span class="slideshowWrapper"><a href="/event/' + frontPageEvents[i].eventUrl + '"><h2 class="desc"><span class="slide-title">' + frontPageEvents[i].eventName + '</span><br /><br /><br /><span class="sub-title slideshow-date">' + months[frontPageEvents[i].eventStartDate.getMonth()] + ' ' + frontPageEvents[i].eventStartDate.getDate() + ' - ' + frontPageEvents[i].eventEndDate.getDate() + ', ' + frontPageEvents[i].eventEndDate.getFullYear() + '</span>';
             if (frontPageEvents[i].eventRegistrationLink) {
               slides += '<div class="sliderRegisterButton clearfix"><a href="' + frontPageEvents[i].eventRegistrationLink + '">Register Now!</a></div>';
             } else if (!frontPageEvents[i].eventRegistrationLink) {
@@ -352,16 +351,16 @@ router.route('/future-events')
       .then(function (upcomingEvent) {
         for (var i = 0, j = upcomingEvent.length; i < j; i++) {
           var risingText = '';
-          if (!upcomingEvent[i].eventFuturePageImage && upcomingEvent[i].eventSlideshowImage) {
+          /*if (!upcomingEvent[i].eventFuturePageImage && upcomingEvent[i].eventSlideshowImage) {
             upcomingEvent[i].eventFuturePageImage = upcomingEvent[i].eventSlideshowImage;
           }
           if (!upcomingEvent[i].eventFuturePageImage && !upcomingEvent[i].eventSlideshowImage) {
             upcomingEvent[i].eventFuturePageImage = randomTabImages[Math.floor(Math.random() * 4)];
-          }
+          }*/
           if (upcomingEvent[i].eventFuturePageText) {
             risingText = '<div class="rising_text"><a href="/event/' + upcomingEvent[i].eventUrl + '">' + upcomingEvent[i].eventFuturePageText + '</div>';
           }
-          eventBlocksHtml += '<div class="col_4 event_block" style="background-image: url(../uploads/' + upcomingEvent[i].eventFuturePageImage + ');"><a href="/event/' + upcomingEvent[i].eventUrl + '"><h1>' + upcomingEvent[i].eventLocation + '</h1><h3>' + upcomingEvent[i].eventName + '<br />' + months[upcomingEvent[i].eventStartDate.getMonth()] + ' ' + upcomingEvent[i].eventStartDate.getDate() + ' - ' + upcomingEvent[i].eventEndDate.getDate() + ', ' + upcomingEvent[i].eventEndDate.getFullYear() + '</h3></a>' + risingText + '</div>';
+          eventBlocksHtml += '<div class="col_4 event_block" style="background-image: url(../uploads/' + upcomingEvent[i].eventSlideshowImage + ');"><a href="/event/' + upcomingEvent[i].eventUrl + '"><h1>' + upcomingEvent[i].eventLocation + '</h1><h3>' + upcomingEvent[i].eventName + '<br />' + months[upcomingEvent[i].eventStartDate.getMonth()] + ' ' + upcomingEvent[i].eventStartDate.getDate() + ' - ' + upcomingEvent[i].eventEndDate.getDate() + ', ' + upcomingEvent[i].eventEndDate.getFullYear() + '</h3></a>' + risingText + '</div>';
         }
         newHtml = html.toString().replace('<main class="events grid flex">', eventBlocksHtml);
         res.send(newHtml);
@@ -390,6 +389,7 @@ router.route('/allevents/:eventId')
     Event.findOne({where: {id: req.params.eventId}})
     .then(function (data) {
       fs.readdir(path.join(__dirname, '../uploads/' + data.eventUrl), function (err, files) {
+        console.log(clc.magenta('KKKKKKKKKKKKKKK  ::: '), files)
         for (var key in files) {
           picsHtml += '<a href="../uploads/' + data.eventUrl + '/' + files[key] + '" class="fancybox" type="image" ><img src="../uploads/' + data.eventUrl + '/' + files[key] + '" width="100" height="100" /></a>';
         }

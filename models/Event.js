@@ -13,6 +13,7 @@ var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
     idle: 10000
   }
 });
+var randomTabImages = ['alt-slide-1.jpg', 'alt-slide-2.jpg', 'alt-slide-3.jpg', 'alt-slide-4.jpg', 'alt-slide-5.jpg', 'alt-slide-6.jpg'];
 
 var Event = module.exports = sql.define('Event', {
   eventName: Sql.STRING,
@@ -23,7 +24,13 @@ var Event = module.exports = sql.define('Event', {
   eventHeaderImage: Sql.TEXT, //link to header image
   eventFuturePageImage: Sql.TEXT, //image to appear on event slide on homepage
   eventFuturePageText: Sql.TEXT, //slide up text for future events page
-  eventSlideshowImage: Sql.TEXT, //image for front page slider
+/*  eventSlideshowImage: {
+    type: Sql.TEXT,
+    unique: true,
+    get: function () {
+      return randomTabImages[Math.floor(Math.random() * randomTabImages.length)]
+    }
+  },*/ //image for front page slider
   homepageBulletOne: Sql.STRING,
   homepageBulletTwo: Sql.STRING,
   homepageBulletThree: Sql.STRING,
@@ -41,7 +48,15 @@ var Event = module.exports = sql.define('Event', {
 {
   getterMethods   : {
     eventUrl: function () {
-      return this.eventName.replace(/\W/g, '').toLowerCase() + '-' + this.eventStartDate.getFullYear();
+      var theEventName = this.getDataValue('eventName');
+      var startDate = this.getDataValue('eventStartDate');
+      var theUrl = theEventName.replace(/\W/g, '').toLowerCase() + '-' + startDate.getFullYear();
+      return theEventName.replace(/\W/g, '').toLowerCase() + '-' + startDate.getFullYear();
+    },
+    eventSlideshowImage: function () {
+      var idVal = this.getDataValue('id');
+      var imgIndex = Math.floor(idVal / randomTabImages.length);
+      return randomTabImages[idVal - imgIndex];
     }
   }
 });
@@ -78,13 +93,13 @@ Event.sync({force: true})
   return Event.create({
   eventName: 'Shanghai Interop Dev Days 2015',
   eventRegistrationLink: 'http://www.example.com', //link to registrationfor event
-  eventLocation: 'Shanghai, China',
+  eventLocation: 'Shanghai',
   eventStartDate: new Date('2026-10-21T08:00:00'), //the start date...
   eventEndDate: new Date('2026-10-22T08:00:00'), // the end date...
   eventHeaderImage: '2b98dc94-eabb-49a9-a419-3aaa25d540bc.jpg', 
   eventFuturePageImage: 'shanghai-2015-future-page.jpg', //image to appear on event slide on homepage
   eventFuturePageText: '<p>Shanghai was the first city to host Interop Dev Days and they continue to be one of the most important hubs of innovation with Microsoft products.</p><p>Dev Days focuses on Microsoft development opportunities for professional, independent, and student developers. Join us and start innovating with Microsoft!</p>', //slide up text for future events page
-  eventSlideshowImage: 'shanghai-2015-slideshow.jpg', //image for front page slider
+  // eventSlideshowImage: 'shanghai-2015-slideshow.jpg', //image for front page slider
   homepageBulletOne: 'O365 APIs',
   homepageBulletTwo: 'Word, Excel, Outlook, & PowerPoint Add-ins',
   homepageBulletThree: 'Exchange and SharePoint protocols',
@@ -103,8 +118,8 @@ Event.sync({force: true})
 .then(function () {
   return Event.create({
   eventName: 'Paris Dev Days 2016',
-  // eventRegistrationLink: Sql.STRING, //link to registrationfor event
-  eventLocation: 'Paris, France',
+  eventRegistrationLink: 'http://www.awwards.com', //link to registrationfor event
+  eventLocation: 'Paris',
   eventStartDate: new Date('2016-05-16:00:00:01'), //the start date...
   eventEndDate: new Date('2016-05-18:23:59:00'), // the end date...
   eventHeaderImage: 'paris-logo-2016.jpg', //link to header image
@@ -131,11 +146,11 @@ Event.sync({force: true})
     eventName: 'Taipei Interop Dev Days 2016',
     eventStartDate: new Date('2016-04-20:08:00:00'),
     eventEndDate: new Date('2016-04-21:23:00:00'),
-    eventLocation: 'Taipei, Taiwan',
+    eventLocation: 'Taipei',
     eventHeaderImage: 'taipei-logo-2016.jpg',
     // eventFuturePageImage: Sql.TEXT, //image to appear on event slide on homepage
     // eventFuturePageText: Sql.TEXT, //slide up text for future events page
-    eventSlideshowImage: 'taipei-sample-slideshow-img.jpg', //image for front page slider
+    // eventSlideshowImage: 'taipei-sample-slideshow-img.jpg', //image for front page slider
     homepageBulletOne: 'SQL Serve',
     homepageBulletTwo: 'PowerBI',
     homepageBulletThree: 'Big Data Stores, and Data Analytics',
@@ -155,7 +170,7 @@ Event.sync({force: true})
   return Event.create({
   eventName: 'Redmond Plugfest 2016',
   // eventRegistrationLink: Sql.STRING, //link to registrationfor event
-  eventLocation: 'Redmond, WA',
+  eventLocation: 'Redmond',
   eventStartDate: new Date('2016-06-20:00:01:00'), //the start date...
   eventEndDate: new Date('2016-06-24:23:59:00'), // the end date...
   eventHeaderImage: 'redmond-logo-2016.jpg', //link to header image
