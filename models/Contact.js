@@ -100,12 +100,30 @@ Contact.sync({force: true})
     firstName: 'Kwabena (K.B.)',
     lastName: 'Badu-Antwi',
     newsletterSubscription: true,
+    contactDescription: 'Rich McLain is a Lead Program Manager in the Microsoft Office Interoperability team. Rich has been with Microsoft for 14 years, and he leads the Compliance, Interoperability and Standards Program Management efforts across the Microsoft Office Division. Responsibilities include all work centering on tools, production, testing and partner engagements for Office, SharePoint, Exchange and Lync protocols as well as Microsoft Office’s engagement with the OOXML, ODF and PDF standards.',
+    eventRole: 'speaker',
+    msTeamMember: true,
+    msTeamTitle: 'Senior Lead Program Manager, Office Interoperability Team.',
+    showOnHomePage: true,
+    headShot: 'kb-badu-antwi.jpg',
+    company: 'Microsoft',
+    country: 'USA',
+    allowNotifications: true,
+    allowPersonalInfoSharing: false
+    
+  })
+})
+.then(function () {
+  return Contact.create({
+    firstName: 'Rich',
+    lastName: 'McClain',
+    newsletterSubscription: true,
     contactDescription: 'Kwabena (K.B.) Badu-Antwi is a Senior Program Manager at Microsoft, in the Cloud and Enterprise Division. A native of Ghana, KB has been with Microsoft 8 years, and he leads the interoperability program for SQL Server and other data technologies in the Data Platform Group (DPG). He drives the delivery of interoperability guidance, events, and tools across all DPG protocols including OData. Recently, his team released an online protocol validation tool for OData. <br /><br />Prior to joining the SQL Server, KB served in the eventRole of Program Manager on the Xbox Platform team. He graduated from Seattle Pacific University with a Bachelor’s of Science degree in Computer Science and a Master’s of Science degree in Information System Management.',
     eventRole: 'speaker',
     msTeamMember: true,
     msTeamTitle: 'Senior Program Manager, Cloud and Enterprise Division',
     showOnHomePage: true,
-    headShot: 'kb-badu-antwi.jpg',
+    headShot: 'rich-mclain-headshot.jpg',
     company: 'Microsoft',
     country: 'USA',
     allowNotifications: true,
