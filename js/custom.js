@@ -121,12 +121,12 @@ $(document).ready(function () {
 	  }
 
 	  if ($(window).height() <= $(document).height()) {
-	  	foot.removeClass('stick-footer');
+	  	$footer.removeClass('stick-footer');
 	  	$body.css('margin-bottom', 0);
 	  }
 	}
 
-	$(window).load(stickyFooter();
+	$(window).load(stickyFooter());
 
 	$(window).onresize = stickyFooter;
 
@@ -136,8 +136,6 @@ $(document).ready(function () {
 			$footer.addClass('stick-footer');
 		}
  	});
-
- 	$(window.)
 
 	//function to add and remove CSS properties depending on screen size
 

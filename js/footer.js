@@ -8,7 +8,7 @@ $(document).ready(function () {
 
 	var $footer = $('footer');
 	var footerMenuHTML = '<nav class="footer-right mobile-foot" style="height: 200px;">\
-				<p class="visible"><a href="/contact">Contact Us</a> | <a href="http://www.microsoft.com/en-us/privacystatement/default.aspx">Privacy Statement</a> | <a href="https://msdn.microsoft.com/en-us/cc300389.aspx">Terms of Service</a></p>\
+				<p class="visible"><a href="/contactus">Contact Us</a> | <a href="http://www.microsoft.com/en-us/privacystatement/default.aspx">Privacy Statement</a> | <a href="https://msdn.microsoft.com/en-us/cc300389.aspx">Terms of Service</a></p>\
 			</nav>';
 
 	var footerMenu = $.parseHTML(footerMenuHTML);

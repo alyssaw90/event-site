@@ -1,6 +1,9 @@
 'use strict';
 
 $(document).ready(function () {
+	var $footer = $('footer');
+
+	$footer.css('bottom: 0;')
 
 	$.get('/events', function (events) {
 		var pathname = window.location.pathname.slice(7);
@@ -61,10 +64,11 @@ $(document).ready(function () {
 		}	
 		//get scheduled items and add them to event
 		$.get('/eventschedules', function (schedules) {
-			console.log(schedules);
 			for (var i = 0, j = schedules.length; i < j; i++) {
-				eventsObj[schedules[i].eventId]['scheduleInfo'].push(schedules[i]);
-				if (eventsObj[schedules[i].eventId]['scheduleDays'].indexOf(schedules[i].scheduleDay) === -1) {
+				if (eventsObj[schedules[i].eventId]) {
+					eventsObj[schedules[i].eventId]['scheduleInfo'].push(schedules[i]);
+				}
+				if (eventsObj[schedules[i].eventId] && eventsObj[schedules[i].eventId]['scheduleDays'].indexOf(schedules[i].scheduleDay) === -1) {
 					eventsObj[schedules[i].eventId]['scheduleDays'].push(schedules[i].scheduleDay);
 				}
 			}
@@ -73,16 +77,17 @@ $(document).ready(function () {
 				//sort contacts by if they're attending and what their role is
 				$.get('/attendees', function (attendees) {
 					for (var i = 0, j = attendees.length; i < j; i++) {
+				console.log(attendees[i].eventId);
 						if (attendees[i].eventAttendeeRole === 'speaker') {
 							for (var ii = 0, jj = contacts.length; ii < jj; ii++) {
-								if (contacts[ii].id === attendees[i].contactId) {
+								if (eventsObj[attendees[i].eventId] && contacts[ii].id === attendees[i].contactId) {
 									eventsObj[attendees[i].eventId].speakers.push(contacts[ii]);
 								}
 							}
 						}
 						if (attendees[i].eventAttendeeRole === 'attendee') {
 							for (var iii = 0, jjj = contacts.length; iii < jjj; iii++) {
-								if (contacts[iii].id === attendees[i].contactId) {
+								if (eventsObj[attendees[i].eventId] && contacts[iii].id === attendees[i].contactId) {
 									eventsObj[attendees[i].eventId].attendees.push(contacts[iii]);
 								}
 							}
