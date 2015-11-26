@@ -136,7 +136,7 @@ li {
 	visibility: hidden;
 }
 
-.home-page-experts img{
+.home-page-experts img {
 	/*max-width: 131px;*/
 	/*display: inline-block;*/
 	/*vertical-align: top;*/
@@ -198,10 +198,24 @@ li {
 .purpleEventMenu {
 	/*margin: 0 auto;*/
 	margin-top: 0.5% !important;
+	/*margin-right: 50% !important;*/
+	/*padding-left: 15% !important;*/
+	/*max-width: max-content;*/
+	/*padding-right: 25% !important;*/
+	/*padding-left: 25% !important;*/
 	/*margin-right: 13% !important;*/
 	/*margin-left: -15% !important;*/
 	/*padding-top: 4% !important;*/
 	/*font-size: 1.3vw !important;*/
+}
+
+.purpleEventMenuWrapper {
+	text-align: center;
+}
+
+#purpleEventMenuInnerWrapper {
+	display: inline-block;
+	width: 60%;
 }
 
 .purpleEventMenu:last-child {
@@ -992,7 +1006,7 @@ footer a {
 	.purpleEventMenu {
 	/*margin: 0 auto;*/
 	margin-top: -3.5%;
-	margin-right: 6% !important;
+	/*margin-right: 6% !important;*/
 	/*margin-left: auto !important;*/
 	/*padding-top: 4% !important;*/
 	/*font-size: 1.3vw !important;*/
@@ -1019,7 +1033,7 @@ footer a {
 @media all and (max-width: 1280px) {
 
 	.purpleEventMenu {
-		/*margin-right: 6% !important;*/
+		margin-right: 6% !important;
 		/*margin-top: -3% !important;*/
 	}
 
@@ -1057,25 +1071,33 @@ footer a {
 		padding-right: 20%;
 	}
 
-	.slideshow .desc:not(:first-child) {
-		display: none;
+	.menu-overlay li {
+		margin-left: -27px !important;
 	}
+
+	.purpleEventMenu a {
+		margin-left: -30px !important;
+	}
+
+/*	.slideshow .desc:not(:first-child) {
+		display: none;
+	}*/
 
 	 .desc .span:first-child {
 		/*font-size: 10em;*/
 	}
 
 	.slide-title {
-		font-size: 4vw;
+		font-size: 2vw;
 	}
 
 	.slideshow p {
-		font-size: 3vw;
+		font-size: 1vw;
 	}
 
-	.sub-title {
+	/*.sub-title {
 		display: none;
-	}
+	}*/
 
 	.event-header {
 		/*max-height: 70px;*/
@@ -1099,7 +1121,7 @@ footer a {
 
 }
 
-@media all and (max-width: 900px) {
+@media all and (max-width: 930px) {
 
 	.menu-block {
 		/*height: 100px;*/
@@ -1115,7 +1137,8 @@ footer a {
 
 	.social-icons img {
 		height: 20px;
-		margin-right: -30px !important;
+		margin-right: -40px !important;
+		padding: 0;
 	}
 
 	.social-icons {
@@ -1141,12 +1164,20 @@ footer a {
 
 @media all and (max-width: 768px) {
 
+	.slideshow {
+		display: none;
+	}
+
 	.header-image {
 		display: block;
 	}
 
 	.social-icons {
-		padding-left: 40px;
+		padding-left: 60px;
+	}
+
+	.msIcon img {
+		padding-left: 20px;
 	}
 
 	.past_events {
