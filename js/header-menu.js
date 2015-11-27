@@ -119,12 +119,12 @@
 					$('.upcoming-sub-menu').slideUp('fast');
 				}
 			);
-			$(window).load(function () {
-				var margin = ($(window).width() / $('.purpleEventMenu').width()) * 100;
-				console.log(margin)
-				$('.purpleEventMenu').css('margin-right', margin);
+			// $(window).load(function () {
+				var margin = ($(window).width() - $('.purpleEventMenu').width()) / ($('.purpleEventMenu').children().length * 2);
+				console.log($('.purpleEventMenu').children().length)
+				$('.purpleEventMenu').css('padding-right', margin);
 				// $('.purpleEventMenuWrapper').css('text-align', 'center');
-			})
+			// })
 			$(window).load(changeWidth($('.menu-block')));
 			$(window).resize(changeWidth($('.menu-block')));
 			//make mobile menu slide up and down when it's pressed
