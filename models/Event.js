@@ -14,6 +14,7 @@ var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
   }
 });
 var randomTabImages = ['alt-slide-1.jpg', 'alt-slide-2.jpg', 'alt-slide-3.jpg', 'alt-slide-4.jpg', 'alt-slide-5.jpg', 'alt-slide-6.jpg'];
+// var randomTabImages = ['alt-slide-1-large.jpg', 'alt-slide-2-large.jpg', 'alt-slide-3-large.jpg', 'alt-slide-4-large.jpg', 'alt-slide-5-large.jpg', 'alt-slide-6-large.jpg', 'alt-slide-7-large.jpg', 'alt-slide-8-large.jpg'];
 
 var Event = module.exports = sql.define('Event', {
   eventName: Sql.STRING,

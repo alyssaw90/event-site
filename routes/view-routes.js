@@ -34,6 +34,16 @@ module.exports = function (router) {
     res.sendFile(path.join(__dirname, '../views/test.html'));
   })
 
+  router.route('/test2')
+  .get(function (req, res) {
+    res.sendFile(path.join(__dirname, '../views/test2.html'));
+  })
+
+  router.route('/test3')
+  .get(function (req, res) {
+    res.sendFile(path.join(__dirname, '../views/test3.html'));
+  })
+
   router.route('/past-events')
   .get(function (req, res) {
     res.sendFile(path.join(__dirname, '../views/past-events.html'));

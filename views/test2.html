@@ -16,8 +16,7 @@
 <body>
 	<header>
 	</header>
-		<main class="grid main-page-content">
-			<section class="col_12 slider">
+			<section class="slider">
 			<!-- Begin Slideshow -->
 				<ul class="slideshow"></ul>
 				<!-- end of slideshow -->
@@ -59,7 +58,7 @@
 				</ul> -->
 				<!-- end of Backup slideshow -->
 			</section>
-			<div class="col_12"><img src="../uploads/Screenshot_7.png" /></div>
+		<main class="grid main-page-content">
 			<div class="col_12">
 				<section class="col_8">
 					<h1>Microsoft Plugfests and Events</h1>
@@ -184,5 +183,12 @@
 	<script type="text/javascript" src="../js/custom.js"></script>
 	<script type="text/javascript" src="../js/form-validator.js"></script>
 	<script type="text/javascript" src="../js/homepage.js"></script>
+	<script type="text/javascript">
+		$(function () {
+
+			$('.slideshow img').height($(window).height() - $('nav').height())
+			
+		})
+	</script>
 </body>
 </html>

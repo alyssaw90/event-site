@@ -58,7 +58,7 @@ $(document).ready(function () {
 			$overviewParagraph.append('<input class="col_8" id="eventId" name="eventId" type="text submit" value="' + $theEventId + '" />');
 
 			$.get('/eventoverviews', function (eventOverviewsData) {
-				console.log(eventOverviewsData)
+				// console.log(eventOverviewsData)
 				for (var i = 0, j = eventOverviewsData.length; i < j; i++) {
 					
 					if (eventOverviewsData[i].eventId == $theEventId) {
