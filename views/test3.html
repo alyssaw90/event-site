@@ -16,50 +16,18 @@
 <body>
 	<header>
 	</header>
+		<section class="slider">
+			<!-- Begin Backup Slideshow -->
+			<ul class="slideshow">
+				<li><a href="#fileFormats"><img src="../uploads/slide-1.jpg"></a></li>
+				<li><a href="#homepage-team"><img src="../uploads/slide-2.jpg"></a></li>
+				<li><img src="../uploads/slide-3.jpg"></li>
+				<li><img src="../uploads/slide-4.jpg"></li>
+				<li><img src="../uploads/slide-5.jpg"></li>
+			</ul>
+			<!-- end of Backup slideshow -->
+		</section>
 		<main class="grid main-page-content">
-			<section class="col_12 slider">
-			<!-- Begin Slideshow -->
-				<ul class="slideshow"></ul>
-				<!-- end of slideshow -->
-				<!-- Begin Backup Slideshow -->
-<!-- 				<ul class="slideshow">
-					<li>
-						<a href="/santa-clara-2015">
-							<h2 class="desc"><span class="slide-title">SNIA Storage Developer Conference 2015</span><br /><br />
-							<span class="sub-title slideshow-city">Santa Clara, CA</span>
-							<span class="sub-title slideshow-date">September 21 - 24, 2015</span><br /><br />
-							<span class="sub-title"><i class="fa fa-code"></i> Persistent Memory</span><br />
-							<span class="sub-title"><i class="fa fa-code"></i> Object Drives</span><br />
-							<span class="sub-title"><i class="fa fa-code"></i> SMR Drives</h2></span>
-						</a>
-						<img src="./img/santa-clara-convention-center-2-homepage.jpg" />
-					</li>
-					<li>
-						<a href="/event/shanghaiinteropdevdays2015-2026">
-							<h2 class="desc"><span class="slide-title">Shanghai Interop Dev Days 2015</span><br /><br />
-							<span class="sub-title slideshow-city">Shanghai, China</span>
-							<span class="sub-title slideshow-date">October 20 - 21, 2026</span><br /><br />
-							<span class="sub-title"><i class="fa fa-code"></i> O365 APIs</span><br />
-							<span class="sub-title"><i class="fa fa-code"></i> Word, Excel, Outlook, & PowerPoint Add-ins</span><br />
-							<span class="sub-title"><i class="fa fa-code"></i> Exchange and SharePoint protocols</h2></span>
-						</a>
-						<img src="./img/shanghai-2015-slideshow.jpg" />
-					</li>
-					<li>
-						<a href="/event/taipeiinteropdevdays2016-2016">
-							<h2 class="desc"><span class="slide-title">Taipei Interop Dev Days 2016</span><br /><br /><br />
-							<span class="sub-title slideshow-city">Taipei, Taiwan</span>
-							<span class="sub-title slideshow-date">April 20 - 21, 2016</span><br /><br />
-							<span class="sub-title"><i class="fa fa-code"></i> Microsoft Office 365 Developer Opportunities</span><br />
-							<span class="sub-title"><i class="fa fa-code"></i> Data Platforms</span><br />
-							<span class="sub-title"><i class="fa fa-code"></i> Interoperability</h2></span>
-						</a>
-						<img src="./img/img-taipei-slideshow.jpg" />
-					</li>
-				</ul> -->
-				<!-- end of Backup slideshow -->
-			</section>
-			<div class="col_12"><img src="../uploads/Screenshot_7.png" /></div>
 			<div class="col_12">
 				<section class="col_8">
 					<h1>Microsoft Plugfests and Events</h1>
@@ -143,7 +111,7 @@
 			<section class="col_12 home-page-experts" id="homepage-team">
 			<hr class="alt1" />
 			</section>
-			<section class="col_12">
+			<section class="col_12" id="fileFormats">
 				<h2>File Format Events</h2>
 				<p>Microsoft-hosted file format events provide software developers with the opportunity to test their implementations of the Office file formats.  Similar testing opportunities for implementations of the Open XML and Open Document Format (ODF) are available through the Document Interoperability Initiative.</p>
 				<hr class="alt1" />
@@ -184,5 +152,12 @@
 	<script type="text/javascript" src="../js/custom.js"></script>
 	<script type="text/javascript" src="../js/form-validator.js"></script>
 	<script type="text/javascript" src="../js/homepage.js"></script>
+	<script type="text/javascript">
+		$(function () {
+
+			$('.slideshow img').height($(window).height() - $('nav').height())
+			
+		})
+	</script>
 </body>
 </html>

@@ -255,13 +255,13 @@ router.route('/showimages')
 .get(function (req, res) {
   EventImage.findAll()
   .then(function (data) {
-    console.log(clc.yellow('GGGGGG :::::::::::  '), data);
+    // console.log(clc.yellow('GGGGGG :::::::::::  '), data);
     res.json(data);
   })
 })
 
   router.route('/addimage')
-  .post(upload.array('image', 2), function (req, res, next) {
+  .post(upload.single('images'), function (req, res, next) {
     console.log(clc.yellow('FFFFFFFFFFFFFFFFF ::::::::   '), req.files)
     res.json(req.files);
   })
@@ -291,6 +291,55 @@ router.route('/showimages')
     var slides = '<ul class="slideshow">';
     var newHtml = '';
     fs.readFile(path.join(__dirname, '../views/index.html'), function (err, html) {
+      if (err) {
+        console.log(err);
+        res.status(500).json({msg: 'internal server error'});
+      }
+      sql.sync()
+      .then(function () {
+        Event.findAll({where: {eventStartDate: {$gte: new Date()}}})
+        .then(function (frontPageEvents) {
+          for (var i = 0, j = frontPageEvents.length; i < j; i++) {
+           /* if (!frontPageEvents[i].eventSlideshowImage) {
+              frontPageEvents[i].eventSlideshowImage = randomTabImages[Math.floor(Math.random() * 4)];
+            }*/
+          
+            slides += '<li><span class="slideshowWrapper"><a href="/event/' + frontPageEvents[i].eventUrl + '"><h2 class="desc"><span class="slide-title">' + frontPageEvents[i].eventName + '</span><br /><br /><br /><span class="sub-title slideshow-date">' + months[frontPageEvents[i].eventStartDate.getMonth()] + ' ' + frontPageEvents[i].eventStartDate.getDate() + ' - ' + frontPageEvents[i].eventEndDate.getDate() + ', ' + frontPageEvents[i].eventEndDate.getFullYear() + '</span>';
+            if (frontPageEvents[i].eventRegistrationLink) {
+              slides += '<div class="sliderRegisterButton clearfix"><a href="' + frontPageEvents[i].eventRegistrationLink + '">Register Now!</a></div>';
+            } else if (!frontPageEvents[i].eventRegistrationLink) {
+              slides += '<div class="sliderRegisterButton clearfix" style="visibility: hidden;"><a href="' + frontPageEvents[i].eventRegistrationLink + '">Register Now!</a></div>';
+            }
+            /*if (frontPageEvents[i].homepageBulletOne) {
+              slides += '<br /><br /><span class="sub-title"><i class="fa fa-code"></i> ' + frontPageEvents[i].homepageBulletOne + '</span>';
+            } else if (!frontPageEvents[i].homepageBulletOne) {
+              slides += '<br /><span class="sub-title"></span>';
+            }
+            if (frontPageEvents[i].homepageBulletTwo) {
+              slides += '<br /><span class="sub-title"><i class="fa fa-code"></i> ' + frontPageEvents[i].homepageBulletTwo + '</span>';
+            } else if (!frontPageEvents[i].homepageBulletTwo) {
+              slides += '<br /><span class="sub-title"></span>';
+            }
+            if (frontPageEvents[i].homepageBulletThree) {
+              slides += '<br /><span class="sub-title"><i class="fa fa-code"></i> ' + frontPageEvents[i].homepageBulletThree + '</span>';
+            } else if (!frontPageEvents[i].homepageBulletThree) {
+              slides += '<br /><br /><span class="sub-title"></span>';
+            }*/
+            slides += '</h2></a></span><img src="./uploads/' + frontPageEvents[i].eventSlideshowImage + '" /></li>';
+          }
+          console.log(slides);
+          newHtml = html.toString().replace('<ul class="slideshow">', slides);
+          res.send(newHtml);
+        });
+      });
+    });
+  });
+
+router.route('/test2')
+  .get(function (req, res) {
+    var slides = '<ul class="slideshow">';
+    var newHtml = '';
+    fs.readFile(path.join(__dirname, '../views/test2.html'), function (err, html) {
       if (err) {
         console.log(err);
         res.status(500).json({msg: 'internal server error'});
