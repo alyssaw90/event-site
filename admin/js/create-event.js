@@ -22,8 +22,8 @@ $(document).ready(function () {
       processData: false,  // tell jQuery not to process the data
       contentType: false   // tell jQuery not to set contentType
     }).done(function( data ) {
-        console.log('Node Output:');
-        console.log( data );
+        // console.log('Node Output:');
+        // console.log( data );
     });
 	}
 
@@ -33,12 +33,11 @@ $(document).ready(function () {
 	})
 
 	$.get('/showimages', function (data) {
-		console.log(data)
 		var imagesHtml = '';
 		for (var i = 0, j = data.length; i < j; i++) {
 			imagesHtml += '<div style="float: left; text-align: center; width: 200px; padding: 10px; margin: 10px;"><img src="../uploads/' + data[i].imageLink + '" width="100" /><p>/uploads/' + data[i].imageLink + '</p></div>';
 		}
-		console.log(imagesHtml)
+		// console.log(imagesHtml)
 		$newEventImages.html(imagesHtml);
 	})
 

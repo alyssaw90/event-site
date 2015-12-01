@@ -20,11 +20,38 @@
 			<section class="col_12 slider">
 				<!-- Begin Backup Slideshow -->
 				<ul class="slideshow">
-					<li><img src="../uploads/slideshow-get-in-touch.png"></li>
-					<li><img src="../uploads/slideshow-direct-feedback.png"></li>
-					<li><img src="../uploads/slideshow-innovate.png"></li>
+					<li><a href="#fileFormats"><img src="../uploads/slide-1.jpg"></a></li>
+					<li><a href="#homepage-team"><img src="../uploads/slide-2.jpg"></a></li>
+					<li><img src="../uploads/slide-3.jpg"></li>
+					<li><img src="../uploads/slide-4.jpg"></li>
+					<li><img src="../uploads/slide-5.jpg"></li>
 				</ul>
 				<!-- end of Backup slideshow -->
+			</section>
+			<section class="col_12 infoBlocksContainer">
+				
+				<div class="col_3">
+					<h2>Learn</h2>
+					<div class="col_3 infoBlocks"><i class="fa fa-book fa-5x"></i></div>
+				</div>
+				<div class="col_3">
+				<h2>Build</h2>
+					<div class="col_3 infoBlocks">
+						<i class="fa fa-file-code-o fa-5x"></i>
+					</div>
+				</div>
+				<div class="col_3">
+				<h2>Connect</h2>
+					<div class="col_3 infoBlocks">
+						<i class="fa fa-globe fa-5x"></i>
+					</div>
+				</div>
+				<div class="col_3">
+				<h2>Innovate</h2>
+					<div class="col_3 infoBlocks">
+						<i class="fa fa-lightbulb-o fa-5x"></i>
+					</div>
+				</div>
 			</section>
 			<div class="col_12">
 				<section class="col_8">
@@ -109,7 +136,7 @@
 			<section class="col_12 home-page-experts" id="homepage-team">
 			<hr class="alt1" />
 			</section>
-			<section class="col_12">
+			<section class="col_12" id="fileFormats">
 				<h2>File Format Events</h2>
 				<p>Microsoft-hosted file format events provide software developers with the opportunity to test their implementations of the Office file formats.  Similar testing opportunities for implementations of the Open XML and Open Document Format (ODF) are available through the Document Interoperability Initiative.</p>
 				<hr class="alt1" />
@@ -150,5 +177,10 @@
 	<script type="text/javascript" src="../js/custom.js"></script>
 	<script type="text/javascript" src="../js/form-validator.js"></script>
 	<script type="text/javascript" src="../js/homepage.js"></script>
+	<script type="text/javascript">
+	$(function () {
+		$('.slideshow img').height('500px');
+	})
+	</script>
 </body>
 </html>
