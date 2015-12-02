@@ -193,7 +193,9 @@ li {
 }
 
 .menu-overlay a:hover {
-	background-color: #68217a;
+	/*background-color: #68217a;*/
+	color: rgba(255, 185, 0, 1);
+	text-shadow: 0 0 15px rgba(255, 185, 0, 1);
 }
 
 .purpleEventMenu {
@@ -1394,7 +1396,7 @@ footer a {
 
 @media all and (min-width: 769px) {
 	.events {
-		max-width: 95% !important;
+		/*max-width: 95% !important;*/
 
 	}
 

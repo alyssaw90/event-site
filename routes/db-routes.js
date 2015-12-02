@@ -386,7 +386,7 @@ router.route('/test2')
 
 router.route('/future-events')
 .get(function (req, res) {
-  var eventBlocksHtml = '<main class="events grid flex">';
+  var eventBlocksHtml = '<main class="events grid">';
   var newHtml = '';
   var colNum = 4;
   fs.readFile(path.join(__dirname, '../views/future-events.html'), function (err, html) {
@@ -398,7 +398,11 @@ router.route('/future-events')
     .then(function () {
       Event.findAll({where: {eventStartDate: {$gte: new Date()}}})
       .then(function (upcomingEvent) {
-        for (var i = 0, j = upcomingEvent.length; i < j; i++) {
+        var numFutureBlocks = 4;
+        if (upcomingEvent.length < 4) {
+          numFutureBlocks = upcomingEvent.length;
+        }
+        for (var i = 0; i < numFutureBlocks; i++) {
           var risingText = '';
           /*if (!upcomingEvent[i].eventFuturePageImage && upcomingEvent[i].eventSlideshowImage) {
             upcomingEvent[i].eventFuturePageImage = upcomingEvent[i].eventSlideshowImage;
@@ -409,9 +413,9 @@ router.route('/future-events')
           if (upcomingEvent[i].eventFuturePageText) {
             risingText = '<div class="rising_text"><a href="/event/' + upcomingEvent[i].eventUrl + '">' + upcomingEvent[i].eventFuturePageText + '</div>';
           }
-          eventBlocksHtml += '<div class="col_4 event_block" style="background-image: url(../uploads/' + upcomingEvent[i].eventSlideshowImage + ');"><a href="/event/' + upcomingEvent[i].eventUrl + '"><h1>' + upcomingEvent[i].eventLocation + '</h1><h3>' + upcomingEvent[i].eventName + '<br />' + months[upcomingEvent[i].eventStartDate.getMonth()] + ' ' + upcomingEvent[i].eventStartDate.getDate() + ' - ' + upcomingEvent[i].eventEndDate.getDate() + ', ' + upcomingEvent[i].eventEndDate.getFullYear() + '</h3></a>' + risingText + '</div>';
+          eventBlocksHtml += '<div class="col_' + 12 / numFutureBlocks + ' event_block" style="background-image: url(../uploads/' + upcomingEvent[i].eventSlideshowImage + ');"><a href="/event/' + upcomingEvent[i].eventUrl + '"><h1>' + upcomingEvent[i].eventLocation + '</h1><h3>' + upcomingEvent[i].eventName + '<br />' + months[upcomingEvent[i].eventStartDate.getMonth()] + ' ' + upcomingEvent[i].eventStartDate.getDate() + ' - ' + upcomingEvent[i].eventEndDate.getDate() + ', ' + upcomingEvent[i].eventEndDate.getFullYear() + '</h3></a>' + risingText + '</div>';
         }
-        newHtml = html.toString().replace('<main class="events grid flex">', eventBlocksHtml);
+        newHtml = html.toString().replace('<main class="events grid">', eventBlocksHtml);
         res.send(newHtml);
       })
     })
