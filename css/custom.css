@@ -654,20 +654,25 @@ footer a {
 	}
 
 	.infoBlocksContainer h2 {
-		/*text-align: center;*/
+		color: rgba(80, 80, 80, 1);
+		font-size: 2.5em;
+		text-align: center;
 	}
 
 	.infoBlocks {
 		/*text-align: center;*/
-		padding-top: 30px !important;
-		height: 220px;
-		width: 220px;
+		margin-right: auto;
+		margin-left: auto;
+		color: rgba(80, 80, 80, 1);
+		padding-top: 25px !important;
+		height: 180px;
+		width: 180px;
 		text-align: center;
-		font-size: 30px;
+		font-size: 25px;
 		border-radius: 100%;
 		border-width: 5px;
 		border-style: solid;
-		border-color: #000;
+		border-color: rgba(80, 80, 80, 1);
 	}
 	
 	.slideshow {
@@ -1107,6 +1112,25 @@ footer a {
 	.purpleEventMenu a:last-child {
 		margin-left: 0% !important;
 	}*/
+
+	.infoBlocksContainer h2 {
+		padding-top: -10px;
+		font-size: 2em;
+	}
+
+	.infoBlocks {
+		/*text-align: center;*/
+
+		padding-top: 20px !important;
+		height: 120px;
+		width: 120px;
+		text-align: center;
+		font-size: 14px;
+		border-radius: 100%;
+		border-width: 5px;
+		border-style: solid;
+		border-color: rgba(80, 80, 80, 1);
+	}
 
 	.menu-overlay ul {
 		width: 115%;
