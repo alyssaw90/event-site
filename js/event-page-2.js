@@ -284,7 +284,7 @@ $(document).ready(function () {
 									$($('a', this).attr('href')).show();
 								}
 							})
-
+							stickyFooter();
 						}
 					}
 

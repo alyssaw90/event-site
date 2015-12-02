@@ -2,12 +2,31 @@
 /*global $ */
 /*global document */
 /*global window */
+	//make footer stick to bottom of content or page, whichever is taller
+
+	function stickyFooter() {
+	  var footerHeight = $('.foot').height();
+	  var heightDiff = $(window).height() - $('body').height() + footerHeight;
+	  console.log('document height ::: ', $(document).height(), '    ', $(window).height());
+	  if ($(window).height() >= $(document).height()) {
+	  	console.log('window is taller ::::::: ');
+	    $('.foot').css('position', 'absolute').css('bottom', 0);
+	    $('body').css('margin-bottom', footerHeight);
+	  }
+
+	  if ($(window).height() < $(document).height()) {
+	  	console.log('window is smaller ::::::: ');
+	  	$('.foot').removeClass('stick-footer');
+	  	$('body').css('margin-bottom', 0);
+	  }
+	}
 
 $(document).ready(function () {
 	var $body = $('body');
-	var $footer = $('footer');
+	var $footer = $('.foot');
 	var $backToTopButton = $('.scroll-button .fa-chevron-up');
 	var $travelUlLinks = $('.travelUlLinks');
+	var $pastEvents = $('.past_events');
 
 /*	//make block slide up effect for upcoming event blocks -- moved to future-events.js
 	$('.event_block').hover(
@@ -74,6 +93,7 @@ $(document).ready(function () {
 	$(window).bind('load', function(){
 		$(window).resize(changeHeight($('.individual-homepage-expert')));
 		$(window).load(changeHeight($('.individual-homepage-expert')));
+		$(window).load(stickyFooter());
 	
 	});
 
@@ -110,23 +130,18 @@ $(document).ready(function () {
 	$(window).resize(fullWidthMobile($('.main-page-content')));
 	$(window).load(fullWidthMobile($('.main-page-content')));
 
-	//make footer stick to bottom of content or page, whichever is taller
 
-	function stickyFooter() {
-	  var footerHeight = $footer.height();
-	  var heightDiff = $(window).height() - $body.height() + footerHeight;
-	  if ($(window).height() > $(document).height()) {
-	    $footer.addClass('stick-footer');
-	    $body.css('margin-bottom', footerHeight);
-	  }
+	$pastEvents.click(function () {
+		console.log($(window).height(), ' ::::::::: ', $(document).height(), ';;;;;;; ', $(this).height())
+		if ($(window).height() >= $(document).height()) {
+			$footer.css('position', 'relative');
+		}
+		else {
+			$footer.css('position', 'absolute').css('bottom', 0);
+		}
+	});
 
-	  if ($(window).height() <= $(document).height()) {
-	  	$footer.removeClass('stick-footer');
-	  	$body.css('margin-bottom', 0);
-	  }
-	}
-
-	$(window).load(stickyFooter());
+	// $(window).load(stickyFooter());
 
 	$(window).onresize = stickyFooter;
 
@@ -168,7 +183,7 @@ $(document).ready(function () {
  	//position tooltips on map
 
  	var locateTip = function (e) {
- 		console.log('X posion : ', e.pageX, 'Y position : ', e.pageY);
+ 		// console.log('X posion : ', e.pageX, 'Y position : ', e.pageY);
 		$('#tiptip_holder').css('margin-top', (e.pageY - 100));
   	$('#tiptip_holder').css('margin-left', (e.pageX - 100));
   	$('#tiptip_holder').css('max-width', '100%');
@@ -196,7 +211,7 @@ $(document).ready(function () {
 	      // $('main').wrapInner('<div class="grid main-page-content"></div>')
 	      // $('main').wrap('<div></div>');
 	      // $('main').append(closeDiv);
-	      console.log('body width : ', $('body').width(), new_ie, 'test width: ', $('.test').width(), 'Footer width : ', $('footer').width(), 'header width : ', $('header').width());
+	      // console.log('body width : ', $('body').width(), new_ie, 'test width: ', $('.test').width(), 'Footer width : ', $('footer').width(), 'header width : ', $('header').width());
 	  }
  		
  	}());

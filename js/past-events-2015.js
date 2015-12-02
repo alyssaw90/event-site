@@ -66,6 +66,7 @@ $(document).ready(function () {
 		} else {
 			$calendar.empty();
 			$calendar.append(html);
+			stickyFooter();
 		}
 	/*	$.get('/allevents/2', function (data) {
 			console.log(data)
