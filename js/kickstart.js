@@ -34,13 +34,13 @@ jQuery(document).ready(function($){
 		video: true,
 		useCSS: true,
 		pager: false,
-		speed: 1000, // transition time
+		speed: 2000, // transition time
 		startSlide: 0,
 		infiniteLoop: true,
 		captions: true,
 		adaptiveHeight: true,
 		touchEnabled: true,
-		pause: 4000,
+		pause: 5000,
 		autoControls: false,
 		controls: true,
 		autoStart: true,
