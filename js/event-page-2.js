@@ -30,6 +30,17 @@ $(document).ready(function () {
 		var $registerButton = $('#registerButton');
 		var $eventScheduleTabLink = $('#eventScheduleTabLink');
 		var $eventTabDiv = $('#event-schedule');
+		//declare native JS variable for #eventTabLinks
+		var eventTabLinks = document.querySelector('#eventTabLinks');
+		//set MutationObserver to check for changes to child nodes (e.g. they become visible)
+		var observer = new MutationObserver(function (mutations) {
+    	stickyFooter();
+  	});
+  	var observerConfig = {
+  		attributes: true, 
+  		subtree: true
+  	};
+  	observer.observe(eventTabLinks, observerConfig);
 
 		//create object containing all current events
 		for (var i = 0, j = events.length; i < j; i++) {
@@ -283,16 +294,6 @@ $(document).ready(function () {
 
 						}
 					}
-					/*$('img').bind('load', function() {
-    				alert('hello world');
-    				stickyFooter();
-					});*/
-					$(document).ajaxStop(function() {
-  					stickyFooter();
-  					$('img').bind('load', function() {
-    					stickyFooter();
-						});
-					});
 					console.log(eventsObj);
 				});
 			});

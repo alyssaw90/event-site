@@ -3,27 +3,24 @@
 /*global document */
 /*global window */
 
-	//make footer stick to bottom of content or page, whichever is taller. Function is out of $(document).ready, because it needs to be available to other .js files
+/*Global Functions*/
+
+	//make footer stick to bottom of content or page, whichever is taller.
 
 function stickyFooter () {
-	// alert('hola');
-  var footerHeight = $('.foot').height();
-  var heightDiff = $(window).height() - $('body').height() + footerHeight;
-  console.log('document height ::: ', $(document).height(), '    ', $(window).height());
-  if ($(window).height() >= $(document).height()) {
-  	console.log('window is taller ::::::: ');
-  	// $('.foot').addClass('stick-footer');
-    // $('.scroll-button .fa-chevron-up').hide();
-    $('.foot').css('position', 'absolute').css('bottom', 0);
-    // $('body').css('margin-bottom', footerHeight);
+	var $body = $('body');
+	var $window = $(window);
+	var $document = $(document);
+	var $footer = $('.foot');
+	var $backToTopButton = $('.scroll-button .fa-chevron-up');
+  if ($window.height() >= $document.height()) {
+    $backToTopButton.hide();
+    $footer.css('position', 'absolute').css('bottom', 0);
   }
 
-  if ($(window).height() < $(document).height()) {
-  	console.log('window is smaller ::::::: ');
-  	// $('.foot').removeClass('stick-footer');
-  	// $('.scroll-button .fa-chevron-up').show();
-  	$('.foot').css('position', 'relative');
-  	// $('body').css('margin-bottom', 0);
+  if ($window.height() < $document.height()) {
+  	$backToTopButton.show();
+  	$footer.css('position', 'relative');
   }
 }
 
@@ -43,7 +40,7 @@ $(document).ready(function () {
 		function () {
 			$(this).find('div').stop(true, true).animate({'bottom': '-100%'}, 200);
 		});
-*/
+
 	//function to set divs with equal height
 	function changeHeight (div) {
 		// var $eventBlock = $('.event_block');
