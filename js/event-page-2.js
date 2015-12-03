@@ -1,9 +1,6 @@
 'use strict';
 
 $(document).ready(function () {
-	var $footer = $('footer');
-
-	$footer.css('bottom: 0;')
 
 	$.get('/events', function (events) {
 		var pathname = window.location.pathname.slice(7);
@@ -77,7 +74,6 @@ $(document).ready(function () {
 				//sort contacts by if they're attending and what their role is
 				$.get('/attendees', function (attendees) {
 					for (var i = 0, j = attendees.length; i < j; i++) {
-				console.log(attendees[i].eventId);
 						if (attendees[i].eventAttendeeRole === 'speaker') {
 							for (var ii = 0, jj = contacts.length; ii < jj; ii++) {
 								if (eventsObj[attendees[i].eventId] && contacts[ii].id === attendees[i].contactId) {
@@ -284,10 +280,21 @@ $(document).ready(function () {
 									$($('a', this).attr('href')).show();
 								}
 							})
-							stickyFooter();
+
 						}
 					}
-
+					/*$('img').bind('load', function() {
+    				alert('hello world');
+    				stickyFooter();
+					});*/
+					$(document).ajaxStop(function() {
+  					alert( "Triggered ajaxStop handler." );
+  					stickyFooter();
+  					$('img').bind('load', function() {
+    					alert('hello world', $('img'));
+    					stickyFooter();
+						});
+					});
 					console.log(eventsObj);
 				});
 			});

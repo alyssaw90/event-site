@@ -2,9 +2,11 @@
 /*global $ */
 /*global document */
 /*global window */
-	//make footer stick to bottom of content or page, whichever is taller
 
-	function stickyFooter() {
+	//make footer stick to bottom of content or page, whichever is taller. Function is out of $(document).ready, because it needs to be available to other .js files
+
+	function stickyFooter () {
+		// alert('hola');
 	  var footerHeight = $('.foot').height();
 	  var heightDiff = $(window).height() - $('body').height() + footerHeight;
 	  console.log('document height ::: ', $(document).height(), '    ', $(window).height());
@@ -17,6 +19,7 @@
 	  if ($(window).height() < $(document).height()) {
 	  	console.log('window is smaller ::::::: ');
 	  	$('.foot').removeClass('stick-footer');
+	  	$('.foot').css('position', 'relative');
 	  	$('body').css('margin-bottom', 0);
 	  }
 	}
