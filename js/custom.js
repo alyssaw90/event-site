@@ -13,6 +13,7 @@ function stickyFooter () {
 	var $document = $(document);
 	var $footer = $('.foot');
 	var $backToTopButton = $('.scroll-button .fa-chevron-up');
+	// alert('fucking footers');
   if ($window.height() >= $document.height()) {
     $backToTopButton.hide();
     $footer.css('position', 'absolute').css('bottom', 0);
