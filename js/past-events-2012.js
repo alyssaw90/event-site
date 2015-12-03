@@ -89,6 +89,7 @@ $(document).ready(function () {
 			$calendar.empty();
 			$calendar.append(html);
 		}
+		stickyFooter();
 
 	});
 });
