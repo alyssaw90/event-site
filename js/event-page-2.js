@@ -288,10 +288,8 @@ $(document).ready(function () {
     				stickyFooter();
 					});*/
 					$(document).ajaxStop(function() {
-  					alert( "Triggered ajaxStop handler." );
   					stickyFooter();
   					$('img').bind('load', function() {
-    					alert('hello world', $('img'));
     					stickyFooter();
 						});
 					});

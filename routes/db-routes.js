@@ -386,7 +386,7 @@ router.route('/test2')
 
 router.route('/future-events')
 .get(function (req, res) {
-  var eventBlocksHtml = '<main class="events grid">';
+  var eventBlocksHtml = '<main class="events grid"><section class="col_12">';
   var newHtml = '';
   var colNum = 4;
   fs.readFile(path.join(__dirname, '../views/future-events.html'), function (err, html) {
@@ -415,6 +415,7 @@ router.route('/future-events')
           }
           eventBlocksHtml += '<div class="col_' + 12 / numFutureBlocks + ' event_block" style="background-image: url(../uploads/' + upcomingEvent[i].eventSlideshowImage + ');"><a href="/event/' + upcomingEvent[i].eventUrl + '"><h1>' + upcomingEvent[i].eventLocation + '</h1><h3>' + upcomingEvent[i].eventName + '<br />' + months[upcomingEvent[i].eventStartDate.getMonth()] + ' ' + upcomingEvent[i].eventStartDate.getDate() + ' - ' + upcomingEvent[i].eventEndDate.getDate() + ', ' + upcomingEvent[i].eventEndDate.getFullYear() + '</h3></a>' + risingText + '</div>';
         }
+        eventBlocksHtml += '</section>';
         newHtml = html.toString().replace('<main class="events grid">', eventBlocksHtml);
         res.send(newHtml);
       })

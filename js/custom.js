@@ -12,15 +12,16 @@
 	  console.log('document height ::: ', $(document).height(), '    ', $(window).height());
 	  if ($(window).height() >= $(document).height()) {
 	  	console.log('window is taller ::::::: ');
+	  	// $('.foot').addClass('stick-footer');
 	    $('.foot').css('position', 'absolute').css('bottom', 0);
-	    $('body').css('margin-bottom', footerHeight);
+	    // $('body').css('margin-bottom', footerHeight);
 	  }
 
 	  if ($(window).height() < $(document).height()) {
 	  	console.log('window is smaller ::::::: ');
-	  	$('.foot').removeClass('stick-footer');
+	  	// $('.foot').removeClass('stick-footer');
 	  	$('.foot').css('position', 'relative');
-	  	$('body').css('margin-bottom', 0);
+	  	// $('body').css('margin-bottom', 0);
 	  }
 	}
 
@@ -135,13 +136,7 @@ $(document).ready(function () {
 
 
 	$pastEvents.click(function () {
-		console.log($(window).height(), ' ::::::::: ', $(document).height(), ';;;;;;; ', $(this).height())
-		if ($(window).height() >= $(document).height()) {
-			$footer.css('position', 'relative');
-		}
-		else {
-			$footer.css('position', 'absolute').css('bottom', 0);
-		}
+		stickyFooter();
 	});
 
 	// $(window).load(stickyFooter());

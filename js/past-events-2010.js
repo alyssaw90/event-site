@@ -83,8 +83,8 @@ $(document).ready(function () {
 		} else {
 			$calendar.empty();
 			$calendar.append(html);
-			stickyFooter();
 		}
+		stickyFooter();
 
 	});
 
