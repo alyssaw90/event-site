@@ -91,7 +91,6 @@
 
 		$.get('/events', function (data) {
 			var upcomingMenu = '<div class="col_2 center-block menu-block upcoming-menu"><a href="/future-events"><h2>Find an Event</h2></a></div>';
-			$(window).load(function () {console.log($('.purpleEventMenu').width(), $(window).width())})
 			var upcomingPurpleMenu = '<div class="col_6 purpleEventMenu" style="text-align: center;">';
 			$(data).each(function (i, elem) {
 				upcomingMenu += '<div class="col_2 center-block menu-block upcoming-menu upcoming-sub-menu"><a href="/event/' + elem.eventUrl + '"><h2>' + elem.eventName + '</h2></a></div>';
@@ -120,10 +119,8 @@
 				var socialIconWidth = 0;
 				var margin = ($(window).width() - $('.purpleEventMenu').width()) / ($('.purpleEventMenu').length * 6);
 				$('.social-icons').children().each(function (i) {
-					console.log($(this).width());
 					socialIconWidth += Math.abs($(this).width())
 				})
-				console.log( socialIconWidth)
 				// $('.purpleEventMenu').css('left', margin * -1);
 				// $('.purpleEventMenuWrapper').css('text-align', 'center');
 			// })

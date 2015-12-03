@@ -160,10 +160,10 @@ li {
 	padding:0px 5px;
 }
 
-.stick-footer {
+/*.stick-footer {
 	  position: absolute;
 		bottom: 0;
-}
+}*/
 
 .fa-bars {
 	color: #fff;
@@ -193,7 +193,9 @@ li {
 }
 
 .menu-overlay a:hover {
-	background-color: #68217a;
+	/*background-color: #68217a;*/
+	color: rgba(255, 185, 0, 1);
+	text-shadow: 0 0 15px rgba(255, 185, 0, 1);
 }
 
 .purpleEventMenu {
@@ -564,31 +566,6 @@ footer a {
 
 .footer-right a:hover {
   text-shadow: 0 0 10px rgba(80, 80, 80, 1);
-}
-
-/*.footer-left a:hover {
-  text-shadow: 0 0 10px rgba(210, 210, 210, 1);
-}*/
-
-/*.footer-left {
-	background-color: #505050;
-	padding-right: 2.5%
-}*/
-
-
-.foot li {
-	/*list-style-type: none;*/
-	/*display: inline;*/
-	/*font-size: 1.25em;*/
-	/*font-weight: bold;*/
-	/*padding: 2%;*/
-}
-
-.foot  {
-	/*margin: 0 0 0 0;*/
-	/*min-height: 100px;*/
-	/*width: 50%;*/
-/*	padding: 1% 1.5% 0 0;*/
 }
 
 .mobile-foot {
@@ -1394,7 +1371,7 @@ footer a {
 
 @media all and (min-width: 769px) {
 	.events {
-		max-width: 95% !important;
+		/*max-width: 95% !important;*/
 
 	}
 
