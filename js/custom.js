@@ -5,25 +5,29 @@
 
 	//make footer stick to bottom of content or page, whichever is taller. Function is out of $(document).ready, because it needs to be available to other .js files
 
-	function stickyFooter () {
-		// alert('hola');
-	  var footerHeight = $('.foot').height();
-	  var heightDiff = $(window).height() - $('body').height() + footerHeight;
-	  console.log('document height ::: ', $(document).height(), '    ', $(window).height());
-	  if ($(window).height() >= $(document).height()) {
-	  	console.log('window is taller ::::::: ');
-	  	// $('.foot').addClass('stick-footer');
-	    $('.foot').css('position', 'absolute').css('bottom', 0);
-	    // $('body').css('margin-bottom', footerHeight);
-	  }
+function stickyFooter () {
+	// alert('hola');
+  var footerHeight = $('.foot').height();
+  var heightDiff = $(window).height() - $('body').height() + footerHeight;
+  console.log('document height ::: ', $(document).height(), '    ', $(window).height());
+  if ($(window).height() >= $(document).height()) {
+  	console.log('window is taller ::::::: ');
+  	// $('.foot').addClass('stick-footer');
+    // $('.scroll-button .fa-chevron-up').hide();
+    $('.foot').css('position', 'absolute').css('bottom', 0);
+    // $('body').css('margin-bottom', footerHeight);
+  }
 
-	  if ($(window).height() < $(document).height()) {
-	  	console.log('window is smaller ::::::: ');
-	  	// $('.foot').removeClass('stick-footer');
-	  	$('.foot').css('position', 'relative');
-	  	// $('body').css('margin-bottom', 0);
-	  }
-	}
+  if ($(window).height() < $(document).height()) {
+  	console.log('window is smaller ::::::: ');
+  	// $('.foot').removeClass('stick-footer');
+  	// $('.scroll-button .fa-chevron-up').show();
+  	$('.foot').css('position', 'relative');
+  	// $('body').css('margin-bottom', 0);
+  }
+}
+
+
 
 $(document).ready(function () {
 	var $body = $('body');
@@ -31,8 +35,7 @@ $(document).ready(function () {
 	var $backToTopButton = $('.scroll-button .fa-chevron-up');
 	var $travelUlLinks = $('.travelUlLinks');
 	var $pastEvents = $('.past_events');
-
-/*	//make block slide up effect for upcoming event blocks -- moved to future-events.js
+//make block slide up effect for upcoming event blocks -- moved to future-events.js
 	$('.event_block').hover(
 		function () {
 		$(this).find('div').stop(true, true).animate({'bottom': '0'}, 200);
@@ -134,21 +137,10 @@ $(document).ready(function () {
 	$(window).resize(fullWidthMobile($('.main-page-content')));
 	$(window).load(fullWidthMobile($('.main-page-content')));
 
-
-	$pastEvents.click(function () {
-		stickyFooter();
-	});
-
-	// $(window).load(stickyFooter());
-
-	$(window).onresize = stickyFooter;
-
- 	$(window).load(function () {
-		if ($(window).height() >= $(document).height()) {
-			$backToTopButton.hide();
-			$footer.addClass('stick-footer');
-		}
- 	});
+		// if ($(window).height() < $(document).height()) {
+		// 	$backToTopButton.hide();
+		// 	// $footer.addClass('stick-footer');
+		// }
 
 	//function to add and remove CSS properties depending on screen size
 
