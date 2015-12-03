@@ -294,11 +294,12 @@ $(document).ready(function () {
 
 						}
 					}
-					$('#eventTabs img').bind('load', function() {
+					$('img').bind('load', function() {
     				// alert('hello world');
     				stickyFooter();
 					});
 					/*$(document).ajaxStop(function() {
+						alert('hola');
   					stickyFooter();
 					});*/
 					console.log(eventsObj);
