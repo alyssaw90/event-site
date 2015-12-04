@@ -286,7 +286,7 @@ router.route('/showimages')
     })
   })*/
 
-  router.route('/')
+  router.route('/oldhome')
   .get(function (req, res) {
     var slides = '<ul class="slideshow">';
     var newHtml = '';

@@ -117,10 +117,10 @@ $(document).ready(function () {
 				// imgArr[i] = $.parseJSON(imgArr[i]);
 			}
 			console.log(JSON.parse(JSON.stringify(imgArr)));
-			$calendar.fancybox({type: 'image', href: '/uploads/shanghaiinteropdevdays2015-2026/_MG_3991.JPG'});
+			$calendar.fancybox.open(data.files);
 			// var f = $(this).attr('rel');
-				$calendar.prepend(data.picsHtml);
-				$('img').bind('load', function() {
+				// $calendar.prepend(data.picsHtml);
+				$('img').bind('load', function () {
   				// alert('hello world');
   				stickyFooter();
 				});
