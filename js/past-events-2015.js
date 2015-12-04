@@ -120,6 +120,10 @@ $(document).ready(function () {
 			$calendar.fancybox({type: 'image', href: '/uploads/shanghaiinteropdevdays2015-2026/_MG_3991.JPG'});
 			// var f = $(this).attr('rel');
 				$calendar.prepend(data.picsHtml);
+				$('img').bind('load', function() {
+  				// alert('hello world');
+  				stickyFooter();
+				});
 			})
 			/*.done(function (data2) {
 				$calendar.fancybox(
