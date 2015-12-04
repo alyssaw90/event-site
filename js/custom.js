@@ -71,6 +71,11 @@ $(document).ready(function () {
 		});
 	}
 
+	//apply flip animation to social icons
+/*	$('.social img').hover(function () {
+		$(this).toggleClass('animated bounce');
+	});*/
+
 	/*$(window).load(changeWidth($('.menu-block')));
 	$(window).resize(changeWidth($('.menu-block')));*/
 
