@@ -448,14 +448,13 @@ router.route('/allevents/:eventId')
           picsHtml += '<a href="../uploads/' + data.eventUrl + '/' + files[key] + '" class="fancybox" type="image" ><img src="../uploads/' + data.eventUrl + '/' + files[key] + '" width="100" height="100" /></a>';
         }
         picsHtml += '</div>';
-        for (var i = 0, j = files.length; i < j; i++) {
+        /*for (var i = 0, j = files.length; i < j; i++) {
           files[i] = '../uploads/' + data.eventUrl + '/' + files[i];
-        }
-        console.log(clc.magenta('ffffffff ::::::::::  '), files);
+        }*/
         var testHtml = '<div class="col_12 gallery"><a href="../uploads/shanghaiinteropdevdays2015-2026/_MG_3990.JPG" rel="gallery"><img src="../uploads/shanghaiinteropdevdays2015-2026/_MG_3990.JPG" width="100" height="100" /></a><a href="../uploads/shanghaiinteropdevdays2015-2026/_MG_4077.JPG" rel="gallery"><img src="../uploads/shanghaiinteropdevdays2015-2026/_MG_4077.JPG" width="100" height="100" /></a></div>';
         returnObj.picsHtml = picsHtml;
         returnObj.files = files;
-        res.json(testHtml);
+        res.json(returnObj);
       })
     })
   })

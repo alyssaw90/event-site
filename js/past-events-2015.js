@@ -7,6 +7,7 @@
 $(document).ready(function () {
 
 	var $calendar = $('#calendar');
+	var imgArr = [];
 
 	$( "#2015_events" ).click(function () {
 
@@ -78,38 +79,47 @@ $(document).ready(function () {
 
 		$('#shanghai2015').click(function (e) {
 			$.get('/allevents/2', function (data) {
-				$calendar.fancybox('/allevents/2',
-					{
-						type: 'image',
-						href: '/uploads/shanghaiinteropdevdays2015-2026/_MG_4077.JPG',
-						onComplete: function (current, previous) {
-							for (var key in this) {
-								console.log('KEY :::::::::::   ', key,'     THIS[KEY] :::::::::::::  ', this[key]);
-							}
-						console.info( 'Current: ', current[0] );        
-        		console.info( 'Previous: ', /*(previous ? previous.href : '-')*/previous );
+				// $calendar.fancybox('/allevents/2',
+				// 	{
+				// 		type: 'image',
+				// 		href: '/uploads/shanghaiinteropdevdays2015-2026/_MG_4077.JPG',
+				// 		onComplete: function (current, previous) {
+				// 			for (var key in this) {
+				// 				console.log('KEY :::::::::::   ', key,'     THIS[KEY] :::::::::::::  ', this[key]);
+				// 			}
+				// 		console.info( 'Current: ', current[0] );        
+    //     		console.info( 'Previous: ', /*(previous ? previous.href : '-')*/previous );
         		
-        		/*if (previous) {
-        		    console.info( 'Navigating: ' + (current.index > previous.index ? 'right' : 'left') );     
-        		}*/
-						}
-					},
-					{
-						type: 'image',
-						href: '/uploads/shanghaiinteropdevdays2015-2026/_MG_3991.JPG'
-					},
-					{
-						// afterLoad: function (current, previous) {
-						// console.info( 'Current: ', current.href );        
-      //   		console.info( 'Previous: ', (previous ? previous.href : '-') );
+    //     		if (previous) {
+    //     		    console.info( 'Navigating: ' + (current.index > previous.index ? 'right' : 'left') );     
+    //     		}
+				// 		}
+				// 	},
+				// 	{
+				// 		type: 'image',
+				// 		href: '/uploads/shanghaiinteropdevdays2015-2026/_MG_3991.JPG'
+				// 	},
+				// 	{
+				// 		// afterLoad: function (current, previous) {
+				// 		// console.info( 'Current: ', current.href );        
+    //   //   		console.info( 'Previous: ', (previous ? previous.href : '-') );
         		
-      //   		/*if (previous) {
-      //   		    console.info( 'Navigating: ' + (current.index > previous.index ? 'right' : 'left') );     
-      //   		}*/
-						// }
-					}
-				)
-				$calendar.prepend(data);
+    //   //   		/*if (previous) {
+    //   //   		    console.info( 'Navigating: ' + (current.index > previous.index ? 'right' : 'left') );     
+    //   //   		}*/
+				// 		// }
+				// 	}
+				// )
+			for (var i = 0, j = data.files.length; i < j; i++) {
+				/*imgArr[i] = '{"href" : "/uploads/shanghaiinteropdevdays2015-2026/' +  data.files[i] + '", "type" : "image"}';
+				imgArr[i] = $.parseJSON(imgArr[i]);*/
+				imgArr.push({'type': 'image', 'href': '/uploads/shanghaiinteropdevdays2015-2026/' + data.files[i]});
+				// imgArr[i] = $.parseJSON(imgArr[i]);
+			}
+			console.log(JSON.parse(JSON.stringify(imgArr)));
+			$calendar.fancybox({type: 'image', href: '/uploads/shanghaiinteropdevdays2015-2026/_MG_3991.JPG'});
+			// var f = $(this).attr('rel');
+				$calendar.prepend(data.picsHtml);
 			})
 			/*.done(function (data2) {
 				$calendar.fancybox(

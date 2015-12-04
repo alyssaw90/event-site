@@ -194,8 +194,9 @@ li {
 
 .menu-overlay a:hover {
 	/*background-color: #68217a;*/
-	color: rgba(255, 185, 0, 1);
-	text-shadow: 0 0 15px rgba(255, 185, 0, 1);
+	/*color: rgba(255, 185, 0, 1);*/
+	text-shadow: 0 0 15px #FFF;
+	font-weight: bold;
 }
 
 .purpleEventMenu {
@@ -595,18 +596,18 @@ footer a {
 }
 
 .wrap {
-	  float:left;
-	  clear:none;
-	  overflow:hidden;
-		width: 100px;
+	  /*float:left;*/
+	  /*clear:none;*/
+	  /*overflow:hidden;*/
+		/*width: 100px;*/
     position: fixed;
     top: 21.5%;
     /*left: 95%;*/
-    right: 0%;
 	}
 	.wrap img {
 	  position:relative;
 	  z-index:1;
+	  /*float: left;*/
 	}
 /*	.wrap .desc {
 	  display:block;
@@ -839,17 +840,24 @@ footer a {
 		font-size: 2.5vw;
 		line-height: 120%;
 	}
-/*
+
 	.social {
     z-index: 999;
-	}*/
-/*
+    left: 0;
+    /*padding-left: 0;*/
+	}
+
+	.social ul {
+		/*margin-left: -50px;*/
+	}
+
 	.social li {
     list-style-type: none;
     margin: 0;
     padding: 1px 0 0 0;
     text-align: right;
-	}*/
+    float: left;
+	}
 
 	.header-image {
 		display: none;
@@ -969,6 +977,10 @@ footer a {
 
 	.past_events h2 {
 		color: #fff;
+	}
+
+	.past_events:hover {
+		cursor: pointer;
 	}
 
 	.rising_text p {
