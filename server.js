@@ -23,7 +23,7 @@ require('./routes/admin-routes')(adminRouter);
 console.log(clc.magenta('LLLLLLLLLLL ::::::::::::::  '), process.env.SECRET_KEY)
 
 app.use(express.static(__dirname + '/'));
-app.use('/', aboutRouter);
+// app.use('/', aboutRouter);
 app.use('/', dbRouter);
 app.use('/', viewRouter);
 app.use('/', adminRouter);

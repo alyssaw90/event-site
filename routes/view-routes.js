@@ -32,16 +32,21 @@ module.exports = function (router) {
   router.route('/test')
   .get(function (req, res) {
     res.sendFile(path.join(__dirname, '../views/test.html'));
-  })
+  });
 
   router.route('/test2')
   .get(function (req, res) {
     res.sendFile(path.join(__dirname, '../views/test2.html'));
-  })
+  });
 
   router.route('/test3')
   .get(function (req, res) {
     res.sendFile(path.join(__dirname, '../views/test3.html'));
+  });
+
+  router.route('/about')
+  .get(function (req, res) {
+    res.sendFile(path.join(__dirname, '../views/about.html'));
   })
 
   router.route('/past-events')
