@@ -6,6 +6,7 @@
 
  $(document).ready(function () {
  	
+ 	var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
  	var $header = $('header');
  	var $menuBlock = $('.menu-block');
  	var menu = '<!-- Begin upper purple menu -->\
@@ -77,10 +78,12 @@
 
 		$.get('/events', function (data) {
 			var upcomingMenu = '<div class="col_2 center-block menu-block upcoming-menu"><a href="/future-events"><h2>Find an Event</h2></a></div>';
-			var upcomingPurpleMenu = '<div class="col_6 purpleEventMenu" style="text-align: center;">';
+			var upcomingPurpleMenu = '<div class="col_6 purpleEventMenu">';
 			$(data).each(function (i, elem) {
+				var startDate = new Date(elem.eventStartDate);
+				// console.log(new Date(elem.eventStartDate).getDate());
 				upcomingMenu += '<div class="col_2 center-block menu-block upcoming-menu upcoming-sub-menu"><a href="/event/' + elem.eventUrl + '"><h2>' + elem.eventName + '</h2></a></div>';
-				upcomingPurpleMenu += '<a href="/event/' + elem.eventUrl + '">' + elem.eventLocation + '</a>'
+				upcomingPurpleMenu += '<div class="float-left"><a href="/event/' + elem.eventUrl + '">' + elem.eventLocation + '<br /><span class="purpleSubMenu">' + months[startDate.getMonth()] + ' ' + startDate.getDate() + ', ' + startDate.getFullYear() + '</span></a></div>';
 			})
 			upcomingPurpleMenu += '</div>';
 			menu = menu.replace('<div class="col_2 center-block menu-block upcoming-menu"><a href="/future-events"><h2>Find an Event</h2></a></div>', upcomingMenu).replace('<div class="col_6 purpleEventMenu"></div>', upcomingPurpleMenu);
@@ -102,11 +105,11 @@
 				}
 			);
 			// $(window).load(function () 
-				var socialIconWidth = 0;
+				/*var socialIconWidth = 0;
 				var margin = ($(window).width() - $('.purpleEventMenu').width()) / ($('.purpleEventMenu').length * 6);
 				$('.social-icons').children().each(function (i) {
 					socialIconWidth += Math.abs($(this).width())
-				})
+				})*/
 				// $('.purpleEventMenu').css('left', margin * -1);
 				// $('.purpleEventMenuWrapper').css('text-align', 'center');
 			// })
