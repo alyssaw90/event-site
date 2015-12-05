@@ -212,16 +212,22 @@ li {
 	/*margin-right: 13% !important;*/
 	/*margin-left: -15% !important;*/
 	/*padding-top: 4% !important;*/
-	/*font-size: 1.3vw !important;*/
+	font-size: 1.3vw !important;
 }
 
 .purpleEventMenu a {
 	color: #FFF;
 	font-family: 'SegoeUILight';
-	line-height: 1.3em;
-	padding-right: 2.5%;
-	padding-left: 2.5%;
-	font-size: 2vw !important;
+	/*line-height: 1.3em;*/
+	/*padding-right: 2.5%;*/
+	/*padding-left: 2.5%;*/
+	font-size: 1.2vw !important;
+}
+
+.purpleSubMenu {
+	font-size: .8vw;
+	padding-right: 30px;
+	text-align: center;
 }
 
 .social-icons {
@@ -555,6 +561,11 @@ footer a {
 	color: #000;
 }
 
+footer img {
+	max-height: 25px;
+	/*padding: 2px;*/
+}
+
 .footer-at-bottom {
 	position: relative;
 }
@@ -562,7 +573,7 @@ footer a {
 .footer-right {
 	background-color: #d2d2d2;
 	float: right;
-	max-height: 60px;
+	max-height: 80px;
 }
 
 .footer-right a:hover {

@@ -24,10 +24,10 @@ module.exports = function (router) {
     extended: true
   }));
 
-/*	router.route('/')
+	router.route('/')
   .get(function (req, res) {
-    res.sendFile(path.join(__dirname, '../index.html'));
-  });*/
+    res.sendFile(path.join(__dirname, '../views/test.html'));
+  });
 
   router.route('/test')
   .get(function (req, res) {
