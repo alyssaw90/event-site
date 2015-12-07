@@ -221,12 +221,17 @@ li {
 	/*line-height: 1.3em;*/
 	/*padding-right: 2.5%;*/
 	/*padding-left: 2.5%;*/
-	font-size: 1.2vw !important;
+	font-size: 1.4vw !important;
+}
+
+.upcomingPurpleMenu {
+	margin-right: 5%;
+	text-align: center;
 }
 
 .purpleSubMenu {
-	font-size: .8vw;
-	padding-right: 30px;
+	font-size: .7vw;
+	/*padding-right: 30px;*/
 	text-align: center;
 }
 
