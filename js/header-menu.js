@@ -119,7 +119,7 @@
 			$('.hamburger-menu').click(function () {
 				// $('.mobile-menu:first').toggleClass('add-space');
   			if ($('.hidden-div').is(':hidden')) {
-  			  $('.hidden-div').slideDown('slow');
+  			  $('.hidden-div').toggle( "slide" );
   			  $('.menu-overlay').css('height', '100%');
   			} else {
   			  $('.hidden-div').slideUp('slow');
