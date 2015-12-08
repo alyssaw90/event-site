@@ -62,35 +62,36 @@
 		</nav>\
 		<!-- End gray desktop menu -->';
 
-			function changeWidth (div) {
+			function changeWidth () {
 			var widestBlock = 0;
-			div.each(function () {
+			$('.menu-block').each(function () {
 				if ($(this).width() > widestBlock) {
 					widestBlock = $(this).width();
 				}
 			});
-	
-			div.each(function () {
+			
+			$('.menu-block').each(function () {
 				$(this).width(widestBlock);
 			});
+			console.log(widestBlock);
 		}
 
 
 		$.get('/events', function (data) {
-			var upcomingMenu = '<div class="col_2 center-block menu-block upcoming-menu"><a href="/future-events"><h2>Find an Event</h2></a></div>';
+			// var upcomingMenu = '<div class="col_2 center-block menu-block upcoming-menu"><a href="/future-events"><h2>Find an Event</h2></a></div>';
 			var upcomingPurpleMenu = '<div class="col_6 purpleEventMenu">';
 			$(data).each(function (i, elem) {
 				var startDate = new Date(elem.eventStartDate);
 				// console.log(new Date(elem.eventStartDate).getDate());
-				upcomingMenu += '<div class="col_2 center-block menu-block upcoming-menu upcoming-sub-menu"><a href="/event/' + elem.eventUrl + '"><h2>' + elem.eventName + '</h2></a></div>';
+				// upcomingMenu += '<div class="col_2 center-block menu-block upcoming-menu upcoming-sub-menu"><a href="/event/' + elem.eventUrl + '"><h2>' + elem.eventName + '</h2></a></div>';
 				upcomingPurpleMenu += '<div class="float-left upcomingPurpleMenu"><a href="/event/' + elem.eventUrl + '">' + elem.eventLocation + '<br /><span class="purpleSubMenu">' + months[startDate.getMonth()] + ' ' + startDate.getDate() + ', ' + startDate.getFullYear() + '</span></a></div>';
 			})
 			upcomingPurpleMenu += '</div>';
-			menu = menu.replace('<div class="col_2 center-block menu-block upcoming-menu"><a href="/future-events"><h2>Find an Event</h2></a></div>', upcomingMenu).replace('<div class="col_6 purpleEventMenu"></div>', upcomingPurpleMenu);
+			menu = menu.replace('<div class="col_6 purpleEventMenu"></div>', upcomingPurpleMenu)/*.replace('<div class="col_2 center-block menu-block upcoming-menu"><a href="/future-events"><h2>Find an Event</h2></a></div>', upcomingMenu)*/;
 			var headerMenu = $.parseHTML(menu);
 			$header.prepend(headerMenu);
 			//make future events tab expand when hovered
-			$('.expanding-menu').hover(function () {
+			/*$('.expanding-menu').hover(function () {
 				var $menuHeight = $(this).parent().height();
 	 			var $menuWidth  = $('.upcoming-menu').width();
 	 			// $('.upcoming-sub-menu:first').css('margin-top', $menuHeight);
@@ -103,7 +104,7 @@
 				function () {
 					$('.upcoming-sub-menu').slideUp('fast');
 				}
-			);
+			);*/
 			// $(window).load(function () 
 				/*var socialIconWidth = 0;
 				var margin = ($(window).width() - $('.purpleEventMenu').width()) / ($('.purpleEventMenu').length * 6);
@@ -113,8 +114,35 @@
 				// $('.purpleEventMenu').css('left', margin * -1);
 				// $('.purpleEventMenuWrapper').css('text-align', 'center');
 			// })
-			$(window).load(changeWidth($('.menu-block')));
-			$(window).resize(changeWidth($('.menu-block')));
+			// $(window).load(changeWidth($('.menu-block')));
+			$(window).load(changeWidth());
+			jQuery(window).load(changeWidth).resize(function (event) {
+  			window.clearTimeout(semaphore);
+  
+  			semaphore = window.setTimeout(changeWidth, 200);
+			});
+			/*$(document).ready(function(){
+    		$(window).resize(function() {
+    			console.log('resize reached');
+      	changeWidth();
+    		})
+  		});*/
+			/*$(window).resize(function () {
+				changeWidth();
+				alert('resized');
+			});*/
+			/*var $window = $(window);
+			var width = $window.width();
+  		var height = $window.height();
+			setInterval(function () {
+        if ((width != $window.width()) || (height != $window.height())) {
+            width = $window.width();
+            height = $window.height();
+
+            // alert('resized!');
+            changeWidth();
+        }
+    	}, 300)*/
 			//highlight currently selected menu item
 			if (window.location.pathname === '/') {
 				$('.home-menu-button').addClass('current-page');

@@ -25,6 +25,34 @@ function stickyFooter () {
   }
 }
 
+//function to set divs with equal height
+function changeHeight (div) {
+	// var $eventBlock = $('.event_block');
+	var tallestBlock = 0;
+	div.each(function () {
+		if ($(this).height() > tallestBlock) {
+			tallestBlock = $(this).height();
+		}
+	});
+
+	div.each(function () {
+		$(this).height(tallestBlock);
+	});
+}
+
+// function to set divs with equal width
+function changeWidth (div) {
+	var widestBlock = 0;
+	div.each(function () {
+		if ($(this).width() > widestBlock) {
+			widestBlock = $(this).width();
+		}
+	});
+
+	div.each(function () {
+		$(this).width(widestBlock);
+	});
+}
 
 
 $(document).ready(function () {
@@ -42,34 +70,6 @@ $(document).ready(function () {
 			$(this).find('div').stop(true, true).animate({'bottom': '-100%'}, 200);
 		});
 
-	//function to set divs with equal height
-	function changeHeight (div) {
-		// var $eventBlock = $('.event_block');
-		var tallestBlock = 0;
-		div.each(function () {
-			if ($(this).height() > tallestBlock) {
-				tallestBlock = $(this).height();
-			}
-		});
-
-		div.each(function () {
-			$(this).height(tallestBlock);
-		});
-	}
-
-	// function to set divs with equal width
-	function changeWidth (div) {
-		var widestBlock = 0;
-		div.each(function () {
-			if ($(this).width() > widestBlock) {
-				widestBlock = $(this).width();
-			}
-		});
-
-		div.each(function () {
-			$(this).width(widestBlock);
-		});
-	}
 
 	//apply flip animation to social icons
 /*	$('.social img').hover(function () {
