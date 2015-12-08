@@ -51,6 +51,26 @@ var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
 
 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 var randomTabImages = ['alt-slide-1.jpg', 'alt-slide-2.jpg', 'alt-slide-3.jpg', 'alt-slide-4.jpg', 'alt-slide-5.jpg', 'alt-slide-6.jpg'];
+var msColors = ['ffb900', 'd83b01', 'e81123', 'b4009e', '5c2d91', '0078d7', '008272', '107c10'];
+
+function shuffle (arr) {
+  var currentIndex = arr.length, tempVal, randomIndex ;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    tempVal = arr[currentIndex];
+    arr[currentIndex] = arr[randomIndex];
+    arr[randomIndex] = tempVal;
+  }
+
+  return arr;
+}
 
 module.exports = function (router) {
   router.use(bodyparser.json());
@@ -389,6 +409,8 @@ router.route('/future-events')
   var eventBlocksHtml = '<main class="events grid"><section class="col_12">';
   var newHtml = '';
   var colNum = 4;
+  var backgroundColors = shuffle(msColors);
+  var numFutureBlocks = 4;
   fs.readFile(path.join(__dirname, '../views/future-events.html'), function (err, html) {
     if (err) {
       console.log(err);
@@ -398,7 +420,6 @@ router.route('/future-events')
     .then(function () {
       Event.findAll({where: {eventStartDate: {$gte: new Date()}}})
       .then(function (upcomingEvent) {
-        var numFutureBlocks = 4;
         if (upcomingEvent.length < 4) {
           numFutureBlocks = upcomingEvent.length;
         }
@@ -410,10 +431,12 @@ router.route('/future-events')
           if (!upcomingEvent[i].eventFuturePageImage && !upcomingEvent[i].eventSlideshowImage) {
             upcomingEvent[i].eventFuturePageImage = randomTabImages[Math.floor(Math.random() * 4)];
           }*/
-          if (upcomingEvent[i].eventFuturePageText) {
+          // this is the rising upcoming block, un comment it to bring it back
+          /*if (upcomingEvent[i].eventFuturePageText) {
             risingText = '<div class="rising_text"><a href="/event/' + upcomingEvent[i].eventUrl + '">' + upcomingEvent[i].eventFuturePageText + '</div>';
-          }
-          eventBlocksHtml += '<div class="col_' + 12 / numFutureBlocks + ' event_block" style="background-image: url(../uploads/' + upcomingEvent[i].eventSlideshowImage + ');"><a href="/event/' + upcomingEvent[i].eventUrl + '"><h1>' + upcomingEvent[i].eventLocation + '</h1><h3>' + upcomingEvent[i].eventName + '<br />' + months[upcomingEvent[i].eventStartDate.getMonth()] + ' ' + upcomingEvent[i].eventStartDate.getDate() + ' - ' + upcomingEvent[i].eventEndDate.getDate() + ', ' + upcomingEvent[i].eventEndDate.getFullYear() + '</h3></a>' + risingText + '</div>';
+          }*/
+            console.log(clc.magenta('LLLLLL   ::'), backgroundColors, i);
+          eventBlocksHtml += '<div class="col_' + 12 / numFutureBlocks + ' event_block" style="background-color: #' + backgroundColors[i] + ';"><a href="/event/' + upcomingEvent[i].eventUrl + '"><p>More Details</p><h1>' + upcomingEvent[i].eventLocation + '</h1><h3>' + upcomingEvent[i].eventName + '<br />' + months[upcomingEvent[i].eventStartDate.getMonth()] + ' ' + upcomingEvent[i].eventStartDate.getDate() + ' - ' + upcomingEvent[i].eventEndDate.getDate() + ', ' + upcomingEvent[i].eventEndDate.getFullYear() + '</h3></a>' + risingText + '</div>';
         }
         eventBlocksHtml += '</section>';
         newHtml = html.toString().replace('<main class="events grid">', eventBlocksHtml);
