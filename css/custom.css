@@ -389,12 +389,14 @@ table {
 	width: 20%;
 }
 
-.center-block h2 {
+.center-block a {
 	/*color: #FFF;*/
 	color: rgba(80, 80, 80, 1);
 	text-align: center;
-	font-size: 1.5em;
-	line-height: .8em;
+	/*font-size: 1.5em;*/
+	font-size: 25px !important;
+	line-height: 1.5em;
+	/*line-height: .8em;*/
 }
 
 .upcoming-sub-menu h2 {
@@ -411,9 +413,10 @@ table {
 .menu-block {
 	background-color: rgba(210, 210, 210, 1);
 	width: 100%;
+	text-align: center;
 }
 
-.menu-block h2 {
+.menu-block a {
 	/*color: rgba(80, 80, 80, 1);*/
 }
 
@@ -426,11 +429,11 @@ table {
 	color: #fff;
 }
 
-.menu-block:hover h2 {
+.menu-block:hover a {
 	color: #fff;
 }
 
-.menu-block.current-page h2 {
+.menu-block.current-page a {
 	color: #fff;
 }
 
@@ -649,7 +652,8 @@ footer img {
 
 	.infoBlocksContainer h2 {
 		color: rgba(80, 80, 80, 1);
-		font-size: 2.5em;
+		/*font-size: 2.5em;*/
+		font-size: 25px !important;
 		text-align: center;
 	}
 
@@ -662,7 +666,7 @@ footer img {
 		height: 180px;
 		width: 180px;
 		text-align: center;
-		font-size: 25px;
+		/*font-size: 25px;*/
 		border-radius: 100%;
 		border-width: 5px;
 		border-style: solid;
@@ -1238,8 +1242,9 @@ footer img {
 	.right-block {
 		height: 140px;	
 	}*/
-	.center-block h2 {
-		font-size: 1.5em;
+	.center-block a {
+		/*font-size: 1.5em;*/
+		font-size: 25px;
 	}
 }
 

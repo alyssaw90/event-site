@@ -41,23 +41,23 @@
 		<!-- begin Gray Desktop Main menu -->\
 		<nav class="grid flex desktop-menu gray-menu">\
 			<div class="col_2 center-block">\
-				<div class="col_2 center-block menu-block home-menu-button"><a href="/"><h2>Home</h2></a></div>\
+				<div class="col_2 center-block menu-block home-menu-button"><a href="/">Home</a></div>\
 			</div>\
 				<div class="col_2 center-block">\
 					<div class="expanding-menu upcoming-menu">\
-						<div class="col_2 center-block menu-block upcoming-menu"><a href="/future-events"><h2>Find an Event</h2></a></div>\
+						<div class="col_2 center-block menu-block upcoming-menu"><a href="/future-events">Find an Event</a></div>\
 					</div>\
 				</div>\
 			<div class="col_custom-menu">\
 			</div>	\
 			<div class="col_2 center-block">\
-				<div class="col_2 center-block menu-block latest-news-menu-block"><a href="/latest-news"><h2>Get the Latest</h2></a></div>\
+				<div class="col_2 center-block menu-block latest-news-menu-block"><a href="/latest-news">Get the Latest</a></div>\
 			</div>\
 			<div class="col_2 center-block">\
-				<div class="col_2 center-block menu-block meet-the-team-menu-block"><a href="/meet-the-team"><h2>Meet the Team</h2></a></div>\
+				<div class="col_2 center-block menu-block meet-the-team-menu-block"><a href="/meet-the-team">Meet the Team</a></div>\
 			</div>\
 			<div class="col_2 center-block">\
-				<div class="col_2 center-block menu-block past-events-header-menu-block"><a href="/past-events"><h2>Past Events</h2></a></div>\
+				<div class="col_2 center-block menu-block past-events-header-menu-block"><a href="/past-events">Past Events</a></div>\
 			</div>\
 		</nav>\
 		<!-- End gray desktop menu -->';
