@@ -436,7 +436,7 @@ router.route('/future-events')
             risingText = '<div class="rising_text"><a href="/event/' + upcomingEvent[i].eventUrl + '">' + upcomingEvent[i].eventFuturePageText + '</div>';
           }*/
             console.log(clc.magenta('LLLLLL   ::'), backgroundColors, i);
-          eventBlocksHtml += '<div class="col_' + 12 / numFutureBlocks + ' event_block" style="background-color: #' + backgroundColors[i] + ';"><a href="/event/' + upcomingEvent[i].eventUrl + '"><h1>' + upcomingEvent[i].eventLocation + '</h1><h3>' + upcomingEvent[i].eventName + '<br />' + months[upcomingEvent[i].eventStartDate.getMonth()] + ' ' + upcomingEvent[i].eventStartDate.getDate() + ' - ' + upcomingEvent[i].eventEndDate.getDate() + ', ' + upcomingEvent[i].eventEndDate.getFullYear() + '</h3></a>' + risingText + '</div>';
+          eventBlocksHtml += '<div class="col_' + 12 / numFutureBlocks + ' event_block" style="background-color: #' + backgroundColors[i] + ';"><a href="/event/' + upcomingEvent[i].eventUrl + '"><p>More Details</p><h1>' + upcomingEvent[i].eventLocation + '</h1><h3>' + upcomingEvent[i].eventName + '<br />' + months[upcomingEvent[i].eventStartDate.getMonth()] + ' ' + upcomingEvent[i].eventStartDate.getDate() + ' - ' + upcomingEvent[i].eventEndDate.getDate() + ', ' + upcomingEvent[i].eventEndDate.getFullYear() + '</h3></a>' + risingText + '</div>';
         }
         eventBlocksHtml += '</section>';
         newHtml = html.toString().replace('<main class="events grid">', eventBlocksHtml);

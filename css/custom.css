@@ -949,14 +949,14 @@ footer img {
 
 	.event_block {
 		/*background-color: #d2d2d2;*/
-		background-repeat: no-repeat;
-		background-position: bottom right;
-		background-size: contain;
+		/*background-repeat: no-repeat;*/
+		/*background-position: bottom right;*/
+		/*background-size: contain;*/
 		max-height: 150px;
-		position: relative;
+		/*position: relative;*/
     overflow: hidden;
-    margin-bottom: 5%;
-    margin-top: 2%;
+    /*margin-bottom: 5%;*/
+    /*margin-top: 2%;*/
 	}
 
 	.event_block div {
@@ -983,6 +983,15 @@ footer img {
 	.event_block h1 {
 		padding: 0 1% 16px 1%;
 		font-size: 2em;
+	}
+
+	.event_block p {
+		 text-align: center; 
+		 font-size: 2em;
+		 padding-top: 12%; 
+		 color: #FFF; 
+		 display: none; 
+		 opacity: 0;
 	}
 
 	.past_events {
