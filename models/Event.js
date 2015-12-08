@@ -20,6 +20,7 @@ var Event = module.exports = sql.define('Event', {
   eventName: Sql.STRING,
   eventRegistrationLink: Sql.STRING, //link to registrationfor event
   eventLocation: Sql.STRING,
+  eventContinent: Sql.ENUM('North America', 'South America', 'Africa', 'Asia', 'Europe', 'Oceania'),
   eventStartDate: Sql.DATE, //the start date...
   eventEndDate: Sql.DATE, // the end date...
   eventHeaderImage: Sql.TEXT, //link to header image
@@ -71,6 +72,7 @@ Event.sync({force: true})
   eventStartDate: new Date('2010-01-01:00:01:00'),
   eventEndDate: new Date('2010-01-04:23:59:00'),
   eventLocation: 'Santa Clara',
+  eventContinent: 'North America',
   eventHeaderImage: '2b98dc94-eabb-49a9-a419-3aaa25d540bc.jpg', 
   eventFuturePageImage: 'santa-clara-convention-center-2.jpg',
   eventFuturePageText: '<p>Produced since 1998, Storage Developer Conference (SDC) 2015 is scheduled for September 21-24, 2015 in Santa Clara, CA, and is again expected to attract more than 400 developers, technical professionals, and engineers from the worldwide storage community.</p><p>Attend and learn about leading storage development topics including File Systems, Software Defined Storage, SMB, Security, Performance, and more.</p>',
@@ -87,7 +89,7 @@ Event.sync({force: true})
   travelAccomodationsTab: '<h2>Accommodations Tab</h2><p>Ancient alien sightings Easter island DNA manipulation, otherworldly visitors earth mound Indian texts, burmuta triangle ancient religions contend. Helicopter heiroglyph choral castle evidence targeted mutation otherworldly visitors ancient god, sanskrit cover up petroglyph ancient alien theorists Mahabharata, aircraft vortex the vedas pre-colonial aerodynamics ancient god. Flying vessels crystal skull, Mayan.</p>', //copy for travel accommodations sub tab
   travelTipsTab: '<h2>Tips Tab</h2><p>We need to neutralize the homing signal. Each unit has total environmental control, gravity, temperature, atmosphere, light, in a protective field. Sensors show energy readings in your area. We had a forced chamber explosion in the resonator coil. Field strength has increased by 3,000 percent.</p>', //copy for travel Tips and Tricks sub tab
   travelEatDrinkTab: '<h2>Eat & Drink</h2><p>Do cupidatat aliquip ribeye meatball beef ribs. Cillum meatloaf beef, filet mignon ham hock lorem culpa. Sirloin laboris dolore shank, pork belly aliquip cillum. Excepteur lorem beef jerky doner.</p>', //copy for travel eat and drink sub tab
-  eventMediaTab: 'Produced since 1998, Storage Developer Conference (SDC) 2015 is scheduled for September 21-24, 2015 in Santa Clara, CA, and is again expected to attract more than 400 developers, technical professionals, and engineers from the worldwide storage community. Attend and learn about leading storage development topics including File Systems, Software Defined Storage, SMB, Security, Performance, and more.' //copy for media tab
+  eventMediaTab: 'Produced since 1998, Storage Developer Conference (SDC) 2015 is scheduled for September 21-24, 2015 in Santa Clara, CA, and is again expected to attract more than 400 developers, technical professionals, and engineers from the worldwide storage community. Attend and learn about leading storage development topics including File Systems, Software Defined Storage, SMB, Security, Performance, and more.', //copy for media tab
   });
 })
 .then(function () {
@@ -95,6 +97,7 @@ Event.sync({force: true})
   eventName: 'Shanghai Interop Dev Days 2015',
   eventRegistrationLink: 'http://www.example.com', //link to registrationfor event
   eventLocation: 'Shanghai',
+  eventContinent: 'Asia',
   eventStartDate: new Date('2026-10-21T08:00:00'), //the start date...
   eventEndDate: new Date('2026-10-22T08:00:00'), // the end date...
   eventHeaderImage: '2b98dc94-eabb-49a9-a419-3aaa25d540bc.jpg', 
@@ -121,6 +124,7 @@ Event.sync({force: true})
   eventName: 'Paris Dev Days 2016',
   eventRegistrationLink: 'http://www.awwards.com', //link to registrationfor event
   eventLocation: 'Paris',
+  eventContinent: 'Europe',
   eventStartDate: new Date('2016-05-16:00:00:01'), //the start date...
   eventEndDate: new Date('2016-05-18:23:59:00'), // the end date...
   eventHeaderImage: 'paris-logo-2016.jpg', //link to header image
@@ -148,6 +152,7 @@ Event.sync({force: true})
     eventStartDate: new Date('2016-04-20:08:00:00'),
     eventEndDate: new Date('2016-04-21:23:00:00'),
     eventLocation: 'Taipei',
+    eventContinent: 'Asia',
     eventHeaderImage: 'taipei-logo-2016.jpg',
     // eventFuturePageImage: Sql.TEXT, //image to appear on event slide on homepage
     // eventFuturePageText: Sql.TEXT, //slide up text for future events page
@@ -172,6 +177,7 @@ Event.sync({force: true})
   eventName: 'Redmond Plugfest 2016',
   // eventRegistrationLink: Sql.STRING, //link to registrationfor event
   eventLocation: 'Redmond',
+  eventContinent: 'North America',
   eventStartDate: new Date('2016-06-20:00:01:00'), //the start date...
   eventEndDate: new Date('2016-06-24:23:59:00'), // the end date...
   eventHeaderImage: 'redmond-logo-2016.jpg', //link to header image
@@ -200,6 +206,7 @@ Event.sync({force: true})
   eventStartDate: new Date('2014-01-01:00:01:00'),
   eventEndDate: new Date('2014-01-04:23:59:00'),
   eventLocation: 'Santa Clara, CA',
+  eventContinent: 'North America',
   eventHeaderImage: '2b98dc94-eabb-49a9-a419-3aaa25d540bc.jpg', 
   eventFuturePageImage: 'santa-clara-convention-center-2.jpg',
   eventFuturePageText: '<p>Produced since 1998, Storage Developer Conference (SDC) 2015 is scheduled for September 21-24, 2015 in Santa Clara, CA, and is again expected to attract more than 400 developers, technical professionals, and engineers from the worldwide storage community.</p><p>Attend and learn about leading storage development topics including File Systems, Software Defined Storage, SMB, Security, Performance, and more.</p>',
