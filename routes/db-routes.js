@@ -452,10 +452,23 @@ router.route('/future-events')
     .then(function () {
       Event.findAll({where: {eventStartDate:{ $gte: new Date()}}})
       .then(function (data) {
+        data.sort(function (a, b) {
+          a = new Date(a.eventStartDate);
+          b = new Date(b.eventStartDate);
+          if ( a > b) {
+            return -1;
+          }
+          if (a < b) {
+            return 1;
+          }
+          if (a === b) {
+            return 0;
+          }
+        });
         res.json(data);
-      })
-    })
-  })
+      });
+    });
+  });
 
 router.route('/allevents/:eventId')
 .get(function (req, res) {

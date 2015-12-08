@@ -213,6 +213,7 @@ li {
 	/*margin-left: -15% !important;*/
 	/*padding-top: 4% !important;*/
 	font-size: 1.3vw !important;
+	text-align: center;
 }
 
 .purpleEventMenu a {
@@ -650,7 +651,7 @@ footer img {
 		/*padding-left: 15%;*/
 	}
 
-	.infoBlocksContainer h2 {
+	.infoBlockWrapper h2 {
 		color: rgba(80, 80, 80, 1);
 		/*font-size: 2.5em;*/
 		font-size: 25px !important;
@@ -666,7 +667,7 @@ footer img {
 		height: 180px;
 		width: 180px;
 		text-align: center;
-		/*font-size: 25px;*/
+		font-size: 25px;
 		border-radius: 100%;
 		border-width: 5px;
 		border-style: solid;
