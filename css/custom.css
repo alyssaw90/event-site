@@ -27,6 +27,10 @@ p {
 	line-height: 1.4em;
 }
 
+	main p {
+		text-align: justify !important;
+	}
+
 li {
 	font-size: 1.15em;
 	line-height: 1.4em;
@@ -213,6 +217,7 @@ li {
 	/*margin-left: -15% !important;*/
 	/*padding-top: 4% !important;*/
 	font-size: 1.3vw !important;
+	text-align: center;
 }
 
 .purpleEventMenu a {
@@ -221,18 +226,30 @@ li {
 	/*line-height: 1.3em;*/
 	/*padding-right: 2.5%;*/
 	/*padding-left: 2.5%;*/
-	font-size: 1.4vw !important;
+	font-size: 20px !important;
+	/*padding-right: 25px;*/
+	padding-right: 12px;
+	padding-left: 12px;
 }
 
-.upcomingPurpleMenu {
+.purpleEventMenu {
+	color: #FFF;
+	font-family: 'SegoeUILight';
+	/*line-height: 1.3em;*/
+	/*padding-right: 2.5%;*/
+	/*padding-left: 2.5%;*/
+	font-size: 25px !important;
+}
+
+/*.upcomingPurpleMenu {
 	margin-right: 5%;
 	text-align: center;
-}
+}*/
 
 .purpleSubMenu {
-	font-size: .7vw;
+	/*font-size: .7vw;*/
 	/*padding-right: 30px;*/
-	text-align: center;
+	/*text-align: center;*/
 }
 
 .social-icons {
@@ -389,12 +406,14 @@ table {
 	width: 20%;
 }
 
-.center-block h2 {
+.center-block a {
 	/*color: #FFF;*/
 	color: rgba(80, 80, 80, 1);
 	text-align: center;
-	font-size: 1.5em;
-	line-height: .8em;
+	/*font-size: 1.5em;*/
+	font-size: 25px !important;
+	line-height: 1.5em;
+	/*line-height: .8em;*/
 }
 
 .upcoming-sub-menu h2 {
@@ -411,9 +430,10 @@ table {
 .menu-block {
 	background-color: rgba(210, 210, 210, 1);
 	width: 100%;
+	text-align: center;
 }
 
-.menu-block h2 {
+.menu-block a {
 	/*color: rgba(80, 80, 80, 1);*/
 }
 
@@ -426,11 +446,11 @@ table {
 	color: #fff;
 }
 
-.menu-block:hover h2 {
+.menu-block:hover a {
 	color: #fff;
 }
 
-.menu-block.current-page h2 {
+.menu-block.current-page a {
 	color: #fff;
 }
 
@@ -647,9 +667,10 @@ footer img {
 		/*padding-left: 15%;*/
 	}
 
-	.infoBlocksContainer h2 {
+	.infoBlockWrapper h2 {
 		color: rgba(80, 80, 80, 1);
-		font-size: 2.5em;
+		/*font-size: 2.5em;*/
+		font-size: 25px !important;
 		text-align: center;
 	}
 
@@ -983,6 +1004,7 @@ footer img {
 	.event_block h1 {
 		padding: 0 1% 16px 1%;
 		font-size: 2em;
+		color: #fff;
 	}
 
 	.event_block p {
@@ -1238,8 +1260,9 @@ footer img {
 	.right-block {
 		height: 140px;	
 	}*/
-	.center-block h2 {
-		font-size: 1.5em;
+	.center-block a {
+		/*font-size: 1.5em;*/
+		font-size: 25px;
 	}
 }
 

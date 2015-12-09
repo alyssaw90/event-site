@@ -52,6 +52,7 @@ var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 var randomTabImages = ['alt-slide-1.jpg', 'alt-slide-2.jpg', 'alt-slide-3.jpg', 'alt-slide-4.jpg', 'alt-slide-5.jpg', 'alt-slide-6.jpg'];
 var msColors = ['ffb900', 'd83b01', 'e81123', 'b4009e', '5c2d91', '0078d7', '008272', '107c10'];
+var continentColors = {'North America': 'ffb900', 'South America': '107c10', 'Africa': 'e81123', 'Asia': '0078d7', 'Europe': '5c2d91', 'Oceania': 'b4009e'};
 
 function shuffle (arr) {
   var currentIndex = arr.length, tempVal, randomIndex ;
@@ -242,7 +243,7 @@ router.route('/answersurvey')
   .post(upload.array('images', 4), function (req, res, next) {
     sql.sync()
     .then(function () {
-          console.log(clc.yellow('FFFFFFFFFFFFFFFFF ::::::::   '), req.files[0].filename)
+          // console.log(clc.yellow('FFFFFFFFFFFFFFFFF ::::::::   '), req.files[0].filename)
       // Event.create(req.body)
       Event.create({
         eventName: req.body.eventName,
@@ -282,7 +283,7 @@ router.route('/showimages')
 
   router.route('/addimage')
   .post(upload.single('images'), function (req, res, next) {
-    console.log(clc.yellow('FFFFFFFFFFFFFFFFF ::::::::   '), req.files)
+    // console.log(clc.yellow('FFFFFFFFFFFFFFFFF ::::::::   '), req.files)
     res.json(req.files);
   })
 
@@ -435,8 +436,7 @@ router.route('/future-events')
           /*if (upcomingEvent[i].eventFuturePageText) {
             risingText = '<div class="rising_text"><a href="/event/' + upcomingEvent[i].eventUrl + '">' + upcomingEvent[i].eventFuturePageText + '</div>';
           }*/
-            console.log(clc.magenta('LLLLLL   ::'), backgroundColors, i);
-          eventBlocksHtml += '<div class="col_' + 12 / numFutureBlocks + ' event_block" style="background-color: #' + backgroundColors[i] + ';"><a href="/event/' + upcomingEvent[i].eventUrl + '"><p>More Details</p><h1>' + upcomingEvent[i].eventLocation + '</h1><h3>' + upcomingEvent[i].eventName + '<br />' + months[upcomingEvent[i].eventStartDate.getMonth()] + ' ' + upcomingEvent[i].eventStartDate.getDate() + ' - ' + upcomingEvent[i].eventEndDate.getDate() + ', ' + upcomingEvent[i].eventEndDate.getFullYear() + '</h3></a>' + risingText + '</div>';
+          eventBlocksHtml += '<div class="col_' + 12 / numFutureBlocks + ' event_block" style="background-color: #' + continentColors[upcomingEvent[i].eventContinent] + ';"><a href="/event/' + upcomingEvent[i].eventUrl + '"><p>More Details</p><h1>' + upcomingEvent[i].eventLocation + '</h1><h3>' + upcomingEvent[i].eventName + '<br />' + months[upcomingEvent[i].eventStartDate.getMonth()] + ' ' + upcomingEvent[i].eventStartDate.getDate() + ' - ' + upcomingEvent[i].eventEndDate.getDate() + ', ' + upcomingEvent[i].eventEndDate.getFullYear() + '</h3></a>' + risingText + '</div>';
         }
         eventBlocksHtml += '</section>';
         newHtml = html.toString().replace('<main class="events grid">', eventBlocksHtml);
@@ -452,10 +452,23 @@ router.route('/future-events')
     .then(function () {
       Event.findAll({where: {eventStartDate:{ $gte: new Date()}}})
       .then(function (data) {
+        data.sort(function (a, b) {
+          a = new Date(a.eventStartDate);
+          b = new Date(b.eventStartDate);
+          if ( a > b) {
+            return -1;
+          }
+          if (a < b) {
+            return 1;
+          }
+          if (a === b) {
+            return 0;
+          }
+        });
         res.json(data);
-      })
-    })
-  })
+      });
+    });
+  });
 
 router.route('/allevents/:eventId')
 .get(function (req, res) {
