@@ -77,11 +77,11 @@
 				var startDate = new Date(elem.eventStartDate);
 				// console.log(new Date(elem.eventStartDate).getDate());
 				// upcomingMenu += '<div class="col_2 center-block menu-block upcoming-menu upcoming-sub-menu"><a href="/event/' + elem.eventUrl + '"><h2>' + elem.eventName + '</h2></a></div>';
-				if (i < data.length) {
-					upcomingPurpleMenu += '<a href="/event/' + elem.eventUrl + '">' + elem.eventLocation + ' - <span class="purpleSubMenu">' + months[startDate.getMonth()] + ' ' + startDate.getDate() + ', ' + startDate.getFullYear() + '</span></a>|';
+				if (i < data.length - 1) {
+					upcomingPurpleMenu += '<a href="/event/' + elem.eventUrl + '">' + elem.eventLocation + '&nbsp-&nbsp<span class="purpleSubMenu">' + months[startDate.getMonth()] + '&nbsp' + startDate.getDate() + ',&nbsp' + startDate.getFullYear() + '</span></a>| ';
 				}
 				if (i >= data.length - 1) {
-					upcomingPurpleMenu += '<a href="/event/' + elem.eventUrl + '">' + elem.eventLocation + ' - <span class="purpleSubMenu">' + months[startDate.getMonth()] + ' ' + startDate.getDate() + ', ' + startDate.getFullYear() + '</span></a>';
+					upcomingPurpleMenu += '<a href="/event/' + elem.eventUrl + '">' + elem.eventLocation + '&nbsp-&nbsp<span class="purpleSubMenu">' + months[startDate.getMonth()] + '&nbsp' + startDate.getDate() + ',&nbsp' + startDate.getFullYear() + '</span></a>';
 
 				}
 			})
