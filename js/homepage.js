@@ -35,6 +35,8 @@ $(document).ready(function () {
 	//array of ms colors at 80% opacity - ms yellow is removed, because it's to light for background color
 	var msColors = ['rgba(216, 59, 1, .8)', 'rgba(232, 17, 35, .8)', 'rgba(180, 0, 158, .8)', 'rgba(92, 45, 145, .8)', 'rgba(0, 120, 215, .8)', 'rgba(0, 130, 114, .8)', 'rgba(16, 124, 16, .8)'];
 	var count = 0;
+	var $learnBlockIcon = $('#learnBlockIcon');
+	var $learnBlock = $('#learnBlock');
 	//randomly assign background-color to the slides -- .slideshow li:nth-child(2) h2:first-child
 	$('.slideshow li').each(function (i) {
 		var randomNum = Math.floor(Math.random() * (7 - count));
@@ -53,4 +55,8 @@ $(document).ready(function () {
 	});
 
 	// console.log($('.sliderRegisterButton').css('background-color'));
+
+	$learnBlockIcon.click(function (e) {
+		$learnBlock.toggle();
+	})
 });

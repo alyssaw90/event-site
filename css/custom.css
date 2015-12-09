@@ -140,6 +140,10 @@ li {
 	visibility: hidden;
 }
 
+.infoBlocks:hover {
+	cursor: pointer;
+}
+
 .home-page-experts img {
 	/*max-width: 131px;*/
 	/*display: inline-block;*/
