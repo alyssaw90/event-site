@@ -58,5 +58,6 @@ $(document).ready(function () {
 
 	$learnBlockIcon.click(function (e) {
 		$learnBlock.toggle();
+		// window.open('')
 	})
 });
