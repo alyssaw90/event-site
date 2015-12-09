@@ -38,12 +38,10 @@
 				<div class="col_2 center-block menu-block home-menu-button"><a href="/">Home</a></div>\
 			</div>\
 				<div class="col_2 center-block">\
-					<div class="expanding-menu upcoming-menu">\
-						<div class="col_2 center-block menu-block upcoming-menu"><a href="/future-events">Find an Event</a></div>\
-					</div>\
+					<div class="col_2 center-block menu-block upcominEventsBlock"><a href="/future-events">Find an Event</a></div>\
 				</div>\
-			<div class="col_custom-menu">\
-			</div>	\
+			<div style="display: none;">\
+			</div>\
 			<div class="col_2 center-block">\
 				<div class="col_2 center-block menu-block latest-news-menu-block"><a href="/latest-news">Get the Latest</a></div>\
 			</div>\
@@ -56,18 +54,17 @@
 		</nav>\
 		<!-- End gray desktop menu -->';
 
-		function changeWidth () {
-			var $menuBlock = $('.menu-block');
+			function changeWidth () {
 			var widestBlock = 0;
-			$menuBlock.each(function () {
+			$('.menu-block').each(function () {
 				if ($(this).width() > widestBlock) {
 					widestBlock = $(this).width();
 				}
 			});
 			
-			$menuBlock.each(function () {
-				// $(this).css('width', widestBlock);
+			$('.menu-block').each(function () {
 				$(this).width(widestBlock);
+				$(this).css('background-color', 'red');
 			});
 			console.log(widestBlock);
 		}
@@ -117,22 +114,8 @@
 				// $('.purpleEventMenuWrapper').css('text-align', 'center');
 			// })
 			// $(window).load(changeWidth($('.menu-block')));
-
-			$(window).load(function (){
-  			changeWidth();
-			});
-
-			$(document).ready(function(){
-    		$(window).resize(changeWidth);
-			});
-
-
-			/*$(window).load(changeWidth);*/
-			/*$(window).load(changeWidth).resize(function (event) {
-  			window.clearTimeout(semaphore);
-  
-  			semaphore = window.setTimeout(changeWidth, 200);
-			});*/
+			// $(window).load(changeWidth());
+			// $(window).resize = changeWidth;
 			/*$(document).ready(function(){
     		$(window).resize(function() {
     			console.log('resize reached');
@@ -160,7 +143,7 @@
 				$('.home-menu-button').addClass('current-page');
 			}
 			if (window.location.pathname === '/future-events') {
-				$('.upcoming-menu').addClass('current-page');
+				$('.upcominEventsBlock').addClass('current-page');
 			}
 			if (window.location.pathname === '/latest-news') {
 				$('.latest-news-menu-block').addClass('current-page');
