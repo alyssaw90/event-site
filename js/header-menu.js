@@ -56,15 +56,17 @@
 		</nav>\
 		<!-- End gray desktop menu -->';
 
-			function changeWidth () {
+		function changeWidth () {
+			var $menuBlock = $('.menu-block');
 			var widestBlock = 0;
-			$('.menu-block').each(function () {
+			$menuBlock.each(function () {
 				if ($(this).width() > widestBlock) {
 					widestBlock = $(this).width();
 				}
 			});
 			
-			$('.menu-block').each(function () {
+			$menuBlock.each(function () {
+				// $(this).css('width', widestBlock);
 				$(this).width(widestBlock);
 			});
 			console.log(widestBlock);
@@ -115,12 +117,22 @@
 				// $('.purpleEventMenuWrapper').css('text-align', 'center');
 			// })
 			// $(window).load(changeWidth($('.menu-block')));
-			$(window).load(changeWidth());
-			jQuery(window).load(changeWidth).resize(function (event) {
+
+			$(window).load(function (){
+  			changeWidth();
+			});
+
+			$(document).ready(function(){
+    		$(window).resize(changeWidth);
+			});
+
+
+			/*$(window).load(changeWidth);*/
+			/*$(window).load(changeWidth).resize(function (event) {
   			window.clearTimeout(semaphore);
   
   			semaphore = window.setTimeout(changeWidth, 200);
-			});
+			});*/
 			/*$(document).ready(function(){
     		$(window).resize(function() {
     			console.log('resize reached');
