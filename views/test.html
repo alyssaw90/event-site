@@ -29,25 +29,25 @@
 			</section>
 			<section class="col_12 infoBlocksContainer">
 				
-				<div class="col_3 infoBlockWrapper">
+				<div class="col_3 infoBlockWrapper" data-thisBlock="learnBlock">
 					<h2>Learn</h2>
 					<div class="infoBlocks" id="learnBlockIcon">
 						<i class="fa fa-book fa-5x"></i>
 					</div>
 				</div>
-				<div class="col_3 infoBlockWrapper">
+				<div class="col_3 infoBlockWrapper" data-thisBlock="buildBlock">
 				<h2>Build</h2>
 					<div class="infoBlocks" id="buildBlockIcon">
 						<i class="fa fa-wrench fa-5x"></i>
 					</div>
 				</div>
-				<div class="col_3 infoBlockWrapper">
+				<div class="col_3 infoBlockWrapper" data-thisBlock="connectBlock">
 				<h2>Connect</h2>
 					<div class="infoBlocks" id="connectBlockIcon">
 						<i class="fa fa-globe fa-5x"></i>
 					</div>
 				</div>
-				<div class="col_3 infoBlockWrapper">
+				<div class="col_3 infoBlockWrapper" data-thisBlock="innovateBlock">
 				<h2>Innovate</h2>
 					<div class="infoBlocks" id="innovateBlockIcon">
 						<i class="fa fa-rocket fa-5x"></i>
@@ -63,95 +63,138 @@
 				</div>
 				<div class="col_12" id="connectBlock" style="display: none;">
 					<p class="float-left">Join developers in an environment designed for collaboration. Receive assistance and feedback from Microsoft engineers who are excited and prepared to help you.</p>
+					<h4>Sign Up for the Newsletter</h4>
+						<form action="/newsletter" method="POST" class="vertical">
+							<label for="email">Email Address</label>
+							<input id="email" name="email" type="email" type="submit" required />
+							<p></p>
+							<label for="firstName">First Name *</label>
+							<input id="firstName" name="firstName" type="text" type="submit" />
+							<label for="lastName">Last Name *</label>
+							<input id="lastName" name="lastName" type="text" type="submit" />
+							<label for="title">Title *</label>
+							<input id="title" name="title" type="text" type="submit" />
+							<label>Which protocols are you interested in? *</label>
+							<fieldset class="scrolling-box">
+								<input type="checkbox" id="sharePointFileOperations" name="sharePointFileOperations" value="true" /> <label for="sharePointFileOperations" class="inline">SharePoint file Operations</label>
+								<br />
+								<input type="checkbox" id="officeClient" name="officeClient" value="true" /> <label for="officeClient" class="inline">Office Client</label>
+								<br />
+								<input type="checkbox" id="windowsFileSharingProtocols" value="true" name="windowsFileSharingProtocols" value="true"/> <label for="windowsFileSharingProtocols" class="inline">Windows File Sharing Protocols (SMB2&3 family)</label>
+								<br />
+								<input type="checkbox" id="windowsIdentityActiveDirectoryAndAuthenticationProtocols" value="true" name="windowsIdentityActiveDirectoryAndAuthenticationProtocols" value="true"/> <label for="windowsIdentityActiveDirectoryAndAuthenticationProtocols" class="inline">Windows Identity (ActiveDirectory) and Authentication Protocols</label>
+								<br />
+								<input type="checkbox" id="kerberosAuthentication" name="kerberosAuthentication" value="true" /> <label for="kerberosAuthentication" class="inline">Kerberos Authentication</label>
+								<br />
+								<input type="checkbox" id="exchangeRPC" name="exchangeRPC" value="true" /> <label for="exchangeRPC" class="inline">Exchange RPC</label>
+								<br />
+								<input type="checkbox" id="exchangeWebServices" value="true" /> <label for="exchangeWebServices" class="inline">Exchange Web Services (EWS)</label>
+								<br />
+								<input type="checkbox" id="exchangeActiveSync" name="exchangeActiveSync" value="true" /> <label for="exchangeActiveSync" class="inline">Exchange ActiveSync (EAS)</label>
+								<br />
+								<input type="checkbox" id="bringYourOwnDevice" name="bringYourOwnDevice" value="true" /> <label for="bringYourOwnDevice" class="inline">Bring your own device (BYOD)</label>
+								<br />
+								<input type="checkbox" id="sqlServer" name="sqlServer" value="true" /> <label for="sqlServer" class="inline">SQL Server</label>
+								<br />
+								<input type="checkbox" id="oDataREST" name="oDataREST" value="true" /> <label for="oDataREST" class="inline">OData / REST</label>
+								<br />
+								<input type="checkbox" id="otherProtocol" name="otherProtocol" value="true" /> <label for="otherProtocol" class="inline">Other</label>
+							</fieldset>
+							<input id="" name="" type="text" type="submit" />
+							<label for="newsletterSubscription">I would like to receive the newsletter</label>
+							<!-- <input type="hidden" name="newsletterSubscription" value="false"> -->
+							<input id="newsletterSubscription" type="checkbox" name="newsletterSubscription" value="true" checked>
+							<p>*Optional</p>
+							<button class="medium" type="submit">Submit</button>
+							<hr>
+						</form>
 				</div>
 				<div class="col_12" id="innovateBlock" style="display: none;">
 					<p class="float-left">Use guidance from Microsoft engineers and connections with other developers to improve your idea and build something more creative and efficient.</p>
 				</div>
 			</section>
-			<div class="col_12">
-				<section class="col_12">
-					<h1 class="center">Microsoft Interop Events</h1>
-					<!-- <span class="social-icons">
-						<a href="http://www.meetup.com/Shanghai-Interop-Dev-Days-2015/"><img src="../../img/meetup-logo.jpg"></a>
-						<a href="https://twitter.com/OSpecifications"><i class="fa fa-twitter-square fa-3x"></i></a>
-						<a href="http://blogs.msdn.com/b/officeinteroperability/default.aspx?wa=wsignin1.0"><i class="fa fa-rss-square fa-3x"></i></a>
-						<a href="mailto:mailto:plugfests@microsoft.com"><i class="fa fa-envelope fa-3x"></i></a>
-					</span> -->
-					<p>Through the Open Specifications program, Microsoft is helping developers open new opportunities by making technical documents related to interoperability for certain popular Microsoft products available to view and download from MSDN at no charge. Microsoft offers developers the chance to learn more about specific protocols and to test their implementations of those protocols at Plugfests. Plugfests include one-on-one discussions with Microsoft engineers and the use of protocol test suites that help evaluate whether an implementation's protocol communications conform to the relevant Microsoft Open Specifications. Most recently, Open Specifications launched Interop Dev Days to focus on Office 365 developer opportunities, Data Platform, and interoperability.</p>
-					<a class="button pill float-right" href="/about">More...</a>
-					<hr class="alt1" />
-					<!-- <h2>Interop Dev Days</h2>
-					<p>Through the Open Specifications program, Microsoft is helping developers open new opportunities by making technical documents related to interoperability for certain popular Microsoft products available to view and download from MSDN at no charge. Microsoft offers developers the chance to learn more about specific protocols and to test their implementations of those protocols at Plugfests. Plugfests include one-on-one discussions with Microsoft engineers and the use of protocol test suites that help evaluate whether an implementation's protocol communications conform to the relevant Microsoft Open Specifications. Most recently, Open Specifications launched Interop Dev Days to focus on Office 365 developer opportunities, Data Platform, and interoperability.</p>
-					<hr class="alt1" />
-					<h2>Microsoft Protocols Plugfests</h2>
-					<p>Microsoft-hosted protocols plugfests provide software developers with the opportunity to learn more about the Microsoft protocols and to test their implementations of the Microsoft Open Specifications. Hosted on the Microsoft Redmond campus, each plugfest focuses on a specific task or technology area. Presentations are conducted by Microsoft engineers, who are also available for one-on-one and group discussions and to provide necessary assistance with configuration and running of the interoperability tests. Testing includes the use of protocol test suites that help evaluate whether an implementation's protocol communications conform to the relevant Microsoft Open Specifications.</p>
-					<h4>Attendees at a Microsoft protocols plugfest can expect the following:</h4>
-					<ul>
-						<li>Technology presentations regarding Open Specifications for Microsoft Protocols</li>
-						<li>Group presentations from members of the Microsoft product teams</li>
-						<li>Interoperability testing on the relevant Microsoft products</li>
-						<li>Access to Microsoft protocol test suites or other tools for interoperability testing of Partner Server implementations</li>
-						<li>Opportunities to field questions and obtain answers directly from Microsoft</li>
-						<li>1:1 sessions with product development team members</li>
-						<li>Assistance from technical support personnel</li>
-					</ul> -->
-				</section>
-				<section class="col_6">
-					<h4>Connect with Us on Twitter</h4>
-					<!-- Twitter Feed -->
-					<a id="twitter-widget-1" class="twitter-timeline" href="https://twitter.com/OSpecifications" data-widget-id="646806018907738115">Tweets by @OSpecifications</a>
-					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-					<!-- End Twitter Feed -->
-				</section>
-				<section class="col_6">
-					<h4>Sign Up for the Newsletter</h4>
-					<form action="/newsletter" method="POST" class="vertical">
-						<label for="email">Email Address</label>
-						<input id="email" name="email" type="email" type="submit" required />
-						<p></p>
-						<label for="firstName">First Name *</label>
-						<input id="firstName" name="firstName" type="text" type="submit" />
-						<label for="lastName">Last Name *</label>
-						<input id="lastName" name="lastName" type="text" type="submit" />
-						<label for="title">Title *</label>
-						<input id="title" name="title" type="text" type="submit" />
-						<label>Which protocols are you interested in? *</label>
-						<fieldset class="scrolling-box">
-							<input type="checkbox" id="sharePointFileOperations" name="sharePointFileOperations" value="true" /> <label for="sharePointFileOperations" class="inline">SharePoint file Operations</label>
-							<br />
-							<input type="checkbox" id="officeClient" name="officeClient" value="true" /> <label for="officeClient" class="inline">Office Client</label>
-							<br />
-							<input type="checkbox" id="windowsFileSharingProtocols" value="true" name="windowsFileSharingProtocols" value="true"/> <label for="windowsFileSharingProtocols" class="inline">Windows File Sharing Protocols (SMB2&3 family)</label>
-							<br />
-							<input type="checkbox" id="windowsIdentityActiveDirectoryAndAuthenticationProtocols" value="true" name="windowsIdentityActiveDirectoryAndAuthenticationProtocols" value="true"/> <label for="windowsIdentityActiveDirectoryAndAuthenticationProtocols" class="inline">Windows Identity (ActiveDirectory) and Authentication Protocols</label>
-							<br />
-							<input type="checkbox" id="kerberosAuthentication" name="kerberosAuthentication" value="true" /> <label for="kerberosAuthentication" class="inline">Kerberos Authentication</label>
-							<br />
-							<input type="checkbox" id="exchangeRPC" name="exchangeRPC" value="true" /> <label for="exchangeRPC" class="inline">Exchange RPC</label>
-							<br />
-							<input type="checkbox" id="exchangeWebServices" value="true" /> <label for="exchangeWebServices" class="inline">Exchange Web Services (EWS)</label>
-							<br />
-							<input type="checkbox" id="exchangeActiveSync" name="exchangeActiveSync" value="true" /> <label for="exchangeActiveSync" class="inline">Exchange ActiveSync (EAS)</label>
-							<br />
-							<input type="checkbox" id="bringYourOwnDevice" name="bringYourOwnDevice" value="true" /> <label for="bringYourOwnDevice" class="inline">Bring your own device (BYOD)</label>
-							<br />
-							<input type="checkbox" id="sqlServer" name="sqlServer" value="true" /> <label for="sqlServer" class="inline">SQL Server</label>
-							<br />
-							<input type="checkbox" id="oDataREST" name="oDataREST" value="true" /> <label for="oDataREST" class="inline">OData / REST</label>
-							<br />
-							<input type="checkbox" id="otherProtocol" name="otherProtocol" value="true" /> <label for="otherProtocol" class="inline">Other</label>
-						</fieldset>
-						<input id="" name="" type="text" type="submit" />
-						<label for="newsletterSubscription">I would like to receive the newsletter</label>
-						<!-- <input type="hidden" name="newsletterSubscription" value="false"> -->
-						<input id="newsletterSubscription" type="checkbox" name="newsletterSubscription" value="true" checked>
-						<p>*Optional</p>
-						<button class="medium" type="submit">Submit</button>
-						<hr>
-					</form>
-				</section>
+			<section class="col_12">
+				<h1 class="center">Microsoft Interop Events</h1>
+				<!-- <span class="social-icons">
+					<a href="http://www.meetup.com/Shanghai-Interop-Dev-Days-2015/"><img src="../../img/meetup-logo.jpg"></a>
+					<a href="https://twitter.com/OSpecifications"><i class="fa fa-twitter-square fa-3x"></i></a>
+					<a href="http://blogs.msdn.com/b/officeinteroperability/default.aspx?wa=wsignin1.0"><i class="fa fa-rss-square fa-3x"></i></a>
+					<a href="mailto:mailto:plugfests@microsoft.com"><i class="fa fa-envelope fa-3x"></i></a>
+				</span> -->
+				<p>Through the Open Specifications program, Microsoft is helping developers open new opportunities by making technical documents related to interoperability for certain popular Microsoft products available to view and download from MSDN at no charge. Microsoft offers developers the chance to learn more about specific protocols and to test their implementations of those protocols at Plugfests. Plugfests include one-on-one discussions with Microsoft engineers and the use of protocol test suites that help evaluate whether an implementation's protocol communications conform to the relevant Microsoft Open Specifications. Most recently, Open Specifications launched Interop Dev Days to focus on Office 365 developer opportunities, Data Platform, and interoperability.</p>
+				<a class="button pill float-right" href="/about">More...</a>
 				<hr class="alt1" />
-			</div>
+				<!-- <h2>Interop Dev Days</h2>
+				<p>Through the Open Specifications program, Microsoft is helping developers open new opportunities by making technical documents related to interoperability for certain popular Microsoft products available to view and download from MSDN at no charge. Microsoft offers developers the chance to learn more about specific protocols and to test their implementations of those protocols at Plugfests. Plugfests include one-on-one discussions with Microsoft engineers and the use of protocol test suites that help evaluate whether an implementation's protocol communications conform to the relevant Microsoft Open Specifications. Most recently, Open Specifications launched Interop Dev Days to focus on Office 365 developer opportunities, Data Platform, and interoperability.</p>
+				<hr class="alt1" />
+				<h2>Microsoft Protocols Plugfests</h2>
+				<p>Microsoft-hosted protocols plugfests provide software developers with the opportunity to learn more about the Microsoft protocols and to test their implementations of the Microsoft Open Specifications. Hosted on the Microsoft Redmond campus, each plugfest focuses on a specific task or technology area. Presentations are conducted by Microsoft engineers, who are also available for one-on-one and group discussions and to provide necessary assistance with configuration and running of the interoperability tests. Testing includes the use of protocol test suites that help evaluate whether an implementation's protocol communications conform to the relevant Microsoft Open Specifications.</p>
+				<h4>Attendees at a Microsoft protocols plugfest can expect the following:</h4>
+				<ul>
+					<li>Technology presentations regarding Open Specifications for Microsoft Protocols</li>
+					<li>Group presentations from members of the Microsoft product teams</li>
+					<li>Interoperability testing on the relevant Microsoft products</li>
+					<li>Access to Microsoft protocol test suites or other tools for interoperability testing of Partner Server implementations</li>
+					<li>Opportunities to field questions and obtain answers directly from Microsoft</li>
+					<li>1:1 sessions with product development team members</li>
+					<li>Assistance from technical support personnel</li>
+				</ul> -->
+				</section>
+				<!-- <section class="col_12">
+					<section class="col_6">
+						<h4>Connect with Us on Twitter</h4>
+						<a id="twitter-widget-1" class="twitter-timeline" href="https://twitter.com/OSpecifications" data-widget-id="646806018907738115">Tweets by @OSpecifications</a>
+						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+					</section>
+					<section class="col_6">
+						<h4>Sign Up for the Newsletter</h4>
+						<form action="/newsletter" method="POST" class="vertical">
+							<label for="email">Email Address</label>
+							<input id="email" name="email" type="email" type="submit" required />
+							<p></p>
+							<label for="firstName">First Name *</label>
+							<input id="firstName" name="firstName" type="text" type="submit" />
+							<label for="lastName">Last Name *</label>
+							<input id="lastName" name="lastName" type="text" type="submit" />
+							<label for="title">Title *</label>
+							<input id="title" name="title" type="text" type="submit" />
+							<label>Which protocols are you interested in? *</label>
+							<fieldset class="scrolling-box">
+								<input type="checkbox" id="sharePointFileOperations" name="sharePointFileOperations" value="true" /> <label for="sharePointFileOperations" class="inline">SharePoint file Operations</label>
+								<br />
+								<input type="checkbox" id="officeClient" name="officeClient" value="true" /> <label for="officeClient" class="inline">Office Client</label>
+								<br />
+								<input type="checkbox" id="windowsFileSharingProtocols" value="true" name="windowsFileSharingProtocols" value="true"/> <label for="windowsFileSharingProtocols" class="inline">Windows File Sharing Protocols (SMB2&3 family)</label>
+								<br />
+								<input type="checkbox" id="windowsIdentityActiveDirectoryAndAuthenticationProtocols" value="true" name="windowsIdentityActiveDirectoryAndAuthenticationProtocols" value="true"/> <label for="windowsIdentityActiveDirectoryAndAuthenticationProtocols" class="inline">Windows Identity (ActiveDirectory) and Authentication Protocols</label>
+								<br />
+								<input type="checkbox" id="kerberosAuthentication" name="kerberosAuthentication" value="true" /> <label for="kerberosAuthentication" class="inline">Kerberos Authentication</label>
+								<br />
+								<input type="checkbox" id="exchangeRPC" name="exchangeRPC" value="true" /> <label for="exchangeRPC" class="inline">Exchange RPC</label>
+								<br />
+								<input type="checkbox" id="exchangeWebServices" value="true" /> <label for="exchangeWebServices" class="inline">Exchange Web Services (EWS)</label>
+								<br />
+								<input type="checkbox" id="exchangeActiveSync" name="exchangeActiveSync" value="true" /> <label for="exchangeActiveSync" class="inline">Exchange ActiveSync (EAS)</label>
+								<br />
+								<input type="checkbox" id="bringYourOwnDevice" name="bringYourOwnDevice" value="true" /> <label for="bringYourOwnDevice" class="inline">Bring your own device (BYOD)</label>
+								<br />
+								<input type="checkbox" id="sqlServer" name="sqlServer" value="true" /> <label for="sqlServer" class="inline">SQL Server</label>
+								<br />
+								<input type="checkbox" id="oDataREST" name="oDataREST" value="true" /> <label for="oDataREST" class="inline">OData / REST</label>
+								<br />
+								<input type="checkbox" id="otherProtocol" name="otherProtocol" value="true" /> <label for="otherProtocol" class="inline">Other</label>
+							</fieldset>
+							<input id="" name="" type="text" type="submit" />
+							<label for="newsletterSubscription">I would like to receive the newsletter</label>
+							<input id="newsletterSubscription" type="checkbox" name="newsletterSubscription" value="true" checked>
+							<p>*Optional</p>
+							<button class="medium" type="submit">Submit</button>
+							<hr>
+						</form>
+					</section>
+				</section>
+				<hr class="alt1" /> -->
 <!-- 			<section class="col_12 home-page-experts" id="homepage-team">
 			<hr class="alt1" />
 			</section> -->
