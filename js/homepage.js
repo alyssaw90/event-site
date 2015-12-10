@@ -31,10 +31,24 @@
 // 	});
 // });
 
+//Finds y value of given object
+function findPos(obj) {
+  var curtop = 0;
+  if (obj.offsetParent) {
+    do {
+      curtop += obj.offsetTop;
+    } while (obj = obj.offsetParent);
+  return curtop;
+  }
+}
+
 $(document).ready(function () {
 	//array of ms colors at 80% opacity - ms yellow is removed, because it's to light for background color
 	var msColors = ['rgba(216, 59, 1, .8)', 'rgba(232, 17, 35, .8)', 'rgba(180, 0, 158, .8)', 'rgba(92, 45, 145, .8)', 'rgba(0, 120, 215, .8)', 'rgba(0, 130, 114, .8)', 'rgba(16, 124, 16, .8)'];
 	var count = 0;
+	var $learnBlockIcon = $('#learnBlockIcon');
+	var $learnBlock = $('#learnBlock');
+	var $infoBlockWrapper = $('.infoBlockWrapper');
 	//randomly assign background-color to the slides -- .slideshow li:nth-child(2) h2:first-child
 	$('.slideshow li').each(function (i) {
 		var randomNum = Math.floor(Math.random() * (7 - count));
@@ -53,4 +67,18 @@ $(document).ready(function () {
 	});
 
 	// console.log($('.sliderRegisterButton').css('background-color'));
+
+	$infoBlockWrapper.click(function (e) {
+		var blockPosition = findPos(this);
+		var thisBlockId = '#' + $(this).data('thisblock');
+		// console.log($(this).data('thisblock'));
+		if ($(thisBlockId).css('display') === 'none') {
+			$(thisBlockId).show();
+			$(thisBlockId).siblings().hide();
+			$('html, body').animate({ scrollTop: blockPosition }, 'slow');
+		} else {
+			$(thisBlockId).hide();
+			$(thisBlockId).siblings().hide();
+		}
+	});
 });

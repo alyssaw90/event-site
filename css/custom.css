@@ -27,9 +27,9 @@ p {
 	line-height: 1.4em;
 }
 
-	main p {
-		text-align: justify !important;
-	}
+main p {
+	text-align: justify !important;
+}
 
 li {
 	font-size: 1.15em;
@@ -138,6 +138,10 @@ li {
 
 .filler {
 	visibility: hidden;
+}
+
+.infoBlocks:hover {
+	cursor: pointer;
 }
 
 .home-page-experts img {
@@ -1008,7 +1012,7 @@ footer img {
 	}
 
 	.event_block p {
-		 text-align: center; 
+		 text-align: center !important; 
 		 font-size: 2em;
 		 padding-top: 12%; 
 		 color: #FFF; 
