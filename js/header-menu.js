@@ -156,14 +156,17 @@
 			}
 			//make mobile menu slide up and down when it's pressed
 			$('.hamburger-menu').click(function () {
-				// $('.mobile-menu:first').toggleClass('add-space');
+				$('.hidden-div').animate({width: 'toggle'});
+				$('.menu-overlay').css('height', '100%');
+/*				// $('.mobile-menu:first').toggleClass('add-space');
   			if ($('.hidden-div').is(':hidden')) {
   			  $('.hidden-div').slideDown('slow');
   			  $('.menu-overlay').css('height', '100%');
+
   			} else {
   			  $('.hidden-div').slideUp('slow');
   			  $('.menu-overlay').css('height', '');
-  			}
+  			}*/
 			});
 		})
 
