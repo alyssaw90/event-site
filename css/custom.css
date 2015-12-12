@@ -125,6 +125,13 @@ li {
 	float: right;
 }
 
+.rotate-180 {
+    -moz-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+}
+
 /*.map {
 	background-color: #7d489c;
 	width: 100%;
@@ -138,6 +145,12 @@ li {
 
 .filler {
 	visibility: hidden;
+}
+
+.hidden-div {
+	background-color: rgba(92, 45, 145, 1);
+	position: absolute;
+	z-index: 1002;
 }
 
 .infoBlocks:hover {
@@ -306,6 +319,19 @@ li {
 	display: none;
 }
 
+.hamburger-menu {
+	list-style: none;
+
+}
+
+.hamburger-menu a {
+	color: #fff;
+}
+
+.hamburger-menu a:first-child {
+	font-size: 30px;
+}
+
 .hamburger-icon {
 	padding-top: 8px; 
 	/*float: right;*/
@@ -316,6 +342,7 @@ li {
 .hidden-menu {
 	display: none !important;
 	position: absolute;
+	background-color: rgba(91, 44, 144, 1);
 }
 
 .upcoming-menu {
@@ -1366,7 +1393,7 @@ footer img {
 	.mobile-menu span {
 		line-height: 130%;
 		float: left !important;
-		width: 270px;
+		/*width: 270px;*/
 		padding: 3% 3% 3% 30%;
 	}
 
@@ -1399,7 +1426,7 @@ footer img {
 	}
 
 	.menu-overlay {
-		height: 65px;
+		height: 65px !important;
 	}
 
 	.home-page-experts img{
@@ -1482,7 +1509,7 @@ footer img {
 	}
 
 	.hidden-div {
-		width: 100%;
+		width: 80%;
 	}
 
 	.mobileSocialIcons {

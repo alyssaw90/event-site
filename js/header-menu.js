@@ -9,22 +9,23 @@
  	var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
  	var $header = $('header');
  	var $menuBlock = $('.menu-block');
+ 	var $hiddenDiv = $('.hidden-div');
  	var menu = '<!-- Begin upper purple menu -->\
-		<nav class="menu-overlay hamburger-menu social-icons clearfix">\
+		<div class="menu-overlay hamburger-menu social-icons">\
 		<!-- Begin Mobile "Hamburger Menu" -->\
 			<div class="float-right mobileHamburgerIcon">\
 				<i class="fa fa-bars fa-3x hamburger-icon"></i>\
 			</div>\
-			<div class="hidden-div" style="display: none">\
-				<ul class="menu vertical hamburger-menu">\
-					<li class="mobile-menu"><a href="/"><span class="home">Home</span></a></li>\
-					<li class="mobile-menu"><a href="/future-events"><span>Find an Event</a></span></a></li>\
-					<li class="mobile-menu"><a href="/latest-news"><span>Get the Latest</span></a></li>\
-					<li class="mobile-menu"><a href="/meet-the-team"><span>Meet the Team</a></span></a></li>\
-					<li class="mobile-menu"><a href="/past-events"><span>Past Events</span></a></li>\
-				</ul>\
-			</div>\
-		</nav>\
+		</div>\
+		<div class="hidden-div" style="display: none">\
+			<ul class="hamburger-menu">\
+				<li class="mobile-menu"><a href="/"><span class="home">Home</span></a></li>\
+				<li class="mobile-menu"><a href="/future-events"><span>Find an Event</a></span></a></li>\
+				<li class="mobile-menu"><a href="/latest-news"><span>Get the Latest</span></a></li>\
+				<li class="mobile-menu"><a href="/meet-the-team"><span>Meet the Team</a></span></a></li>\
+				<li class="mobile-menu"><a href="/past-events"><span>Past Events</span></a></li>\
+			</ul>\
+		</div>\
 		<!-- End "Hamburger" Menu -->\
 		<!-- Begin purple desktop menu -->\
 		<nav class="menu-overlay desktop-menu flex"">\
@@ -154,23 +155,16 @@
 			if (window.location.pathname === '/past-events') {
 				$('.past-events-header-menu-block').addClass('current-page');
 			}
-			//make mobile menu slide up and down when it's pressed
+			//make mobile menu slide in from side when it's pressed and back when anywhere else is pressed
 			$('.hamburger-menu').click(function () {
 				$('.hidden-div').animate({width: 'toggle'});
-				$('.menu-overlay').css('height', '100%');
-/*				// $('.mobile-menu:first').toggleClass('add-space');
-  			if ($('.hidden-div').is(':hidden')) {
-  			  $('.hidden-div').slideDown('slow');
-  			  $('.menu-overlay').css('height', '100%');
-
-  			} else {
-  			  $('.hidden-div').slideUp('slow');
-  			  $('.menu-overlay').css('height', '');
-  			}*/
+				$('.hamburger-icon').toggleClass('rotate-180');
 			});
-		})
-
-
-
-					
+			$('main').click(function (e) {
+				if ($('.hidden-div').is(':visible') && e.target !== $('.hidden-div')) {
+					console.log(e.target);
+					$('.hidden-div').animate({width: 'toggle'});
+				}
+			})
+		});		
  });
