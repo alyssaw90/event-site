@@ -9,7 +9,7 @@ var $ = require('cheerio');
 var bodyparser = require('body-parser');
 var path = require('path');
 var Sql = require('sequelize');
-var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
+var sql = new Sql('events_page', 'EventAdmin', 'Event.4ever!', {
   host: 'localhost',
   dialect: 'mssql',
 
