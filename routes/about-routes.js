@@ -8,15 +8,15 @@ var fs = require('fs');
 var $ = require('cheerio');
 var bodyparser = require('body-parser');
 var path = require('path');
-var Sql = require('sequelize');
-var sql = new Sql('Driver={SQL Server Native Client 11.0};Server=tcp:interopeventstestserver.database.windows.net,1433;Database=InteropEventsDBTest;Uid=EventAdmin@interopeventstestserver;Pwd={Event.4ever!};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;', {
+// var Sql = require('sequelize');
+/*var sql = new Sql('Driver={SQL Server Native Client 11.0};Server=tcp:interopeventstestserver.database.windows.net,1433;Database=InteropEventsDBTest;Uid=EventAdmin@interopeventstestserver;Pwd={Event.4ever!};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;', {
   dialect: 'mssql',
   pool: {
     max: 5,
     min: 0,
     idle: 10000
   }
-});
+});*/
 /*var sql = new Sql('events_page', 'EventAdmin', 'Event.4ever!', {
   host: 'localhost',
   dialect: 'mssql',
