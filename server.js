@@ -12,7 +12,7 @@ var aboutRouter = express.Router();
 var dbRouter = express.Router();
 var viewRouter = express.Router();
 var adminRouter = express.Router();
-require('./routes/about-routes')(aboutRouter);
+// require('./routes/about-routes')(aboutRouter);
 require('./routes/db-routes')(dbRouter);
 require('./routes/view-routes')(viewRouter);
 require('./routes/admin-routes')(adminRouter);
