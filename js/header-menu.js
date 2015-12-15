@@ -158,12 +158,29 @@
 			//make mobile menu slide in from side when it's pressed and back when anywhere else is pressed
 			$('.hamburger-menu').click(function () {
 				$('.hidden-div').animate({width: 'toggle'});
-				$('.hamburger-icon').toggleClass('rotate-180');
+				// $('.hamburger-icon').toggleClass('rotate-180');
+				$('.hamburger-icon').css({
+
+        //for firefox
+        '-moz-animation-name':'rotatebox',
+        '-moz-animation-duration':'0.8s',
+        '-moz-animation-iteration-count':'1',
+        '-moz-animation-fill-mode':'forwards',
+
+        //for safari & chrome
+        '-webkit-animation-name':'rotatebox',
+        '-webkit-animation-duration':'0.8s',
+        '-webkit-animation-iteration-count':'1',
+        '-webkit-animation-fill-mode' : 'forwards',
+
+        });
+				$('main').toggleClass('grayedOut').toggleClass('grid').toggleClass('flex');
 			});
 			$('main').click(function (e) {
 				if ($('.hidden-div').is(':visible') && e.target !== $('.hidden-div')) {
 					console.log(e.target);
 					$('.hidden-div').animate({width: 'toggle'});
+					$('main').toggleClass('grayedOut');
 				}
 			})
 		});		
