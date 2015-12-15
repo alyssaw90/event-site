@@ -36,6 +36,46 @@ li {
 	line-height: 1.4em;
 }
 
+.grayedOut {
+	opacity: .5;
+	background-color: #000;
+	width: 100% !important;
+	padding-right: 5% !important;
+	padding-left: 5% !important;
+	/*margin-right: 0 !important;
+	margin-left: 0 !important;*/
+}
+
+
+.rotate-180 {
+    -moz-transform: rotate(120deg);
+    -webkit-transform: rotate(120deg);
+    -o-transform: rotate(120deg);
+    -ms-transform: rotate(120deg);
+}
+
+@-moz-keyframes rotatebox /*--for firefox--*/{
+
+    from{
+        -moz-transform:rotate(0deg);
+    }       
+    to{
+        -moz-transform:rotate(180deg);
+    }                       
+
+}
+
+@-webkit-keyframes rotatebox /*--for webkit--*/{
+
+    from{
+        -webkit-transform:rotate(0deg);
+    }       
+    to{
+        -webkit-transform:rotate(180deg);
+    }                       
+
+}
+
 /*header {
 	position: relative !important;
 	background-image: url(../img/tnw-conference.jpg);
@@ -123,13 +163,6 @@ li {
 
 .float-right {
 	float: right;
-}
-
-.rotate-180 {
-    -moz-transform: rotate(180deg);
-    -webkit-transform: rotate(180deg);
-    -o-transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
 }
 
 /*.map {
