@@ -463,10 +463,10 @@ router.route('/future-events')
         data.sort(function (a, b) {
           a = new Date(a.eventStartDate);
           b = new Date(b.eventStartDate);
-          if ( a > b) {
+          if ( a < b) {
             return -1;
           }
-          if (a < b) {
+          if (a > b) {
             return 1;
           }
           if (a === b) {
@@ -658,7 +658,7 @@ router.route('/allevents/:eventId')
   })
   */
   //This route has to be last or it will override the other routes
-  router.route('/event/:eventName')
+  router.route('/:eventName')
   .get(function (req, res) {
     // var cat = req.params.eventName.toLowerCase().replace(/\s+/g, '');
     var theParam = req.params.eventName.toLowerCase().slice(1);
