@@ -46,6 +46,10 @@ li {
 	margin-left: 0 !important;*/
 }
 
+.infoBlockButton {
+	top: 100px;
+}
+
 
 .rotate-180 {
     -moz-transform: rotate(120deg);

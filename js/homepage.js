@@ -49,6 +49,9 @@ $(document).ready(function () {
 	var $learnBlockIcon = $('#learnBlockIcon');
 	var $learnBlock = $('#learnBlock');
 	var $infoBlockWrapper = $('.infoBlockWrapper');
+	var $infoBlockButton = $('.infoBlockButton');
+	var $infoBlocksContainer = $('.infoBlocksContainer');
+	var $infoBlocksContainer2 = $('.infoBlocksContainer2');
 	//randomly assign background-color to the slides -- .slideshow li:nth-child(2) h2:first-child
 	$('.slideshow li').each(function (i) {
 		var randomNum = Math.floor(Math.random() * (7 - count));
@@ -81,4 +84,17 @@ $(document).ready(function () {
 			$(thisBlockId).siblings().hide();
 		}
 	});
+
+	$infoBlockButton.click(function () {
+		if ($infoBlocksContainer.is(':visible')) {
+			$infoBlocksContainer.fadeOut(function() { 
+				$infoBlocksContainer2.fadeIn(); 
+			}); 	
+		}
+		if ($infoBlocksContainer2.is(':visible')) {
+			$infoBlocksContainer2.fadeOut(function() { 
+				$infoBlocksContainer.fadeIn(); 
+			}); 	
+		}
+	})
 });
