@@ -463,10 +463,10 @@ router.route('/future-events')
         data.sort(function (a, b) {
           a = new Date(a.eventStartDate);
           b = new Date(b.eventStartDate);
-          if ( a > b) {
+          if ( a < b) {
             return -1;
           }
-          if (a < b) {
+          if (a > b) {
             return 1;
           }
           if (a === b) {
