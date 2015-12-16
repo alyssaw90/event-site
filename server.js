@@ -20,7 +20,7 @@ require('./routes/admin-routes')(adminRouter);
 
 // app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(bodyParser.json());
-console.log(clc.magenta('LLLLLLLLLLL ::::::::::::::  '), process.env.SECRET_KEY)
+console.log(clc.magenta('process.env.SECRET_KEY ::::::::::::::  '), process.env.SECRET_KEY)
 
 app.use(express.static(__dirname + '/'));
 // app.use('/', aboutRouter);
