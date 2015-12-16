@@ -50,10 +50,11 @@ var Event = module.exports = sql.define('Event', {
 {
   getterMethods   : {
     eventUrl: function () {
-      var theEventName = this.getDataValue('eventName');
+      var theEventLocation = this.getDataValue('eventLocation');
       var startDate = this.getDataValue('eventStartDate');
-      var theUrl = theEventName.replace(/\W/g, '').toLowerCase() + '-' + startDate.getFullYear();
-      return theEventName.replace(/\W/g, '').toLowerCase() + '-' + startDate.getFullYear();
+      var theUrl = theEventLocation.replace(/\W/g, '').toLowerCase() + startDate.getFullYear();
+      // return theEventLocation.replace(/\W/g, '').toLowerCase() + '-' + startDate.getFullYear();
+      return theUrl;
     },
     eventSlideshowImage: function () {
       var idVal = this.getDataValue('id');

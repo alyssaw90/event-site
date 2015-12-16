@@ -658,7 +658,7 @@ router.route('/allevents/:eventId')
   })
   */
   //This route has to be last or it will override the other routes
-  router.route('/event/:eventName')
+  router.route('/:eventName')
   .get(function (req, res) {
     // var cat = req.params.eventName.toLowerCase().replace(/\s+/g, '');
     var theParam = req.params.eventName.toLowerCase().slice(1);

@@ -3,7 +3,7 @@
 $(document).ready(function () {
 
 	$.get('/events', function (events) {
-		var pathname = window.location.pathname.slice(7);
+		var pathname = window.location.pathname.slice(1);
 		var eventsObj = {};
 		var $eventHeader = $('#eventHeader');
 		var $eventTabs = $('#eventTabs');
