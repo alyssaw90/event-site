@@ -1,0 +1,18 @@
+(node) warning: possible EventEmitter memory leak detected. 11 exit listeners added. Use emitter.setMaxListeners() to increase limit.
+Trace
+    at process.addListener (events.js:239:17)
+    at ConnectionManager (C:\Users\v-mibowe\Documents\GitHub\event-site\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:43:11)
+    at new ConnectionManager (C:\Users\v-mibowe\Documents\GitHub\event-site\node_modules\sequelize\lib\dialects\mssql\connection-manager.js:10:29)
+    at new MssqlDialect (C:\Users\v-mibowe\Documents\GitHub\event-site\node_modules\sequelize\lib\dialects\mssql\index.js:12:28)
+    at new Sequelize (C:\Users\v-mibowe\Documents\GitHub\event-site\node_modules\sequelize\lib\sequelize.js:203:20)
+    at Object.<anonymous> (C:\Users\v-mibowe\Documents\GitHub\event-site\routes\view-routes.js:18:11)
+    at Module._compile (module.js:435:26)
+    at Object.Module._extensions..js (module.js:442:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:311:12)
+    at Module.require (module.js:366:17)
+    at require (module.js:385:17)
+    at Object.<anonymous> (C:\Users\v-mibowe\Documents\GitHub\event-site\server.js:17:1)
+    at Module._compile (module.js:435:26)
+    at Object.Module._extensions..js (module.js:442:10)
+    at Module.load (module.js:356:32)
