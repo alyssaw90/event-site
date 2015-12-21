@@ -16,10 +16,14 @@
     "express": "^4.13.3",
     "flash": "^1.1.0",
     "jquery": "^2.1.4",
+    "msnodesqlv8": "^0.1.18",
     "multer": "^1.1.0",
+    "node-sqlserver-unofficial": "^1.4.0",
     "sequelize": "^3.11.0",
     "sequelize-encrypted": "^0.1.0",
-    "tedious": "^1.12.3"
+    "sequelize-tools": "0.0.3",
+    "tds": "^0.1.0",
+    "tedious": "^1.13.1"
   },
   "devDependencies": {
     "chai": "^3.2.0",

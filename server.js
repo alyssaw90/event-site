@@ -10,11 +10,11 @@ process.env.SECRET_KEY = process.env.SECRET_KEY || 'change this change this chan
 
 var aboutRouter = express.Router();
 var dbRouter = express.Router();
-var viewRouter = express.Router();
+// var viewRouter = express.Router();
 var adminRouter = express.Router();
 // require('./routes/about-routes')(aboutRouter);
 require('./routes/db-routes')(dbRouter);
-require('./routes/view-routes')(viewRouter);
+// require('./routes/view-routes')(viewRouter);
 require('./routes/admin-routes')(adminRouter);
 
 
@@ -25,7 +25,7 @@ console.log(clc.magenta('process.env.SECRET_KEY ::::::::::::::  '), process.env.
 app.use(express.static(__dirname + '/'));
 // app.use('/', aboutRouter);
 app.use('/', dbRouter);
-app.use('/', viewRouter);
+// app.use('/', viewRouter);
 app.use('/', adminRouter);
 
 app.listen(port, function () {

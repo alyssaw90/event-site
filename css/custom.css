@@ -227,8 +227,13 @@ li {
 	color: #fff;
 }
 
+.invisibleDiv {
+	visibility: none;
+}
+
 .menu-overlay {
-	background-color: rgba(91, 44, 144, 1);
+	/*background-color: rgba(91, 44, 144, 1);*/
+	background-color: #4668c5;
 	padding-bottom: 0 !important;
 	/*padding-right: 18%;*/
 }

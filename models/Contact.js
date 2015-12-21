@@ -11,6 +11,30 @@ var Sql = require('sequelize');
     idle: 10000
   }
 });*/
+var sql = new Sql('InteropEventsDBTest', 'EventAdmin@interopeventstestserver', 'Event.4ever!', {
+  host: 'interopeventstestserver.database.windows.net',
+  dialect: 'mssql',
+  pool: {
+    max: 5,
+    min: 0,
+    idle: 10000
+  },
+  dialectOptions: {
+    encrypt: true
+  }
+});
+/*var sql = new Sql('InteropEventsDBTest', 'EventAdmin@interopeventstestserver', 'Event.4ever!', {
+  host: 'interopeventstestserver.database.windows.net',
+  dialect: 'mssql',
+  driver: 'tedious',
+ options: {encrypt: true, database: 'InteropEventsDBTest'},
+  port: 1433,
+  pool: {
+    max: 5,
+    min: 0,
+    idle: 10000
+  }
+});*/
 /*var sql = new Sql('Driver={SQL Server Native Client 11.0};Server=tcp:interopeventstestserver.database.windows.net,1433;Database=InteropEventsDBTest;Uid=EventAdmin@interopeventstestserver;Pwd={Event.4ever!};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;', {
   dialect: 'mssql',
   pool: {
@@ -19,16 +43,26 @@ var Sql = require('sequelize');
     idle: 10000
   }
 });*/
-var sql = new Sql('InteropEventsDBTest', 'EventAdmin', 'Event.4ever!', {
+/*var sql = new Sql('InteropEventsDBTest', 'EventAdmin', 'Event.4ever!', {
   host: 'interopeventstestserver.database.windows.net',
   dialect: 'mssql',
   port: 1433,
+  driver: 'tedious',
   pool: {
     max: 5,
     min: 0,
     idle: 10000
   }
-});
+});*/
+// console.log(sql);
+/*sql.authenticate().then(function (err, data) {
+  if (err) {
+  console.log(err);
+  }
+  if (!err) {
+    console.log('db connection made');
+  }
+});*/
 
 var fs = require('fs');
 var path = require('path');
@@ -97,6 +131,9 @@ return Contact.create({
 
 // Table created
 Contact.sync({force: true})
+.then(function () {
+  console.log(sql.databaseVersion());
+})
 .then(function () {
   return Contact.create({
     firstName: 'Michael',

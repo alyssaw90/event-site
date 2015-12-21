@@ -38,14 +38,26 @@ var upload = multer({ storage: storage });
 var bodyparser = require('body-parser');
 var path = require('path');
 var Sql = require('sequelize');
-var sql = new Sql('InteropEventsDBTest', 'EventAdmin', 'Event.4ever!', {
-  host: 'interopeventstestserver.database.windows.net',
+/*var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
+  host: 'localhost',
   dialect: 'mssql',
-  port: 1433,
+
   pool: {
     max: 5,
     min: 0,
     idle: 10000
+  }
+});*/
+var sql = new Sql('InteropEventsDBTest', 'EventAdmin@interopeventstestserver', 'Event.4ever!', {
+  host: 'interopeventstestserver.database.windows.net',
+  dialect: 'mssql',
+  pool: {
+    max: 5,
+    min: 0,
+    idle: 10000
+  },
+  dialectOptions: {
+    encrypt: true
   }
 });
 /*var sql = new Sql('Driver={SQL Server Native Client 11.0};Server=tcp:interopeventstestserver.database.windows.net,1433;Database=InteropEventsDBTest;Uid=EventAdmin@interopeventstestserver;Pwd={Event.4ever!};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;', {
@@ -56,17 +68,72 @@ var sql = new Sql('InteropEventsDBTest', 'EventAdmin', 'Event.4ever!', {
     idle: 10000
   }
 });*/
-/*var sql = new Sql('events_page', 'EventAdmin', 'Event.4ever!', {
-  host: 'localhost',
-  dialect: 'mssql',
+sql
+    .authenticate()
+    .then(function (err) {
+        if (err) {
+            console.log(clc.xterm(202)('Unable to connect to the database: '), err);
+        } else {
+            console.log(clc.xterm(202)('Connection has been established successfully.'));
+        }
+    });
 
-  pool: {
-    max: 5,
-    min: 0,
-    idle: 10000
-  }
+    console.log(clc.magenta('    ::::::::     '), sql.authenticate());
+// console.log(sql.authenticate());
+
+/*var db = require("sequelize-tools").db
+  console.log(clc.magenta('DB Connection made'), db);
+  db.init().then()*/
+
+// db.init(function() {
+//   // successfully connected, authenticated, synced
+// })
+
+/*sql.authenticate().then(function (err) {
+  // if (err) {
+  console.log(err);
+  // }
 });*/
-console.log(sql.authenticate());
+/*var Connection = require('tedious').Connection;
+var config = {
+    userName: 'EventAdmin@interopeventstestserver',
+    password: 'Event.4ever!',
+    server: 'interopeventstestserver.database.windows.net',
+    // If you are on Microsoft Azure, you need this:
+    options: {encrypt: true, database: 'InteropEventsDBTest'}
+};
+var connection = new Connection(config);
+connection.on('connect', function(err) {
+    // If no error, then good to proceed.
+    console.log("Connected");
+    executeStatement1();
+});
+
+var Request = require('tedious').Request
+var TYPES = require('tedious').TYPES;
+
+function executeStatement1() {
+    request = new Request("INSERT SalesLT.Product (Name, ProductNumber, StandardCost, ListPrice, SellStartDate) OUTPUT INSERTED.ProductID VALUES (@Name, @Number, @Cost, @Price, CURRENT_TIMESTAMP);", function(err) {
+     if (err) {
+        console.log(err);}
+    });
+    request.addParameter('Name', TYPES.NVarChar,'SQL Server Express 2014');
+    request.addParameter('Number', TYPES.NVarChar , 'SQLEXPRESS2014');
+    request.addParameter('Cost', TYPES.Int, 11);
+    request.addParameter('Price', TYPES.Int,11);
+    request.on('row', function(columns) {
+        columns.forEach(function(column) {
+          if (column.value === null) {
+            console.log('NULL');
+          } else {
+            console.log("Product id of inserted item is " + column.value);
+          }
+        });
+    });     
+    connection.execSql(request);
+}*/
+
+// console.log(sql.databaseVersion());
 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 var randomTabImages = ['alt-slide-1.jpg', 'alt-slide-2.jpg', 'alt-slide-3.jpg', 'alt-slide-4.jpg', 'alt-slide-5.jpg', 'alt-slide-6.jpg'];
 var msColors = ['ffb900', 'd83b01', 'e81123', 'b4009e', '5c2d91', '0078d7', '008272', '107c10'];
@@ -97,6 +164,77 @@ module.exports = function (router) {
     extended: true
   }));
 
+  router.route('/')
+  .get(function (req, res) {
+    res.sendFile(path.join(__dirname, '../views/test.html'));
+  });
+
+  router.route('/test')
+  .get(function (req, res) {
+    res.sendFile(path.join(__dirname, '../views/test.html'));
+  });
+
+  router.route('/test2')
+  .get(function (req, res) {
+    res.sendFile(path.join(__dirname, '../views/test2.html'));
+  });
+
+  router.route('/test3')
+  .get(function (req, res) {
+    res.sendFile(path.join(__dirname, '../views/test3.html'));
+  });
+
+  router.route('/about')
+  .get(function (req, res) {
+    res.sendFile(path.join(__dirname, '../views/about.html'));
+  });
+
+  router.route('/past-events')
+  .get(function (req, res) {
+    res.sendFile(path.join(__dirname, '../views/past-events.html'));
+  });
+
+  router.route('/meet-the-team')
+  .get(function (req, res) {
+    res.sendFile(path.join(__dirname, '../views/meet-the-team.html'));
+  });
+
+  router.route('/contactus')
+  .get(function (req, res) {
+    res.sendFile(path.join(__dirname, '../views/contact.html'));
+  });
+
+  router.route('/faq')
+  .get(function (req, res) {
+    res.sendFile(path.join(__dirname, '../views/faq.html'));
+  });
+
+  router.route('/santa-clara-2015')
+  .get(function (req, res) {
+   res.sendFile(path.join(__dirname, '../views/events/santa-clara-2015.html'));
+  }); 
+
+  router.route('/latest-news')
+  .get(function (req, res) {
+    res.sendFile(path.join(__dirname, '../views/latest-news.html'));
+  });
+
+  router.route('/map')
+  .get(function (req, res) {
+    res.sendFile(path.join(__dirname, '../views/world-map.html'));
+  });
+
+  router.route('/survey/:eventId')
+  .get(function (req, res) {
+    // console.log(clc.magenta('HHHHHHHHHHHH :::::::::::::: '), req.params.eventId);
+    res.sendFile(path.join(__dirname, '../views/survey.html'));
+  });
+
+  router.route('/media')
+  .get(function (req, res) {
+    res.sendFile(path.join(__dirname, '../views/media.html'));
+  });
+
   router.route('/showfullteam')
   .get(function (req, res) {
     var start = new Date().getTime();
@@ -123,7 +261,7 @@ module.exports = function (router) {
         res.json(data);
       })
       .error(function (err) {
-        console(err);
+        console.log(err);
         res.status(500).json({msg: 'internal server error'});
       });
     });
