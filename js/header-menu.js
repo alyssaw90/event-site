@@ -4,13 +4,46 @@
 /*global window */
 /*jshint multistr: true */ 
 
+/*function randomQuote (arr) {
+	var randomNum = Math.floor(Math.random() * arr.length);
+	var outputQuote = '<h4>' + arr[randomNum].quote + '</h4><p>' + arr[randomNum].author + '</p>';
+	$('#feedbackBlock').append(outputQuote);
+}*/
+
  $(document).ready(function () {
  	
  	var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
  	var $header = $('header');
  	var $menuBlock = $('.menu-block');
  	var $hiddenDiv = $('.hidden-div');
- 	var menu = '<!-- Begin upper purple menu -->\
+ 	var feedbackArr = [{quote: 'I loved it!', author: 'John Doe'}, {quote: 'I adored it!', author: 'Jane Doe'}, {quote: 'I like it!', author: 'John Doe Jr.'}, {quote: 'I\'m hungry', author: 'Me'}];
+ 	var pathname = window.location.pathname;
+
+ 	var menu = '<nav class="grid flex desktop-menu gray-menu">\
+			<div class="col_2 center-block">\
+				<div class="col_2 center-block menu-block home-menu-button"><a href="/">Home</a></div>\
+			</div>\
+				<div class="col_2 center-block">\
+					<div class="col_2 center-block menu-block upcominEventsBlock"><a href="/future-events">Find an Event</a></div>\
+				</div>\
+			<div style="display: none;">\
+			</div>\
+			<div class="col_2 center-block">\
+				<div class="col_2 center-block menu-block latest-news-menu-block"><a href="/latest-news">Get the Latest</a></div>\
+			</div>\
+			<div class="col_2 center-block">\
+				<div class="col_2 center-block menu-block meet-the-team-menu-block"><a href="/meet-the-team">Meet the Team</a></div>\
+			</div>\
+			<div class="col_2 center-block">\
+				<div class="col_2 center-block menu-block past-events-header-menu-block"><a href="/past-events">Past Events</a></div>\
+			</div>\
+		</nav>\
+		<!-- End gray desktop menu -->\
+		<div class="menu-overlay" id="feedbackBlockWrapper" style="height:100px; color: #fff; padding-top: 15px;"><div id="feedbackBlock" style=""></div></div>\
+		<section id="headerImage">\
+			<img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../img/jinghui-zhang-slider.png" />\
+		</section>\
+		<!-- Begin upper purple menu -->\
 		<div class="menu-overlay hamburger-menu social-icons">\
 		<!-- Begin Mobile "Hamburger Menu" -->\
 			<div class="float-right mobileHamburgerIcon">\
@@ -33,27 +66,7 @@
 		</nav>\
 		<!-- End Purple desktop menu -->\
 		<!-- End upper purple upper menu -->\
-		<!-- begin Gray Desktop Main menu -->\
-		<nav class="grid flex desktop-menu gray-menu">\
-			<div class="col_2 center-block">\
-				<div class="col_2 center-block menu-block home-menu-button"><a href="/">Home</a></div>\
-			</div>\
-				<div class="col_2 center-block">\
-					<div class="col_2 center-block menu-block upcominEventsBlock"><a href="/future-events">Find an Event</a></div>\
-				</div>\
-			<div style="display: none;">\
-			</div>\
-			<div class="col_2 center-block">\
-				<div class="col_2 center-block menu-block latest-news-menu-block"><a href="/latest-news">Get the Latest</a></div>\
-			</div>\
-			<div class="col_2 center-block">\
-				<div class="col_2 center-block menu-block meet-the-team-menu-block"><a href="/meet-the-team">Meet the Team</a></div>\
-			</div>\
-			<div class="col_2 center-block">\
-				<div class="col_2 center-block menu-block past-events-header-menu-block"><a href="/past-events">Past Events</a></div>\
-			</div>\
-		</nav>\
-		<!-- End gray desktop menu -->';
+		<!-- begin Gray Desktop Main menu -->';
 
 			function changeWidth () {
 			var widestBlock = 0;
@@ -182,6 +195,51 @@
 					$('.hidden-div').animate({width: 'toggle'});
 					$('main').toggleClass('grayedOut');
 				}
-			})
+			});
+			/*setInterval(function () { 
+				var randomNum = Math.floor(Math.random() * feedbackArr.length);
+				var outputQuote = '<h4 class="float-left" style="padding-left: 30%;">' + feedbackArr[randomNum].quote + '</h4><p class="float-left" style="padding-left: 3%;">' + feedbackArr[randomNum].author + '</p>';
+				console.log($('#feedbackBlock').html());
+				$('#feedbackBlock').html(outputQuote); 
+				$('#feedbackBlock').fadeIn('slow');
+			}, 3000);*/
+			/*setInterval(function () {
+				$('#feedbackBlock').fadeIn('slow', function () {
+					$('#feedbackBlock').fadeOut('slow');
+				})
+			}, 2000)*/
+			/*$('#feedbackBlock').effect('fade', {}, 1000, function () {
+      	setTimeout(function() {
+        	$('#feedbackBlock').removeAttr( "style" ).hide().fadeIn();
+    		}, 1000 );
+    	});*/
+			/*setInterval(function () {
+				$('#feedbackBlock').toggleClass('.invisibleDiv');
+			}, 2000);*/
+console.log(pathname);
+			if (pathname === '/') {
+				var randomNum = Math.floor(Math.random() * feedbackArr.length);
+				var outputQuote = '<h4>' + feedbackArr[randomNum].quote + '</h4><p>' + feedbackArr[randomNum].author + '</p>';
+				setInterval(function () { 
+					var randomNum = Math.floor(Math.random() * feedbackArr.length);
+					var outputQuote = '<h4 class="float-left" style="padding-left: 40%;">' + feedbackArr[randomNum].quote + '</h4><p class="float-left" style="padding-left: 3%;">' + feedbackArr[randomNum].author + '</p>';
+					$('#feedbackBlock').html(outputQuote); 
+					// $('#feedbackBlock').fadeIn('slow');
+				}, 3000);
+			}
+			(function swoop(element) {
+        element
+            .animate({'padding-top':'-20px'}, 1000)
+            .animate({'padding-top':'15px'}, 1000, function(){
+                setTimeout(function(){
+                    swoop(element);
+                }, 3000);
+            });
+    		})($('#feedbackBlock'));
+			if (pathname !== '/') {
+				$('#feedbackBlockWrapper').hide();
+				$('#headerImage').hide();
+
+			}
 		});		
  });

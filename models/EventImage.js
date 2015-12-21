@@ -58,6 +58,18 @@ var Sql = require('sequelize');
     idle: 10000
   }
 });*/
+var sql = new Sql('InteropEventsDBTest', 'EventAdmin@interopeventstestserver', 'Event.4ever!', {
+  host: 'interopeventstestserver.database.windows.net',
+  dialect: 'mssql',
+  pool: {
+    max: 5,
+    min: 0,
+    idle: 10000
+  },
+  dialectOptions: {
+    encrypt: true
+  }
+});
 /*var sql = new Sql('Driver={SQL Server Native Client 11.0};Server=tcp:interopeventstestserver.database.windows.net,1433;Database=InteropEventsDBTest;Uid=EventAdmin@interopeventstestserver;Pwd={Event.4ever!};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;', {
   dialect: 'mssql',
   pool: {
@@ -66,16 +78,17 @@ var Sql = require('sequelize');
     idle: 10000
   }
 });*/
-var sql = new Sql('InteropEventsDBTest', 'EventAdmin', 'Event.4ever!', {
+/*var sql = new Sql('InteropEventsDBTest', 'EventAdmin', 'Event.4ever!', {
   host: 'interopeventstestserver.database.windows.net',
   dialect: 'mssql',
   port: 1433,
+  driver: 'tedious',
   pool: {
     max: 5,
     min: 0,
     idle: 10000
   }
-});
+});*/
 
 var EventImage = module.exports = sql.define('EventImage', {
 	imageLink: Sql.STRING
