@@ -23,46 +23,6 @@ var sql = new Sql('InteropEventsDBTest', 'EventAdmin@interopeventstestserver', '
     encrypt: true
   }
 });
-/*var sql = new Sql('InteropEventsDBTest', 'EventAdmin@interopeventstestserver', 'Event.4ever!', {
-  host: 'interopeventstestserver.database.windows.net',
-  dialect: 'mssql',
-  driver: 'tedious',
- options: {encrypt: true, database: 'InteropEventsDBTest'},
-  port: 1433,
-  pool: {
-    max: 5,
-    min: 0,
-    idle: 10000
-  }
-});*/
-/*var sql = new Sql('Driver={SQL Server Native Client 11.0};Server=tcp:interopeventstestserver.database.windows.net,1433;Database=InteropEventsDBTest;Uid=EventAdmin@interopeventstestserver;Pwd={Event.4ever!};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;', {
-  dialect: 'mssql',
-  pool: {
-    max: 5,
-    min: 0,
-    idle: 10000
-  }
-});*/
-/*var sql = new Sql('InteropEventsDBTest', 'EventAdmin', 'Event.4ever!', {
-  host: 'interopeventstestserver.database.windows.net',
-  dialect: 'mssql',
-  port: 1433,
-  driver: 'tedious',
-  pool: {
-    max: 5,
-    min: 0,
-    idle: 10000
-  }
-});*/
-// console.log(sql);
-/*sql.authenticate().then(function (err, data) {
-  if (err) {
-  console.log(err);
-  }
-  if (!err) {
-    console.log('db connection made');
-  }
-});*/
 
 var fs = require('fs');
 var path = require('path');
@@ -106,26 +66,6 @@ var Contact = module.exports = sql.define('Contact', {
     }*/
   }
 });
-/*var image = fs.readFileSync(path.join(__dirname, '../img/rich-mclain-headshot.jpg')).toString("base64");
-Contact.sync({force: true})
-.then(function () {
-
-return Contact.create({
-    firstName: 'Bob',
-    lastName: 'Jones',
-    newsletterSubscription: true,
-    contactDescription: 'Hola Mundo',
-    eventRole: 'speaker',
-    msTeamMember: true,
-    msTeamTitle: 'Senior Lead Program Manager, Office Interoperability Team',
-    showOnHomePage: true,
-    headShot: image,
-    company: 'Microsoft',
-    country: 'USA',
-    allowNotifications: true,
-    allowPersonalInfoSharing: false
-  })
-})*/
 
 // create table if it doesn't already exist ```({force: true})``` will cause the table to be deleted and created regardless of if it exists already
 
