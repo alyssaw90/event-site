@@ -39,7 +39,6 @@
 			</div>\
 		</nav>\
 		<!-- End gray desktop menu -->\
-		<div class="menu-overlay" id="feedbackBlockWrapper" style="height:100px; color: #fff; padding-top: 15px;"><div id="feedbackBlock" style=""></div></div>\
 		<section id="headerImage">\
 			<img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../img/jinghui-zhang-slider.png" />\
 		</section>\
