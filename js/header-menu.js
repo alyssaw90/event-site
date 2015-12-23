@@ -39,7 +39,9 @@
 			</div>\
 		</nav>\
 		<!-- End gray desktop menu -->\
-		<section id="headerImage"><img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../img/jinghui-zhang-slider.png" /></section>\
+		<section id="headerImage">\
+			<img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../img/jinghui-zhang-slider.png" />\
+		</section>\
 		<!-- Begin upper purple menu -->\
 		<div class="menu-overlay hamburger-menu social-icons">\
 		<!-- Begin Mobile "Hamburger Menu" -->\
