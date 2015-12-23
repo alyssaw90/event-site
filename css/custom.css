@@ -37,11 +37,11 @@ li {
 }
 
 .grayedOut {
-	opacity: .5;
-	background-color: #000;
+	opacity: .2;
+	background-color: #fff
 	width: 100% !important;
-	padding-right: 5% !important;
-	padding-left: 5% !important;
+	/*padding-right: 5% !important;*/
+	/*padding-left: 5% !important;*/
 	/*margin-right: 0 !important;
 	margin-left: 0 !important;*/
 }
@@ -51,11 +51,11 @@ li {
 }
 
 
-.rotate-180 {
-    -moz-transform: rotate(120deg);
-    -webkit-transform: rotate(120deg);
-    -o-transform: rotate(120deg);
-    -ms-transform: rotate(120deg);
+.rotate-90{
+    -moz-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
 }
 
 @-moz-keyframes rotatebox /*--for firefox--*/{
@@ -64,7 +64,7 @@ li {
         -moz-transform:rotate(0deg);
     }       
     to{
-        -moz-transform:rotate(180deg);
+        -moz-transform:rotate(90deg);
     }                       
 
 }
@@ -75,7 +75,7 @@ li {
         -webkit-transform:rotate(0deg);
     }       
     to{
-        -webkit-transform:rotate(180deg);
+        -webkit-transform:rotate(90deg);
     }                       
 
 }
@@ -185,7 +185,8 @@ li {
 }
 
 .hidden-div {
-	background-color: rgba(92, 45, 145, 1);
+	/*background-color: rgba(92, 45, 145, 1);*/
+	background-color: #4668c5;
 	position: absolute;
 	z-index: 1002;
 }
@@ -1354,7 +1355,7 @@ footer img {
 	}
 
 	.hidden-div {
-		width: 40%;
+		width: 38%;
 	}
 
 
@@ -1559,7 +1560,7 @@ footer img {
 	}
 
 	.hamburger-icon {
-		padding-right: 20px;
+		padding-right: 15px;
 		padding-top: 10px;
 		margin-top: 0;
 	}
