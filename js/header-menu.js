@@ -86,6 +86,7 @@
 		$.get('/events', function (data) {
 			// var upcomingMenu = '<div class="col_2 center-block menu-block upcoming-menu"><a href="/future-events"><h2>Find an Event</h2></a></div>';
 			var upcomingPurpleMenu = '<div class="col_12 purpleEventMenu">';
+
 			$(data).each(function (i, elem) {
 				var startDate = new Date(elem.eventStartDate);
 				// console.log(new Date(elem.eventStartDate).getDate());
@@ -170,72 +171,19 @@
 			//make mobile menu slide in from side when it's pressed and back when anywhere else is pressed
 			$('.hamburger-menu').click(function () {
 				$('.hidden-div').animate({width: 'toggle'});
-				// $('.hamburger-icon').toggleClass('rotate-180');
-				$('.hamburger-icon').css({
-
-        //for firefox
-        '-moz-animation-name':'rotatebox',
-        '-moz-animation-duration':'0.8s',
-        '-moz-animation-iteration-count':'1',
-        '-moz-animation-fill-mode':'forwards',
-
-        //for safari & chrome
-        '-webkit-animation-name':'rotatebox',
-        '-webkit-animation-duration':'0.8s',
-        '-webkit-animation-iteration-count':'1',
-        '-webkit-animation-fill-mode' : 'forwards',
-
-        });
-				$('main').toggleClass('grayedOut').toggleClass('grid').toggleClass('flex');
+				$('.hamburger-icon').toggleClass('rotate-90');
+				$('main').toggleClass('grayedOut');
 			});
 			$('main').click(function (e) {
 				if ($('.hidden-div').is(':visible') && e.target !== $('.hidden-div')) {
 					console.log(e.target);
 					$('.hidden-div').animate({width: 'toggle'});
 					$('main').toggleClass('grayedOut');
+					$('.hamburger-icon').toggleClass('rotate-90');
 				}
 			});
-			/*setInterval(function () { 
-				var randomNum = Math.floor(Math.random() * feedbackArr.length);
-				var outputQuote = '<h4 class="float-left" style="padding-left: 30%;">' + feedbackArr[randomNum].quote + '</h4><p class="float-left" style="padding-left: 3%;">' + feedbackArr[randomNum].author + '</p>';
-				console.log($('#feedbackBlock').html());
-				$('#feedbackBlock').html(outputQuote); 
-				$('#feedbackBlock').fadeIn('slow');
-			}, 3000);*/
-			/*setInterval(function () {
-				$('#feedbackBlock').fadeIn('slow', function () {
-					$('#feedbackBlock').fadeOut('slow');
-				})
-			}, 2000)*/
-			/*$('#feedbackBlock').effect('fade', {}, 1000, function () {
-      	setTimeout(function() {
-        	$('#feedbackBlock').removeAttr( "style" ).hide().fadeIn();
-    		}, 1000 );
-    	});*/
-			/*setInterval(function () {
-				$('#feedbackBlock').toggleClass('.invisibleDiv');
-			}, 2000);*/
-console.log(pathname);
-			if (pathname === '/') {
-				var randomNum = Math.floor(Math.random() * feedbackArr.length);
-				var outputQuote = '<h4>' + feedbackArr[randomNum].quote + '</h4><p>' + feedbackArr[randomNum].author + '</p>';
-				setInterval(function () { 
-					var randomNum = Math.floor(Math.random() * feedbackArr.length);
-					var outputQuote = '<h4 class="float-left" style="padding-left: 40%;">' + feedbackArr[randomNum].quote + '</h4><p class="float-left" style="padding-left: 3%;">' + feedbackArr[randomNum].author + '</p>';
-					$('#feedbackBlock').html(outputQuote); 
-					// $('#feedbackBlock').fadeIn('slow');
-				}, 3000);
-			}
-			(function swoop(element) {
-        element
-            .animate({'padding-top':'-20px'}, 1000)
-            .animate({'padding-top':'15px'}, 1000, function(){
-                setTimeout(function(){
-                    swoop(element);
-                }, 3000);
-            });
-    		})($('#feedbackBlock'));
-			if (pathname !== '/') {
+			//if it isn't the homepage or the window is less than 768px, hide the frontpage image
+			if (pathname !== '/' || $(window).width() <= 768) {
 				$('#feedbackBlockWrapper').hide();
 				$('#headerImage').hide();
 
