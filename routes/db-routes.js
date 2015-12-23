@@ -5,29 +5,16 @@ var NewsletterSignup = require('../models/NewsletterSignup');
 var SuggestedCity = require('../models/SuggestedCity');
 var Interest = require('../models/Interest');
 var Event = require('../models/Event');
-// var EventOverview = require('../models/EventOverview');
 var EventSchedule = require('../models/EventSchedule');
 var EventAttendee = require('../models/EventAttendee');
-// var EventPlatinumSponsor = require('../models/EventPlatinumSponsor');
-// var EventGoldSponsor = require('../models/EventGoldSponsor');
-// var EventSilverSponsor = require('../models/EventSilverSponsor');
-// var EventBronzeSponsor = require('../models/EventBronzeSponsor');
-// var EventTravel = require('../models/EventTravel');
-// var TravelAccommodation = require('../models/TravelAccommodation');
-// var TravelRestaurant = require('../models/TravelRestaurant');
-// var TravelTip = require('../models/TravelTip');
 var SurveyQuestion = require('../models/SurveyQuestion');
 var SurveyAnswer = require('../models/SurveyAnswer');
-// var AdditionalTravelSection = require('../models/AdditionalTravelSection');
 // var User = require('../models/User');
 var EventImage = require('../models/EventImage');
 var aboutUs = require('../views/about')();
 var fs = require('fs');
-// var $ = require('cheerio');
 var clc = require('cli-color');
 var multer = require('multer');
-// var storage = multer.memoryStorage();
-// var upload = multer({ storage: storage });
 var storage = multer.diskStorage({
   destination: 'uploads/',
   filename: function (req, file, callback) {
@@ -60,80 +47,16 @@ var sql = new Sql('InteropEventsDBTest', 'EventAdmin@interopeventstestserver', '
     encrypt: true
   }
 });
-/*var sql = new Sql('Driver={SQL Server Native Client 11.0};Server=tcp:interopeventstestserver.database.windows.net,1433;Database=InteropEventsDBTest;Uid=EventAdmin@interopeventstestserver;Pwd={Event.4ever!};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;', {
-  dialect: 'mssql',
-  pool: {
-    max: 5,
-    min: 0,
-    idle: 10000
-  }
-});*/
-sql
-    .authenticate()
-    .then(function (err) {
-        if (err) {
-            console.log(clc.xterm(202)('Unable to connect to the database: '), err);
-        } else {
-            console.log(clc.xterm(202)('Connection has been established successfully.'));
-        }
-    });
 
-    console.log(clc.magenta('    ::::::::     '), sql.authenticate());
-// console.log(sql.authenticate());
+sql.authenticate()
+  .then(function (err) {
+    if (err) {
+      console.log(clc.xterm(202)('Unable to connect to the database: '), err);
+    } else {
+      console.log(clc.xterm(202)('Connection has been established successfully.'));
+    }
+  });
 
-/*var db = require("sequelize-tools").db
-  console.log(clc.magenta('DB Connection made'), db);
-  db.init().then()*/
-
-// db.init(function() {
-//   // successfully connected, authenticated, synced
-// })
-
-/*sql.authenticate().then(function (err) {
-  // if (err) {
-  console.log(err);
-  // }
-});*/
-/*var Connection = require('tedious').Connection;
-var config = {
-    userName: 'EventAdmin@interopeventstestserver',
-    password: 'Event.4ever!',
-    server: 'interopeventstestserver.database.windows.net',
-    // If you are on Microsoft Azure, you need this:
-    options: {encrypt: true, database: 'InteropEventsDBTest'}
-};
-var connection = new Connection(config);
-connection.on('connect', function(err) {
-    // If no error, then good to proceed.
-    console.log("Connected");
-    executeStatement1();
-});
-
-var Request = require('tedious').Request
-var TYPES = require('tedious').TYPES;
-
-function executeStatement1() {
-    request = new Request("INSERT SalesLT.Product (Name, ProductNumber, StandardCost, ListPrice, SellStartDate) OUTPUT INSERTED.ProductID VALUES (@Name, @Number, @Cost, @Price, CURRENT_TIMESTAMP);", function(err) {
-     if (err) {
-        console.log(err);}
-    });
-    request.addParameter('Name', TYPES.NVarChar,'SQL Server Express 2014');
-    request.addParameter('Number', TYPES.NVarChar , 'SQLEXPRESS2014');
-    request.addParameter('Cost', TYPES.Int, 11);
-    request.addParameter('Price', TYPES.Int,11);
-    request.on('row', function(columns) {
-        columns.forEach(function(column) {
-          if (column.value === null) {
-            console.log('NULL');
-          } else {
-            console.log("Product id of inserted item is " + column.value);
-          }
-        });
-    });     
-    connection.execSql(request);
-}*/
-
-// console.log(sql.databaseVersion());
 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 var randomTabImages = ['alt-slide-1.jpg', 'alt-slide-2.jpg', 'alt-slide-3.jpg', 'alt-slide-4.jpg', 'alt-slide-5.jpg', 'alt-slide-6.jpg'];
 var msColors = ['ffb900', 'd83b01', 'e81123', 'b4009e', '5c2d91', '0078d7', '008272', '107c10'];
