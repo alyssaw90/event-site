@@ -1352,7 +1352,7 @@ footer img {
 	}
 
 	.hidden-div {
-		width: 38%;
+		width: 70%;
 	}
 
 
@@ -1545,7 +1545,7 @@ footer img {
 	}
 
 	.hidden-div {
-		width: 80%;
+		width: 70%;
 	}
 
 	.mobileSocialIcons {
@@ -1561,6 +1561,14 @@ footer img {
 	.event_block h1 {
 		margin-top: 0;
 		font-size: 12vw;
+	}
+
+}
+
+@media all and (max-width: 421px) {
+
+	.mobile-menu span {
+		padding-left: 10%;
 	}
 
 }
