@@ -64,7 +64,7 @@
 			</div>\
 		</nav>\
 		<!-- End gray desktop menu -->\
-		<section id="headerImage">\
+		<section id="headerImage" class="mobileWrapper">\
 			<img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../img/slider-teipei-20105-12-24.jpg" />\
 		</section>\
 		<!-- Begin purple desktop menu -->\
@@ -176,14 +176,13 @@
 			//make mobile menu slide in from side when it's pressed and back when anywhere else is pressed
 			$('.hamburger-menu').click(function () {
 				$('.hidden-div').animate({width: 'toggle'});
+				$('.mobileWrapper').toggleClass('grayedOut');
 				$('.hamburger-icon').toggleClass('rotate-90');
-				$('#mobileWrapper').toggleClass('grayedOut');
 			});
-			$('#mobileWrapper').click(function (e) {
+			$('.mobileWrapper').click(function (e) {
 				if ($('.hidden-div').is(':visible') && e.target !== $('.hidden-div')) {
-					console.log(e.target);
 					$('.hidden-div').animate({width: 'toggle'});
-					$('#mobileWrapper').toggleClass('grayedOut');
+					$('.mobileWrapper').toggleClass('grayedOut');
 					$('.hamburger-icon').toggleClass('rotate-90');
 				}
 			});
