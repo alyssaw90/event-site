@@ -364,11 +364,6 @@ li {
 	list-style: none;
 }
 
-.hamburger-menu a:hover {
-	text-shadow: 0 0 15px #FFF;
-	font-weight: bold;
-}
-
 .hamburger-menu a {
 	color: #fff;
 }
