@@ -16,8 +16,14 @@
  	var $header = $('header');
  	var $menuBlock = $('.menu-block');
  	var $hiddenDiv = $('.hidden-div');
- 	var feedbackArr = [{quote: 'I loved it!', author: 'John Doe'}, {quote: 'I adored it!', author: 'Jane Doe'}, {quote: 'I like it!', author: 'John Doe Jr.'}, {quote: 'I\'m hungry', author: 'Me'}];
+ 	var $homeMenuButton = $('.home-menu-button');
+ 	var $upcominEventsBlock = $('.upcominEventsBlock');
+ 	var $latestNewsMenuBlock = $('.latest-news-menu-block');
+ 	var $meetTheTeamMenuBlock = $('.meet-the-team-menu-block');
+ 	var $pastEventsHeaderMenuBlock = $('.past-events-header-menu-block');
+ 	var $hamburgerMenu = $('.hamburger-menu');
  	var pathname = window.location.pathname;
+ 	var feedbackArr = [{quote: 'I loved it!', author: 'John Doe'}, {quote: 'I adored it!', author: 'Jane Doe'}, {quote: 'I like it!', author: 'John Doe Jr.'}, {quote: 'I\'m hungry', author: 'Me'}];
 
  	var menu = '<nav class="grid flex desktop-menu gray-menu">\
 			<div class="col_2 center-block">\
@@ -89,7 +95,6 @@
 
 			$(data).each(function (i, elem) {
 				var startDate = new Date(elem.eventStartDate);
-				// console.log(new Date(elem.eventStartDate).getDate());
 				// upcomingMenu += '<div class="col_2 center-block menu-block upcoming-menu upcoming-sub-menu"><a href="/event/' + elem.eventUrl + '"><h2>' + elem.eventName + '</h2></a></div>';
 				if (i < data.length - 1) {
 					upcomingPurpleMenu += '<a href="/' + elem.eventUrl + '">' + elem.eventLocation + '&nbsp-&nbsp<span class="purpleSubMenu">' + months[startDate.getMonth()] + ',&nbsp' + startDate.getFullYear() + '</span></a>| ';
@@ -153,39 +158,39 @@
         }
     	}, 300)*/
 			//highlight currently selected menu item
-			if (window.location.pathname === '/') {
-				$('.home-menu-button').addClass('current-page');
+			if (pathname === '/') {
+				$homeMenuButton.addClass('current-page');
 			}
-			if (window.location.pathname === '/future-events') {
-				$('.upcominEventsBlock').addClass('current-page');
+			if (pathname === '/future-events') {
+				$upcominEventsBlock.addClass('current-page');
 			}
-			if (window.location.pathname === '/latest-news') {
-				$('.latest-news-menu-block').addClass('current-page');
+			if (pathname === '/latest-news') {
+				$latestNewsMenuBlock.addClass('current-page');
 			}
-			if (window.location.pathname === '/meet-the-team') {
-				$('.meet-the-team-menu-block').addClass('current-page');
+			if (pathname === '/meet-the-team') {
+				$meetTheTeamMenuBlock.addClass('current-page');
 			}
-			if (window.location.pathname === '/past-events') {
-				$('.past-events-header-menu-block').addClass('current-page');
+			if (pathname === '/past-events') {
+				$pastEventsHeaderMenuBlock.addClass('current-page');
 			}
 			//make mobile menu slide in from side when it's pressed and back when anywhere else is pressed
 			$('.hamburger-menu').click(function () {
 				$('.hidden-div').animate({width: 'toggle'});
 				$('.hamburger-icon').toggleClass('rotate-90');
-				$('main').toggleClass('grayedOut');
+				$('#mobileWrapper').toggleClass('grayedOut');
 			});
-			$('main').click(function (e) {
+			$('#mobileWrapper').click(function (e) {
 				if ($('.hidden-div').is(':visible') && e.target !== $('.hidden-div')) {
 					console.log(e.target);
 					$('.hidden-div').animate({width: 'toggle'});
-					$('main').toggleClass('grayedOut');
+					$('#mobileWrapper').toggleClass('grayedOut');
 					$('.hamburger-icon').toggleClass('rotate-90');
 				}
 			});
 			//if it isn't the homepage or the window is less than 768px, hide the frontpage image
 			if (pathname !== '/' || $(window).width() <= 768) {
 				$('#feedbackBlockWrapper').hide();
-				$('#headerImage').hide();
+				// $('#headerImage').hide();
 
 			}
 		});		
