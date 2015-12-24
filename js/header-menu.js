@@ -25,7 +25,26 @@
  	var pathname = window.location.pathname;
  	var feedbackArr = [{quote: 'I loved it!', author: 'John Doe'}, {quote: 'I adored it!', author: 'Jane Doe'}, {quote: 'I like it!', author: 'John Doe Jr.'}, {quote: 'I\'m hungry', author: 'Me'}];
 
- 	var menu = '<nav class="grid flex desktop-menu gray-menu">\
+ 	var menu = '<!-- Begin upper purple menu -->\
+		<div class="menu-overlay hamburger-menu social-icons">\
+		<!-- Begin Mobile "Hamburger Menu" -->\
+			<div class="float-right mobileHamburgerIcon">\
+				<i class="fa fa-bars fa-3x hamburger-icon"></i>\
+			</div>\
+		</div>\
+		<div class="hidden-div" style="display: none">\
+			<ul class="hamburger-menu">\
+				<li class="mobile-menu"><a href="/"><span class="home">Home</span></a></li>\
+				<li class="mobile-menu"><a href="/future-events"><span>Find an Event</a></span></a></li>\
+				<li class="mobile-menu"><a href="/latest-news"><span>Get the Latest</span></a></li>\
+				<li class="mobile-menu"><a href="/meet-the-team"><span>Meet the Team</a></span></a></li>\
+				<li class="mobile-menu"><a href="/past-events"><span>Past Events</span></a></li>\
+			</ul>\
+		</div>\
+		<!-- End "Hamburger" Menu -->\
+		<!-- End upper purple upper menu -->\
+		<!-- begin Gray Desktop Main menu -->\
+ 		<nav class="grid flex desktop-menu gray-menu">\
 			<div class="col_2 center-block">\
 				<div class="col_2 center-block menu-block home-menu-button"><a href="/">Home</a></div>\
 			</div>\
@@ -46,32 +65,13 @@
 		</nav>\
 		<!-- End gray desktop menu -->\
 		<section id="headerImage">\
-			<img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../img/jinghui-zhang-slider.png" />\
+			<img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../img/slider-teipei-20105-12-24.jpg" />\
 		</section>\
-		<!-- Begin upper purple menu -->\
-		<div class="menu-overlay hamburger-menu social-icons">\
-		<!-- Begin Mobile "Hamburger Menu" -->\
-			<div class="float-right mobileHamburgerIcon">\
-				<i class="fa fa-bars fa-3x hamburger-icon"></i>\
-			</div>\
-		</div>\
-		<div class="hidden-div" style="display: none">\
-			<ul class="hamburger-menu">\
-				<li class="mobile-menu"><a href="/"><span class="home">Home</span></a></li>\
-				<li class="mobile-menu"><a href="/future-events"><span>Find an Event</a></span></a></li>\
-				<li class="mobile-menu"><a href="/latest-news"><span>Get the Latest</span></a></li>\
-				<li class="mobile-menu"><a href="/meet-the-team"><span>Meet the Team</a></span></a></li>\
-				<li class="mobile-menu"><a href="/past-events"><span>Past Events</span></a></li>\
-			</ul>\
-		</div>\
-		<!-- End "Hamburger" Menu -->\
 		<!-- Begin purple desktop menu -->\
 		<nav class="menu-overlay desktop-menu flex"">\
 			<div class="col_12 purpleEventMenu"></div>\
 		</nav>\
-		<!-- End Purple desktop menu -->\
-		<!-- End upper purple upper menu -->\
-		<!-- begin Gray Desktop Main menu -->';
+		<!-- End Purple desktop menu -->';
 
 			function changeWidth () {
 			var widestBlock = 0;
@@ -188,9 +188,9 @@
 				}
 			});
 			//if it isn't the homepage or the window is less than 768px, hide the frontpage image
-			if (pathname !== '/' || $(window).width() <= 768) {
+			if (pathname !== '/' && $(window).width() > 768) {
 				$('#feedbackBlockWrapper').hide();
-				// $('#headerImage').hide();
+				$('#headerImage').hide();
 
 			}
 		});		
