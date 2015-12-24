@@ -376,7 +376,7 @@ li {
 	padding-top: 8px; 
 	/*float: right;*/
 	color: #fff;
-	margin-right: -50%;
+	/*margin-right: -50%;*/
 }
 
 .hidden-menu {
@@ -1377,10 +1377,6 @@ footer img {
 		margin-top: 15px;
 	}
 
-	.mobileHamburgerIcon {
-		/*margin-top: 2px;*/
-	}
-
 	.hamburgerIconDiv {
 		width: 25%;
 	}
@@ -1570,14 +1566,11 @@ footer img {
 }
 
 @media all and (max-width: 321px) {
-	.menu-overlay {
-		/*height: 150px;*/
+
+	.hidden-div {
+		width: 70%;
 	}
 
-	.hamburger-icon {
-		/*padding-right: 40px;*/
-		padding-right: 0;
-	}
 }
 
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
