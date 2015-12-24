@@ -22,8 +22,8 @@
  	var $meetTheTeamMenuBlock = $('.meet-the-team-menu-block');
  	var $pastEventsHeaderMenuBlock = $('.past-events-header-menu-block');
  	var $hamburgerMenu = $('.hamburger-menu');
- 	var feedbackArr = [{quote: 'I loved it!', author: 'John Doe'}, {quote: 'I adored it!', author: 'Jane Doe'}, {quote: 'I like it!', author: 'John Doe Jr.'}, {quote: 'I\'m hungry', author: 'Me'}];
  	var pathname = window.location.pathname;
+ 	var feedbackArr = [{quote: 'I loved it!', author: 'John Doe'}, {quote: 'I adored it!', author: 'Jane Doe'}, {quote: 'I like it!', author: 'John Doe Jr.'}, {quote: 'I\'m hungry', author: 'Me'}];
 
  	var menu = '<nav class="grid flex desktop-menu gray-menu">\
 			<div class="col_2 center-block">\
@@ -95,7 +95,6 @@
 
 			$(data).each(function (i, elem) {
 				var startDate = new Date(elem.eventStartDate);
-				// console.log(new Date(elem.eventStartDate).getDate());
 				// upcomingMenu += '<div class="col_2 center-block menu-block upcoming-menu upcoming-sub-menu"><a href="/event/' + elem.eventUrl + '"><h2>' + elem.eventName + '</h2></a></div>';
 				if (i < data.length - 1) {
 					upcomingPurpleMenu += '<a href="/' + elem.eventUrl + '">' + elem.eventLocation + '&nbsp-&nbsp<span class="purpleSubMenu">' + months[startDate.getMonth()] + ',&nbsp' + startDate.getFullYear() + '</span></a>| ';

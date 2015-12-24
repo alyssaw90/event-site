@@ -39,8 +39,8 @@ li {
 .grayedOut {
 	opacity: .2;
 	background-color: #fff;
-	width: 100% !important;
-	max-width: 100% !important;
+	width: 100%;
+	max-width: 100%;
 	/*padding-right: 5% !important;*/
 	/*padding-left: 5% !important;*/
 	/*margin-right: 0 !important;
@@ -361,11 +361,12 @@ li {
 
 .hamburger-menu {
 	display: none;
+	list-style: none;
 }
 
-.hamburger-menu {
-	list-style: none;
-
+.hamburger-menu a:hover {
+	text-shadow: 0 0 15px #FFF;
+	font-weight: bold;
 }
 
 .hamburger-menu a {
