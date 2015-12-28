@@ -14,14 +14,6 @@
  	
  	var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
  	var $header = $('header');
- 	var $menuBlock = $('.menu-block');
- 	var $hiddenDiv = $('.hidden-div');
- 	var $homeMenuButton = $('.home-menu-button');
- 	var $upcominEventsBlock = $('.upcominEventsBlock');
- 	var $latestNewsMenuBlock = $('.latest-news-menu-block');
- 	var $meetTheTeamMenuBlock = $('.meet-the-team-menu-block');
- 	var $pastEventsHeaderMenuBlock = $('.past-events-header-menu-block');
- 	var $hamburgerMenu = $('.hamburger-menu');
  	var pathname = window.location.pathname;
  	var feedbackArr = [{quote: 'I loved it!', author: 'John Doe'}, {quote: 'I adored it!', author: 'Jane Doe'}, {quote: 'I like it!', author: 'John Doe Jr.'}, {quote: 'I\'m hungry', author: 'Me'}];
 
@@ -159,19 +151,19 @@
     	}, 300)*/
 			//highlight currently selected menu item
 			if (pathname === '/') {
-				$homeMenuButton.addClass('current-page');
+				$('.home-menu-button').addClass('current-page');
 			}
 			if (pathname === '/future-events') {
-				$upcominEventsBlock.addClass('current-page');
+				$('.upcominEventsBlock').addClass('current-page');
 			}
 			if (pathname === '/latest-news') {
-				$latestNewsMenuBlock.addClass('current-page');
+				$('.latest-news-menu-block').addClass('current-page');
 			}
 			if (pathname === '/meet-the-team') {
-				$meetTheTeamMenuBlock.addClass('current-page');
+				$('.meet-the-team-menu-block').addClass('current-page');
 			}
 			if (pathname === '/past-events') {
-				$pastEventsHeaderMenuBlock.addClass('current-page');
+				$('.past-events-header-menu-block').addClass('current-page');
 			}
 			//make mobile menu slide in from side when it's pressed and back when anywhere else is pressed
 			$('.hamburger-menu').click(function () {
