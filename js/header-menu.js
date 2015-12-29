@@ -84,16 +84,7 @@
 			// var upcomingMenu = '<div class="col_2 center-block menu-block upcoming-menu"><a href="/future-events"><h2>Find an Event</h2></a></div>';
 			var upcomingPurpleMenu = '<div class="col_12 purpleEventMenu">';
 		 	var $header = $('header');
-		 	var $menuBlock = $('.menu-block');
-		 	var $hiddenDiv = $('.hidden-div');
-		 	var $homeMenuButton = $('.home-menu-button');
-		 	var $upcominEventsBlock = $('.upcominEventsBlock');
-		 	var $latestNewsMenuBlock = $('.latest-news-menu-block');
-		 	var $meetTheTeamMenuBlock = $('.meet-the-team-menu-block');
-		 	var $pastEventsHeaderMenuBlock = $('.past-events-header-menu-block');
-		 	var $hamburgerMenu = $('.hamburger-menu');
-		 	var $mobileWrapper = $('.mobileWrapper');
-		 	var $hamburgerIcon = $('.hamburger-icon');
+		 	// var $menuBlock = $('.menu-block');
 
 			$(data).each(function (i, elem) {
 				var startDate = new Date(elem.eventStartDate);
@@ -159,8 +150,22 @@
             changeWidth();
         }
     	}, 300)*/
+			//declare jQuery variables after menu has been rendered to the DOM
+		 	var $homeMenuButton = $('.home-menu-button');
+		 	var $upcominEventsBlock = $('.upcominEventsBlock');
+		 	var $latestNewsMenuBlock = $('.latest-news-menu-block');
+		 	var $meetTheTeamMenuBlock = $('.meet-the-team-menu-block');
+		 	var $pastEventsHeaderMenuBlock = $('.past-events-header-menu-block');
+		 	var $hiddenDiv = $('.hidden-div');
+		 	var $hamburgerMenu = $('.hamburger-menu');
+		 	var $mobileWrapper = $('.mobileWrapper');
+		 	var $hamburgerIcon = $('.hamburger-icon');
+		 	var $feedbackBlockWrapper = $('#feedbackBlockWrapper');
+		 	var $headerImage = $('#headerImage');
+
 			//highlight currently selected menu item
 			if (pathname === '/') {
+				console.log('hola');
 				$homeMenuButton.addClass('current-page');
 			}
 			if (pathname === '/future-events') {
@@ -175,6 +180,7 @@
 			if (pathname === '/past-events') {
 				$pastEventsHeaderMenuBlock.addClass('current-page');
 			}
+
 			//make mobile menu slide in from side when it's pressed and back when anywhere else is pressed
 			$hamburgerMenu.click(function () {
 				$hiddenDiv.animate({width: 'toggle'});
@@ -188,9 +194,8 @@
 					$hamburgerIcon.toggleClass('rotate-90');
 				}
 			});
+			
 			//if it isn't the homepage or the window is less than 768px, hide the frontpage image
-		 	var $feedbackBlockWrapper = $('#feedbackBlockWrapper');
-		 	var $headerImage = $('#headerImage');
 			if (pathname !== '/' && $(window).width() > 768) {
 				$feedbackBlockWrapper.hide();
 				$headerImage.hide();
