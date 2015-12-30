@@ -38,7 +38,7 @@
 					<div class="col_4">
 						<!-- Twitter Feed -->
 						<a id="twitter-widget-1" class="twitter-timeline" href="https://twitter.com/OSpecifications" data-widget-id="622196778129985537">Tweets by @OSpecifications</a>
-						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";js.setAttribute('onload', "twttr.events.bind('rendered',function(e) {stickyFooter()});");fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 						<!-- End Twitter Feed -->
 					</div>
 					<div class="col_8">
@@ -207,6 +207,7 @@
 	<script type="text/javascript" src="../js/footer.js"></script>
 	<script type="text/javascript" src="../js/header-menu.js"></script>
 	<script type="text/javascript" src="../js/custom.js"></script>
+	<script type="text/javascript" src="../js/latest-news.js"></script>
 	<!-- Go to www.addthis.com/dashboard to customize your tools -->
 	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5660d6c488a1a100" async="async"></script>
 </body>
