@@ -336,6 +336,10 @@ li {
 	transition: background-color 0.5s ease-out;	
 }
 
+.notANumberBlockMobile {
+	background: #68c4eb;
+}
+
 #notANumberBlock:hover {
 	/*color: #fff;*/
 	/*background-color: rgb(0, 120, 215);*/
@@ -359,6 +363,10 @@ li {
 	transition: background-color 0.5s ease-out;
 }
 
+.toHelpYouBlockMobile {
+	background-color: #b5009f;
+}
+
 #toHelpYouBlock:hover {
 	background-color: #b5009f;
 	-webkit-transition: background-color 0.5s ease-out;
@@ -380,6 +388,10 @@ li {
 	transition: background-color 0.5s ease-out;
 }
 
+.whoMadeItBlockMobile {
+	background-color: #fd8d00;
+}
+
 #whoMadeItBlock:hover {
 	background-color: #fd8d00;
 	-webkit-transition: background-color 0.5s ease-out;
@@ -399,6 +411,10 @@ li {
 	-ms-transition: background-color 0.5s ease-out;
 	-o-transition: background-color 0.5s ease-out;
 	transition: background-color 0.5s ease-out;
+}
+
+.itsYourEventBlockMobile {
+	background-color: #81b902;
 }
 
 #itsYourEventBlock:hover {

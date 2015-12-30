@@ -125,15 +125,14 @@ $(document).ready(function () {
 		}
 	})*/
 	console.log($window.width());
-	$('.slider').attr('value', 'hello');
-alert($('.slider').attr('value'))
 	$homepageIntroBlocks.click(function (e) {
 		var $this = $(this);
 		var thisBlockArrowClass = $this.attr('id') + 'ArrowBox';
+		var thisBlockMobileClass = $this.attr('id') + 'Mobile'
 		var thisBlockText = '#' + $this.data('thisblocktext');
 		var blockPosition = $(thisBlockText).parent().offset().top;
-    	var thisStyle = $this.css();
-    	console.log('::::  ', thisStyle);
+    	// var thisStyle = $this.css();
+    	// console.log('::::  ', thisStyle);
     	var style = window.getComputedStyle(this, 'hover');
 		if ($window.width() > 768) {
 			$this.toggleClass(thisBlockArrowClass);
@@ -145,14 +144,12 @@ alert($('.slider').attr('value'))
 
 		}
 		if ($window.width() <= 768) {
-    	if (this.backgroundColor !== style.backgroundColor) {
-    		$this.css('background-color', style.backgroundColor);
-    		$this.siblings().css('background-color', '');
-    	}
-    	/*if ($this.css('background-color') === style.backgroundColor) {
-    		$(this).css('background-color', '');
-    		$this.siblings().css('background-color', '');
-    	}*/
+  		$this.toggleClass(thisBlockMobileClass);
+			$this.siblings().each(function (i, elem) {
+				var $thisMobileElem = $(this);
+				var mobileClass = elem.id + 'Mobile';
+				$thisMobileElem.removeClass(mobileClass);
+			});
 		}
 		// $this.siblings().removeClass('arrow_box1');
 		if ($(thisBlockText).css('display') === 'none') {
