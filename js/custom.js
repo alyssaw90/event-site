@@ -14,14 +14,16 @@ function stickyFooter () {
 	var $footer = $('.foot');
 	var $backToTopButton = $('.scroll-button .fa-chevron-up');
 	// alert('fucking footers');
-  if ($window.height() >= $document.height()) {
+  if ($(window).height() >= $(document).height()) {
+  	console.log('window is taller. Window: ', $(window).height(), '  Document: ', $(document).height());
     $backToTopButton.hide();
-    $footer.css('position', 'absolute').css('bottom', 0);
+    $('.foot').css('position', 'absolute').css('bottom', 0);
   }
 
-  if ($window.height() < $document.height()) {
+  if ($(window).height() < $(document).height()) {
+  	console.log('document is taller. Window: ', $(window).height(), '  Document: ', $(document).height());
   	$backToTopButton.show();
-  	$footer.css('position', 'relative');
+  	$('.foot').css('position', 'relative');
   }
 }
 

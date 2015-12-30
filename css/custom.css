@@ -192,7 +192,7 @@ li {
 	z-index: 1002;
 }
 
-.homepageIntroBlocks > section {
+.homepageIntroBlocks {
 	visibility: hidden;
 }
 
@@ -229,6 +229,93 @@ li {
 	margin-left: -36px;
 }
 
+.toHelpYouBlockArrowBox {
+	position: relative;
+	background: #b5009f;
+	border: 4px solid #442358;
+}
+.toHelpYouBlockArrowBox:after, .toHelpYouBlockArrowBox:before {
+	top: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.toHelpYouBlockArrowBox:after {
+	border-color: rgba(181, 0, 159, 0);
+	border-top-color: #b5009f;
+	border-width: 30px;
+	margin-left: -30px;
+}
+.toHelpYouBlockArrowBox:before {
+	border-color: rgba(68, 35, 88, 0);
+	border-top-color: #442358;
+	border-width: 36px;
+	margin-left: -36px;
+}
+
+.whoMadeItBlockArrowBox {
+	position: relative;
+	background: #fd8d00;
+	border: 4px solid #e15700;
+}
+.whoMadeItBlockArrowBox:after, .whoMadeItBlockArrowBox:before {
+	top: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.whoMadeItBlockArrowBox:after {
+	border-color: rgba(253, 141, 0, 0);
+	border-top-color: #fd8d00;
+	border-width: 30px;
+	margin-left: -30px;
+}
+.whoMadeItBlockArrowBox:before {
+	border-color: rgba(225, 87, 0, 0);
+	border-top-color: #e15700;
+	border-width: 36px;
+	margin-left: -36px;
+}
+
+.itsYourEventBlockArrowBox {
+	position: relative;
+	background: #81b902;
+	border: 4px solid #007234;
+}
+.itsYourEventBlockArrowBox:after, .itsYourEventBlockArrowBox:before {
+	top: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.itsYourEventBlockArrowBox:after {
+	border-color: rgba(129, 185, 2, 0);
+	border-top-color: #81b902;
+	border-width: 30px;
+	margin-left: -30px;
+}
+.itsYourEventBlockArrowBox:before {
+	border-color: rgba(0, 114, 52, 0);
+	border-top-color: #007234;
+	border-width: 36px;
+	margin-left: -36px;
+}
+
 .homepageIntroBlocks h3 {
 	text-align: center;
 }
@@ -241,19 +328,86 @@ li {
 	/*border-radius: 10px;*/
 	border-width: 4px;
 	border-style: solid;
-	border-color: rgb(0, 120, 215);	
+	border-color: rgb(0, 120, 215);
+	-webkit-transition: background-color 0.5s ease-out;
+	-moz-transition: background-color 0.5s ease-out;
+	-ms-transition: background-color 0.5s ease-out;
+	-o-transition: background-color 0.5s ease-out;
+	transition: background-color 0.5s ease-out;	
 }
 
-#toHelpYouBlock h3 {
+#notANumberBlock:hover {
+	/*color: #fff;*/
+	/*background-color: rgb(0, 120, 215);*/
+	background: #68c4eb;
+	-webkit-transition: background-color 0.5s ease-out;
+	-moz-transition: background-color 0.5s ease-out;
+	-ms-transition: background-color 0.5s ease-out;
+	-o-transition: background-color 0.5s ease-out;
+	transition: background-color 0.5s ease-out;
+}
+
+#toHelpYouBlock {
 	color: rgb(92, 45, 145);
+	border-width: 4px;
+	border-style: solid;
+	border-color: #442358;
+	-webkit-transition: background-color 0.5s ease-out;
+	-moz-transition: background-color 0.5s ease-out;
+	-ms-transition: background-color 0.5s ease-out;
+	-o-transition: background-color 0.5s ease-out;
+	transition: background-color 0.5s ease-out;
 }
 
-#whoMadeItBlock h3 {
+#toHelpYouBlock:hover {
+	background-color: #b5009f;
+	-webkit-transition: background-color 0.5s ease-out;
+	-moz-transition: background-color 0.5s ease-out;
+	-ms-transition: background-color 0.5s ease-out;
+	-o-transition: background-color 0.5s ease-out;
+	transition: background-color 0.5s ease-out;
+}
+
+#whoMadeItBlock {
 	color: rgb(216, 59, 1);
+	border-width: 4px;
+	border-style: solid;
+	border-color: #e15700;
+	-webkit-transition: background-color 0.5s ease-out;
+	-moz-transition: background-color 0.5s ease-out;
+	-ms-transition: background-color 0.5s ease-out;
+	-o-transition: background-color 0.5s ease-out;
+	transition: background-color 0.5s ease-out;
 }
 
-#itsYourEventBlock h3 {
+#whoMadeItBlock:hover {
+	background-color: #fd8d00;
+	-webkit-transition: background-color 0.5s ease-out;
+	-moz-transition: background-color 0.5s ease-out;
+	-ms-transition: background-color 0.5s ease-out;
+	-o-transition: background-color 0.5s ease-out;
+	transition: background-color 0.5s ease-out;
+}
+
+#itsYourEventBlock {
 	color: rgb(16, 124, 16);
+	border-width: 4px;
+	border-style: solid;
+	border-color: #007234;
+	-webkit-transition: background-color 0.5s ease-out;
+	-moz-transition: background-color 0.5s ease-out;
+	-ms-transition: background-color 0.5s ease-out;
+	-o-transition: background-color 0.5s ease-out;
+	transition: background-color 0.5s ease-out;
+}
+
+#itsYourEventBlock:hover {
+	background-color: #81b902;
+	-webkit-transition: background-color 0.5s ease-out;
+	-moz-transition: background-color 0.5s ease-out;
+	-ms-transition: background-color 0.5s ease-out;
+	-o-transition: background-color 0.5s ease-out;
+	transition: background-color 0.5s ease-out;
 }
 
 .infoBlocks:hover {
