@@ -38,4 +38,13 @@ $(document).ready(function () {
 			// $(this).find('h3').animate({opacity: 1});
 		})
 
-})
+});
+
+$(window).load(function() {
+  changeHeight('.event_block')
+});
+
+
+$(window).resize(function(){
+  changeHeight('.event_block')
+});

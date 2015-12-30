@@ -5,8 +5,18 @@
 
 /*Global Functions*/
 
-	//make footer stick to bottom of content or page, whichever is taller.
+//Finds y value of given object
+function findPos(obj) {
+  var curtop = 0;
+  if (obj.offsetParent) {
+    do {
+      curtop += obj.offsetTop;
+    } while (obj = obj.offsetParent);
+  return curtop;
+  }
+}
 
+//make footer stick to bottom of content or page, whichever is taller.
 function stickyFooter () {
 	var $body = $('body');
 	var $window = $(window);
@@ -14,30 +24,30 @@ function stickyFooter () {
 	var $footer = $('.foot');
 	var $backToTopButton = $('.scroll-button .fa-chevron-up');
 	// alert('fucking footers');
+  if ($(window).height() < $(document).height()) {
+  	console.log('document is taller. Window: ', $(window).height(), '  Document: ', $(document).height());
+  	$backToTopButton.show();
+  	$('.foot').css('position', 'relative');
+  }
   if ($(window).height() >= $(document).height()) {
   	console.log('window is taller. Window: ', $(window).height(), '  Document: ', $(document).height());
     $backToTopButton.hide();
     $('.foot').css('position', 'absolute').css('bottom', 0);
   }
 
-  if ($(window).height() < $(document).height()) {
-  	console.log('document is taller. Window: ', $(window).height(), '  Document: ', $(document).height());
-  	$backToTopButton.show();
-  	$('.foot').css('position', 'relative');
-  }
 }
 
 //function to set divs with equal height
 function changeHeight (div) {
-	// var $eventBlock = $('.event_block');
+	$(div).css('height','auto');
 	var tallestBlock = 0;
-	div.each(function () {
+	$(div).each(function () {
 		if ($(this).height() > tallestBlock) {
 			tallestBlock = $(this).height();
 		}
 	});
 
-	div.each(function () {
+	$(div).each(function () {
 		$(this).height(tallestBlock);
 	});
 }
@@ -45,13 +55,14 @@ function changeHeight (div) {
 // function to set divs with equal width
 function changeWidth (div) {
 	var widestBlock = 0;
-	div.each(function () {
+	$(div).css('width','auto');
+	$(div).each(function () {
 		if ($(this).width() > widestBlock) {
 			widestBlock = $(this).width();
 		}
 	});
 
-	div.each(function () {
+	$(div).each(function () {
 		$(this).width(widestBlock);
 	});
 }
@@ -96,18 +107,6 @@ $(document).ready(function () {
 		}
 	);
 */
-	$(window).resize(changeHeight($('.event_block')));
-	$(window).load(changeHeight($('.event_block')));
-	$(window).resize(changeHeight($('.past_events')));
-	$(window).load(changeHeight($('.past_events')));
-
-	//make individual-homepage-expert divs wait for entire page to load before firing
-	$(window).bind('load', function(){
-		$(window).resize(changeHeight($('.individual-homepage-expert')));
-		$(window).load(changeHeight($('.individual-homepage-expert')));
-		$(window).load(stickyFooter());
-	
-	});
 
 	// 100% image width for homepage team members if parent is more than 165px wide
 
@@ -212,3 +211,19 @@ $(document).ready(function () {
  	}());
  	
 });
+
+$(window).load(function() {
+  changeHeight('.homepageIntroBlocks');
+	changeHeight('.past_events');
+	changeHeight('.individual-homepage-expert');
+  stickyFooter();
+});
+
+
+$(window).resize(function(){
+  changeHeight('.homepageIntroBlocks');
+	changeHeight('.past_events');
+	changeHeight('.individual-homepage-expert');
+  stickyFooter();
+});
+

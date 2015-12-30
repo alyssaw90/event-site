@@ -31,29 +31,7 @@
 // 	});
 // });
 
-//Finds y value of given object
-function findPos(obj) {
-  var curtop = 0;
-  if (obj.offsetParent) {
-    do {
-      curtop += obj.offsetTop;
-    } while (obj = obj.offsetParent);
-  return curtop;
-  }
-}
 
-function findTallest () {
-	var tallestBlock = 0;
-	$('.homepageIntroBlocks').each(function () {
-		if ($(this).height() > tallestBlock) {
-			tallestBlock = $(this).height();
-		}
-	});
-
-	$('.homepageIntroBlocks').each(function () {
-		$(this).height(tallestBlock);
-	});
-}
 $(document).ready(function () {
 	//array of ms colors at 80% opacity - ms yellow is removed, because it's to light for background color
 	var msColors = ['rgba(216, 59, 1, .8)', 'rgba(232, 17, 35, .8)', 'rgba(180, 0, 158, .8)', 'rgba(92, 45, 145, .8)', 'rgba(0, 120, 215, .8)', 'rgba(0, 130, 114, .8)', 'rgba(16, 124, 16, .8)'];
@@ -70,15 +48,7 @@ $(document).ready(function () {
 	var $whoMadeItBlock = $('#whoMadeItBlock');
 	var $itsYourEventBlock = $('#itsYourEventBlock');
 	var $window = $(window);
-	// var newHeight = $homepageIntroBlocks.height();
-	// 	$homepageIntroBlocks.height(newHeight);
-	// findTallest();
-	// $(window).resize(function () {
-	// 	var newHeight = $homepageIntroBlocks.height();
-	// 	$homepageIntroBlocks.height(newHeight);
-	// 	console.log('lll  :: ', $homepageIntroBlocks.height());
-	// 	// findTallest();
-	// });
+	
 	//randomly assign background-color to the slides -- .slideshow li:nth-child(2) h2:first-child
 	$('.slideshow li').each(function (i) {
 		var randomNum = Math.floor(Math.random() * (7 - count));
@@ -200,17 +170,11 @@ $(document).ready(function () {
 	}, 3000);
 });
 
-// $(window).on('resize', function (e) {
-// 		// var newHeight = $('.homepageIntroBlocks').height();
-// 		// $('.homepageIntroBlocks').height(newHeight);
-// 		console.log('hello');
-// 		findTallest();
-// 	});
-// $(window).on('load', function (e) {
-// 	// var newHeight = $('.homepageIntroBlocks').height();
-// 	// $('.homepageIntroBlocks').height(newHeight);
-// 	console.log('lll  :: ', $('.homepageIntroBlocks').height());
-// 	findTallest();
-// });
-// $(window).on('resize', findTallest);
-$(window).on('load', findTallest);
+$(window).load(function() {
+  changeHeight('.homepageIntroBlocks');
+});
+
+
+$(window).resize(function(){
+  changeHeight('.homepageIntroBlocks');
+});
