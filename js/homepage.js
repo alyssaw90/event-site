@@ -94,16 +94,14 @@ $(document).ready(function () {
 			}); 	
 		}
 	})*/
-	console.log($window.width());
+	//when a homepageIntroBlocks is clicked, show the corresponding div
 	$homepageIntroBlocks.click(function (e) {
 		var $this = $(this);
 		var thisBlockArrowClass = $this.attr('id') + 'ArrowBox';
 		var thisBlockMobileClass = $this.attr('id') + 'Mobile'
 		var thisBlockText = '#' + $this.data('thisblocktext');
 		var blockPosition = $(thisBlockText).parent().offset().top;
-    	// var thisStyle = $this.css();
-    	// console.log('::::  ', thisStyle);
-    	var style = window.getComputedStyle(this, 'hover');
+   	var style = window.getComputedStyle(this, 'hover');
 		if ($window.width() > 768) {
 			$this.toggleClass(thisBlockArrowClass);
 			$this.siblings().each(function (i, elem) {
@@ -121,7 +119,6 @@ $(document).ready(function () {
 				$thisMobileElem.removeClass(mobileClass);
 			});
 		}
-		// $this.siblings().removeClass('arrow_box1');
 		if ($(thisBlockText).css('display') === 'none') {
 			$(thisBlockText).fadeIn();
 			$(thisBlockText).siblings().hide();
@@ -130,43 +127,30 @@ $(document).ready(function () {
 			$(thisBlockText).fadeOut();
 			$(thisBlockText).siblings().hide();
 		}
+		//execute the stickyFooter function to correctly position the footer after the new div is added
+   	stickyFooter(); 
 	});
-
-	// $homepageIntroBlocks.children().hide();
-	/*setInterval(function () {
-		setTimeout(function () {
-			$('.homepageIntroBlocks section:nth-child(1)').addClass('zoomInDown');
-			// $('.homepageIntroBlocks section:nth-child(4)').removeClass('zoomInDown');
-		}, 10);
-		setTimeout(function () {
-			$('.homepageIntroBlocks section:nth-child(2)').addClass('zoomInDown');
-			// $('.homepageIntroBlocks section:nth-child(1)').removeClass('zoomInDown');
-		}, 2000);
-		setTimeout(function () {
-			$('.homepageIntroBlocks section:nth-child(3)').addClass('zoomInDown');
-			// $('.homepageIntroBlocks section:nth-child(2)').removeClass('zoomInDown');
-		}, 4000);
-		setTimeout(function () {
-			// $('.homepageIntroBlocks section:nth-child(3)').removeClass('zoomInDown');
-			$('.homepageIntroBlocks section:nth-child(4)').addClass('zoomInDown');
-		}, 6000);
-	}, 7000)
-*/
+	
+	//make homepageIntroBlocks zoom in and down
 	setTimeout(function () {
 		$notANumberBlock.css('visibility', 'visible').addClass('animated zoomInDown');
+		stickyFooter();
 		// $('.homepageIntroBlocks section:nth-child(4)').removeClass('animated zoomInDown');
 	}, 10);
 	setTimeout(function () {
 		$toHelpYouBlock.css('visibility', 'visible').addClass('animated zoomInDown');
+		stickyFooter();
 		// $('.homepageIntroBlocks section:nth-child(1)').removeClass('animated zoomInDown');
 	}, 1000);
 	setTimeout(function () {
 		$whoMadeItBlock.css('visibility', 'visible').addClass('animated zoomInDown');
+		stickyFooter();
 		// $('.homepageIntroBlocks section:nth-child(2)').removeClass('animated zoomInDown');
 	}, 2000);
 	setTimeout(function () {
 		// $('.homepageIntroBlocks section:nth-child(3)').removeClass('animated zoomInDown');
 		$itsYourEventBlock.css('visibility', 'visible').addClass('animated zoomInDown');
+		stickyFooter();
 	}, 3000);
 });
 

@@ -18,21 +18,24 @@ function findPos(obj) {
 
 //make footer stick to bottom of content or page, whichever is taller.
 function stickyFooter () {
-	var $body = $('body');
 	var $window = $(window);
 	var $document = $(document);
 	var $footer = $('.foot');
 	var $backToTopButton = $('.scroll-button .fa-chevron-up');
-	// alert('fucking footers');
-  if ($(window).height() < $(document).height()) {
-  	console.log('document is taller. Window: ', $(window).height(), '  Document: ', $(document).height());
-  	$backToTopButton.show();
-  	$('.foot').css('position', 'relative');
+	console.log($window.height(), '  :::::  ', $(window).height(), '\n', $document.height(), '  :::::  ', $(document).height());
+  if ($window.height() < $document.height()) {
+  	// console.log('document is taller. Window: ', $window.height(), '  Document: ', $document.height());
+  	$footer.css('position', 'relative');
   }
-  if ($(window).height() >= $(document).height()) {
-  	console.log('window is taller. Window: ', $(window).height(), '  Document: ', $(document).height());
+  if ($window.height() >= $document.height()) {
+  	// console.log('window is taller. Window: ', $window.height(), '  Document: ', $document.height());
+    $footer.css('position', 'absolute').css('bottom', 0);
+  }
+	if ($window.height() < $document.height() - 200) {
+  	$backToTopButton.show();
+  }
+  if ($window.height() > $document.height() - 200) {
     $backToTopButton.hide();
-    $('.foot').css('position', 'absolute').css('bottom', 0);
   }
 
 }
