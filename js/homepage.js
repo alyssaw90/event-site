@@ -47,6 +47,7 @@ $(document).ready(function () {
 	var $toHelpYouBlock = $('#toHelpYouBlock');
 	var $whoMadeItBlock = $('#whoMadeItBlock');
 	var $itsYourEventBlock = $('#itsYourEventBlock');
+	var $backToTopButton = $('.scroll-button .fa-chevron-up');
 	var $window = $(window);
 	
 	//randomly assign background-color to the slides -- .slideshow li:nth-child(2) h2:first-child
@@ -94,6 +95,18 @@ $(document).ready(function () {
 			}); 	
 		}
 	})*/
+	//close textbox and unhighlight introBox when $backToTopButton is clicked
+	$backToTopButton.click(function (e) {
+		$('.hiddenHomepageSections:visible').hide();
+		$('.homepageIntroBlocks').each(function (i, elem) {
+			var $this = $(this);
+			var thisBlockMobileClass = $this.attr('id') + 'Mobile'
+			if ($this.hasClass(thisBlockMobileClass)) {
+				$this.removeClass(thisBlockMobileClass);
+			}
+		})
+		stickyFooter();
+	})
 	//when a homepageIntroBlocks is clicked, show the corresponding div
 	$homepageIntroBlocks.click(function (e) {
 		var $this = $(this);
@@ -156,9 +169,11 @@ $(document).ready(function () {
 
 $(window).load(function() {
   changeHeight('.homepageIntroBlocks');
+  stickyFooter();
 });
 
 
 $(window).resize(function(){
   changeHeight('.homepageIntroBlocks');
+  stickyFooter();
 });

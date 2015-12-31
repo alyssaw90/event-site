@@ -22,7 +22,6 @@ function stickyFooter () {
 	var $document = $(document);
 	var $footer = $('.foot');
 	var $backToTopButton = $('.scroll-button .fa-chevron-up');
-	console.log($window.height(), '  :::::  ', $(window).height(), '\n', $document.height(), '  :::::  ', $(document).height());
   if ($window.height() < $document.height()) {
   	// console.log('document is taller. Window: ', $window.height(), '  Document: ', $document.height());
   	$footer.css('position', 'relative');
@@ -216,7 +215,6 @@ $(document).ready(function () {
 });
 
 $(window).load(function() {
-  changeHeight('.homepageIntroBlocks');
 	changeHeight('.past_events');
 	changeHeight('.individual-homepage-expert');
   stickyFooter();
@@ -224,7 +222,6 @@ $(window).load(function() {
 
 
 $(window).resize(function(){
-  changeHeight('.homepageIntroBlocks');
 	changeHeight('.past_events');
 	changeHeight('.individual-homepage-expert');
   stickyFooter();
