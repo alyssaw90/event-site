@@ -105,6 +105,7 @@ $(document).ready(function () {
 				$this.removeClass(thisBlockMobileClass);
 			}
 		})
+		stickyFooter();
 	})
 	//when a homepageIntroBlocks is clicked, show the corresponding div
 	$homepageIntroBlocks.click(function (e) {
@@ -168,9 +169,11 @@ $(document).ready(function () {
 
 $(window).load(function() {
   changeHeight('.homepageIntroBlocks');
+  stickyFooter();
 });
 
 
 $(window).resize(function(){
   changeHeight('.homepageIntroBlocks');
+  stickyFooter();
 });

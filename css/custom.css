@@ -194,6 +194,7 @@ li {
 
 .homepageIntroBlocks {
 	visibility: hidden;
+	background-color: #fff;
 }
 
 .homepageIntroBlocks:hover {
@@ -322,6 +323,13 @@ li {
 /*.homepageIntroBlocks :nth-child(1) {
 	color: rgb(0, 120, 215);
 }*/
+
+.homepageIntroBlocksBackground {
+	width: 100%;
+	margin: 0 0 0 0;
+	padding-bottom: 8%;
+	background-color: #fd8c00;
+}
 
 #notANumberBlock {
 	color: rgb(0, 120, 215);
