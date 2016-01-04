@@ -56,7 +56,7 @@
 		</nav>\
 		<!-- End gray desktop menu -->\
 		<section id="headerImage" class="mobileWrapper">\
-			<img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../img/slider-teipei-20105-12-24.jpg" />\
+			<img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../img/sample2.png" />\
 		</section>\
 		<!-- Begin purple desktop menu -->\
 		<nav class="menu-overlay desktop-menu flex"">\

@@ -203,8 +203,8 @@ li {
 
 .notANumberBlockArrowBox {
 	position: relative;
-	background: #68c4eb;
-	border: 4px solid #476ac6;
+	background: #0073c5;
+	border: 4px solid #00188f;
 }
 .notANumberBlockArrowBox:after, .notANumberBlockArrowBox:before {
 	top: 100%;
@@ -219,20 +219,20 @@ li {
 
 .notANumberBlockArrowBox:after {
 	border-color: rgba(104, 196, 235, 0);
-	border-top-color: #68c4eb;
+	border-top-color: #0073c5;
 	border-width: 30px;
 	margin-left: -30px;
 }
 .notANumberBlockArrowBox:before {
 	border-color: rgba(71, 106, 198, 0);
-	border-top-color: #476ac6;
+	border-top-color: #00188f;
 	border-width: 36px;
 	margin-left: -36px;
 }
 
 .toHelpYouBlockArrowBox {
 	position: relative;
-	background: #b5009f;
+	background: #9d5098;
 	border: 4px solid #442358;
 }
 .toHelpYouBlockArrowBox:after, .toHelpYouBlockArrowBox:before {
@@ -248,7 +248,7 @@ li {
 
 .toHelpYouBlockArrowBox:after {
 	border-color: rgba(181, 0, 159, 0);
-	border-top-color: #b5009f;
+	border-top-color: #9d5098;
 	border-width: 30px;
 	margin-left: -30px;
 }
@@ -290,7 +290,7 @@ li {
 
 .itsYourEventBlockArrowBox {
 	position: relative;
-	background: #81b902;
+	background: #6fb06f;
 	border: 4px solid #007234;
 }
 .itsYourEventBlockArrowBox:after, .itsYourEventBlockArrowBox:before {
@@ -306,7 +306,7 @@ li {
 
 .itsYourEventBlockArrowBox:after {
 	border-color: rgba(129, 185, 2, 0);
-	border-top-color: #81b902;
+	border-top-color: #6fb06f;
 	border-width: 30px;
 	margin-left: -30px;
 }
@@ -321,22 +321,30 @@ li {
 	text-align: center;
 }
 /*.homepageIntroBlocks :nth-child(1) {
-	color: rgb(0, 120, 215);
+	color: #00188f;
 }*/
 
 .homepageIntroBlocksBackground {
 	width: 100%;
 	margin: 0 0 0 0;
-	padding-bottom: 8%;
-	background-color: #fd8c00;
+	/*padding-bottom: 8%;*/
+	background-color: #fff;
+}
+
+.hiddenHomepageSectionsWrapper {
+	/*background-color: #0073c5;*/
+	color: #fcfbdc;
+	width: 100%;
+	margin: 0 0 0 0;
+	font-size: 1.15em;
 }
 
 #notANumberBlock {
-	color: rgb(0, 120, 215);
+	color: #00188f;
 	/*border-radius: 10px;*/
 	border-width: 4px;
 	border-style: solid;
-	border-color: rgb(0, 120, 215);
+	border-color: #00188f;
 	-webkit-transition: background-color 0.5s ease-out;
 	-moz-transition: background-color 0.5s ease-out;
 	-ms-transition: background-color 0.5s ease-out;
@@ -345,19 +353,23 @@ li {
 }
 
 .notANumberBlockMobile {
-	background: #68c4eb;
+	background: #0073c5;
 }
 
 #notANumberBlock:hover {
 	/*color: #fff;*/
-	/*background-color: rgb(0, 120, 215);*/
-	background: #68c4eb;
+	/*background-color: #00188f;*/
+	background: #0073c5;
 	-webkit-transition: background-color 0.5s ease-out;
 	-moz-transition: background-color 0.5s ease-out;
 	-ms-transition: background-color 0.5s ease-out;
 	-o-transition: background-color 0.5s ease-out;
 	transition: background-color 0.5s ease-out;
 }
+
+/*#notANumberBlockText {
+	background-color: #0073c5;
+}*/
 
 #toHelpYouBlock {
 	color: rgb(92, 45, 145);
@@ -372,11 +384,11 @@ li {
 }
 
 .toHelpYouBlockMobile {
-	background-color: #b5009f;
+	background-color: #9d5098;
 }
 
 #toHelpYouBlock:hover {
-	background-color: #b5009f;
+	background-color: #9d5098;
 	-webkit-transition: background-color 0.5s ease-out;
 	-moz-transition: background-color 0.5s ease-out;
 	-ms-transition: background-color 0.5s ease-out;
@@ -422,11 +434,11 @@ li {
 }
 
 .itsYourEventBlockMobile {
-	background-color: #81b902;
+	background-color: #6fb06f;
 }
 
 #itsYourEventBlock:hover {
-	background-color: #81b902;
+	background-color: #6fb06f;
 	-webkit-transition: background-color 0.5s ease-out;
 	-moz-transition: background-color 0.5s ease-out;
 	-ms-transition: background-color 0.5s ease-out;
@@ -466,6 +478,34 @@ li {
 	  position: absolute;
 		bottom: 0;
 }*/
+
+.newsletterSubscSection {
+	background-color: #e15700;
+/*	padding-right: 10%;
+	padding-left: 10%;*/
+	padding: auto 10% auto 10%;
+	/*padding-top: 3%;*/
+	margin: 0 0 0 0;
+	width: 100%;
+	height: 80px;
+	color: #fcfbdc;
+}
+
+.newsletterSubscSection > * {
+	padding-top: 7px;
+	padding-bottom: 10px;
+	/*float: right;*/
+}
+
+.newsletterSubscSection p {
+	font-size: 2em;
+	text-align: center;
+}
+
+.newsletterSubscSection button {
+	font-size: 1em;
+	margin: 0 0 10px 40px;
+}
 
 .fa-bars {
 	color: #fff;
@@ -657,6 +697,7 @@ li {
 */
 h1 {
 	font-family: SegoeUILight, sans-serif;
+	color: #2F2F2F !important;
 }
 
 h2 {
@@ -1369,6 +1410,7 @@ footer img {
 .scroll-button p {
 	font-size: .5em;
 	font-weight: bold;
+	margin-left: 40px;
 }
 
 .ms-logo {
@@ -1441,6 +1483,15 @@ footer img {
 
 	.social-icons {
 		padding-top: .5vw;
+	}
+
+/*	.newsletterSubscSection {
+		margin-right: auto;
+		margin-left: auto;
+	}*/
+
+	.newsletterSubscSection span {
+		display: none;
 	}
 
 }

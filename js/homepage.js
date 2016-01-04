@@ -48,6 +48,8 @@ $(document).ready(function () {
 	var $whoMadeItBlock = $('#whoMadeItBlock');
 	var $itsYourEventBlock = $('#itsYourEventBlock');
 	var $backToTopButton = $('.scroll-button .fa-chevron-up');
+	var $newsletterButton = $('#newsletterButton');
+	var $homepageEmailSignUp = $('#homepageEmailSignUp');
 	var $window = $(window);
 	
 	//randomly assign background-color to the slides -- .slideshow li:nth-child(2) h2:first-child
@@ -95,6 +97,12 @@ $(document).ready(function () {
 			}); 	
 		}
 	})*/
+
+	$newsletterButton.click(function (e) {
+		$homepageEmailSignUp.toggle();
+		$('html, body').animate({ scrollTop: $homepageEmailSignUp.offset().top }, 'slow');
+		stickyFooter();
+	})
 	//close textbox and unhighlight introBox when $backToTopButton is clicked
 	$backToTopButton.click(function (e) {
 		$('.hiddenHomepageSections:visible').hide();
@@ -115,6 +123,7 @@ $(document).ready(function () {
 		var thisBlockText = '#' + $this.data('thisblocktext');
 		var blockPosition = $(thisBlockText).parent().offset().top;
    	var style = window.getComputedStyle(this, 'hover');
+   	// console.log('hello :::::: ', style);
 		if ($window.width() > 768) {
 			$this.toggleClass(thisBlockArrowClass);
 			$this.siblings().each(function (i, elem) {
@@ -140,6 +149,7 @@ $(document).ready(function () {
 			$(thisBlockText).fadeOut();
 			$(thisBlockText).siblings().hide();
 		}
+		$('.hiddenHomepageSectionsWrapper').css('background-color', style['background-color']);
 		//execute the stickyFooter function to correctly position the footer after the new div is added
    	stickyFooter(); 
 	});

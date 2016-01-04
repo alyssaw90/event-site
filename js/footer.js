@@ -20,5 +20,5 @@ $(document).ready(function () {
 			</p></nav>';
 
 	var footerMenu = $.parseHTML(footerMenuHTML);
-	$footer.prepend(footerMenu);
+	$footer.append(footerMenu);
 });
