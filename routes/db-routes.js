@@ -1,5 +1,6 @@
 'use strict';
 
+require('dotenv').load();
 var Contact = require('../models/Contact');
 var NewsletterSignup = require('../models/NewsletterSignup');
 var SuggestedCity = require('../models/SuggestedCity');
@@ -35,8 +36,8 @@ var Sql = require('sequelize');
     idle: 10000
   }
 });*/
-var sql = new Sql('InteropEventsDBTest', 'EventAdmin@interopeventstestserver', 'Event.4ever!', {
-  host: 'interopeventstestserver.database.windows.net',
+var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+    host: process.env.DB_HOST,
   dialect: 'mssql',
   pool: {
     max: 5,

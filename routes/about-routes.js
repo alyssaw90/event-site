@@ -5,7 +5,6 @@ var NewsletterSignup = require('../models/NewsletterSignup');
 var SuggestedCity = require('../models/SuggestedCity');
 var aboutUs = require('../views/about')();
 var fs = require('fs');
-var $ = require('cheerio');
 var bodyparser = require('body-parser');
 var path = require('path');
 // var Sql = require('sequelize');
