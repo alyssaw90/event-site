@@ -603,8 +603,7 @@ main p {
 .menu-overlay a:hover {
 	/*background-color: #68217a;*/
 	/*color: rgba(255, 185, 0, 1);*/
-	text-shadow: 0 0 15px #FFF;
-	font-weight: bold;
+	text-shadow: 1px 1px 5px #fff, 0 0 3em #fff, 0 0 0.3em #fff;
 }
 
 .purpleEventMenu {
