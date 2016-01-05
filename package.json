@@ -11,7 +11,6 @@
   "license": "MS-PL",
   "dependencies": {
     "body-parser": "^1.14.1",
-    "cheerio": "^0.19.0",
     "dotenv": "^1.2.0",
     "express": "^4.13.3",
     "flash": "^1.1.0",
@@ -21,7 +20,6 @@
     "node-sqlserver-unofficial": "^1.4.0",
     "sequelize": "^3.11.0",
     "sequelize-encrypted": "^0.1.0",
-    "sequelize-tools": "0.0.3",
     "tds": "^0.1.0",
     "tedious": "^1.13.1"
   },
