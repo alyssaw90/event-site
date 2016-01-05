@@ -30,43 +30,36 @@
 h1 {
 	font-family: SegoeUILight, sans-serif;
 	font-weight: normal;
-	color: #2F2F2F;
 }
 
 h2 {
 	font-family: SegoeUILight, sans-serif;
 	font-weight: normal;
-	color: #2F2F2F;
 }
 
 h3 {
 	font-family: SegoeUILight, sans-serif;
 	font-weight: normal;
-	color: #2F2F2F;
 }
 
 h4 {
 	font-family: SegoeUILight, sans-serif;
 	font-weight: normal;
-	color: #2F2F2F;
 }
 
 h5 {
 	font-family: SegoeUILight, sans-serif;
 	font-weight: normal;
-	color: #2F2F2F;
 }
 
 h6 {
 	font-family: SegoeUILight, sans-serif;
 	font-weight: normal;
-	color: #2F2F2F;
 }
 
 p {
 	font-family: SegoeUILight, sans-serif;
 	font-weight: normal;
-	color: #2F2F2F;
 	font-size: 1.15em;
 	line-height: 1.4em;
 }
@@ -74,7 +67,6 @@ p {
 li {
 	font-family: SegoeUILight, sans-serif;
 	font-weight: normal;
-	color: #2F2F2F;
 	font-size: 1.15em;
 	line-height: 1.4em;
 }
@@ -83,13 +75,11 @@ a {
 	text-decoration: none;
 	font-family: SegoeUILight, sans-serif;
 	font-weight: normal;
-	color: #2F2F2F;
 }
 
 table {
 	font-family: SegoeUILight, sans-serif;
 	font-weight: normal;
-	color: #2F2F2F;
 }
 
 
@@ -100,7 +90,7 @@ body {
 	background-size: 100%
 	opacity: .5;
 	font-family: SegoeUILight;
-
+	color: #2F2F2F;
 }
 
 main p {
@@ -412,6 +402,7 @@ main p {
 
 #notANumberBlock {
 	/*border-radius: 10px;*/
+	color: #00188f;
 	border-width: 4px;
 	border-style: solid;
 	border-color: #00188f;
@@ -420,10 +411,6 @@ main p {
 	-ms-transition: background-color 0.5s ease-out;
 	-o-transition: background-color 0.5s ease-out;
 	transition: background-color 0.5s ease-out;	
-}
-
-#notANumberBlock h3 {
-	color: #00188f;
 }
 
 .notANumberBlockMobile {
@@ -446,6 +433,7 @@ main p {
 }*/
 
 #toHelpYouBlock {
+	color: rgb(92, 45, 145);
 	border-width: 4px;
 	border-style: solid;
 	border-color: #442358;
@@ -454,10 +442,6 @@ main p {
 	-ms-transition: background-color 0.5s ease-out;
 	-o-transition: background-color 0.5s ease-out;
 	transition: background-color 0.5s ease-out;
-}
-
-#toHelpYouBlock h3 {
-	color: rgb(92, 45, 145);
 }
 
 .toHelpYouBlockMobile {
@@ -474,6 +458,7 @@ main p {
 }
 
 #whoMadeItBlock {
+	color: rgb(216, 59, 1);
 	border-width: 4px;
 	border-style: solid;
 	border-color: #e15700;
@@ -482,10 +467,6 @@ main p {
 	-ms-transition: background-color 0.5s ease-out;
 	-o-transition: background-color 0.5s ease-out;
 	transition: background-color 0.5s ease-out;
-}
-
-#whoMadeItBlock h3 {
-	color: rgb(216, 59, 1);
 }
 
 .whoMadeItBlockMobile {
@@ -502,6 +483,7 @@ main p {
 }
 
 #itsYourEventBlock {
+	color: rgb(16, 124, 16);
 	border-width: 4px;
 	border-style: solid;
 	border-color: #007234;
@@ -510,10 +492,6 @@ main p {
 	-ms-transition: background-color 0.5s ease-out;
 	-o-transition: background-color 0.5s ease-out;
 	transition: background-color 0.5s ease-out;
-}
-
-#itsYourEventBlock h3 {
-	color: rgb(16, 124, 16);
 }
 
 .itsYourEventBlockMobile {
