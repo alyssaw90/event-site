@@ -1,8 +1,8 @@
 'use strict';
 
 var Sql = require('sequelize');
-/*var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
-  host: 'localhost',
+var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
+  host: process.env.DB_LOCAL_HOST,
   dialect: 'mssql',
 
   pool: {
@@ -10,8 +10,8 @@ var Sql = require('sequelize');
     min: 0,
     idle: 10000
   }
-});*/
-var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+});
+/*var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
   host: process.env.DB_HOST,
   dialect: 'mssql',
   pool: {
@@ -22,7 +22,7 @@ var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS,
   dialectOptions: {
     encrypt: true
   }
-});
+});*/
 var AdditionalTravelSection = module.exports = sql.define('AdditionalTravelSection', {
   eventId: Sql.INTEGER,
   additionalHeading: Sql.TEXT,
