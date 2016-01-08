@@ -1899,16 +1899,16 @@ footer img {
 		width: 100%;
 	}
 
-	.col_12 {
+	.col_12.internetExplorer {
 		width: 70%;
 		margin-right: 15%;
 		margin-left: 15%;
 	}
 
-	.stick-footer {
+	/*.stick-footer {
 		position: relative;
 	}
-
+*/
 }
 /*IE10+ CSS for desktop only*/
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active), (min-width: 768px) {

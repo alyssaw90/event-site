@@ -1,5 +1,6 @@
 'use strict';
 
+require('dotenv').load();
 var Contact = require('../models/Contact');
 var NewsletterSignup = require('../models/NewsletterSignup');
 var SuggestedCity = require('../models/SuggestedCity');
@@ -25,8 +26,8 @@ var upload = multer({ storage: storage });
 var bodyparser = require('body-parser');
 var path = require('path');
 var Sql = require('sequelize');
-/*var sql = new Sql('events_page', 'eventsUser', 'p@ssw0rd1', {
-  host: 'localhost',
+/*var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
+  host: process.env.DB_LOCAL_HOST,
   dialect: 'mssql',
 
   pool: {
@@ -35,8 +36,8 @@ var Sql = require('sequelize');
     idle: 10000
   }
 });*/
-var sql = new Sql('InteropEventsDBTest', 'EventAdmin@interopeventstestserver', 'Event.4ever!', {
-  host: 'interopeventstestserver.database.windows.net',
+var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+    host: process.env.DB_HOST,
   dialect: 'mssql',
   pool: {
     max: 5,
@@ -486,7 +487,7 @@ router.route('/test2')
 
 router.route('/future-events')
 .get(function (req, res) {
-  var eventBlocksHtml = '<main class="events grid"><section class="col_12">';
+  var eventBlocksHtml = '<main class="events grid"><section class="col_12 internetExplorer">';
   var newHtml = '';
   var colNum = 4;
   var backgroundColors = shuffle(msColors);
