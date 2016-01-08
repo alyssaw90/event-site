@@ -959,23 +959,23 @@ footer a {
 	color: #000;
 }
 
-footer img {
+.siteFooter {
+	background-color: #d2d2d2;
+	float: right;
+	height: 100px;
+}
+
+.siteFooter a:hover {
+  text-shadow: 0 0 10px rgba(80, 80, 80, 1);
+}
+
+.socialIcon {
 	max-height: 25px;
 	/*padding: 2px;*/
 }
 
 .footer-at-bottom {
 	position: relative;
-}
-
-.footer-right {
-	background-color: #d2d2d2;
-	float: right;
-	max-height: 80px;
-}
-
-.footer-right a:hover {
-  text-shadow: 0 0 10px rgba(80, 80, 80, 1);
 }
 
 .mobile-foot {
@@ -1434,7 +1434,7 @@ footer img {
 
 .ms-logo {
 	float: left;
-	margin: 1% auto auto 1%;;
+	margin-left: 3%;
 }
 
 .register-button {
