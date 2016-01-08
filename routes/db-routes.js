@@ -487,7 +487,7 @@ router.route('/test2')
 
 router.route('/future-events')
 .get(function (req, res) {
-  var eventBlocksHtml = '<main class="events grid"><section class="col_12">';
+  var eventBlocksHtml = '<main class="events grid"><section class="col_12 internetExplorer">';
   var newHtml = '';
   var colNum = 4;
   var backgroundColors = shuffle(msColors);
