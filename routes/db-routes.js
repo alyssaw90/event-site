@@ -150,7 +150,6 @@ module.exports = function (router) {
 
   router.route('/survey/:eventId')
   .get(function (req, res) {
-    // console.log(clc.magenta('HHHHHHHHHHHH :::::::::::::: '), req.params.eventId);
     res.sendFile(path.join(__dirname, '../views/survey.html'));
   });
 
@@ -323,7 +322,6 @@ router.route('/answersurvey')
   .post(upload.array('images', 4), function (req, res, next) {
     sql.sync()
     .then(function () {
-          // console.log(clc.yellow('FFFFFFFFFFFFFFFFF ::::::::   '), req.files[0].filename)
       // Event.create(req.body)
       Event.create({
         eventName: req.body.eventName,
@@ -356,7 +354,6 @@ router.route('/showimages')
 .get(function (req, res) {
   EventImage.findAll()
   .then(function (data) {
-    // console.log(clc.yellow('GGGGGG :::::::::::  '), data);
     res.json(data);
   })
 })
@@ -428,7 +425,6 @@ router.route('/showimages')
             }*/
             slides += '</h2></a></span><img src="./uploads/' + frontPageEvents[i].eventSlideshowImage + '" /></li>';
           }
-          console.log(slides);
           newHtml = html.toString().replace('<ul class="slideshow">', slides);
           res.send(newHtml);
         });
@@ -477,7 +473,6 @@ router.route('/test2')
             }*/
             slides += '</h2></a></span><img src="./uploads/' + frontPageEvents[i].eventSlideshowImage + '" /></li>';
           }
-          console.log(slides);
           newHtml = html.toString().replace('<ul class="slideshow">', slides);
           res.send(newHtml);
         });
