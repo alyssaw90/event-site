@@ -960,7 +960,7 @@ footer a {
 }
 
 .siteFooter {
-	background-color: #d2d2d2;
+	background-color: #737373;
 	float: right;
 	height: 100px;
 }
@@ -1435,6 +1435,7 @@ footer a {
 .ms-logo {
 	float: left;
 	margin-left: 3%;
+	margin-top: 25px;
 }
 
 .register-button {
