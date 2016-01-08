@@ -559,7 +559,6 @@ router.route('/allevents/:eventId')
     Event.findOne({where: {id: req.params.eventId}})
     .then(function (data) {
       fs.readdir(path.join(__dirname, '../uploads/' + data.eventUrl), function (err, files) {
-        console.log(clc.magenta('KKKKKKKKKKKKKKK  ::: '), files)
         for (var key in files) {
           picsHtml += '<a href="../uploads/' + data.eventUrl + '/' + files[key] + ' rel="gallery" class="fancybox" type="image" ><img src="../uploads/' + data.eventUrl + '/' + files[key] + '" width="100" height="100" /></a>';
         }

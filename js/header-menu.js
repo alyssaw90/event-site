@@ -55,9 +55,7 @@
 			</div>\
 		</nav>\
 		<!-- End gray desktop menu -->\
-		<section id="headerImage" class="mobileWrapper">\
-			<img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../img/sample2.png" />\
-		</section>\
+		<section id="headerImage" class="mobileWrapper"></section>\
 		<!-- Begin purple desktop menu -->\
 		<nav class="menu-overlay desktop-menu flex"">\
 			<div class="col_12 purpleEventMenu"></div>\
@@ -83,9 +81,10 @@
 		$.get('/events', function (data) {
 			// var upcomingMenu = '<div class="col_2 center-block menu-block upcoming-menu"><a href="/future-events"><h2>Find an Event</h2></a></div>';
 			var upcomingPurpleMenu = '<div class="col_12 purpleEventMenu">';
+			var headerImage = '<section id="headerImage" class="mobileWrapper"><a href="/' + data[0].eventUrl + '"><img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../uploads/' + data[0].eventHomepageImage + '" /></a></section>';
 		 	var $header = $('header');
 		 	// var $menuBlock = $('.menu-block');
-
+		 	console.log(data[0]);
 			$(data).each(function (i, elem) {
 				var startDate = new Date(elem.eventStartDate);
 				// upcomingMenu += '<div class="col_2 center-block menu-block upcoming-menu upcoming-sub-menu"><a href="/event/' + elem.eventUrl + '"><h2>' + elem.eventName + '</h2></a></div>';
@@ -98,7 +97,7 @@
 				}
 			})
 			upcomingPurpleMenu += '</div>';
-			menu = menu.replace('<div class="col_12 purpleEventMenu"></div>', upcomingPurpleMenu)/*.replace('<div class="col_2 center-block menu-block upcoming-menu"><a href="/future-events"><h2>Find an Event</h2></a></div>', upcomingMenu)*/;
+			menu = menu.replace('<div class="col_12 purpleEventMenu"></div>', upcomingPurpleMenu).replace('<section id="headerImage" class="mobileWrapper"></section>', headerImage);
 			var headerMenu = $.parseHTML(menu);
 			$header.prepend(headerMenu);
 			//make future events tab expand when hovered
