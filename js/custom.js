@@ -30,7 +30,7 @@ function stickyFooter () {
   	// console.log('window is taller. Window: ', $window.height(), '  Document: ', $document.height());
     $footer.css('position', 'absolute').css('bottom', 0);
   }
-	if ($window.height() < $document.height() - 200) {
+	if ($window.height() < $document.height() - 200 && $window.width() < 768) {
   	$backToTopButton.show();
   }
   if ($window.height() > $document.height() - 200) {

@@ -74,7 +74,6 @@
 				$(this).width(widestBlock);
 				$(this).css('background-color', 'red');
 			});
-			console.log(widestBlock);
 		}
 
 
@@ -84,7 +83,6 @@
 			var headerImage = '<section id="headerImage" class="mobileWrapper"><a href="/' + data[0].eventUrl + '"><img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../uploads/' + data[0].eventHomepageImage + '" /></a></section>';
 		 	var $header = $('header');
 		 	// var $menuBlock = $('.menu-block');
-		 	console.log(data[0]);
 			$(data).each(function (i, elem) {
 				var startDate = new Date(elem.eventStartDate);
 				// upcomingMenu += '<div class="col_2 center-block menu-block upcoming-menu upcoming-sub-menu"><a href="/event/' + elem.eventUrl + '"><h2>' + elem.eventName + '</h2></a></div>';
@@ -164,7 +162,6 @@
 
 			//highlight currently selected menu item
 			if (pathname === '/') {
-				console.log('hola');
 				$homeMenuButton.addClass('current-page');
 			}
 			if (pathname === '/future-events') {
