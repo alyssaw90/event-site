@@ -123,6 +123,7 @@ $(document).ready(function () {
 		var thisBlockText = '#' + $this.data('thisblocktext');
 		var blockPosition = $(thisBlockText).parent().offset().top;
    	var style = window.getComputedStyle(this, 'hover');
+   	var backgroundColor = style['background-color'];
    	// console.log('hello :::::: ', style);
 		if ($window.width() > 768) {
 			$this.toggleClass(thisBlockArrowClass);
@@ -149,6 +150,7 @@ $(document).ready(function () {
 			$(thisBlockText).fadeOut();
 			$(thisBlockText).siblings().hide();
 		}
+			console.log('background-color ::::: ', style['background-color']);
 		$('.hiddenHomepageSectionsWrapper').css('background-color', style['background-color']);
 		//execute the stickyFooter function to correctly position the footer after the new div is added
    	stickyFooter(); 

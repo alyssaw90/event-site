@@ -9,10 +9,10 @@
 	
 	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="../css/kickstart.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="../css/custom.css" media="all" />
 	<link rel="stylesheet" type="text/css" href="../css/animate.css" media="all" />
 	<link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css" media="all" />
 	<link rel="stylesheet" type="text/css" href="../style.css" media="all" /> 
-	<link rel="stylesheet" type="text/css" href="../css/custom.css" media="all" />
 </head>
 <body>
 	<header>
@@ -21,21 +21,11 @@
 		<img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../img/jinghui-zhang-slider.png" />
 	</section> -->
 	<div class="mobileWrapper">
-		<main class="grid main-page-content">
-			<section class="col_12 slider">
-				<!-- Begin Backup Slideshow -->
-				<!-- <ul class="slideshow">
-					<li><a href="/future-events"><img src="../img/slide-1.jpg"></a></li>
-					<li><a href="/future-events"><img src="../img/slide-2.jpg"></a></li>
-					<li><a href="/future-events"><img src="../img/slide-3.jpg"></a></li>
-					<li><a href="/future-events"><img src="../img/slide-4.jpg"></a></li>
-					<li><a href="/future-events"><img src="../img/slide-5.jpg"></a></li>
-				</ul> -->
-			</section>
+		<div class="homepageIntroBlocksBackground col_12">
 			<section class="col_12">
 				<h1 class="center">At Microsoft Interop Events...</h1>
 			</section>
-			<div class="col_12 internetExplorer homepageIntroBlocksWrapper">
+			<div class="grid">
 				<section class="col_3 homepageIntroBlocks" id="notANumberBlock" data-thisBlockText="notANumberBlockText">
 					<h3>You're a name, <br />not a number...</h3>
 				</section>
@@ -49,10 +39,22 @@
 					<h3>It's your event,<br /> on us...</h3>
 				</section>
 			</div>
-			<!-- <section class="col_12">
-				<h1 class="center">Microsoft Interop Events</h1>
-			</section> -->
-			<section class="col_12 hiddenHomepageSectionsWrapper">
+		</div>
+			<main class="main-page-content">
+				<section class="col_12 slider">
+					<!-- Begin Backup Slideshow -->
+					<!-- <ul class="slideshow">
+						<li><a href="/future-events"><img src="../img/slide-1.jpg"></a></li>
+						<li><a href="/future-events"><img src="../img/slide-2.jpg"></a></li>
+						<li><a href="/future-events"><img src="../img/slide-3.jpg"></a></li>
+						<li><a href="/future-events"><img src="../img/slide-4.jpg"></a></li>
+						<li><a href="/future-events"><img src="../img/slide-5.jpg"></a></li>
+					</ul> -->
+				</section>
+				<!-- <section class="col_12">
+					<h1 class="center">Microsoft Interop Events</h1>
+				</section> -->
+				<section class="col_12 hiddenHomepageSectionsWrapper">
 					<div class="grid">
 						<section class="col_12 hiddenHomepageSections" id="notANumberBlockText" style="display: none;">
 							<p><iframe width="560" height="315" style="float:left; margin-right: 10px;" src="https://www.youtube-nocookie.com/embed/kexuG-YcQFA" frameborder="0" allowfullscreen></iframe>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. </p>
@@ -82,10 +84,55 @@
 						</section>
 					</div>
 				</section>
-			<section class="col_12 scroll-button">
-				<i class="fa fa-chevron-up fa-3x"><p>Back to Top</p></i>
-			</section>
-		</main>
+			</main>
+			<div class="grid">
+				<section id="homepageEmailSignUp" class="col_12" style="display:none;">
+					<h4>Sign Up for the Newsletter</h4>
+						<form action="/newsletter" method="POST" class="vertical">
+							<label for="email">Email Address</label>
+							<input id="email" name="email" type="email" type="submit" required />
+							<p></p>
+							<label for="firstName">First Name *</label>
+							<input id="firstName" name="firstName" type="text" type="submit" />
+							<label for="lastName">Last Name *</label>
+							<input id="lastName" name="lastName" type="text" type="submit" />
+							<label for="title">Title *</label>
+							<input id="title" name="title" type="text" type="submit" />
+							<label>Which protocols are you interested in? *</label>
+							<fieldset class="scrolling-box">
+								<input type="checkbox" id="sharePointFileOperations" name="sharePointFileOperations" value="true" /> <label for="sharePointFileOperations" class="inline">SharePoint file Operations</label>
+								<br />
+								<input type="checkbox" id="officeClient" name="officeClient" value="true" /> <label for="officeClient" class="inline">Office Client</label>
+								<br />
+								<input type="checkbox" id="windowsFileSharingProtocols" name="windowsFileSharingProtocols" value="true"/> <label for="windowsFileSharingProtocols" class="inline">Windows File Sharing Protocols (SMB2&3 family)</label>
+								<br />
+								<input type="checkbox" id="windowsIdentityActiveDirectoryAndAuthenticationProtocols" value="true" name="windowsIdentityActiveDirectoryAndAuthenticationProtocols" value="true"/> <label for="windowsIdentityActiveDirectoryAndAuthenticationProtocols" class="inline">Windows Identity (ActiveDirectory) and Authentication Protocols</label>
+								<br />
+								<input type="checkbox" id="kerberosAuthentication" name="kerberosAuthentication" value="true" /> <label for="kerberosAuthentication" class="inline">Kerberos Authentication</label>
+								<br />
+								<input type="checkbox" id="exchangeRPC" name="exchangeRPC" value="true" /> <label for="exchangeRPC" class="inline">Exchange RPC</label>
+								<br />
+								<input type="checkbox" id="exchangeWebServices" value="true" name="exchangeWebServices" value="true" /> <label for="exchangeWebServices" class="inline">Exchange Web Services (EWS)</label>
+								<br />
+								<input type="checkbox" id="exchangeActiveSync" name="exchangeActiveSync" value="true" /> <label for="exchangeActiveSync" class="inline">Exchange ActiveSync (EAS)</label>
+								<br />
+								<input type="checkbox" id="bringYourOwnDevice" name="bringYourOwnDevice" value="true" /> <label for="bringYourOwnDevice" class="inline">Bring your own device (BYOD)</label>
+								<br />
+								<input type="checkbox" id="sqlServer" name="sqlServer" value="true" /> <label for="sqlServer" class="inline">SQL Server</label>
+								<br />
+								<input type="checkbox" id="oDataREST" name="oDataREST" value="true" /> <label for="oDataREST" class="inline">OData / REST</label>
+								<br />
+								<input type="checkbox" id="otherProtocol" name="otherProtocol" value="true" /> <label for="otherProtocol" class="inline">Other</label>
+							</fieldset>
+							<input id="" name="" type="text" type="submit" />
+							<label for="newsletterSubscription">I would like to receive the newsletter</label>
+							<!-- <input type="hidden" name="newsletterSubscription" value="false"> -->
+							<input id="newsletterSubscription" type="checkbox" name="newsletterSubscription" value="true" checked>
+							<p>*Optional</p>
+							<button class="medium" type="submit">Submit</button>
+						</form>
+				</section>
+			</div>
 	</div>
 		<!-- begin footer -->
 	<footer class="grid flex footer-at-bottom foot">
