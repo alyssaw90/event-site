@@ -392,6 +392,10 @@ main p {
 	background-color: #fff;
 }
 
+.hiddenHomepageSections {
+	min-height: 180px;
+}
+
 .hiddenHomepageSectionsWrapper {
 	/*background-color: #0073c5;*/
 	color: #fcfbdc;
