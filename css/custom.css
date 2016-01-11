@@ -401,7 +401,15 @@ main p {
 }
 
 .hiddenHomepageSectionsWrapper img {
-	margin-top: 40px;
+	/*margin-top: 58px;*/
+}
+
+.hiddenHomepageSectionsWrapper p {
+	/*margin-top: 5%;*/
+}
+
+.hiddenHomepageSectionsWrapper blockquote {
+	margin-top: -20px;
 }
 
 #notANumberBlock {
