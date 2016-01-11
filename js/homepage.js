@@ -70,6 +70,12 @@ $(document).ready(function () {
 		}
 	});
 
+	$homepageIntroBlocks.each(function (i, elem) {
+		var $thisElem = $(this);
+		var arrowClass = elem.id + 'ArrowBox';
+		$thisElem.removeClass(arrowClass);
+	});
+
 	// console.log($('.sliderRegisterButton').css('background-color'));
 
 	/*$infoBlockWrapper.click(function (e) {
