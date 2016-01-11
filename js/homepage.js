@@ -118,12 +118,13 @@ $(document).ready(function () {
 	//when a homepageIntroBlocks is clicked, show the corresponding div
 	$homepageIntroBlocks.click(function (e) {
 		var $this = $(this);
+		var $hiddenHomepageSectionsWrapper = $('.hiddenHomepageSectionsWrapper');
 		var thisBlockArrowClass = $this.attr('id') + 'ArrowBox';
-		var thisBlockMobileClass = $this.attr('id') + 'Mobile'
+		var thisBlockMobileClass = $this.attr('id') + 'Mobile';
 		var thisBlockText = '#' + $this.data('thisblocktext');
 		var blockPosition = $(thisBlockText).parent().offset().top;
    	var style = window.getComputedStyle(this, 'hover');
-   	// console.log('hello :::::: ', style);
+   	var mobileStyle = $(this).data('hoverBackgroundColor');
 		if ($window.width() > 768) {
 			$this.toggleClass(thisBlockArrowClass);
 			$this.siblings().each(function (i, elem) {
@@ -149,7 +150,7 @@ $(document).ready(function () {
 			$(thisBlockText).fadeOut();
 			$(thisBlockText).siblings().hide();
 		}
-		$('.hiddenHomepageSectionsWrapper').css('background-color', style['background-color']);
+		$hiddenHomepageSectionsWrapper.css('background-color', $this.attr('data-hoverBackgroundColor'));
 		//execute the stickyFooter function to correctly position the footer after the new div is added
    	stickyFooter(); 
 	});
