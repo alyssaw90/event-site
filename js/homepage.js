@@ -135,7 +135,13 @@ $(document).ready(function () {
 
 		}
 		if ($window.width() <= 768) {
-  		$this.toggleClass(thisBlockMobileClass);
+  		console.log('::::::::::::::::  ', $this.css('background-color') === 'rgb(255, 255, 255)');
+  		// $this.toggleClass(thisBlockMobileClass);
+  		if ($this.css('background-color') === 'rgb(255, 255, 255)') {
+				$this.css('background-color', mobileStyle);
+			} else {
+				$this.css('background-color', 'rgb(255, 255, 255)')
+			}
 			$this.siblings().each(function (i, elem) {
 				var $thisMobileElem = $(this);
 				var mobileClass = elem.id + 'Mobile';
