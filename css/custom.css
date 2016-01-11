@@ -400,6 +400,10 @@ main p {
 	font-size: 1.15em;
 }
 
+.hiddenHomepageSectionsWrapper img {
+	margin-top: 40px;
+}
+
 #notANumberBlock {
 	/*border-radius: 10px;*/
 	color: #00188f;
