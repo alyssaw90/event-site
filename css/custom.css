@@ -1424,7 +1424,12 @@ footer a {
 
 .scroll-button {
 	text-align: right;
-	color: #737373;
+	padding-right: 12%;
+	height: 100px;
+	margin-right: 0;
+	margin-left: 0;
+	margin-bottom: -20px;
+	margin-top: -20px;
 }
 
 .scroll-button p {

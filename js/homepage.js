@@ -47,9 +47,10 @@ $(document).ready(function () {
 	var $toHelpYouBlock = $('#toHelpYouBlock');
 	var $whoMadeItBlock = $('#whoMadeItBlock');
 	var $itsYourEventBlock = $('#itsYourEventBlock');
-	var $backToTopButton = $('.scroll-button .fa-chevron-up');
+	var $backToTopButton = $('#backToTop');
 	var $newsletterButton = $('#newsletterButton');
 	var $homepageEmailSignUp = $('#homepageEmailSignUp');
+	var $scrollButtonDiv = $('.scroll-button');
 	var $window = $(window);
 	
 	//randomly assign background-color to the slides -- .slideshow li:nth-child(2) h2:first-child
@@ -106,6 +107,7 @@ $(document).ready(function () {
 	//close textbox and unhighlight introBox when $backToTopButton is clicked
 	$backToTopButton.click(function (e) {
 		$('.hiddenHomepageSections:visible').hide();
+		$scrollButtonDiv.css('background-color', '#fff').css('color', '#2F2F2F');
 		$('.homepageIntroBlocks').each(function (i, elem) {
 			var $this = $(this);
 			var thisBlockMobileClass = $this.attr('id') + 'Mobile'
@@ -135,7 +137,12 @@ $(document).ready(function () {
 
 		}
 		if ($window.width() <= 768) {
-  		$this.toggleClass(thisBlockMobileClass);
+  		// $this.toggleClass(thisBlockMobileClass);
+  		if ($this.css('background-color') === 'rgb(255, 255, 255)') {
+				$this.css('background-color', mobileStyle);
+			} else {
+				$this.css('background-color', 'rgb(255, 255, 255)')
+			}
 			$this.siblings().each(function (i, elem) {
 				var $thisMobileElem = $(this);
 				var mobileClass = elem.id + 'Mobile';
@@ -146,11 +153,14 @@ $(document).ready(function () {
 			$(thisBlockText).fadeIn();
 			$(thisBlockText).siblings().hide();
 			$('html, body').animate({ scrollTop: blockPosition }, 'slow');
+			$scrollButtonDiv.css('color', '#fcfbdc');
 		} else {
 			$(thisBlockText).fadeOut();
 			$(thisBlockText).siblings().hide();
+			$scrollButtonDiv.css('color', '#2F2F2F');
 		}
 		$hiddenHomepageSectionsWrapper.css('background-color', $this.attr('data-hoverBackgroundColor'));
+		$scrollButtonDiv.css('background-color', $hiddenHomepageSectionsWrapper.css('background-color'));
 		//execute the stickyFooter function to correctly position the footer after the new div is added
    	stickyFooter(); 
 	});

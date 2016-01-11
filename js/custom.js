@@ -21,7 +21,7 @@ function stickyFooter () {
 	var $window = $(window);
 	var $document = $(document);
 	var $footer = $('.foot');
-	var $backToTopButton = $('.scroll-button .fa-chevron-up');
+	var $backToTopButton = $('.scroll-button');
   if ($window.height() < $document.height()) {
   	// console.log('document is taller. Window: ', $window.height(), '  Document: ', $document.height());
   	$footer.css('position', 'relative');
