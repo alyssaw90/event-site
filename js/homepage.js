@@ -127,6 +127,8 @@ $(document).ready(function () {
 		var blockPosition = $(thisBlockText).parent().offset().top;
    	var style = window.getComputedStyle(this, 'hover');
    	var mobileStyle = $(this).data('hoverBackgroundColor');
+   	var backgroundColor = style['background-color'];
+   	// console.log('hello :::::: ', style);
 		if ($window.width() > 768) {
 			$this.toggleClass(thisBlockArrowClass);
 			$this.siblings().each(function (i, elem) {
