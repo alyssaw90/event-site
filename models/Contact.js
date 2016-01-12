@@ -445,7 +445,7 @@ Contact.sync({force: true})
     newsletterSubscription: true,
     contactDescription: 'Michelle has been involved in technical communication and developer community support for more than 20 years. The teams and projects she has been a part of at Microsoft during that time include the TechNet and MSDN feedback teams, the TechNet webcast program, content management for major Microsoft developer conferences, and extensive technical editing work on a wide range of topics. She has been part of the Office Interoperability team for nearly six years, first as a programmer writer and most recently as a release coordinator covering Open Specifications for Office, SharePoint, Exchange, and Skype for Business. Michelle is also an avid and passionate supporter of video games as a medium for artistic expression, social commentary, and powerful storytelling.',
     eventRole: 'speaker',
-    msTeamMember: true,
+    msTeamMember: false,
     msTeamTitle: 'Release Manager, Office Content Team',
     showOnHomePage: false,
     headShot: 'michelle-hammond-headshot.jpg',
