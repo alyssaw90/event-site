@@ -70,12 +70,6 @@ $(document).ready(function () {
 		}
 	});
 
-	$homepageIntroBlocks.each(function (i, elem) {
-		var $thisElem = $(this);
-		var arrowClass = elem.id + 'ArrowBox';
-		$thisElem.removeClass(arrowClass);
-	});
-
 	// console.log($('.sliderRegisterButton').css('background-color'));
 
 	/*$infoBlockWrapper.click(function (e) {
@@ -146,8 +140,9 @@ $(document).ready(function () {
 		}
 		if ($window.width() <= 768) {
   		// $this.toggleClass(thisBlockMobileClass);
+  		// console.log(' :::::::  ', $this.css('background-color'));
   		if ($this.css('background-color') === 'rgb(255, 255, 255)') {
-				$this.css('background-color', mobileStyle);
+				$this.css('background-color', $this.attr('data-hoverBackgroundColor'));
 			} else {
 				$this.css('background-color', 'rgb(255, 255, 255)')
 			}
@@ -161,7 +156,7 @@ $(document).ready(function () {
 			$(thisBlockText).fadeIn();
 			$(thisBlockText).siblings().hide();
 			$('html, body').animate({ scrollTop: blockPosition }, 'slow');
-			$scrollButtonDiv.css('color', '#fcfbdc');
+			$scrollButtonDiv.css('color', '#fff');
 		} else {
 			$(thisBlockText).fadeOut();
 			$(thisBlockText).siblings().hide();
