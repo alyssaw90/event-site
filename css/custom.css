@@ -416,6 +416,10 @@ main p {
 	margin-top: -20px;
 }
 
+.hiddenHomepageSectionsWrapper iframe {
+	padding: 10px 10px 10px 10px;
+}
+
 #notANumberBlock {
 	/*border-radius: 10px;*/
 	color: #00188f;
@@ -562,7 +566,7 @@ main p {
 	padding-left: 10%;*/
 	padding: auto 10% auto 10%;
 	/*padding-top: 3%;*/
-	margin: 26px 0 0 0;
+	margin: 0 0 0 0;
 	width: 100%;
 	height: 80px;
 	color: #fff;
@@ -572,6 +576,14 @@ main p {
 	padding-top: 7px;
 	padding-bottom: 10px;
 	/*float: right;*/
+}
+
+.newsletterSubscSection a {
+	color: #fff;
+}
+
+.newsletterSubscSection a:hover {
+	color: blue;
 }
 
 .newsletterSubscSection p {
@@ -978,10 +990,10 @@ footer a {
 .siteFooter {
 	background-color: #d2d2d2;
 	float: right;
-	min-height: 80px;
+	min-height: 40px;
 	width: 100%;
 	margin: 0 0 0 0;
-	padding: 5px 0 5px 0;
+	/*padding: 16px 0 16px 0;*/
 	padding-right: 7%;
 	padding-left: 3%;
 }

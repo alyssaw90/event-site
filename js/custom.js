@@ -33,7 +33,30 @@ function stickyFooter () {
 	if ($window.height() < $document.height() - 200 && $window.width() < 768) {
   	$backToTopButton.show();
   }
-  if ($window.height() > $document.height() - 200) {
+  if ($window.height() > $document.height() - 200 || $window.width() >= 768) {
+    $backToTopButton.hide();
+  }
+
+}
+
+//special sticky footer for homepage that switches equals signs in the if statements
+function homepageStickyFooter () {
+	var $window = $(window);
+	var $document = $(document);
+	var $footer = $('.foot');
+	var $backToTopButton = $('.scroll-button');
+  if ($window.height() < $document.height()) {
+  	// console.log('document is taller. Window: ', $window.height(), '  Document: ', $document.height());
+  	$footer.css('position', 'relative');
+  }
+  if ($window.height() >= $document.height()) {
+  	// console.log('window is taller. Window: ', $window.height(), '  Document: ', $document.height());
+    $footer.css('position', 'absolute').css('bottom', 0);
+  }
+	if ($window.height() < $document.height() - 200 && $window.width() < 768) {
+  	$backToTopButton.show();
+  }
+  if ($window.height() > $document.height() - 200 || $window.width() >= 768) {
     $backToTopButton.hide();
   }
 

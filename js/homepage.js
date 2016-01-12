@@ -102,7 +102,7 @@ $(document).ready(function () {
 	$newsletterButton.click(function (e) {
 		$homepageEmailSignUp.toggle();
 		$('html, body').animate({ scrollTop: $homepageEmailSignUp.offset().top }, 'slow');
-		stickyFooter();
+		homepageStickyFooter();
 	})
 	//close textbox and unhighlight introBox when $backToTopButton is clicked
 	$backToTopButton.click(function (e) {
@@ -117,7 +117,7 @@ $(document).ready(function () {
 				// $this.removeClass(thisBlockMobileClass);
 			}*/
 		})
-		stickyFooter();
+		homepageStickyFooter();
 	})
 	//when a homepageIntroBlocks is clicked, show the corresponding div
 	$homepageIntroBlocks.click(function (e) {
@@ -166,40 +166,40 @@ $(document).ready(function () {
 			$(thisBlockText).siblings().hide();
 			$scrollButtonDiv.css('color', '#2F2F2F').css('background-color', '#fff');
 		}
-		//execute the stickyFooter function to correctly position the footer after the new div is added
-   	stickyFooter(); 
+		//execute the homepageStickyFooter function to correctly position the footer after the new div is added
+   	homepageStickyFooter(); 
 	});
 	
 	//make homepageIntroBlocks zoom in and down
 	setTimeout(function () {
 		$notANumberBlock.css('visibility', 'visible').addClass('animated zoomInDown');
-		stickyFooter();
+		homepageStickyFooter();
 		// $('.homepageIntroBlocks section:nth-child(4)').removeClass('animated zoomInDown');
 	}, 10);
 	setTimeout(function () {
 		$toHelpYouBlock.css('visibility', 'visible').addClass('animated zoomInDown');
-		stickyFooter();
+		homepageStickyFooter();
 		// $('.homepageIntroBlocks section:nth-child(1)').removeClass('animated zoomInDown');
 	}, 1000);
 	setTimeout(function () {
 		$whoMadeItBlock.css('visibility', 'visible').addClass('animated zoomInDown');
-		stickyFooter();
+		homepageStickyFooter();
 		// $('.homepageIntroBlocks section:nth-child(2)').removeClass('animated zoomInDown');
 	}, 2000);
 	setTimeout(function () {
 		// $('.homepageIntroBlocks section:nth-child(3)').removeClass('animated zoomInDown');
 		$itsYourEventBlock.css('visibility', 'visible').addClass('animated zoomInDown');
-		stickyFooter();
+		homepageStickyFooter();
 	}, 3000);
 });
 
 $(window).load(function() {
   changeHeight('.homepageIntroBlocks');
-  stickyFooter();
+  homepageStickyFooter();
 });
 
 
 $(window).resize(function(){
   changeHeight('.homepageIntroBlocks');
-  stickyFooter();
+  homepageStickyFooter();
 });
