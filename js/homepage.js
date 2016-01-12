@@ -110,10 +110,12 @@ $(document).ready(function () {
 		$scrollButtonDiv.css('background-color', '#fff').css('color', '#2F2F2F');
 		$('.homepageIntroBlocks').each(function (i, elem) {
 			var $this = $(this);
-			var thisBlockMobileClass = $this.attr('id') + 'Mobile'
-			if ($this.hasClass(thisBlockMobileClass)) {
-				$this.removeClass(thisBlockMobileClass);
-			}
+			var thisBlockMobileClass = $this.attr('id') + 'Mobile';
+			$this.css('background-color', '#fff');
+			/*if ($this.hasClass(thisBlockMobileClass)) {
+				console.log('hola');
+				// $this.removeClass(thisBlockMobileClass);
+			}*/
 		})
 		stickyFooter();
 	})
