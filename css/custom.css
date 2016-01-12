@@ -398,7 +398,7 @@ main p {
 
 .hiddenHomepageSectionsWrapper {
 	/*background-color: #0073c5;*/
-	color: #fcfbdc;
+	color: #fff;
 	width: 100%;
 	margin: 0 0 0 0;
 	font-size: 1.15em;
@@ -565,7 +565,7 @@ main p {
 	margin: 0 0 0 0;
 	width: 100%;
 	height: 80px;
-	color: #fcfbdc;
+	color: #fff;
 }
 
 .newsletterSubscSection > * {
@@ -978,7 +978,7 @@ footer a {
 .siteFooter {
 	background-color: #d2d2d2;
 	float: right;
-	height: 100px;
+	min-height: 80px;
 	width: 100%;
 	margin: 0 0 0 0;
 	padding: 5px 0 5px 0;
@@ -1443,8 +1443,13 @@ footer a {
 
 .ms-logo {
 	float: left;
+	padding-top: 20px;
 	/*margin-left: 3%;*/
-	margin-top: 25px;
+	/*padding-bottom: 25px;*/
+}
+
+.ms-logo-mobile {
+	display: none;
 }
 
 .register-button {
@@ -1660,6 +1665,15 @@ footer a {
 }
 
 @media all and (max-width: 768px) {
+
+	.ms-logo {
+	display: none;
+}
+
+	.ms-logo-mobile {
+		display: inline;
+	}
+
 
 	.slideshow {
 		display: none;
