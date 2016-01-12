@@ -151,7 +151,7 @@ $(document).ready(function () {
 			$this.siblings().each(function (i, elem) {
 				var $thisMobileElem = $(this);
 				var mobileClass = elem.id + 'Mobile';
-				$thisMobileElem.removeClass(mobileClass);
+				$thisMobileElem.removeClass(mobileClass).css('background-color', '#fff');
 			});
 		}
 		$hiddenHomepageSectionsWrapper.css('background-color', $this.attr('data-hoverBackgroundColor'));
