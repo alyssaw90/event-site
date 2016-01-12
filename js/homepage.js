@@ -146,7 +146,7 @@ $(document).ready(function () {
   		if ($this.css('background-color') === 'rgb(255, 255, 255)') {
 				$this.css('background-color', $this.attr('data-hoverBackgroundColor'));
 			} else {
-				$this.css('background-color', 'rgb(255, 255, 255)')
+				$this.css('background-color', 'rgb(255, 255, 255)');
 			}
 			$this.siblings().each(function (i, elem) {
 				var $thisMobileElem = $(this);
@@ -154,6 +154,8 @@ $(document).ready(function () {
 				$thisMobileElem.removeClass(mobileClass);
 			});
 		}
+		$hiddenHomepageSectionsWrapper.css('background-color', $this.attr('data-hoverBackgroundColor'));
+		$scrollButtonDiv.css('background-color', $hiddenHomepageSectionsWrapper.css('background-color'));
 		if ($(thisBlockText).css('display') === 'none') {
 			$(thisBlockText).fadeIn();
 			$(thisBlockText).siblings().hide();
@@ -162,10 +164,8 @@ $(document).ready(function () {
 		} else {
 			$(thisBlockText).fadeOut();
 			$(thisBlockText).siblings().hide();
-			$scrollButtonDiv.css('color', '#2F2F2F');
+			$scrollButtonDiv.css('color', '#2F2F2F').css('background-color', '#fff');
 		}
-		$hiddenHomepageSectionsWrapper.css('background-color', $this.attr('data-hoverBackgroundColor'));
-		$scrollButtonDiv.css('background-color', $hiddenHomepageSectionsWrapper.css('background-color'));
 		//execute the stickyFooter function to correctly position the footer after the new div is added
    	stickyFooter(); 
 	});
