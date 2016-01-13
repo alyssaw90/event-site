@@ -253,14 +253,27 @@ main p {
 	z-index: 1002;
 }
 
+.homepageIntroBlocksWrapper {
+
+}
+
 .homepageIntroBlocks {
 	visibility: hidden;
 	background-color: #fff;
+	min-height: 100px;
 }
 
 .homepageIntroBlocks:hover {
 	cursor: pointer;
 }
+
+.homepageIntroBlocks h3 {
+	text-align: center;
+	margin-top: 2.75%;
+}
+/*.homepageIntroBlocks :nth-child(1) {
+	color: #00188f;
+}*/
 
 .notANumberBlockArrowBox {
 	position: relative;
@@ -378,13 +391,6 @@ main p {
 	margin-left: -36px;
 }
 
-.homepageIntroBlocks h3 {
-	text-align: center;
-}
-/*.homepageIntroBlocks :nth-child(1) {
-	color: #00188f;
-}*/
-
 .homepageIntroBlocksBackground {
 	width: 100%;
 	margin: 0 0 0 0;
@@ -406,6 +412,7 @@ main p {
 
 .hiddenHomepageSectionsWrapper img {
 	/*margin-top: 58px;*/
+	margin-top: 30px;
 }
 
 .hiddenHomepageSectionsWrapper p {
@@ -413,7 +420,7 @@ main p {
 }
 
 .hiddenHomepageSectionsWrapper blockquote {
-	margin-top: -20px;
+	/*margin-top: -20px;*/
 }
 
 .hiddenHomepageSectionsWrapper iframe {
@@ -1678,9 +1685,17 @@ footer a {
 
 @media all and (max-width: 768px) {
 
+	#hiddenHomepageSectionsGrid {
+		max-width: 100%;
+	}
+
+	.newsletterSubscSection p {
+		padding-top: 2%;
+	}
+
 	.ms-logo {
-	display: none;
-}
+		display: none;
+	}
 
 	.ms-logo-mobile {
 		display: inline;
@@ -1851,19 +1866,22 @@ footer a {
 
 	}
 
-/*	.event_block h1 {
-		font-size: 3.5vw;
+	.homepageIntroBlocksWrapper {
+		max-width: 80% !important;
 	}
-*/
+
+	/*.hiddenHomepageSections {
+		max-width: 80% !important;
+		margin-left: 10%;
+	}*/
+
 }
 
-/*@media all and (min-width: 1450px) {
-	.event_block h1 {
-		font-size: 3.5em;
-	}
-}*/
-
 @media all and (max-width: 641px) {
+	.newsletterSubscSection p {
+		font-size: 1.5em;
+		padding-top: 3.5%;
+	}
 
 	.social-icons {
 		/*margin-top: -15px;*/
@@ -1885,6 +1903,8 @@ footer a {
 		/*margin-right: -70px;*/
 		/*margin-top: -10px;*/
 	}
+
+
 }
 
 @media all and (max-width: 530px) {
@@ -1922,6 +1942,12 @@ footer a {
 }
 
 @media all and (max-width: 321px) {
+
+	.newsletterSubscSection p {
+		font-size: 1.3em;
+		padding-top: 5%;
+	}
+
 
 	.hidden-div {
 		width: 70%;
