@@ -1679,8 +1679,8 @@ footer a {
 @media all and (max-width: 768px) {
 
 	.ms-logo {
-	display: none;
-}
+		display: none;
+	}
 
 	.ms-logo-mobile {
 		display: inline;
