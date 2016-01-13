@@ -4,7 +4,7 @@
   "description": "A bootstrap version to demonstrate what the eventual event page can look like",
   "main": "server.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha tests/test_entry.js",
+    "test": "mocha tests/test_entry.js",
     "start": "node server.js"
   },
   "author": "Michael Bowen",
@@ -31,7 +31,8 @@
     "grunt-cli": "^0.1.13",
     "grunt-contrib-jshint": "^0.11.3",
     "grunt-jscs": "^2.1.0",
+    "grunt-mocha-cli": "^2.0.0",
     "grunt-simple-mocha": "^0.4.0",
-    "mocha": "^2.3.2"
+    "mocha": "^2.3.4"
   }
 }
