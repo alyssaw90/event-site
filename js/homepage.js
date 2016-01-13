@@ -51,6 +51,7 @@ $(document).ready(function () {
 	var $newsletterButton = $('#newsletterButton');
 	var $homepageEmailSignUp = $('#homepageEmailSignUp');
 	var $scrollButtonDiv = $('.scroll-button');
+	var $hiddenHomepageSectionsWrapper = $('.hiddenHomepageSectionsWrapper');
 	var $window = $(window);
 	
 	//randomly assign background-color to the slides -- .slideshow li:nth-child(2) h2:first-child
@@ -122,7 +123,6 @@ $(document).ready(function () {
 	//when a homepageIntroBlocks is clicked, show the corresponding div
 	$homepageIntroBlocks.click(function (e) {
 		var $this = $(this);
-		var $hiddenHomepageSectionsWrapper = $('.hiddenHomepageSectionsWrapper');
 		var thisBlockArrowClass = $this.attr('id') + 'ArrowBox';
 		var thisBlockMobileClass = $this.attr('id') + 'Mobile';
 		var thisBlockText = '#' + $this.data('thisblocktext');

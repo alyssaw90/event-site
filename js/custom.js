@@ -92,6 +92,18 @@ function changeWidth (div) {
 	});
 }
 
+	//add flex class below 768
+
+	function fullWidthMobile(div) {
+		/*if ($(window).width() <= 768) {
+			div.addClass('flex');
+		}
+		if ($(window).width() > 768) {
+			div.removeClass('flex');
+		}*/
+		
+	}
+
 
 $(document).ready(function () {
 	var $body = $('body');
@@ -148,18 +160,6 @@ $(document).ready(function () {
   	  $('.menu-overlay').css('height', '');
   	}
 	});*/
-
-	//make past events buttons and homepage content full width on mobile
-
-	function fullWidthMobile(div) {
-		if ($(window).width() < 768) {
-			div.addClass('flex');
-		}
-		if ($(window).width() > 768) {
-			div.removeClass('flex');
-		}
-		
-	}
 
 	$(window).resize(fullWidthMobile($('.past-events-menu')));
 	$(window).load(fullWidthMobile($('.past-events-menu')));
