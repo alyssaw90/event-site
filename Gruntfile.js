@@ -28,7 +28,7 @@ module.exports = function (grunt) {
 
       mocha: {
         // tell mocha where test files are
-        src: ['tests/**/*.js', '!tests/client/bundle.js', '!tests/karma_tests/bundle.js'],
+        src: ['tests/test_entry.js', '!tests/client/bundle.js', '!tests/karma_tests/bundle.js'],
         options: {
           node: true,
           globals: {
