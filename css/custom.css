@@ -421,6 +421,7 @@ main p {
 
 .hiddenHomepageSectionsWrapper blockquote {
 	/*margin-top: -20px;*/
+	text-align: left;
 }
 
 .hiddenHomepageSectionsWrapper iframe {
