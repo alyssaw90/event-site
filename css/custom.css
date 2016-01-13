@@ -1678,6 +1678,10 @@ footer a {
 
 @media all and (max-width: 768px) {
 
+	.newsletterSubscSection p {
+		padding-top: 2%;
+	}
+
 	.ms-logo {
 		display: none;
 	}
@@ -1864,6 +1868,10 @@ footer a {
 }*/
 
 @media all and (max-width: 641px) {
+	.newsletterSubscSection p {
+		font-size: 1.5em;
+		padding-top: 3.5%;
+	}
 
 	.social-icons {
 		/*margin-top: -15px;*/
@@ -1885,6 +1893,8 @@ footer a {
 		/*margin-right: -70px;*/
 		/*margin-top: -10px;*/
 	}
+
+
 }
 
 @media all and (max-width: 530px) {
@@ -1922,6 +1932,12 @@ footer a {
 }
 
 @media all and (max-width: 321px) {
+
+	.newsletterSubscSection p {
+		font-size: 1.3em;
+		padding-top: 5%;
+	}
+
 
 	.hidden-div {
 		width: 70%;
