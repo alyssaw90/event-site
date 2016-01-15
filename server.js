@@ -4,7 +4,7 @@ require('dotenv').load();
 var express = require('express');
 var app = express();
 var clc = require('cli-color');
-var port = process.env.PORT || 4000;
+var port = process.env.PORT || 3000;
 var time = new Date();
 process.env.SECRET_KEY = process.env.SECRET_KEY || 'change this change this change this!!!';
 
