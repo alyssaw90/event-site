@@ -595,7 +595,7 @@ main p {
 }
 
 .newsletterSubscSection p {
-	font-size: 2em;
+	font-size: 28px;
 	text-align: center;
 }
 
@@ -665,7 +665,7 @@ main p {
 	/*line-height: 1.3em;*/
 	/*padding-right: 2.5%;*/
 	/*padding-left: 2.5%;*/
-	font-size: 20px !important;
+	font-size: 25px;
 	/*padding-right: 25px;*/
 	padding-right: 12px;
 	padding-left: 12px;
@@ -1054,10 +1054,6 @@ footer a {
 
 	.desktop-menu {
 	  overflow: hidden;
-	}
-
-	.menu-overlay.desktop-menu a {
-		font-size: 1.2em;
 	}
 
 	.bottom-menu {
