@@ -4,12 +4,6 @@
 /*global window */
 /*jshint multistr: true */ 
 
-/*function randomQuote (arr) {
-	var randomNum = Math.floor(Math.random() * arr.length);
-	var outputQuote = '<h4>' + arr[randomNum].quote + '</h4><p>' + arr[randomNum].author + '</p>';
-	$('#feedbackBlock').append(outputQuote);
-}*/
-
  $(document).ready(function () {
  	
  	var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -78,14 +72,11 @@
 
 
 		$.get('/events', function (data) {
-			// var upcomingMenu = '<div class="col_2 center-block menu-block upcoming-menu"><a href="/future-events"><h2>Find an Event</h2></a></div>';
 			var upcomingPurpleMenu = '<div class="col_12 purpleEventMenu">';
 			var headerImage = '<section id="headerImage" class="mobileWrapper"><a href="/' + data[0].eventUrl + '"><img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../uploads/' + data[0].eventHomepageImage + '" /></a></section>';
 		 	var $header = $('header');
-		 	// var $menuBlock = $('.menu-block');
 			$(data).each(function (i, elem) {
 				var startDate = new Date(elem.eventStartDate);
-				// upcomingMenu += '<div class="col_2 center-block menu-block upcoming-menu upcoming-sub-menu"><a href="/event/' + elem.eventUrl + '"><h2>' + elem.eventName + '</h2></a></div>';
 				if (i < data.length - 1) {
 					upcomingPurpleMenu += '<a href="/' + elem.eventUrl + '">' + elem.eventLocation + '&nbsp-&nbsp<span class="purpleSubMenu">' + months[startDate.getMonth()] + ',&nbsp' + startDate.getFullYear() + '</span></a>| ';
 				}
@@ -98,55 +89,6 @@
 			menu = menu.replace('<div class="col_12 purpleEventMenu"></div>', upcomingPurpleMenu).replace('<section id="headerImage" class="mobileWrapper"></section>', headerImage);
 			var headerMenu = $.parseHTML(menu);
 			$header.prepend(headerMenu);
-			//make future events tab expand when hovered
-			/*$('.expanding-menu').hover(function () {
-				var $menuHeight = $(this).parent().height();
-	 			var $menuWidth  = $('.upcoming-menu').width();
-	 			// $('.upcoming-sub-menu:first').css('margin-top', $menuHeight);
-	 			$('.expanding-menu').css({'height': $menuHeight, 'width': $menuWidth});
-	 			$('.expanding-menu').height($menuHeight);
-	 			$('.expanding-menu').width($menuWidth);
-	 			$('.upcoming-sub-menu').slideDown('fast');
-				$('.upcoming-sub-menu').css('display', 'inline');
-				},
-				function () {
-					$('.upcoming-sub-menu').slideUp('fast');
-				}
-			);*/
-			// $(window).load(function () 
-				/*var socialIconWidth = 0;
-				var margin = ($(window).width() - $('.purpleEventMenu').width()) / ($('.purpleEventMenu').length * 6);
-				$('.social-icons').children().each(function (i) {
-					socialIconWidth += Math.abs($(this).width())
-				})*/
-				// $('.purpleEventMenu').css('left', margin * -1);
-				// $('.purpleEventMenuWrapper').css('text-align', 'center');
-			// })
-			// $(window).load(changeWidth($('.menu-block')));
-			// $(window).load(changeWidth());
-			// $(window).resize = changeWidth;
-			/*$(document).ready(function(){
-    		$(window).resize(function() {
-    			console.log('resize reached');
-      	changeWidth();
-    		})
-  		});*/
-			/*$(window).resize(function () {
-				changeWidth();
-				alert('resized');
-			});*/
-			/*var $window = $(window);
-			var width = $window.width();
-  		var height = $window.height();
-			setInterval(function () {
-        if ((width != $window.width()) || (height != $window.height())) {
-            width = $window.width();
-            height = $window.height();
-
-            // alert('resized!');
-            changeWidth();
-        }
-    	}, 300)*/
 			//declare jQuery variables after menu has been rendered to the DOM
 		 	var $homeMenuButton = $('.home-menu-button');
 		 	var $upcominEventsBlock = $('.upcominEventsBlock');

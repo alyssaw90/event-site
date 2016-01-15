@@ -71,35 +71,6 @@ $(document).ready(function () {
 		}
 	});
 
-	// console.log($('.sliderRegisterButton').css('background-color'));
-
-	/*$infoBlockWrapper.click(function (e) {
-		var blockPosition = findPos(this);
-		var thisBlockId = '#' + $(this).data('thisblock');
-		// console.log($(this).data('thisblock'));
-		if ($(thisBlockId).css('display') === 'none') {
-			$(thisBlockId).show();
-			$(thisBlockId).siblings().hide();
-			$('html, body').animate({ scrollTop: blockPosition }, 'slow');
-		} else {
-			$(thisBlockId).hide();
-			$(thisBlockId).siblings().hide();
-		}
-	});
-
-	$infoBlockButton.click(function () {
-		if ($infoBlocksContainer.is(':visible')) {
-			$infoBlocksContainer.fadeOut(function() { 
-				$infoBlocksContainer2.fadeIn(); 
-			}); 	
-		}
-		if ($infoBlocksContainer2.is(':visible')) {
-			$infoBlocksContainer2.fadeOut(function() { 
-				$infoBlocksContainer.fadeIn(); 
-			}); 	
-		}
-	})*/
-
 	$newsletterButton.click(function (e) {
 		$homepageEmailSignUp.toggle();
 		$('html, body').animate({ scrollTop: $homepageEmailSignUp.offset().top }, 'slow');
@@ -113,13 +84,9 @@ $(document).ready(function () {
 			var $this = $(this);
 			var thisBlockMobileClass = $this.attr('id') + 'Mobile';
 			$this.css('background-color', '#fff');
-			/*if ($this.hasClass(thisBlockMobileClass)) {
-				console.log('hola');
-				// $this.removeClass(thisBlockMobileClass);
-			}*/
-		})
+		});
 		homepageStickyFooter();
-	})
+	});
 	//when a homepageIntroBlocks is clicked, show the corresponding div
 	$homepageIntroBlocks.click(function (e) {
 		var $this = $(this);
@@ -140,8 +107,6 @@ $(document).ready(function () {
 			});
 		}
 		if ($window.width() <= 768) {
-  		// $this.toggleClass(thisBlockMobileClass);
-  		// console.log(' :::::::  ', $this.css('background-color'));
   		if ($this.css('background-color') === 'rgb(255, 255, 255)') {
 				$this.css('background-color', $this.attr('data-hoverBackgroundColor'));
 			} else {
@@ -174,20 +139,16 @@ $(document).ready(function () {
 	setTimeout(function () {
 		$notANumberBlock.css('visibility', 'visible').addClass('animated zoomInDown');
 		homepageStickyFooter();
-		// $('.homepageIntroBlocks section:nth-child(4)').removeClass('animated zoomInDown');
 	}, 10);
 	setTimeout(function () {
 		$toHelpYouBlock.css('visibility', 'visible').addClass('animated zoomInDown');
 		homepageStickyFooter();
-		// $('.homepageIntroBlocks section:nth-child(1)').removeClass('animated zoomInDown');
 	}, 1000);
 	setTimeout(function () {
 		$whoMadeItBlock.css('visibility', 'visible').addClass('animated zoomInDown');
 		homepageStickyFooter();
-		// $('.homepageIntroBlocks section:nth-child(2)').removeClass('animated zoomInDown');
 	}, 2000);
 	setTimeout(function () {
-		// $('.homepageIntroBlocks section:nth-child(3)').removeClass('animated zoomInDown');
 		$itsYourEventBlock.css('visibility', 'visible').addClass('animated zoomInDown');
 		homepageStickyFooter();
 	}, 3000);

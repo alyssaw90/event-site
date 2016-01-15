@@ -43,23 +43,23 @@ module.exports = function (grunt) {
           }
         }
       },
-      // jasmine: {
-      //   src: ['tests/karma_tests/*test.js', 'app/js/*.js', 'app/js/*.js'],
-      //   options: {
-      //     node: true,
-      //     jasmine: true,
-      //     globals: {
-      //       describe: true,
-      //       it: true,
-      //       before: true,
-      //       after: true,
-      //       beforeEach: true,
-      //       afterEach: true,
-      //       expect: true,
-      //       react: true
-      //     }
-      //   }
-      // },
+      jasmine: {
+        src: ['tests/karma_tests/*test.js', 'app/js/*.js', 'app/js/*.js'],
+        options: {
+          node: true,
+          jasmine: true,
+          globals: {
+            describe: true,
+            it: true,
+            before: true,
+            after: true,
+            beforeEach: true,
+            afterEach: true,
+            expect: true,
+            react: true
+          }
+        }
+      },
 
       // create jscs task
       jscs: {
@@ -70,23 +70,23 @@ module.exports = function (grunt) {
       }
     },
 
-		// mocha: {
-		// 	// tell mocha where the test file is
-		// 	src: ['tests/test_entry.js'],
-		// 	options: {
-		// 		node: true,
-		// 		globals: {
-		// 			describe: true,
-		// 			it: true,
-		// 			before: true,
-		// 			after: true,
-		// 			beforeEach: true,
-		// 			afterEach: true,
-		// 			res: true,
-		// 			expect: true
-		// 		}
-		// 	}
-		// },
+		mocha: {
+			// tell mocha where the test file is
+			src: ['tests/test_entry.js'],
+			options: {
+				node: true,
+				globals: {
+					describe: true,
+					it: true,
+					before: true,
+					after: true,
+					beforeEach: true,
+					afterEach: true,
+					res: true,
+					expect: true
+				}
+			}
+		},
 
 		// create simplemocha task
 		simplemocha: {
@@ -97,7 +97,7 @@ module.exports = function (grunt) {
 	});
 	
 	// register linting task
-  grunt.registerTask('lint', ['jshint:dev', 'jshint:mocha'/*, 'jshint:jasmine'*/]);
+  grunt.registerTask('lint', ['jshint:dev', 'jshint:mocha', 'jshint:jasmine']);
 	// register mocha test task
 	grunt.registerTask('test', ['simplemocha:dev']);
 	grunt.registerTask('default', ['test']);
