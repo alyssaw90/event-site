@@ -59,7 +59,6 @@ function homepageStickyFooter () {
   if ($window.height() > $document.height() - 200 || $window.width() >= 768) {
     $backToTopButton.hide();
   }
-
 }
 
 //function to set divs with equal height

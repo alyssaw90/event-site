@@ -138,7 +138,6 @@ $(document).ready(function () {
 				var arrowClass = elem.id + 'ArrowBox';
 				$thisElem.removeClass(arrowClass);
 			});
-
 		}
 		if ($window.width() <= 768) {
   		// $this.toggleClass(thisBlockMobileClass);
@@ -167,7 +166,8 @@ $(document).ready(function () {
 			$scrollButtonDiv.css('color', '#2F2F2F').css('background-color', '#fff');
 		}
 		//execute the homepageStickyFooter function to correctly position the footer after the new div is added
-   	homepageStickyFooter(); 
+   	homepageStickyFooter();
+   	setTimeout(homepageStickyFooter, 420); 
 	});
 	
 	//make homepageIntroBlocks zoom in and down
