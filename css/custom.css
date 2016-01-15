@@ -94,7 +94,7 @@ body {
 }
 
 main p {
-	text-align: justify !important;
+	text-align: justify;
 }
 
 .grayedOut {
@@ -419,7 +419,7 @@ main p {
 	/*margin-top: 5%;*/
 }
 
-.hiddenHomepageSectionsWrapper blockquote {
+.hiddenHomepageSectionsWrapper blockquote p {
 	/*margin-top: -20px;*/
 	text-align: left;
 }
