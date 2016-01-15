@@ -88,6 +88,11 @@ module.exports = function (router) {
     extended: true
   }));
 
+  /*router.route('/admin')
+  .get(function (req, res) {
+    res.sendFile(path.join(__dirname, '../admin/admin.html'));
+  });*/
+
   router.route('/')
   .get(function (req, res) {
     res.sendFile(path.join(__dirname, '../views/test.html'));

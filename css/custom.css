@@ -90,11 +90,12 @@ body {
 	background-size: 100%
 	opacity: .5;
 	font-family: SegoeUILight;
-	color: #2F2F2F;
+	color: #2F2F2F !important;
+	background-color: #F0F8FF;
 }
 
 main p {
-	text-align: justify !important;
+	text-align: justify;
 }
 
 .grayedOut {
@@ -242,6 +243,11 @@ main p {
 	color: #fff;
 }*/
 
+.main-page-content h1 {
+	font-size: 62px;
+	margin-top: 2%;
+}
+
 .filler {
 	visibility: hidden;
 }
@@ -261,6 +267,9 @@ main p {
 	visibility: hidden;
 	background-color: #fff;
 	min-height: 100px;
+	padding: 20px 20px 20px 20px;
+	margin-top: 3%;
+	margin-bottom: 3%;
 }
 
 .homepageIntroBlocks:hover {
@@ -391,12 +400,11 @@ main p {
 	margin-left: -36px;
 }
 
-.homepageIntroBlocksBackground {
+/*.homepageIntroBlocksBackground {
 	width: 100%;
 	margin: 0 0 0 0;
-	/*padding-bottom: 8%;*/
 	background-color: #fff;
-}
+}*/
 
 .hiddenHomepageSections {
 	min-height: 180px;
@@ -419,7 +427,7 @@ main p {
 	/*margin-top: 5%;*/
 }
 
-.hiddenHomepageSectionsWrapper blockquote {
+.hiddenHomepageSectionsWrapper blockquote p {
 	/*margin-top: -20px;*/
 	text-align: left;
 }
@@ -595,7 +603,7 @@ main p {
 }
 
 .newsletterSubscSection p {
-	font-size: 2em;
+	font-size: 28px;
 	text-align: center;
 }
 
@@ -665,7 +673,7 @@ main p {
 	/*line-height: 1.3em;*/
 	/*padding-right: 2.5%;*/
 	/*padding-left: 2.5%;*/
-	font-size: 20px !important;
+	font-size: 25px;
 	/*padding-right: 25px;*/
 	padding-right: 12px;
 	padding-left: 12px;
@@ -1636,9 +1644,9 @@ footer a {
 		font-size:1em;
 	}
 
-	.menu-overlay.desktop-menu a {
+	/*.menu-overlay.desktop-menu a {
 		font-size: 1.2em;
-	}
+	}*/
 
 }
 
