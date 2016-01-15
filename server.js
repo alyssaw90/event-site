@@ -26,7 +26,7 @@ app.use(express.static(__dirname + '/'));
 // app.use('/', aboutRouter);
 app.use('/', dbRouter);
 // app.use('/', viewRouter);
-app.use('/', adminRouter);
+// app.use('/', adminRouter);
 
 app.listen(port, function () {
 	console.log(clc.cyanBright('server started on port ' + port + ' at ' + time));
