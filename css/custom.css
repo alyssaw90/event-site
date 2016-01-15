@@ -261,6 +261,7 @@ main p {
 	visibility: hidden;
 	background-color: #fff;
 	min-height: 100px;
+	padding: 20px 20px 20px 20px;
 }
 
 .homepageIntroBlocks:hover {
@@ -391,12 +392,11 @@ main p {
 	margin-left: -36px;
 }
 
-.homepageIntroBlocksBackground {
+/*.homepageIntroBlocksBackground {
 	width: 100%;
 	margin: 0 0 0 0;
-	/*padding-bottom: 8%;*/
 	background-color: #fff;
-}
+}*/
 
 .hiddenHomepageSections {
 	min-height: 180px;
@@ -1056,6 +1056,10 @@ footer a {
 	  overflow: hidden;
 	}
 
+	.menu-overlay.desktop-menu a {
+		font-size: 1.2em;
+	}
+
 	.bottom-menu {
 		display: none;
 	}
@@ -1636,9 +1640,9 @@ footer a {
 		font-size:1em;
 	}
 
-	.menu-overlay.desktop-menu a {
+	/*.menu-overlay.desktop-menu a {
 		font-size: 1.2em;
-	}
+	}*/
 
 }
 
