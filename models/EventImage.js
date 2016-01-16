@@ -29,7 +29,7 @@ var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS,
 
 var EventImage = module.exports = sql.define('EventImage', {
 	imageLink: Sql.STRING
-})
+});
 
 EventImage.sync({force: true})
 .then(function () {
@@ -41,5 +41,5 @@ EventImage.sync({force: true})
 			}
 		}
 		return EventImage.bulkCreate(imageArr);
-	})
-})
+	});
+});

@@ -34,9 +34,9 @@ var enc_fields = EncryptedField(Sql, key);
 var User = module.exports = sql.define('User', {
   name: Sql.STRING,
   encrypted: enc_fields.vault('encrypted')
-})
+});
 
 /*var user = User.build();
 user.private_1 = 'test';*/
 
-User.sync({force: true})
+User.sync({force: true});

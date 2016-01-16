@@ -50,7 +50,7 @@ font-family: 'SegoeUILight';
 body{
 margin:0;
 padding:0 0 0 0;
-color:#000;
+color: #2F2F2F;
 background:#fff;
 font:normal 0.9em/150% 'SegoeUILight';
 text-shadow: 0 0 1px transparent; /* google font pixelation fix */

@@ -107,7 +107,7 @@ Contact.sync({force: true})
     allowNotifications: true,
     allowPersonalInfoSharing: false
     
-  })
+  });
 })
 .then(function () {
   return Contact.create({
@@ -175,7 +175,7 @@ Contact.sync({force: true})
     country: 'USA',
     allowNotifications: true,
     allowPersonalInfoSharing: false
-  })
+  });
 })
 .then(function () {
   return Contact.create({
@@ -192,7 +192,7 @@ Contact.sync({force: true})
     country: 'USA',
     allowNotifications: true,
     allowPersonalInfoSharing: false
-  })
+  });
 })
 .then(function () {
   return Contact.create({
@@ -331,7 +331,7 @@ Contact.sync({force: true})
     country: 'USA',
     allowNotifications: true,
     allowPersonalInfoSharing: false
-  })
+  });
 })
 .then(function () {
 
@@ -508,4 +508,4 @@ Contact.sync({force: true})
     headShot: '',
     eventRole: 'speaker'
   });
-})
+});

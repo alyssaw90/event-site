@@ -1,4 +1,7 @@
 'use strict';
+/*global $ */
+/*global document */
+/*global window */
 
 $(document).ready(function () {
 	$.get('/findsurvey', function (data) {
@@ -18,8 +21,8 @@ $(document).ready(function () {
 			}
 		}
 		$('#mainSurvey').prepend(surveyHtml);
-	})
-})
+	});
+});
 
 
 /*<fieldset>
