@@ -2,6 +2,7 @@
 /*global $ */
 /*global document */
 /*global window */
+/*global stickyFooter */
 /*jshint multistr: true */ 
 
 $(document).ready(function () {

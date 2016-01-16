@@ -29,9 +29,9 @@ var SurveyAnswer = module.exports = sql.define('SurveyAnswer', {
   question: Sql.TEXT,
 	answer: Sql.TEXT,
   options: Sql.TEXT
-})
+});
 
-SurveyAnswer.sync({force: false})
+SurveyAnswer.sync({force: false});
 /*.then(function () {
 	return SurveyAnswer.create({
 		surveyQuestionId: 1,

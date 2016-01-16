@@ -31,7 +31,7 @@ var SuggestedCity = module.exports = sql.define('SuggestedCity', {
 
 
 // force creation of table if it doesn't exist already
-SuggestedCity.sync({force: false})
+SuggestedCity.sync({force: false});
 /*.then(function () {
   // Table created
   return SuggestedCity.create({

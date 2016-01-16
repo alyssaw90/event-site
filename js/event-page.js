@@ -1,4 +1,12 @@
 'use strict';
+/* jshint shadow:true */
+/*global $ */
+/*global document */
+/*global $ */
+/*global stickyFooter */
+/*global window */
+/*global MutationObserver */
+/* jshint loopfunc:true */
 
 $(document).ready(function () {
 
@@ -45,39 +53,39 @@ $(document).ready(function () {
 		//create object containing all current events
 		for (var i = 0, j = events.length; i < j; i++) {
 			eventsObj[events[i].id] = {};
-			eventsObj[events[i].id]['eventName'] = events[i]['eventName'];
-			eventsObj[events[i].id]['eventRegistrationLink'] = events[i]['eventRegistrationLink'];
-			eventsObj[events[i].id]['eventUrl'] = events[i].eventUrl;
-			eventsObj[events[i].id]['eventLocation'] = events[i]['eventLocation'];
-			eventsObj[events[i].id]['eventStartDate'] = events[i]['eventStartDate'];
-			eventsObj[events[i].id]['eventEndDate'] = events[i]['eventEndDate'];
-			eventsObj[events[i].id]['eventHeaderImage'] = events[i]['eventHeaderImage'];
-			eventsObj[events[i].id]['eventSponsorsTab'] = events[i]['eventSponsorsTab'];
-			eventsObj[events[i].id]['eventOverviewTab'] = events[i]['eventOverviewTab'];
-			// eventsObj[events[i].id]['travelTabMap'] = events[i]['travelTabMap'];
-			eventsObj[events[i].id]['travelTravelTab'] = events[i]['travelTravelTab'];
-			eventsObj[events[i].id]['travelVenueTab'] = events[i]['travelVenueTab'];
-			eventsObj[events[i].id]['travelAccomodationsTab'] = events[i]['travelAccomodationsTab'];
-			eventsObj[events[i].id]['travelTipsTab'] = events[i]['travelTipsTab'];
-			eventsObj[events[i].id]['travelEatDrinkTab'] = events[i]['travelEatDrinkTab'];
-			eventsObj[events[i].id]['eventMediaTab'] = events[i]['eventMediaTab'];
-			eventsObj[events[i].id]['travelTabHeaderImage'] = events[i]['travelTabHeaderImage'];
-			eventsObj[events[i].id]['scheduleDays'] = [];
-			eventsObj[events[i].id]['scheduleInfo'] = [];
-			eventsObj[events[i].id]['speakers'] = [];
-			eventsObj[events[i].id]['attendees'] = [];
-			eventsObj[events[i].id]['speakersHtml'] = '';
-			eventsObj[events[i].id]['dailyScheduleHtml'] = '';
-			eventsObj[events[i].id]['scheduleDaysHtml'] = '<ul class="tabs center">';
+			eventsObj[events[i].id].eventName = events[i].eventName;
+			eventsObj[events[i].id].eventRegistrationLink = events[i].eventRegistrationLink;
+			eventsObj[events[i].id].eventUrl = events[i].eventUrl;
+			eventsObj[events[i].id].eventLocation = events[i].eventLocation;
+			eventsObj[events[i].id].eventStartDate = events[i].eventStartDate;
+			eventsObj[events[i].id].eventEndDate = events[i].eventEndDate;
+			eventsObj[events[i].id].eventHeaderImage = events[i].eventHeaderImage;
+			eventsObj[events[i].id].eventSponsorsTab = events[i].eventSponsorsTab;
+			eventsObj[events[i].id].eventOverviewTab = events[i].eventOverviewTab;
+			// eventsObj[events[i]..].travelTabMap = events[i].travelTabMap;
+			eventsObj[events[i].id].travelTravelTab = events[i].travelTravelTab;
+			eventsObj[events[i].id].travelVenueTab = events[i].travelVenueTab;
+			eventsObj[events[i].id].travelAccomodationsTab = events[i].travelAccomodationsTab;
+			eventsObj[events[i].id].travelTipsTab = events[i].travelTipsTab;
+			eventsObj[events[i].id].travelEatDrinkTab = events[i].travelEatDrinkTab;
+			eventsObj[events[i].id].eventMediaTab = events[i].eventMediaTab;
+			eventsObj[events[i].id].travelTabHeaderImage = events[i].travelTabHeaderImage;
+			eventsObj[events[i].id].scheduleDays = [];
+			eventsObj[events[i].id].scheduleInfo = [];
+			eventsObj[events[i].id].speakers = [];
+			eventsObj[events[i].id].attendees = [];
+			eventsObj[events[i].id].speakersHtml = '';
+			eventsObj[events[i].id].dailyScheduleHtml = '';
+			eventsObj[events[i].id].scheduleDaysHtml = '<ul class="tabs center">';
 		}	
 		//get scheduled items and add them to event
 		$.get('/eventschedules', function (schedules) {
 			for (var i = 0, j = schedules.length; i < j; i++) {
 				if (eventsObj[schedules[i].eventId]) {
-					eventsObj[schedules[i].eventId]['scheduleInfo'].push(schedules[i]);
+					eventsObj[schedules[i].eventId].scheduleInfo.push(schedules[i]);
 				}
-				if (eventsObj[schedules[i].eventId] && eventsObj[schedules[i].eventId]['scheduleDays'].indexOf(schedules[i].scheduleDay) === -1) {
-					eventsObj[schedules[i].eventId]['scheduleDays'].push(schedules[i].scheduleDay);
+				if (eventsObj[schedules[i].eventId] && eventsObj[schedules[i].eventId].scheduleDays.indexOf(schedules[i].scheduleDay) === -1) {
+					eventsObj[schedules[i].eventId].scheduleDays.push(schedules[i].scheduleDay);
 				}
 			}
 			//find all contacts
@@ -118,7 +126,7 @@ $(document).ready(function () {
 							if (eventsObj[key].speakers[i].contactDescription) {
 						 		eventsObj[key].speakersHtml += eventsObj[key].speakers[i].contactDescription + '</p>';
 							}
-							eventsObj[key].speakersHtml += '<hr class="alt1" />'
+							eventsObj[key].speakersHtml += '<hr class="alt1" />';
 						}
 
 						//loop over scheduleDays array and add each Day name to the UL for the schedule tab
@@ -250,7 +258,7 @@ $(document).ready(function () {
 							if (eventsObj[key].travelTravelTab) {
 								$travelUlLinks.show();
 								$travelTravelTabLink.show();
-								$travelTravelTab.html(eventsObj[key].travelTravelTab)
+								$travelTravelTab.html(eventsObj[key].travelTravelTab);
 							} else if (!eventsObj[key].travelTravelTab) {
 								$travelTravelTabLink.remove();
 								$travelTravelTab.remove();
@@ -290,7 +298,7 @@ $(document).ready(function () {
 									$(this).addClass('first current');
 									$($('a', this).attr('href')).show();
 								}
-							})
+							});
 
 						}
 					}

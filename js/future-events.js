@@ -1,4 +1,8 @@
 'use strict';
+/*global $ */
+/*global document */
+/*global window */
+/*global changeHeight */
 
 $(document).ready(function () {
 	var $eventBlock = $('.event_block');
@@ -23,10 +27,10 @@ $(document).ready(function () {
 });
 
 $(window).load(function() {
-  changeHeight('.event_block')
+  changeHeight('.event_block');
 });
 
 
 $(window).resize(function(){
-  changeHeight('.event_block')
+  changeHeight('.event_block');
 });

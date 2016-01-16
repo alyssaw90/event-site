@@ -84,7 +84,7 @@
 					upcomingPurpleMenu += '<a href="/' + elem.eventUrl + '">' + elem.eventLocation + '&nbsp-&nbsp<span class="purpleSubMenu">' + months[startDate.getMonth()] + ',&nbsp' + startDate.getFullYear() + '</span></a>';
 
 				}
-			})
+			});
 			upcomingPurpleMenu += '</div>';
 			menu = menu.replace('<div class="col_12 purpleEventMenu"></div>', upcomingPurpleMenu).replace('<section id="headerImage" class="mobileWrapper"></section>', headerImage);
 			var headerMenu = $.parseHTML(menu);

@@ -14,7 +14,7 @@ var adminRouter = express.Router();
 require('./routes/db-routes')(dbRouter);
 
 
-console.log(clc.magenta('process.env.SECRET_KEY ::::::::::::::  '), process.env.SECRET_KEY)
+console.log(clc.magenta('process.env.SECRET_KEY ::::::::::::::  '), process.env.SECRET_KEY);
 
 app.use(express.static(__dirname + '/'));
 

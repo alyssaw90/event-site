@@ -11,7 +11,7 @@ function findPos(obj) {
   if (obj.offsetParent) {
     do {
       curtop += obj.offsetTop;
-    } while (obj = obj.offsetParent);
+    } while (obj == obj.offsetParent);
   return curtop;
   }
 }

@@ -1,4 +1,6 @@
 'use strict';
+/*global interests */
+/*global ContactsSuggestedCity */
 
 require('dotenv').load();
 var Contact = require('../models/Contact');
@@ -18,9 +20,9 @@ var multer = require('multer');
 var storage = multer.diskStorage({
   destination: 'uploads/',
   filename: function (req, file, callback) {
-    callback(null, Date.now() + '-' + file.originalname)
+    callback(null, Date.now() + '-' + file.originalname);
   }
-})
+});
 var upload = multer({ storage: storage });
 var bodyparser = require('body-parser');
 var path = require('path');
@@ -236,7 +238,7 @@ module.exports = function (router) {
           data.contactId = data2.id;
           data.save().then(function() {
             ContactsSuggestedCity.create({suggestedCity: req.body.city, contactId: data2.id});            
-          })
+          });
         });
       });
     })
@@ -256,9 +258,9 @@ router.route('/findsurvey')
       SurveyQuestion.findAll()
       .then(function (data) {
         res.json(data);
-      })
-    })
-  })
+      });
+    });
+  });
 
 router.route('/answersurvey')
 .post(function (req, res) {
@@ -268,17 +270,17 @@ router.route('/answersurvey')
       SurveyAnswer.create({answer: req.body.answer[i], surveyQuestionId: req.body.surveyQuestionId[i], question: req.body.question[i]});
     }
     res.sendFile(path.join(__dirname, '../views/thank-you.html'));
-  })
-})
+  });
+});
 
   router.route('/addschedule') 
   .post(function (req, res) {
     sql.sync()
     .then(function () {
-      EventSchedule.create(req.body)
+      EventSchedule.create(req.body);
       res.end();
-    })
-  })
+    });
+  });
 
   router.route('/deleteschedule')
   .post(function (req, res) {
@@ -286,8 +288,8 @@ router.route('/answersurvey')
     .then(function () {
       EventSchedule.destroy({where: {id: req.body.scheduleId}});
       res.end();
-    })
-  })
+    });
+  });
 
   
   router.route('/createevent')
@@ -317,18 +319,18 @@ router.route('/answersurvey')
         travelTipsTab: req.body.travelTipsTab, //copy for travel Tips and Tricks sub tab
         travelEatDrinkTab: req.body.travelEatDrinkTab, //copy for travel eat and drink sub tab
         eventMediaTab: req.body.eventMediaTab //copy for media tab
-      })
-      res.end()
-    })
-  })
+      });
+      res.end();
+    });
+  });
 
 router.route('/showimages')
 .get(function (req, res) {
   EventImage.findAll()
   .then(function (data) {
     res.json(data);
-  })
-})
+  });
+});
 
 router.route('/addimage')
 .post(upload.single('images'), function (req, res, next) {
@@ -362,10 +364,10 @@ router.route('/future-events')
         eventBlocksHtml += '</section>';
         newHtml = html.toString().replace('<main class="events grid">', eventBlocksHtml);
         res.send(newHtml);
-      })
-    })
-  })
-})
+      });
+    });
+  });
+});
   
   router.route('/events')
   .get(function (req, res) {
@@ -412,9 +414,9 @@ router.route('/allevents/:eventId')
         returnObj.picsHtml = picsHtml;
         returnObj.files = files;
         res.json(returnObj);
-      })
-    })
-  })
+      });
+    });
+  });
 });
   
   router.route('/eventschedules')
@@ -424,8 +426,8 @@ router.route('/allevents/:eventId')
       EventSchedule.findAll()
       .then(function (data) {
         res.json(data);
-      })
-    })
+      });
+    });
   });
 
   router.route('/contacts')
@@ -435,8 +437,8 @@ router.route('/allevents/:eventId')
       Contact.findAll()
       .then(function (data) {
         res.json(data);
-      })
-    })
+      });
+    });
   });
   
   router.route('/attendees')

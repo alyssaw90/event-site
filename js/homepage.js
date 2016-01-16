@@ -2,6 +2,8 @@
 /*global $ */
 /*global document */
 /*global window */
+/*global homepageStickyFooter */
+/*global changeHeight */
 /*jshint multistr: true */ 
 
 
@@ -57,7 +59,7 @@ $(document).ready(function () {
 	//randomly assign background-color to the slides -- .slideshow li:nth-child(2) h2:first-child
 	$('.slideshow li').each(function (i) {
 		var randomNum = Math.floor(Math.random() * (7 - count));
-		count++
+		count++;
 		if (i > 0) {
 			$(this).children().children().css('background-color', msColors[randomNum]);
 			// $('.sliderRegisterButton').css('background-color', msColors[randomNum].replace('.8', '1'))
@@ -75,7 +77,7 @@ $(document).ready(function () {
 		$homepageEmailSignUp.toggle();
 		$('html, body').animate({ scrollTop: $homepageEmailSignUp.offset().top }, 'slow');
 		homepageStickyFooter();
-	})
+	});
 	//close textbox and unhighlight introBox when $backToTopButton is clicked
 	$backToTopButton.click(function (e) {
 		$('.hiddenHomepageSections:visible').hide();
