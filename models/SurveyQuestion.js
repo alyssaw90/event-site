@@ -30,7 +30,11 @@ var SurveyQuestion = module.exports = sql.define('SurveyQuestion', {
 	options: Sql.TEXT
 });
 
-SurveyQuestion.sync({force: true})
+SurveyQuestion.sync({force: false});
+
+// create table if it doesn't already exist ```({force: true})``` will cause the table to be deleted and created regardless of if it exists already
+
+/*SurveyQuestion.sync({force: true})
 .then(function () {
 	return SurveyQuestion.create({
 		eventId: 1,
@@ -192,4 +196,4 @@ SurveyQuestion.sync({force: true})
 		question: 'Have you attended a Microsoft Interoperability event before? (1d398201-5cfe-4b39-87f8-75783c22789b) &#24744;&#20043;&#21069;&#21442;&#21152;&#36807;&#24494;&#36719;&#20114;&#25805;&#20316;&#22823;&#20250;&#21527;&#65311;',
 		options: 'yes &#26159;, no &#21542;'
 	});
-});
+});*/

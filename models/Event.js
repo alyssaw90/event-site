@@ -77,8 +77,11 @@ var Event = module.exports = sql.define('Event', {
   }
 });
 
+Event.sync({force: false});
 
-Event.sync({force: true})
+// create table if it doesn't already exist ```({force: true})``` will cause the table to be deleted and created regardless of if it exists already
+
+/*Event.sync({force: true})
 .then(function () {
   return Event.create({
   eventName: 'Storage Developer Conference',
@@ -246,3 +249,4 @@ Event.sync({force: true})
   eventMediaTab: 'Produced since 1998, Storage Developer Conference (SDC) 2015 is scheduled for September 21-24, 2015 in Santa Clara, CA, and is again expected to attract more than 400 developers, technical professionals, and engineers from the worldwide storage community. Attend and learn about leading storage development topics including File Systems, Software Defined Storage, SMB, Security, Performance, and more.' //copy for media tab
   });
 });
+*/

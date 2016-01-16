@@ -31,7 +31,11 @@ var EventSchedule = module.exports = sql.define('EventSchedule', {
   description: Sql.TEXT
 });
 
-EventSchedule.sync({force: true})
+EventSchedule.sync({force: false});
+
+// create table if it doesn't already exist ```({force: true})``` will cause the table to be deleted and created regardless of if it exists already
+
+/*EventSchedule.sync({force: true})
   .then(function () {
     return EventSchedule.create({
       eventId: 1,
@@ -424,3 +428,4 @@ EventSchedule.sync({force: true})
       description: 'Closing & Awards'
     });
   });
+*/
