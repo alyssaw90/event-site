@@ -67,10 +67,12 @@ var Contact = module.exports = sql.define('Contact', {
   }
 });
 
+Contact.sync({force: false});
+
 // create table if it doesn't already exist ```({force: true})``` will cause the table to be deleted and created regardless of if it exists already
 
 // Table created
-Contact.sync({force: true})
+/*Contact.sync({force: true})
 .then(function () {
   console.log(sql.databaseVersion());
 })
@@ -508,4 +510,4 @@ Contact.sync({force: true})
     headShot: '',
     eventRole: 'speaker'
   });
-});
+});*/
