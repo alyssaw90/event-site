@@ -31,7 +31,7 @@ var EventSchedule = module.exports = sql.define('EventSchedule', {
   description: Sql.TEXT
 });
 
-EventSchedule.sync({force: false});
+// EventSchedule.sync({force: false});
 
 // create table if it doesn't already exist ```({force: true})``` will cause the table to be deleted and created regardless of if it exists already
 

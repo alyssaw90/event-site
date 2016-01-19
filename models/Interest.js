@@ -49,6 +49,6 @@ var Interest = module.exports = sql.define('Interest', {
   otherHardware: Sql.BOOLEAN
 });
 
-Interest.sync({force: false});
+// Interest.sync({force: false});
 
 

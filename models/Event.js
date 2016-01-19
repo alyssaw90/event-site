@@ -77,7 +77,7 @@ var Event = module.exports = sql.define('Event', {
   }
 });
 
-Event.sync({force: false});
+// Event.sync({force: false});
 
 // create table if it doesn't already exist ```({force: true})``` will cause the table to be deleted and created regardless of if it exists already
 
