@@ -8,9 +8,8 @@ var port = process.env.PORT || 3000;
 var time = new Date();
 process.env.SECRET_KEY = process.env.SECRET_KEY || 'change this change this change this!!!';
 
-var aboutRouter = express.Router();
 var dbRouter = express.Router();
-var adminRouter = express.Router();
+// var adminRouter = express.Router();
 require('./routes/db-routes')(dbRouter);
 
 
