@@ -135,7 +135,6 @@ module.exports = function (router) {
   router.route('/showfullteam')
   .get(function (req, res) {
     var start = new Date().getTime();
-    console.log('start time : ', start);
     sql.sync()
     .then(function () {
       Contact.findAll({where: {msTeamMember: true}})
