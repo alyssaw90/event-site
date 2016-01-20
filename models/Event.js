@@ -141,7 +141,7 @@ Event.sync({force: true})
 .then(function () {
   return Event.create({
   eventName: 'Paris Dev Days 2016',
-  eventRegistrationLink: 'http://www.awwards.com', //link to registrationfor event
+  eventRegistrationLink: 'http://www.awwwards.com', //link to registrationfor event
   eventLocation: 'Paris',
   eventContinent: 'Europe',
   eventStartDate: new Date('2016-05-16:00:00:01'), //the start date...

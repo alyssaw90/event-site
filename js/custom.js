@@ -87,6 +87,17 @@ function changeWidth (div) {
 		$(this).width(widestBlock);
 	});
 }
+	//function to add and remove CSS properties depending on screen size
+
+	function addCSS (changeWidth, div, cssPropKey, smallScreenVal, largeScreenVal) {
+		if ($(window).width() < changeWidth) {
+			div.css(cssPropKey, smallScreenVal);
+		}
+		if ($(window).width() > changeWidth) {
+			div.css(cssPropKey, largeScreenVal);
+		}
+
+	}
 
 $(document).ready(function () {
 	var $body = $('body');
@@ -107,17 +118,8 @@ $(document).ready(function () {
 			$(this).find('div').stop(true, true).animate({'bottom': '-100%'}, 200);
 		});
 
-	//function to add and remove CSS properties depending on screen size
-
-	function addCSS(changeWidth, div, cssPropKey, smallScreenVal, largeScreenVal) {
-		if ($(window).width() < changeWidth) {
-			div.css(cssPropKey, smallScreenVal);
-		}
-		if ($(window).width() > changeWidth) {
-			div.css(cssPropKey, largeScreenVal);
-		}
-
-	}
+	//make external links open in new tabs
+	$('a[href^="http"]').attr('target','_blank');
 
 	//hide slider on screens larger than 768px
 	$(window).load(addCSS(768, $('.slider'), 'display', 'none', 'inline'));
