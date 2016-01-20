@@ -9,8 +9,3 @@ node_js:
 before_install:
   - npm install -g grunt-cli
 script: grunt test
-env:
-	- DB_PASS=Event.4ever!
-	- DB_HOST=interopeventstestserver.database.windows.net
-	- DB_USER=EventAdmin@interopeventstestserver
-	- DB_NAME=InteropEventsDBTest
