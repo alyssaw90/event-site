@@ -1,4 +1,9 @@
 language: node_js
+env:
+	- DB_PASS=Event.4ever!
+	- DB_HOST=interopeventstestserver.database.windows.net
+	- DB_USER=EventAdmin@interopeventstestserver
+	- DB_NAME=InteropEventsDBTest
 node_js:
   - "4.1"
   - "4.0"
