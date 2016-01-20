@@ -4,7 +4,6 @@ var chai = require('chai');
 var expect = chai.expect;
 var assert = chai.assert;
 var chaihttp = require('chai-http');
-var clc = require('cli-color');
 
 
 chai.use(chaihttp);
@@ -34,9 +33,6 @@ describe('Test /showfullteam route', function () {
 				if (res.body[i].showOnHomePage) {
 					assert.typeOf(res.body[i].showOnHomePage, 'boolean');
 				}
-				if (res.body[i].showOnHomePage) {
-					assert.typeOf(res.body[i].showOnHomePage, 'boolean');
-				}
 				if (res.body[i].allowNotifications) {
 					assert.typeOf(res.body[i].allowNotifications, 'boolean');
 				}
@@ -51,6 +47,6 @@ describe('Test /showfullteam route', function () {
 				expect(typeof res.body[i].allowPersonalInfoSharing).to.be.a('string') || expect(typeof res.body[i].firstName).to.be.a('null');
 			};
 			done();
-		})
+		});
 	});
 });
