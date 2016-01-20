@@ -109,15 +109,11 @@ $(document).ready(function () {
 			});
 		}
 		if ($window.width() <= 768) {
-  		if ($this.css('background-color') === 'rgb(255, 255, 255)') {
-				$this.css('background-color', $this.attr('data-hoverBackgroundColor'));
-			} else {
-				$this.css('background-color', 'rgb(255, 255, 255)');
-			}
+			$this.toggleClass($this.context.id + 'Mobile');
 			$this.siblings().each(function (i, elem) {
 				var $thisMobileElem = $(this);
 				var mobileClass = elem.id + 'Mobile';
-				$thisMobileElem.removeClass(mobileClass).css('background-color', '#fff');
+				$thisMobileElem.removeClass(mobileClass);
 			});
 		}
 		$hiddenHomepageSectionsWrapper.css('background-color', $this.attr('data-hoverBackgroundColor'));
