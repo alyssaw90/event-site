@@ -7,12 +7,12 @@ node_js:
   - "0.10"
   - "iojs"
 env:
-global:
-  - DB_PASS=Event.4ever!
-	- DB_HOST=interopeventstestserver.database.windows.net
-	- DB_USER=EventAdmin@interopeventstestserver
-	- DB_NAME=InteropEventsDBTest
-  - TIMEOUT=1000
+	global:
+  	- DB_PASS=Event.4ever!
+		- DB_HOST=interopeventstestserver.database.windows.net
+		- DB_USER=EventAdmin@interopeventstestserver
+		- DB_NAME=InteropEventsDBTest
+  	- TIMEOUT=1000
 before_install:
   - npm install -g grunt-cli
 script: grunt test
