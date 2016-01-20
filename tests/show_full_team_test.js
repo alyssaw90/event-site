@@ -16,6 +16,7 @@ describe('Test /showfullteam route', function () {
 		chai.request('localhost:3000')
 		.get('/showfullteam')
 		.end(function (err, res) {
+			console.log(' ::::::   ', process.env);
 			expect(err).to.eql(null);
 			for (var i = 0; i < res.body.length; i++) {
 				expect(res.body[i]).to.include.keys('firstName', 'lastName', 'email', 'newsletterSubscription', 'contactDescription', 'msTeamMember', 'msTeamTitle', 'showOnHomePage', 'headShot', 'company', 'address', 'country', 'interestId', 'allowNotifications', 'allowPersonalInfoSharing');
