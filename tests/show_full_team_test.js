@@ -16,8 +16,8 @@ var Sql = require('sequelize');
     idle: 10000
   }
 });*/
-var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
-    host: process.env.DB_HOST,
+var sql = new Sql(DB_NAME, DB_USER, DB_PASS, {
+    host: DB_HOST,
   dialect: 'mssql',
   pool: {
     max: 5,
