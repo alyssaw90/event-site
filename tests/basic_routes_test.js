@@ -83,7 +83,7 @@ describe('Test that server can load basic html pages', function () {
     .end(function (err, res) {
       expect(err).to.eql(null);
       expect(res.status).to.eql(200);
-      assert.equal(response.header['content-type'], 'text/html; charset=UTF-8');
+      assert.equal(res.header['content-type'], 'text/html; charset=UTF-8');
       done();
     });
   });

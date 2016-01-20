@@ -5,29 +5,6 @@ var expect = chai.expect;
 var assert = chai.assert;
 var chaihttp = require('chai-http');
 var clc = require('cli-color');
-var Sql = require('sequelize');
-/*var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
-  host: process.env.DB_LOCAL_HOST,
-  dialect: 'mssql',
-
-  pool: {
-    max: 5,
-    min: 0,
-    idle: 10000
-  }
-});*/
-var sql = new Sql(DB_NAME, DB_USER, DB_PASS, {
-    host: DB_HOST,
-  dialect: 'mssql',
-  pool: {
-    max: 5,
-    min: 0,
-    idle: 10000
-  },
-  dialectOptions: {
-    encrypt: true
-  }
-});
 
 
 chai.use(chaihttp);
