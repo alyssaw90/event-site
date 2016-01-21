@@ -1,0 +1,288 @@
+/*Custom CSS for Plugfest and Events Homepage*/
+
+.homepageIntroBlocks {
+	visibility: hidden;
+	background-color: rgb(255, 255, 255);
+	min-height: 100px;
+	padding: 20px 20px 20px 20px;
+	margin-top: 3%;
+	margin-bottom: 3%;
+}
+
+.homepageIntroBlocks:hover {
+	cursor: pointer;
+}
+
+.homepageIntroBlocks h3 {
+	text-align: center;
+	margin-top: 2.75%;
+}
+
+.notANumberBlockArrowBox {
+	position: relative;
+	background: #0073c5;
+	border: 4px solid #00188f;
+}
+.notANumberBlockArrowBox:after, .notANumberBlockArrowBox:before {
+	top: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.notANumberBlockArrowBox:after {
+	border-color: rgba(104, 196, 235, 0);
+	border-top-color: #0073c5;
+	border-width: 30px;
+	margin-left: -30px;
+}
+.notANumberBlockArrowBox:before {
+	border-color: rgba(71, 106, 198, 0);
+	border-top-color: #00188f;
+	border-width: 36px;
+	margin-left: -36px;
+}
+
+.toHelpYouBlockArrowBox {
+	position: relative;
+	background: #9d5098;
+	border: 4px solid #442358;
+}
+.toHelpYouBlockArrowBox:after, .toHelpYouBlockArrowBox:before {
+	top: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.toHelpYouBlockArrowBox:after {
+	border-color: rgba(181, 0, 159, 0);
+	border-top-color: #9d5098;
+	border-width: 30px;
+	margin-left: -30px;
+}
+.toHelpYouBlockArrowBox:before {
+	border-color: rgba(68, 35, 88, 0);
+	border-top-color: #442358;
+	border-width: 36px;
+	margin-left: -36px;
+}
+
+.whoMadeItBlockArrowBox {
+	position: relative;
+	background: #fd8d00;
+	border: 4px solid #e15700;
+}
+.whoMadeItBlockArrowBox:after, .whoMadeItBlockArrowBox:before {
+	top: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.whoMadeItBlockArrowBox:after {
+	border-color: rgba(253, 141, 0, 0);
+	border-top-color: #fd8d00;
+	border-width: 30px;
+	margin-left: -30px;
+}
+.whoMadeItBlockArrowBox:before {
+	border-color: rgba(225, 87, 0, 0);
+	border-top-color: #e15700;
+	border-width: 36px;
+	margin-left: -36px;
+}
+
+.itsYourEventBlockArrowBox {
+	position: relative;
+	background: #6fb06f;
+	border: 4px solid #007234;
+}
+.itsYourEventBlockArrowBox:after, .itsYourEventBlockArrowBox:before {
+	top: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.itsYourEventBlockArrowBox:after {
+	border-color: rgba(129, 185, 2, 0);
+	border-top-color: #6fb06f;
+	border-width: 30px;
+	margin-left: -30px;
+}
+.itsYourEventBlockArrowBox:before {
+	border-color: rgba(0, 114, 52, 0);
+	border-top-color: #007234;
+	border-width: 36px;
+	margin-left: -36px;
+}
+
+.hiddenHomepageSections {
+	min-height: 180px;
+}
+
+.hiddenHomepageSectionsWrapper {
+	/*background-color: #0073c5;*/
+	color: #fff;
+	width: 100%;
+	margin: 0 0 0 0;
+	font-size: 1.15em;
+}
+
+.hiddenHomepageSectionsWrapper img {
+	margin-top: 30px;
+}
+
+.hiddenHomepageSectionsWrapper blockquote p {
+	text-align: left;
+}
+
+.hiddenHomepageSectionsWrapper iframe {
+	padding: 10px 10px 10px 10px;
+}
+
+#notANumberBlock {
+	color: #00188f;
+	border-width: 4px;
+	border-style: solid;
+	border-color: #00188f;
+	-webkit-transition: background-color 0.5s ease-out;
+	-moz-transition: background-color 0.5s ease-out;
+	-ms-transition: background-color 0.5s ease-out;
+	-o-transition: background-color 0.5s ease-out;
+	transition: background-color 0.5s ease-out;	
+}
+
+.notANumberBlockMobile {
+	background: #0073c5;
+}
+
+#notANumberBlock:hover {
+	background: #0073c5;
+	-webkit-transition: background-color 0.5s ease-out;
+	-moz-transition: background-color 0.5s ease-out;
+	-ms-transition: background-color 0.5s ease-out;
+	-o-transition: background-color 0.5s ease-out;
+	transition: background-color 0.5s ease-out;
+}
+
+#toHelpYouBlock {
+	color: rgb(92, 45, 145);
+	border-width: 4px;
+	border-style: solid;
+	border-color: #442358;
+	-webkit-transition: background-color 0.5s ease-out;
+	-moz-transition: background-color 0.5s ease-out;
+	-ms-transition: background-color 0.5s ease-out;
+	-o-transition: background-color 0.5s ease-out;
+	transition: background-color 0.5s ease-out;
+}
+
+.toHelpYouBlockMobile {
+	background-color: #9d5098;
+}
+
+#toHelpYouBlock:hover {
+	background-color: #9d5098;
+	-webkit-transition: background-color 0.5s ease-out;
+	-moz-transition: background-color 0.5s ease-out;
+	-ms-transition: background-color 0.5s ease-out;
+	-o-transition: background-color 0.5s ease-out;
+	transition: background-color 0.5s ease-out;
+}
+
+#whoMadeItBlock {
+	color: rgb(216, 59, 1);
+	border-width: 4px;
+	border-style: solid;
+	border-color: #e15700;
+	-webkit-transition: background-color 0.5s ease-out;
+	-moz-transition: background-color 0.5s ease-out;
+	-ms-transition: background-color 0.5s ease-out;
+	-o-transition: background-color 0.5s ease-out;
+	transition: background-color 0.5s ease-out;
+}
+
+.whoMadeItBlockMobile {
+	background-color: #fd8d00;
+}
+
+#whoMadeItBlock:hover {
+	background-color: #fd8d00;
+	-webkit-transition: background-color 0.5s ease-out;
+	-moz-transition: background-color 0.5s ease-out;
+	-ms-transition: background-color 0.5s ease-out;
+	-o-transition: background-color 0.5s ease-out;
+	transition: background-color 0.5s ease-out;
+}
+
+#itsYourEventBlock {
+	color: rgb(16, 124, 16);
+	border-width: 4px;
+	border-style: solid;
+	border-color: #007234;
+	-webkit-transition: background-color 0.5s ease-out;
+	-moz-transition: background-color 0.5s ease-out;
+	-ms-transition: background-color 0.5s ease-out;
+	-o-transition: background-color 0.5s ease-out;
+	transition: background-color 0.5s ease-out;
+}
+
+#notANumberBlockText a {
+	color: #ff8c00;
+}
+
+#notANumberBlockText a:hover {
+	color: #00188f;
+}
+
+.itsYourEventBlockMobile {
+	background-color: #6fb06f;
+}
+
+#itsYourEventBlock:hover {
+	background-color: #6fb06f;
+	-webkit-transition: background-color 0.5s ease-out;
+	-moz-transition: background-color 0.5s ease-out;
+	-ms-transition: background-color 0.5s ease-out;
+	-o-transition: background-color 0.5s ease-out;
+	transition: background-color 0.5s ease-out;
+}
+
+.infoBlocks:hover {
+	cursor: pointer;
+}
+
+.home-page-experts a {
+	vertical-align: top;
+	color: #000;
+}
+
+.home-page-experts a:hover {
+	color: blue;
+}
+
+.home-page-experts p {
+	display:block;
+	margin-top:3px;
+	font-size:1em;
+	color:#666;
+	padding:0px 5px;
+}

@@ -55,6 +55,18 @@ $(document).ready(function () {
 	var $scrollButtonDiv = $('.scroll-button');
 	var $hiddenHomepageSectionsWrapper = $('.hiddenHomepageSectionsWrapper');
 	var $window = $(window);
+
+	// console.log(typeof $('iframe').context);
+	for (var key in $('iframe').context) {
+		// console.log(key, '   :::   ');
+	}
+	$('iframe').load(function () {
+		for (var key in $(this)[0]) {
+			console.log(key, '   :::   ', $(this)[0][key]);
+		}
+		// console.log(typeof $(this)[0]);
+	})
+  // $('iframe').contents().find('.controls').css({'font-size':'12px'});
 	
 	//randomly assign background-color to the slides -- .slideshow li:nth-child(2) h2:first-child
 	$('.slideshow li').each(function (i) {
@@ -85,7 +97,9 @@ $(document).ready(function () {
 		$('.homepageIntroBlocks').each(function (i, elem) {
 			var $this = $(this);
 			var thisBlockMobileClass = $this.attr('id') + 'Mobile';
-			$this.css('background-color', '#fff');
+			if ($this.hasClass(thisBlockMobileClass)) {
+				$this.removeClass(thisBlockMobileClass).css('background', 'rgb(255, 255, 255)');
+			}
 		});
 		homepageStickyFooter();
 	});
@@ -109,15 +123,16 @@ $(document).ready(function () {
 			});
 		}
 		if ($window.width() <= 768) {
-  		if ($this.css('background-color') === 'rgb(255, 255, 255)') {
-				$this.css('background-color', $this.attr('data-hoverBackgroundColor'));
+				console.log(':::::::   ', $this.attr('data-hoverBackgroundColor'));
+			if ($this.hasClass(thisBlockMobileClass)) {
+				$this.removeClass(thisBlockMobileClass).css('background', 'rgb(255, 255, 255)');
 			} else {
-				$this.css('background-color', 'rgb(255, 255, 255)');
+				$this.addClass(thisBlockMobileClass).css('background', $this.attr('data-hoverBackgroundColor'));
 			}
 			$this.siblings().each(function (i, elem) {
 				var $thisMobileElem = $(this);
 				var mobileClass = elem.id + 'Mobile';
-				$thisMobileElem.removeClass(mobileClass).css('background-color', '#fff');
+				$thisMobileElem.removeClass(mobileClass).css('background', 'rgb(255, 255, 255)');
 			});
 		}
 		$hiddenHomepageSectionsWrapper.css('background-color', $this.attr('data-hoverBackgroundColor'));

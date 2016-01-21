@@ -10,6 +10,10 @@
 
 $(document).ready(function () {
 
+	$('li').click(function () {
+		setTimeout(function() {homepageStickyFooter()}, 10);
+	})
+
 	$.get('/events', function (events) {
 		var pathname = window.location.pathname.slice(1);
 		var eventsObj = {};
@@ -38,6 +42,9 @@ $(document).ready(function () {
 		var $registerButton = $('#registerButton');
 		var $eventScheduleTabLink = $('#eventScheduleTabLink');
 		var $eventTabDiv = $('#event-schedule');
+		var $technologiesTabLink = $('#technologiesTabLink');
+		var $technolgiesTab = $('#technolgiesTab');
+
 		//declare native JS variable for #eventTabs
 		var eventTabs = document.querySelector('#eventTabs');
 		//set MutationObserver to check for changes to child nodes (e.g. they become visible)
@@ -70,6 +77,7 @@ $(document).ready(function () {
 			eventsObj[events[i].id].travelEatDrinkTab = events[i].travelEatDrinkTab;
 			eventsObj[events[i].id].eventMediaTab = events[i].eventMediaTab;
 			eventsObj[events[i].id].travelTabHeaderImage = events[i].travelTabHeaderImage;
+			eventsObj[events[i].id].eventTechnologiesTab = events[i].eventTechnologiesTab;
 			eventsObj[events[i].id].scheduleDays = [];
 			eventsObj[events[i].id].scheduleInfo = [];
 			eventsObj[events[i].id].speakers = [];
@@ -289,6 +297,14 @@ $(document).ready(function () {
 							} else if (!eventsObj[key].travelEatDrinkTab) {
 								$travelEatTabLink.remove();
 								$travelEatTab.remove();
+							}
+
+							if (eventsObj[key].eventTechnologiesTab) {
+								$technologiesTabLink.show();
+								$technolgiesTab.html(eventsObj[key].eventTechnologiesTab);
+							} else if (!eventsObj[key].eventTechnologiesTab) {
+								$technologiesTabLink.remove();
+								$technolgiesTab.remove();
 							}
 
 							//assign first and current classes to first tab li(s) so they display correctly

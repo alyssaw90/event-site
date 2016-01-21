@@ -30,7 +30,7 @@ var EventAttendee = module.exports = sql.define('EventAttendee', {
   eventAttendeeRole: Sql.ENUM('speaker', 'attendee', 'technical support', 'audio visual support'),
 });
 
-EventAttendee.sync({force: false});
+// EventAttendee.sync({force: false});
 
 // create table if it doesn't already exist ```({force: true})``` will cause the table to be deleted and created regardless of if it exists already
 

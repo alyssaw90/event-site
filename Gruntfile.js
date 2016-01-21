@@ -44,7 +44,7 @@ module.exports = function (grunt) {
         }
       },
       jasmine: {
-        src: ['tests/karma_tests/*test.js', 'app/js/*.js', 'app/js/*.js'],
+        src: ['<%= jshint.dev.src %>', '<%= jshint.mocha.src %>'],
         options: {
           node: true,
           jasmine: true,

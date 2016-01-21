@@ -39,4 +39,4 @@ var User = module.exports = sql.define('User', {
 /*var user = User.build();
 user.private_1 = 'test';*/
 
-User.sync({force: true});
+// User.sync({force: false});

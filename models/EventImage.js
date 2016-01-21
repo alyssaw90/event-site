@@ -31,8 +31,8 @@ var EventImage = module.exports = sql.define('EventImage', {
 	imageLink: Sql.STRING
 });
 
-EventImage.sync({force: true})
-.then(function () {
+// EventImage.sync({force: false})
+/*.then(function () {
 		fs.readdir(path.join(__dirname, '../uploads/'), function (err, files) {
 		var imageArr = [];
 		for (var i = 0, j = files.length; i < j; i++) {
@@ -42,4 +42,4 @@ EventImage.sync({force: true})
 		}
 		return EventImage.bulkCreate(imageArr);
 	});
-});
+});*/

@@ -30,7 +30,7 @@ var SurveyQuestion = module.exports = sql.define('SurveyQuestion', {
 	options: Sql.TEXT
 });
 
-SurveyQuestion.sync({force: false});
+// SurveyQuestion.sync({force: false});
 
 // create table if it doesn't already exist ```({force: true})``` will cause the table to be deleted and created regardless of if it exists already
 

@@ -53,7 +53,14 @@ var Contact = module.exports = sql.define('Contact', {
 {
   getterMethods   : {
     divId: function () {
-      return this.firstName.toLowerCase() + '-' + this.lastName.toLowerCase();
+      var theDate = new Date();
+      if (!this.firstName && !this.lastName) {
+        this.firstName = '';
+      }
+      if (!this.lastName) {
+        this.lastName = '';
+      }
+      return this.firstName.toLowerCase() + '-' + this.lastName.toLowerCase() + '-' + Date.parse(theDate);
     }
   },
 
@@ -67,7 +74,7 @@ var Contact = module.exports = sql.define('Contact', {
   }
 });
 
-Contact.sync({force: false});
+// Contact.sync({force: false});
 
 // create table if it doesn't already exist ```({force: true})``` will cause the table to be deleted and created regardless of if it exists already
 
