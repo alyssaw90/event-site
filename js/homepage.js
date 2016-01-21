@@ -55,6 +55,18 @@ $(document).ready(function () {
 	var $scrollButtonDiv = $('.scroll-button');
 	var $hiddenHomepageSectionsWrapper = $('.hiddenHomepageSectionsWrapper');
 	var $window = $(window);
+
+	// console.log(typeof $('iframe').context);
+	for (var key in $('iframe').context) {
+		// console.log(key, '   :::   ');
+	}
+	$('iframe').load(function () {
+		for (var key in $(this)[0]) {
+			console.log(key, '   :::   ', $(this)[0][key]);
+		}
+		// console.log(typeof $(this)[0]);
+	})
+  // $('iframe').contents().find('.controls').css({'font-size':'12px'});
 	
 	//randomly assign background-color to the slides -- .slideshow li:nth-child(2) h2:first-child
 	$('.slideshow li').each(function (i) {
