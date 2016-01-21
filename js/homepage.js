@@ -85,7 +85,9 @@ $(document).ready(function () {
 		$('.homepageIntroBlocks').each(function (i, elem) {
 			var $this = $(this);
 			var thisBlockMobileClass = $this.attr('id') + 'Mobile';
-			$this.css('background-color', '#fff');
+			if ($this.hasClass(thisBlockMobileClass)) {
+				$this.removeClass(thisBlockMobileClass).css('background', 'rgb(255, 255, 255)');
+			}
 		});
 		homepageStickyFooter();
 	});
@@ -109,11 +111,16 @@ $(document).ready(function () {
 			});
 		}
 		if ($window.width() <= 768) {
-			$this.toggleClass($this.context.id + 'Mobile');
+				console.log(':::::::   ', $this.attr('data-hoverBackgroundColor'));
+			if ($this.hasClass(thisBlockMobileClass)) {
+				$this.removeClass(thisBlockMobileClass).css('background', 'rgb(255, 255, 255)');
+			} else {
+				$this.addClass(thisBlockMobileClass).css('background', $this.attr('data-hoverBackgroundColor'));
+			}
 			$this.siblings().each(function (i, elem) {
 				var $thisMobileElem = $(this);
 				var mobileClass = elem.id + 'Mobile';
-				$thisMobileElem.removeClass(mobileClass);
+				$thisMobileElem.removeClass(mobileClass).css('background', 'rgb(255, 255, 255)');
 			});
 		}
 		$hiddenHomepageSectionsWrapper.css('background-color', $this.attr('data-hoverBackgroundColor'));
