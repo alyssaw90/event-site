@@ -1,5 +1,9 @@
 /*Custom CSS for Plugfest and Events Homepage*/
 
+#toHelpYouBlockText {
+	margin-bottom: -10%;
+}
+
 .homepageIntroBlocks {
 	visibility: hidden;
 	background-color: rgb(255, 255, 255);
@@ -154,9 +158,9 @@
 	text-align: left;
 }
 
-.hiddenHomepageSectionsWrapper iframe {
+/*.hiddenHomepageSectionsWrapper iframe {
 	padding: 10px 10px 10px 10px;
-}
+}*/
 
 #notANumberBlock {
 	color: #00188f;

@@ -136,7 +136,8 @@ $(document).ready(function () {
 							}
 							eventsObj[key].speakersHtml += '<hr class="alt1" />';
 						}
-
+						//add warning about speakers subject to change to speakers tab content
+						eventsObj[key].speakersHtml = '<h4 style="text-align:right;">*Speakers Subject to Change</h4>' + eventsObj[key].speakersHtml;
 						//loop over scheduleDays array and add each Day name to the UL for the schedule tab
 						for (var i = 0, j = eventsObj[key].scheduleDays.length; i < j; i++) {
 							if (i === 0) {
