@@ -10,6 +10,23 @@
 
 $(document).ready(function () {
 
+	var testSched = {
+		'data': {
+		  "title":"Event Title",
+		  "desc":"Event Description.",
+		  "location": "My event",
+		  "url": "http://www.jqueryscript.net",
+		  "time":{
+		  "start":"March 12, 2014 14:00:00",
+		  "end":"march 13, 2014 15:30:00",
+		  "zone":"-08:00"
+		},
+		'ics': "http://url to ics generator"
+		}
+	};
+
+	$('.demo').addcalevent(testSched);
+
 	$('li').click(function () {
 		setTimeout(function() {homepageStickyFooter()}, 10);
 	})
@@ -152,6 +169,20 @@ $(document).ready(function () {
 						}
 						//create tab-content div for each day with a placeholder for that days schedule UL
 						for (var i = 0, j = eventsObj[key].scheduleDays.length; i < j; i++) {
+							var scheduleItem = {
+								'data': {
+								  "title":"Event Title",
+								  "desc":"Event Description.",
+								  "location": "My event",
+								  "url": "http://www.jqueryscript.net",
+								  "time":{
+								  "start":"March 12, 2014 14:00:00",
+								  "end":"march 13, 2014 15:30:00",
+								  "zone":"-08:00"
+								},
+								'ics': "http://url to ics generator"
+								}
+							};
 							if (i === 0) {
 								eventsObj[key].dailyScheduleHtml += '<div id="tabr' + eventsObj[key].scheduleDays[i] + '" class="tab-content" style="display:block;"><table cellspacing="0" cellpadding="0" class="striped schedule"><thead><tr><th><h3>' + eventsObj[key].scheduleDays[i] + '</h3></th></tr></thead>' + eventsObj[key].scheduleDays[i] + 'Placeholder</table></div>';
 							}
@@ -161,12 +192,26 @@ $(document).ready(function () {
 						}
 						//search the dailyScheduleHtml for the placeholder and add an LI with the correct class depending on its postion in the list and insert it into the scheduleInfoObj object declared above
 						for (var i = 0, j = eventsObj[key].scheduleInfo.length; i < j; i++) {
+							/*var calEvent = {
+								'data': {
+									'title': eventsObj[key].scheduleInfo[i].sessionTitle,
+									'desc': eventsObj[key].scheduleInfo[i].description,
+									'location': eventsObj[key].eventLocation,
+									'url': 'http://http://interopeventstest.azurewebsites.net' + eventsObj[key].eventUrl,
+									'time': {
+										'start': eventsObj[key].scheduleInfo[i].sessionStartTime,
+										'end': eventsObj[key].scheduleInfo[i].sessionEndTime,
+										'zone': '-08:00'
+									}
+								}
+							}*/
+							// console.log(calEvent);
 							if (!scheduleInfoObj[eventsObj[key].scheduleInfo[i].scheduleDay + 'Placeholder']) {
 								scheduleInfoObj[eventsObj[key].scheduleInfo[i].scheduleDay + 'Placeholder'] = '';
-							}
+							}eventsObj[key].scheduleInfo[i]
 							if (i <= 0) {
-								scheduleInfoObj[eventsObj[key].scheduleInfo[i].scheduleDay + 'Placeholder'] += '<tr class="first"><td>' + eventsObj[key].scheduleInfo[i].scheduleTime + '</td><td>' +  eventsObj[key].scheduleInfo[i].description + '</td></tr>';
-							}
+								scheduleInfoObj[eventsObj[key].scheduleInfo[i].scheduleDay + 'Placeholder'] += '<tr class="first"><td>' + eventsObj[key].scheduleInfo[i].scheduleTime + '</td><td>' +  eventsObj[key].scheduleInfo[i].description + '</td><td><a class="button small" data-ace="{"title"' + ':"' + eventsObj[key].scheduleInfo[i].sessionTitle + '",' + '"desc"' + ':"' + eventsObj[key].scheduleInfo[i].description + '",' + '"location"' + ':"' + eventsObj[events[i].id].eventLocation + '",' + '"time"' + ':{"' + eventsObj[key].scheduleInfo[i].sessionStartTime.toString() + '","end":"' + eventsObj[key].scheduleInfo[i].sessionEndTime.toString() + '","zone":"-08:00"}}">Add to calendar...</a></td></tr>';
+									}
 							if (i > 0 && i < j - 1 && i % 2 !== 0) {
 								scheduleInfoObj[eventsObj[key].scheduleInfo[i].scheduleDay + 'Placeholder'] += '<tr class="alt"><td>' + eventsObj[key].scheduleInfo[i].scheduleTime + '</td><td>' +  eventsObj[key].scheduleInfo[i].description + '</td></tr>';															
 							}

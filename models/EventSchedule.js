@@ -28,14 +28,17 @@ var EventSchedule = module.exports = sql.define('EventSchedule', {
 	eventId: Sql.INTEGER,
 	scheduleDay: Sql.STRING,
 	scheduleTime: Sql.STRING,
-  description: Sql.TEXT
+  description: Sql.TEXT,
+  sessionStartTime: Sql.DATE,
+  sessionEndTime: Sql.DATE,
+  sessionTitle: Sql.STRING
 });
 
 // EventSchedule.sync({force: false});
 
 // create table if it doesn't already exist ```({force: true})``` will cause the table to be deleted and created regardless of if it exists already
 
-/*EventSchedule.sync({force: true})
+EventSchedule.sync({force: true})
   .then(function () {
     return EventSchedule.create({
       eventId: 1,
@@ -313,7 +316,10 @@ var EventSchedule = module.exports = sql.define('EventSchedule', {
       eventId: 4,
       scheduleDay: 'Wednesday',
       scheduleTime: '9am -10:30am',
-      description: 'Presentations'
+      description: 'Presentations',
+      sessionStartTime: new Date('2016-04-20:09:00:00'),
+      sessionEndTime: new Date('2016-04-20:10:30:00'),
+      sessionTitle: 'Presentations'
     });
   })
   .then(function () {
@@ -321,7 +327,10 @@ var EventSchedule = module.exports = sql.define('EventSchedule', {
       eventId: 4,
       scheduleDay: 'Wednesday',
       scheduleTime: '10:30-10:45 ',
-      description: 'Break'
+      description: 'Break',
+      sessionStartTime: new Date('2016-04-20:10:30:00'),
+      sessionEndTime: new Date('2016-04-20:10:45:00'),
+      sessionTitle: 'Break'
     });
   })
   .then(function () {
@@ -329,7 +338,10 @@ var EventSchedule = module.exports = sql.define('EventSchedule', {
       eventId: 4,
       scheduleDay: 'Wednesday',
       scheduleTime: '10:45- 12pm ',
-      description: 'Presentations'
+      description: 'Presentations',
+      sessionStartTime: new Date('2016-04-20:10:45:00'),
+      sessionEndTime: new Date('2016-04-20:12:00:00'),
+      sessionTitle: 'Break'
     });
   })
   .then(function () {
@@ -337,7 +349,10 @@ var EventSchedule = module.exports = sql.define('EventSchedule', {
       eventId: 4,
       scheduleDay: 'Wednesday',
       scheduleTime: '12-1pm ',
-      description: 'Lunch'
+      description: 'Lunch',
+      sessionStartTime: new Date('2016-04-20:12:00:00'),
+      sessionEndTime: new Date('2016-04-20:13:00:00'),
+      sessionTitle: 'Lunch'
     });
   })
   .then(function () {
@@ -345,7 +360,10 @@ var EventSchedule = module.exports = sql.define('EventSchedule', {
       eventId: 4,
       scheduleDay: 'Wednesday',
       scheduleTime: '1-2:30 ',
-      description: 'Presentations & Hackathon'
+      description: 'Presentations & Hackathon',
+      sessionStartTime: new Date('2016-04-20:13:00:00'),
+      sessionEndTime: new Date('2016-04-20:14:30:00'),
+      sessionTitle: 'Presentations & Hackathon'
     });
   })
   .then(function () {
@@ -353,7 +371,10 @@ var EventSchedule = module.exports = sql.define('EventSchedule', {
       eventId: 4,
       scheduleDay: 'Wednesday',
       scheduleTime: '2:30-2:45 ',
-      description: 'Break'
+      description: 'Break',
+      sessionStartTime: new Date('2016-04-20:14:30:00'),
+      sessionEndTime: new Date('2016-04-20:14:45:00'),
+      sessionTitle: 'Break'
     });
   })
   .then(function () {
@@ -361,7 +382,10 @@ var EventSchedule = module.exports = sql.define('EventSchedule', {
       eventId: 4,
       scheduleDay: 'Wednesday',
       scheduleTime: '2:45-5pm ',
-      description: 'Presentations & Hackathon'
+      description: 'Presentations & Hackathon',
+      sessionStartTime: new Date('2016-04-20:14:45:00'),
+      sessionEndTime: new Date('2016-04-20:17:00:00'),
+      sessionTitle: 'Presentations & Hackathon'
     });
   })
   .then(function () {
@@ -369,7 +393,10 @@ var EventSchedule = module.exports = sql.define('EventSchedule', {
       eventId: 4,
       scheduleDay: 'Thursday',
       scheduleTime: '9am -10:30am ',
-      description: 'Presentations & Hackathon'
+      description: 'Presentations & Hackathon',
+      sessionStartTime: new Date('2016-04-21:09:00:00'),
+      sessionEndTime: new Date('2016-04-21:10:30:00'),
+      sessionTitle: 'Presentations & Hackathon'
     });
   })
   .then(function () {
@@ -377,7 +404,10 @@ var EventSchedule = module.exports = sql.define('EventSchedule', {
       eventId: 4,
       scheduleDay: 'Thursday',
       scheduleTime: '10:30-10:45 ',
-      description: 'Break'
+      description: 'Break',
+      sessionStartTime: new Date('2016-04-21:10:30:00'),
+      sessionEndTime: new Date('2016-04-21:10:45:00'),
+      sessionTitle: 'Break'
     });
   })
   .then(function () {
@@ -385,7 +415,10 @@ var EventSchedule = module.exports = sql.define('EventSchedule', {
       eventId: 4,
       scheduleDay: 'Thursday',
       scheduleTime: '10:45- 12pm ',
-      description: 'Presentations & Hackathon'
+      description: 'Presentations & Hackathon',
+      sessionStartTime: new Date('2016-04-21:10:45:00'),
+      sessionEndTime: new Date('2016-04-21:12:00:00'),
+      sessionTitle: 'Presentations & Hackathon'
     });
   })
   .then(function () {
@@ -393,7 +426,10 @@ var EventSchedule = module.exports = sql.define('EventSchedule', {
       eventId: 4,
       scheduleDay: 'Thursday',
       scheduleTime: '12-1pm ',
-      description: 'Lunch'
+      description: 'Lunch',
+      sessionStartTime: new Date('2016-04-21:12:00:00'),
+      sessionEndTime: new Date('2016-04-21:13:00:00'),
+      sessionTitle: 'Lunch'
     });
   })
   .then(function () {
@@ -401,7 +437,10 @@ var EventSchedule = module.exports = sql.define('EventSchedule', {
       eventId: 4,
       scheduleDay: 'Thursday',
       scheduleTime: '1-2:30 ',
-      description: 'Presentations & Hackathon'
+      description: 'Presentations & Hackathon',
+      sessionStartTime: new Date('2016-04-21:13:00:00'),
+      sessionEndTime: new Date('2016-04-21:14:30:00'),
+      sessionTitle: 'Presentations & Hackathon'
     });
   })
   .then(function () {
@@ -409,7 +448,10 @@ var EventSchedule = module.exports = sql.define('EventSchedule', {
       eventId: 4,
       scheduleDay: 'Thursday',
       scheduleTime: '2:30-2:45 ',
-      description: 'Break'
+      description: 'Break',
+      sessionStartTime: new Date('2016-04-21:14:30:00'),
+      sessionEndTime: new Date('2016-04-21:14:45:00'),
+      sessionTitle: 'Break'
     });
   })
   .then(function () {
@@ -417,7 +459,10 @@ var EventSchedule = module.exports = sql.define('EventSchedule', {
       eventId: 4,
       scheduleDay: 'Thursday',
       scheduleTime: '2:45-4pm ',
-      description: 'Presentations & Hackathon'
+      description: 'Presentations & Hackathon',
+      sessionStartTime: new Date('2016-04-21:14:45:00'),
+      sessionEndTime: new Date('2016-04-21:16:00:00'),
+      sessionTitle: 'Presentations & Hackathon'
     });
   })
   .then(function () {
@@ -425,7 +470,10 @@ var EventSchedule = module.exports = sql.define('EventSchedule', {
       eventId: 4,
       scheduleDay: 'Thursday',
       scheduleTime: '4-5pm ',
-      description: 'Closing & Awards'
+      description: 'Closing & Awards',
+      sessionStartTime: new Date('2016-04-21:16:00:00'),
+      sessionEndTime: new Date('2016-04-21:17:00:00'),
+      sessionTitle: 'Closing & Awards'
     });
   });
-*/
+
