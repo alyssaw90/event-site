@@ -105,6 +105,7 @@
 		 	var $hamburgerIcon = $('.hamburger-icon');
 		 	var $feedbackBlockWrapper = $('#feedbackBlockWrapper');
 		 	var $headerImage = $('#headerImage');
+		 	var $headerImageTitleBox = $('.headerImageTitleBox');
 
 			//highlight currently selected menu item
 			if (pathname === '/') {
@@ -141,7 +142,7 @@
 			if (pathname !== '/' && $(window).width() > 768) {
 				$feedbackBlockWrapper.hide();
 				$headerImage.hide();
-
+				$headerImageTitleBox.hide();
 			}
 		});		
  });

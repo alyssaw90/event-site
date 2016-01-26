@@ -940,7 +940,7 @@ footer a {
 
 	.headerImageTitleBox {
 		padding: 0 0 0 0;
-		margin-top: 20%;
+		margin-top: 18%;
 		/*position: relative;*/
 		/*display: none;*/
 	}
@@ -1149,6 +1149,10 @@ footer a {
 
 	.mobile-menu span {
 		padding-left: 10%;
+	}
+
+	.headerImageTitleBox h1 {
+		font-size: 1.25em;
 	}
 
 }
