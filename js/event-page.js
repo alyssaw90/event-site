@@ -210,7 +210,7 @@ $(document).ready(function () {
 								scheduleInfoObj[eventsObj[key].scheduleInfo[i].scheduleDay + 'Placeholder'] = '';
 							}eventsObj[key].scheduleInfo[i]
 							if (i <= 0) {
-								scheduleInfoObj[eventsObj[key].scheduleInfo[i].scheduleDay + 'Placeholder'] += '<tr class="first"><td>' + eventsObj[key].scheduleInfo[i].scheduleTime + '</td><td>' +  eventsObj[key].scheduleInfo[i].description + '</td><td><a class="button small" data-ace="{"title"' + ':"' + eventsObj[key].scheduleInfo[i].sessionTitle + '",' + '"desc"' + ':"' + eventsObj[key].scheduleInfo[i].description + '",' + '"location"' + ':"' + eventsObj[events[i].id].eventLocation + '",' + '"time"' + ':{"' + eventsObj[key].scheduleInfo[i].sessionStartTime.toString() + '","end":"' + eventsObj[key].scheduleInfo[i].sessionEndTime.toString() + '","zone":"-08:00"}}">Add to calendar...</a></td></tr>';
+								scheduleInfoObj[eventsObj[key].scheduleInfo[i].scheduleDay + 'Placeholder'] += '<tr class="first"><td>' + eventsObj[key].scheduleInfo[i].scheduleTime + '</td><td>' +  eventsObj[key].scheduleInfo[i].description + '</td><td></td></tr>';
 									}
 							if (i > 0 && i < j - 1 && i % 2 !== 0) {
 								scheduleInfoObj[eventsObj[key].scheduleInfo[i].scheduleDay + 'Placeholder'] += '<tr class="alt"><td>' + eventsObj[key].scheduleInfo[i].scheduleTime + '</td><td>' +  eventsObj[key].scheduleInfo[i].description + '</td></tr>';															
