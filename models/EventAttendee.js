@@ -178,14 +178,14 @@ var EventAttendee = module.exports = sql.define('EventAttendee', {
   .then(function () {
     return EventAttendee.create({
       eventId: 3,
-      contactId: 7,
+      contactId: 8,
       eventAttendeeRole: 'speaker'
     });
   })
   .then(function () {
     return EventAttendee.create({
       eventId: 3,
-      contactId: 5,
+      contactId: 6,
       eventAttendeeRole: 'speaker'
     });
   })
@@ -199,18 +199,24 @@ var EventAttendee = module.exports = sql.define('EventAttendee', {
   .then(function () {
     return EventAttendee.create({
       eventId: 3,
-      contactId: 15,
+      contactId: 5,
       eventAttendeeRole: 'speaker'
     });
   })
   .then(function () {
     return EventAttendee.create({
       eventId: 3,
-      contactId: 8,
+      contactId: 16,
       eventAttendeeRole: 'speaker'
     });
   })
-
+  .then(function () {
+    return EventAttendee.create({
+      eventId: 3,
+      contactId: 9,
+      eventAttendeeRole: 'speaker'
+    });
+  })
   .then(function () {
     return EventAttendee.create({
       eventId: 4,
@@ -252,4 +258,67 @@ var EventAttendee = module.exports = sql.define('EventAttendee', {
       contactId: 15,
       eventAttendeeRole: 'speaker'
     });
-  });*/
+  })
+  .then(function () {
+    return EventAttendee.create({
+      eventId: 5,
+      contactId: 1,
+      eventAttendeeRole: 'speaker'
+    });
+  })
+  .then(function () {
+    return EventAttendee.create({
+      eventId: 5,
+      contactId: 2,
+      eventAttendeeRole: 'speaker'
+    });
+  })
+  .then(function () {
+    return EventAttendee.create({
+      eventId: 5,
+      contactId: 8,
+      eventAttendeeRole: 'speaker'
+    });
+  })
+  .then(function () {
+    return EventAttendee.create({
+      eventId: 5,
+      contactId: 6,
+      eventAttendeeRole: 'speaker'
+    });
+  })
+  .then(function () {
+    return EventAttendee.create({
+      eventId: 5,
+      contactId: 4,
+      eventAttendeeRole: 'speaker'
+    });
+  })
+  .then(function () {
+    return EventAttendee.create({
+      eventId: 5,
+      contactId: 5,
+      eventAttendeeRole: 'speaker'
+    });
+  })
+  .then(function () {
+    return EventAttendee.create({
+      eventId: 5,
+      contactId: 16,
+      eventAttendeeRole: 'speaker'
+    });
+  })
+  .then(function () {
+    return EventAttendee.create({
+      eventId: 5,
+      contactId: 9,
+      eventAttendeeRole: 'speaker'
+    });
+  })
+  .then(function () {
+    return EventAttendee.create({
+      eventId: 5,
+      contactId: 19,
+      eventAttendeeRole: 'speaker'
+    });
+  })*/

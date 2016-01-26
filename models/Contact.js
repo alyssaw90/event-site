@@ -282,7 +282,7 @@ var Contact = module.exports = sql.define('Contact', {
       contactDescription: 'Feng Han is a software test engineer in Windows Server Interoperability team in Shanghai, China. He works on the development and support for synthetic test suite of Remote Desktop protocol family. <br /><br />Prior to joining Microsoft, Feng worked as a Software Development Engineer for 3 years. He graduated from the Zhejiang University with Bachelor’s degree and graduated from Shanghai Jiaotong University with Master’s degree in Software Engineering.',
       eventRole: 'speaker',
       msTeamMember: true,
-      msTeamTitle: 'Partner Software Engineering Manager, Office Developer Experience Team',
+      msTeamTitle: 'Software Engineer, Windows Server Interoperability & Tools',
       showOnHomePage: false,
       headShot: 'feng-han-headshot.jpg',
       company: 'Microsoft',

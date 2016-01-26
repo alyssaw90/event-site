@@ -82,7 +82,7 @@ var Event = module.exports = sql.define('Event', {
 
 // create table if it doesn't already exist ```({force: true})``` will cause the table to be deleted and created regardless of if it exists already
 
-Event.sync({force: true})
+/*Event.sync({force: true})
 .then(function () {
   return Event.create({
   eventName: 'Storage Developer Conference',
@@ -114,7 +114,7 @@ Event.sync({force: true})
 .then(function () {
   return Event.create({
   eventName: 'Shanghai Interop Dev Days 2015',
-  eventRegistrationLink: 'http://www.example.com', //link to registrationfor event
+  // eventRegistrationLink: , //link to registrationfor event
   eventLocation: 'Shanghai',
   eventContinent: 'Asia',
   eventStartDate: new Date('2015-10-21T08:00:00'), //the start date...
@@ -141,12 +141,12 @@ Event.sync({force: true})
 })
 .then(function () {
   return Event.create({
-  eventName: 'Paris Dev Days 2016',
-  eventRegistrationLink: 'http://www.awwwards.com', //link to registrationfor event
+  eventName: 'Extend 2016',
+  // eventRegistrationLink: , //link to registrationfor event
   eventLocation: 'Paris',
   eventContinent: 'Europe',
-  eventStartDate: new Date('2016-05-16:00:00:01'), //the start date...
-  eventEndDate: new Date('2016-05-18:23:59:00'), // the end date...
+  eventStartDate: new Date('2016-05-11:00:00:01'), //the start date...
+  eventEndDate: new Date('2016-05-12:23:59:00'), // the end date...
   eventHeaderImage: 'paris-logo-2016.jpg', //link to header image
   eventHomepageImage: 'paris-slide.jpg', 
   // eventFuturePageImage: Sql.TEXT, //image to appear on event slide on homepage
@@ -156,7 +156,7 @@ Event.sync({force: true})
   // homepageBulletTwo: Sql.STRING,
   // homepageBulletThree: Sql.STRING,
   // eventSponsorsTab: Sql.TEXT, //copy for Sponsors Tab
-  eventOverviewTab: '<h2>Paris Dev Days 2016</h2><p>As part of the Dev Days series, Microsoft Office and Data Platform Interoperability introduce Paris Dev Days from May 16-18, 2016. Similar to Shanghai and Taipei, Paris Dev Days will showcase Microsoft Office 365 developer opportunities, Data Platform, and interoperability.</p><br /><ul><li>Discover the potential of connecting to Office 365 services by building and selling apps that extend the most widely used productivity platform on the planet.</li> <li>Learn what’s new in Data Platform including SQL Server, PowerBI, Cortana Analytics, machine learning, big data stores, and data analytics.  </li><li>Experience Microsoft’s commitment to interoperability while learning about protocol documentation, available protocol tools, and customer engagement opportunities that are available to implementers and developers looking to connect with Microsoft clients and servers. </li></ul><br /><p>Attendees can look forward to presentations from subject matter experts, interactive developer sessions, hackathons, and one-on-one collaborations with Microsoft engineers. Paris Dev Days will include evening mixers and social hour with other attendees and Microsoft engineers. Paris 2016 will be launched in February 2016. If you would like to reserve your seat early, please email <a href="mailto:plugfests@microsoft.com" >plugfests@microsoft.com</a>.</p><br /><p>*Content is subject to change</p><br />', //copy for Overview Tab
+  eventOverviewTab: '<h2>Extend 2016</h2><h4 class="center">Paris, France - May 11 - 12, 2016</h4><p>Microsoft Office and Data Platform Interoperability teams are pleased to announce Extend 2016 in Paris from May 11-12, 2016. Microsoft and <a href="https://medium.com/la-reserve/the-startup-that-puts-the-swag-in-the-conference-1a6c171933bf#.ip9hmrsib" target="_blank">La Reserve</a>, the startup that puts the swag in the conference, are working together to create Paris Extend 2016. Extend 2016 will decide topics beforehand but let the public decide on the content. La Reserve lets attendees choose the content for an, "experience similar to what one might call crowd conferencing; a participative conference of a new kind where the public is the key player" (Julien Kerihuel, La Reserve founder). </p><p>Attendees can look forward to presentations from subject matter experts, interactive developer sessions and one-on-one collaborations with Microsoft engineers. Extend 2016 will include evening mixers and social hour with other attendees and Microsoft engineers. More details and event registration will be announced in February 2016. If you would like to reserve your seat early, please email <a href="mailto:plugfests@microsoft.com">plugfests@microsoft.com</a>. </p><p>*Content is subject to change </p><br />', //copy for Overview Tab
   // travelTabMap: Sql.TEXT, //Bing Imap of location
   // travelTabHeaderImage: Sql.TEXT, //image to appear above travel tabs
   // travelVenueTab: Sql.TEXT, //copy for travel venue sub tab
@@ -164,13 +164,14 @@ Event.sync({force: true})
   // travelAccomodationsTab: Sql.TEXT, //copy for travel accommodations sub tab
   // travelTipsTab: Sql.TEXT, //copy for travel Tips and Tricks sub tab
   // travelEatDrinkTab: Sql.TEXT, //copy for travel eat and drink sub tab
-  // eventMediaTab: Sql.TEXT //copy for media tab
+  // eventMediaTab: Sql.TEXT, //copy for media tab
+  eventTechnologiesTab: '<ul><li><h4>Microsoft Office </h4></li><li><h4>Office365 </h4></li><li><h4>Office 365 Unified API </h4></li><li><h4>Office Add-ins </h4></li><li><h4>Mail, Calendar + Contacts </h4></li><li><h4>Interoperability + Open Specifications </h4></li><li><h4>Exchange Protocols </h4></li><li><h4>Cloud + Enterprise </h4></li><li><h4>REST APIs </h4></li><li><h4>OData </h4></li><li><h4>Cortana Analytics Suite </h4></li><li><h4>Power BI </h4></li><li><h4>SQL Server </h4></li><li><h4>Big Data Stores </h4></li><li><h4>Machine Learning & Data Analytics </h4></li></ul>'
   });
 })
 .then(function () {
   return Event.create({
     eventName: 'Taipei Interop Dev Days 2016',
-    eventStartDate: new Date('2016-04-20:08:00:00'),
+    eventStartDate: new Date('2016-04-19:08:00:00'),
     eventEndDate: new Date('2016-04-21:23:00:00'),
     eventLocation: 'Taipei',
     eventContinent: 'Asia',
@@ -184,7 +185,7 @@ Event.sync({force: true})
     homepageBulletTwo: 'PowerBI',
     homepageBulletThree: 'Big Data Stores, and Data Analytics',
     // eventSponsorsTab: Sql.TEXT, //copy for Sponsors Tab
-    eventOverviewTab: '<h2>Taipei Interop Dev Days 2016</h2><p>Join Microsoft Office and Data Platform Interoperability teams April 20-21, 2016 for their 4th event in Taipei, Taiwan. Taipei 2016 will focus on Microsoft Office 365 developer opportunities, Data Platform, and interoperability.</p><br /><ul><li>Discover the potential of connecting to Office 365 services by building and selling apps that extend the most widely used productivity platform on the planet.</li><li>Learn what’s new in Data Platform including SQL Server, PowerBI, Cortana Analytics, machine learning, big data stores, and data analytics.</li><li>Experience Microsoft’s commitment to interoperability while learning about protocol documentation, available protocol tools, and customer engagement opportunities that are available to implementers and developers looking to connect with Microsoft clients and servers.</li></ul><br /><p>Attendees can look forward to presentations from subject matter experts, interactive developer sessions, hackathons, and one-on-one collaboration with Microsoft engineers. Taipei 2016 will be launched in January 2016 when more details and event registration will be released. If you would like to reserve your seat early, please email <a href="mailto:plugfests@microsoft.com" >plugfests@microsoft.com</a>.</p><br /><p>*Content is subject to change</p>', //copy for Overview Tab
+    eventOverviewTab: '<h2>Taipei Interop Dev Days 2016</h2><h4 class="center">Taipei, Taiwan - April 19 - 21, 2016</h4><p>Join Microsoft Office and Data Platform Interoperability teams April 20-21, 2016 for their 4th event in Taipei, Taiwan. Taipei 2016 will focus on Microsoft Office 365 developer opportunities, Data Platform, and interoperability.</p><br /><ul><li>Discover the potential of connecting to Office 365 services by building and selling apps that extend the most widely used productivity platform on the planet.</li><li>Learn what’s new in Data Platform including SQL Server, PowerBI, Cortana Analytics, machine learning, big data stores, and data analytics.</li><li>Experience Microsoft’s commitment to interoperability while learning about protocol documentation, available protocol tools, and customer engagement opportunities that are available to implementers and developers looking to connect with Microsoft clients and servers.</li></ul><br /><p>Attendees can look forward to presentations from subject matter experts, interactive developer sessions, hackathons, and one-on-one collaboration with Microsoft engineers. Taipei 2016 will be launched in January 2016 when more details and event registration will be released. If you would like to reserve your seat early, please email <a href="mailto:plugfests@microsoft.com" >plugfests@microsoft.com</a>.</p><br /><p>*Content is subject to change</p>', //copy for Overview Tab
     // travelTabMap: Sql.TEXT, //Bing Imap of location
     // travelTabHeaderImage: Sql.TEXT, //image to appear above travel tabs
     // travelVenueTab: Sql.TEXT, //copy for travel venue sub tab
@@ -193,7 +194,7 @@ Event.sync({force: true})
     // travelTipsTab: Sql.TEXT, //copy for travel Tips and Tricks sub tab
     // travelEatDrinkTab: Sql.TEXT, //copy for travel eat and drink sub tab
     // eventMediaTab: Sql.TEXT, //copy for media tab
-    eventTechnologiesTab: '<h3>Office 365</h3><p>Want to reach more than 1 billion users worldwide?! Learn the potential of connecting to Office 365 services. Build and sell apps that extend the most widely used productivity platform on the planet and understand the opportunity Office 365 holds. Find out about the latest product offerings from Office and the developer opportunities that are available.</p><ul>  <li>Build Office Add-ins</li> <li>Office 365 Unified/Graph API</li> <li>Mail, Calendar, and Contacts REST</li>  <li>Office Online Integration</li></ul><h3>Open Specifications and Interoperability</h3><p>Microsoft is committed to interoperability! Take a look at the expansive landscape of protocol documentation, available protocol tools, and customer engagement opportunities that are available to implementers and developers looking to connect with Microsoft clients and servers.</p><ul> <li>Exchange Protocols</li> <li>Exchange ActiveSync protocols and documentation</li>  <li>Exchange Web Services (EWS)</li>  <li>EWS Managed API</li></ul><h3>Microsoft File Formats</h3><p>Learn about the most commonly used file formats supported by Microsoft Office applications.</p><ul>  <li>Office Open XML</li>  <li>Open Document Format</li> <li>Binary File Format</li></ul><h3>What’s new with Office</h3><p>Learn about the newest service offerings and products from Office</p><ul> <li>Sway</li> <li>Delve</li>  <li>Lens</li> <li>Mix</li></ul><h3>Data Platform</h3><p>Find out about the latest products in Data Platforms</p><ul>  <li>SQL Server</li> <li>PowerBI</li>  <li>Cortana Analytics</li></ul><h3>Machine Learning and Data Analytics</h3><p>Review the capabilities of Microsoft\'s Data Tools</p><ul> <li>Machine Learning</li> <li>Hadoop</li> <li>Distributed Analytics</li>  <li>Complex Event Processing</li></ul>'
+    eventTechnologiesTab: '<h4>Office 365</h4><p>Want to reach more than 1 billion users worldwide?! Learn the potential of connecting to Office 365 services. Build and sell apps that extend the most widely used productivity platform on the planet and understand the opportunity Office 365 holds. Find out about the latest product offerings from Office and the developer opportunities that are available.</p><ul>  <li>Build Office Add-ins</li> <li>Office 365 Unified/Graph API</li> <li>Mail, Calendar, and Contacts REST</li>  <li>Office Online Integration</li></ul><h3>Open Specifications and Interoperability</h3><p>Microsoft is committed to interoperability! Take a look at the expansive landscape of protocol documentation, available protocol tools, and customer engagement opportunities that are available to implementers and developers looking to connect with Microsoft clients and servers.</p><ul> <li>Exchange Protocols</li> <li>Exchange ActiveSync protocols and documentation</li>  <li>Exchange Web Services (EWS)</li>  <li>EWS Managed API</li></ul><h3>Microsoft File Formats</h3><p>Learn about the most commonly used file formats supported by Microsoft Office applications.</p><ul>  <li>Office Open XML</li>  <li>Open Document Format</li> <li>Binary File Format</li></ul><h3>What’s new with Office</h3><p>Learn about the newest service offerings and products from Office</p><ul> <li>Sway</li> <li>Delve</li>  <li>Lens</li> <li>Mix</li></ul><h3>Data Platform</h3><p>Find out about the latest products in Data Platforms</p><ul>  <li>SQL Server</li> <li>PowerBI</li>  <li>Cortana Analytics</li></ul><h3>Machine Learning and Data Analytics</h3><p>Review the capabilities of Microsoft\'s Data Tools</p><ul> <li>Machine Learning</li> <li>Hadoop</li> <li>Distributed Analytics</li>  <li>Complex Event Processing</li></ul>'
   });
 })
 .then(function () {
@@ -213,7 +214,7 @@ Event.sync({force: true})
   // homepageBulletTwo: Sql.STRING,
   // homepageBulletThree: Sql.STRING,
   // eventSponsorsTab: Sql.TEXT, //copy for Sponsors Tab
-  eventOverviewTab: '<p>The Microsoft Interoperability team is hosting the 7th annual Redmond Plugfest from June 20-24, 2016. The Redmond Plugfest will feature content from the very latest developments in Office, SharePoint, Exchange, File Formats and Data Platform.  Attendees of the Redmond Plugfest can participate in protocol testing, engage directly with the Microsoft Interoperability support engineers and network with other professionals from all over the world! Microsoft product engineers will be on site throughout the event to discuss interoperability topics and to help answer questions.</p><br /><p>If you would like to reserve your seat early, please email plugfests@microsoft.com.</p><br /><p>*Content is subject to change</p>', //copy for Overview Tab
+  eventOverviewTab: '<h2>Redmond Plugfest 2016</h2><h4 class="center">Redmond, WA USA - June 20 - 24, 2016</h4><p>The Microsoft Interoperability team is hosting the 7th annual Redmond Plugfest from June 20-24, 2016. The 2016 Redmond Plugfest is a traditional interoperability event and will feature content about the very latest interop developments from Office, Windows, and Cloud + Enterprise. </p><p>Attendees of the Redmond Plugfest can participate in protocol testing, engage directly with the Microsoft Interoperability support engineers and network with other professionals from all over the world. Microsoft product engineers will be on site throughout the event to discuss interoperability topics and to help answer questions. If you would like to reserve your seat early, please email <a href="mailto:plugfests@microsoft.com">plugfests@microsoft.com</a>. </p><p>*Content is subject to change </p>', //copy for Overview Tab
   // travelTabMap: Sql.TEXT, //Bing Imap of location
   // travelTabHeaderImage: Sql.TEXT, //image to appear above travel tabs
   // travelVenueTab: Sql.TEXT, //copy for travel venue sub tab
@@ -221,7 +222,8 @@ Event.sync({force: true})
   // travelAccomodationsTab: Sql.TEXT, //copy for travel accommodations sub tab
   // travelTipsTab: Sql.TEXT, //copy for travel Tips and Tricks sub tab
   // travelEatDrinkTab: Sql.TEXT, //copy for travel eat and drink sub tab
-  // eventMediaTab: Sql.TEXT //copy for media tab
+  // eventMediaTab: Sql.TEXT, //copy for media tab
+  eventTechnologiesTab: '<ul><li><h4>What\'s New in Office </h4></l1><li><h4>Open Specifications + Interoperability </h4></l1><li><h4>Protocol Test Suites </h4></l1><li><h4>Mail Sim </h4></l1><li><h4>Microsoft Big Data </h4></l1><li><h4>Office Parsers </h4></l1><li><h4>Microsoft Cloud Foundations </h4></l1><li><h4>OData </h4></l1><li><h4>Exchange </h4></l1><li><h4>SharePoint </h4></l1><li><h4>File Formats </h4></l1><li><h4>Mail, Calendar + Contacts </h4></l1><li><h4>WOPI </h4></l1><li><h4>HyperV SMB3 Storage </h4></l1></ul>'
   });
 })
 .then(function () {
@@ -251,4 +253,4 @@ Event.sync({force: true})
   travelEatDrinkTab: '<h2>Eat & Drink</h2><p>Do cupidatat aliquip ribeye meatball beef ribs. Cillum meatloaf beef, filet mignon ham hock lorem culpa. Sirloin laboris dolore shank, pork belly aliquip cillum. Excepteur lorem beef jerky doner.</p>', //copy for travel eat and drink sub tab
   eventMediaTab: 'Produced since 1998, Storage Developer Conference (SDC) 2015 is scheduled for September 21-24, 2015 in Santa Clara, CA, and is again expected to attract more than 400 developers, technical professionals, and engineers from the worldwide storage community. Attend and learn about leading storage development topics including File Systems, Software Defined Storage, SMB, Security, Performance, and more.' //copy for media tab
   });
-});
+});*/
