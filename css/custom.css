@@ -250,7 +250,7 @@ main p {
 }
 
 .menu-overlay {
-	background-color: #4668c5;
+	/*background-color: #4668c5;*/
 	padding-bottom: 0;
 }
 
@@ -264,6 +264,15 @@ main p {
 
 .menu-overlay a:hover {
 	text-shadow: 1px 1px 5px #fff, 0 0 3em #fff, 0 0 0.3em #fff;
+}
+
+.headerImageTitleBox {
+	z-index: 999;
+	position: absolute;
+}
+
+.headerImageTitleBox a {
+	color: #000;
 }
 
 .purpleEventMenu a {
