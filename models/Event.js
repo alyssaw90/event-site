@@ -176,7 +176,7 @@ Event.sync({force: true})
     eventContinent: 'Asia',
     eventHeaderImage: 'taipei-logo-2016.jpg',
     eventHomepageImage: 'taipei-dev-days-2016.jpg',
-    eventHighlightColor: '4668c5',
+    eventHighlightColor: '#4668c5',
     // eventFuturePageImage: Sql.TEXT, //image to appear on event slide on homepage
     // eventFuturePageText: Sql.TEXT, //slide up text for future events page
     // eventSlideshowImage: 'taipei-sample-slideshow-img.jpg', //image for front page slider
