@@ -38,6 +38,7 @@ var Event = module.exports = sql.define('Event', {
   eventEndDate: Sql.DATE, // the end date...
   eventHeaderImage: Sql.TEXT, //link to header image
   eventHomepageImage: Sql.TEXT, //link to homepage image
+  eventHighlightColor: Sql.TEXT, //what color to use to highlight the homepage
   eventFuturePageImage: Sql.TEXT, //image to appear on event slide on homepage
   eventFuturePageText: Sql.TEXT, //slide up text for future events page
 /*  eventSlideshowImage: {
@@ -174,7 +175,8 @@ Event.sync({force: true})
     eventLocation: 'Taipei',
     eventContinent: 'Asia',
     eventHeaderImage: 'taipei-logo-2016.jpg',
-    eventHomepageImage: 'sample2.png',
+    eventHomepageImage: 'taipei-dev-days-2016.jpg',
+    eventHighlightColor: '#4668c5',
     // eventFuturePageImage: Sql.TEXT, //image to appear on event slide on homepage
     // eventFuturePageText: Sql.TEXT, //slide up text for future events page
     // eventSlideshowImage: 'taipei-sample-slideshow-img.jpg', //image for front page slider

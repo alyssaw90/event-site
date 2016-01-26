@@ -250,7 +250,7 @@ main p {
 }
 
 .menu-overlay {
-	background-color: #4668c5;
+	/*background-color: #4668c5;*/
 	padding-bottom: 0;
 }
 
@@ -264,6 +264,21 @@ main p {
 
 .menu-overlay a:hover {
 	text-shadow: 1px 1px 5px #fff, 0 0 3em #fff, 0 0 0.3em #fff;
+}
+
+.headerImageTitleBox {
+	z-index: 999;
+	position: absolute;
+	margin: 3.5% auto auto 8%;
+	padding: 2% 3% 3% 3%;
+	/*min-height: 25%;*/
+	/*min-width: 50%;*/
+	text-align: center;
+}
+
+.headerImageTitleBox h1 {
+	color: #fff;
+	font-size: 3.5vw;
 }
 
 .purpleEventMenu a {
@@ -849,6 +864,15 @@ footer a {
 		display: none;
 	}
 
+	.headerImageTitleBox {
+		/*height: 10px !important;*/
+		padding: 1% auto auto 1%;
+	}
+
+	.headerImageTitleBox h1 {
+		font-size: 3vw;
+	}
+
 }
 
 @media all and (max-width: 1074px) {
@@ -887,6 +911,10 @@ footer a {
 		font-size: 1vw;
 	}
 
+	.headerImageTitleBox {
+		/*max-height: 7%;*/
+	}
+
 }
 
 @media all and (min-width: 765px) and (max-width: 1250px) {
@@ -909,6 +937,13 @@ footer a {
 }
 
 @media all and (max-width: 768px) {
+
+	.headerImageTitleBox {
+		padding: 0 0 0 0;
+		margin-top: 20%;
+		/*position: relative;*/
+		/*display: none;*/
+	}
 
 	#hiddenHomepageSectionsGrid {
 		max-width: 100%;
@@ -935,9 +970,9 @@ footer a {
 		display: none !important;
 	}
 
-	.header-image {
+/*	.header-image {
 		display: block;
-	}
+	}*/
 
 	.hidden-div {
 		width: 70%;
@@ -1051,7 +1086,7 @@ footer a {
 
 	.menu-overlay {
 		overflow: hidden;
-		padding-bottom: 85px;
+		/*padding-bottom: 85px;*/
 	}
 
 	.individual-homepage-expert img {

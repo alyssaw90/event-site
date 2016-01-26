@@ -176,6 +176,7 @@ $(window).load(function() {
 	changeHeight('.past_events');
 	changeHeight('.individual-homepage-expert');
   stickyFooter();
+  homepageStickyFooter();
 });
 
 
@@ -183,5 +184,6 @@ $(window).resize(function(){
 	changeHeight('.past_events');
 	changeHeight('.individual-homepage-expert');
   stickyFooter();
+  homepageStickyFooter();
 });
 

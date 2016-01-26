@@ -51,7 +51,7 @@
 		<!-- End gray desktop menu -->\
 		<section id="headerImage" class="mobileWrapper"></section>\
 		<!-- Begin purple desktop menu -->\
-		<nav class="menu-overlay desktop-menu flex"">\
+		<nav class="menu-overlay desktop-menu flex">\
 			<div class="col_12 purpleEventMenu"></div>\
 		</nav>\
 		<!-- End Purple desktop menu -->';
@@ -70,10 +70,14 @@
 			});
 		}
 
-
 		$.get('/events', function (data) {
+		console.log(data[0]);
+			var startDate = new Date(data[0].eventStartDate);
+			var endDate = new Date(data[0].eventEndDate);
 			var upcomingPurpleMenu = '<div class="col_12 purpleEventMenu">';
-			var headerImage = '<section id="headerImage" class="mobileWrapper"><a href="/' + data[0].eventUrl + '"><img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../uploads/' + data[0].eventHomepageImage + '" /></a></section>';
+			var headerImage = '<a href="/' + data[0].eventUrl + '"><section class="headerImageTitleBox" style="background-color:' + data[0].eventHighlightColor + '; opacity: .8;">' + '<h1>' + data[0].eventName + '</h1><h1>' + months[startDate.getMonth()] + ' ' + startDate.getDate() + ' - ' + endDate.getDate() + ', ' + endDate.getFullYear() + '</h1></section></a><section id="headerImage" class="mobileWrapper"><img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../uploads/' + data[0].eventHomepageImage + '" /></section>';
+			var headerBackgroundColor = '<nav class="menu-overlay desktop-menu flex" style="background-color:' + data[0].eventHighlightColor + ';">'
+			var hamburgerMenu = '<div class="menu-overlay hamburger-menu social-icons" style="background-color:' + data[0].eventHighlightColor + ';">'
 		 	var $header = $('header');
 			$(data).each(function (i, elem) {
 				var startDate = new Date(elem.eventStartDate);
@@ -86,7 +90,7 @@
 				}
 			});
 			upcomingPurpleMenu += '</div>';
-			menu = menu.replace('<div class="col_12 purpleEventMenu"></div>', upcomingPurpleMenu).replace('<section id="headerImage" class="mobileWrapper"></section>', headerImage);
+			menu = menu.replace('<div class="col_12 purpleEventMenu"></div>', upcomingPurpleMenu).replace('<section id="headerImage" class="mobileWrapper"></section>', headerImage).replace('<nav class="menu-overlay desktop-menu flex">', headerBackgroundColor).replace('<div class="menu-overlay hamburger-menu social-icons">', hamburgerMenu);
 			var headerMenu = $.parseHTML(menu);
 			$header.prepend(headerMenu);
 			//declare jQuery variables after menu has been rendered to the DOM
