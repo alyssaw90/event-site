@@ -208,10 +208,10 @@ $(document).ready(function () {
 							// console.log(calEvent);
 							if (!scheduleInfoObj[eventsObj[key].scheduleInfo[i].scheduleDay + 'Placeholder']) {
 								scheduleInfoObj[eventsObj[key].scheduleInfo[i].scheduleDay + 'Placeholder'] = '';
-							}eventsObj[key].scheduleInfo[i]
+							}
 							if (i <= 0) {
 								scheduleInfoObj[eventsObj[key].scheduleInfo[i].scheduleDay + 'Placeholder'] += '<tr class="first"><td>' + eventsObj[key].scheduleInfo[i].scheduleTime + '</td><td>' +  eventsObj[key].scheduleInfo[i].description + '</td><td></td></tr>';
-									}
+							}
 							if (i > 0 && i < j - 1 && i % 2 !== 0) {
 								scheduleInfoObj[eventsObj[key].scheduleInfo[i].scheduleDay + 'Placeholder'] += '<tr class="alt"><td>' + eventsObj[key].scheduleInfo[i].scheduleTime + '</td><td>' +  eventsObj[key].scheduleInfo[i].description + '</td></tr>';															
 							}
@@ -366,6 +366,7 @@ $(document).ready(function () {
 					}
 					$('img').bind('load', function() {
     				stickyFooter();
+    				homepageStickyFooter();
 					});
 					/*$(document).ajaxStop(function() {
 						alert('hola');
