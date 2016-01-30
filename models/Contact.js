@@ -157,7 +157,7 @@ var Contact = module.exports = sql.define('Contact', {
     firstName: 'Tom',
     lastName: 'Jebo',
     newsletterSubscription: true,
-    contactDescription: 'Tom Jebo is a Senior Escalation Engineer for the Microsoft Developer Support Open Specifications team. His primary responsibilities are helping customers implement solutions using Office file formats including Office Open XML and Office binary formats, Exchange server and client protocols including RPC/MAPI, ActiveSync, and Web Services, SharePoint and Lync/Skype protocols. Before joining the Open Specifications team, Tom supported Microsoft’s developer tools and languages and COM technologies. Before Microsoft, Tom was an assembly language programmer working on operating system software in Silicon Valley. <br /><br />Tom grew up in upstate New York, holds a computer science degree from Boston University and currently lives in Seattle Washington.',
+    contactDescription: 'Tom Jebo is a Senior Escalation Engineer in the Microsoft Developer Support Open Specifications team. His primary responsibilities are helping customers implement solutions using WOPI, Exchange RPC/MAPI, ActiveSync, Web Services, Lync/Skype protocols, and Office Open XML and binary formats. Before joining the Open Specifications team, Tom helped customers with Microsoftâ€™s developer tools, C/C++ languages and COM technologies.<br /><br />Before Microsoft, Tom developed architectural simulation software at Amdhal Corporation in Sunnyvale, California. Tom graduated from Boston University with a bachelors in Computer Science and currently lives in Seattle Washington.',
     eventRole: 'speaker',
     msTeamMember: true,
     msTeamTitle: 'Supportability Program Manager, Developer Support Open Specifications Team',
@@ -272,17 +272,15 @@ var Contact = module.exports = sql.define('Contact', {
   });
 })
 .then(function () {
-
-
     return Contact.create({
       firstName: 'Feng',
       lastName: 'Han',
       newsletterSubscription: true,
 
-      contactDescription: 'Feng Han is a software test engineer in Windows Server Interoperability team in Shanghai, China. He works on the development and support for synthetic test suite of Remote Desktop protocol family. <br /><br />Prior to joining Microsoft, Feng worked as a Software Development Engineer for 3 years. He graduated from the Zhejiang University with Bachelor’s degree and graduated from Shanghai Jiaotong University with Master’s degree in Software Engineering.',
+      contactDescription: 'Feng Han is a software engineer in Windows Server Interoperability & Tools team in Shanghai, China. He has worked on the development and support of test tools for Windows interoperability for 4 years, especially on Remote Desktop protocol family.<br /><br />He graduated from the Zhejiang University with Bachelor’s degree and graduated from Shanghai Jiaotong University with Master’s degree in Software Engineering. Prior to joining Microsoft, Feng worked as a Software Development Engineer for 3 years in a startup company.<br /><br />His role on Interop Events is to present and support synthetic test suites, help partners to use these test tools to identity their product issue.',
       eventRole: 'speaker',
       msTeamMember: true,
-      msTeamTitle: 'Software Engineer, Windows Server Interoperability & Tools',
+      msTeamTitle: 'Software Engineer, Windows Server Interoperability & Tools Team, Microsoft (China) Corporation',
       showOnHomePage: false,
       headShot: 'feng-han-headshot.jpg',
       company: 'Microsoft',
