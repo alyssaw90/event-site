@@ -82,7 +82,7 @@ var Event = module.exports = sql.define('Event', {
 
 // create table if it doesn't already exist ```({force: true})``` will cause the table to be deleted and created regardless of if it exists already
 
-Event.sync({force: true})
+/*Event.sync({force: true})
 .then(function () {
   return Event.create({
   eventName: 'Storage Developer Conference',
@@ -253,4 +253,4 @@ Event.sync({force: true})
   travelEatDrinkTab: '<h2>Eat & Drink</h2><p>Do cupidatat aliquip ribeye meatball beef ribs. Cillum meatloaf beef, filet mignon ham hock lorem culpa. Sirloin laboris dolore shank, pork belly aliquip cillum. Excepteur lorem beef jerky doner.</p>', //copy for travel eat and drink sub tab
   eventMediaTab: 'Produced since 1998, Storage Developer Conference (SDC) 2015 is scheduled for September 21-24, 2015 in Santa Clara, CA, and is again expected to attract more than 400 developers, technical professionals, and engineers from the worldwide storage community. Attend and learn about leading storage development topics including File Systems, Software Defined Storage, SMB, Security, Performance, and more.' //copy for media tab
   });
-});
+});*/
