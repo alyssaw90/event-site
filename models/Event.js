@@ -203,8 +203,8 @@ var Event = module.exports = sql.define('Event', {
   // eventRegistrationLink: Sql.STRING, //link to registrationfor event
   eventLocation: 'Redmond',
   eventContinent: 'North America',
-  eventStartDate: new Date('2016-06-20:00:01:00'), //the start date...
-  eventEndDate: new Date('2016-06-24:23:59:00'), // the end date...
+  eventStartDate: new Date('2016-06-13:00:01:00'), //the start date...
+  eventEndDate: new Date('2016-06-17:23:59:00'), // the end date...
   eventHeaderImage: 'redmond-logo-2016.jpg', //link to header image
   eventHomepageImage: 'redmond-slide.jpg',
   // eventFuturePageImage: Sql.TEXT, //image to appear on event slide on homepage
@@ -214,7 +214,7 @@ var Event = module.exports = sql.define('Event', {
   // homepageBulletTwo: Sql.STRING,
   // homepageBulletThree: Sql.STRING,
   // eventSponsorsTab: Sql.TEXT, //copy for Sponsors Tab
-  eventOverviewTab: '<h2>Redmond Plugfest 2016</h2><h4 class="center">Redmond, WA USA - June 20 - 24, 2016</h4><p>The Microsoft Interoperability team is hosting the 7th annual Redmond Plugfest from June 20-24, 2016. The 2016 Redmond Plugfest is a traditional interoperability event and will feature content about the very latest interop developments from Office, Windows, and Cloud + Enterprise. </p><p>Attendees of the Redmond Plugfest can participate in protocol testing, engage directly with the Microsoft Interoperability support engineers and network with other professionals from all over the world. Microsoft product engineers will be on site throughout the event to discuss interoperability topics and to help answer questions. If you would like to reserve your seat early, please email <a href="mailto:plugfests@microsoft.com">plugfests@microsoft.com</a>. </p><p>*Content is subject to change </p>', //copy for Overview Tab
+  eventOverviewTab: '<h2>Redmond Plugfest 2016</h2><h4 class="center">Redmond, WA USA - June 13 - 17, 2016</h4><p>The Microsoft Interoperability team is hosting the 7th annual Redmond Plugfest from June 20-24, 2016. The 2016 Redmond Plugfest is a traditional interoperability event and will feature content about the very latest interop developments from Office, Windows, and Cloud + Enterprise. </p><p>Attendees of the Redmond Plugfest can participate in protocol testing, engage directly with the Microsoft Interoperability support engineers and network with other professionals from all over the world. Microsoft product engineers will be on site throughout the event to discuss interoperability topics and to help answer questions. If you would like to reserve your seat early, please email <a href="mailto:plugfests@microsoft.com">plugfests@microsoft.com</a>. </p><p>*Content is subject to change </p>', //copy for Overview Tab
   // travelTabMap: Sql.TEXT, //Bing Imap of location
   // travelTabHeaderImage: Sql.TEXT, //image to appear above travel tabs
   // travelVenueTab: Sql.TEXT, //copy for travel venue sub tab
@@ -253,4 +253,5 @@ var Event = module.exports = sql.define('Event', {
   travelEatDrinkTab: '<h2>Eat & Drink</h2><p>Do cupidatat aliquip ribeye meatball beef ribs. Cillum meatloaf beef, filet mignon ham hock lorem culpa. Sirloin laboris dolore shank, pork belly aliquip cillum. Excepteur lorem beef jerky doner.</p>', //copy for travel eat and drink sub tab
   eventMediaTab: 'Produced since 1998, Storage Developer Conference (SDC) 2015 is scheduled for September 21-24, 2015 in Santa Clara, CA, and is again expected to attract more than 400 developers, technical professionals, and engineers from the worldwide storage community. Attend and learn about leading storage development topics including File Systems, Software Defined Storage, SMB, Security, Performance, and more.' //copy for media tab
   });
-});*/
+});
+*/
