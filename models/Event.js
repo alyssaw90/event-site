@@ -141,7 +141,7 @@ var Event = module.exports = sql.define('Event', {
 })
 .then(function () {
   return Event.create({
-  eventName: 'Extend 2016',
+  eventName: 'Extend Conference',
   // eventRegistrationLink: , //link to registrationfor event
   eventLocation: 'Paris',
   eventContinent: 'Europe',
@@ -156,7 +156,7 @@ var Event = module.exports = sql.define('Event', {
   // homepageBulletTwo: Sql.STRING,
   // homepageBulletThree: Sql.STRING,
   // eventSponsorsTab: Sql.TEXT, //copy for Sponsors Tab
-  eventOverviewTab: '<h2>Extend 2016</h2><h4 class="center">Paris, France - May 11 - 12, 2016</h4><p>Microsoft Office and Data Platform Interoperability teams are pleased to announce Extend 2016 in Paris from May 11-12, 2016. Microsoft and <a href="https://medium.com/la-reserve/the-startup-that-puts-the-swag-in-the-conference-1a6c171933bf#.ip9hmrsib" target="_blank">La Reserve</a>, the startup that puts the swag in the conference, are working together to create Paris Extend 2016. Extend 2016 will decide topics beforehand but let the public decide on the content. La Reserve lets attendees choose the content for an, "experience similar to what one might call crowd conferencing; a participative conference of a new kind where the public is the key player" (Julien Kerihuel, La Reserve founder). </p><p>Attendees can look forward to presentations from subject matter experts, interactive developer sessions and one-on-one collaborations with Microsoft engineers. Extend 2016 will include evening mixers and social hour with other attendees and Microsoft engineers. More details and event registration will be announced in February 2016. If you would like to reserve your seat early, please email <a href="mailto:plugfests@microsoft.com">plugfests@microsoft.com</a>. </p><p>*Content is subject to change </p><br />', //copy for Overview Tab
+  eventOverviewTab: '<h2>Extend Conference</h2><h4 class="center">Paris, France - May 11 - 12, 2016</h4><p>Microsoft Office and Data Platform Interoperability teams are pleased to announce Extend Conference in Paris from May 11-12, 2016. Microsoft and <a href="https://medium.com/la-reserve/the-startup-that-puts-the-swag-in-the-conference-1a6c171933bf#.ip9hmrsib" target="_blank">La Reserve</a>, the startup that puts the swag in the conference, are working together to create Paris Extend Conference. Extend Conference will decide topics beforehand but let the public decide on the content. La Reserve lets attendees choose the content for an, "experience similar to what one might call crowd conferencing; a participative conference of a new kind where the public is the key player" (Julien Kerihuel, La Reserve founder). </p><p>Attendees can look forward to presentations from subject matter experts, interactive developer sessions and one-on-one collaborations with Microsoft engineers. Extend Conference will include evening mixers and social hour with other attendees and Microsoft engineers. More details and event registration will be announced in February 2016. If you would like to reserve your seat early, please email <a href="mailto:plugfests@microsoft.com">plugfests@microsoft.com</a>. </p><p>*Content is subject to change </p><br />', //copy for Overview Tab
   // travelTabMap: Sql.TEXT, //Bing Imap of location
   // travelTabHeaderImage: Sql.TEXT, //image to appear above travel tabs
   // travelVenueTab: Sql.TEXT, //copy for travel venue sub tab
@@ -170,7 +170,7 @@ var Event = module.exports = sql.define('Event', {
 })
 .then(function () {
   return Event.create({
-    eventName: 'Taipei Interop Dev Days 2016',
+    eventName: 'DevDays Asia 2016 @Taipei',
     eventStartDate: new Date('2016-04-19:08:00:00'),
     eventEndDate: new Date('2016-04-21:23:00:00'),
     eventLocation: 'Taipei',
@@ -185,7 +185,7 @@ var Event = module.exports = sql.define('Event', {
     homepageBulletTwo: 'PowerBI',
     homepageBulletThree: 'Big Data Stores, and Data Analytics',
     // eventSponsorsTab: Sql.TEXT, //copy for Sponsors Tab
-    eventOverviewTab: '<h2>Taipei Interop Dev Days 2016</h2><h4 class="center">Taipei, Taiwan - April 19 - 21, 2016</h4><p>Join Microsoft Office and Data Platform Interoperability teams April 19-21, 2016 for their 4th event in Taipei, Taiwan. Taipei 2016 will focus on Microsoft Office 365 developer opportunities, Data Platform, and interoperability.</p><br /><ul><li>Discover the potential of connecting to Office 365 services by building and selling apps that extend the most widely used productivity platform on the planet.</li><li>Learn what’s new in Data Platform including SQL Server, PowerBI, Cortana Analytics, machine learning, big data stores, and data analytics.</li><li>Experience Microsoft’s commitment to interoperability while learning about protocol documentation, available protocol tools, and customer engagement opportunities that are available to implementers and developers looking to connect with Microsoft clients and servers.</li></ul><br /><p>Attendees can look forward to presentations from subject matter experts, interactive developer sessions, hackathons, and one-on-one collaboration with Microsoft engineers. Taipei 2016 will be launched in January 2016 when more details and event registration will be released. If you would like to reserve your seat early, please email <a href="mailto:plugfests@microsoft.com" >plugfests@microsoft.com</a>.</p><br /><p>*Content is subject to change</p>', //copy for Overview Tab
+    eventOverviewTab: '<h2>DevDays Asia 2016 @Taipei</h2><h4 class="center">Taipei, Taiwan - April 19 - 21, 2016</h4><p>Join Microsoft Office and Data Platform Interoperability teams April 19-21, 2016 for their 4th event in Taipei, Taiwan. Taipei 2016 will focus on Microsoft Office 365 developer opportunities, Data Platform, and interoperability.</p><br /><ul><li>Discover the potential of connecting to Office 365 services by building and selling apps that extend the most widely used productivity platform on the planet.</li><li>Learn what’s new in Data Platform including SQL Server, PowerBI, Cortana Analytics, machine learning, big data stores, and data analytics.</li><li>Experience Microsoft’s commitment to interoperability while learning about protocol documentation, available protocol tools, and customer engagement opportunities that are available to implementers and developers looking to connect with Microsoft clients and servers.</li></ul><br /><p>Attendees can look forward to presentations from subject matter experts, interactive developer sessions, hackathons, and one-on-one collaboration with Microsoft engineers. Taipei 2016 will be launched in January 2016 when more details and event registration will be released. If you would like to reserve your seat early, please email <a href="mailto:plugfests@microsoft.com" >plugfests@microsoft.com</a>.</p><br /><p>*Content is subject to change</p>', //copy for Overview Tab
     // travelTabMap: Sql.TEXT, //Bing Imap of location
     // travelTabHeaderImage: Sql.TEXT, //image to appear above travel tabs
     // travelVenueTab: Sql.TEXT, //copy for travel venue sub tab
@@ -199,7 +199,7 @@ var Event = module.exports = sql.define('Event', {
 })
 .then(function () {
   return Event.create({
-  eventName: 'Redmond Plugfest 2016',
+  eventName: 'Redmond Protocols Plugfest',
   // eventRegistrationLink: Sql.STRING, //link to registrationfor event
   eventLocation: 'Redmond',
   eventContinent: 'North America',
@@ -214,7 +214,7 @@ var Event = module.exports = sql.define('Event', {
   // homepageBulletTwo: Sql.STRING,
   // homepageBulletThree: Sql.STRING,
   // eventSponsorsTab: Sql.TEXT, //copy for Sponsors Tab
-  eventOverviewTab: '<h2>Redmond Plugfest 2016</h2><h4 class="center">Redmond, WA USA - June 13 - 17, 2016</h4><p>The Microsoft Interoperability team is hosting the 7th annual Redmond Plugfest from June 13-17, 2016. The 2016 Redmond Plugfest is a traditional interoperability event and will feature content about the very latest interop developments from Office, Windows, and Cloud + Enterprise. </p><p>Attendees of the Redmond Plugfest can participate in protocol testing, engage directly with the Microsoft Interoperability support engineers and network with other professionals from all over the world. Microsoft product engineers will be on site throughout the event to discuss interoperability topics and to help answer questions. If you would like to reserve your seat early, please email <a href="mailto:plugfests@microsoft.com">plugfests@microsoft.com</a>. </p><p>*Content is subject to change </p>', //copy for Overview Tab
+  eventOverviewTab: '<h2>Redmond Protocols Plugfest</h2><h4 class="center">Redmond, WA USA - June 13 - 17, 2016</h4><p>The Microsoft Interoperability team is hosting the 7th annual Redmond Plugfest from June 13-17, 2016. The 2016 Redmond Plugfest is a traditional interoperability event and will feature content about the very latest interop developments from Office, Windows, and Cloud + Enterprise. </p><p>Attendees of the Redmond Plugfest can participate in protocol testing, engage directly with the Microsoft Interoperability support engineers and network with other professionals from all over the world. Microsoft product engineers will be on site throughout the event to discuss interoperability topics and to help answer questions. If you would like to reserve your seat early, please email <a href="mailto:plugfests@microsoft.com">plugfests@microsoft.com</a>. </p><p>*Content is subject to change </p>', //copy for Overview Tab
   // travelTabMap: Sql.TEXT, //Bing Imap of location
   // travelTabHeaderImage: Sql.TEXT, //image to appear above travel tabs
   // travelVenueTab: Sql.TEXT, //copy for travel venue sub tab
@@ -253,4 +253,5 @@ var Event = module.exports = sql.define('Event', {
   travelEatDrinkTab: '<h2>Eat & Drink</h2><p>Do cupidatat aliquip ribeye meatball beef ribs. Cillum meatloaf beef, filet mignon ham hock lorem culpa. Sirloin laboris dolore shank, pork belly aliquip cillum. Excepteur lorem beef jerky doner.</p>', //copy for travel eat and drink sub tab
   eventMediaTab: 'Produced since 1998, Storage Developer Conference (SDC) 2015 is scheduled for September 21-24, 2015 in Santa Clara, CA, and is again expected to attract more than 400 developers, technical professionals, and engineers from the worldwide storage community. Attend and learn about leading storage development topics including File Systems, Software Defined Storage, SMB, Security, Performance, and more.' //copy for media tab
   });
-});*/
+});
+*/
