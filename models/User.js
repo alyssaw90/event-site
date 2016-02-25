@@ -29,7 +29,7 @@ var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.
 var EncryptedField = require('sequelize-encrypted');
 
 // secret key should be 32 bytes hex encoded (64 characters)
-var key = process.env.SECRET_KEY_HERE;
+var key = process.env.SECRET_KEY;
 
 var enc_fields = EncryptedField(Sql, key);
 
