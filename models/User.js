@@ -1,6 +1,8 @@
 'use Strict';
 
 var clc = require('cli-color');
+var bcrypt = require('bcrypt-nodejs');
+var eat = require('eat');
 
 var Sql = require('sequelize');
 var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
@@ -26,17 +28,41 @@ var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.
   }
 });*/
 
-var EncryptedField = require('sequelize-encrypted');
+// var EncryptedField = require('sequelize-encrypted');
 
 // secret key should be 32 bytes hex encoded (64 characters)
-var key = process.env.SECRET_KEY;
+// var key = process.env.SECRET_KEY;
 
-var enc_fields = EncryptedField(Sql, key);
+// var enc_fields = EncryptedField(Sql, key);
 
 var User = module.exports = sql.define('User', {
   userName: Sql.STRING,
-  password: enc_fields.vault('password'),
-  email: Sql.STRING
+  // password: enc_fields.vault('password'),
+  password: {
+    type: Sql.TEXT,
+    set: function() {
+       this.setDataValue('password', bcrypt.hashSync(this.password, bcrypt.genSaltSync(8), null));
+    } 
+  },
+  email: Sql.STRING,
+  // paranoid: true,
+},
+{
+  getterMethods: {
+    setPassword: function(password) {
+      return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+    }
+  },
+  instanceMethods: {
+    verifyPassword: function(password) {
+      return bcrypt.compareSync(password, this.password); 
+    },
+    generateToken: function(secret, callback) {
+      eat.encode({id: this.id}, secret, callback);
+    }
+    
+  }
+
 });
 
 /*var user = User.build();
@@ -57,4 +83,13 @@ User.sync({force: true})
 })
 .then(function () {
   console.log(clc.green('User created'));
+  User.findAll({
+  where: {
+    userName: 'TestUser'
+  }
+  })
+  .success(function(user) {
+    user.verifyPassword('password');
+    console.log(clc.blue('   ::::::    '), user);
+  })
 })
