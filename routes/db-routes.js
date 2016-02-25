@@ -14,6 +14,7 @@ var SurveyQuestion = require('../models/SurveyQuestion');
 var SurveyAnswer = require('../models/SurveyAnswer');
 // var User = require('../models/User');
 var EventImage = require('../models/EventImage');
+var User = require('../models/User');
 var fs = require('fs');
 var clc = require('cli-color');
 var multer = require('multer');
