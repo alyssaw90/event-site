@@ -45,20 +45,26 @@ var User = module.exports = sql.define('User', {
     } 
   },
   email: Sql.STRING,
-  // paranoid: true,
+  get: function(password) {
+    // return this.getDataValue('password');
+    return this.getDataValue('password');
+    // return bcrypt.compareSync(password, this.password);
+  }
 },
 {
-  getterMethods: {
+  /*getterMethods: {
     setPassword: function(password) {
       return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
     }
-  },
-  instanceMethods: {
+  },*/
+  // paranoid: true,
+  classMethods: {
     verifyPassword: function(password) {
-      return bcrypt.compareSync(password, this.password); 
+      // return bcrypt.compareSync(password, this.password);
+      return this;
     },
     generateToken: function(secret, callback) {
-      eat.encode({id: this.id}, secret, callback);
+      return eat.encode({id: this.id}, secret, callback);
     }
     
   }
@@ -83,13 +89,13 @@ User.sync({force: true})
 })
 .then(function () {
   console.log(clc.green('User created'));
-  User.findAll({
+  return User.findAll({
   where: {
     userName: 'TestUser'
   }
   })
-  .success(function(user) {
-    user.verifyPassword('password');
-    console.log(clc.blue('   ::::::    '), user);
+  .then(function(user) {
+    var pw = user[0].get('password');
+    console.log(clc.yellow('   ::::::    '), pw);
   })
 })
