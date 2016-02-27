@@ -105,7 +105,7 @@ var Contact = module.exports = sql.define('Contact', {
     firstName: 'Kwabena (K.B.)',
     lastName: 'Badu-Antwi',
     newsletterSubscription: true,
-    contactDescription: 'Kwabena (K.B.) Badu-Antwi is a Senior Program Manager at Microsoft, in the Cloud and Enterprise Division. A native of Ghana, KB has been with Microsoft 8 years, and he leads the interoperability program for SQL Server and other data technologies in the Data Platform Group (DPG). He drives the delivery of interoperability guidance, events, and tools across all DPG protocols including OData. Recently, his team released an online protocol validation tool for OData. <br /><br />Prior to joining the SQL Server, KB served in the eventRole of Program Manager on the Xbox Platform team. He graduated from Seattle Pacific University with a Bachelor’s of Science degree in Computer Science and a Master’s of Science degree in Information System Management.',
+    contactDescription: 'KB Badu-Antwi is Senior Program Manager responsible for the interoperability initiative spanning the entire Data Group (including SQL Server). He has been at Microsoft for over 10 years and currently leads cross-functional domestic and international teams responsible for defining, delivering, and monitoring engineering/antitrust compliance and interoperability requirements. <br />Prior to joining the Data Group, KB served in the of Program Manager on the Xbox Platform team. He graduated from Seattle Pacific University with a Bachelor’s of Science degree in Computer Science and a Master’s of Science degree in Information System Management.',
     eventRole: 'speaker',
     msTeamMember: true,
     msTeamTitle: 'Senior Program Manager, Cloud and Enterprise Division',
