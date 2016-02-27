@@ -82,7 +82,7 @@ var Event = module.exports = sql.define('Event', {
 
 // create table if it doesn't already exist ```({force: true})``` will cause the table to be deleted and created regardless of if it exists already
 
-Event.sync({force: true})
+/*Event.sync({force: true})
 .then(function () {
   return Event.create({
   eventName: 'Storage Developer Conference 2',
@@ -226,4 +226,4 @@ Event.sync({force: true})
   eventTechnologiesTab: '<ul><li><h4>What\'s New in Office </h4></l1><li><h4>Open Specifications + Interoperability </h4></l1><li><h4>Protocol Test Suites </h4></l1><li><h4>Mail Sim </h4></l1><li><h4>Microsoft Big Data </h4></l1><li><h4>Office Parsers </h4></l1><li><h4>Microsoft Cloud Foundations </h4></l1><li><h4>OData </h4></l1><li><h4>Exchange </h4></l1><li><h4>SharePoint </h4></l1><li><h4>File Formats </h4></l1><li><h4>Mail, Calendar + Contacts </h4></l1><li><h4>WOPI </h4></l1><li><h4>HyperV SMB3 Storage </h4></l1></ul>'
   });
 });
-
+*/
