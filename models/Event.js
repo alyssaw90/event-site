@@ -3,7 +3,7 @@
 var fs = require('fs');
 var path = require('path');
 var Sql = require('sequelize');
-var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
+/*var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
   host: process.env.DB_LOCAL_HOST,
   dialect: 'mssql',
 
@@ -12,8 +12,8 @@ var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.
     min: 0,
     idle: 10000
   }
-});
-/*var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+});*/
+var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
   host: process.env.DB_HOST,
   dialect: 'mssql',
   pool: {
@@ -24,7 +24,7 @@ var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.
   dialectOptions: {
     encrypt: true
   }
-});*/
+});
 
 var randomTabImages = ['alt-slide-1.jpg', 'alt-slide-2.jpg', 'alt-slide-3.jpg', 'alt-slide-4.jpg', 'alt-slide-5.jpg', 'alt-slide-6.jpg'];
 // var randomTabImages = ['alt-slide-1-large.jpg', 'alt-slide-2-large.jpg', 'alt-slide-3-large.jpg', 'alt-slide-4-large.jpg', 'alt-slide-5-large.jpg', 'alt-slide-6-large.jpg', 'alt-slide-7-large.jpg', 'alt-slide-8-large.jpg'];
@@ -82,7 +82,7 @@ var Event = module.exports = sql.define('Event', {
 
 // create table if it doesn't already exist ```({force: true})``` will cause the table to be deleted and created regardless of if it exists already
 
-/*Event.sync({force: true})
+Event.sync({force: true})
 .then(function () {
   return Event.create({
   eventName: 'Storage Developer Conference 2',
@@ -226,4 +226,4 @@ var Event = module.exports = sql.define('Event', {
   eventTechnologiesTab: '<ul><li><h4>What\'s New in Office </h4></l1><li><h4>Open Specifications + Interoperability </h4></l1><li><h4>Protocol Test Suites </h4></l1><li><h4>Mail Sim </h4></l1><li><h4>Microsoft Big Data </h4></l1><li><h4>Office Parsers </h4></l1><li><h4>Microsoft Cloud Foundations </h4></l1><li><h4>OData </h4></l1><li><h4>Exchange </h4></l1><li><h4>SharePoint </h4></l1><li><h4>File Formats </h4></l1><li><h4>Mail, Calendar + Contacts </h4></l1><li><h4>WOPI </h4></l1><li><h4>HyperV SMB3 Storage </h4></l1></ul>'
   });
 });
-*/
+
