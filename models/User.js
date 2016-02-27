@@ -42,29 +42,36 @@ var User = module.exports = sql.define('User', {
     type: Sql.TEXT,
     set: function() {
        this.setDataValue('password', bcrypt.hashSync(this.password, bcrypt.genSaltSync(8), null));
+      console.log(clc.cyan('   :::::   '), this.dataValues.password);
+    },
+    get: function(password) {
+      // return this.getDataValue('userName');
+      return this;
+      // return bcrypt.compareSync(password, this.password);
     } 
   },
   email: Sql.STRING,
-  get: function(password) {
-    // return this.getDataValue('password');
-    return this.getDataValue('password');
-    // return bcrypt.compareSync(password, this.password);
-  }
 },
 {
-  /*getterMethods: {
-    setPassword: function(password) {
-      return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-    }
-  },*/
   // paranoid: true,
-  classMethods: {
-    verifyPassword: function(password) {
-      // return bcrypt.compareSync(password, this.password);
-      return this;
+  instanceMethods: {
+    verifyPassword: function(password, userPassword) {
+     /* User.sync()
+      .then(function() {
+        return 'hola';
+      })*/
+      // return 'hola    ' + this;
+      return bcrypt.compareSync(password, userPassword);
+      // return this.getDataValue('userName');
+      // return 'password';
     },
     generateToken: function(secret, callback) {
       return eat.encode({id: this.id}, secret, callback);
+    },
+    testFunc: function() {
+      var hash = bcrypt.hashSync("bacon");
+ 
+      bcrypt.compareSync("bacon", hash); // true
     }
     
   }
@@ -77,7 +84,7 @@ user.private_1 = 'test';*/
 //User.sync({force: false});
 
 User.sync({force: true})
-.then(function () {
+.then(function() {
   console.log(clc.blue('::::::::     '), sql.databaseVersion());
 })
 .then(function () {
@@ -87,15 +94,19 @@ User.sync({force: true})
   email: 'email@example.com'  
   });
 })
-.then(function () {
+.then(function() {
   console.log(clc.green('User created'));
-  return User.findAll({
+  return User.findOne({
   where: {
     userName: 'TestUser'
   }
   })
   .then(function(user) {
-    var pw = user[0].get('password');
-    console.log(clc.yellow('   ::::::    '), pw);
+    var pw =    user.$modelOptions.instanceMethods.verifyPassword('password', user.dataValues.password);
+    var testF = user.$modelOptions.instanceMethods.testFunc;
+    // var gh = user[0].dataValues.password;
+    console.log(clc.yellow('   ::::::    '), user.dataValues.password);
+    // console.log(bcrypt.compareSync("bacon", hash)); // true
   })
 })
+    // var hash = bcrypt.hashSync("bacon");
