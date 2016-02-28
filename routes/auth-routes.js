@@ -2,6 +2,7 @@
 
 var User = require('../models/User');
 var bodyparser = require('body-parser');
+var clc = require('cli-color');
 var Sql = require('sequelize');
 var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
   host: process.env.DB_LOCAL_HOST,

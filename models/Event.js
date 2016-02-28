@@ -3,7 +3,7 @@
 var fs = require('fs');
 var path = require('path');
 var Sql = require('sequelize');
-/*var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
+var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
   host: process.env.DB_LOCAL_HOST,
   dialect: 'mssql',
 
@@ -12,8 +12,8 @@ var Sql = require('sequelize');
     min: 0,
     idle: 10000
   }
-});*/
-var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+});
+/*var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
   host: process.env.DB_HOST,
   dialect: 'mssql',
   pool: {
@@ -24,7 +24,7 @@ var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS,
   dialectOptions: {
     encrypt: true
   }
-});
+});*/
 
 var randomTabImages = ['alt-slide-1.jpg', 'alt-slide-2.jpg', 'alt-slide-3.jpg', 'alt-slide-4.jpg', 'alt-slide-5.jpg', 'alt-slide-6.jpg'];
 // var randomTabImages = ['alt-slide-1-large.jpg', 'alt-slide-2-large.jpg', 'alt-slide-3-large.jpg', 'alt-slide-4-large.jpg', 'alt-slide-5-large.jpg', 'alt-slide-6-large.jpg', 'alt-slide-7-large.jpg', 'alt-slide-8-large.jpg'];
