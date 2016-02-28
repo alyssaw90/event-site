@@ -57,6 +57,7 @@ module.exports = function(router) {
             User.findOne({where: {email: req.body.email}})
             .then(function(newUser) {
               var hashPass = newUser.$modelOptions.instanceMethods.generateHash(req.body.password);
+              delete req.body.password;
               newUser.update({password: hashPass});
               console.log(clc.cyan('::::::   '), newUser);
   					  res.status(200).json({msg: 'user created'});

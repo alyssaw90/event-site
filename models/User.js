@@ -58,17 +58,17 @@ var User = module.exports = sql.define('User', {
 
 });
 
-User.sync({force: false})
+User.sync({force: true})
 .then(function() {
   console.log(clc.blue('::::::::     '), sql.databaseVersion());
 })
-/*.then(function () {
+.then(function () {
   return User.create({
   userName: 'TestUser',
-  password: 'password',
-  email: 'email@example.com'  
+  password: bcrypt.hashSync('password', bcrypt.genSaltSync(8), null),
+  email: 'test@example.com'  
   });
-})*/
+})
 .then(function() {
   console.log(clc.green('User created'));
   return User.findOne({
