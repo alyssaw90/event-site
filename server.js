@@ -16,7 +16,7 @@ var authRouter = express.Router();
 
 require('./lib/passport_strat')(passport);
 
-// require('./routes/db-routes')(dbRouter);
+require('./routes/db-routes')(dbRouter);
 require('./routes/auth-routes')(authRouter, passport);
 
 
@@ -25,7 +25,7 @@ console.log(clc.magenta('process.env.SECRET_KEY ::::::::::::::  '), process.env.
 app.use(express.static(__dirname + '/'));
 
 app.use('/', dbRouter);
-app.use('/', authRouter);
+app.use('/auth/', authRouter);
 
 app.listen(port, function () {
 	console.log(clc.cyanBright('server started on port ' + port + ' at ' + time));

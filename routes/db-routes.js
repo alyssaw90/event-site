@@ -488,7 +488,7 @@ router.route('/allevents/:eventId')
         } 
         if (testArr.indexOf(req.params.eventName) === -1) {
           res.status(404);
-          res.send(path.join(__dirname, '../views/thank-you.html')); //I need to make a 404 page
+          // res.send(path.join(__dirname, '../views/thank-you.html')); //I need to make a 404 page
         }
       });
     });

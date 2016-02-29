@@ -11,19 +11,19 @@
   "license": "MS-PL",
   "dependencies": {
     "bcrypt-nodejs": "latest",
-    "body-parser": "^1.14.1",
+    "body-parser": "^1.15.0",
     "dotenv": "^1.2.0",
     "eat": "^0.1.1",
-    "express": "^4.13.3",
+    "express": "^4.13.4",
     "flash": "^1.1.0",
-    "jquery": "^2.1.4",
+    "jquery": "^2.2.1",
     "multer": "^1.1.0",
     "passport": "^0.3.2",
     "passport-http": "^0.3.0",
-    "sequelize": "^3.11.0",
+    "sequelize": "^3.19.3",
     "sequelize-encrypted": "^0.1.0",
     "tds": "^0.1.0",
-    "tedious": "^1.13.1"
+    "tedious": "^1.13.2"
   },
   "devDependencies": {
     "chai": "^3.2.0",

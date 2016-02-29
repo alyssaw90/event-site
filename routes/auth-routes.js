@@ -65,23 +65,25 @@ module.exports = function(router, passport) {
     })
 	});
 
-  /*router.route('/sign-in', passport.authenticate('basic', {session: false}))
-  .get(function(req, res) {
-    var theUser = req.user.email;
-    res.json({msg: 'authenticated as ', theUser});
-  })*/
-  router.post('/sign-in', passport.authenticate('basic', {session: false}, function(req, res) {
-    console.log(clc.red(':::::    '), req);
-    var theUser = req.user.email;
-    res.json({msg: 'authenticated as ', theUser});
-  }))
-
-  router.post('/login', 
-  passport.authenticate('basic', {session: false}),
-  function(req, res) {
-    // var theUser = req.user.email;
-    console.log(clc.red('::::::   '), req)
-    res.json({msg: 'authenticated as '}).redirect('/');
+  router.get('/login', function(req, res, next) {
+    passport.authenticate('basic', {session: false}, function(err, user, info) {
+      //if user is found, but there is some other error
+      if (err && user) { 
+        console.log(clc.redBright('Login error: '), err);
+        res.json({msg: 'internal server error'});
+      }
+      // if user is not found due to wrong username or password
+      if (err && !user) {
+        console.log(clc.redBright('Login error: '), err);
+        res.json({msg: 'invalid username or password'});
+      }
+      //if the user is found and there is no error
+      if (user && !err) {
+      var userEmail = user.dataValues.email;
+        res.json({msg: 'authenticated as ', userEmail});
+        
+      }
+    })(req, res, next);
   });
 
 }
