@@ -46,27 +46,23 @@ module.exports = function(router) {
 	.post(function(req, res) {
 		sql.sync()
 		.then(function() {
-			User.find({where: {email: req.body.email}})
-			.then(function(user) {
-				if (user) {
-					res.status(419).json({msg: 'email address alread in use'});
-				}
-				if (!user) {
-					User.create({userName: req.body.userName, email: req.body.email})
-          .then(function() {
-            User.findOne({where: {email: req.body.email}})
-            .then(function(newUser) {
-              var hashPass = newUser.$modelOptions.instanceMethods.generateHash(req.body.password);
-              delete req.body.password;
-              newUser.update({password: hashPass});
-              console.log(clc.cyan('::::::   '), newUser);
-  					  res.status(200).json({msg: 'user created'});
-              
-            })
-          })
-				}
-			});
-		});
+			return User.find({where: {email: req.body.email}})
+    })
+		.then(function(user) {
+			if (user) {
+				res.status(419).json({msg: 'email address alread in use'});
+			}
+			if (!user) {
+				return User.create({userName: req.body.userName, email: req.body.email})
+      }
+    })
+    .then(function(newUser) {
+      var hashPass = newUser.$modelOptions.instanceMethods.generateHash(req.body.password);
+      delete req.body.password;
+      newUser.update({password: hashPass});
+      console.log(newUser);
+		  res.status(200).json({msg: 'user created'});             
+    })
 	});
 
 }
