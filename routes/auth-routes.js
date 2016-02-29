@@ -36,7 +36,7 @@ sql.authenticate()
     }
   });
 
-module.exports = function(router) {
+module.exports = function(router, passport) {
 	router.use(bodyparser.json());
   router.use(bodyparser.urlencoded({
     extended: true
@@ -64,5 +64,24 @@ module.exports = function(router) {
 		  res.status(200).json({msg: 'user created'});             
     })
 	});
+
+  /*router.route('/sign-in', passport.authenticate('basic', {session: false}))
+  .get(function(req, res) {
+    var theUser = req.user.email;
+    res.json({msg: 'authenticated as ', theUser});
+  })*/
+  router.post('/sign-in', passport.authenticate('basic', {session: false}, function(req, res) {
+    console.log(clc.red(':::::    '), req);
+    var theUser = req.user.email;
+    res.json({msg: 'authenticated as ', theUser});
+  }))
+
+  router.post('/login', 
+  passport.authenticate('basic', {session: false}),
+  function(req, res) {
+    // var theUser = req.user.email;
+    console.log(clc.red('::::::   '), req)
+    res.json({msg: 'authenticated as '}).redirect('/');
+  });
 
 }
