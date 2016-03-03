@@ -40,6 +40,7 @@ var User = module.exports = sql.define('User', {
   // password: enc_fields.vault('password'),
   password: Sql.STRING,
   email: Sql.STRING,
+  randomString: Sql.STRING
 },
 {
   // paranoid: true,
@@ -47,8 +48,9 @@ var User = module.exports = sql.define('User', {
     verifyPassword: function(password, userPassword) {
       return bcrypt.compareSync(password, userPassword);
     },
-    generateToken: function(secret, /*randomString, */callback) {
-      return eat.encode(/*randomString, */secret, callback);
+    generateToken: function(userString, secret, callback) {
+      console.log(clc.green('::::::::   '), userString);
+      return eat.encode(userString, secret, callback);
     },
     generateHash: function(password) {
       return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);

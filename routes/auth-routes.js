@@ -69,12 +69,12 @@ module.exports = function(router, passport) {
     })
     .then(function(newUser) {
       var hashPass = newUser.$modelOptions.instanceMethods.generateHash(req.body.password);
+      var ranJSON = {randomString: newUser.dataValues.randomString};
       delete req.body.password;
       newUser.update({password: hashPass});
-      console.log(newUser);
 		  // res.status(200).json({msg: 'user created'});
-      newUser.$modelOptions.instanceMethods.generateToken(process.env.SECRET_KEY, function(err, token) {
-        // console.log(clc.cyanBright('::::::::   '), process.env.SECRET_KEY, makeRandomString())
+      console.log(clc.cyanBright('::::::::   '), newUser.dataValues.randomString);
+      newUser.$modelOptions.instanceMethods.generateToken(ranJSON, process.env.SECRET_KEY, function(err, token) {
         if (err) {
           console.log(err);
           return res.status(500).json({msg: 'error generating token'});
@@ -98,10 +98,11 @@ module.exports = function(router, passport) {
       }
       //if the user is found and there is no error
       if (user && !err) {
-      var userEmail = user.dataValues.email;
+        var userEmail = user.dataValues.email;
+        var ranJSON = {randomString: user.dataValues.randomString};
+        console.log(clc.red('::::::    '), user.$modelOptions.instanceMethods.generateToken);
         // res.json({msg: 'authenticated as ', userEmail});
-        user.$modelOptions.instanceMethods.generateToken(user.dataValues.randomString, function(err, token) {
-          console.log(clc.yellow(':::::   '), process.env.SECRET_KEY);
+        user.$modelOptions.instanceMethods.generateToken(ranJSON, process.env.SECRET_KEY, function(err, token) {
           if (err) {
             console.log(err);
             return res.status(500).json({msg: 'error generating token'});
