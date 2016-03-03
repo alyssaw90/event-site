@@ -12,10 +12,10 @@ require('../server.js');
 
 describe('Test /showfullteam route', function () {
 	it('should load all MS contacts from /showfullteam', function (done) {
-		chai.request('localhost:3000')
+		chai.request('/')
 		.get('/showfullteam')
 		.end(function (err, res) {
-			console.log(' ::::::   ', process.env);
+			// console.log(' ::::::   ', process.env);
 			expect(err).to.eql(null);
 			for (var i = 0; i < res.body.length; i++) {
 				expect(res.body[i]).to.include.keys('firstName', 'lastName', 'email', 'newsletterSubscription', 'contactDescription', 'msTeamMember', 'msTeamTitle', 'showOnHomePage', 'headShot', 'company', 'address', 'country', 'interestId', 'allowNotifications', 'allowPersonalInfoSharing');
