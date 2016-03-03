@@ -79,7 +79,7 @@ var Contact = module.exports = sql.define('Contact', {
 // create table if it doesn't already exist ```({force: true})``` will cause the table to be deleted and created regardless of if it exists already
 
 // Table created
-/*Contact.sync({force: true})
+Contact.sync({force: true})
 .then(function () {
   console.log(sql.databaseVersion());
 })
@@ -515,4 +515,21 @@ var Contact = module.exports = sql.define('Contact', {
     headShot: '',
     eventRole: 'speaker'
   });
-});*/
+})
+.then(function() {
+  return Contact.create({
+  firstName: 'Jingyu',
+  lastName: 'Shao',
+  newsletterSubscription: true,
+  contactDescription: 'Jingyu Shao is a Software Engineer in the Microsoft Office Extensibility team. She works as web developer for Office developer portal: dev.office.com and Microsoft Graph portal: graph.microsoft.io. Jingyu also has developed several Office Add-ins with the new Office JavaScript API. She also drives development of interoperability tools, like Fiddler Inspectors to parse Exchange, SharePoint and WOPI online traffic. <br /><br />Jingyu graduated from Zhejiang University China with a master degree in Electronic Information Engineering.',
+  eventRole: 'speaker',
+  msTeamMember: true,
+  msTeamTitle: 'Software Engineer, Office Extensibility Team',
+  showOnHomePage: false,
+  headShot: 'jingyu-shao-headshot.jpg',
+  company: 'Microsoft',
+  country: 'USA',
+  allowNotifications: true,
+  allowPersonalInfoSharing: false
+  })
+})

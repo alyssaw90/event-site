@@ -22,7 +22,6 @@
     "passport-http": "^0.3.0",
     "sequelize": "^3.19.3",
     "sequelize-encrypted": "^0.1.0",
-    "tds": "^0.1.0",
     "tedious": "^1.13.2"
   },
   "devDependencies": {

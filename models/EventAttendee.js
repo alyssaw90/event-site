@@ -34,7 +34,7 @@ var EventAttendee = module.exports = sql.define('EventAttendee', {
 
 // create table if it doesn't already exist ```({force: true})``` will cause the table to be deleted and created regardless of if it exists already
 
-/*EventAttendee.sync({force: true})
+EventAttendee.sync({force: true})
   .then(function () {
     return EventAttendee.create({
       eventId: 1,
@@ -213,7 +213,14 @@ var EventAttendee = module.exports = sql.define('EventAttendee', {
   .then(function () {
     return EventAttendee.create({
       eventId: 3,
-      contactId: 9,
+      contactId: 29,
+      eventAttendeeRole: 'speaker'
+    });
+  })
+  .then(function () {
+    return EventAttendee.create({
+      eventId: 3,
+      contactId: 19,
       eventAttendeeRole: 'speaker'
     });
   })
@@ -321,4 +328,4 @@ var EventAttendee = module.exports = sql.define('EventAttendee', {
       contactId: 19,
       eventAttendeeRole: 'speaker'
     });
-  })*/
+  })
