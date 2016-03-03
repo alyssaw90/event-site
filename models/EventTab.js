@@ -33,7 +33,7 @@ var EventTab = module.exports = sql.define('EventTab', {
   tabContent: Sql.TEXT
 })
 
-EventTab.sync({force: true})
+/*EventTab.sync({force: true})
 .then(function() {
   return EventTab.create({
     eventId: 1,
@@ -113,4 +113,4 @@ EventTab.sync({force: true})
     tabTitle: 'Venue',
     tabContent: 'Microsoft Redmond Campus'
   })
-})
+})*/
