@@ -47,8 +47,8 @@ var User = module.exports = sql.define('User', {
     verifyPassword: function(password, userPassword) {
       return bcrypt.compareSync(password, userPassword);
     },
-    generateToken: function(secret, callback) {
-      return eat.encode({id: this.id}, secret, callback);
+    generateToken: function(secret, /*randomString, */callback) {
+      return eat.encode(/*randomString, */secret, callback);
     },
     generateHash: function(password) {
       return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
