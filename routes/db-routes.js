@@ -12,7 +12,6 @@ var EventSchedule = require('../models/EventSchedule');
 var EventAttendee = require('../models/EventAttendee');
 var SurveyQuestion = require('../models/SurveyQuestion');
 var SurveyAnswer = require('../models/SurveyAnswer');
-var Event2 = require('../models/Event2');
 var EventTab = require('../models/EventTab');
 // var User = require('../models/User');
 var EventImage = require('../models/EventImage');
@@ -29,7 +28,7 @@ var upload = multer({ storage: storage });
 var bodyparser = require('body-parser');
 var path = require('path');
 var Sql = require('sequelize');
-var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
+/*var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
   host: process.env.DB_LOCAL_HOST,
   dialect: 'mssql',
 
@@ -38,8 +37,8 @@ var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.
     min: 0,
     idle: 10000
   }
-});
-/*var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+});*/
+var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
     host: process.env.DB_HOST,
   dialect: 'mssql',
   pool: {
@@ -50,7 +49,7 @@ var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.
   dialectOptions: {
     encrypt: true
   }
-});*/
+});
 
 sql.authenticate()
   .then(function (err) {
@@ -398,7 +397,7 @@ router.route('/future-events')
   .get(function (req, res) {
     sql.sync()
     .then(function () {
-      Event2.findAll()
+      Event.findAll()
       .then(function (data) {
         data.sort(function (a, b) {
           a = new Date(a.eventStartDate);
