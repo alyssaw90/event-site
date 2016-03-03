@@ -71,7 +71,7 @@
 		}
 
 		$.get('/events', function (data) {
-		console.log(data[0]);
+		// console.log(data[0]);
 			var startDate = new Date(data[0].eventStartDate);
 			var endDate = new Date(data[0].eventEndDate);
 			var upcomingPurpleMenu = '<div class="col_12 purpleEventMenu">';

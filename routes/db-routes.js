@@ -12,6 +12,8 @@ var EventSchedule = require('../models/EventSchedule');
 var EventAttendee = require('../models/EventAttendee');
 var SurveyQuestion = require('../models/SurveyQuestion');
 var SurveyAnswer = require('../models/SurveyAnswer');
+var Event2 = require('../models/Event2');
+var EventTab = require('../models/EventTab');
 // var User = require('../models/User');
 var EventImage = require('../models/EventImage');
 var fs = require('fs');
@@ -27,7 +29,7 @@ var upload = multer({ storage: storage });
 var bodyparser = require('body-parser');
 var path = require('path');
 var Sql = require('sequelize');
-/*var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
+var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
   host: process.env.DB_LOCAL_HOST,
   dialect: 'mssql',
 
@@ -36,8 +38,8 @@ var Sql = require('sequelize');
     min: 0,
     idle: 10000
   }
-});*/
-var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+});
+/*var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
     host: process.env.DB_HOST,
   dialect: 'mssql',
   pool: {
@@ -48,7 +50,7 @@ var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS,
   dialectOptions: {
     encrypt: true
   }
-});
+});*/
 
 sql.authenticate()
   .then(function (err) {
@@ -368,7 +370,7 @@ router.route('/future-events')
   });
 });
   
-  router.route('/events')
+/*  router.route('/events')
   .get(function (req, res) {
     sql.sync()
     .then(function () {
@@ -390,7 +392,43 @@ router.route('/future-events')
         res.json(data);
       });
     });
+  });*/
+
+  router.route('/events')
+  .get(function (req, res) {
+    sql.sync()
+    .then(function () {
+      Event2.findAll()
+      .then(function (data) {
+        data.sort(function (a, b) {
+          a = new Date(a.eventStartDate);
+          b = new Date(b.eventStartDate);
+          if ( a < b) {
+            return -1;
+          }
+          if (a > b) {
+            return 1;
+          }
+          if (a === b) {
+            return 0;
+          }
+        });
+        res.json(data);
+      });
+    });
   });
+
+  router.route('/eventTabs')
+  .get(function(req, res) {
+    sql.sync()
+    .then(function() {
+      EventTab.findAll()
+      .then(function(data) {
+        res.json(data);
+      });
+    });
+  });
+
 
 router.route('/allevents/:eventId')
 .get(function (req, res) {
@@ -484,6 +522,30 @@ router.route('/allevents/:eventId')
         }
         if (testArr.indexOf(req.params.eventName) !== -1) {
           res.sendFile(path.join(__dirname, '../views/blank-event.html'));  
+        } 
+        if (testArr.indexOf(req.params.eventName) === -1) {
+          res.status(404);
+          res.send(path.join(__dirname, '../views/thank-you.html')); //I need to make a 404 page
+        }
+      });
+    });
+  });
+
+  //This route has to be last or it will override the other routes
+  router.route('/test/:eventName')
+  .get(function (req, res) {
+    // var cat = req.params.eventName.toLowerCase().replace(/\s+/g, '');
+    var theParam = req.params.eventName.toLowerCase().slice(1);
+    sql.sync()
+    .then(function () {
+      Event2.findAll()
+      .then(function (data) {
+        var testArr = [];
+        for (var i = 0; i < data.length; i++) {
+          testArr.push(data[i].eventUrl);
+        }
+        if (testArr.indexOf(req.params.eventName) !== -1) {
+          res.sendFile(path.join(__dirname, '../views/blank-event-2.html'));  
         } 
         if (testArr.indexOf(req.params.eventName) === -1) {
           res.status(404);
