@@ -4,14 +4,7 @@
 
 require('dotenv').load();
 var Contact = require('../models/Contact');
-var NewsletterSignup = require('../models/NewsletterSignup');
-var SuggestedCity = require('../models/SuggestedCity');
-var Interest = require('../models/Interest');
 var Event = require('../models/Event');
-var EventSchedule = require('../models/EventSchedule');
-var EventAttendee = require('../models/EventAttendee');
-var SurveyQuestion = require('../models/SurveyQuestion');
-var SurveyAnswer = require('../models/SurveyAnswer');
 var EventTab = require('../models/EventTab');
 // var User = require('../models/User');
 var EventImage = require('../models/EventImage');
@@ -163,134 +156,6 @@ module.exports = function (router) {
       });
     });
   });
-
-  router.route('/newsletter')
-  .post(function (req, res) {
-    sql.sync()
-    .then(function () {
-      Contact.findOne({where: {email: req.body.email}})
-      .then(function (data) {
-        if (!data) {
-          Contact.create(req.body)
-          .then(function (newContact) {
-            Interest.create(req.body)
-            .then(function (newInterests) {
-              newInterests.updateAttributes({contactId: newContact.id})
-              .then(function () {
-                newContact.updateAttributes({interestId: newInterests.id});
-              });
-            });
-          });
-        }
-        if (data) {
-          data.updateAttributes(req.body)
-          // data.updateAttributes({newsletterSubscription: req.body.newsletterSubscription});
-          .then(function () {
-            Interest.findOne({where: {contactId: data.id}})
-            .then(function (data2) {   
-              if (!data2) {
-                Interest.create(req.body)
-                .then(function (interests) {
-                  interests.updateAttributes({contactId: data.id});
-                })
-                .then(function () {
-                  data.updateAttributes({interestId: interests.id});
-                });
-              }
-              if (data2) {
-                data2.updateAttributes(req.body);
-              }
-            });
-            
-          });
-        }
-      })
-      .then(
-        res.sendFile(path.join(__dirname, '../views/thank-you.html'))
-      );
-    })
-    .error(function (err) {
-      router.alert(err);
-      console.log(err);
-      res.status(500).json({msg: 'internal server error'});
-    });
-  });
-
-  router.route('/suggestacity')
-  .post(function (req, res) {
-    sql.sync()
-    .then(function () {
-      Contact.find({where: {email: req.body.email}})
-      .then(function (data) {
-      if (!data) {
-        Contact.create({
-          email: req.body.email
-        });
-      }
-  
-      });
-    })
-    .then(function () {
-      SuggestedCity.create(req.body)
-      .then(function (data) {
-        Contact.findOne({where: {email: req.body.email}})
-        .then(function (data2) {
-          data.contactId = data2.id;
-          data.save().then(function() {
-            ContactsSuggestedCity.create({suggestedCity: req.body.city, contactId: data2.id});            
-          });
-        });
-      });
-    })
-    .then(function () {
-      res.sendFile(path.join(__dirname, '../views/thank-you.html'));
-    })
-    .error(function (err) {
-      console.log(err);
-      res.status(500).json({msg: 'internal server error'});
-    });
-  });
-
-router.route('/findsurvey')
-  .get(function (req, res) {
-    sql.sync()
-    .then(function () {
-      SurveyQuestion.findAll()
-      .then(function (data) {
-        res.json(data);
-      });
-    });
-  });
-
-router.route('/answersurvey')
-.post(function (req, res) {
-  sql.sync()
-  .then(function () {
-    for (var i = 0, j = req.body.surveyQuestionId.length; i < j; i++) {
-      SurveyAnswer.create({answer: req.body.answer[i], surveyQuestionId: req.body.surveyQuestionId[i], question: req.body.question[i]});
-    }
-    res.sendFile(path.join(__dirname, '../views/thank-you.html'));
-  });
-});
-
-  router.route('/addschedule') 
-  .post(function (req, res) {
-    sql.sync()
-    .then(function () {
-      EventSchedule.create(req.body);
-      res.end();
-    });
-  });
-
-  router.route('/deleteschedule')
-  .post(function (req, res) {
-    sql.sync()
-    .then(function () {
-      EventSchedule.destroy({where: {id: req.body.scheduleId}});
-      res.end();
-    });
-  });
-
   
   router.route('/createevent')
   .post(upload.array('images', 4), function (req, res, next) {
@@ -454,34 +319,12 @@ router.route('/allevents/:eventId')
     });
   });
 });
-  
-  router.route('/eventschedules')
-  .get(function (req, res) {
-    sql.sync()
-    .then(function () {
-      EventSchedule.findAll()
-      .then(function (data) {
-        res.json(data);
-      });
-    });
-  });
 
   router.route('/contacts')
   .get(function (req, res) {
     sql.sync()
     .then(function () {
       Contact.findAll()
-      .then(function (data) {
-        res.json(data);
-      });
-    });
-  });
-  
-  router.route('/attendees')
-  .get(function (req, res) {
-    sql.sync()
-    .then(function () {
-      EventAttendee.findAll()
       .then(function (data) {
         res.json(data);
       });
