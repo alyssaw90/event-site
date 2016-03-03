@@ -12,7 +12,7 @@ require('../server.js');
 describe('Test that server can load basic html pages', function () {
   //create task to test that server can load a basic web pages
   it('Should load homepage', function (done) {
-    chai.request('localhost:3000')
+    chai.request('localhost:3030')
     .get('/')
     .end(function (err, res) {
       expect(err).to.eql(null);
@@ -23,7 +23,7 @@ describe('Test that server can load basic html pages', function () {
   });
 
   it('Should load about page', function (done) {
-    chai.request('localhost:3000')
+    chai.request('localhost:3030')
     .get('/about')
     .end(function (err, res) {
       expect(err).to.eql(null);
@@ -34,7 +34,7 @@ describe('Test that server can load basic html pages', function () {
   });
 
   it('Should load past events page', function (done) {
-    chai.request('localhost:3000')
+    chai.request('localhost:3030')
     .get('/past-events')
     .end(function (err, res) {
       expect(err).to.eql(null);
@@ -45,7 +45,7 @@ describe('Test that server can load basic html pages', function () {
   });
 
   it('Should load meet the team page', function (done) {
-    chai.request('localhost:3000')
+    chai.request('localhost:3030')
     .get('/meet-the-team')
     .end(function (err, res) {
       expect(err).to.eql(null);
@@ -56,7 +56,7 @@ describe('Test that server can load basic html pages', function () {
   });
 
   it('Should load contact us page', function (done) {
-    chai.request('localhost:3000')
+    chai.request('localhost:3030')
     .get('/contactus')
     .end(function (err, res) {
       expect(err).to.eql(null);
@@ -67,7 +67,7 @@ describe('Test that server can load basic html pages', function () {
   });
 
   it('Should load faq page', function (done) {
-    chai.request('localhost:3000')
+    chai.request('localhost:3030')
     .get('/faq')
     .end(function (err, res) {
       expect(err).to.eql(null);
@@ -78,7 +78,7 @@ describe('Test that server can load basic html pages', function () {
   });
 
   it('Should load latest news page', function (done) {
-    chai.request('localhost:3000')
+    chai.request('localhost:3030')
     .get('/latest-news')
     .end(function (err, res) {
       expect(err).to.eql(null);
