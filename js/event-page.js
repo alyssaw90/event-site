@@ -82,7 +82,7 @@ $(document).ready(function() {
 								eventsObj[key].speakersHtml += '<h5>' + eventsObj[key].speakersArr[i].msTeamTitle + '</h5><p>';
 							}
 							if (eventsObj[key].speakersArr[i].headShot) {
-								eventsObj[key].speakersHtml += '<img class="pull-left" height="165" width="165" src="../uploads/' + eventsObj[key].speakersArr[i].headShot + '" />';
+								eventsObj[key].speakersHtml += '<img class="pull-left speakersImg" height="165" width="165" src="../uploads/' + eventsObj[key].speakersArr[i].headShot + '" />';
 							}
 							if (eventsObj[key].speakersArr[i].contactDescription) {
 						 		eventsObj[key].speakersHtml += eventsObj[key].speakersArr[i].contactDescription + '</p>';

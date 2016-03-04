@@ -88,7 +88,7 @@ var Contact = module.exports = sql.define('Contact', {
     firstName: 'Michael',
     lastName: 'Bowman',
     newsletterSubscription: true,
-    contactDescription: 'Michael Bowman is a Program Manager in the Microsoft Office Interoperability team.   He leads the delivery and release efforts for interoperability events and test tools for the Microsoft Office Division, including SharePoint, Exchange Server, and Office.Prior to joining Microsoft, Michael spent the first part of his career in an engineering eventRole at Hewlett Packard focusing on developing new industry standard server technologies.  <br /><br />He graduated from the University of Washington with a Bachelor’s of Science degree in Computer Science and a Masters of Business Administration from the Foster School of Business at the University of Washington.',
+    contactDescription: 'Michael Bowman is a Program Manager in the Microsoft Office Interoperability team. He leads the delivery and release efforts for interoperability events and test tools for the Microsoft Office Division, including SharePoint, Exchange Server, and Office.Prior to joining Microsoft, Michael spent the first part of his career in an engineering eventRole at Hewlett Packard focusing on developing new industry standard server technologies.  <br /><br />He graduated from the University of Washington with a Bachelor’s of Science degree in Computer Science and a Masters of Business Administration from the Foster School of Business at the University of Washington.',
     eventRole: 'speaker',
     msTeamMember: true,
     msTeamTitle: 'Senior Program Manager, Office Interoperability Team',
@@ -527,6 +527,23 @@ var Contact = module.exports = sql.define('Contact', {
   msTeamTitle: 'Software Engineer, Office Extensibility Team',
   showOnHomePage: false,
   headShot: 'jingyu-shao-headshot.jpg',
+  company: 'Microsoft',
+  country: 'USA',
+  allowNotifications: true,
+  allowPersonalInfoSharing: false
+  })
+})
+.then(function() {
+  return Contact.create({
+  firstName: 'Prakash',
+  lastName: 'Narayanan',
+  newsletterSubscription: true,
+  contactDescription: 'Prakash Narayanan is a Program Manager in the Enterprise Cloud Group Project Engineering Team. He has been with Microsoft almost 10 years and works on interoperability events for the partners using Windows Protocols, driving the coordination of those events and reimagining the future engagements and information sharing with the partners.<br /><br />Prior to this event role, Prakash was a Software Engineer across different teams in SharePoint, Microsoft Office and Office 365 before transitioning into a Program Manager in the Office 365/Exchange division where he drove the engineering team\'s responsiveness to address product issues affecting the customers who run Exchange themselves or consume Office 365 from the Microsoft cloud. He graduated from University of Kentucky with a Master\'s of Science degree in Computer Science.',
+  eventRole: 'speaker',
+  msTeamMember: true,
+  msTeamTitle: 'Program Manager Enterprise Cloud Group Project Engineering Team',
+  showOnHomePage: false,
+  headShot: 'prakash-narayanan-headshot.jpg',
   company: 'Microsoft',
   country: 'USA',
   allowNotifications: true,
