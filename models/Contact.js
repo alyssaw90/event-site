@@ -118,6 +118,23 @@ var Contact = module.exports = sql.define('Contact', {
     
   });
 })
+.then(function() {
+  return Contact.create({
+  firstName: 'Prakash',
+  lastName: 'Narayanan',
+  newsletterSubscription: true,
+  contactDescription: 'Prakash Narayanan is a Program Manager in the Enterprise Cloud Group Project Engineering Team. He has been with Microsoft almost 10 years and works on interoperability events for the partners using Windows Protocols, driving the coordination of those events and reimagining the future engagements and information sharing with the partners.<br /><br />Prior to this event role, Prakash was a Software Engineer across different teams in SharePoint, Microsoft Office and Office 365 before transitioning into a Program Manager in the Office 365/Exchange division where he drove the engineering team\'s responsiveness to address product issues affecting the customers who run Exchange themselves or consume Office 365 from the Microsoft cloud. He graduated from University of Kentucky with a Master\'s of Science degree in Computer Science.',
+  eventRole: 'speaker',
+  msTeamMember: true,
+  msTeamTitle: 'Program Manager, Enterprise Cloud Group Project Engineering Team',
+  showOnHomePage: false,
+  headShot: 'prakash-narayanan-headshot.jpg',
+  company: 'Microsoft',
+  country: 'USA',
+  allowNotifications: true,
+  allowPersonalInfoSharing: false
+  })
+})
 .then(function () {
   return Contact.create({
     firstName: 'Rich',
@@ -533,20 +550,4 @@ var Contact = module.exports = sql.define('Contact', {
   allowPersonalInfoSharing: false
   })
 })
-.then(function() {
-  return Contact.create({
-  firstName: 'Prakash',
-  lastName: 'Narayanan',
-  newsletterSubscription: true,
-  contactDescription: 'Prakash Narayanan is a Program Manager in the Enterprise Cloud Group Project Engineering Team. He has been with Microsoft almost 10 years and works on interoperability events for the partners using Windows Protocols, driving the coordination of those events and reimagining the future engagements and information sharing with the partners.<br /><br />Prior to this event role, Prakash was a Software Engineer across different teams in SharePoint, Microsoft Office and Office 365 before transitioning into a Program Manager in the Office 365/Exchange division where he drove the engineering team\'s responsiveness to address product issues affecting the customers who run Exchange themselves or consume Office 365 from the Microsoft cloud. He graduated from University of Kentucky with a Master\'s of Science degree in Computer Science.',
-  eventRole: 'speaker',
-  msTeamMember: true,
-  msTeamTitle: 'Program Manager Enterprise Cloud Group Project Engineering Team',
-  showOnHomePage: false,
-  headShot: 'prakash-narayanan-headshot.jpg',
-  company: 'Microsoft',
-  country: 'USA',
-  allowNotifications: true,
-  allowPersonalInfoSharing: false
-  })
-})*/
+*/
