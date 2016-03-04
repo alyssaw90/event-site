@@ -62,8 +62,8 @@ var Event = module.exports = sql.define('Event', {
     }*/
   }
 });
-/*
-Event.sync({force: true})
+
+/*Event.sync({force: true})
 .then(function () {
   return Event.create({
     eventName: 'DevDays Asia 2016 @Taipei',
@@ -99,8 +99,8 @@ Event.sync({force: true})
   eventContinent: 'North America',
   eventStartDate: new Date('2016-06-13:00:01:00'), //the start date...
   eventEndDate: new Date('2016-06-17:23:59:00'), // the end date...
-  eventHeaderImage: 'Redmond-Header.png', //link to header image
-  eventHomepageImage: 'Redmond-Header.png',
+  eventHeaderImage: 'plugfest-io-lab-heade.png', //link to header image
+  eventHomepageImage: 'plugfest-io-lab-heade.png',
   eventSpeakers: '1,2,8,6,4,20,16,19,9'
   });
 })*/
