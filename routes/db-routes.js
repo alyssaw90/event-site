@@ -123,7 +123,7 @@ module.exports = function (router) {
     res.sendFile(path.join(__dirname, '../views/latest-news.html'));
   });
 
-  router.get('/curriculum', eatAuth, function(req, res) {
+  router.get('/curriculum', /*eatAuth,*/ function(req, res) {
     res.sendFile(path.join(__dirname, '../views/curriculum.html'));
   })
 

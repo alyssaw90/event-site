@@ -67,7 +67,7 @@ User.sync({force: true})
 .then(function () {
   return User.create({
   userName: 'TestUser',
-  password: bcrypt.hashSync('password', bcrypt.genSaltSync(8), null),
+  password: bcrypt.hashSync('123', bcrypt.genSaltSync(8), null),
   email: 'test@example.com'  
   });
 })
@@ -80,7 +80,7 @@ User.sync({force: true})
   })
   .then(function(user) {
     // var pwComp = bcrypt.hashSync('password', bcrypt.genSaltSync(8), null);
-    var pw =    user.$modelOptions.instanceMethods.verifyPassword('password', user.dataValues.password);
+    var pw =    user.$modelOptions.instanceMethods.verifyPassword('123', user.dataValues.password);
     // var testF = user.$modelOptions.instanceMethods.testFunc;
     // var gh = user;
     console.log(clc.yellow('   ::::::    '), pw);

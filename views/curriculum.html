@@ -23,6 +23,13 @@
 	</header>
 	<div class="mobileWrapper">
 		<main class="grid main-page-content">
+			<form id="loginForm" action="/auth/login" method="get">
+				<label for"email">Email</label>
+				<input id="email" name="email" type="email"></input>
+				<label for="password">Password</label>
+				<input id="password" name="password" type="password"></input>
+				<button id="loginButton" type="submit">Login</button>
+			</form>
 			<h1>Curriculum Page</h1>
 			<section class="col_12 internetExplorer scroll-button">
 				<i class="fa fa-chevron-up fa-3x"><p>Back to Top</p></i>
@@ -40,7 +47,7 @@
 	<script type="text/javascript" src="../js/footer.js"></script>
 	<script type="text/javascript" src="../js/header-menu.js"></script>
 	<script type="text/javascript" src="../js/custom.js"></script>
-	<script type="text/javascript" src="../js/event-page.js"></script>
+	<script type="text/javascript" src="../js/curriculum-page.js"></script>
 	<!-- Go to www.addthis.com/dashboard to customize your tools -->
 	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5660d6c488a1a100" async="async"></script>
 	</body>

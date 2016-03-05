@@ -69,7 +69,7 @@ module.exports = function(router, passport) {
     })
     .then(function(newUser) {
       var hashPass = newUser.$modelOptions.instanceMethods.generateHash(req.body.password);
-      var ranJSON = {randomString: newUser.dataValues.randomString};
+      var ranJSON = {randomString: newUser.dataValues.randomString, id: newUser.dataValues.id};
       delete req.body.password;
       newUser.update({password: hashPass});
 		  // res.status(200).json({msg: 'user created'});
