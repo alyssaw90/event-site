@@ -10,11 +10,11 @@
 /* jshint loopfunc:true */
 
 $(document).ready(function() {
-	
+	//when one of the li tabs is clicked wait 10 milliseconds and fire the stickyFooter function
 	$('li').click(function() {
 		setTimeout(function() {homepageStickyFooter()}, 10);
 	});
-
+	//get events api
 	$.get('/events', function (events) {
 		var pathname = window.location.pathname.slice(1);
 		var eventsObj = {};
@@ -31,7 +31,7 @@ $(document).ready(function() {
   		subtree: true
   	};
   	observer.observe(eventTabs, observerConfig);
-		
+		//loop over returned events object and make an object for each event
 		for (var i = 0, j = events.length; i < j; i++) {
 			eventsObj[events[i].id] = {};
 			eventsObj[events[i].id].htmlContent = '';
@@ -52,28 +52,29 @@ $(document).ready(function() {
 				eventsObj[events[i].id].eventSpeakers = events[i].eventSpeakers.split(',');
 
 			}
-			// console.log(typeof eventsObj[events[i].id].eventSpeakers);
 		}
-
+		//call eventTabs api and get tabs for each event
 		$.get('/eventTabs', function(eventsTabs) {
 			for (var key in eventsTabs) {
-				// console.log(eventsTabs[i]);
+				// push those tabs to the tabs array for each object
 				eventsObj[eventsTabs[key].eventId].tabs.push(eventsTabs[key]);
-					// console.log(eventsObj[eventsTabs[key].eventId].tabs);
 			}
-
+			//call the contact api and get the contacts
 			$.get('/contacts', function(attendees) {
+				//loop over the eventsObj
 				for (var key in eventsObj) {
+					//if the event has speakers
 					if (eventsObj[key].eventSpeakers) {
-						// console.log(eventsObj[key].eventSpeakers.indexOf('1'));
+						// loop through the string of attendees for the event
 						for (var i = 0, j = attendees.length; i < j; i++) {
-							// console.log(eventsObj[key].eventSpeakers.indexOf(attendees[i].id.toString()));
+							// if the id of an attendee matches one of the IDs from the speakers string, then push the attendee object to the speakers array
 							if (eventsObj[key].eventSpeakers.indexOf(attendees[i].id.toString()) > -1) {
 								eventsObj[key].speakersArr.push(attendees[i]);
 							}
 						}
 						
 					}
+					//if there are speakers in the speakers array
 					if (eventsObj[key].speakersArr) {
 					//loop over the speakers array and create html for speakers tab
 						for (var i = 0, j = eventsObj[key].speakersArr.length; i < j; i++) {
@@ -91,53 +92,87 @@ $(document).ready(function() {
 						}
 						
 					}
-
+					//loop over the event tabs and create the html for the tabs
 					for (var i = 0, j = eventsObj[key].tabs.length; i < j; i++) {
+						//create the first tab with the first and current classes
 						if (i === 0) {
-							eventsObj[key].eventUltHtml += '<li class="current"><a href="#thisEvent-' + eventsObj[key].tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '') + '"><h5>' + eventsObj[key].tabs[i].tabTitle + '</h5></a></li>';
+							eventsObj[key].eventUltHtml += '<li class="first current"><a href="#thisEvent-' + eventsObj[key].tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '') + '"><h5>' + eventsObj[key].tabs[i].tabTitle + '</h5></a></li>';
 							eventsObj[key].eventDivHtml += '<div id="thisEvent-' + eventsObj[key].tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '') + '" class="tab-content eventTabDiv" style="display:block;">' + eventsObj[key].tabs[i].tabContent  + '</div>';
 
 						}
-						if (i > 0) {
+						//create the tabs that aren't first or last
+						if (i > 0 && i < eventsObj[key].tabs.length - 1) {
 							eventsObj[key].eventUltHtml += '<li><a href="#thisEvent-' + eventsObj[key].tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '') + '"><h5>' + eventsObj[key].tabs[i].tabTitle + '</h5></a></li>';
 							eventsObj[key].eventDivHtml += '<div id="thisEvent-' + eventsObj[key].tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '') + '" class="tab-content eventTabDiv" style="display:none;">' + eventsObj[key].tabs[i].tabContent  + '</div>';
 
 						}
+						//if there are speakers add their html as the last tab
 						if (eventsObj[key].eventSpeakers && i >= eventsObj[key].tabs.length - 1) {
-							eventsObj[key].eventUltHtml += '<li><a href="#thisEvent-speakers"><h5>Speakers</h5></a></li>';
+							eventsObj[key].eventUltHtml += '<li class="last"><a href="#thisEvent-speakers"><h5>Speakers</h5></a></li>';
 							eventsObj[key].eventDivHtml += '<div id="thisEvent-speakers" class="tab-content eventTabDiv" style="display:none;">' + eventsObj[key].speakersHtml  + '</div>';
 						}
+						//if there are no speakers add the last eventTab as the last tab
+						if (!eventsObj[key].eventSpeakers && i >= eventsObj[key].tabs.length - 1) {
+							eventsObj[key].eventUltHtml += '<li class="last"><a href="#thisEvent-' + eventsObj[key].tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '') + '"><h5>' + eventsObj[key].tabs[i].tabTitle + '</h5></a></li>';
+							eventsObj[key].eventDivHtml += '<div id="thisEvent-' + eventsObj[key].tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '') + '" class="tab-content eventTabDiv" style="display:none;">' + eventsObj[key].tabs[i].tabContent  + '</div>';
+
+						}
+						//add the closing ul tag
 						if (i >= eventsObj[key].tabs.length - 1) {
 							eventsObj[key].eventUltHtml += '</ul>';
 						}
 					}
-
+					//create the html string
 					eventsObj[key].htmlContent = eventsObj[key].eventUltHtml + eventsObj[key].eventDivHtml;
-					// console.log(eventsObj[key].htmlContent);
 					//check if the event url matches the current url
 					if (pathname === eventsObj[key].eventUrl) {
+						//set the title to the event bame
 						document.title = eventsObj[key].eventName;
+						//hide the children of the $eventTabs
 						$eventTabs.children().hide();
-
+						//if there is a header image add it, if not remove the div
 						if (eventsObj[key].eventHeaderImage) {
 							$eventHeader.html('<img src="../uploads/' + eventsObj[key].eventHeaderImage + '" />');
 						} else if (!eventsObj[key].eventHeaderImage) {
 							$eventHeader.remove();
 						}
+						//add the html content to the $eventTabs div
 						$eventTabs.html(eventsObj[key].htmlContent);
 
-						//assign first and current classes to first tab li(s) so they display correctly
+						//if there is no hash in the route
 						if (!window.location.hash) {
+						//assign first and current classes to first tab li(s) so they display correctly
 							$('.tabs').children().each(function (i) {
 								if ($(this).is(':first-child')) {
 									$(this).siblings().removeClass('current');
-									$(this).addClass('first current');
+									$(this).addClass('current');
 									$($('a', this).attr('href')).show();
 								}
 							});
 						}
 
 					}
+					//if there is a hash in the route
+					if (window.location.hash) {
+						//loop over the children of the tabs (the tabDivs)
+						$('.tabs').children().each(function (i, elem) {
+							//if the has value of the a link of this matches the hash in the url
+							if ($($('a', this))[0].hash === window.location.hash) {
+								//remove the current class from the other divs
+								$(this).siblings().removeClass('current');
+								//add current class to this div
+								$(this).addClass('current');
+								//show the div that matches the href of the "a" tag of this, for this function, $('a', this).attr('href') and  $(window.location.hash) are the same
+								$($('a', this).attr('href')).show();
+								// $(window.location.hash).show();
+								//hid the siblings of a div with an id of the hash from the url
+								$(window.location.hash).siblings().hide();
+								//show the tabs
+								$('.tabs').show();
+							}
+						});
+					}
+					//once all images are loaded fire the sticky footer functions
 					$('img').bind('load', function() {
     				stickyFooter();
     				homepageStickyFooter();
@@ -149,28 +184,3 @@ $(document).ready(function() {
 	});
 
 });
-
-//when the ajax route has rendered the page check for a hash route and if there is one open the hashed link
-$(document).ajaxComplete(function() {
-	if (window.location.hash) {
-		//loop over the children of the tabs (the tabDivs)
-		$('.tabs').children().each(function (i, elem) {
-			//if the has value of the a link of this matches the hash in the url
-			if ($($('a', this))[0].hash === window.location.hash) {
-				//remove the current class from the other divs
-				$(this).siblings().removeClass('current');
-				//add current class to this div
-				$(this).addClass('current');
-				console.log('hello     ', $($('a', this).attr('href')));
-				//show the div that matches the href of the "a" tag of this, for this function, $('a', this).attr('href') and  $(window.location.hash) are the same
-				$($('a', this).attr('href')).show();
-				// $(window.location.hash).show();
-				//hid the siblings of a div with an id of the hash from the url
-				$(window.location.hash).siblings().hide();
-				//show the tabs
-				$('.tabs').show();
-			}
-		});
-	}
-
-})
