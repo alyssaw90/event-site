@@ -127,20 +127,21 @@ $(document).ready(function() {
 						$eventTabs.html(eventsObj[key].htmlContent);
 
 						//assign first and current classes to first tab li(s) so they display correctly
-						$('.tabs').children().each(function (i) {
-							if ($(this).is(':first-child')) {
-								$(this).siblings().removeClass('current');
-								$(this).addClass('first current');
-								$($('a', this).attr('href')).show();
-							}
-						});
+						if (!window.location.hash) {
+							$('.tabs').children().each(function (i) {
+								if ($(this).is(':first-child')) {
+									$(this).siblings().removeClass('current');
+									$(this).addClass('first current');
+									$($('a', this).attr('href')).show();
+								}
+							});
+						}
 
 					}
 					$('img').bind('load', function() {
     				stickyFooter();
     				homepageStickyFooter();
 					});
-					console.log(eventsObj);
 				}
 
 			})
@@ -148,3 +149,28 @@ $(document).ready(function() {
 	});
 
 });
+
+//when the ajax route has rendered the page check for a hash route and if there is one open the hashed link
+$(document).ajaxComplete(function() {
+	if (window.location.hash) {
+		//loop over the children of the tabs (the tabDivs)
+		$('.tabs').children().each(function (i, elem) {
+			//if the has value of the a link of this matches the hash in the url
+			if ($($('a', this))[0].hash === window.location.hash) {
+				//remove the current class from the other divs
+				$(this).siblings().removeClass('current');
+				//add current class to this div
+				$(this).addClass('current');
+				console.log('hello     ', $($('a', this).attr('href')));
+				//show the div that matches the href of the "a" tag of this, for this function, $('a', this).attr('href') and  $(window.location.hash) are the same
+				$($('a', this).attr('href')).show();
+				// $(window.location.hash).show();
+				//hid the siblings of a div with an id of the hash from the url
+				$(window.location.hash).siblings().hide();
+				//show the tabs
+				$('.tabs').show();
+			}
+		});
+	}
+
+})
