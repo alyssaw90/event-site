@@ -3,7 +3,7 @@
 var fs = require('fs');
 var path = require('path');
 var Sql = require('sequelize');
-/*var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
+var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
   host: process.env.DB_LOCAL_HOST,
   dialect: 'mssql',
 
@@ -12,8 +12,8 @@ var Sql = require('sequelize');
     min: 0,
     idle: 10000
   }
-});*/
-var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+});
+/*var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
   host: process.env.DB_HOST,
   dialect: 'mssql',
   pool: {
@@ -25,7 +25,7 @@ var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS,
     encrypt: true
   }
 });
-
+*/
 var Event = module.exports = sql.define('Event', {
   eventName: Sql.STRING,
   eventRegistrationLink: Sql.STRING, //link to registrationfor event
@@ -63,7 +63,7 @@ var Event = module.exports = sql.define('Event', {
   }
 });
 
-/*Event.sync({force: true})
+Event.sync({force: true})
 .then(function () {
   return Event.create({
     eventName: 'DevDays Asia 2016 @Taipei',
@@ -74,7 +74,7 @@ var Event = module.exports = sql.define('Event', {
     eventHeaderImage: 'TAIPEIHeader.png',
     eventHomepageImage: 'TAIPEIHeader.png',
     eventHighlightColor: '#4668c5',
-    eventSpeakers: '1,2,8,6,4,5,16,29,19'
+    eventSpeakers: '1,2,4,7,10,14,8,11,9,5'
     
   });
 })
@@ -88,7 +88,7 @@ var Event = module.exports = sql.define('Event', {
     eventEndDate: new Date('2016-05-12:23:59:00'), // the end date...
     eventHeaderImage: 'ExtendWebsiteHeader.png', //link to header image
     eventHomepageImage: 'ExtendWebsiteHeader.png',
-    eventSpeakers: '1,2,20,3,4,15'
+    eventSpeakers: '1,2,4,8,11,7,14,10,9,5'
   });
 })
 .then(function () {
@@ -101,6 +101,6 @@ var Event = module.exports = sql.define('Event', {
   eventEndDate: new Date('2016-06-17:23:59:00'), // the end date...
   eventHeaderImage: 'plugfest-io-lab-heade.png', //link to header image
   eventHomepageImage: 'plugfest-io-lab-heade.png',
-  eventSpeakers: '1,2,8,6,4,20,16,19,9'
+  eventSpeakers: '1,2,3,4,8,7,10,14,11,9,5,20,13,17,15'
   });
-})*/
+})
