@@ -62,8 +62,8 @@ var Event = module.exports = sql.define('Event', {
     }*/
   }
 });
-
-/*Event.sync({force: true})
+/*
+Event.sync({force: true})
 .then(function () {
   return Event.create({
     eventName: 'DevDays Asia 2016 @Taipei',
@@ -98,7 +98,7 @@ var Event = module.exports = sql.define('Event', {
   eventLocation: 'Redmond',
   eventContinent: 'North America',
   eventStartDate: new Date('2016-06-13:00:01:00'), //the start date...
-  eventEndDate: new Date('2016-06-24:23:59:00'), // the end date...
+  eventEndDate: new Date('2016-06-24:01:00:00'), // the end date...
   eventHeaderImage: 'plugfest-io-lab-heade.png', //link to header image
   eventHomepageImage: 'plugfest-io-lab-heade.png',
   eventSpeakers: '1,2,3,4,8,7,10,14,11,9,5,20,13,17,15'
