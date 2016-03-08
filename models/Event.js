@@ -74,7 +74,7 @@ var Event = module.exports = sql.define('Event', {
     eventHeaderImage: 'TAIPEIHeader.png',
     eventHomepageImage: 'TAIPEIHeader.png',
     eventHighlightColor: '#4668c5',
-    eventSpeakers: '1,2,8,6,4,5,16,29,19'
+    eventSpeakers: '1,2,4,7,10,14,8,11,9,5'
     
   });
 })
@@ -88,19 +88,19 @@ var Event = module.exports = sql.define('Event', {
     eventEndDate: new Date('2016-05-12:23:59:00'), // the end date...
     eventHeaderImage: 'ExtendWebsiteHeader.png', //link to header image
     eventHomepageImage: 'ExtendWebsiteHeader.png',
-    eventSpeakers: '1,2,20,3,4,15'
+    eventSpeakers: '1,2,4,8,11,7,14,10,9,5'
   });
 })
 .then(function () {
   return Event.create({
-  eventName: 'Redmond Protocols Plugfest',
+  eventName: 'Redmond Protocols Plugfest & Windows Interoperability (IO) Lab',
   // eventRegistrationLink: Sql.STRING, //link to registrationfor event
   eventLocation: 'Redmond',
   eventContinent: 'North America',
   eventStartDate: new Date('2016-06-13:00:01:00'), //the start date...
-  eventEndDate: new Date('2016-06-17:23:59:00'), // the end date...
+  eventEndDate: new Date('2016-06-24:23:59:00'), // the end date...
   eventHeaderImage: 'plugfest-io-lab-heade.png', //link to header image
   eventHomepageImage: 'plugfest-io-lab-heade.png',
-  eventSpeakers: '1,2,8,6,4,20,16,19,9'
+  eventSpeakers: '1,2,3,4,8,7,10,14,11,9,5,20,13,17,15'
   });
 })*/
