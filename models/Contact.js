@@ -1,7 +1,7 @@
 'use strict';
 
 var Sql = require('sequelize');
-var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
+/*var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
   host: process.env.DB_LOCAL_HOST,
   dialect: 'mssql',
 
@@ -10,9 +10,11 @@ var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.
     min: 0,
     idle: 10000
   }
-});
-/*var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
-    host: process.env.DB_HOST,
+ HEAD
+});*/
+
+var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+  host: process.env.DB_HOST,
   dialect: 'mssql',
   pool: {
     max: 5,
@@ -22,7 +24,7 @@ var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.
   dialectOptions: {
     encrypt: true
   }
-});*/
+});
 
 var fs = require('fs');
 var path = require('path');
@@ -154,49 +156,15 @@ var Contact = module.exports = sql.define('Contact', {
 })
 .then(function () {
   return Contact.create({
-    firstName: 'Andrew',
-    lastName: 'Davidoff',
+    firstName: 'Donny',
+    lastName: 'Luu',
     newsletterSubscription: true,
-    contactDescription: 'Andrew Davidoff is a Senior Software Test Engineer in the Microsoft Office Interoperability team.   He drives Interoperability testing and Test Suites across the Exchange family of Open Specifications, and other Office Open Specifications. <br /><br />Prior to joining Office Interoperability team, Andrew has served in the eventRole of Senior Test Engineer and Senior Test Lead in Exchange team at Microsoft.  He was responsible for testing of major components of Exchange Server for a number of releases. He graduated from the Moscow Aviation Institute, Russia with a Bachelor’s degree in Computer Science.',
+    contactDescription: 'Donny is the software engineering manager of the Office Developer Experience team. He leads the development and release efforts for interoperability tools, documentation, and events for the Microsoft Office Division, including SharePoint, Exchange Server, and Office. The mission of the Developer Experience team is to provide Office365 developers and IT admins a good on ramp experience in developing, deploying, and migrating their solutions and documents on Office365 releases.  Our goals are to unite the Office365 developer communities where they can discover, learn, build, migrate, and measure the success of their applications.<br /><br />Prior to joining the Office Developer Experience team, Donny was the test director of the Microsoft Analytics and Presentation Services team where he leaded the testing and release efforts of Excel, PowerBI, and PowerPoint. In earlier Office releases, Donny was the software test manager for the Office Programmability team where he leaded the integration, testing, and release of VBA, COM-Addin, and PIA. He graduated from the University of Washington with a Bachelor of Science degree in Computer Science and Engineering.',
     eventRole: 'speaker',
     msTeamMember: true,
-    msTeamTitle: 'Senior Software Test Engineer, Office Interoperability Team',
+    msTeamTitle: 'Software Engineering Manager, Office Developer Experience Team',
     showOnHomePage: true,
-    headShot: 'andrew-davidoff-headshot.jpg',
-    company: 'Microsoft',
-    country: 'USA',
-    allowNotifications: true,
-    allowPersonalInfoSharing: false
-  });
-})
-.then(function () {
-  return Contact.create({
-    firstName: 'Tom',
-    lastName: 'Jebo',
-    newsletterSubscription: true,
-    contactDescription: 'Tom Jebo is a Senior Escalation Engineer in the Microsoft Developer Support Open Specifications team. His primary responsibilities are helping customers implement solutions using WOPI, Exchange RPC/MAPI, ActiveSync, Web Services, Lync/Skype protocols, and Office Open XML and binary formats. Before joining the Open Specifications team, Tom helped customers with Microsoft\'s developer tools, C/C++ languages and COM technologies.<br /><br />Before Microsoft, Tom developed architectural simulation software at Amdhal Corporation in Sunnyvale, California. Tom graduated from Boston University with a bachelors in Computer Science and currently lives in Seattle Washington.',
-    eventRole: 'speaker',
-    msTeamMember: true,
-    msTeamTitle: 'Senior Escalation Engineer, Developer Support Open Specifications Team',
-    showOnHomePage: true,
-    headShot: 'tom-jebo-headshot.jpg',
-    company: 'Microsoft',
-    country: 'USA',
-    allowNotifications: true,
-    allowPersonalInfoSharing: false
-  });
-})
-.then(function () {
-  return Contact.create({
-    firstName: 'Pui',
-    lastName: 'Leung',
-    newsletterSubscription: true,
-    contactDescription: 'Pui Leung is a Software Engineer in the Microsoft Office Extensibility team. . He is responsible for Interoperability test suites and test tools development and release testing for the Microsoft Office Division, including SharePoint, Exchange Server, and Office.<br /><br />Prior to joining Microsoft, Pui worked as a System Software Engineer on various types of software projects including Windows kernel device driver and server management software at Compaq and Hewlett Packard. He graduated from the Oregon State University with a Bachelor’s of Science degree in Computer Science.',
-    eventRole: 'speaker',
-    msTeamMember: true,
-    msTeamTitle: 'Software Engineer, Office Extensibility team',
-    showOnHomePage: true,
-    headShot: 'pui-leung-headshot.jpg',
+    headShot: 'donny-luu-headshot.jpg',
     company: 'Microsoft',
     country: 'USA',
     allowNotifications: true,
@@ -222,20 +190,88 @@ var Contact = module.exports = sql.define('Contact', {
 })
 .then(function () {
   return Contact.create({
-    firstName: 'Donny',
-    lastName: 'Luu',
+    firstName: 'Andrew',
+    lastName: 'Davidoff',
     newsletterSubscription: true,
-    contactDescription: 'Donny is the software engineering manager of the Office Developer Experience team. He leads the development and release efforts for interoperability tools, documentation, and events for the Microsoft Office Division, including SharePoint, Exchange Server, and Office. The mission of the Developer Experience team is to provide Office365 developers and IT admins a good on ramp experience in developing, deploying, and migrating their solutions and documents on Office365 releases.  Our goals are to unite the Office365 developer communities where they can discover, learn, build, migrate, and measure the success of their applications.<br /><br />Prior to joining the Office Developer Experience team, Donny was the test director of the Microsoft Analytics and Presentation Services team where he leaded the testing and release efforts of Excel, PowerBI, and PowerPoint. In earlier Office releases, Donny was the software test manager for the Office Programmability team where he leaded the integration, testing, and release of VBA, COM-Addin, and PIA. He graduated from the University of Washington with a Bachelor of Science degree in Computer Science and Engineering.',
+    contactDescription: 'Andrew Davidoff is a Senior Software Test Engineer in the Microsoft Office Interoperability team.   He drives Interoperability testing and Test Suites across the Exchange family of Open Specifications, and other Office Open Specifications. <br /><br />Prior to joining Office Interoperability team, Andrew has served in the eventRole of Senior Test Engineer and Senior Test Lead in Exchange team at Microsoft.  He was responsible for testing of major components of Exchange Server for a number of releases. He graduated from the Moscow Aviation Institute, Russia with a Bachelor’s degree in Computer Science.',
     eventRole: 'speaker',
     msTeamMember: true,
-    msTeamTitle: 'Software Engineering Manager, Office Developer Experience Team',
+    msTeamTitle: 'Senior Software Test Engineer, Office Interoperability Team',
     showOnHomePage: true,
-    headShot: 'donny-luu-headshot.jpg',
+    headShot: 'andrew-davidoff-headshot.jpg',
     company: 'Microsoft',
     country: 'USA',
     allowNotifications: true,
     allowPersonalInfoSharing: false
   });
+})
+.then(function () {
+  return Contact.create({
+    firstName: 'Jinghui',
+    lastName: 'Zhang',
+    newsletterSubscription: true,
+    contactDescription: 'Jinghui Zhang is a Software Engineer in the Microsoft Office Extensibility team. She is a developer of dev.office.com and graph.microsoft.io. She also drives development for new Office Add-ins, SharePoint and Exchange Test Suites, and Office Open XML and Uniform Office Format interoperability tools.<br /><br />She gives talks about Office Add-in, Protocol Test Suites, etc. in the Microsoft Interop Events. And she also participates in the hack sessions to lead developers to reach their hack success. Her favorite part of the events is the brain storm and hack session.<br /><br />She graduated from Beijing University of Aeronautics & Astronautics, China with a Bachelor’s degree in Information Management and Information Systems.',
+    eventRole: 'speaker',
+    msTeamMember: true,
+    msTeamTitle: 'Software Engineer, Office Extensibility Team, Microsoft Corporation',
+    showOnHomePage: false,
+    headShot: 'jinghui-zhang-headshot.jpg',
+    company: 'Microsoft',
+    country: 'USA',
+    allowNotifications: true,
+    allowPersonalInfoSharing: false
+  });
+})
+.then(function () {
+  return Contact.create({
+    firstName: 'Pui',
+    lastName: 'Leung',
+    newsletterSubscription: true,
+    contactDescription: 'Pui Leung is a Software Engineer in the Microsoft Office Extensibility team. . He is responsible for Interoperability test suites and test tools development and release testing for the Microsoft Office Division, including SharePoint, Exchange Server, and Office.<br /><br />Prior to joining Microsoft, Pui worked as a System Software Engineer on various types of software projects including Windows kernel device driver and server management software at Compaq and Hewlett Packard. He graduated from the Oregon State University with a Bachelor’s of Science degree in Computer Science.',
+    eventRole: 'speaker',
+    msTeamMember: true,
+    msTeamTitle: 'Software Engineer, Office Extensibility team',
+    showOnHomePage: true,
+    headShot: 'pui-leung-headshot.jpg',
+    company: 'Microsoft',
+    country: 'USA',
+    allowNotifications: true,
+    allowPersonalInfoSharing: false
+  });
+})
+.then(function () {
+  return Contact.create({
+    firstName: 'Tom',
+    lastName: 'Jebo',
+    newsletterSubscription: true,
+    contactDescription: 'Tom Jebo is a Senior Escalation Engineer in the Microsoft Developer Support Open Specifications team. His primary responsibilities are helping customers implement solutions using WOPI, Exchange RPC/MAPI, ActiveSync, Web Services, Lync/Skype protocols, and Office Open XML and binary formats. Before joining the Open Specifications team, Tom helped customers with Microsoft\'s developer tools, C/C++ languages and COM technologies.<br /><br />Before Microsoft, Tom developed architectural simulation software at Amdhal Corporation in Sunnyvale, California. Tom graduated from Boston University with a bachelors in Computer Science and currently lives in Seattle Washington.',
+    eventRole: 'speaker',
+    msTeamMember: true,
+    msTeamTitle: 'Senior Escalation Engineer, Developer Support Open Specifications Team',
+    showOnHomePage: true,
+    headShot: 'tom-jebo-headshot.jpg',
+    company: 'Microsoft',
+    country: 'USA',
+    allowNotifications: true,
+    allowPersonalInfoSharing: false
+  });
+})
+.then(function() {
+  return Contact.create({
+  firstName: 'Jingyu',
+  lastName: 'Shao',
+  newsletterSubscription: true,
+  contactDescription: 'Jingyu Shao is a Software Engineer in the Microsoft Office Extensibility team. She works as web developer for Office developer portal: dev.office.com and Microsoft Graph portal: graph.microsoft.io. Jingyu also has developed several Office Add-ins with the new Office JavaScript API. She also drives development of interoperability tools, like Fiddler Inspectors to parse Exchange, SharePoint and WOPI online traffic. <br /><br />Jingyu graduated from Zhejiang University China with a master degree in Electronic Information Engineering.',
+  eventRole: 'speaker',
+  msTeamMember: true,
+  msTeamTitle: 'Software Engineer, Office Extensibility Team',
+  showOnHomePage: false,
+  headShot: 'jingyu-shao-headshot.jpg',
+  company: 'Microsoft',
+  country: 'USA',
+  allowNotifications: true,
+  allowPersonalInfoSharing: false
+  })
 })
 .then(function () {
   return Contact.create({
@@ -256,23 +292,6 @@ var Contact = module.exports = sql.define('Contact', {
 })
 .then(function () {
   return Contact.create({
-    firstName: 'Bryan S.',
-    lastName: 'Burgin',
-    newsletterSubscription: true,
-    contactDescription: 'Bryan Burgin is a Senior Escalation Engineer responsible for support of Microsoft’s open specifications (protocol documents).  He primarily works with third-party protocol implementers to address questions and issues related to the open specifications and to champion interoperability with Microsoft platforms.  He works extensively with the RDP/RDS and File sharing (SMB2&3) protocol groups.  However, along with his team, support 500+ on-the-wire Windows protocols.  He has been in this eventRole for three years and at Microsoft for 13.  <br /><br />Prior to this eventRole, Bryan supported Kernel driver developers, specializing in network (NDIS) driver development. Prior to joining Microsoft, Bryan spent many years developing products that integrated Wang VS minicomputers with PC networks (terminal emulation, file system redirection, print redirection).',
-    eventRole: 'speaker',
-    msTeamMember: true,
-    msTeamTitle: 'Senior Escalation Engineer, Developer Support, Open Specifications/Protocols/Interoperability',
-    showOnHomePage: false,
-    headShot: 'bryan-burgin-headshot.jpg',
-    company: 'Microsoft',
-    country: 'USA',
-    allowNotifications: true,
-    allowPersonalInfoSharing: false
-  });
-})
-.then(function () {
-  return Contact.create({
     firstName: 'Christine',
     lastName: 'Huang',
     newsletterSubscription: true,
@@ -282,129 +301,6 @@ var Contact = module.exports = sql.define('Contact', {
     msTeamTitle: 'Principal Test Manager, Windows Server Interoperability & Tools',
     showOnHomePage: false,
     headShot: 'christine-huang.jpg',
-    company: 'Microsoft',
-    country: 'USA',
-    allowNotifications: true,
-    allowPersonalInfoSharing: false
-  });
-})
-.then(function () {
-    return Contact.create({
-      firstName: 'Feng',
-      lastName: 'Han',
-      newsletterSubscription: true,
-
-      contactDescription: 'Feng Han is a software engineer in Windows Server Interoperability & Tools team in Shanghai, China. He has worked on the development and support of test tools for Windows interoperability for 4 years, especially on Remote Desktop protocol family.<br /><br />He graduated from the Zhejiang University with Bachelor’s degree and graduated from Shanghai Jiaotong University with Master’s degree in Software Engineering. Prior to joining Microsoft, Feng worked as a Software Development Engineer for 3 years in a startup company.<br /><br />His role on Interop Events is to present and support synthetic test suites, help partners to use these test tools to identity their product issue.',
-      eventRole: 'speaker',
-      msTeamMember: true,
-      msTeamTitle: 'Software Engineer, Windows Server Interoperability & Tools Team, Microsoft (China) Corporation',
-      showOnHomePage: false,
-      headShot: 'feng-han-headshot.jpg',
-      company: 'Microsoft',
-      country: 'USA',
-      allowNotifications: true,
-      allowPersonalInfoSharing: false
-    });
-})
-.then(function () {
-  return Contact.create({
-    firstName: 'Guozhao',
-    lastName: 'Wu',
-    newsletterSubscription: true,
-    contactDescription: 'Guozhao Wu is a Software Test Engineer in the Microsoft Office Interoperability team. He drives Test Suites development across the Exchange family of Open Specification and Interoperability tool development for Office OPN parsers. <br /><br />Prior to joining Microsoft, Guozhao worked as a Software Development Engineer in Hangzhou Tiantu focusing on developing System for Highway Emergency. He graduated from the Zhejiang University with Bachelor’s degree & Master’s degree in Software Engineering.',
-    eventRole: 'speaker',
-    msTeamMember: true,
-    msTeamTitle: 'Software Engineer in Test, Office Interoperability Team',
-    showOnHomePage: false,
-    headShot: 'guozhao-wu-headshot.jpg',
-    company: 'Microsoft',
-    country: 'USA',
-    allowNotifications: true,
-    allowPersonalInfoSharing: false
-  });
-})
-.then(function () {
-  return Contact.create({
-    firstName: 'Guqing',
-    lastName: 'Fang',
-    newsletterSubscription: true,
-    contactDescription: 'Guqing Fang is a Software Development Engineer in Test in the Microsoft Windows Server and Cloud Interoperability team in Shanghai, China. He owns the development and support efforts for Remote Desktop protocol family and Mobile Device Management test suites for Microsoft Windows Server Division. <br /><br />Prior to joining the team in Shanghai, Guqing worked as a Software Development Engineer in Test for 5 years, focusing on testing the model based testing tool SpecExplorer. Guqing graduated from Zhejiang University, Hangzhou China, with a Bachelor’s degree in Instrument Engineering.',
-    eventRole: 'speaker',
-    msTeamMember: true,
-    msTeamTitle: 'Software Development Engineer in Test, Windows Server Interoperability Team',
-    showOnHomePage: false,
-    headShot: 'guqing-fang-headshot.jpg',
-    company: 'Microsoft',
-    country: 'USA',
-    allowNotifications: true,
-    allowPersonalInfoSharing: false
-  });
-})
-.then(function () {
-  return Contact.create({
-    firstName: 'Hector',
-    lastName: 'Sandino',
-    newsletterSubscription: true,
-    contactDescription: 'Hector Sandino is a Quality Assurance Manager in the Microsoft Office Interoperability team. He leads the development and release efforts for interoperability test tools and events for the Microsoft Office Division, including SharePoint, Exchange Server, and Office. <br /><br />Prior to joining the Office Interoperability team, Hector worked as a Software Developer Engineer across several products of the Microsoft Office brand, including: Outlook, PowerPoint, Visio, Excel, and Word. He graduated from the Pontificia Universidad Javeriana with a Bachelor’s of Science degree in Industrial Engineering and a Master of Science degree in Industrial Engineering from the University of Puerto Rico.',
-    eventRole: 'speaker',
-    msTeamMember: true,
-    msTeamTitle: 'Quality Assurance Manager, Office Interoperability Team',
-    showOnHomePage: false,
-    headShot: 'hector-sandino-headshot.jpg',
-    company: 'Microsoft',
-    country: 'USA',
-    allowNotifications: true,
-    allowPersonalInfoSharing: false
-  });
-})
-.then(function () {
-
-
-    return Contact.create({
-      firstName: 'Jinghui',
-      lastName: 'Zhang',
-      newsletterSubscription: true,
-
-      contactDescription: 'Jinghui Zhang is a Software Engineer in the Microsoft Office Extensibility team. She is a developer of dev.office.com and graph.microsoft.io. She also drives development for new Office Add-ins, SharePoint and Exchange Test Suites, and Office Open XML and Uniform Office Format interoperability tools.<br /><br />She gives talks about Office Add-in, Protocol Test Suites, etc. in the Microsoft Interop Events. And she also participates in the hack sessions to lead developers to reach their hack success. Her favorite part of the events is the brain storm and hack session.<br /><br />She graduated from Beijing University of Aeronautics & Astronautics, China with a Bachelor’s degree in Information Management and Information Systems.',
-      eventRole: 'speaker',
-      msTeamMember: true,
-      msTeamTitle: 'Software Engineer, Office Extensibility Team, Microsoft Corporation',
-      showOnHomePage: false,
-      headShot: 'jinghui-zhang-headshot.jpg',
-      company: 'Microsoft',
-      country: 'USA',
-      allowNotifications: true,
-      allowPersonalInfoSharing: false
-    });
-})
-.then(function () {
-  return Contact.create({
-    firstName: 'Mai-Ing',
-    lastName: 'Cheng',
-    newsletterSubscription: true,
-    contactDescription: 'Mai-Ing Cheng is a Senior Program Manager Lead in the Microsoft Windows Server and Cloud Interoperability team. She manages and owns the Microsoft Windows Protocol Compliance related efforts.  She also manages the delivery and release efforts for Spec Explorer. She is also involved in managing in the area of specification languages, compilers, and message monitor and analyzer for interoperability technologies. <br /><br />Prior to joining Microsoft, Mai-Ing was a Research Engineer at RR Donnelley focusing on developing software solution for real-time digital commercial variable printing. She also worked as Senior Software Engineer at a Network company focusing developing firmware for network devices. She graduated from Feng Chia University, Taiwan with Bachelor’s degree in Business Administration and a Master’s degree Computer Science from DePaul University.',
-    eventRole: 'speaker',
-    msTeamMember: true,
-    msTeamTitle: 'Principal Program Manager Lead, Windows Server Interoperability Team',
-    showOnHomePage: false,
-    headShot: 'mai-ing-cheng-headshot.jpg',
-    company: 'Microsoft',
-    country: 'USA',
-    allowNotifications: true,
-    allowPersonalInfoSharing: false
-  });
-})
-.then(function () {
-  return Contact.create({
-    firstName: 'Obaid',
-    lastName: 'Farooqi',
-    newsletterSubscription: true,
-    contactDescription: 'Obaid Farooqi is an Escalation Engineer on the Microsoft Developer Support, Open Specifications/Protocols/Interoperability team. <br /><br />Obaid is responsible for support of Microsoft’s open specifications (protocol documents).  He earned his Master Computer Science degree from University of Texas at Arlington. He primarily works with third-party protocol implementers to address questions and issues related to the open specifications.  He works extensively with the Authentication, File sharing (SMB2&3) and Mobile Device Management (MDM) protocols but is capable of supporting any of the 500+ on-the-wire Windows protocols.  He has been in this eventRole for six years at Microsoft and in the telecommunications industry as a developer for 12 years.',
-    eventRole: 'speaker',
-    msTeamMember: true,
-    msTeamTitle: 'Escalation Engineer, Developer Support',
-    showOnHomePage: false,
-    headShot: 'obaid-farooqi-headshot.jpg',
     company: 'Microsoft',
     country: 'USA',
     allowNotifications: true,
@@ -439,6 +335,125 @@ var Contact = module.exports = sql.define('Contact', {
     msTeamTitle: 'Escalation Engineer, Open Specification Support Team',
     showOnHomePage: false,
     headShot: 'tom-devey-headshot.jpg',
+    company: 'Microsoft',
+    country: 'USA',
+    allowNotifications: true,
+    allowPersonalInfoSharing: false
+  });
+})
+.then(function () {
+  return Contact.create({
+    firstName: 'Hector',
+    lastName: 'Sandino',
+    newsletterSubscription: true,
+    contactDescription: 'Hector Sandino is a Quality Assurance Manager in the Microsoft Office Interoperability team. He leads the development and release efforts for interoperability test tools and events for the Microsoft Office Division, including SharePoint, Exchange Server, and Office. <br /><br />Prior to joining the Office Interoperability team, Hector worked as a Software Developer Engineer across several products of the Microsoft Office brand, including: Outlook, PowerPoint, Visio, Excel, and Word. He graduated from the Pontificia Universidad Javeriana with a Bachelor’s of Science degree in Industrial Engineering and a Master of Science degree in Industrial Engineering from the University of Puerto Rico.',
+    eventRole: 'speaker',
+    msTeamMember: true,
+    msTeamTitle: 'Quality Assurance Manager, Office Interoperability Team',
+    showOnHomePage: false,
+    headShot: 'hector-sandino-headshot.jpg',
+    company: 'Microsoft',
+    country: 'USA',
+    allowNotifications: true,
+    allowPersonalInfoSharing: false
+  });
+})
+.then(function () {
+  return Contact.create({
+    firstName: 'Bryan S.',
+    lastName: 'Burgin',
+    newsletterSubscription: true,
+    contactDescription: 'Bryan Burgin is a Senior Escalation Engineer responsible for support of Microsoft’s open specifications (protocol documents).  He primarily works with third-party protocol implementers to address questions and issues related to the open specifications and to champion interoperability with Microsoft platforms.  He works extensively with the RDP/RDS and File sharing (SMB2&3) protocol groups.  However, along with his team, support 500+ on-the-wire Windows protocols.  He has been in this eventRole for three years and at Microsoft for 13.  <br /><br />Prior to this eventRole, Bryan supported Kernel driver developers, specializing in network (NDIS) driver development. Prior to joining Microsoft, Bryan spent many years developing products that integrated Wang VS minicomputers with PC networks (terminal emulation, file system redirection, print redirection).',
+    eventRole: 'speaker',
+    msTeamMember: true,
+    msTeamTitle: 'Senior Escalation Engineer, Developer Support, Open Specifications/Protocols/Interoperability',
+    showOnHomePage: false,
+    headShot: 'bryan-burgin-headshot.jpg',
+    company: 'Microsoft',
+    country: 'USA',
+    allowNotifications: true,
+    allowPersonalInfoSharing: false
+  });
+})
+.then(function () {
+    return Contact.create({
+      firstName: 'Feng',
+      lastName: 'Han',
+      newsletterSubscription: true,
+      contactDescription: 'Feng Han is a software engineer in Windows Server Interoperability & Tools team in Shanghai, China. He has worked on the development and support of test tools for Windows interoperability for 4 years, especially on Remote Desktop protocol family.<br /><br />He graduated from the Zhejiang University with Bachelor’s degree and graduated from Shanghai Jiaotong University with Master’s degree in Software Engineering. Prior to joining Microsoft, Feng worked as a Software Development Engineer for 3 years in a startup company.<br /><br />His role on Interop Events is to present and support synthetic test suites, help partners to use these test tools to identity their product issue.',
+      eventRole: 'speaker',
+      msTeamMember: true,
+      msTeamTitle: 'Software Engineer, Windows Server Interoperability & Tools Team, Microsoft (China) Corporation',
+      showOnHomePage: false,
+      headShot: 'feng-han-headshot.jpg',
+      company: 'Microsoft',
+      country: 'USA',
+      allowNotifications: true,
+      allowPersonalInfoSharing: false
+    });
+})
+.then(function () {
+  return Contact.create({
+    firstName: 'Guozhao',
+    lastName: 'Wu',
+    newsletterSubscription: true,
+    contactDescription: 'Guozhao Wu is a Software Test Engineer in the Microsoft Office Interoperability team. He drives Test Suites development across the Exchange family of Open Specification and Interoperability tool development for Office OPN parsers. <br /><br />Prior to joining Microsoft, Guozhao worked as a Software Development Engineer in Hangzhou Tiantu focusing on developing System for Highway Emergency. He graduated from the Zhejiang University with Bachelor’s degree & Master’s degree in Software Engineering.',
+    eventRole: 'speaker',
+    msTeamMember: true,
+    msTeamTitle: 'Software Engineer in Test, Office Interoperability Team',
+    showOnHomePage: false,
+    headShot: 'guozhao-wu-headshot.jpg',
+    company: 'Microsoft',
+    country: 'USA',
+    allowNotifications: true,
+    allowPersonalInfoSharing: false
+  });
+})
+.then(function () {
+  return Contact.create({
+    firstName: 'Obaid',
+    lastName: 'Farooqi',
+    newsletterSubscription: true,
+    contactDescription: 'Obaid Farooqi is an Escalation Engineer on the Microsoft Developer Support, Open Specifications/Protocols/Interoperability team. <br /><br />Obaid is responsible for support of Microsoft’s open specifications (protocol documents).  He earned his Master Computer Science degree from University of Texas at Arlington. He primarily works with third-party protocol implementers to address questions and issues related to the open specifications.  He works extensively with the Authentication, File sharing (SMB2&3) and Mobile Device Management (MDM) protocols but is capable of supporting any of the 500+ on-the-wire Windows protocols.  He has been in this eventRole for six years at Microsoft and in the telecommunications industry as a developer for 12 years.',
+    eventRole: 'speaker',
+    msTeamMember: true,
+    msTeamTitle: 'Escalation Engineer, Developer Support',
+    showOnHomePage: false,
+    headShot: 'obaid-farooqi-headshot.jpg',
+    company: 'Microsoft',
+    country: 'USA',
+    allowNotifications: true,
+    allowPersonalInfoSharing: false
+  });
+})
+.then(function () {
+  return Contact.create({
+    firstName: 'Guqing',
+    lastName: 'Fang',
+    newsletterSubscription: true,
+    contactDescription: 'Guqing Fang is a Software Development Engineer in Test in the Microsoft Windows Server and Cloud Interoperability team in Shanghai, China. He owns the development and support efforts for Remote Desktop protocol family and Mobile Device Management test suites for Microsoft Windows Server Division. <br /><br />Prior to joining the team in Shanghai, Guqing worked as a Software Development Engineer in Test for 5 years, focusing on testing the model based testing tool SpecExplorer. Guqing graduated from Zhejiang University, Hangzhou China, with a Bachelor’s degree in Instrument Engineering.',
+    eventRole: 'speaker',
+    msTeamMember: true,
+    msTeamTitle: 'Software Development Engineer in Test, Windows Server Interoperability Team',
+    showOnHomePage: false,
+    headShot: 'guqing-fang-headshot.jpg',
+    company: 'Microsoft',
+    country: 'USA',
+    allowNotifications: true,
+    allowPersonalInfoSharing: false
+  });
+})
+.then(function () {
+  return Contact.create({
+    firstName: 'Mai-Ing',
+    lastName: 'Cheng',
+    newsletterSubscription: true,
+    contactDescription: 'Mai-Ing Cheng is a Senior Program Manager Lead in the Microsoft Windows Server and Cloud Interoperability team. She manages and owns the Microsoft Windows Protocol Compliance related efforts.  She also manages the delivery and release efforts for Spec Explorer. She is also involved in managing in the area of specification languages, compilers, and message monitor and analyzer for interoperability technologies. <br /><br />Prior to joining Microsoft, Mai-Ing was a Research Engineer at RR Donnelley focusing on developing software solution for real-time digital commercial variable printing. She also worked as Senior Software Engineer at a Network company focusing developing firmware for network devices. She graduated from Feng Chia University, Taiwan with Bachelor’s degree in Business Administration and a Master’s degree Computer Science from DePaul University.',
+    eventRole: 'speaker',
+    msTeamMember: true,
+    msTeamTitle: 'Principal Program Manager Lead, Windows Server Interoperability Team',
+    showOnHomePage: false,
+    headShot: 'mai-ing-cheng-headshot.jpg',
     company: 'Microsoft',
     country: 'USA',
     allowNotifications: true,
@@ -532,22 +547,4 @@ var Contact = module.exports = sql.define('Contact', {
     headShot: '',
     eventRole: 'speaker'
   });
-})
-.then(function() {
-  return Contact.create({
-  firstName: 'Jingyu',
-  lastName: 'Shao',
-  newsletterSubscription: true,
-  contactDescription: 'Jingyu Shao is a Software Engineer in the Microsoft Office Extensibility team. She works as web developer for Office developer portal: dev.office.com and Microsoft Graph portal: graph.microsoft.io. Jingyu also has developed several Office Add-ins with the new Office JavaScript API. She also drives development of interoperability tools, like Fiddler Inspectors to parse Exchange, SharePoint and WOPI online traffic. <br /><br />Jingyu graduated from Zhejiang University China with a master degree in Electronic Information Engineering.',
-  eventRole: 'speaker',
-  msTeamMember: true,
-  msTeamTitle: 'Software Engineer, Office Extensibility Team',
-  showOnHomePage: false,
-  headShot: 'jingyu-shao-headshot.jpg',
-  company: 'Microsoft',
-  country: 'USA',
-  allowNotifications: true,
-  allowPersonalInfoSharing: false
-  })
-})
-*/
+})*/

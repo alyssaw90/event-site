@@ -40,7 +40,7 @@ $(document).ready(function() {
 			eventsObj[events[i].id].speakersHtml =  '';
 			eventsObj[events[i].id].tabs = [];
 			eventsObj[events[i].id].eventUrl = events[i].eventUrl;
-			eventsObj[events[i].id].speakersArr = [];
+			eventsObj[events[i].id].eventSpeakers = [];
 			eventsObj[events[i].id].eventName = events[i].eventName;
 			eventsObj[events[i].id].eventRegistrationLink = events[i].eventRegistrationLink;
 			eventsObj[events[i].id].eventUrl = events[i].eventUrl;
@@ -67,26 +67,28 @@ $(document).ready(function() {
 					if (eventsObj[key].eventSpeakers) {
 						// loop through the string of attendees for the event
 						for (var i = 0, j = attendees.length; i < j; i++) {
-							// if the id of an attendee matches one of the IDs from the speakers string, then push the attendee object to the speakers array
-							if (eventsObj[key].eventSpeakers.indexOf(attendees[i].id.toString()) > -1) {
-								eventsObj[key].speakersArr.push(attendees[i]);
+							var attendeeId = attendees[i].id.toString()
+							// if the id of an attendee matches one of the IDs from the speakers string, replace the value from the eventSpeakers array with the speaker's object
+							if (eventsObj[key].eventSpeakers.indexOf(attendeeId) > -1) {
+								console.log(eventsObj[key].eventSpeakers.indexOf(attendeeId));
+								eventsObj[key].eventSpeakers[eventsObj[key].eventSpeakers.indexOf(attendeeId)] = attendees[i];
 							}
 						}
-						
+						console.log(eventsObj[key].eventSpeakers);
 					}
 					//if there are speakers in the speakers array
-					if (eventsObj[key].speakersArr) {
+					if (eventsObj[key].eventSpeakers) {
 					//loop over the speakers array and create html for speakers tab
-						for (var i = 0, j = eventsObj[key].speakersArr.length; i < j; i++) {
-							eventsObj[key].speakersHtml += '<h4>' + eventsObj[key].speakersArr[i].firstName + ' ' + eventsObj[key].speakersArr[i].lastName + '</h4>';
-							if (eventsObj[key].speakersArr[i].msTeamTitle) {
-								eventsObj[key].speakersHtml += '<h5>' + eventsObj[key].speakersArr[i].msTeamTitle + '</h5><p>';
+						for (var i = 0, j = eventsObj[key].eventSpeakers.length; i < j; i++) {
+							eventsObj[key].speakersHtml += '<h4>' + eventsObj[key].eventSpeakers[i].firstName + ' ' + eventsObj[key].eventSpeakers[i].lastName + '</h4>';
+							if (eventsObj[key].eventSpeakers[i].msTeamTitle) {
+								eventsObj[key].speakersHtml += '<h5>' + eventsObj[key].eventSpeakers[i].msTeamTitle + '</h5><p>';
 							}
-							if (eventsObj[key].speakersArr[i].headShot) {
-								eventsObj[key].speakersHtml += '<img class="pull-left speakersImg" height="165" width="165" src="../uploads/' + eventsObj[key].speakersArr[i].headShot + '" />';
+							if (eventsObj[key].eventSpeakers[i].headShot) {
+								eventsObj[key].speakersHtml += '<img class="pull-left speakersImg" height="165" width="165" src="../uploads/' + eventsObj[key].eventSpeakers[i].headShot + '" />';
 							}
-							if (eventsObj[key].speakersArr[i].contactDescription) {
-						 		eventsObj[key].speakersHtml += eventsObj[key].speakersArr[i].contactDescription + '</p>';
+							if (eventsObj[key].eventSpeakers[i].contactDescription) {
+						 		eventsObj[key].speakersHtml += eventsObj[key].eventSpeakers[i].contactDescription + '</p>';
 							}
 							eventsObj[key].speakersHtml += '<hr class="alt1" />';
 						}
