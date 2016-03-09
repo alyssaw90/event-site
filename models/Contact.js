@@ -346,7 +346,7 @@ var Contact = module.exports = sql.define('Contact', {
     newsletterSubscription: true,
     contactDescription: 'Hector Sandino is a Quality Assurance Manager in the Microsoft Office Interoperability team. He leads the development and release efforts for interoperability test tools and events for the Microsoft Office Division, including SharePoint, Exchange Server, and Office. <br /><br />Prior to joining the Office Interoperability team, Hector worked as a Software Developer Engineer across several products of the Microsoft Office brand, including: Outlook, PowerPoint, Visio, Excel, and Word. He graduated from the Pontificia Universidad Javeriana with a Bachelor’s of Science degree in Industrial Engineering and a Master of Science degree in Industrial Engineering from the University of Puerto Rico.',
     eventRole: 'speaker',
-    msTeamMember: true,
+    msTeamMember: false,
     msTeamTitle: 'Quality Assurance Manager, Office Interoperability Team',
     showOnHomePage: false,
     headShot: 'hector-sandino-headshot.jpg',
@@ -397,7 +397,7 @@ var Contact = module.exports = sql.define('Contact', {
     newsletterSubscription: true,
     contactDescription: 'Guozhao Wu is a Software Test Engineer in the Microsoft Office Interoperability team. He drives Test Suites development across the Exchange family of Open Specification and Interoperability tool development for Office OPN parsers. <br /><br />Prior to joining Microsoft, Guozhao worked as a Software Development Engineer in Hangzhou Tiantu focusing on developing System for Highway Emergency. He graduated from the Zhejiang University with Bachelor’s degree & Master’s degree in Software Engineering.',
     eventRole: 'speaker',
-    msTeamMember: true,
+    msTeamMember: false,
     msTeamTitle: 'Software Engineer in Test, Office Interoperability Team',
     showOnHomePage: false,
     headShot: 'guozhao-wu-headshot.jpg',
@@ -448,7 +448,7 @@ var Contact = module.exports = sql.define('Contact', {
     newsletterSubscription: true,
     contactDescription: 'Mai-Ing Cheng is a Senior Program Manager Lead in the Microsoft Windows Server and Cloud Interoperability team. She manages and owns the Microsoft Windows Protocol Compliance related efforts.  She also manages the delivery and release efforts for Spec Explorer. She is also involved in managing in the area of specification languages, compilers, and message monitor and analyzer for interoperability technologies. <br /><br />Prior to joining Microsoft, Mai-Ing was a Research Engineer at RR Donnelley focusing on developing software solution for real-time digital commercial variable printing. She also worked as Senior Software Engineer at a Network company focusing developing firmware for network devices. She graduated from Feng Chia University, Taiwan with Bachelor’s degree in Business Administration and a Master’s degree Computer Science from DePaul University.',
     eventRole: 'speaker',
-    msTeamMember: true,
+    msTeamMember: false,
     msTeamTitle: 'Principal Program Manager Lead, Windows Server Interoperability Team',
     showOnHomePage: false,
     headShot: 'mai-ing-cheng-headshot.jpg',
@@ -465,7 +465,7 @@ var Contact = module.exports = sql.define('Contact', {
     newsletterSubscription: true,
     contactDescription: 'Yuqing Zhao is a Software Development Engineer in Test in the Microsoft Windows Server and Cloud Interoperability team in Shanghai, China. He owns the development and support efforts for Identity protocol family and OMI test suites for Microsoft Windows Server Division. <br /><br />Prior to joining the team in Shanghai, Yuqing worked as a Software Development Engineer for 4 years, focusing on SaaS development and protocol engineering. Yuqing graduated from Nanjing University of Postage and Telecommunications, Nanjing China, with a Bachelor’s degree in Information Engineering.',
     eventRole: 'speaker',
-    msTeamMember: true,
+    msTeamMember: false,
     msTeamTitle: 'Software Development Engineer in Test, Windows Server Interoperability Team',
     showOnHomePage: false,
     headShot: 'yuqing-zhao-headshot.jpg',
@@ -545,4 +545,22 @@ var Contact = module.exports = sql.define('Contact', {
     headShot: '',
     eventRole: 'speaker'
   });
-})*/
+})
+.then(function () {
+  return Contact.create({
+    firstName: 'Ted',
+    lastName: 'Way',
+    newsletterSubscription: true,
+    contactDescription: 'Ted Way is a Program Manager on the Azure Machine Learning engineering team.  The Azure Machine Learning service enables you to quickly create a predictive model and use it in production.  He focuses on insights derived from telemetry and metrics from the service, and he also works on enabling BI analysts to go from hindsight to foresight by integrating Excel, Power BI, and other tools with Azure ML web services.  He received BS degrees in electrical engineering and computer engineering, MS degrees in electrical engineering and biomedical engineering, and a PhD in biomedical engineering, all from the University of Michigan – Ann Arbor.  His PhD dissertation was on "spell check for radiologists," a computer-aided diagnosis (CAD) system that uses image processing and machine learning to estimate lung cancer malignancy on chest CT scans.  Ted was born in Taiwan, grew up in Arizona, and went to high school in Hsin-chu.  While working for Microsoft, he took a leave of absence to fulfill his military service requirement, serving as an Alternative Military Serviceman at the Ministry of Foreign Affairs (MOFA) from 2010-2011.',
+    eventRole: 'speaker',
+    msTeamMember: true,
+    msTeamTitle: ' Program Manager, Azure Machine Learning Engineering Team',
+    showOnHomePage: false,
+    headShot: 'ted-way-headshot.jpg',
+    company: 'Microsoft',
+    country: 'USA',
+    allowNotifications: true,
+    allowPersonalInfoSharing: false
+  });
+})
+*/
