@@ -3,7 +3,7 @@
 var fs = require('fs');
 var path = require('path');
 var Sql = require('sequelize');
-var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
+/*var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
   host: process.env.DB_LOCAL_HOST,
   dialect: 'mssql',
 
@@ -12,8 +12,8 @@ var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.
     min: 0,
     idle: 10000
   }
-});
-/*var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+});*/
+var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
   host: process.env.DB_HOST,
   dialect: 'mssql',
   pool: {
@@ -24,7 +24,7 @@ var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.
   dialectOptions: {
     encrypt: true
   }
-});*/
+});
 
 var EventTab = module.exports = sql.define('EventTab', {
   eventId: Sql.INTEGER,
@@ -33,7 +33,7 @@ var EventTab = module.exports = sql.define('EventTab', {
   tabContent: Sql.TEXT
 })
 
-EventTab.sync({force: true})
+/*EventTab.sync({force: true})
 .then(function() {
   return EventTab.create({
     eventId: 1,
@@ -74,14 +74,6 @@ EventTab.sync({force: true})
     tabContent: '<a class="button orange large float-right" href="mailto:plugfests@microsoft.com?subject=I’m interested in Extend 2016">Register</a><h2>Extend Conference</h2><h4 class="center">Paris, France - May 11 - 12, 2016</h4><p>Microsoft Office and Data Platform Interoperability teams are pleased to announce Extend in Paris from May 11-12, 2016. Microsoft will present its latest updates about Office, Machine Learning, Cortana Analytics Suite, Power BI, and SQL Server. Microsoft will decide topics beforehand but let the public choose the context of the content. Microsoft and event startup, La Reserve,  let attendees choose the content for an, "experience similar to what one might call crowd conferencing; a participative conference of a new kind where the public is the key player" (Julien Kerihuel, La Reserve founder).</p><p>Attendees can look forward to presentations from subject matter experts, interactive developer sessions and one-on-one collaborations with Microsoft engineers. Extend 2016 will include evening mixers and social hour with other attendees and Microsoft engineers.</p><h5>Where: Paris, France</h5><h5>When: May 11 - 12, 2016</h5><h5>Who: Developers building solutions that leverage Office, SharePoint, and SQL</h5><h5>Registration: Contact <a href="mailto:plugfests@microsoft.com">plugfests@microsoft.com</a> for eligibility</h5><h5>Cost: Free</h5><br /><hr class="alt1" /><div class="clearfix"><div class="videoContainerWrapper" id="mobileVideoWrapper"><div class="videoContainer"><iframe src="https://www.youtube.com/embed/LIQb5B8BSpo" frameborder="0" allowfullscreen></iframe></div><div class="videoContainer"><iframe src="https://www.youtube.com/embed/N1NMvx0Jkvk" frameborder="0" allowfullscreen></iframe></div></div><div class="videoContainerWrapper" id="leftVideoWrapper"><div class="videoContainer"><iframe src="https://www.youtube.com/embed/LIQb5B8BSpo" frameborder="0" allowfullscreen></iframe></div></div><div class="videoContainerWrapper" id="rightVideoWrapper"><div class="videoContainer"><iframe src="https://www.youtube.com/embed/N1NMvx0Jkvk" frameborder="0" allowfullscreen></iframe></div></div></div>'
   })
 })
-/*.then(function() {
-  return EventTab.create({
-    eventId: 2,
-    tabNumber: 1,
-    tabTitle: 'Videos',
-    tabContent: '<div class="videoContainerWrapper" id="mobileVideoWrapper"><div class="videoContainer"><iframe src="https://www.youtube.com/embed/LIQb5B8BSpo" frameborder="0" allowfullscreen></iframe></div><div class="videoContainer"><iframe src="https://www.youtube.com/embed/N1NMvx0Jkvk" frameborder="0" allowfullscreen></iframe></div></div><div class="videoContainerWrapper" id="leftVideoWrapper"><div class="videoContainer"><iframe src="https://www.youtube.com/embed/LIQb5B8BSpo" frameborder="0" allowfullscreen></iframe></div></div><div class="videoContainerWrapper" id="rightVideoWrapper"><div class="videoContainer"><iframe src="https://www.youtube.com/embed/N1NMvx0Jkvk" frameborder="0" allowfullscreen></iframe></div></div>'
-  })
-})*/
 .then(function() {
   return EventTab.create({
     eventId: 3,
@@ -113,4 +105,4 @@ EventTab.sync({force: true})
     tabTitle: 'Venue',
     tabContent: '<h3>Microsoft Redmond Campus</h3><img src="../uploads/ms-campus.png" />'
   })
-})
+})*/
