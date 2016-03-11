@@ -565,4 +565,21 @@ var Contact = module.exports = sql.define('Contact', {
     allowPersonalInfoSharing: false
   });
 })
+.then(function () {
+  return Contact.create({
+    firstName: 'Darwin',
+    lastName: 'Schweitzer',
+    newsletterSubscription: true,
+    contactDescription: 'Darwin is a Senior Program Manager at Microsoft focused on Cortana Analytics, Big Data, and Data Science tools and education.  He is part of the Algorithms and Data Science group in Information Management and Machine Learning.  His data experience has been gained through a number of diverse roles at Microsoft as well as at other technology companies like IBM and Business Objects.  Roles have included program manager, instructor, practitioner, data architect, technical lead, consultant, and teaching assistant and he has worked for companies in a variety of industries (technology, healthcare, financial services, insurance, pharmaceuticals, travel, education, non-profit, and utilities) including local Pacific Northwest organizations like the University of Washington, Washington Mutual, Expedia, and Snohomish County PUD.  The one commonality in his career has been Data and Education.  Darwin is an aspiring Data Engineer/Data Scientist and dedicated lifelong learner who contributes to continuing education as a <a href="https://na01.safelinks.protection.outlook.com/?url=http%3a%2f%2fwww.pce.uw.edu%2fcertificates%2fcloud-data-management-analytics.html&data=01%7c01%7cdarsch%40microsoft.com%7cd7779071e89248487b7508d2c618fd40%7c72f988bf86f141af91ab2d7cd011db47%7c1&sdata=cYAHBivwx5vMq95E5iA1Lw9nNaf7IOJKEnXnDaJATGA%3d">Cloud Data Management & Analytics</a> instructor at the University of Washington and as a volunteer teaching assistant at Henry M. Jackson High School in Millcreek, WA where he helps students learn Java and prepare for the AP Computer Science exam  <a href="http://tealsk12.org">http://tealsk12.org</a> .  In his spare time he likes to travel, hike, read (technology or books about US Presidents), listen to Blues and Jazz, and enjoy an occasional round of golf.  Darwin hopes to help drive Big Data and Data Science education and increase the broad adoption of Data Science products and services like Cortana Analytics and build Data Science community.',
+    eventRole: 'speaker',
+    msTeamMember: true,
+    msTeamTitle: 'Senior Program Manager',
+    showOnHomePage: false,
+    headShot: 'darwin-schweitzer-headshot.jpg',
+    company: 'Microsoft',
+    country: 'USA',
+    allowNotifications: true,
+    allowPersonalInfoSharing: false
+  });
+})
 */

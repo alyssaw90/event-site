@@ -103,7 +103,7 @@ $(document).ready(function() {
 
 						}
 						//create the tabs that aren't first or last
-						if (i > 0 && i < eventsObj[key].tabs.length - 1) {
+						if (i > 0 && i <= eventsObj[key].tabs.length - 1) {
 							eventsObj[key].eventUltHtml += '<li><a href="#thisEvent-' + eventsObj[key].tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '') + '"><h5>' + eventsObj[key].tabs[i].tabTitle + '</h5></a></li>';
 							eventsObj[key].eventDivHtml += '<div id="thisEvent-' + eventsObj[key].tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '') + '" class="tab-content eventTabDiv" style="display:none;">' + eventsObj[key].tabs[i].tabContent  + '</div>';
 
