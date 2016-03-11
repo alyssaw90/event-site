@@ -3,7 +3,7 @@
 var fs = require('fs');
 var path = require('path');
 var Sql = require('sequelize');
-var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
+/*var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
   host: process.env.DB_LOCAL_HOST,
   dialect: 'mssql',
 
@@ -12,8 +12,8 @@ var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.
     min: 0,
     idle: 10000
   }
-});
-/*var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+});*/
+var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
   host: process.env.DB_HOST,
   dialect: 'mssql',
   pool: {
@@ -24,7 +24,7 @@ var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.
   dialectOptions: {
     encrypt: true
   }
-});*/
+});
 
 var EventTab = module.exports = sql.define('EventTab', {
   eventId: Sql.INTEGER,
@@ -33,7 +33,7 @@ var EventTab = module.exports = sql.define('EventTab', {
   tabContent: Sql.TEXT
 })
 
-EventTab.sync({force: true})
+/*EventTab.sync({force: true})
 .then(function() {
   return EventTab.create({
     eventId: 1,
@@ -95,7 +95,7 @@ EventTab.sync({force: true})
     eventId: 3,
     tabNumber: 3,
     tabTitle: 'Accommodations',
-    tabContent: '<h2>Silver Cloud Inns & Hotels</h2><h3>How to Book Online</h3><img src="../uploads/silver-cloud-in.jpg" class="align-left" /><p>URL: <a href="http://www.silvercloud.com" targe="_blank">www.silvercloud.com</a></p><p>Destination: Pull down a tab and select <b>“Redmond”</b> </p><p>Enter: <b>Arrival/Departure</b> date; Enter: Number of Adults / Children</p><p>Click on <b>“Check for Availability”</b>, a published room type/rates will populate the page</p><p>Enter Group ID/Login: <b>RDMDPLUG</b></p><p>Enter your Password: <b>plugfest2016</b> (lower case)</p><p>Click on <b>“Login”</b> tab below, Then Click on the <b>“Check Availability”</b> tab</p><p>A new page will then populate showing<b> “Redmond Plugfest 2016”</b> Room Type/Rate </p><p>Select room type and follow instructions until done.</p><p>You may also copy and paste below link: </p><p>https://redmond.silvercloud.com/irmnet/(S(priycso41uvl2e0n2wk0fjg1))/res/resmain.aspx?hotel=7&Arrival=06%2F20%2F2016&Departure=06%2F24%2F2016&People1=1&People2=0</p><p>Note: you may prepay online by selecting a box marked “Would you like to pay for this now?”</p><ul style="list-style-type: none"><li>Call Reservation Toll Free Line at <a href="tel:8002056934"> 1.800.205.6934</a></li><li>Call the Hotel direct at <a href="tel:4257468200"> 425.746.8200</a> and mention <b>“Redmond Plugfest”</b> Group</li><li>Email your reservation request to: <a href="mailto:reservations@redmond.silvercloud.com">reservations@redmond.silvercloud.com</a> </li><li><b>Rate Validity:</b> June 13 – June 24, 2016 </li><li><b>Check-In Time:</b> 1500 hour (3:00pm - PDT) <b>Check-Out Time: 1200 hour (12:00pm – PDT)</b> </li><li><b>Cancellation Policy:</b> 24 hours at 1500 hour (3:00pm – PDT), day before arrival date.</li></ul><p style="text-align: center;"><i> We thank you for an opportunity to serve you.</i></p><hr class="alt1" /><p style="text-align: center;"><i>Silver Cloud Inn Redmond | 2122 152nd Avenue NE | Redmond | WA 98052 USA</i></p><p style="text-align: center;"><i>Reservation: 800.205.6934 |Hotel: 425.746.8200 | Fax: 425.747.2078</i></p><p style="text-align: center;"><i><a href="http://www.silvercloud.com"> www.silvercloud.com</a></i></p>'
+    tabContent: '<h2>Silver Cloud Inns & Hotels</h2><h3>How to Book Online</h3><img src="../uploads/silver-cloud-in.jpg" class="align-left" /><p>URL: <a href="http://www.silvercloud.com" targe="_blank">www.silvercloud.com</a></p><p>Destination: Pull down a tab and select <b>“Redmond”</b> </p><p>Enter: <b>Arrival/Departure</b> date; Enter: Number of Adults / Children</p><p>Click on <b>“Check for Availability”</b>, a published room type/rates will populate the page</p><p>Enter Group ID/Login: <b>RDMDPLUG</b></p><p>Enter your Password: <b>plugfest2016</b> (lower case)</p><p>Click on <b>“Login”</b> tab below, Then Click on the <b>“Check Availability”</b> tab</p><p>A new page will then populate showing<b> “Redmond Plugfest 2016”</b> Room Type/Rate </p><p>Select room type and follow instructions until done.</p><p>You may also copy and paste below link: </p><p>https://redmond.silvercloud.com/irmnet/(S(priycso41uvl2e0n2wk0fjg1))/res/resmain.aspx?hotel=7&Arrival=06%2F20%2F2016&Departure=06%2F24%2F2016&People1=1&People2=0</p><p>Note: you may prepay online by selecting a box marked “Would you like to pay for this now?”</p><ul style="list-style-type: none"><li>Call Reservation Toll Free Line at <a href="tel:8002056934"> 1.800.205.6934</a></li><li>Call the Hotel direct at <a href="tel:4257468200"> 425.746.8200</a> and mention <b>“Redmond Plugfest”</b> Group</li><li>Email your reservation request to: <a href="mailto:reservations@redmond.silvercloud.com">reservations@redmond.silvercloud.com</a> </li><li><b>Rate Validity:</b> June 12 – June 24, 2016 </li><li><b>Check-In Time:</b> 1500 hour (3:00pm - PDT) <b>Check-Out Time: 1200 hour (12:00pm – PDT)</b> </li><li><b>Cancellation Policy:</b> 24 hours at 1500 hour (3:00pm – PDT), day before arrival date.</li></ul><p style="text-align: center;"><i> We thank you for an opportunity to serve you.</i></p><hr class="alt1" /><p style="text-align: center;"><i>Silver Cloud Inn Redmond | 2122 152nd Avenue NE | Redmond | WA 98052 USA</i></p><p style="text-align: center;"><i>Reservation: 800.205.6934 |Hotel: 425.746.8200 | Fax: 425.747.2078</i></p><p style="text-align: center;"><i><a href="http://www.silvercloud.com"> www.silvercloud.com</a></i></p>'
   })
 })
 .then(function() {
@@ -105,4 +105,4 @@ EventTab.sync({force: true})
     tabTitle: 'Venue',
     tabContent: '<h3>Microsoft Redmond Campus</h3><img src="../uploads/ms-campus.png" />'
   })
-})
+})*/
