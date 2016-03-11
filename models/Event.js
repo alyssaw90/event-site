@@ -63,7 +63,7 @@ var Event = module.exports = sql.define('Event', {
   }
 });
 
-Event.sync({force: true})
+/*Event.sync({force: true})
 .then(function () {
   return Event.create({
     eventName: 'DevDays Asia 2016 @Taipei',
@@ -103,4 +103,4 @@ Event.sync({force: true})
   eventHomepageImage: 'plugfest-io-lab-heade.png',
   eventSpeakers: '1,2,3,4,8,7,10,14,11,9,5,20,13,17,15'
   });
-})
+})*/
