@@ -137,7 +137,7 @@ module.exports = function (router) {
     var start = new Date().getTime();
     sql.sync()
     .then(function () {
-      Contact.findAll({where: {msTeamMember: true}})
+      Contact.findAll({where: {showOnMeetTheTeamPage: true}})
       .then(function (data) {
         res.json(data);
       })
