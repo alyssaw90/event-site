@@ -11,7 +11,7 @@ $(function() {
 		// console.log($form);
 		var loginInfo = JSON.stringify({email: $email.val(), password: $password.val()});
 		var testInfo = JSON.stringify({email: 'test@example.com', password: '123'});
-	console.log($email.val(), '      ', $password.val(), '       :  ', testInfo);
+	// console.log($email.val(), '      ', $password.val(), '       :  ', testInfo);
 		/*$.get('/auth/login', testInfo, function(data) {
 			console.log(data);
 		})*/
@@ -22,7 +22,19 @@ $(function() {
 
 		})
 		.done(function(data) {
-			console.log(data);
+			Cookies.set('token', data);
+			var tkn = Cookies.get('token');
+			console.log('hola               ', tkn);
+		})
+		.error(function(error) {
+			console.log(error);
 		})
 	})
+
+	$('#testButton').click(function(e) {
+		e.preventDefault();
+		var ckie = Cookies.get('token');
+		console.log('cooookieee     ', ckie);
+	})
+
 })

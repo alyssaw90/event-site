@@ -126,6 +126,9 @@ module.exports = function (router) {
   router.get('/curriculum', /*eatAuth,*/ function(req, res) {
     res.sendFile(path.join(__dirname, '../views/curriculum.html'));
   })
+   router.get('/curriculum2', /*eatAuth,*/ function(req, res) {
+    res.sendFile(path.join(__dirname, '../views/curriculum.html'));
+  })
 
   router.route('/survey/:eventId')
   .get(function (req, res) {

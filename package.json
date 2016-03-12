@@ -12,6 +12,7 @@
   "dependencies": {
     "bcrypt-nodejs": "latest",
     "body-parser": "^1.15.0",
+    "cookie-parser": "^1.4.1",
     "dotenv": "^1.2.0",
     "eat": "^0.1.1",
     "express": "^4.13.4",

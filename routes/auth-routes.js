@@ -3,6 +3,7 @@
 require('dotenv').load();
 var User = require('../models/User');
 var bodyparser = require('body-parser');
+var cookieParser = require('cookie-parser');
 var clc = require('cli-color');
 var Sql = require('sequelize');
 var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
@@ -52,6 +53,7 @@ module.exports = function(router, passport) {
   router.use(bodyparser.urlencoded({
     extended: true
   }));
+  router.use(cookieParser());
 
 	router.route('/create-user')
 	.post(function(req, res) {
@@ -84,7 +86,7 @@ module.exports = function(router, passport) {
     });
 	});
 
-  router.get('/login', function(req, res, next) {
+/*  router.get('/login', function(req, res, next) {
     passport.authenticate('basic', {session: false}, function(err, user, info) {
       //if user is found, but there is some other error
       if (err && user) { 
@@ -111,6 +113,13 @@ module.exports = function(router, passport) {
         });
       }
     })(req, res, next);
-  });
+  });*/
 
+  router.get('/login', passport.authenticate('basic', { session: false }), function(req, res) {
+    res.req.headers.authorization = 'hahaha';
+    res.req.rawHeaders.Authorization = 'blah';
+    console.log(clc.magenta('   groooogggggg    '), req.user);
+    console.log(clc.greenBright("Cookies: "), res.req.headers.authorization, '     :::::     ', res.req.rawHeaders);
+    res.json(req.user);
+  });
 }

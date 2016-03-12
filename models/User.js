@@ -60,6 +60,16 @@ var User = module.exports = sql.define('User', {
 
 });
 
+function makeRandomString () {
+  var outputString = '';
+  var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_-+=<,>.?/';
+  var randomNumber = Math.ceil(Math.random() * 10) + 10;
+  for ( var i = 0; i < randomNumber; i++ ) {
+    outputString += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
+  return outputString;
+}
+
 User.sync({force: true})
 .then(function() {
   console.log(clc.blue('::::::::     '), sql.databaseVersion());
@@ -68,7 +78,8 @@ User.sync({force: true})
   return User.create({
   userName: 'TestUser',
   password: bcrypt.hashSync('123', bcrypt.genSaltSync(8), null),
-  email: 'test@example.com'  
+  email: 'test@example.com',
+  randomString: makeRandomString()
   });
 })
 .then(function() {
