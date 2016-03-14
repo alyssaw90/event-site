@@ -98,25 +98,25 @@ $(document).ready(function() {
 					for (var i = 0, j = eventsObj[key].tabs.length; i < j; i++) {
 						//create the first tab with the first and current classes
 						if (i === 0) {
-							eventsObj[key].eventUltHtml += '<li class="first current"><a href="#thisEvent-' + eventsObj[key].tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '') + '"><h5>' + eventsObj[key].tabs[i].tabTitle + '</h5></a></li>';
-							eventsObj[key].eventDivHtml += '<div id="thisEvent-' + eventsObj[key].tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '') + '" class="tab-content eventTabDiv" style="display:block;">' + eventsObj[key].tabs[i].tabContent  + '</div>';
+							eventsObj[key].eventUltHtml += '<li class="first current"><a href="#' + eventsObj[key].eventUrl + '-' + eventsObj[key].tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '').toLowerCase() + '"><h5>' + eventsObj[key].tabs[i].tabTitle + '</h5></a></li>';
+							eventsObj[key].eventDivHtml += '<div id="' + eventsObj[key].eventUrl + '-' + eventsObj[key].tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '').toLowerCase() + '" class="tab-content eventTabDiv" style="display:block;">' + eventsObj[key].tabs[i].tabContent  + '</div>';
 
 						}
 						//create the tabs that aren't first or last
 						if (i > 0 && i <= eventsObj[key].tabs.length - 1) {
-							eventsObj[key].eventUltHtml += '<li><a href="#thisEvent-' + eventsObj[key].tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '') + '"><h5>' + eventsObj[key].tabs[i].tabTitle + '</h5></a></li>';
-							eventsObj[key].eventDivHtml += '<div id="thisEvent-' + eventsObj[key].tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '') + '" class="tab-content eventTabDiv" style="display:none;">' + eventsObj[key].tabs[i].tabContent  + '</div>';
+							eventsObj[key].eventUltHtml += '<li><a href="#' + eventsObj[key].eventUrl + '-' + eventsObj[key].tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '').toLowerCase() + '"><h5>' + eventsObj[key].tabs[i].tabTitle + '</h5></a></li>';
+							eventsObj[key].eventDivHtml += '<div id="' + eventsObj[key].eventUrl + '-' + eventsObj[key].tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '').toLowerCase() + '" class="tab-content eventTabDiv" style="display:none;">' + eventsObj[key].tabs[i].tabContent  + '</div>';
 
 						}
 						//if there are speakers add their html as the last tab
 						if (eventsObj[key].eventSpeakers && i >= eventsObj[key].tabs.length - 1) {
-							eventsObj[key].eventUltHtml += '<li class="last"><a href="#thisEvent-speakers"><h5>Speakers</h5></a></li>';
-							eventsObj[key].eventDivHtml += '<div id="thisEvent-speakers" class="tab-content eventTabDiv" style="display:none;">' + eventsObj[key].speakersHtml  + '</div>';
+							eventsObj[key].eventUltHtml += '<li class="last"><a href="#' + eventsObj[key].eventUrl + '-speakers"><h5>Speakers</h5></a></li>';
+							eventsObj[key].eventDivHtml += '<div id="' + eventsObj[key].eventUrl + '-speakers" class="tab-content eventTabDiv" style="display:none;">' + eventsObj[key].speakersHtml  + '</div>';
 						}
 						//if there are no speakers add the last eventTab as the last tab
 						if (!eventsObj[key].eventSpeakers && i >= eventsObj[key].tabs.length - 1) {
-							eventsObj[key].eventUltHtml += '<li class="last"><a href="#thisEvent-' + eventsObj[key].tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '') + '"><h5>' + eventsObj[key].tabs[i].tabTitle + '</h5></a></li>';
-							eventsObj[key].eventDivHtml += '<div id="thisEvent-' + eventsObj[key].tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '') + '" class="tab-content eventTabDiv" style="display:none;">' + eventsObj[key].tabs[i].tabContent  + '</div>';
+							eventsObj[key].eventUltHtml += '<li class="last"><a href="#' + eventsObj[key].eventUrl + '-' + eventsObj[key].tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '').toLowerCase() + '"><h5>' + eventsObj[key].tabs[i].tabTitle + '</h5></a></li>';
+							eventsObj[key].eventDivHtml += '<div id="' + eventsObj[key].eventUrl + '-' + eventsObj[key].tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '').toLowerCase() + '" class="tab-content eventTabDiv" style="display:none;">' + eventsObj[key].tabs[i].tabContent  + '</div>';
 
 						}
 						//add the closing ul tag
