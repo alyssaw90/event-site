@@ -8,17 +8,13 @@ $(function() {
 	$loginButton.click(function(e) {
 		e.preventDefault();
 		var $form = $('#loginForm');
-		// console.log($form);
 		var loginInfo = JSON.stringify({email: $email.val(), password: $password.val()});
 		var testInfo = JSON.stringify({email: 'test@example.com', password: '123'});
-	// console.log($email.val(), '      ', $password.val(), '       :  ', testInfo);
-		/*$.get('/auth/login', testInfo, function(data) {
-			console.log(data);
-		})*/
+
 		$.ajax({
 			method: 'post',
 			url: '/auth/login',
-			// data: loginInfo
+			data: loginInfo
 
 		})
 		.done(function(data) {
@@ -34,7 +30,11 @@ $(function() {
 	})
 
 	$('#testButton').click(function(e) {
-		e.preventDefault();
+		var ckie = Cookies.get('token');
+		console.log(ckie);
+			Cookies.set('token', 'not a token');
+			console.log('ladfjhlkadshf', Cookies.get('token'));
+/*		e.preventDefault();
 		// var ckie = Cookies.get('token');
 		// console.log('cooookieee     ', ckie);
 		$.ajax({
@@ -52,9 +52,9 @@ $(function() {
 	    // We expect to get an 401 Unauthorized error! In this case we are successfully 
             // logged out and we redirect the user.
 	    // Cookies.set('Authorization', 'Basic xxx');
-    });
+    });*/
  
-    return false;
+    // return false;
 	})
 
 })
