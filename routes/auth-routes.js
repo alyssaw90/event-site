@@ -71,12 +71,12 @@ module.exports = function(router, passport) {
     })
     .then(function(newUser) {
       var hashPass = newUser.$modelOptions.instanceMethods.generateHash(req.body.password);
-      var ranJSON = {randomString: newUser.dataValues.randomString, id: newUser.dataValues.id};
+      var userJSON = {randomString: newUser.dataValues.randomString, id: newUser.dataValues.id};
       delete req.body.password;
       newUser.update({password: hashPass});
 		  // res.status(200).json({msg: 'user created'});
       console.log(clc.cyanBright('::::::::   '), newUser.dataValues.randomString);
-      newUser.$modelOptions.instanceMethods.generateToken(ranJSON, process.env.SECRET_KEY, function(err, token) {
+      newUser.$modelOptions.instanceMethods.generateToken(userJSON, process.env.SECRET_KEY, function(err, token) {
         if (err) {
           console.log(err);
           return res.status(500).json({msg: 'error generating token'});
@@ -115,11 +115,32 @@ module.exports = function(router, passport) {
     })(req, res, next);
   });*/
 
-  router.get('/login', passport.authenticate('basic', { session: false }), function(req, res) {
+  router.post('/login', passport.authenticate('basic', { session: false }), function(req, res) {
+    var userJSON = {randomString: req.user.dataValues.randomString, id: req.user.dataValues.id};
     res.req.headers.authorization = 'hahaha';
-    res.req.rawHeaders.Authorization = 'blah';
+    // res.req.rawHeaders.Authorization = 'blah';
     console.log(clc.magenta('   groooogggggg    '), req.user);
-    console.log(clc.greenBright("Cookies: "), res.req.headers.authorization, '     :::::     ', res.req.rawHeaders);
-    res.json(req.user);
-  });
+    for (var key in res.req.rawHeaders) {
+      if (res.req.rawHeaders[key].slice(0, 5) === 'Basic') {
+        res.req.rawHeaders[key] = 'Basic xxxx'
+      }
+      
+    }
+    console.log(clc.greenBright('Cookies: '), '     :::::     ', res.req.rawHeaders);
+    req.user.$modelOptions.instanceMethods.generateToken(userJSON, process.env.SECRET_KEY, function(err, token) {
+      if (err) {
+          console.log(err);
+          return res.status(500).json({msg: 'error generating token'});
+      }
+      // res.req.headers.token = token;
+      res.header('token', token);
+      res.json({token: token});
+      });
+    });
+
+  router.get('/logout', function(req, res) {
+    console.log(clc.cyanBright(':::::      '), req.rawHeaders);
+    console.log(clc.greenBright(':::::      '), req.cookies);
+    res.end('the end');
+  })
 }

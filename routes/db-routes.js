@@ -20,6 +20,7 @@ var storage = multer.diskStorage({
 });
 var upload = multer({ storage: storage });
 var bodyparser = require('body-parser');
+var cookieParser = require('cookie-parser');
 var path = require('path');
 var eatAuth = require('../lib/eat_auth')(process.env.SECRET_KEY)
 var Sql = require('sequelize');
@@ -82,6 +83,7 @@ module.exports = function (router) {
   router.use(bodyparser.urlencoded({
     extended: true
   }));
+  router.use(cookieParser());
 
   /*router.route('/admin')
   .get(function (req, res) {
@@ -126,8 +128,8 @@ module.exports = function (router) {
   router.get('/curriculum', /*eatAuth,*/ function(req, res) {
     res.sendFile(path.join(__dirname, '../views/curriculum.html'));
   })
-   router.get('/curriculum2', /*eatAuth,*/ function(req, res) {
-    res.sendFile(path.join(__dirname, '../views/curriculum.html'));
+   router.get('/curriculum2', eatAuth, function(req, res) {
+    res.sendFile(path.join(__dirname, '../views/faq.html'));
   })
 
   router.route('/survey/:eventId')

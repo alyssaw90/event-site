@@ -16,25 +16,45 @@ $(function() {
 			console.log(data);
 		})*/
 		$.ajax({
-			method: 'get',
+			method: 'post',
 			url: '/auth/login',
-			// data: testInfo
+			// data: loginInfo
 
 		})
 		.done(function(data) {
-			Cookies.set('token', data);
+			console.log('done reached');
+			Cookies.set('token', data.token);
 			var tkn = Cookies.get('token');
-			console.log('hola               ', tkn);
+			console.log('hola               ', data);
 		})
 		.error(function(error) {
+		console.log('error reached');
 			console.log(error);
 		})
 	})
 
 	$('#testButton').click(function(e) {
 		e.preventDefault();
-		var ckie = Cookies.get('token');
-		console.log('cooookieee     ', ckie);
+		// var ckie = Cookies.get('token');
+		// console.log('cooookieee     ', ckie);
+		$.ajax({
+      type: 'get',
+      url: '/auth/logout'
+      // data: {email: 'notemail@example.com', password: '789'},
+      // headers: { 'Authorization': 'Basic xxx' }
+		})
+		.done(function(data){
+		    // If we don't get an error, we actually got an error as we expect an 401!
+	    // window.location = '/';
+	    console.log(data);
+		})
+		.error(function(error){
+	    // We expect to get an 401 Unauthorized error! In this case we are successfully 
+            // logged out and we redirect the user.
+	    // Cookies.set('Authorization', 'Basic xxx');
+    });
+ 
+    return false;
 	})
 
 })
