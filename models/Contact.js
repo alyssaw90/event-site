@@ -596,4 +596,20 @@ var Contact = module.exports = sql.define('Contact', {
     allowNotifications: true,
     allowPersonalInfoSharing: false
   })
+})
+.then(function() {
+  return Contact.create({
+    firstName: 'Mark',
+    lastName: 'Stafford',
+    contactDescription: 'Mark Stafford is a program manager at Microsoft contributing to the future of the OData protocol. Mark has a unique perspective on data access technologies given his many years of pre-Microsoft experience building and deploying real-world applications, managing developers and directing a business intelligence team.',
+    eventRole: 'speaker',
+    showOnMeetTheTeamPage: false,
+    msTeamTitle: 'Principal PM Manager ',
+    showOnHomePage: false,
+    headShot: 'mark-stafford-headshot.jpg',
+    company: 'Microsoft',
+    country: 'USA',
+    allowNotifications: false,
+    allowPersonalInfoSharing: false
+  })
 })*/

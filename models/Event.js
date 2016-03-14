@@ -74,7 +74,7 @@ var Event = module.exports = sql.define('Event', {
     eventHeaderImage: 'TAIPEIHeader.png',
     eventHomepageImage: 'TAIPEIHeader.png',
     eventHighlightColor: '#4668c5',
-    eventSpeakers: '1,2,4,7,10,14,8,11,9,5,31,32,33'
+    eventSpeakers: '1,2,4,7,10,14,8,11,9,5,31,32,33,34'
     
   });
 })
