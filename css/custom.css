@@ -91,6 +91,70 @@ main p {
 	text-align: justify;
 }
 
+ .lightGreenBackground {
+ 	background-color: #c6e0b4;
+ }
+
+ .lightBlueBackground {
+ 	background-color: #ddebf7;
+ }
+
+ .lightOrangeBackground {
+ 	background-color: #ffc000;
+ }
+
+ .lightPinkBackground {
+ 	background-color: #ff99ff;
+ }
+
+ .lightYellowBackground {
+ 	background-color: #ffe699;
+ }
+
+ .lightGrayBackground {
+ 	background-color: #d9d9d9;
+ }
+
+ .lightOrangeBackground {
+ 	background-color: #fce4d6;
+ }
+
+ .medOrangeBackground {
+ 	background-color: #ffc000;
+ }
+
+ .tableWithVerticalLines td {
+  border-right: solid 1px #000; 
+  border-left: solid 1px #000;
+ }
+
+ .taipeiSchedule tr td:first-child {
+ 	width: 8%;
+ }
+
+ .taipeiSchedule tr td:nth-child(3) {
+ 	width: 8%;
+ }
+
+ .taipeiSchedule tr td:nth-child(5) {
+ 	width: 8%;
+ }
+
+ .withoutBottomBorder {
+ 	border-bottom: none;
+ }
+ .bottomAlignTd {
+ 	vertical-align:bottom;
+ }
+
+ .eventScheduleTable th {
+ 	font-size: 1.5em;
+ }
+
+ .eventScheduleTable td {
+ 	font-size: 1.2em;
+ }
+
 .grayedOut {
 	opacity: .2;
 	background-color: #fff;
