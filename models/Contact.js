@@ -88,7 +88,7 @@ var Contact = module.exports = sql.define('Contact', {
     firstName: 'Michael',
     lastName: 'Bowman',
     newsletterSubscription: true,
-    contactDescription: 'Michael Bowman is a Program Manager in the Microsoft Office Interoperability team. He leads the delivery and release efforts for interoperability events and test tools for the Microsoft Office Division, including SharePoint, Exchange Server, and Office.Prior to joining Microsoft, Michael spent the first part of his career in an engineering eventRole at Hewlett Packard focusing on developing new industry standard server technologies.  <br /><br />He graduated from the University of Washington with a Bachelor’s of Science degree in Computer Science and a Masters of Business Administration from the Foster School of Business at the University of Washington.',
+    contactDescription: 'Michael Bowman is a Program Manager in the Microsoft Office Interoperability team. He leads the delivery and release efforts for interoperability events and test tools for the Microsoft Office Division, including SharePoint, Exchange Server, and Office. Prior to joining Microsoft, Michael spent the first part of his career in an engineering role at Hewlett Packard focusing on developing new industry standard server technologies.',
     eventRole: 'speaker',
     showOnMeetTheTeamPage: true,
     msTeamTitle: 'Senior Program Manager, Office Interoperability Team',
