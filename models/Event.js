@@ -74,7 +74,7 @@ var Event = module.exports = sql.define('Event', {
     eventHeaderImage: 'TAIPEIHeader.png',
     eventHomepageImage: 'TAIPEIHeader.png',
     eventHighlightColor: '#4668c5',
-    eventSpeakers: '1,2,4,7,10,14,8,11,9,5,31,32,33,34'
+    eventSpeakers: '1,2,7,10,14,8,11,9,5,31,32,33,34'
     
   });
 })
@@ -88,7 +88,7 @@ var Event = module.exports = sql.define('Event', {
     eventEndDate: new Date('2016-05-12:23:59:00'), // the end date...
     eventHeaderImage: 'ExtendWebsiteHeader.png', //link to header image
     eventHomepageImage: 'ExtendWebsiteHeader.png',
-    eventSpeakers: '1,2,4,8,11,7,14,10,9,5'
+    eventSpeakers: '1,2,8,11,7,14,10,9,5'
   });
 })
 .then(function () {
