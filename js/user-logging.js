@@ -4,6 +4,7 @@ $(function() {
 	var $email = $('#email');
 	var $password = $('#password');
 	var $loginButton = $('#loginButton');
+	var $badLogInDiv = $('#badLogInDiv');
 
 	//Submits an invalid authentication header, causing the user to be 'logged out'
 	function logout() {
@@ -51,6 +52,7 @@ $(function() {
 		})
 		.error(function(error) {
 			console.log(error);
+			$badLogInDiv.show();
 		})
 	})
 
