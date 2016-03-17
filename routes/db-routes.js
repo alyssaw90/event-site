@@ -8,6 +8,7 @@ var Event = require('../models/Event');
 var EventTab = require('../models/EventTab');
 // var User = require('../models/User');
 var EventImage = require('../models/EventImage');
+var User = require('../models/User');
 var fs = require('fs');
 var clc = require('cli-color');
 var multer = require('multer');
@@ -19,7 +20,9 @@ var storage = multer.diskStorage({
 });
 var upload = multer({ storage: storage });
 var bodyparser = require('body-parser');
+var cookieParser = require('cookie-parser');
 var path = require('path');
+var eatAuth = require('../lib/eat_auth')(process.env.SECRET_KEY)
 var Sql = require('sequelize');
 /*var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
   host: process.env.DB_LOCAL_HOST,
@@ -80,6 +83,7 @@ module.exports = function (router) {
   router.use(bodyparser.urlencoded({
     extended: true
   }));
+  router.use(cookieParser());
 
   /*router.route('/admin')
   .get(function (req, res) {
@@ -119,6 +123,18 @@ module.exports = function (router) {
   router.route('/latest-news')
   .get(function (req, res) {
     res.sendFile(path.join(__dirname, '../views/latest-news.html'));
+  });
+
+  router.get('/curriculum', eatAuth, function(req, res) {
+    res.sendFile(path.join(__dirname, '../views/curriculum.html'));
+  });
+   router.get('/private', function(req, res) {
+    res.sendFile(path.join(__dirname, '../views/login.html'));
+  });
+
+  router.route('/thankyou')
+  .get(function(req, res) {
+    res.sendFile(path.join(__dirname, '../views/loggedout.html'));
   });
 
   router.route('/survey/:eventId')
@@ -367,7 +383,7 @@ router.route('/allevents/:eventId')
         } 
         if (testArr.indexOf(req.params.eventName) === -1) {
           res.status(404);
-          res.send(path.join(__dirname, '../views/thank-you.html')); //I need to make a 404 page
+          // res.send(path.join(__dirname, '../views/thank-you.html')); //I need to make a 404 page
         }
       });
     });
