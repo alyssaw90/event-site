@@ -33,7 +33,7 @@ var EventTab = module.exports = sql.define('EventTab', {
   tabContent: Sql.TEXT
 })
 
-/*EventTab.sync({force: true})
+EventTab.sync({force: true})
 .then(function() {
   return EventTab.create({
     eventId: 1,
@@ -79,7 +79,7 @@ var EventTab = module.exports = sql.define('EventTab', {
     eventId: 3,
     tabNumber:1, 
     tabTitle: 'Redmond Protocol Plugfest ',
-    tabContent: '<a class="button orange large float-right" target="_blank" href="http://aka.ms/Nma3yz">Register</a><h4>Redmond Protocol Plugfest</h4><p>A 5-day Microsoft event centered around Open Specifications, interoperability, and Extensibility. Attendees will learn more about interoperability within Microsoft Office, Exchange, SharePoint, Windows and SQL Server. Attendees have the opportunity to utilize Office testing tools during the Plugfest. SQL will not be testing during the Plugfest and Windows protocol testing will be available the following week at the Windows Interoperability (IO) Lab.</p><p><b>When:</b>  June 13 - 17, 2016</p><p><b>Where:</b> Microsoft headquarters in Redmond, Washington </p><p><b>Who:</b> Developers building solutions that leverage Office, Exchange, SharePoint, Windows, or SQL</p><p><b>Cost:</b> Free</p><ul class="tabs left"><li class="current"><a href="#redmond2016WindowsAgenda"><span style="font-size: 1.5em">Agenda</span></a></li><li><a href="#redmond2016WindowsTechnologies"><span style="font-size: 1.5em">Technologies</span></a></li></ul><div id="redmond2016WindowsAgenda" class="tab-content eventTabDiv" style="display:block;"><h3>Coming Soon</h3><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></div><div id="redmond2016WindowsTechnologies" class="tab-content eventTabDiv" style="display:none;"><ul><li>What\'s New in Office</li><li>Open Specifications + Interoperability</li><li>Protocol Test Suites</li><li>Mail Sim</li><li>Microsoft Big Data</li><li>Office Parsers</li><li>Microsoft Cloud Foundations</li><li>OData</li><li>Exchange</li><li>SharePoint</li><li>File Formats</li><li>Mail, Calendar + Contacts</li><li>WOPI</li><li>HyperV SMB3 Storage</li></ul></div></div>'
+    tabContent: '<a class="button orange large float-right" target="_blank" href="http://aka.ms/Nma3yz">Register</a><h4>Redmond Protocol Plugfest</h4><p>A 5-day Microsoft event centered around Open Specifications, interoperability, and Extensibility. Attendees will learn more about interoperability within Microsoft Office, Exchange, SharePoint, Windows and SQL Server. Attendees have the opportunity to utilize Office testing tools during the Plugfest. SQL will not be testing during the Plugfest and Windows protocol testing will be available the following week at the Windows Interoperability (IO) Lab.</p><p><b>When:</b>  June 13 - 17, 2016</p><p><b>Where:</b> Microsoft headquarters in Redmond, Washington </p><p><b>Who:</b> Developers building solutions that leverage Office, Exchange, SharePoint, Windows, or SQL</p><p><b>Cost:</b> Free</p><ul class="tabs left"><li class="current"><a href="#redmond2016WindowsAgenda"><span style="font-size: 1.5em">Agenda</span></a></li><li><a href="#redmond2016WindowsTechnologies"><span style="font-size: 1.5em">Technologies</span></a></li></ul><div id="redmond2016WindowsAgenda" class="tab-content eventTabDiv" style="display:block;"><h3>Coming Soon</h3><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></div><div id="redmond2016WindowsTechnologies" class="tab-content eventTabDiv" style="display:none;"><ul><li>What\'s New in Office</li><li>Open Specifications + Interoperability</li><li>Protocol Test Suites</li><li>Mail Sim</li><li>Microsoft Big Data</li><li>Office Parsers</li><li>Microsoft Cloud Foundations</li><li>OData</li><li>Exchange</li><li>SharePoint</li><li>File Formats</li><li>Mail, Calendar + Contacts</li><li>WOPI</li><li>SQL Server</li><li>HyperV SMB3 Storage</li></ul></div></div>'
   })
 })
 .then(function() {
@@ -105,4 +105,4 @@ var EventTab = module.exports = sql.define('EventTab', {
     tabTitle: 'Venue',
     tabContent: '<h3>Microsoft Redmond Campus</h3><img src="../uploads/ms-campus.png" />'
   })
-})*/
+})
