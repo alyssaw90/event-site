@@ -128,6 +128,14 @@ main p {
   border-left: solid 1px #000;
  }
 
+ .tableWithBorders td {
+ 	border: solid 1px #000;
+ }
+
+ .tableWithBorders tr {
+ 	border: solid 1px #000;
+ }
+
  .taipeiSchedule tr td:first-child {
  	width: 8%;
  }
@@ -145,6 +153,18 @@ main p {
  }
  .bottomAlignTd {
  	vertical-align:bottom;
+ }
+
+ .indentP p {
+   text-indent: 50px;
+ }
+
+ #taipei2016-chinese-curriculum img {
+ 	display: block;
+ }
+
+ .noStyleUL {
+ 	list-style-type: none;
  }
 
  .eventScheduleTable th {
