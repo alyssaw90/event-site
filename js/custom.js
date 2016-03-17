@@ -5,6 +5,30 @@
 
 /*Global Functions*/
 
+//Logout function
+//Submits an invalid authentication header, causing the user to be 'logged out'
+function logout() {
+	Cookies.set('token', 'not a token');
+  $.ajax({
+    type: 'post',
+    url: '/auth/login',
+    dataType: 'json',
+    async: true,
+    username: 'not_a_real_username',
+    password: 'not_a_real_password',
+    data: '{ "comment" }'
+  })
+	//In our case, we WANT to get access denied, so a success would be a failure.
+	.done(function(){
+	    alert('Error logging off!')
+	})
+	//Likewise, a failure *usually* means we succeeded.
+	//set window.location to redirect the user to wherever you want them to go
+	.fail(function(){
+	    window.location = '/thankyou';
+	});
+}
+
 //Finds y value of given object
 function findPos(obj) {
   var curtop = 0;

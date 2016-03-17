@@ -125,12 +125,17 @@ module.exports = function (router) {
     res.sendFile(path.join(__dirname, '../views/latest-news.html'));
   });
 
-  router.get('/curriculum', /*eatAuth,*/ function(req, res) {
+  router.get('/curriculum', eatAuth, function(req, res) {
     res.sendFile(path.join(__dirname, '../views/curriculum.html'));
-  })
-   router.get('/curriculum2', eatAuth, function(req, res) {
-    res.sendFile(path.join(__dirname, '../views/faq.html'));
-  })
+  });
+   router.get('/private', function(req, res) {
+    res.sendFile(path.join(__dirname, '../views/login.html'));
+  });
+
+  router.route('/thankyou')
+  .get(function(req, res) {
+    res.sendFile(path.join(__dirname, '../views/loggedout.html'));
+  });
 
   router.route('/survey/:eventId')
   .get(function (req, res) {

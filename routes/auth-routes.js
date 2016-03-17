@@ -116,6 +116,7 @@ module.exports = function(router, passport) {
   });*/
 
   router.post('/login', passport.authenticate('basic', { session: false }), function(req, res) {
+    console.log(clc.greenBright(' AAAAAAAA    '), req);
     var userJSON = {randomString: req.user.dataValues.randomString, id: req.user.dataValues.id};
     res.req.headers.authorization = 'hahaha';
     // res.req.rawHeaders.Authorization = 'blah';
@@ -133,14 +134,15 @@ module.exports = function(router, passport) {
           return res.status(500).json({msg: 'error generating token'});
       }
       // res.req.headers.token = token;
-      res.header('token', token);
-      res.json({token: token});
+      // res.header('token', token);
+      // res.json({token: token});
+      res.status('200').header('token', token).json({token: token});
       });
     });
 
-  router.get('/logout', function(req, res) {
+  /*router.get('/logout', function(req, res) {
     console.log(clc.cyanBright(':::::      '), req.rawHeaders);
     console.log(clc.greenBright(':::::      '), req.cookies);
     res.end('the end');
-  })
+  })*/
 }

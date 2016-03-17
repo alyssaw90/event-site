@@ -5,7 +5,7 @@ var bcrypt = require('bcrypt-nodejs');
 var eat = require('eat');
 
 var Sql = require('sequelize');
-var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
+/*var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
   host: process.env.DB_LOCAL_HOST,
   dialect: 'mssql',
 
@@ -14,8 +14,8 @@ var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.
     min: 0,
     idle: 10000
   }
-});
-/*var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+});*/
+var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
     host: process.env.DB_HOST,
   dialect: 'mssql',
   pool: {
@@ -26,7 +26,7 @@ var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.
   dialectOptions: {
     encrypt: true
   }
-});*/
+});
 
 // var EncryptedField = require('sequelize-encrypted');
 
@@ -77,8 +77,8 @@ User.sync({force: true})
 .then(function () {
   return User.create({
   userName: 'TestUser',
-  password: bcrypt.hashSync('123', bcrypt.genSaltSync(8), null),
-  email: 'test@example.com',
+  password: bcrypt.hashSync('!nt3r0p', bcrypt.genSaltSync(8), null),
+  email: 'curriculum@interopevents.com',
   randomString: makeRandomString()
   });
 })
@@ -86,12 +86,12 @@ User.sync({force: true})
   console.log(clc.green('User created'));
   return User.findOne({
   where: {
-    email: 'test@example.com'
+    email: 'curriculum@interopevents.com'
   }
   })
   .then(function(user) {
     // var pwComp = bcrypt.hashSync('password', bcrypt.genSaltSync(8), null);
-    var pw =    user.$modelOptions.instanceMethods.verifyPassword('123', user.dataValues.password);
+    var pw =    user.$modelOptions.instanceMethods.verifyPassword('!nt3r0p', user.dataValues.password);
     // var testF = user.$modelOptions.instanceMethods.testFunc;
     // var gh = user;
     console.log(clc.yellow('   ::::::    '), pw);
