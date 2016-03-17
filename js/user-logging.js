@@ -52,7 +52,8 @@ $(function() {
 		})
 		.error(function(error) {
 			console.log(error);
-			$badLogInDiv.show();
+			// $badLogInDiv.show();
+			alert('There was a problem with your log in, please try again');
 		})
 	})
 
