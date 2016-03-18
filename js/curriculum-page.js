@@ -11,7 +11,7 @@ $(function () {
 
 	 $curriculumLogoutButton.click(logout);
 
-	 $taipei1016Eng.click(function(e) {
+	 $taipei2016Cn.click(function(e) {
 	 	e.preventDefault();
 	 	$taipei2016ChineseCurriculum.show();
 	 	$taipei2016EnglishCurriculum.hide();
