@@ -356,7 +356,8 @@
 	</div>
 	<div id="taipei2016-curriculum-publishing-cn" class="tab-content">
 		<h2>發佈</h2>
-<p>本案例演示從美國西岸來發佈 Excel Colorizer Add-in for Excel 2016 增益集及提交至Office 市集的步驟， 使用的開發工具是Visual Studio Community 2015。微軟 Azure 爲承載 Excel Colorizer 的主機平臺。如果您要按照自己的情況來發佈您的Office增益集，請參閲MSDN 資源 > 發佈。</p>
+<p>本案例演示從美國西岸來發佈 Excel Colorizer Add-in for Excel 2016 增益集及提交至Office 市集的步驟， 使用的開發工具是Visual Studio Community 2015。微軟 Azure 爲承載 Excel Colorizer 的主機平臺。</p>
+<p>如果您要按照自己的情況來發佈您的Office增益集，請參閲MSDN 資源 > <a href="https://msdn.microsoft.com/zh-tw/library/office/fp123515.aspx">發佈</a>。</p>
 <h3>本文内容</h3>
 <ol>
 <li><a href="#taipei2016-publishing-decide-end-point-cn">決定發佈Office 增益集的通訊端點</a></li>
@@ -377,7 +378,7 @@
 	<li>Exchange 目錄</li>
 	<li>網路共用的資料夾增益集目錄</li>
 </ol>
-本案例演示如何將Office增益集發佈到<a href="https://msdn.microsoft.com/ZH-TW/library/office/dn622055.aspx">微軟 Azure</a>，<a href="https://msdn.microsoft.com/zh-tw/library/office/jj220037.aspx">然後提交至Office 市集</a>。
+<p>本案例演示如何將Office增益集發佈到<a href="https://msdn.microsoft.com/ZH-TW/library/office/dn622055.aspx">微軟 Azure</a>，<a href="https://msdn.microsoft.com/zh-tw/library/office/jj220037.aspx">然後提交至Office 市集</a>。</p>
 <h3 id="taipei2016-publishing-set-up-dev-computer-cn">爲開發而設定電腦：安裝.NET 的Azure SDK (英文)，訂閲Azure賬戶， 及使用Office 2016</h3>
 <ol>
 	<li>在<a href="http://azure.microsoft.com/en-us/downloads/">Azure 下載頁面</a>安裝爲.NET 的Azure SDK (英文) 。本案例使用免費的Microsoft <a href="https://www.microsoft.com/en-us/download/details.aspx?id=48146">Visual Studio Community 2015</a>。
@@ -408,11 +409,8 @@
 <p>建立空白的Azure網站有幾種方式。如果您使用 Visual Studio Community 2015，請遵循從Visual Studio IDE 中建立Azure網站從中的步驟。</p>
 <p>使用Visual Studio 2015 或免費版本來建立空白的Azure網站。</p>
 <ol>
-	
 	<li>在 Visual Studio的[檢視] 功能表中選擇 [伺服器檔案總管] ，按一下滑鼠右鍵 [Azure] 并選擇 [連接到 Microsoft Azure 訂閱] 。遵循指示連線您的 Azure 訂閱。 </li>
-
 	<li>在Visual Studio，[伺服器檔案總管] 中展開Azure、滑鼠右鍵按一下[應用程式服務]，然後選擇[建立新的 Web 應用程式]。 </li>
-
 	<li>在 [ Windows Azure 上建立 Web 應用程式] 對話方塊中，提供此資訊： 
 		<ul>
 			<li>輸入您網站的唯一的 [Web 應用程式名稱]。Azure驗證 azurewebsites.net 是網域内唯一的網站名稱。 </li>
@@ -948,7 +946,7 @@
 	<li>In the manifest file, add the IconUrl, SupportUrl, and the Requirements elements in addition to the default elements. (The Excel Colorizer uses the new Excel add-in JavaScript APIs that runs in Excel 2016 or Excel Online). The manifest schema version is 1.1.
 	<br /><table class="tableWithBorders tableFirstRowBold">
 		<tr><td><b>Note</b></td></tr>
-		<tr><td>*Every add-in is different, to ensure that your add-in works as expected, see <a href="https://msdn.microsoft.com/EN-US/library/office/dn535871.aspx">Specify Office hosts and API requirements</a>  and <a href="https://msdn.microsoft.com/EN-US/library/office/mt590206.aspx">Office add-in requirement sets</a>.</td></tr>
+		<tr><td>Every add-in is different, to ensure that your add-in works as expected, see <a href="https://msdn.microsoft.com/EN-US/library/office/dn535871.aspx">Specify Office hosts and API requirements</a>  and <a href="https://msdn.microsoft.com/EN-US/library/office/mt590206.aspx">Office add-in requirement sets</a>.</td></tr>
 	</table>
 	</li>
 	<li><a href="https://msdn.microsoft.com/en-us/library/dn221992.aspx">Reference the Microsoft hosted Office.js file from its CDN URL</a>. Don't include a copy of the Office.js file in your add-in. <a href="https://msdn.microsoft.com/en-us/library/jj591603.aspx">See Office Store app and add-in submission FAQ</a> > How do I reference the JavaScript APIs for Office in my add-ins?</li>
