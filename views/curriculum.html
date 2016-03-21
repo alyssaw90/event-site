@@ -40,11 +40,11 @@
 	</ul>
 	<div id="taipei2016-curriculum-welcome-cn" class="tab-content">
 		<h2>歡迎</h2>
-		<h3>此課程能幫助您學習及瞭解Office Add-in的開發和發佈過程。</h3>
+		<h3>此課程能幫助您學習及瞭解Office 增益集的開發和發佈過程。</h3>
 		<ol class="tabs">
 			<li class="welcomeTab" data-tabId="taipei2016-curriculum-overview-cn-tab"><a href="">Office 增益集平台概述</a></li>
 			<li class="welcomeTab" data-tabId="taipei2016-curriculum-registration-cn-tab"><a href="">報名注冊</a></li>
-			<li class="welcomeTab" data-tabId="taipei2016-curriculum-napa-cn-tab"><a href="">Napa Office365開發工具及演練</a></li>
+			<li class="welcomeTab" data-tabId="taipei2016-curriculum-napa-cn-tab"><a href="">Napa Office 365開發工具及演練</a></li>
 			<li class="welcomeTab" data-tabId="taipei2016-curriculum-vs2015-cn-tab"><a href="">Visual Studio Community 2015及演練</a></li>
 			<li class="welcomeTab" data-tabId="taipei2016-curriculum-api-cn-tab"><a href="">API演練</a></li>
 			<li class="welcomeTab" data-tabId="taipei2016-curriculum-publishing-cn-tab"><a href="">發佈</a></li>
@@ -67,13 +67,12 @@
 <p>開發增益集的工具有幾種：</p>
 <ul>
 	<li><a href="https://www.napacloudapp.com/Getting-Started">Napa Office 365 開發工具</a> </li>
-	<li><a href="https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx">Visual Studio Community 2015 開發工具 (免費社區版)</a> </li>
-	<li><a href="https://www.visualstudio.com/features/office-tools-vs">與 Microsoft 開發人員工具</a></li>
-	<li><a href="https://msdn.microsoft.com/en-us/library/office/mt628821.aspx">文字編輯器</a></li>
+	<li><a href="https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx">Visual Studio Community 2015 開發工具 (免費社區版)</a>與<a href="https://www.visualstudio.com/features/office-tools-vs">Microsoft 開發人員工具</a> </li>
+	<li><a href="https://msdn.microsoft.com/zh-tw/library/office/mt628821.aspx">文字編輯器</a></li>
 </ul>
 <h3 id="taipei2016-anatomy-of-an-office-addin-cn">Office 增益集的基本元件</h3>
 <p>Office 增益集的基本元件是 XML 資訊清單檔案和增益集的預設網頁。</p>
-<p>資訊清單 + 網頁 = Office 增益集 </p>
+<p><b>資訊清單 + 網頁 = Office 增益集</b> </p>
 <img src="../img/office-web-curriculum-taipei-1.png" />
 <p>資訊清單可指定增益集的設定及功能，例如下列：</p>
 <ul>
@@ -89,23 +88,23 @@
 </ul>
 <h3 id="taipei2016-types-of-office-addins-cn">Office 增益集的類型</h3>
 <p>Office 增益集有三種類型 ：工作窗格、內容及 Outlook。</p>
-<h3>工作窗格增益集</h3>
+<h4>工作窗格增益集</h4>
 <p>工作窗格增益集能與 Office 文件并行運作，并可讓您提供關聯式資訊和功能，以強化文件檢視及撰寫體驗。例如，工作窗格增益集可以根據文件中選取的產品名稱或組件編號在 Web 服務查詢并擷取產品資訊。</p>
-<p>工作窗格增益集 </p>
+<figcaption>工作窗格增益集 </figcaption>
 <img src="../img/office-web-curriculum-taipei-2.png" />
 <p>若要在 Excel 2013、Excel Online 或 Word 2013 中嘗試工作窗格增益集，請安裝<a href="https://store.office.com/wikipedia-WA104099688.aspx?assetid=WA104099688">維基百科</a>增益集。</p>
-<h3>內容增益集</h3>
+<h4>內容增益集</h4>
 <p>內容增益集會將 Web 式功能在文件內容中嵌入及顯示。內容增益集可讓您把豐富的 網絡視覺資料、內嵌的媒體 (例如 YouTube 視訊播放程式或圖片庫) ，以及其它外部內容集成在文件中。</p>
-<p>內容增益集</p>
+<figcaption>內容增益集</figcaption>
 <img src="../img/office-web-curriculum-taipei-3.png" />
 <p>若要在 Excel 2013 或 Excel Online 中嘗試內容增益集，請安裝 <a href="https://store.office.com/bing-maps-WA102957661.aspx?assetid=WA102957661">Bing 地圖服務</a>增益集。</p>
-<h3>Outlook 增益集</h3>
+<h4>Outlook 增益集</h4>
 <p>當您檢視或撰寫 Outlook 項目時，Outlook 增益集會顯示在該項目旁邊。在讀取案例中 (使用者檢視收到項目時) 或在撰寫案例中 (使用者回覆或建立新的項目時)，它們可以與電子郵件、會議邀請、會議回覆、會議取消或約會搭配使用。</p>
-<table>
-	<tr><th><td>注意事項</td></th></tr>
+<table class="tableWithBorders tableFirstRowBold">
+	<tr><td>注意事項</td></tr>
 	<tr><td>Outlook 增益集需要最低的版本爲 Exchange 2013 或 Exchange Online 來主控使用者的信箱。不支援 POP 和 IMAP 電子郵件帳戶。</td></tr>
 </table>
-<p>讀取案例中的 Outlook 增益集</p>
+<figcaption>讀取案例中的 Outlook 增益集</figcaption>
 <img src="../img/office-web-curriculum-taipei-4.png" />
 <p>若要在 Outlook、Outlook for Mac 或 Outlook Web App 中嘗試 Outlook 增益集，請安裝 <a href="https://store.office.com/package-tracker-WA104162083.aspx?assetid=WA104162083">Package Tracker</a> 增益集。</p>
 <h3 id="taipei2016-scenarios-cn">案例</h3>
@@ -135,11 +134,7 @@
 	<tr><td>Word Online</td>&nbsp;<td></td><td><i class="fa fa-check"></i></td>&nbsp;<td></td></tr>
 </table>
 <h3 id="taipei2016-development-life-cycle-cn">Office 增益集開發週期</h3>
-<p>請參考以下内容來計畫開發工作窗格、 內容和 Outlook 的Office增益集。開發 Office 增益集的一些有用的工具:</p>
-<ul>
-	<li>免費的<a href="https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx">Visual Studio 2015 Community Edition  與 Microsoft 開發人員工具</a>或</li>
-	<li><a href="https://www.napacloudapp.com/getting-started">Napa Office 365 Development Tools</a> (您可以從<a href="http://dev.office.com/devprogram">Office 365 開發者帳戶</a>使用Napa開發工具或通過您個人的<a href="https://www.microsoft.com/en-us/account/">Microsoft Account</a> 來登入<a href="https://www.napacloudapp.com/Getting-Started">Napa</a>)。</li>
-</ul>
+<p>請參考以下内容來計畫開發工作窗格、 內容和 Outlook 的Office增益集。</p>
 <ol>
 	<li>決定增益集的目的。</li>
 	<li>識別資料及增益集的資料或數據來源。</li>
@@ -184,12 +179,12 @@
 <p>4.	 建立 <strong>.onmicrosoft.com</strong> 的子網域。</p>
 <p class="indentP"> 註冊之後，您必須使用所產生的認證 (格式為 <a href="mailto:UserID@yourdomain.onmicrosoft.com">UserID@yourdomain.onmicrosoft.com</a>) 登入您在其中管理帳戶的 Office 365 入口網站。SharePoint Online 開發人員網站會佈建於您的新網域中：http://yourdomain.sharepoint.com。 </p>
 <p>5.	選擇 [下一步]，並填寫單表的最後一頁。如果您選擇用電話號碼來取得確認碼，則可以提供行動電話或地面通訊電話號碼，但不是 VoIP 號碼。</p>
-<table class="tableWithBorders">
+<table class="tableWithBorders tableFirstRowBold">
 	<tr><td><strong>注意事項</strong></td></tr>
 	<tr><td>如果您嘗試註冊開發人員帳戶時已登入另一個 Microsoft 帳戶，可能會收到此訊息“抱歉，您輸入的使用者識別碼無法運作。它看起來無效。請務必輸入組織分配給您的使用者識別碼。您的使用者識別碼通常看起來像是 someone@example.com 或 someone@example.onmicrosoft.com。”
 如果您看到此訊息，請退出原本使用的 Microsoft 帳戶然後再試一次。如果仍然收到此訊息，請清除瀏覽器快取，或切換到 [InPrivate 瀏覽]，然後填寫單表。</td></tr>
 </table>
-<p>一旦創建了您的帳戶，您將收到另一封電子郵件，請連接Office 365。</p>
+<p>一旦創建了您的帳戶，您將收到另一封電子郵件，<a href="http://portal.office.com">請連接Office 365</a>。</p>
 <h3 id="taipei2016-access-your-office-365-cn">登入Office 365</h3>
 <p>您的瀏覽器會開啟 Office 365 安裝頁面。請選擇 [管理] 圖示，以開啟管理中心頁面。</p>
 <p>圖 3：Office 365 管理中心頁面</p>
@@ -226,24 +221,25 @@
 <ul>
 	<li><a href="#taipei2016-prerequisites-napa-cn">必要條件</a></li>
 	<li><a href="#taipei2016-create-office-addins-with-napa-cn">在Office 365 開發人員網站上建置Office 增益集</a></li>
-	<li><a href="#taipei2016-create-excel=addin-with-napa-cn">使用Napa Office 365 開發工具來建立Excel内容增益集</a></li>
+	<li><a href="#taipei2016-create-excel-addin-with-napa-cn">使用Napa Office 365 開發工具來建立Excel内容增益集</a></li>
 	<li><a href="#taipei2016-debug-your-addin-napa-cn">增益集在 Internet Explorer 中偵錯</a></li>
 	<li><a href="#taipei2016-resources-napa-cn">資源</a></li>
 </ul>
 <h3 id="taipei2016-prerequisites-napa-cn">必要條件</h3>
-<p>報名及參加<a href="http://dev.office.com/devprogram">Office 365 Developer Program</a>。參考報名註冊。</p>
-<h3> <a href="taipei2016-create-office-addins-with-napa-cn">在Office 365 開發人員網站上建置Office 增益集</a></h3>
+<p>報名及參加<a href="http://dev.office.com/devprogram">Office 365 Developer Program</a>。參考<a class="welcomeTab" data-tabId="taipei2016-curriculum-registration-cn-tab">報名註冊</a>。</p>
+<h3 id="taipei2016-create-office-addins-with-napa-cn">在Office 365 開發人員網站上建置Office 增益集</h3>
 <p>您可以直接從瀏覽器視窗來使用Napa開發工具及開始建置Office 增益集。您不需要安裝任何其它Visual Studio類似的工具。所有您需要的爲支援的瀏覽器和Office 365 開發者免費賬戶。（Firefox是針對 Mac 用戶所推薦的瀏覽器）。</p>
 <p>若要開始，註冊Office 365 開發人員賬戶。然後在開發人員網站上安裝Napa，之後您可以準備建立Office 增益集。當您準備使用Visual Studio強大功能時， Napa可以下載您的專案並讓您繼續進行開發Office 增益集。</p>
-<table class="tableWithBorders">
+<table class="tableWithBorders tableFirstRowBold">
 	<tr><td>注意事項</td></tr>
 	<tr><td>如果您已經有Office 365， 您也可以使用不需要Office 365 開發人員網站的<a href="http://osgdesigntools/styleguides/services/">Napa替代版本</a>。 此版本支援用您的個人<a href="https://www.microsoft.com/en-us/account/default.aspx">Microsoft 帳戶</a>來建立Office 增益集。</td></tr>
 </table>
 <ol>
-<li>如果您已完成Office 365 開發人員網站的報名註冊， 用您建置的憑證而登入Office 365 > 點擊 [管理] > [建置增益集]。<br />如果您沒有Napa, 您將被引導及[添加] Napa Office 365 開發工具。</li>
-<li>在開發人員網站上， 再次點擊 [建置增益集] 磚。<br /><h3 id="taipei2016-create-excel=addin-with-napa-cn">使用Napa Office 365 開發工具來建立Excel内容增益集</h3></li>
+<li>如果您已完成Office 365 開發人員網站的<a class="welcomeTab" data-tabId="taipei2016-curriculum-registration-cn-tab">報名註冊</a>， 用您建置的憑證而登入<a href="http://portal.office.com">Office 365</a> > 點擊 [管理] > [建置增益集]。<br />如果您沒有Napa, 您將被引導及[添加] Napa Office 365 開發工具。</li>
+<li>在開發人員網站上， 再次點擊 [建置增益集] 磚。</li>
+<h3 id="taipei2016-create-excel-addin-with-napa-cn" style="margin-left: -25px">使用Napa Office 365 開發工具來建立Excel内容增益集</h3>
 <li>選擇 [新增專案] 磚。 只有當您已經建立了其它專案后， [加入新的專案] 磚才會出現。 </li>
-<li>演練<a href="https://msdn.microsoft.com/ZH-TW/library/office/jj220065.aspx">Excel 與 Napa Office 365 開發工具建立內容的增益集</a></li>
+<li>演練<a href="https://msdn.microsoft.com/ZH-TW/library/office/jj220065.aspx">Excel 與 Napa Office 365 開發工具建立內容的增益集</a>。</li>
 </ol>
 <h3 id="taipei2016-debug-your-addin-napa-cn">增益集在 Internet Explorer 中偵錯  </h3>
 <p>如果您啟動增益集Excel Online，並且使用 Internet Explorer (IE)，您可以使用 F12 開發人員工具偵錯 JavaScript、 HTML 和階層式樣式表 (CSS) 內容增益集。 如需詳細資訊，請參閱<a href="https://msdn.microsoft.com/ZH-TW/library/office/mt488952.aspx">使用 F12 開發人員工具</a> 。 如果您使用 Internet Explorer 以外的瀏覽器，搜尋瀏覽器文件。 </p>
@@ -273,7 +269,8 @@
 <h3 id="taipei2016-vs-2015-setup-cn">下載及安裝免費的Visual Studio Community 2015</h3>
 <p class="indentP">1.	如果您沒有Visual Studio, 請下載及安裝免費的<a href="https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx">Visual Studio 2015 Community Edition</a> 與 <a href="https://www.visualstudio.com/features/office-tools-vs">Office開發者工具</a>。 </p>
 <img src="../img/office-web-curriculum-taipei-14.png" />
-<table class="tableWithBorders">
+<br />
+<table class="tableWithBorders tableFirstRowBold">
 	<tr><td>注意事項</td></tr>
 	<tr><td>當您在Visual Studio中開發與偵錯增益集時， Visual Studio會部署和使用 IIS Express，并在本機上執行您的增益集的網頁檔案， 因此不需要其它網頁伺服器。同樣地，如果您使用Napa，在瀏覽器中做開發與偵錯，它會從您用來登入 Napa 帳戶相關聯的儲存部署來執行增益集的網頁檔案。</td></tr>
 </table>
@@ -290,10 +287,10 @@
 <h3 id="taipei2016-vs-2015-build-first-excel-addin-cn">建立您的第一個Excel增益集</h3>
 <p>演練<a href="https://msdn.microsoft.com/EN-US/library/office/mt616491.aspx">Build your first Excel add-in</a></p>
 <p>新的 Excel JavaScript API 與 Excel  2016 和 Excel 線上版本進行互動。如果您使用 Excel 2013 來操作Excel增益集，您將可能看到此錯誤:</p>
-<table class="tableWithBorders">
+<table class="tableWithBorders tableFirstRowBold">
 	<tr><td>0x800a1391 - JavaScript runtime error: 'Excel' is undefined</td></tr>
 </table>
-<p>如果您沒有 Excel 2016，您可以使用 Office 365 開發者網站。 請參閱報名注冊。 使用Napa開發工具讓Excel 增益集在 線上版本中運行。</p>
+<p>如果您沒有 Excel 2016，您可以使用 Office 365 開發者網站。 請參閱<a class="welcomeTab" data-tabId="taipei2016-curriculum-registration-cn-tab">報名注冊</a>。 使用Napa開發工具讓Excel 增益集在 線上版本中運行。</p>
 <h3 id="taipei2016-vs-2015-debuging-cn">在Visual Studio中偵錯</h3>
 <p>設定中斷點。點擊Start Debugging或按F5來開始偵錯。</p>
 <h3 id="taipei2016-vs-2015-resources-cn">資源</h3>
@@ -328,7 +325,7 @@
 <p><a href="https://github.com/OfficeDev/office-js-docs">Office JavaScript APIs on GitHub</a></p>
 <p><a href="https://dev.outlook.com/MailAppsGettingStarted/GetStarted">Get Started with Outlook add-ins for Office 365</a></p>
 <h3 id="taipei2016-api-exercises-cn">演練</h3>
-<p>用Excel Colorizer Add-in for Excel 2016來演練Excel add-in JavaScript API。以下練習可以給您擴展Excel Colorizer Add-in for Excel 2016一些提示與啓發:</p>
+<p>用<a href="/uploads/ColorizerVS.zip">Excel Colorizer Add-in for Excel 2016</a>來演練Excel add-in JavaScript API。以下練習可以給您擴展Excel Colorizer Add-in for Excel 2016一些提示與啓發:</p>
 <ol>
 	<li>添加 [Pattern]選項: [Square Waves] (方波)。 波的振幅和週期應由現有的[Pattern Contrast %] (對比)和 [Pattern Waves] (週期)來控制。這項練習包括以下:
 		<ol type="a">
@@ -389,16 +386,16 @@
 			<li>在 Web 平台 Installer 視窗中，選擇 [安裝]。 </li>
 		</ol>
 	</li>
-	<li>安裝Office 2016或更新Office 2013 。Excel Colorizer 增益集衹限于在Excel 2016上運行。</li>
-	<li style="list-style-type: none;">
-		<table class="tableWithBorders">
+	<li>安裝Office 2016或更新Office 2013 。Excel Colorizer 增益集衹限于在Excel 2016上運行。
+	<br />
+		<table class="tableWithBorders tableFirstRowBold">
 			<tr><td>注意事項</td></tr>
 			<tr><td>您可以取得<a href="http://office.microsoft.com/en-us/try/?WT.intid1=ODC_ENUS_FX101785584_XT104056786">1 個月的Office試用版本</a>。</td></tr>
 		</table>
 	</li>	
-	<li>取得Azure的帳戶。<li>
-	<li class="noStyleUL">
-		<table class="tableWithBorders">
+	<li>取得Azure的帳戶。
+	<br />
+		<table class="tableWithBorders tableFirstRowBold">
 			<tr><td>注意事項</td></tr>
 			<tr><td>如果您是 Microsoft Developer Network (MSDN) 訂閱者<a href="http://www.windowsazure.com/en-us/pricing/member-offers/msdn-benefits/">Azure的 訂閱是MSDN訂閲的一部分</a>。</td></tr>
 			<tr><td>如果您不是 MSDN 訂閱者，您仍然可以在<a href="https://azure.microsoft.com/en-us/pricing/free-trial/">Windows Azure網站上取得免費Azure試用版</a>。</td></tr>
@@ -428,18 +425,22 @@
 	<li>在瀏覽器網址列中，更變網站的 URL讓其使用HTTPS，按[Enter] ，并確認已啟用 HTTPS 通訊協定。Office 增益集模型需要增益集使用 HTTPS 通訊協定。 </li>
 	<li>在Visual Studio 2015中，以滑鼠右鍵按一下[伺服器檔案總管]中的新網站，并選擇 [下載發佈設定檔]，然後將該設定檔儲存到電腦。發佈設定檔有您的認證并可讓您在 Azure 網站上發佈您的 Office 增益集。 </li>
 </ol>
-<h3 id="taipei2016-publishing-publish-add-in-azure-cn">Office 增益集發佈到Azure 網站></h3>
-	<li>把增益集在Visual Studio中開啟，展開 [方案總管中]的 解決方案節點，您會看到兩個專案的解決方案。 </li>
-	<li>以滑鼠右鍵按一下Web 專案，然後選擇 [發佈] 。 </li>
-	<li class="noStyleUL">Web 專案會有Office 增益集網站檔案, 所以這是您發佈到Azure的專案。 </li>
-	<li> 在[發佈網站]，選擇 [匯入]。 </li>
-	<li>[匯入發佈設定] 中選擇 [瀏覽] ，然後瀏覽至您儲存發佈設定檔本主題中前面的地方。選擇[確定]以匯入您的設定檔。 </li>
-	<li>在[發佈網站]、 [連線] 索引標籤中接受預設值并選擇 [下一步]。 </li>
-	<li class="noStyleUL">再一次選擇 [下一步] >接受預設設定。 </li>
-	<li>在 [預覽]標籤上選擇 [啟動預覽]。預覽會顯示所有將發佈至 Azure 網站的Web專案及其檔案。 </li>
-	<li>選擇 [發佈]。Visual Studio將Office 增益集 的web 專案發佈到Azure 網站。 </li>
-	<li>在Visual Studio完成發佈 web 專案后、 瀏覽器中開啟并顯示網頁及文字"此 web 應用程式已成功建立"。 這是網站目前的預設的頁面。 </li>
-	<li class="noStyleUL">若 要查看 增益集的 網頁，更變URL 及使用 https: 并加上增益集的預設HTML頁面的路徑。例如，更變的 URL 看起來應類似https://YourDomain.azurewebsites.net/Addin/Home/Home.html。這會確認增益集的 網站現在已裝載於Azure。拷貝此 URL，因為編輯增益集資訊清單檔案時會需要它。  </li>
+<h3 id="taipei2016-publishing-publish-add-in-azure-cn">Office 增益集發佈到Azure 網站</h3>
+	<ol>
+		<li>把增益集在Visual Studio中開啟，展開 [方案總管中]的 解決方案節點，您會看到兩個專案的解決方案。 </li>
+		<li>以滑鼠右鍵按一下Web 專案，然後選擇 [發佈] 。 
+		<br />
+		Web 專案會有Office 增益集網站檔案, 所以這是您發佈到Azure的專案。 </li>
+		<li> 在[發佈網站]，選擇 [匯入]。 </li>
+		<li>[匯入發佈設定] 中選擇 [瀏覽] ，然後瀏覽至您儲存發佈設定檔本主題中前面的地方。選擇[確定]以匯入您的設定檔。 </li>
+		<li>在[發佈網站]、 [連線] 索引標籤中接受預設值并選擇 [下一步]。 
+		<br />
+		再一次選擇 [下一步] >接受預設設定。 </li>
+		<li>在 [預覽]標籤上選擇 [啟動預覽]。預覽會顯示所有將發佈至 Azure 網站的Web專案及其檔案。 </li>
+		<li>選擇 [發佈]。Visual Studio將Office 增益集 的web 專案發佈到Azure 網站。 </li>
+		<li>在Visual Studio完成發佈 web 專案后、 瀏覽器中開啟并顯示網頁及文字"此 web 應用程式已成功建立"。 這是網站目前的預設的頁面。 </li>
+		<li class="noStyleUL">若 要查看 增益集的 網頁，更變URL 及使用 https: 并加上增益集的預設HTML頁面的路徑。例如，更變的 URL 看起來應類似https://YourDomain.azurewebsites.net/Addin/Home/Home.html。這會確認增益集的 網站現在已裝載於Azure。拷貝此 URL，因為編輯增益集資訊清單檔案時會需要它。  </li>
+	</ol>
 <h3 id="taipei2016-publishing-edit-addin-manifest-cn">使增益集資訊清單檔案指向在Azure的Office 增益集</h3>
 <ol>
 	<li>在Visual Studio 中把Office 增益集打開，在[方案總管中]展開解決方案以便顯示這兩個專案。 </li>
@@ -454,20 +455,25 @@
 <p><a href="https://msdn.microsoft.com/ZH-TW/library/office/dn356576.aspx">提交Office 與 SharePoint 增益集和 Office 365 web 應用程式送至買方儀表板的檢查清單</a></p>
 <p><a href="https://msdn.microsoft.com/ZH-TW/library/office/jj591603.aspx">提交Office 市集應用程式和增益集的常見問題</a></p>
 <p><a href="https://msdn.microsoft.com/ZH-TW/library/office/jj220035.aspx">提交到 Office 市集的應用程式和增益集的驗證原則(第 1.9 版)</a></p>
-<p><a href="">Office 增益集的 XML 資訊清單</a></p>
-<p><a href="https://msdn.microsoft.com/ZH-TW/library/office/fp161044.aspx">更新Office JavaScript API及資訊清單結構描述檔案的版本</a></p>
-<p><a href="https://msdn.microsoft.com/ZH-TW/library/office/dn535869.aspx">從內容傳遞網路 (Content Delivery Network)來 引用 Office 程式庫的 JavaScript API</a></p>
+<p><a href="https://msdn.microsoft.com/ZH-TW/library/office/fp161044.aspx">Office 增益集的 XML 資訊清單></a></p>
+<p><a href="https://msdn.microsoft.com/ZH-TW/library/office/dn535869.aspx">更新Office JavaScript API及資訊清單結構描述檔案的版本</a></p>
+<p><a href="https://msdn.microsoft.com/ZH-TW/library/office/dn221992.aspx">從內容傳遞網路 (Content Delivery Network)來 引用 Office 程式庫的 JavaScript API</a></p>
 <h4>發佈 Excel Colorizer Add-in for Excel 2016進行了以下事項:</h4>
 <ol>
-	<li>把增益集送至 Office 市集，請使用 Microsoft賣方儀表板。</li>
-	<li class="noStyleUL">首先您必須建立個人或公司帳戶。如果有必要建立賣方賬戶，請參考<a href="https://sellerdashboard.microsoft.com/Registration">建立賣方帳戶并新增支付額資訊</a>。</li>
-	<li class="noStyleUL">本演示創建了個人帳戶來發佈Office增益集。因爲增益集爲免費，買方賬戶沒有建立。</li>
-	<li class="noStyleUL">填寫賬戶信息， 提交并等待批准。</li>
-	<li>提交準備圖示、應用程式 (增益集) 徽標、 螢幕截圖、 隱私和支援語句的HTML 文件。</li>
-	<li class="noStyleUL">圖像的尺寸，參閲<a href="https://msdn.microsoft.com/ZH-TW/library/office/dn356576.aspx">提交Office 與 SharePoint 增益集和 Office 365 web 應用程式送至買方儀表板的檢查清單</a> 。</li>
+	<li>把增益集送至 Office 市集，請使用 Microsoft賣方儀表板。
+	<br />
+	首先您必須建立個人或公司帳戶。如果有必要建立賣方賬戶，請參考<a href="https://sellerdashboard.microsoft.com/Registration">建立賣方帳戶并新增支付額資訊</a>。
+	<br />
+	本演示創建了個人帳戶來發佈Office增益集。因爲增益集爲免費，買方賬戶沒有建立。
+	<br />
+	填寫賬戶信息， 提交并等待批准。</li>
+	<li>提交準備圖示、應用程式 (增益集) 徽標、 螢幕截圖、 隱私和支援語句的HTML 文件。
+	<br />
+	圖像的尺寸，參閲<a href="https://msdn.microsoft.com/ZH-TW/library/office/dn356576.aspx">提交Office 與 SharePoint 增益集和 Office 365 web 應用程式送至買方儀表板的檢查清單</a> 。</li>
 	<li>圖示、 隱私和支援的聲明 (.html 文件) 發佈到 Azure 帳戶。</li>
-	<li>清單中, 除了預設元素，Excel Colorizer 增益集添加了 IconUrl、 SupportUrl 和必須要求的元素（Excel Colorizer 增益集使用Excel 新的API, 并且衹限于在Excel 2016 或上綫版本中運行）。清單架構檔的版本為1.1。</li>
-	<li class="noStyleUL"><table class="tableWithBorders">
+	<li>清單中, 除了預設元素，Excel Colorizer 增益集添加了 IconUrl、 SupportUrl 和必須要求的元素（Excel Colorizer 增益集使用Excel 新的API, 并且衹限于在Excel 2016 或上綫版本中運行）。清單架構檔的版本為1.1。
+	<br />
+	<table class="tableWithBorders tableFirstRowBold">
 		<tr><td>注意事項</td></tr>
 		<tr><td>每個增益集都不同， 為確保增益集按預期方式工作，請參閲 指定 Office 主機和 API 需求和<a href="https://msdn.microsoft.com/ZH-TW/library/office/dn535871.aspx">設定 office 增益集 (英文) 需求</a> 。</td></tr>
 	</table>
@@ -476,9 +482,11 @@
 	<li> Visual Studio中，驗證增益集資訊清單， 點擊組建 > [發佈] > [執行驗證檢查] 。</li>
 	<li>登入到 Microsoft 賣方儀表板并添加應用程式（增益集）。
 		<ul>
-		<li>輸入版本編號。在賣方儀表板中提交的版本編號必須與增益集資訊清單里的版本編號相同。例如:</li>
-		<li class="noStyleUL">賣方儀表板: 1.0.0.0</li>
-		<li class="noStyleUL">增益集資訊清單：1.0.0.0</li>
+		<li>輸入版本編號。在賣方儀表板中提交的版本編號必須與增益集資訊清單里的版本編號相同。例如:
+		<br />
+		賣方儀表板: 1.0.0.0
+		<br />
+		增益集資訊清單：1.0.0.0</li>
 		<li>上傳截圖和 App 徽標。</li>
 		<li> 上傳應用程式套裝軟體，也就是應用程式（增益集）的資訊清單。</li>
 		<li>提供支援和隱私的 URL。支援語句里并有聯絡信息（聯絡信息也可以在增益集里）。聯絡信息可以是以下任何一項或全部: 電子郵件地址、 電話號碼、 連絡人單表，有效的社會媒體連接 (例如Facebook 或 Twitter 上和您接觸的 URL) 或其它評論交流形式。</li>
@@ -537,9 +545,8 @@
 	<li>You can also use <a href="https://msdn.microsoft.com/en-us/library/office/mt628821.aspx">text editor to create Office Add-ins</a>.</li>
 </ul>
 <h3 id="taipei2016-anatomy-of-an-office-addin-en">Anatomy of an Office Add-in</h3>
-<p>Office 增益集的基本元件是 XML 資訊清單檔案和增益集的預設網頁。</p>
 <p>The basic components of an Office Add-in are an XML manifest file and the default webpage of your add-in.</p>
-<p>Manifest + webpage = an Office Add-in</p>
+<p><b>Manifest + webpage = an Office Add-in</b></p>
 <img src="../img/office-web-curriculum-taipei-en-1.png" />
 <p>The manifest specifies settings and capabilities of the add-in, such as the following:</p>
 <ul>
@@ -564,11 +571,11 @@
 <p>Content add-ins integrate web-based features as content that shown in line with the body of a document. Content add-ins let you integrate rich, web-based data visualizations, embedded media (such as a YouTube video player or a picture gallery), as well as other external content.</p>
 <p>Content add-ins</p>
 <img src="../img/office-web-curriculum-taipei-en-3.png" />
-<p>若要在 Excel 2013 或 Excel Online 中嘗試內容增益集，請安裝 <a href="https://store.office.com/bing-maps-WA102957661.aspx?assetid=WA102957661">Bing 地圖服務</a>增益集。</p>
+<p>To try out a content add-in in Excel 2013 or Excel Online, install the <a href="https://store.office.com/bing-maps-WA102957661.aspx?assetid=WA102957661">Bing Maps</a> add-in.</p>
 <h3>Outlook add-ins</h3>
 <p>Outlook add-ins display next to an Outlook item when you're viewing or composing it. They can work with an email message, meeting request, meeting response, meeting cancellation, or appointment in a read scenario – the user viewing a received item – or in a compose scenario – the user replying or creating a new item.</p>
-<table>
-	<tr><th><td>Note</td></th></tr>
+<table class="tableWithBorders tableFirstRowBold">
+	<tr><td>Note</td></tr>
 	<tr><td>Outlook add-ins require a minimum version of Exchange 2013 or Exchange Online to host the user’s mailbox. POP and IMAP email accounts aren't supported.</td></tr>
 </table>
 <p>Outlook add-in in a read scenario</p>
@@ -601,11 +608,7 @@
 	<tr><td>Word Online</td>&nbsp;<td></td><td><i class="fa fa-check"></i></td>&nbsp;<td></td></tr>
 </table>
 <h3 id="taipei2016-development-life-cycle-en">Development lifecycle</h3>
-<p>Plan the end-to-end process for developing task pane, content, and Outlook add-ins to extend Office applications. Some useful tools for developing an Office add-in include:</p>
-<ul>
-	<li>The free <a href="https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx">Visual Studio 2015 Community Edition</a>  along with <a href="https://www.visualstudio.com/features/office-tools-vs">Office Developer Tools</a>, or </li>
-	<li><a href="https://www.napacloudapp.com/getting-started">Napa Office 365 Development Tools</a>, also free by signing up a free Office 365 developer site or use your personal <a href="https://www.microsoft.com/en-us/account/">Microsoft Account</a> to sign in to <a href="https://www.napacloudapp.com/Getting-Started">Napa Cloud App</a>. </li>
-</ul>
+<p>Plan the end-to-end process for developing task pane, content, and Outlook add-ins to extend Office applications.</p>
 <ol>
 	<li>Decide on the purpose of the add-in. </li>
 	<li>Identify the data and data source for the add-in. </li>
@@ -631,10 +634,10 @@
 	<li><a href="#taipei2016-join-dev-program-en">Join Office 365 Developer Program</a></li>
 	<li><a href="#taipei2016-access-your-office-365-en">Access your Office 365</a></li>
 	<li><a href="#taipei2016-assign-office-365-license-en">Assign Office 365 license</a></li>
-	<li><a href="#taipei2016-registration-resources-en">MSDN Resources</a></li>
+	<li><a href="#taipei2016-registration-resources-en">Resources</a></li>
 </ol>
 <h3 id="taipei2016-sign-up-at-office-dev-cenbter-en">Sign up at Office Dev Center</h3>
-<p>在<a href="http://dev.office.com/devprogram">Sign up with <a href="http://dev.office.com/devprogram">Office Dev Center</a> to get a free Office 365 developer account. </p>
+<p>Sign up with <a href="http://dev.office.com/devprogram">Office Dev Center</a> to get a free Office 365 developer account. </p>
 <p>Figure 1. Office 365 Dev Program</p>
  <img src="../img/office-web-curriculum-taipei-en-5.png" />
 <h3 id="taipei2016-join-dev-program-en">Join Office 365 Developer Program</h3>
@@ -645,10 +648,10 @@
 </ol>
 <p>Figure 2. Office 365 Developer Site domain name</p>
 <img src="../img/office-web-curriculum-taipei-en-6.png" />
-<p>4.	 4.	Create a subdomain of <strong>.onmicrosoft.com</strong></p>
+<p>4.	Create a subdomain of <strong>.onmicrosoft.com</strong></p>
 <p class="indentP"> After signup, you have to use the resulting credentials (in the format <a href="mailto:UserID@yourdomain.onmicrosoft.com">UserID@yourdomain.onmicrosoft.com</a>) to sign in to your Office 365 portal site where you administer your account. Your SharePoint Online Developer Site is provisioned at your new domain: http://yourdomain.sharepoint.com.</p>
 <p>5.	Choose <strong>Next</strong> and fill out the final page of the form. If you choose to provide a telephone number to obtain a confirmation code, you can provide a mobile or land line telephone number, but not a VoIP (Voice over Internet Protocol) number.</p>
-<table class="tableWithBorders">
+<table class="tableWithBorders tableFirstRowBold">
 	<tr><td><strong>Note</strong></td></tr>
 	<tr><td><p>If you’re logged on to another Microsoft account when you try to sign up for a developer account, you might get this message: "Sorry, that user ID you entered didn’t work. It looks like it’s not valid. Be sure you enter the user ID that your organization assigned to you. Your user ID usually looks like someone@example.com or someone@example.onmicrosoft.com."</p>
 		<p>If you see this message, log out of the Microsoft account you were using and try again. If you still get the message, clear your browser cache or switch to InPrivate Browsing and then fill out the form.</p>
@@ -682,7 +685,7 @@
 <p>Figure 8. Office 365</p>
 <img src="../img/office-web-curriculum-taipei-en-13.png" />
 <p>To navigate back to the developer site, click on the “waffle” icon (located in the top-left corner) <strong>> Admin > Build Apps</strong.</p>
-<h3 id="taipei2016-registration-resources-en">MSDN Resources</h3>
+<h3 id="taipei2016-registration-resources-en">Resources</h3>
 <p><a href="https://msdn.microsoft.com/en-us/library/office/dn467914.aspx">Office developer documentation</a></p>
 <p><a href="https://msdn.microsoft.com/en-us/library/office/fp179924.aspx#o365_signup">Set up for an Office 365 Developer Site</a></p>
 	</div>
@@ -700,7 +703,7 @@
 <h3 id="taipei2016-create-office-addins-with-napa-en">Create Office Add-ins with Napa with an Office 365 Developer Site</a></h3>
 <p>Napa is a great way to get started building Office Add-ins right in a browser window. You don't need to install any tools such as Visual Studio.  All you need is an Office 365 account and a supported browser. (Firefox is the recommended browser for Mac users.)</p>
 <p>To get started, sign up for an Office 365 Developer Site. Then, install Napa on your Developer site and you are ready to create Office Add-ins.</p>
-<table class="tableWithBorders">
+<table class="tableWithBorders tableFirstRowBold">
 	<tr><td><b>Note</b></td></tr>
 	<tr><td>If you have Office 365, there's an alternate version of <a href="https://www.napacloudapp.com/Getting-Started">Napa</a> that doesn't use or require an Office 365 Developer Site. That version supports creating only Office Add-ins using your personal <a href="https://www.microsoft.com/en-us/account/default.aspx">Microsoft Account</a>. </td></tr>
 </table>
@@ -738,7 +741,7 @@
 <h3 id="taipei2016-vs-2015-setup-en">Set up your free Visual Studio Community 2015</h3>
 <p class="indentP">If you don't have Visual Studio, download <a href="https://go.microsoft.com/fwlink/?LinkId=532606&clcid=0x409">Visual Studio 2015 Community Edition</a> along with <a href="https://www.visualstudio.com/features/office-tools-vs">Office Developer Tools</a>. </p>
 <img src="../img/office-web-curriculum-taipei-14.png" />
-<table class="tableWithBorders">
+<table class="tableWithBorders tableFirstRowBold">
 	<tr><td><b>Note</b></td></tr>
 	<tr><td>When you develop and debug an add-in in Visual Studio, Visual Studio deploys and runs your add-in's webpage files locally with IIS Express, and doesn't require an additional web server. Similarly, when you develop and debug with Napa in the browser, it deploys and runs your add-in's webpage files from storage associated with the account you used to sign into Napa.</td></tr>
 </table>
@@ -755,7 +758,7 @@
 <h3 id="taipei2016-vs-2015-build-first-excel-addin-en">Build your first Excel add-in</h3>
 <p>Try this tutorial: <a href="https://msdn.microsoft.com/EN-US/library/office/mt616491.aspx">Build your first Excel add-in</a></p>
 <p>The new Excel add-in JavaScript API interacts with Excel 2016, and Excel online. If you use Excel 2013 to run your add-in, you will see this error:</p>
-<table class="tableWithBorders">
+<table class="tableWithBorders tableFirstRowBold">
 	<tr><td>0x800a1391 - JavaScript runtime error: 'Excel' is undefined</td></tr>
 </table>
 <p>If you do not have Excel 2016, login to your Office 365 developer site, see Registration.  Use the Napa development tool and run your add-in using Excel Online.</p>
@@ -824,7 +827,7 @@
 	<div id="taipei2016-curriculum-publishing-en" class="tab-content">
 		<h2>Publishing</h2>
 <p>This tutorial shows the steps to publish the Excel Colorizer Add-in for Excel 2016 from the west U.S. for distribution in Office Store. Visual Studio Community 2015 is the IDE of choice. Microsoft Azure is the web hosting platform for the Colorizer.  </p>
-<p>To publish your add-in using other methods that are specific to your scenario, please see MSDN resources on <a href="https://msdn.microsoft.com/EN-US/library/office/fp123515.aspx">publishing</a>.</p>
+<p>To publish your add-in using other methods that are specific to your scenario, please see resources on <a href="https://msdn.microsoft.com/EN-US/library/office/fp123515.aspx">publishing</a>.</p>
 <h3>Topics</h3>
 <ol>
 <li><a href="#taipei2016-publishing-decide-end-point-en">Decide on the Office Add-ins distribution end-points</a></li>
@@ -856,16 +859,16 @@
 			<li>In the Web Platform Installer window, choose <b>Install</b>.</li>
 		</ol>
 	</li>
-	<li>Install Office 2016. (The Colorizer add-in works only in Excel 2016 or Excel Online.)</li>
-	<li style="list-style-type: none;">
-		<table class="tableWithBorders">
+	<li>Install Office 2016. (The Colorizer add-in works only in Excel 2016 or Excel Online.)
+	<br />
+		<table class="tableWithBorders tableFirstRowBold">
 			<tr><td><b>Note</b></td></tr>
 			<tr><td><a href="https://products.office.com/en-us/try?legRedir=true&WT.intid1=ODC_ENUS_FX101785584_XT104056786&CorrelationId=cae9f0f9-caf0-411f-b512-426d951c2259">You can get a trial version of Office for one month.</a>。</td></tr>
 		</table>
 	</li>	
-	<li>Get your Azure account. <li>
-	<li class="noStyleUL">
-		<table class="tableWithBorders">
+	<li>Get your Azure account. 
+	<br />
+		<table class="tableWithBorders tableFirstRowBold">
 			<tr><td><b>Note</b></td></tr>
 			<tr><td>If you’re a Microsoft Developer Network (MSDN) subscriber, <a href="http://www.windowsazure.com/en-us/pricing/member-offers/msdn-benefits/">you get an Azure subscription as part of your MSDN subscription</a>.</a>。</td></tr>
 			<tr><td>If you're not an MSDN subscriber, you can still <a href="https://azure.microsoft.com/en-us/pricing/free-trial/">get a free trial of Azure at the Windows Azure website</a>.</td></tr>
@@ -881,7 +884,7 @@
 
 	<li>In the <b>Create Web App on Windows Azure</b> dialog box, provide this information: 
 		<ul>
-			<li>Enter a unique <b>Web App name</b> for your site. Azure verifies that the site name is unique across the azurewebsites.net domain.</li>
+			<li>Enter a unique <b>Web AWith your add-in open in Visual Studio, expand the solution node in Solution Explorer so that you see both projects for the solution.pp name</b> for your site. Azure verifies that the site name is unique across the azurewebsites.net domain.</li>
 			<li>Choose the <b>App Service plan</b> you're using to authorize creating this website. If you create a new plan, you also need to name it. </li>
 			<li>Choose the <b>Resource group</b> for your site. If you create a new group, you also need to name it.</li>
 			<li>Choose a geographical <b>Region</b> appropriate for you.</li>
@@ -896,16 +899,19 @@
 <h3 id="taipei2016-publishing-publish-add-in-azure-en">Publish your Office Add-in to the Azure website</h3>
 <ol>
 	<li>With your add-in open in Visual Studio, expand the solution node in <b>Solution Explorer</b> so that you see both projects for the solution. </li>
-	<li>Right-click the web project, and then choose <b>Publish</b>. </li>
-	<li class="noStyleUL">The web project contains Office Add-in website files so this is the project that you publish to Azure.</li>
+	<li>Right-click the web project, and then choose <b>Publish</b>. 
+	<br />
+	The web project contains Office Add-in website files so this is the project that you publish to Azure.</li>
 	<li>In <b>Publish Web</b>, choose <b>Import</b>. </li>
 	<li>In <b>Import Publish Settings</b>, choose <b>Browse</b>, and then browse to the place where you saved your publish profile earlier in this topic. Choose <b>OK</b> to import your profile.</li>
-	<li>In <b>Publish Web</b>, on the <b>Connection tab</b>, accept the defaults and choose <b>Next</b>. </li>
-	<li class="noStyleUL">Choose <b>Next</b> > again to accept the default settings.</li>
+	<li>In <b>Publish Web</b>, on the <b>Connection tab</b>, accept the defaults and choose <b>Next</b>. 
+	<br />
+	Choose <b>Next</b> > again to accept the default settings.</li>
 	<li>On the <b>Preview</b> tab, choose <b>Start Preview</b>. The preview shows you all the files in the web project that will be published to the Azure website.</li>
 	<li>Choose <b>Publish</b>. Visual Studio publishes the web project for your Office Add-in to your Azure Web Site. </li>
-	<li>When Visual Studio finishes publishing the web project, your browser opens and shows a webpage with the text "This web app has been successfully created." This is the current default page for the website.</li>
-	<li class="noStyleUL">To see the webpage for your add-in, change the URL to use https: and add the path of your add-in's default HTML page. For example, the changed URL should look like https://YourDomain.azurewebsites.net/Addin/Home/Home.html. This confirms that your add-in's website is now hosted on Azure. Copy this URL because you'll need it when you edit the add-in manifest file later in this topic. </li>
+	<li>When Visual Studio finishes publishing the web project, your browser opens and shows a webpage with the text "This web app has been successfully created." This is the current default page for the website.
+	<br />
+	To see the webpage for your add-in, change the URL to use https: and add the path of your add-in's default HTML page. For example, the changed URL should look like https://YourDomain.azurewebsites.net/Addin/Home/Home.html. This confirms that your add-in's website is now hosted on Azure. Copy this URL because you'll need it when you edit the add-in manifest file later in this topic. </li>
 </ol>
 <h3 id="taipei2016-publishing-edit-addin-manifest-en">Edit the add-in manifest file to point to the Office Add-in on Azure</h3>
 <ol>
@@ -928,14 +934,17 @@
 	<p><a href="https://msdn.microsoft.com/EN-US/library/office/dn221992.aspx">Referencing the JavaScript API for Office library from its content delivery network (CDN)</a></p>
 <h4>To publish the Excel Colorizer Add-in for Excel 2016, the following tasks are performed:</h4>
 <ol>
-	<li>To include your app or add-in in the Office Store, submit it to the <a href="https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=12&ct=1434731402&rver=6.4.6456.0&wp=MBI_SSL_SA&wreply=https://sellerdashboard.microsoft.com/Wlid/AfterLogin?returnUrl=https://sellerdashboard.microsoft.com/?culture=en-US&lc=1033&id=284543">Microsoft Seller Dashboard</a>. </li>
-	<li class="noStyleUL">Create an individual or company account and, if applicable, add payout information. To open an account, see <a href="https://sellerdashboard.microsoft.com/Registration">Create a seller account and add payout information</a>.</li>
-	<li class="noStyleUL">For this tutorial, an individual account is created to publish the add-in. Because the add-in is free, no payout information is provided.</li>
-	<li class="noStyleUL">Fill out the account profile, submit, and wait for the approval. </li>
+	<li>To include your app or add-in in the Office Store, submit it to the <a href="https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=12&ct=1434731402&rver=6.4.6456.0&wp=MBI_SSL_SA&wreply=https://sellerdashboard.microsoft.com/Wlid/AfterLogin?returnUrl=https://sellerdashboard.microsoft.com/?culture=en-US&lc=1033&id=284543">Microsoft Seller Dashboard</a>. 
+	<br />
+	Create an individual or company account and, if applicable, add payout information. To open an account, see <a href="https://sellerdashboard.microsoft.com/Registration">Create a seller account and add payout information</a>.
+	<br />
+	For this tutorial, an individual account is created to publish the add-in. Because the add-in is free, no payout information is provided.
+	<br />
+	Fill out the account profile, submit, and wait for the approval. </li>
 	<li>An icon, App logo, screenshots, and .html files containing privacy and support statements are prepared before the submission. Follow the specifications for the image dimensions in the <a href="https://msdn.microsoft.com/EN-US/library/office/dn356576.aspx">Checklist for submitting Office and SharePoint Add-ins and Office 365 web apps to the Seller Dashboard</a>.</li>
 	<li>Publish the icon, privacy and support statements to your Azure account.</li>
-	<li>In the manifest file, add the IconUrl, SupportUrl, and the Requirements elements in addition to the default elements. (The Excel Colorizer uses the new Excel add-in JavaScript APIs that runs in Excel 2016 or Excel Online). The manifest schema version is 1.1.</li>
-	<li class="noStyleUL"><table class="tableWithBorders">
+	<li>In the manifest file, add the IconUrl, SupportUrl, and the Requirements elements in addition to the default elements. (The Excel Colorizer uses the new Excel add-in JavaScript APIs that runs in Excel 2016 or Excel Online). The manifest schema version is 1.1.
+	<br /><table class="tableWithBorders tableFirstRowBold">
 		<tr><td><b>Note</b></td></tr>
 		<tr><td>*Every add-in is different, to ensure that your add-in works as expected, see <a href="https://msdn.microsoft.com/EN-US/library/office/dn535871.aspx">Specify Office hosts and API requirements</a>  and <a href="https://msdn.microsoft.com/EN-US/library/office/mt590206.aspx">Office add-in requirement sets</a>.</td></tr>
 	</table>
@@ -944,9 +953,9 @@
 	<li>If you’re using Visual Studio, validate the manifest by clicking on <b>Build > Publish > Perform Validation Check</b></li>
 	<li>Login to the Microsoft Seller Dashboard to add the App. 
 		<ul>
-		<li>Enter the version number. The version number submitted via the Seller Dashboard must be the same as that in the add-in manifest. For example:</li>
-		<li class="noStyleUL">Seller Dashboard: 1.0.0.0</li>
-		<li class="noStyleUL">Add-in Manifest: 1.0.0.0</li>
+		<li>Enter the version number. The version number submitted via the Seller Dashboard must be the same as that in the add-in manifest. For example:
+		<br />Seller Dashboard: 1.0.0.0
+		<br />Add-in Manifest: 1.0.0.0</li>
 		<li>Upload the screenshots and the App logo.</li>
 		<li>Upload the app package (i.e. the manifest XML file). </li>
 		<li>Supply the Support and Privacy Statement URL. Include your contact information in the Support Statement URL or alternatively within your add-in. This can be any or all of the following: email address, phone number, contact form, valid social media link (e.g. a URL to your contact page on Facebook or Twitter), or comments form.</li>
