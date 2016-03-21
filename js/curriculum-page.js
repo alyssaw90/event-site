@@ -9,6 +9,19 @@ $(function () {
 	var $welcomeTab = $('.welcomeTab');
 	var $curriculumList = $('.curriculumList');
 	var languageSection = window.location.href.slice(-3);
+	function checkFooter() {
+		setTimeout(function() {
+			if ($('html').height() > $(window).height()) {
+				homepageStickyFooter();
+			}
+			if ($('html').height() <= $(window).height()) {
+				stickyFooter();
+			}
+			
+		}, 500);
+	};
+
+	// checkFooter();
 
 	if (languageSection === '-en') {
 		$taipei2016EnglishCurriculum.show();
@@ -46,19 +59,11 @@ $(function () {
  			});
  		});
  	});
+
  	$('a').click(function() {
- 		if ($('html').height() < $(window).height()) {
- 			homepageStickyFooter();
- 		}
- 		if ($('html').height() <= $(window).height()) {
- 			stickyFooter();
- 		}
- 		console.log($(window).height(), '    :::::::     ', $('html').height())
- 	})
- 	if ($('html').height() < $(window).height()) {
-		homepageStickyFooter();
-	}
-	if ($('html').height() <= $(window).height()) {
-		stickyFooter();
-	}
+ 		stickyFooter();
+ 		checkFooter();
+ 		console.log($(window).innerHeight(), '    :::::::     ', $('html').height());
+ 	});
+ 	
 });
