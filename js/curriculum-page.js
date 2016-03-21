@@ -47,8 +47,18 @@ $(function () {
  		});
  	});
  	$('a').click(function() {
- 		stickyFooter();
+ 		if ($('html').height() < $(window).height()) {
+ 			homepageStickyFooter();
+ 		}
+ 		if ($('html').height() <= $(window).height()) {
+ 			stickyFooter();
+ 		}
+ 		console.log($(window).height(), '    :::::::     ', $('html').height())
  	})
- 	homepageStickyFooter();
- 	stickyFooter();
+ 	if ($('html').height() < $(window).height()) {
+		homepageStickyFooter();
+	}
+	if ($('html').height() <= $(window).height()) {
+		stickyFooter();
+	}
 });
