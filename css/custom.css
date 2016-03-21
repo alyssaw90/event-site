@@ -131,9 +131,19 @@ main p {
  .tableWithBorders td {
  	border: solid 1px #000;
  }
+ .tableWithBorders:first-child(td) {
+ 	font-weight: bold;
+ }
 
  .tableWithBorders tr {
  	border: solid 1px #000;
+ }
+
+ .tableFirstRowBold tr:first-child {
+ 	font-weight: bold;
+ }
+ .tableFirstRowBold {
+ 	margin-top: 8px;
  }
 
  .taipeiSchedule tr td:first-child {
