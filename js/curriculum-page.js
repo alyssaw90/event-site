@@ -46,5 +46,19 @@ $(function () {
  			});
  		});
  	});
-
+ 	$('a').click(function() {
+ 		if ($('html').height() < $(window).height()) {
+ 			homepageStickyFooter();
+ 		}
+ 		if ($('html').height() <= $(window).height()) {
+ 			stickyFooter();
+ 		}
+ 		console.log($(window).height(), '    :::::::     ', $('html').height())
+ 	})
+ 	if ($('html').height() < $(window).height()) {
+		homepageStickyFooter();
+	}
+	if ($('html').height() <= $(window).height()) {
+		stickyFooter();
+	}
 });
