@@ -42,8 +42,6 @@ $(function () {
  				if ($(this).attr('id') === tabid) {
  					$(this).children().trigger('click');
  					$('html, body').animate({ scrollTop: 0 }, 'fast');
- 					homepageStickyFooter();
-   				// setTimeout(homepageStickyFooter, 420);
  				}
  			});
  		});
