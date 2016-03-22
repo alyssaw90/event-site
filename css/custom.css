@@ -146,6 +146,10 @@ main p {
  	margin-top: 8px;
  }
 
+ *[id^='taipei2016-curriculum-welcome-'] {
+ 	min-height: 700px;
+ }
+
  .taipeiSchedule tr td:first-child {
  	width: 8%;
  }
