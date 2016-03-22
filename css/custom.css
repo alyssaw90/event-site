@@ -290,7 +290,7 @@ main p {
 	padding:5px 5px 5px 5px;
 	margin-right: 10px;
 	margin-bottom: 20px;
-	max-width: 165px;
+	width: 165px;
 }
 
 .speakersImg {
@@ -299,7 +299,7 @@ main p {
 	padding:5px 5px 5px 5px;
 	margin-right: 10px;
 	margin-bottom: 20px;
-	max-width: 165px;
+	width: 165px;
 }
 
 
