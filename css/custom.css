@@ -183,10 +183,22 @@ main p {
 
  #taipei2016-chinese-curriculum img {
  	display: block;
+ 	margin-top: 20px;
+ 	margin-bottom: 20px;
  }
 
  #taipei2016-english-curriculum img {
  	display: block;
+ 	margin-top: 20px;
+ 	margin-bottom: 20px;
+ }
+
+ #taipei2016-chinese-curriculum ol li {
+ 	font-size: 1.05em;
+ }
+
+ #taipei2016-english-curriculum ol li {
+ 	font-size: 1.05em;
  }
 
  .noStyleUL {
