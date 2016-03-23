@@ -86,8 +86,8 @@ var Event = module.exports = sql.define('Event', {
     eventContinent: 'Europe',
     eventStartDate: new Date('2016-05-11:00:00:01'), //the start date...
     eventEndDate: new Date('2016-05-12:23:59:00'), // the end date...
-    eventHeaderImage: 'ExtendWebsiteHeader.png', //link to header image
-    eventHomepageImage: 'ExtendWebsiteHeader.png',
+    eventHeaderImage: 'extend-gray.jpg', //link to header image
+    eventHomepageImage: 'extend-gray.jpg',
     eventSpeakers: '1,2,8,11,7,14,10,9,5'
   });
 })
