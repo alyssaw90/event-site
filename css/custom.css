@@ -139,9 +139,6 @@ main p {
  	border: solid 1px #000;
  }
 
- .tableFirstRowBold tr:first-child {
- 	font-weight: bold;
- }
  .tableFirstRowBold {
  	margin-top: 8px;
  }
@@ -193,12 +190,28 @@ main p {
  	margin-bottom: 20px;
  }
 
+ #taipei2016-chinese-curriculum figcaption {
+ 	font-weight: bold;
+ }
+
+ #taipei2016-english-curriculum figcaption {
+ 	font-weight: bold;
+ }
+
  #taipei2016-chinese-curriculum ol li {
  	font-size: 1.05em;
  }
 
  #taipei2016-english-curriculum ol li {
  	font-size: 1.05em;
+ }
+
+ #taipei2016-chinese-curriculum th {
+ 	text-align: left;
+ }
+
+ #taipei2016-english-curriculum th {
+ 	text-align: left;
  }
 
  .noStyleUL {
