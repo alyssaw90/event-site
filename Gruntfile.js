@@ -11,7 +11,7 @@ module.exports = function (grunt) {
     jshint: {
       dev: {
         // tell jshint what check
-        src: ['Gruntfile.js', 'server.js', 'js/**/*.js', 'models/**/*.js', 'routes/**/*.js', '!build/**', '!tests/client/bundle.js', '!tests/karma_tests/bundle.js', '!js/imageMapResizer.min.js', '!js/kickstart.js', '!js/form-validator.js', '!js/imageMapResizer.js', '!js/jquery-ui.min.js', '!js/jquery.base64.js', '!js/kickstart.js'],
+        src: ['Gruntfile.js', 'server.js', 'js/**/*.js', 'models/**/*.js', 'routes/**/*.js', '!build/**', '!tests/client/bundle.js', '!tests/karma_tests/bundle.js', '!js/imageMapResizer.min.js', '!js/kickstart.js', '!js/form-validator.js', '!js/imageMapResizer.js', '!js/jquery-ui.min.js', '!js/jquery.base64.js', '!js/kickstart.js', '!js/AddCalEvent.js', '!js/AddCalEventZones.js'],
         options: {
           node: true,
           globals: {

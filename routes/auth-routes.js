@@ -42,9 +42,9 @@ function makeRandomString () {
 sql.authenticate()
   .then(function (err) {
     if (err) {
-      console.log(clc.xterm(202)('Unable to connect to the database: '), err);
+      console.log(clc.xterm(46)('Unable to connect to the database with auth router: '), err);
     } else {
-      console.log(clc.xterm(202)('Connection has been established successfully.'));
+      console.log(clc.xterm(46)('Connection has been established successfully with auth router.'));
     }
   });
 
@@ -59,14 +59,14 @@ module.exports = function(router, passport) {
 	.post(function(req, res) {
 		sql.sync()
 		.then(function() {
-			return User.find({where: {email: req.body.email}})
+			return User.find({where: {email: req.body.email}});
     })
 		.then(function(user) {
 			if (user) {
 				res.status(419).json({msg: 'email address alread in use'});
 			}
 			if (!user) {
-				return User.create({userName: req.body.userName, email: req.body.email, randomString: makeRandomString()})
+				return User.create({userName: req.body.userName, email: req.body.email, randomString: makeRandomString()});
       }
     })
     .then(function(newUser) {
@@ -123,7 +123,7 @@ module.exports = function(router, passport) {
     console.log(clc.magenta('   groooogggggg    '), req.user);
     for (var key in res.req.rawHeaders) {
       if (res.req.rawHeaders[key].slice(0, 5) === 'Basic') {
-        res.req.rawHeaders[key] = 'Basic xxxx'
+        res.req.rawHeaders[key] = 'Basic xxxx';
       }
       
     }
@@ -145,4 +145,4 @@ module.exports = function(router, passport) {
     console.log(clc.greenBright(':::::      '), req.cookies);
     res.end('the end');
   })*/
-}
+};

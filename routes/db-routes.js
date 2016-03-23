@@ -22,9 +22,9 @@ var upload = multer({ storage: storage });
 var bodyparser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var path = require('path');
-var eatAuth = require('../lib/eat_auth')(process.env.SECRET_KEY)
+var eatAuth = require('../lib/eat_auth')(process.env.SECRET_KEY);
 var Sql = require('sequelize');
-/*var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
+var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
   host: process.env.DB_LOCAL_HOST,
   dialect: 'mssql',
 
@@ -33,8 +33,8 @@ var Sql = require('sequelize');
     min: 0,
     idle: 10000
   }
-});*/
-var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+});
+/*var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
     host: process.env.DB_HOST,
   dialect: 'mssql',
   pool: {
@@ -45,14 +45,14 @@ var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS,
   dialectOptions: {
     encrypt: true
   }
-});
+});*/
 
 sql.authenticate()
   .then(function (err) {
     if (err) {
-      console.log(clc.xterm(202)('Unable to connect to the database: '), err);
+      console.log(clc.xterm(202)('Unable to connect to the database with db router: '), err);
     } else {
-      console.log(clc.xterm(202)('Connection has been established successfully.'));
+      console.log(clc.xterm(202)('Connection has been established successfully with db router.'));
     }
   });
 
@@ -126,10 +126,16 @@ module.exports = function (router) {
   });
 
   router.get('/curriculum', eatAuth, function(req, res) {
+    // console.log(clc.bgMagentaBright('req :::::::::     '), req);
     res.sendFile(path.join(__dirname, '../views/curriculum.html'));
   });
-   router.get('/private', function(req, res) {
+
+  router.get('/private', function(req, res) {
     res.sendFile(path.join(__dirname, '../views/login.html'));
+  });
+
+  router.get('/admin', function(req, res) {
+    res.sendFile(path.join(__dirname, '../views/admin.html'));
   });
 
   router.route('/thankyou')
@@ -384,30 +390,6 @@ router.route('/allevents/:eventId')
         if (testArr.indexOf(req.params.eventName) === -1) {
           res.status(404);
           // res.send(path.join(__dirname, '../views/thank-you.html')); //I need to make a 404 page
-        }
-      });
-    });
-  });
-
-  //This route has to be last or it will override the other routes
-  router.route('/test/:eventName')
-  .get(function (req, res) {
-    // var cat = req.params.eventName.toLowerCase().replace(/\s+/g, '');
-    var theParam = req.params.eventName.toLowerCase().slice(1);
-    sql.sync()
-    .then(function () {
-      Event2.findAll()
-      .then(function (data) {
-        var testArr = [];
-        for (var i = 0; i < data.length; i++) {
-          testArr.push(data[i].eventUrl);
-        }
-        if (testArr.indexOf(req.params.eventName) !== -1) {
-          res.sendFile(path.join(__dirname, '../views/blank-event-2.html'));  
-        } 
-        if (testArr.indexOf(req.params.eventName) === -1) {
-          res.status(404);
-          res.send(path.join(__dirname, '../views/thank-you.html')); //I need to make a 404 page
         }
       });
     });

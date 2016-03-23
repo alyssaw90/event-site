@@ -5,7 +5,7 @@ var bcrypt = require('bcrypt-nodejs');
 var eat = require('eat');
 
 var Sql = require('sequelize');
-/*var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
+var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
   host: process.env.DB_LOCAL_HOST,
   dialect: 'mssql',
 
@@ -14,8 +14,8 @@ var Sql = require('sequelize');
     min: 0,
     idle: 10000
   }
-});*/
-var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+});
+/*var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
     host: process.env.DB_HOST,
   dialect: 'mssql',
   pool: {
@@ -26,7 +26,7 @@ var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS,
   dialectOptions: {
     encrypt: true
   }
-});
+});*/
 
 // var EncryptedField = require('sequelize-encrypted');
 
@@ -40,7 +40,8 @@ var User = module.exports = sql.define('User', {
   // password: enc_fields.vault('password'),
   password: Sql.STRING,
   email: Sql.STRING,
-  randomString: Sql.STRING
+  randomString: Sql.STRING,
+  isAdmin: Sql.BOOLEAN
 },
 {
   // paranoid: true,
@@ -70,16 +71,17 @@ function makeRandomString () {
   return outputString;
 }
 
-User.sync({force: true})
+/*User.sync({force: true})
 .then(function() {
   console.log(clc.blue('::::::::     '), sql.databaseVersion());
 })
 .then(function () {
   return User.create({
-  userName: 'TestUser',
+  userName: 'CurriculumUser',
   password: bcrypt.hashSync('!nt3r0p', bcrypt.genSaltSync(8), null),
   email: 'curriculum@interopevents.com',
-  randomString: makeRandomString()
+  randomString: makeRandomString(),
+  isAdmin: false
   });
 })
 .then(function() {
@@ -88,12 +90,21 @@ User.sync({force: true})
   where: {
     email: 'curriculum@interopevents.com'
   }
-  })
-  .then(function(user) {
-    // var pwComp = bcrypt.hashSync('password', bcrypt.genSaltSync(8), null);
-    var pw =    user.$modelOptions.instanceMethods.verifyPassword('!nt3r0p', user.dataValues.password);
-    // var testF = user.$modelOptions.instanceMethods.testFunc;
-    // var gh = user;
-    console.log(clc.yellow('   ::::::    '), pw);
-  })
-});
+  });
+})
+.then(function(user) {
+  // var pwComp = bcrypt.hashSync('password', bcrypt.genSaltSync(8), null);
+  var pw =    user.$modelOptions.instanceMethods.verifyPassword('!nt3r0p', user.dataValues.password);
+  // var testF = user.$modelOptions.instanceMethods.testFunc;
+  // var gh = user;
+  console.log(clc.yellow('   ::::::    '), user.randomString);
+})
+.then(function() {
+  return User.create({
+    userName: 'Admin',
+    password: bcrypt.hashSync('@ddEv3nt$', bcrypt.genSaltSync(8), null),
+    email: 'admin@interopevents.com',
+    randomString: makeRandomString(),
+    isAdmin: true
+  });
+})*/

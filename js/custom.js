@@ -2,6 +2,8 @@
 /*global $ */
 /*global document */
 /*global window */
+/*global Cookies*/
+/*global alert*/
 
 /*Global Functions*/
 
@@ -20,7 +22,7 @@ function logout() {
   })
 	//In our case, we WANT to get access denied, so a success would be a failure.
 	.done(function(){
-	    alert('Error logging off!')
+	    alert('Error logging off!');
 	})
 	//Likewise, a failure *usually* means we succeeded.
 	//set window.location to redirect the user to wherever you want them to go
