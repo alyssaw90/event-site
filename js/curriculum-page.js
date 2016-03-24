@@ -1,5 +1,16 @@
 'use strict';
 
+/* jshint shadow:true */
+/*global $ */
+/*global document */
+/*global $ */
+/*global stickyFooter */
+/*global window */
+/*global MutationObserver */
+/* jshint loopfunc:true */
+/*global homepageStickyFooter*/
+/*global logout*/
+
 $(function () {
 	var $curriculumLogoutButton = $('#curriculumLogoutButton');
 	var $taipei1016Eng = $('.taipei1016-eng');
@@ -19,7 +30,7 @@ $(function () {
 			}
 			
 		}, 500);
-	};
+	}
 
 	// checkFooter();
 
