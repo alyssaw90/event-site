@@ -28,13 +28,13 @@
 			<section class="col_12 internetExplorer">
 			<h2>Become a Part of the Interoperability Community</h2>
 			<!-- Tabs Center -->
-				<ul class="tabs left">
-					<li><a href="#tabc1"><h4>Recent News</h4></a></li>
-					<li><a href="#tabc2"><h4>Development Support</h4></a></li>
+				<ul class="tabs left newsTabsList">
+					<li id="recentNewsSection-tab"><a href="#recentNewsSection"><h4>Recent News</h4></a></li>
+					<li id="developmentSupportSection-tab"><a href="#developmentSupportSection"><h4>Development Support</h4></a></li>
 					<!-- <li><a href="#tabc3"><h4>Interop Newsletter</h4></a></li> -->
 				</ul>
 				
-				<div id="tabc1" class="tab-content">
+				<div id="recentNewsSection" class="tab-content">
 					<div class="col_4">
 						<!-- Twitter Feed -->
 						<a id="twitter-widget-1" class="twitter-timeline" href="https://twitter.com/OSpecifications" data-widget-id="622196778129985537">Tweets by @OSpecifications</a>
@@ -48,7 +48,7 @@
 					<!-- end feedwind code -->
 				</div>
 				</div>
-				<div id="tabc2" class="tab-content">
+				<div id="developmentSupportSection" class="tab-content">
 					<h4>Additional Resources</h4>
 					<p>Developers who are working with and implementing Microsoft Open Specifications can obtain assistance from Microsoft and its engineers, including managed technical support, through a variety of means:</p>
 					<ul>
@@ -56,7 +56,7 @@
 						<li>Microsoft Knowledge Base</li>
 						<li>Other support options, including Microsoft Support, chat, blogs, and partner programs</li>
 					</ul>
-					<p>For more information about support options, email the <a href="mailto:dochelp@microsoft.com">Interop Documentation Support Team</a>. To see the latest interoperability news posts, visit the <a href="./join-the-community.html">News page</a>.</p>
+					<p>For more information about support options, email the <a href="mailto:dochelp@microsoft.com">Interop Documentation Support Team</a>. To see the latest interoperability news posts, visit the <a data-tabId="recentNewsSection-tab" id="latestNewsLink">news page</a>.</p>
 					<hr />
 					<h4>Ask a Question in the Forums</h4>
 					<!-- Table -->
@@ -206,6 +206,7 @@
 	<script type="text/javascript" src="../js/footer.js"></script>
 	<script type="text/javascript" src="../js/header-menu.js"></script>
 	<script type="text/javascript" src="../js/custom.js"></script>
+	<script type="text/javascript" src="../js/latest-news.js"></script>
 	<!-- Go to www.addthis.com/dashboard to customize your tools -->
 	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5660d6c488a1a100" async="async"></script>
 	<script>
