@@ -1,5 +1,16 @@
 'use strict';
 
+/* jshint shadow:true */
+/*global $ */
+/*global document */
+/*global $ */
+/*global stickyFooter */
+/*global window */
+/*global MutationObserver */
+/* jshint loopfunc:true */
+/*global alert*/
+/*global Cookies*/
+
 $(function() {
 	var $email = $('#email');
 	var $password = $('#password');
@@ -20,7 +31,7 @@ $(function() {
     })
 		//In our case, we WANT to get access denied, so a success would be a failure.
 		.done(function(){
-		    alert('Error logging off!')
+		    alert('Error logging off!');
 		})
 		//Likewise, a failure *usually* means we succeeded.
 		//set window.location to redirect the user to wherever you want them to go
@@ -41,7 +52,7 @@ $(function() {
 			method: 'post',
 			url: '/auth/login',
 			dataType: 'json',
-      async: false,
+      async: true,
       username: $email.val(),
       password: $password.val()
 
@@ -54,8 +65,8 @@ $(function() {
 			console.log(error);
 			// $badLogInDiv.show();
 			alert('There was a problem with your log in, please try again');
-		})
-	})
+		});
+	});
 
 	$('#testButton').click(function(e) {
 		var ckie = Cookies.get('token');
@@ -65,4 +76,4 @@ $(function() {
 
 	$('#logoutButton').click(logout);
 
-})
+});
