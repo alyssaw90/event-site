@@ -8,12 +8,11 @@
 /*global window */
 /*global MutationObserver */
 /* jshint loopfunc:true */
-/* global homepageStickyFooter*/
 
 $(document).ready(function() {
 	//when one of the li tabs is clicked wait 10 milliseconds and fire the stickyFooter function
 	$('li').click(function() {
-		setTimeout(function() {homepageStickyFooter();}, 10);
+		setTimeout(function() {homepageStickyFooter()}, 10);
 	});
 	//get events api
 	$.get('/events', function (events) {
@@ -68,14 +67,14 @@ $(document).ready(function() {
 					if (eventsObj[key].eventSpeakers) {
 						// loop through the string of attendees for the event
 						for (var i = 0, j = attendees.length; i < j; i++) {
-							var attendeeId = attendees[i].id.toString();
+							var attendeeId = attendees[i].id.toString()
 							// if the id of an attendee matches one of the IDs from the speakers string, replace the value from the eventSpeakers array with the speaker's object
 							if (eventsObj[key].eventSpeakers.indexOf(attendeeId) > -1) {
-								// console.log(eventsObj[key].eventSpeakers.indexOf(attendeeId));
+								console.log(eventsObj[key].eventSpeakers.indexOf(attendeeId));
 								eventsObj[key].eventSpeakers[eventsObj[key].eventSpeakers.indexOf(attendeeId)] = attendees[i];
 							}
 						}
-						// console.log(eventsObj[key].eventSpeakers);
+						console.log(eventsObj[key].eventSpeakers);
 					}
 					//if there are speakers in the speakers array
 					if (eventsObj[key].eventSpeakers) {
@@ -182,7 +181,7 @@ $(document).ready(function() {
 					});
 				}
 
-			});
+			})
 		});
 	});
 
