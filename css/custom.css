@@ -139,9 +139,6 @@ main p {
  	border: solid 1px #000;
  }
 
- .tableFirstRowBold tr:first-child {
- 	font-weight: bold;
- }
  .tableFirstRowBold {
  	margin-top: 8px;
  }
@@ -183,10 +180,38 @@ main p {
 
  #taipei2016-chinese-curriculum img {
  	display: block;
+ 	margin-top: 20px;
+ 	margin-bottom: 20px;
  }
 
  #taipei2016-english-curriculum img {
  	display: block;
+ 	margin-top: 20px;
+ 	margin-bottom: 20px;
+ }
+
+ #taipei2016-chinese-curriculum figcaption {
+ 	font-weight: bold;
+ }
+
+ #taipei2016-english-curriculum figcaption {
+ 	font-weight: bold;
+ }
+
+ #taipei2016-chinese-curriculum ol li {
+ 	font-size: 1.05em;
+ }
+
+ #taipei2016-english-curriculum ol li {
+ 	font-size: 1.05em;
+ }
+
+ #taipei2016-chinese-curriculum th {
+ 	text-align: left;
+ }
+
+ #taipei2016-english-curriculum th {
+ 	text-align: left;
  }
 
  .noStyleUL {
@@ -336,7 +361,7 @@ main p {
 	padding:5px 5px 5px 5px;
 	margin-right: 10px;
 	margin-bottom: 20px;
-	max-width: 165px;
+	width: 165px;
 }
 
 .speakersImg {
@@ -345,7 +370,7 @@ main p {
 	padding:5px 5px 5px 5px;
 	margin-right: 10px;
 	margin-bottom: 20px;
-	max-width: 165px;
+	width: 165px;
 }
 
 
