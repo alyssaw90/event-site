@@ -71,11 +71,11 @@ $(document).ready(function() {
 							var attendeeId = attendees[i].id.toString();
 							// if the id of an attendee matches one of the IDs from the speakers string, replace the value from the eventSpeakers array with the speaker's object
 							if (eventsObj[key].eventSpeakers.indexOf(attendeeId) > -1) {
-								console.log(eventsObj[key].eventSpeakers.indexOf(attendeeId));
+								// console.log(eventsObj[key].eventSpeakers.indexOf(attendeeId));
 								eventsObj[key].eventSpeakers[eventsObj[key].eventSpeakers.indexOf(attendeeId)] = attendees[i];
 							}
 						}
-						console.log(eventsObj[key].eventSpeakers);
+						// console.log(eventsObj[key].eventSpeakers);
 					}
 					//if there are speakers in the speakers array
 					if (eventsObj[key].eventSpeakers) {
