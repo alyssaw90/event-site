@@ -260,7 +260,7 @@ var EventTab = module.exports = sql.define('EventTab', {
 <figcaption>圖 6：Office 365 管理中心頁面 > 活躍用戶</figcaption>\
 <img src="../img/office-web-curriculum-taipei-11.png" />\
 <p class="indentP">3. 在[用戶位置]的組合框設置您的地點。並選擇Microsoft Office 365的開發。點擊[保存]完成分配的許可證。</p>\
-<p>圖7：分配活躍用戶許可證</p>\
+<figcaption>圖7：分配活躍用戶許可證</figcaption>\
 <img src="../img/office-web-curriculum-taipei-12.png">\
 <p class="indentP">4. 在完成後，返回到 Office 365 的主頁。頁面將顯示可用的 Office 的產品。拉下頁面，可以看到完整的顯示。</p>\
 <figcaption>圖8：Office 365 首頁</figcaption>\
@@ -282,13 +282,13 @@ var EventTab = module.exports = sql.define('EventTab', {
 </ul>\
 <h3 id="taipei2016-prerequisites-napa-cn">必要條件</h3>\
 <p>報名及參加<a href="http://dev.office.com/devprogram">Office 365 Developer Program</a>。參考<a class="welcomeTab" data-tabId="taipei2016-curriculum-registration-cn-tab">報名註冊</a>。</p>\
-<h3 id="taipei2016-create-office-addins-with-napa-cn">在Office 365 開發人員網站上建置Office 增益集</h3>\
-<p>您可以直接從瀏覽器視窗來使用Napa開發工具及開始建置Office 增益集。您不需要安裝任何其它Visual Studio類似的工具。所有您需要的爲支援的瀏覽器和Office 365 開發者免費賬戶。（Firefox是針對 Mac 用戶所推薦的瀏覽器）。</p>\
-<p>若要開始，註冊Office 365 開發人員賬戶。然後在開發人員網站上安裝Napa，之後您可以準備建立Office 增益集。當您準備使用Visual Studio強大功能時， Napa可以下載您的專案並讓您繼續進行開發Office 增益集。</p>\
 <table class="tableWithBorders tableFirstRowBold">\
 <tr><th>注意事項</th></tr>\
 <tr><td>如果您已經有Office 365， 您也可以使用不需要Office 365 開發人員網站的<a href="https://www.napacloudapp.com/Getting-Started">Napa替代版本</a>。 此版本支援用您的個人<a href="https://www.microsoft.com/en-us/account/default.aspx">Microsoft 帳戶</a>來建立Office 增益集。</td></tr>\
 </table>\
+<h3 id="taipei2016-create-office-addins-with-napa-cn">在Office 365 開發人員網站上建置Office 增益集</h3>\
+<p>您可以直接從瀏覽器視窗來使用Napa開發工具及開始建置Office 增益集。您不需要安裝任何其它Visual Studio類似的工具。所有您需要的爲支援的瀏覽器和Office 365 開發者免費賬戶。（Firefox是針對 Mac 用戶所推薦的瀏覽器）。</p>\
+<p>若要開始，註冊Office 365 開發人員賬戶。然後在開發人員網站上安裝Napa，之後您可以準備建立Office 增益集。當您準備使用Visual Studio強大功能時， Napa可以下載您的專案並讓您繼續進行開發Office 增益集。</p>\
 <ol>\
 <li>如果您已完成Office 365 開發人員網站的<a class="welcomeTab" data-tabId="taipei2016-curriculum-registration-cn-tab">報名註冊</a>， 用您建置的憑證而登入<a href="http://portal.office.com">Office 365</a> > 點擊 [管理] > [建置增益集]。<br />如果您沒有Napa, 您將被引導及[添加] Napa Office 365 開發工具。</li>\
 <li>在開發人員網站上， 再次點擊 [建置增益集] 磚。</li>\
@@ -433,7 +433,7 @@ var EventTab = module.exports = sql.define('EventTab', {
 <p>本案例演示如何將Office增益集發佈到<a href="https://msdn.microsoft.com/ZH-TW/library/office/dn622055.aspx">微軟 Azure</a>，<a href="https://msdn.microsoft.com/zh-tw/library/office/jj220037.aspx">然後提交至Office 市集</a>。</p>\
 <h3 id="taipei2016-publishing-set-up-dev-computer-cn">爲開發而設定電腦：安裝.NET 的Azure SDK (英文)，訂閲Azure賬戶， 及使用Office 2016</h3>\
 <ol>\
-<li>在<a href="http://azure.microsoft.com/en-us/downloads/">Azure 下載頁面</a>安裝爲.NET 的Azure SDK (英文) 。本案例使用免費的Microsoft <a href="https://www.microsoft.com/en-us/download/details.aspx?id=48146">Visual Studio Community 2015</a>。\
+<li>在<a href="http://azure.microsoft.com/en-us/downloads/">Azure 下載頁面</a>安裝爲.NET 的Azure SDK (英文) 。本案例使用免費的<a href="https://www.microsoft.com/en-us/download/details.aspx?id=48146">Microsoft Visual Studio Community 2015</a>。\
 <ol type="a">\
 <li>在 [語言]，選擇[.NET]。 </li>\
 <li>如果您已安裝的Visual Studio ，選擇符合您的Visual Studio版本的Azure .NET SDK            版本。 </li>\
@@ -526,8 +526,8 @@ Web 專案會有Office 增益集網站檔案, 所以這是您發佈到Azure的�
 <li>清單中, 除了預設元素，Excel Colorizer 增益集添加了 IconUrl、 SupportUrl 和必須要求的元素（Excel Colorizer 增益集使用Excel 新的API, 并且衹限于在Excel 2016 或上綫版本中運行）。清單架構檔的版本為1.1。\
 <br />\
 <table class="tableWithBorders tableFirstRowBold">\
-  <tr><th>注意事項</th></tr>\
-  <tr><td>每個增益集都不同， 為確保增益集按預期方式工作，請參閲 指定 Office 主機和 API 需求和<a href="https://msdn.microsoft.com/ZH-TW/library/office/dn535871.aspx">設定 office 增益集 (英文) 需求</a> 。</td></tr>\
+<tr><th>注意事項</th></tr>\
+<tr><td>每個增益集都不同， 為確保增益集按預期方式工作，請參閲 <a href="https://msdn.microsoft.com/ZH-TW/library/office/dn535871.aspx">指定 Office 主機和 API 需求</a>和<a href="https://msdn.microsoft.com/ZH-TW/library/office/mt590206.aspx">設定 office 增益集 (英文) 需求</a> 。</td></tr>\
 </table>\
 </li>\
 <li>果在增益集中使用 Office JavaScript API，您必須<a href="https://msdn.microsoft.com/ZH-TW/library/office/dn221992.aspx">參照從CDN URL Microsoft 主控的 Office.js 檔案</a>。不要在增益集中包含 Office.js 檔案的複本或參照其它地方主控之檔案的複本。</li>\
