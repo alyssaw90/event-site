@@ -74,7 +74,7 @@ var Event = module.exports = sql.define('Event', {
     eventHeaderImage: 'TAIPEIHeader.png',
     eventHomepageImage: 'TAIPEIHeader.png',
     eventHighlightColor: '#4668c5',
-    eventSpeakers: '1,2,7,10,14,8,11,9,5,31,32,33,34'
+    eventSpeakers: '1,2,8,11,15,9,12,10,6,32,33,34,35'
     
   });
 })
@@ -88,7 +88,7 @@ var Event = module.exports = sql.define('Event', {
     eventEndDate: new Date('2016-05-12:23:59:00'), // the end date...
     eventHeaderImage: 'extend-gray.jpg', //link to header image
     eventHomepageImage: 'extend-gray.jpg',
-    eventSpeakers: '1,2,8,11,7,14,10,9,5'
+    eventSpeakers: '1,2,9,12,8,15,11,10,6'
   });
 })
 .then(function () {
@@ -101,6 +101,6 @@ var Event = module.exports = sql.define('Event', {
   eventEndDate: new Date('2016-06-24:01:00:00'), // the end date...
   eventHeaderImage: 'plugfest-io-lab-heade.png', //link to header image
   eventHomepageImage: 'plugfest-io-lab-heade.png',
-  eventSpeakers: '1,2,3,4,8,7,10,14,11,9,5,20,13,17,15'
+  eventSpeakers: '1,2,3,5,9,8,11,15,12,10,6,21,14,18,16'
   });
 })*/
