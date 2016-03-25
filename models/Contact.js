@@ -135,6 +135,21 @@ var Contact = module.exports = sql.define('Contact', {
   allowPersonalInfoSharing: false
   })
 })
+.then(function() {
+  return Contact.create({
+    firstName: 'Diane',
+    lastName: 'Larsen',
+    contactDescription: 'Diane Larsen is a Senior Program Manager in the Enterprise Cloud Group. She has been with Microsoft since 2000, and has been working on protocol interoperability initiatives for Windows and Windows Server since 2008. Prior to this role, she wrote documentation for SQL Server, managed a content publishing team, and managed web development projects.<br /><br />Diane graduated from the University of Washington with a Bachelor of Science degree in Technical Communication. She spends as much time as possible outdoors, watches movies, takes classes, and travels to warmer places during the really rainy season.',
+    eventRole: 'speaker',
+    showOnMeetTheTeamPage: true,
+    msTeamTitle: 'Senior Program Manager',
+    headShot: 'diane-larsen-headshot.jpg',
+    company: 'Microsoft',
+    country: 'USA',
+    allowNotifications: false,
+    allowPersonalInfoSharing: false
+  })
+})
 .then(function () {
   return Contact.create({
     firstName: 'Rich',
@@ -607,21 +622,6 @@ var Contact = module.exports = sql.define('Contact', {
     msTeamTitle: 'Principal PM Manager ',
     showOnHomePage: false,
     headShot: 'mark-stafford-headshot.jpg',
-    company: 'Microsoft',
-    country: 'USA',
-    allowNotifications: false,
-    allowPersonalInfoSharing: false
-  })
-})
-.then(function() {
-  return Contact.create({
-    firstName: 'Diane',
-    lastName: 'Larsen',
-    contactDescription: 'Diane Larsen is a Senior Program Manager in the Enterprise Cloud Group. She has been with Microsoft since 2000, and has been working on protocol interoperability initiatives for Windows and Windows Server since 2008. Prior to this role, she wrote documentation for SQL Server, managed a content publishing team, and managed web development projects.<br /><br />Diane graduated from the University of Washington with a Bachelor of Science degree in Technical Communication. She spends as much time as possible outdoors, watches movies, takes classes, and travels to warmer places during the really rainy season.',
-    eventRole: 'speaker',
-    showOnMeetTheTeamPage: true,
-    msTeamTitle: 'Senior Program Manager',
-    headShot: 'diane-larsen-headshot.jpg',
     company: 'Microsoft',
     country: 'USA',
     allowNotifications: false,

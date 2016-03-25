@@ -70,11 +70,9 @@ $(document).ready(function() {
 							var attendeeId = attendees[i].id.toString()
 							// if the id of an attendee matches one of the IDs from the speakers string, replace the value from the eventSpeakers array with the speaker's object
 							if (eventsObj[key].eventSpeakers.indexOf(attendeeId) > -1) {
-								console.log(eventsObj[key].eventSpeakers.indexOf(attendeeId));
 								eventsObj[key].eventSpeakers[eventsObj[key].eventSpeakers.indexOf(attendeeId)] = attendees[i];
 							}
 						}
-						console.log(eventsObj[key].eventSpeakers);
 					}
 					//if there are speakers in the speakers array
 					if (eventsObj[key].eventSpeakers) {
@@ -144,7 +142,7 @@ $(document).ready(function() {
 						//if there is no hash in the route
 						if (!window.location.hash) {
 						//assign first and current classes to first tab li(s) so they display correctly
-							$('.tabs').children().each(function (i) {
+							$('#eventTabLinks').children().each(function (i) {
 								if ($(this).is(':first-child')) {
 									$(this).siblings().removeClass('current');
 									$(this).addClass('current');
@@ -157,7 +155,7 @@ $(document).ready(function() {
 					//if there is a hash in the route
 					if (window.location.hash) {
 						//loop over the children of the tabs (the tabDivs)
-						$('.tabs').children().each(function (i, elem) {
+						$('#eventTabLinks').children().each(function (i, elem) {
 							//if the has value of the a link of this matches the hash in the url
 							if ($($('a', this))[0].hash === window.location.hash) {
 								//remove the current class from the other divs
@@ -170,7 +168,7 @@ $(document).ready(function() {
 								//hid the siblings of a div with an id of the hash from the url
 								$(window.location.hash).siblings().hide();
 								//show the tabs
-								$('.tabs').show();
+								$('#eventTabLinks').show();
 							}
 						});
 					}
