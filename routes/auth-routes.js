@@ -6,7 +6,7 @@ var bodyparser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var clc = require('cli-color');
 var Sql = require('sequelize');
-var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
+/*var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
   host: process.env.DB_LOCAL_HOST,
   dialect: 'mssql',
 
@@ -15,7 +15,7 @@ var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.
     min: 0,
     idle: 10000
   }
-});
+});*/
 /*var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
     host: process.env.DB_HOST,
   dialect: 'mssql',
@@ -28,6 +28,19 @@ var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.
     encrypt: true
   }
 });*/
+
+var sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
+  host: process.env.DB_DEV_HOST,
+  dialect: 'mssql',
+  pool: {
+    max: 5,
+    min: 0,
+    idle: 10000
+  },
+  dialectOptions: {
+    encrypt: true
+  }
+});
 
 function makeRandomString () {
   var outputString = '';
@@ -75,7 +88,7 @@ module.exports = function(router, passport) {
       delete req.body.password;
       newUser.update({password: hashPass});
 		  // res.status(200).json({msg: 'user created'});
-      console.log(clc.cyanBright('::::::::   '), newUser.dataValues.randomString);
+      // console.log(clc.cyanBright('::::::::   '), newUser.dataValues.randomString);
       newUser.$modelOptions.instanceMethods.generateToken(userJSON, process.env.SECRET_KEY, function(err, token) {
         if (err) {
           console.log(err);
@@ -116,27 +129,27 @@ module.exports = function(router, passport) {
   });*/
 
   router.post('/login', passport.authenticate('basic', { session: false }), function(req, res) {
-    console.log(clc.greenBright(' AAAAAAAA    '), req);
+    console.log(clc.greenBright(' AAAAAAAA    '), req.user.dataValues);
     var userJSON = {randomString: req.user.dataValues.randomString, id: req.user.dataValues.id};
     res.req.headers.authorization = 'hahaha';
     // res.req.rawHeaders.Authorization = 'blah';
-    console.log(clc.magenta('   groooogggggg    '), req.user);
+    // console.log(clc.magenta('   groooogggggg    '), req.user);
     for (var key in res.req.rawHeaders) {
       if (res.req.rawHeaders[key].slice(0, 5) === 'Basic') {
         res.req.rawHeaders[key] = 'Basic xxxx';
       }
       
     }
-    console.log(clc.greenBright('Cookies: '), '     :::::     ', res.req.rawHeaders);
+    // console.log(clc.greenBright('Cookies: '), '     :::::     ', res.req.rawHeaders);
     req.user.$modelOptions.instanceMethods.generateToken(userJSON, process.env.SECRET_KEY, function(err, token) {
-      if (err) {
-          console.log(err);
-          return res.status(500).json({msg: 'error generating token'});
-      }
-      // res.req.headers.token = token;
-      // res.header('token', token);
-      // res.json({token: token});
-      res.status('200').header('token', token).json({token: token});
+        if (err) {
+            console.log(err);
+            return res.status(500).json({msg: 'error generating token'});
+        }
+        // res.req.headers.token = token;
+        // res.header('token', token);
+        // res.json({token: token});
+        res.status('200').header('token', token).json({token: token, 'admin': req.user.dataValues.isAdmin});
       });
     });
 

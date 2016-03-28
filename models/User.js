@@ -15,7 +15,7 @@ var Sql = require('sequelize');
     idle: 10000
   }
 });*/
-var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+/*var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
     host: process.env.DB_HOST,
   dialect: 'mssql',
   pool: {
@@ -26,7 +26,21 @@ var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS,
   dialectOptions: {
     encrypt: true
   }
+});*/
+
+var sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
+  host: process.env.DB_DEV_HOST,
+  dialect: 'mssql',
+  pool: {
+    max: 5,
+    min: 0,
+    idle: 10000
+  },
+  dialectOptions: {
+    encrypt: true
+  }
 });
+
 
 // var EncryptedField = require('sequelize-encrypted');
 
@@ -40,7 +54,8 @@ var User = module.exports = sql.define('User', {
   // password: enc_fields.vault('password'),
   password: Sql.STRING,
   email: Sql.STRING,
-  randomString: Sql.STRING
+  randomString: Sql.STRING,
+  isAdmin: Sql.BOOLEAN
 },
 {
   // paranoid: true,
@@ -79,7 +94,17 @@ User.sync({force: true})
   userName: 'TestUser',
   password: bcrypt.hashSync('!nt3r0p', bcrypt.genSaltSync(8), null),
   email: 'curriculum@interopevents.com',
-  randomString: makeRandomString()
+  randomString: makeRandomString(),
+  isAdmin: false
+  });
+})
+.then(function () {
+  return User.create({
+  userName: 'Admin',
+  password: bcrypt.hashSync('!nt3r0p', bcrypt.genSaltSync(8), null),
+  email: 'admin@interopevents.com',
+  randomString: makeRandomString(),
+  isAdmin: true
   });
 })
 .then(function() {
