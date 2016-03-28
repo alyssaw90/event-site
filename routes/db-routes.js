@@ -24,7 +24,7 @@ var cookieParser = require('cookie-parser');
 var path = require('path');
 var eatAuth = require('../lib/eat_auth')(process.env.SECRET_KEY);
 var Sql = require('sequelize');
-var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
+/*var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
   host: process.env.DB_LOCAL_HOST,
   dialect: 'mssql',
 
@@ -33,7 +33,7 @@ var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.
     min: 0,
     idle: 10000
   }
-});
+});*/
 /*var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
     host: process.env.DB_HOST,
   dialect: 'mssql',
@@ -46,6 +46,19 @@ var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.
     encrypt: true
   }
 });*/
+
+var sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
+  host: process.env.DB_DEV_HOST,
+  dialect: 'mssql',
+  pool: {
+    max: 5,
+    min: 0,
+    idle: 10000
+  },
+  dialectOptions: {
+    encrypt: true
+  }
+});
 
 sql.authenticate()
   .then(function (err) {
@@ -130,19 +143,6 @@ module.exports = function (router) {
     res.sendFile(path.join(__dirname, '../views/curriculum.html'));
   });
 
-  router.get('/private', function(req, res) {
-    res.sendFile(path.join(__dirname, '../views/login.html'));
-  });
-
-  router.get('/admin', function(req, res) {
-    res.sendFile(path.join(__dirname, '../views/admin.html'));
-  });
-
-  router.route('/thankyou')
-  .get(function(req, res) {
-    res.sendFile(path.join(__dirname, '../views/loggedout.html'));
-  });
-
   router.route('/survey/:eventId')
   .get(function (req, res) {
     res.sendFile(path.join(__dirname, '../views/survey.html'));
@@ -178,6 +178,24 @@ module.exports = function (router) {
       });
     });
   });
+
+  router.get('/private', function(req, res) {
+    res.sendFile(path.join(__dirname, '../views/login.html'));
+  });
+
+  router.get('/admin', eatAuth, function(req, res) {
+    if (req.cookies.interopAdmin === 'true') {
+      res.sendFile(path.join(__dirname, '../views/admin.html'));
+    } else {
+      res.sendFile(path.join(__dirname, '../views/curriculum.html'));
+    }
+  });
+
+  router.route('/thankyou')
+  .get(function(req, res) {
+    res.sendFile(path.join(__dirname, '../views/loggedout.html'));
+  });
+
   
   router.route('/createevent')
   .post(upload.array('images', 4), function (req, res, next) {

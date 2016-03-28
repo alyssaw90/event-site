@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- META -->
+	<title>Meet the Microsoft Plugfests Team</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta name="description" content="" />
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/ >
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/kickstart.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="../style.css" media="all" /> 
+	<link rel="stylesheet" type="text/css" href="../css/animate.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="../css/custom.css" media="all" />
+	
+	<!-- Javascript -->
+</head>
+<body>
+	<header>
+	</header>
+	<div class="mobileWrapper">
+		<!-- begin main section -->
+		<main class="grid white-bg main-page-content">
+			<section id="mainAdminSection" class="col_12">
+				<ul class="tabs">
+					<li><a href="#createEventDiv">Create Event</a></li>
+					<li><a href="#editEventDiv">Edit Event</a></li>
+				</ul>
+				<div id="createEventDiv" class="tab-content">
+					<h1>Create Event Tab</h1>
+					<form action="/createevent" id="createEventForm" method="POST" enctype="multipart/form-data">
+						<label class="col_4" for="newEventName">Event Name</label>
+        		<input class="col_8" id="newEventName" name="eventName" type="text" placeholder="Event Name" />
+        		<br />
+        		<br />
+        		<button class="medium" id="createEventButton" type="submit">Create Event</button>
+					</form>
+				</div>
+				<div id="editEventDiv" class="tab-content">
+					<h1>Edit Event Tab</h1>
+				</div>
+			</section>
+			<section class="col_12 internetExplorer scroll-button">
+				<i class="fa fa-chevron-up fa-3x"><p>Back to Top</p></i>
+			</section>
+		</main>
+	</div>
+	<footer class="grid flex footer-at-bottom">
+	</footer>
+	<!-- Javascript -->
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/kickstart.js"></script>
+	<script type="text/javascript" src="../js/jquery.base64.js"></script>
+	<script src="//tinymce.cachefly.net/4.2/tinymce.min.js"></script>
+	<script type="text/javascript" src="../js/footer.js"></script>
+	<script type="text/javascript" src="../js/header-menu.js"></script>
+	<script type="text/javascript" src="../js/custom.js"></script>
+	<script type="text/javascript" src="../js/admin-page.js"></script>
+</body>
+</html>

@@ -41,14 +41,19 @@ $(function() {
 			method: 'post',
 			url: '/auth/login',
 			dataType: 'json',
-      async: false,
+      async: true,
       username: $email.val(),
       password: $password.val()
 
 		})
 		.done(function(data) {
 			Cookies.set('token', data.token);
-			window.location = '/curriculum';
+			Cookies.set('interopAdmin', data.admin);
+			if (data.admin === true) {
+				window.location = '/admin';
+			} else {
+				window.location = '/curriculum';
+			}
 		})
 		.error(function(error) {
 			console.log(error);
@@ -59,7 +64,7 @@ $(function() {
 
 	$('#testButton').click(function(e) {
 		var ckie = Cookies.get('token');
-		console.log('ladfjhlkadshf', Cookies.get('token'));
+		console.log('ladfjhlkadshf', Cookies.get());
 	});
 
 

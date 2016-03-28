@@ -13,7 +13,7 @@ var Sql = require('sequelize');
     idle: 10000
   }
 });*/
-var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+/*var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
   host: process.env.DB_HOST,
   dialect: 'mssql',
   pool: {
@@ -24,7 +24,21 @@ var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS,
   dialectOptions: {
     encrypt: true
   }
+});*/
+
+var sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
+  host: process.env.DB_DEV_HOST,
+  dialect: 'mssql',
+  pool: {
+    max: 5,
+    min: 0,
+    idle: 10000
+  },
+  dialectOptions: {
+    encrypt: true
+  }
 });
+
 
 var Event = module.exports = sql.define('Event', {
   eventName: Sql.STRING,
@@ -63,7 +77,7 @@ var Event = module.exports = sql.define('Event', {
   }
 });
 
-/*Event.sync({force: true})
+Event.sync({force: true})
 .then(function () {
   return Event.create({
     eventName: 'DevDays Asia 2016 @Taipei',
@@ -103,4 +117,4 @@ var Event = module.exports = sql.define('Event', {
   eventHomepageImage: 'plugfest-io-lab-heade.png',
   eventSpeakers: '1,2,3,5,9,8,11,15,12,10,6,21,14,18,16'
   });
-})*/
+})

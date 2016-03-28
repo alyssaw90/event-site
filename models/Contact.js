@@ -11,8 +11,20 @@ var Sql = require('sequelize');
     idle: 10000
   }
 });*/
-var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+/*var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
   host: process.env.DB_HOST,
+  dialect: 'mssql',
+  pool: {
+    max: 5,
+    min: 0,
+    idle: 10000
+  },
+  dialectOptions: {
+    encrypt: true
+  }
+});*/
+var sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
+  host: process.env.DB_DEV_HOST,
   dialect: 'mssql',
   pool: {
     max: 5,
@@ -79,7 +91,7 @@ var Contact = module.exports = sql.define('Contact', {
 // create table if it doesn't already exist ```({force: true})``` will cause the table to be deleted and created regardless of if it exists already
 
 // Table created
-/*Contact.sync({force: true})
+Contact.sync({force: true})
 .then(function () {
   console.log(sql.databaseVersion());
 })
@@ -627,4 +639,4 @@ var Contact = module.exports = sql.define('Contact', {
     allowNotifications: false,
     allowPersonalInfoSharing: false
   })
-})*/
+})
