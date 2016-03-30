@@ -77,7 +77,7 @@ var Event = module.exports = sql.define('Event', {
   }
 });
 
-/**/Event.sync({force: true})
+/*Event.sync({force: true})
 .then(function () {
   return Event.create({
     eventName: 'DevDays Asia 2016 @Taipei',
@@ -119,4 +119,4 @@ var Event = module.exports = sql.define('Event', {
   eventHighlightColor: '#ffb900',
   eventSpeakers: '1,2,3,5,9,8,11,15,12,10,6,21,14,18,16'
   });
-})
+})*/
