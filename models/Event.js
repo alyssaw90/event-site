@@ -13,7 +13,7 @@ var Sql = require('sequelize');
     idle: 10000
   }
 });*/
-/*var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
   host: process.env.DB_HOST,
   dialect: 'mssql',
   pool: {
@@ -24,9 +24,9 @@ var Sql = require('sequelize');
   dialectOptions: {
     encrypt: true
   }
-});*/
+});
 
-var sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
+/*var sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
   host: process.env.DB_DEV_HOST,
   dialect: 'mssql',
   pool: {
@@ -37,7 +37,7 @@ var sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.
   dialectOptions: {
     encrypt: true
   }
-});
+});*/
 
 
 var Event = module.exports = sql.define('Event', {
@@ -77,7 +77,7 @@ var Event = module.exports = sql.define('Event', {
   }
 });
 
-Event.sync({force: true})
+/**/Event.sync({force: true})
 .then(function () {
   return Event.create({
     eventName: 'DevDays Asia 2016 @Taipei',
@@ -102,6 +102,7 @@ Event.sync({force: true})
     eventEndDate: new Date('2016-05-12:23:59:00'), // the end date...
     eventHeaderImage: 'extend-gray.jpg', //link to header image
     eventHomepageImage: 'extend-gray.jpg',
+    eventHighlightColor: '#5c2d91',
     eventSpeakers: '1,2,9,12,8,15,11,10,6'
   });
 })
@@ -115,6 +116,7 @@ Event.sync({force: true})
   eventEndDate: new Date('2016-06-24:01:00:00'), // the end date...
   eventHeaderImage: 'plugfest-io-lab-heade.png', //link to header image
   eventHomepageImage: 'plugfest-io-lab-heade.png',
+  eventHighlightColor: '#ffb900',
   eventSpeakers: '1,2,3,5,9,8,11,15,12,10,6,21,14,18,16'
   });
 })
