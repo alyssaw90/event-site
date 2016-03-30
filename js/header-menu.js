@@ -8,7 +8,6 @@
  	
  	var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
  	var pathname = window.location.pathname;
- 	var feedbackArr = [{quote: 'I loved it!', author: 'John Doe'}, {quote: 'I adored it!', author: 'Jane Doe'}, {quote: 'I like it!', author: 'John Doe Jr.'}, {quote: 'I\'m hungry', author: 'Me'}];
 
  	var menu = '<!-- Begin upper purple menu -->\
 		<div class="menu-overlay hamburger-menu social-icons">\
@@ -140,7 +139,7 @@
 			});
 			
 			//if it isn't the homepage or the window is less than 768px, hide the frontpage image
-			if (pathname !== '/' && $(window).width() > 768) {
+			if (pathname !== '/') {
 				$feedbackBlockWrapper.hide();
 				$headerImage.hide();
 				$headerImageTitleBox.hide();

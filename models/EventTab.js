@@ -13,21 +13,8 @@ var Sql = require('sequelize');
     idle: 10000
   }
 });*/
-/*var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
   host: process.env.DB_HOST,
-  dialect: 'mssql',
-  pool: {
-    max: 5,
-    min: 0,
-    idle: 10000
-  },
-  dialectOptions: {
-    encrypt: true
-  }
-});*/
-
-var sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
-  host: process.env.DB_DEV_HOST,
   dialect: 'mssql',
   pool: {
     max: 5,
@@ -39,6 +26,19 @@ var sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.
   }
 });
 
+/*var sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
+  host: process.env.DB_DEV_HOST,
+  dialect: 'mssql',
+  pool: {
+    max: 5,
+    min: 0,
+    idle: 10000
+  },
+  dialectOptions: {
+    encrypt: true
+  }
+});*/
+
 
 var EventTab = module.exports = sql.define('EventTab', {
   eventId: Sql.INTEGER,
@@ -47,7 +47,7 @@ var EventTab = module.exports = sql.define('EventTab', {
   tabContent: Sql.TEXT
 })
 
-EventTab.sync({force: true})
+/*EventTab.sync({force: true})
 .then(function() {
   return EventTab.create({
     eventId: 1,
@@ -95,7 +95,7 @@ EventTab.sync({force: true})
     tabTitle: 'Productivity Track Reference',
     tabContent: '<div id="taipei2016-chinese-curriculum">\
 <ul class="tabs left curriculumList">\
-<li><a href="#taipei2016-curriculum-welcome-cn" class="first current"><h6>歡迎</h6></a></li>\
+<li class="first current"><a href="#taipei2016-curriculum-welcome-cn"><h6>歡迎</h6></a></li>\
 <li id="taipei2016-curriculum-overview-cn-tab"><a href="#taipei2016-curriculum-overview-cn"><h6>概述</h6></a></li>\
 <li id="taipei2016-curriculum-registration-cn-tab"><a href="#taipei2016-curriculum-registration-cn"><h6>報名注冊</h6></a></li>\
 <li id="taipei2016-curriculum-napa-cn-tab"><a href="#taipei2016-curriculum-napa-cn"><h6>Napa</h6></a></li>\
@@ -569,7 +569,7 @@ Web 專案會有Office 增益集網站檔案, 所以這是您發佈到Azure的�
 </div>\
 <div id="taipei2016-english-curriculum" style="display: none;">\
 <ul class="tabs left curriculumList">\
-<li><a href="#taipei2016-curricilum-welcome-en" class="first current"><h6>Welcome</h6></a></li>\
+<li class="first current"><a href="#taipei2016-curricilum-welcome-en"><h6>Welcome</h6></a></li>\
 <li id="taipei2016-curriculum-overview-en-tab"><a href="#taipei2016-curriculum-overview-en"><h6>Overview</h6></a></li>\
 <li id="taipei2016-curriculum-registration-en-tab"><a href="#taipei2016-curriculum-registration-en"><h6>Registration</h6></a></li>\
 <li id="taipei2016-curriculum-napa-en-tab"><a href="#taipei2016-curriculum-napa-en"><h6>Napa</h6></a></li>\
@@ -1108,7 +1108,7 @@ console.log($(window).innerHeight(), "    :::::::     ", $("html").height());\
     eventId: 3,
     tabNumber:1, 
     tabTitle: 'Redmond Protocol Plugfest ',
-    tabContent: '<a class="button orange large float-right" target="_blank" href="http://aka.ms/Nma3yz">Register</a><h4>Redmond Protocol Plugfest</h4><p>A 5-day Microsoft event centered around Open Specifications, interoperability, and Extensibility. Attendees will learn more about interoperability within Microsoft Office, Exchange, SharePoint, Windows and SQL Server. Attendees have the opportunity to utilize Office testing tools during the Plugfest. SQL will not be testing during the Plugfest and Windows protocol testing will be available the following week at the Windows Interoperability (IO) Lab.</p><p><b>When:</b>  June 13 - 17, 2016</p><p><b>Where:</b> Microsoft headquarters in Redmond, Washington </p><p><b>Who:</b> Developers building solutions that leverage Office, Exchange, SharePoint, Windows, or SQL</p><p><b>Cost:</b> Free</p><ul class="tabs left"><li class="current"><a href="#redmond2016WindowsAgenda"><span style="font-size: 1.5em">Agenda</span></a></li><li><a href="#redmond2016WindowsTechnologies"><span style="font-size: 1.5em">Technologies</span></a></li></ul><div id="redmond2016WindowsAgenda" class="tab-content eventTabDiv" style="display:block;"><h3>Coming Soon</h3><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></div><div id="redmond2016WindowsTechnologies" class="tab-content eventTabDiv" style="display:none;"><ul><li>What\'s New in Office</li><li>Open Specifications + Interoperability</li><li>Protocol Test Suites</li><li>Mail Sim</li><li>Microsoft Big Data</li><li>Office Parsers</li><li>Microsoft Cloud Foundations</li><li>OData</li><li>Exchange</li><li>SharePoint</li><li>File Formats</li><li>Mail, Calendar + Contacts</li><li>WOPI</li><li>HyperV SMB3 Storage</li></ul></div></div>'
+    tabContent: '<a class="button orange large float-right" target="_blank" href="http://aka.ms/Nma3yz">Register</a><h4>Redmond Protocol Plugfest</h4><p>A 5-day Microsoft event centered around Open Specifications, interoperability, and Extensibility. Attendees will learn more about interoperability within Microsoft Office, Exchange, SharePoint, Windows and SQL Server. Attendees have the opportunity to utilize Office testing tools during the Plugfest. SQL will not be testing during the Plugfest and Windows protocol testing will be available the following week at the Windows Interoperability (IO) Lab.</p><p><b>When:</b>  June 13 - 17, 2016</p><p><b>Where:</b> Microsoft headquarters in Redmond, Washington </p><p><b>Who:</b> Developers building solutions that leverage Office, Exchange, SharePoint, Windows, or SQL</p><p><b>Cost:</b> Free</p><ul class="tabs left"><li class="current"><a href="#redmond2016WindowsAgenda"><span style="font-size: 1.5em">Agenda</span></a></li><li><a href="#redmond2016WindowsTechnologies"><span style="font-size: 1.5em">Technologies</span></a></li></ul><div id="redmond2016WindowsAgenda" class="tab-content eventTabDiv" style="display:block;"><h4>Monday</h4><p>Big Data Overview</p><p>Dev.Office.com: Developer Resources</p><p>Mail, Calendar, and Contacts REST Demonstration</p><p>Office 365 APIs: Office Graph</p><p>Office Add-ins Intro and Development</p><p>Office Developer Opportunity</p><p>Office UI Fabric</p><h4>Tuesday</h4><p>SQL Server 2016</p><ul><li>AlwaysOn</li><li>PolyBase</li><li>R services</li><li>Real-time operational analytics</li><li>Speeding up data ingestion and transaction processing with In-Memory OLTP</li><li>Stretch Database</li></ul><p>Exchange 2016 Protocol Overview</p><p>Office File Formats</p><p>Office Interoperability Test Tools (Test Suites and Open Source Projects)</p><p>Office Network Parsers (Message Analyzer and Fiddler)</p><p>Office Network Parsers (Message Analyzer and Fiddler)</p><p>Office Online (MS-WOPI)</p><p>SharePoint 2016 Protocol Overview</p><h4>Wednesday</h4><p>AD/BYOD test suites and updates</p><p>New and modified protocols for Redstone and Server 2016</p><p>Talk from Canonical</p><p>Tech talk on Auth + Q&A for AD</p><p>Tech talk on Device Management</p><p>Windows 10 telemetry</p><p>Windows server telemetry</p><h4>Thursday</h4><p>Containers/Nested hyper visor (OR) Secure Shell</p><p>File Sharing</p><p>File Sharing Updates – (FTS/DFSR/Storage Space) and Q&A</p><p>HVRS+RSVD+SQOS – Interative updates and Q&A</p><p>Overview documents: Role of the Message Analyzer parsers and network captures</p> <h4>Friday</h4><p>Containers/Nestor hyper visor (OR) Secure Shell</p><p>Keynote/Nano Server: The Future of Windows Server Starts Now</p><p>Open Authoring and use of tools such as Markdown and Github</p><p>Windows protocol test suites open source</p></div><div id="redmond2016WindowsTechnologies" class="tab-content eventTabDiv" style="display:none;"><ul><li>What\'s New in Office</li><li>Open Specifications + Interoperability</li><li>Protocol Test Suites</li><li>Mail Sim</li><li>Microsoft Big Data</li><li>Office Parsers</li><li>Microsoft Cloud Foundations</li><li>OData</li><li>Exchange</li><li>SharePoint</li><li>File Formats</li><li>Mail, Calendar + Contacts</li><li>WOPI</li><li>HyperV SMB3 Storage</li></ul></div></div>'
   })
 })
 .then(function() {
@@ -1134,4 +1134,4 @@ console.log($(window).innerHeight(), "    :::::::     ", $("html").height());\
     tabTitle: 'Venue',
     tabContent: '<h3>Microsoft Redmond Campus</h3><img src="../uploads/ms-campus.png" />'
   })
-})
+})*/

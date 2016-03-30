@@ -15,7 +15,7 @@ var Sql = require('sequelize');
     idle: 10000
   }
 });*/
-/*var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
     host: process.env.DB_HOST,
   dialect: 'mssql',
   pool: {
@@ -26,9 +26,9 @@ var Sql = require('sequelize');
   dialectOptions: {
     encrypt: true
   }
-});*/
+});
 
-var sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
+/*var sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
   host: process.env.DB_DEV_HOST,
   dialect: 'mssql',
   pool: {
@@ -39,7 +39,7 @@ var sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.
   dialectOptions: {
     encrypt: true
   }
-});
+});*/
 
 
 // var EncryptedField = require('sequelize-encrypted');
@@ -85,7 +85,7 @@ function makeRandomString () {
   return outputString;
 }
 
-User.sync({force: true})
+/*User.sync({force: true})
 .then(function() {
   console.log(clc.blue('::::::::     '), sql.databaseVersion());
 })
@@ -121,4 +121,4 @@ User.sync({force: true})
     // var gh = user;
     console.log(clc.yellow('   ::::::    '), pw);
   })
-});
+});*/
