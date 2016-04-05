@@ -156,7 +156,25 @@ EventTab.sync({force: true})
 </ul>\
 <h3 id="taipei2016-types-of-office-addins-cn">Office 增益集的類型</h3>\
 <p>Office 增益集有三種類型 ：工作窗格、內容及 Outlook。</p>\
-<h4>工作窗格增益集</h4>\
+<h4>工作窗格增益集 (可以擴展Word、 Excel 與 PowerPoint 功能的增益集)</h4>\
+<p>您可以通過工作窗格資訊清單 (<a href="http://dev.office.com/docs/add-ins/design/add-in-commands-for-excel-and-word-preview">task pane add-in manifest</a>) 來註冊您的增益集及在 Word、 Excel 與PowerPoint 中添加新功能。此清單支援兩種融合模式 ︰</strong>:</p>\
+<ul>\
+<li>增益集命令 (Add-in commands)</li>\
+<li>可插入的工作窗格(Insertable task panes)</li>\
+</ul>\
+<h5>增益集命令 (Add-in commands)</h5>\
+<p>您可以在Office增益集中添加增益集命令來讓您 擴展 Office for Windows Desktop 與Office Online 的使用者介面。 例如， 您可以在功能區或選定的內容功能表内添加及設置Office 增益集的按鈕，這能允許使用者輕鬆地訪問在Office内外接增益集。命令按鈕可以啟動不同的行動，如通過自訂的 HTML 或執行一個 JavaScript 函數來顯示一個窗格（或多個窗格）。有關詳細資訊，請參見 <a href="http://dev.office.com/docs/add-ins/overview/office-add-ins">Office Add-ins platform overview</a> > Types of Office add-ins > Add-in Commands. 我們還建議您看<a href="https://channel9.msdn.com/Events/Visual-Studio/Connect-event-2015/316">九 頻道</a>的視頻來更深層次地瞭解此功能。</p>\
+<figcaption>有命令的增益集在 Excel Desktop中運行</figcaption>\
+<img src="../img/office-web-curriculum-taipei-en-14.jpg" />\
+<figcaption>有命令的增益集在 Excel Online中運行</figcaption>\
+<img src="../img/office-web-curriculum-taipei-en-16.jpg" />\
+<p>通過 VersionOverrides，您可以在增益集資訊清單中定義您的命令。Office平臺能解譯它們到本機的使用者介面。若要開始，請查閱<a href="https://github.com/OfficeDev/Office-Add-in-Commands-Samples/">GitHub 代碼範例</a>和<a href="http://dev.office.com/docs/add-ins/design/add-in-commands-for-excel-and-word-preview">Excel、 Word、 PowerPoint增益集命令</a>。</p>\
+<h5>可插入的 工作窗格</h5>\
+<p>用戶端不支援增益集命令有 （Office 2013 ，Office for Mac 與Office for IPad）。這些用戶端 將通過咨詢清單中的DefaultUrl來運行工作窗格增益集。此增益集然后會從Insert Tab中的My Add-ins選項卡中啓動。</p>\
+<table class="tableWithBorders tableFirstRowBold">\
+<tr><th>注意事項</th></tr>\
+<tr><td>一個咨詢清單内可以有在不支援增益集命令的用戶端中而運行的工作窗格增益集，也可以有支援增益集命令版中運行的工作窗格增益集。這允許您在所有支援Office 增益集的用戶端中運行一個增益集。</td></tr>\
+</table>\
 <p>工作窗格增益集能與 Office 文件并行運作，并可讓您提供關聯式資訊和功能，以強化文件檢視及撰寫體驗。例如，工作窗格增益集可以根據文件中選取的產品名稱或組件編號在 Web 服務查詢并擷取產品資訊。</p>\
 <figcaption>工作窗格增益集 </figcaption>\
 <img src="../img/office-web-curriculum-taipei-2.png" />\
@@ -613,7 +631,7 @@ Web 專案會有Office 增益集網站檔案, 所以這是您發佈到Azure的�
 <h3 id="taipei2016-anatomy-of-an-office-addin-en">Anatomy of an Office Add-in</h3>\
 <p>The basic components of an Office Add-in are an XML manifest file and the default webpage of your add-in.</p>\
 <figcaption>Manifest + webpage = an Office Add-in</figcaption>\
-<img src="../img/office-web-curriculum-taipei-en-1.png" />\
+<img src="../img/office-web-curriculum-taipei-en-15.jpg" />\
 <p>The manifest specifies settings and capabilities of the add-in, such as the following:</p>\
 <ul>\
 <li>The URL of the webpage that implements the add-in\'s UI and programming logic.</li>\
@@ -628,7 +646,25 @@ Web 專案會有Office 增益集網站檔案, 所以這是您發佈到Azure的�
 </ul>\
 <h3 id="taipei2016-types-of-office-addins-en">Types of Office Add-ins</h3>\
 <p>There are three types of Office Add-ins: task pane, content, and Outlook.</p>\
-<h3>Task pane add-ins</h3>\
+<h3>Task pane add-ins (Word, Excel, and PowerPoint Add-ins that extend functionality)</h3>\
+<p>You can <strong>add new functionality</strong> to Word, Excel, or PowerPoint by registering your add-in using a <a href="http://dev.office.com/docs/add-ins/design/add-in-commands-for-excel-and-word-preview">task pane add-in manifest</a>. This manifest supports <strong>two integration modes</strong>:</p>\
+<ul>\
+<li>Add-in commands</li>\
+<li>Insertable task panes</li>\
+</ul>\
+<h4>Add-in commands</h4>\
+<p>Use add-in commands to extend the user interface of Office for Windows Desktop and Office Online. For example, you can add <strong>buttons for your add-ins on the ribbon</strong> or selected contextual menus, allowing users to easily access their add-ins within Office. Command buttons can launch the different actions such as <strong>showing a pane (or multiple panes) with a custom HTML</strong> or <strong>executing a JavaScript function</strong>. We recommend that you <a href="https://channel9.msdn.com/Events/Visual-Studio/Connect-event-2015/316">watch this Channel9 video</a> for a deeper overview of this feature.</p>\
+<figcaption>Add-in with commands running in Excel Desktop </figcaption>\
+<img src="../img/office-web-curriculum-taipei-en-14.jpg" />\
+<figcaption>Add-in with commands running in Excel Online </figcaption>\
+<img src="../img/office-web-curriculum-taipei-en-16.jpg" />\
+<p>You can define your commands in your add-in manifest by using VersionOverrides. The Office platform takes care of interpreting them into native UI. To get started, check out these <a href="https://github.com/OfficeDev/Office-Add-in-Commands-Samples/">samples on GitHub</a>, and see <a href="http://dev.office.com/docs/add-ins/design/add-in-commands-for-excel-and-word-preview">Add-in commands for Excel, Word, and PowerPoint</a></p>\
+<h4>Insertable Taskpanes</h4>\
+<p>Clients that do not support add-in commands yet (Office 2013, Office for Mac and Office for IPad) will run your add-in as a <strong>Task pane</strong> using the <strong>DefaultUrl</strong> provided in the manifest. The add-in can then be launched via the My Add-ins menu from the Insert Tab. </p>\
+<table class="tableWithBorders tableFirstRowBold">\
+<tr><th>Note</th></tr>\
+<tr><td>A single manifest can have both a task pane add-in that runs in clients that do not support commands and a version that runs with commands. This allows you to have a single add-in that works across all clients that support Office Add-ins.</td></tr>\
+</table>\
 <p>Task pane add-ins work side-by-side with an Office document, and let you supply contextual information and functionality to enhance the document viewing and authoring experience. For example, a task pane add-in can look up and retrieve product information from a web service based on the product name or part number selected in the document.</p>\
 <figcaption>Task pane add-ins</figcaption>\
 <img src="../img/office-web-curriculum-taipei-en-2.png" />\
