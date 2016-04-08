@@ -47,7 +47,7 @@ var EventTab = module.exports = sql.define('EventTab', {
   tabContent: Sql.TEXT
 })
 
-EventTab.sync({force: true})
+/*EventTab.sync({force: true})
 .then(function() {
   return EventTab.create({
     eventId: 1,
@@ -1183,4 +1183,4 @@ console.log($(window).innerHeight(), "    :::::::     ", $("html").height());\
     tabTitle: 'Venue',
     tabContent: '<h3>Microsoft Redmond Campus</h3><img src="../uploads/ms-campus.png" />'
   })
-})
+})*/
