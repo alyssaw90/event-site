@@ -91,6 +91,10 @@ main p {
 	text-align: justify;
 }
 
+	.block {
+		display: block;
+	}
+
  .lightGreenBackground {
  	background-color: #c6e0b4;
  }
@@ -146,6 +150,20 @@ main p {
  /**[id^='taipei2016-curriculum-welcome-'] {
  	min-height: 700px;
  }*/
+
+ .tinyMceDiv {
+  vertical-align: middle;
+  zoom: 1;
+  border: 1px solid #ccc;
+  font-size: 1em;
+  padding: 5px 0;
+  text-indent: 5px;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: inset 0 1px 6px #ccc;
+  box-sizing: border-box;
+  min-height: 600px;
+ }
 
 #taipei2016-curriculum-welcome-cn {
 	min-height: 700px;

@@ -12,14 +12,12 @@ process.env.SECRET_KEY = process.env.SECRET_KEY || 'change this change this chan
 app.use(passport.initialize());
 
 var dbRouter 		= express.Router();
-// var adminRouter = express.Router();
 var authRouter 	= express.Router();
 
 require('./lib/passport_strat')(passport);
 
 require('./routes/db-routes')(dbRouter);
 require('./routes/auth-routes')(authRouter, passport);
-// require('./routes/admin-routes')(adminRouter);
 
 
 console.log(clc.magenta('process.env.SECRET_KEY ::::::::::::::  '), process.env.SECRET_KEY);
@@ -27,7 +25,6 @@ console.log(clc.magenta('process.env.SECRET_KEY ::::::::::::::  '), process.env.
 app.use(express.static(__dirname + '/'));
 
 app.use('/', dbRouter);
-// app.use('/', adminRouter);
 app.use('/auth/', authRouter);
 
 app.listen(port, function () {

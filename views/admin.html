@@ -27,14 +27,63 @@
 					<li><a href="#editEventDiv">Edit Event</a></li>
 				</ul>
 				<div id="createEventDiv" class="tab-content">
-					<h1>Create Event Tab</h1>
+					<h2>Create an Event</h2>
 					<form action="/createevent" id="createEventForm" method="POST" enctype="multipart/form-data">
 						<label class="col_4" for="newEventName">Event Name</label>
-        		<input class="col_8" id="newEventName" name="eventName" type="text" placeholder="Event Name" />
+        		<input class="col_8" id="newEventName" name="newEventName" type="text" placeholder="Event Name" />
+        		<label class="col_4" for="newEventStartDate">Start Date</label>
+        		<input class="col_4" id="newEventStartDate" name="newEventStartDate" type="date" placeholder="Start Date"></input>
+        		<label class="col_4" for="newEventEndDate">End Date</label>
+        		<input class="col_4" id="newEventEndDate" name="newEventEndDate" type="date" placeholder="End Date"></input>
+        		<label class="col_4" for="newEventLocation">Event Location</label>
+        		<input class="col_8" id="newEventLocation" name="newEventLocation" type="text" placeholder="Location"></input>
+        		<label class="col_4" for="newEventContinent">Choose Event Continent</label>
+      			<input type="radio" id="newEventContinent" name="newEventContinent" value="North America">North America</input>
+      			<input type="radio" id="newEventContinent" name="newEventContinent" value="South America">South America</input>
+      			<input type="radio" id="newEventContinent" name="newEventContinent" value="Africa">Africa</input>
+      			<input type="radio" id="newEventContinent" name="newEventContinent" value="Asia">Asia</input>
+      			<input type="radio" id="newEventContinent" name="newEventContinent" value="Europe">Europe</input>
+      			<input type="radio" id="newEventContinent" name="newEventContinent" value="Oceania">Australia</input>
+      			<label class="col_4" for="newEventColor">Pick a color</label>
+      			<input class="col_4" type="color" id="newEventColor" name="newEventColor"></input>
+      			<label class="col_4" for="newEventRegistrationLink">Enter registration link</label>
+      			<input class="col_8" type="text" id="newEventRegistrationLink" name="newEventRegistrationLink" placeholder="Include full link with http:// or https:// "></input>
+        		<label class="col_4" for="newEventHeaderImage">Event Page Header Image</label>
+        		<input class="col_8" id="newEventHeaderImage" name="images" type="file" placeholder="Event Page Header Image"></input>
+        		<label class="col_4" for="newEventHomerImage">Event Homepage Header Image</label>
+        		<input class="col_8" id="newEventHomerImage" name="images" type="file" placeholder="Event Homepage Header Image"></input>
+        		<!-- <label>Choose speakers for this event</label> -->
+        		<!-- <fieldset id="newEventSpeakers"></fieldset> -->
         		<br />
         		<br />
         		<button class="medium" id="createEventButton" type="submit">Create Event</button>
 					</form>
+					<div id="addSpeakersDiv" style="display: none;">
+						<form id="chooseSpeakerCount">
+							<label for="speakerCount">How many speakers will the event have?</label>
+							<input type="number" id="speakerCount" name="speakerCount"></input>
+							<button class="medium" id="speakerCountButton" type="submit">Choose Speakers</button>
+						</form>
+						<form action="/editevent" id="addSpeakersForm" method="post" enctype="multipart/form-data"></form>
+					</div>
+					<div id="addTabsDiv" style="display: none;">
+						<form id="addTabsForm">
+					 		<label for="newTabName">Tab Name</label>
+					 		<input id="newTabName" name="newTabName" class="col_6" type="text" placeholder="Enter a tab"></input>
+					 		<label for="newTabPosition">Tab Order</label>
+					 		<input id="newTabPosition" name="newTabPosition" class="col_4" type="text" placeholder="Enter a number for the position you want the tab to appear in"></input>
+					 		<div class="col_12 tinyMceDiv" id="newEventTabTextArea">Add event tab content here</div>
+					 		<button class="medium" id="addTabsButton" type="submit">Add Tab First Tab</button>
+					 		<button class="medium" id="refreshEvent" type="submit">I'm finished with this event</button>
+						</form>
+						<form id="addImageForm">	
+							<label class="col_4" for="addEventTabImage">Add Image</label>
+        			<input class="col_8" id="addEventTabImage" name="images" type="file"></input>
+        			<button class="medium" id="addImageButton" type="submit">Add Image</button>
+						</form>
+						<h5>Click an image to copy its location and enter it in above area to add an image</h5>
+						<div id="imagesDiv"></div>
+					</div>
 				</div>
 				<div id="editEventDiv" class="tab-content">
 					<h1>Edit Event Tab</h1>
@@ -48,10 +97,12 @@
 	<footer class="grid flex footer-at-bottom">
 	</footer>
 	<!-- Javascript -->
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
 	<script type="text/javascript" src="../js/kickstart.js"></script>
 	<script type="text/javascript" src="../js/jquery.base64.js"></script>
-	<script src="//tinymce.cachefly.net/4.2/tinymce.min.js"></script>
+	<script src="//tinymce.cachefly.net/4.3/tinymce.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/clipboard.js/1.5.8/clipboard.min.js"></script>
 	<script type="text/javascript" src="../js/footer.js"></script>
 	<script type="text/javascript" src="../js/header-menu.js"></script>
 	<script type="text/javascript" src="../js/custom.js"></script>

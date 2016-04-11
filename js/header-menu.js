@@ -75,6 +75,7 @@
 			var endDate = new Date(data[0].eventEndDate);
 			var upcomingPurpleMenu = '<div class="col_12 purpleEventMenu">';
 			// var headerImage = '<a href="/' + data[0].eventUrl + '"><section class="headerImageTitleBox" style="background-color:' + data[0].eventHighlightColor + '; opacity: .8;">' + '<h1>' + data[0].eventName + '</h1><h1>' + months[startDate.getMonth()] + ' ' + startDate.getDate() + ' - ' + endDate.getDate() + ', ' + endDate.getFullYear() + '</h1></section></a><section id="headerImage" class="mobileWrapper"><img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../uploads/' + data[0].eventHomepageImage + '" /></section>'; //section commmented out to remove db rendered title box
+			console.log(data[0])
 			var headerImage = '<a href="/' + data[0].eventUrl + '"><section id="headerImage" class="mobileWrapper"><img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../uploads/' + data[0].eventHomepageImage + '" /></section></a>';
 			var headerBackgroundColor = '<nav class="menu-overlay desktop-menu flex" style="background-color:' + data[0].eventHighlightColor + ';">'
 			var hamburgerMenu = '<div class="menu-overlay hamburger-menu social-icons" style="background-color:' + data[0].eventHighlightColor + ';">'
