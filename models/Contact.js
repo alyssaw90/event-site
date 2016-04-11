@@ -11,7 +11,7 @@ var Sql = require('sequelize');
     idle: 10000
   }
 });*/
-/*var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
   host: process.env.DB_HOST,
   dialect: 'mssql',
   pool: {
@@ -22,8 +22,8 @@ var Sql = require('sequelize');
   dialectOptions: {
     encrypt: true
   }
-});*/
-var sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
+});
+/*var sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
   host: process.env.DB_DEV_HOST,
   dialect: 'mssql',
   pool: {
@@ -34,7 +34,7 @@ var sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.
   dialectOptions: {
     encrypt: true
   }
-});
+});*/
 
 var fs = require('fs');
 var path = require('path');
@@ -95,7 +95,7 @@ var Contact = module.exports = sql.define('Contact', {
 // create table if it doesn't already exist ```({force: true})``` will cause the table to be deleted and created regardless of if it exists already
 
 // Table created
-/*Contact.sync({force: true})
+Contact.sync({force: true})
 .then(function () {
   console.log(sql.databaseVersion());
 })
@@ -141,11 +141,11 @@ var Contact = module.exports = sql.define('Contact', {
   firstName: 'Prakash',
   lastName: 'Narayanan',
   newsletterSubscription: true,
-  contactDescription: 'Prakash Narayanan is a Program Manager on the Enterprise Cloud Group. He has been with Microsoft for almost ten years and works on interoperability events for partners who use Windows Protocols. He drives the coordination of those events, reimagining the future engagements and information sharing with the partners. <br /><br />Prior to this event role, Prakash was a Software Engineer across different teams in SharePoint, Microsoft Office, and Office 365 before becoming a Program Manager in the Office 365/Exchange division. In that role, he drove the engineering team\'s responsiveness to address product issues that affect the customers who run Exchange themselves or consume Office 365 from the Microsoft cloud. He graduated from the University of Kentucky with a Master of Science degree in Computer Science.',
+  contactDescription: 'Prakash Narayanan is a Program Manager on the Enterprise Cloud Group Project Engineering Team. He has been with Microsoft for almost ten years and works on interoperability events for the partners using Windows Protocols. He drives the coordination of those events, reimagining the future engagements and information sharing with the partners. <br /><br />Prior to this event role, Prakash was a Software Engineer across different teams in SharePoint, Microsoft Office and Office 365 before becoming a Program Manager in the Office 365/Exchange division where he drove the engineering team\'s responsiveness to address product issues affecting the customers who run Exchange themselves or consume Office 365 from the Microsoft cloud. He graduated from University of Kentucky with a Master of Science degree in Computer Science.',
   eventRole: 'speaker',
   showOnMeetTheTeamPage: true,
   meetTheTeamPageOrder: 3,
-  msTeamTitle: 'Program Manager, Enterprise Cloud Group',
+  msTeamTitle: 'Program Manager, Enterprise Cloud Group Project Engineering Team',
   showOnHomePage: false,
   headShot: 'prakash-narayanan-headshot.jpg',
   company: 'Microsoft',
@@ -162,7 +162,7 @@ var Contact = module.exports = sql.define('Contact', {
     eventRole: 'speaker',
     showOnMeetTheTeamPage: true,
     meetTheTeamPageOrder: 4,
-    msTeamTitle: 'Senior Program Manager, Enterprise Cloud Group',
+    msTeamTitle: 'Senior Program Manager',
     headShot: 'diane-larsen-headshot.jpg',
     company: 'Microsoft',
     country: 'USA',
@@ -175,7 +175,7 @@ var Contact = module.exports = sql.define('Contact', {
     firstName: 'Rich',
     lastName: 'McLain',
     newsletterSubscription: true,
-    contactDescription: 'Rich McLain is a Lead Program Manager on the Microsoft Office Interoperability team. Rich has been with Microsoft for fourteen years, and he leads the Compliance, Interoperability and Standards Program Management efforts across the Microsoft Office Division. His responsibilities include all work centering on tools, production, testing and partner engagements for Office, SharePoint, Exchange and Lync protocols as well as Microsoft Office’s engagement with the OOXML, ODF and PDF standards.',
+    contactDescription: 'Rich McLain is a Lead Program Manager on the Microsoft Office Interoperability team. Rich has been with Microsoft for fourteen years, and he leads the Compliance, Interoperability and Standards Program Management efforts across the Microsoft Office Division. Responsibilities include all work centering on tools, production, testing and partner engagements for Office, SharePoint, Exchange and Lync protocols as well as Microsoft Office’s engagement with the OOXML, ODF and PDF standards.',
     eventRole: 'speaker',
     showOnMeetTheTeamPage: true,
     meetTheTeamPageOrder: 5,
@@ -247,7 +247,7 @@ var Contact = module.exports = sql.define('Contact', {
     firstName: 'Jinghui',
     lastName: 'Zhang',
     newsletterSubscription: true,
-    contactDescription: 'Jinghui Zhang is a Software Engineer on the Microsoft Office Extensibility team. She is a developer of dev.office.com and graph.microsoft.io. She also drives the development for the new Office Add-ins, SharePoint and Exchange Test Suites, and Office Open XML and Uniform Office Format interoperability tools.<br /><br />She gives talks on Office Add-in, Protocol Test Suites, and more at the Microsoft Interop events. She also participates in the hack sessions that lead developers to reach their hack success. Her favorite part of the events is the brainstorm and hack session. <br /><br />She graduated from Beijing University of Aeronautics & Astronautics, China with a bachelor’s degree in Information Management and Information Systems.',
+    contactDescription: 'Jinghui Zhang is a Software Engineer on the Microsoft Office Extensibility team. She is a developer of dev.office.com and graph.microsoft.io. She also drives the development for new Office Add-ins, SharePoint and Exchange Test Suites, and Office Open XML and Uniform Office Format interoperability tools.<br /><br />She gives talks on Office Add-in, Protocol Test Suites, and more at the Microsoft Interop events. She also participates in the hack sessions to lead developers to reach their hack success. Her favorite part of the events is the brainstorm and hack session. <br /><br />She graduated from Beijing University of Aeronautics & Astronautics, China with a bachelor’s degree in Information Management and Information Systems.',
     eventRole: 'speaker',
     showOnMeetTheTeamPage: true,
     meetTheTeamPageOrder: 9,
@@ -265,7 +265,7 @@ var Contact = module.exports = sql.define('Contact', {
     firstName: 'Pui',
     lastName: 'Leung',
     newsletterSubscription: true,
-    contactDescription: 'Pui Leung is a Software Engineer on the Microsoft Office Extensibility team. He is responsible for Interoperability test suites and test tools development and release testing for the Microsoft Office Division, including SharePoint, Exchange Server, and Office.<br /><br />Prior to joining Microsoft, Pui worked as a System Software Engineer on various types of software projects, including Windows kernel device driver and server management software at Compaq and Hewlett Packard. He graduated from Oregon State University with a Bachelor of Science degree in Computer Science.',
+    contactDescription: 'Pui Leung is a Software Engineer on the Microsoft Office Extensibility team. He is responsible for Interoperability test suites and test tools development and release testing for the Microsoft Office Division, including SharePoint, Exchange Server, and Office.<br /><br />Prior to joining Microsoft, Pui worked as a System Software Engineer on various types of software projects, including Windows kernel device driver and server management software at Compaq and Hewlett Packard. He graduated from the Oregon State University with a Bachelor of Science degree in Computer Science.',
     eventRole: 'speaker',
     showOnMeetTheTeamPage: true,
     meetTheTeamPageOrder: 10,
@@ -283,7 +283,7 @@ var Contact = module.exports = sql.define('Contact', {
     firstName: 'Tom',
     lastName: 'Jebo',
     newsletterSubscription: true,
-    contactDescription: 'Tom Jebo is a Senior Escalation Engineer on the Microsoft Developer Support Open Specifications team. His primary responsibilities are helping customers implement solutions using WOPI, Exchange RPC/MAPI, ActiveSync, Web Services, Lync/Skype protocols, and Office Open XML and binary formats. Before joining the Open Specifications team, Tom helped customers with Microsoft\'s developer tools, C/C++ languages and COM technologies.<br /><br />Before Microsoft, Tom developed architectural simulation software at Amdhal Corporation in Sunnyvale, California. Tom graduated from Boston University with a bachelor’s degree in Computer Science and currently lives in Seattle Washington.',
+    contactDescription: 'Tom Jebo is a Senior Escalation Engineer in the Microsoft Developer Support Open Specifications team. His primary responsibilities are helping customers implement solutions using WOPI, Exchange RPC/MAPI, ActiveSync, Web Services, Lync/Skype protocols, and Office Open XML and binary formats. Before joining the Open Specifications team, Tom helped customers with Microsoft\'s developer tools, C/C++ languages and COM technologies.<br /><br />Before Microsoft, Tom developed architectural simulation software at Amdhal Corporation in Sunnyvale, California. Tom graduated from Boston University with a bachelor’s degree in Computer Science and currently lives in Seattle Washington.',
     eventRole: 'speaker',
     showOnMeetTheTeamPage: true,
     meetTheTeamPageOrder: 11,
@@ -301,7 +301,7 @@ var Contact = module.exports = sql.define('Contact', {
   firstName: 'Jingyu',
   lastName: 'Shao',
   newsletterSubscription: true,
-  contactDescription: 'Jingyu Shao is a Software Engineer on the Microsoft Office Extensibility team. She works as a web developer for the Office developer portal: dev.office.com and Microsoft Graph portal: graph.microsoft.io. Jingyu has also developed several Office Add-ins with the new Office JavaScript API. In addition, she drives the development of interoperability tools, such as Fiddler Inspectors which parses Exchange, SharePoint, and WOPI online traffic. <br /><br />Jingyu graduated from Zhejiang University China with a master’s degree in Electronic Information Engineering.',
+  contactDescription: 'Jingyu Shao is a Software Engineer on the Microsoft Office Extensibility team. She works as a web developer for Office developer portal: dev.office.com and Microsoft Graph portal: graph.microsoft.io. Jingyu has also developed several Office Add-ins with the new Office JavaScript API. In addition, she drives the development of interoperability tools, such as Fiddler Inspectors to parse Exchange, SharePoint, and WOPI online traffic. <br /><br />Jingyu graduated from Zhejiang University China with a master’s degree in Electronic Information Engineering.',
   eventRole: 'speaker',
   showOnMeetTheTeamPage: true,
   meetTheTeamPageOrder: 12,
@@ -319,7 +319,7 @@ var Contact = module.exports = sql.define('Contact', {
     firstName: 'Jinlin',
     lastName: 'Xu',
     newsletterSubscription: true,
-    contactDescription: 'Jinlin Xu is a Software Engineer on the Microsoft Office Interoperability team. He is responsible for Interoperability tool development and fixes the Interoperability document issues of SharePoint Server, Lync Server and Exchange Server. <br /><br />Prior to joining Microsoft, Jinlin spent one year as a Network Engineer at Huawei focusing on developing software on city routers, and two years as a Software Test Engineer focusing on Lync Server test suites development. He graduated from Nankai University with a bachelor’s degree in Computer Science.',
+    contactDescription: 'Jinlin Xu is a Software Engineer on the Microsoft Office Interoperability team. He is responsible for Interoperability tool development and fixes the Interoperability document issues of SharePoint Server, Lync Server and Exchange Server. <br /><br />Prior to joining Microsoft, Jinlin spent one year as a Network Engineer at Huawei focusing on developing software on city routers, and two2 years as a Software Test Engineer focusing on Lync Server test suites development. He graduated from Nankai University with a bachelor’s degree in Computer Science.',
     eventRole: 'speaker',
     showOnMeetTheTeamPage: true,
     meetTheTeamPageOrder: 13,
@@ -373,7 +373,7 @@ var Contact = module.exports = sql.define('Contact', {
     firstName: 'Tom',
     lastName: 'Devey',
     newsletterSubscription: true,
-    contactDescription: 'Tom Devey is a Supportability Program Manager on the Microsoft Windows Interoperability team. He leads the Windows Open Specification Partner support and events. Events that include Windows Protocol Plugfests are delivered at Microsoft regularly to Microsoft partners who implement Active Directory, File Sharing and Remote Desktop, and other Microsoft protocols. <br /><br />Prior to joining the Windows Interoperability team, Tom served in a similar event role in the Microsoft Office division, working with partners who developed Exchange, SharePoint, Open XML, and the Office Binary formats solutions.',
+    contactDescription: 'Tom Devey is a Supportability Program Manager on the Microsoft Windows Interoperability team. He leads the Windows Open Specification Partner support and events. Events that include Windows Protocol Plugfests are delivered at Microsoft regularly to Microsoft Partners who implement Active Directory, File Sharing and Remote Desktop, and other Microsoft protocols. <br /><br />Prior to joining the Windows Interoperability team, Tom served in a similar event role in the Microsoft Office division, working with partners who developed Exchange, SharePoint, Open XML, and the Office Binary formats solutions.',
     eventRole: 'speaker',
     showOnMeetTheTeamPage: true,
     meetTheTeamPageOrder: 16,
@@ -408,7 +408,7 @@ var Contact = module.exports = sql.define('Contact', {
     firstName: 'Bryan S.',
     lastName: 'Burgin',
     newsletterSubscription: true,
-    contactDescription: 'Bryan Burgin is a Senior Escalation Engineer, responsible for support of Microsoft’s open specifications (protocol documents). He primarily works with third-party protocol implementers to address questions and issues related to the open specifications and to champion interoperability with Microsoft platforms. He works extensively with the RDP/RDS and File sharing (SMB2&3) protocol groups and along with his team, supports 500+ on-the-wire Windows protocols. He has been in this event role for three years and at Microsoft for thirteen. <br /><br />Prior to this event role, Bryan supported Kernel driver developers, specializing in network (NDIS) driver development. Prior to joining Microsoft, Bryan spent many years developing products that integrated Wang VS minicomputers with PC networks (terminal emulation, file system redirection, and print redirection).',
+    contactDescription: 'Bryan Burgin is a Senior Escalation Engineer responsible for support of Microsoft’s open specifications (protocol documents). He primarily works with third-party protocol implementers to address questions and issues related to the open specifications and to champion interoperability with Microsoft platforms. He works extensively with the RDP/RDS and File sharing (SMB2&3) protocol groups and along with his team, supports 500+ on-the-wire Windows protocols. He has been in this event role for three years and at Microsoft for thirteen. <br /><br />Prior to this event role, Bryan supported Kernel driver developers, specializing in network (NDIS) driver development. Prior to joining Microsoft, Bryan spent many years developing products that integrated Wang VS minicomputers with PC networks (terminal emulation, file system redirection, and print redirection).',
     eventRole: 'speaker',
     showOnMeetTheTeamPage: true,
     meetTheTeamPageOrder: 17,
@@ -426,7 +426,7 @@ var Contact = module.exports = sql.define('Contact', {
       firstName: 'Feng',
       lastName: 'Han',
       newsletterSubscription: true,
-      contactDescription: 'Feng Han is a Software Engineer on Windows Server Interoperability & Tools team in Shanghai, China. He has worked on the development and support of test tools for Windows interoperability for four years, especially on the Remote Desktop Protocol family.<br /><br />He graduated from Zhejiang University with a bachelor’s degree and graduated from Shanghai Jiao Tong University with a master’s degree in Software Engineering. Prior to joining Microsoft, Feng worked as a Software Development Engineer for three years at a startup company.<br /><br />His role in Interop events is to present and support synthetic test suites, and helping partners to use these test tools to identity their product issues.',
+      contactDescription: 'Feng Han is a Software Engineer on Windows Server Interoperability & Tools team in Shanghai, China. He has worked on the development and support of test tools for Windows interoperability for four years, especially on the Remote Desktop protocol family.<br /><br />He graduated from Zhejiang University with a bachelor’s degree and graduated from Shanghai Jiao Tong University with a master’s degree in Software Engineering. Prior to joining Microsoft, Feng worked as a Software Development Engineer for three years at a startup company. .<br /><br />His role in Interop events is to present and support synthetic test suites, and helping partners to use these test tools to identity their product issues.',
       eventRole: 'speaker',
       showOnMeetTheTeamPage: true,
       meetTheTeamPageOrder: 18,
@@ -461,7 +461,7 @@ var Contact = module.exports = sql.define('Contact', {
     firstName: 'Obaid',
     lastName: 'Farooqi',
     newsletterSubscription: true,
-    contactDescription: 'Obaid Farooqi is an Escalation Engineer on the Microsoft Developer Support, Open Specifications/Protocols/Interoperability team. <br /><br />Obaid is responsible for the support of Microsoft Open Specifications (protocol documentation). He earned a Master of Computer Science degree from University of Texas at Arlington. He primarily works with third-party protocol implementers to address questions and issues related to the open specifications. He works extensively with the Authentication, File sharing (SMB2&3) and Mobile Device Management (MDM) protocols, but is capable of supporting any of the 500+ on-the-wire Windows protocols. He has been in this event role for six years at Microsoft and in the telecommunications industry as a developer for twelve years.',
+    contactDescription: 'Obaid Farooqi is an Escalation Engineer on the Microsoft Developer Support, Open Specifications/Protocols/Interoperability team. <br /><br />Obaid is responsible for support of Microsoft’s open specifications (protocol documents). He earned a Master of Computer Science degree from University of Texas at Arlington. He primarily works with third-party protocol implementers to address questions and issues related to the open specifications. He works extensively with the Authentication, File sharing (SMB2&3) and Mobile Device Management (MDM) protocols, but is capable of supporting any of the 500+ on-the-wire Windows protocols. He has been in this event role for six years at Microsoft and in the telecommunications industry as a developer for twelve years.',
     eventRole: 'speaker',
     showOnMeetTheTeamPage: true,
     meetTheTeamPageOrder: 19,
@@ -479,7 +479,7 @@ var Contact = module.exports = sql.define('Contact', {
     firstName: 'Guqing',
     lastName: 'Fang',
     newsletterSubscription: true,
-    contactDescription: 'Guqing Fang is a Software Development Engineer in Test on the Microsoft Windows Server and Cloud Interoperability team in Shanghai, China. He owns the development and support efforts for the Remote Desktop Protocol family and Mobile Device Management test suites for Microsoft Windows Server Division. <br /><br />Prior to joining the team in Shanghai, Guqing worked as a Software Development Engineer in Test for five years, focusing on testing the model based testing tool Spec Explorer. Guqing graduated from Zhejiang University in Hangzhou, China with a bachelor’s degree in Instrument Engineering.',
+    contactDescription: 'Guqing Fang is a Software Development Engineer in Test in the Microsoft Windows Server and Cloud Interoperability team in Shanghai, China. He owns the development and support efforts for Remote Desktop protocol family and Mobile Device Management test suites for Microsoft Windows Server Division. <br /><br />Prior to joining the team in Shanghai, Guqing worked as a Software Development Engineer in Test for five years, focusing on testing the model based testing tool SpecExplorer. Guqing graduated from Zhejiang University in Hangzhou China with a bachelor’s degree in Instrument Engineering.',
     eventRole: 'speaker',
     showOnMeetTheTeamPage: true,
     meetTheTeamPageOrder: 20,
@@ -664,4 +664,3 @@ var Contact = module.exports = sql.define('Contact', {
     allowPersonalInfoSharing: false
   })
 })
-*/
