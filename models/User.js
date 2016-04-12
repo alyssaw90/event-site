@@ -85,7 +85,7 @@ function makeRandomString () {
   return outputString;
 }
 
-/*User.sync({force: true})
+User.sync({force: true})
 .then(function() {
   console.log(clc.blue('::::::::     '), sql.databaseVersion());
 })
@@ -121,4 +121,4 @@ function makeRandomString () {
     // var gh = user;
     console.log(clc.yellow('   ::::::    '), pw);
   })
-});*/
+});
