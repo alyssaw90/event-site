@@ -4,6 +4,7 @@
 /*global window */
 
 $(document).ready(function () {
+	let x = 100;
 	$.get('/findsurvey', function (data) {
 		var eventId = window.location.pathname.slice(8);
 		var surveyHtml = '';

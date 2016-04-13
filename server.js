@@ -14,7 +14,7 @@ app.use(passport.initialize());
 var dbRouter 		= express.Router();
 var authRouter 	= express.Router();
 
-require('./lib/passport_strat')(passport);
+require('./scripts/passport_strat')(passport);
 
 require('./routes/db-routes')(dbRouter);
 require('./routes/auth-routes')(authRouter, passport);
