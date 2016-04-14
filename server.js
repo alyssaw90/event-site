@@ -9,8 +9,8 @@ var time = new Date();
 var fs = require('fs');
 var testEnv = fs.statSync('./.env');
 process.env.SECRET_KEY = process.env.SECRET_KEY || 'change this change this change this!!!';
-console.log(clc.magenta('process.env.SECRET_KEY ::::::::::::::  '), testEnv, clc.magenta('    ::::::     '), testEnv == true);
-if (testEnv) {
+console.log(clc.magenta('process.env.SECRET_KEY ::::::::::::::  '), testEnv, clc.magenta('    ::::::     '), testEnv.isFile());
+if (testEnv.isFile()) {
 	require('dotenv').load();
 }
 
