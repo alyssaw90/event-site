@@ -11,7 +11,8 @@ var testEnv = fs.statSync('./.env');
 process.env.SECRET_KEY = process.env.SECRET_KEY || 'change this change this change this!!!';
 console.log(clc.magenta('process.env.SECRET_KEY ::::::::::::::  '), testEnv, clc.magenta('    ::::::     '), testEnv.isFile());
 if (testEnv.isFile()) {
-	require('dotenv').load();
+	// require('dotenv').load();
+	console.log(clc.greenBright('file found!!!!'));
 }
 
 
