@@ -1,6 +1,6 @@
 'use strict';
 
-// require('dotenv').load();
+require('dotenv').load();
 var express = require('express');
 var app = express();
 var passport = require('passport');

@@ -2,7 +2,6 @@
 /*global interests */
 /*global ContactsSuggestedCity */
 
-// require('dotenv').load();
 var Contact = require('../models/Contact');
 var Event = require('../models/Event');
 var EventTab = require('../models/EventTab');

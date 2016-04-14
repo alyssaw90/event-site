@@ -1,6 +1,5 @@
 'use strict';
 
-// require('dotenv').load();
 var User = require('../models/User');
 var bodyparser = require('body-parser');
 var cookieParser = require('cookie-parser');
