@@ -9,6 +9,7 @@ var time = new Date();
 var fs = require('fs');
 var testEnv = fs.statSync('./.env');
 process.env.SECRET_KEY = process.env.SECRET_KEY || 'change this change this change this!!!';
+console.log(clc.magenta('process.env.SECRET_KEY ::::::::::::::  '), testEnv, clc.magenta('    ::::::     '), testEnv == true);
 if (testEnv) {
 	require('dotenv').load();
 }
@@ -25,7 +26,6 @@ require('./routes/db-routes')(dbRouter);
 require('./routes/auth-routes')(authRouter, passport);
 
 
-// console.log(clc.magenta('process.env.SECRET_KEY ::::::::::::::  '), process.env.SECRET_KEY);
 
 app.use(express.static(__dirname + '/'));
 
