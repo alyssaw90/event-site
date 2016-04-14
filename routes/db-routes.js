@@ -22,7 +22,7 @@ var upload = multer({ storage: storage });
 var bodyparser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var path = require('path');
-var eatAuth = require('../lib/eat_auth')(process.env.SECRET_KEY);
+var eatAuth = require('../scripts/eat_auth')(process.env.SECRET_KEY);
 var Sql = require('sequelize');
 /*var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
   host: process.env.DB_LOCAL_HOST,
