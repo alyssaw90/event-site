@@ -1,15 +1,11 @@
 'use strict';
 
+// require('dotenv').load();
 var User = require('../models/User');
 var bodyparser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var clc = require('cli-color');
 var Sql = require('sequelize');
-var fs = require('fs');
-var testEnv = fs.statSync('./.env');
-if (testEnv.isFile()) {
-  require('dotenv').load();
-}
 /*var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
   host: process.env.DB_LOCAL_HOST,
   dialect: 'mssql',
