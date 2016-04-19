@@ -13,7 +13,7 @@ var Sql = require('sequelize');
     idle: 10000
   }
 });*/
-var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+/*var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
   host: process.env.DB_HOST,
   dialect: 'mssql',
   pool: {
@@ -24,9 +24,9 @@ var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS,
   dialectOptions: {
     encrypt: true
   }
-});
+});*/
 
-/*var sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
+var sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
   host: process.env.DB_DEV_HOST,
   dialect: 'mssql',
   pool: {
@@ -38,7 +38,7 @@ var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS,
     encrypt: true
   }
 });
-*/
+
 
 var EventTab = module.exports = sql.define('EventTab', {
   eventId: Sql.INTEGER,
@@ -1186,7 +1186,7 @@ setTimeout(function() {\
     eventId: 1,
     tabNumber: 7,
     tabTitle: 'DevDays Event Material',
-    tabContent: '<h2>DevDays Event Material</h2><p>Click on the link below to download the materials</p><ul><li><a href="/uploads/Productivity.zip">Productivity</a></li><li><a href="/uploads/Data-Platform.zip">Cloud + Data Platform</a></li><li><a href="/uploads/Open-Specs.zip">Open Specifications</a></li></ul>'
+    tabContent: '<h2>DevDays Event Material</h2><p>Click on the link below to download the materials</p><ul><li><a href="/uploads/Productivity.zip">Productivity</a></li><li><a href="/uploads/Data-Platform.zip">Cloud + Data Platform</a></li><li><a href="/uploads/Open-Specs.zip">Open Specifications</a></li></ul><br /><br /><br /><br /><br /><br />'
   })
 })
 .then(function() {
