@@ -13,7 +13,7 @@ var Sql = require('sequelize');
     idle: 10000
   }
 });*/
-var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+/*var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
   host: process.env.DB_HOST,
   dialect: 'mssql',
   pool: {
@@ -24,9 +24,9 @@ var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS,
   dialectOptions: {
     encrypt: true
   }
-});
+});*/
 
-/*var sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
+var sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
   host: process.env.DB_DEV_HOST,
   dialect: 'mssql',
   pool: {
@@ -37,7 +37,7 @@ var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS,
   dialectOptions: {
     encrypt: true
   }
-});*/
+});
 
 
 var EventTab = module.exports = sql.define('EventTab', {
@@ -1080,7 +1080,7 @@ Fill out the account profile, submit, and wait for the approval. </li>\
 <p><a href="https://msdn.microsoft.com/en-us/library/office/jj220037.aspx">Submit Office and SharePoint Add-ins and Office 365 web apps to the Office Store</a></p>\
 </div>\
 </div>\
-<script type="text/javascript" src="../js/kickstart.js"></script>\
+<script type="text/javascript" src="../lib/kickstart.js"></script>\
 <script type="text/javascript">\
 $(function () {\
 var $taipei1016Eng = $(".taipei1016-eng");\
@@ -1179,6 +1179,14 @@ setTimeout(function() {\
   }\
 }, 10)\
 </script>'
+  })
+})
+.then(function(){
+  return EventTab.create({
+    eventId: 1,
+    tabNumber: 7,
+    tabTitle: 'DevDays Event Material',
+    tabContent: '<h2>DevDays Event Material</h2><p>Click on the link below to download the materials</p><ul><li><a href="/uploads/Productivity.zip">Productivity</a></li><li><a href="/uploads/Data-Platform.zip">Cloud + Data Platform</a></li><li><a href="/uploads/Open-Specs.zip">Open Specifications</a></li></ul>'
   })
 })
 .then(function() {
