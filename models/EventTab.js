@@ -1,5 +1,6 @@
 'use strict';
 
+require('dotenv').load();
 var fs = require('fs');
 var path = require('path');
 var Sql = require('sequelize');
@@ -37,8 +38,8 @@ var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS,
   dialectOptions: {
     encrypt: true
   }
-});
-*/
+});*/
+
 
 var EventTab = module.exports = sql.define('EventTab', {
   eventId: Sql.INTEGER,
@@ -1186,7 +1187,7 @@ setTimeout(function() {\
     eventId: 1,
     tabNumber: 7,
     tabTitle: 'DevDays Event Material',
-    tabContent: '<h2>DevDays Event Material</h2><p>Click on the link below to download the materials</p><ul><li><a href="/uploads/Productivity.zip">Productivity</a></li><li><a href="/uploads/Data-Platform.zip">Cloud + Data Platform</a></li><li><a href="/uploads/Open-Specs.zip">Open Specifications</a></li></ul><br /><br /><br /><br /><br /><br />'
+    tabContent: '<h2>DevDays Event Material</h2><p>Click on the link below to download the materials</p><ul><li><a href="/uploads/Productivity.zip">Productivity</a></li><li><a href="/uploads/Data-Platform.zip">Cloud + Data Platform</a></li><li><a href="/uploads/Open-Specs.zip">Open Specifications</a></li><li><a href="/uploads/Lightening-Talk.zip">Lightening Talks</a></li></ul><br /><br /><br /><br /><br /><br />'
   })
 })
 .then(function() {
