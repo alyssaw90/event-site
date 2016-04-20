@@ -3,7 +3,7 @@
 var fs = require('fs');
 var path = require('path');
 var Sql = require('sequelize');
-var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
+/*var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
   host: process.env.DB_LOCAL_HOST,
   dialect: 'mssql',
 
@@ -12,8 +12,8 @@ var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.
     min: 0,
     idle: 10000
   }
-});
-/*var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+});*/
+var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
   host: process.env.DB_HOST,
   dialect: 'mssql',
   pool: {
@@ -24,7 +24,7 @@ var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.
   dialectOptions: {
     encrypt: true
   }
-});*/
+});
 
 /*var sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
   host: process.env.DB_DEV_HOST,
@@ -37,8 +37,8 @@ var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.
   dialectOptions: {
     encrypt: true
   }
-});*/
-
+});
+*/
 
 var Event = module.exports = sql.define('Event', {
   eventName: Sql.STRING,
@@ -100,8 +100,8 @@ Event.sync({force: true})
     eventContinent: 'Europe',
     eventStartDate: new Date('2016-05-11:00:00:01'), //the start date...
     eventEndDate: new Date('2016-05-12:23:59:00'), // the end date...
-    eventHeaderImage: 'extend-gray.jpg', //link to header image
-    eventHomepageImage: 'extend-gray.jpg',
+    eventHeaderImage: 'ExtendWebsiteHeader_edited.jpg', //link to header image
+    eventHomepageImage: 'ExtendWebsiteHeader_edited.jpg',
     eventHighlightColor: '#5c2d91',
     eventSpeakers: '1,2,9,12,8,15,11,10,6'
   });
