@@ -1,14 +1,17 @@
 'use strict';
 
+let jQuery = require('jquery');
+import * as customFunctions from './common-functions.build.js';
+
 (function($) {
 	$(function() {
 
- 		var $latestNewsLink = $('#latestNewsLink');
- 		var $newsTabsList = $('.newsTabsList');
+ 		let $latestNewsLink = $('#latestNewsLink');
+ 		let $newsTabsList = $('.newsTabsList');
 
  		$latestNewsLink.click(function(e) {
  			e.preventDefault();
- 			var tabId = $(this).data('tabid');
+ 			let tabId = $(this).data('tabid');
  			$newsTabsList.children().each(function(i, elem) {
  					console.log(elem);
  				if ($(this).attr('id') === tabId) {

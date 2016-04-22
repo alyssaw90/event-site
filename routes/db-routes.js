@@ -1,29 +1,28 @@
 'use strict';
 /*global interests */
 /*global ContactsSuggestedCity */
-
-var Contact = require('../models/Contact');
-var Event = require('../models/Event');
-var EventTab = require('../models/EventTab');
-// var User = require('../models/User');
-var EventImage = require('../models/EventImage');
-var User = require('../models/User');
-var fs = require('fs');
-var clc = require('cli-color');
-var multer = require('multer');
-var storage = multer.diskStorage({
+require('dotenv').load();
+let Contact = require('../models/Contact');
+let Event = require('../models/Event');
+let EventTab = require('../models/EventTab');
+let EventImage = require('../models/EventImage');
+let User = require('../models/User');
+let fs = require('fs');
+let clc = require('cli-color');
+let multer = require('multer');
+let storage = multer.diskStorage({
   destination: 'uploads/',
   filename: function (req, file, callback) {
     callback(null, Date.now() + '-' + file.originalname);
   }
 });
-var upload = multer({ storage: storage });
-var bodyparser = require('body-parser');
-var cookieParser = require('cookie-parser');
-var path = require('path');
-var eatAuth = require('../scripts/eat_auth')(process.env.SECRET_KEY);
-var Sql = require('sequelize');
-/*var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
+let upload = multer({ storage: storage });
+let bodyparser = require('body-parser');
+let cookieParser = require('cookie-parser');
+let path = require('path');
+let eatAuth = require('../scripts/eat_auth')(process.env.SECRET_KEY);
+let Sql = require('sequelize');
+let sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
   host: process.env.DB_LOCAL_HOST,
   dialect: 'mssql',
 
@@ -32,8 +31,8 @@ var Sql = require('sequelize');
     min: 0,
     idle: 10000
   }
-});*/
-/*var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+});
+/*let sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
     host: process.env.DB_HOST,
   dialect: 'mssql',
   pool: {
@@ -46,7 +45,7 @@ var Sql = require('sequelize');
   }
 });*/
 
-var sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
+/*let sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
   host: process.env.DB_DEV_HOST,
   dialect: 'mssql',
   pool: {
@@ -58,7 +57,7 @@ var sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.
     encrypt: true
   }
 });
-
+*/
 sql.authenticate()
   .then(function (err) {
     if (err) {
@@ -68,11 +67,11 @@ sql.authenticate()
     }
   });
 
-var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-var continentColors = {'North America': 'ffb900', 'South America': '107c10', 'Africa': 'e81123', 'Asia': '0078d7', 'Europe': '5c2d91', 'Oceania': 'b4009e'};
+let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+let continentColors = {'North America': 'ffb900', 'South America': '107c10', 'Africa': 'e81123', 'Asia': '0078d7', 'Europe': '5c2d91', 'Oceania': 'b4009e'};
 
 function shuffle (arr) {
-  var currentIndex = arr.length, tempVal, randomIndex ;
+  let currentIndex = arr.length, tempVal, randomIndex ;
 
   // While there remain elements to shuffle...
   while (0 !== currentIndex) {
@@ -126,19 +125,19 @@ module.exports = function (router) {
       })
     })
     .then(function(speakers) {
-      var meetTheTeamSpeakersArr = [];
-      var meetTheTeamSpeakersHtml = '<main class="grid white-bg main-page-content the-team-section">';
+      let meetTheTeamSpeakersArr = [];
+      let meetTheTeamSpeakersHtml = '<main class="grid white-bg main-page-content the-team-section">';
       //loop over the returned speakers and splice them into an array using their position number minus one as the index
-      for (var key in speakers) {
+      for (let key in speakers) {
         meetTheTeamSpeakersArr.splice(speakers[key].meetTheTeamPageOrder - 1, 0, speakers[key]) 
       }
       //create the string of html to add to the page
-      for (var i = 0, j = meetTheTeamSpeakersArr.length; i < j; i++) {
+      for (let i = 0, j = meetTheTeamSpeakersArr.length; i < j; i++) {
         meetTheTeamSpeakersHtml += '<section class="col_12 internetExplorer" id="' + meetTheTeamSpeakersArr[i].divId + '"><h4>' + meetTheTeamSpeakersArr[i].firstName + ' ' + meetTheTeamSpeakersArr[i].lastName + '</h4><h5>'+ meetTheTeamSpeakersArr[i].msTeamTitle + '</h5><p><img class="pull-left" src="../uploads/' + meetTheTeamSpeakersArr[i].headShot + '" />' + meetTheTeamSpeakersArr[i].contactDescription + '</p><hr class="alt1" /></section>';
       }
       //read in the meet-the-team.html page and add the speakers html then send the html string
       fs.readFile(path.join(__dirname, '../views/meet-the-team.html'), function(err, speakersPage) {
-        var speakersPageHtml = speakersPage.toString();
+        let speakersPageHtml = speakersPage.toString();
         speakersPageHtml = speakersPageHtml.replace('<main class="grid white-bg main-page-content the-team-section">', meetTheTeamSpeakersHtml);
         res.send(speakersPageHtml);
       });
@@ -234,7 +233,6 @@ module.exports = function (router) {
     .then(function(thisEvent) {
       thisEvent.eventSpeakers = req.body.speakers;
       thisEvent.save().then(function() {});
-      console.log(clc.green.bgMagentaBright('    addspeakers req.body   '), thisEvent);
     })
   });
 
@@ -242,7 +240,6 @@ module.exports = function (router) {
   .post(function(req, res, next) {
     sql.sync()
     .then(function() {
-      console.log(clc.bgGreen.red('       ::::::::::::::::::     '), req.body);
       EventTab.create({
         eventId: req.body.eventId,
         tabNumber: req.body.tabNumber,
@@ -253,24 +250,16 @@ module.exports = function (router) {
     })
   });
 
-/*  router.route('/showimages')
-  .get(function (req, res) {
-    EventImage.findAll()
-    .then(function (data) {
-      res.json(data);
-    });
-  });*/
-
   router.route('/showimages')
   .get(function(req, res) {
     fs.readdir(path.join(__dirname, '../uploads'), function(err, files) {
-      var outputHtml = '';
+      let outputHtml = '';
       if (err) {
         console.log(err);
         res.status(500).json({msg: 'internal server error'});
       }
 
-      for (var i = 0, j = files.length; i < j; i ++) {
+      for (let i = 0, j = files.length; i < j; i ++) {
         if (files[i] !== '.gitignore') {
           outputHtml += '<img class="imageToInsert" style="height: 50px; margin: 10px 10px 10px 10px" data-clipboard-text="/uploads/' + files[i] + '" src="/uploads/' + files[i] + '" />';
         }
@@ -282,18 +271,29 @@ module.exports = function (router) {
   
   router.route('/addimage')
   .post(upload.single('images'), function (req, res, next) {
-    // console.log(clc.yellow('FFFFFFFFFFFFFFFFF ::::::::   '), req.files)
-    // res.json(req.files);
-    res.end();
+    if (req.body.eventId) {
+      sql.sync()
+      .then(function() {
+        return Event.findOne({where: {id: req.body.eventId}});
+      })
+      .then(function(data) {
+        var key = req.body.whatToChange;
+        data[key] = req.file.filename;
+        data.save()
+        console.log(clc.yellow('FFFFFFFFFFFFFFFFF ::::::::   '), data[key]);
+        res.end();
+      })
+      
+    }
   });
   
     
   router.route('/future-events')
   .get(function (req, res) {
-    var eventBlocksHtml = '<main class="events grid"><section class="col_12 internetExplorer">';
-    var newHtml = '';
-    var colNum = 4;
-    var numFutureBlocks = 4;
+    let eventBlocksHtml = '<main class="events grid"><section class="col_12 internetExplorer">';
+    let newHtml = '';
+    let colNum = 4;
+    let numFutureBlocks = 4;
     fs.readFile(path.join(__dirname, '../views/future-events.html'), function (err, html) {
       if (err) {
         console.log(err);
@@ -306,8 +306,21 @@ module.exports = function (router) {
           if (upcomingEvent.length < 4) {
             numFutureBlocks = upcomingEvent.length;
           }
-          for (var i = 0; i < numFutureBlocks; i++) {
-            var risingText = '';
+          upcomingEvent.sort(function (a, b) {
+            a = new Date(a.eventStartDate);
+            b = new Date(b.eventStartDate);
+            if ( a < b) {
+              return -1;
+            }
+            if (a > b) {
+              return 1;
+            }
+            if (a === b) {
+              return 0;
+            }
+          });
+          for (let i = 0; i < numFutureBlocks; i++) {
+            let risingText = '';
             eventBlocksHtml += '<div class="col_' + 12 / numFutureBlocks + ' event_block" style="background-color: #' + continentColors[upcomingEvent[i].eventContinent] + ';"><a href="/' + upcomingEvent[i].eventUrl + '"><p>More Details</p><h1>' + upcomingEvent[i].eventLocation + '</h1><h3>' + upcomingEvent[i].eventName + '<br />' + months[upcomingEvent[i].eventStartDate.getMonth()] + ' ' + upcomingEvent[i].eventStartDate.getDate() + ' - ' + upcomingEvent[i].eventEndDate.getDate() + ', ' + upcomingEvent[i].eventEndDate.getFullYear() + '</h3></a>' + risingText + '</div>';
           }
           eventBlocksHtml += '</section>';
@@ -324,11 +337,16 @@ module.exports = function (router) {
   .get(function (req, res) {
     sql.sync()
     .then(function () {
-      Event.findAll()
+      Event.findAll({where: {eventEndDate: {$gte: new Date()}}})
       .then(function (data) {
+        let eventArr = [];
+        let menuEvents = 4;
+        if (data.length < 4) {
+          menuEvents = data.length;
+        }
         data.sort(function (a, b) {
-          a = new Date(a.eventStartDate);
-          b = new Date(b.eventStartDate);
+          a = a.eventStartDate;
+          b = b.eventStartDate;
           if ( a < b) {
             return -1;
           }
@@ -339,12 +357,33 @@ module.exports = function (router) {
             return 0;
           }
         });
-        res.json(data);
+        for (let i = 0; i < menuEvents; i++) {
+          let tmpObj = {
+            eventStartDate: data[i].eventStartDate,
+            eventUrl: data[i].eventUrl,
+            eventLocation: data[i].eventLocation,
+            eventHomepageImage: data[i].eventHomepageImage,
+            eventHighlightColor: data[i].eventHighlightColor
+          };
+          eventArr.push(tmpObj);
+        }
+        res.json(eventArr);
       });
     });
   });
 
-  router.route('/eventTabs')
+  router.route('/allevents')
+  .get(function(req, res) {
+    sql.sync()
+    .then(function() {
+      return Event.findAll();
+    })
+    .then(function(events) {
+      res.json(events);
+    })
+  })
+
+/*  router.route('/eventTabs')
   .get(function(req, res) {
     sql.sync()
     .then(function() {
@@ -353,26 +392,152 @@ module.exports = function (router) {
         res.json(data);
       });
     });
+  });*/
+
+  //route to return event tab being searched
+  router.route('/eventTabs')
+  .post(function(req, res) {
+    sql.sync()
+    .then(function() {
+      EventTab.findOne({where: {id: req.body.tabId}})
+      .then(function(data) {
+        let tabObj = {
+          tabContent: data.tabContent,
+          tabNumber: data.tabNumber,
+          tabTitle: data.tabTitle,
+          tabId: data.id,
+          eventId: data.eventId
+        }
+        res.json(tabObj);
+      });
+    });
   });
+
+  router.route('/edittab')
+  .post(function(req, res) {
+    console.log(clc.bgRed(':::::::::::::     '), req.body)
+    sql.sync()
+    .then(function() {
+      return EventTab.findOne({where: {id: req.body.tabId}})
+    })
+    .then(function(tab) {
+      tab.tabNumber = req.body.tabNumber;
+      tab.tabTitle = req.body.tabTitle;
+      tab.tabContent = req.body.tabContent;
+      tab.save();
+      res.end();
+    })
+  })
+
+  router.route('/findeventtoedit')
+  .post(function(req, res) {
+    //create object to hold html to be sent to the DOM
+    let editEventHtml = {};
+    //create an eventInfo object to hold the values for the event to be rendered
+    let eventInfo = {};
+    eventInfo.eventUrl = req.body.eventUrl;
+    //sync with the database
+    sql.sync()
+    .then(function() {
+      //trim the params to get the city and the year of the event
+      let eventSearchCity = req.body.eventUrl.slice(0, -4);
+      let eventYear = req.body.eventUrl.slice(-4);
+      let testDate = new Date(eventYear - 1, 11, 31, 11, 59, 59);
+      // search the database for event that matches the city and occurs on or after the year from the params and return the event found
+      return Event.findOne({
+        where: {
+          eventLocation: eventSearchCity,
+          eventStartDate: {$gte: testDate}
+        }
+      });
+    })
+    .then(function(theEvent) {
+      eventInfo.theEvent = theEvent;
+      return EventTab.findAll({
+        where: {
+          eventId: theEvent.id
+        }
+      })
+    })
+    .then(function(tabs) {
+      eventInfo.tabs = tabs;
+      //split the speaker IDs into an array then search for all Contacts that haver an ID that appears in the array and return the result
+      let speakersArr = eventInfo.theEvent.eventSpeakers.split(',');
+      return Contact.findAll({
+        where: {
+          id: {$in: speakersArr}
+        }
+      })
+    })
+    .then(function(speakers) {
+      let tabForm = `<form action="/eventTabs" id="editEventTabs">`;
+      //create an array and push each speaker object into it with the needed values and add the array to the eventInfo object
+      let speakersArr =  [];
+      let i = 0;
+
+      for (let key in speakers) {
+        speakersArr[i] = {};
+        speakersArr[i].firstName = speakers[key].firstName;
+        speakersArr[i].lastName = speakers[key].lastName;
+        speakersArr[i].msTeamTitle = speakers[key].msTeamTitle;
+        speakersArr[i].headShot = speakers[key].headShot;
+        speakersArr[i].contactDescription = speakers[key].contactDescription;
+        i++;
+      }
+
+      for (let i = 0, j = eventInfo.tabs.length; i < j; i++) {
+        tabForm += `<label for="chooseEventToEdit">${eventInfo.tabs[i].tabTitle}</label><input class="col_8" style="margin-left:10px; margin-right:10px;" id="chooseEventToEdit${i}" name="chooseEventToEdit" type="radio" value="${eventInfo.tabs[i].id}"></input></input>`;
+      }
+      tabForm += `<button class="medium" id="chooseTabToEditButton">Choose tab</button></form>`;
+      eventInfo.speakers = speakersArr;
+      editEventHtml.eventTabs = tabForm;
+      editEventHtml.eventName = `<form action="/editevent" id="editEventForm" method="POST"><label for="editEventInput">Choose a name</label><input class="col_8" style="margin-left:10px; margin-right:10px;" id="editEventInput" name="editEventInput" type="text" value="${eventInfo.theEvent.eventName}"></input><input type="hidden" id="eventId" name="eventId" value="${eventInfo.theEvent.id}"></input><input type="hidden" id="whatToChange" id="whatToChange" name="whatToChange" value="eventName"></input><button class="medium" id="editEventNameButton">Save</button></form>`;
+      editEventHtml.eventRegistrationLink = `<form action="/editevent" id="editEventForm" method="POST"><label for="editEventInput">Choose a registraion link</label><input class="col_8" style="margin-left:10px; margin-right:10px;" id="editEventInput" name="editEventInput" type="text submit" value="${eventInfo.theEvent.eventRegistrationLink}"></input><input type="hidden" id="eventId" name="eventId" value="${eventInfo.theEvent.id}"></input><input type="hidden" id="whatToChange" name="whatToChange" value="eventRegistrationLink"></input><button class="medium" id="editEventNameButton">Save</button></form>`;
+      editEventHtml.eventLocation = `<form action="/editevent" id="editEventForm" method="POST"><label for="editEventInput">Choose a new city</label><input class="col_8" style="margin-left:10px; margin-right:10px;" id="editEventInput" name="editEventInput" type="text submit" value="${eventInfo.theEvent.eventLocation}"></input><input type="hidden" id="eventId" name="eventId" value="${eventInfo.theEvent.id}"></input><input type="hidden" id="whatToChange" name="whatToChange" value="eventLocation"></input><button class="medium" id="editEventNameButton">Save</button></form>`;
+      editEventHtml.eventContinent = `<form action="/editevent" id="editEventForm" method="POST"><label class="col_4" for="editEventInput">The current continent is ${eventInfo.theEvent.eventContinent}</label><input type="radio" id="editEventInput" name="editEventInput" value="North America">North America</input><input type="radio" id="editEventInput" name="editEventInput" value="South America">South America</input><input type="radio" id="editEventInput" name="editEventInput" value="Africa">Africa</input><input type="radio" id="editEventInput" name="editEventInput" value="Asia">Asia</input><input type="radio" id="editEventInput" name="editEventInput" value="Europe">Europe</input><input type="radio" id="editEventInput" name="editEventInput" value="Oceania">Australia</input><input type="hidden" id="eventId" name="eventId" value="${eventInfo.theEvent.id}"></input><input type="hidden" id="whatToChange" name="whatToChange" value="eventContinent"></input><button class="medium" id="editEventNameButton">Save</button></form>`;
+      editEventHtml.eventStartDate = `<form action="/editevent" id="editEventForm" method="POST"><label for="editEventInput">Choose a new start date</label><input class="col_8" style="margin-left:10px; margin-right:10px;" id="editEventInput" name="editEventInput" type="date" value="${eventInfo.theEvent.eventStartDate}"></input><input type="hidden" id="eventId" name="eventId" value="${eventInfo.theEvent.id}"></input><input type="hidden" id="whatToChange" name="whatToChange" value="eventStartDate"></input><button class="medium" id="editEventNameButton">Save</button></form>`;
+      editEventHtml.eventEndDate = `<form action="/editevent" id="editEventForm" method="POST"><label for="editEventInput">Choose a new end date</label><input class="col_8" style="margin-left:10px; margin-right:10px;" id="editEventInput" name="editEventInput" type="date" value="${eventInfo.theEvent.eventEndDate}"></input><input type="hidden" id="eventId" name="eventId" value="${eventInfo.theEvent.id}"></input><input type="hidden" id="whatToChange" name="whatToChange" value="eventEndDate"></input><button class="medium" id="editEventNameButton">Save</button></form>`;
+      editEventHtml.eventHeaderImage = `<form action="/addimage" id="editEventForm" method="POST" enctype="multipart/form-data"><label for="editEventInput">Choose a new event header image</label><input class="col_8" style="margin-left:10px; margin-right:10px;" id="editEventInput" name="images" type="file" value="${eventInfo.theEvent.eventHeaderImage}"></input><input type="hidden" id="eventId" name="eventId" value="${eventInfo.theEvent.id}"></input><input type="hidden" id="whatToChange" name="whatToChange" value="eventHeaderImage"></input><button class="medium" id="editEventNameButton">Save</button></form>`;
+      editEventHtml.eventHomepageImage = `<form action="/addimage" id="editEventForm" method="POST" enctype="multipart/form-data"><label for="editEventInput">Choose a new event header image</label><input class="col_8" style="margin-left:10px; margin-right:10px;" id="editEventInput" name="images" type="file" value="${eventInfo.theEvent.eventHomepageImage}"></input><input type="hidden" id="eventId" name="eventId" value="${eventInfo.theEvent.id}"></input><input type="hidden" id="whatToChange" name="whatToChange" value="eventHomepageImage"></input><button class="medium" id="editEventNameButton">Save</button></form>`;
+      editEventHtml.eventHighlightColor = `<form action="/editevent" id="editEventForm" method="POST"><label for="editEventInput">Choose a color</label><input class="col_8" style="margin-left:10px; margin-right:10px;" id="editEventInput" name="editEventInput" type="color" value="${eventInfo.theEvent.eventHighlightColor}"></input><input type="hidden" id="eventId" name="eventId" value="${eventInfo.theEvent.id}"></input><input type="hidden" id="whatToChange" id="whatToChange" name="whatToChange" value="eventHighlightColor"></input><button class="medium" id="editEventNameButton">Save</button></form>`;
+      editEventHtml.eventSpeakers = `<form id="editSpeakerCount"><label for="newSpeakerCount">How many speakers will the event have?</label><input type="number" id="newSpeakerCount" name="newSpeakerCount"></input></input><input type="hidden" id="eventId" name="eventId" value="${eventInfo.theEvent.id}"></input><button class="medium" id="newSpeakerCountButton" type="submit">Choose Speakers</button></form><form action="/editevent" id="newAddSpeakersForm" method="post" enctype="multipart/form-data"><input type="hidden" id="whatToChange" id="whatToChange" name="whatToChange" value="eventSpeakers"></input></form>`;
+      res.json(editEventHtml);
+    })
+
+  });
+
+  router.route('/editevent')
+  .post(function(req, res) {
+    sql.sync()
+    .then(function() {
+      return Event.findOne({where:{id: req.body.eventId}})
+    })
+    .then(function(eventToEdit) {
+      var key = req.body.whatToChange;
+      eventToEdit[key] = req.body.editEventInput;
+      eventToEdit.save();
+      res.end();
+    })
+  })
 
 
 router.route('/allevents/:eventId')
 .get(function (req, res) {
-  var picsHtml = '<div class="col_12 gallery">';
-  var returnObj = {};
+  let picsHtml = '<div class="col_12 gallery">';
+  let returnObj = {};
   sql.sync()
   .then(function () {
     Event.findOne({where: {id: req.params.eventId}})
     .then(function (data) {
       fs.readdir(path.join(__dirname, '../uploads/' + data.eventUrl), function (err, files) {
-        for (var key in files) {
+        for (let key in files) {
           picsHtml += '<a href="../uploads/' + data.eventUrl + '/' + files[key] + ' rel="gallery" class="fancybox" type="image" ><img src="../uploads/' + data.eventUrl + '/' + files[key] + '" width="100" height="100" /></a>';
         }
         picsHtml += '</div>';
-        /*for (var i = 0, j = files.length; i < j; i++) {
+        /*for (let i = 0, j = files.length; i < j; i++) {
           files[i] = '../uploads/' + data.eventUrl + '/' + files[i];
         }*/
-        var testHtml = '<div class="col_12 gallery"><a href="../uploads/shanghaiinteropdevdays2015-2026/_MG_3990.JPG" rel="gallery"><img src="../uploads/shanghaiinteropdevdays2015-2026/_MG_3990.JPG" width="100" height="100" /></a><a href="../uploads/shanghaiinteropdevdays2015-2026/_MG_4077.JPG" rel="gallery"><img src="../uploads/shanghaiinteropdevdays2015-2026/_MG_4077.JPG" width="100" height="100" /></a></div>';
+        let testHtml = '<div class="col_12 gallery"><a href="../uploads/shanghaiinteropdevdays2015-2026/_MG_3990.JPG" rel="gallery"><img src="../uploads/shanghaiinteropdevdays2015-2026/_MG_3990.JPG" width="100" height="100" /></a><a href="../uploads/shanghaiinteropdevdays2015-2026/_MG_4077.JPG" rel="gallery"><img src="../uploads/shanghaiinteropdevdays2015-2026/_MG_4077.JPG" width="100" height="100" /></a></div>';
         returnObj.eventUrl = data.eventUrl;
         returnObj.picsHtml = picsHtml;
         returnObj.files = files;
@@ -399,9 +564,9 @@ router.route('/allevents/:eventId')
     .then(function () {
       Event.findAll({where: {eventStartDate: {$gte: new Date()}}})
       .then(function (data) {
-        var theUrls = [];
-        for (var i = 0; i < data.length; i++) {
-          var tmpObj = {};
+        let theUrls = [];
+        for (let i = 0; i < data.length; i++) {
+          let tmpObj = {};
           tmpObj.url = data[i].eventUrl;
           tmpObj.eventName = data[i].eventName;
           theUrls.push(tmpObj);
@@ -415,7 +580,7 @@ router.route('/allevents/:eventId')
   router.route('/:eventUrl')
   .get(function(req, res) {
     //create an eventInfo object to hold the values for the event to be rendered
-    var eventInfo = {};
+    let eventInfo = {};
     eventInfo.eventUrl = req.params.eventUrl;
     eventInfo.htmlContent = '';
     eventInfo.eventUltHtml = '<ul class="tabs left" id="eventTabLinks">';
@@ -426,9 +591,9 @@ router.route('/allevents/:eventId')
     sql.sync()
     .then(function() {
       //trim the params to get the city and the year of the event
-      var eventSearchCity = req.params.eventUrl.slice(0, -4);
-      var eventYear = req.params.eventUrl.slice(-4);
-      var testDate = new Date(eventYear - 1, 11, 31, 11, 59, 59);
+      let eventSearchCity = req.params.eventUrl.slice(0, -4);
+      let eventYear = req.params.eventUrl.slice(-4);
+      let testDate = new Date(eventYear - 1, 11, 31, 11, 59, 59);
       // search the database for event that matches the city and occurs on or after the year from the params and return the event found
       return Event.findOne({
         where: {
@@ -456,7 +621,7 @@ router.route('/allevents/:eventId')
     })
     .then(function() {
       //split the speaker IDs into an array then search for all Contacts that haver an ID that appears in the array and return the result
-      var speakersArr = eventInfo.event.eventSpeakers.split(',');
+      let speakersArr = eventInfo.event.eventSpeakers.split(',');
       return Contact.findAll({
         where: {
           id: {$in: speakersArr}
@@ -465,9 +630,9 @@ router.route('/allevents/:eventId')
     })
     .then(function(theSpeakers) {
       //create an array and push each speaker object into it with the needed values and add the array to the eventInfo object
-      var speakersArr =  [];
-      var i = 0;
-      for (var key in theSpeakers) {
+      let speakersArr =  [];
+      let i = 0;
+      for (let key in theSpeakers) {
         speakersArr[i] = {};
         speakersArr[i].firstName = theSpeakers[key].firstName;
         speakersArr[i].lastName = theSpeakers[key].lastName;
@@ -481,7 +646,7 @@ router.route('/allevents/:eventId')
       //if there are speakers in the speakers array
       if (eventInfo.speakers.length > 0) {
       //loop over the speakers array and create html for speakers tab
-        for (var i = 0, j = eventInfo.speakers.length; i < j; i++) {
+        for (let i = 0, j = eventInfo.speakers.length; i < j; i++) {
           eventInfo.speakersHtml += '<h4>' + eventInfo.speakers[i].firstName + ' ' + eventInfo.speakers[i].lastName + '</h4>';
           if (eventInfo.speakers[i].msTeamTitle) {
             eventInfo.speakersHtml += '<h5>' + eventInfo.speakers[i].msTeamTitle + '</h5><p>';
@@ -503,7 +668,7 @@ router.route('/allevents/:eventId')
         eventInfo.eventDivHtml += '<div id="speakers" class="tab-content eventTabDiv" style="display:none;">' + eventInfo.speakersHtml  + '</div>';
       }
       //if there are event tabs loop over the tabs and create the html for the tabs
-      for (var i = 0, j = eventInfo.tabs.length; i < j; i++) {
+      for (let i = 0, j = eventInfo.tabs.length; i < j; i++) {
         //create the first tab with the first and current classes
         if (i === 0) {
           eventInfo.eventUltHtml += '<li class="first current"><a href="#' + eventInfo.tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '').toLowerCase() + '"><h5>' + eventInfo.tabs[i].tabTitle + '</h5></a></li>';
@@ -540,8 +705,8 @@ router.route('/allevents/:eventId')
       }
       //read the blank event html file and turn the returned blob into a string, then replace the placeholder html content with the content created by the event
       fs.readFile(path.join(__dirname, '../views/blank-event.html'), function(err, data) {
-        var theHtml = data.toString();            
-        var fullEventHtml = theHtml.replace('<div class="col_12 internetExplorer event-header center" id="eventHeader"></div>', eventInfo.headerHtml).replace('<section class="col_12 internetExplorer event-tabs" id="eventTabs"></section>', '<section class="col_12 internetExplorer event-tabs" id="eventTabs">' + eventInfo.htmlContent + '</section>');
+        let theHtml = data.toString();            
+        let fullEventHtml = theHtml.replace('<div class="col_12 internetExplorer event-header center" id="eventHeader"></div>', eventInfo.headerHtml).replace('<section class="col_12 internetExplorer event-tabs" id="eventTabs"></section>', '<section class="col_12 internetExplorer event-tabs" id="eventTabs">' + eventInfo.htmlContent + '</section>');
         res.send(fullEventHtml);
       })
       

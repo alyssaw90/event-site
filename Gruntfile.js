@@ -13,25 +13,42 @@ module.exports = function (grunt) {
     pkg: grunt.file.readJSON('package.json'),
     clean: {
       dev: {
-        src: 'build/'
+        src: ['build/', 'dist/']
       }
     },
     //register task to run babel and compile es6
     babel: {
       options: {
-        sourceMap: true,
-        // presets: ['babel-preset-es2015']
+        sourceMap: false,
+        presets: ['babel-preset-es2015']
       },
       dist: {
         files: [
           {
             expand: true,
-            cwd: 'js/',
+            cwd: 'es6/',
             src: ['*.js'],
             dest: 'build/',
             ext:'.build.js'
           }
         ]
+      }
+    },
+    //create browserify task
+    browserify: {
+      dist: {
+        files: {
+          'dist/build.dist.js': ['build/**/*.js']
+        },
+        options: {
+          // transform: ['coffeeify']
+        }
+      }
+    },
+    //create nodemon task to run server
+    nodemon: {
+      dev: {
+        script: 'server.js'
       }
     },
 		    // create jshint task
@@ -127,6 +144,8 @@ module.exports = function (grunt) {
   grunt.registerTask('lint', ['jshint:dev', 'jshint:mocha', 'jshint:jasmine']);
 	// register mocha test task
 	grunt.registerTask('test', ['simplemocha:dev']);
+  // grunt.registerTask('nodemon', ['nodemon:dev']);
   grunt.registerTask('bbl', ['clean', 'babel']);
-	grunt.registerTask('default', ['bbl', 'test']);
+  grunt.registerTask('build', ['bbl', 'browserify', 'nodemon:dev']);
+	grunt.registerTask('default', ['build', 'test']);
 };

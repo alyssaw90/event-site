@@ -1,5 +1,6 @@
 'use Strict';
 
+require('dotenv').load();
 var clc = require('cli-color');
 var bcrypt = require('bcrypt-nodejs');
 var eat = require('eat');
@@ -64,7 +65,6 @@ var User = module.exports = sql.define('User', {
       return bcrypt.compareSync(password, userPassword);
     },
     generateToken: function(userInfo, secret, callback) {
-      console.log(clc.green('::::::::   '), userInfo);
       return eat.encode(userInfo, secret, callback);
     },
     generateHash: function(password) {

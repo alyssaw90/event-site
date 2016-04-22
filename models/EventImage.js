@@ -1,5 +1,6 @@
 'use strict';
 
+require('dotenv').load();
 var clc = require('cli-color');
 var fs = require('fs');
 var path = require('path');

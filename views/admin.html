@@ -22,6 +22,8 @@
 		<!-- begin main section -->
 		<main class="grid white-bg main-page-content">
 			<section id="mainAdminSection" class="col_12">
+			<button id="adminLogoutButton" class="float-right">Logout</button>
+			<button class="large" id="cancelButton" type="submit">Cancel</button>
 				<ul class="tabs">
 					<li><a href="#createEventDiv">Create Event</a></li>
 					<li><a href="#editEventDiv">Edit Event</a></li>
@@ -73,8 +75,8 @@
 					 		<label for="newTabPosition">Tab Order</label>
 					 		<input id="newTabPosition" name="newTabPosition" class="col_4" type="text" placeholder="Enter a number for the position you want the tab to appear in"></input>
 					 		<div class="col_12 tinyMceDiv" id="newEventTabTextArea">Add event tab content here</div>
-					 		<button class="medium" id="addTabsButton" type="submit">Add Tab First Tab</button>
-					 		<button class="medium" id="refreshEvent" type="submit">I'm finished with this event</button>
+					 		<button class="large" id="addTabsButton" type="submit">Add Tab 1</button>
+					 		<button class="large" id="refreshEvent" type="submit">I'm finished with this event</button>
 						</form>
 						<form id="addImageForm">	
 							<label class="col_4" for="addEventTabImage">Add Image</label>
@@ -86,7 +88,46 @@
 					</div>
 				</div>
 				<div id="editEventDiv" class="tab-content">
-					<h1>Edit Event Tab</h1>
+					<h2>Choose Event to Edit</h2>
+					<button id="showAllEvents" style="display: none;">Show all Events</button>
+					<div id="editEventSection"></div>
+					<div id="chooseTabToEdit"></div>
+					<div id="chooseWhatToEdit" style="display: none;">
+						<button class="pickWhatToEditButton" data-whatToEdit="eventName" id="editEventName">Edit Event Name</button>
+						<button class="pickWhatToEditButton" data-whatToEdit="eventRegistrationLink" id="editEventRegistration">Edit Registration Link</button>
+						<button class="pickWhatToEditButton" data-whatToEdit="eventContinent" id="editEventContinent">Edit Event Continent</button>
+						<button class="pickWhatToEditButton" data-whatToEdit="eventLocation" id="editEventCity">Edit Event City</button>
+						<button class="pickWhatToEditButton" data-whatToEdit="eventStartDate" id="editEventDates">Edit Event Start Date</button>
+						<button class="pickWhatToEditButton" data-whatToEdit="eventEndDate" id="editEventDates">Edit Event Start Date</button>
+						<button class="pickWhatToEditButton" data-whatToEdit="eventHeaderImage" id="editEventHeaderImage">Edit Event Header Image</button>
+						<button class="pickWhatToEditButton" data-whatToEdit="eventHomepageImage" id="editEventHomepageImage">Edit Event Homepage Image</button>
+						<button class="pickWhatToEditButton" data-whatToEdit="eventHighlightColor" id="editEventHighlightColor">Edit Event Highlight Color</button>
+						<button class="pickWhatToEditButton" data-whatToEdit="eventSpeakers" id="editEventSpeakers">Edit Event Speakers</button>
+						<button class="pickWhatToEditButton" data-whatToEdit="eventTabs" id="editEventTabs">Edit Event Tabs</button>
+					</div>
+					<div id="editFormSection"></div>
+					<div id="editTabsSection" style="display: none;">
+						<form id="editEventForm">
+					 		<div class="col_12 tinyMceDiv" id="editEventTabTextArea">Add event tab content here</div>
+						</form>
+						<form id="newTabInfoForm">
+					 		<label for="editedTabName">Tab Name</label>
+					 		<input id="editedTabName" name="editedTabName" class="col_6" type="text" placeholder="Enter a tab"></input>
+					 		<label for="editedTabPosition">Tab Order</label>
+					 		<input id="editedTabPosition" name="editedTabPosition" class="col_4" type="text" placeholder="Enter a number for the position you want the tab to appear in"></input>
+					 		<input type="hidden" id="tabId" id="tabId" name="tabId"></input>
+					 		<input type="hidden" id="eventId" id="eventId" name="eventId"></input>
+					 		<button class="large" id="addEditedTabsButton" type="submit">Save Tab</button>
+							
+						</form>
+						<form id="addTabImage">	
+							<label class="col_4" for="addNewEventTabImage">Add Image</label>
+        			<input class="col_8" id="addNewEventTabImage" name="images" type="file"></input>
+        			<button class="medium" id="addImageButton" type="submit">Add Image</button>
+						</form>
+						<h5>Click an image to copy its location and enter it in above area to add an image</h5>
+						<div id="newImagesDiv"></div>
+					</div>
 				</div>
 			</section>
 			<section class="col_12 internetExplorer scroll-button">
@@ -103,9 +144,9 @@
 	<script type="text/javascript" src="../lib/jquery.base64.js"></script>
 	<script src="//tinymce.cachefly.net/4.3/tinymce.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/clipboard.js/1.5.8/clipboard.min.js"></script>
-	<script type="text/javascript" src="../build/footer.build.js"></script>
-	<script type="text/javascript" src="../build/header-menu.build.js"></script>
-	<script type="text/javascript" src="../build/custom.build.js"></script>
-	<script type="text/javascript" src="../build/admin-page.build.js"></script>
+	<script type="text/javascript" src="../lib/js.cookie.js"></script>
+	<script type="text/javascript" src="../dist/build.dist.js"></script>
+	<script type="text/javascript" src="../adminjs/user-logging.js"></script>
+	<script type="text/javascript" src="../adminjs/admin-page.js"></script>
 </body>
 </html>
