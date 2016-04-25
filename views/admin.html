@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- META -->
+	<title>Meet the Microsoft Plugfests Team</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta name="description" content="" />
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/ >
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/kickstart.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="../style.css" media="all" /> 
+	<link rel="stylesheet" type="text/css" href="../css/animate.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="../css/custom.css" media="all" />
+	
+	<!-- Javascript -->
+</head>
+<body>
+	<header>
+	</header>
+	<div class="mobileWrapper">
+		<!-- begin main section -->
+		<main class="grid white-bg main-page-content">
+			<section id="mainAdminSection" class="col_12">
+			<button id="adminLogoutButton" class="float-right">Logout</button>
+			<button class="large" id="cancelButton" type="submit">Cancel</button>
+				<ul class="tabs">
+					<li><a href="#createEventDiv">Create Event</a></li>
+					<li><a href="#editEventDiv">Edit Event</a></li>
+				</ul>
+				<div id="createEventDiv" class="tab-content">
+					<h2>Create an Event</h2>
+					<form id="createEventForm" method="POST" enctype="multipart/form-data">
+						<label class="col_4" for="newEventName">Event Name</label>
+        		<input class="col_8" id="newEventName" name="newEventName" type="text" placeholder="Event Name" />
+        		<label class="col_4" for="newEventStartDate">Start Date</label>
+        		<input class="col_4" id="newEventStartDate" name="newEventStartDate" type="date" placeholder="Start Date"></input>
+        		<label class="col_4" for="newEventEndDate">End Date</label>
+        		<input class="col_4" id="newEventEndDate" name="newEventEndDate" type="date" placeholder="End Date"></input>
+        		<label class="col_4" for="newEventLocation">Event Location</label>
+        		<input class="col_8" id="newEventLocation" name="newEventLocation" type="text" placeholder="Location"></input>
+        		<label class="col_4" for="newEventContinent">Choose Event Continent</label>
+      			<input type="radio" id="newEventContinent" name="newEventContinent" value="North America">North America</input>
+      			<input type="radio" id="newEventContinent" name="newEventContinent" value="South America">South America</input>
+      			<input type="radio" id="newEventContinent" name="newEventContinent" value="Africa">Africa</input>
+      			<input type="radio" id="newEventContinent" name="newEventContinent" value="Asia">Asia</input>
+      			<input type="radio" id="newEventContinent" name="newEventContinent" value="Europe">Europe</input>
+      			<input type="radio" id="newEventContinent" name="newEventContinent" value="Oceania">Australia</input>
+      			<label class="col_4" for="newEventColor">Pick a color</label>
+      			<input class="col_4" type="color" id="newEventColor" name="newEventColor"></input>
+      			<label class="col_4" for="newEventRegistrationLink">Enter registration link</label>
+      			<input class="col_8" type="text" id="newEventRegistrationLink" name="newEventRegistrationLink" placeholder="Include full link with http:// or https:// "></input>
+        		<label class="col_4" for="newEventHeaderImage">Event Page Header Image</label>
+        		<input class="col_8" id="newEventHeaderImage" name="images" type="file" placeholder="Event Page Header Image"></input>
+        		<label class="col_4" for="newEventHomerImage">Event Homepage Header Image</label>
+        		<input class="col_8" id="newEventHomerImage" name="images" type="file" placeholder="Event Homepage Header Image"></input>
+        		<!-- <label>Choose speakers for this event</label> -->
+        		<!-- <fieldset id="newEventSpeakers"></fieldset> -->
+        		<br />
+        		<br />
+        		<button class="medium" id="createEventButton" type="submit">Create Event</button>
+					</form>
+					<div id="addSpeakersDiv" style="display: none;">
+						<form id="chooseSpeakerCount">
+							<label for="speakerCount">How many speakers will the event have?</label>
+							<input type="number" id="speakerCount" name="speakerCount"></input>
+							<button class="medium" id="speakerCountButton" type="submit">Choose Speakers</button>
+						</form>
+						<form action="edittheevent" id="addSpeakersForm" method="post" enctype="multipart/form-data"></form>
+					</div>
+					<div id="addTabsDiv" style="display: none;">
+						<form id="addTabsForm">
+					 		<label for="newTabName">Tab Name</label>
+					 		<input id="newTabName" name="newTabName" class="col_6" type="text" placeholder="Enter a tab"></input>
+					 		<label for="newTabPosition">Tab Order</label>
+					 		<input id="newTabPosition" name="newTabPosition" class="col_4" type="text" placeholder="Enter a number for the position you want the tab to appear in"></input>
+					 		<div class="col_12 tinyMceDiv" id="newEventTabTextArea">Add event tab content here</div>
+					 		<button class="large" id="addTabsButton" type="submit">Add Tab 1</button>
+					 		<button class="large" id="refreshEvent" type="submit">I'm finished with this event</button>
+						</form>
+						<form id="addImageForm">	
+							<label class="col_4" for="addEventTabImage">Add Image</label>
+        			<input class="col_8" id="addEventTabImage" name="images" type="file"></input>
+        			<button class="medium" id="addImageButton" type="submit">Add Image</button>
+						</form>
+						<h5>Click an image to copy its location and enter it in above area to add an image</h5>
+						<div id="imagesDiv"></div>
+					</div>
+				</div>
+				<div id="editEventDiv" class="tab-content">
+					<h2>Choose Event to Edit</h2>
+					<button id="showAllEvents" style="display: none;">Show all Events</button>
+					<div id="editEventSection"></div>
+					<div id="chooseTabToEdit"></div>
+					<div id="chooseWhatToEdit" style="display: none;">
+						<button class="pickWhatToEditButton" data-whatToEdit="eventName" id="editEventName">Edit Event Name</button>
+						<button class="pickWhatToEditButton" data-whatToEdit="eventRegistrationLink" id="editEventRegistration">Edit Registration Link</button>
+						<button class="pickWhatToEditButton" data-whatToEdit="eventContinent" id="editEventContinent">Edit Event Continent</button>
+						<button class="pickWhatToEditButton" data-whatToEdit="eventLocation" id="editEventCity">Edit Event City</button>
+						<button class="pickWhatToEditButton" data-whatToEdit="eventStartDate" id="editEventDates">Edit Event Start Date</button>
+						<button class="pickWhatToEditButton" data-whatToEdit="eventEndDate" id="editEventDates">Edit Event Start Date</button>
+						<button class="pickWhatToEditButton" data-whatToEdit="eventHeaderImage" id="editEventHeaderImage">Edit Event Header Image</button>
+						<button class="pickWhatToEditButton" data-whatToEdit="eventHomepageImage" id="editEventHomepageImage">Edit Event Homepage Image</button>
+						<button class="pickWhatToEditButton" data-whatToEdit="eventHighlightColor" id="editEventHighlightColor">Edit Event Highlight Color</button>
+						<button class="pickWhatToEditButton" data-whatToEdit="eventSpeakers" id="editEventSpeakers">Edit Event Speakers</button>
+						<button class="pickWhatToEditButton" data-whatToEdit="eventTabs" id="editEventTabs">Edit Event Tabs</button>
+					</div>
+					<div id="editFormSection"></div>
+					<div id="editTabsSection" style="display: none;">
+						<form id="editEventForm">
+					 		<div class="col_12 tinyMceDiv" id="editEventTabTextArea">Add event tab content here</div>
+						</form>
+						<form id="newTabInfoForm">
+					 		<label for="editedTabName">Tab Name</label>
+					 		<input id="editedTabName" name="editedTabName" class="col_6" type="text" placeholder="Enter a tab"></input>
+					 		<label for="editedTabPosition">Tab Order</label>
+					 		<input id="editedTabPosition" name="editedTabPosition" class="col_4" type="text" placeholder="Enter a number for the position you want the tab to appear in"></input>
+					 		<input type="hidden" id="tabId" id="tabId" name="tabId"></input>
+					 		<input type="hidden" id="eventId" id="eventId" name="eventId"></input>
+					 		<button class="large" id="addEditedTabsButton" type="submit">Save Tab</button>
+							
+						</form>
+						<form id="addTabImage">	
+							<label class="col_4" for="addNewEventTabImage">Add Image</label>
+        			<input class="col_8" id="addNewEventTabImage" name="images" type="file"></input>
+        			<button class="medium" id="addImageButton" type="submit">Add Image</button>
+						</form>
+						<h5>Click an image to copy its location and enter it in above area to add an image</h5>
+						<div id="newImagesDiv"></div>
+					</div>
+				</div>
+			</section>
+			<section class="col_12 internetExplorer scroll-button">
+				<i class="fa fa-chevron-up fa-3x"><p>Back to Top</p></i>
+			</section>
+		</main>
+	</div>
+	<footer class="grid flex footer-at-bottom">
+	</footer>
+	<!-- Javascript -->
+	<!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
+	<script type="text/javascript" src="../lib/kickstart.js"></script>
+	<script type="text/javascript" src="../lib/jquery.base64.js"></script>
+	<script src="//tinymce.cachefly.net/4.3/tinymce.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/clipboard.js/1.5.8/clipboard.min.js"></script>
+	<script type="text/javascript" src="../lib/js.cookie.js"></script>
+	<script type="text/javascript" src="../dist/build.dist.js"></script>
+	<script type="text/javascript" src="../adminjs/user-logging.js"></script>
+	<script type="text/javascript" src="../adminjs/admin-page.js"></script>
+</body>
+</html>
