@@ -6,7 +6,7 @@ var bodyparser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var clc = require('cli-color');
 var Sql = require('sequelize');
-/*var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
+var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
   host: process.env.DB_LOCAL_HOST,
   dialect: 'mssql',
 
@@ -15,7 +15,7 @@ var Sql = require('sequelize');
     min: 0,
     idle: 10000
   }
-});*/
+});
 /*var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
     host: process.env.DB_HOST,
   dialect: 'mssql',
@@ -29,7 +29,7 @@ var Sql = require('sequelize');
   }
 });*/
 
-var sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
+/*var sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
   host: process.env.DB_DEV_HOST,
   dialect: 'mssql',
   pool: {
@@ -41,7 +41,7 @@ var sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.
     encrypt: true
   }
 });
-
+*/
 function makeRandomString () {
   var outputString = '';
   var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_-+=<,>.?/';
@@ -129,7 +129,6 @@ module.exports = function(router, passport) {
   });*/
 
   router.post('/login', passport.authenticate('basic', { session: false }), function(req, res) {
-    console.log(clc.greenBright(' AAAAAAAA    '), req.user.dataValues);
     var userJSON = {randomString: req.user.dataValues.randomString, id: req.user.dataValues.id};
     res.req.headers.authorization = 'hahaha';
     // res.req.rawHeaders.Authorization = 'blah';

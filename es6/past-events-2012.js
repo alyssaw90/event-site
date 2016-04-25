@@ -5,13 +5,18 @@
 /*global stickyFooter */
 /*jshint multistr: true */ 
 
+let jQuery = require('jquery');
+import * as customFunctions from './common-functions.build.js';
+
+(function($) {
+
 $(document).ready(function () {
-	var $calendar = $('#calendar');
+	let $calendar = $('#calendar');
 
 	$( "#2012_events" ).click(function () {
 
 
-		var schedule = '<table cellspacing="0" cellpadding="0">\
+		let schedule = '<table cellspacing="0" cellpadding="0">\
 												<thead><tr>\
 												<th>Name</th>\
 												<th>Date</th>\
@@ -81,7 +86,7 @@ $(document).ready(function () {
 												<td><a href="http://channel9.msdn.com/Events/Open-Specifications-Plugfests/Odata-Meetup-2012">Videos</a></td>\
 											</tr></tbody>\
 										</table>';
-		var html = $.parseHTML(schedule);
+		let html = $.parseHTML(schedule);
 		$(this).siblings().removeClass('selected-year');
 		$(this).toggleClass('selected-year');
 		if ($calendar.html() === schedule) {
@@ -90,7 +95,10 @@ $(document).ready(function () {
 			$calendar.empty();
 			$calendar.append(html);
 		}
-		stickyFooter();
+		customFunctions.stickyFooter();
 
 	});
 });
+
+})(jQuery);
+

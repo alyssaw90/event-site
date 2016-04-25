@@ -11,16 +11,19 @@
 /*global homepageStickyFooter*/
 /*global logout*/
 
+let jQuery = require('jquery');
+import * as customFunctions from './common-functions.build.js';
+
 (function($) {
 	$(function () {
-		var $curriculumLogoutButton = $('#curriculumLogoutButton');
-		var $taipei1016Eng = $('.taipei1016-eng');
-		var $taipei2016Cn = $('.taipei2016-cn');
-		var $taipei2016ChineseCurriculum = $('#taipei2016-chinese-curriculum');
-		var $taipei2016EnglishCurriculum = $('#taipei2016-english-curriculum');
-		var $welcomeTab = $('.welcomeTab');
-		var $curriculumList = $('.curriculumList');
-		var languageSection = window.location.href.slice(-3);
+		let $curriculumLogoutButton = $('#curriculumLogoutButton');
+		let $taipei1016Eng = $('.taipei1016-eng');
+		let $taipei2016Cn = $('.taipei2016-cn');
+		let $taipei2016ChineseCurriculum = $('#taipei2016-chinese-curriculum');
+		let $taipei2016EnglishCurriculum = $('#taipei2016-english-curriculum');
+		let $welcomeTab = $('.welcomeTab');
+		let $curriculumList = $('.curriculumList');
+		let languageSection = window.location.href.slice(-3);
 		function checkFooter() {
 			setTimeout(function() {
 				if ($('html').height() > $(window).height()) {
@@ -44,7 +47,7 @@
 		}
 
 
-	 	$curriculumLogoutButton.click(logout);
+	 	$curriculumLogoutButton.click(customFunctions.logout);
 		
 	 	$taipei2016Cn.click(function(e) {
 	 		e.preventDefault();
@@ -60,9 +63,9 @@
 		
 	 	$welcomeTab.click(function(e) {
 	 		e.preventDefault();
-	 		var tabid = $(this).data('tabid');
+	 		let tabid = $(this).data('tabid');
 	 		$curriculumList.each(function(i, elem) {
-	 			var that = $(this);
+	 			let that = $(this);
 	 			that.children().each(function(index, element) {
 	 				if ($(this).attr('id') === tabid) {
 	 					$(this).children().trigger('click');
@@ -73,8 +76,8 @@
 	 	});
 
 	 	$('a').click(function() {
-	 		stickyFooter();
-	 		checkFooter();
+	 		customFunctions.stickyFooter();
+	 		customFunctions.checkFooter();
 	 		console.log($(window).innerHeight(), '    :::::::     ', $('html').height());
 	 	});
 	 	

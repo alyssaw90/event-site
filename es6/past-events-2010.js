@@ -5,14 +5,18 @@
 /*global stickyFooter */
 /*jshint multistr: true */ 
 
-$(document).ready(function () {
+let jQuery = require('jquery');
+import * as customFunctions from './common-functions.build.js';
 
-	var $calendar = $('#calendar');
+(function($) {
+	$(document).ready(function () {
+
+	let $calendar = $('#calendar');
 
 	$( "#2010_events" ).click(function () {
 
 
-		var schedule = '<table cellspacing="0" cellpadding="0">\
+		let schedule = '<table cellspacing="0" cellpadding="0">\
 												<thead><tr>\
 												<th>Name</th>\
 												<th>Date</th>\
@@ -76,17 +80,19 @@ $(document).ready(function () {
 												<td><a href="https://msdn.microsoft.com/openspecifications/dn768081#tile=event011810">Summary</a></td>\
 											</tr></tbody>\
 										</table>';
-		var html = $.parseHTML(schedule);
-		$(this).siblings().removeClass('selected-year');
-		$(this).toggleClass('selected-year');
-		if ($calendar.html() === schedule) {
-			$calendar.empty();
-		} else {
-			$calendar.empty();
-			$calendar.append(html);
-		}
-		stickyFooter();
-
+			let html = $.parseHTML(schedule);
+			$(this).siblings().removeClass('selected-year');
+			$(this).toggleClass('selected-year');
+			if ($calendar.html() === schedule) {
+				$calendar.empty();
+			} else {
+				$calendar.empty();
+				$calendar.append(html);
+			}
+			customFunctions.stickyFooter();
+	
+		});
+	
 	});
+})(jQuery);
 
-});

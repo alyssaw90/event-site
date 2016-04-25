@@ -1,9 +1,10 @@
 'use strict';
 
+require('dotenv').load();
 var fs = require('fs');
 var path = require('path');
 var Sql = require('sequelize');
-/*var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
+var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
   host: process.env.DB_LOCAL_HOST,
   dialect: 'mssql',
 
@@ -12,7 +13,7 @@ var Sql = require('sequelize');
     min: 0,
     idle: 10000
   }
-});*/
+});
 /*var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
   host: process.env.DB_HOST,
   dialect: 'mssql',
@@ -26,7 +27,7 @@ var Sql = require('sequelize');
   }
 });*/
 
-var sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
+/*var sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
   host: process.env.DB_DEV_HOST,
   dialect: 'mssql',
   pool: {
@@ -38,12 +39,17 @@ var sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.
     encrypt: true
   }
 });
-
+*/
 
 var Event = module.exports = sql.define('Event', {
   eventName: Sql.STRING,
   eventRegistrationLink: Sql.STRING, //link to registrationfor event
-  eventLocation: Sql.STRING,
+  eventLocation: {
+    type: Sql.STRING,
+    set: function(val) {
+      this.setDataValue('eventLocation', val.toLowerCase().replace(' ', '_'));
+    }
+  },
   eventContinent: Sql.ENUM('North America', 'South America', 'Africa', 'Asia', 'Europe', 'Oceania'),
   eventStartDate: Sql.DATE, //the start date...
   eventEndDate: Sql.DATE, // the end date...
@@ -98,10 +104,10 @@ Event.sync({force: true})
     // eventRegistrationLink: , //link to registrationfor event
     eventLocation: 'Paris',
     eventContinent: 'Europe',
-    eventStartDate: new Date('2016-05-11:00:00:01'), //the start date...
+    eventStartDate: new Date('2016-05-12:00:00:01'), //the start date...
     eventEndDate: new Date('2016-05-12:23:59:00'), // the end date...
-    eventHeaderImage: 'extend-gray.jpg', //link to header image
-    eventHomepageImage: 'extend-gray.jpg',
+    eventHeaderImage: 'ExtendWebsiteHeader_edited.jpg', //link to header image
+    eventHomepageImage: 'ExtendWebsiteHeader_edited.jpg',
     eventHighlightColor: '#5c2d91',
     eventSpeakers: '1,2,9,12,8,15,11,10,6'
   });

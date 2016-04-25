@@ -1,12 +1,56 @@
 'use strict';
 
 module.exports = function (grunt) {
-	grunt.loadNpmTasks('grunt-simple-mocha');
+	/*grunt.loadNpmTasks('grunt-simple-mocha');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-jscs');
+  grunt.loadNpmTasks('grunt-babel');*/
+  //load-grunt-tasks loads all grunt tasks automatically
+  require('load-grunt-tasks')(grunt);
 
 	// initialize Grunt
 	grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
+    clean: {
+      dev: {
+        src: ['build/', 'dist/']
+      }
+    },
+    //register task to run babel and compile es6
+    babel: {
+      options: {
+        sourceMap: false,
+        presets: ['babel-preset-es2015']
+      },
+      dist: {
+        files: [
+          {
+            expand: true,
+            cwd: 'es6/',
+            src: ['*.js'],
+            dest: 'build/',
+            ext:'.build.js'
+          }
+        ]
+      }
+    },
+    //create browserify task
+    browserify: {
+      dist: {
+        files: {
+          'dist/build.dist.js': ['build/**/*.js']
+        },
+        options: {
+          // transform: ['coffeeify']
+        }
+      }
+    },
+    //create nodemon task to run server
+    nodemon: {
+      dev: {
+        script: 'server.js'
+      }
+    },
 		    // create jshint task
     jshint: {
       dev: {
@@ -100,5 +144,10 @@ module.exports = function (grunt) {
   grunt.registerTask('lint', ['jshint:dev', 'jshint:mocha', 'jshint:jasmine']);
 	// register mocha test task
 	grunt.registerTask('test', ['simplemocha:dev']);
-	grunt.registerTask('default', ['test']);
+  // grunt.registerTask('nodemon', ['nodemon:dev']);
+  grunt.registerTask('bbl', ['clean', 'babel']);
+  grunt.registerTask('build', ['browserify', 'nodemon:dev']);
+  grunt.registerTask('start', ['bbl', 'browserify', 'nodemon:dev']);
+	grunt.registerTask('test', ['build', 'test']);
+  grunt.registerTask('default', ['start']);
 };
