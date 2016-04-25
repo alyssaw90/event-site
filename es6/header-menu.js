@@ -81,7 +81,7 @@ import * as customFunctions from './common-functions.build.js';
 				// let headerImage = '<a href="/' + data[0].eventUrl + '"><section class="headerImageTitleBox" style="background-color:' + data[0].eventHighlightColor + '; opacity: .8;">' + '<h1>' + data[0].eventName + '</h1><h1>' + months[startDate.getMonth()] + ' ' + startDate.getDate() + ' - ' + endDate.getDate() + ', ' + endDate.getFullYear() + '</h1></section></a><section id="headerImage" class="mobileWrapper"><img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../uploads/' + data[0].eventHomepageImage + '" /></section>'; //section commmented out to remove db rendered title box
 				//if the next upcoming event starts after today assign it to be the homepage header, otherwise assign it to the next event
 				let currentHeader;
-				let todaysDate = new Date();
+				let todaysDate = new Date();				
 				if (new Date(data[0].eventStartDate) >= todaysDate) {
 					currentHeader = data[0];
 				} else {
@@ -94,11 +94,17 @@ import * as customFunctions from './common-functions.build.js';
 			 	let $header = $('header');
 				$(data).each(function (i, elem) {
 					let startDate = new Date(elem.eventStartDate);
+					let cityArr = elem.eventLocation.split('_');
+					for (let i = 0, j = cityArr.length; i < j; i++) {
+						cityArr[i] = cityArr[i].charAt(0).toUpperCase() + cityArr[i].slice(1);
+					}
+
+			 		let city = cityArr.join(' ');
 					if (i < data.length - 1) {
-						upcomingPurpleMenu += '<a href="/' + elem.eventUrl + '">' + elem.eventLocation + '&nbsp-&nbsp<span class="purpleSubMenu">' + months[startDate.getMonth()] + ',&nbsp' + startDate.getFullYear() + '</span></a>| ';
+						upcomingPurpleMenu += '<a href="/' + elem.eventUrl + '">' + city + '&nbsp-&nbsp<span class="purpleSubMenu">' + months[startDate.getMonth()] + ',&nbsp' + startDate.getFullYear() + '</span></a>| ';
 					}
 					if (i >= data.length - 1) {
-						upcomingPurpleMenu += '<a href="/' + elem.eventUrl + '">' + elem.eventLocation + '&nbsp-&nbsp<span class="purpleSubMenu">' + months[startDate.getMonth()] + ',&nbsp' + startDate.getFullYear() + '</span></a>';
+						upcomingPurpleMenu += '<a href="/' + elem.eventUrl + '">' + city + '&nbsp-&nbsp<span class="purpleSubMenu">' + months[startDate.getMonth()] + ',&nbsp' + startDate.getFullYear() + '</span></a>';
 
 					}
 				});

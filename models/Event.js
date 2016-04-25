@@ -44,7 +44,12 @@ var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.
 var Event = module.exports = sql.define('Event', {
   eventName: Sql.STRING,
   eventRegistrationLink: Sql.STRING, //link to registrationfor event
-  eventLocation: Sql.STRING,
+  eventLocation: {
+    type: Sql.STRING,
+    set: function(val) {
+      this.setDataValue('eventLocation', val.toLowerCase().replace(' ', '_'));
+    }
+  },
   eventContinent: Sql.ENUM('North America', 'South America', 'Africa', 'Asia', 'Europe', 'Oceania'),
   eventStartDate: Sql.DATE, //the start date...
   eventEndDate: Sql.DATE, // the end date...
@@ -99,7 +104,7 @@ Event.sync({force: true})
     // eventRegistrationLink: , //link to registrationfor event
     eventLocation: 'Paris',
     eventContinent: 'Europe',
-    eventStartDate: new Date('2016-05-11:00:00:01'), //the start date...
+    eventStartDate: new Date('2016-05-12:00:00:01'), //the start date...
     eventEndDate: new Date('2016-05-12:23:59:00'), // the end date...
     eventHeaderImage: 'ExtendWebsiteHeader_edited.jpg', //link to header image
     eventHomepageImage: 'ExtendWebsiteHeader_edited.jpg',

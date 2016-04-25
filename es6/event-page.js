@@ -192,7 +192,7 @@
 
 // });
 
-let jQuery = require('jquery');
+/*let jQuery = require('jquery');
 import * as customFunctions from './common-functions.build.js';
 
 (function() {
@@ -202,4 +202,4 @@ import * as customFunctions from './common-functions.build.js';
 			// alert(theEvent);
 		});
 	});
-})(jQuery);
+})(jQuery);*/

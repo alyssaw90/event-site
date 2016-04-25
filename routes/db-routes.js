@@ -200,94 +200,7 @@ module.exports = function (router) {
     res.sendFile(path.join(__dirname, '../views/loggedout.html'));
   });
 
-  
-  router.route('/createevent')
-  .post(upload.array('images', 2), function (req, res, next) {
-    sql.sync()
-    .then(function () {
-      Event.create({
-        eventName: req.body.newEventName,
-        eventStartDate: req.body.newEventStartDate,
-        eventEndDate: req.body.newEventEndDate,
-        eventLocation: req.body.newEventLocation,
-        eventHeaderImage: req.files[0].filename,
-        eventHomepageImage: req.files[1].filename,
-        eventContinent: req.body.newEventContinent,
-        eventLocation: req.body.newEventLocation,
-        eventHighlightColor: req.body.newEventColor
-      })
-      .then(function(newEvent) {
-        // console.log(clc.bgGreen('   ::::::    '), newEvent.eventName);
-        res.json(newEvent.id);
-      })
-      // console.log(clc.bgRed('    ::::::   '), req.body.speakersInput);
-    })
-  });
-
-  router.route('/addspeakers')
-  .post(function(req, res, next) {
-    sql.sync()
-    .then(function() {
-      return Event.findOne({where: {id: req.body.eventId}})
-    })
-    .then(function(thisEvent) {
-      thisEvent.eventSpeakers = req.body.speakers;
-      thisEvent.save().then(function() {});
-    })
-  });
-
-  router.route('/addtabs')
-  .post(function(req, res, next) {
-    sql.sync()
-    .then(function() {
-      EventTab.create({
-        eventId: req.body.eventId,
-        tabNumber: req.body.tabNumber,
-        tabTitle: req.body.tabTitle,
-        tabContent: req.body.tabContent
-      })
-      res.end();
-    })
-  });
-
-  router.route('/showimages')
-  .get(function(req, res) {
-    fs.readdir(path.join(__dirname, '../uploads'), function(err, files) {
-      let outputHtml = '';
-      if (err) {
-        console.log(err);
-        res.status(500).json({msg: 'internal server error'});
-      }
-
-      for (let i = 0, j = files.length; i < j; i ++) {
-        if (files[i] !== '.gitignore') {
-          outputHtml += '<img class="imageToInsert" style="height: 50px; margin: 10px 10px 10px 10px" data-clipboard-text="/uploads/' + files[i] + '" src="/uploads/' + files[i] + '" />';
-        }
-      }
-      outputHtml += '<script type="text/javascript">$(".imageToInsert").click(function() {$(this).toggleClass("animated shake");})'
-      res.send(outputHtml);
-    })
-  })
-  
-  router.route('/addimage')
-  .post(upload.single('images'), function (req, res, next) {
-    if (req.body.eventId) {
-      sql.sync()
-      .then(function() {
-        return Event.findOne({where: {id: req.body.eventId}});
-      })
-      .then(function(data) {
-        var key = req.body.whatToChange;
-        data[key] = req.file.filename;
-        data.save()
-        console.log(clc.yellow('FFFFFFFFFFFFFFFFF ::::::::   '), data[key]);
-        res.end();
-      })
-      
-    }
-  });
-  
-    
+  //find all events that are upcoming and add the next 3 upcoming events to the future-events page
   router.route('/future-events')
   .get(function (req, res) {
     let eventBlocksHtml = '<main class="events grid"><section class="col_12 internetExplorer">';
@@ -330,9 +243,8 @@ module.exports = function (router) {
       });
     });
   });
-  
 
-
+  //route to send events for header
   router.route('/events')
   .get(function (req, res) {
     sql.sync()
@@ -371,9 +283,102 @@ module.exports = function (router) {
       });
     });
   });
+  
 
-  router.route('/allevents')
-  .get(function(req, res) {
+  /*/////////////////////////////////////////////////////////////////////////////////////////
+
+
+               ********The Routes below are for event Creation******
+
+
+  /////////////////////////////////////////////////////////////////////////////////////////*/
+
+  //create basic event
+  router.post('/createevent', eatAuth, upload.array('images', 2), function (req, res, next) {
+    sql.sync()
+    .then(function () {
+      Event.create({
+        eventName: req.body.newEventName,
+        eventStartDate: req.body.newEventStartDate,
+        eventEndDate: req.body.newEventEndDate,
+        eventLocation: req.body.newEventLocation,
+        eventHeaderImage: req.files[0].filename,
+        eventHomepageImage: req.files[1].filename,
+        eventContinent: req.body.newEventContinent,
+        eventLocation: req.body.newEventLocation,
+        eventHighlightColor: req.body.newEventColor
+      })
+      .then(function(newEvent) {
+        // console.log(clc.bgGreen('   ::::::    '), newEvent.eventName);
+        res.json(newEvent.id);
+      })
+      // console.log(clc.bgRed('    ::::::   '), req.body.speakersInput);
+    });
+  });
+
+  //Find an event with the id from req.body.eventId and add the string of speakers then save
+  router.post('/addspeakers', eatAuth, function(req, res, next) {
+    sql.sync()
+    .then(function() {
+      return Event.findOne({where: {id: req.body.eventId}})
+    })
+    .then(function(thisEvent) {
+      thisEvent.eventSpeakers = req.body.speakers;
+      thisEvent.save().then(function() {});
+    });
+  });
+
+  //create a tab with data from req.body
+  router.post('/addtabs', eatAuth, function(req, res, next) {
+    sql.sync()
+    .then(function() {
+      EventTab.create({
+        eventId: req.body.eventId,
+        tabNumber: req.body.tabNumber,
+        tabTitle: req.body.tabTitle,
+        tabContent: req.body.tabContent
+      })
+      res.end();
+    });
+  });
+
+  //show all images
+  router.get('/showimages', eatAuth, function(req, res) {
+    fs.readdir(path.join(__dirname, '../uploads'), function(err, files) {
+      let outputHtml = '';
+      if (err) {
+        console.log(err);
+        res.status(500).json({msg: 'internal server error'});
+      }
+
+      for (let i = 0, j = files.length; i < j; i ++) {
+        if (files[i] !== '.gitignore') {
+          outputHtml += '<img class="imageToInsert" style="height: 50px; margin: 10px 10px 10px 10px" data-clipboard-text="/uploads/' + files[i] + '" src="/uploads/' + files[i] + '" />';
+        }
+      }
+      outputHtml += '<script type="text/javascript">$(".imageToInsert").click(function() {$(this).toggleClass("animated shake");})'
+      res.send(outputHtml);
+    });
+  });
+  
+  //add an image from req.body
+  router.post('/addimage', eatAuth, upload.single('images'), function (req, res, next) {
+    if (req.body.eventId) {
+      sql.sync()
+      .then(function() {
+        return Event.findOne({where: {id: req.body.eventId}});
+      })
+      .then(function(data) {
+        var key = req.body.whatToChange;
+        data[key] = req.file.filename;
+        data.save()
+        res.end();
+      })
+      
+    }
+  });
+  //get all events for edit events tab
+  router.get('/allevents', function(req, res) {
     sql.sync()
     .then(function() {
       return Event.findAll();
@@ -395,8 +400,7 @@ module.exports = function (router) {
   });*/
 
   //route to return event tab being searched
-  router.route('/eventTabs')
-  .post(function(req, res) {
+  router.post('/eventTabs', eatAuth, function(req, res) {
     sql.sync()
     .then(function() {
       EventTab.findOne({where: {id: req.body.tabId}})
@@ -413,24 +417,29 @@ module.exports = function (router) {
     });
   });
 
-  router.route('/edittab')
-  .post(function(req, res) {
-    console.log(clc.bgRed(':::::::::::::     '), req.body)
+  //search for a tab with the id from req.body.tabId and replace the data with the submitted data
+  router.post('/edittab', eatAuth, function(req, res) {
     sql.sync()
     .then(function() {
       return EventTab.findOne({where: {id: req.body.tabId}})
     })
     .then(function(tab) {
-      tab.tabNumber = req.body.tabNumber;
-      tab.tabTitle = req.body.tabTitle;
-      tab.tabContent = req.body.tabContent;
+      if (req.body.tabNumber) {
+        tab.tabNumber = req.body.tabNumber;
+      }
+      if (req.body.tabTitle) {
+        tab.tabTitle = req.body.tabTitle;
+      }
+      if (req.body.tabContent) {
+        tab.tabContent = req.body.tabContent;
+      }
       tab.save();
       res.end();
-    })
-  })
+    });
+  });
 
-  router.route('/findeventtoedit')
-  .post(function(req, res) {
+  //find the searched for event and return the html form to edit it
+  router.post('/findeventtoedit', eatAuth, function(req, res) {
     //create object to hold html to be sent to the DOM
     let editEventHtml = {};
     //create an eventInfo object to hold the values for the event to be rendered
@@ -502,18 +511,18 @@ module.exports = function (router) {
       editEventHtml.eventHighlightColor = `<form action="/editevent" id="editEventForm" method="POST"><label for="editEventInput">Choose a color</label><input class="col_8" style="margin-left:10px; margin-right:10px;" id="editEventInput" name="editEventInput" type="color" value="${eventInfo.theEvent.eventHighlightColor}"></input><input type="hidden" id="eventId" name="eventId" value="${eventInfo.theEvent.id}"></input><input type="hidden" id="whatToChange" id="whatToChange" name="whatToChange" value="eventHighlightColor"></input><button class="medium" id="editEventNameButton">Save</button></form>`;
       editEventHtml.eventSpeakers = `<form id="editSpeakerCount"><label for="newSpeakerCount">How many speakers will the event have?</label><input type="number" id="newSpeakerCount" name="newSpeakerCount"></input></input><input type="hidden" id="eventId" name="eventId" value="${eventInfo.theEvent.id}"></input><button class="medium" id="newSpeakerCountButton" type="submit">Choose Speakers</button></form><form action="/editevent" id="newAddSpeakersForm" method="post" enctype="multipart/form-data"><input type="hidden" id="whatToChange" id="whatToChange" name="whatToChange" value="eventSpeakers"></input></form>`;
       res.json(editEventHtml);
-    })
+    });
 
   });
 
-  router.route('/editevent')
-  .post(function(req, res) {
+  //find event and change the value that is sent in req.body.whatToChange
+  router.post('/editevent', eatAuth, function(req, res) {
     sql.sync()
     .then(function() {
       return Event.findOne({where:{id: req.body.eventId}})
     })
     .then(function(eventToEdit) {
-      var key = req.body.whatToChange;
+      let key = req.body.whatToChange;
       eventToEdit[key] = req.body.editEventInput;
       eventToEdit.save();
       res.end();
@@ -521,34 +530,33 @@ module.exports = function (router) {
   })
 
 
-router.route('/allevents/:eventId')
-.get(function (req, res) {
-  let picsHtml = '<div class="col_12 gallery">';
-  let returnObj = {};
-  sql.sync()
-  .then(function () {
-    Event.findOne({where: {id: req.params.eventId}})
-    .then(function (data) {
-      fs.readdir(path.join(__dirname, '../uploads/' + data.eventUrl), function (err, files) {
-        for (let key in files) {
-          picsHtml += '<a href="../uploads/' + data.eventUrl + '/' + files[key] + ' rel="gallery" class="fancybox" type="image" ><img src="../uploads/' + data.eventUrl + '/' + files[key] + '" width="100" height="100" /></a>';
-        }
-        picsHtml += '</div>';
-        /*for (let i = 0, j = files.length; i < j; i++) {
-          files[i] = '../uploads/' + data.eventUrl + '/' + files[i];
-        }*/
-        let testHtml = '<div class="col_12 gallery"><a href="../uploads/shanghaiinteropdevdays2015-2026/_MG_3990.JPG" rel="gallery"><img src="../uploads/shanghaiinteropdevdays2015-2026/_MG_3990.JPG" width="100" height="100" /></a><a href="../uploads/shanghaiinteropdevdays2015-2026/_MG_4077.JPG" rel="gallery"><img src="../uploads/shanghaiinteropdevdays2015-2026/_MG_4077.JPG" width="100" height="100" /></a></div>';
-        returnObj.eventUrl = data.eventUrl;
-        returnObj.picsHtml = picsHtml;
-        returnObj.files = files;
-        res.json(returnObj);
+/*  router.route('/allevents/:eventId')
+  .get(function (req, res) {
+    let picsHtml = '<div class="col_12 gallery">';
+    let returnObj = {};
+    sql.sync()
+    .then(function () {
+      Event.findOne({where: {id: req.params.eventId}})
+      .then(function (data) {
+        fs.readdir(path.join(__dirname, '../uploads/' + data.eventUrl), function (err, files) {
+          for (let key in files) {
+            picsHtml += '<a href="../uploads/' + data.eventUrl + '/' + files[key] + ' rel="gallery" class="fancybox" type="image" ><img src="../uploads/' + data.eventUrl + '/' + files[key] + '" width="100" height="100" /></a>';
+          }
+          picsHtml += '</div>';
+          // for (let i = 0, j = files.length; i < j; i++) {
+          //   files[i] = '../uploads/' + data.eventUrl + '/' + files[i];
+          // }
+          let testHtml = '<div class="col_12 gallery"><a href="../uploads/shanghaiinteropdevdays2015-2026/_MG_3990.JPG" rel="gallery"><img src="../uploads/shanghaiinteropdevdays2015-2026/_MG_3990.JPG" width="100" height="100" /></a><a href="../uploads/shanghaiinteropdevdays2015-2026/_MG_4077.JPG" rel="gallery"><img src="../uploads/shanghaiinteropdevdays2015-2026/_MG_4077.JPG" width="100" height="100" /></a></div>';
+          returnObj.eventUrl = data.eventUrl;
+          returnObj.picsHtml = picsHtml;
+          returnObj.files = files;
+          res.json(returnObj);
+        });
       });
     });
-  });
-});
+  });*/
 
-  router.route('/contacts')
-  .get(function (req, res) {
+  router.get('/contacts', eatAuth, function (req, res) {
     sql.sync()
     .then(function () {
       Contact.findAll()
@@ -558,7 +566,7 @@ router.route('/allevents/:eventId')
     });
   });
   
-  router.route('/upcomingeventurls')
+/*  router.route('/upcomingeventurls')
   .get(function (req, res) {
     sql.sync()
     .then(function () {
@@ -574,9 +582,9 @@ router.route('/allevents/:eventId')
         res.json(theUrls);
       });
     });
-  });
+  });*/
 
-  //This route creates the html for the event pages
+  //This route creates the html for the event pages. This route MUST be last
   router.route('/:eventUrl')
   .get(function(req, res) {
     //create an eventInfo object to hold the values for the event to be rendered
