@@ -29,6 +29,7 @@
       var $cancelButton = $('#cancelButton');
       var tabCount = 1;
 			var newEventId;
+
       //make footer stick to bottom of content or page, whichever is taller.
       var stickyFooter = function() {
         var $window = $(window);
@@ -71,15 +72,7 @@
         }
       }
 
-     /* tinymce.activeEditor.uploadImages(function(success) {
-        $.post('/addimage', tinymce.activeEditor.getContent()).done(function() {
-          console.log("Uploaded images and posted content as an ajax request.");
-        });
-
-        var content = tinymce.activeEditor.getContent();
-        console.log(content);
-      });
-*/
+      //function to submit form data that includes files
       function submitForm(formId, submitUrl) {
         var fd = new FormData(document.getElementById(formId));
         fd.append('label', 'WEBUPLOAD');
@@ -117,25 +110,13 @@
         })
       }
 */
-      function showImages() {
+      //show images in div passed to function
+      function showImages(divId) {
         $.ajax({
           type: 'GET',
           url: '/showimages',
           success: function(data2) {
-            $imagesDiv.html(data2);
-          },
-          error: function(err) {
-            console.log(err);
-          }
-        })
-      }
-
-      function showImages2() {
-        $.ajax({
-          type: 'GET',
-          url: '/showimages',
-          success: function(data3) {
-            $newImagesDiv.html(data3);
+            divId.html(data2);
           },
           error: function(err) {
             console.log(err);
@@ -143,9 +124,10 @@
         })
       }
       
-
+      //use clipboard to enable copying to system clipboard see https://clipboardjs.com/ for details on how it works
       new Clipboard('.imageToInsert');
 
+      //initiate #newEventTabTextArea as a tinymce form see https://www.tinymce.com/ for more details on how it works
       tinymce.init({
         selector: '#newEventTabTextArea',
         theme: 'modern',
@@ -159,17 +141,19 @@
         inline: true
       });
 
+      //set cancel button to reload page
       $cancelButton.click(function() {
         location.reload();
       })
 
-      
+      //submit the create event form and show the speakers div to decide on speaker count, this created the initial event item in the database
       $createEventForm.submit(function(e) {
         e.preventDefault();
         submitForm('createEventForm', 'createevent');
         $addSpeakersDiv.show();
       });
 
+      //once the speaker count has been decided create that number of dropdown forms listing all available speakers
       $chooseSpeakerCount.submit(function(e) {
         e.preventDefault();
         var speakerCount = $chooseSpeakerCount.serializeArray();
@@ -197,6 +181,7 @@
   			})
   		});
 
+      //when the speakers form has been submitted, turn their IDs into a comma deliminated string and add it to the created event
   		$('#addSpeakersForm').submit(function(e) {
   			e.preventDefault();
   			var speakersArr = [];
@@ -214,28 +199,17 @@
             //do something on success
           }
         });
-        showImages();
+        showImages($imagesDiv);
       });
 
       $addImageForm.submit(function(e) {
         e.preventDefault();
         submitForm('addImageForm', 'addimage');
-        showImages();
+        showImages($imagesDiv);
 
       });
 
-  /*		$.get('/contacts', function(data) {
-  			var speakersHtml = '';
-  			for (var i = 0, j = data.length; i < j; i++) {
-  				// console.log(data[i]);
-  				var thisSpeakerName = data[i].firstName + ' ' + data[i].lastName;
-  				var thisSpeakerId = data[i].id;
-  				var thisInputId = data[i].firstName.toLowerCase() + data[i].lastName.toLowerCase();
-  				speakersHtml += '<input type="checkbox" id="speakersInput" name="speakersInput" value="' + thisSpeakerId + '">     </input><input type="text" id="speakersInput" name="speakersInput" placeholder="Order number">     </input><label for"speakersInput" class="inline">' + thisSpeakerName + '</label><br />'
-  			}
-  			$newEventSpeakers.append(speakersHtml);
-  		});*/
-
+      //add tab EventTabs in database and then reset the form
   		$addTabsForm.submit(function(e) {
   			e.preventDefault();
         tabCount++;
@@ -389,20 +363,14 @@
                           $('#eventId').val(data.eventId);
                           $('#editedTabName').val(data.tabTitle);
                           $('#editedTabPosition').val(data.tabNumber);
-                          showImages2();
+                          showImages($newImagesDiv);
                         }
                       });
 
                     });
-                  })
-                  // $('#editEventTabs').submit(function(ee) {
-                  //   ee.preventDefault();
-                  //   $.post('/eventTabs', $("input[name=chooseEventToEdit]:checked").val(), function(data, textStatus, xhr) {
-                  //     /*optional stuff to do after success */
-                  //   });
-                  // });
+                  });
 
-                })
+                });
               });
             });
           })
@@ -432,7 +400,7 @@
       $('#addTabImage').submit(function(e) {
         e.preventDefault();
         submitForm('addTabImage', 'addimage')
-        showImages2();
+        showImages($newImagesDiv);
 
       });
 
