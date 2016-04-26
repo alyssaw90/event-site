@@ -94,21 +94,3 @@ function makeRandomString () {
   }
   return outputString;
 }
-
-User.sync({force: true})
-.then(function () {
-  return User.create({
-  userName: 'TestUser',
-  password: '!nt3r0p',
-  email: 'curriculum@interopevents.com',
-  isAdmin: false
-  });
-})
-.then(function () {
-  return User.create({
-  userName: 'Admin',
-  password: '!nt3r0p',
-  email: 'admin@interopevents.com',
-  isAdmin: true
-  });
-})
