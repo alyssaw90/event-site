@@ -127,22 +127,26 @@
       //function to check database for changes and refresh  if any have been made
 
       function checkForChanges() {
-        $.get('/allevents', function(data) {
-          var now = new Date();
-          var before = new Date(now.getTime() - 2000);
-          for (var i = 0, j = data.length; i < j; i++) {
-          var changed = new Date(data[i].updatedAt) > before;
-          if (changed) {
-            location.reload();
-            changed = false;
-          }
+        setTimeout(function() {
+          $.get('/allevents', function(data) {
+            console.log('reached');
+            var now = new Date();
+            var before = new Date(now.getTime() - 2000);
+            for (var i = 0, j = data.length; i < j; i++) {
+            var changed = new Date(data[i].updatedAt) > before;
+            if (changed) {
+              location.reload();
+              changed = false;
+            }
 
-          }
-        });
+            }
+          });
+          
+        }, 100);
       }
       
       //check to see if anything as changed in the database
-      setInterval(checkForChanges, 1000);
+      // setInterval(checkForChanges, 1000);
       
       //use clipboard to enable copying to system clipboard see https://clipboardjs.com/ for details on how it works
       new Clipboard('.imageToInsert');
@@ -260,7 +264,8 @@
       $.get('/allevents', function(data) {
         var eventsList = '<ul>';
         for (var i = 0, j = data.length; i < j; i++) {
-          eventsList += '<li><button class="editEventButton" id="' + data[i].eventUrl + 'Button" data-eventUrl="' + data[i].eventUrl + '">' + data[i].eventName + ', ' + data[i].eventLocation + ', ' + data[i].eventStartDate + '</button></li>';
+          let currentEventDate = new Date(data[i].eventStartDate).toDateString();
+          eventsList += `<li><button class="editEventButton" id="${data[i].eventUrl}Button" data-eventUrl="${data[i].eventUrl}">${data[i].eventName}, ${data[i].eventLocation}, ${currentEventDate}</button></li>`;
         }
         eventsList += '</ul>';
         $editEventSection.append(eventsList);
@@ -296,14 +301,14 @@
 
                     if (actionUrl === 'edittheevent') {
                       $.post('/editevent', $('#editEventForm').serialize(), function(data, textStatus, xhr) {
-                        
+
                       });
 
                     }
 
                     $('#editEventForm')[0].reset();
                     $editFormSection.html('<h3>Saved</h3>');
-
+                    checkForChanges();
                   });
 
                   //when the speaker count form is submitted, call the contacts API and create the form with the desired number of speakers
@@ -350,6 +355,7 @@
                         });
                         $('#newAddSpeakersForm').hide();
                         $editFormSection.show().html('<h3>Saved</h3>');
+                        checkForChanges();
                       });
 
                     })
@@ -388,6 +394,7 @@
 
                     });
                     $editFormSection.show().html('<h3>Saved</h3>');
+                    checkForChanges();
                   });
 
                 });
