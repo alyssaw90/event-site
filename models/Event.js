@@ -1,10 +1,10 @@
 'use strict';
 
 require('dotenv').load();
-var fs = require('fs');
-var path = require('path');
-var Sql = require('sequelize');
-var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
+let fs = require('fs');
+let path = require('path');
+let Sql = require('sequelize');
+let sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
   host: process.env.DB_LOCAL_HOST,
   dialect: 'mssql',
 
@@ -14,7 +14,7 @@ var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.
     idle: 10000
   }
 });
-/*var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+/*let sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
   host: process.env.DB_HOST,
   dialect: 'mssql',
   pool: {
@@ -27,7 +27,7 @@ var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.
   }
 });*/
 
-/*var sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
+/*let sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
   host: process.env.DB_DEV_HOST,
   dialect: 'mssql',
   pool: {
@@ -41,7 +41,7 @@ var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.
 });
 */
 
-var Event = module.exports = sql.define('Event', {
+let Event = module.exports = sql.define('Event', {
   eventName: Sql.STRING,
   eventRegistrationLink: Sql.STRING, //link to registrationfor event
   eventLocation: {
@@ -70,14 +70,14 @@ var Event = module.exports = sql.define('Event', {
 {
   getterMethods   : {
     eventUrl: function () {
-      var theEventLocation = this.getDataValue('eventLocation');
-      var startDate = this.getDataValue('eventStartDate');
-      var theUrl = theEventLocation.replace(/\W/g, '').toLowerCase() + '-' + startDate.getFullYear();
+      let theEventLocation = this.getDataValue('eventLocation');
+      let startDate = this.getDataValue('eventStartDate');
+      let theUrl = theEventLocation.replace(/\W/g, '').toLowerCase() + '-' + startDate.getFullYear();
       return theEventLocation.replace(/\W/g, '').toLowerCase() + startDate.getFullYear();
     }/*,
     eventSlideshowImage: function () {
-      var idVal = this.getDataValue('id');
-      var imgIndex = Math.floor(idVal / randomTabImages.length);
+      let idVal = this.getDataValue('id');
+      let imgIndex = Math.floor(idVal / randomTabImages.length);
       return randomTabImages[idVal - imgIndex];
     }*/
   }

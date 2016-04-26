@@ -623,7 +623,6 @@ module.exports = function (router) {
       })
     })
     .then(function(theTabs) {
-      console.log(clc.bgGreen.red('    :::::    '), theTabs);
       //assign the returned event tabs to the tabs key of the eventInfo object
       eventInfo.tabs = theTabs;
     })

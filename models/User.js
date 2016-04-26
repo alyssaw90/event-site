@@ -1,12 +1,12 @@
-'use Strict';
+'use strict';
 
 require('dotenv').load();
-var clc = require('cli-color');
-var bcrypt = require('bcrypt-nodejs');
-var eat = require('eat');
+let clc = require('cli-color');
+let bcrypt = require('bcrypt-nodejs');
+let eat = require('eat');
 
-var Sql = require('sequelize');
-var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
+let Sql = require('sequelize');
+let sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
   host: process.env.DB_LOCAL_HOST,
   dialect: 'mssql',
 
@@ -16,7 +16,7 @@ var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.
     idle: 10000
   }
 });
-/*var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+/*let sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
     host: process.env.DB_HOST,
   dialect: 'mssql',
   pool: {
@@ -29,7 +29,7 @@ var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.
   }
 });*/
 
-/*var sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
+/*let sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
   host: process.env.DB_DEV_HOST,
   dialect: 'mssql',
   pool: {
@@ -43,14 +43,14 @@ var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.
 });
 */
 
-// var EncryptedField = require('sequelize-encrypted');
+// let EncryptedField = require('sequelize-encrypted');
 
 // secret key should be 32 bytes hex encoded (64 characters)
-// var key = process.env.SECRET_KEY;
+// let key = process.env.SECRET_KEY;
 
-// var enc_fields = EncryptedField(Sql, key);
+// let enc_fields = EncryptedField(Sql, key);
 
-var User = module.exports = sql.define('User', {
+let User = module.exports = sql.define('User', {
   userName: Sql.STRING,
   // password: enc_fields.vault('password'),
   password: {
@@ -86,10 +86,10 @@ var User = module.exports = sql.define('User', {
 });
 
 function makeRandomString () {
-  var outputString = '';
-  var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_-+=<,>.?/';
-  var randomNumber = Math.ceil(Math.random() * 10) + 10;
-  for ( var i = 0; i < randomNumber; i++ ) {
+  let outputString = '';
+  let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_-+=<,>.?/';
+  let randomNumber = Math.ceil(Math.random() * 10) + 10;
+  for ( let i = 0; i < randomNumber; i++ ) {
     outputString += possible.charAt(Math.floor(Math.random() * possible.length));
   }
   return outputString;
