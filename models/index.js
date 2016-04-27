@@ -1,9 +1,5 @@
 'use strict';
 
-require('dotenv').load();
-let clc = require('cli-color');
-let fs = require('fs');
-let path = require('path');
 let Sql = require('sequelize');
 let sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
   host: process.env.DB_LOCAL_HOST,
@@ -28,7 +24,6 @@ let sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.
   }
 });*/
 
-
 /*let sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
   host: process.env.DB_DEV_HOST,
   dialect: 'mssql',
@@ -40,21 +35,15 @@ let sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.
   dialectOptions: {
     encrypt: true
   }
-});*/
+});
+*/
 
-let EventImage = module.exports = sql.define('EventImage', {
-	imageLink: Sql.STRING
+//load models
+let models = ['Contact', 'Event', 'EventTab', 'User'];
+
+models.forEach(function(model) {
+  module.exports[model] = sql.import(__dirname + '/' + model);
 });
 
-// EventImage.sync({force: false})
-/*.then(function () {
-		fs.readdir(path.join(__dirname, '../uploads/'), function (err, files) {
-		let imageArr = [];
-		for (let i = 0, j = files.length; i < j; i++) {
-			if (files[i] !== '.gitignore') {
-				imageArr.push({imageLink: files[i]});
-			}
-		}
-		return EventImage.bulkCreate(imageArr);
-	});
-});*/
+//export connection
+module.exports.sql = sql;

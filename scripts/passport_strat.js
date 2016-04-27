@@ -2,7 +2,8 @@
 
 var Basic = require('passport-http').BasicStrategy;
 var Digest = require('passport-http').DigestStrategy;
-var User = require('../models/User');
+var models = require('../models');
+var User = models.User;
 var clc = require('cli-color');
 
 // module.exports = function(passport) {

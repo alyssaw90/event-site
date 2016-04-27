@@ -128,15 +128,36 @@
 
       function checkForChanges() {
         setTimeout(function() {
+          var now = new Date();
+          var before = new Date(now.getTime() - 2000);
           $.get('/allevents', function(data) {
-            console.log('reached');
-            var now = new Date();
-            var before = new Date(now.getTime() - 2000);
             for (var i = 0, j = data.length; i < j; i++) {
             var changed = new Date(data[i].updatedAt) > before;
             if (changed) {
               location.reload();
               changed = false;
+            }
+
+            }
+          });
+
+          $.get('/contacts', function(data2) {
+            for (var i = 0, j = data2.length; i < j; i++) {
+            var changed2 = new Date(data2[i].updatedAt) > before;
+            if (changed2) {
+              location.reload();
+              changed2 = false;
+            }
+
+            }
+          });
+
+          $.get('/alltabs', function(data3) {
+            for (var i = 0, j = data3.length; i < j; i++) {
+            var changed3 = new Date(data3[i].updatedAt) > before;
+            if (changed3) {
+              location.reload();
+              changed3 = false;
             }
 
             }

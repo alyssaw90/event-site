@@ -1,7 +1,8 @@
 'use strict';
 
 var eat = require('eat');
-var User = require('../models/User');
+var models = require('../models');
+var User = models.User;
 var clc = require('cli-color');
 
 module.exports = function(secret) {
