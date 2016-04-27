@@ -169,7 +169,7 @@ module.exports = function() {
 <h3 id="taipei2016-anatomy-of-an-office-addin-cn">Office 增益集的基本元件</h3>\
 <p>Office 增益集的基本元件是 XML 資訊清單檔案和增益集的預設網頁。</p>\
 <figcaption>資訊清單 + 網頁 = Office 增益集</figcaption>\
-<img src="../img/office-web-curriculum-taipei-1.png" />\
+<img src="../uploads/office-web-curriculum-taipei-1.png" />\
 <p>資訊清單可指定增益集的設定及功能，例如下列：</p>\
 <ul>\
 <li>實施增益集 UI 及程式設計邏輯之網頁的 URL。</li>\
@@ -193,9 +193,9 @@ module.exports = function() {
 <h5>增益集命令 (Add-in commands)</h5>\
 <p>您可以在Office增益集中添加增益集命令來讓您 擴展 Office for Windows Desktop 與Office Online 的使用者介面。 例如， 您可以在功能區或選定的內容功能表内添加及設置Office 增益集的按鈕，這能允許使用者輕鬆地訪問 Office 增益集。命令按鈕可以啟動不同的行動，如通過自訂的 HTML 或執行一個 JavaScript 函數來顯示一個窗格（或多個窗格）。有關詳細資訊，請參見 <a href="http://dev.office.com/docs/add-ins/overview/office-add-ins">Office Add-ins platform overview</a> > Types of Office add-ins > Add-in Commands. 我們還建議您看<a href="https://channel9.msdn.com/Events/Visual-Studio/Connect-event-2015/316">九 頻道</a>的視頻來更深層次地瞭解此功能。</p>\
 <figcaption>有命令的增益集在 Excel Desktop中運行</figcaption>\
-<img src="../img/office-web-curriculum-taipei-en-14.jpg" />\
+<img src="../uploads/office-web-curriculum-taipei-en-14.jpg" />\
 <figcaption>有命令的增益集在 Excel Online中運行</figcaption>\
-<img src="../img/office-web-curriculum-taipei-en-16.jpg" />\
+<img src="../uploads/office-web-curriculum-taipei-en-16.jpg" />\
 <p>通過 VersionOverrides，您可以對增益集資訊清單中的命令設置定義。Office平臺能在本機的使用者介面對它們進行解譯。若要開始，請查閱<a href="https://github.com/OfficeDev/Office-Add-in-Commands-Samples/">GitHub 代碼範例</a>和<a href="http://dev.office.com/docs/add-ins/design/add-in-commands-for-excel-and-word-preview">Excel、 Word、 PowerPoint增益集命令</a>。</p>\
 <h5>可插入的 工作窗格</h5>\
 <p>用戶端不支援增益集命令有 （Office 2013 ，Office for Mac 與Office for IPad）。這些用戶端 將通過咨詢清單中的DefaultUrl來運行工作窗格增益集。此增益集然后會從Insert Tab中的My Add-ins選項卡中啓動。</p>\
@@ -205,12 +205,12 @@ module.exports = function() {
 </table>\
 <p>工作窗格增益集能與 Office 文件并行運作，并可讓您提供關聯式資訊和功能，以強化文件檢視及撰寫體驗。例如，工作窗格增益集可以根據文件中選取的產品名稱或組件編號在 Web 服務查詢并擷取產品資訊。</p>\
 <figcaption>工作窗格增益集 </figcaption>\
-<img src="../img/office-web-curriculum-taipei-2.png" />\
+<img src="../uploads/office-web-curriculum-taipei-2.png" />\
 <p>若要在 Excel 2013、Excel Online 或 Word 2013 中嘗試工作窗格增益集，請安裝<a href="https://store.office.com/wikipedia-WA104099688.aspx?assetid=WA104099688">維基百科</a>增益集。</p>\
 <h4>內容增益集</h4>\
 <p>內容增益集會將 Web 式功能在文件內容中嵌入及顯示。內容增益集可讓您把豐富的 網絡視覺資料、內嵌的媒體 (例如 YouTube 視訊播放程式或圖片庫) ，以及其它外部內容集成在文件中。</p>\
 <figcaption>內容增益集</figcaption>\
-<img src="../img/office-web-curriculum-taipei-3.png" />\
+<img src="../uploads/office-web-curriculum-taipei-3.png" />\
 <p>若要在 Excel 2013 或 Excel Online 中嘗試內容增益集，請安裝 <a href="https://store.office.com/bing-maps-WA102957661.aspx?assetid=WA102957661">Bing 地圖服務</a>增益集。</p>\
 <h4>Outlook 增益集</h4>\
 <p>當您檢視或撰寫 Outlook 項目時，Outlook 增益集會顯示在該項目旁邊。在讀取案例中 (使用者檢視收到項目時) 或在撰寫案例中 (使用者回覆或建立新的項目時)，它們可以與電子郵件、會議邀請、會議回覆、會議取消或約會搭配使用。</p>\
@@ -220,9 +220,9 @@ module.exports = function() {
 <tr><td>Outlook 增益集需要最低的版本爲 Exchange 2013 或 Exchange Online 來主控使用者的信箱。不支援 POP 和 IMAP 電子郵件帳戶。</td></tr>\
 </table>\
 <figcaption>有命令按鈕的Outlook增益集在功能區内</figcaption>\
-<img src="../img/office-web-curriculum-taipei-en-17.jpg" />\
+<img src="../uploads/office-web-curriculum-taipei-en-17.jpg" />\
 <figcaption>讀取案例中的 Outlook 增益集</figcaption>\
-<img src="../img/office-web-curriculum-taipei-4.png" />\
+<img src="../uploads/office-web-curriculum-taipei-4.png" />\
 <p>若要在 Outlook、Outlook for Mac 或 Outlook Web App 中嘗試 Outlook 增益集，請安裝 <a href="https://store.office.com/package-tracker-WA104162083.aspx?assetid=WA104162083">Package Tracker</a> 增益集。</p>\
 <h3 id="taipei2016-scenarios-cn">案例</h3>\
 <ul>\
@@ -287,7 +287,7 @@ module.exports = function() {
 <h3 id="taipei2016-sign-up-at-office-dev-cenbter-cn">在Office Dev Center網站上報名</h3>\
 <p>在<a href="http://dev.office.com/devprogram">Office Dev Center</a>的網站上報名及填寫單表。通過 Office 365 開發人員計劃，您能拿到免費的Office 365開發人員賬戶及為期一年Office 365的訂閲。</p>\
 <figcaption>圖 1: Office 365 Dev Program</figcaption>\
- <img src="../img/office-web-curriculum-taipei-5.png" />\
+ <img src="../uploads/office-web-curriculum-taipei-5.png" />\
 <h3 id="taipei2016-join-dev-program-cn">獲取Office 365開發人員賬戶</h3>\
 <ol>\
 <li>完成上個環節後您將收到一封來自Office 365 Developer Program的電子郵件。在電子郵件里，請按一下連接來註冊免費的 Office 365 開發人員帳戶。</li>\
@@ -295,7 +295,7 @@ module.exports = function() {
 <li> 在第二頁上(圖 2), 指定訂閱管理員的使用者識別碼。</li>\
 </ol>\
 <figcaption>圖 2. Office 365 開發人員網站網域名稱</figcaption>\
-<img src="../img/office-web-curriculum-taipei-6.png" />\
+<img src="../uploads/office-web-curriculum-taipei-6.png" />\
 <p>4.  建立 <strong>.onmicrosoft.com</strong> 的子網域。</p>\
 <p class="indentP"> 註冊之後，您必須使用所產生的認證 (格式為 <a href="mailto:UserID@yourdomain.onmicrosoft.com">UserID@yourdomain.onmicrosoft.com</a>) 登入您在其中管理帳戶的 Office 365 入口網站。SharePoint Online 開發人員網站會佈建於您的新網域中：http://yourdomain.sharepoint.com。 </p>\
 <p>5. 選擇 [下一步]，並填寫單表的最後一頁。如果您選擇用電話號碼來取得確認碼，則可以提供行動電話或地面通訊電話號碼，但不是 VoIP 號碼。</p>\
@@ -308,7 +308,7 @@ module.exports = function() {
 <h3 id="taipei2016-access-your-office-365-cn">登入Office 365</h3>\
 <p>您的瀏覽器會開啟 Office 365 安裝頁面。請選擇 [管理] 圖示，以開啟管理中心頁面。</p>\
 <figcaption>圖 3：Office 365 管理中心頁面</figcaption>\
-<img src="../img/office-web-curriculum-taipei-7.png" />\
+<img src="../uploads/office-web-curriculum-taipei-7.png" />\
 <ol>\
 <li>您必須等待 開發人員網站準備完成。準備完成之後，請在瀏覽器中刷新 管理中心頁面。</li>\
 <li>然後在頁面上選擇 [建置增益集]來開啟您開發人員網站。您應該會看到像圖 4 中的網站。在頁面有測試增益集清單。這會確認網站是否符合SharePoint開發人員網站模板。如果您看到的是普通的小組網站，請稍候幾分鐘並重新啟動您的網站。\
@@ -316,21 +316,21 @@ module.exports = function() {
 <li>記下網站 URL。在 Visual Studio 中建立 SharePoint Add-ins 專案時會用到它。</li>\
 </ol>\
 <figcaption>圖4：開發人員網站的首頁與測試清單中的增益集</figcaption>\
- <img src="../img/office-web-curriculum-taipei-8.png" />\
+ <img src="../uploads/office-web-curriculum-taipei-8.png" />\
 <h3 id="taipei2016-assign-office-365-license-cn">分配office 365許可證</h3>\
 <p>分配給自己 （活躍用戶）Office 365 許可證。點擊 "華夫格" > [管理員] 圖示。</p>\
 <figcaption>圖5： Office 365首頁</figcaption>\
-<img src="../img/office-web-curriculum-taipei-10.png" />\
+<img src="../uploads/office-web-curriculum-taipei-10.png" />\
 <p class="indentP">1.   在左側導航面板中，選擇 [用戶] > [活躍用戶]</p>\
 <p class="indentP">2.   在核取方塊内選擇自己。您的個人資料會顯示在右邊。點擊下方的項目編輯：給自己分配許可證</p>\
 <figcaption>圖 6：Office 365 管理中心頁面 > 活躍用戶</figcaption>\
-<img src="../img/office-web-curriculum-taipei-11.png" />\
+<img src="../uploads/office-web-curriculum-taipei-11.png" />\
 <p class="indentP">3. 在[用戶位置]的組合框設置您的地點。並選擇Microsoft Office 365的開發。點擊[保存]完成分配的許可證。</p>\
 <figcaption>圖7：分配活躍用戶許可證</figcaption>\
-<img src="../img/office-web-curriculum-taipei-12.png">\
+<img src="../uploads/office-web-curriculum-taipei-12.png">\
 <p class="indentP">4. 在完成後，返回到 Office 365 的主頁。頁面將顯示可用的 Office 的產品。拉下頁面，可以看到完整的顯示。</p>\
 <figcaption>圖8：Office 365 首頁</figcaption>\
-<img src="../img/office-web-curriculum-taipei-13.png" />\
+<img src="../uploads/office-web-curriculum-taipei-13.png" />\
 <p>如要回到開發者網站，點擊在左上角的"華夫格"> [管理] > [構建的應用程式]。</p>\
 <h3 id="taipei2016-registration-resources-cn">資源</h3>\
 <p><a href="https://msdn.microsoft.com/zh-tw/library/office/dn467914.aspx">Office 開發人員文件</a></p>\
@@ -389,7 +389,7 @@ module.exports = function() {
 </ul>\
 <h3 id="taipei2016-vs-2015-setup-cn">下載及安裝免費的Visual Studio Community 2015</h3>\
 <p class="indentP">1. 如果您沒有Visual Studio, 請下載及安裝免費的<a href="https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx">Visual Studio 2015 Community Edition</a> 與 <a href="https://www.visualstudio.com/features/office-tools-vs">Office開發者工具</a>。 </p>\
-<img src="../img/office-web-curriculum-taipei-14.png" />\
+<img src="../uploads/office-web-curriculum-taipei-14.png" />\
 <br />\
 <table class="tableWithBorders tableFirstRowBold">\
 <tr><th>注意事項</th></tr>\
@@ -397,7 +397,7 @@ module.exports = function() {
 </table>\
 <p class="indentP">2. 選擇<strong>File</strong> > <strong>New</strong> > <strong>Project</strong>.</p>\
 <p class="indentP">3. 在<strong>New Project</strong>方塊中，選擇<strong>Template</strong> <strong>Visual C#</strong> > <strong>Office/SharePoint</strong> > <strong>Office Add-in</strong> (或App for Office). </p>\
-<img src="../img/office-web-curriculum-taipei-15.png" />\
+<img src="../uploads/office-web-curriculum-taipei-15.png" />\
 <p class="indentP">4. 命名該專案<strong>HelloWorld</strong>, 然後選擇<strong>OK</strong>。</p>\
 <p class="indentP">5. 在此演示，選擇<strong>Task pane</strong>作為應用程式類型, 然後選擇<strong>Next</strong>。</p>\
 <p class="indentP">6.  選擇 <strong>Excel</strong> 作為要承載外接程式中的 Office 增益集。您可以選擇多個選項，Office 增益集將運行在任何選定的應用程式中。</p>\
@@ -665,7 +665,7 @@ Web 專案會有Office 增益集網站檔案, 所以這是您發佈到Azure的�
 <h3 id="taipei2016-anatomy-of-an-office-addin-en">Anatomy of an Office Add-in</h3>\
 <p>The basic components of an Office Add-in are an XML manifest file and the default webpage of your add-in.</p>\
 <figcaption>Manifest + webpage = an Office Add-in</figcaption>\
-<img src="../img/office-web-curriculum-taipei-en-15.jpg" />\
+<img src="../uploads/office-web-curriculum-taipei-en-15.jpg" />\
 <p>The manifest specifies settings and capabilities of the add-in, such as the following:</p>\
 <ul>\
 <li>The URL of the webpage that implements the add-in\'s UI and programming logic.</li>\
@@ -689,9 +689,9 @@ Web 專案會有Office 增益集網站檔案, 所以這是您發佈到Azure的�
 <h4>Add-in commands</h4>\
 <p>Use add-in commands to extend the user interface of Office for Windows Desktop and Office Online. For example, you can add uttons for your add-ins on the ribbon or selected contextual menus, allowing users to easily access their add-ins within Office. Command buttons can launch the different actions such as showing a pane (or multiple panes) with a custom HTML or executing a JavaScript function. We recommend that you <a href="https://channel9.msdn.com/Events/Visual-Studio/Connect-event-2015/316">watch this Channel9 video</a> for a deeper overview of this feature.</p>\
 <figcaption>Add-in with commands running in Excel Desktop </figcaption>\
-<img src="../img/office-web-curriculum-taipei-en-14.jpg" />\
+<img src="../uploads/office-web-curriculum-taipei-en-14.jpg" />\
 <figcaption>Add-in with commands running in Excel Online </figcaption>\
-<img src="../img/office-web-curriculum-taipei-en-16.jpg" />\
+<img src="../uploads/office-web-curriculum-taipei-en-16.jpg" />\
 <p>You can define your commands in your add-in manifest by using VersionOverrides. The Office platform takes care of interpreting them into native UI. To get started, check out these <a href="https://github.com/OfficeDev/Office-Add-in-Commands-Samples/">samples on GitHub</a>, and see <a href="http://dev.office.com/docs/add-ins/design/add-in-commands-for-excel-and-word-preview">Add-in commands for Excel, Word, and PowerPoint</a></p>\
 <h4>Insertable Taskpanes</h4>\
 <p>Clients that do not support add-in commands yet (Office 2013, Office for Mac and Office for IPad) will run your add-in as a Task pane using the DefaultUrl provided in the manifest. The add-in can then be launched via the My Add-ins menu from the Insert Tab. </p>\
@@ -701,12 +701,12 @@ Web 專案會有Office 增益集網站檔案, 所以這是您發佈到Azure的�
 </table>\
 <p>Task pane add-ins work side-by-side with an Office document, and let you supply contextual information and functionality to enhance the document viewing and authoring experience. For example, a task pane add-in can look up and retrieve product information from a web service based on the product name or part number selected in the document.</p>\
 <figcaption>Task pane add-ins</figcaption>\
-<img src="../img/office-web-curriculum-taipei-en-2.png" />\
+<img src="../uploads/office-web-curriculum-taipei-en-2.png" />\
 <p>To try out a task pane add-in in Excel 2013, Excel Online, or Word 2013, install the <a href="https://store.office.com/wikipedia-WA104099688.aspx?assetid=WA104099688">Wikipedia</a> add-in.</p>\
 <h3>Content add-ins</h3>\
 <p>Content add-ins integrate web-based features as content that shown in line with the body of a document. Content add-ins let you integrate rich, web-based data visualizations, embedded media (such as a YouTube video player or a picture gallery), as well as other external content.</p>\
 <figcaption>Content add-ins</figcaption>\
-<img src="../img/office-web-curriculum-taipei-en-3.png" />\
+<img src="../uploads/office-web-curriculum-taipei-en-3.png" />\
 <p>To try out a content add-in in Excel 2013 or Excel Online, install the <a href="https://store.office.com/bing-maps-WA102957661.aspx?assetid=WA102957661">Bing Maps</a> add-in.</p>\
 <h3>Outlook add-ins</h3>\
 <p>Outlook add-ins display next to an Outlook item when you\'re viewing or composing it. They can work with an email message, meeting request, meeting response, meeting cancellation, or appointment in a read scenario – the user viewing a received item – or in a compose scenario – the user replying or creating a new item.</p>\
@@ -716,9 +716,9 @@ Web 專案會有Office 增益集網站檔案, 所以這是您發佈到Azure的�
 <tr><td>Outlook add-ins require a minimum version of Exchange 2013 or Exchange Online to host the user’s mailbox. POP and IMAP email accounts aren\'t supported.</td></tr>\
 </table>\
 <figcaption>An add-in with command buttons on the ribbon</figcaption>\
-<img src="../img/office-web-curriculum-taipei-en-17.jpg" />\
+<img src="../uploads/office-web-curriculum-taipei-en-17.jpg" />\
 <figcaption>Outlook add-in in a read scenario</figcaption>\
-<img src="../img/office-web-curriculum-taipei-en-4.png" />\
+<img src="../uploads/office-web-curriculum-taipei-en-4.png" />\
 <p>To try out an Outlook add-in in Outlook, Outlook for Mac, or Outlook Web App, install the <a href="https://store.office.com/package-tracker-WA104162083.aspx?assetid=WA104162083">Package Tracker</a> add-in.</p>\
 <h3 id="taipei2016-scenarios-en">Scenarios</h3>\
 <ul>\
@@ -779,7 +779,7 @@ Web 專案會有Office 增益集網站檔案, 所以這是您發佈到Azure的�
 <h3 id="taipei2016-sign-up-at-office-dev-cenbter-en">Sign up with Office Dev Center</h3>\
 <p>Sign up with <a href="http://dev.office.com/devprogram">Office Dev Center</a> to get a free Office 365 developer account and receive a one-year, free subscription for an Office 365 Development instance.  </p>\
 <figcaption>Figure 1. Office 365 Dev Program</figcaption>\
- <img src="../img/office-web-curriculum-taipei-en-5.png" />\
+ <img src="../uploads/office-web-curriculum-taipei-en-5.png" />\
 <h3 id="taipei2016-join-dev-program-en">Get an Office 365 developer account</h3>\
 <ol>\
 <li>You will receive an email from the Office 365 Developer Program. Scroll down the email, click on the provided link to sign up for a free Office 365 developer account.</li>\
@@ -787,7 +787,7 @@ Web 專案會有Office 增益集網站檔案, 所以這是您發佈到Azure的�
 <li>On the second page, shown in Figure 2, specify a user ID for the administrator of the subscription. </li>\
 </ol>\
 <figcaption>Figure 2. Office 365 Developer Site domain name</figcaption>\
-<img src="../img/office-web-curriculum-taipei-en-6.png" />\
+<img src="../uploads/office-web-curriculum-taipei-en-6.png" />\
 <p>4. Create a subdomain of <strong>.onmicrosoft.com</strong></p>\
 <p class="indentP"> After signup, you have to use the resulting credentials (in the format <a href="mailto:UserID@yourdomain.onmicrosoft.com">UserID@yourdomain.onmicrosoft.com</a>) to sign in to your Office 365 portal site where you administer your account. Your SharePoint Online Developer Site is provisioned at your new domain: http://yourdomain.sharepoint.com.</p>\
 <p>5. Choose <strong>Next</strong> and fill out the final page of the form. If you choose to provide a telephone number to obtain a confirmation code, you can provide a mobile or land line telephone number, but not a VoIP (Voice over Internet Protocol) number.</p>\
@@ -801,28 +801,28 @@ Web 專案會有Office 增益集網站檔案, 所以這是您發佈到Azure的�
 <h3 id="taipei2016-access-your-office-365-en">Access your Office 365</h3>\
 <p>Your browser will open the Office 365 installation page. Choose the Admin icon to open the admin center page.</p>\
 <figcaption>Figure 3. Office 365 admin center page</figcaption>\
-<img src="../img/office-web-curriculum-taipei-en-7.png" />\
+<img src="../uploads/office-web-curriculum-taipei-en-7.png" />\
 <ol>\
 <li>You’ll have to wait for your Developer Site to finish provisioning. After provisioning is complete, refresh the admin center page in your browser.</li>\
 <li>Then, choose the Build Add-ins link to open your Developer Site. You should see a site that looks like the one in Figure 4. There is an Add-ins in Testing list on the page. This confirms that the website was made with SharePoint\'s Developer Site template. If you see a regular team site instead, wait a few minutes and launch your site again.<br />If you do not have the development tool, you will be directed to Add the Napa Office 365 Development Tools. You can use Napa to develop your add-ins on this site.</li>\
 <li>Make a note of the URL of the site. It is used when you create SharePoint Add-ins projects in Visual Studio.</li>\
 </ol>\
 <figcaption>Figure 4. Your Developer Site home page with the Add-ins in Testing list</figcaption>\
- <img src="../img/office-web-curriculum-taipei-en-8.png" />\
+ <img src="../uploads/office-web-curriculum-taipei-en-8.png" />\
 <h3 id="taipei2016-assign-office-365-license-en">Assign Office 365 license</h3>\
 <p>To assign Office 365 license for yourself, the active user. Click on the “waffle” icon > Admin icon located on the top left.</p>\
 <figcaption>Figure 5. Office 365 landing page</figcaption>\
-<img src="../img/office-web-curriculum-taipei-en-10.png" />\
+<img src="../uploads/office-web-curriculum-taipei-en-10.png" />\
 <p class="indentP">In the left navigation panel, select <strong>Users</strong> > <strong>Active Users</strong> </p>\
 <p class="indentP">Select yourself by clicking on the checkbox. Your profile will be shown on the right. Click <strong>Edit</strong> under the item: <strong>Assigned license</strong></p>\
 <figcaption>Figure 6. Office 365 admin center > Active Users</figcaption>\
-<img src="../img/office-web-curriculum-taipei-en-11.png" />\
+<img src="../uploads/office-web-curriculum-taipei-en-11.png" />\
 <p class="indentP">3. Select your location in the <strong>Set user location</strong> combo box. And select <strong>Microsoft Office 365 Developer</strong>. Click <strong>Save</strong> to finish assigning the license.</p>\
 <figcaption>Figure 7: Assign license for the active user profile</figcaption>\
-<img src="../img/office-web-curriculum-taipei-en-12.png">\
+<img src="../uploads/office-web-curriculum-taipei-en-12.png">\
 <p class="indentP">4. After you’re finished, return to the Office 365 homepage. The page will display the products that are available to you, including the Office web apps. Pull down the page to see the full display.</p>\
 <figcaption>Figure 8. Office 365</figcaption>\
-<img src="../img/office-web-curriculum-taipei-en-13.png" />\
+<img src="../uploads/office-web-curriculum-taipei-en-13.png" />\
 <p>To navigate back to the developer site, click on the “waffle” icon (located in the top-left corner) > <strong>Admin</strong> > <strong>Build Apps</strong>.</p>\
 <h3 id="taipei2016-registration-resources-en">Resources</h3>\
 <p><a href="https://msdn.microsoft.com/en-us/library/office/dn467914.aspx">Office developer documentation</a></p>\
@@ -880,14 +880,14 @@ Web 專案會有Office 增益集網站檔案, 所以這是您發佈到Azure的�
 </ul>\
 <h3 id="taipei2016-vs-2015-setup-en">Set up your free Visual Studio Community 2015</h3>\
 <p class="indentP">1. If you don\'t have Visual Studio, download <a href="https://go.microsoft.com/fwlink/?LinkId=532606&clcid=0x409">Visual Studio 2015 Community Edition</a> along with <a href="https://www.visualstudio.com/features/office-tools-vs">Office Developer Tools</a>. </p>\
-<img src="../img/office-web-curriculum-taipei-14.png" />\
+<img src="../uploads/office-web-curriculum-taipei-14.png" />\
 <table class="tableWithBorders tableFirstRowBold">\
 <tr><th>Note</strong></th>\
 <tr><td>When you develop and debug an add-in in Visual Studio, Visual Studio deploys and runs your add-in\'s webpage files locally with IIS Express, and doesn\'t require an additional web server. Similarly, when you develop and debug with Napa in the browser, it deploys and runs your add-in\'s webpage files from storage associated with the account you used to sign into Napa.</td></tr>\
 </table>\
 <p class="indentP">2. Choose <strong>File</strong> > <strong>New</strong> > <strong>Project</strong>.</p>\
 <p class="indentP">3. In the <strong>New Project</strong> dialog, choose <strong>Templates</strong> > <strong>Visual C#</strong> > <strong>Office/SharePoint</strong> > <strong>Office Add-in</strong> (or App for Office).</p>\
-<img src="../img/office-web-curriculum-taipei-15.png" />\
+<img src="../uploads/office-web-curriculum-taipei-15.png" />\
 <p class="indentP">4. Name the project <strong>HelloWorld</strong>, and then choose <strong>OK</strong>.</p>\
 <p class="indentP">5. Select <strong>Task</strong> pane as the app type and then <strong>Next</strong>.</p>\
 <p class="indentP">6.  Select <strong>Excel</strong> as the Office application that you want to host your add-in. You can select multiple options, and your add-in will run in any of the selected applications.</p>\
