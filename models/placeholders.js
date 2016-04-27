@@ -9,9 +9,23 @@ let clc = require('cli-color');
 
 module.exports = function() {
 
+	////////////////////////////////////Admin User placeholder/////////////////////////////////////
+
+	User.sync({force: true})
+	.then(function() {
+		return User.create({
+	  userName: 'Admin',
+	  password: process.env.ADMIN_PASSWORD,
+	  email: process.env.ADMIN_USERNAME,
+	  isAdmin: true
+	  });
+	})
+
 	////////////////////////////////////Event placeholder/////////////////////////////////////
 
-	Event.sync({force: true})
+	.then(function() {
+		return Event.sync({force: true})
+	})
 	.then(function () {
 	  return Event.create({
 	    eventName: 'DevDays Asia 2016 @Taipei',
@@ -56,19 +70,6 @@ module.exports = function() {
 	})
 	
 
-	////////////////////////////////////Admin User placeholder/////////////////////////////////////
-
-	.then(function() {
-		return User.sync({force: true})
-	})
-	.then(function() {
-		return User.create({
-	  userName: 'Admin',
-	  password: process.env.ADMIN_PASSWORD,
-	  email: process.env.ADMIN_USERNAME,
-	  isAdmin: true
-	  });
-	})
 
 	////////////////////////////////////EventTab placeholder/////////////////////////////////////
 

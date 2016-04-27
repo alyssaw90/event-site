@@ -11,7 +11,6 @@ module.exports = function(sql, DataTypes) {
     password: {
       type: DataTypes.STRING,
       set: function(val) {
-        console.log(clc.bgRed.white(`::::::    `));
         var outputString = '';
         var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_-+=<,>.?/';
         var randomNumber = Math.ceil(Math.random() * 10) + 10;
