@@ -51,6 +51,16 @@ module.exports = function (grunt) {
         script: 'server.js'
       }
     },
+    //watch for changes in build.dist.js file
+    watch: {
+      scripts: {
+        files: ['dist/build.dist.js', 'adminjs/*.js', 'models/*.js', 'routes/*.js', 'scripts/*.*', 'tests/*.js'],
+        tasks: ['start'],
+        options: {
+          spawn: false,
+        },
+      },
+    },
 		    // create jshint task
     jshint: {
       dev: {
@@ -149,5 +159,5 @@ module.exports = function (grunt) {
   grunt.registerTask('build', ['bbl', 'browserify']);
   grunt.registerTask('start', ['build', 'nodemon:dev']);
 	grunt.registerTask('test', ['build', 'test']);
-  grunt.registerTask('default', ['start']);
+  grunt.registerTask('default', ['start', 'watch']);
 };
