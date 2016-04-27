@@ -13,7 +13,7 @@ module.exports = function (grunt) {
     pkg: grunt.file.readJSON('package.json'),
     clean: {
       dev: {
-        src: ['build/', 'dist/']
+        src: ['build/*.js', 'dist/*.js']
       }
     },
     //register task to run babel and compile es6
@@ -146,8 +146,8 @@ module.exports = function (grunt) {
 	grunt.registerTask('test', ['simplemocha:dev']);
   // grunt.registerTask('nodemon', ['nodemon:dev']);
   grunt.registerTask('bbl', ['clean', 'babel']);
-  grunt.registerTask('build', ['browserify', 'nodemon:dev']);
-  grunt.registerTask('start', ['bbl', 'browserify', 'nodemon:dev']);
+  grunt.registerTask('build', ['bbl', 'browserify']);
+  grunt.registerTask('start', ['build', 'nodemon:dev']);
 	grunt.registerTask('test', ['build', 'test']);
   grunt.registerTask('default', ['start']);
 };

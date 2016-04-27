@@ -1,12 +1,12 @@
 'use strict';
 /*global interests */
 /*global ContactsSuggestedCity */
-require('dotenv').load();
-let Contact = require('../models/Contact');
+// require('dotenv').load();
+/*let Contact = require('../models/Contact');
 let Event = require('../models/Event');
 let EventTab = require('../models/EventTab');
 let EventImage = require('../models/EventImage');
-let User = require('../models/User');
+let User = require('../models/User');*/
 let fs = require('fs');
 let clc = require('cli-color');
 let multer = require('multer');
@@ -21,10 +21,19 @@ let bodyparser = require('body-parser');
 let cookieParser = require('cookie-parser');
 let path = require('path');
 let eatAuth = require('../scripts/eat_auth')(process.env.SECRET_KEY);
-let Sql = require('sequelize');
-/*let sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
+let models = require('../models');
+let User = models.User;
+let Contact = models.Contact;
+let Event = models.Event;
+let EventTab = models.EventTab;
+let placeholders = require('../models/placeholders');
+
+placeholders();
+
+/*let models.Sql = require('sequelize');
+let models.sql = new models.Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
   host: process.env.DB_LOCAL_HOST,
-  dialect: 'mssql',
+  dialect: 'msmodels.sql',
 
   pool: {
     max: 5,
@@ -32,9 +41,9 @@ let Sql = require('sequelize');
     idle: 10000
   }
 });*/
-let sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+/*let models.sql = new models.Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
     host: process.env.DB_HOST,
-  dialect: 'mssql',
+  dialect: 'msmodels.sql',
   pool: {
     max: 5,
     min: 0,
@@ -43,11 +52,11 @@ let sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS,
   dialectOptions: {
     encrypt: true
   }
-});
+});*/
 
-/*let sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
+/*let models.sql = new models.Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
   host: process.env.DB_DEV_HOST,
-  dialect: 'mssql',
+  dialect: 'msmodels.sql',
   pool: {
     max: 5,
     min: 0,
@@ -58,7 +67,7 @@ let sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS,
   }
 });
 */
-sql.authenticate()
+models.sql.authenticate()
   .then(function (err) {
     if (err) {
       console.log(clc.xterm(202)('Unable to connect to the database with db router: '), err);
@@ -116,7 +125,7 @@ module.exports = function (router) {
   router.route('/meet-the-team')
   .get(function(req, res) {
     //sync with the database and search for all speakers where showOnMeetTheTeamPage is true
-    sql.sync()
+    models.sql.sync()
     .then(function() {
       return Contact.findAll({
         where: {
@@ -170,7 +179,7 @@ module.exports = function (router) {
 
   router.route('/homepageteam')
   .get(function (req, res) {
-    sql.sync()
+    models.sql.sync()
     .then(function () { 
       Contact.findAll({where: {showOnHomePage: true}})
       .then(function (data) {
@@ -212,7 +221,7 @@ module.exports = function (router) {
         console.log(err);
         res.status(500).json({msg: 'internal server error'});
       }
-      sql.sync()
+      models.sql.sync()
       .then(function () {
         Event.findAll({where: {eventStartDate: {$gte: new Date()}}})
         .then(function (upcomingEvent) {
@@ -247,7 +256,7 @@ module.exports = function (router) {
   //route to send events for header
   router.route('/events')
   .get(function (req, res) {
-    sql.sync()
+    models.sql.sync()
     .then(function () {
       Event.findAll({where: {eventEndDate: {$gte: new Date()}}})
       .then(function (data) {
@@ -295,7 +304,7 @@ module.exports = function (router) {
 
   //create basic event
   router.post('/createevent', eatAuth, upload.array('images', 2), function (req, res, next) {
-    sql.sync()
+    models.sql.sync()
     .then(function () {
       Event.create({
         eventName: req.body.newEventName,
@@ -318,7 +327,7 @@ module.exports = function (router) {
 
   //Find an event with the id from req.body.eventId and add the string of speakers then save
   router.post('/addspeakers', eatAuth, function(req, res, next) {
-    sql.sync()
+    models.sql.sync()
     .then(function() {
       return Event.findOne({where: {id: req.body.eventId}})
     })
@@ -330,7 +339,7 @@ module.exports = function (router) {
 
   //create a tab with data from req.body
   router.post('/addtabs', eatAuth, function(req, res, next) {
-    sql.sync()
+    models.sql.sync()
     .then(function() {
       EventTab.create({
         eventId: req.body.eventId,
@@ -364,7 +373,7 @@ module.exports = function (router) {
   //add an image from req.body
   router.post('/addimage', eatAuth, upload.single('images'), function (req, res, next) {
     if (req.body.eventId) {
-      sql.sync()
+      models.sql.sync()
       .then(function() {
         return Event.findOne({where: {id: req.body.eventId}});
       })
@@ -379,18 +388,28 @@ module.exports = function (router) {
   });
   //get all events for edit events tab
   router.get('/allevents', function(req, res) {
-    sql.sync()
+    models.sql.sync()
     .then(function() {
       return Event.findAll();
     })
     .then(function(events) {
       res.json(events);
+    });
+  });
+
+  router.get('/alltabs', eatAuth, function(req, res) {
+    models.sql.sync()
+    .then(function() {
+      return EventTab.findAll();
     })
-  })
+    .then(function(tabs) {
+      res.json(tabs);
+    });
+  });
 
 /*  router.route('/eventTabs')
   .get(function(req, res) {
-    sql.sync()
+    models.sql.sync()
     .then(function() {
       EventTab.findAll()
       .then(function(data) {
@@ -401,7 +420,7 @@ module.exports = function (router) {
 
   //route to return event tab being searched
   router.post('/eventTabs', eatAuth, function(req, res) {
-    sql.sync()
+    models.sql.sync()
     .then(function() {
       EventTab.findOne({where: {id: req.body.tabId}})
       .then(function(data) {
@@ -419,7 +438,7 @@ module.exports = function (router) {
 
   //search for a tab with the id from req.body.tabId and replace the data with the submitted data
   router.post('/edittab', eatAuth, function(req, res) {
-    sql.sync()
+    models.sql.sync()
     .then(function() {
       return EventTab.findOne({where: {id: req.body.tabId}})
     })
@@ -446,7 +465,7 @@ module.exports = function (router) {
     let eventInfo = {};
     eventInfo.eventUrl = req.body.eventUrl;
     //sync with the database
-    sql.sync()
+    models.sql.sync()
     .then(function() {
       //trim the params to get the city and the year of the event
       let eventSearchCity = req.body.eventUrl.slice(0, -4);
@@ -479,7 +498,7 @@ module.exports = function (router) {
       })
     })
     .then(function(speakers) {
-      let tabForm = `<form action="/eventTabs" id="editEventTabs">`;
+      let tabForm = `<form id="editEventTabs">`;
       //create an array and push each speaker object into it with the needed values and add the array to the eventInfo object
       let speakersArr =  [];
       let i = 0;
@@ -500,15 +519,15 @@ module.exports = function (router) {
       tabForm += `<button class="medium" id="chooseTabToEditButton">Choose tab</button></form>`;
       eventInfo.speakers = speakersArr;
       editEventHtml.eventTabs = tabForm;
-      editEventHtml.eventName = `<form action="/editevent" id="editEventForm" method="POST"><label for="editEventInput">Choose a name</label><input class="col_8" style="margin-left:10px; margin-right:10px;" id="editEventInput" name="editEventInput" type="text" value="${eventInfo.theEvent.eventName}"></input><input type="hidden" id="eventId" name="eventId" value="${eventInfo.theEvent.id}"></input><input type="hidden" id="whatToChange" id="whatToChange" name="whatToChange" value="eventName"></input><button class="medium" id="editEventNameButton">Save</button></form>`;
-      editEventHtml.eventRegistrationLink = `<form action="/editevent" id="editEventForm" method="POST"><label for="editEventInput">Choose a registraion link</label><input class="col_8" style="margin-left:10px; margin-right:10px;" id="editEventInput" name="editEventInput" type="text submit" value="${eventInfo.theEvent.eventRegistrationLink}"></input><input type="hidden" id="eventId" name="eventId" value="${eventInfo.theEvent.id}"></input><input type="hidden" id="whatToChange" name="whatToChange" value="eventRegistrationLink"></input><button class="medium" id="editEventNameButton">Save</button></form>`;
-      editEventHtml.eventLocation = `<form action="/editevent" id="editEventForm" method="POST"><label for="editEventInput">Choose a new city</label><input class="col_8" style="margin-left:10px; margin-right:10px;" id="editEventInput" name="editEventInput" type="text submit" value="${eventInfo.theEvent.eventLocation}"></input><input type="hidden" id="eventId" name="eventId" value="${eventInfo.theEvent.id}"></input><input type="hidden" id="whatToChange" name="whatToChange" value="eventLocation"></input><button class="medium" id="editEventNameButton">Save</button></form>`;
-      editEventHtml.eventContinent = `<form action="/editevent" id="editEventForm" method="POST"><label class="col_4" for="editEventInput">The current continent is ${eventInfo.theEvent.eventContinent}</label><input type="radio" id="editEventInput" name="editEventInput" value="North America">North America</input><input type="radio" id="editEventInput" name="editEventInput" value="South America">South America</input><input type="radio" id="editEventInput" name="editEventInput" value="Africa">Africa</input><input type="radio" id="editEventInput" name="editEventInput" value="Asia">Asia</input><input type="radio" id="editEventInput" name="editEventInput" value="Europe">Europe</input><input type="radio" id="editEventInput" name="editEventInput" value="Oceania">Australia</input><input type="hidden" id="eventId" name="eventId" value="${eventInfo.theEvent.id}"></input><input type="hidden" id="whatToChange" name="whatToChange" value="eventContinent"></input><button class="medium" id="editEventNameButton">Save</button></form>`;
-      editEventHtml.eventStartDate = `<form action="/editevent" id="editEventForm" method="POST"><label for="editEventInput">Choose a new start date</label><input class="col_8" style="margin-left:10px; margin-right:10px;" id="editEventInput" name="editEventInput" type="date" value="${eventInfo.theEvent.eventStartDate}"></input><input type="hidden" id="eventId" name="eventId" value="${eventInfo.theEvent.id}"></input><input type="hidden" id="whatToChange" name="whatToChange" value="eventStartDate"></input><button class="medium" id="editEventNameButton">Save</button></form>`;
-      editEventHtml.eventEndDate = `<form action="/editevent" id="editEventForm" method="POST"><label for="editEventInput">Choose a new end date</label><input class="col_8" style="margin-left:10px; margin-right:10px;" id="editEventInput" name="editEventInput" type="date" value="${eventInfo.theEvent.eventEndDate}"></input><input type="hidden" id="eventId" name="eventId" value="${eventInfo.theEvent.id}"></input><input type="hidden" id="whatToChange" name="whatToChange" value="eventEndDate"></input><button class="medium" id="editEventNameButton">Save</button></form>`;
-      editEventHtml.eventHeaderImage = `<form action="/addimage" id="editEventForm" method="POST" enctype="multipart/form-data"><label for="editEventInput">Choose a new event header image</label><input class="col_8" style="margin-left:10px; margin-right:10px;" id="editEventInput" name="images" type="file" value="${eventInfo.theEvent.eventHeaderImage}"></input><input type="hidden" id="eventId" name="eventId" value="${eventInfo.theEvent.id}"></input><input type="hidden" id="whatToChange" name="whatToChange" value="eventHeaderImage"></input><button class="medium" id="editEventNameButton">Save</button></form>`;
-      editEventHtml.eventHomepageImage = `<form action="/addimage" id="editEventForm" method="POST" enctype="multipart/form-data"><label for="editEventInput">Choose a new event header image</label><input class="col_8" style="margin-left:10px; margin-right:10px;" id="editEventInput" name="images" type="file" value="${eventInfo.theEvent.eventHomepageImage}"></input><input type="hidden" id="eventId" name="eventId" value="${eventInfo.theEvent.id}"></input><input type="hidden" id="whatToChange" name="whatToChange" value="eventHomepageImage"></input><button class="medium" id="editEventNameButton">Save</button></form>`;
-      editEventHtml.eventHighlightColor = `<form action="/editevent" id="editEventForm" method="POST"><label for="editEventInput">Choose a color</label><input class="col_8" style="margin-left:10px; margin-right:10px;" id="editEventInput" name="editEventInput" type="color" value="${eventInfo.theEvent.eventHighlightColor}"></input><input type="hidden" id="eventId" name="eventId" value="${eventInfo.theEvent.id}"></input><input type="hidden" id="whatToChange" id="whatToChange" name="whatToChange" value="eventHighlightColor"></input><button class="medium" id="editEventNameButton">Save</button></form>`;
+      editEventHtml.eventName = `<form action="edittheevent" id="editEventForm" method="POST"><label for="editEventInput">Choose a name</label><input class="col_8" style="margin-left:10px; margin-right:10px;" id="editEventInput" name="editEventInput" type="text" value="${eventInfo.theEvent.eventName}"></input><input type="hidden" id="eventId" name="eventId" value="${eventInfo.theEvent.id}"></input><input type="hidden" id="whatToChange" id="whatToChange" name="whatToChange" value="eventName"></input><button class="medium" id="editEventNameButton">Save</button></form>`;
+      editEventHtml.eventRegistrationLink = `<form action="edittheevent" id="editEventForm" method="POST"><label for="editEventInput">Choose a registraion link</label><input class="col_8" style="margin-left:10px; margin-right:10px;" id="editEventInput" name="editEventInput" type="text submit" value="${eventInfo.theEvent.eventRegistrationLink}"></input><input type="hidden" id="eventId" name="eventId" value="${eventInfo.theEvent.id}"></input><input type="hidden" id="whatToChange" name="whatToChange" value="eventRegistrationLink"></input><button class="medium" id="editEventNameButton">Save</button></form>`;
+      editEventHtml.eventLocation = `<form action="edittheevent" id="editEventForm" method="POST"><label for="editEventInput">Choose a new city</label><input class="col_8" style="margin-left:10px; margin-right:10px;" id="editEventInput" name="editEventInput" type="text submit" value="${eventInfo.theEvent.eventLocation}"></input><input type="hidden" id="eventId" name="eventId" value="${eventInfo.theEvent.id}"></input><input type="hidden" id="whatToChange" name="whatToChange" value="eventLocation"></input><button class="medium" id="editEventNameButton">Save</button></form>`;
+      editEventHtml.eventContinent = `<form action="edittheevent" id="editEventForm" method="POST"><label class="col_4" for="editEventInput">The current continent is ${eventInfo.theEvent.eventContinent}</label><input type="radio" id="editEventInput" name="editEventInput" value="North America">North America</input><input type="radio" id="editEventInput" name="editEventInput" value="South America">South America</input><input type="radio" id="editEventInput" name="editEventInput" value="Africa">Africa</input><input type="radio" id="editEventInput" name="editEventInput" value="Asia">Asia</input><input type="radio" id="editEventInput" name="editEventInput" value="Europe">Europe</input><input type="radio" id="editEventInput" name="editEventInput" value="Oceania">Australia</input><input type="hidden" id="eventId" name="eventId" value="${eventInfo.theEvent.id}"></input><input type="hidden" id="whatToChange" name="whatToChange" value="eventContinent"></input><button class="medium" id="editEventNameButton">Save</button></form>`;
+      editEventHtml.eventStartDate = `<form action="edittheevent" id="editEventForm" method="POST"><label for="editEventInput">Choose a new start date</label><input class="col_8" style="margin-left:10px; margin-right:10px;" id="editEventInput" name="editEventInput" type="date" value="${eventInfo.theEvent.eventStartDate}"></input><input type="hidden" id="eventId" name="eventId" value="${eventInfo.theEvent.id}"></input><input type="hidden" id="whatToChange" name="whatToChange" value="eventStartDate"></input><button class="medium" id="editEventNameButton">Save</button></form>`;
+      editEventHtml.eventEndDate = `<form action="edittheevent" id="editEventForm" method="POST"><label for="editEventInput">Choose a new end date</label><input class="col_8" style="margin-left:10px; margin-right:10px;" id="editEventInput" name="editEventInput" type="date" value="${eventInfo.theEvent.eventEndDate}"></input><input type="hidden" id="eventId" name="eventId" value="${eventInfo.theEvent.id}"></input><input type="hidden" id="whatToChange" name="whatToChange" value="eventEndDate"></input><button class="medium" id="editEventNameButton">Save</button></form>`;
+      editEventHtml.eventHeaderImage = `<form action="savenewimage" id="editEventForm" method="POST" enctype="multipart/form-data"><label for="editEventInput">Choose a new event header image</label><input class="col_8" style="margin-left:10px; margin-right:10px;" id="editEventInput" name="images" type="file" value="${eventInfo.theEvent.eventHeaderImage}"></input><input type="hidden" id="eventId" name="eventId" value="${eventInfo.theEvent.id}"></input><input type="hidden" id="whatToChange" name="whatToChange" value="eventHeaderImage"></input><button class="medium" id="editEventNameButton">Save</button></form>`;
+      editEventHtml.eventHomepageImage = `<form action="savenewimage" id="editEventForm" method="POST" enctype="multipart/form-data"><label for="editEventInput">Choose a new event header image</label><input class="col_8" style="margin-left:10px; margin-right:10px;" id="editEventInput" name="images" type="file" value="${eventInfo.theEvent.eventHomepageImage}"></input><input type="hidden" id="eventId" name="eventId" value="${eventInfo.theEvent.id}"></input><input type="hidden" id="whatToChange" name="whatToChange" value="eventHomepageImage"></input><button class="medium" id="editEventNameButton">Save</button></form>`;
+      editEventHtml.eventHighlightColor = `<form action="edittheevent" id="editEventForm" method="POST"><label for="editEventInput">Choose a color</label><input class="col_8" style="margin-left:10px; margin-right:10px;" id="editEventInput" name="editEventInput" type="color" value="${eventInfo.theEvent.eventHighlightColor}"></input><input type="hidden" id="eventId" name="eventId" value="${eventInfo.theEvent.id}"></input><input type="hidden" id="whatToChange" id="whatToChange" name="whatToChange" value="eventHighlightColor"></input><button class="medium" id="editEventNameButton">Save</button></form>`;
       editEventHtml.eventSpeakers = `<form id="editSpeakerCount"><label for="newSpeakerCount">How many speakers will the event have?</label><input type="number" id="newSpeakerCount" name="newSpeakerCount"></input></input><input type="hidden" id="eventId" name="eventId" value="${eventInfo.theEvent.id}"></input><button class="medium" id="newSpeakerCountButton" type="submit">Choose Speakers</button></form><form action="/editevent" id="newAddSpeakersForm" method="post" enctype="multipart/form-data"><input type="hidden" id="whatToChange" id="whatToChange" name="whatToChange" value="eventSpeakers"></input></form>`;
       res.json(editEventHtml);
     });
@@ -517,7 +536,7 @@ module.exports = function (router) {
 
   //find event and change the value that is sent in req.body.whatToChange
   router.post('/editevent', eatAuth, function(req, res) {
-    sql.sync()
+    models.sql.sync()
     .then(function() {
       return Event.findOne({where:{id: req.body.eventId}})
     })
@@ -534,7 +553,7 @@ module.exports = function (router) {
   .get(function (req, res) {
     let picsHtml = '<div class="col_12 gallery">';
     let returnObj = {};
-    sql.sync()
+    models.sql.sync()
     .then(function () {
       Event.findOne({where: {id: req.params.eventId}})
       .then(function (data) {
@@ -557,7 +576,7 @@ module.exports = function (router) {
   });*/
 
   router.get('/contacts', eatAuth, function (req, res) {
-    sql.sync()
+    models.sql.sync()
     .then(function () {
       Contact.findAll()
       .then(function (data) {
@@ -568,7 +587,7 @@ module.exports = function (router) {
   
 /*  router.route('/upcomingeventurls')
   .get(function (req, res) {
-    sql.sync()
+    models.sql.sync()
     .then(function () {
       Event.findAll({where: {eventStartDate: {$gte: new Date()}}})
       .then(function (data) {
@@ -596,7 +615,7 @@ module.exports = function (router) {
     eventInfo.speakersHtml =  '';
     eventInfo.headerHtml = '';
     //sync with the database
-    sql.sync()
+    models.sql.sync()
     .then(function() {
       //trim the params to get the city and the year of the event
       let eventSearchCity = req.params.eventUrl.slice(0, -4);
@@ -623,7 +642,6 @@ module.exports = function (router) {
       })
     })
     .then(function(theTabs) {
-      console.log(clc.bgGreen.red('    :::::    '), theTabs);
       //assign the returned event tabs to the tabs key of the eventInfo object
       eventInfo.tabs = theTabs;
     })
@@ -726,7 +744,7 @@ module.exports = function (router) {
   .get(function (req, res) {
     // var cat = req.params.eventName.toLowerCase().replace(/\s+/g, '');
     var theParam = req.params.eventName.toLowerCase().slice(1);
-    sql.sync()
+    models.sql.sync()
     .then(function () {
       Event.findAll()
       .then(function (data) {

@@ -4,7 +4,6 @@
 .env
 npm-debug.log
 db/
-build/
 mssql_db/
 **/App_Data/
 **/App_Data/PublishProfiles/
@@ -29,7 +28,6 @@ mssql_db/
 [Rr]eleases/
 x64/
 x86/
-build/
 bld/
 [Bb]in/
 [Oo]bj/
@@ -159,8 +157,8 @@ publish/
 *.nupkg
 # The packages folder can be ignored because of Package Restore
 **/packages/*
-# except build/, which is used as an MSBuild target.
-!**/packages/build/
+# except, which is used as an MSBuild target.
+!**/packages
 # Uncomment if necessary however generally it will be regenerated when needed
 #!**/packages/repositories.config
 

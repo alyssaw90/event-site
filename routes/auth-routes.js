@@ -1,14 +1,20 @@
 'use strict';
 
-require('dotenv').load();
-var User = require('../models/User');
-var bodyparser = require('body-parser');
-var cookieParser = require('cookie-parser');
-var clc = require('cli-color');
-var Sql = require('sequelize');
-/*var sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
+// require('dotenv').load();
+// let User = require('../models/User');
+let bodyparser = require('body-parser');
+let cookieParser = require('cookie-parser');
+let clc = require('cli-color');
+let models = require('../models');
+let User = models.User;
+let Contact = models.Contact;
+let Event = models.Event;
+let EventTab = models.EventTab;
+
+/*let models.Sql = require('sequelize');
+let models.sql = new models.Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
   host: process.env.DB_LOCAL_HOST,
-  dialect: 'mssql',
+  dialect: 'msmodels.sql',
 
   pool: {
     max: 5,
@@ -16,9 +22,9 @@ var Sql = require('sequelize');
     idle: 10000
   }
 });*/
-var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+/*let models.sql = new models.Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
     host: process.env.DB_HOST,
-  dialect: 'mssql',
+  dialect: 'msmodels.sql',
   pool: {
     max: 5,
     min: 0,
@@ -27,11 +33,11 @@ var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS,
   dialectOptions: {
     encrypt: true
   }
-});
+});*/
 
-/*var sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
+/*let models.sql = new models.Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
   host: process.env.DB_DEV_HOST,
-  dialect: 'mssql',
+  dialect: 'msmodels.sql',
   pool: {
     max: 5,
     min: 0,
@@ -43,16 +49,16 @@ var sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS,
 });
 */
 function makeRandomString () {
-  var outputString = '';
-  var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_-+=<,>.?/';
-  var randomNumber = Math.ceil(Math.random() * 10) + 10;
-  for ( var i = 0; i < randomNumber; i++ ) {
+  let outputString = '';
+  let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_-+=<,>.?/';
+  let randomNumber = Math.ceil(Math.random() * 10) + 10;
+  for ( let i = 0; i < randomNumber; i++ ) {
     outputString += possible.charAt(Math.floor(Math.random() * possible.length));
   }
   return outputString;
 }
 
-sql.authenticate()
+models.sql.authenticate()
   .then(function (err) {
     if (err) {
       console.log(clc.xterm(46)('Unable to connect to the database with auth router: '), err);
@@ -70,7 +76,7 @@ module.exports = function(router, passport) {
 
 	router.route('/create-user')
 	.post(function(req, res) {
-		sql.sync()
+		models.sql.sync()
 		.then(function() {
 			return User.find({where: {email: req.body.email}});
     })
@@ -83,8 +89,8 @@ module.exports = function(router, passport) {
       }
     })
     .then(function(newUser) {
-      var hashPass = newUser.$modelOptions.instanceMethods.generateHash(req.body.password);
-      var userJSON = {randomString: newUser.dataValues.randomString, id: newUser.dataValues.id};
+      let hashPass = newUser.$modelOptions.instanceMethods.generateHash(req.body.password);
+      let userJSON = {randomString: newUser.dataValues.randomString, id: newUser.dataValues.id};
       delete req.body.password;
       newUser.update({password: hashPass});
 		  // res.status(200).json({msg: 'user created'});
@@ -113,8 +119,8 @@ module.exports = function(router, passport) {
       }
       //if the user is found and there is no error
       if (user && !err) {
-        var userEmail = user.dataValues.email;
-        var ranJSON = {randomString: user.dataValues.randomString};
+        let userEmail = user.dataValues.email;
+        let ranJSON = {randomString: user.dataValues.randomString};
         console.log(clc.red('::::::    '), user.$modelOptions.instanceMethods.generateToken);
         // res.json({msg: 'authenticated as ', userEmail});
         user.$modelOptions.instanceMethods.generateToken(ranJSON, process.env.SECRET_KEY, function(err, token) {
@@ -129,11 +135,11 @@ module.exports = function(router, passport) {
   });*/
 
   router.post('/login', passport.authenticate('basic', { session: false }), function(req, res) {
-    var userJSON = {randomString: req.user.dataValues.randomString, id: req.user.dataValues.id};
+    let userJSON = {randomString: req.user.dataValues.randomString, id: req.user.dataValues.id};
     res.req.headers.authorization = 'hahaha';
     // res.req.rawHeaders.Authorization = 'blah';
     // console.log(clc.magenta('   groooogggggg    '), req.user);
-    for (var key in res.req.rawHeaders) {
+    for (let key in res.req.rawHeaders) {
       if (res.req.rawHeaders[key].slice(0, 5) === 'Basic') {
         res.req.rawHeaders[key] = 'Basic xxxx';
       }
