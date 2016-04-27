@@ -385,7 +385,9 @@
                   $('#chooseTabToEditButton').click(function(e) {
                     e.preventDefault();
                     var tabId = $("input[name=chooseEventToEdit]:checked").val();
-                    
+                    //reset tinymce
+                    tinymce.remove('#editEventForm');
+
                     $.post('/eventTabs', {tabId: tabId}, function(data, textStatus, xhr) {
                       $editEventForm.show();
                       $addTabImage.show();
@@ -414,7 +416,7 @@
                       });
 
                     });
-                    $editFormSection.show().html('<h3>Saved</h3>');
+                    
                     checkForChanges();
                   });
 
@@ -457,7 +459,6 @@
         e.preventDefault();
         tinyMCE.triggerSave();
         var newTabHtmlContent = tinyMCE.activeEditor.getContent();
-        console.log('newEventId       ', tinyMCE.activeEditor.getContent());
         $.post('/edittab', {
           tabId: $('#tabId').val(),
           tabNumber: $('#newTabPosition').val(),
