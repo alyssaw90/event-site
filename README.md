@@ -27,7 +27,7 @@ Unlike Events and Contacts, there is no online form to soft code Users. One may 
 {
   userName: 'TestUser',
   password: 'p@ssw0rd',
-  email: 'tesuser@example.com',
+  email: 'testuser@example.com',
   isAdmin: false
 }
 ```
