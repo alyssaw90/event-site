@@ -48,8 +48,8 @@ module.exports = function() {
 	    eventContinent: 'Europe',
 	    eventStartDate: new Date('2016-05-12:00:00:01'), //the start date...
 	    eventEndDate: new Date('2016-05-12:23:59:00'), // the end date...
-	    eventHeaderImage: 'ExtendWebsiteHeader_edited.jpg', //link to header image
-	    eventHomepageImage: 'ExtendWebsiteHeader_edited.jpg',
+	    eventHeaderImage: 'Extend-banniereV2-(002).gif', //link to header image
+	    eventHomepageImage: 'ExtendConference1500.png',
 	    eventHighlightColor: '#5c2d91',
 	    eventSpeakers: '1,2,9,12,8,15,11,10,6'
 	  });
@@ -62,8 +62,8 @@ module.exports = function() {
 	  eventContinent: 'North America',
 	  eventStartDate: new Date('2016-06-13:00:01:00'), //the start date...
 	  eventEndDate: new Date('2016-06-24:01:00:00'), // the end date...
-	  eventHeaderImage: 'plugfest-io-lab-heade.png', //link to header image
-	  eventHomepageImage: 'plugfest-io-lab-heade.png',
+	  eventHeaderImage: 'Plugfest-and-IO-Website.png', //link to header image
+	  eventHomepageImage: 'Plugfest-and-IO-Website.png',
 	  eventHighlightColor: '#ffb900',
 	  eventSpeakers: '1,2,3,5,9,8,11,15,12,10,6,21,14,18,16'
 	  });

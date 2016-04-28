@@ -21,7 +21,7 @@ There is one placeholder Event, one placeholder Contact, and one placeholder adm
 
 Unlike Events and Contacts, there is no online form to soft code Users. One may be added in the future, but for now the only way to edit or create a user is to hard code it in the `models/index.js` file. For the admin user, you will need to store your password as `ADMIN_PASSWORD` and `ADMIN_USERNAME` in your `.env` file. If you want to create non-admin users that are not able to access the admin section of the website, set `isAdmin` to `false`.
 
-####Example of a user object: 
+####Example of a user record: 
 
 ```JavaScript
 {
@@ -34,16 +34,16 @@ Unlike Events and Contacts, there is no online form to soft code Users. One may 
 
 ####Code to create a user
 
-Replace the dummy data and place this code below the schema in the User.js file to create a new user. Remember that setting `{force: true}` on Sequelize's `.sync()` method will drop all previously created tables.
+If you want to create more users, replace the placeholders below with your data and place this code below the `models/placeholder.js` file to create a new user. Remember that setting `{force: true}` on Sequelize's `.sync()` method will drop all previously created tables. if you want to create another admin user, set the value of `isAdmin` to `true`.
 
 ```JavaScript
 User.sync({force: true})
 .then(function () {
   return User.create({
-  userName: 'Admin',
+  userName: 'TestUser',
   password: 'p@ssw0rd',
-  email: 'admin@example.com',
-  isAdmin: true
+  email: 'testuser@example.com',
+  isAdmin: false
   });
 });
 ```
