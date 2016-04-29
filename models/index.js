@@ -22,8 +22,8 @@ let Sql = require('sequelize');
   dialectOptions: {
     encrypt: true
   }
-});
-*/
+});*/
+
 let sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
     host: process.env.DB_HOST,
   dialect: 'mssql',

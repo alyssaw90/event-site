@@ -500,6 +500,7 @@ module.exports = function (router) {
     })
     .then(function(speakers) {
       let tabForm = `<form id="editEventTabs">`;
+      let deleteTabForm;
       //create an array and push each speaker object into it with the needed values and add the array to the eventInfo object
       let speakersArr =  [];
       let i = 0;
@@ -518,8 +519,10 @@ module.exports = function (router) {
         tabForm += `<label for="chooseEventToEdit">${eventInfo.tabs[i].tabTitle}</label><input class="col_8" style="margin-left:10px; margin-right:10px;" id="chooseEventToEdit${i}" name="chooseEventToEdit" type="radio" value="${eventInfo.tabs[i].id}"></input></input>`;
       }
       tabForm += `<button class="medium" id="chooseTabToEditButton">Choose tab</button></form>`;
+      deleteTabForm = tabForm.replace('chooseEventToEdit', 'chooseEventToDelete').replace('chooseTabToEditButton', 'chooseTabToDeleteButton').replace('editEventTabs', 'deleteEventTabs');
       eventInfo.speakers = speakersArr;
       editEventHtml.eventTabs = tabForm;
+      editEventHtml.deleteEventTabs = deleteTabForm;
       editEventHtml.eventName = `<form action="edittheevent" id="editEventForm" method="POST"><label for="editEventInput">Choose a name</label><input class="col_8" style="margin-left:10px; margin-right:10px;" id="editEventInput" name="editEventInput" type="text" value="${eventInfo.theEvent.eventName}"></input><input type="hidden" id="eventId" name="eventId" value="${eventInfo.theEvent.id}"></input><input type="hidden" id="whatToChange" id="whatToChange" name="whatToChange" value="eventName"></input><button class="medium" id="editEventNameButton">Save</button></form>`;
       editEventHtml.eventRegistrationLink = `<form action="edittheevent" id="editEventForm" method="POST"><label for="editEventInput">Choose a registraion link</label><input class="col_8" style="margin-left:10px; margin-right:10px;" id="editEventInput" name="editEventInput" type="text submit" value="${eventInfo.theEvent.eventRegistrationLink}"></input><input type="hidden" id="eventId" name="eventId" value="${eventInfo.theEvent.id}"></input><input type="hidden" id="whatToChange" name="whatToChange" value="eventRegistrationLink"></input><button class="medium" id="editEventNameButton">Save</button></form>`;
       editEventHtml.eventLocation = `<form action="edittheevent" id="editEventForm" method="POST"><label for="editEventInput">Choose a new city</label><input class="col_8" style="margin-left:10px; margin-right:10px;" id="editEventInput" name="editEventInput" type="text submit" value="${eventInfo.theEvent.eventLocation}"></input><input type="hidden" id="eventId" name="eventId" value="${eventInfo.theEvent.id}"></input><input type="hidden" id="whatToChange" name="whatToChange" value="eventLocation"></input><button class="medium" id="editEventNameButton">Save</button></form>`;
@@ -545,6 +548,18 @@ module.exports = function (router) {
       let key = req.body.whatToChange;
       eventToEdit[key] = req.body.editEventInput;
       eventToEdit.save();
+      res.end();
+    })
+  });
+
+  router.post('/deleteevent', eatAuth, function(req, res) {
+    models.sql.sync()
+    .then(function() {
+      console.log(clc.magenta(':::::::::     '), req.body.tabToDeleteId);
+      return EventTab.findOne({where: {id: req.body.tabToDeleteId}});
+    })
+    .then(function(tabToDelete) {
+      tabToDelete.destroy();
       res.end();
     })
   })
