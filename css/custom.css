@@ -424,7 +424,6 @@ main p {
 }
 
 .hidden-div {
-	background-color: #4668c5;
 	position: absolute;
 	z-index: 1002;
 }
