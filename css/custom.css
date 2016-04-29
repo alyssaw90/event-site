@@ -127,6 +127,10 @@ main p {
  	background-color: #ffc000;
  }
 
+ .tableWithVerticalLines {
+ 	border: solid 1px #000;
+ }
+
  .tableWithVerticalLines td {
   border-right: solid 1px #000; 
   border-left: solid 1px #000;
@@ -187,17 +191,25 @@ main p {
 	min-height: 700px;
 }
 
- .taipeiSchedule tr td:first-child {
- 	width: 8%;
- }
+.scheduleTable tr td:first-child {
+	width: 8%;
+}
 
- .taipeiSchedule tr td:nth-child(3) {
- 	width: 8%;
- }
+.scheduleTable tr td:nth-child(3) {
+	width: 8%;
+}
 
- .taipeiSchedule tr td:nth-child(5) {
- 	width: 8%;
- }
+.scheduleTable tr td:nth-child(5) {
+	width: 8%;
+}
+
+.scheduleTable th {
+ 	font-size: 1.5em;
+}
+
+.scheduleTable td {
+ 	font-size: 1.2em;
+}
 
  .withoutBottomBorder {
  	border-bottom: none;
@@ -250,14 +262,14 @@ main p {
  	list-style-type: none;
  }
 
- .eventScheduleTable th {
+/* .eventScheduleTable th {
  	font-size: 1.5em;
  }
 
  .eventScheduleTable td {
  	font-size: 1.2em;
  }
-
+*/
 .grayedOut {
 	opacity: .2;
 	background-color: #fff;
