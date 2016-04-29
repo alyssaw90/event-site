@@ -545,6 +545,7 @@ module.exports = function (router) {
       let key = req.body.whatToChange;
       eventToEdit[key] = req.body.editEventInput;
       eventToEdit.save();
+      console.log(clc.bgGreen.white('::::::::::::::::::::::    '), req.body, '          ', eventToEdit);
       res.end();
     })
   })

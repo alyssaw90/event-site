@@ -260,7 +260,6 @@
         tabCount++;
         tinyMCE.triggerSave();
         var tabHtmlContent = tinyMCE.get('newEventTabTextArea').getContent();
-        console.log('newEventId       ', tinyMCE.get('newEventTabTextArea').getContent());
   			$.post('/addtabs', {
   				eventId: newEventId,
   				tabNumber: $('#newTabPosition').val(),
@@ -308,6 +307,7 @@
               //actions to take depending on what the user wants to edi
               $('.pickWhatToEditButton').click(function(e) {
                 var whatToEdit = $(this).data('whattoedit');
+                console.log(event);
                 $editFormSection.html(event[whatToEdit])
                 .promise()
                 .done(function() {
@@ -317,7 +317,7 @@
 
                     if (actionUrl === 'savenewimage') {
 
-                      submitFormWithCallback('editEventForm', actionUrl, null);
+                      submitForm('editEventForm', '/addimage');
                     }
 
                     if (actionUrl === 'edittheevent') {
