@@ -382,6 +382,16 @@
                     })
                   });
 
+                  $('#chooseTabToDeleteButton').click(function(e) {
+                    e.preventDefault();
+                    var tabToDeleteId = $("input[name=chooseEventToEdit]:checked").val();
+
+                    $.post('/deleteevent', {tabToDeleteId: tabToDeleteId}, function(data, textStatus, xhr) {
+                      $('#editEventForm')[0].reset();
+                      checkForChanges();
+                    });
+                  });
+
                   $('#chooseTabToEditButton').click(function(e) {
                     e.preventDefault();
                     var tabId = $("input[name=chooseEventToEdit]:checked").val();
