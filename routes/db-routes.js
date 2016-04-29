@@ -284,7 +284,8 @@ module.exports = function (router) {
             eventUrl: data[i].eventUrl,
             eventLocation: data[i].eventLocation,
             eventHomepageImage: data[i].eventHomepageImage,
-            eventHighlightColor: data[i].eventHighlightColor
+            eventHighlightColor: data[i].eventHighlightColor,
+            eventName: data[i].eventName
           };
           eventArr.push(tmpObj);
         }
