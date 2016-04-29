@@ -128,15 +128,36 @@
 
       function checkForChanges() {
         setTimeout(function() {
+          var now = new Date();
+          var before = new Date(now.getTime() - 2000);
           $.get('/allevents', function(data) {
-            console.log('reached');
-            var now = new Date();
-            var before = new Date(now.getTime() - 2000);
             for (var i = 0, j = data.length; i < j; i++) {
             var changed = new Date(data[i].updatedAt) > before;
             if (changed) {
               location.reload();
               changed = false;
+            }
+
+            }
+          });
+
+          $.get('/contacts', function(data2) {
+            for (var i = 0, j = data2.length; i < j; i++) {
+            var changed2 = new Date(data2[i].updatedAt) > before;
+            if (changed2) {
+              location.reload();
+              changed2 = false;
+            }
+
+            }
+          });
+
+          $.get('/alltabs', function(data3) {
+            for (var i = 0, j = data3.length; i < j; i++) {
+            var changed3 = new Date(data3[i].updatedAt) > before;
+            if (changed3) {
+              location.reload();
+              changed3 = false;
             }
 
             }
@@ -364,7 +385,9 @@
                   $('#chooseTabToEditButton').click(function(e) {
                     e.preventDefault();
                     var tabId = $("input[name=chooseEventToEdit]:checked").val();
-                    
+                    //reset tinymce
+                    tinymce.remove('#editEventForm');
+
                     $.post('/eventTabs', {tabId: tabId}, function(data, textStatus, xhr) {
                       $editEventForm.show();
                       $addTabImage.show();
@@ -393,7 +416,7 @@
                       });
 
                     });
-                    $editFormSection.show().html('<h3>Saved</h3>');
+                    
                     checkForChanges();
                   });
 
@@ -436,7 +459,6 @@
         e.preventDefault();
         tinyMCE.triggerSave();
         var newTabHtmlContent = tinyMCE.activeEditor.getContent();
-        console.log('newEventId       ', tinyMCE.activeEditor.getContent());
         $.post('/edittab', {
           tabId: $('#tabId').val(),
           tabNumber: $('#newTabPosition').val(),

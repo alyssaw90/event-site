@@ -13,8 +13,10 @@ import * as customFunctions from './common-functions.build.js';
 	 	
 	 	let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 	 	let pathname = window.location.pathname;
+	 	let $grayMenu = $('#grayMenu');
+	 	let $purpleMenuDiv = $('#purpleMenu');
 
-	 	let menu = `<!-- Begin upper purple menu -->
+	 	let upperGrayMenu = `<!-- Begin upper purple menu -->
 			<div class="menu-overlay hamburger-menu social-icons">
 			<!-- Begin Mobile "Hamburger Menu" -->
 				<div class="float-right mobileHamburgerIcon">
@@ -52,8 +54,9 @@ import * as customFunctions from './common-functions.build.js';
 					<div class="col_2 center-block menu-block past-events-header-menu-block"><a href="/past-events">Past Events</a></div>
 				</div>
 			</nav>
-			<!-- End gray desktop menu -->
-			<section id="headerImage" class="mobileWrapper"></section>
+			<!-- End gray desktop menu -->`;
+
+			let purpleMenu = `<section id="headerImage" class="mobileWrapper"></section>
 			<!-- Begin purple desktop menu -->
 			<nav class="menu-overlay desktop-menu flex">
 				<div class="col_12 purpleEventMenu"></div>
@@ -88,10 +91,12 @@ import * as customFunctions from './common-functions.build.js';
 					currentHeader = data[1];
 				}
 				console.log(new Date(data[0].eventStartDate) < todaysDate);
-				let headerImage = '<a href="/' + currentHeader.eventUrl + '"><section id="headerImage" class="mobileWrapper"><img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../uploads/' + currentHeader.eventHomepageImage + '" /></section></a>';
+				// let headerImage = '<a href="/' + currentHeader.eventUrl + '"><section id="headerImage" class="mobileWrapper"><img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../uploads/' + currentHeader.eventHomepageImage + '" /></section></a>';
 				let headerBackgroundColor = '<nav class="menu-overlay desktop-menu flex" style="background-color:' + currentHeader.eventHighlightColor + ';">'
 				let hamburgerMenu = '<div class="menu-overlay hamburger-menu social-icons" style="background-color:' + currentHeader.eventHighlightColor + ';">'
+				let theHomepageSlider = `<ul class="slideshow">`;
 			 	let $header = $('header');
+
 				$(data).each(function (i, elem) {
 					let startDate = new Date(elem.eventStartDate);
 					let cityArr = elem.eventLocation.split('_');
@@ -107,12 +112,28 @@ import * as customFunctions from './common-functions.build.js';
 						upcomingPurpleMenu += '<a href="/' + elem.eventUrl + '">' + city + '&nbsp-&nbsp<span class="purpleSubMenu">' + months[startDate.getMonth()] + ',&nbsp' + startDate.getFullYear() + '</span></a>';
 
 					}
+
 				});
 				upcomingPurpleMenu += '</div>';
-				menu = menu.replace('<div class="col_12 purpleEventMenu"></div>', upcomingPurpleMenu).replace('<section id="headerImage" class="mobileWrapper"></section>', headerImage).replace('<nav class="menu-overlay desktop-menu flex">', headerBackgroundColor).replace('<div class="menu-overlay hamburger-menu social-icons">', hamburgerMenu);
-				let headerMenu = $.parseHTML(menu);
-				$header.prepend(headerMenu);
-				//declare jQuery letiables after menu has been rendered to the DOM
+
+				purpleMenu = purpleMenu.replace('<nav class="menu-overlay desktop-menu flex">', headerBackgroundColor).replace('<div class="col_12 purpleEventMenu"></div>', upcomingPurpleMenu);
+				upperGrayMenu = upperGrayMenu.replace('<div class="menu-overlay hamburger-menu social-icons">', hamburgerMenu);
+				// let headerMenu = $.parseHTML(menu);
+				// $header.prepend(headerMenu);
+				let purpleMenuHtml = $.parseHTML(purpleMenu);
+				let upperGrayMenuHtml = $.parseHTML(upperGrayMenu);
+				$grayMenu.html(upperGrayMenuHtml);
+				$purpleMenuDiv.html(purpleMenuHtml);
+				$.get('/events', function(data) {
+					for (let i = 0, j = data.length; i < j; i++) {
+						theHomepageSlider += `<li><a href="${data[i].eventUrl}"><img src="uploads/${data[i].eventHomepageImage}" /></a></li>`;
+						
+					}
+					theHomepageSlider += '</ul><script type="text/javascript" src="../lib/kickstart.js"></script><script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5660d6c488a1a100" async="async"></script>';
+					$('#homepageSliderSection').html(theHomepageSlider);
+				});
+
+				//declare jQuery variables after menu has been rendered to the DOM
 			 	let $homeMenuButton = $('.home-menu-button');
 			 	let $upcominEventsBlock = $('.upcominEventsBlock');
 			 	let $latestNewsMenuBlock = $('.latest-news-menu-block');
@@ -162,6 +183,9 @@ import * as customFunctions from './common-functions.build.js';
 					$feedbackBlockWrapper.hide();
 					$headerImage.hide();
 					$headerImageTitleBox.hide();
+				}
+				if ($(window).width() < 768) {
+					$('#homepageSliderSection').hide();
 				}
 			});		
 	 });
