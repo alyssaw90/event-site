@@ -130,6 +130,12 @@ import * as customFunctions from './common-functions.build.js';
 					}
 					theHomepageSlider += '</ul><script type="text/javascript" src="../lib/kickstart.js"></script><script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5660d6c488a1a100" async="async"></script>';
 					$('#homepageSliderSection').html(theHomepageSlider);
+					if ($(window).width() < 768) {
+						// $('#homepageSliderSection').hide();
+						$('#homepageSliderSection').children('div.bx-wrapper').each(function(i, el) {
+							console.log($(this));
+						});
+					}
 				});
 
 				//declare jQuery variables after menu has been rendered to the DOM
@@ -183,9 +189,7 @@ import * as customFunctions from './common-functions.build.js';
 					$headerImage.hide();
 					$headerImageTitleBox.hide();
 				}
-				if ($(window).width() < 768) {
-					$('#homepageSliderSection').hide();
-				}
+
 			});		
 	 });
 })(jQuery);
