@@ -51,7 +51,7 @@ module.exports = function() {
 	    eventHeaderImage: 'Extend-banniereV2-(002).gif', //link to header image
 	    eventHomepageImage: 'ExtendWebsiteBanner.jpg',
 	    eventHighlightColor: '#5c2d91',
-	    eventSpeakers: '1,2,5,10,8,11,35'
+	    eventSpeakers: '1,2,5,10,8,11,35,36'
 	  });
 	})
 	.then(function () {
@@ -1859,6 +1859,22 @@ setTimeout(function() {\
     allowNotifications: false,
     allowPersonalInfoSharing: false
   })
+})
+.then(function() {
+	return Contact.create({
+		firstName: 'Jaimie',
+		lastName: 'Olson',
+		contactDescription: 'Jamie Olson is a Senior Data Scientist at Microsoft, where he works with customers and partners to build advanced analytics application, designing and developing end-to-end data pipelines across the entire range of Cortana Analytics products.  He has more than 10 years of experience with the R programming language, the last four of which have focused on using R inside Big Data platforms like Hadoop. Jamie’s expertise in computer science, machine learning and big data allows customers to quickly and easily transition and scale their advanced analytics projects with Microsoft technologies.',
+		eventRole: 'speaker',
+		showOnMeetTheTeamPage: false,
+		msTeamTitle: 'Senior Data Scientist',
+		showOnHomePage: false,
+		headShot: 'jaime-olson.jpg',
+		company: 'Microsoft',
+		country: 'USA',
+		allowNotifications: false,
+		allowPersonalInfoSharing: false
+	})
 })
 
 }
