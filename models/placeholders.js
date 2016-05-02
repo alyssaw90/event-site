@@ -51,7 +51,7 @@ module.exports = function() {
 	    eventHeaderImage: 'Extend-banniereV2-(002).gif', //link to header image
 	    eventHomepageImage: 'ExtendWebsiteBanner.jpg',
 	    eventHighlightColor: '#5c2d91',
-	    eventSpeakers: '1,2,5,10,8,11,35,36'
+	    eventSpeakers: '1,2,5,10,8,11,35,36,37'
 	  });
 	})
 	.then(function () {
@@ -1222,7 +1222,7 @@ setTimeout(function() {\
     eventId: 2,
     tabNumber: 1,
     tabTitle: 'About',
-    tabContent: '<a class="button blue float-right" style="height:65px;" href="https://www.facebook.com/events/815243558586451/">Find us on:<br /><i class="fa fa-facebook-square fa-2x"></i> acebook</a><a class="button orange large float-right" style="height:65px;margin-right:10px;font-size:2.35em;" target="_blank" href="http://aka.ms/x9n9ua">Register</a><h2>Extend Conference</h2><h4 class="center">Paris, France - May 12, 2016</h4><p>Microsoft introduces Extend – a 1-day event that brings together the latest technologies from Office, Data Platform, and Open Specifications.  Explore updates in Data Platform including machine learning, big data ingestion, and advanced analytics. Find out why Satya Nadella called Office 365, “the most strategic developer surface area” for Microsoft by discovering the potential of Office Add-ins and Office APIs. Finally, get direct access to a team of Microsoft program managers and engineers who are not only subject matter experts, but are excited to help you! Finish up the day at an evening mixer with attendees and Microsoft engineers.</p><h5>Where: Paris, France</h5><h5>When: May 12, 2016</h5><h5>Cost: Free</h5><br />'
+    tabContent: '<a class="button blue float-right" style="height:65px;" href="https://www.facebook.com/events/815243558586451/">Find us on:<br /><i class="fa fa-facebook-square fa-2x"></i> acebook</a><a class="button orange large float-right" style="height:65px;margin-right:10px;font-size:2.35em;" target="_blank" href="http://aka.ms/x9n9ua">Register</a><h2>Extend Conference</h2><h4 class="center">Paris, France - May 12, 2016</h4><p>Microsoft introduces Extend – a 1-day event that brings together the latest technologies from Office, Data Platform, and Open Specifications.  Explore updates in Data Platform including machine learning, big data ingestion, and advanced analytics. Find out why Satya Nadella called Office 365, “the most strategic developer surface area” for Microsoft by discovering the potential of Office Add-ins and Office APIs. Finally, get direct access to a team of Microsoft program managers and engineers who are not only subject matter experts, but are excited to help you! Finish up the day at an evening mixer with attendees and Microsoft engineers.</p><h5>Where: Paris, France</h5><h5>Terrass Kardinal</h5><h5>45 Rue Jussieu, 75005 Paris, France</h5><h5>When: May 12, 2016</h5><h5>Cost: Free</h5><br />'
   })
 })
 .then(function() {
@@ -1255,6 +1255,20 @@ setTimeout(function() {\
 	<tr><td class="lightGreenBackground">Data Platform</td></tr>
 	<tr><td class="lightBlueBackground">Office</td></tr>
 </table>`
+	})
+})
+.then(function() {
+	return EventTab.create({
+		eventId: 2,
+		tabNumber: 3,
+		tabTitle: 'Venue',
+		tabContent: `
+								<h3>Terrass Kardinal</h3>
+								<p>45 Rue Jussieu</p>
+								<p>75005 Paris, France</p>
+								<p><a href="http://terrass-kardinal.com/">terrass-kardinal.com </a></p>
+								<p><a href="tel:33156020345">+33 1 56 02 03 45 </a></p>
+								<img src="uploads/terrass-kardinal.jpg" />`
 	})
 })
 .then(function() {
@@ -1870,6 +1884,22 @@ setTimeout(function() {\
 		msTeamTitle: 'Senior Data Scientist',
 		showOnHomePage: false,
 		headShot: 'jaime-olson.jpg',
+		company: 'Microsoft',
+		country: 'USA',
+		allowNotifications: false,
+		allowPersonalInfoSharing: false
+	})
+})
+.then(function() {
+	return Contact.create({
+		firstName: 'Vivek',
+		lastName: 'Gupta',
+		contactDescription: 'Vivek Gupta is a Senior Data Scientist at Microsoft. He works with customers to understand their analytical business problems and how to use the Cortana Intelligence Suite to help solve them. Most recently, Vivek was part of Nokia’s Smart Devices division where he worked on applying data analytics solution to problems in the areas of understanding user behavior around location information, photography and application usage. Prior to joining Nokia, Vivek worked in a variety of industries designing and building backend services.',
+		eventRole: 'speaker',
+		showOnMeetTheTeamPage: false,
+		msTeamTitle: 'Senior Data Scientist',
+		showOnHomePage: false,
+		headShot: 'vivek-gupta.jpg',
 		company: 'Microsoft',
 		country: 'USA',
 		allowNotifications: false,
