@@ -84,7 +84,6 @@ import * as customFunctions from './common-functions.build.js';
 				} else {
 					currentHeader = data[1];
 				}
-				console.log(new Date(data[0].eventStartDate) < todaysDate);
 				let headerBackgroundColor = `<nav class="menu-overlay desktop-menu flex" style="background-color:${currentHeader.eventHighlightColor};">`
 				let hamburgerMenu = `<div class="menu-overlay hamburger-menu social-icons" style="background-color:${currentHeader.eventHighlightColor};">`
 				let theHomepageSlider = `<ul class="slideshow">`;

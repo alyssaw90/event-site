@@ -13,7 +13,7 @@ module.exports = function (grunt) {
     pkg: grunt.file.readJSON('package.json'),
     clean: {
       dev: {
-        src: ['build/*.js', 'dist/*.js']
+        src: ['build/**/.js', 'dist/*.js']
       }
     },
     //register task to run babel and compile es6
@@ -27,7 +27,7 @@ module.exports = function (grunt) {
           {
             expand: true,
             cwd: 'es6/',
-            src: ['*.js'],
+            src: ['**/*.js'],
             dest: 'build/',
             ext:'.build.js'
           }

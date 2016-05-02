@@ -6,7 +6,7 @@
 /*global homepageStickyFooter */
 
 let jQuery = require('jquery');
-import * as customFunctions from './common-functions.build.js';
+import * as customFunctions from '../common-functions.build.js';
 
 (function($) {
 
