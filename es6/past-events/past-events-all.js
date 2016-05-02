@@ -13,9 +13,9 @@ import * as customFunctions from '../common-functions.build.js';
 	$(function() {
 		var $pastEvents = $('.past_events');
 		$pastEvents.click(function() {
-			console.log('hello');
 			customFunctions.changeHeight('.past_events');
 			customFunctions.homepageStickyFooter();
+			customFunctions.pastEventBackgroundSwitch();
 		});
 	});
 

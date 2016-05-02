@@ -12,13 +12,13 @@ import * as customFunctions from '../common-functions.build.js';
 
 	$(document).ready(function () {
 
-		var $calendar = $('#calendar');
-		var imgArr = [];
+		let $calendar = $('#calendar');
+		let imgArr = [];
 
 		$( "#2015_events" ).click(function () {
 
 
-			var schedule = `<table cellspacing="0" cellpadding="0">
+			let schedule = `<table cellspacing="0" cellpadding="0">
 											<thead><tr>
 												<th>Name</th>
 												<th>Date</th>
@@ -65,14 +65,12 @@ import * as customFunctions from '../common-functions.build.js';
 											</tr></tbody>
 											</table>`;
 
-			var html = $.parseHTML(schedule);
-			$(this).siblings().removeClass('selected-year');
-			$(this).toggleClass('selected-year');
-			if ($calendar.html() === schedule) {
-				$calendar.empty();
+			let html = $.parseHTML(schedule);
+			if ($(this).css('background-color') === 'rgba(0, 216, 204, 0.8)') {
+			    $calendar.empty();
 			} else {
-				$calendar.empty();
-				$calendar.append(html);
+			    $calendar.empty();
+			    $calendar.append(html);
 			}
 			customFunctions.stickyFooter();
 

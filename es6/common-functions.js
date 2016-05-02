@@ -118,3 +118,20 @@ export let changeWidth = function(div) {
 		}
 
 	}
+
+export let pastEventBackgroundSwitch = function() {
+    console.log($(this).siblings());
+    $(this).siblings('.past_events').css('background-color', 'rgba(0, 216, 204, .8)');
+    if ($(this).css('background-color', '#4668c5')) {
+        $(this).css('background-color', 'rgba(0, 216, 204, .8)');
+    } else {
+        $(this).css('background-color', '#4668c5');
+    }
+}
+
+export let showCalendarOfPastEvents = function(htmlContent) {
+    if ($(this).css('background-color', 'rgba(0, 216, 204, .8)')) {
+        $('#calendar').empty();
+        $('#calendar').append(htmlContent);
+    }
+}

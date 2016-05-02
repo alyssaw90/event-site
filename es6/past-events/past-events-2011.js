@@ -58,13 +58,11 @@ import * as customFunctions from '../common-functions.build.js';
 												</tr></tbody>
 											</table>`;
 			let html = $.parseHTML(schedule);
-			$(this).siblings().removeClass('selected-year');
-			$(this).toggleClass('selected-year');
-			if ($calendar.html() === schedule) {
-				$calendar.empty();
+			if ($(this).css('background-color') === 'rgba(0, 216, 204, 0.8)') {
+			    $calendar.empty();
 			} else {
-				$calendar.empty();
-				$calendar.append(html);
+			    $calendar.empty();
+			    $calendar.append(html);
 			}
 			customFunctions.stickyFooter();
 	
