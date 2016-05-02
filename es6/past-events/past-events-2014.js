@@ -6,7 +6,7 @@
 /*jshint multistr: true */ 
 
 let jQuery = require('jquery');
-import * as customFunctions from './common-functions.build.js';
+import * as customFunctions from '../common-functions.build.js';
 
 (function($) {
 
@@ -20,38 +20,38 @@ import * as customFunctions from './common-functions.build.js';
 												<thead><tr>
 													<th>Name</th>
 													<th>Date</th>
-													<th># of attendees</th>
+													<th>Location</th>
 													<th>Technical topics</th>
 													<th>Related Materials</th>
 												</tr></thead>
 												<tbody><tr>
-													<td>RDP Protocols Plugfest 2014 – Redmond, WA</td>
+													<td>RDP Protocols Plugfest 2014</td>
 													<td>October 28-30, 2014</td>
-													<td> - </td>
+													<td>Redmond, WA</td>
 													<td>Protocol test suites and tools overviews, RDP documentation, Windows Multipoint Server, and RDP USB redirection</td>
 													<td><a href="http://channel9.msdn.com/Events/Open-Specifications-Plugfests/RDP-Protocols-Plugfest-2014">Videos</a></td>
 												</tr><tr>
-													<td>SDC (SNIA) – Santa Clara, CA</td>
+													<td>SDC (SNIA)</td>
 													<td>September 15-19, 2014</td>
-													<td> - </td>
+													<td>Santa Clara, CA</td>
 													<td> - </td>
 													<td> - </td>
 												</tr><tr>
-													<td>Redmond Interoperability Protocols Plugfest 2014 – Redmond, WA</td>
+													<td>Redmond Interoperability Protocols Plugfest 2014</td>
 													<td>June 16-20, 2014</td>
-													<td> - </td>
+													<td>Redmond, WA</td>
 													<td>Windows File Sharing, SharePoint, Exchange, and SQL protocols</td>
 													<td><a href="http://channel9.msdn.com/Events/Open-Specifications-Plugfests/Redmond-Interoperability-Protocols-Plugfest-2014">Videos</a></td>
 												</tr><tr>
-													<td>Beijing Interoperability Event – Beijing, China</td>
+													<td>Beijing Interoperability Event</td>
 													<td>April 1-2, 2014</td>
-													<td> - </td>
+													<td>Beijing, China</td>
 													<td> - </td>
 													<td> - </td>
 												</tr><tr>
-													<td>Taipei Interoperability Protocols Plugfest 2014 – Taipei,Taiwan</td>
+													<td>Taipei Interoperability Protocols Plugfest 2014</td>
 													<td>March 25-27, 2014</td>
-													<td> - </td>
+													<td>Taipei, Taiwan</td>
 													<td>Key interoperability topics, such as Bring your own device (BYOD), OAuth, OData, Remote Desktop Protocol (RemoteFX/RDP), Office File IO, and Exchange Email clients</td>
 													<td><a href="http://channel9.msdn.com/Events/Open-Specifications-Plugfests/Taipei-Interoperability-Protocols-Plugfest-2014">Videos</a></td>
 												</tr></tbody>
