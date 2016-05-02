@@ -10,15 +10,15 @@ import * as customFunctions from '../common-functions.build.js';
 
 (function($) {
 
-	$(document).ready(function () {
+    $(document).ready(function () {
 
-		var $calendar = $('#calendar');
-		var imgArr = [];
+        let $calendar = $('#calendar');
+        let imgArr = [];
 
-		$( "#2016_events" ).click(function () {
+        $( "#2016_events" ).click(function () {
 
 
-			var schedule = `<table cellspacing="0" cellpadding="0">
+            let schedule = `<table cellspacing="0" cellpadding="0">
 											<thead><tr>
 												<th>Name</th>
 												<th>Date</th>
@@ -35,19 +35,20 @@ import * as customFunctions from '../common-functions.build.js';
 											</tr></tbody>
 											</table>`;
 
-			var html = $.parseHTML(schedule);
-			$(this).siblings().removeClass('selected-year');
-			$(this).toggleClass('selected-year');
-			if ($calendar.html() === schedule) {
-				$calendar.empty();
-			} else {
-				$calendar.empty();
-				$calendar.append(html);
-			}
-			customFunctions.stickyFooter();
+            let html = $.parseHTML(schedule);
+            //for some reason the customFunctions.pastEventBackgroundSwitch(); method does not work on this past event block. I need to figure out why
+            $(this).siblings().removeClass('selected-year');
+            $(this).toggleClass('selected-year');
+            if ($(this).css('background-color') === 'rgba(0, 216, 204, 0.8)') {
+                $calendar.empty();
+            } else {
+                $calendar.empty();
+                $calendar.append(html);
+            }
+            customFunctions.stickyFooter();
 
-		});
+        });
 
-	});
+    });
 
 })(jQuery);
