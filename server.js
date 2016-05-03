@@ -16,6 +16,23 @@ if (process.env.SECRET_KEY !== 'change this change this change this!!!') {
 	secretKeyReminder = clc.black.bgRed('process.env.SECRET_KEY : change this change this change this!!!');
 }
 
+// create a generic "terminator" to stop server 
+function terminator(sig){
+    if (typeof sig === 'string') {
+       console.log('%s: Received %s - terminating sample app ...',
+                   Date(Date.now()), sig);
+       process.exit(1);
+    }
+    console.log(clc.bgRed('%s: Node server stopped.'), Date(Date.now()) );
+};
+
+// then implement it for every process signal related to exit/quit
+['SIGHUP', 'SIGINT', 'SIGQUIT', 'SIGILL', 'SIGTRAP', 'SIGABRT',
+ 'SIGBUS', 'SIGFPE', 'SIGUSR1', 'SIGSEGV', 'SIGUSR2', 'SIGTERM'
+].forEach(function(element, index, array) {
+    process.on(element, function() { terminator(element); });
+});
+
 app.use(passport.initialize());
 
 let dbRouter 		= express.Router();

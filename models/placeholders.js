@@ -8,7 +8,7 @@ let EventTab = models.EventTab;
 let clc = require('cli-color');
 
 module.exports = function() {
-
+ 
 	////////////////////////////////////Admin User placeholder/////////////////////////////////////
 
 	User.sync({force: true})
@@ -20,7 +20,7 @@ module.exports = function() {
 	  isAdmin: true
 	  });
 	})
-
+ 
 	////////////////////////////////////Event placeholder/////////////////////////////////////
 
 	.then(function() {
