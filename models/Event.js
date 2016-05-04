@@ -35,9 +35,15 @@ module.exports = function(sql, DataTypes) {
     getterMethods   : {
       eventUrl: function () {
         let theEventLocation = this.getDataValue('eventLocation');
-        let startDate = this.getDataValue('eventStartDate');
-        let theUrl = theEventLocation.replace(/\W/g, '').toLowerCase() + '-' + startDate.getFullYear();
-        return theEventLocation.replace(/\W/g, '').toLowerCase() + startDate.getFullYear();
+        let startDate;
+        if (this.getDataValue('eventStartDate')) {
+          startDate = this.getDataValue('eventStartDate');
+          
+        } else {
+          startDate = new Date(new Date().getFullYear(), 11, 31);
+        }
+        let theUrl = theEventLocation.replace(/\W/g, '').toLowerCase() + startDate.getFullYear();
+        return theUrl;
       }/*,
       eventSlideshowImage: function () {
         let idVal = this.getDataValue('id');

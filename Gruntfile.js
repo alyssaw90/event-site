@@ -39,10 +39,21 @@ module.exports = function (grunt) {
     browserify: {
       dist: {
         files: {
-          'dist/build.dist.js': ['build/**/*.js']
+          'dist/build.browserify.js': ['build/**/*.js']
         },
         options: {
           // transform: ['coffeeify']
+        }
+      }
+    },
+    //create uglify task to minify javascript
+    uglify: {
+      my_target: {
+        options: {
+          sourceMap: true
+        },
+        files: {
+          'dist/build.min.js': ['dist/build.browserify.js']
         }
       }
     },
@@ -51,16 +62,27 @@ module.exports = function (grunt) {
       dev: {
         script: 'server.js'
       }
-    },
-    //watch for changes in build.dist.js file
+    }, 
+    //watch for changes in es6 files
     watch: {
       scripts: {
-        files: ['dist/build.dist.js', 'adminjs/*.js', 'models/*.js', 'routes/*.js', 'scripts/*.*', 'tests/*.js'],
-        tasks: ['start'],
+        files: ['./es6/*.js', './admin/*.js', './models/*.js', './routes/*.js', './scripts/*.js', './*.js'],
+        tasks: ['clean', 'babel', 'browserify', 'uglify', 'nodemon:dev'],
         options: {
-          spawn: false,
+          interrupt: true,
+          // livereload: true
         },
       },
+    },
+    //create concurrent task to run watch and nodemon concurrently
+    concurrent: {
+      target1: ['clean', 'babel', 'browserify', 'uglify'],
+      target2: {
+          tasks: ['nodemon:dev', 'watch'],
+          options: {
+              logConcurrentOutput: true
+          }
+      }
     },
 		    // create jshint task
     jshint: {
@@ -157,8 +179,8 @@ module.exports = function (grunt) {
 	grunt.registerTask('test', ['simplemocha:dev']);
   // grunt.registerTask('nodemon', ['nodemon:dev']);
   grunt.registerTask('bbl', ['clean', 'babel']);
-  grunt.registerTask('build', ['bbl', 'browserify']);
+  grunt.registerTask('build', ['clean', 'babel', 'browserify', 'uglify']);
   grunt.registerTask('start', ['build', 'nodemon:dev']);
 	grunt.registerTask('test', ['build', 'test']);
-  grunt.registerTask('default', ['start', 'watch']);
+  grunt.registerTask('default', ['concurrent:target1', 'concurrent:target2']);
 };
