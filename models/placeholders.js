@@ -68,6 +68,20 @@ module.exports = function() {
 	  eventSpeakers: '1,2,3,5,9,8,11,15,12,10,6,21,14,18,16'
 	  });
 	})
+	.then(function () {
+	  return Event.create({
+	  eventName: 'India Event',
+	  // eventRegistrationLink: Sql.STRING, //link to registrationfor event
+	  eventLocation: 'India',
+	  eventContinent: 'Asia',
+	  // eventStartDate: new Date('2016-12-13:00:01:00'), //the start date...
+	  // eventEndDate: new Date('2016-12-13:00:01:00'), // the end date...
+	  // eventHeaderImage: null, //link to header image
+	  // eventHomepageImage: null,
+	  eventHighlightColor: '#ffb900',
+	  // eventSpeakers: null
+	  });
+	})
 	
 
 
@@ -1302,6 +1316,14 @@ setTimeout(function() {\
     tabTitle: 'Venue',
     tabContent: '<h3>Microsoft Redmond Campus</h3><img src="../uploads/ms-campus.png" />'
   })
+})
+.then(function() {
+	return EventTab.create({
+		eventId: 4,
+		tabNumber: 1,
+		tabTitle: 'About',
+		tabContent: '<h3>More info coming soon!</h3>'
+	})
 })
 
 ////////////////////////////////////Contact placeholder/////////////////////////////////////

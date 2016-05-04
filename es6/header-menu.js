@@ -96,18 +96,31 @@ import * as customFunctions from './common-functions.build.js';
 				let headerImage = '<a href="/' + data[0].eventUrl + '"><section class="headerImageTitleBox" style="background-color:' + data[0].eventHighlightColor + '; opacity: .8;">' + '<h1>' + data[0].eventName + '</h1><h1>' + months[startDate.getMonth()] + ' ' + startDate.getDate() + ' - ' + endDate.getDate() + ', ' + endDate.getFullYear() + '</h1></section></a><section id="headerImage" class="mobileWrapper"><img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../uploads/' + data[0].eventHomepageImage + '" /></section>'; //section commmented out to remove db rendered title box*/
 
 				$(data).each(function (i, elem) {
-					let startDate = new Date(elem.eventStartDate);
+					let startDate;
+					let startYear;
+					let startMonth;
 					let cityArr = elem.eventLocation.split('_');
 					for (let i = 0, j = cityArr.length; i < j; i++) {
 						cityArr[i] = cityArr[i].charAt(0).toUpperCase() + cityArr[i].slice(1);
 					}
+					console.log(elem.eventStartDate);
+					if (elem.eventStartDate === 'TBD') {
+						startYear = 'TBD';
+						startMonth = '';
+					} else {
+						startDate = new Date(elem.eventStartDate);
+						startYear = startDate.getFullYear();
+						startMonth = months[startDate.getMonth()] + ',';
+					}
+
+					
 
 			 		let city = cityArr.join(' ');
 					if (i < data.length - 1) {
-						upcomingPurpleMenu += '<a href="/' + elem.eventUrl + '">' + city + '&nbsp-&nbsp<span class="purpleSubMenu">' + months[startDate.getMonth()] + ',&nbsp' + startDate.getFullYear() + '</span></a>| ';
+						upcomingPurpleMenu += '<a href="/' + elem.eventUrl + '">' + city + '&nbsp-&nbsp<span class="purpleSubMenu">' + startMonth + '&nbsp' + startYear + '</span></a>| ';
 					}
 					if (i >= data.length - 1) {
-						upcomingPurpleMenu += '<a href="/' + elem.eventUrl + '">' + city + '&nbsp-&nbsp<span class="purpleSubMenu">' + months[startDate.getMonth()] + ',&nbsp' + startDate.getFullYear() + '</span></a>';
+						upcomingPurpleMenu += '<a href="/' + elem.eventUrl + '">' + city + '&nbsp-&nbsp<span class="purpleSubMenu">' + startMonth + '&nbsp' + startYear + '</span></a>';
 
 					}
 
@@ -124,7 +137,10 @@ import * as customFunctions from './common-functions.build.js';
 				$purpleMenuDiv.html(purpleMenuHtml);
 				$.get('/events', function(data) {
 					for (let i = 0, j = data.length; i < j; i++) {
-						theHomepageSlider += `<li><a href="${data[i].eventUrl}"><img src="uploads/${data[i].eventHomepageImage}" /></a></li>`;
+						//if there is a homepage image, add it to the slider
+						if (data[i].eventHomepageImage) {
+							theHomepageSlider += `<li><a href="${data[i].eventUrl}"><img src="uploads/${data[i].eventHomepageImage}" /></a></li>`;
+						}
 						
 					}
 					theHomepageSlider += '</ul><script type="text/javascript" src="../lib/kickstart.js"></script><script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5660d6c488a1a100" async="async"></script>';

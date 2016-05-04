@@ -1383,6 +1383,10 @@ footer a {
 		max-width: 80% !important;
 	}
 
+	.eventTabDiv  {
+		min-height: 600px;
+	}
+
 }
 
 @media all and (max-width: 641px) {

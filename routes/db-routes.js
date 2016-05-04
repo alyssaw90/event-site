@@ -30,43 +30,6 @@ let placeholders = require('../models/placeholders');
 
 placeholders();
 
-/*let models.Sql = require('sequelize');
-let models.sql = new models.Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
-  host: process.env.DB_LOCAL_HOST,
-  dialect: 'msmodels.sql',
-
-  pool: {
-    max: 5,
-    min: 0,
-    idle: 10000
-  }
-});*/
-/*let models.sql = new models.Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
-    host: process.env.DB_HOST,
-  dialect: 'msmodels.sql',
-  pool: {
-    max: 5,
-    min: 0,
-    idle: 10000
-  },
-  dialectOptions: {
-    encrypt: true
-  }
-});*/
-
-/*let models.sql = new models.Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
-  host: process.env.DB_DEV_HOST,
-  dialect: 'msmodels.sql',
-  pool: {
-    max: 5,
-    min: 0,
-    idle: 10000
-  },
-  dialectOptions: {
-    encrypt: true
-  }
-});
-*/
 models.sql.authenticate()
   .then(function (err) {
     if (err) {
@@ -258,9 +221,21 @@ module.exports = function (router) {
   .get(function (req, res) {
     models.sql.sync()
     .then(function () {
-      Event.findAll({where: {eventEndDate: {$gte: new Date()}}})
+      Event.findAll({
+        where: {
+          eventEndDate: {
+            $or: {
+              $gte: new Date(),
+              $eq: null
+            }
+          }
+        }
+      })
       .then(function (data) {
         let eventArr = [];
+        let undatedEventArr = [];
+        let outputArr;
+        let outputJson;
         let menuEvents = 4;
         if (data.length < 4) {
           menuEvents = data.length;
@@ -279,17 +254,28 @@ module.exports = function (router) {
           }
         });
         for (let i = 0; i < menuEvents; i++) {
+          let startDate;
+          if (data[i].eventStartDate === null) {
+            startDate = 'TBD';
+          } else {
+            startDate = data[i].eventStartDate;
+          }
           let tmpObj = {
-            eventStartDate: data[i].eventStartDate,
+            eventStartDate: startDate,
             eventUrl: data[i].eventUrl,
             eventLocation: data[i].eventLocation,
             eventHomepageImage: data[i].eventHomepageImage,
             eventHighlightColor: data[i].eventHighlightColor,
             eventName: data[i].eventName
           };
-          eventArr.push(tmpObj);
+          if (startDate === 'TBD') {
+            undatedEventArr.push(tmpObj);
+          } else {
+            eventArr.push(tmpObj);
+          }
         }
-        res.json(eventArr);
+        outputArr = eventArr.concat(undatedEventArr);
+        res.json(outputArr);
       });
     });
   });
@@ -460,6 +446,8 @@ module.exports = function (router) {
 
   //find the searched for event and return the html form to edit it
   router.post('/findeventtoedit', eatAuth, function(req, res) {
+    //declare variable to save the eventId for later searches
+    let thisEventId;
     //create object to hold html to be sent to the DOM
     let editEventHtml = {};
     //create an eventInfo object to hold the values for the event to be rendered
@@ -481,6 +469,7 @@ module.exports = function (router) {
       });
     })
     .then(function(theEvent) {
+      thisEventId = theEvent.id;
       eventInfo.theEvent = theEvent;
       return EventTab.findAll({
         where: {
@@ -504,7 +493,7 @@ module.exports = function (router) {
       //create an array and push each speaker object into it with the needed values and add the array to the eventInfo object
       let speakersArr =  [];
       let i = 0;
-
+      //loop over speakers to create object with all speakers
       for (let key in speakers) {
         speakersArr[i] = {};
         speakersArr[i].firstName = speakers[key].firstName;
@@ -514,13 +503,17 @@ module.exports = function (router) {
         speakersArr[i].contactDescription = speakers[key].contactDescription;
         i++;
       }
-
+      //create a form input with the tabs for each event
       for (let i = 0, j = eventInfo.tabs.length; i < j; i++) {
         tabForm += `<label for="chooseEventToEdit">${eventInfo.tabs[i].tabTitle}</label><input class="col_8" style="margin-left:10px; margin-right:10px;" id="chooseEventToEdit${i}" name="chooseEventToEdit" type="radio" value="${eventInfo.tabs[i].id}"></input></input>`;
       }
+      //add the button to the end of the tab form
       tabForm += `<button class="medium" id="chooseTabToEditButton">Choose tab</button></form>`;
+      //replace edit with deletes to create delete tab form
       deleteTabForm = tabForm.replace('chooseEventToEdit', 'chooseEventToDelete').replace('chooseTabToEditButton', 'chooseTabToDeleteButton').replace('editEventTabs', 'deleteEventTabs');
+      //declare keys and values to send as response
       eventInfo.speakers = speakersArr;
+      editEventHtml.eventToEditId = thisEventId;
       editEventHtml.eventTabs = tabForm;
       editEventHtml.deleteEventTabs = deleteTabForm;
       editEventHtml.eventName = `<form action="edittheevent" id="editEventForm" method="POST"><label for="editEventInput">Choose a name</label><input class="col_8" style="margin-left:10px; margin-right:10px;" id="editEventInput" name="editEventInput" type="text" value="${eventInfo.theEvent.eventName}"></input><input type="hidden" id="eventId" name="eventId" value="${eventInfo.theEvent.id}"></input><input type="hidden" id="whatToChange" id="whatToChange" name="whatToChange" value="eventName"></input><button class="medium" id="editEventNameButton">Save</button></form>`;
@@ -641,7 +634,12 @@ module.exports = function (router) {
       return Event.findOne({
         where: {
           eventLocation: eventSearchCity,
-          eventStartDate: {$gte: testDate}
+          eventStartDate: {
+            $or: {
+              $gte: testDate,
+              $eq: null
+            }
+          }
         }
       })
     })
@@ -662,8 +660,13 @@ module.exports = function (router) {
       eventInfo.tabs = theTabs;
     })
     .then(function() {
+      let speakersArr;
       //split the speaker IDs into an array then search for all Contacts that haver an ID that appears in the array and return the result
-      let speakersArr = eventInfo.event.eventSpeakers.split(',');
+      if (eventInfo.event.eventSpeakers !== null) {
+        speakersArr = eventInfo.event.eventSpeakers.split(',');
+      } else {
+        speakersArr = [];
+      }
       return Contact.findAll({
         where: {
           id: {$in: speakersArr}
@@ -705,7 +708,7 @@ module.exports = function (router) {
       }
 
       //if there are speakers, but no tabs add them as the only tab
-      if (eventInfo.tabs.length === 0) {
+      if (eventInfo.tabs.length === 0 && eventInfo.speakers.length > 0) {
         eventInfo.eventUltHtml += '<li class="last"><a href="#speakers"><h5>Speakers</h5></a></li></ul>';
         eventInfo.eventDivHtml += '<div id="speakers" class="tab-content eventTabDiv" style="display:none;">' + eventInfo.speakersHtml  + '</div>';
       }
@@ -724,12 +727,12 @@ module.exports = function (router) {
 
         }
         //if there are speakers add their html as the last tab
-        if (eventInfo.speakers && i >= eventInfo.tabs.length - 1) {
+        if (eventInfo.speakers.length > 0 && i >= eventInfo.tabs.length - 1) {
           eventInfo.eventUltHtml += '<li class="last"><a href="#speakers"><h5>Speakers</h5></a></li>';
           eventInfo.eventDivHtml += '<div id="speakers" class="tab-content eventTabDiv" style="display:none;">' + eventInfo.speakersHtml  + '</div>';
         }
-        //if there are no speakers add the last eventTab as the last tab
-        if (!eventInfo.speakers && i >= eventInfo.tabs.length - 1) {
+        //if there are no speakers and there is more than one tab add the last eventTab as the last tab
+        if (eventInfo.speakers.length <= 0 && i >= eventInfo.tabs.length - 1 && eventInfo.tabs.length > 1) {
           eventInfo.eventUltHtml += '<li class="last"><a href="#' + eventInfo.tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '').toLowerCase() + '"><h5>' + eventInfo.tabs[i].tabTitle + '</h5></a></li>';
           eventInfo.eventDivHtml += '<div id="' + eventInfo.tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '').toLowerCase() + '" class="tab-content eventTabDiv" style="display:none;">' + eventInfo.tabs[i].tabContent  + '</div>';
 

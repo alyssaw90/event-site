@@ -179,7 +179,7 @@ module.exports = function (grunt) {
 	grunt.registerTask('test', ['simplemocha:dev']);
   // grunt.registerTask('nodemon', ['nodemon:dev']);
   grunt.registerTask('bbl', ['clean', 'babel']);
-  grunt.registerTask('build', ['bbl', 'browserify']);
+  grunt.registerTask('build', ['clean', 'babel', 'browserify', 'uglify']);
   grunt.registerTask('start', ['build', 'nodemon:dev']);
 	grunt.registerTask('test', ['build', 'test']);
   grunt.registerTask('default', ['concurrent:target1', 'concurrent:target2']);
