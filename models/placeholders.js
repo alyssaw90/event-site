@@ -1250,17 +1250,17 @@ setTimeout(function() {\
 	<tr><td>10:00-10:45</td><td class="lightGreenBackground">Advanced Analytics Keynote</td></tr>
 	<tr><td>10:45-11:00</td><td>Break</td></tr>
 	<tr><td>11:00-11:45</td><td class="lightGreenBackground">Big Data Ingestion</td></tr>
-	<tr><td>11:45-12:45</td><td>Lunch</td></tr>
-	<tr><td>12:45-13:15</td><td class="lightGreenBackground">Machine Learning</td></tr>
-	<tr><td>13:15-13:45</td><td class="lightGreenBackground">R and Python</td></tr>
+	<tr><td>11:45-12:15</td><td class="lightGreenBackground">Machine Learning</td></tr>
+	<tr><td>12:15-12:45</td><td class="lightGreenBackground">R and Python</td></tr>
+	<tr><td>12:45-13:45</td><td>Lunch</td></tr>
 	<tr><td>13:45-14:15</td><td class="lightGreenBackground">Power BI using Big Data</td></tr>
 	<tr><td>14:15-14:45</td><td class="lightGreenBackground">Cognitive Services</td></tr>
-	<tr><td>14:45-15:00</td><td>Break</td></tr>
-	<tr><td>15:00-15:30</td><td class="lightBlueBackground">Office Add-ins Intro and Development</td></tr>
-	<tr><td>15:30-16:00</td><td class="lightBlueBackground">Office 365 APIs: Office Graph</td></tr>
+	<tr><td>14:45-15:15</td><td class="lightBlueBackground">Office Add-ins Intro and Development</td></tr>
+	<tr><td>15:15-15:45</td><td class="lightBlueBackground">Office 365 APIs: Office Graph</td></tr>
+	<tr><td>15:45-16:00</td><td>Break</td></tr>
 	<tr><td>16:00-16:45</td><td class="lightBlueBackground">Mail, Calendar, and Contacts REST APIs and Protocols</td></tr>
+	<tr><td>16:45-17:15</td><td class="lightBlueBackground">Office Add-ins and Graph Testimonials by Infinite Square</td></tr>
 	<tr><td>17:15-17:45</td><td class="lightBlueBackground">Office and SharePoint Protocols</td></tr>
-	<tr><td>15:00-15:30</td><td class="lightBlueBackground">Office Add-ins Intro and Development</td></tr>
 	<tr><td>17:45-18:15</td><td class="lightGreenBackground">OData Overview and Demonstration</td></tr>
 	<tr><td>18:15-20:00</td><td>Cocktails and Appetizers</td></tr>
 </table>
@@ -1283,6 +1283,605 @@ setTimeout(function() {\
 								<p><a href="http://terrass-kardinal.com/">terrass-kardinal.com </a></p>
 								<p><a href="tel:33156020345">+33 1 56 02 03 45 </a></p>
 								<img src="uploads/terrass-kardinal.jpg" />`
+	})
+})
+.then(function() {
+  return EventTab.create({
+    eventId: 2,
+    tabNumber: 4,
+    tabTitle: 'Data Platform Track Resources',
+    tabContent: `<p>For attendees of the Data Platform Track, the resources below are available during the event and the hackathon.</p><span class="taipeiDropDown2016"><h5><span class="rightArrow">&#x25B8;</span><span class="downArrow" style="display: none;">&#x25BE;</span> Azure cloud tools</h5><ul style="display: none;"><li><a href="https://www.visualstudio.com">Visual Studio free download</a></li><li><a href="http://portal.azure.com">Azure portal</a></li><li><a href="http://azure.Microsoft.com">Azure documentation</a></li><li><a href="https://ossonazure.bhuntr.com/api.php">Open data on Azure</a></li></ul></span><h5><a href="https://www.projectoxford.ai/doc">Microsoft Project Oxford</a> (image recognition and speech recognition API)</h5><h5><a href="http://dev.office.com">Office API</a></h5><h5><a href="http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/01/13/azure-amp-visual-studio-2015-web.aspx">Azure web app deployment</a></h5><span class="taipeiDropDown2016"><h5><span class="rightArrow">&#x25B8;</span><span class="downArrow" style="display: none;">&#x25BE;</span> Open source PHP</h5><ul style="display: none;"><li><a href="http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/02/19/azurer-php-mysql-web.aspx">Build PHP-MySQL Web application with Azure</a></li><li><a href="http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/01/13/azure-visual-studio-php.aspx">Build PHP website with Azure</a></li></ul></span><span class="taipeiDropDown2016"><h5><span class="rightArrow">&#x25B8;</span><span class="downArrow" style="display: none;">&#x25BE;</span> Cross-platform development</h5><ul style="display: none;"><li><a href="http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/01/22/xamarin-azure-app-service.aspx">Build Cross-platform Azure App Service with Xamarin</a></li></ul></span><h5><a href="https://azure.microsoft.com/en-us/develop/iot/">Use Azure for IoT</a></h5><span class="taipeiDropDown2016"><h5><span class="rightArrow">&#x25B8;</span><span class="downArrow" style="display: none;">&#x25BE;</span>Virtual machine</h5><ul style="display: none;"><li><a href="http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/02/19/azure-vm.aspx">Build up Linux virtual machine by Azure</a></li></ul></span><h5><a href="https://channel9.msdn.com/Series/mini-Connect-2016/youbike">IoT and machine learning demo</a></h5><h5><a href="http://blogs.msdn.com/b/hermanwu/archive/2015/08/03/windows-10-uwa-uwp-app.aspx">Client (Universal Windows Platform)</a></h5><h5><a href="https://azure.microsoft.com/zh-tw/documentation/services/sql-database/">SQL database</a></h5><span class="taipeiDropDown2016"><h5><span class="rightArrow">&#x25B8;</span><span class="downArrow" style="display: none;">&#x25BE;</span> Developer support</h5><ul style="display: none;"><li><a href="http://azure.microsoft.com/zh-tw/develop/net/">.NET</a></li><li><a href="https://azure.microsoft.com/zh-tw/documentation/articles/machine-learning-r-quickstart/">R</a></li><li><a href="https://azure.microsoft.com/zh-tw/develop/php/">PHP</a></li><li><a href="http://azure.microsoft.com/zh-tw/develop/java/">JAVA</a></li><li><a href="http://azure.microsoft.com/zh-tw/develop/nodejs/">Node.js</a></li><li><a href="http://azure.microsoft.com/zh-tw/develop/mobile/">iOS , Android , Windows</a></li></ul></span><h5><a href="http://azure.microsoft.com/zh-tw/documentation/">Microsoft Azure documentation</a></h5><h5><a href="http://azure.microsoft.com/zh-tw/">Azure website</a></h5><h5><a href="http://social.msdn.microsoft.com/Forums/zh-tw/home?category=windowsazuretw">MSDN forum</a></h5><h5><a href="https://www.facebook.com/groups/AzureTWUG/">Microsoft Azure Taiwan User Group</a></h5><h5><a href="http://www.microsoftvirtualacademy.com/">Microsoft Virtual Academy (MVA)</a></h5><script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script><script type="text/javascript">$(".taipeiDropDown2016").click(function(event) {$(this).find(".rightArrow").toggle();$(this).find(".downArrow").toggle();$(this).find("ol").toggle(250);$(this).find("ul").toggle(250);});</script>`
+  })
+})
+.then(function() {
+	return EventTab.create({
+		eventId: 2,
+		tabNumber: 5,
+		tabTitle: 'Productivity Track Resources',
+		tabContent: `<ul class="tabs left curriculumList">
+<li class="first current"><a href="#taipei2016-curricilum-welcome-en"><h6>Welcome</h6></a></li>
+<li id="taipei2016-curriculum-overview-en-tab"><a href="#taipei2016-curriculum-overview-en"><h6>Overview</h6></a></li>
+<li id="taipei2016-curriculum-registration-en-tab"><a href="#taipei2016-curriculum-registration-en"><h6>Registration</h6></a></li>
+<li id="taipei2016-curriculum-napa-en-tab"><a href="#taipei2016-curriculum-napa-en"><h6>Napa</h6></a></li>
+<li id="taipei2016-curriculum-vs2015-en-tab"><a href="#taipei2016-curriculum-vs2015-en"><h6>Visual Studio 2015</h6></a></li>
+<li id="taipei2016-curriculum-api-en-tab"><a href="#taipei2016-curriculum-api-en"><h6>API tutorial</h6></a></li>
+<li id="taipei2016-curriculum-publishing-en-tab"><a href="#taipei2016-curriculum-publishing-en"><h6>Publishing</h6></a></li>
+</ul>
+<div id="taipei2016-curricilum-welcome-en" class="tab-content">
+<p>Welcome to the Office Add-in training curriculum! Follow the modules to learn about the end-to-end process of developing and publishing an add-in to extend Office.</p>
+<p>If you don\'t already have Office, sign up with <a href="http://dev.office.com/devprogram">Office Dev Center</a> by clicking <strong>Dev Program sign up</strong> to get an Office 365 developer account and receive a one-year, free subscription for an Office 365 Development instance. See <a  class="welcomeTab" data-tabId="taipei2016-curriculum-registration-en-tab" href="">Registration</a> for details.</p>
+<ol class="tabs">
+<li class="welcomeTab" data-tabId="taipei2016-curriculum-overview-en-tab"><a href="">Office Add-ins platform overview</a></li>
+<li class="welcomeTab" data-tabId="taipei2016-curriculum-registration-en-tab"><a href="">Registration</a></li>
+<li class="welcomeTab" data-tabId="taipei2016-curriculum-napa-en-tab"><a href="">Napa Office 365 Development Tools</a></li>
+<li class="welcomeTab" data-tabId="taipei2016-curriculum-vs2015-en-tab"><a href="">Visual Studio Community 2015</a></li>
+<li class="welcomeTab" data-tabId="taipei2016-curriculum-api-en-tab"><a href="">API tutorial</a></li>
+<li class="welcomeTab" data-tabId="taipei2016-curriculum-publishing-en-tab"><a href="">Publishing</a></li>
+</ol>
+</div>
+<div id="taipei2016-curriculum-overview-en" class="tab-content" style="display: none;">
+<h2>Office Add-ins platform overview</h2>
+<h3>Topics</h3>
+<ul>
+<li><a href="#taipei2016-what-is-office-addin-en">What is an Office Add-in?</a></li>
+<li><a href="#taipei2016-anatomy-of-an-office-addin-en">Anatomy of an Office Add-in</a></li>
+<li><a href="#taipei2016-types-of-office-addins-en">Types of Office Add-ins</a></li>
+<li><a href="#taipei2016-scenarios-en">Scenarios</a></li>
+<li><a href="#taipei2016-office-apps-that-support-addins-en">Office applications that support Office Add-ins</a> </li>
+<li><a href="#taipei2016-development-life-cycle-en">Development life cycle</a></li>
+<li><a href="#taipei2016-resources-en">Resources</a></li>
+</ul>
+<h3 id="taipei2016-what-is-office-addin-en">What is an Office Add-in?</h3>
+<p>An Office Add-in is a web application hosted in a browser control or iframe running in the context of an Office application. There are several ways to developer an Office Add-in.</p>
+<ul>
+<li>You can create a simple Office Add-in by using <a href="https://www.napacloudapp.com/Getting-Started">Napa Office 365 Development Tools web app</a>.</li>
+<li>You can use the free <a href="https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx">Visual Studio Community 2015</a> along with <a href="https://www.visualstudio.com/features/office-tools-vs">Office Developer Tools</a>.</li>
+<li>You can also use <a href="https://msdn.microsoft.com/en-us/library/office/mt628821.aspx">text editor to create Office Add-ins</a>.</li>
+</ul>
+<h3 id="taipei2016-anatomy-of-an-office-addin-en">Anatomy of an Office Add-in</h3>
+<p>The basic components of an Office Add-in are an XML manifest file and the default webpage of your add-in.</p>
+<figcaption>Manifest + webpage = an Office Add-in</figcaption>
+<img src="../uploads/office-web-curriculum-taipei-en-15.jpg" />
+<p>The manifest specifies settings and capabilities of the add-in, such as the following:</p>
+<ul>
+<li>The URL of the webpage that implements the add-in\'s UI and programming logic.</li>
+<li>The add-in\'s display name, description, ID, version, and default locale.</li>
+<li>How the add-in activates and displays: 
+<ul>
+<li>For add-ins that interact with documents: as a task pane, or in line with document content.</li>
+<li>For add-ins that interact with mail items (messages or appointments): when reading or composing the item.</li>
+</ul>
+</li>
+<li>The permission level and data access requirements for the add-in.</li>
+</ul>
+<h3 id="taipei2016-types-of-office-addins-en">Types of Office Add-ins</h3>
+<p>There are three types of Office Add-ins: task pane, content, and Outlook.</p>
+<h3>Task pane add-ins (Word, Excel, and PowerPoint Add-ins that extend functionality)</h3>
+<p>You can add new functionality to Word, Excel, or PowerPoint by registering your add-in using a <a href="http://dev.office.com/docs/add-ins/design/add-in-commands-for-excel-and-word-preview">task pane add-in manifest</a>. This manifest supports two integration modes:</p>
+<ul>
+<li>Add-in commands</li>
+<li>Insertable task panes</li>
+</ul>
+<h4>Add-in commands</h4>
+<p>Use add-in commands to extend the user interface of Office for Windows Desktop and Office Online. For example, you can add uttons for your add-ins on the ribbon or selected contextual menus, allowing users to easily access their add-ins within Office. Command buttons can launch the different actions such as showing a pane (or multiple panes) with a custom HTML or executing a JavaScript function. We recommend that you <a href="https://channel9.msdn.com/Events/Visual-Studio/Connect-event-2015/316">watch this Channel9 video</a> for a deeper overview of this feature.</p>
+<figcaption>Add-in with commands running in Excel Desktop </figcaption>
+<img src="../uploads/office-web-curriculum-taipei-en-14.jpg" />
+<figcaption>Add-in with commands running in Excel Online </figcaption>
+<img src="../uploads/office-web-curriculum-taipei-en-16.jpg" />
+<p>You can define your commands in your add-in manifest by using VersionOverrides. The Office platform takes care of interpreting them into native UI. To get started, check out these <a href="https://github.com/OfficeDev/Office-Add-in-Commands-Samples/">samples on GitHub</a>, and see <a href="http://dev.office.com/docs/add-ins/design/add-in-commands-for-excel-and-word-preview">Add-in commands for Excel, Word, and PowerPoint</a></p>
+<h4>Insertable Taskpanes</h4>
+<p>Clients that do not support add-in commands yet (Office 2013, Office for Mac and Office for IPad) will run your add-in as a Task pane using the DefaultUrl provided in the manifest. The add-in can then be launched via the My Add-ins menu from the Insert Tab. </p>
+<table class="tableWithBorders tableFirstRowBold">
+<tr><th>Note</th></tr>
+<tr><td>A single manifest can have both a task pane add-in that runs in clients that do not support commands and a version that runs with commands. This allows you to have a single add-in that works across all clients that support Office Add-ins.</td></tr>
+</table>
+<p>Task pane add-ins work side-by-side with an Office document, and let you supply contextual information and functionality to enhance the document viewing and authoring experience. For example, a task pane add-in can look up and retrieve product information from a web service based on the product name or part number selected in the document.</p>
+<figcaption>Task pane add-ins</figcaption>
+<img src="../uploads/office-web-curriculum-taipei-en-2.png" />
+<p>To try out a task pane add-in in Excel 2013, Excel Online, or Word 2013, install the <a href="https://store.office.com/wikipedia-WA104099688.aspx?assetid=WA104099688">Wikipedia</a> add-in.</p>
+<h3>Content add-ins</h3>
+<p>Content add-ins integrate web-based features as content that shown in line with the body of a document. Content add-ins let you integrate rich, web-based data visualizations, embedded media (such as a YouTube video player or a picture gallery), as well as other external content.</p>
+<figcaption>Content add-ins</figcaption>
+<img src="../uploads/office-web-curriculum-taipei-en-3.png" />
+<p>To try out a content add-in in Excel 2013 or Excel Online, install the <a href="https://store.office.com/bing-maps-WA102957661.aspx?assetid=WA102957661">Bing Maps</a> add-in.</p>
+<h3>Outlook add-ins</h3>
+<p>Outlook add-ins display next to an Outlook item when you\'re viewing or composing it. They can work with an email message, meeting request, meeting response, meeting cancellation, or appointment in a read scenario – the user viewing a received item – or in a compose scenario – the user replying or creating a new item.</p>
+<p>To learn more, see <a href="http://dev.office.com/docs/add-ins/outlook/outlook-add-ins">Outlook add-ins</a></p>
+<table class="tableWithBorders tableFirstRowBold">
+<tr><th>Note</th></tr>
+<tr><td>Outlook add-ins require a minimum version of Exchange 2013 or Exchange Online to host the user’s mailbox. POP and IMAP email accounts aren\'t supported.</td></tr>
+</table>
+<figcaption>An add-in with command buttons on the ribbon</figcaption>
+<img src="../uploads/office-web-curriculum-taipei-en-17.jpg" />
+<figcaption>Outlook add-in in a read scenario</figcaption>
+<img src="../uploads/office-web-curriculum-taipei-en-4.png" />
+<p>To try out an Outlook add-in in Outlook, Outlook for Mac, or Outlook Web App, install the <a href="https://store.office.com/package-tracker-WA104162083.aspx?assetid=WA104162083">Package Tracker</a> add-in.</p>
+<h3 id="taipei2016-scenarios-en">Scenarios</h3>
+<ul>
+<li><strong>Translation wizard</strong>—A Word task pane add-in that automatically translates selected text from the document language to another language selected from a drop-down list.</li>
+<li><strong>Chart creation</strong>—An Excel content add-in that builds a chart automatically from selected data.</li>
+<li><strong>Third-party service integration</strong>—A Word or Excel task pane add-in that automatically displays the Wikipedia page that corresponds to selected text.</li>
+<li><strong>Rich mash-ups</strong>—A Bing map content add-in in Excel that plots the offshore equipment and resource locations for a petroleum company, including getting this information in real time from the company resource-management system.</li>
+<li><strong>Spec validation</strong>—A section or paragraph of a design specification for an aircraft component is flagged as outdated, because a Word task pane add-in that communicates with a business system to validate the contents against the latest spec.</li>
+<li><strong>Kicking off workflows</strong>—An Outlook add-in can assist creating a message or meeting request based on templates, inserting meeting location details or user’s choice of a signature, and attaching related documents.</li>
+<li><strong>Order details surfaced in context</strong>—An Outlook add-in that detects a purchase order number or customer number embedded in an email message can present details of the order or customer in the message. This could include an action to take, such as approval.</li>
+</ul>
+<h3 id="taipei2016-office-apps-that-support-addins-en">Office applications that support Office Add-ins</h3>
+<table class="striped">
+<tr><th>Office application</th><th>Content add-ins</th><th>Outlook add-ins</th><th>Task pane add-ins</th></tr>
+<tr><td>Access web apps</td><td><i class="fa fa-check"></i></td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>Excel 2013 or later</td><td><i class="fa fa-check"></i></td><td>&nbsp;</td><td><i class="fa fa-check"></i></td></tr>
+<tr><td>Excel Online  </td><td><i class="fa fa-check"></i></td><td>&nbsp;</td><td><i class="fa fa-check"></i></td></tr>
+<tr><td>Excel for iPad  </td><td><i class="fa fa-check"></i></td><td>&nbsp;</td><td><i class="fa fa-check"></i></td></tr>
+<tr><td>Outlook 2013 or later</td><td>&nbsp;</td><td><i class="fa fa-check"></i></td><td>&nbsp;</td></tr>
+<tr><td>Outlook for Mac </td><td>&nbsp;</td><td><i class="fa fa-check"></i></td><td>&nbsp;</td></tr>
+<tr><td>Outlook Web App</td><td>&nbsp;</td><td><i class="fa fa-check"></i></td><td></td&nbsp;></tr>
+<tr><td>OWA for Devices</td><td>&nbsp;</td><td><i class="fa fa-check"></i></td><td>&nbsp;</td></tr>
+<tr><td>PowerPoint 2013 or later</td><td><i class="fa fa-check"></i></td><td>&nbsp;</td><td><i class="fa fa-check"></i></td></tr>
+<tr><td>PowerPoint Online</td><td><i class="fa fa-check"></i></td><td>&nbsp;</td><td><i class="fa fa-check"></i></td></tr>
+<tr><td>Project 2013 or later</td><td>&nbsp;</td><td>&nbsp;</td>&nbsp;<td><i class="fa fa-check"></i></td></tr>
+<tr><td>Word 2013 or later</td><td>&nbsp;</td><td>&nbsp;</td>&nbsp;<td><i class="fa fa-check"></i></td></tr>
+<tr><td>Word Online</td><td>&nbsp;</td><td>&nbsp;</td>&nbsp;<td><i class="fa fa-check"></i></td></tr>
+<tr><td>Word for iPad</td><td>&nbsp;</td><td>&nbsp;</td>&nbsp;<td><i class="fa fa-check"></i></td></tr>
+</table>
+<h3 id="taipei2016-development-life-cycle-en">Development lifecycle</h3>
+<p>Plan the end-to-end process for developing task pane, content, and Outlook add-ins to extend Office applications.</p>
+<ol>
+<li>Decide on the purpose of the add-in. </li>
+<li>Identify the data and data source for the add-in. </li>
+<li>Identify the type of add-in and Office host applications that best support the purpose of the add-in. </li>
+<li>Design and implement the user experience and user interface for the add-in. </li>
+<li>Create an XML manifest file based on the Office Add-ins manifest schema. </li>
+<li>Install and test the add-in. </li>
+<li>Publish the add-in. </li>
+<li>Updating the add-in </li>
+</ol>
+<h3 id="taipei2016-resources-en">Resources</h3>
+<p><a href="https://msdn.microsoft.com/EN-US/library/office/jj220082.aspx">Office Add-ins platform overview</a></p>
+<p><a href="https://dev.office.com/getting-started/addins">Getting started with Office Add-ins</a></p>
+<p><a href="https://code.visualstudio.com/Docs/runtimes/office">Office Add-ins with VS code</a></p>
+<p><a href="https://github.com/OfficeDev">Office Developer code samples</a></p>
+</div>
+<div id="taipei2016-curriculum-registration-en" class="tab-content" style="display: none;">
+<h2>Registration</h2>
+<h3>Topics</h3>
+<ol>
+<li><a href="#taipei2016-sign-up-at-office-dev-cenbter-en">Sign up with Office Dev Center</a></li>
+<li><a href="#taipei2016-join-dev-program-en">Get an Office 365 developer account</a></li>
+<li><a href="#taipei2016-access-your-office-365-en">Access your Office 365</a></li>
+<li><a href="#taipei2016-assign-office-365-license-en">Assign Office 365 license</a></li>
+<li><a href="#taipei2016-registration-resources-en">Resources</a></li>
+</ol>
+<h3 id="taipei2016-sign-up-at-office-dev-cenbter-en">Sign up with Office Dev Center</h3>
+<p>Sign up with <a href="http://dev.office.com/devprogram">Office Dev Center</a> to get a free Office 365 developer account and receive a one-year, free subscription for an Office 365 Development instance.  </p>
+<figcaption>Figure 1. Office 365 Dev Program</figcaption>
+ <img src="../uploads/office-web-curriculum-taipei-en-5.png" />
+<h3 id="taipei2016-join-dev-program-en">Get an Office 365 developer account</h3>
+<ol>
+<li>You will receive an email from the Office 365 Developer Program. Scroll down the email, click on the provided link to sign up for a free Office 365 developer account.</li>
+<li>The first page (not shown) of the signup form is self-explanatory. Just supply the information about yourself that is requested and choose <strong>Next</strong>.</li>
+<li>On the second page, shown in Figure 2, specify a user ID for the administrator of the subscription. </li>
+</ol>
+<figcaption>Figure 2. Office 365 Developer Site domain name</figcaption>
+<img src="../uploads/office-web-curriculum-taipei-en-6.png" />
+<p>4. Create a subdomain of <strong>.onmicrosoft.com</strong></p>
+<p class="indentP"> After signup, you have to use the resulting credentials (in the format <a href="mailto:UserID@yourdomain.onmicrosoft.com">UserID@yourdomain.onmicrosoft.com</a>) to sign in to your Office 365 portal site where you administer your account. Your SharePoint Online Developer Site is provisioned at your new domain: http://yourdomain.sharepoint.com.</p>
+<p>5. Choose <strong>Next</strong> and fill out the final page of the form. If you choose to provide a telephone number to obtain a confirmation code, you can provide a mobile or land line telephone number, but not a VoIP (Voice over Internet Protocol) number.</p>
+<table class="tableWithBorders tableFirstRowBold">
+<tr><th>Note</tj></tr>
+<tr><td><p>If you’re logged on to another Microsoft account when you try to sign up for a developer account, you might get this message: "Sorry, that user ID you entered didn’t work. It looks like it’s not valid. Be sure you enter the user ID that your organization assigned to you. Your user ID usually looks like <i>someone@example.com</i> or <i>someone@example.onmicrosoft.com</i>."</p>
+<p>If you see this message, log out of the Microsoft account you were using and try again. If you still get the message, clear your browser cache or switch to InPrivate Browsing and then fill out the form.</p>
+</td></tr>
+</table>
+<p>Once your account is created, you will receive another email that contains a link to access your Office 365.</p>
+<h3 id="taipei2016-access-your-office-365-en">Access your Office 365</h3>
+<p>Your browser will open the Office 365 installation page. Choose the Admin icon to open the admin center page.</p>
+<figcaption>Figure 3. Office 365 admin center page</figcaption>
+<img src="../uploads/office-web-curriculum-taipei-en-7.png" />
+<ol>
+<li>You’ll have to wait for your Developer Site to finish provisioning. After provisioning is complete, refresh the admin center page in your browser.</li>
+<li>Then, choose the Build Add-ins link to open your Developer Site. You should see a site that looks like the one in Figure 4. There is an Add-ins in Testing list on the page. This confirms that the website was made with SharePoint\'s Developer Site template. If you see a regular team site instead, wait a few minutes and launch your site again.<br />If you do not have the development tool, you will be directed to Add the Napa Office 365 Development Tools. You can use Napa to develop your add-ins on this site.</li>
+<li>Make a note of the URL of the site. It is used when you create SharePoint Add-ins projects in Visual Studio.</li>
+</ol>
+<figcaption>Figure 4. Your Developer Site home page with the Add-ins in Testing list</figcaption>
+ <img src="../uploads/office-web-curriculum-taipei-en-8.png" />
+<h3 id="taipei2016-assign-office-365-license-en">Assign Office 365 license</h3>
+<p>To assign Office 365 license for yourself, the active user. Click on the “waffle” icon > Admin icon located on the top left.</p>
+<figcaption>Figure 5. Office 365 landing page</figcaption>
+<img src="../uploads/office-web-curriculum-taipei-en-10.png" />
+<p class="indentP">In the left navigation panel, select <strong>Users</strong> > <strong>Active Users</strong> </p>
+<p class="indentP">Select yourself by clicking on the checkbox. Your profile will be shown on the right. Click <strong>Edit</strong> under the item: <strong>Assigned license</strong></p>
+<figcaption>Figure 6. Office 365 admin center > Active Users</figcaption>
+<img src="../uploads/office-web-curriculum-taipei-en-11.png" />
+<p class="indentP">3. Select your location in the <strong>Set user location</strong> combo box. And select <strong>Microsoft Office 365 Developer</strong>. Click <strong>Save</strong> to finish assigning the license.</p>
+<figcaption>Figure 7: Assign license for the active user profile</figcaption>
+<img src="../uploads/office-web-curriculum-taipei-en-12.png">
+<p class="indentP">4. After you’re finished, return to the Office 365 homepage. The page will display the products that are available to you, including the Office web apps. Pull down the page to see the full display.</p>
+<figcaption>Figure 8. Office 365</figcaption>
+<img src="../uploads/office-web-curriculum-taipei-en-13.png" />
+<p>To navigate back to the developer site, click on the “waffle” icon (located in the top-left corner) > <strong>Admin</strong> > <strong>Build Apps</strong>.</p>
+<h3 id="taipei2016-registration-resources-en">Resources</h3>
+<p><a href="https://msdn.microsoft.com/en-us/library/office/dn467914.aspx">Office developer documentation</a></p>
+<p><a href="https://msdn.microsoft.com/en-us/library/office/fp179924.aspx#o365_signup">Set up for an Office 365 Developer Site</a></p>
+</div>
+<div id="taipei2016-curriculum-napa-en" class="tab-content" style="display: none;">
+<h2>Napa Office 365 Development Tools</h2>
+<h3>Topics</h3>
+<ul>
+<li> <a href="#taipei2016-prerequisites-napa-en">Prerequisites</a></li>
+<li><a href="#taipei2016-create-office-addins-with-napa-en">Create Office Add-ins with Napa on an Office 365 Developer Site</a></li>
+<li><a href="#taipei2016-create-excel=addin-with-napa-en">Create a content add-in for Excel with Napa Office 365 Development Tool </a></li>
+<li><a href="#taipei2016-debug-your-addin-napa-en">Debug your add-in in Internet Explorer </a></li>
+<li><a href="#taipei2016-resources-napa-en">Resources</a></li>
+</ul>
+<h3 id="taipei2016-prerequisites-napa-en">Prerequisites</h3>
+<p>Join the <a href="http://dev.office.com/devprogram">Office 365 Developer Program</a>. See <a class="welcomeTab" data-tabId="taipei2016-curriculum-registration-en-tab">Registration</a></p>
+<table class="tableWithBorders tableFirstRowBold">
+<tr><th>Note</th></tr>
+<tr><td>If you have Office 365, there\'s an alternate version of <a href="https://www.napacloudapp.com/Getting-Started">Napa</a> that doesn\'t use or require an Office 365 Developer Site. That version supports creating only Office Add-ins using your personal <a href="https://www.microsoft.com/en-us/account/default.aspx">Microsoft account</a>. </td></tr>
+</table>
+<h3 id="taipei2016-create-office-addins-with-napa-en">Create Office Add-ins with Napa on an Office 365 Developer Site</a></h3>
+<p>Napa is a great way to get started building Office Add-ins right in a browser window. You don\'t need to install any tools such as Visual Studio.  All you need is an Office 365 account and a supported browser. (Firefox is the recommended browser for Mac users.)</p>
+<p>To get started, sign up for an Office 365 Developer Site. Then, install Napa on your developer site and you are ready to create Office Add-ins.</p>
+<ol>
+<li>If you’ve completed the steps in Registration, you will have access to the Office 365 Developer Site. Sign in with your credential created in Registration at <a href="http://www.portal.office.com/">www.portal.office.com</a> > Click on <strong>Admin</strong> > <strong>Build Apps</strong> to access your developer site.<br />If you do not have the development tool, you will be directed to <strong>Add</strong> the Napa Office 365 Development Tools.</li>
+<li>Click on <strong>Build Apps</strong> on the developer site to open the Napa Office 365 Development Tools web app in your browser.<br /><h3 style="margin-left: -25px" id="taipei2016-create-excel=addin-with-napa-en">Create a content add-in for Excel with Napa Office 365 Development Tool </h3></li>
+<li>Open the Napa Office 365 Development Tools web app in your browser and choose the <strong>Add New Project</strong> tile. (The Add New Project tile appears only if you have created other projects.)</li>
+<li>Try the tutorial: <a href="https://msdn.microsoft.com/EN-US/library/office/jj220065.aspx">Create a content add-in for Excel with Napa Office 365 Development Tools</a></li>
+</ol>
+<h3 id="taipei2016-debug-your-addin-napa-en">Debug your add-in in Internet Explorer</h3>
+<p>If you start your add-in in Excel Online, and you use Internet Explorer (IE), you can use F12 developer tools to debug the JavaScript, HTML, and Cascading Style Sheets (CSS) of your content add-in. See <a href="https://msdn.microsoft.com/library/bg182326(v=vs.85)">Using the F12 developer tools</a> for more information. If you use a browser other than Internet Explorer, search your browser documentation.</p>
+<h3 id="taipei2016-resources-napa-en">Resources</h3>
+<p><a href="https://msdn.microsoft.com/EN-US/library/office/jj220038.aspx">Create Office Add-ins with Napa on an Office 365 Developer Site</a></p>
+<p><a href="https://msdn.microsoft.com/EN-US/library/office/dn974046.aspx">Create Office Add-ins with Napa Office 365 Development Tools</a></p>
+<p><a href="https://msdn.microsoft.com/EN-US/library/office/jj554660.aspx">Create a task pane add-in with Napa Office 365 Development Tools</a></p>
+</div>
+<div id="taipei2016-curriculum-vs2015-en" class="tab-content" style="display: none;">
+<h2>Visual Studio Community 2015</h2>
+<h3>Topics</h3>
+<ul>
+<li><a href="#taipei2016-vs-2015-prerequisites-en">Prerequisites</a></li>
+<li><a href="#taipei2016-vs-2015-setup-en">Set up your free Visual Studio Community 2015</a></li>
+<li><a href="#taipei2016-vs-2015-hello-world-en">Build your first Hello World task pane add-in with Visual Studio</a></li>
+<li><a href="#taipei2016-vs-2015-build-first-excel-addin-en">Build your first Excel add-in</a></li>
+<li><a href="#taipei2016-vs-2015-debuging-en">Debug in Visual Studio</a></li>
+<li><a href="#taipei2016-vs-2015-resources-ens-en">Resources</a></li>
+</ul>
+<h3 id="taipei2016-vs-2015-prerequisites-en">Prerequisites</h3>
+<ul>
+<li><a href="https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx">Visual Studio community 2015 (free version)</a></li>
+<li><a href="https://www.visualstudio.com/features/office-tools-vs">Office Developer Tools</a></li>
+<li>Excel 2013 or later and Word 2013 or later for "Build your first Hello World" and extend on your "Hello World" add-in</li>
+<li>Excel 2016, Excel Online for "Build your first Excel add-in" (The new API released with Office 2016 has additional functionalities, but works with the latest version of Office or the online version.) </li>
+</ul>
+<h3 id="taipei2016-vs-2015-setup-en">Set up your free Visual Studio Community 2015</h3>
+<p class="indentP">1. If you don\'t have Visual Studio, download <a href="https://go.microsoft.com/fwlink/?LinkId=532606&clcid=0x409">Visual Studio 2015 Community Edition</a> along with <a href="https://www.visualstudio.com/features/office-tools-vs">Office Developer Tools</a>. </p>
+<img src="../uploads/office-web-curriculum-taipei-14.png" />
+<table class="tableWithBorders tableFirstRowBold">
+<tr><th>Note</strong></th>
+<tr><td>When you develop and debug an add-in in Visual Studio, Visual Studio deploys and runs your add-in\'s webpage files locally with IIS Express, and doesn\'t require an additional web server. Similarly, when you develop and debug with Napa in the browser, it deploys and runs your add-in\'s webpage files from storage associated with the account you used to sign into Napa.</td></tr>
+</table>
+<p class="indentP">2. Choose <strong>File</strong> > <strong>New</strong> > <strong>Project</strong>.</p>
+<p class="indentP">3. In the <strong>New Project</strong> dialog, choose <strong>Templates</strong> > <strong>Visual C#</strong> > <strong>Office/SharePoint</strong> > <strong>Office Add-in</strong> (or App for Office).</p>
+<img src="../uploads/office-web-curriculum-taipei-15.png" />
+<p class="indentP">4. Name the project <strong>HelloWorld</strong>, and then choose <strong>OK</strong>.</p>
+<p class="indentP">5. Select <strong>Task</strong> pane as the app type and then <strong>Next</strong>.</p>
+<p class="indentP">6.  Select <strong>Excel</strong> as the Office application that you want to host your add-in. You can select multiple options, and your add-in will run in any of the selected applications.</p>
+<p class="indentP">Visual Studio creates the project, and its files appear in Solution Explorer. The default Home.html page opens in Visual Studio.</p>
+<p>If you prefer to use an editor other than Visual Studio, keep in mind you can <a href="https://msdn.microsoft.com/library/office/mt628821.aspx">create an Office add-in using any editor.</a>
+<h3 id="taipei2016-vs-2015-hello-world-en">Build your first Hello World task pane add-in with Visual Studio</h3>
+<p>Try this tutorial: <a href="https://msdn.microsoft.com/en-us/library/office/fp142161.aspx">Create a task pane or content add-in with Visual Studio</a></p>
+<h3 id="taipei2016-vs-2015-build-first-excel-addin-en">Build your first Excel add-in</h3>
+<p>Try this tutorial: <a href="https://msdn.microsoft.com/EN-US/library/office/mt616491.aspx">Build your first Excel add-in</a></p>
+<p>The new Excel add-in JavaScript API interacts with Excel 2016, and Excel online. If you use Excel 2013 to run your add-in, you will see this error:</p>
+<table class="tableWithBorders tableFirstRowBold">
+<tr><td>0x800a1391 - JavaScript runtime error: \'Excel\' is undefined</td></tr>
+</table>
+<p>If you do not have Excel 2016, login to your Office 365 Developer Site, see <a class="welcomeTab" data-tabId="taipei2016-curriculum-registration-en-tab">Registration</a>.  Use the Napa development tool and run your add-in using Excel Online.</p>
+<h3 id="taipei2016-vs-2015-debuging-en">Debug in Visual Studio</h3>
+<p>Add breakpoints and click <strong>Start Debugging</strong> or press <strong>F5</strong> to start debugging.</p>
+<h3 id="taipei2016-vs-2015-resources-en">Resources</h3>
+<p><a href="https://dev.office.com/">Office Dev Center</a></p>
+</div>
+<div id="taipei2016-curriculum-api-en" class="tab-content" style="display: none;">
+<h2>API tutorial </h2>
+<h3>Topics</h3>
+<ul>
+<li><a href="#taipei2016-api-programming-overview-en">Programming overview</a></li>
+<li><a href="#taipei2016-api-reference-en">API reference</a></li>
+<li><a href="#taipei2016-api-samples-en">Samples</a></li>
+<li><a href="#taipei2016-api-exercises-en">Exercises</a></li>
+<li><a href="#taipei2016-api-resources-en">Resources</a></li>
+</ul>
+<h3 id="taipei2016-api-programming-overview-en">Programming overview</h3>
+<p>Before you begin writing your add-in, it may be helpful to review <a href="https://msdn.microsoft.com/en-us/library/office/fp160953.aspx">Understanding the JavaScript API for Office</a> and the programming overview for the different types of Office add-in.</p>
+<p><a href="https://msdn.microsoft.com/EN-US/library/office/mt616487.aspx">Excel</a></p>
+<p><a href="http://dev.office.com/docs/add-ins/word/word-add-ins-programming-overview">Word</a></p>
+<p><a href="https://msdn.microsoft.com/EN-US/library/office/fp161015.aspx">Outlook</a></p>
+<p><a href="https://msdn.microsoft.com/EN-US/library/office/dn610884.aspx">PowerPoint</a></p>
+<p>Note that if you make use of JavaScript APIs that are only available in some versions of Office; for example, you might use the new JavaScript APIs for Excel in an add-in that runs in Excel 2016, make sure you have Excel 2016 or Excel Online during development and <a href="http://dev.office.com/docs/add-ins/testing/testing-and-troubleshooting">testing</a>. </p>
+<p>To ensure that your add-in works as expected, see <a href="https://msdn.microsoft.com/EN-US/library/office/dn535871.aspx">Specify Office hosts and API requirements</a>.</p>
+<h3 id="taipei2016-api-reference-en">API reference</h3>
+<p>Explore the <a href="https://dev.office.com/reference/add-ins/javascript-api-for-office">JavaScript API for Office reference</a> – or <a href="https://dev.office.com/docs/add-ins/excel/excel-add-ins-javascript-api-reference">Excel add-ins JavaScript API reference</a> for example – along with the code samples may expedite the learning.</p>
+<h3 id="taipei2016-api-samples-en">Samples</h3>
+<p><a href="https://dev.office.com/blogs/Add-in-Samples-Have-Moved-To-GitHub">Add-in samples have moved to GitHub</a></p>
+<p><a href="https://github.com/OfficeDev">Office Developer on GitHub</a></p>
+<p><a href="https://dev.office.com/code-samples">Office Dev Center  </a></p>
+<p><a href="https://msdn.microsoft.com/EN-US/library/office/mt616484.aspx">Excel add-in code samples </a></p>
+<p><a href="https://github.com/OfficeDev/Word-Add-in-ClauseLibrary-Code-Sample">Word-Add-in-ClauseLibrary-Code-Sample</a></p>
+<p><a href="https://github.com/OfficeDev/office-js-docs">Office JavaScript APIs on GitHub</a></p>
+<p><a href="https://dev.outlook.com/MailAppsGettingStarted/GetStarted">Get Started with Outlook add-ins for Office 365</a></p>
+<h3 id="taipei2016-api-exercises-en">Exercises</h3>
+<p>Try using the Excel add-in JavaScript API with the <a href="../uploads/ColorizerVS.zip">Excel Colorizer Add-in for Excel 2016</a>.</p>
+<p>Use the following tasks as a guide on how you may extend the basic Colorizer:</p>
+<ol>
+<li>Add another pattern option called Square Waves.  The wave amplitude and cycle are controlled by the existing <strong>Pattern Contrast %</strong> and <strong>Pattern Waves</strong> controls. This task consists of the following:
+<ol type="a">
+<li>Adjust the UI combo box for the pattern type.</li>
+<li>Adjust the existing JavaScript code that determines the visibility for the contrast and cycle controls.</li>
+<li>Add the necessary code to generate square waves.</li>
+</ol>
+</li>
+<li>Add a new feature to enumerate the leftmost column in a table. When enabled, consecutive numbers in the leftmost column are added to the selected range starting with the first row after the header. The numbers are black and in bold. This task consists of the following:
+<ol type="a">
+<li>Add a new checkbox control to enable this new functionality.</li>
+<li>Use the <a href="https://msdn.microsoft.com/EN-US/library/office/mt616490.aspx">Excel add-ins JavaScript API</a> to overwrite the cells’ text values with the right numbers.</li>
+<li>Use the <a href="https://msdn.microsoft.com/EN-US/library/office/mt616490.aspx">Excel add-ins JavaScript API</a> to format the cells correctly so that fonts are black and in bold.</li>
+</ol>
+</li>
+<li>Add a new feature to create borders for the given selection. This tasks requires a new combo box with the following options: None, Outer, Inner, Outer and Inner. Make the outer border twice as thick as the inner borders. This task consists of the following:
+<ol type="a">
+<li>Add new combo box with the right values. “None” is selected as default.</li>
+<li>Add the required code to create a table based on the specified choice using the <a href="https://msdn.microsoft.com/EN-US/library/office/mt616490.aspx">Excel add-ins JavaScript API</a>.</li>
+</ol>
+</li>
+</ol>
+<h3 id="taipei2016-api-resources-en">Resources </h3>
+<p><a href="https://dev.office.com/docs/add-ins/testing/debug-add-ins-using-f12-developer-tools-on-windows-10">Testing</a></p>
+<p><a href="https://msdn.microsoft.com/EN-US/library/office/mt484317.aspx">Design guidelines for Office Add-ins</a></p>
+</div>
+<div id="taipei2016-curriculum-publishing-en" class="tab-content" style="display: none;">
+<h2>Publishing</h2>
+<p>This tutorial shows the steps to publish the Excel Colorizer Add-in for Excel 2016 from the west U.S. for distribution in Office Store. Visual Studio Community 2015 is the IDE of choice. Microsoft Azure is the web hosting platform for the Colorizer.  </p>
+<p>To publish your add-in using other methods that are specific to your scenario, please see resources on <a href="http://dev.office.com/docs/add-ins/publish/publish">publishing</a>.</p>
+<h3>Topics</h3>
+<ol>
+<li><a href="#taipei2016-publishing-decide-end-point-en">Decide on the Office Add-ins distribution end-points</a></li>
+<li><a href="#taipei2016-publishing-set-up-dev-computer-en">Set up your development computer with Azure SDK for .NET, an Azure subscription, and Office 2016</a></li>
+<li><a href="#taipei2016-publishing-create-azure-website-en">Create a website in Azure</a></li>
+<li><a href="#taipei2016-publishing-publish-add-in-azure-en">Publish your Office Add-in to the Azure website</a></li>
+<li><a href="#taipei2016-publishing-edit-addin-manifest-en">Edit the add-in manifest file to point to the Office Add-in on Azure</a></li>
+<li><a href="#taipei2016-publishing-run-addin-en">Run the add-in in the Office client application</a></li>
+<li><a href="#taipei2016-publishing-submit-to-office-store-en">Submit your add-in to the Office Store</a></li>
+<li><a href="#taipei2016-publishing-publishing-resources-en">Resources</a></li>
+</ol>
+<h3 id="taipei2016-publishing-decide-end-point-en">Decide on the Office Add-ins distribution end-points</h3>
+<p>Decide on the distribution end-points to publish your Office Add-ins:</p>
+<ol type="a">
+<li>Office Store </li>
+<li>Office Add-ins catalog on SharePoint </li>
+<li>Exchange catalog</li>
+<li>Network shared folder add-in catalog</li>
+</ol>
+<p>This tutorial uses <a href="http://dev.office.com/docs/add-ins/publish/host-an-office-add-in-on-microsoft-azure">Microsoft Azure</a> to host the add-in and <a href="https://msdn.microsoft.com/en-us/library/office/jj220037.aspx">submit the add-ins to the Office Store for publishing</a>.</p>
+<h3 id="taipei2016-publishing-set-up-dev-computer-en">Set up your development computer with Azure SDK for .NET, an Azure subscription, and Office 2016</h3>
+<ol>
+<li>Install the Azure SDK for .NET from the <a href="http://azure.microsoft.com/en-us/downloads/">Azure downloads page</a>. This tutorial uses the free <a href="https://www.microsoft.com/en-us/download/details.aspx?id=48146">Microsoft Visual Studio Community 2015</a>.</a>
+<ol type="a">
+<li>Under <strong>Languages</strong>, choose <strong>.NET</strong>.</li>
+<li>Choose the version of the Azure .NET SDK that matches your version of Visual Studio, if you already have Visual Studio installed.</li>
+<li>When you’re asked whether to run or save the installation executable, choose <strong>Run</strong>.</li>
+<li>In the Web Platform Installer window, choose <strong>Install</strong>.</li>
+</ol>
+</li>
+<li>Install Office 2016. (The Colorizer add-in works only in Excel 2016 or Excel Online.)
+<br />
+<table class="tableWithBorders tableFirstRowBold">
+<tr><th>Note</strong></th>
+<tr><td><a href="https://products.office.com/en-us/try?legRedir=true&WT.intid1=ODC_ENUS_FX101785584_XT104056786&CorrelationId=cae9f0f9-caf0-411f-b512-426d951c2259">You can get a trial version of Office for one month.</a></td></tr>
+</table>
+</li> 
+<li>Get your Azure account. 
+<br />
+<table class="tableWithBorders tableFirstRowBold">
+<tr><th>Note</strong></th>
+<tr><td>If you’re a Microsoft Developer Network (MSDN) subscriber, <a href="http://www.windowsazure.com/en-us/pricing/member-offers/msdn-benefits/">you get an Azure subscription as part of your MSDN subscription</a>.</a></td></tr>
+<tr><td>If you\'re not an MSDN subscriber, you can still <a href="https://azure.microsoft.com/en-us/pricing/free-trial/">get a free trial of Azure at the Windows Azure website</a>.</td></tr>
+</table>
+</li> 
+</ol>
+<h3 id="taipei2016-publishing-create-azure-website-en">Create a website in Azure</h3>
+<p>There are a couple of ways you can create an empty Azure website. If you\'re using Visual Studio 2015 or the free community version, follow the steps below to create an Azure website from within the Visual Studio IDE.</p>
+<p><strong>Using Visual Studio Community 2015 </strong></p>
+<ol>
+<li>In Visual Studio, in the <strong>View</strong> menu choose <strong>Server Explorer</strong>. Right click <strong>Azure</strong> and choose <strong>Connect to Microsoft Azure subscription</strong>. Follow the instructions for connecting to your Azure subscription.</li>
+<li>In Visual Studio, in <strong>Server Explorer</strong>, expand <strong>Azure</strong>, right-click <strong>App Service</strong>, and then choose <strong>Create New App Service</strong>.</li>
+<li>In the <strong>Create Web App on Windows Azure</strong> dialog box, provide this information: 
+<ul>
+<li>Enter a unique <strong>Web App name</strong> for your site. Azure verifies that the site name is unique across the azurewebsites.net domain.</li>
+<li>Choose the <strong>App Service plan</strong> you\'re using to authorize creating this website. If you create a new plan, you also need to name it. </li>
+<li>Choose the <strong>Resource group</strong> for your site. If you create a new group, you also need to name it.</li>
+<li>Choose a geographical <strong>Region</strong> appropriate for you.</li>
+<li><strong>For Database server</strong>: accept the default of No database and then choose <strong>Create</strong>.</li>
+<li class="noStyleUL">The new website appears under the chosen resource group under <strong>App Service</strong> under <strong>Azure</strong> in <strong>Server Explorer</strong>.</li>
+</ul>
+</li>
+<li>Right-click the new website, and then choose <strong>View in Browser</strong>. Your browser opens and displays a webpage with the message "This web site has been successfully created."</li>
+<li>In the browser address bar, change the URL for the website so that it uses HTTPS and press <strong>Enter</strong> to confirm that the HTTPS protocol is enabled. The Office Add-in model requires add-ins to use the HTTPS protocol. </li>
+<li>In Visual Studio 2015, right-click the new website in <strong>Server Explorer</strong>, choose <strong>Download Publish Profile</strong> and then save the profile to your computer. The publish profile contains your credentials and enables you to publish your Office Add-in to the Azure website.</li>
+</ol>
+<h3 id="taipei2016-publishing-publish-add-in-azure-en">Publish your Office Add-in to the Azure website</h3>
+<ol>
+<li>With your add-in open in Visual Studio, expand the solution node in <strong>Solution Explorer</strong> so that you see both projects for the solution. </li>
+<li>Right-click the web project, and then choose <strong>Publish</strong>. 
+<br />
+The web project contains Office Add-in website files so this is the project that you publish to Azure.</li>
+<li>In <strong>Publish Web</strong>, choose <strong>Import</strong>. </li>
+<li>In <strong>Import Publish Settings</strong>, choose <strong>Browse</strong>, and then browse to the place where you saved your publish profile earlier in this topic. Choose <strong>OK</strong> to import your profile.</li>
+<li>In <strong>Publish Web</strong>, on the <strong>Connection tab</strong>, accept the defaults and choose <strong>Next</strong>. 
+<br />
+Choose <strong>Next</strong> > again to accept the default settings.</li>
+<li>On the <strong>Preview</strong> tab, choose <strong>Start Preview</strong>. The preview shows you all the files in the web project that will be published to the Azure website.</li>
+<li>Choose <strong>Publish</strong>. Visual Studio publishes the web project for your Office Add-in to your Azure Web Site. </li>
+<li>When Visual Studio finishes publishing the web project, your browser opens and shows a webpage with the text "This web app has been successfully created." This is the current default page for the website.
+<br />
+To see the webpage for your add-in, change the URL to use https: and add the path of your add-in\'s default HTML page. For example, the changed URL should look like https://YourDomain.azurewebsites.net/Addin/Home/Home.html. This confirms that your add-in\'s website is now hosted on Azure. Copy this URL because you\'ll need it when you edit the add-in manifest file later in this topic. </li>
+</ol>
+<h3 id="taipei2016-publishing-edit-addin-manifest-en">Edit the add-in manifest file to point to the Office Add-in on Azure</h3>
+<ol>
+<li>In Visual Studio with the Office Add-in open in <strong>Solution Explorer</strong>, expand the solution so that both projects are shown.</li>
+<li>Open the add-in manifest XML file.</li>
+<li>For <strong>Source Location</strong>: enter the URL for the add-in\'s main HTML page that you copied in the previous step after you published the add-in, for example, https://YourDomain.azurewebsites.net/Addin/Home/Home.html. </li>
+<li class="noStyleUL">Save the manifest file.</li>
+</ol>
+<h3 id="taipei2016-publishing-run-addin-en">Run the add-in in the Office client application</h3>
+<p>By now, your source location has changed from the local server for the testing environment to the website URL in Azure. </p>
+<p>Run your add-in in the Office client and test that the add-in is working.</p>
+<h3 id="taipei2016-publishing-submit-to-office-store-en">Submit your add-in to the Office Store</h3>
+<h4>The recommended reading for submitting your add-in to the Office Store is as follows:</h4>
+<p><a href="https://msdn.microsoft.com/en-us/library/office/jj220037.aspx">Submit Office and SharePoint Add-ins and Office 365 web apps to the Office Store</a></p>
+<p><a href="https://msdn.microsoft.com/EN-US/library/office/dn356576.aspx">Checklist for submitting Office and SharePoint Add-ins and Office 365 web apps to the Seller Dashboard </a></p>
+<p><a href="https://msdn.microsoft.com/EN-US/library/office/jj591603.aspx">Office Store app and add-in submission FAQ</a></p>
+<p><a href="https://msdn.microsoft.com/EN-US/library/office/jj220035.aspx">Validation policies for apps and add-ins submitted to the Office Store (version 1.9)</a></p>
+<p><a href="https://msdn.microsoft.com/EN-US/library/office/fp161044.aspx#O15AgaveManifestOverview_Samplev1_1">Office Add-ins XML manifest</a></p>
+<p><a href="https://msdn.microsoft.com/EN-US/library/office/dn535869.aspx">Update the version of your JavaScript API for Office and manifest schema files</a></p>
+<p><a href="https://msdn.microsoft.com/EN-US/library/office/dn221992.aspx">Referencing the JavaScript API for Office library from its content delivery network (CDN)</a></p>
+<h4>To publish the Excel Colorizer Add-in for Excel 2016, the following tasks are performed:</h4>
+<ol>
+<li>To include your app or add-in in the Office Store, submit it to the <a href="https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=12&ct=1434731402&rver=6.4.6456.0&wp=MBI_SSL_SA&wreply=https://sellerdashboard.microsoft.com/Wlid/AfterLogin?returnUrl=https://sellerdashboard.microsoft.com/?culture=en-US&lc=1033&id=284543">Microsoft Seller Dashboard</a>. 
+<br />
+Create an individual or company account and, if applicable, add payout information. To open an account, see <a href="https://sellerdashboard.microsoft.com/Registration">Create a seller account and add payout information</a>.
+<br />
+For this tutorial, an individual account is created to publish the add-in. Because the add-in is free, no payout information is provided.
+<br />
+Fill out the account profile, submit, and wait for the approval. </li>
+<li>An icon, App logo, screenshots, and .html files containing privacy and support statements are prepared before the submission. Follow the specifications for the image dimensions in the <a href="https://msdn.microsoft.com/EN-US/library/office/dn356576.aspx">Checklist for submitting Office and SharePoint Add-ins and Office 365 web apps to the Seller Dashboard</a>.</li>
+<li>Publish the icon, privacy and support statements to your Azure account.</li>
+<li>In the manifest file, add the IconUrl, SupportUrl, and the Requirements elements in addition to the default elements. (The Excel Colorizer uses the new Excel add-in JavaScript APIs that runs in Excel 2016 or Excel Online). The manifest schema version is 1.1.
+<br /><table class="tableWithBorders tableFirstRowBold">
+<tr><th>Note</strong></th>
+<tr><td>Every add-in is different, to ensure that your add-in works as expected, see <a href="https://msdn.microsoft.com/EN-US/library/office/dn535871.aspx">Specify Office hosts and API requirements</a>  and <a href="https://msdn.microsoft.com/EN-US/library/office/mt590206.aspx">Office add-in requirement sets</a>.</td></tr>
+</table>
+</li>
+<li><a href="https://msdn.microsoft.com/en-us/library/dn221992.aspx">Reference the Microsoft hosted Office.js file from its CDN URL</a>. Don\'t include a copy of the Office.js file in your add-in. <a href="https://msdn.microsoft.com/en-us/library/jj591603.aspx">See Office Store app and add-in submission FAQ</a> > How do I reference the JavaScript APIs for Office in my add-ins?</li>
+<li>If you’re using Visual Studio, validate the manifest by clicking on <strong>Build</strong> > <strong>Publish</strong> > <strong>Perform Validation Check</strong></li>
+<li>Login to the Microsoft Seller Dashboard to add the App. 
+<ul>
+<li>Enter the version number. The version number submitted via the Seller Dashboard must be the same as that in the add-in manifest. For example:
+<br />Seller Dashboard: 1.0.0.0
+<br />Add-in Manifest: 1.0.0.0</li>
+<li>Upload the screenshots and the App logo.</li>
+<li>Upload the app package (i.e. the manifest XML file). </li>
+<li>Supply the Support and Privacy Statement URL. Include your contact information in the Support Statement URL or alternatively within your add-in. This can be any or all of the following: email address, phone number, contact form, valid social media link (e.g. a URL to your contact page on Facebook or Twitter), or comments form.</li>
+</ul>
+</li>
+<li>Submit the app and wait for the approval.</li>
+<li>After your add-in is submitted, a Validation Test Results report will be returned to you if the add-in is not approved by the Office Store. The validation test is performed based on <a href="https://msdn.microsoft.com/en-us/library/office/jj220035.aspx">Validation policies for apps and add-ins submitted to the Office Store (version 1.9)</a>, and lists the required changes. Make the changes and resubmit your add-in. </li>
+</ol>
+<h3 id="taipei2016-publishing-publishing-resources-en">Resources</h3>
+<p><a href="http://dev.office.com/docs/add-ins/publish/publish">Publishing</a></p>
+<p><a href="http://dev.office.com/docs/add-ins/publish/host-an-office-add-in-on-microsoft-azure">Host an Office Add-in on Microsoft Azure</a></p>
+<p><a href="https://msdn.microsoft.com/en-us/library/office/jj220037.aspx">Submit Office and SharePoint Add-ins and Office 365 web apps to the Office Store</a></p>
+</div>
+<script type="text/javascript" src="../lib/kickstart.js"></script>
+<script type="text/javascript">
+$(function () {
+let $taipei1016Eng = $(".taipei1016-eng");
+let $taipei2016Cn = $(".taipei2016-cn");
+let $taipei2016ChineseCurriculum = $("#taipei2016-chinese-curriculum");
+let $taipei2016EnglishCurriculum = $("#taipei2016-english-curriculum");
+let $welcomeTab = $(".welcomeTab");
+let $curriculumList = $(".curriculumList");
+let languageSection = window.location.href.slice(-3);
+let hashRoute = window.location.href;
+let http = "http";
+$("a[href^=http]").attr("target", "_blank");
+function checkFooter() {
+setTimeout(function() {
+if ($("html").height() > $(window).height()) {
+homepageStickyFooter();
+}
+if ($("html").height() <= $(window).height()) {
+stickyFooter();
+}
+}, 500);
+}
+if (languageSection === "-en") {
+$taipei2016EnglishCurriculum.show();
+$taipei2016ChineseCurriculum.hide();
+} else {
+$taipei2016EnglishCurriculum.hide();
+$taipei2016ChineseCurriculum.show();  
+}
+$taipei2016Cn.click(function(e) {
+e.preventDefault();
+$taipei2016ChineseCurriculum.show();
+$taipei2016EnglishCurriculum.hide();
+});
+$taipei1016Eng.click(function(e) {
+e.preventDefault();
+$taipei2016EnglishCurriculum.show();
+$taipei2016ChineseCurriculum.hide();
+});
+$welcomeTab.click(function(e) {
+e.preventDefault();
+let tabid = $(this).data("tabid");
+let tabIDName = "#" + tabid;
+let divWithTabId = "div" + tabIDName.slice(0, -4);
+$curriculumList.children().each(function(i, elem) {
+if ($(this).attr("id") === tabid) {
+let wantedTab = $(this);
+let tabs = $(this).parents("ul.tabs").find("li");
+let tab_next = tabs.filter(".current").find("a").attr("href");
+let tab_current = tabs.filter(tabIDName).find("a").attr("href");
+$(tab_current).hide();
+tabs.removeClass("current");
+$(this).addClass("current");
+$(tab_next).show();
+$(this).parent().parent().children("div").hide();
+$(this).parent().parent().children(divWithTabId).show();
+return false;
+}
+});
+});
+$("a").click(function() {
+stickyFooter();
+checkFooter();
+});
+});
+setTimeout(function() {
+  let tabsArr = [];
+  $("#eventTabLinks").children("li").each(function(index, el) {
+    tabsArr.push($(this).children().attr("href"));
+  });
+  if (window.location.hash && tabsArr.indexOf(window.location.hash) < 0 && $(window.location.hash).parent().parent().parents().children("ul.tabs").find("li").find("a").length > 0) {
+    let $newDivId = "#" + $(window.location.hash).parent().parent().attr("id");
+    let $tabs2 = $(window.location.hash).parent().parent().parents().children("ul.tabs").find("li");
+    let $newTabCheck = $(window.location.hash).parent().parent().parents().children("ul.tabs").find("li").find("a");
+    let $newTab;
+    $newTabCheck.each(function(index, el) {
+      if ($(this).attr("href") === $newDivId) {$newTab = $(this).parent();}
+    });
+    $tabs2.removeClass("current");
+    $newTab.addClass("current");
+    $(".tab-content.eventTabDiv").hide();
+    $($newDivId).show();
+  }
+  if (window.location.hash && tabsArr.indexOf(window.location.hash) < 0 && $(window.location.hash).parent().parent().parents().children("ul.tabs").find("li").find("a").length <= 0) {
+    let $newDivId3 = "#" + $(window.location.hash).parent().attr("id");
+    let $tabs3 = $(window.location.hash).parent().parents().children("ul.tabs").find("li");
+    let $newTabCheck3 = $(window.location.hash).parent().parents().children("ul.tabs").find("li").find("a");
+    let $newTab3;
+    $newTabCheck3.each(function(index, el) {
+      if ($(this).attr("href") === $newDivId3) {$newTab3 = $(this).parent();}
+    });
+    $tabs3.removeClass("current");
+    $newTab3.addClass("current");
+    $(".tab-content.eventTabDiv").hide();
+    $($newDivId3).show();
+  }
+}, 10)
+</script>`
 	})
 })
 .then(function() {
@@ -1322,7 +1921,7 @@ setTimeout(function() {\
 		eventId: 4,
 		tabNumber: 1,
 		tabTitle: 'About',
-		tabContent: '<h3>More info coming soon!</h3>'
+		tabContent: '<p>We are currently planning for a developer event in India. If you are interested in learning more, please contact <a href="mailto:plugfest@microsoft.com">Plugfests@Microsoft.com</a> and check back soon for more updates. </p>'
 	})
 })
 
