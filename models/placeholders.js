@@ -82,6 +82,19 @@ module.exports = function() {
 	  // eventSpeakers: null
 	  });
 	})
+	.then(function() {
+		return Event.create({
+			eventName: 'Shanghai Interop Dev Days 2015',
+			eventLocation: 'Shanghai',
+			eventContinent: 'Asia',
+			eventStartDate: new Date('2015-10-20:00:01:00'),
+			eventEndDate: new Date('2015-10-21:23:00:00'),
+			eventHeaderImage: 'shanghai-header.jpg',
+			eventHomepageImage: 'shanghai-header.jpg',
+			eventHighlightColor: '#3bb300',
+			eventSpeakers: '1,2,13,9,8,10,6,11,35'
+		})
+	})
 	
 
 
@@ -1922,6 +1935,71 @@ setTimeout(function() {
 		tabNumber: 1,
 		tabTitle: 'About',
 		tabContent: '<p>We are currently planning for a developer event in India. If you are interested in learning more, please contact <a href="mailto:plugfest@microsoft.com">Plugfests@Microsoft.com</a> and check back soon for more updates. </p>'
+	})
+})
+.then(function() {
+	return EventTab.create({
+		eventId: 5,
+		tabNumber: 1,
+		tabTitle: 'About',
+		tabContent: `<ul class="noStyleUL">
+									<li>Where: Shanghai, China</li>
+									<li>Who: Students, professionals, and coders welcome.  </li>
+									<li>Date:  October 20 – 21, 2015 </li>
+									<li>Venue: Shanghai Marriott City Center  </li>
+									<li>Cost: Free</li>
+									</ul>
+									<h4>Join Us</h4>
+									<p>Microsoft Office’s user base is over 1.2 billion strong and represents one of the most strategic developer surface areas. Be competitive and learn how to innovate with the Office 365 developer platform, access our user base through the Office Store, and develop using OData.</p>
+									<p>In an increasingly connected world, OData (the Open Data protocol) provides powerful, standards-based connectivity and interoperability for Web APIs, and as an open industry standard for RESTful APIs. OData is widely adopted by companies such as SAP, Salesforce and Microsoft. Learn how to build OData APIs and apps to easily integrate with their services and applications.   </p>
+									 
+									<h4>Learn</h4>
+									<p>Get up to speed on the latest developer technologies from Office, learn about OData, and collaborate with Microsoft experts. Coverage includes Office 365 APIs, Word, Excel, Outlook, and PowerPoint Add-ins, Mail, Contacts, Calendar, and Files, and Office file formats. Gain insight into OData’s features, dive deep into protocol specifications, and get hands-on experience on OData frameworks and applications. </p>
+									 
+									<h4>Innovate</h4>
+									<p>Connect with Microsoft and other developers. Build new apps or work on existing apps at the event. Interoperate with one of the fastest growing Microsoft productivity platforms and develop new solutions.  </p>
+									<p>No experience necessary. Developers recommended. Students and professionals encouraged.</p>`
+	})
+})
+.then(function() {
+	return EventTab.create({
+		eventId: 5,
+	tabNumber: 2,
+	tabTitle: 'Agenda',
+	tabContent: `<h2>Tuesday, October 20, 2015</h2>
+<table style="table-layout: fixed;" class="tableWithVerticalLines scheduleTableTextOnly">
+<thead><tr style="line-height: 4em;"><th style="width: 8%;" class="darkBlueBackground whiteText">&nbsp;</th><th class="darkBlueBackground whiteText">Conference Room</th><th class="darkBlueBackground whiteText">Hack Session 1: Add-ins </th><th class="darkBlueBackground whiteText">Hack Session 2: OData</th></thead>
+<tr><td>9-9:30</td><td>Keynote</td><td colspan="2" class="withoutBottomBorder">&nbsp;</td></tr>
+<tr><td>9:30-10:15</td><td>The Office Developer Opportunity </td><td colspan="2" class="withoutBottomBorder">&nbsp;</td></tr>
+<tr><td>10:15-11:00</td><td>Office Add-ins Intro and Development</td><td colspan="2" class="withoutBottomBorder">&nbsp;</td></tr>
+<tr><td>11:00-11:15</td><td class="lightGrayBackground">Break</td><td colspan="2" colspan="2" style="padding-left: 25%;" class="withoutBottomBorder">Opens after lunch</td></tr>
+<tr><td>11:15-12:00</td><td>Build a Complete Office Add-in Solution</td><td colspan="2" class="withoutBottomBorder">&nbsp;</td></tr>
+<tr><td>12:00-1:00</td><td class="lightGrayBackground">Lunch</td><td colspan="2">&nbsp;</td></tr>
+<tr><td>1:00-2:00</td><td>Office 365 APIs</td><td rowspan="7" style="word-wrap: break-word;" class="lightGreenBackground">Add-ins and O365 Solutions, Development Tools, and Open Source Hack Session</td><td rowspan="7" style="text-align: center;" class="lightBlueBackground">OData Hack Session</td></tr>
+<tr><td>2:00-2:15</td><td class="lightGrayBackground">Break</td></tr>
+<tr><td>2:15-3:00</td><td>Data Platform Overview</td></tr>
+<tr><td>3:00-3:30</td><td>An Introduction to OData</td></tr>
+<tr><td>3:30-4:30</td><td>Building OData Services</td></tr>
+<tr><td>4:30-5:00</td><td>Consuming OData Services: (.NET)</td></tr>
+<tr><td>5:00-5:30</td><td>Consuming OData Services (Java)</td></tr>
+</table>
+<br /><br /><br />
+<h2>Wednesday, October 21, 2015</h2>
+<table style="table-layout: fixed;" class="tableWithVerticalLines scheduleTableTextOnly">
+<thead><tr style="line-height: 4em;"><th style="width: 8%;" class="darkBlueBackground whiteText">&nbsp;</th><th class="darkBlueBackground whiteText">Conference Room</th><th class="darkBlueBackground whiteText">Hack Session 1: Add-ins </th><th class="darkBlueBackground whiteText">Hack Session 2: OData</th></thead>
+<tr><td>9-9:30</td><td>Open Specifications and Interoperability </td><td rowspan="5" style="word-wrap: break-word;" class="lightGreenBackground">Add-ins and O365 Solutions, Development Tools, and Open Source Hack Session</td><td rowspan="5" class="lightBlueBackground" style="text-align: center;">OData Hack Session </td></tr>
+<tr><td>9:30-10:00</td><td>Exchange Protocols Overview and EAS Deep Dive</td></tr>
+<tr><td>10:00-10:45</td><td>Mail, Calendar, and Contacts REST Demonstration</td></tr>
+<tr><td>10:45-11:00</td><td class="lightGrayBackground">Break</td></tr>
+<tr><td>11:00-11:45</td><td>Exchange Web Services Demo and Examples</td></tr>
+<tr><td>11:45-1:00</td><td colspan="3" class="lightGrayBackground">Lunch</td></tr>
+<tr><td>1:00-1:30</td><td>Office Online Integration</td><td class="withoutBottomBorder lightGreenBackground">&nbsp;</td><td class="withoutBottomBorder lightBlueBackground">&nbsp;</td></tr>
+<tr><td>1:30-2:15</td><td>Office and SharePoint File IO</td><td class="withoutBottomBorder lightGreenBackground">&nbsp;</td><td class="withoutBottomBorder lightBlueBackground">&nbsp;</td></tr>
+<tr><td>2:15-2:45</td><td>OData Validator</td><td class="withoutBottomBorder lightGreenBackground">&nbsp;</td><td class="withoutBottomBorder lightBlueBackground">OData Hack</td></tr>
+<tr><td>2:45-3:00</td><td class="lightGrayBackground">Break</td><td class="withoutBottomBorder lightGreenBackground">&nbsp;</td><td class="withoutBottomBorder lightBlueBackground">Session</td></tr>
+<tr><td>3:00-3:30</td><td>Overview of Microsoft File Formats</td><td class="withoutBottomBorder lightGreenBackground">&nbsp;</td><td class="withoutBottomBorder lightBlueBackground">&nbsp;</td></tr>
+<tr><td>3:30-4:30</td><td>Build an OOXML document </td><td class="withoutBottomBorder lightGreenBackground">&nbsp;</td><td class="withoutBottomBorder lightBlueBackground">&nbsp;</td></tr>
+</table>`
 	})
 })
 
