@@ -2497,7 +2497,7 @@ setTimeout(function() {
 })
 .then(function() {
 	return Contact.create({
-		firstName: 'Jaimie',
+		firstName: 'Jamie',
 		lastName: 'Olson',
 		contactDescription: 'Jamie Olson is a Senior Data Scientist at Microsoft, where he works with customers and partners to build advanced analytics application, designing and developing end-to-end data pipelines across the entire range of Cortana Analytics products.  He has more than 10 years of experience with the R programming language, the last four of which have focused on using R inside Big Data platforms like Hadoop. Jamie’s expertise in computer science, machine learning and big data allows customers to quickly and easily transition and scale their advanced analytics projects with Microsoft technologies.',
 		eventRole: 'speaker',
