@@ -11,7 +11,7 @@ let Sql = require('sequelize');
     idle: 10000
   }
 });*/
-/*let sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
+let sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
   host: process.env.DB_DEV_HOST,
   dialect: 'mssql',
   pool: {
@@ -23,8 +23,8 @@ let Sql = require('sequelize');
     encrypt: true
   }
 });
-*/
-let sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+
+/*let sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
     host: process.env.DB_HOST,
   dialect: 'mssql',
   pool: {
@@ -35,7 +35,7 @@ let sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS,
   dialectOptions: {
     encrypt: true
   }
-});
+});*/
 
 
 //load models

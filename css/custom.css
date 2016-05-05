@@ -95,6 +95,18 @@ main p {
 		display: block;
 	}
 
+	.whiteText {
+		color: #fff;
+	}
+
+	.medGrayBackground {
+		background-color: #bfbfbf
+	}
+
+	.darkBlueBackground {
+		background-color: #0072c6;
+	}
+
  .lightGreenBackground {
  	background-color: #c6e0b4;
  }
@@ -208,6 +220,14 @@ main p {
 }
 
 .scheduleTable td {
+ 	font-size: 1.2em;
+}
+
+.scheduleTableTextOnly th {
+ 	font-size: 1.5em;
+}
+
+.scheduleTableTextOnly td {
  	font-size: 1.2em;
 }
 
