@@ -27,11 +27,11 @@ import * as customFunctions from '../common-functions.build.js';
 												<th>Related Materials</th>
 											</tr></thead>
 											<tbody><tr>
-												<td><a href="/event/shanghaiinteropdevdays2015-2026">Shanghai Interop Dev Days 2015</a></td>
+												<td><a href="/shanghai2015">Shanghai Interop Dev Days 2015</a></td>
 												<td>October 21 - 22, 2015</td>
 												<td>Shanghai, China</td>
 												<td>Office Developer Opportunity, Data Platform, OData, Open Specifications, Office Add-ins + APIs</td>
-												<td><a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/Shanghai-Interop-Dev-Days">Videos</a>, <a id="shanghai2015" href="#">Pictures</a></td>
+												<td><a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/Shanghai-Interop-Dev-Days">Videos</a>, <a href="/taipei2016">Event Page</a></td>
 											</tr><tr>
 												<td>Redmond Interoperability Protocols Plugfest 2015</td>
 												<td>June 22-26, 2015</td>
@@ -66,6 +66,8 @@ import * as customFunctions from '../common-functions.build.js';
 											</table>`;
 
 			let html = $.parseHTML(schedule);
+			$(this).siblings().removeClass('selected-year');
+      $(this).toggleClass('selected-year');
 			if ($(this).css('background-color') === 'rgba(0, 216, 204, 0.8)') {
 			    $calendar.empty();
 			} else {
