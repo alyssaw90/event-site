@@ -36,7 +36,7 @@ module.exports = function() {
 	    eventHeaderImage: 'TAIPEIHeader.png',
 	    eventHomepageImage: 'TAIPEIHeader.png',
 	    eventHighlightColor: '#4668c5',
-	    eventSpeakers: '1,2,8,11,15,9,12,10,6,32,33,34,35'
+	    eventSpeakers: '1,2,8,11,15,9,12,10,6,32,33,34,35,38'
 	    
 	  });
 	})
@@ -2002,6 +2002,78 @@ setTimeout(function() {
 </table>`
 	})
 })
+.then(function() {
+	return EventTab.create({
+		eventId: 5,
+		tabNumber: 3,
+		tabTitle: 'Event Material',
+		tabContent: `<h2>Shanghai Interop Dev Days Materials</h2>
+<ul>
+	<li><a download="uploads/Shanghai-Interop-Dev-Days-2015-Resources.zip">Shanghai Interop Dev Days Presentations</a></li>
+	<li><a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/Shanghai-Interop-Dev-Days">Shanghai Interop Dev Days Videos</a></li>
+	<li>Click on a photo to enlarge it, then right click to download</li>
+</ul>
+<div class="gallery">
+<a href="uploads/_MG_3990.JPG"><img src="uploads/_MG_3990.JPG" width="100" height="100" /></a>
+<a href="uploads/_MG_3992.JPG"><img src="uploads/_MG_3992.JPG" width="100" height="100" /></a>
+<a href="uploads/_MG_3993.JPG"><img src="uploads/_MG_3993.JPG" width="100" height="100" /></a>
+<a href="uploads/_MG_3996.JPG"><img src="uploads/_MG_3996.JPG" width="100" height="100" /></a>
+<a href="uploads/_MG_3999.JPG"><img src="uploads/_MG_3999.JPG" width="100" height="100" /></a>
+<a href="uploads/_MG_4002.JPG"><img src="uploads/_MG_4002.JPG" width="100" height="100" /></a>
+<a href="uploads/_MG_4007.JPG"><img src="uploads/_MG_4007.JPG" width="100" height="100" /></a>
+<a href="uploads/_MG_4013.JPG"><img src="uploads/_MG_4013.JPG" width="100" height="100" /></a>
+<a href="uploads/_MG_4016.JPG"><img src="uploads/_MG_4016.JPG" width="100" height="100" /></a>
+<a href="uploads/_MG_4019.JPG"><img src="uploads/_MG_4019.JPG" width="100" height="100" /></a>
+<a href="uploads/_MG_4021.JPG"><img src="uploads/_MG_4021.JPG" width="100" height="100" /></a>
+<a href="uploads/_MG_4025.JPG"><img src="uploads/_MG_4025.JPG" width="100" height="100" /></a>
+<a href="uploads/_MG_4026.JPG"><img src="uploads/_MG_4026.JPG" width="100" height="100" /></a>
+<a href="uploads/_MG_4030.JPG"><img src="uploads/_MG_4030.JPG" width="100" height="100" /></a>
+<a href="uploads/_MG_4031.JPG"><img src="uploads/_MG_4031.JPG" width="100" height="100" /></a>
+<a href="uploads/_MG_4046.JPG"><img src="uploads/_MG_4046.JPG" width="100" height="100" /></a>
+<a href="uploads/_MG_4048.JPG"><img src="uploads/_MG_4048.JPG" width="100" height="100" /></a>
+<a href="uploads/_MG_4053.JPG"><img src="uploads/_MG_4053.JPG" width="100" height="100" /></a>
+<a href="uploads/_MG_4058.JPG"><img src="uploads/_MG_4058.JPG" width="100" height="100" /></a>
+<a href="uploads/_MG_4061.JPG"><img src="uploads/_MG_4061.JPG" width="100" height="100" /></a>
+<a href="uploads/_MG_4066.JPG"><img src="uploads/_MG_4066.JPG" width="100" height="100" /></a>
+<a href="uploads/_MG_4070.JPG"><img src="uploads/_MG_4070.JPG" width="100" height="100" /></a>
+</div>`
+	})
+})
+.then(function() {
+	return EventTab.create({
+		eventId: 5,
+		tabNumber: 4,
+		tabTitle: 'Event Recap',
+		tabContent: `
+<h2>Event Recap: Shanghai Interop Dev Days 2015</h2>
+<p>Traditionally, the Open Specifications team holds Plugfests to help developers learn about Microsoft protocols, access Microsoft protocol test suites, and collaborate with Microsoft engineers. With the continued success of Open Specifications events, the concept of the Plugfest evolved and Interop Dev Days was created.</p>
+<h4>Subject Matter Experts</h4>
+<img src="uploads/3225.110515_0128_EventRecapS1.jpg" />
+<p>The Microsoft Extensibility team held an Interop Dev Days event to highlight the opportunities of developing with Office 365. In addition to familiar topics such as O365 development and Open Specifications, OData played a crucial role in this year’s Dev Days, illustrating the value in creating and using interoperable RESTful APIs. The event offered a full range of presentations, live demonstrations, and Q&A sessions. Attendees also received one-on-one assistance and <a href="http://dev.office.com/devprogram">a free Microsoft developer account</a>.</p>
+<h4>O365 Developer Brainstorm Session</h4>
+<img src="uploads/1665.110515_0128_EventRecapS2.jpg" />
+<p>After showing attendees how to sign up for their Microsoft developer account, the Microsoft team led an open, interactive Office Add-in brainstorm session. Attendees were encouraged to think of new Office Add-ins and share their ideas in an open discussion. Participants’ creativity and openly shared ideas helped inspire the entire group to begin thinking of new ways to develop with Office 365.</p>
+<h4>Hack Sessions</h4>
+<img src="uploads/2766.110515_0128_EventRecapS3.jpg" />
+<p>After sparking creativity during the O365 brainstorm session, attendees began developing their Add-ins! Microsoft engineers were eager to sit down and work with developers to make their Office Add-ins a reality. With Microsoft experts readily available, attendees received immediate, personalized assistance, which led to a faster and more successful development process.</p>
+<h4>Certificate of Completion</h4>
+<p>As part of Shanghai Interop Dev Days, each attendee who completed an Office Add-in hack session received a Certificate of Completion. Attendees who completed both a hack session and an Office Add-in received a certificate and were announced on stage by the Microsoft team. Additionally, attendees were rewarded for their hard work at a post-event mingle with beverages and food.</p>
+<p>The combination of O365 development, OData, and the traditional protocol implementation allowed for Interop Dev Days to reach a new audience, introduce fresh content, and explore a different event structure. Shanghai Interop Dev Days gave attendees a well-rounded experience from brainstorming, to building, to completing a product. Engaged, enthusiastic attendees actively developed with Office 365, created tangible results, and built stronger relationships with Microsoft.</p>
+<p>Are you interested in attending a future Open Specifications event? Stay up to date on our blog or send an email to <a href="mailto:plugfests@microsoft.com">plugfests@microsoft.com</a>.</p>
+<p>Event Resources: <a href="http://blogs.msdn.com/b/officeinteroperability/default.aspx?wa=wsignin1.0">Blog</a> / <a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests">Event Videos</a> / <a href=mailto:"plugfests@microsoft.com">Email</a> / <a href="http://www.meetup.com/Shanghai-Interop-Dev-Days-2015/">Meetup</a> / <a href="https://twitter.com/OSpecifications">Twitter</a></p>`
+	})
+})
+.then(function() {
+	return EventTab.create({
+		eventId: 5,
+		tabNumber: 5,
+		tabTitle: 'Venue',
+		tabContent: `<h3>Shanghai Marriott Hotel City Centre</h3>
+<p>555 Xi Zang Road (Middle)</p>
+<p>Huangpu District  Shanghai  200003  China</p>
+<img src="uploads/shamc_main01.jpg" />`
+	})
+})
 
 ////////////////////////////////////Contact placeholder/////////////////////////////////////
 
@@ -2599,6 +2671,22 @@ setTimeout(function() {
 		msTeamTitle: 'Senior Data Scientist',
 		showOnHomePage: false,
 		headShot: 'vivek-gupta.jpg',
+		company: 'Microsoft',
+		country: 'USA',
+		allowNotifications: false,
+		allowPersonalInfoSharing: false
+	})
+})
+.then(function() {
+	return Contact.create({
+		firstName: 'Tristan',
+		lastName: 'Davis',
+		contactDescription: 'Tristan Davis is the Group Program Manager of the APIs & Extensions team within Office Extensibility. His team is responsible for improvements to the Office 365 APIs, the new Apps for Office client extensibility model, as well as all existing flavors of Office programmability. Prior to joining the team, he was a member of the Word program management team from Office 2003 through Office 2013.',
+		eventRole: 'speaker',
+		showOnMeetTheTeamPage: false,
+		msTeamTitle: 'Group Program Manager',
+		showOnHomePage: false,
+		headShot: 'Tristan-Davis.jpg',
 		company: 'Microsoft',
 		country: 'USA',
 		allowNotifications: false,

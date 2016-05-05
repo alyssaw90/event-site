@@ -31,7 +31,7 @@ import * as customFunctions from '../common-functions.build.js';
 												<td>April 19 - 21, 2016</td>
 												<td>Taipei, Taiwan</td>
 												<td>Office Developer Opportunity, Office Add-ins and APIs, Machine Learning, Big Data Analytics, Open Specifications, Hackathon</td>
-												<td> - </td>
+												<td><a href="/shanghai2015">Event Page</a></td>
 											</tr></tbody>
 											</table>`;
 
