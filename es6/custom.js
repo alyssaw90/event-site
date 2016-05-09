@@ -61,6 +61,32 @@ import * as customFunctions from './common-functions.build.js';
 	 	
 	});
 
+	$('.tabLink').click(function(e) {
+		if ($(this).data('tabid') !== 'undefined') {
+		console.log('tabId', $(this).data('tabid'));
+			e.preventDefault();
+			let tabId = $(this).data('tabid');
+			let tabIDName = '#' + tabId;
+			let divWithTabId = 'div' + tabIDName.slice(0, -4);
+			$('ul.tabs').children('li').each(function(i, elem) {
+				if ($(this).attr('id') === tabId) {
+					let wantedTab = $(this);
+					let tabs = $(this).parents('ul.tabs').find('li');
+					let tab_next = tabs.filter('.current').find('a').attr('href');
+					let tab_current = tabs.filter(tabIDName).find('a').attr('href');
+					$(tab_current).hide();
+					tabs.removeClass('current');
+					$(this).addClass('current');
+					$(tab_next).show();
+					$(this).parent().parent().children('div').hide();
+					$(this).parent().parent().children(divWithTabId).show();
+					return false;
+				}
+			});
+			
+		}
+	});
+
 	$(window).load(function() {
 		customFunctions.changeHeight('.past_events');
 		customFunctions.changeHeight('.individual-homepage-expert');

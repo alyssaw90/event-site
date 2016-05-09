@@ -27,10 +27,10 @@ import * as customFunctions from './common-functions.build.js';
 		function checkFooter() {
 			setTimeout(function() {
 				if ($('html').height() > $(window).height()) {
-					homepageStickyFooter();
+					customFunctions.homepageStickyFooter();
 				}
 				if ($('html').height() <= $(window).height()) {
-					stickyFooter();
+					customFunctions.stickyFooter();
 				}
 				
 			}, 500);
@@ -77,8 +77,7 @@ import * as customFunctions from './common-functions.build.js';
 
 	 	$('a').click(function() {
 	 		customFunctions.stickyFooter();
-	 		customFunctions.checkFooter();
-	 		console.log($(window).innerHeight(), '    :::::::     ', $('html').height());
+	 		checkFooter();
 	 	});
 	 	
 	});
