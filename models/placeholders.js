@@ -76,7 +76,7 @@ module.exports = function() {
 	  eventContinent: 'Asia',
 	  // eventStartDate: new Date('2016-12-13:00:01:00'), //the start date...
 	  // eventEndDate: new Date('2016-12-13:00:01:00'), // the end date...
-	  // eventHeaderImage: null, //link to header image
+	  eventHeaderImage: 'India-2016.jpg', //link to header image
 	  // eventHomepageImage: null,
 	  eventHighlightColor: '#ffb900',
 	  // eventSpeakers: null
