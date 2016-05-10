@@ -1926,7 +1926,11 @@ setTimeout(function() {
     eventId: 3,
     tabNumber: 4,
     tabTitle: 'Venue',
-    tabContent: '<h3>Microsoft Redmond Campus</h3><img src="../uploads/ms-campus.png" />'
+    tabContent: `<h3>Building 20</h3>
+									<h4>Microsoft Campus</h4>
+									<h4>3709 157th Ave NE</h4>
+									<h4>Redmond, WA 98052</h4>
+									<img src="../uploads/ms-campus.png" />`
   })
 })
 .then(function() {
