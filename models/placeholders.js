@@ -36,7 +36,7 @@ module.exports = function() {
 	    eventHeaderImage: 'TAIPEIHeader.png',
 	    eventHomepageImage: 'TAIPEIHeader.png',
 	    eventHighlightColor: '#4668c5',
-	    eventSpeakers: '1,2,8,11,15,9,12,10,6,32,33,34,35,38'
+	    eventSpeakers: '1,2,8,11,15,9,12,10,6,32,33,34,35,38,26'
 	    
 	  });
 	})
@@ -92,7 +92,7 @@ module.exports = function() {
 			eventHeaderImage: 'shanghai-header.jpg',
 			eventHomepageImage: 'shanghai-header.jpg',
 			eventHighlightColor: '#3bb300',
-			eventSpeakers: '1,2,13,9,8,10,6,11,35'
+			eventSpeakers: '1,2,13,9,8,10,6,11,35,26'
 		})
 	})
 	
@@ -2533,6 +2533,7 @@ setTimeout(function() {
     firstName: 'David',
     lastName: 'Robinson',
     msTeamTitle: 'Principal Group SW Eng Mgr',
+    contactDescription: 'David Robinson is the Director of Engineering for Cortina Intelligence China within Cloud and Enterprise Computing. He is responsible for the global Azure Data Movement services, SSIS, and OData protocols. David Robinson relocated from the United States to Shanghai, China and has spoken at previous Microsoft Interoperability Events.',
     headShot: 'darobins.jpg',
     eventRole: 'speaker'
   });
