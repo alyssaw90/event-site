@@ -1934,7 +1934,11 @@ setTimeout(function() {
 		eventId: 4,
 		tabNumber: 1,
 		tabTitle: 'About',
-		tabContent: '<p>We are currently planning for a developer event in India. If you are interested in learning more, please contact <a href="mailto:plugfest@microsoft.com">Plugfests@Microsoft.com</a> and check back soon for more updates. </p>'
+		tabContent: `<p>With the success of interoperability and developer events in Shanghai, Beijing, Taipei, Paris, and Redmond, Microsoft Office and Data Platform teams are ready to travel to India!</p>
+
+									<p>Substantial growth in the IT industry, a rapid increase of startups, and an abundance of computer science students make India a fantastic location for our next Microsoft event. </p>
+									
+									<p>If you’re interested in attending an event in India, have any questions or suggestions, please email us at <a href="mailto:plugfests@microsoft.com">plugfests@microsoft.com</a>.</p>`
 	})
 })
 .then(function() {
