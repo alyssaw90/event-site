@@ -1421,7 +1421,7 @@ setTimeout(function() {\
 </ul>
 <h3 id="taipei2016-office-apps-that-support-addins-en">Office applications that support Office Add-ins</h3>
 <table class="striped">
-<tr><th>Office application</th><th>Content add-ins</th><th>Outlook add-ins</th><th>Task pane add-ins</th></tr>
+<tr><th class ="align-left">Office application</th><th class ="align-left">Content add-ins</th><th class ="align-left">Outlook add-ins</th><th class ="align-left">Task pane add-ins</th></tr>
 <tr><td>Access web apps</td><td><i class="fa fa-check"></i></td><td>&nbsp;</td><td>&nbsp;</td></tr>
 <tr><td>Excel 2013 or later</td><td><i class="fa fa-check"></i></td><td>&nbsp;</td><td><i class="fa fa-check"></i></td></tr>
 <tr><td>Excel Online  </td><td><i class="fa fa-check"></i></td><td>&nbsp;</td><td><i class="fa fa-check"></i></td></tr>
@@ -2535,6 +2535,7 @@ setTimeout(function() {
     msTeamTitle: 'Principal Group SW Eng Mgr',
     contactDescription: 'David Robinson is the Director of Engineering for Cortina Intelligence China within Cloud and Enterprise Computing. He is responsible for the global Azure Data Movement services, SSIS, and OData protocols. David Robinson relocated from the United States to Shanghai, China and has spoken at previous Microsoft Interoperability Events.',
     headShot: 'darobins.jpg',
+    showOnMeetTheTeamPage: false,
     eventRole: 'speaker'
   });
 })
@@ -2640,7 +2641,7 @@ setTimeout(function() {
     lastName: 'Stafford',
     contactDescription: 'Mark Stafford is a program manager at Microsoft contributing to the future of the OData protocol. Mark has a unique perspective on data access technologies given his many years of pre-Microsoft experience building and deploying real-world applications, managing developers and directing a business intelligence team.',
     eventRole: 'speaker',
-    showOnMeetTheTeamPage: false,
+    showOnMeetTheTeamPage: true,
     msTeamTitle: 'Principal PM Manager ',
     showOnHomePage: false,
     headShot: 'mark-stafford-headshot.jpg',
