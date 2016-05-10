@@ -446,6 +446,10 @@ main p {
 	float: right;
 }
 
+.align-left {
+    text-align: left !important;
+}
+
 .main-page-content h1 {
 	font-size: 62px;
 	margin-top: 2%;
