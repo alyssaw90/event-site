@@ -3,7 +3,6 @@
 //Logout function
 //Submits an invalid authentication header, causing the user to be 'logged out'
 export let logout = function() {
-	alert('reached');
 	Cookies.set('token', 'not a token');
   $.ajax({
     type: 'post',

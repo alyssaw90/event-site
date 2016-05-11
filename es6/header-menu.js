@@ -76,34 +76,35 @@ import * as customFunctions from './common-functions.build.js';
 	 			let pathname = window.location.pathname;
 	 			let $grayMenu = $('#grayMenu');
 	 			let $purpleMenuDiv = $('#purpleMenu');
+	 			let $homepageSliderSection = $('#homepageSliderSection');
 				//if the next upcoming event starts after today assign it to be the homepage header, otherwise assign it to the next event
 				let currentHeader;
 				let todaysDate = new Date();				
-				if (new Date(data[0].eventStartDate) >= todaysDate) {
+				if (new Date(data[0].eventStartDate) >= todaysDate || (data[0].eventStartDate === 'TBD' && data.length <= 1)) {
 					currentHeader = data[0];
 				} else {
 					currentHeader = data[1];
 				}
 				let headerBackgroundColor = `<nav class="menu-overlay desktop-menu flex" style="background-color:${currentHeader.eventHighlightColor};">`
 				let hamburgerMenu = `<div class="menu-overlay hamburger-menu social-icons" style="background-color:${currentHeader.eventHighlightColor};">`
-				let theHomepageSlider = `<ul class="slideshow">`;
+				let homepageImage = `<ul class="slideshow">`;
 				let theHiddenDiv = `<div class="hidden-div" style="display: none; background-color: ${currentHeader.eventHighlightColor}">`
 				let upcomingPurpleMenu = '<div class="col_12 purpleEventMenu">';
-			 	/*let $header = $('header');
-				let headerImage = '<a href="/' + currentHeader.eventUrl + '"><section id="headerImage" class="mobileWrapper"><img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../uploads/' + currentHeader.eventHomepageImage + '" /></section></a>';
-				let startDate = new Date(data[0].eventStartDate);
-				let endDate = new Date(data[0].eventEndDate);
-				let headerImage = '<a href="/' + data[0].eventUrl + '"><section class="headerImageTitleBox" style="background-color:' + data[0].eventHighlightColor + '; opacity: .8;">' + '<h1>' + data[0].eventName + '</h1><h1>' + months[startDate.getMonth()] + ' ' + startDate.getDate() + ' - ' + endDate.getDate() + ', ' + endDate.getFullYear() + '</h1></section></a><section id="headerImage" class="mobileWrapper"><img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../uploads/' + data[0].eventHomepageImage + '" /></section>'; //section commmented out to remove db rendered title box*/
+		 		let imageCount = 0;
 
 				$(data).each(function (i, elem) {
 					let startDate;
 					let startYear;
 					let startMonth;
+			 		let city;
 					let cityArr = elem.eventLocation.split('_');
+
 					for (let i = 0, j = cityArr.length; i < j; i++) {
 						cityArr[i] = cityArr[i].charAt(0).toUpperCase() + cityArr[i].slice(1);
 					}
-					console.log(elem.eventStartDate);
+
+					city = cityArr.join(' ');
+
 					if (elem.eventStartDate === 'TBD') {
 						startYear = 'TBD';
 						startMonth = '';
@@ -113,9 +114,6 @@ import * as customFunctions from './common-functions.build.js';
 						startMonth = months[startDate.getMonth()] + ',';
 					}
 
-					
-
-			 		let city = cityArr.join(' ');
 					if (i < data.length - 1) {
 						upcomingPurpleMenu += '<a href="/' + elem.eventUrl + '">' + city + '&nbsp-&nbsp<span class="purpleSubMenu">' + startMonth + '&nbsp' + startYear + '</span></a>| ';
 					}
@@ -123,30 +121,35 @@ import * as customFunctions from './common-functions.build.js';
 						upcomingPurpleMenu += '<a href="/' + elem.eventUrl + '">' + city + '&nbsp-&nbsp<span class="purpleSubMenu">' + startMonth + '&nbsp' + startYear + '</span></a>';
 
 					}
+						//if there is a homepage image, add it to the slider
+						if (elem.eventHomepageImage && data.length > 1) {
+							homepageImage += `<li><a href="${elem.eventUrl}"><img src="uploads/${elem.eventHomepageImage}" /></a></li>`;
+						}
+						
+						//increment the image count
+						if (elem.eventHomepageImage) {
+							imageCount++;
+						}
 
 				});
+				if (data.length > 1) {
+					homepageImage += '</ul><script type="text/javascript" src="../lib/kickstart.js"></script><script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5660d6c488a1a100" async="async"></script>';
+					
+				} else if (data[0].eventHomepageImage && data.length <= 1) {
+					homepageImage = `<a href="/${currentHeader.eventUrl}"><section id="headerImage" class="mobileWrapper"><img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../uploads/${currentHeader.eventHomepageImage}" /></section></a>`;
+				} else if (!imageCount) {
+					homepageImage = `<section id="headerImage" class="mobileWrapper"><img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../uploads/FillerPhoto.jpg" /></section>`;
+				}
 				upcomingPurpleMenu += '</div>';
 
 				purpleMenu = purpleMenu.replace('<nav class="menu-overlay desktop-menu flex">', headerBackgroundColor).replace('<div class="col_12 purpleEventMenu"></div>', upcomingPurpleMenu);
 				upperGrayMenu = upperGrayMenu.replace('<div class="menu-overlay hamburger-menu social-icons">', hamburgerMenu).replace('<div class="hidden-div" style="display: none">', theHiddenDiv);
-				// let headerMenu = $.parseHTML(menu);
-				// $header.prepend(headerMenu);
+				
 				let purpleMenuHtml = $.parseHTML(purpleMenu);
 				let upperGrayMenuHtml = $.parseHTML(upperGrayMenu);
 				$grayMenu.html(upperGrayMenuHtml);
 				$purpleMenuDiv.html(purpleMenuHtml);
-				$.get('/events', function(data) {
-					for (let i = 0, j = data.length; i < j; i++) {
-						//if there is a homepage image, add it to the slider
-						if (data[i].eventHomepageImage) {
-							theHomepageSlider += `<li><a href="${data[i].eventUrl}"><img src="uploads/${data[i].eventHomepageImage}" /></a></li>`;
-						}
-						
-					}
-					theHomepageSlider += '</ul><script type="text/javascript" src="../lib/kickstart.js"></script><script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5660d6c488a1a100" async="async"></script>';
-					$('#homepageSliderSection').html(theHomepageSlider);
-
-				});
+				$homepageSliderSection.html(homepageImage);
 
 				//declare jQuery variables after menu has been rendered to the DOM
 			 	let $homeMenuButton = $('.home-menu-button');
