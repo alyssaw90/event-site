@@ -30,7 +30,6 @@ import * as customFunctions from './common-functions.build.js';
 			})
 			.then(function(siteStyle) {
 				$.get('/events', function (data) {
-					console.log('this is the site style    ::', siteStyle.showSlider);
 					let upperGrayMenu = `<!-- Begin upper purple menu -->
 					<div class="menu-overlay hamburger-menu social-icons">
 					<!-- Begin Mobile "Hamburger Menu" -->
@@ -95,25 +94,31 @@ import * as customFunctions from './common-functions.build.js';
 			 		if (data.length <= 0) {
 			 			upcomingPurpleMenu += 'Welcome to Microsoft Interop Events';
 			 		}
+					console.log(data.length);
 			 		
 			 		//if there is an event returned set the currrent header 
 			 		if (data.length > 0) {
 						//if the next upcoming event starts after today assign it to be the homepage header, otherwise assign it to the next event
-						if (new Date(data[0].eventStartDate) >= todaysDate || (data[0].eventStartDate === 'TBD' && data.length <= 1)) {
+						if ((new Date(data[0].eventStartDate) >= todaysDate || (data[0].eventStartDate === 'TBD' && data.length <= 1)) && data[0].eventHomepageImage) {
 							currentHeader = data[0];
-						} else {
+							imageCount++;
+						} else if (data[1] && data[1].eventHomepageImage) {
 							currentHeader = data[1];
+							imageCount++;
 						}
-			 			//set the menu background color
-			 			headerBackgroundColor = `<nav class="menu-overlay desktop-menu flex" style="background-color:${currentHeader.eventHighlightColor};">`;
-						hamburgerMenu = `<div class="menu-overlay hamburger-menu social-icons" style="background-color:${currentHeader.eventHighlightColor};">`;
-						theHiddenDiv = `<div class="hidden-div" style="display: none; background-color: ${currentHeader.eventHighlightColor}">`;
-
+			 			console.log(currentHeader);
+			 			if (currentHeader) {
+				 			//set the menu background color
+				 			headerBackgroundColor = `<nav class="menu-overlay desktop-menu flex" style="background-color:${currentHeader.eventHighlightColor};">`;
+							hamburgerMenu = `<div class="menu-overlay hamburger-menu social-icons" style="background-color:${currentHeader.eventHighlightColor};">`;
+							theHiddenDiv = `<div class="hidden-div" style="display: none; background-color: ${currentHeader.eventHighlightColor}">`;
+							
+			 				
+			 			}
 			 		}
 
 			 		//if there is more than one event returned, create the slider
 					if (data.length > 1) {
-
 						$(data).each(function (i, elem) {
 							let startDate;
 							let startYear;
@@ -155,13 +160,35 @@ import * as customFunctions from './common-functions.build.js';
 						
 					} 
 					//if there is only one event returned, make it a static image on the homepage
-					if ((data.length <= 1 && data[0] && data[0].eventHomepageImage) || siteStyle.showSlider === false) {
+					if (data.length === 1 || siteStyle.showSlider === false) {
+						let eventCity;
+						let eventCityArr = data[0].eventLocation.split('_');
+						let eventStartYear;
+						let eventStartMonth;
+						let theStartDate;
+						if (data[0].eventStartDate === 'TBD') {
+								eventStartYear = 'TBD';
+								eventStartMonth = '';
+							} else {
+								theStartDate = new Date(data[0].eventStartDate);
+								eventStartYear = theStartDate.getFullYear();
+								eventStartMonth = months[theStartDate.getMonth()] + ',';
+								console.log(eventStartYear);
+							}
+
+						for (let i = 0, j = eventCityArr.length; i < j; i++) {
+							eventCityArr[i] = eventCityArr[i].charAt(0).toUpperCase() + eventCityArr[0].slice(1);
+						}
+						eventCity = eventCityArr.join(' ');
 						//increment the image count
 						if (data[0].eventHomepageImage) {
 							imageCount++;
 						}
-
-						homepageImage = `<a href="/${data[0].eventUrl}"><section id="headerImage" class="mobileWrapper"><img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../uploads/${data[0].eventHomepageImage}" /></section></a>`;
+						if (data[0] && data[0].eventHomepageImage) {
+							homepageImage = `<a href="/${data[0].eventUrl}"><section id="headerImage" class="mobileWrapper"><img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../uploads/${data[0].eventHomepageImage}" /></section></a>`;
+						}
+						headerBackgroundColor = `<nav class="menu-overlay desktop-menu flex" style="background-color:${data[0].eventHighlightColor};">`;
+						upcomingPurpleMenu += `<a href="/${data[0].eventUrl}">${eventCity}&nbsp-&nbsp<span class="purpleSubMenu">${eventStartMonth}&nbsp${eventStartYear}</span></a>`;
 					} 
 					//if there are no images, use the backup homepage image
 					if (!imageCount) {
@@ -169,6 +196,7 @@ import * as customFunctions from './common-functions.build.js';
 					}
 					upcomingPurpleMenu += '</div>';
 
+					console.log(upcomingPurpleMenu);
 					purpleMenu = purpleMenu.replace('<nav class="menu-overlay desktop-menu flex">', headerBackgroundColor).replace('<div class="col_12 purpleEventMenu"></div>', upcomingPurpleMenu);
 					upperGrayMenu = upperGrayMenu.replace('<div class="menu-overlay hamburger-menu social-icons">', hamburgerMenu).replace('<div class="hidden-div" style="display: none">', theHiddenDiv);
 					
@@ -177,7 +205,6 @@ import * as customFunctions from './common-functions.build.js';
 					$grayMenu.html(upperGrayMenuHtml);
 					$purpleMenuDiv.html(purpleMenuHtml);
 					$homepageSliderSection.html(homepageImage);
-					console.log($('#purpleMenu').outerHeight());
 					
 					//declare jQuery variables after menu has been rendered to the DOM
 				 	let $homeMenuButton = $('.home-menu-button');
