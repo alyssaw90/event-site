@@ -1908,11 +1908,112 @@ setTimeout(function() {
 	})
 })
 .then(function() {
+	return EventTab.create({
+		eventId: 2,
+		tabNumber:6,
+		tabTitle: 'Extend Event Material',
+		tabContent: `<h2>Extend Event Material</h2>
+									<ul class="noStyleUL">
+									<li><a href="/uploads/Extend-2016-Presentations.zip"><h4>Extend PowerPoint Presentations</h4></a></li>
+									</ul>`
+	})
+})
+.then(function() {
   return EventTab.create({
     eventId: 3,
     tabNumber:1, 
     tabTitle: 'Redmond Protocol Plugfest ',
-    tabContent: '<a class="button orange large float-right" target="_blank" href="http://aka.ms/Nma3yz">Register</a><h4>Redmond Protocol Plugfest</h4><p>A 5-day Microsoft event centered around Open Specifications, interoperability, and Extensibility. Attendees will learn more about interoperability within Microsoft Office, Exchange, SharePoint, Windows and SQL Server. Attendees have the opportunity to utilize Office testing tools during the Plugfest. SQL will not be testing during the Plugfest and Windows protocol testing will be available the following week at the Windows Interoperability (IO) Lab.</p><p><strong>When:</strong>  June 13 - 17, 2016</p><p><strong>Where:</strong> Microsoft headquarters in Redmond, Washington </p><p><strong>Who:</strong> Developers building solutions that leverage Office, Exchange, SharePoint, Windows, or SQL</p><p><strong>Cost:</strong> Free</p><ul class="tabs left"><li class="current"><a href="#redmond2016WindowsAgenda"><span style="font-size: 1.5em">Agenda</span></a></li><li><a href="#redmond2016WindowsTechnologies"><span style="font-size: 1.5em">Technologies</span></a></li></ul><div id="redmond2016WindowsAgenda" class="tab-content eventTabDiv" style="display:block;"><h4>Monday</h4><p>Big Data Overview</p><p>Dev.Office.com: Developer Resources</p><p>Mail, Calendar, and Contacts REST Demonstration</p><p>Office 365 APIs: Office Graph</p><p>Office Add-ins Intro and Development</p><p>Office Developer Opportunity</p><p>Office UI Fabric</p><h4>Tuesday</h4><p>SQL Server 2016</p><ul><li>AlwaysOn</li><li>PolyBase</li><li>R services</li><li>Real-time operational analytics</li><li>Speeding up data ingestion and transaction processing with In-Memory OLTP</li><li>Stretch Database</li></ul><p>Exchange 2016 Protocol Overview</p><p>Office File Formats</p><p>Office Interoperability Test Tools (Test Suites and Open Source Projects)</p><p>Office Network Parsers (Message Analyzer and Fiddler)</p><p>Office Network Parsers (Message Analyzer and Fiddler)</p><p>Office Online (MS-WOPI)</p><p>SharePoint 2016 Protocol Overview</p><h4>Wednesday</h4><p>AD/BYOD test suites and updates</p><p>New and modified protocols for Redstone and Server 2016</p><p>Talk from Canonical</p><p>Tech talk on Auth + Q&A for AD</p><p>Tech talk on Device Management</p><p>Windows 10 telemetry</p><p>Windows server telemetry</p><h4>Thursday</h4><p>Containers/Nested hyper visor (OR) Secure Shell</p><p>File Sharing</p><p>File Sharing Updates – (FTS/DFSR/Storage Space) and Q&A</p><p>HVRS+RSVD+SQOS – Interative updates and Q&A</p><p>Overview documents: Role of the Message Analyzer parsers and network captures</p> <h4>Friday</h4><p>Containers/Nestor hyper visor (OR) Secure Shell</p><p>Keynote/Nano Server: The Future of Windows Server Starts Now</p><p>Open Authoring and use of tools such as Markdown and Github</p><p>Windows protocol test suites open source</p></div><div id="redmond2016WindowsTechnologies" class="tab-content eventTabDiv" style="display:none;"><ul><li>What\'s New in Office</li><li>Open Specifications + Interoperability</li><li>Protocol Test Suites</li><li>Mail Sim</li><li>Microsoft Big Data</li><li>Office Parsers</li><li>Microsoft Cloud Foundations</li><li>OData</li><li>Exchange</li><li>SharePoint</li><li>File Formats</li><li>Mail, Calendar + Contacts</li><li>WOPI</li><li>HyperV SMB3 Storage</li></ul></div>'
+    tabContent: `<a class="button orange large float-right" target="_blank" href="http://aka.ms/Nma3yz">Register</a><h4>Redmond Protocol Plugfest</h4><p>A 5-day Microsoft event centered around Open Specifications, interoperability, and Extensibility. Attendees will learn more about interoperability within Microsoft Office, Exchange, SharePoint, Windows and SQL Server. Attendees have the opportunity to utilize Office testing tools during the Plugfest. SQL will not be testing during the Plugfest and Windows protocol testing will be available the following week at the Windows Interoperability (IO) Lab.</p><p><strong>When:</strong>  June 13 - 17, 2016</p><p><strong>Where:</strong> Microsoft headquarters in Redmond, Washington </p><p><strong>Who:</strong> Developers building solutions that leverage Office, Exchange, SharePoint, Windows, or SQL</p><p><strong>Cost:</strong> Free</p><ul class="tabs left"><li class="current"><a href="#redmond2016WindowsAgenda"><span style="font-size: 1.5em">Agenda</span></a></li><li><a href="#redmond2016WindowsTechnologies"><span style="font-size: 1.5em">Technologies</span></a></li></ul>
+    <div id="redmond2016WindowsAgenda" class="tab-content eventTabDiv" style="display:block;">
+   	<h2>Monday, June 13, 2016</h2>
+<table class="scheduleTable tableWithVerticalLines scheduleTableTextOnly">
+	<thead><th class="lightGrayBackground">Time</th><th class="lightGrayBackground">Presentation Zone</th></thead>
+	<tr><td>8:00-9:00</td><td>Breakfast</td></tr>
+	<tr><td>9:00-9:30</td><td class="lightBlueBackground">Office Developer Opportunity</td></tr>
+	<tr><td>9:30-10:15</td><td class="lightBlueBackground">Dev.Office.com: Developer Resources</td></tr>
+	<tr><td>10:15-10:30</td><td>Break</td></tr>
+	<tr><td>10:30-11:15</td><td class="lightBlueBackground">Office 365 APIs: Office Graph</td></tr>
+	<tr><td>11:15-12:00</td><td class="lightBlueBackground">Mail, Calendar, and Contacts REST Demonstration</td></tr>
+	<tr><td>12:00-13:00</td><td>Lunch</td></tr>
+	<tr><td>13:00-13:45</td><td class="lightBlueBackground">Office Add-ins Intro and Development </td></tr>
+	<tr><td>13:45-14:30</td><td class="lightBlueBackground">Office Online (MS-WOPI)</td></tr>
+	<tr><td>14:30-15:15</td><td class="lightBlueBackground">Office Co-authoring (MS-FSSHTTP)</td></tr>
+	<tr><td>15:15-15:30</td><td>Break</td></tr>
+	<tr><td>15:30-16:15</td><td class="lightBlueBackground">Office File Formats </td></tr>
+</table>
+<br /><br />
+<h2>Tuesday, June 14, 2016</h2>
+<table class="scheduleTable tableWithVerticalLines scheduleTableTextOnly">
+	<thead><th class="lightGrayBackground">Time</th><th class="lightGrayBackground">Presentation Zone</th><th class="lightGrayBackground">Time</th><th class="lightGrayBackground">White Room</th></thead>
+	<tr><td>8:00-9:00</td><td>Breakfast</td><td rowspan="7"></td><td rowspan="7"></td></tr>
+	<tr><td>9:00-9:20</td><td class="lightGreenBackground">SQL 2016 Protocol Overview </td></tr>
+	<tr><td>9:20-10:15</td><td class="lightGreenBackground">Big Data Overview</td></tr>
+	<tr><td>10:15-10:30</td><td>Break</td></tr>
+	<tr><td>10:30-11:15</td><td class="lightGreenBackground">SQL Server: Developing modern applications with Temporal Tables and JSON </td></tr>
+	<tr><td>11:15-12:00</td><td class="lightGreenBackground">SQL Server: Always On</td></tr>
+	<tr><td>12:00-13:00</td><td>Lunch</td></tr>
+	<tr><td>13:00-13:45</td><td class="lightGreenBackground">SQL Server: Speeding up data ingestion and transaction processing with In-Memory OLTP</td><td>13:00-13:45</td><td class="lightBlueBackground">Exchange 2016 Protocol Overview</td></tr>
+	<tr><td>13:45-14:30</td><td class="lightGreenBackground">SQL Server: Real-time operational analytics</td><td>13:45-14:15</td><td class="lightBlueBackground">Office Interoperability Test Tools (Test Suites and Open Source Projects)</td></tr>
+	<tr><td>14:30-15:15</td><td class="lightGreenBackground">SQL Server: R Services</td><td rowspan="2"></td><td rowspan="2"></td></tr>
+	<tr><td>15:15-15:30</td><td>Break</td></tr>
+	<tr><td>15:30-16:15</td><td class="lightGreenBackground">SQL Server: PolyBase</td><td>15:30-16:00</td><td class="lightBlueBackground">Office Network Parsers (Message Analyzer and Fiddler)</td></tr>
+	<tr><td>16:15-17:00</td><td class="lightGreenBackground">SQL Server: Stretch Database </td><td>16:15-16:45</td><td class="lightBlueBackground">Office UI Fabric</td></tr>
+</table>
+<br /><br />
+<h2>Wednesday, June 15, 2016</h2>
+<table class="scheduleTable tableWithVerticalLines scheduleTableTextOnly">
+	<thead><th class="lightGrayBackground">Time</th><th class="lightGrayBackground">Presentation Zone</th></thead>
+	<tr><td>8:00-9:00</td><td>Breakfast</td></tr>
+	<tr><td>9:00-9:30</td><td class="lightOrangeBackground">Plugfest Welcome</td></tr>
+	<tr><td>9:30-9:45</td><td class="lightOrangeBackground">Windows Keynote</td></tr>
+	<tr><td>9:45-10:30</td><td class="lightOrangeBackground">Tech talk on Auth + Q&A for AD</td></tr>
+	<tr><td>10:30-10:45</td><td>Break</td></tr>
+	<tr><td>10:45-11:30</td><td class="lightOrangeBackground">Tech talk on Device Management</td></tr>
+	<tr><td>11:30-12:00</td><td class="lightOrangeBackground">AD/BYOD test suites and updates</td></tr>
+	<tr><td>12:00-13:00</td><td>Lunch</td></tr>
+	<tr><td>13:00-13:45</td><td class="lightOrangeBackground">Windows 10 telemetry</td></tr>
+	<tr><td>13:45-14:30</td><td class="lightOrangeBackground">Windows server telemetry</td></tr>
+	<tr><td>14:30-14:45</td><td>Break</td></tr>
+	<tr><td>14:45-15:30</td><td class="lightOrangeBackground">New and modified protocols for Redstone and Server 2016</td></tr>
+	<tr><td>15:30-16:00</td><td class="lightOrangeBackground">Talk from Canonical</td></tr>
+</table>
+<br /><br />
+<h2>Thursday, June 16, 2016</h2>
+<table class="scheduleTable tableWithVerticalLines scheduleTableTextOnly">
+	<thead><th class="lightGrayBackground">Time</th><th class="lightGrayBackground">Presentation Zone</th></thead>
+	<tr><td>8:00-9:00</td><td>Breakfast</td></tr>
+	<tr><td>9:00-9:45</td><td class="lightOrangeBackground">File Sharing</td></tr>
+	<tr><td>9:45-10:30</td><td class="lightOrangeBackground">FS updates (FTS/DFSR/Storage Space) and Q&A</td></tr>
+	<tr><td>10:30-10:45</td><td>Break</td></tr>
+	<tr><td>10:45-11:30</td><td class="lightOrangeBackground">File Server Test Suite updates and demo</td></tr>
+	<tr><td>11:30-12:00</td><td class="lightOrangeBackground">HVRS+RSVD+SQOS – Iterative updates and Q&A</td></tr>
+	<tr><td>12:00-13:00</td><td>Lunch</td></tr>
+	<tr><td>13:00-13:45</td><td class="lightOrangeBackground">Windows Containers</td></tr>
+	<tr><td>13:45-14:30</td><td class="lightOrangeBackground">PCS and Azure Stack hardware validation </td></tr>
+	<tr><td>14:30-14:45</td><td>Break</td></tr>
+	<tr><td>14:45-15:30</td><td class="lightOrangeBackground">Overview documents:  Role of the Message Analyzer parsers and network captures</td></tr>
+	<tr><td>15:30-16:15</td><td class="lightOrangeBackground">Enhanced User experience in Protocol test suites</td></tr>
+	<tr><td>16:30-17:30</td><td>Visit the Microsoft Store</td></tr>
+</table>
+<br /><br />
+<h2>Friday, June 17, 2016</h2>
+<table class="scheduleTable tableWithVerticalLines scheduleTableTextOnly">
+	<thead><th class="lightGrayBackground">Time</th><th class="lightGrayBackground">Presentation Zone</th></thead>
+	<tr><td>8:00-9:00</td><td>Breakfast</td></tr>
+	<tr><td>9:00-9:45</td><td class="lightOrangeBackground">Keynote/Nano Server: The Future of Windows Server Starts Now</td></tr>
+	<tr><td>9:45-10:30</td><td class="lightOrangeBackground">Open SSH</td></tr>
+	<tr><td>10:30-10:45</td><td>Break</td></tr>
+	<tr><td>10:45-11:30</td><td class="lightOrangeBackground">Windows protocol test suites open source</td></tr>
+	<tr><td>11:30-12:00</td><td class="lightOrangeBackground">Open Authoring and use of tools such as Markdown and Github</td></tr>
+	<tr><td>12:00-13:00</td><td>Lunch</td></tr>
+</table>
+<br /><br />
+<table class="scheduleTable tableWithVerticalLines scheduleTableTextOnly" style="width: 12%;">
+	<tr><td class="lightBlueBackground">Office</td></tr>
+	<tr><td class="lightGreenBackground">Data Platform</td></tr>
+	<tr><td class="lightOrangeBackground">Windows</td></tr>
+</table>
+    <div id="redmond2016WindowsTechnologies" class="tab-content eventTabDiv" style="display:none;"><ul><li>What\'s New in Office</li><li>Open Specifications + Interoperability</li><li>Protocol Test Suites</li><li>Mail Sim</li><li>Microsoft Big Data</li><li>Office Parsers</li><li>Microsoft Cloud Foundations</li><li>OData</li><li>Exchange</li><li>SharePoint</li><li>File Formats</li><li>Mail, Calendar + Contacts</li><li>WOPI</li><li>HyperV SMB3 Storage</li></ul></div>`
   })
 })
 .then(function() {
@@ -2140,7 +2241,7 @@ setTimeout(function() {
   firstName: 'Prakash',
   lastName: 'Narayanan',
   newsletterSubscription: true,
-  contactDescription: 'Prakash Narayanan is a Program Manager on the Enterprise Cloud Group. He has been with Microsoft for almost ten years and works on interoperability events for partners who use Windows Protocols. He drives the coordination of those events, reimagining the future engagements and information sharing with the partners. <br /><br />Prior to this event role, Prakash was a Software Engineer across different teams in SharePoint, Microsoft Office, and Office 365 before becoming a Program Manager in the Office 365/Exchange division. In that role, he drove the engineering team\'s responsiveness to address product issues that affect the customers who run Exchange themselves or consume Office 365 from the Microsoft cloud. He graduated from the University of Kentucky with a Master of Science degree in Computer Science.',
+  contactDescription: 'Prakash Narayanan is a Program Manager in the Enterprise Cloud Group. He has been with Microsoft for almost ten years and works on interoperability events for partners who use Windows Protocols. He drives the coordination of those events, reimagining the future engagements and information sharing with the partners. <br /><br />Prior to this event role, Prakash was a Software Engineer across different teams in SharePoint, Microsoft Office, and Office 365 before becoming a Program Manager in the Office 365/Exchange division. In that role, he drove the engineering team\'s responsiveness to address product issues that affect the customers who run Exchange themselves or consume Office 365 from the Microsoft cloud. He graduated from the University of Kentucky with a Master of Science degree in Computer Science.',
   eventRole: 'speaker',
   showOnMeetTheTeamPage: true,
   meetTheTeamPageOrder: 3,
@@ -2264,7 +2365,7 @@ setTimeout(function() {
     firstName: 'Pui',
     lastName: 'Leung',
     newsletterSubscription: true,
-    contactDescription: 'Pui Leung is a Software Engineer on the Microsoft Office Extensibility team. He is responsible for Interoperability test suites and test tools development and release testing for the Microsoft Office Division, including SharePoint, Exchange Server, and Office.<br /><br />Prior to joining Microsoft, Pui worked as a System Software Engineer on letious types of software projects, including Windows kernel device driver and server management software at Compaq and Hewlett Packard. He graduated from Oregon State University with a Bachelor of Science degree in Computer Science.',
+    contactDescription: 'Pui Leung is a Software Engineer on the Microsoft Office Extensibility team. He is responsible for Interoperability test suites and test tools development and release testing for the Microsoft Office Division, including SharePoint, Exchange Server, and Office.<br /><br />Prior to joining Microsoft, Pui worked as a System Software Engineer on the latest types of software projects, including Windows kernel device driver and server management software at Compaq and Hewlett Packard. He graduated from Oregon State University with a Bachelor of Science degree in Computer Science.',
     eventRole: 'speaker',
     showOnMeetTheTeamPage: true,
     meetTheTeamPageOrder: 10,
@@ -2653,7 +2754,7 @@ setTimeout(function() {
   return Contact.create({
     firstName: 'Mark',
     lastName: 'Stafford',
-    contactDescription: 'Mark Stafford is a program manager at Microsoft contributing to the future of the OData protocol. Mark has a unique perspective on data access technologies given his many years of pre-Microsoft experience building and deploying real-world applications, managing developers and directing a business intelligence team.',
+    contactDescription: 'Mark Stafford is a Program Manager at Microsoft contributing to the future of the OData protocol. Mark has a unique perspective on data access technologies given his many years of pre-Microsoft experience building and deploying real-world applications, managing developers and directing a business intelligence team.',
     eventRole: 'speaker',
     showOnMeetTheTeamPage: true,
     msTeamTitle: 'Principal PM Manager ',
