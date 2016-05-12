@@ -548,7 +548,10 @@ main p {
 	margin-top: 0.5%;
 	text-align: center;
 	color: #FFF;
+	font-family: 'SegoeUILight';
 	font-size: 25px;
+	padding-right: 12px;
+	padding-left: 12px;
 }
 
 .social-icons img {

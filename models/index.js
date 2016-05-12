@@ -22,8 +22,8 @@ let Sql = require('sequelize');
   dialectOptions: {
     encrypt: true
   }
-});*/
-
+});
+*/
 let sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
     host: process.env.DB_HOST,
   dialect: 'mssql',
@@ -39,7 +39,7 @@ let sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS,
 
 
 //load models
-let models = ['Contact', 'Event', 'EventTab', 'User'];
+let models = ['Contact', 'Event', 'EventTab', 'User', 'SiteStyle'];
 
 models.forEach(function(model) {
   module.exports[model] = sql.import(__dirname + '/' + model);

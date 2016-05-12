@@ -26,6 +26,7 @@ let User = models.User;
 let Contact = models.Contact;
 let Event = models.Event;
 let EventTab = models.EventTab;
+let SiteStyle = models.SiteStyle;
 let placeholders = require('../models/placeholders');
 
 placeholders();
@@ -216,12 +217,23 @@ module.exports = function (router) {
     });
   });
 
+  //route to send style choices for website
+  router.get('/sitestyle', function(req, res) {
+    models.sql.sync()
+    .then(function() {
+      return SiteStyle.findOne({where: {id: 1}})
+    })
+    .then(function(data) {
+      res.json(data);
+    });
+  });
+
   //route to send events for header
   router.route('/events')
   .get(function (req, res) {
     models.sql.sync()
     .then(function () {
-      Event.findAll({
+      return Event.findAll({
         where: {
           eventEndDate: {
             $or: {
@@ -231,52 +243,52 @@ module.exports = function (router) {
           }
         }
       })
-      .then(function (data) {
-        let eventArr = [];
-        let undatedEventArr = [];
-        let outputArr;
-        let outputJson;
-        let menuEvents = 4;
-        if (data.length < 4) {
-          menuEvents = data.length;
+    })
+    .then(function (data) {
+      let eventArr = [];
+      let undatedEventArr = [];
+      let outputArr;
+      let outputJson;
+      let menuEvents = 4;
+      if (data.length < 4) {
+        menuEvents = data.length;
+      }
+      data.sort(function (a, b) {
+        a = a.eventStartDate;
+        b = b.eventStartDate;
+        if ( a < b) {
+          return -1;
         }
-        data.sort(function (a, b) {
-          a = a.eventStartDate;
-          b = b.eventStartDate;
-          if ( a < b) {
-            return -1;
-          }
-          if (a > b) {
-            return 1;
-          }
-          if (a === b) {
-            return 0;
-          }
-        });
-        for (let i = 0; i < menuEvents; i++) {
-          let startDate;
-          if (data[i].eventStartDate === null) {
-            startDate = 'TBD';
-          } else {
-            startDate = data[i].eventStartDate;
-          }
-          let tmpObj = {
-            eventStartDate: startDate,
-            eventUrl: data[i].eventUrl,
-            eventLocation: data[i].eventLocation,
-            eventHomepageImage: data[i].eventHomepageImage,
-            eventHighlightColor: data[i].eventHighlightColor,
-            eventName: data[i].eventName
-          };
-          if (startDate === 'TBD') {
-            undatedEventArr.push(tmpObj);
-          } else {
-            eventArr.push(tmpObj);
-          }
+        if (a > b) {
+          return 1;
         }
-        outputArr = eventArr.concat(undatedEventArr);
-        res.json(outputArr);
+        if (a === b) {
+          return 0;
+        }
       });
+      for (let i = 0; i < menuEvents; i++) {
+        let startDate;
+        if (data[i].eventStartDate === null) {
+          startDate = 'TBD';
+        } else {
+          startDate = data[i].eventStartDate;
+        }
+        let tmpObj = {
+          eventStartDate: startDate,
+          eventUrl: data[i].eventUrl,
+          eventLocation: data[i].eventLocation,
+          eventHomepageImage: data[i].eventHomepageImage,
+          eventHighlightColor: data[i].eventHighlightColor,
+          eventName: data[i].eventName
+        };
+        if (startDate === 'TBD') {
+          undatedEventArr.push(tmpObj);
+        } else {
+          eventArr.push(tmpObj);
+        }
+      }
+      outputArr = eventArr.concat(undatedEventArr);
+      res.json(outputArr);
     });
   });
   
