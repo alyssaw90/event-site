@@ -25,185 +25,215 @@ import * as customFunctions from './common-functions.build.js';
 				});
 			}
 
-			$.get('/events', function (data) {
-				let upperGrayMenu = `<!-- Begin upper purple menu -->
-				<div class="menu-overlay hamburger-menu social-icons">
-				<!-- Begin Mobile "Hamburger Menu" -->
-					<div class="float-right mobileHamburgerIcon">
-						<i class="fa fa-bars fa-3x hamburger-icon"></i>
-					</div>
-				</div>
-				<div class="hidden-div" style="display: none">
-					<ul class="hamburger-menu">
-						<li class="mobile-menu"><a href="/"><span class="home">Home</span></a></li>
-						<li class="mobile-menu"><a href="/future-events"><span>Find an Event</a></span></a></li>
-						<li class="mobile-menu"><a href="/latest-news"><span>Get the Latest</span></a></li>
-						<li class="mobile-menu"><a href="/meet-the-team"><span>Meet the Team</a></span></a></li>
-						<li class="mobile-menu"><a href="/past-events"><span>Past Events</span></a></li>
-					</ul>
-				</div>
-				<!-- End "Hamburger" Menu -->
-				<!-- End upper purple upper menu -->
-				<!-- begin Gray Desktop Main menu -->
-	 			<nav class="grid flex desktop-menu gray-menu">
-					<div class="col_2 center-block">
-						<div class="col_2 center-block menu-block home-menu-button"><a href="/">Home</a></div>
-					</div>
-						<div class="col_2 center-block">
-							<div class="col_2 center-block menu-block upcominEventsBlock"><a href="/future-events">Find an Event</a></div>
+			$.get('/sitestyle', function(siteStyle) {
+
+			})
+			.then(function(siteStyle) {
+				$.get('/events', function (data) {
+					console.log('this is the site style    ::', siteStyle.showSlider);
+					let upperGrayMenu = `<!-- Begin upper purple menu -->
+					<div class="menu-overlay hamburger-menu social-icons">
+					<!-- Begin Mobile "Hamburger Menu" -->
+						<div class="float-right mobileHamburgerIcon">
+							<i class="fa fa-bars fa-3x hamburger-icon"></i>
 						</div>
-					<div style="display: none;">
 					</div>
-					<div class="col_2 center-block">
-						<div class="col_2 center-block menu-block latest-news-menu-block"><a href="/latest-news">Get the Latest</a></div>
+					<div class="hidden-div" style="display: none">
+						<ul class="hamburger-menu">
+							<li class="mobile-menu"><a href="/"><span class="home">Home</span></a></li>
+							<li class="mobile-menu"><a href="/future-events"><span>Find an Event</a></span></a></li>
+							<li class="mobile-menu"><a href="/latest-news"><span>Get the Latest</span></a></li>
+							<li class="mobile-menu"><a href="/meet-the-team"><span>Meet the Team</a></span></a></li>
+							<li class="mobile-menu"><a href="/past-events"><span>Past Events</span></a></li>
+						</ul>
 					</div>
-					<div class="col_2 center-block">
-						<div class="col_2 center-block menu-block meet-the-team-menu-block"><a href="/meet-the-team">Meet the Team</a></div>
-					</div>
-					<div class="col_2 center-block">
-						<div class="col_2 center-block menu-block past-events-header-menu-block"><a href="/past-events">Past Events</a></div>
-					</div>
-				</nav>
-				<!-- End gray desktop menu -->`;
-	
-				let purpleMenu = `<section id="headerImage" class="mobileWrapper"></section>
-				<!-- Begin purple desktop menu -->
-				<nav class="menu-overlay desktop-menu flex">
-					<div class="col_12 purpleEventMenu"></div>
-				</nav>
-				<!-- End Purple desktop menu -->`;
-				let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-	 			let pathname = window.location.pathname;
-	 			let $grayMenu = $('#grayMenu');
-	 			let $purpleMenuDiv = $('#purpleMenu');
-	 			let $homepageSliderSection = $('#homepageSliderSection');
-				//if the next upcoming event starts after today assign it to be the homepage header, otherwise assign it to the next event
-				let currentHeader;
-				let todaysDate = new Date();				
-				if (new Date(data[0].eventStartDate) >= todaysDate || (data[0].eventStartDate === 'TBD' && data.length <= 1)) {
-					currentHeader = data[0];
-				} else {
-					currentHeader = data[1];
-				}
-				let headerBackgroundColor = `<nav class="menu-overlay desktop-menu flex" style="background-color:${currentHeader.eventHighlightColor};">`
-				let hamburgerMenu = `<div class="menu-overlay hamburger-menu social-icons" style="background-color:${currentHeader.eventHighlightColor};">`
-				let homepageImage = `<ul class="slideshow">`;
-				let theHiddenDiv = `<div class="hidden-div" style="display: none; background-color: ${currentHeader.eventHighlightColor}">`
-				let upcomingPurpleMenu = '<div class="col_12 purpleEventMenu">';
-		 		let imageCount = 0;
+					<!-- End "Hamburger" Menu -->
+					<!-- End upper purple upper menu -->
+					<!-- begin Gray Desktop Main menu -->
+		 			<nav class="grid flex desktop-menu gray-menu">
+						<div class="col_2 center-block">
+							<div class="col_2 center-block menu-block home-menu-button"><a href="/">Home</a></div>
+						</div>
+							<div class="col_2 center-block">
+								<div class="col_2 center-block menu-block upcominEventsBlock"><a href="/future-events">Find an Event</a></div>
+							</div>
+						<div style="display: none;">
+						</div>
+						<div class="col_2 center-block">
+							<div class="col_2 center-block menu-block latest-news-menu-block"><a href="/latest-news">Get the Latest</a></div>
+						</div>
+						<div class="col_2 center-block">
+							<div class="col_2 center-block menu-block meet-the-team-menu-block"><a href="/meet-the-team">Meet the Team</a></div>
+						</div>
+						<div class="col_2 center-block">
+							<div class="col_2 center-block menu-block past-events-header-menu-block"><a href="/past-events">Past Events</a></div>
+						</div>
+					</nav>
+					<!-- End gray desktop menu -->`;
+		
+					let purpleMenu = `<section id="headerImage" class="mobileWrapper"></section>
+					<!-- Begin purple desktop menu -->
+					<nav class="menu-overlay desktop-menu flex">
+						<div class="col_12 purpleEventMenu"></div>
+					</nav>
+					<!-- End Purple desktop menu -->`;
+					let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+		 			let pathname = window.location.pathname;
+		 			let $grayMenu = $('#grayMenu');
+		 			let $purpleMenuDiv = $('#purpleMenu');
+		 			let $homepageSliderSection = $('#homepageSliderSection');
+					let currentHeader;
+					let todaysDate = new Date();				
+					let headerBackgroundColor = `<nav class="menu-overlay desktop-menu flex" style="background-color:#6FB06E;">`;
+					let hamburgerMenu = `<div class="menu-overlay hamburger-menu social-icons" style="background-color:#6FB06E;">`;
+					let homepageImage = `<ul class="slideshow">`;
+					let theHiddenDiv = `<div class="hidden-div" style="display: none; background-color: #6FB06E">`;
+					let upcomingPurpleMenu = '<div class="col_12 purpleEventMenu">';
+			 		let imageCount = 0;
 
-				$(data).each(function (i, elem) {
-					let startDate;
-					let startYear;
-					let startMonth;
-			 		let city;
-					let cityArr = elem.eventLocation.split('_');
-
-					for (let i = 0, j = cityArr.length; i < j; i++) {
-						cityArr[i] = cityArr[i].charAt(0).toUpperCase() + cityArr[i].slice(1);
-					}
-
-					city = cityArr.join(' ');
-
-					if (elem.eventStartDate === 'TBD') {
-						startYear = 'TBD';
-						startMonth = '';
-					} else {
-						startDate = new Date(elem.eventStartDate);
-						startYear = startDate.getFullYear();
-						startMonth = months[startDate.getMonth()] + ',';
-					}
-
-					if (i < data.length - 1) {
-						upcomingPurpleMenu += '<a href="/' + elem.eventUrl + '">' + city + '&nbsp-&nbsp<span class="purpleSubMenu">' + startMonth + '&nbsp' + startYear + '</span></a>| ';
-					}
-					if (i >= data.length - 1) {
-						upcomingPurpleMenu += '<a href="/' + elem.eventUrl + '">' + city + '&nbsp-&nbsp<span class="purpleSubMenu">' + startMonth + '&nbsp' + startYear + '</span></a>';
-
-					}
-						//if there is a homepage image, add it to the slider
-						if (elem.eventHomepageImage && data.length > 1) {
-							homepageImage += `<li><a href="${elem.eventUrl}"><img src="uploads/${elem.eventHomepageImage}" /></a></li>`;
+			 		//add filler text to menu if there are no upcoming events scheduled
+			 		if (data.length <= 0) {
+			 			upcomingPurpleMenu += 'Welcome to Microsoft Interop Events';
+			 		}
+			 		
+			 		//if there is an event returned set the currrent header 
+			 		if (data.length > 0) {
+						//if the next upcoming event starts after today assign it to be the homepage header, otherwise assign it to the next event
+						if (new Date(data[0].eventStartDate) >= todaysDate || (data[0].eventStartDate === 'TBD' && data.length <= 1)) {
+							currentHeader = data[0];
+						} else {
+							currentHeader = data[1];
 						}
+			 			//set the menu background color
+			 			headerBackgroundColor = `<nav class="menu-overlay desktop-menu flex" style="background-color:${currentHeader.eventHighlightColor};">`;
+						hamburgerMenu = `<div class="menu-overlay hamburger-menu social-icons" style="background-color:${currentHeader.eventHighlightColor};">`;
+						theHiddenDiv = `<div class="hidden-div" style="display: none; background-color: ${currentHeader.eventHighlightColor}">`;
+
+			 		}
+
+			 		//if there is more than one event returned, create the slider
+					if (data.length > 1) {
+
+						$(data).each(function (i, elem) {
+							let startDate;
+							let startYear;
+							let startMonth;
+					 		let city;
+							let cityArr = elem.eventLocation.split('_');
+
+							for (let i = 0, j = cityArr.length; i < j; i++) {
+								cityArr[i] = cityArr[i].charAt(0).toUpperCase() + cityArr[i].slice(1);
+							}
+
+							city = cityArr.join(' ');
+
+							if (elem.eventStartDate === 'TBD') {
+								startYear = 'TBD';
+								startMonth = '';
+							} else {
+								startDate = new Date(elem.eventStartDate);
+								startYear = startDate.getFullYear();
+								startMonth = months[startDate.getMonth()] + ',';
+							}
+
+							if (i < data.length - 1) {
+								upcomingPurpleMenu += '<a href="/' + elem.eventUrl + '">' + city + '&nbsp-&nbsp<span class="purpleSubMenu">' + startMonth + '&nbsp' + startYear + '</span></a>| ';
+							}
+							if (i >= data.length - 1) {
+								upcomingPurpleMenu += '<a href="/' + elem.eventUrl + '">' + city + '&nbsp-&nbsp<span class="purpleSubMenu">' + startMonth + '&nbsp' + startYear + '</span></a>';
+
+							}
+								//if there is a homepage image, add it to the slider
+								if (data.length > 1 && elem.eventHomepageImage && siteStyle.showSlider) {
+									homepageImage += `<li><a href="${elem.eventUrl}"><img src="uploads/${elem.eventHomepageImage}" /></a></li>`;
+									imageCount++;
+								}
+
+						});
+
+						homepageImage += '</ul><script type="text/javascript" src="../lib/kickstart.js"></script><script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5660d6c488a1a100" async="async"></script>';
 						
+					} 
+					//if there is only one event returned, make it a static image on the homepage
+					if ((data.length <= 1 && data[0] && data[0].eventHomepageImage) || siteStyle.showSlider === false) {
 						//increment the image count
-						if (elem.eventHomepageImage) {
+						if (data[0].eventHomepageImage) {
 							imageCount++;
 						}
 
-				});
-				if (data.length > 1) {
-					homepageImage += '</ul><script type="text/javascript" src="../lib/kickstart.js"></script><script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5660d6c488a1a100" async="async"></script>';
+						homepageImage = `<a href="/${data[0].eventUrl}"><section id="headerImage" class="mobileWrapper"><img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../uploads/${data[0].eventHomepageImage}" /></section></a>`;
+					} 
+					//if there are no images, use the backup homepage image
+					if (!imageCount) {
+						homepageImage = `<section id="headerImage" class="mobileWrapper"><img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../uploads/FillerPhoto.jpg" /></section>`;
+					}
+					upcomingPurpleMenu += '</div>';
+
+					purpleMenu = purpleMenu.replace('<nav class="menu-overlay desktop-menu flex">', headerBackgroundColor).replace('<div class="col_12 purpleEventMenu"></div>', upcomingPurpleMenu);
+					upperGrayMenu = upperGrayMenu.replace('<div class="menu-overlay hamburger-menu social-icons">', hamburgerMenu).replace('<div class="hidden-div" style="display: none">', theHiddenDiv);
 					
-				} else if (data[0].eventHomepageImage && data.length <= 1) {
-					homepageImage = `<a href="/${currentHeader.eventUrl}"><section id="headerImage" class="mobileWrapper"><img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../uploads/${currentHeader.eventHomepageImage}" /></section></a>`;
-				} else if (!imageCount) {
-					homepageImage = `<section id="headerImage" class="mobileWrapper"><img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../uploads/FillerPhoto.jpg" /></section>`;
-				}
-				upcomingPurpleMenu += '</div>';
+					let purpleMenuHtml = $.parseHTML(purpleMenu);
+					let upperGrayMenuHtml = $.parseHTML(upperGrayMenu);
+					$grayMenu.html(upperGrayMenuHtml);
+					$purpleMenuDiv.html(purpleMenuHtml);
+					$homepageSliderSection.html(homepageImage);
+					console.log($('#purpleMenu').outerHeight());
+					
+					//declare jQuery variables after menu has been rendered to the DOM
+				 	let $homeMenuButton = $('.home-menu-button');
+				 	let $upcominEventsBlock = $('.upcominEventsBlock');
+				 	let $latestNewsMenuBlock = $('.latest-news-menu-block');
+				 	let $meetTheTeamMenuBlock = $('.meet-the-team-menu-block');
+				 	let $pastEventsHeaderMenuBlock = $('.past-events-header-menu-block');
+				 	let $hiddenDiv = $('.hidden-div');
+				 	let $hamburgerMenu = $('.hamburger-menu');
+				 	let $mobileWrapper = $('.mobileWrapper');
+				 	let $hamburgerIcon = $('.hamburger-icon');
+				 	let $feedbackBlockWrapper = $('#feedbackBlockWrapper');
+				 	let $headerImage = $('#headerImage');
+				 	let $headerImageTitleBox = $('.headerImageTitleBox');
 
-				purpleMenu = purpleMenu.replace('<nav class="menu-overlay desktop-menu flex">', headerBackgroundColor).replace('<div class="col_12 purpleEventMenu"></div>', upcomingPurpleMenu);
-				upperGrayMenu = upperGrayMenu.replace('<div class="menu-overlay hamburger-menu social-icons">', hamburgerMenu).replace('<div class="hidden-div" style="display: none">', theHiddenDiv);
-				
-				let purpleMenuHtml = $.parseHTML(purpleMenu);
-				let upperGrayMenuHtml = $.parseHTML(upperGrayMenu);
-				$grayMenu.html(upperGrayMenuHtml);
-				$purpleMenuDiv.html(purpleMenuHtml);
-				$homepageSliderSection.html(homepageImage);
+					//highlight currently selected menu item
+					if (pathname === '/') {
+						$homeMenuButton.addClass('current-page');
+					}
+					if (pathname === '/future-events') {
+						$upcominEventsBlock.addClass('current-page');
+					}
+					if (pathname === '/latest-news') {
+						$latestNewsMenuBlock.addClass('current-page');
+					}
+					if (pathname === '/meet-the-team') {
+						$meetTheTeamMenuBlock.addClass('current-page');
+					}
+					if (pathname === '/past-events') {
+						$pastEventsHeaderMenuBlock.addClass('current-page');
+					}
 
-				//declare jQuery variables after menu has been rendered to the DOM
-			 	let $homeMenuButton = $('.home-menu-button');
-			 	let $upcominEventsBlock = $('.upcominEventsBlock');
-			 	let $latestNewsMenuBlock = $('.latest-news-menu-block');
-			 	let $meetTheTeamMenuBlock = $('.meet-the-team-menu-block');
-			 	let $pastEventsHeaderMenuBlock = $('.past-events-header-menu-block');
-			 	let $hiddenDiv = $('.hidden-div');
-			 	let $hamburgerMenu = $('.hamburger-menu');
-			 	let $mobileWrapper = $('.mobileWrapper');
-			 	let $hamburgerIcon = $('.hamburger-icon');
-			 	let $feedbackBlockWrapper = $('#feedbackBlockWrapper');
-			 	let $headerImage = $('#headerImage');
-			 	let $headerImageTitleBox = $('.headerImageTitleBox');
-
-				//highlight currently selected menu item
-				if (pathname === '/') {
-					$homeMenuButton.addClass('current-page');
-				}
-				if (pathname === '/future-events') {
-					$upcominEventsBlock.addClass('current-page');
-				}
-				if (pathname === '/latest-news') {
-					$latestNewsMenuBlock.addClass('current-page');
-				}
-				if (pathname === '/meet-the-team') {
-					$meetTheTeamMenuBlock.addClass('current-page');
-				}
-				if (pathname === '/past-events') {
-					$pastEventsHeaderMenuBlock.addClass('current-page');
-				}
-
-				//make mobile menu slide in from side when it's pressed and back when anywhere else is pressed
-				$hamburgerMenu.click(function () {
-					$hiddenDiv.animate({width: 'toggle'});
-					$mobileWrapper.toggleClass('grayedOut');
-					$hamburgerIcon.toggleClass('rotate-90');
-				});
-				$mobileWrapper.click(function (e) {
-					if ($hiddenDiv.is(':visible') && e.target !== $hiddenDiv) {
+					//make mobile menu slide in from side when it's pressed and back when anywhere else is pressed
+					$hamburgerMenu.click(function () {
 						$hiddenDiv.animate({width: 'toggle'});
 						$mobileWrapper.toggleClass('grayedOut');
 						$hamburgerIcon.toggleClass('rotate-90');
+					});
+					$mobileWrapper.click(function (e) {
+						if ($hiddenDiv.is(':visible') && e.target !== $hiddenDiv) {
+							$hiddenDiv.animate({width: 'toggle'});
+							$mobileWrapper.toggleClass('grayedOut');
+							$hamburgerIcon.toggleClass('rotate-90');
+						}
+					});
+					
+					//if it isn't the homepage or the window is less than 768px, hide the frontpage image
+					if (pathname !== '/') {
+						$feedbackBlockWrapper.hide();
+						$headerImage.hide();
+						$headerImageTitleBox.hide();
 					}
-				});
-				
-				//if it isn't the homepage or the window is less than 768px, hide the frontpage image
-				if (pathname !== '/') {
-					$feedbackBlockWrapper.hide();
-					$headerImage.hide();
-					$headerImageTitleBox.hide();
-				}
 
-			});		
+				});		
+			})
+
 	 });
 })(jQuery);
 

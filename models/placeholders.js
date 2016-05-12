@@ -5,13 +5,23 @@ let User = models.User;
 let Contact = models.Contact;
 let Event = models.Event;
 let EventTab = models.EventTab;
+let SiteStyle = models.SiteStyle;
 let clc = require('cli-color');
 
 module.exports = function() {
+	////////////////////////////////////Style Choices//////////////////////////////////////////////
+
+	SiteStyle.sync({force: true})
+	.then(function() {
+		return SiteStyle.create({
+			showSlider: true
+		})
+	})
  
 	////////////////////////////////////Admin User placeholder/////////////////////////////////////
-
-	User.sync({force: true})
+	.then(function() {
+		return User.sync({force: true})
+	})
 	.then(function() {
 		return User.create({
 	  userName: 'Admin',
