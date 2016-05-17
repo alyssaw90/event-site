@@ -91,6 +91,12 @@ main p {
 	text-align: justify;
 }
 
+/*a:focus {
+	border-style: solid;
+  border-width: 3px;
+  border-color: black;
+}
+*/
 	.block {
 		display: block;
 	}
@@ -490,7 +496,8 @@ main p {
 	color: #fff;
 }
 
-.newsletterSubscSection a:hover {
+.newsletterSubscSection a:hover,
+.newsletterSubscSection a:focus {
 	color: blue;
 }
 
@@ -517,7 +524,8 @@ main p {
 	float: right;
 }
 
-.menu-overlay a:hover {
+.menu-overlay a:hover, 
+.menu-overlay a:focus {
 	text-shadow: 1px 1px 5px #fff, 0 0 3em #fff, 0 0 0.3em #fff;
 }
 
@@ -634,7 +642,8 @@ main p {
 	line-height: 1.2em;
 }
 
-.upcoming-menu h4:hover {
+.upcoming-menu h4:hover, 
+.upcoming-menu h4:focus {
 	color: #FFF;
 }
 
@@ -644,7 +653,8 @@ main p {
 	text-align: center;
 }
 
-.menu-block:hover {
+.menu-block:hover,
+.menu-block:focus {
 	background-color: rgba(80, 80, 80, 1);
 }
 
@@ -653,7 +663,8 @@ main p {
 	color: #fff;
 }
 
-.menu-block:hover a {
+.menu-block:hover a,
+.menu-block:focus a {
 	color: #fff;
 }
 
@@ -711,7 +722,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e53c16', end
 
 	button.red:hover,
 	a.btn.red:hover,
-	a.button.red:hover{
+	a.button.red:hover,
+	button.red:focus,
+	a.btn.red:focus,
+	a.button.red:focus {
 	text-shadow:0 1px 0 #B21203;
 	border:1px solid #B21203;
 	background: rgb(238,106,76); /* Old browsers */
@@ -741,7 +755,8 @@ footer a {
 	text-align: center;
 }
 
-.siteFooter a:hover {
+.siteFooter a:hover,
+.siteFooter a:focus {
   text-shadow: 0 0 10px rgba(80, 80, 80, 1);
 }
 
@@ -823,7 +838,8 @@ footer a {
 		display: block;
 	}
 
-	.slideshow a:hover {
+	.slideshow a:hover,
+	.slideshow a:focus {
 		color: #d2d2d2;
 	}
 
@@ -861,7 +877,8 @@ footer a {
     text-align: center;
 	}
 
-	.sliderRegisterButton:hover {
+	.sliderRegisterButton:hover,
+	.sliderRegisterButton:focus {
 		background-color: inherit;
 	}
 
@@ -1033,8 +1050,13 @@ footer a {
 		color: #fff;
 	}
 
-	.past_events:hover {
+	.past_events:hover,
+	.past_events:focus {
 		cursor: pointer;
+	}
+
+	#calendar > table {
+		font-size: 1.15em !important;
 	}
 
 	.rising_text p {
