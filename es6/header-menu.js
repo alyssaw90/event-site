@@ -161,7 +161,8 @@ import * as customFunctions from './common-functions.build.js';
 						
 					} 
 					//if there is only one event returned, make it a static image on the homepage
-					if (data.length <= 1 || siteStyle.showSlider === false) {
+					console.log('data[0]:    ', data.length);
+					if (imageCount === 1 || data.length <= 1 || siteStyle.showSlider === false) {
 						let eventCity;
 						let eventCityArr = data[0].eventLocation.split('_');
 						let eventStartYear;
