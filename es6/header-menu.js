@@ -94,19 +94,15 @@ import * as customFunctions from './common-functions.build.js';
 			 		if (data.length <= 0) {
 			 			upcomingPurpleMenu += 'Welcome to Microsoft Interop Events';
 			 		}
-					console.log(data.length);
 			 		
 			 		//if there is an event returned set the currrent header 
 			 		if (data.length > 0) {
 						//if the next upcoming event starts after today assign it to be the homepage header, otherwise assign it to the next event
 						if ((new Date(data[0].eventStartDate) >= todaysDate || (data[0].eventStartDate === 'TBD' && data.length <= 1)) && data[0].eventHomepageImage) {
 							currentHeader = data[0];
-							imageCount++;
 						} else if (data[1] && data[1].eventHomepageImage) {
 							currentHeader = data[1];
-							imageCount++;
 						}
-			 			console.log(currentHeader);
 			 			if (currentHeader) {
 				 			//set the menu background color
 				 			headerBackgroundColor = `<nav class="menu-overlay desktop-menu flex" style="background-color:${currentHeader.eventHighlightColor};">`;
@@ -115,8 +111,13 @@ import * as customFunctions from './common-functions.build.js';
 							
 			 				
 			 			}
+			 			//count the number of homepage images
+			 			for (let i = 0, j = data.length; i < j; i++) {
+			 				if (data[i].eventHomepageImage) {
+			 					imageCount++;
+			 				}
+			 			}
 			 		}
-
 			 		//if there is more than one event returned, create the slider
 					if (data.length > 1) {
 						$(data).each(function (i, elem) {
@@ -125,9 +126,9 @@ import * as customFunctions from './common-functions.build.js';
 							let startMonth;
 					 		let city;
 							let cityArr = elem.eventLocation.split('_');
-
-							for (let i = 0, j = cityArr.length; i < j; i++) {
-								cityArr[i] = cityArr[i].charAt(0).toUpperCase() + cityArr[i].slice(1);
+							console.log(`i:   ${i},   data.length: ${data.length}     elem:      `, elem);
+							for (let index = 0, j = cityArr.length; index < j; index++) {
+								cityArr[index] = cityArr[index].charAt(0).toUpperCase() + cityArr[index].slice(1);
 							}
 
 							city = cityArr.join(' ');
@@ -149,18 +150,19 @@ import * as customFunctions from './common-functions.build.js';
 
 							}
 								//if there is a homepage image, add it to the slider
-								if (data.length > 1 && elem.eventHomepageImage && siteStyle.showSlider) {
+								if (imageCount > 1 && elem.eventHomepageImage && siteStyle.showSlider) {
 									homepageImage += `<li><a href="${elem.eventUrl}"><img src="uploads/${elem.eventHomepageImage}" /></a></li>`;
-									imageCount++;
 								}
 
 						});
-
-						homepageImage += '</ul><script type="text/javascript" src="../lib/kickstart.js"></script><script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5660d6c488a1a100" async="async"></script>';
+						//if there are multiple images, close the slider <ul> and add the necessary js packages from lib
+						if (imageCount > 1) {
+							homepageImage += '</ul><script type="text/javascript" src="../lib/kickstart.js"></script><script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5660d6c488a1a100" async="async"></script>';
+						}
 						
 					} 
 					//if there is only one event returned, make it a static image on the homepage
-					if (data.length === 1 || siteStyle.showSlider === false) {
+					if (data.length <= 1 || siteStyle.showSlider === false) {
 						let eventCity;
 						let eventCityArr = data[0].eventLocation.split('_');
 						let eventStartYear;
@@ -173,22 +175,23 @@ import * as customFunctions from './common-functions.build.js';
 								theStartDate = new Date(data[0].eventStartDate);
 								eventStartYear = theStartDate.getFullYear();
 								eventStartMonth = months[theStartDate.getMonth()] + ',';
-								console.log(eventStartYear);
 							}
 
 						for (let i = 0, j = eventCityArr.length; i < j; i++) {
 							eventCityArr[i] = eventCityArr[i].charAt(0).toUpperCase() + eventCityArr[0].slice(1);
 						}
 						eventCity = eventCityArr.join(' ');
-						//increment the image count
-						if (data[0].eventHomepageImage) {
-							imageCount++;
-						}
+						//if there is a hompepage image create the homepage image style
 						if (data[0] && data[0].eventHomepageImage) {
 							homepageImage = `<a href="/${data[0].eventUrl}"><section id="headerImage" class="mobileWrapper"><img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../uploads/${data[0].eventHomepageImage}" /></section></a>`;
 						}
 						headerBackgroundColor = `<nav class="menu-overlay desktop-menu flex" style="background-color:${data[0].eventHighlightColor};">`;
-						upcomingPurpleMenu += `<a href="/${data[0].eventUrl}">${eventCity}&nbsp-&nbsp<span class="purpleSubMenu">${eventStartMonth}&nbsp${eventStartYear}</span></a>`;
+						//if there is only one event create the menu
+						console.log('data.length:   ', data.length);
+						if (data.length === 1 ) {
+							upcomingPurpleMenu += `<a href="/${data[0].eventUrl}">${eventCity}&nbsp-&nbsp<span class="purpleSubMenu">${eventStartMonth}&nbsp${eventStartYear}</span></a>`;
+							
+						}
 					} 
 					//if there are no images, use the backup homepage image
 					if (!imageCount) {
@@ -196,7 +199,6 @@ import * as customFunctions from './common-functions.build.js';
 					}
 					upcomingPurpleMenu += '</div>';
 
-					console.log(upcomingPurpleMenu);
 					purpleMenu = purpleMenu.replace('<nav class="menu-overlay desktop-menu flex">', headerBackgroundColor).replace('<div class="col_12 purpleEventMenu"></div>', upcomingPurpleMenu);
 					upperGrayMenu = upperGrayMenu.replace('<div class="menu-overlay hamburger-menu social-icons">', hamburgerMenu).replace('<div class="hidden-div" style="display: none">', theHiddenDiv);
 					

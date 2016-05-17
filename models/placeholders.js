@@ -9,9 +9,30 @@ let SiteStyle = models.SiteStyle;
 let clc = require('cli-color');
 
 module.exports = function() {
-	////////////////////////////////////Style Choices//////////////////////////////////////////////
 
+	/////////////////////////////Sync Schemas////////////////////////////////////////////////
 	SiteStyle.sync({force: true})
+	.then(function() {
+		return Event.sync({force: true})
+	})
+	.then(function() {
+		return EventTab.sync({force: true});
+	})
+	.then(function () {
+	  return Contact.sync({force: true});
+	})
+	.then(function() {
+		return User.sync({force: true})
+	})
+	/*.then(function() {
+		return EventTab.belongsTo(Event, {foreignKey: 'event_id'});
+	})
+	.then(function() {
+		return Event.hasMany(EventTab, {foreignKey: 'event_id'});
+	})*/
+
+	////////////////////////////////////Style Choices//////////////////////////////////////////////
+	
 	.then(function() {
 		return SiteStyle.create({
 			showSlider: true
@@ -19,9 +40,6 @@ module.exports = function() {
 	})
  
 	////////////////////////////////////Admin User placeholder/////////////////////////////////////
-	.then(function() {
-		return User.sync({force: true})
-	})
 	.then(function() {
 		return User.create({
 	  userName: 'Admin',
@@ -33,9 +51,6 @@ module.exports = function() {
  
 	////////////////////////////////////Event placeholder/////////////////////////////////////
 
-	.then(function() {
-		return Event.sync({force: true})
-	})
 	.then(function () {
 	  return Event.create({
 	    eventName: 'DevDays Asia 2016 @Taipei',
@@ -110,9 +125,6 @@ module.exports = function() {
 
 	////////////////////////////////////EventTab placeholder/////////////////////////////////////
 
-.then(function() {
-	return EventTab.sync({force: true});
-})
 .then(function() {
   return EventTab.create({
     eventId: 1,
@@ -1924,6 +1936,7 @@ setTimeout(function() {
     tabNumber:1, 
     tabTitle: 'Redmond Protocol Plugfest ',
     tabContent: `<a class="button orange large float-right" target="_blank" href="http://aka.ms/Nma3yz">Register</a><h4>Redmond Protocol Plugfest</h4><p>A 5-day Microsoft event centered around Open Specifications, interoperability, and Extensibility. Attendees will learn more about interoperability within Microsoft Office, Exchange, SharePoint, Windows and SQL Server. Attendees have the opportunity to utilize Office testing tools during the Plugfest. SQL will not be testing during the Plugfest and Windows protocol testing will be available the following week at the Windows Interoperability (IO) Lab.</p><p><strong>When:</strong>  June 13 - 17, 2016</p><p><strong>Where:</strong> Microsoft headquarters in Redmond, Washington </p><p><strong>Who:</strong> Developers building solutions that leverage Office, Exchange, SharePoint, Windows, or SQL</p><p><strong>Cost:</strong> Free</p><ul class="tabs left"><li class="current"><a href="#redmond2016WindowsAgenda"><span style="font-size: 1.5em">Agenda</span></a></li><li><a href="#redmond2016WindowsTechnologies"><span style="font-size: 1.5em">Technologies</span></a></li></ul>
+    <div id="redmond2016WindowsAgenda" class="tab-content eventTabDiv" style="display:block;">
    	<h2>Monday, June 13, 2016</h2>
 <table class="scheduleTable tableWithVerticalLines scheduleTableTextOnly">
 	<thead><th class="lightGrayBackground">Time</th><th class="lightGrayBackground">Presentation Zone</th></thead>
@@ -2012,6 +2025,7 @@ setTimeout(function() {
 	<tr><td class="lightGreenBackground">Data Platform</td></tr>
 	<tr><td class="lightOrangeBackground">Windows</td></tr>
 </table>
+</div>
     <div id="redmond2016WindowsTechnologies" class="tab-content eventTabDiv" style="display:none;"><ul><li>What\'s New in Office</li><li>Open Specifications + Interoperability</li><li>Protocol Test Suites</li><li>Mail Sim</li><li>Microsoft Big Data</li><li>Office Parsers</li><li>Microsoft Cloud Foundations</li><li>OData</li><li>Exchange</li><li>SharePoint</li><li>File Formats</li><li>Mail, Calendar + Contacts</li><li>WOPI</li><li>HyperV SMB3 Storage</li></ul></div>`
   })
 })
@@ -2195,9 +2209,6 @@ setTimeout(function() {
 
 ////////////////////////////////////Contact placeholder/////////////////////////////////////
 
-.then(function () {
-  return Contact.sync({force: true});
-})
 .then(function () {
   return Contact.create({
     firstName: 'Michael',
