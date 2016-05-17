@@ -126,7 +126,6 @@ import * as customFunctions from './common-functions.build.js';
 							let startMonth;
 					 		let city;
 							let cityArr = elem.eventLocation.split('_');
-							console.log(`i:   ${i},   data.length: ${data.length}     elem:      `, elem);
 							for (let index = 0, j = cityArr.length; index < j; index++) {
 								cityArr[index] = cityArr[index].charAt(0).toUpperCase() + cityArr[index].slice(1);
 							}
@@ -187,7 +186,6 @@ import * as customFunctions from './common-functions.build.js';
 						}
 						headerBackgroundColor = `<nav class="menu-overlay desktop-menu flex" style="background-color:${data[0].eventHighlightColor};">`;
 						//if there is only one event create the menu
-						console.log('data.length:   ', data.length);
 						if (data.length === 1 ) {
 							upcomingPurpleMenu += `<a href="/${data[0].eventUrl}">${eventCity}&nbsp-&nbsp<span class="purpleSubMenu">${eventStartMonth}&nbsp${eventStartYear}</span></a>`;
 							
