@@ -12,8 +12,9 @@ import * as customFunctions from '../common-functions.build.js';
 	$(document).ready(function () {
 
 	let $calendar = $('#calendar');
+	let $pastEventsDiv = $( '#2010_events' )
 
-	$( "#2010_events" ).click(function () {
+	$pastEventsDiv.click(function () {
 
 
 		let schedule = `<table cellspacing="0" cellpadding="0">
@@ -81,12 +82,7 @@ import * as customFunctions from '../common-functions.build.js';
 											</tr></tbody>
 										</table>`;
 			let html = $.parseHTML(schedule);
-			if ($(this).css('background-color') === 'rgba(0, 216, 204, 0.8)') {
-			    $calendar.empty();
-			} else {
-			    $calendar.empty();
-			    $calendar.append(html);
-			}
+			customFunctions.showCalendarOfPastEvents(html, $pastEventsDiv, $calendar);
 			customFunctions.stickyFooter();
 	
 		});

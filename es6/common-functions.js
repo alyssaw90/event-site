@@ -118,18 +118,14 @@ export let changeWidth = function(div) {
 
 	}
 
-export let pastEventBackgroundSwitch = function() {
-    $(this).siblings('.past_events').css('background-color', 'rgba(0, 216, 204, .8)');
-    if ($(this).css('background-color', '#4668c5')) {
-        $(this).css('background-color', 'rgba(0, 216, 204, .8)');
+//function to show and hide past event tables on past events page
+export let showCalendarOfPastEvents = function(calendarHtml, divClicked, calendarDiv) {
+    if (divClicked.hasClass('selected-year')) {
+      calendarDiv.empty();
     } else {
-        $(this).css('background-color', '#4668c5');
+      calendarDiv.empty();
+      calendarDiv.append(calendarHtml);
     }
-}
-
-export let showCalendarOfPastEvents = function(htmlContent) {
-    if ($(this).css('background-color', 'rgba(0, 216, 204, .8)')) {
-        $('#calendar').empty();
-        $('#calendar').append(htmlContent);
-    }
+    divClicked.siblings().removeClass('selected-year');
+  	divClicked.toggleClass('selected-year');
 }

@@ -9,9 +9,30 @@ let SiteStyle = models.SiteStyle;
 let clc = require('cli-color');
 
 module.exports = function() {
-	////////////////////////////////////Style Choices//////////////////////////////////////////////
 
+	/////////////////////////////Sync Schemas////////////////////////////////////////////////
 	SiteStyle.sync({force: true})
+	.then(function() {
+		return Event.sync({force: true})
+	})
+	.then(function() {
+		return EventTab.sync({force: true});
+	})
+	.then(function () {
+	  return Contact.sync({force: true});
+	})
+	.then(function() {
+		return User.sync({force: true})
+	})
+	/*.then(function() {
+		return EventTab.belongsTo(Event, {foreignKey: 'event_id'});
+	})
+	.then(function() {
+		return Event.hasMany(EventTab, {foreignKey: 'event_id'});
+	})*/
+
+	////////////////////////////////////Style Choices//////////////////////////////////////////////
+	
 	.then(function() {
 		return SiteStyle.create({
 			showSlider: true
@@ -19,9 +40,6 @@ module.exports = function() {
 	})
  
 	////////////////////////////////////Admin User placeholder/////////////////////////////////////
-	.then(function() {
-		return User.sync({force: true})
-	})
 	.then(function() {
 		return User.create({
 	  userName: 'Admin',
@@ -33,9 +51,6 @@ module.exports = function() {
  
 	////////////////////////////////////Event placeholder/////////////////////////////////////
 
-	.then(function() {
-		return Event.sync({force: true})
-	})
 	.then(function () {
 	  return Event.create({
 	    eventName: 'DevDays Asia 2016 @Taipei',
@@ -111,14 +126,11 @@ module.exports = function() {
 	////////////////////////////////////EventTab placeholder/////////////////////////////////////
 
 .then(function() {
-	return EventTab.sync({force: true});
-})
-.then(function() {
   return EventTab.create({
     eventId: 1,
     tabNumber: 1,
     tabTitle: 'About',
-    tabContent: '<a class="button orange large float-right" target="_blank" href="http://aka.ms/Pphkv8">Register</a><h3>DevDays Asia 2016 @ Taipei</h3><h4>April 19th - 21st, TAF Innovation Base</h4><p>Microsoft established the Internet of Things (IoT) Industry Development Center in October of 2015 to integrate global and local partners from the ecosystem, accelerating the process of developing IoT solutions for the manufacturing, financial, health care, transportation, and retailing industries. </p><p>DevDays Asia 2016 @ Taipei, directed by Industrial Development Bureau, and hosted by Microsoft and Digital Content Industry Promotion Office, will be held in April to help developers catch up with new concepts and technologies. </p><p>In the three-day program, Microsoft developers from the US will deliver lectures, host workshops, and interact with participants to generate amazing ideas and solutions. </p><p>On the first day, keynote speeches on new concepts and technologies for enhancing productivity, cloud computing, and data analysis platform will be delivered by the Microsoft developers. The speakers will focus on the technologies for boosting productivity, cloud and data platform. </p><p>In the morning session of the second day, the Microsoft developers will provide code samples and share their tips and guidelines about application development. A HAOckathon ( Hackathon + A for Analytical + O for Open ) that focuses on improving social good will be held in the afternoon of the second day. Contestants will get the chance to use the latest technologies to promote social welfare with the Microsoft developers. </p><p>For the remaining day and a half, the Microsoft developers will help contestants implement their ideas and generate improved solutions. Aligning with the theme of promoting social welfare, contestants can choose a wide letiety of topics, such as Hack for Enhancing Productivity, Hack for the Environment and Marine Eco-system, Hack for the Good, Hack for Government Open Data, Hack for University Education, etc. By better using technologies, it is possible to bring good deeds to a whole new level. Generous prizes will be awarded for the contestants of Hackathon, including a Surface Pro 4, a one-year subscription to Visual Studio Enterprise with MSDN, and a one-year subscription to Office 365. </p><p>Don’t hesitate to reserve your seats for DevDays Asia 2016 in Taipei!<h5>Information</h5><ul><li>Date: 19th-21st April (Tue - Thu)</li><li>Event Plan:<ul type="square"><li>Day 1 Morning: Keynote</li><li>Day 1 Afternoon + Day 2 Morning: Tracks + Workshops</li><li>Day 2 Afternoon + Day 3: HAOckathon (Hackathon)</li></ul></li><li>Contact：02-25622880 # 3671 Mr.Dai</li><li><a href="https://www.microsoft.com/taiwan/events/devdays/">DevDay Asia 2016 @Taipei 亞太開發人員技術年會 - 生產力暨物聯網應用開發元年</a></li></ul><br /><br />'
+    tabContent: '<h3>DevDays Asia 2016 @ Taipei</h3><h4>April 19th - 21st, TAF Innovation Base</h4><p>Microsoft established the Internet of Things (IoT) Industry Development Center in October of 2015 to integrate global and local partners from the ecosystem, accelerating the process of developing IoT solutions for the manufacturing, financial, health care, transportation, and retailing industries. </p><p>DevDays Asia 2016 @ Taipei, directed by Industrial Development Bureau, and hosted by Microsoft and Digital Content Industry Promotion Office, will be held in April to help developers catch up with new concepts and technologies. </p><p>In the three-day program, Microsoft developers from the US will deliver lectures, host workshops, and interact with participants to generate amazing ideas and solutions. </p><p>On the first day, keynote speeches on new concepts and technologies for enhancing productivity, cloud computing, and data analysis platform will be delivered by the Microsoft developers. The speakers will focus on the technologies for boosting productivity, cloud and data platform. </p><p>In the morning session of the second day, the Microsoft developers will provide code samples and share their tips and guidelines about application development. A HAOckathon ( Hackathon + A for Analytical + O for Open ) that focuses on improving social good will be held in the afternoon of the second day. Contestants will get the chance to use the latest technologies to promote social welfare with the Microsoft developers. </p><p>For the remaining day and a half, the Microsoft developers will help contestants implement their ideas and generate improved solutions. Aligning with the theme of promoting social welfare, contestants can choose a wide letiety of topics, such as Hack for Enhancing Productivity, Hack for the Environment and Marine Eco-system, Hack for the Good, Hack for Government Open Data, Hack for University Education, etc. By better using technologies, it is possible to bring good deeds to a whole new level. Generous prizes will be awarded for the contestants of Hackathon, including a Surface Pro 4, a one-year subscription to Visual Studio Enterprise with MSDN, and a one-year subscription to Office 365. </p><p>Don’t hesitate to reserve your seats for DevDays Asia 2016 in Taipei!<h5>Information</h5><ul><li>Date: 19th-21st April (Tue - Thu)</li><li>Event Plan:<ul type="square"><li>Day 1 Morning: Keynote</li><li>Day 1 Afternoon + Day 2 Morning: Tracks + Workshops</li><li>Day 2 Afternoon + Day 3: HAOckathon (Hackathon)</li></ul></li><li>Contact：02-25622880 # 3671 Mr.Dai</li><li><a href="https://www.microsoft.com/taiwan/events/devdays/">DevDay Asia 2016 @Taipei 亞太開發人員技術年會 - 生產力暨物聯網應用開發元年</a></li></ul><br /><br />'
   })
 })
 .then(function() {
@@ -1259,7 +1271,7 @@ setTimeout(function() {\
     eventId: 2,
     tabNumber: 1,
     tabTitle: 'About',
-    tabContent: '<a class="button blue float-right" style="height:65px;" href="https://www.facebook.com/events/815243558586451/">Find us on:<br /><i class="fa fa-facebook-square fa-2x"></i> acebook</a><a class="button orange large float-right" style="height:65px;margin-right:10px;font-size:2.35em;" target="_blank" href="http://aka.ms/x9n9ua">Register</a><h2>Extend Conference</h2><h4 class="center">Paris, France - May 12, 2016</h4><p>Microsoft introduces Extend – a 1-day event that brings together the latest technologies from Office, Data Platform, and Open Specifications.  Explore updates in Data Platform including machine learning, big data ingestion, and advanced analytics. Find out why Satya Nadella called Office 365, “the most strategic developer surface area” for Microsoft by discovering the potential of Office Add-ins and Office APIs. Finally, get direct access to a team of Microsoft program managers and engineers who are not only subject matter experts, but are excited to help you! Finish up the day at an evening mixer with attendees and Microsoft engineers.</p><h5>Where: Paris, France</h5><h5>Terrass Kardinal</h5><h5>45 Rue Jussieu, 75005 Paris, France</h5><h5>When: May 12, 2016</h5><h5>Cost: Free</h5><br />'
+    tabContent: '<a class="button blue float-right" style="height:65px;" href="https://www.facebook.com/events/815243558586451/">Find us on:<br /><i class="fa fa-facebook-square fa-2x"></i> acebook</a><h2>Extend Conference</h2><h4 class="center">Paris, France - May 12, 2016</h4><p>Microsoft introduces Extend – a 1-day event that brings together the latest technologies from Office, Data Platform, and Open Specifications.  Explore updates in Data Platform including machine learning, big data ingestion, and advanced analytics. Find out why Satya Nadella called Office 365, “the most strategic developer surface area” for Microsoft by discovering the potential of Office Add-ins and Office APIs. Finally, get direct access to a team of Microsoft program managers and engineers who are not only subject matter experts, but are excited to help you! Finish up the day at an evening mixer with attendees and Microsoft engineers.</p><h5>Where: Paris, France</h5><h5>Terrass Kardinal</h5><h5>45 Rue Jussieu, 75005 Paris, France</h5><h5>When: May 12, 2016</h5><h5>Cost: Free</h5><br />'
   })
 })
 .then(function() {
@@ -1924,6 +1936,7 @@ setTimeout(function() {
     tabNumber:1, 
     tabTitle: 'Redmond Protocol Plugfest ',
     tabContent: `<a class="button orange large float-right" target="_blank" href="http://aka.ms/Nma3yz">Register</a><h4>Redmond Protocol Plugfest</h4><p>A 5-day Microsoft event centered around Open Specifications, interoperability, and Extensibility. Attendees will learn more about interoperability within Microsoft Office, Exchange, SharePoint, Windows and SQL Server. Attendees have the opportunity to utilize Office testing tools during the Plugfest. SQL will not be testing during the Plugfest and Windows protocol testing will be available the following week at the Windows Interoperability (IO) Lab.</p><p><strong>When:</strong>  June 13 - 17, 2016</p><p><strong>Where:</strong> Microsoft headquarters in Redmond, Washington </p><p><strong>Who:</strong> Developers building solutions that leverage Office, Exchange, SharePoint, Windows, or SQL</p><p><strong>Cost:</strong> Free</p><ul class="tabs left"><li class="current"><a href="#redmond2016WindowsAgenda"><span style="font-size: 1.5em">Agenda</span></a></li><li><a href="#redmond2016WindowsTechnologies"><span style="font-size: 1.5em">Technologies</span></a></li></ul>
+    <div id="redmond2016WindowsAgenda" class="tab-content eventTabDiv" style="display:block;">
    	<h2>Monday, June 13, 2016</h2>
 <table class="scheduleTable tableWithVerticalLines scheduleTableTextOnly">
 	<thead><th class="lightGrayBackground">Time</th><th class="lightGrayBackground">Presentation Zone</th></thead>
@@ -2012,6 +2025,7 @@ setTimeout(function() {
 	<tr><td class="lightGreenBackground">Data Platform</td></tr>
 	<tr><td class="lightOrangeBackground">Windows</td></tr>
 </table>
+</div>
     <div id="redmond2016WindowsTechnologies" class="tab-content eventTabDiv" style="display:none;"><ul><li>What\'s New in Office</li><li>Open Specifications + Interoperability</li><li>Protocol Test Suites</li><li>Mail Sim</li><li>Microsoft Big Data</li><li>Office Parsers</li><li>Microsoft Cloud Foundations</li><li>OData</li><li>Exchange</li><li>SharePoint</li><li>File Formats</li><li>Mail, Calendar + Contacts</li><li>WOPI</li><li>HyperV SMB3 Storage</li></ul></div>`
   })
 })
@@ -2195,9 +2209,6 @@ setTimeout(function() {
 
 ////////////////////////////////////Contact placeholder/////////////////////////////////////
 
-.then(function () {
-  return Contact.sync({force: true});
-})
 .then(function () {
   return Contact.create({
     firstName: 'Michael',
