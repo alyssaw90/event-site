@@ -13,9 +13,10 @@ import * as customFunctions from '../common-functions.build.js';
     $(document).ready(function () {
 
         let $calendar = $('#calendar');
+        let $pastEventsDiv = $( "#2016_events" )
         let imgArr = [];
 
-        $( "#2016_events" ).click(function () {
+        $pastEventsDiv.click(function () {
 
 
             let schedule = `
@@ -48,15 +49,7 @@ import * as customFunctions from '../common-functions.build.js';
 										</table>`;
 
             let html = $.parseHTML(schedule);
-            //for some reason the customFunctions.pastEventBackgroundSwitch(); method does not work on this past event block. I need to figure out why
-            $(this).siblings().removeClass('selected-year');
-            $(this).toggleClass('selected-year');
-            if ($(this).css('background-color') === 'rgba(0, 216, 204, 0.8)') {
-                $calendar.empty();
-            } else {
-                $calendar.empty();
-                $calendar.append(html);
-            }
+            customFunctions.showCalendarOfPastEvents(html, $pastEventsDiv, $calendar);
             customFunctions.stickyFooter();
 
         });

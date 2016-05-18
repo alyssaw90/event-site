@@ -15,7 +15,7 @@ import * as customFunctions from '../common-functions.build.js';
 		$pastEvents.click(function() {
 			customFunctions.changeHeight('.past_events');
 			customFunctions.homepageStickyFooter();
-			customFunctions.pastEventBackgroundSwitch();
+			// customFunctions.pastEventBackgroundSwitch();
 		});
 	});
 
