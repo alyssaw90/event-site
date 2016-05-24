@@ -59,6 +59,66 @@ import * as customFunctions from './common-functions.build.js';
 		let $scrollButtonDiv = $('.scroll-button');
 		let $hiddenHomepageSectionsWrapper = $('.hiddenHomepageSectionsWrapper');
 		let $window = $(window);	
+
+		//function to show homepage intro text when the corresponding block is clicked
+		function showHomepageBlock (e) {
+			let $this = $(this);
+			let thisBlockArrowClass = $this.attr('id') + 'ArrowBox';
+			let thisBlockMobileClass = $this.attr('id') + 'Mobile';
+			let thisBlockText = '#' + $this.data('thisblocktext');
+			let blockPosition = $(thisBlockText).parent().offset().top;
+	   	let style = window.getComputedStyle(this, 'hover');
+	   	let mobileStyle = $(this).data('hoverBackgroundColor');
+	   	let backgroundColor = style['background-color'];
+			let keyCode;
+			//get key code
+			if (e.keyCode) {
+				keyCode = e.keyCode;
+				console.log('keyCode reached');
+			} else {
+				keyCode = e.which;
+				console.log('which reached');
+			}
+			//if the keyCode is the mouse click (1) or enter (13) show the text block 
+			if (keyCode === 1 || keyCode === 13) {
+				if ($window.width() > 768) {
+					$this.toggleClass(thisBlockArrowClass);
+					$this.siblings().each(function (i, elem) {
+						let $thisElem = $(this);
+						let arrowClass = elem.id + 'ArrowBox';
+						$thisElem.removeClass(arrowClass);
+					});
+				}
+				if ($window.width() <= 768) {
+					if ($this.hasClass(thisBlockMobileClass)) {
+						$this.removeClass(thisBlockMobileClass).css('background', 'rgb(255, 255, 255)');
+					} else {
+						$this.addClass(thisBlockMobileClass).css('background', $this.attr('data-hoverBackgroundColor'));
+					}
+					$this.siblings().each(function (i, elem) {
+						let $thisMobileElem = $(this);
+						let mobileClass = elem.id + 'Mobile';
+						$thisMobileElem.removeClass(mobileClass).css('background', 'rgb(255, 255, 255)');
+					});
+				}
+				$hiddenHomepageSectionsWrapper.css('background-color', $this.attr('data-hoverBackgroundColor'));
+				$scrollButtonDiv.css('background-color', $hiddenHomepageSectionsWrapper.css('background-color'));
+				if ($(thisBlockText).css('display') === 'none') {
+					$(thisBlockText).fadeIn();
+					$(thisBlockText).siblings().hide();
+					$('html, body').animate({ scrollTop: blockPosition }, 'slow');
+					$scrollButtonDiv.css('color', '#fff');
+				} else {
+					$(thisBlockText).fadeOut();
+					$(thisBlockText).siblings().hide();
+					$scrollButtonDiv.css('color', '#2F2F2F').css('background-color', '#fff');
+				}
+				//execute the homepageStickyFooter function to correctly position the footer after the new div is added
+		   	customFunctions.homepageStickyFooter();
+		   	setTimeout(customFunctions.homepageStickyFooter, 420); 
+				
+			}
+		}
 		
 
 		// console.log($('iframe').contents().css('background-color'));
@@ -97,56 +157,36 @@ import * as customFunctions from './common-functions.build.js';
 			});
 			customFunctions.homepageStickyFooter();
 		});
-		//when a homepageIntroBlocks is clicked, show the corresponding div
-		$homepageIntroBlocks.click(function (e) {
-			let $this = $(this);
-			let thisBlockArrowClass = $this.attr('id') + 'ArrowBox';
-			let thisBlockMobileClass = $this.attr('id') + 'Mobile';
-			let thisBlockText = '#' + $this.data('thisblocktext');
-			let blockPosition = $(thisBlockText).parent().offset().top;
-	   	let style = window.getComputedStyle(this, 'hover');
-	   	let mobileStyle = $(this).data('hoverBackgroundColor');
-	   	let backgroundColor = style['background-color'];
-			if ($window.width() > 768) {
-				$this.toggleClass(thisBlockArrowClass);
-				$this.siblings().each(function (i, elem) {
-					let $thisElem = $(this);
-					let arrowClass = elem.id + 'ArrowBox';
-					$thisElem.removeClass(arrowClass);
-				});
-			}
-			if ($window.width() <= 768) {
-					console.log(':::::::   ', $this.attr('data-hoverBackgroundColor'));
-				if ($this.hasClass(thisBlockMobileClass)) {
-					$this.removeClass(thisBlockMobileClass).css('background', 'rgb(255, 255, 255)');
-				} else {
-					$this.addClass(thisBlockMobileClass).css('background', $this.attr('data-hoverBackgroundColor'));
-				}
-				$this.siblings().each(function (i, elem) {
-					let $thisMobileElem = $(this);
-					let mobileClass = elem.id + 'Mobile';
-					$thisMobileElem.removeClass(mobileClass).css('background', 'rgb(255, 255, 255)');
-				});
-			}
-			$hiddenHomepageSectionsWrapper.css('background-color', $this.attr('data-hoverBackgroundColor'));
-			$scrollButtonDiv.css('background-color', $hiddenHomepageSectionsWrapper.css('background-color'));
-			if ($(thisBlockText).css('display') === 'none') {
-				$(thisBlockText).fadeIn();
-				$(thisBlockText).siblings().hide();
-				$('html, body').animate({ scrollTop: blockPosition }, 'slow');
-				$scrollButtonDiv.css('color', '#fff');
-			} else {
-				$(thisBlockText).fadeOut();
-				$(thisBlockText).siblings().hide();
-				$scrollButtonDiv.css('color', '#2F2F2F').css('background-color', '#fff');
-			}
-			//execute the homepageStickyFooter function to correctly position the footer after the new div is added
-	   	customFunctions.homepageStickyFooter();
-	   	setTimeout(customFunctions.homepageStickyFooter, 420); 
-		});
-		
+		//when a homepageIntroBlocks is clicked or enter is clicked, show the corresponding div
+		$homepageIntroBlocks.click(showHomepageBlock);
+		$homepageIntroBlocks.keydown(showHomepageBlock);
+
+		// $homepageIntroBlocks.keydown(function(event) {
+		// 	console.log(event, '     ', $(this));
+		// 	let keyCode;
+		// 	if (event.keyCode) {
+		// 		keyCode = event.keyCode;
+		// 		console.log('keyCode reached');
+		// 	} else {
+		// 		keyCode = event.which;
+		// 		console.log('which reached');
+		// 	}
+		// 	showHomepageBlock();
+		// 	/*
+		// 	let keyCode;
+		// 	if (event.keyCode) {
+		// 		keyCode = event.keyCode;
+		// 	} else {
+		// 		keyCode = event.which;
+		// 	}
+		// 	if (keyCode === 13) {
+		// 		event.preventDefault();
+		// 	}*/
+			
+		// });
+
 		//make homepageIntroBlocks zoom in and down
-		setTimeout(function () {
+		/*setTimeout(function () {
 			$notANumberBlock.css('visibility', 'visible').addClass('animated zoomInDown');
 			customFunctions.homepageStickyFooter();
 		}, 10);
@@ -161,7 +201,7 @@ import * as customFunctions from './common-functions.build.js';
 		setTimeout(function () {
 			$itsYourEventBlock.css('visibility', 'visible').addClass('animated zoomInDown');
 			customFunctions.homepageStickyFooter();
-		}, 3000);
+		}, 3000);*/
 	});
 
 	$(window).load(function() {

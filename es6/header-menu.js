@@ -39,33 +39,36 @@ import * as customFunctions from './common-functions.build.js';
 					</div>
 					<div class="hidden-div" style="display: none">
 						<ul class="hamburger-menu">
-							<li class="mobile-menu"><a href="/"><span class="home">Home</span></a></li>
-							<li class="mobile-menu"><a href="/future-events"><span>Find an Event</a></span></a></li>
-							<li class="mobile-menu"><a href="/latest-news"><span>Get the Latest</span></a></li>
-							<li class="mobile-menu"><a href="/meet-the-team"><span>Meet the Team</a></span></a></li>
-							<li class="mobile-menu"><a href="/past-events"><span>Past Events</span></a></li>
+							<li class="mobile-menu"><a role="navigation" href="/"><span class="home">Home</span></a></li>
+							<li class="mobile-menu"><a role="navigation" href="/future-events"><span>Find an Event</a></span></a></li>
+							<li class="mobile-menu"><a role="navigation" href="/latest-news"><span>Get the Latest</span></a></li>
+							<li class="mobile-menu"><a role="navigation" href="/meet-the-team"><span>Meet the Team</a></span></a></li>
+							<li class="mobile-menu"><a role="navigation" href="/past-events"><span>Past Events</span></a></li>
 						</ul>
 					</div>
 					<!-- End "Hamburger" Menu -->
 					<!-- End upper purple upper menu -->
 					<!-- begin Gray Desktop Main menu -->
 		 			<nav class="grid flex desktop-menu gray-menu">
+		 				<div><a id="navMenuBeginning" class="skipNavigation" role="navigation" href="#eventNavigationMenu">Skip to Event Menu</a></a></div>
+		 				<div><a class="skipNavigation" role="navigation" href="#beginningOfContent">Skip to Main Content</a></a></div>
+		 				<div><a class="skipNavigation" role="navigation" href="#theFooter">Skip to Footer</a></a></div>
 						<div class="col_2 center-block">
-							<div class="col_2 center-block menu-block home-menu-button"><a href="/">Home</a></div>
+							<div class="col_2 center-block menu-block home-menu-button"><a role="navigation" href="/">Home</a></div>
 						</div>
 							<div class="col_2 center-block">
-								<div class="col_2 center-block menu-block upcominEventsBlock"><a href="/future-events">Find an Event</a></div>
+								<div class="col_2 center-block menu-block upcominEventsBlock"><a role="navigation" href="/future-events">Find an Event</a></div>
 							</div>
 						<div style="display: none;">
 						</div>
 						<div class="col_2 center-block">
-							<div class="col_2 center-block menu-block latest-news-menu-block"><a href="/latest-news">Get the Latest</a></div>
+							<div class="col_2 center-block menu-block latest-news-menu-block"><a role="navigation" href="/latest-news">Get the Latest</a></div>
 						</div>
 						<div class="col_2 center-block">
-							<div class="col_2 center-block menu-block meet-the-team-menu-block"><a href="/meet-the-team">Meet the Team</a></div>
+							<div class="col_2 center-block menu-block meet-the-team-menu-block"><a role="navigation" href="/meet-the-team">Meet the Team</a></div>
 						</div>
 						<div class="col_2 center-block">
-							<div class="col_2 center-block menu-block past-events-header-menu-block"><a href="/past-events">Past Events</a></div>
+							<div class="col_2 center-block menu-block past-events-header-menu-block"><a role="navigation" href="/past-events">Past Events</a></div>
 						</div>
 					</nav>
 					<!-- End gray desktop menu -->`;
@@ -142,15 +145,15 @@ import * as customFunctions from './common-functions.build.js';
 							}
 
 							if (i < data.length - 1) {
-								upcomingPurpleMenu += '<a href="/' + elem.eventUrl + '">' + city + '&nbsp-&nbsp<span class="purpleSubMenu">' + startMonth + '&nbsp' + startYear + '</span></a>| ';
+								upcomingPurpleMenu += '<a id="eventNavigationMenu" role="navigation" href="/' + elem.eventUrl + '">' + city + '&nbsp-&nbsp<span class="purpleSubMenu">' + startMonth + '&nbsp' + startYear + '</span></a>| ';
 							}
 							if (i >= data.length - 1) {
-								upcomingPurpleMenu += '<a href="/' + elem.eventUrl + '">' + city + '&nbsp-&nbsp<span class="purpleSubMenu">' + startMonth + '&nbsp' + startYear + '</span></a>';
+								upcomingPurpleMenu += '<a role="navigation" href="/' + elem.eventUrl + '">' + city + '&nbsp-&nbsp<span class="purpleSubMenu">' + startMonth + '&nbsp' + startYear + '</span></a>';
 
 							}
 								//if there is a homepage image, add it to the slider
 								if (imageCount > 1 && elem.eventHomepageImage && siteStyle.showSlider) {
-									homepageImage += `<li><a href="${elem.eventUrl}"><img src="uploads/${elem.eventHomepageImage}" /></a></li>`;
+									homepageImage += `<li><a tabindex="-1" href="${elem.eventUrl}"><img src="uploads/${elem.eventHomepageImage}" /></a></li>`;
 								}
 
 						});
@@ -183,7 +186,7 @@ import * as customFunctions from './common-functions.build.js';
 						eventCity = eventCityArr.join(' ');
 						//if there is a hompepage image create the homepage image style
 						if (data[0] && data[0].eventHomepageImage) {
-							homepageImage = `<a href="/${data[0].eventUrl}"><section id="headerImage" class="mobileWrapper"><img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../uploads/${data[0].eventHomepageImage}" /></section></a>`;
+							homepageImage = `<a tabindex="-1" href="/${data[0].eventUrl}"><section id="headerImage" class="mobileWrapper"><img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../uploads/${data[0].eventHomepageImage}" /></section></a>`;
 						}
 						headerBackgroundColor = `<nav class="menu-overlay desktop-menu flex" style="background-color:${data[0].eventHighlightColor};">`;
 						//if there is only one event create the menu
@@ -220,6 +223,16 @@ import * as customFunctions from './common-functions.build.js';
 				 	let $feedbackBlockWrapper = $('#feedbackBlockWrapper');
 				 	let $headerImage = $('#headerImage');
 				 	let $headerImageTitleBox = $('.headerImageTitleBox');
+				 	let $skipNavigation = $('.skipNavigation');
+
+				 	//make skip menu parent width 100% on focus
+					$skipNavigation.on('focus', function() {
+						$(this).parent().css('width', '100%').css('display', 'inline-block');
+						$(this).css('margin-left', '45%');
+					});
+					$skipNavigation.on('blur', function() {
+						$(this).parent().css('width', 'auto').css('display', 'inline');
+					})
 
 					//highlight currently selected menu item
 					if (pathname === '/') {
@@ -264,4 +277,3 @@ import * as customFunctions from './common-functions.build.js';
 
 	 });
 })(jQuery);
-
