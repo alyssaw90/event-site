@@ -52,7 +52,7 @@ import * as customFunctions from './common-functions.build.js';
 		 			<nav class="grid flex desktop-menu gray-menu">
 		 				<div><a id="navMenuBeginning" class="skipNavigation" role="navigation" href="#eventNavigationMenu">Skip to Event Menu</a></a></div>
 		 				<div><a class="skipNavigation" role="navigation" href="#beginningOfContent">Skip to Main Content</a></a></div>
-		 				<div><a class="skipNavigation" role="navigation" href="#theFooter">Skip to Footer</a></a></div>
+		 				<div><a class="skipNavigation" role="navigation" href="#footerStartMenuItem">Skip to Footer</a></a></div>
 						<div class="col_2 center-block">
 							<div class="col_2 center-block menu-block home-menu-button"><a role="navigation" href="/">Home</a></div>
 						</div>

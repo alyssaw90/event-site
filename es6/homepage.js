@@ -62,6 +62,7 @@ import * as customFunctions from './common-functions.build.js';
 
 		//function to show homepage intro text when the corresponding block is clicked
 		function showHomepageBlock (e) {
+			console.log('reached');
 			let $this = $(this);
 			let thisBlockArrowClass = $this.attr('id') + 'ArrowBox';
 			let thisBlockMobileClass = $this.attr('id') + 'Mobile';
@@ -74,10 +75,8 @@ import * as customFunctions from './common-functions.build.js';
 			//get key code
 			if (e.keyCode) {
 				keyCode = e.keyCode;
-				console.log('keyCode reached');
 			} else {
 				keyCode = e.which;
-				console.log('which reached');
 			}
 			//if the keyCode is the mouse click (1) or enter (13) show the text block 
 			if (keyCode === 1 || keyCode === 13) {
@@ -104,13 +103,18 @@ import * as customFunctions from './common-functions.build.js';
 				$hiddenHomepageSectionsWrapper.css('background-color', $this.attr('data-hoverBackgroundColor'));
 				$scrollButtonDiv.css('background-color', $hiddenHomepageSectionsWrapper.css('background-color'));
 				if ($(thisBlockText).css('display') === 'none') {
-					$(thisBlockText).fadeIn();
-					$(thisBlockText).siblings().hide();
+					$(thisBlockText).fadeIn().attr({
+						'aria-hidden': 'false',
+						'tabindex': '0'
+					}).focus();
+					$(thisBlockText).siblings().hide().attr('aria-hidden', 'true').removeAttr('tabindex');
 					$('html, body').animate({ scrollTop: blockPosition }, 'slow');
 					$scrollButtonDiv.css('color', '#fff');
+					$this.next().attr('tabindex', '1');
 				} else {
-					$(thisBlockText).fadeOut();
-					$(thisBlockText).siblings().hide();
+					$(thisBlockText).fadeOut().attr('aria-hidden', 'true').removeAttr('tabindex');
+					$(thisBlockText).siblings().hide().attr('aria-hidden', 'true').removeAttr('tabindex');
+					$this.next().attr('tabindex', '0');
 					$scrollButtonDiv.css('color', '#2F2F2F').css('background-color', '#fff');
 				}
 				//execute the homepageStickyFooter function to correctly position the footer after the new div is added
@@ -119,9 +123,24 @@ import * as customFunctions from './common-functions.build.js';
 				
 			}
 		}
-		
 
-		// console.log($('iframe').contents().css('background-color'));
+		function moveTab(e) {
+			e.preventDefault();
+			let keyCode;
+			//get key code
+			if (e.keyCode) {
+				keyCode = e.keyCode;
+			} else {
+				keyCode = e.which;
+			}
+			let parentId = `#${$(this).attr('data-parent')}`;
+			if (keyCode === 9) {
+				$(parentId)[0].click();
+				$(parentId).next().focus();
+			}
+		}
+
+
 		//randomly assign background-color to the slides -- .slideshow li:nth-child(2) h2:first-child
 		$('.slideshow li').each(function (i) {
 			let randomNum = Math.floor(Math.random() * (7 - count));
@@ -146,7 +165,7 @@ import * as customFunctions from './common-functions.build.js';
 		});*/
 		//close textbox and unhighlight introBox when $backToTopButton is clicked
 		$backToTopButton.click(function (e) {
-			$('.hiddenHomepageSections:visible').hide();
+			$('.hiddenHomepageSections:visible').hide().attr('aria-hidden', 'true').removeAttr('tabindex');
 			$scrollButtonDiv.css('background-color', '#fff').css('color', '#2F2F2F');
 			$('.homepageIntroBlocks').each(function (i, elem) {
 				let $this = $(this);
@@ -160,6 +179,8 @@ import * as customFunctions from './common-functions.build.js';
 		//when a homepageIntroBlocks is clicked or enter is clicked, show the corresponding div
 		$homepageIntroBlocks.click(showHomepageBlock);
 		$homepageIntroBlocks.keydown(showHomepageBlock);
+		//when using keyboard navigation hitting tab on the hiddenHomepageSections nextTab item should send user to the next title block
+		$('.nextTab').keydown(moveTab);
 
 		// $homepageIntroBlocks.keydown(function(event) {
 		// 	console.log(event, '     ', $(this));
