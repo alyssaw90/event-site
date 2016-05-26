@@ -75,7 +75,7 @@ import * as customFunctions from './common-functions.build.js';
 		
 					let purpleMenu = `<section id="headerImage" class="mobileWrapper"></section>
 					<!-- Begin purple desktop menu -->
-					<nav class="menu-overlay desktop-menu flex">
+					<nav class="menu-overlay desktop-menu flex clearfix">
 						<div class="col_12 purpleEventMenu"></div>
 					</nav>
 					<!-- End Purple desktop menu -->`;
@@ -86,7 +86,7 @@ import * as customFunctions from './common-functions.build.js';
 		 			let $homepageSliderSection = $('#homepageSliderSection');
 					let currentHeader;
 					let todaysDate = new Date();				
-					let headerBackgroundColor = `<nav class="menu-overlay desktop-menu flex" style="background-color:#6FB06E;">`;
+					let headerBackgroundColor = `<nav class="menu-overlay desktop-menu flex clearfix" style="background-color:#6FB06E;">`;
 					let hamburgerMenu = `<div class="menu-overlay hamburger-menu social-icons" style="background-color:#6FB06E;">`;
 					let homepageImage = `<ul class="slideshow">`;
 					let theHiddenDiv = `<div class="hidden-div" style="display: none; background-color: #6FB06E">`;
@@ -108,7 +108,7 @@ import * as customFunctions from './common-functions.build.js';
 						}
 			 			if (currentHeader) {
 				 			//set the menu background color
-				 			headerBackgroundColor = `<nav class="menu-overlay desktop-menu flex" style="background-color:${currentHeader.eventHighlightColor};">`;
+				 			headerBackgroundColor = `<nav class="menu-overlay desktop-menu flex clearfix" style="background-color:${currentHeader.eventHighlightColor};">`;
 							hamburgerMenu = `<div class="menu-overlay hamburger-menu social-icons" style="background-color:${currentHeader.eventHighlightColor};">`;
 							theHiddenDiv = `<div class="hidden-div" style="display: none; background-color: ${currentHeader.eventHighlightColor}">`;
 							
@@ -188,7 +188,7 @@ import * as customFunctions from './common-functions.build.js';
 						if (data[0] && data[0].eventHomepageImage) {
 							homepageImage = `<a tabindex="-1" href="/${data[0].eventUrl}"><section id="headerImage" class="mobileWrapper"><img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../uploads/${data[0].eventHomepageImage}" /></section></a>`;
 						}
-						headerBackgroundColor = `<nav class="menu-overlay desktop-menu flex" style="background-color:${data[0].eventHighlightColor};">`;
+						headerBackgroundColor = `<nav class="menu-overlay desktop-menu flex clearfix" style="background-color:${data[0].eventHighlightColor};">`;
 						//if there is only one event create the menu
 						if (data.length === 1 ) {
 							upcomingPurpleMenu += `<a href="/${data[0].eventUrl}">${eventCity}&nbsp-&nbsp<span class="purpleSubMenu">${eventStartMonth}&nbsp${eventStartYear}</span></a>`;
@@ -201,7 +201,7 @@ import * as customFunctions from './common-functions.build.js';
 					}
 					upcomingPurpleMenu += '</div>';
 
-					purpleMenu = purpleMenu.replace('<nav class="menu-overlay desktop-menu flex">', headerBackgroundColor).replace('<div class="col_12 purpleEventMenu"></div>', upcomingPurpleMenu);
+					purpleMenu = purpleMenu.replace('<nav class="menu-overlay desktop-menu flex clearfix">', headerBackgroundColor).replace('<div class="col_12 purpleEventMenu"></div>', upcomingPurpleMenu);
 					upperGrayMenu = upperGrayMenu.replace('<div class="menu-overlay hamburger-menu social-icons">', hamburgerMenu).replace('<div class="hidden-div" style="display: none">', theHiddenDiv);
 					
 					let purpleMenuHtml = $.parseHTML(purpleMenu);
