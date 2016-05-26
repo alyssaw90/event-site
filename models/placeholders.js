@@ -2060,9 +2060,9 @@ setTimeout(function() {
   		<p>This year’s Windows IO lab will be held in Building 20 in an “open-hall-format”. This will be similar to how the SNIA’s Storage Developer Conference (SDC) Plugfest is organized. We hope this will promote more interactions both amongst the partners and with the Microsoft Product Groups.</p>
   		<h3>Chalk-talk sessions</h3>
   			<ul class="noStyleUL">
-					<li><h5>Talk on Authentication/AD/Security – Edgar Olougouna</h5></li>
-					<li><h5>Engagement around RSVD document – Jeff McCashland</h5></li>
-					<li><h5>MSCR talk – Shawn Richardson/Mechele Gruhn</h5></li>
+					<li>Talk on Authentication/AD/Security – Edgar Olougouna</li>
+					<li>Engagement around RSVD document – Jeff McCashland</li>
+					<li>MSCR talk – Shawn Richardson/Mechele Gruhn</li>
 				</ul>
 		</div>
 		<div id="redmond2016Technologies" class="tab-content eventTabDiv" style="display:none;">
