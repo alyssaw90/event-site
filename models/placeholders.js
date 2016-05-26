@@ -1979,7 +1979,7 @@ setTimeout(function() {
 	<tr><td>14:30-15:15</td><td class="lightGreenBackground">SQL Server: R Services</td><td rowspan="2"></td><td rowspan="2"></td></tr>
 	<tr><td>15:15-15:30</td><td>Break</td></tr>
 	<tr><td>15:30-16:15</td><td class="lightGreenBackground">SQL Server: PolyBase</td><td>15:30-16:00</td><td class="lightBlueBackground">Office Network Parsers (Message Analyzer and Fiddler)</td></tr>
-	<tr><td>16:15-17:00</td><td class="lightGreenBackground">SQL Server: Stretch Database </td><td>16:15-16:45</td><td class="lightBlueBackground">Office UI Fabric</td></tr>
+	<tr><td>16:15-17:00</td><td class="lightGreenBackground">SQL Server: Stretch Database </td><td>16:15-16:45</td><td class="lightBlueBackground">Calling an API with an Add-in</td></tr>
 	<tr><td>17:30-19:30</td><td colspan="3">Barbecue dinner at Lincoln Square in Bellevue, WA</td></tr>
 </table>
 <br /><br />
@@ -2047,7 +2047,33 @@ setTimeout(function() {
     eventId: 3,
     tabNumber:2, 
     tabTitle: 'Windows Interoperability (IO) Lab',
-    tabContent: '<a class="button orange large float-right" target="_blank" href="http://aka.ms/Nma3yz">Register</a><h4>Windows Interoperability (IO) Lab </h4><p>The Windows Interoperability (IO) Lab is the opportunity to test your implementation with Microsoft Windows protocol test suites.   During the IO lab you have the opportunity to directly engage with Windows Protocol Support, Test Suite Development, and Windows development team as well as network with other professionals from all over the world.</p><p><strong>When:</strong>  June 20-24, 2016</p><p><strong>Where:</strong> Microsoft headquarters in Redmond, Washington </p><p><strong>Who:</strong> File sharing (SMB 2&3), Authentication and AD protocol implementers</p><p><strong>Cost:</strong> Free</p><ul class="tabs left"><li class="current"><a href="#redmond2016Agenda"><span style="font-size: 1.5em">Agenda</span></a></li><li><a href="#redmond2016Technologies"><span style="font-size: 1.5em">Technologies</span></a></li></ul><div id="redmond2016Agenda" class="tab-content eventTabDiv" style="display:block;"><h3>Coming Soon</h3><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></div><div id="redmond2016Technologies" class="tab-content eventTabDiv" style="display:none;"><ul><li>Server Message Block (SMB2&3)</li><li>Remote Shared Virtual Disk (RSVD)</li><li>Active Directory (ADOD) and Identity</li><li>Authentication (AUTHSOD and PAC/Kile)</li><li>Bring Your Own Device (BYOD)</li><li>Authorization (AZOD)</li><li>Claim-Based Access Control (CBAC)</li></ul></div>'
+    tabContent: `<a class="button orange large float-right" target="_blank" href="http://aka.ms/Nma3yz">Register</a><h4>Windows Interoperability (IO) Lab </h4>
+    <p>The Windows Interoperability (IO) Lab is the opportunity to test your implementation with Microsoft Windows protocol test suites.   During the IO lab you have the opportunity to directly engage with Windows Protocol Support, Test Suite Development, and Windows development team as well as network with other professionals from all over the world.</p>
+    <p><strong>When:</strong>  June 20-24, 2016</p><p><strong>Where:</strong> Microsoft headquarters in Redmond, Washington </p>
+    <p><strong>Who:</strong> File sharing (SMB 2&3), Authentication and AD protocol implementers</p><p><strong>Cost:</strong> Free</p>
+    <ul class="tabs left">
+    	<li class="current"><a href="#redmond2016Agenda"><span style="font-size: 1.5em">Agenda</span></a></li>
+    	<li><a href="#redmond2016Technologies"><span style="font-size: 1.5em">Technologies</span></a></li>
+  	</ul>
+  	<div id="redmond2016Agenda" class="tab-content eventTabDiv" style="display:block;">
+  		<p>Core concentration during the IO lab week would be on <strong>Interop testing your protocol implementations</strong>.</p>
+  		<p>This year’s Windows IO lab will be held in Building 20 in an “open-hall-format”. This will be similar to how the SNIA’s Storage Developer Conference (SDC) Plugfest is organized. We hope this will promote more interactions both amongst the partners and with the Microsoft Product Groups.</p>
+  		<h3>Chalk-talk sessions</h3>
+  			<ul class="noStyleUL">
+					<li><h5>Talk on Authentication/AD/Security – Edgar Olougouna</h5></li>
+					<li><h5>Engagement around RSVD document – Jeff McCashland</h5></li>
+					<li><h5>MSCR talk – Shawn Richardson/Mechele Gruhn</h5></li>
+				</ul>
+		</div>
+		<div id="redmond2016Technologies" class="tab-content eventTabDiv" style="display:none;">
+			<ul>
+				<li>Server Message Block (SMB2&3)</li><li>Remote Shared Virtual Disk (RSVD)</li>
+				<li>Active Directory (ADOD) and Identity</li><li>Authentication (AUTHSOD and PAC/Kile)</li>
+				<li>Bring Your Own Device (BYOD)</li>
+				<li>Authorization (AZOD)</li>
+				<li>Claim-Based Access Control (CBAC)</li>
+			</ul>
+		</div>`
   })
 })
 .then(function() {
