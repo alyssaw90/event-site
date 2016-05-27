@@ -27,7 +27,7 @@ module.exports = function (grunt) {
           paths: ['css/', 'css/fonts/', 'css/img/'],
           plugins: [
             new (require('less-plugin-autoprefix'))({
-              browsers: ['last 2 versions']
+              browsers: ['last 2 versions', '> 1%', 'ie > 6']
             }),
             new (require('less-plugin-clean-css'))({
               sourceMap: false,
@@ -56,8 +56,8 @@ module.exports = function (grunt) {
         files: [
           {
             expand: true,
-            cwd: 'es6/',
-            src: ['**/*.js'],
+            cwd: '',
+            src: ['es6/**/*.js'],
             dest: 'build/',
             ext:'.build.js'
           }

@@ -33,8 +33,8 @@
 // 	});
 // });
 
-let jQuery = require('jquery');
 import * as customFunctions from './common-functions.build.js';
+const jQuery = require('jquery');
 
 (function($) {
 
@@ -44,7 +44,7 @@ import * as customFunctions from './common-functions.build.js';
 		let count = 0;
 		let $learnBlockIcon = $('#learnBlockIcon');
 		let $learnBlock = $('#learnBlock');
-		let $infoBlockWrapper = $('.infoBlockWrapper');
+		// let $infoBlockWrapper = $('.infoBlockWrapper');
 		let $infoBlockButton = $('.infoBlockButton');
 		let $infoBlocksContainer = $('.infoBlocksContainer');
 		let $infoBlocksContainer2 = $('.infoBlocksContainer2');
@@ -54,7 +54,6 @@ import * as customFunctions from './common-functions.build.js';
 		let $whoMadeItBlock = $('#whoMadeItBlock');
 		let $itsYourEventBlock = $('#itsYourEventBlock');
 		let $backToTopButton = $('#backToTop');
-		// let $newsletterButton = $('#newsletterButton');
 		let $homepageEmailSignUp = $('#homepageEmailSignUp');
 		let $scrollButtonDiv = $('.scroll-button');
 		let $hiddenHomepageSectionsWrapper = $('.hiddenHomepageSectionsWrapper');
@@ -62,7 +61,6 @@ import * as customFunctions from './common-functions.build.js';
 
 		//function to show homepage intro text when the corresponding block is clicked
 		function showHomepageBlock (e) {
-			console.log('reached');
 			let $this = $(this);
 			let thisBlockArrowClass = $this.attr('id') + 'ArrowBox';
 			let thisBlockMobileClass = $this.attr('id') + 'Mobile';
@@ -182,29 +180,6 @@ import * as customFunctions from './common-functions.build.js';
 		//when using keyboard navigation hitting tab on the hiddenHomepageSections nextTab item should send user to the next title block
 		$('.nextTab').keydown(moveTab);
 
-		// $homepageIntroBlocks.keydown(function(event) {
-		// 	console.log(event, '     ', $(this));
-		// 	let keyCode;
-		// 	if (event.keyCode) {
-		// 		keyCode = event.keyCode;
-		// 		console.log('keyCode reached');
-		// 	} else {
-		// 		keyCode = event.which;
-		// 		console.log('which reached');
-		// 	}
-		// 	showHomepageBlock();
-		// 	/*
-		// 	let keyCode;
-		// 	if (event.keyCode) {
-		// 		keyCode = event.keyCode;
-		// 	} else {
-		// 		keyCode = event.which;
-		// 	}
-		// 	if (keyCode === 13) {
-		// 		event.preventDefault();
-		// 	}*/
-			
-		// });
 
 		//make homepageIntroBlocks zoom in and down
 		/*setTimeout(function () {

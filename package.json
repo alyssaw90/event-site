@@ -1,7 +1,7 @@
 {
-  "name": "event_site_bootstrap",
+  "name": "event_site",
   "version": "0.1.0",
-  "description": "A website to help promote Microsoft Office Interoperability Events",
+  "description": "A website to help promote events",
   "main": "server.js",
   "scripts": {
     "test": "mocha tests/test_entry.js",
@@ -20,13 +20,14 @@
     "flash": "^1.1.0",
     "image-map-resizer": "^1.0.0",
     "jquery": "^2.2.3",
+    "jquery-ui": "^1.10.5",
+    "js.cookie": "0.0.4",
     "multer": "^1.1.0",
     "passport": "^0.3.2",
     "passport-http": "^0.3.0",
     "sequelize": "^3.19.3",
     "sequelize-encrypted": "^0.1.0",
-    "tedious": "^1.13.2",
-    "tinymce": "^4.3.10"
+    "tedious": "^1.13.2"
   },
   "devDependencies": {
     "babel-cli": "^6.7.5",

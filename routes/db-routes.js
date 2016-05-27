@@ -176,10 +176,13 @@ module.exports = function (router) {
   //find all events that are upcoming and add the next 3 upcoming events to the future-events page
   router.route('/future-events')
   .get(function (req, res) {
-    let eventBlocksHtml = '<main class="events grid"><section class="col_12 internetExplorer">';
+    let eventBlocksHtml = '<main class="events grid "><section class="col_12 internetExplorer">';
     let newHtml = '';
-    let colNum = 4;
     let numFutureBlocks = 4;
+    let eventDates = 'Coming Soon';
+    let city;
+    let cityArr;
+
     fs.readFile(path.join(__dirname, '../views/future-events.html'), function (err, html) {
       if (err) {
         console.log(err);
@@ -187,7 +190,16 @@ module.exports = function (router) {
       }
       models.sql.sync()
       .then(function () {
-        Event.findAll({where: {eventStartDate: {$gte: new Date()}}})
+        Event.findAll({
+          where: {
+            eventStartDate: {
+                $or: {
+                  $gte: new Date(),
+                  $eq: null
+              }
+            }
+          }
+        })
         .then(function (upcomingEvent) {
           if (upcomingEvent.length < 4) {
             numFutureBlocks = upcomingEvent.length;
@@ -205,9 +217,22 @@ module.exports = function (router) {
               return 0;
             }
           });
+
+
           for (let i = 0; i < numFutureBlocks; i++) {
+            
+            cityArr = upcomingEvent[i].eventLocation.split('_');
+            for (let index = 0, j = cityArr.length; index < j; index++) {
+              cityArr[index] = cityArr[index].charAt(0).toUpperCase() + cityArr[index].slice(1);
+            }
+
+            city = cityArr.join(' ');
+            
+            if (upcomingEvent[i].eventStartDate) {
+              eventDates = `${months[upcomingEvent[i].eventStartDate.getMonth()]} ${upcomingEvent[i].eventStartDate.getDate()} - ${upcomingEvent[i].eventEndDate.getDate()}, ${upcomingEvent[i].eventEndDate.getFullYear()}`;
+            }
             let risingText = '';
-            eventBlocksHtml += '<div class="col_' + 12 / numFutureBlocks + ' event_block" style="background-color: #' + continentColors[upcomingEvent[i].eventContinent] + ';"><a href="/' + upcomingEvent[i].eventUrl + '"><p>More Details</p><h1>' + upcomingEvent[i].eventLocation + '</h1><h3>' + upcomingEvent[i].eventName + '<br />' + months[upcomingEvent[i].eventStartDate.getMonth()] + ' ' + upcomingEvent[i].eventStartDate.getDate() + ' - ' + upcomingEvent[i].eventEndDate.getDate() + ', ' + upcomingEvent[i].eventEndDate.getFullYear() + '</h3></a>' + risingText + '</div>';
+            eventBlocksHtml += `<div class="col_${12 / numFutureBlocks} event_block" style="background-color: #${continentColors[upcomingEvent[i].eventContinent]};"><a href="/${upcomingEvent[i].eventUrl}"><p>More Details</p><h1>${city}</h1><h3>${upcomingEvent[i].eventName}<br />${eventDates}</h3></a>${risingText}</div>`;
           }
           eventBlocksHtml += '</section>';
           newHtml = html.toString().replace('<main class="events grid">', eventBlocksHtml);

@@ -1,0 +1,30 @@
+
+a:focus, h1:focus, h2:focus, h3:focus, h4:focus, h5:focus, h6:focus, p:focus, iframe:focus, .tabs > li > a:focus {
+ 	box-shadow: 0 0 7px #6DB9FF;
+	border: 3px solid #50B1FE;
+}
+
+div:focus {
+	box-shadow: 0 0 30px #6DB9FF;
+	border: 20px solid #50B1FE;
+}
+
+.skipNavigation {
+	position:absolute;
+	left:-10000px;
+	top:auto;
+	width:1px;
+	height:1px;
+	overflow:hidden;
+	&:focus {
+		position:static;
+		left:10px;
+		top:auto;
+		width:auto;
+		height:auto;
+		overflow:visible;
+		float: left;
+		margin-left: 45%;
+	}
+}
+

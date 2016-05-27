@@ -91,178 +91,8 @@ main p {
 	text-align: justify;
 }
 
-a:focus, h1:focus, h2:focus, h3:focus, h4:focus, h5:focus, h6:focus, p:focus, iframe:focus {
- 	box-shadow: 0 0 7px #6DB9FF;
-	border: 3px solid #50B1FE;
-}
-
-div:focus {
-	box-shadow: 0 0 30px #6DB9FF;
-	border: 20px solid #50B1FE;
-}
-
-.skipNavigation {
-	position:absolute;
-	left:-10000px;
-	top:auto;
-	width:1px;
-	height:1px;
-	overflow:hidden
-}
-
-.skipNavigation:focus {
-	position:static;
-	left:10px;
-	top:auto;
-	width:auto;
-	height:auto;
-	overflow:visible;
-	float: left;
-	margin-left: 45%;
-}
-
-.block {
-	display: block;
-}
-
-.inlineBlock {
-	display: inline-block;
-}
-
 .whiteText {
 	color: #fff;
-}
-
-.medGrayBackground {
-	background-color: #bfbfbf
-}
-
-.darkBlueBackground {
-	background-color: #0072c6;
-}
-
-.lightGreenBackground {
-	background-color: #c6e0b4;
-}
-
-.lightBlueBackground {
-	background-color: #ddebf7;
-}
-
-.lightOrangeBackground {
-	background-color: #ffc000;
-}
-
-.lightPinkBackground {
-	background-color: #ff99ff;
-}
-
-.lightYellowBackground {
-	background-color: #ffe699;
-}
-
-.lightGrayBackground {
-	background-color: #d9d9d9;
-}
-
-.lightOrangeBackground {
-	background-color: #fce4d6;
-}
-
-.medOrangeBackground {
-	background-color: #ffc000;
-}
-
-.tableWithVerticalLines {
-	border: solid 1px #000;
-}
-
-.tableWithVerticalLines td {
-border-right: solid 1px #000; 
-border-left: solid 1px #000;
-}
-
-.tableWithBorders td {
-	border: solid 1px #000;
-}
-.tableWithBorders:first-child(td) {
-	font-weight: bold;
-}
-
-.tableWithBorders tr {
-	border: solid 1px #000;
-}
-
-.tableFirstRowBold {
-	margin-top: 8px;
-}
-
-/**[id^='taipei2016-curriculum-welcome-'] {
-	min-height: 700px;
-}*/
-
-.tinyMceDiv {
-vertical-align: middle;
-zoom: 1;
-border: 1px solid #ccc;
-font-size: 1em;
-padding: 5px 0;
-text-indent: 5px;
-border-radius: 5px;
-background: #fff;
-box-shadow: inset 0 1px 6px #ccc;
-box-sizing: border-box;
-min-height: 600px;
-}
-
-#editEventForm {
-border: solid;
-padding: 10px 10px 10px 10px;
-}
-
-#newEventTabTextArea {
-border: solid;
-padding: 10px 10px 10px 10px;
-}
-
-.pickWhatToEditButton {
-margin: 10px 10px 10px 10px;
-}
-
-#taipei2016-curriculum-welcome-cn {
-min-height: 700px;
-}
-
-#taipei2016-curricilum-welcome-en {
-min-height: 700px;
-}
-
-.scheduleTable tr td:first-child {
-width: 8%;
-}
-
-.scheduleTable tr td:nth-child(3) {
-width: 8%;
-}
-
-.scheduleTable tr td:nth-child(5) {
-width: 8%;
-}
-
-.scheduleTable th {
-	font-size: 1.5em;
-}
-
-.scheduleTable td {
-	font-size: 1.2em;
-}
-
-.scheduleTableTextOnly th {
-	font-size: 1.5em;
-}
-
-.scheduleTableTextOnly td {
-	font-size: 1.2em;
 }
 
 .withoutBottomBorder {
@@ -272,97 +102,8 @@ width: 8%;
 	vertical-align:bottom;
 }
 
-.indentP p {
- text-indent: 50px;
-}
-
-#taipei2016-chinese-curriculum img {
-	display: block;
-	margin-top: 20px;
-	margin-bottom: 20px;
-}
-
-#taipei2016-english-curriculum img {
-	display: block;
-	margin-top: 20px;
-	margin-bottom: 20px;
-}
-
-#taipei2016-chinese-curriculum figcaption {
-	font-weight: bold;
-}
-
-#taipei2016-english-curriculum figcaption {
-	font-weight: bold;
-}
-
-#taipei2016-chinese-curriculum ol li {
-	font-size: 1.05em;
-}
-
-#taipei2016-english-curriculum ol li {
-	font-size: 1.05em;
-}
-
-#taipei2016-chinese-curriculum th {
-	text-align: left;
-}
-
-#taipei2016-english-curriculum th {
-	text-align: left;
-}
-
 .noStyleUL {
 	list-style-type: none;
-}
-
-/* .eventScheduleTable th {
-	font-size: 1.5em;
-}
-
-.eventScheduleTable td {
-	font-size: 1.2em;
-}
-*/
-.grayedOut {
-opacity: .2;
-background-color: #fff;
-width: 100%;
-max-width: 100%;
-}
-
-.infoBlockButton {
-top: 100px;
-}
-
-
-.rotate-90{
-  -moz-transform: rotate(90deg);
-  -webkit-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-}
-
-@-moz-keyframes rotatebox /*--for firefox--*/{
-
-  from{
-      -moz-transform:rotate(0deg);
-  }       
-  to{
-      -moz-transform:rotate(90deg);
-  }                       
-
-}
-
-@-webkit-keyframes rotatebox /*--for webkit--*/{
-
-  from{
-      -webkit-transform:rotate(0deg);
-  }       
-  to{
-      -webkit-transform:rotate(90deg);
-  }                       
-
 }
 
 /* Flexible iFrame */
@@ -385,99 +126,80 @@ top: 100px;
   /*height: 100%;*/
 }
 
-.venue-map {
-text-align: center;
+.tooltip-content {
+	background-color: #fff !important;
 }
 
-.tooltip-content {
-background-color: #fff !important;
-}
 /*css to make iframe videos responsive*/
 .videoContainer {
-position: relative;
-padding-bottom: 56.25%;
-padding-top: 30px;
-height: 0;
-overflow: hidden;
+	position: relative;
+	padding-bottom: 56.25%;
+	padding-top: 30px;
+	height: 0;
+	overflow: hidden;
 }
 
 .videoContainer iframe,  
 .videoContainer object,  
 .videoContainer embed {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 }
 .videoContainerWrapper {
-/*width: 640px;*/
-width: 30%;
-float:none;
-margin-left:auto;
-margin-right:auto;
-max-width: 100%;
-min-width: 400px;
-}
-
-#leftVideoWrapper {
-float: left;
-margin-left: 20%;
-padding-right: 1%;
-}
-
-#rightVideoWrapper {
-float: right;
-margin-right: 20%;
-padding-left: 1%;
-}
-
-#mobileVideoWrapper {
-display: none;
+	/*width: 640px;*/
+	width: 30%;
+	float:none;
+	margin-left:auto;
+	margin-right:auto;
+	max-width: 100%;
+	min-width: 400px;
 }
 
 .individual-homepage-expert {
-display:inline-block;
-position:relative;
-border:1px solid #ddd;
-background:#f5f5f5;
-padding:3px;
-margin:5px;
--moz-border-radius:5px;
--webkit-border-radius:5px;
-border-radius:5px;
+	display:inline-block;
+	position:relative;
+	border:1px solid #ddd;
+	background:#f5f5f5;
+	padding:3px;
+	margin:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
 }
 
 .individual-homepage-expert img {
-max-width: 100%;
-padding-right:7px;
+	max-width: 100%;
+	padding-right:7px;
 }
 
 .the-team-section img {
-background:#f5f5f5;
-border:1px solid #ddd;
-padding:5px 5px 5px 5px;
-margin-right: 10px;
-margin-bottom: 20px;
-width: 165px;
+	background:#f5f5f5;
+	border:1px solid #ddd;
+	padding:5px 5px 5px 5px;
+	margin-right: 10px;
+	margin-bottom: 20px;
+	width: 165px;
 }
 
 .speakersImg {
-background:#f5f5f5;
-border:1px solid #ddd;
-padding:5px 5px 5px 5px;
-margin-right: 10px;
-margin-bottom: 20px;
-width: 165px;
+	background:#f5f5f5;
+	border:1px solid #ddd;
+	padding:5px 5px 5px 5px;
+	margin-right: 10px;
+	margin-bottom: 20px;
+	width: 165px;
 }
 
 
 .float-left {
-float: left;
+	float: left;
 }
 
 .float-right {
-float: right;
+	float: right;
 }
 
 .align-left {
@@ -485,246 +207,13 @@ float: right;
 }
 
 .main-page-content h1 {
-font-size: 62px;
-margin-top: 2%;
-}
-
-.filler {
-visibility: hidden;
-}
-
-.hidden-div {
-position: absolute;
-z-index: 1002;
-}
-
-.fa-bars {
-color: #fff;
-}
-
-.invisibleDiv {
-visibility: none;
-}
-
-.newsletterSubscSection {
-background-color: #e15700;
-padding: auto 10% auto 10%;
-margin: 0 0 0 0;
-width: 100%;
-height: 80px;
-color: #fff;
-}
-
-.newsletterSubscSection > * {
-padding-top: 7px;
-padding-bottom: 10px;
-}
-
-.newsletterSubscSection a {
-color: #fff;
-}
-
-.newsletterSubscSection a:hover,
-.newsletterSubscSection a:focus {
-color: blue;
-}
-
-.newsletterSubscSection p {
-font-size: 28px;
-text-align: center;
-}
-
-.newsletterSubscSection button {
-font-size: 1em;
-margin: 0 0 10px 40px;
-}
-
-.menu-overlay {
-/*background-color: #4668c5;*/
-padding-bottom: 0;
-}
-
-.menu-overlay ul {
-padding-right: 2%;
-}
-
-.menu-overlay li {
-float: right;
-}
-
-.menu-overlay a:hover, 
-.menu-overlay a:focus {
-text-shadow: 1px 1px 5px #fff, 0 0 3em #fff, 0 0 0.3em #fff;
-}
-
-.headerImageTitleBox {
-z-index: 999;
-position: absolute;
-margin: 3.5% auto auto 8%;
-padding: 2% 3% 3% 3%;
-/*min-height: 25%;*/
-/*min-width: 50%;*/
-text-align: center;
-}
-
-.headerImageTitleBox h1 {
-color: #fff;
-font-size: 3.5vw;
-}
-
-.purpleEventMenu a {
-color: #FFF;
-font-family: 'SegoeUILight';
-font-size: 25px;
-padding-right: 12px;
-padding-left: 12px;
-}
-
-.purpleEventMenu {
-margin-top: 0.5%;
-text-align: center;
-color: #FFF;
-font-family: 'SegoeUILight';
-font-size: 25px;
-padding-right: 12px;
-padding-left: 12px;
-}
-
-.social-icons img {
-height: 3vw;
-padding-right: 5px;
-padding-top: 3px;
-}
-
-.social-icons a {
-background-color: transparent !important;
-}
-
-.hamburger-menu {
-display: none;
-list-style: none;
-}
-
-.hamburger-menu a {
-color: #fff;
-}
-
-.hamburger-menu a:first-child {
-font-size: 30px;
-}
-
-.hamburger-icon {
-padding-top: 8px; 
-color: #fff;
-}
-
-.hidden-menu {
-display: none;
-position: absolute;
-background-color: rgba(91, 44, 144, 1);
-}
-
-.upcoming-menu {
-position: relative;
-z-index: 1001;
-}
-
-.expanding-menu {
-position: absolute;
-z-index: 1000;
-}
-
-.upcoming-sub-menu {
-display: none;
-}
-
-.add-padding {
-padding-left: 60% !important;
-}
-
-.community td:first-child {
-width: 25%;
+	font-size: 62px;
+	margin-top: 2%;
 }
 
 .bing-logo {
-float: right;
-margin-right: 12%;
-}
-
-.center-block  {
-margin: 0 0 0 0;
-width: 20%;
-}
-
-.center-block a {
-color: rgba(80, 80, 80, 1);
-text-align: center;
-font-size: 25px;
-line-height: 1.5em;
-}
-
-.upcoming-sub-menu h2 {
-color: rgba(80, 80, 80, 1);
-text-align: center;
-font-size: 1em;
-line-height: 1.2em;
-}
-
-.upcoming-menu h4:hover, 
-.upcoming-menu h4:focus {
-color: #FFF;
-}
-
-.menu-block {
-background-color: rgba(210, 210, 210, 1);
-width: 100%;
-text-align: center;
-}
-
-.menu-block:hover,
-.menu-block:focus {
-background-color: rgba(80, 80, 80, 1);
-}
-
-.menu-block.current-page {
-background-color: rgba(80, 80, 80, 1);
-color: #fff;
-}
-
-.menu-block:hover a,
-.menu-block:focus a {
-color: #fff;
-}
-
-.menu-block.current-page a {
-color: #fff;
-}
-
-.gray-menu {
-background-color: rgba(210, 210, 210, 1);
-}
-
-.home-menu-block {
-/*width: 12%;*/
-}
-
-.register-button {
-background-color: #0078D7 !important;
-margin-top: 3% !important;
-margin-left: 100px !important;
-padding-bottom: 2%;
-border-radius: 10px;
-color: #fff !important;
-}
-
-.register-button a {
-line-height: 11px !important;
-
-}
-
-.meetup-button {
-background-color: red !important;
-
+	float: right;
+	margin-right: 12%;
 }
 
 /*---------------------------------
@@ -785,6 +274,117 @@ a.button.red:focus {
 }
 
 /*
+.block {
+	display: block;
+}*/
+
+/* .eventScheduleTable th {
+	font-size: 1.5em;
+}
+
+.eventScheduleTable td {
+	font-size: 1.2em;
+}
+*/
+
+/*.infoBlockButton {
+	top: 100px;
+}
+*/
+
+
+/*.venue-map {
+	text-align: center;
+}*/
+
+/*#leftVideoWrapper {
+	float: left;
+	margin-left: 20%;
+	padding-right: 1%;
+}
+*/
+/*#rightVideoWrapper {
+	float: right;
+	margin-right: 20%;
+	padding-left: 1%;
+}*/
+/*
+#mobileVideoWrapper {
+	display: none;
+}*/
+
+/*
+.filler {
+	visibility: hidden;
+}*/
+
+/*.invisibleDiv {
+	visibility: none;
+}*/
+
+
+/*.hidden-menu {
+display: none;
+position: absolute;
+background-color: rgba(91, 44, 144, 1);
+}*/
+/*
+.upcoming-menu {
+position: relative;
+z-index: 1001;
+}*/
+
+/*.expanding-menu {
+	position: absolute;
+	z-index: 1000;
+}*/
+
+/*.upcoming-sub-menu {
+	display: none;
+}
+*/
+/*.add-padding {
+	padding-left: 60% !important;
+}*/
+
+/*.community td:first-child {
+	width: 25%;
+}
+*/
+
+
+/*.upcoming-sub-menu h2 {
+color: rgba(80, 80, 80, 1);
+text-align: center;
+font-size: 1em;
+line-height: 1.2em;
+}*/
+/*
+.upcoming-menu h4:hover, 
+.upcoming-menu h4:focus {
+	color: #FFF;
+}*/
+
+/*.register-button {
+background-color: #0078D7 !important;
+margin-top: 3% !important;
+margin-left: 100px !important;
+padding-bottom: 2%;
+border-radius: 10px;
+color: #fff !important;
+}
+*/
+/*.register-button a {
+line-height: 11px !important;
+
+}*/
+
+/*.meetup-button {
+background-color: red !important;
+
+}*/
+
+/*
 .bx-wrapper {
 margin: 0 0 0;
 padding: 0 0 0 0;
@@ -798,10 +398,7 @@ padding: 0 0 0 0;
   position:relative;
   z-index:1;
 }*/
-/*
-.desktop-menu {
-  overflow: hidden;
-}*/
+
 /*
 .bottom-menu {
 	display: none;
