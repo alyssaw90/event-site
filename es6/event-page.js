@@ -7,19 +7,26 @@ import * as customFunctions from './common-functions.build.js';
 
 (function($) {
 	$(function() {
-		let $firstTab = $('.first:first a:first-child');
-		let $tabLinks = $('.tabs').find('a');
-		let $tabContent = $('.tab-content');
+		const $firstTab = $('.first:first a:first-child');
+		const $tabLinks = $('.tabs').find('a');
+		const $tabContent = $('.tab-content');
+		// $('.tabs').children('li').attr('tabindex', '0');
+
 		//add #beginningOfContent id to first tab, so it can be navigated to with skip navigation
 		$firstTab.attr('id', 'beginningOfContent');
 		
 		//add roles to tabs
 		$tabLinks.each(function(i, elem) {
 			let $this = $(this);
+			let divId = $this.attr('href');
+			$tabContent.attr('tabindex', '-1');
+			$(divId).attr('tabindex', '0');
 			$this.attr({
 				'aria-role': 'navigation',
-				'aria-label': `${$this.text()}, click enter/return to read contents`
+				'aria-label': `${$this.text()}, click enter/return to read contents`,
+				'aria-owns': `${divId.slice(1)}`
 			});
+
 		});
 
 		//function to add role="article" to event tab divs so they are read by screen reader
@@ -27,13 +34,17 @@ import * as customFunctions from './common-functions.build.js';
 			
 		 	$tabContent.each(function(i, elem) {
 		 		let $this = $(this);
-		 		$this.attr('role', 'article');
-		 		if ($this.is(':hidden')) {
+		 		$this.attr({
+		 			'role': 'tab',
+		 			'aria-hidden': 'true',
+		 			'tabindex': -1
+		 		});  
+		 		/*if ($this.is(':hidden')) {
 		 			$this.attr('aria-hidden', 'true');
 		 		}
 		 		if ($this.is(':visible')) {
 		 			$this.attr('aria-hidden', 'false');
-		 		}
+		 		}*/
 		 	});
 
 		}
@@ -50,8 +61,15 @@ import * as customFunctions from './common-functions.build.js';
 						'aria-hidden': 'false',
 						'tabindex': '0'
 					}).focus();
+				$this.parents('ul').find('a').removeAttr('tabindex');
+				$this.parent('li').next().children('a')[0].attr('tabindex', '1');
+				// console.log($this.parent('li').next().children('a'), '          ', $this.parents('ul').find('a'));
 				$(divId).children().each(function(i, el) {
-					console.log('this        ', el);
+						console.log('this        ', $(this).attr('tabindex'), '        ', $(this));
+					let $that = $(this);
+					if ($that.is(':focusable')) {
+						
+					}
 				});
 				addAccessibilityTags();
 			}

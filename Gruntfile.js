@@ -95,19 +95,19 @@ module.exports = function (grunt) {
     //watch for changes in es6 files
     watch: {
       scripts: {
-        files: ['./es6/*.js', './admin/*.js', './models/*.js', './routes/*.js', './scripts/*.js', './*.js'],
-        tasks: ['clean', 'babel', 'browserify', 'uglify', 'nodemon:dev'],
+        files: ['./es6/*.js', './admin/*.js', './models/*.js', './routes/*.js', './scripts/*.js', './*.js', './css/less/*.less'],
+        tasks: ['build'],
         options: {
           interrupt: true,
           // livereload: true
         },
-      },
+      }
     },
     //create concurrent task to run watch and nodemon concurrently
     concurrent: {
-      target1: ['clean', 'babel', 'browserify', 'uglify'],
+      target1: ['clean', 'babel', 'browserify', 'less:prod', 'uglify'],
       target2: {
-          tasks: ['nodemon:dev', 'watch'],
+          tasks: ['start', 'watch'],
           options: {
               logConcurrentOutput: true
           }
@@ -206,11 +206,10 @@ module.exports = function (grunt) {
   grunt.registerTask('lint', ['jshint:dev', 'jshint:mocha', 'jshint:jasmine']);
 	// register mocha test task
 	grunt.registerTask('test', ['simplemocha:dev']);
-  // grunt.registerTask('nodemon', ['nodemon:dev']);
   grunt.registerTask('lessProd', ['less:prod']);
   grunt.registerTask('bbl', ['clean', 'babel']);
   grunt.registerTask('build', ['clean', 'babel', 'browserify', 'uglify', 'lessProd']);
   grunt.registerTask('start', ['build', 'nodemon:dev']);
 	grunt.registerTask('test', ['build', 'test']);
-  grunt.registerTask('default', ['concurrent:target1', 'concurrent:target2']);
+  grunt.registerTask('default', ['concurrent:target2']);
 };
