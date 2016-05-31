@@ -95,7 +95,7 @@ module.exports = function (grunt) {
     //watch for changes in es6 files
     watch: {
       scripts: {
-        files: ['./es6/*.js', './admin/*.js', './models/*.js', './routes/*.js', './scripts/*.js', './*.js', './css/less/*.less'],
+        files: ['./es6/*.js', './admin/*.js', './models/*.js', './routes/*.js', './scripts/*.js', './*.js', './css/less/*.less', './views/*.html'],
         tasks: ['build'],
         options: {
           interrupt: true,

@@ -39,25 +39,25 @@ const jQuery = require('jquery');
 (function($) {
 
 	$(document).ready(function () {
+		const $learnBlockIcon = $('#learnBlockIcon');
+		const $learnBlock = $('#learnBlock');
+		// const $infoBlockWrapper = $('.infoBlockWrapper');
+		const $infoBlockButton = $('.infoBlockButton');
+		const $infoBlocksContainer = $('.infoBlocksContainer');
+		const $infoBlocksContainer2 = $('.infoBlocksContainer2');
+		const $homepageIntroBlocks = $('.homepageIntroBlocks');
+		const $notANumberBlock = $('#notANumberBlock');
+		const $toHelpYouBlock = $('#toHelpYouBlock');
+		const $whoMadeItBlock = $('#whoMadeItBlock');
+		const $itsYourEventBlock = $('#itsYourEventBlock');
+		const $backToTopButton = $('#backToTop');
+		const $homepageEmailSignUp = $('#homepageEmailSignUp');
+		const $scrollButtonDiv = $('.scroll-button');
+		const $hiddenHomepageSectionsWrapper = $('.hiddenHomepageSectionsWrapper');
+		const $window = $(window);	
 		//array of ms colors at 80% opacity - ms yellow is removed, because it's to light for background color
 		let msColors = ['rgba(216, 59, 1, .8)', 'rgba(232, 17, 35, .8)', 'rgba(180, 0, 158, .8)', 'rgba(92, 45, 145, .8)', 'rgba(0, 120, 215, .8)', 'rgba(0, 130, 114, .8)', 'rgba(16, 124, 16, .8)'];
 		let count = 0;
-		let $learnBlockIcon = $('#learnBlockIcon');
-		let $learnBlock = $('#learnBlock');
-		// let $infoBlockWrapper = $('.infoBlockWrapper');
-		let $infoBlockButton = $('.infoBlockButton');
-		let $infoBlocksContainer = $('.infoBlocksContainer');
-		let $infoBlocksContainer2 = $('.infoBlocksContainer2');
-		let $homepageIntroBlocks = $('.homepageIntroBlocks');
-		let $notANumberBlock = $('#notANumberBlock');
-		let $toHelpYouBlock = $('#toHelpYouBlock');
-		let $whoMadeItBlock = $('#whoMadeItBlock');
-		let $itsYourEventBlock = $('#itsYourEventBlock');
-		let $backToTopButton = $('#backToTop');
-		let $homepageEmailSignUp = $('#homepageEmailSignUp');
-		let $scrollButtonDiv = $('.scroll-button');
-		let $hiddenHomepageSectionsWrapper = $('.hiddenHomepageSectionsWrapper');
-		let $window = $(window);	
 
 		//function to show homepage intro text when the corresponding block is clicked
 		function showHomepageBlock (e) {
@@ -124,17 +124,11 @@ const jQuery = require('jquery');
 
 		function moveTab(e) {
 			e.preventDefault();
-			let keyCode;
-			//get key code
-			if (e.keyCode) {
-				keyCode = e.keyCode;
-			} else {
-				keyCode = e.which;
-			}
+			let keyCode = customFunctions.getKeyCode(e);
 			let parentId = `#${$(this).attr('data-parent')}`;
 			if (keyCode === 9) {
-				$(parentId)[0].click();
-				$(parentId).next().focus();
+				$(parentId).next().children('h3').click();
+				$(parentId).next().children('h3').focus();
 			}
 		}
 
@@ -175,6 +169,7 @@ const jQuery = require('jquery');
 			customFunctions.homepageStickyFooter();
 		});
 		//when a homepageIntroBlocks is clicked or enter is clicked, show the corresponding div
+		$homepageIntroBlocks.attr('tabindex', '-1');
 		$homepageIntroBlocks.click(showHomepageBlock);
 		$homepageIntroBlocks.keydown(showHomepageBlock);
 		//when using keyboard navigation hitting tab on the hiddenHomepageSections nextTab item should send user to the next title block

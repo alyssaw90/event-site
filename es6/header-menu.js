@@ -39,36 +39,36 @@ import * as customFunctions from './common-functions.build.js';
 					</div>
 					<div class="hidden-div" style="display: none">
 						<ul class="hamburger-menu">
-							<li class="mobile-menu"><a role="navigation" href="/"><span class="home">Home</span></a></li>
-							<li class="mobile-menu"><a role="navigation" href="/future-events"><span>Find an Event</a></span></a></li>
-							<li class="mobile-menu"><a role="navigation" href="/latest-news"><span>Get the Latest</span></a></li>
-							<li class="mobile-menu"><a role="navigation" href="/meet-the-team"><span>Meet the Team</a></span></a></li>
-							<li class="mobile-menu"><a role="navigation" href="/past-events"><span>Past Events</span></a></li>
+							<li class="mobile-menu"><a href="/"><span class="home">Home</span></a></li>
+							<li class="mobile-menu"><a href="/future-events"><span>Find an Event</a></span></a></li>
+							<li class="mobile-menu"><a href="/latest-news"><span>Get the Latest</span></a></li>
+							<li class="mobile-menu"><a href="/meet-the-team"><span>Meet the Team</a></span></a></li>
+							<li class="mobile-menu"><a href="/past-events"><span>Past Events</span></a></li>
 						</ul>
 					</div>
 					<!-- End "Hamburger" Menu -->
 					<!-- End upper purple upper menu -->
 					<!-- begin Gray Desktop Main menu -->
-		 			<nav class="grid flex desktop-menu gray-menu">
-		 				<div><a id="navMenuBeginning" class="skipNavigation" role="navigation" href="#eventNavigationMenu">Skip to Event Menu</a></a></div>
-		 				<div><a class="skipNavigation" role="navigation" href="#beginningOfContent">Skip to Main Content</a></a></div>
-		 				<div><a class="skipNavigation" role="navigation" href="#footerStartMenuItem">Skip to Footer</a></a></div>
+		 			<nav tabindex="0" aria-label="Header Menu" role="navigation" class="grid flex desktop-menu gray-menu">
+		 				<div><a id="navMenuBeginning" class="skipNavigation" href="#eventNavigationMenu">Skip to Event Menu</a></a></div>
+		 				<div><a class="skipNavigation" href="#beginningOfContent">Skip to Main Content</a></a></div>
+		 				<div><a class="skipNavigation" href="#footerStartMenuItem">Skip to Footer</a></a></div>
 						<div class="col_2 center-block">
-							<div class="col_2 center-block menu-block home-menu-button"><a role="navigation" href="/">Home</a></div>
+							<div class="col_2 center-block menu-block home-menu-button"><a href="/">Home</a></div>
 						</div>
 							<div class="col_2 center-block">
-								<div class="col_2 center-block menu-block upcominEventsBlock"><a role="navigation" href="/future-events">Find an Event</a></div>
+								<div class="col_2 center-block menu-block upcominEventsBlock"><a href="/future-events">Find an Event</a></div>
 							</div>
 						<div style="display: none;">
 						</div>
 						<div class="col_2 center-block">
-							<div class="col_2 center-block menu-block latest-news-menu-block"><a role="navigation" href="/latest-news">Get the Latest</a></div>
+							<div class="col_2 center-block menu-block latest-news-menu-block"><a href="/latest-news">Get the Latest</a></div>
 						</div>
 						<div class="col_2 center-block">
-							<div class="col_2 center-block menu-block meet-the-team-menu-block"><a role="navigation" href="/meet-the-team">Meet the Team</a></div>
+							<div class="col_2 center-block menu-block meet-the-team-menu-block"><a href="/meet-the-team">Meet the Team</a></div>
 						</div>
 						<div class="col_2 center-block">
-							<div class="col_2 center-block menu-block past-events-header-menu-block"><a role="navigation" href="/past-events">Past Events</a></div>
+							<div class="col_2 center-block menu-block past-events-header-menu-block"><a href="/past-events">Past Events</a></div>
 						</div>
 					</nav>
 					<!-- End gray desktop menu -->`;
