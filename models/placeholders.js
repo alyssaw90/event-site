@@ -2013,7 +2013,7 @@ setTimeout(function() {
 	<tr><td>11:30-12:00</td><td class="lightOrangeBackground">HVRS+RSVD+SQOS – Iterative updates and Q&A</td></tr>
 	<tr><td>12:00-13:00</td><td>Lunch</td></tr>
 	<tr><td>13:00-13:45</td><td class="lightOrangeBackground">Windows Containers</td></tr>
-	<tr><td>13:45-14:30</td><td class="lightOrangeBackground">PCS and Azure Stack hardware validation </td></tr>
+	<tr><td>13:45-14:30</td><td class="lightOrangeBackground">Testing hardware components for private/hybrid clouds</td></tr>
 	<tr><td>14:30-14:45</td><td>Break</td></tr>
 	<tr><td>14:45-15:30</td><td class="lightOrangeBackground">Overview documents:  Role of the Message Analyzer parsers and network captures</td></tr>
 	<tr><td>15:30-16:15</td><td class="lightOrangeBackground">Enhanced User experience in Protocol test suites</td></tr>
@@ -2039,7 +2039,18 @@ setTimeout(function() {
 	<tr><td class="lightOrangeBackground">Windows</td></tr>
 </table>
 </div>
-    <div id="redmond2016WindowsTechnologies" class="tab-content eventTabDiv" style="display:none;"><ul><li>What\'s New in Office</li><li>Open Specifications + Interoperability</li><li>Protocol Test Suites</li><li>Mail Sim</li><li>Microsoft Big Data</li><li>Office Parsers</li><li>Microsoft Cloud Foundations</li><li>OData</li><li>Exchange</li><li>SharePoint</li><li>File Formats</li><li>Mail, Calendar + Contacts</li><li>WOPI</li><li>HyperV SMB3 Storage</li></ul></div>`
+    <div id="redmond2016WindowsTechnologies" class="tab-content eventTabDiv" style="display:none;">
+    <ul>
+    	<li>What's New in Office</li><li>Open Specifications + Interoperability</li>
+   		<li>Protocol Test Suites</li><li>Mail Sim</li>
+   		<li>Microsoft Big Data</li><li>Office Parsers</li>
+   		<li>Microsoft Cloud Foundations</li>
+   		<li>OData</li><li>Exchange</li>
+   		<li>SharePoint</li><li>File Formats</li>
+   		<li>Mail, Calendar + Contacts</li><li>WOPI</li>
+   		<li>HyperV SMB3 Storage</li>
+   		<li>Private Cloud Simulator</li>
+    </ul></div>`
   })
 })
 .then(function() {
