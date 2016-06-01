@@ -103,7 +103,8 @@ import * as customFunctions from './common-functions.build.js';
 			$(divId).siblings('.tab-content').hide();
 			$(divId).show();
 			if (keyCode === 13) {
-				console.log('this:    ', $this.parents('li'));
+				console.log(`$this.parents('li'):    `, $this.parent('li').next('li').children('a'));
+				$this.parent('li').next('li').children('a').attr('tabindex', '1');
 				$this.focus();
 				$this.trigger('click');
 				$(divId).attr({
@@ -117,7 +118,7 @@ import * as customFunctions from './common-functions.build.js';
 						console.log('this        ', $(this).attr('tabindex'), '        ', $(this));
 					let $that = $(this);
 					if ($that.is(':focusable')) {
-						
+						console.log('that:     ', $that);
 					}
 				});
 				addAccessibilityTags();
