@@ -1,12 +1,12 @@
 'use strict';
 
-let models = require('./index');
-let User = models.User;
-let Contact = models.Contact;
-let Event = models.Event;
-let EventTab = models.EventTab;
-let SiteStyle = models.SiteStyle;
-let clc = require('cli-color');
+const models = require('./index');
+const User = models.User;
+const Contact = models.Contact;
+const Event = models.Event;
+const EventTab = models.EventTab;
+const SiteStyle = models.SiteStyle;
+const clc = require('cli-color');
 
 module.exports = function() {
 
