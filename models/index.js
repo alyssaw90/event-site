@@ -10,6 +10,7 @@ const Sql = require('sequelize');
     min: 0,
     idle: 10000
   }
+
 });*/
 /*const sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
   host: process.env.DB_DEV_HOST,
@@ -25,7 +26,7 @@ const Sql = require('sequelize');
 });*/
 
 const sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
-    host: process.env.DB_HOST,
+  host: process.env.DB_HOST,
   dialect: 'mssql',
   pool: {
     max: 5,
