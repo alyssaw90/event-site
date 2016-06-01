@@ -11,7 +11,7 @@ const Sql = require('sequelize');
     idle: 10000
   }
 });*/
-const sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
+/*const sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
   host: process.env.DB_DEV_HOST,
   dialect: 'mssql',
   pool: {
@@ -22,9 +22,9 @@ const sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.en
   dialectOptions: {
     encrypt: true
   }
-});
+});*/
 
-/*const sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+const sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
     host: process.env.DB_HOST,
   dialect: 'mssql',
   pool: {
@@ -35,7 +35,7 @@ const sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.en
   dialectOptions: {
     encrypt: true
   }
-});*/
+});
 
 
 //load models

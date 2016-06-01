@@ -1935,7 +1935,7 @@ setTimeout(function() {
     eventId: 3,
     tabNumber:1, 
     tabTitle: 'Redmond Protocol Plugfest ',
-    tabContent: `<a class="button orange large float-right" target="_blank" href="http://aka.ms/Nma3yz">Register</a><h2>Redmond Protocol Plugfest</h2><p>Enjoy a 5-day Microsoft event centered around Open Specifications, interoperability, and Extensibility. Attendees will learn more about interoperability within Microsoft Office, Exchange, SharePoint, Windows and SQL Server. Office, SharePoint, and Exchange protocol testing will be supported at the event. Hardware will not be provided however; we will have support engineers on site for assistance. Office protocol test resources are available on <a href="https://github.com/OfficeDev/Interop-TestSuites">GitHub</a>.  Any Windows testing is available during the <a href="http://interopevents.com/redmond2016#windowsinteroperabilityiolab">Windows IO Lab</a> from June 20-24, 2016. </p>
+    tabContent: `<a class="button orange large float-right" target="_blank" href="http://aka.ms/Nma3yz">Register</a><h2>Redmond Protocol Plugfest</h2><p>Enjoy a 5-day Microsoft event centered around Open Specifications, interoperability, and Extensibility. Attendees will learn more about interoperability within Microsoft Office, Exchange, SharePoint, Windows and SQL Server. Office, SharePoint, and Exchange protocol testing will be supported at the event. Hardware will not be provided however; we will have support engineers on site for assistance. Office protocol test resources are available on <a href="https://github.com/OfficeDev/Interop-TestSuites">GitHub</a>.  Any Windows testing is available during the <a href="http://interopevents.com/redmond2016#windowsinteroperabilityiolab">Windows IO Lab</a> from June 20-24, 2016. Windows File Server test suites are also available on <a href="https://github.com/Microsoft/WindowsProtocolTestSuites">GitHub</a>. </p>
 <p>Microsoft subject matter experts from both the support organization and the product team gather at the Plugfest to present protocol updates, to answer questions, and to debug with customers. </p>
 <p>Our team at Microsoft also knows the importance of relaxation and fun. The Redmond Protocols Plugfest provides a balance between work and play with evening socials, a visit to the Microsoft company store, and plenty of networking opportunities.</p>
 <ul class="noStyleUL">
@@ -2060,9 +2060,10 @@ setTimeout(function() {
   		<p>This year’s Windows IO lab will be held in Building 20 in an “open-hall-format”. This will be similar to how the SNIA’s Storage Developer Conference (SDC) Plugfest is organized. We hope this will promote more interactions both amongst the partners and with the Microsoft Product Groups.</p>
   		<h3>Chalk-talk sessions</h3>
   			<ul class="noStyleUL">
-					<li>Talk on Authentication/AD/Security – Edgar Olougouna</li>
+					<li>The Evolution of Identity on Windows – Edgar Olougouna</li>
 					<li>Engagement around RSVD document – Jeff McCashland</li>
 					<li>MSCR talk – Shawn Richardson/Mechele Gruhn</li>
+					<li>Steps to calculate NTLM keys from network trace – Obaid Farooqi</li>
 				</ul>
 		</div>
 		<div id="redmond2016Technologies" class="tab-content eventTabDiv" style="display:none;">
