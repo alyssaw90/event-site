@@ -49,7 +49,10 @@ import * as customFunctions from './common-functions.build.js';
 					<!-- End "Hamburger" Menu -->
 					<!-- End upper purple upper menu -->
 					<!-- begin Gray Desktop Main menu -->
-		 			<nav class="grid flex desktop-menu gray-menu">
+		 			<nav tabindex="0" aria-label="Header Menu" role="navigation" class="grid flex desktop-menu gray-menu">
+		 				<div><a id="navMenuBeginning" class="skipNavigation" href="#eventNavigationMenu">Skip to Event Menu</a></a></div>
+		 				<div><a class="skipNavigation" href="#beginningOfContent">Skip to Main Content</a></a></div>
+		 				<div><a class="skipNavigation" href="#footerStartMenuItem">Skip to Footer</a></a></div>
 						<div class="col_2 center-block">
 							<div class="col_2 center-block menu-block home-menu-button"><a href="/">Home</a></div>
 						</div>
@@ -72,7 +75,7 @@ import * as customFunctions from './common-functions.build.js';
 		
 					let purpleMenu = `<section id="headerImage" class="mobileWrapper"></section>
 					<!-- Begin purple desktop menu -->
-					<nav class="menu-overlay desktop-menu flex">
+					<nav class="menu-overlay desktop-menu flex clearfix">
 						<div class="col_12 purpleEventMenu"></div>
 					</nav>
 					<!-- End Purple desktop menu -->`;
@@ -83,7 +86,7 @@ import * as customFunctions from './common-functions.build.js';
 		 			let $homepageSliderSection = $('#homepageSliderSection');
 					let currentHeader;
 					let todaysDate = new Date();				
-					let headerBackgroundColor = `<nav class="menu-overlay desktop-menu flex" style="background-color:#6FB06E;">`;
+					let headerBackgroundColor = `<nav class="menu-overlay desktop-menu flex clearfix" style="background-color:#6FB06E;">`;
 					let hamburgerMenu = `<div class="menu-overlay hamburger-menu social-icons" style="background-color:#6FB06E;">`;
 					let homepageImage = `<ul class="slideshow">`;
 					let theHiddenDiv = `<div class="hidden-div" style="display: none; background-color: #6FB06E">`;
@@ -105,7 +108,7 @@ import * as customFunctions from './common-functions.build.js';
 						}
 			 			if (currentHeader) {
 				 			//set the menu background color
-				 			headerBackgroundColor = `<nav class="menu-overlay desktop-menu flex" style="background-color:${currentHeader.eventHighlightColor};">`;
+				 			headerBackgroundColor = `<nav class="menu-overlay desktop-menu flex clearfix" style="background-color:${currentHeader.eventHighlightColor};">`;
 							hamburgerMenu = `<div class="menu-overlay hamburger-menu social-icons" style="background-color:${currentHeader.eventHighlightColor};">`;
 							theHiddenDiv = `<div class="hidden-div" style="display: none; background-color: ${currentHeader.eventHighlightColor}">`;
 							
@@ -142,15 +145,15 @@ import * as customFunctions from './common-functions.build.js';
 							}
 
 							if (i < data.length - 1) {
-								upcomingPurpleMenu += '<a href="/' + elem.eventUrl + '">' + city + '&nbsp-&nbsp<span class="purpleSubMenu">' + startMonth + '&nbsp' + startYear + '</span></a>| ';
+								upcomingPurpleMenu += '<a id="eventNavigationMenu" role="navigation" href="/' + elem.eventUrl + '">' + city + '&nbsp-&nbsp<span class="purpleSubMenu">' + startMonth + '&nbsp' + startYear + '</span></a>| ';
 							}
 							if (i >= data.length - 1) {
-								upcomingPurpleMenu += '<a href="/' + elem.eventUrl + '">' + city + '&nbsp-&nbsp<span class="purpleSubMenu">' + startMonth + '&nbsp' + startYear + '</span></a>';
+								upcomingPurpleMenu += '<a role="navigation" href="/' + elem.eventUrl + '">' + city + '&nbsp-&nbsp<span class="purpleSubMenu">' + startMonth + '&nbsp' + startYear + '</span></a>';
 
 							}
 								//if there is a homepage image, add it to the slider
 								if (imageCount > 1 && elem.eventHomepageImage && siteStyle.showSlider) {
-									homepageImage += `<li><a href="${elem.eventUrl}"><img src="uploads/${elem.eventHomepageImage}" /></a></li>`;
+									homepageImage += `<li><a tabindex="-1" href="${elem.eventUrl}"><img src="uploads/${elem.eventHomepageImage}" /></a></li>`;
 								}
 
 						});
@@ -183,9 +186,9 @@ import * as customFunctions from './common-functions.build.js';
 						eventCity = eventCityArr.join(' ');
 						//if there is a hompepage image create the homepage image style
 						if (data[0] && data[0].eventHomepageImage) {
-							homepageImage = `<a href="/${data[0].eventUrl}"><section id="headerImage" class="mobileWrapper"><img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../uploads/${data[0].eventHomepageImage}" /></section></a>`;
+							homepageImage = `<a tabindex="-1" href="/${data[0].eventUrl}"><section id="headerImage" class="mobileWrapper"><img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../uploads/${data[0].eventHomepageImage}" /></section></a>`;
 						}
-						headerBackgroundColor = `<nav class="menu-overlay desktop-menu flex" style="background-color:${data[0].eventHighlightColor};">`;
+						headerBackgroundColor = `<nav class="menu-overlay desktop-menu flex clearfix" style="background-color:${data[0].eventHighlightColor};">`;
 						//if there is only one event create the menu
 						if (data.length === 1 ) {
 							upcomingPurpleMenu += `<a href="/${data[0].eventUrl}">${eventCity}&nbsp-&nbsp<span class="purpleSubMenu">${eventStartMonth}&nbsp${eventStartYear}</span></a>`;
@@ -198,7 +201,7 @@ import * as customFunctions from './common-functions.build.js';
 					}
 					upcomingPurpleMenu += '</div>';
 
-					purpleMenu = purpleMenu.replace('<nav class="menu-overlay desktop-menu flex">', headerBackgroundColor).replace('<div class="col_12 purpleEventMenu"></div>', upcomingPurpleMenu);
+					purpleMenu = purpleMenu.replace('<nav class="menu-overlay desktop-menu flex clearfix">', headerBackgroundColor).replace('<div class="col_12 purpleEventMenu"></div>', upcomingPurpleMenu);
 					upperGrayMenu = upperGrayMenu.replace('<div class="menu-overlay hamburger-menu social-icons">', hamburgerMenu).replace('<div class="hidden-div" style="display: none">', theHiddenDiv);
 					
 					let purpleMenuHtml = $.parseHTML(purpleMenu);
@@ -220,6 +223,16 @@ import * as customFunctions from './common-functions.build.js';
 				 	let $feedbackBlockWrapper = $('#feedbackBlockWrapper');
 				 	let $headerImage = $('#headerImage');
 				 	let $headerImageTitleBox = $('.headerImageTitleBox');
+				 	let $skipNavigation = $('.skipNavigation');
+
+				 	//make skip menu parent width 100% on focus
+					$skipNavigation.on('focus', function() {
+						$(this).parent().css('width', '100%').css('display', 'inline-block');
+						$(this).css('margin-left', '45%');
+					});
+					$skipNavigation.on('blur', function() {
+						$(this).parent().css('width', 'auto').css('display', 'inline');
+					})
 
 					//highlight currently selected menu item
 					if (pathname === '/') {
@@ -264,4 +277,3 @@ import * as customFunctions from './common-functions.build.js';
 
 	 });
 })(jQuery);
-

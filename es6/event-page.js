@@ -1,205 +1,137 @@
-// 'use strict';
+'use strict';
 
-// /* jshint shadow:true */
-// /*global $ */
-// /*global document */
-// /*global $ */
-// /*global stickyFooter */
-// /*global window */
-// /*global MutationObserver */
-// /* jshint loopfunc:true */
+const jQuery = require('jquery');
+require('jquery-ui');
 
-// $(document).ready(function() {
-// 	//when one of the li tabs is clicked wait 10 milliseconds and fire the stickyFooter function
-// 	$('li').click(function() {
-// 		setTimeout(function() {homepageStickyFooter()}, 10);
-// 	});
-// 	//get events api
-// 	$.get('/events', function (events) {
-// 		var pathname = window.location.pathname.slice(1);
-// 		var eventsObj = {};
-// 		var $eventTabs = $('#eventTabs');
-// 		var $eventHeader = $('#eventHeader');
-// 		//declare native JS variable for #eventTabs
-// 		var eventTabs = document.querySelector('#eventTabs');
-// 		//set MutationObserver to check for changes to child nodes (e.g. they become visible)
-// 		var observer = new MutationObserver(function (mutations) {
-//     	stickyFooter();
-//   	});
-//   	var observerConfig = {
-//   		attributes: true, 
-//   		subtree: true
-//   	};
-//   	observer.observe(eventTabs, observerConfig);
-// 		//loop over returned events object and make an object for each event
-// 		for (var i = 0, j = events.length; i < j; i++) {
-// 			eventsObj[events[i].id] = {};
-// 			eventsObj[events[i].id].htmlContent = '';
-// 			eventsObj[events[i].id].eventUltHtml = '<ul class="tabs left" id="eventTabLinks">';
-// 			eventsObj[events[i].id].eventDivHtml = '';
-// 			eventsObj[events[i].id].speakersHtml =  '';
-// 			eventsObj[events[i].id].tabs = [];
-// 			eventsObj[events[i].id].eventUrl = events[i].eventUrl;
-// 			eventsObj[events[i].id].eventSpeakers = [];
-// 			eventsObj[events[i].id].eventName = events[i].eventName;
-// 			eventsObj[events[i].id].eventRegistrationLink = events[i].eventRegistrationLink;
-// 			eventsObj[events[i].id].eventUrl = events[i].eventUrl;
-// 			eventsObj[events[i].id].eventLocation = events[i].eventLocation;
-// 			eventsObj[events[i].id].eventStartDate = events[i].eventStartDate;
-// 			eventsObj[events[i].id].eventEndDate = events[i].eventEndDate;
-// 			eventsObj[events[i].id].eventHeaderImage = events[i].eventHeaderImage;
-// 			if (events[i].eventSpeakers) {
-// 				eventsObj[events[i].id].eventSpeakers = events[i].eventSpeakers.split(',');
-
-// 			}
-// 		}
-// 		//call eventTabs api and get tabs for each event
-// 		$.get('/eventTabs', function(eventsTabs) {
-// 			for (var key in eventsTabs) {
-// 				// push those tabs to the tabs array for each object
-// 				eventsObj[eventsTabs[key].eventId].tabs.push(eventsTabs[key]);
-// 			}
-// 			//call the contact api and get the contacts
-// 			$.get('/contacts', function(attendees) {
-// 				//loop over the eventsObj
-// 				for (var key in eventsObj) {
-// 					//if the event has speakers
-// 					if (eventsObj[key].eventSpeakers) {
-// 						// loop through the string of attendees for the event
-// 						for (var i = 0, j = attendees.length; i < j; i++) {
-// 							var attendeeId = attendees[i].id.toString()
-// 							// if the id of an attendee matches one of the IDs from the speakers string, replace the value from the eventSpeakers array with the speaker's object
-// 							if (eventsObj[key].eventSpeakers.indexOf(attendeeId) > -1) {
-// 								eventsObj[key].eventSpeakers[eventsObj[key].eventSpeakers.indexOf(attendeeId)] = attendees[i];
-// 							}
-// 						}
-// 					}
-// 					//if there are speakers in the speakers array
-// 					if (eventsObj[key].eventSpeakers) {
-// 					//loop over the speakers array and create html for speakers tab
-// 						for (var i = 0, j = eventsObj[key].eventSpeakers.length; i < j; i++) {
-// 							eventsObj[key].speakersHtml += '<h4>' + eventsObj[key].eventSpeakers[i].firstName + ' ' + eventsObj[key].eventSpeakers[i].lastName + '</h4>';
-// 							if (eventsObj[key].eventSpeakers[i].msTeamTitle) {
-// 								eventsObj[key].speakersHtml += '<h5>' + eventsObj[key].eventSpeakers[i].msTeamTitle + '</h5><p>';
-// 							}
-// 							if (eventsObj[key].eventSpeakers[i].headShot) {
-// 								eventsObj[key].speakersHtml += '<img class="pull-left speakersImg" height="165" width="165" src="../uploads/' + eventsObj[key].eventSpeakers[i].headShot + '" />';
-// 							}
-// 							if (eventsObj[key].eventSpeakers[i].contactDescription) {
-// 						 		eventsObj[key].speakersHtml += eventsObj[key].eventSpeakers[i].contactDescription + '</p>';
-// 							}
-// 							eventsObj[key].speakersHtml += '<hr class="alt1" />';
-// 						}
-						
-// 					}
-// 					//if there are speakers, but no tabs add them ass the only tab
-// 					if (eventsObj[key].tabs.length === 0) {
-// 						eventsObj[key].eventUltHtml += '<li class="last"><a href="#' + eventsObj[key].eventUrl + '-speakers"><h5>Speakers</h5></a></li></ul>';
-// 						eventsObj[key].eventDivHtml += '<div id="' + eventsObj[key].eventUrl + '-speakers" class="tab-content eventTabDiv" style="display:none;">' + eventsObj[key].speakersHtml  + '</div>';
-// 					}
-// 					//if there are event tabs loop over the tabs and create the html for the tabs
-// 					for (var i = 0, j = eventsObj[key].tabs.length; i < j; i++) {
-// 						//create the first tab with the first and current classes
-// 						if (i === 0) {
-// 							eventsObj[key].eventUltHtml += '<li class="first current"><a href="#' + eventsObj[key].eventUrl + '-' + eventsObj[key].tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '').toLowerCase() + '"><h5>' + eventsObj[key].tabs[i].tabTitle + '</h5></a></li>';
-// 							eventsObj[key].eventDivHtml += '<div id="' + eventsObj[key].eventUrl + '-' + eventsObj[key].tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '').toLowerCase() + '" class="tab-content eventTabDiv" style="display:block;">' + eventsObj[key].tabs[i].tabContent  + '</div>';
-
-// 						}
-// 						//create the tabs that aren't first or last
-// 						if (i > 0 && i <= eventsObj[key].tabs.length - 1) {
-// 							eventsObj[key].eventUltHtml += '<li><a href="#' + eventsObj[key].eventUrl + '-' + eventsObj[key].tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '').toLowerCase() + '"><h5>' + eventsObj[key].tabs[i].tabTitle + '</h5></a></li>';
-// 							eventsObj[key].eventDivHtml += '<div id="' + eventsObj[key].eventUrl + '-' + eventsObj[key].tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '').toLowerCase() + '" class="tab-content eventTabDiv" style="display:none;">' + eventsObj[key].tabs[i].tabContent  + '</div>';
-
-// 						}
-// 						//if there are speakers add their html as the last tab
-// 						if (eventsObj[key].eventSpeakers && i >= eventsObj[key].tabs.length - 1) {
-// 							eventsObj[key].eventUltHtml += '<li class="last"><a href="#' + eventsObj[key].eventUrl + '-speakers"><h5>Speakers</h5></a></li>';
-// 							eventsObj[key].eventDivHtml += '<div id="' + eventsObj[key].eventUrl + '-speakers" class="tab-content eventTabDiv" style="display:none;">' + eventsObj[key].speakersHtml  + '</div>';
-// 						}
-// 						//if there are no speakers add the last eventTab as the last tab
-// 						if (!eventsObj[key].eventSpeakers && i >= eventsObj[key].tabs.length - 1) {
-// 							eventsObj[key].eventUltHtml += '<li class="last"><a href="#' + eventsObj[key].eventUrl + '-' + eventsObj[key].tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '').toLowerCase() + '"><h5>' + eventsObj[key].tabs[i].tabTitle + '</h5></a></li>';
-// 							eventsObj[key].eventDivHtml += '<div id="' + eventsObj[key].eventUrl + '-' + eventsObj[key].tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '').toLowerCase() + '" class="tab-content eventTabDiv" style="display:none;">' + eventsObj[key].tabs[i].tabContent  + '</div>';
-
-// 						}
-// 						//add the closing ul tag
-// 						if (i >= eventsObj[key].tabs.length - 1) {
-// 							eventsObj[key].eventUltHtml += '</ul>';
-// 						}
-// 					}
-// 					console.log('hola      ', eventsObj[key].tabs.length);
-// 					//create the html string
-// 					eventsObj[key].htmlContent = eventsObj[key].eventUltHtml + eventsObj[key].eventDivHtml;
-// 					//check if the event url matches the current url
-// 					if (pathname === eventsObj[key].eventUrl) {
-// 						console.log(eventsObj[key].tabs.length);
-// 						//set the title to the event bame
-// 						document.title = eventsObj[key].eventName;
-// 						//hide the children of the $eventTabs
-// 						$eventTabs.children().hide();
-// 						//if there is a header image add it, if not remove the div
-// 						if (eventsObj[key].eventHeaderImage) {
-// 							$eventHeader.html('<img src="../uploads/' + eventsObj[key].eventHeaderImage + '" />');
-// 						} else if (!eventsObj[key].eventHeaderImage) {
-// 							$eventHeader.remove();
-// 						}
-// 						//add the html content to the $eventTabs div
-// 						$eventTabs.html(eventsObj[key].htmlContent);
-
-// 						//if there is no hash in the route
-// 						if (!window.location.hash) {
-// 						//assign first and current classes to first tab li(s) so they display correctly
-// 							$('#eventTabLinks').children().each(function (i) {
-// 								if ($(this).is(':first-child')) {
-// 									$(this).siblings().removeClass('current');
-// 									$(this).addClass('current');
-// 									$($('a', this).attr('href')).show();
-// 								}
-// 							});
-// 						}
-
-// 					}
-// 					//if there is a hash in the route
-// 					if (window.location.hash) {
-// 						//loop over the children of the tabs (the tabDivs)
-// 						$('#eventTabLinks').children().each(function (i, elem) {
-// 							//if the has value of the a link of this matches the hash in the url
-// 							if ($($('a', this))[0].hash === window.location.hash) {
-// 								//remove the current class from the other divs
-// 								$(this).siblings().removeClass('current');
-// 								//add current class to this div
-// 								$(this).addClass('current');
-// 								//show the div that matches the href of the "a" tag of this, for this function, $('a', this).attr('href') and  $(window.location.hash) are the same
-// 								$($('a', this).attr('href')).show();
-// 								// $(window.location.hash).show();
-// 								//hid the siblings of a div with an id of the hash from the url
-// 								$(window.location.hash).siblings().hide();
-// 								//show the tabs
-// 								$('#eventTabLinks').show();
-// 							}
-// 						});
-// 					}
-// 					//once all images are loaded fire the sticky footer functions
-// 					$('img').bind('load', function() {
-//     				stickyFooter();
-//     				homepageStickyFooter();
-// 					});
-// 				}
-
-// 			})
-// 		});
-// 	});
-
-// });
-
-/*let jQuery = require('jquery');
 import * as customFunctions from './common-functions.build.js';
 
-(function() {
-	$(function($) {
-		var pathname = window.location.pathname.slice(1);
-		$.get('/' + pathname, function(theEvent) {
-			// alert(theEvent);
+(function($) {
+	$(function() {
+		const $firstTab = $('.first:first a:first-child');
+		const $tabLinks = $('ul.tabs a[href^="#"]');
+		const $tabContent = $('.tab-content');
+		// $('.tabs').children('li').attr('tabindex', '0');
+		// console.log('tablinks:    ', $tabLinks);
+		//add #beginningOfContent id to first tab, so it can be navigated to with skip navigation
+		$firstTab.attr('id', 'beginningOfContent');
+		//add -1 tab index to content of tabs
+		// $tabContent.find('p, li:not(.tabs > li), th, td, blockquote, *:header').attr('tabindex', '-1');
+		
+		//add roles to tabs
+		$tabLinks.each(function(i, elem) {
+			let $this = $(this);
+			let divId = $this.attr('href');
+			let anchorId = $this.attr('id') === 'beginningOfContent' ? 'beginningOfContent' : `${divId.slice(1)}Anchor`;
+		 		// console.log('owner LI:  ', anchorId.slice(0, -6));
+			
+			// $tabContent.attr('tabindex', '-1');
+			$(divId).attr('tabindex', '0');
+			$this.attr({
+				'aria-role': 'navigation',
+				'aria-label': `${$this.text()}, click enter/return to read contents`,
+				'aria-owns': `${divId.slice(1)}`,
+				'id': anchorId
+			});
+
 		});
-	});
-})(jQuery);*/
+
+		//function to add role="article" to event tab divs so they are read by screen reader
+		function addAccessibilityTags() {
+			
+		 	$tabContent.each(function(i, elem) {
+		 		let $this = $(this);
+		 		let divId = $this.attr('id');
+		 		let nextId = $this.next().attr('id');
+		 		let nextTabLiAnchor = $(`a[href="#${divId}"]`).parent('li').next('li').find('a');
+		 		// let nestLiId = $(`a[href="#${divId}"]`).parent('li').next('li').attr('id');
+		 		let nextTabLink = $(`a[href="#${divId}"]`).parent('li').next('li');
+		 		console.log('blah     ', $(`a[href="#${divId}"]`).parent('li').next('li'));
+		 		$this.attr({
+		 			'role': 'tab',
+		 			'aria-hidden': 'true',
+		 			// 'tabindex': -1 
+		 		});  
+		 		// $this.append(`<div><a href="" class="nextTab skipNavigation" data-parent="${nextTabLiAnchor.attr('id')}" onkeydown="function(e){${nextTabLink}.focus()}">Click enter to view next tab</a></div>`);
+		 		/*if ($this.is(':hidden')) {
+		 			$this.attr('aria-hidden', 'true');
+		 		}
+		 		if ($this.is(':visible')) {
+		 			$this.attr('aria-hidden', 'false');
+		 		}*/
+		 	});
+
+		}
+		addAccessibilityTags();
+
+		function moveTab(e) {
+			e.preventDefault();
+			let keyCode = customFunctions.getKeyCode(e);
+			let parentId = `#${$(this).attr('data-parent')}`;
+			let nextLi = $(parentId).next('li').find('a')
+			let divId = parentId.slice(0, -6);
+			// console.log('parentId      ', $(parentId).parent('li').siblings());
+			if (keyCode === 13) {
+				$(nextLi).trigger('click');
+				// $(divId).focus();
+			}
+		}
+
+		$('.nextTab').keydown(moveTab);
+
+		// tab click
+		$(document).on('click', 'ul.tabs a[href^="#"]', function(e){
+			e.preventDefault();
+			var tabs = $(this).parents('ul.tabs').find('li');
+			var tab_next = $(this).attr('href');
+			var tab_current = tabs.filter('.current').find('a').attr('href');
+			$(tab_current).hide();
+			tabs.removeClass('current');
+			$(this).parent().addClass('current');
+			$(tab_next).show();
+			history.pushState( null, null, window.location.search + $(this).attr('href') );
+			return false;
+		});
+
+
+		//add tabindexes to tab-content divs when they come into focus
+		$tabContent.focus(function(e) {
+			$(this).children('p, li:not(.tabs > li), th, td, blockquote, *:header').attr('tabindex', '0');
+		});
+		
+		//move focus to div containing content when tab link is clicked
+		$tabLinks.keydown(function(e) {
+			let $this = $(this);
+			let divId = $this.attr('href');
+			let keyCode = customFunctions.getKeyCode(e);
+			// let $nextTabLi = $this.parent('li').next('li').children('a');
+			$(divId).siblings('.tab-content').hide();
+			$(divId).show();
+			if (keyCode === 13) {
+				console.log(`$this.parents('li'):    `, $this.parent('li').next('li').children('a'));
+				// $this.parent('li').next('li').children('a').attr('tabindex', '1');
+				$this.focus();
+				$this.trigger('click');
+				$(divId).attr({
+						'aria-hidden': 'false',
+						// 'tabindex': '0'
+					}).focus();
+				// console.log('hello:   ', $(divId + ' *:last-child'));
+				// $(divId).append(`<a href="" class="nextTab skipNavigation" onkeydown="">Move to next tab</a>`);
+				// $this.parents('ul').find('a').removeAttr('tabindex');
+				// $this.parent('li').next().children('a')[0].attr('tabindex', '1');
+				// console.log($this.parent('li').next().children('a'), '          ', $this.parents('ul').find('a'));
+				/*$(divId).children().each(function(i, el) {
+						// console.log('this        ', $(this).attr('tabindex'), '        ', $(this));
+					let $that = $(this);
+					// console.log('taco:     ', $that);
+					if ($that.is(':focusable') && !$that.hasClass('tab-content') ) {
+						console.log('that:     ', $that);
+					}
+				});*/
+				addAccessibilityTags();
+			}
+
+		});
+		
+	})
+})(jQuery)
