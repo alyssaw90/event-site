@@ -1988,15 +1988,15 @@ setTimeout(function() {
 	<thead><th class="lightGrayBackground">Time</th><th class="lightGrayBackground">Presentation Zone</th></thead>
 	<tr><td>8:00-9:15</td><td>Breakfast</td></tr>
 	<tr><td>9:15-9:45</td><td class="lightOrangeBackground">Plugfest Welcome + Windows Keynote</td></tr>
-	<tr><td>9:45-10:30</td><td class="lightOrangeBackground">Tech talk on Auth + Q&A for AD</td></tr>
+	<tr><td>9:45-10:30</td><td class="lightOrangeBackground">Windows Server telemetry</td></tr>
 	<tr><td>10:30-10:45</td><td>Break</td></tr>
-	<tr><td>10:45-11:30</td><td class="lightOrangeBackground">Tech talk on Device Management</td></tr>
-	<tr><td>11:30-12:00</td><td class="lightOrangeBackground">AD/BYOD test suites and updates</td></tr>
+	<tr><td>10:45-11:30</td><td class="lightOrangeBackground">Windows 10 telemetry</td></tr>
+	<tr><td>11:30-12:00</td><td class="lightOrangeBackground">Tech talk on Device Management</td></tr>
 	<tr><td>12:15-13:15</td><td>Lunch (Members from Auth and AD team will be available for a chat session)</td></tr>
-	<tr><td>13:15-13:45</td><td class="lightOrangeBackground">Windows 10 telemetry</td></tr>
-	<tr><td>13:45-14:30</td><td class="lightOrangeBackground">Windows server telemetry</td></tr>
-	<tr><td>14:30-14:45</td><td>Break</td></tr>
-	<tr><td>14:45-15:30</td><td class="lightOrangeBackground">New and modified protocols for Redstone and Server 2016</td></tr>
+	<tr><td>13:15-14:00</td><td class="lightOrangeBackground">Azure Files talk</td></tr>
+	<tr><td>14:00-14:45</td><td class="lightOrangeBackground">AD/BYOD test suites and updates</td></tr>
+	<tr><td>14:45-15:00</td><td>Break</td></tr>
+	<tr><td>15:00-15:30</td><td class="lightOrangeBackground">New and modified protocols for Redstone and Server 2016</td></tr>
 	<tr><td>15:30-16:00</td><td class="lightOrangeBackground">Talk from Canonical</td></tr>
 	<tr><td>17:00-19:00</td><td>Dinner from Pacific Northwest Catering</td></tr>
 </table>
