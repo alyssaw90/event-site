@@ -10,25 +10,26 @@ import * as customFunctions from '../common-functions.build.js';
 
 (function($) {
 
-    $(document).ready(function () {
+  $(document).ready(function () {
 
-        let $calendar = $('#calendar');
-        let $pastEventsDiv = $( "#2016_events" )
-        let imgArr = [];
+    let $calendar = $('#calendar');
+    let $pastEventsDiv = $( '#2016_events' );
 
-        $pastEventsDiv.click(function () {
-
-
-            let schedule = `
-                    <table cellspacing="0" cellpadding="0">
-											 <thead>
+    let showSchedule = function(e) {
+      let keyCode = customFunctions.getKeyCode(e);
+      let schedule;
+      let html;
+      if (keyCode === 13 || keyCode === 1) {
+        schedule = `<table cellspacing="0" cellpadding="0" id="firstPastEventHeader" tabindex="0">
+                      <caption>Past plugfests and events from 2008</caption>
+                          <thead>
                           <tr>
-											  	 <th>Name</th>
-											  	 <th>Date</th>
-											  	 <th>Location</th>
-											  	 <th>Technical Topics</th>
-											  	 <th>Related Materials</th>
-											  </tr>
+                           <th>Name</th>
+                           <th>Date</th>
+                           <th>Location</th>
+                           <th>Technical Topics</th>
+                           <th>Related Materials</th>
+                        </tr>
                          </thead>
                       <tbody>
                         <tr>
@@ -46,14 +47,20 @@ import * as customFunctions from '../common-functions.build.js';
                           <td><a href="/paris2016">Event Page</a></td>
                         </tr>
                       </tbody>
-										</table>`;
+                    </table>`;
+        
+      }
+      html = $.parseHTML(schedule);
+      customFunctions.showCalendarOfPastEvents(html, $pastEventsDiv, $calendar);
+      // console.log('past:    ', $('#firstPastEventHeader'));
+      customFunctions.stickyFooter();
+      $('#firstPastEventHeader').focus();
+      $('th, td').attr('tabindex', '0');
 
-            let html = $.parseHTML(schedule);
-            customFunctions.showCalendarOfPastEvents(html, $pastEventsDiv, $calendar);
-            customFunctions.stickyFooter();
+    }
 
-        });
+    $pastEventsDiv.click(showSchedule);
+    $pastEventsDiv.keydown(showSchedule);
 
-    });
-
+  });
 })(jQuery);

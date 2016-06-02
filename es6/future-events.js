@@ -40,4 +40,7 @@ import * as customFunctions from './common-functions.build.js';
 	  customFunctions.changeHeight('.event_block');
 	});
 
+	//for Accessibility
+	$('map area').attr('tabindex', '-1');
+
 })(jQuery);
