@@ -1957,7 +1957,7 @@ setTimeout(function() {
 	<tr><td>11:15-12:00</td><td class="lightBlueBackground">Excel Integration using Microsoft Graph APIs</td></tr>
 	<tr><td>12:00-13:00</td><td>Lunch</td></tr>
 	<tr><td>13:00-13:45</td><td class="lightBlueBackground">Build Powerful Add-ins with Excel APIs</td></tr>
-	<tr><td>13:45-14:30</td><td class="lightBlueBackground">Office Add-ins Intro and Development </td></tr>
+	<tr><td>13:45-14:30</td><td class="lightBlueBackground">Mail Calendar and Contacts REST APIs</td></tr>
 	<tr><td>14:30-15:15</td><td class="lightBlueBackground">Office Online Integration (MS-WOPI)</td></tr>
 	<tr><td>15:15-15:30</td><td>Break</td></tr>
 	<tr><td>15:30-16:15</td><td class="lightBlueBackground">Office File Formats </td></tr>
