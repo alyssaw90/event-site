@@ -1950,15 +1950,15 @@ setTimeout(function() {
 <table class="scheduleTable tableWithVerticalLines scheduleTableTextOnly">
 	<thead><th class="lightGrayBackground">Time</th><th class="lightGrayBackground">Presentation Zone</th></thead>
 	<tr><td>8:00-9:00</td><td>Breakfast</td></tr>
-	<tr><td>9:00-9:30</td><td class="lightBlueBackground">Office Developer Opportunity</td></tr>
-	<tr><td>9:30-10:15</td><td class="lightBlueBackground">Dev.Office.com: Developer Resources</td></tr>
+	<tr><td>9:00-9:30</td><td class="lightBlueBackground">Plugfest Welcome</td></tr>
+	<tr><td>9:30-10:15</td><td class="lightBlueBackground">Office Developer Opportunity</td></tr>
 	<tr><td>10:15-10:30</td><td>Break</td></tr>
-	<tr><td>10:30-11:15</td><td class="lightBlueBackground">Office 365 APIs: Office Graph</td></tr>
-	<tr><td>11:15-12:00</td><td class="lightBlueBackground">Mail, Calendar, and Contacts REST Demonstration</td></tr>
+	<tr><td>10:30-11:15</td><td class="lightBlueBackground">Getting Started with Add-ins and Microsoft Graph</td></tr>
+	<tr><td>11:15-12:00</td><td class="lightBlueBackground">Excel Integration using Microsoft Graph APIs</td></tr>
 	<tr><td>12:00-13:00</td><td>Lunch</td></tr>
-	<tr><td>13:00-13:45</td><td class="lightBlueBackground">Office Add-ins Intro and Development </td></tr>
-	<tr><td>13:45-14:30</td><td class="lightBlueBackground">Office Online (MS-WOPI)</td></tr>
-	<tr><td>14:30-15:15</td><td class="lightBlueBackground">Office Co-authoring (MS-FSSHTTP)</td></tr>
+	<tr><td>13:00-13:45</td><td class="lightBlueBackground">Mail, Calendar, and Contacts REST Demonstration</td></tr>
+	<tr><td>13:45-14:30</td><td class="lightBlueBackground">Office Add-ins Intro and Development </td></tr>
+	<tr><td>14:30-15:15</td><td class="lightBlueBackground">Office Online (MS-WOPI)</td></tr>
 	<tr><td>15:15-15:30</td><td>Break</td></tr>
 	<tr><td>15:30-16:15</td><td class="lightBlueBackground">Office File Formats </td></tr>
 	<tr><td>17:00-19:00</td><td>Wood fired pizza dinner </td></tr>
@@ -1967,19 +1967,19 @@ setTimeout(function() {
 <h2>Tuesday, June 14, 2016</h2>
 <table class="scheduleTable tableWithVerticalLines scheduleTableTextOnly">
 	<thead><th class="lightGrayBackground">Time</th><th class="lightGrayBackground">Presentation Zone</th><th class="lightGrayBackground">Time</th><th class="lightGrayBackground">White Room</th></thead>
-	<tr><td>8:00-9:00</td><td>Breakfast</td><td rowspan="7"></td><td rowspan="7"></td></tr>
+	<tr><td>8:00-9:00</td><td>Breakfast</td><td rowspan="4"></td><td rowspan="4"></td></tr>
 	<tr><td>9:00-9:20</td><td class="lightGreenBackground">SQL 2016 Protocol Overview </td></tr>
 	<tr><td>9:20-10:15</td><td class="lightGreenBackground">Big Data Overview</td></tr>
 	<tr><td>10:15-10:30</td><td>Break</td></tr>
-	<tr><td>10:30-11:15</td><td class="lightGreenBackground">SQL Server: Developing modern applications with Temporal Tables and JSON </td></tr>
-	<tr><td>11:15-12:00</td><td class="lightGreenBackground">SQL Server: Always On</td></tr>
+	<tr><td>10:30-11:15</td><td class="lightGreenBackground">SQL Server: Developing modern applications with Temporal Tables and JSON </td><td>10:30-11:15</td><td class="lightBlueBackground">Office Co-authoring (MS-FSSHTTP)</td></tr>
+	<tr><td>11:15-12:00</td><td class="lightGreenBackground">SQL Server: Always On</td><td rowspan="2"</td><td rowspan="2"</td></tr>
 	<tr><td>12:00-13:00</td><td>Lunch</td></tr>
 	<tr><td>13:00-13:45</td><td class="lightGreenBackground">SQL Server: Speeding up data ingestion and transaction processing with In-Memory OLTP</td><td>13:00-13:45</td><td class="lightBlueBackground">Exchange 2016 Protocol Overview</td></tr>
 	<tr><td>13:45-14:30</td><td class="lightGreenBackground">SQL Server: Real-time operational analytics</td><td>13:45-14:15</td><td class="lightBlueBackground">Office Interoperability Test Tools (Test Suites and Open Source Projects)</td></tr>
 	<tr><td>14:30-15:15</td><td class="lightGreenBackground">SQL Server: R Services</td><td rowspan="2"></td><td rowspan="2"></td></tr>
 	<tr><td>15:15-15:30</td><td>Break</td></tr>
 	<tr><td>15:30-16:15</td><td class="lightGreenBackground">SQL Server: PolyBase</td><td>15:30-16:00</td><td class="lightBlueBackground">Office Network Parsers (Message Analyzer and Fiddler)</td></tr>
-	<tr><td>16:15-17:00</td><td class="lightGreenBackground">SQL Server: Stretch Database </td><td>16:15-16:45</td><td class="lightBlueBackground">Calling an API with an Add-in</td></tr>
+	<tr><td>16:15-17:00</td><td class="lightGreenBackground">SQL Server: Stretch Database </td><td>16:15-16:45</td><td class="lightBlueBackground">Calling 3rd Party APIs from Office Add-ins</td></tr>
 	<tr><td>17:30-19:30</td><td colspan="3">Barbecue dinner at Lincoln Square in Bellevue, WA</td></tr>
 </table>
 <br /><br />
