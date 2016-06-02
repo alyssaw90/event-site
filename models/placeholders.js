@@ -1956,9 +1956,9 @@ setTimeout(function() {
 	<tr><td>10:30-11:15</td><td class="lightBlueBackground">Getting Started with Add-ins and Microsoft Graph</td></tr>
 	<tr><td>11:15-12:00</td><td class="lightBlueBackground">Excel Integration using Microsoft Graph APIs</td></tr>
 	<tr><td>12:00-13:00</td><td>Lunch</td></tr>
-	<tr><td>13:00-13:45</td><td class="lightBlueBackground">Mail, Calendar, and Contacts REST Demonstration</td></tr>
+	<tr><td>13:00-13:45</td><td class="lightBlueBackground">Build Powerful Add-ins with Excel APIs</td></tr>
 	<tr><td>13:45-14:30</td><td class="lightBlueBackground">Office Add-ins Intro and Development </td></tr>
-	<tr><td>14:30-15:15</td><td class="lightBlueBackground">Office Online (MS-WOPI)</td></tr>
+	<tr><td>14:30-15:15</td><td class="lightBlueBackground">Office Online Integration (MS-WOPI)</td></tr>
 	<tr><td>15:15-15:30</td><td>Break</td></tr>
 	<tr><td>15:30-16:15</td><td class="lightBlueBackground">Office File Formats </td></tr>
 	<tr><td>17:00-19:00</td><td>Wood fired pizza dinner </td></tr>
@@ -1979,22 +1979,21 @@ setTimeout(function() {
 	<tr><td>14:30-15:15</td><td class="lightGreenBackground">SQL Server: R Services</td><td rowspan="2"></td><td rowspan="2"></td></tr>
 	<tr><td>15:15-15:30</td><td>Break</td></tr>
 	<tr><td>15:30-16:15</td><td class="lightGreenBackground">SQL Server: PolyBase</td><td>15:30-16:00</td><td class="lightBlueBackground">Office Network Parsers (Message Analyzer and Fiddler)</td></tr>
-	<tr><td>16:15-17:00</td><td class="lightGreenBackground">SQL Server: Stretch Database </td><td>16:15-16:45</td><td class="lightBlueBackground">Calling 3rd Party APIs from Office Add-ins</td></tr>
+	<tr><td>16:15-17:00</td><td class="lightGreenBackground">SQL Server: Stretch Database </td><td>16:15-16:45</td><td class="lightBlueBackground">: Calling 3rd Party APIs from an Outlook Add-in</td></tr>
 	<tr><td>17:30-19:30</td><td colspan="3">Barbecue dinner at Lincoln Square in Bellevue, WA</td></tr>
 </table>
 <br /><br />
 <h2>Wednesday, June 15, 2016</h2>
 <table class="scheduleTable tableWithVerticalLines scheduleTableTextOnly">
 	<thead><th class="lightGrayBackground">Time</th><th class="lightGrayBackground">Presentation Zone</th></thead>
-	<tr><td>8:00-9:00</td><td>Breakfast</td></tr>
-	<tr><td>9:00-9:30</td><td class="lightOrangeBackground">Windows Introduction</td></tr>
-	<tr><td>9:30-9:45</td><td class="lightOrangeBackground">Windows Keynote</td></tr>
+	<tr><td>8:00-9:15</td><td>Breakfast</td></tr>
+	<tr><td>9:15-9:45</td><td class="lightOrangeBackground">Plugfest Welcome + Windows Keynote</td></tr>
 	<tr><td>9:45-10:30</td><td class="lightOrangeBackground">Tech talk on Auth + Q&A for AD</td></tr>
 	<tr><td>10:30-10:45</td><td>Break</td></tr>
 	<tr><td>10:45-11:30</td><td class="lightOrangeBackground">Tech talk on Device Management</td></tr>
 	<tr><td>11:30-12:00</td><td class="lightOrangeBackground">AD/BYOD test suites and updates</td></tr>
-	<tr><td>12:00-13:00</td><td>Lunch</td></tr>
-	<tr><td>13:00-13:45</td><td class="lightOrangeBackground">Windows 10 telemetry</td></tr>
+	<tr><td>12:15-13:15</td><td>Lunch (Members from Auth and AD team will be available for a chat session)</td></tr>
+	<tr><td>13:15-13:45</td><td class="lightOrangeBackground">Windows 10 telemetry</td></tr>
 	<tr><td>13:45-14:30</td><td class="lightOrangeBackground">Windows server telemetry</td></tr>
 	<tr><td>14:30-14:45</td><td>Break</td></tr>
 	<tr><td>14:45-15:30</td><td class="lightOrangeBackground">New and modified protocols for Redstone and Server 2016</td></tr>
@@ -2029,7 +2028,7 @@ setTimeout(function() {
 	<tr><td>9:45-10:30</td><td class="lightOrangeBackground">Open SSH</td></tr>
 	<tr><td>10:30-10:45</td><td>Break</td></tr>
 	<tr><td>10:45-11:30</td><td class="lightOrangeBackground">Windows protocol test suites open source</td></tr>
-	<tr><td>11:30-12:00</td><td class="lightOrangeBackground">Open Authoring and use of tools such as Markdown and Github</td></tr>
+	<tr><td>11:30-12:00</td><td class="lightOrangeBackground">Adhoc conversation on Open Authoring and use of tools such as Markdown and Github</td></tr>
 	<tr><td>12:00-13:00</td><td>Lunch</td></tr>
 </table>
 <br /><br />
