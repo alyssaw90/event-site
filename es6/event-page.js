@@ -11,11 +11,11 @@ import * as customFunctions from './common-functions.build.js';
 		const $tabLinks = $('ul.tabs a[href^="#"]');
 		const $tabContent = $('.tab-content');
 		// $('.tabs').children('li').attr('tabindex', '0');
-		console.log('tablinks:    ', $tabLinks);
+		// console.log('tablinks:    ', $tabLinks);
 		//add #beginningOfContent id to first tab, so it can be navigated to with skip navigation
 		$firstTab.attr('id', 'beginningOfContent');
 		//add -1 tab index to content of tabs
-		$tabContent.find('p, li:not(.tabs > li), th, td, blockquote, *:header').attr('tabindex', '-1');
+		// $tabContent.find('p, li:not(.tabs > li), th, td, blockquote, *:header').attr('tabindex', '-1');
 		
 		//add roles to tabs
 		$tabLinks.each(function(i, elem) {
@@ -24,7 +24,7 @@ import * as customFunctions from './common-functions.build.js';
 			let anchorId = $this.attr('id') === 'beginningOfContent' ? 'beginningOfContent' : `${divId.slice(1)}Anchor`;
 		 		// console.log('owner LI:  ', anchorId.slice(0, -6));
 			
-			$tabContent.attr('tabindex', '-1');
+			// $tabContent.attr('tabindex', '-1');
 			$(divId).attr('tabindex', '0');
 			$this.attr({
 				'aria-role': 'navigation',
@@ -43,12 +43,15 @@ import * as customFunctions from './common-functions.build.js';
 		 		let divId = $this.attr('id');
 		 		let nextId = $this.next().attr('id');
 		 		let nextTabLiAnchor = $(`a[href="#${divId}"]`).parent('li').next('li').find('a');
+		 		// let nestLiId = $(`a[href="#${divId}"]`).parent('li').next('li').attr('id');
+		 		let nextTabLink = $(`a[href="#${divId}"]`).parent('li').next('li');
+		 		console.log('blah     ', $(`a[href="#${divId}"]`).parent('li').next('li'));
 		 		$this.attr({
 		 			'role': 'tab',
 		 			'aria-hidden': 'true',
 		 			// 'tabindex': -1 
 		 		});  
-		 		// $this.append(`<div><a href="" class="nextTab skipNavigation" data-parent="${nextTabLiAnchor.attr('id')}">Click enter to view next tab</a></div>`);
+		 		// $this.append(`<div><a href="" class="nextTab skipNavigation" data-parent="${nextTabLiAnchor.attr('id')}" onkeydown="function(e){${nextTabLink}.focus()}">Click enter to view next tab</a></div>`);
 		 		/*if ($this.is(':hidden')) {
 		 			$this.attr('aria-hidden', 'true');
 		 		}
@@ -66,7 +69,7 @@ import * as customFunctions from './common-functions.build.js';
 			let parentId = `#${$(this).attr('data-parent')}`;
 			let nextLi = $(parentId).next('li').find('a')
 			let divId = parentId.slice(0, -6);
-			console.log('parentId      ', $(parentId).parent('li').siblings());
+			// console.log('parentId      ', $(parentId).parent('li').siblings());
 			if (keyCode === 13) {
 				$(nextLi).trigger('click');
 				// $(divId).focus();
@@ -100,27 +103,31 @@ import * as customFunctions from './common-functions.build.js';
 			let $this = $(this);
 			let divId = $this.attr('href');
 			let keyCode = customFunctions.getKeyCode(e);
+			// let $nextTabLi = $this.parent('li').next('li').children('a');
 			$(divId).siblings('.tab-content').hide();
 			$(divId).show();
 			if (keyCode === 13) {
 				console.log(`$this.parents('li'):    `, $this.parent('li').next('li').children('a'));
-				$this.parent('li').next('li').children('a').attr('tabindex', '1');
+				// $this.parent('li').next('li').children('a').attr('tabindex', '1');
 				$this.focus();
 				$this.trigger('click');
 				$(divId).attr({
 						'aria-hidden': 'false',
-						'tabindex': '0'
+						// 'tabindex': '0'
 					}).focus();
+				// console.log('hello:   ', $(divId + ' *:last-child'));
+				// $(divId).append(`<a href="" class="nextTab skipNavigation" onkeydown="">Move to next tab</a>`);
 				// $this.parents('ul').find('a').removeAttr('tabindex');
 				// $this.parent('li').next().children('a')[0].attr('tabindex', '1');
 				// console.log($this.parent('li').next().children('a'), '          ', $this.parents('ul').find('a'));
-				$(divId).children().each(function(i, el) {
-						console.log('this        ', $(this).attr('tabindex'), '        ', $(this));
+				/*$(divId).children().each(function(i, el) {
+						// console.log('this        ', $(this).attr('tabindex'), '        ', $(this));
 					let $that = $(this);
-					if ($that.is(':focusable')) {
+					// console.log('taco:     ', $that);
+					if ($that.is(':focusable') && !$that.hasClass('tab-content') ) {
 						console.log('that:     ', $that);
 					}
-				});
+				});*/
 				addAccessibilityTags();
 			}
 
