@@ -608,7 +608,6 @@ module.exports = function (router) {
   router.post('/deleteevent', eatAuth, function(req, res) {
     models.sql.sync()
     .then(function() {
-      console.log(clc.magenta(':::::::::     '), req.body.tabToDeleteId);
       return EventTab.findOne({where: {id: req.body.tabToDeleteId}});
     })
     .then(function(tabToDelete) {
