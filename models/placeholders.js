@@ -1946,7 +1946,8 @@ setTimeout(function() {
 </ul>
 <ul class="tabs left"><li class="current"><a href="#redmond2016WindowsAgenda"><span style="font-size: 1.5em">Agenda</span></a></li><li><a href="#redmond2016WindowsTechnologies"><span style="font-size: 1.5em">Technologies</span></a></li></ul>
 <div id="redmond2016WindowsAgenda" class="tab-content eventTabDiv" style="display:block;">
-	<h2>Monday, June 13, 2016</h2>
+<p>* If you cannot attend the entire Plugfest, we encourage you to attend days and sessions that best fit your schedule.</p>
+<h2>Monday, June 13, 2016</h2>
 <table class="scheduleTable tableWithVerticalLines scheduleTableTextOnly">
 	<thead><th class="lightGrayBackground">Time</th><th class="lightGrayBackground">Presentation Zone</th></thead>
 	<tr><td>8:00-9:00</td><td>Breakfast</td></tr>
