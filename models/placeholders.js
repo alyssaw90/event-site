@@ -1957,7 +1957,7 @@ setTimeout(function() {
 	<tr><td>11:15-12:00</td><td class="lightBlueBackground">Excel Integration using Microsoft Graph APIs</td></tr>
 	<tr><td>12:00-13:00</td><td>Lunch</td></tr>
 	<tr><td>13:00-13:45</td><td class="lightBlueBackground">Build Powerful Add-ins with Excel APIs</td></tr>
-	<tr><td>13:45-14:30</td><td class="lightBlueBackground">Office Add-ins Intro and Development </td></tr>
+	<tr><td>13:45-14:30</td><td class="lightBlueBackground">Mail Calendar and Contacts REST APIs</td></tr>
 	<tr><td>14:30-15:15</td><td class="lightBlueBackground">Office Online Integration (MS-WOPI)</td></tr>
 	<tr><td>15:15-15:30</td><td>Break</td></tr>
 	<tr><td>15:30-16:15</td><td class="lightBlueBackground">Office File Formats </td></tr>
@@ -1979,7 +1979,7 @@ setTimeout(function() {
 	<tr><td>14:30-15:15</td><td class="lightGreenBackground">SQL Server: R Services</td><td rowspan="2"></td><td rowspan="2"></td></tr>
 	<tr><td>15:15-15:30</td><td>Break</td></tr>
 	<tr><td>15:30-16:15</td><td class="lightGreenBackground">SQL Server: PolyBase</td><td>15:30-16:00</td><td class="lightBlueBackground">Office Network Parsers (Message Analyzer and Fiddler)</td></tr>
-	<tr><td>16:15-17:00</td><td class="lightGreenBackground">SQL Server: Stretch Database </td><td>16:15-16:45</td><td class="lightBlueBackground">: Calling 3rd Party APIs from an Outlook Add-in</td></tr>
+	<tr><td>16:15-17:00</td><td class="lightGreenBackground">SQL Server: Stretch Database </td><td>16:15-16:45</td><td class="lightBlueBackground">Calling 3rd Party APIs from an Outlook Add-in</td></tr>
 	<tr><td>17:30-19:30</td><td colspan="3">Barbecue dinner at Lincoln Square in Bellevue, WA</td></tr>
 </table>
 <br /><br />
