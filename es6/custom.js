@@ -113,7 +113,14 @@ import * as customFunctions from './common-functions.build.js';
 	//////////////////////////////////////////////////////*/
 
 
+	let path = window.location.pathname;
 	$('li:not(.tabs > li), th, td').attr('tabindex', '0');
+
+	//add tabindex="0" to paragraphs on the speakers page 
+
+	if (path === '/meet-the-team') {
+		$('p').attr('tabindex', '0');
+	}
 
 	$('td').each(function(index, el) {
 		let $this = $(this);
