@@ -10,14 +10,15 @@ import * as customFunctions from '../common-functions.build.js';
 
 (function($) {
 
-	$(document).ready(function () {
-		let $calendar = $('#calendar');
-		let $pastEventsDiv = $( '#2013_events' );
+  $(document).ready(function () {
 
-		$pastEventsDiv.click(function () {
+    let $calendar = $('#calendar');
+    let $pastEventsDiv = $( '#2015_events' );
 
-
-			let schedule = `<table cellspacing="0" cellpadding="0">
+    let showSchedule = function(e) {
+      let keyCode = customFunctions.getKeyCode(e);
+      let html;
+      let schedule = keyCode === 13 || 1 ? `<table id="2013PastEvents" cellspacing="0" cellpadding="0">
 													<thead><tr>
 													<th>Name</th>
 													<th>Date</th>
@@ -50,13 +51,20 @@ import * as customFunctions from '../common-functions.build.js';
 													<td>Windows RDP, Exchange and SharePoint Protocols</td>
 													<td><a href="http://channel9.msdn.com/Events/Open-Specifications-Plugfests/Taipei-Interoperability-Protocols-Plugfest-2013">Videos</a></td>
 												</tr></tbody>
-											</table>`;
-			let html = $.parseHTML(schedule);
-			customFunctions.showCalendarOfPastEvents(html, $pastEventsDiv, $calendar);
-			customFunctions.stickyFooter();
+											</table>` : undefined;
+        
+      
+      html = $.parseHTML(schedule);
+      customFunctions.showCalendarOfPastEvents(html, $pastEventsDiv, $calendar);
+      // console.log('past:    ', $('#firstPastEventHeader'));
+      customFunctions.stickyFooter();
+      $('#2013PastEvents').focus();
+      $('th, td').attr('tabindex', '0');
 
-		});
+    }
 
-	});
+    $pastEventsDiv.click(showSchedule);
+    $pastEventsDiv.keydown(showSchedule);
 
+  });
 })(jQuery);

@@ -116,9 +116,9 @@ import * as customFunctions from './common-functions.build.js';
 	let path = window.location.pathname;
 	$('li:not(.tabs > li), th, td').attr('tabindex', '0');
 
-	//add tabindex="0" to paragraphs on the speakers page 
+	//add tabindex="0" to paragraphs on the speakers, about abd faq pages
 
-	if (path === '/meet-the-team') {
+	if (path === '/meet-the-team' || path === '/about' || path === '/faq') {
 		$('p').attr('tabindex', '0');
 	}
 

@@ -11,11 +11,15 @@ import * as customFunctions from '../common-functions.build.js';
 (function($) {
 
 	$(function() {
-		var $pastEvents = $('.past_events');
-		$pastEvents.click(function() {
-			customFunctions.changeHeight('.past_events');
-			customFunctions.homepageStickyFooter();
-			// customFunctions.pastEventBackgroundSwitch();
+		const $pastEvents = $('.past_events');
+		$pastEvents.click(function(e) {
+			let keyCode = customFunctions.getKeyCode(e);
+			if (keyCode === 1 || 9 || 13) {
+				customFunctions.changeHeight('.past_events');
+				customFunctions.homepageStickyFooter();
+				// customFunctions.pastEventBackgroundSwitch();
+				
+			}
 		});
 	});
 
@@ -28,5 +32,8 @@ import * as customFunctions from '../common-functions.build.js';
 		customFunctions.changeHeight('.past_events');
 		customFunctions.homepageStickyFooter();
 	});
+
+	///////////Accessibility
+	console.log('tacos:     ', $('.past_events')[0]);
 
 })(jQuery);

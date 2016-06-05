@@ -10,16 +10,15 @@ import * as customFunctions from '../common-functions.build.js';
 
 (function($) {
 
-	$(document).ready(function () {
+  $(document).ready(function () {
 
-		let $calendar = $('#calendar');
-		let $pastEventsDiv = $( "#2015_events" );
-		let imgArr = [];
+    let $calendar = $('#calendar');
+    let $pastEventsDiv = $( '#2015_events' );
 
-		$pastEventsDiv.click(function () {
-
-
-			let schedule = `<table cellspacing="0" cellpadding="0">
+    let showSchedule = function(e) {
+      let keyCode = customFunctions.getKeyCode(e);
+      let html;
+      let schedule = keyCode === 13 || keyCode === 1 ? `<table id="2015PastEvents" cellspacing="0" cellpadding="0">
 											<thead><tr>
 												<th>Name</th>
 												<th>Date</th>
@@ -64,14 +63,20 @@ import * as customFunctions from '../common-functions.build.js';
 												<td>Office File Formats and the latest in Office developer and product technology.</td>
 												<td><a href="http://connect.microsoft.com/site216/Downloads/DownloadDetails.aspx?DownloadID=57585">Presentation handouts</a></td>
 											</tr></tbody>
-											</table>`;
+											</table>` : undefined;
+        
+      
+      html = $.parseHTML(schedule);
+      customFunctions.showCalendarOfPastEvents(html, $pastEventsDiv, $calendar);
+      // console.log('past:    ', $('#firstPastEventHeader'));
+      customFunctions.stickyFooter();
+      $('#2015PastEvents').focus();
+      $('#2015PastEvents').find('th, td').attr('tabindex', '0');
 
-			let html = $.parseHTML(schedule);
-			customFunctions.showCalendarOfPastEvents(html, $pastEventsDiv, $calendar);
-			customFunctions.stickyFooter();
+    }
 
-		});
+    $pastEventsDiv.click(showSchedule);
+    $pastEventsDiv.keydown(showSchedule);
 
-	});
-
+  });
 })(jQuery);

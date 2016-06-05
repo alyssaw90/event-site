@@ -10,14 +10,15 @@ import * as customFunctions from '../common-functions.build.js';
 
 (function($) {
 
-	$(document).ready(function () {
-			let $calendar = $('#calendar');
-			let $pastEventsDiv = $( '#2014_events' );
+  $(document).ready(function () {
 
-			$pastEventsDiv.click(function () {
+    let $calendar = $('#calendar');
+    let $pastEventsDiv = $( '#2014_events' );
 
-
-			let schedule = `<table cellspacing="0" cellpadding="0">
+    let showSchedule = function(e) {
+      let keyCode = customFunctions.getKeyCode(e);
+      let html;
+      let schedule = keyCode === 13 || keyCode === 1 ? `<table id="2014PastEvents" cellspacing="0" cellpadding="0">
 												<thead><tr>
 													<th>Name</th>
 													<th>Date</th>
@@ -56,13 +57,20 @@ import * as customFunctions from '../common-functions.build.js';
 													<td>Key interoperability topics, such as Bring your own device (BYOD), OAuth, OData, Remote Desktop Protocol (RemoteFX/RDP), Office File IO, and Exchange Email clients</td>
 													<td><a href="http://channel9.msdn.com/Events/Open-Specifications-Plugfests/Taipei-Interoperability-Protocols-Plugfest-2014">Videos</a></td>
 												</tr></tbody>
-											</table>`;
-			let html = $.parseHTML(schedule);
-			customFunctions.showCalendarOfPastEvents(html, $pastEventsDiv, $calendar);
-			customFunctions.stickyFooter();
+											</table>` : undefined;
+        
+      
+      html = $.parseHTML(schedule);
+      customFunctions.showCalendarOfPastEvents(html, $pastEventsDiv, $calendar);
+      // console.log('past:    ', $('#firstPastEventHeader'));
+      customFunctions.stickyFooter();
+      $('#2014PastEvents').focus();
+      $('th, td').attr('tabindex', '0');
 
-		});
+    }
 
-	});
+    $pastEventsDiv.click(showSchedule);
+    $pastEventsDiv.keydown(showSchedule);
 
+  });
 })(jQuery);

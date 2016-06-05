@@ -21,7 +21,7 @@ import * as customFunctions from '../common-functions.build.js';
 			let html;
 			console.log('key code:    ', keyCode);
 			if (keyCode === 13 || keyCode === 1) {
-				schedule = `<table cellspacing="0" cellpadding="0" id="firstPastEventHeader" tabindex="0">
+				schedule = `<table cellspacing="0" cellpadding="0" id="2008PastEvents" tabindex="0">
 											<caption>Past plugfests and events from 2008</caption>
 													<thead><tr>
 														<th>Name</th>
@@ -86,7 +86,7 @@ import * as customFunctions from '../common-functions.build.js';
 			customFunctions.showCalendarOfPastEvents(html, $pastEventsDiv, $calendar);
 			// console.log('past:    ', $('#firstPastEventHeader'));
 			customFunctions.stickyFooter();
-			$('#firstPastEventHeader').focus();
+			$('#2008PastEvents').focus();
 			$('th, td').attr('tabindex', '0');
 
 		}

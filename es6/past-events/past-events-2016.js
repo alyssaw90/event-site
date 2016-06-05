@@ -17,10 +17,8 @@ import * as customFunctions from '../common-functions.build.js';
 
     let showSchedule = function(e) {
       let keyCode = customFunctions.getKeyCode(e);
-      let schedule;
       let html;
-      if (keyCode === 13 || keyCode === 1) {
-        schedule = `<table cellspacing="0" cellpadding="0" id="firstPastEventHeader" tabindex="0">
+      let schedule = keyCode === 13 || keyCode === 1 ? `<table cellspacing="0" cellpadding="0" id="2016PastEvents" tabindex="0">
                       <caption>Past plugfests and events from 2008</caption>
                           <thead>
                           <tr>
@@ -47,14 +45,14 @@ import * as customFunctions from '../common-functions.build.js';
                           <td><a href="/paris2016">Event Page</a></td>
                         </tr>
                       </tbody>
-                    </table>`;
+                    </table>` : undefined;
         
-      }
+      
       html = $.parseHTML(schedule);
       customFunctions.showCalendarOfPastEvents(html, $pastEventsDiv, $calendar);
       // console.log('past:    ', $('#firstPastEventHeader'));
       customFunctions.stickyFooter();
-      $('#firstPastEventHeader').focus();
+      $('#2016PastEvents').focus();
       $('th, td').attr('tabindex', '0');
 
     }

@@ -10,14 +10,15 @@ import * as customFunctions from '../common-functions.build.js';
 
 (function($) {
 
-$(document).ready(function () {
-	let $calendar = $('#calendar');
-	let $pastEventsDiv = $( '#2012_events' );
+  $(document).ready(function () {
 
-	$pastEventsDiv.click(function () {
+    let $calendar = $('#calendar');
+    let $pastEventsDiv = $( '#2012_events' );
 
-
-		let schedule = `<table cellspacing="0" cellpadding="0">
+    let showSchedule = function(e) {
+      let keyCode = customFunctions.getKeyCode(e);
+      let html;
+      let schedule = keyCode === 13 || keyCode === 1 ? `<table id="2012PastEvents" cellspacing="0" cellpadding="0">
 												<thead><tr>
 												<th>Name</th>
 												<th>Date</th>
@@ -86,13 +87,20 @@ $(document).ready(function () {
 												<td>The Evolution of OData, OData v3, Partner Presentations, Implementing OData, and Open Discussion Session</td>
 												<td><a href="http://channel9.msdn.com/Events/Open-Specifications-Plugfests/Odata-Meetup-2012">Videos</a></td>
 											</tr></tbody>
-										</table>`;
-		let html = $.parseHTML(schedule);
-		customFunctions.showCalendarOfPastEvents(html, $pastEventsDiv, $calendar);
-		customFunctions.stickyFooter();
+										</table>` : undefined;
+        
+      
+      html = $.parseHTML(schedule);
+      customFunctions.showCalendarOfPastEvents(html, $pastEventsDiv, $calendar);
+      // console.log('past:    ', $('#firstPastEventHeader'));
+      customFunctions.stickyFooter();
+      $('#2012PastEvents').focus();
+      $('th, td').attr('tabindex', '0');
 
-	});
-});
+    }
 
+    $pastEventsDiv.click(showSchedule);
+    $pastEventsDiv.keydown(showSchedule);
+
+  });
 })(jQuery);
-
