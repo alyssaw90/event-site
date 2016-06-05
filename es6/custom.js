@@ -113,7 +113,7 @@ import * as customFunctions from './common-functions.build.js';
 	//////////////////////////////////////////////////////*/
 
 
-	$('p, li:not(.tabs > li), th, td, blockquote').attr('tabindex', '0');
+	$('li:not(.tabs > li), th, td').attr('tabindex', '0');
 
 	$('td').each(function(index, el) {
 		let $this = $(this);

@@ -10,75 +10,84 @@ import * as customFunctions from './common-functions.build.js';
 		const $firstTab = $('.first:first a:first-child');
 		const $tabLinks = $('ul.tabs a[href^="#"]');
 		const $tabContent = $('.tab-content');
-		// $('.tabs').children('li').attr('tabindex', '0');
-		// console.log('tablinks:    ', $tabLinks);
+		
 		//add #beginningOfContent id to first tab, so it can be navigated to with skip navigation
 		$firstTab.attr('id', 'beginningOfContent');
 		//add -1 tab index to content of tabs
-		// $tabContent.find('p, li:not(.tabs > li), th, td, blockquote, *:header').attr('tabindex', '-1');
 		
-		//add roles to tabs
+		//add roles and ids to tabs to tabs
 		$tabLinks.each(function(i, elem) {
 			let $this = $(this);
 			let divId = $this.attr('href');
 			let anchorId = $this.attr('id') === 'beginningOfContent' ? 'beginningOfContent' : `${divId.slice(1)}Anchor`;
-		 		// console.log('owner LI:  ', anchorId.slice(0, -6));
 			
-			// $tabContent.attr('tabindex', '-1');
 			$(divId).attr('tabindex', '0');
 			$this.attr({
 				'aria-role': 'navigation',
-				'aria-label': `${$this.text()}, click enter/return to read contents`,
+				'aria-label': `${$this.text()}, click enter/return to read contents, click tab to go to next section`,
 				'aria-owns': `${divId.slice(1)}`,
 				'id': anchorId
 			});
 
 		});
 
-		//function to add role="article" to event tab divs so they are read by screen reader
-		function addAccessibilityTags() {
+
+		//add a navigation div to the bottom of tab-content divs to navigate to next item in tab list
+		function addNavAnchor() {
 			
 		 	$tabContent.each(function(i, elem) {
 		 		let $this = $(this);
 		 		let divId = $this.attr('id');
-		 		let nextId = $this.next().attr('id');
-		 		let nextTabLiAnchor = $(`a[href="#${divId}"]`).parent('li').next('li').find('a');
-		 		// let nestLiId = $(`a[href="#${divId}"]`).parent('li').next('li').attr('id');
-		 		let nextTabLink = $(`a[href="#${divId}"]`).parent('li').next('li');
-		 		console.log('blah     ', $(`a[href="#${divId}"]`).parent('li').next('li'));
+		 		let $nextTabLiAnchor = $(`a[href="#${divId}"]`).parent('li').next('li').find('a');
+		 		let $nextTabLink = $(`a[href="#${divId}"]`).parent('li').next('li');
+		 		let $thisLi = $(`a[href="#${divId}"]`).parent('li');
+		 		let nextTabId = $nextTabLink.find('a').attr('href');
+		 		let newAnchorTag = $nextTabLiAnchor.attr('id') !== undefined ? $nextTabLiAnchor.attr('id') : 'footerStartMenuItem';
+		 		//add an id to the list items
+		 		$thisLi.attr('id', `tab${i + 1}`);
+		 		//if the next tab has an undefined id and it is not a subsection of a larger tab
+		 		if ($nextTabLiAnchor.attr('id') === undefined && $(`#${divId}`).parents('.tab-content').length === 0) {
+		 			nextTabId = '#footerStartMenuItem';
+		 			newAnchorTag = 'footerStartMenuItem';
+		 		}
+		 		//for tabs that are subsections of larger tabs get the infor the outer tab
+		 		if ($nextTabLiAnchor.attr('id') === undefined && $(`#${divId}`).parents('.tab-content').length !== 0) {
+		 			let outerTabId = $this.parent().attr('id');
+		 			nextTabId = '#' + $this.parent().parent().find(`a[aria-owns="${outerTabId}"]`).attr('id');
+		 			newAnchorTag = $this.parent().parent().find(`a[aria-owns="${outerTabId}"]`).attr('href');
+		 		}
+		 		//add aria-hidden role and tab roll to tab
 		 		$this.attr({
 		 			'role': 'tab',
 		 			'aria-hidden': 'true',
-		 			// 'tabindex': -1 
-		 		});  
-		 		// $this.append(`<div><a href="" class="nextTab skipNavigation" data-parent="${nextTabLiAnchor.attr('id')}" onkeydown="function(e){${nextTabLink}.focus()}">Click enter to view next tab</a></div>`);
-		 		/*if ($this.is(':hidden')) {
-		 			$this.attr('aria-hidden', 'true');
-		 		}
-		 		if ($this.is(':visible')) {
-		 			$this.attr('aria-hidden', 'false');
-		 		}*/
+		 		});
+		 		//append a skipNavigation link to the end of the tab section
+		 		$this.append(`<div><a href="${nextTabId}" class="skipNavigation nextTab" data-parent="${newAnchorTag}" >Click tab or enter to go back to the tab list</a></div>`);
+
 		 	});
 
 		}
-		addAccessibilityTags();
 
-		function moveTab(e) {
-			e.preventDefault();
+		//
+		function tabNavigation(e) {
+			let $this = $(this);
 			let keyCode = customFunctions.getKeyCode(e);
-			let parentId = `#${$(this).attr('data-parent')}`;
-			let nextLi = $(parentId).next('li').find('a')
-			let divId = parentId.slice(0, -6);
-			// console.log('parentId      ', $(parentId).parent('li').siblings());
-			if (keyCode === 13) {
-				$(nextLi).trigger('click');
-				// $(divId).focus();
+			let parentId = `#${$this.attr('data-parent')}`;
+			//if the data-parent attribute is not footerStartMenuItem assign it the link of the next tab, otherwise assign it to #footerStartMenuItem
+			let nextLiId = $this.attr('data-parent') !== 'footerStartMenuItem' ? `#${$(parentId).parent('li').find('a').attr('id')}` : '#footerStartMenuItem';
+			//if enter or tab is clicked, but not shift focus of the next li
+			let previosEl = $this.parent().prevAll(':focusable')[0];
+			if ((keyCode === 13 || keyCode === 9) && !e.shiftKey) {
+				$(nextLiId).focus();
+			}
+			//if shift tab is clicked focus on the previous li
+			if (keyCode === 9 && e.shiftKey) {
+				previosEl.focus();
 			}
 		}
 
-		$('.nextTab').keydown(moveTab);
 
-		// tab click
+		// tab click copied from kickstart.js to make it work here
 		$(document).on('click', 'ul.tabs a[href^="#"]', function(e){
 			e.preventDefault();
 			var tabs = $(this).parents('ul.tabs').find('li');
@@ -95,7 +104,7 @@ import * as customFunctions from './common-functions.build.js';
 
 		//add tabindexes to tab-content divs when they come into focus
 		$tabContent.focus(function(e) {
-			$(this).children('p, li:not(.tabs > li), th, td, blockquote, *:header').attr('tabindex', '0');
+			$(this).find('li:not(.tabs > li), th, td, *:header, .nextTab').attr('tabindex', '0');
 		});
 		
 		//move focus to div containing content when tab link is clicked
@@ -103,35 +112,26 @@ import * as customFunctions from './common-functions.build.js';
 			let $this = $(this);
 			let divId = $this.attr('href');
 			let keyCode = customFunctions.getKeyCode(e);
-			// let $nextTabLi = $this.parent('li').next('li').children('a');
 			$(divId).siblings('.tab-content').hide();
 			$(divId).show();
+			//if enter is clicked trigger the links click function and focus on the tab content
 			if (keyCode === 13) {
-				console.log(`$this.parents('li'):    `, $this.parent('li').next('li').children('a'));
-				// $this.parent('li').next('li').children('a').attr('tabindex', '1');
 				$this.focus();
 				$this.trigger('click');
-				$(divId).attr({
-						'aria-hidden': 'false',
-						// 'tabindex': '0'
-					}).focus();
-				// console.log('hello:   ', $(divId + ' *:last-child'));
-				// $(divId).append(`<a href="" class="nextTab skipNavigation" onkeydown="">Move to next tab</a>`);
-				// $this.parents('ul').find('a').removeAttr('tabindex');
-				// $this.parent('li').next().children('a')[0].attr('tabindex', '1');
-				// console.log($this.parent('li').next().children('a'), '          ', $this.parents('ul').find('a'));
-				/*$(divId).children().each(function(i, el) {
-						// console.log('this        ', $(this).attr('tabindex'), '        ', $(this));
-					let $that = $(this);
-					// console.log('taco:     ', $that);
-					if ($that.is(':focusable') && !$that.hasClass('tab-content') ) {
-						console.log('that:     ', $that);
-					}
-				});*/
-				addAccessibilityTags();
+				$(divId).attr({ 'aria-hidden': 'false' }).focus();
+			
 			}
-
+			//if tab is clicked and it is the last tab link, hide all content from tab navigation and to go to next section
+			if (keyCode === 9 && $this.parent('li').hasClass('last')) {
+				$(divId).attr('tabindex', -1);
+				$(divId).find('*').attr('tabindex', -1);
+			}
 		});
+
+		//add nav anchors to all sections
+		addNavAnchor();
+
+		$('.nextTab').keydown(tabNavigation);
 		
 	})
 })(jQuery)
