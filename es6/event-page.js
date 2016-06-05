@@ -104,7 +104,13 @@ import * as customFunctions from './common-functions.build.js';
 
 		//add tabindexes to tab-content divs when they come into focus
 		$tabContent.focus(function(e) {
-			$(this).find('li:not(.tabs > li), th, td, *:header, .nextTab').attr('tabindex', '0');
+			let $this = $(this);
+			//if it's the speakers tab add tabindex to the p tag, otherwise don't include the p tags 
+			if ($this.attr('id') === 'speakers') {
+				$this.find('p, li:not(.tabs > li), th, td, *:header, .nextTab, .rightArrow, .downArrow').attr('tabindex', '0');
+			} else {
+				$this.find('li:not(.tabs > li), th, td, *:header, .nextTab, .rightArrow, .downArrow').attr('tabindex', '0');
+			}
 		});
 		
 		//move focus to div containing content when tab link is clicked
