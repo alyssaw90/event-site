@@ -16,9 +16,8 @@ import * as customFunctions from '../common-functions.build.js';
     let $pastEventsDiv = $( '#2015_events' );
 
     let showSchedule = function(e) {
-      let keyCode = customFunctions.getKeyCode(e);
       let html;
-      let schedule = keyCode === 13 || keyCode === 1 ? `<table id="2015PastEvents" cellspacing="0" cellpadding="0">
+      let schedule = `<table id="2015PastEvents" tabindex="0" cellspacing="0" cellpadding="0">
 											<thead><tr>
 												<th>Name</th>
 												<th>Date</th>
@@ -31,7 +30,7 @@ import * as customFunctions from '../common-functions.build.js';
 												<td>October 21 - 22, 2015</td>
 												<td>Shanghai, China</td>
 												<td>Office Developer Opportunity, Data Platform, OData, Open Specifications, Office Add-ins + APIs</td>
-												<td><a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/Shanghai-Interop-Dev-Days">Videos</a>, <a href="/taipei2016">Event Page</a></td>
+												<td><a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/Shanghai-Interop-Dev-Days">Videos</a>, <a href="/shanghai2015">Event Page</a></td>
 											</tr><tr>
 												<td>Redmond Interoperability Protocols Plugfest 2015</td>
 												<td>June 22-26, 2015</td>
@@ -63,7 +62,7 @@ import * as customFunctions from '../common-functions.build.js';
 												<td>Office File Formats and the latest in Office developer and product technology.</td>
 												<td><a href="http://connect.microsoft.com/site216/Downloads/DownloadDetails.aspx?DownloadID=57585">Presentation handouts</a></td>
 											</tr></tbody>
-											</table>` : undefined;
+											</table>`;
         
       
       html = $.parseHTML(schedule);
@@ -71,12 +70,17 @@ import * as customFunctions from '../common-functions.build.js';
       // console.log('past:    ', $('#firstPastEventHeader'));
       customFunctions.stickyFooter();
       $('#2015PastEvents').focus();
-      $('#2015PastEvents').find('th, td').attr('tabindex', '0');
+      $('th, td').attr('tabindex', '0');
 
     }
 
     $pastEventsDiv.click(showSchedule);
-    $pastEventsDiv.keydown(showSchedule);
+    $pastEventsDiv.keydown(function (e) {
+      let keyCode = customFunctions.getKeyCode(e);
+      if (keyCode === 13) {
+        showSchedule();
+      }
+    });
 
   });
 })(jQuery);

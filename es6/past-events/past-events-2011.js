@@ -16,9 +16,8 @@ import * as customFunctions from '../common-functions.build.js';
     let $pastEventsDiv = $( '#2011_events' );
 
     let showSchedule = function(e) {
-      let keyCode = customFunctions.getKeyCode(e);
       let html;
-      let schedule = keyCode === 13 || keyCode === 1 ? `<table id="2011PastEvents" cellspacing="0" cellpadding="0">
+      let schedule = `<table id="2011PastEvents" tabindex="0" cellspacing="0" cellpadding="0">
 											<thead><tr>
 												<th>Name</th>
 												<th>Date</th>
@@ -57,7 +56,7 @@ import * as customFunctions from '../common-functions.build.js';
 													<td>Active Directory protocols</td>
 													<td><a href="http://channel9.msdn.com/Series/Windows-AD-Protocols-Plugfest-2011">Videos</a></td>
 												</tr></tbody>
-											</table>` : undefined;
+											</table>`;
         
       
       html = $.parseHTML(schedule);
@@ -70,7 +69,12 @@ import * as customFunctions from '../common-functions.build.js';
     }
 
     $pastEventsDiv.click(showSchedule);
-    $pastEventsDiv.keydown(showSchedule);
+    $pastEventsDiv.keydown(function (e) {
+      let keyCode = customFunctions.getKeyCode(e);
+      if (keyCode === 13) {
+        showSchedule();
+      }
+    });
 
   });
 })(jQuery);

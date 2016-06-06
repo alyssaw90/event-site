@@ -16,9 +16,8 @@ import * as customFunctions from '../common-functions.build.js';
     let $pastEventsDiv = $( '#2014_events' );
 
     let showSchedule = function(e) {
-      let keyCode = customFunctions.getKeyCode(e);
       let html;
-      let schedule = keyCode === 13 || keyCode === 1 ? `<table id="2014PastEvents" cellspacing="0" cellpadding="0">
+      let schedule = `<table id="2014PastEvents" tabindex="0" cellspacing="0" cellpadding="0">
 												<thead><tr>
 													<th>Name</th>
 													<th>Date</th>
@@ -57,7 +56,7 @@ import * as customFunctions from '../common-functions.build.js';
 													<td>Key interoperability topics, such as Bring your own device (BYOD), OAuth, OData, Remote Desktop Protocol (RemoteFX/RDP), Office File IO, and Exchange Email clients</td>
 													<td><a href="http://channel9.msdn.com/Events/Open-Specifications-Plugfests/Taipei-Interoperability-Protocols-Plugfest-2014">Videos</a></td>
 												</tr></tbody>
-											</table>` : undefined;
+											</table>`;
         
       
       html = $.parseHTML(schedule);
@@ -70,7 +69,12 @@ import * as customFunctions from '../common-functions.build.js';
     }
 
     $pastEventsDiv.click(showSchedule);
-    $pastEventsDiv.keydown(showSchedule);
+    $pastEventsDiv.keydown(function (e) {
+      let keyCode = customFunctions.getKeyCode(e);
+      if (keyCode === 13) {
+        showSchedule();
+      }
+    });
 
   });
 })(jQuery);

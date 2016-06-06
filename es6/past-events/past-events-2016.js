@@ -16,9 +16,8 @@ import * as customFunctions from '../common-functions.build.js';
     let $pastEventsDiv = $( '#2016_events' );
 
     let showSchedule = function(e) {
-      let keyCode = customFunctions.getKeyCode(e);
       let html;
-      let schedule = keyCode === 13 || keyCode === 1 ? `<table cellspacing="0" cellpadding="0" id="2016PastEvents" tabindex="0">
+      let schedule = `<table cellspacing="0" cellpadding="0" id="2016PastEvents" tabindex="0">
                       <caption>Past plugfests and events from 2008</caption>
                           <thead>
                           <tr>
@@ -45,7 +44,7 @@ import * as customFunctions from '../common-functions.build.js';
                           <td><a href="/paris2016">Event Page</a></td>
                         </tr>
                       </tbody>
-                    </table>` : undefined;
+                    </table>`;
         
       
       html = $.parseHTML(schedule);
@@ -58,7 +57,12 @@ import * as customFunctions from '../common-functions.build.js';
     }
 
     $pastEventsDiv.click(showSchedule);
-    $pastEventsDiv.keydown(showSchedule);
+    $pastEventsDiv.keydown(function (e) {
+      let keyCode = customFunctions.getKeyCode(e);
+      if (keyCode === 13) {
+        showSchedule();
+      }
+    });
 
   });
 })(jQuery);

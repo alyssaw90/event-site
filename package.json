@@ -18,6 +18,7 @@
     "eat": "^0.1.1",
     "express": "^4.13.4",
     "flash": "^1.1.0",
+    "get-contrast": "^2.0.0",
     "image-map-resizer": "^1.0.0",
     "jquery": "^2.2.3",
     "jquery-ui": "^1.10.5",

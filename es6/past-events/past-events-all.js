@@ -11,8 +11,8 @@ import * as customFunctions from '../common-functions.build.js';
 (function($) {
 
 	$(function() {
-		const $pastEvents = $('.past_events');
-		$pastEvents.click(function(e) {
+		var $pastEvents = $('.past_events');
+		$pastEvents.on('click keydown', function() {
 			let keyCode = customFunctions.getKeyCode(e);
 			if (keyCode === 1 || 9 || 13) {
 				customFunctions.changeHeight('.past_events');
@@ -32,8 +32,5 @@ import * as customFunctions from '../common-functions.build.js';
 		customFunctions.changeHeight('.past_events');
 		customFunctions.homepageStickyFooter();
 	});
-
-	///////////Accessibility
-	console.log('tacos:     ', $('.past_events')[0]);
 
 })(jQuery);
