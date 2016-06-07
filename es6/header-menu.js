@@ -153,7 +153,7 @@ import * as customFunctions from './common-functions.build.js';
 							}
 								//if there is a homepage image, add it to the slider
 								if (imageCount > 1 && elem.eventHomepageImage && siteStyle.showSlider) {
-									homepageImage += `<li><a tabindex="-1" href="${elem.eventUrl}"><img src="uploads/${elem.eventHomepageImage}" /></a></li>`;
+									homepageImage += `<li><a tabindex="-1" href="${elem.eventUrl}"><img alt="home page banner" src="uploads/${elem.eventHomepageImage}" /></a></li>`;
 								}
 
 						});
@@ -164,7 +164,6 @@ import * as customFunctions from './common-functions.build.js';
 						
 					} 
 					//if there is only one event returned, make it a static image on the homepage
-					console.log('data[0]:    ', data.length);
 					if (imageCount === 1 || data.length <= 1 || siteStyle.showSlider === false) {
 						let eventCity;
 						let eventCityArr = data[0].eventLocation.split('_');
@@ -186,7 +185,7 @@ import * as customFunctions from './common-functions.build.js';
 						eventCity = eventCityArr.join(' ');
 						//if there is a hompepage image create the homepage image style
 						if (data[0] && data[0].eventHomepageImage) {
-							homepageImage = `<a tabindex="-1" href="/${data[0].eventUrl}"><section id="headerImage" class="mobileWrapper"><img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../uploads/${data[0].eventHomepageImage}" /></section></a>`;
+							homepageImage = `<a tabindex="-1" href="/${data[0].eventUrl}"><section id="headerImage" class="mobileWrapper"><img alt="home page banner" style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../uploads/${data[0].eventHomepageImage}" /></section></a>`;
 						}
 						headerBackgroundColor = `<nav class="menu-overlay desktop-menu flex clearfix" style="background-color:${data[0].eventHighlightColor};">`;
 						//if there is only one event create the menu
