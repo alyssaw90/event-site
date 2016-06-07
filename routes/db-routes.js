@@ -99,20 +99,20 @@ module.exports = function (router) {
     })
     .then(function(speakers) {
       let meetTheTeamSpeakersArr = [];
-      let meetTheTeamSpeakersHtml = '<main class="grid white-bg main-page-content the-team-section">';
+      let meetTheTeamSpeakersHtml = '<main role="main" class="grid white-bg main-page-content the-team-section">';
       //loop over the returned speakers and splice them into an array using their position number minus one as the index
       for (let key in speakers) {
         meetTheTeamSpeakersArr.splice(speakers[key].meetTheTeamPageOrder - 1, 0, speakers[key]) 
       }
       //create the string of html to add to the page
-      meetTheTeamSpeakersHtml += `<section class="col_12 internetExplorer" id="${meetTheTeamSpeakersArr[0].divId}"><h4  id="beginningOfContent">${meetTheTeamSpeakersArr[0].firstName} ${meetTheTeamSpeakersArr[0].lastName}</h4><h5>${meetTheTeamSpeakersArr[0].msTeamTitle}</h5><p><img class="pull-left" src="../uploads/${meetTheTeamSpeakersArr[0].headShot}" />${meetTheTeamSpeakersArr[0].contactDescription}</p><hr class="alt1" /></section>`;
+      meetTheTeamSpeakersHtml += `<section class="col_12 internetExplorer" id="${meetTheTeamSpeakersArr[0].divId}"><h4  id="beginningOfContent">${meetTheTeamSpeakersArr[0].firstName} ${meetTheTeamSpeakersArr[0].lastName}</h4><h5>${meetTheTeamSpeakersArr[0].msTeamTitle}</h5><p><img alt="Image of ${meetTheTeamSpeakersArr[0].fullName}" class="pull-left" src="../uploads/${meetTheTeamSpeakersArr[0].headShot}" />${meetTheTeamSpeakersArr[0].contactDescription}</p><hr class="alt1" /></section>`;
       for (let i = 1, j = meetTheTeamSpeakersArr.length; i < j; i++) {
-        meetTheTeamSpeakersHtml += `<section class="col_12 internetExplorer" id="${meetTheTeamSpeakersArr[i].divId}"><h4>${meetTheTeamSpeakersArr[i].firstName} ${meetTheTeamSpeakersArr[i].lastName}</h4><h5>${meetTheTeamSpeakersArr[i].msTeamTitle}</h5><p><img class="pull-left" src="../uploads/${meetTheTeamSpeakersArr[i].headShot}" />${meetTheTeamSpeakersArr[i].contactDescription}</p><hr class="alt1" /></section>`;
+        meetTheTeamSpeakersHtml += `<section class="col_12 internetExplorer" id="${meetTheTeamSpeakersArr[i].divId}"><h4>${meetTheTeamSpeakersArr[i].firstName} ${meetTheTeamSpeakersArr[i].lastName}</h4><h5>${meetTheTeamSpeakersArr[i].msTeamTitle}</h5><p><img alt="Image of ${meetTheTeamSpeakersArr[i].fullName}" class="pull-left" src="../uploads/${meetTheTeamSpeakersArr[i].headShot}" />${meetTheTeamSpeakersArr[i].contactDescription}</p><hr class="alt1" /></section>`;
       }
       //read in the meet-the-team.html page and add the speakers html then send the html string
       fs.readFile(path.join(__dirname, '../views/meet-the-team.html'), function(err, speakersPage) {
         let speakersPageHtml = speakersPage.toString();
-        speakersPageHtml = speakersPageHtml.replace('<main class="grid white-bg main-page-content the-team-section">', meetTheTeamSpeakersHtml);
+        speakersPageHtml = speakersPageHtml.replace('<main role="main" class="grid white-bg main-page-content the-team-section">', meetTheTeamSpeakersHtml);
         res.send(speakersPageHtml);
       });
     });
@@ -177,7 +177,7 @@ module.exports = function (router) {
   //find all events that are upcoming and add the next 3 upcoming events to the future-events page
   router.route('/future-events')
   .get(function (req, res) {
-    let eventBlocksHtml = '<main class="events grid" tabindex="0"><section class="col_12 internetExplorer">';
+    let eventBlocksHtml = '<main class="events grid" tabindex="0" role="main"><section class="col_12 internetExplorer">';
     let newHtml = '';
     let numFutureBlocks = 4;
     let eventDates = 'Coming Soon';

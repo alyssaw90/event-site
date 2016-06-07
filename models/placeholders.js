@@ -1962,7 +1962,7 @@ setTimeout(function() {
 	<tr><td>14:30-15:15</td><td class="lightBlueBackground">Office Online Integration (MS-WOPI)</td></tr>
 	<tr><td>15:15-15:30</td><td>Break</td></tr>
 	<tr><td>15:30-16:15</td><td class="lightBlueBackground">Office File Formats </td></tr>
-	<tr><td>17:00-19:00</td><td>Wood fired pizza dinner </td></tr>
+	<tr><td>16:30-19:00</td><td>Wood fired pizza dinner </td></tr>
 </table>
 <br /><br />
 <h2>Tuesday, June 14, 2016</h2>
@@ -1998,8 +1998,8 @@ setTimeout(function() {
 	<tr><td>14:00-14:45</td><td class="lightOrangeBackground">AD/BYOD test suites and updates</td></tr>
 	<tr><td>14:45-15:00</td><td>Break</td></tr>
 	<tr><td>15:00-15:30</td><td class="lightOrangeBackground">New and modified protocols for Redstone and Server 2016</td></tr>
-	<tr><td>15:30-16:00</td><td class="lightOrangeBackground">Talk from Canonical</td></tr>
-	<tr><td>17:00-19:00</td><td>Dinner from Pacific Northwest Catering</td></tr>
+	<tr><td>15:30-16:00</td><td class="lightOrangeBackground">Adhoc conversation on Open Authoring and use of tools such as Markdown and Github <strong>*(Venue: White Room)</strong></td></tr>
+	<tr><td>16:30-19:00</td><td>Dinner from Pacific Northwest Catering</td></tr>
 </table>
 <br /><br />
 <h2>Thursday, June 16, 2016</h2>
@@ -2029,7 +2029,6 @@ setTimeout(function() {
 	<tr><td>9:45-10:30</td><td class="lightOrangeBackground">Open SSH</td></tr>
 	<tr><td>10:30-10:45</td><td>Break</td></tr>
 	<tr><td>10:45-11:30</td><td class="lightOrangeBackground">Windows protocol test suites open source</td></tr>
-	<tr><td>11:30-12:00</td><td class="lightOrangeBackground">Adhoc conversation on Open Authoring and use of tools such as Markdown and Github</td></tr>
 	<tr><td>12:00-13:00</td><td>Lunch</td></tr>
 </table>
 <br /><br />

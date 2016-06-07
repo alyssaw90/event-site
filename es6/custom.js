@@ -118,7 +118,7 @@ import * as customFunctions from './common-functions.build.js';
 
 	//add tabindex="0" to paragraphs on the speakers, about abd faq pages
 
-	if (path === '/meet-the-team' || path === '/about' || path === '/faq') {
+	if (path === '/meet-the-team' || path === '/about' || path === '/faq' || path === '/latest-news', '/contactus') {
 		$('p').attr('tabindex', '0');
 	}
 
