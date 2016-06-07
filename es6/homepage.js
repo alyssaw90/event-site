@@ -80,10 +80,12 @@ const jQuery = require('jquery');
 			if (keyCode === 1 || keyCode === 13) {
 				if ($window.width() > 768) {
 					$this.toggleClass(thisBlockArrowClass);
+					$this.find('h3').toggleClass('whiteText');
 					$this.siblings().each(function (i, elem) {
 						let $thisElem = $(this);
 						let arrowClass = elem.id + 'ArrowBox';
 						$thisElem.removeClass(arrowClass);
+						$thisElem.find('h3').removeClass('whiteText');
 					});
 				}
 				if ($window.width() <= 768) {
