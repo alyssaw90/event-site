@@ -2108,7 +2108,15 @@ setTimeout(function() {
 									<h4>Microsoft Campus</h4>
 									<h4>3709 157th Ave NE</h4>
 									<h4>Redmond, WA 98052</h4>
-									<img src="../uploads/ms-campus.png" />`
+									<h4>Parking</h4>
+									<ul class="noStyleUL">
+										<li>Building 20 provides 50 parking spaces</li>
+										<li>We encourage you to carpool or take a shuttle, taxi, or other ride service to the venue.</li>
+										<li>If you are planning on parking, please arrive early to ensure your space.</li>
+										<li>If you have any further questions, please contact <a href="mailto:plugfests@microsoft.com">plugfests@microsoft.com</a></li>
+									</ul>
+
+									<img src="../uploads/ms-campus.jpg" />`
   })
 })
 .then(function() {
