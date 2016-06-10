@@ -120,7 +120,83 @@ module.exports = function() {
 			eventSpeakers: '1,2,13,9,8,10,6,11,35,26'
 		})
 	})
-	
+	.then(function() {
+		return Event.create({
+			eventLocation: 'Göttingen',
+			eventEndDate: new Date('May 22, 2015'),
+			eventStartDate: new Date('May 22, 2015')
+		})
+	})
+	.then(function() {
+		return Event.create({
+			eventLocation: 'Zaragoza, Spain',
+			eventEndDate: new Date('May 14, 2015'),
+			eventStartDate: new Date('May 14, 2015')
+		})
+	})
+	.then(function() {
+		return Event.create({
+			eventLocation: 'Beijing',
+			eventEndDate: new Date('March 17, 2015'),
+			eventStartDate: new Date('March 17, 2015')
+		})
+	})
+	.then(function() {
+		return Event.create({
+			eventLocation: 'Santa Clara',
+			eventEndDate: new Date('March 17, 2015'),
+			eventStartDate: new Date('March 17, 2015')
+		})
+	})
+	.then(function() {
+		return Event.create({
+			eventLocation: 'Portland, OR',
+			eventEndDate: new Date('March 17, 2015'),
+			eventStartDate: new Date('March 17, 2015')
+		})
+	})
+	.then(function() {
+		return Event.create({
+			eventLocation: 'Las Vegas',
+			eventEndDate: new Date('March 17, 2015'),
+			eventStartDate: new Date('March 17, 2015')
+		})
+	})
+	.then(function() {
+		return Event.create({
+			eventLocation: 'Cambridge, MA',
+			eventEndDate: new Date('March 17, 2015'),
+			eventStartDate: new Date('March 17, 2015')
+		})
+	})
+	.then(function() {
+		return Event.create({
+			eventLocation: 'London',
+			eventEndDate: new Date('March 17, 2015'),
+			eventStartDate: new Date('March 17, 2015')
+		})
+	})
+	.then(function() {
+		return Event.create({
+			eventLocation: 'Tokyo',
+			eventEndDate: new Date('March 17, 2015'),
+			eventStartDate: new Date('March 17, 2015')
+		})
+	})
+	.then(function() {
+		return Event.create({
+			eventLocation: 'Munich',
+			eventEndDate: new Date('March 17, 2015'),
+			eventStartDate: new Date('March 17, 2015')
+		})
+	})
+	.then(function() {
+		return Event.create({
+			eventLocation: 'Seoul',
+			eventEndDate: new Date('March 17, 2015'),
+			eventStartDate: new Date('March 17, 2015')
+		})
+	})
 
 
 	////////////////////////////////////EventTab placeholder/////////////////////////////////////
@@ -2118,6 +2194,41 @@ setTimeout(function() {
 
 									<img src="../uploads/ms-campus.jpg" />`
   })
+})
+.then(function() {
+	return EventTab.create({
+		eventId: 3,
+		tabNumber: 4,
+		tabTitle: 'Event Resources',
+		tabContent: `<h3>Office</h3>
+									<h5>Office Protocol Test Suites  <a href="https://github.com/OfficeDev/Interop-TestSuites">https://github.com/OfficeDev/Interop-TestSuites</a> </h5>
+									<ul>
+										<li>Exchange EAS, EWS, MAPIHTTP</li>
+										<li>SharePoint Protocols</li>
+										<li>WOPI/FSSHTTP</li>
+									</ul>
+									<h5>MailSim: <a href="https://github.com/OfficeDev/Interop-MailSim">https://github.com/OfficeDev/Interop-MailSim</a> </h5>
+									<ul>
+										<li>Outlook traffic generation</li>
+										<li>REST Mail Client </li>
+									</ul>
+									<h5>Network Tracing </h5>
+									<ul>
+										<li>Fiddler: <a href="https://github.com/OfficeDev/Office-Inspectors-for-Fiddler">https://github.com/OfficeDev/Office-Inspectors-for-Fiddler</a></li>
+										<li>Message Analyzer: <a href="https://www.microsoft.com/en-us/download/details.aspx?id=44226">https://www.microsoft.com/en-us/download/details.aspx?id=44226</a> </li>
+									</ul>
+									<h3>Data</h3>
+									
+									<p>Tools on <a href="http://www.odata.org/">http://www.odata.org/</a></p>
+									
+									<h3>Windows</h3>
+									
+									<h5>Windows Protocol Test Suites:</h5>
+									<p><a href="https://github.com/Microsoft/WindowsProtocolTestSuites">https://github.com/Microsoft/WindowsProtocolTestSuites</a></p>
+									
+									<h5>Protocol Test Framework:</h5>
+									<p><a href="https://github.com/Microsoft/ProtocolTestFramework">https://github.com/Microsoft/ProtocolTestFramework</a></p>`
+	})
 })
 .then(function() {
 	return EventTab.create({
