@@ -31,12 +31,27 @@ import * as customFunctions from './common-functions.build.js';
 				$(this).find('p').animate({opacity: 0}, 0);
 			});
 
-		function GeocodeCallback(result) 
-{   
-    // Do something with the result
-    console.log('result:    ', result);
-}
+		//urlify a string function
+		function urlify(str, lngth) {
+		  let strArr = [];
+		  let tmpStr = '';
+		  tmpStr = str.slice(0, lngth);
+		  for (let i = 0; i < tmpStr.length; i++) {
+		    if (tmpStr.charAt(i) !== ' ') {
+		      strArr.push(tmpStr.charAt(i));
+		    }
+		    if (tmpStr.charAt(i) === ' ') {
+		      strArr.push('%20');
+		    }
+		  }
+		  tmpStr = strArr.join('');
+		  return tmpStr;
+		}
+
 		//create bing map
+
+		if (window.location.pathname === '/future-events') {
+
 			let map = new Microsoft.Maps.Map(document.getElementById('eventsMap'), {
  	   		credentials: 'AsQgDPDncnnJ8Zf6TkAuZVBQUVtzAe2-h_sjl4OxiTF2XFLIJF9rbMMPU5Oucd5v',
  	   		width: 800,
@@ -44,105 +59,66 @@ import * as customFunctions from './common-functions.build.js';
  	   		zoom: 2.25,
  	   		enableSearchLogo: false
  	   	});
+	
+			//add pins to map
+			function getMap() {
+    	  function displayEventInfo(e) {
+    	    window.location = '/redmond2016'
+    	  }
 
-		//get all events to add to the map
-
-		function CallRestService(request, callback) {
-	    $.ajax({
-        	url: request,
-        	dataType: "jsonp",
-        	jsonp: "jsonp",
-        	success: function (r) {
-        	    callback(r);
-        	},
-        	error: function (e) {
-        	    alert(e.statusText);
-        	}
-	    });
-		}
-		var geocodeRequest = "http://dev.virtualearth.net/REST/v1/Locations?query=1%20Microsoft%20Way%20Redmond%20WA%2098052&key=AsQgDPDncnnJ8Zf6TkAuZVBQUVtzAe2-h_sjl4OxiTF2XFLIJF9rbMMPU5Oucd5v";
-
-		CallRestService(geocodeRequest, GeocodeCallback);
-		
-		function GeocodeCallback(result) {
-		    // Do something with the result
-		    console.log('result:    ', result);
-		}
 				$.get('/allevents', function(data) {
-			console.log('data:              ', data);
-			for (let i = 0, j = data.length; i < j; i++) {
-				let searchUrl = "http://dev.virtualearth.net/REST/v1/Locations?query=1%20Microsoft%20Way%20Redmond%20WA%2098052&key=AsQgDPDncnnJ8Zf6TkAuZVBQUVtzAe2-h_sjl4OxiTF2XFLIJF9rbMMPU5Oucd5v";
-				// let searchUrl = `http://dev.virtualearth.net/REST/v1/Locations?query=1%20Microsoft%20Way%20Redmond%20WA%2098052&jsonp&key=AsQgDPDncnnJ8Zf6TkAuZVBQUVtzAe2-h_sjl4OxiTF2XFLIJF9rbMMPU5Oucd5v&callback=JSON_CALLBACK`;
-				// // let searchUrl = `http://dev.virtualearth.net/REST/v1/Locations?query=1%20Microsoft%20Way%20Redmond%20WA%2098052&o=json&key=AsQgDPDncnnJ8Zf6TkAuZVBQUVtzAe2-h_sjl4OxiTF2XFLIJF9rbMMPU5Oucd5v&callback=JSON_CALLBACK`;
-				$.ajax({
-					url: searchUrl,
-					type: 'GET',
-					crossDomain: true,
-    			dataType: 'jsonp',
-    			jsonp: 'jsonp',
-    			success: function(data2) {
-    				console.log('this is data2     ', data2);
-    			},
-    			error: function(err) {
-    				console.log('error    ', err);
-    			}
-				})
-				/*.done(function(data) {
-					console.log("success");
-				})
-				.fail(function() {
-					console.log("error");
-				})
-				.always(function(data) {
-					console.log('this is data:    ', data);
-					console.log("complete");
-				});*/
-				
-			}
-		});
+					for (let i = 0, j = data.length; i < j; i++) {
+						let searchString = urlify(data[i].eventLocation);
+						let searchUrl = `http://dev.virtualearth.net/REST/v1/Locations?query=${searchString}&key=AsQgDPDncnnJ8Zf6TkAuZVBQUVtzAe2-h_sjl4OxiTF2XFLIJF9rbMMPU5Oucd5v`;
+						let today = new Date();
+						let mapIcon;
+						if (new Date(data[i].eventEndDate) > today || data[i].eventEndDate === null) {
+							mapIcon = 'favicon.png';
+						} else {
+							mapIcon = 'favicon-gray.png';
+						}
+						$.ajax({
+							url: searchUrl,
+							type: 'GET',
+							crossDomain: true,
+	    				dataType: 'jsonp',
+	    				jsonp: 'jsonp',
+	    				success: function(data2) {
+				 	  	 	// map.entities.clear(); 
+				 	  	 	let currentEventUrl = new Date(data[i].eventEndDate) < new Date('June 1, 2015') &&  data[i].eventEndDate !== null ? 'past-events' : data[i].eventUrl;
+								let pushpinOptions = {
+									// icon: './uploads/favicon.png', 
+									width: 15, 
+									height: 15,
+									typeName: 'pushpinLabel',
+									text: searchString,
+									textOffset : new Microsoft.Maps.Point(-45,-25),
+									htmlContent: `<span class="tooltip" title="${data[i].eventLocation}"><img src="./uploads/${mapIcon}" /></span>`
+								}; 
+								let pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), pushpinOptions);
+								let pushpinClick = Microsoft.Maps.Events.addHandler(pushpin, 'click', function() {window.location = `/${currentEventUrl}`}); 
+								pushpin.setLocation(new Microsoft.Maps.Location(data2.resourceSets[0].resources[0].geocodePoints[0].coordinates[0], data2.resourceSets[0].resources[0].geocodePoints[0].coordinates[1])); 
+								map.entities.push(pushpin);
+	    				},
+	    				error: function(err) {
+	    					console.log('error');
+	    				}
+						})
+					}
+				});
 
+   		}
+    	  
+	
+   		getMap();
+	
+   		$('.MicrosoftMap').css({
+   			width: '100%'
+   		});;
 
-		function getMap(eventLink, eventLocation, upcomingBool, latLong) {
-      function displayEventInfo(e) {
-        window.location = '/redmond2016'
-      }
- 	   /*	let map = new Microsoft.Maps.Map(document.getElementById('eventsMap'), {
- 	   		credentials: process.env.BING_MAP_API_KEY,
- 	   		width: 800,
- 	   		height: 800,
- 	   		zoom: 2.25,
- 	   		enableSearchLogo: false
- 	   	});*/
- 	   	map.entities.clear(); 
-			let pushpinOptions = {
-				// icon: './uploads/favicon.png', 
-				width: 15, 
-				height: 15,
-				typeName: 'pushpinLabel',
-				text: 'Redmond, USA',
-				textOffset : new Microsoft.Maps.Point(-45,-25),
-				htmlContent: '<span class="tooltip" title="Redmond, USA"><img src="./uploads/favicon.png" /></span>'
-			}; 
-			let pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), pushpinOptions);
-			let pushpinClick = Microsoft.Maps.Events.addHandler(pushpin, 'click', displayEventInfo); 
-			pushpin.setLocation(new Microsoft.Maps.Location(47.6740, -122.1215)); 
-			map.entities.push(pushpin);
-   	}
+		}
 
-   	/*function attachPushpinClickEvent()
-      {
-        var pushpin= new Microsoft.Maps.Pushpin(map.getCenter(), null); 
-        var pushpinClick= Microsoft.Maps.Events.addHandler(pushpin, 'click', displayEventInfo);  
-        map.entities.push(pushpin); 
-        alert('Click on newly added pushpin to raise event');
-      }*/
-      
-
-   	getMap();
-
-   	$('.MicrosoftMap').css({
-   		width: '100%'
-   	});;
+			
 
 		//convert rbg colors to hex
 		function rgb2hex(rgb) {
