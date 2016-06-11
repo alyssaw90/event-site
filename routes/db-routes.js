@@ -7,27 +7,27 @@ let Event = require('../models/Event');
 let EventTab = require('../models/EventTab');
 let EventImage = require('../models/EventImage');
 let User = require('../models/User');*/
-let fs = require('fs');
-let clc = require('cli-color');
-let multer = require('multer');
-let storage = multer.diskStorage({
+const fs = require('fs');
+const clc = require('cli-color');
+const multer = require('multer');
+const storage = multer.diskStorage({
   destination: 'uploads/',
   filename: function (req, file, callback) {
     callback(null, Date.now() + '-' + file.originalname);
   }
 });
-let upload = multer({ storage: storage });
-let bodyparser = require('body-parser');
-let cookieParser = require('cookie-parser');
-let path = require('path');
-let eatAuth = require('../scripts/eat_auth')(process.env.SECRET_KEY);
-let models = require('../models');
-let User = models.User;
-let Contact = models.Contact;
-let Event = models.Event;
-let EventTab = models.EventTab;
-let SiteStyle = models.SiteStyle;
-let placeholders = require('../models/placeholders');
+const upload = multer({ storage: storage });
+const bodyparser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const path = require('path');
+const eatAuth = require('../scripts/eat_auth')(process.env.SECRET_KEY);
+const models = require('../models');
+const User = models.User;
+const Contact = models.Contact;
+const Event = models.Event;
+const EventTab = models.EventTab;
+const SiteStyle = models.SiteStyle;
+const placeholders = require('../models/placeholders');
 
 placeholders();
 
@@ -99,19 +99,20 @@ module.exports = function (router) {
     })
     .then(function(speakers) {
       let meetTheTeamSpeakersArr = [];
-      let meetTheTeamSpeakersHtml = '<main class="grid white-bg main-page-content the-team-section">';
+      let meetTheTeamSpeakersHtml = '<main role="main" class="grid white-bg main-page-content the-team-section">';
       //loop over the returned speakers and splice them into an array using their position number minus one as the index
       for (let key in speakers) {
         meetTheTeamSpeakersArr.splice(speakers[key].meetTheTeamPageOrder - 1, 0, speakers[key]) 
       }
       //create the string of html to add to the page
-      for (let i = 0, j = meetTheTeamSpeakersArr.length; i < j; i++) {
-        meetTheTeamSpeakersHtml += '<section class="col_12 internetExplorer" id="' + meetTheTeamSpeakersArr[i].divId + '"><h4>' + meetTheTeamSpeakersArr[i].firstName + ' ' + meetTheTeamSpeakersArr[i].lastName + '</h4><h5>'+ meetTheTeamSpeakersArr[i].msTeamTitle + '</h5><p><img class="pull-left" src="../uploads/' + meetTheTeamSpeakersArr[i].headShot + '" />' + meetTheTeamSpeakersArr[i].contactDescription + '</p><hr class="alt1" /></section>';
+      meetTheTeamSpeakersHtml += `<section class="col_12 internetExplorer" id="${meetTheTeamSpeakersArr[0].divId}"><h4  id="beginningOfContent">${meetTheTeamSpeakersArr[0].firstName} ${meetTheTeamSpeakersArr[0].lastName}</h4><h5>${meetTheTeamSpeakersArr[0].msTeamTitle}</h5><p><img alt="Image of ${meetTheTeamSpeakersArr[0].fullName}" class="pull-left" src="../uploads/${meetTheTeamSpeakersArr[0].headShot}" />${meetTheTeamSpeakersArr[0].contactDescription}</p><hr class="alt1" /></section>`;
+      for (let i = 1, j = meetTheTeamSpeakersArr.length; i < j; i++) {
+        meetTheTeamSpeakersHtml += `<section class="col_12 internetExplorer" id="${meetTheTeamSpeakersArr[i].divId}"><h4>${meetTheTeamSpeakersArr[i].firstName} ${meetTheTeamSpeakersArr[i].lastName}</h4><h5>${meetTheTeamSpeakersArr[i].msTeamTitle}</h5><p><img alt="Image of ${meetTheTeamSpeakersArr[i].fullName}" class="pull-left" src="../uploads/${meetTheTeamSpeakersArr[i].headShot}" />${meetTheTeamSpeakersArr[i].contactDescription}</p><hr class="alt1" /></section>`;
       }
       //read in the meet-the-team.html page and add the speakers html then send the html string
       fs.readFile(path.join(__dirname, '../views/meet-the-team.html'), function(err, speakersPage) {
         let speakersPageHtml = speakersPage.toString();
-        speakersPageHtml = speakersPageHtml.replace('<main class="grid white-bg main-page-content the-team-section">', meetTheTeamSpeakersHtml);
+        speakersPageHtml = speakersPageHtml.replace('<main role="main" class="grid white-bg main-page-content the-team-section">', meetTheTeamSpeakersHtml);
         res.send(speakersPageHtml);
       });
     });
@@ -176,10 +177,13 @@ module.exports = function (router) {
   //find all events that are upcoming and add the next 3 upcoming events to the future-events page
   router.route('/future-events')
   .get(function (req, res) {
-    let eventBlocksHtml = '<main class="events grid"><section class="col_12 internetExplorer">';
+    let eventBlocksHtml = '<main class="events grid" tabindex="0" role="main"><section class="col_12 internetExplorer">';
     let newHtml = '';
-    let colNum = 4;
     let numFutureBlocks = 4;
+    let eventDates = 'Coming Soon';
+    let city;
+    let cityArr;
+
     fs.readFile(path.join(__dirname, '../views/future-events.html'), function (err, html) {
       if (err) {
         console.log(err);
@@ -187,7 +191,16 @@ module.exports = function (router) {
       }
       models.sql.sync()
       .then(function () {
-        Event.findAll({where: {eventStartDate: {$gte: new Date()}}})
+        Event.findAll({
+          where: {
+            eventStartDate: {
+                $or: {
+                  $gte: new Date(),
+                  $eq: null
+              }
+            }
+          }
+        })
         .then(function (upcomingEvent) {
           if (upcomingEvent.length < 4) {
             numFutureBlocks = upcomingEvent.length;
@@ -196,18 +209,32 @@ module.exports = function (router) {
             a = new Date(a.eventStartDate);
             b = new Date(b.eventStartDate);
             if ( a < b) {
-              return -1;
+              return 1;
             }
             if (a > b) {
-              return 1;
+              return -1;
             }
             if (a === b) {
               return 0;
             }
           });
+
+
           for (let i = 0; i < numFutureBlocks; i++) {
+            
+            cityArr = upcomingEvent[i].eventLocation.split('_');
+            for (let index = 0, j = cityArr.length; index < j; index++) {
+              cityArr[index] = cityArr[index].charAt(0).toUpperCase() + cityArr[index].slice(1);
+            }
+
+            city = cityArr.join(' ');
+            
+            if (upcomingEvent[i].eventStartDate) {
+              eventDates = `${months[upcomingEvent[i].eventStartDate.getMonth()]} ${upcomingEvent[i].eventStartDate.getDate()} - ${upcomingEvent[i].eventEndDate.getDate()}, ${upcomingEvent[i].eventEndDate.getFullYear()}`;
+            }
             let risingText = '';
-            eventBlocksHtml += '<div class="col_' + 12 / numFutureBlocks + ' event_block" style="background-color: #' + continentColors[upcomingEvent[i].eventContinent] + ';"><a href="/' + upcomingEvent[i].eventUrl + '"><p>More Details</p><h1>' + upcomingEvent[i].eventLocation + '</h1><h3>' + upcomingEvent[i].eventName + '<br />' + months[upcomingEvent[i].eventStartDate.getMonth()] + ' ' + upcomingEvent[i].eventStartDate.getDate() + ' - ' + upcomingEvent[i].eventEndDate.getDate() + ', ' + upcomingEvent[i].eventEndDate.getFullYear() + '</h3></a>' + risingText + '</div>';
+            eventBlocksHtml += i === 0 ? `<div tabindex="-1" class="col_${12 / numFutureBlocks} event_block" style="background-color: #${continentColors[upcomingEvent[i].eventContinent]};"><a id="beginningOfContent" tabindex="0" href="/${upcomingEvent[i].eventUrl}"><p>More Details</p><h1>${city}</h1><h3>${upcomingEvent[i].eventName}<br />${eventDates}</h3></a>${risingText}</div>` : `<div tabindex="-1" class="col_${12 / numFutureBlocks} event_block" style="background-color: #${continentColors[upcomingEvent[i].eventContinent]};"><a tabindex="0" href="/${upcomingEvent[i].eventUrl}"><p>More Details</p><h1>${city}</h1><h3>${upcomingEvent[i].eventName}<br />${eventDates}</h3></a>${risingText}</div>`;
+            // eventBlocksHtml += `<div tabindex="-1" class="col_${12 / numFutureBlocks} event_block" style="background-color: #${continentColors[upcomingEvent[i].eventContinent]};"><a tabindex="0" href="/${upcomingEvent[i].eventUrl}"><p>More Details</p><h1>${city}</h1><h3>${upcomingEvent[i].eventName}<br />${eventDates}</h3></a>${risingText}</div>`;
           }
           eventBlocksHtml += '</section>';
           newHtml = html.toString().replace('<main class="events grid">', eventBlocksHtml);
@@ -581,7 +608,6 @@ module.exports = function (router) {
   router.post('/deleteevent', eatAuth, function(req, res) {
     models.sql.sync()
     .then(function() {
-      console.log(clc.magenta(':::::::::     '), req.body.tabToDeleteId);
       return EventTab.findOne({where: {id: req.body.tabToDeleteId}});
     })
     .then(function(tabToDelete) {
@@ -784,7 +810,7 @@ module.exports = function (router) {
       //read the blank event html file and turn the returned blob into a string, then replace the placeholder html content with the content created by the event
       fs.readFile(path.join(__dirname, '../views/blank-event.html'), function(err, data) {
         let theHtml = data.toString();            
-        let fullEventHtml = theHtml.replace('<div class="col_12 internetExplorer event-header center" id="eventHeader"></div>', eventInfo.headerHtml).replace('<section class="col_12 internetExplorer event-tabs" id="eventTabs"></section>', '<section class="col_12 internetExplorer event-tabs" id="eventTabs">' + eventInfo.htmlContent + '</section>');
+        let fullEventHtml = theHtml.replace('<div class="col_12 internetExplorer event-header center" id="eventHeader"></div>', eventInfo.headerHtml).replace('<section class="col_12 internetExplorer event-tabs" id="eventTabs"></section>', '<section class="col_12 internetExplorer event-tabs" id="eventTabs">' + eventInfo.htmlContent + '</section>').replace(`<title></title>`, `<title>${eventInfo.event.eventName}</title>`);
         res.send(fullEventHtml);
       })
       
