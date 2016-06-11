@@ -13,6 +13,7 @@
     "bcrypt-nodejs": "latest",
     "body-parser": "^1.15.0",
     "clipboard": "^1.5.10",
+    "compression": "^1.6.2",
     "cookie-parser": "^1.4.1",
     "dotenv": "^1.2.0",
     "eat": "^0.1.1",
