@@ -72,6 +72,13 @@ import * as customFunctions from './common-functions.build.js';
 						let searchUrl = `http://dev.virtualearth.net/REST/v1/Locations?query=${searchString}&key=AsQgDPDncnnJ8Zf6TkAuZVBQUVtzAe2-h_sjl4OxiTF2XFLIJF9rbMMPU5Oucd5v`;
 						let today = new Date();
 						let mapIcon;
+						let city;
+						let cityArr = data[i].eventLocation.split('_');
+						
+            for (let index = 0, j = cityArr.length; index < j; index++) {
+              cityArr[index] = cityArr[index].charAt(0).toUpperCase() + cityArr[index].slice(1);
+            }
+            city = cityArr.join(' ');
 						if (new Date(data[i].eventEndDate) > today || data[i].eventEndDate === null) {
 							mapIcon = 'favicon.png';
 						} else {
@@ -93,7 +100,7 @@ import * as customFunctions from './common-functions.build.js';
 									typeName: 'pushpinLabel',
 									text: searchString,
 									textOffset : new Microsoft.Maps.Point(-45,-25),
-									htmlContent: `<span class="tooltip" title="${data[i].eventLocation}"><img src="./uploads/${mapIcon}" /></span>`
+									htmlContent: `<span class="tooltip" title="${city}"><img src="./uploads/${mapIcon}" /></span>`
 								}; 
 								let pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), pushpinOptions);
 								let pushpinClick = Microsoft.Maps.Events.addHandler(pushpin, 'click', function() {window.location = `/${currentEventUrl}`}); 
