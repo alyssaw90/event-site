@@ -9,23 +9,6 @@ import * as customFunctions from './common-functions.build.js';
 
 	$(function () {
 
-		//urlify a string function
-		function urlify(str, lngth) {
-		  let strArr = [];
-		  let tmpStr = '';
-		  tmpStr = str.slice(0, lngth);
-		  for (let i = 0; i < tmpStr.length; i++) {
-		    if (tmpStr.charAt(i) !== ' ') {
-		      strArr.push(tmpStr.charAt(i));
-		    }
-		    if (tmpStr.charAt(i) === ' ') {
-		      strArr.push('%20');
-		    }
-		  }
-		  tmpStr = strArr.join('');
-		  return tmpStr;
-		}
-
 		//create bing map
 
 		if (window.location.pathname === '/future-events') {
@@ -46,7 +29,7 @@ import * as customFunctions from './common-functions.build.js';
 
 				$.get('/allevents', function(data) {
 					for (let i = 0, j = data.length; i < j; i++) {
-						let searchString = urlify(data[i].eventLocation);
+						let searchString = data[i].eventLocation.trim().replace(/\s+/g, '%20');;
 						let searchUrl = `http://dev.virtualearth.net/REST/v1/Locations?query=${searchString}&key=AsQgDPDncnnJ8Zf6TkAuZVBQUVtzAe2-h_sjl4OxiTF2XFLIJF9rbMMPU5Oucd5v`;
 						let today = new Date();
 						let mapIcon;
