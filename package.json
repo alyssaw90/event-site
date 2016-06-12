@@ -19,8 +19,6 @@
     "dotenv": "^1.2.0",
     "eat": "^0.1.1",
     "express": "^4.13.4",
-    "flash": "^1.1.0",
-    "image-map-resizer": "^1.0.0",
     "jquery": "^2.2.3",
     "multer": "^1.1.0",
     "passport": "^0.3.2",
