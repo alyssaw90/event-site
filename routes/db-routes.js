@@ -193,7 +193,7 @@ module.exports = function (router) {
       .then(function () {
         Event.findAll({
           where: {
-            eventStartDate: {
+            eventEndDate: {
                 $or: {
                   $gte: new Date(),
                   $eq: null
@@ -206,8 +206,8 @@ module.exports = function (router) {
             numFutureBlocks = upcomingEvent.length;
           }
           upcomingEvent.sort(function (a, b) {
-            a = new Date(a.eventStartDate);
-            b = new Date(b.eventStartDate);
+            a = new Date(a.eventEndDate);
+            b = new Date(b.eventEndDate);
             if ( a < b) {
               return 1;
             }
