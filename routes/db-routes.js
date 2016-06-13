@@ -209,10 +209,10 @@ module.exports = function (router) {
             a = new Date(a.eventStartDate);
             b = new Date(b.eventStartDate);
             if ( a < b) {
-              return -1;
+              return 1;
             }
             if (a > b) {
-              return 1;
+              return -1;
             }
             if (a === b) {
               return 0;

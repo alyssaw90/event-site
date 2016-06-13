@@ -90,7 +90,7 @@ module.exports = function() {
 	  eventHeaderImage: 'Plugfest-and-IO-Website.png', //link to header image
 	  eventHomepageImage: 'Plugfest-and-IO-Website.png',
 	  eventHighlightColor: '#008272',
-	  eventSpeakers: '1,2,3,5,9,8,11,15,12,10,6,21,14,18,16'
+	  eventSpeakers: '1,2,3,5,9,8,11,15,12,10,6,21,14,18,16,39'
 	  });
 	})
 	.then(function () {
@@ -144,13 +144,6 @@ module.exports = function() {
 	.then(function() {
 		return Event.create({
 			eventLocation: 'Santa Clara',
-			eventEndDate: new Date('March 17, 2015'),
-			eventStartDate: new Date('March 17, 2015')
-		})
-	})
-	.then(function() {
-		return Event.create({
-			eventLocation: 'Portland, OR',
 			eventEndDate: new Date('March 17, 2015'),
 			eventStartDate: new Date('March 17, 2015')
 		})
@@ -2997,5 +2990,20 @@ setTimeout(function() {
 		allowPersonalInfoSharing: false
 	})
 })
-
+.then(function() {
+	return Contact.create({
+		firstName: 'Jos',
+		lastName: ' de Bruijn',
+		contactDescription: 'Jos de Bruijn is a Senior Program Manager in the Database Systems team. He works on in-memory technologies in SQL Server. His main focus is on query processing, programmability, and transaction semantics. In a previous life, he obtained a PhD in knowledge representation and semantic web technology, and worked in academia for several years as an assistant professor.',
+		eventRole: 'speaker',
+		showOnMeetTheTeamPage: false,
+		msTeamTitle: 'Senior Program Manager, Database Systems Team',
+		showOnHomePage: false,
+		headShot: 'jodebrui-photo-web.jpg',
+		company: 'Microsoft',
+		country: 'USA',
+		allowNotifications: false,
+		allowPersonalInfoSharing: false
+	})
+})
 }
