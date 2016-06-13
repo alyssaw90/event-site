@@ -90,7 +90,7 @@ module.exports = function() {
 	  eventHeaderImage: 'Plugfest-and-IO-Website.png', //link to header image
 	  eventHomepageImage: 'Plugfest-and-IO-Website.png',
 	  eventHighlightColor: '#008272',
-	  eventSpeakers: '1,2,3,5,9,8,11,15,12,10,6,21,14,18,16,39'
+	  eventSpeakers: '1,2,3,5,9,8,11,15,12,10,6,21,14,18,16,39,40'
 	  });
 	})
 	.then(function () {
@@ -2020,17 +2020,17 @@ setTimeout(function() {
 <table class="scheduleTable tableWithVerticalLines scheduleTableTextOnly">
 	<thead><th class="lightGrayBackground">Time</th><th class="lightGrayBackground">Presentation Zone</th></thead>
 	<tr><td>8:00-9:00</td><td>Breakfast</td></tr>
-	<tr><td>9:00-9:30</td><td class="lightBlueBackground">Plugfest Welcome</td></tr>
+	<tr><td>9:00-9:30</td><td class="lightBlueBackground">Plugfest Welcome<a class="button small blue float-right" href="/uploads/Welcome.pptx" download>Download Presentation</a></td></tr>
 	<tr><td>9:30-10:15</td><td class="lightBlueBackground">Office Developer Opportunity</td></tr>
 	<tr><td>10:15-10:30</td><td>Break</td></tr>
-	<tr><td>10:30-11:15</td><td class="lightBlueBackground">Getting Started with Add-ins and Microsoft Graph</td></tr>
-	<tr><td>11:15-12:00</td><td class="lightBlueBackground">Excel Integration using Microsoft Graph APIs</td></tr>
+	<tr><td>10:30-11:15</td><td class="lightBlueBackground">Getting Started with Add-ins and Microsoft Graph<a class="button small blue float-right" href="/uploads/Getting-Started-with-Add-ins-and-the-Microsoft-Graph.pptx" download>Download Presentation</a></td></tr>
+	<tr><td>11:15-12:00</td><td class="lightBlueBackground">Excel Integration using Microsoft Graph APIs<a class="button small blue float-right" href="/uploads/Excel-Integration-using-Microsoft-Graph-API.pptx" download>Download Presentation</a></td></tr>
 	<tr><td>12:00-13:00</td><td>Lunch</td></tr>
-	<tr><td>13:00-13:45</td><td class="lightBlueBackground">Build Powerful Add-ins with Excel APIs</td></tr>
-	<tr><td>13:45-14:30</td><td class="lightBlueBackground">Mail Calendar and Contacts REST APIs</td></tr>
+	<tr><td>13:00-13:45</td><td class="lightBlueBackground">Build Powerful Add-ins with Excel APIs<a class="button small blue float-right" href="/uploads/Build-Powerful-Add-ins-with-Excel-APIs.pptx" download>Download Presentation</a></td></tr>
+	<tr><td>13:45-14:30</td><td class="lightBlueBackground">Mail, Calendar, and Contacts Graph API Demonstration<a class="button small blue float-right" href="/uploads/Mail-Calendar-and-Contacts-Graph-API-Demonstration.pptx" download>Download Presentation</a></td></tr>
 	<tr><td>14:30-15:15</td><td class="lightBlueBackground">Office Online Integration (MS-WOPI)</td></tr>
 	<tr><td>15:15-15:30</td><td>Break</td></tr>
-	<tr><td>15:30-16:15</td><td class="lightBlueBackground">Office File Formats </td></tr>
+	<tr><td>15:30-16:15</td><td class="lightBlueBackground">Office File Formats<a class="button small blue float-right" href="/uploads/File-Format-Overview-Redmond-2016.pptx" download>Download Presentation</a></td></tr>
 	<tr><td>16:30-19:00</td><td>Wood fired pizza dinner </td></tr>
 </table>
 <br /><br />
@@ -2041,15 +2041,15 @@ setTimeout(function() {
 	<tr><td>9:00-9:20</td><td class="lightGreenBackground">SQL 2016 Protocol Overview </td></tr>
 	<tr><td>9:20-10:15</td><td class="lightGreenBackground">Big Data Overview</td></tr>
 	<tr><td>10:15-10:30</td><td>Break</td></tr>
-	<tr><td>10:30-11:15</td><td class="lightGreenBackground">SQL Server: Developing modern applications with Temporal Tables and JSON </td><td>10:30-11:15</td><td class="lightBlueBackground">Office Co-authoring (MS-FSSHTTP)</td></tr>
+	<tr><td>10:30-11:15</td><td class="lightGreenBackground">SQL Server: Developing modern applications with Temporal Tables and JSON <a class="button small green float-right" href="/uploads/SQL2016---Developing-modern-applications-with-Temporal-Tables-and-JSON.pptx" download>Download Presentation</a></td><td>10:30-11:15</td><td class="lightBlueBackground">Office Co-authoring (MS-FSSHTTP)</td></tr>
 	<tr><td>11:15-12:00</td><td class="lightGreenBackground">SQL Server: Always On</td><td rowspan="2"</td><td rowspan="2"</td></tr>
-	<tr><td>12:00-13:00</td><td>Lunch</td></tr>
-	<tr><td>13:00-13:45</td><td class="lightGreenBackground">SQL Server: Speeding up data ingestion and transaction processing with In-Memory OLTP</td><td>13:00-13:45</td><td class="lightBlueBackground">Exchange 2016 Protocol Overview</td></tr>
-	<tr><td>13:45-14:30</td><td class="lightGreenBackground">SQL Server: Real-time operational analytics</td><td>13:45-14:15</td><td class="lightBlueBackground">Office Interoperability Test Tools (Test Suites and Open Source Projects)</td></tr>
+	<tr><td>12:00-13:00</td><td>Lunch & Machine Learning Talk</td></tr>
+	<tr><td>13:00-13:45</td><td class="lightGreenBackground">SQL Server: Speeding up data ingestion and transaction processing with In-Memory OLTP<a class="button small green float-right" href="/uploads/SQL2016---In-Memory-OLTP.pptx" download>Download Presentation</a></td><td>13:00-13:45</td><td class="lightBlueBackground">Exchange 2016 Protocol Overview<a class="button small blue float-right" href="/uploads/Exchange-2016-Protocol-Overview.pptx" download>Download Presentation</a></td></tr>
+	<tr><td>13:45-14:30</td><td class="lightGreenBackground">SQL Server: Real-time operational analytics</td><td>13:45-14:15</td><td class="lightBlueBackground">Office Interoperability Test Tools (Test Suites and Open Source Projects)<a class="button small blue float-right" href="/uploads/Office-Interoperability-Test-Tools-(Test-Suites-and-Open-Source-Projects).pptx" download>Download Presentation</a></td></tr>
 	<tr><td>14:30-15:15</td><td class="lightGreenBackground">SQL Server: R Services</td><td rowspan="2"></td><td rowspan="2"></td></tr>
 	<tr><td>15:15-15:30</td><td>Break</td></tr>
-	<tr><td>15:30-16:15</td><td class="lightGreenBackground">SQL Server: PolyBase</td><td>15:30-16:00</td><td class="lightBlueBackground">Office Network Parsers (Message Analyzer and Fiddler)</td></tr>
-	<tr><td>16:15-17:00</td><td class="lightGreenBackground">SQL Server: Stretch Database </td><td>16:15-16:45</td><td class="lightBlueBackground">Calling 3rd Party APIs from an Outlook Add-in</td></tr>
+	<tr><td>15:30-16:15</td><td class="lightGreenBackground">SQL Server: PolyBase</td><td>15:30-16:00</td><td class="lightBlueBackground">Office Network Parsers (Message Analyzer and Fiddler)<a class="button small blue float-right" href="/uploads/Office-Network-Parsers---JingyuShao.pptx" download>Download Presentation</a></td></tr>
+	<tr><td>16:15-17:00</td><td class="lightGreenBackground">SQL Server: Stretch Database </td><td>16:15-16:45</td><td class="lightBlueBackground">Calling 3rd Party APIs from an Outlook Add-in<a class="button small blue float-right" href="/uploads/Accessing-APIs-through-Add-Ins.pptx" download>Download Presentation</a></td></tr>
 	<tr><td>17:30-19:30</td><td colspan="3">Barbecue dinner at Lincoln Square in Bellevue, WA</td></tr>
 </table>
 <br /><br />
@@ -2060,13 +2060,13 @@ setTimeout(function() {
 	<tr><td>9:15-9:45</td><td class="lightOrangeBackground">Plugfest Welcome + Windows Keynote</td></tr>
 	<tr><td>9:45-10:30</td><td class="lightOrangeBackground">Windows Server telemetry</td></tr>
 	<tr><td>10:30-10:45</td><td>Break</td></tr>
-	<tr><td>10:45-11:30</td><td class="lightOrangeBackground">Windows 10 telemetry</td></tr>
+	<tr><td>10:45-11:30</td><td class="lightOrangeBackground">Windows 10 telemetry<a class="button small orange float-right" href="/uploads/Windows-Protocol-&-Privacy.pptx" download>Download Presentation</a></td></tr>
 	<tr><td>11:30-12:00</td><td class="lightOrangeBackground">Tech talk on Device Management</td></tr>
 	<tr><td>12:15-13:15</td><td>Lunch (Members from Auth and AD team will be available for a chat session)</td></tr>
-	<tr><td>13:15-14:00</td><td class="lightOrangeBackground">Azure Files talk</td></tr>
-	<tr><td>14:00-14:45</td><td class="lightOrangeBackground">AD/BYOD test suites and updates</td></tr>
+	<tr><td>13:15-14:00</td><td class="lightOrangeBackground">Azure Files talk<a class="button small orange float-right" href="/uploads/Plugfest_2016_Azure_Files.pptx" download>Download Presentation</a></td></tr>
+	<tr><td>14:00-14:45</td><td class="lightOrangeBackground">AD/BYOD test suites and updates<a class="button small orange float-right" href="/uploads/June-2016-AD-Family-and-BYOD-Protocol-Test-Suite-Updates.pptx" download>Download Presentation</a></td></tr>
 	<tr><td>14:45-15:00</td><td>Break</td></tr>
-	<tr><td>15:00-15:30</td><td class="lightOrangeBackground">New and modified protocols for Redstone and Server 2016</td></tr>
+	<tr><td>15:00-15:30</td><td class="lightOrangeBackground">New and Modified Windows Protocol Documents<a class="button small orange float-right" href="/uploads/Windows-Overview-Documents-Presentation.pptx" download>Download Presentation</a></td></tr>
 	<tr><td>15:30-16:00</td><td class="lightOrangeBackground">Adhoc conversation on Open Authoring and use of tools such as Markdown and Github <strong>*(Venue: White Room)</strong></td></tr>
 	<tr><td>16:30-19:00</td><td>Dinner from Pacific Northwest Catering</td></tr>
 </table>
@@ -2076,16 +2076,16 @@ setTimeout(function() {
 	<thead><th class="lightGrayBackground">Time</th><th class="lightGrayBackground">Presentation Zone</th></thead>
 	<tr><td>8:00-9:00</td><td>Breakfast</td></tr>
 	<tr><td>9:00-9:45</td><td class="lightOrangeBackground">File Sharing</td></tr>
-	<tr><td>9:45-10:30</td><td class="lightOrangeBackground">FS updates (FTS/DFSR/Storage Space) and Q&A</td></tr>
+	<tr><td>9:45-10:30</td><td class="lightOrangeBackground">Software-defined Storage and SMB’s Critical Role</td></tr>
 	<tr><td>10:30-10:45</td><td>Break</td></tr>
-	<tr><td>10:45-11:30</td><td class="lightOrangeBackground">File Server Test Suite updates and demo</td></tr>
+	<tr><td>10:45-11:30</td><td class="lightOrangeBackground">File Server Test Suite updates and demo<a class="button small orange float-right" href="/uploads/File-Server-Family-Test-Suite-Updates.pptx" download>Download Presentation</a></td></tr>
 	<tr><td>11:30-12:00</td><td class="lightOrangeBackground">HVRS+RSVD+SQOS – Iterative updates and Q&A</td></tr>
 	<tr><td>12:00-13:00</td><td>Lunch</td></tr>
 	<tr><td>13:00-13:45</td><td class="lightOrangeBackground">Windows Containers</td></tr>
 	<tr><td>13:45-14:30</td><td class="lightOrangeBackground">Testing hardware components for private/hybrid clouds</td></tr>
 	<tr><td>14:30-14:45</td><td>Break</td></tr>
-	<tr><td>14:45-15:30</td><td class="lightOrangeBackground">Overview documents:  Role of the Message Analyzer parsers and network captures</td></tr>
-	<tr><td>15:30-16:15</td><td class="lightOrangeBackground">Enhanced User experience in Protocol test suites</td></tr>
+	<tr><td>14:45-15:30</td><td class="lightOrangeBackground">Overview documents:  Role of the Message Analyzer parsers and network captures<a class="button small orange float-right" href="/uploads/Windows-Overview-Documents-Presentation.pptx" download>Download Presentation</a></td></tr>
+	<tr><td>15:30-16:15</td><td class="lightOrangeBackground">Enhanced User experience in Protocol test suites<a class="button small orange float-right" href="/uploads/Enhanced-User-Experience-for-Testsuite.pptx" download>Download Presentation</a></td></tr>
 	<tr><td>16:30-17:30</td><td>Visit the Microsoft Store</td></tr>
 	<tr><td>17:30-19:30</td><td>Dinner at in.gredients – a John Howie restaurant </td></tr>
 </table>
@@ -2097,7 +2097,7 @@ setTimeout(function() {
 	<tr><td>9:00-9:45</td><td class="lightOrangeBackground">Keynote/Nano Server: The Future of Windows Server Starts Now</td></tr>
 	<tr><td>9:45-10:30</td><td class="lightOrangeBackground">Open SSH</td></tr>
 	<tr><td>10:30-10:45</td><td>Break</td></tr>
-	<tr><td>10:45-11:30</td><td class="lightOrangeBackground">Windows protocol test suites open source</td></tr>
+	<tr><td>10:45-11:30</td><td class="lightOrangeBackground">Windows protocol test suites open source<a class="button small orange float-right" href="/uploads/2016-June-Windows-Protocol-Test-Suites-Open-Source.pptx" download>Download Presentation</a></td></tr>
 	<tr><td>12:00-13:00</td><td>Lunch</td></tr>
 </table>
 <br /><br />
@@ -3000,6 +3000,22 @@ setTimeout(function() {
 		msTeamTitle: 'Senior Program Manager, Database Systems Team',
 		showOnHomePage: false,
 		headShot: 'jodebrui-photo-web.jpg',
+		company: 'Microsoft',
+		country: 'USA',
+		allowNotifications: false,
+		allowPersonalInfoSharing: false
+	})
+})
+.then(function() {
+	return Contact.create({
+		firstName: 'Kevin',
+		lastName: 'Farlee',
+		contactDescription: 'Kevin Farlee has over 30 years in the industry, in both database as well as storage management software. In his current role as a Senior Program Manager on the Microsoft SQL Server team, he is responsible for the SQL Server High Availability roadmap, as well as the high performance OLTP and Analytics features within the SQL Server product.',
+		eventRole: 'speaker',
+		showOnMeetTheTeamPage: false,
+		msTeamTitle: 'Senior Program Manager, SQL Server Team',
+		showOnHomePage: false,
+		headShot: 'kevin-farlee-headshot.jpg',
 		company: 'Microsoft',
 		country: 'USA',
 		allowNotifications: false,
