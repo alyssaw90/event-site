@@ -2038,7 +2038,7 @@ setTimeout(function() {
 <table class="scheduleTable tableWithVerticalLines scheduleTableTextOnly">
 	<thead><th class="lightGrayBackground">Time</th><th class="lightGrayBackground">Presentation Zone</th><th class="lightGrayBackground">Time</th><th class="lightGrayBackground">White Room</th></thead>
 	<tr><td>8:00-9:00</td><td>Breakfast</td><td rowspan="4"></td><td rowspan="4"></td></tr>
-	<tr><td>9:00-9:20</td><td class="lightGreenBackground">SQL 2016 Protocol Overview </td></tr>
+	<tr><td>9:00-9:20</td><td class="lightGreenBackground">SQL 2016 Protocol Overview<a href="/uploads/SQL-Server-Interoperability-Overview_Updated.pptx" class="button green small float-right">Download Presentation</a></td></tr>
 	<tr><td>9:20-10:15</td><td class="lightGreenBackground">Big Data Overview</td></tr>
 	<tr><td>10:15-10:30</td><td>Break</td></tr>
 	<tr><td>10:30-11:15</td><td class="lightGreenBackground">SQL Server: Developing modern applications with Temporal Tables and JSON <a class="button small green float-right" href="/uploads/SQL2016---Developing-modern-applications-with-Temporal-Tables-and-JSON.pptx" download>Download Presentation</a></td><td>10:30-11:15</td><td class="lightBlueBackground">Office Co-authoring (MS-FSSHTTP)</td></tr>
