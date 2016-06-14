@@ -2046,9 +2046,9 @@ setTimeout(function() {
 	<tr><td>12:00-13:00</td><td>Lunch & Machine Learning Talk</td></tr>
 	<tr><td>13:00-13:45</td><td class="lightGreenBackground">SQL Server: Speeding up data ingestion and transaction processing with In-Memory OLTP<a data-presentationTime="June 14, 2016 1:00pm" class="button small green float-right" href="/uploads/SQL2016---In-Memory-OLTP.pptx" download>Download Presentation</a></td><td>13:00-13:45</td><td class="lightBlueBackground">Exchange 2016 Protocol Overview<a class="button small blue float-right" href="/uploads/Exchange-2016-Protocol-Overview.pptx" download>Download Presentation</a></td></tr>
 	<tr><td>13:45-14:30</td><td class="lightGreenBackground">SQL Server: Real-time operational analytics</td><td>13:45-14:15</td><td class="lightBlueBackground">Office Interoperability Test Tools (Test Suites and Open Source Projects)<a data-presentationTime="June 14, 2016 13:45" class="button small blue float-right" href="/uploads/Office-Interoperability-Test-Tools-(Test-Suites-and-Open-Source-Projects).pptx" download>Download Presentation</a></td></tr>
-	<tr><td>14:30-15:15</td><td class="lightGreenBackground">SQL Server: R Services</td><td rowspan="2"></td><td rowspan="2"></td></tr>
+	<tr><td>14:30-15:15</td><td class="lightGreenBackground">SQL Server: R Services<a data-presentationTime="June 14, 2016 14:30" class="button small green float-right" href="/uploads/SQL-Server-2016-R-Services.pptx" download>Download Presentation</a></td><td rowspan="2"></td><td rowspan="2"></td></tr>
 	<tr><td>15:15-15:30</td><td>Break</td></tr>
-	<tr><td>15:30-16:15</td><td class="lightGreenBackground">SQL Server: PolyBase</td><td>15:30-16:00</td><td class="lightBlueBackground">Office Network Parsers (Message Analyzer and Fiddler)<a data-presentationTime="June 14, 2016 15:30" class="button small blue float-right" href="/uploads/Office-Network-Parsers---JingyuShao.pptx" download>Download Presentation</a></td></tr>
+	<tr><td>15:30-16:15</td><td class="lightGreenBackground">SQL Server: PolyBase<a data-presentationTime="June 14, 2016 15:30" class="button small green float-right" href="/uploads/SQL-Server-2016-PolyBase.pptx" download>Download Presentation</a></td><td>15:30-16:00</td><td class="lightBlueBackground">Office Network Parsers (Message Analyzer and Fiddler)<a data-presentationTime="June 14, 2016 15:30" class="button small blue float-right" href="/uploads/Office-Network-Parsers---JingyuShao.pptx" download>Download Presentation</a></td></tr>
 	<tr><td>16:15-17:00</td><td class="lightGreenBackground">SQL Server: Stretch Database </td><td>16:15-16:45</td><td class="lightBlueBackground">Calling 3rd Party APIs from an Outlook Add-in<a data-presentationTime="June 14, 2016 16:15" class="button small blue float-right" href="/uploads/Accessing-APIs-through-Add-Ins.pptx" download>Download Presentation</a></td></tr>
 	<tr><td>17:30-19:30</td><td colspan="3">Barbecue dinner at Lincoln Square in Bellevue, WA</td></tr>
 </table>
@@ -2094,7 +2094,7 @@ setTimeout(function() {
 <table class="scheduleTable tableWithVerticalLines scheduleTableTextOnly">
 	<thead><th class="lightGrayBackground">Time</th><th class="lightGrayBackground">Presentation Zone</th></thead>
 	<tr><td>8:00-9:00</td><td>Breakfast</td></tr>
-	<tr><td>9:00-9:45</td><td class="lightOrangeBackground">Keynote/Nano Server: The Future of Windows Server Starts Now</td></tr>
+	<tr><td>9:00-9:45</td><td class="lightOrangeBackground">Keynote/Nano Server: The Future of Windows Server Starts Now<a data-presentationTime="June 17, 2016 9:00" class="button small orange float-right" href="/uploads/Windows-Nano-Server.pptxs" download>Download Presentation</a></td></tr>
 	<tr><td>9:45-10:30</td><td class="lightOrangeBackground">Open SSH</td></tr>
 	<tr><td>10:30-10:45</td><td>Break</td></tr>
 	<tr><td>10:45-11:30</td><td class="lightOrangeBackground">Windows protocol test suites open source<a data-presentationTime="June 17, 2016 10:45" class="button small orange float-right" href="/uploads/2016-June-Windows-Protocol-Test-Suites-Open-Source.pptx" download>Download Presentation</a></td></tr>
