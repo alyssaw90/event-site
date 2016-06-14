@@ -2058,9 +2058,9 @@ setTimeout(function() {
 	<thead><th class="lightGrayBackground">Time</th><th class="lightGrayBackground">Presentation Zone</th></thead>
 	<tr><td>8:00-9:15</td><td>Breakfast</td></tr>
 	<tr><td>9:15-9:45</td><td class="lightOrangeBackground">Plugfest Welcome + Windows Keynote</td></tr>
-	<tr><td>9:45-10:30</td><td class="lightOrangeBackground">Windows Server telemetry</td></tr>
+	<tr><td>9:45-10:30</td><td class="lightOrangeBackground">Windows Server telemetry<a class="button small orange float-right" href="/uploads/Windows-Protocol-&-Privacy.pptx" download>Download Presentation</a></td></tr>
 	<tr><td>10:30-10:45</td><td>Break</td></tr>
-	<tr><td>10:45-11:30</td><td class="lightOrangeBackground">Windows 10 telemetry<a class="button small orange float-right" href="/uploads/Windows-Protocol-&-Privacy.pptx" download>Download Presentation</a></td></tr>
+	<tr><td>10:45-11:30</td><td class="lightOrangeBackground">Windows 10 telemetry</td></tr>
 	<tr><td>11:30-12:00</td><td class="lightOrangeBackground">Tech talk on Device Management</td></tr>
 	<tr><td>12:15-13:15</td><td>Lunch (Members from Auth and AD team will be available for a chat session)</td></tr>
 	<tr><td>13:15-14:00</td><td class="lightOrangeBackground">Azure Files talk<a class="button small orange float-right" href="/uploads/Plugfest_2016_Azure_Files.pptx" download>Download Presentation</a></td></tr>
