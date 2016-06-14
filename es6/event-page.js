@@ -140,4 +140,25 @@ import * as customFunctions from './common-functions.build.js';
 		$('.nextTab').keydown(tabNavigation);
 		
 	})
-})(jQuery)
+	
+	//hide presentation download buttons until the presetation has started
+	const $presentationButtons = $('a.button');
+
+	$presentationButtons.each(function(index, el) {
+		let $this = $(this);
+		let presentationTime = $this.attr('data-presentationTime');
+
+
+		if (typeof presentationTime !== typeof undefined && presentationTime !== false) {
+			
+			if (new Date(presentationTime) > new Date()) {
+				$this.hide();
+
+			} else {
+				$this.show();
+			}
+
+		}
+	});
+
+})(jQuery);
