@@ -38,6 +38,7 @@ module.exports = function(sql, DataTypes) {
         let startDate;
         if (this.getDataValue('eventStartDate')) {
           startDate = this.getDataValue('eventStartDate');
+          startDate.setDate(startDate.getDate() + 1);
           
         } else {
           startDate = new Date(new Date().getFullYear(), 11, 31);
