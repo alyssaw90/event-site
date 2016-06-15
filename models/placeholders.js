@@ -2039,7 +2039,7 @@ setTimeout(function() {
 	<thead><th class="lightGrayBackground">Time</th><th class="lightGrayBackground">Presentation Zone</th><th class="lightGrayBackground">Time</th><th class="lightGrayBackground">White Room</th></thead>
 	<tr><td>8:00-9:00</td><td>Breakfast</td><td rowspan="4"></td><td rowspan="4"></td></tr>
 	<tr><td>9:00-9:20</td><td class="lightGreenBackground">SQL 2016 Protocol Overview<a href="/uploads/SQL-Server-Interoperability-Overview_Updated.pptx" class="button green small float-right">Download Presentation</a></td></tr>
-	<tr><td>9:20-10:15</td><td class="lightGreenBackground">Big Data Overview</td></tr>
+	<tr><td>9:20-10:15</td><td class="lightGreenBackground">Big Data Overview<a href="/uploads/Redmond_Protocols_Plugfest_Intro_to_ADL_Store_and_Analytics_2016_06_14.pptx" class="button green small float-right">Download Presentation</a></td></tr>
 	<tr><td>10:15-10:30</td><td>Break</td></tr>
 	<tr><td>10:30-11:15</td><td class="lightGreenBackground">SQL Server: Developing modern applications with Temporal Tables and JSON <a class="button small green float-right" href="/uploads/SQL2016---Developing-modern-applications-with-Temporal-Tables-and-JSON.pptx" download>Download Presentation</a></td><td>10:30-11:15</td><td class="lightBlueBackground">Office Co-authoring (MS-FSSHTTP)</td></tr>
 	<tr><td>11:15-12:00</td><td class="lightGreenBackground">SQL Server: Always On<a class="button small green float-right" href="/uploads/SQL-Always-On.pptx" download>Download Presentation</a></td><td rowspan="2"</td><td rowspan="2"</td></tr>
@@ -2057,11 +2057,11 @@ setTimeout(function() {
 <table class="scheduleTable tableWithVerticalLines scheduleTableTextOnly">
 	<thead><th class="lightGrayBackground">Time</th><th class="lightGrayBackground">Presentation Zone</th></thead>
 	<tr><td>8:00-9:15</td><td>Breakfast</td></tr>
-	<tr><td>9:15-9:45</td><td class="lightOrangeBackground">Plugfest Welcome + Windows Keynote<a data-presentationTime="June 15, 2016 9:15" class="button small orange float-right" href="/uploads/Welcome.pptx" download>Download Presentation</a></td></tr>
+	<tr><td>9:15-9:45</td><td class="lightOrangeBackground">Plugfest Welcome + Windows Keynote<a data-presentationTime="June 15, 2016 9:15" class="button small orange float-right" href="/uploads/Welcome-wednesday.pptx" download>Download Presentation</a></td></tr>
 	<tr><td>9:45-10:30</td><td class="lightOrangeBackground">Windows Server telemetry<a data-presentationTime="June 15, 2016 9:45" class="button small orange float-right" href="/uploads/Windows-Protocol-&-Privacy.pptx" download>Download Presentation</a></td></tr>
 	<tr><td>10:30-10:45</td><td>Break</td></tr>
-	<tr><td>10:45-11:30</td><td class="lightOrangeBackground">Windows 10 telemetry</td></tr>
-	<tr><td>11:30-12:00</td><td class="lightOrangeBackground">Tech talk on Device Management</td></tr>
+	<tr><td>10:45-11:30</td><td class="lightOrangeBackground">Windows 10 telemetry<a data-presentationTime="June 15, 2016 10:45" class="button small orange float-right" href="/uploads/Windows-Telemetry-Privacy-Plugfest-0616.pptx" download>Download Presentation</a></td></tr>
+	<tr><td>11:30-12:00</td><td class="lightOrangeBackground">Tech talk on Device Management<a data-presentationTime="June 15, 2016 11:30" class="button small orange float-right" href="/uploads/Plugfest-June-2016-Device-Health-Attestation.pptx" download>Download Presentation</a></td></tr>
 	<tr><td>12:15-13:15</td><td>Lunch (Members from Auth and AD team will be available for a chat session)</td></tr>
 	<tr><td>13:15-14:00</td><td class="lightOrangeBackground">Azure Files talk<a data-presentationTime="June 15, 2016 13:15" class="button small orange float-right" href="/uploads/Plugfest_2016_Azure_Files.pptx" download>Download Presentation</a></td></tr>
 	<tr><td>14:00-14:45</td><td class="lightOrangeBackground">AD/BYOD test suites and updates<a data-presentationTime="June 15, 2016 14:00" class="button small orange float-right" href="/uploads/June-2016-AD-Family-and-BYOD-Protocol-Test-Suite-Updates.pptx" download>Download Presentation</a></td></tr>
