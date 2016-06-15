@@ -141,11 +141,10 @@ import * as customFunctions from './common-functions.build.js';
 								startMonth = months[startDate.getMonth()] + ',';
 							}
 							//check to see if date is Dec 31, which means no month was included with date, so remove it and increment the year
-							if (startDate !== undefined && startDate.getMonth() === 11 && startDate.getDate() === 31) {
-								startYear = startDate.getFullYear() + 1;
+							if (startDate !== undefined && startDate.getMonth() === 0 && startDate.getDate() === 1) {
+								startYear = startDate.getFullYear();
 								startMonth = '';
 							}
-
 							if (i < data.length - 1) {
 								upcomingPurpleMenu += '<a href="/' + elem.eventUrl + '">' + city + '&nbsp-&nbsp<span class="purpleSubMenu">' + startMonth + '&nbsp' + startYear + '</span></a>| ';
 							}

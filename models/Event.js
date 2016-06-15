@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const clc = require('cli-color');
 
 module.exports = function(sql, DataTypes) {
 
@@ -35,15 +36,16 @@ module.exports = function(sql, DataTypes) {
     getterMethods   : {
       eventUrl: function () {
         let theEventLocation = this.getDataValue('eventLocation');
-        let startDate;
+        let startDate = this.getDataValue('eventStartDate');
+        let realStartDate = this.getDataValue('eventStartDate');
         if (this.getDataValue('eventStartDate')) {
-          startDate = this.getDataValue('eventStartDate');
           startDate.setDate(startDate.getDate() + 1);
           
         } else {
           startDate = new Date(new Date().getFullYear(), 11, 31);
         }
         let theUrl = theEventLocation.replace(/\W/g, '').toLowerCase() + startDate.getFullYear();
+        this.setDataValue('eventStartDate', realStartDate);
         return theUrl;
       }/*,
       eventSlideshowImage: function () {
