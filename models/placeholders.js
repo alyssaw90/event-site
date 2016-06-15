@@ -35,7 +35,7 @@ module.exports = function() {
 	
 	.then(function() {
 		return SiteStyle.create({
-			showSlider: true
+			showSlider: false
 		})
 	})
  
@@ -118,6 +118,19 @@ module.exports = function() {
 			eventHomepageImage: 'shanghai-header.jpg',
 			eventHighlightColor: '#3bb300',
 			eventSpeakers: '1,2,13,9,8,10,6,11,35,26'
+		})
+	})
+	.then(function() {
+		return Event.create({
+			eventName: 'Paris 2017',
+			eventLocation: 'Paris',
+			eventContinent: 'Europe',
+			eventStartDate: '2017',
+			eventEndDate: '2017',
+			eventHeaderImage: 'paris-2017-banner.jpg',
+			eventHomepageImage: 'paris-2017-banner.jpg',
+			eventHighlightColor: '#5c005c',
+			// eventSpeakers: '1'
 		})
 	})
 	.then(function() {
@@ -2028,7 +2041,7 @@ setTimeout(function() {
 	<tr><td>12:00-13:00</td><td>Lunch</td></tr>
 	<tr><td>13:00-13:45</td><td class="lightBlueBackground">Build Powerful Add-ins with Excel APIs<a class="button small blue float-right" href="/uploads/Build-Powerful-Add-ins-with-Excel-APIs.pptx" download>Download Presentation</a></td></tr>
 	<tr><td>13:45-14:30</td><td class="lightBlueBackground">Mail, Calendar, and Contacts Graph API Demonstration<a class="button small blue float-right" href="/uploads/Mail-Calendar-and-Contacts-Graph-API-Demonstration.pptx" download>Download Presentation</a></td></tr>
-	<tr><td>14:30-15:15</td><td class="lightBlueBackground">Office Online Integration (MS-WOPI)</td></tr>
+	<tr><td>14:30-15:15</td><td class="lightBlueBackground">Office Online Integration (MS-WOPI)<a class="button small blue float-right" href="/uploads/Online-Integration-WOPI.pptx" download>Download Presentation</a></td></tr>
 	<tr><td>15:15-15:30</td><td>Break</td></tr>
 	<tr><td>15:30-16:15</td><td class="lightBlueBackground">Office File Formats<a class="button small blue float-right" href="/uploads/File-Format-Overview-Redmond-2016.pptx" download>Download Presentation</a></td></tr>
 	<tr><td>16:30-19:00</td><td>Wood fired pizza dinner </td></tr>
@@ -2049,7 +2062,7 @@ setTimeout(function() {
 	<tr><td>14:30-15:15</td><td class="lightGreenBackground">SQL Server: R Services<a data-presentationTime="June 14, 2016 14:30" class="button small green float-right" href="/uploads/SQL-Server-2016-R-Services.pptx" download>Download Presentation</a></td><td rowspan="2"></td><td rowspan="2"></td></tr>
 	<tr><td>15:15-15:30</td><td>Break</td></tr>
 	<tr><td>15:30-16:15</td><td class="lightGreenBackground">SQL Server: PolyBase<a data-presentationTime="June 14, 2016 15:30" class="button small green float-right" href="/uploads/SQL-Server-2016-PolyBase.pptx" download>Download Presentation</a></td><td>15:30-16:00</td><td class="lightBlueBackground">Office Network Parsers (Message Analyzer and Fiddler)<a data-presentationTime="June 14, 2016 15:30" class="button small blue float-right" href="/uploads/Office-Network-Parsers---JingyuShao.pptx" download>Download Presentation</a></td></tr>
-	<tr><td>16:15-17:00</td><td class="lightGreenBackground">SQL Server: Stretch Database </td><td>16:15-16:45</td><td class="lightBlueBackground">Calling 3rd Party APIs from an Outlook Add-in<a data-presentationTime="June 14, 2016 16:15" class="button small blue float-right" href="/uploads/Accessing-APIs-through-Add-Ins.pptx" download>Download Presentation</a></td></tr>
+	<tr><td>16:15-17:00</td><td class="lightGreenBackground">SQL Server: Stretch Database <a data-presentationTime="June 14, 2016 16:15" class="button small green float-right" href="/uploads/SQL-Server-2016-Stretch-Database.pptx" download>Download Presentation</a></td><td>16:15-16:45</td><td class="lightBlueBackground">Calling 3rd Party APIs from an Outlook Add-in<a data-presentationTime="June 14, 2016 16:15" class="button small blue float-right" href="/uploads/Accessing-APIs-through-Add-Ins.pptx" download>Download Presentation</a></td></tr>
 	<tr><td>17:30-19:30</td><td colspan="3">Barbecue dinner at Lincoln Square in Bellevue, WA</td></tr>
 </table>
 <br /><br />
@@ -2370,6 +2383,15 @@ setTimeout(function() {
 <p>555 Xi Zang Road (Middle)</p>
 <p>Huangpu District  Shanghai  200003  China</p>
 <img src="uploads/shamc_main01.jpg" />`
+	})
+})
+.then(function() {
+	return EventTab.create({
+		eventId: 6,
+		tabNumber: 6,
+		tabTitle: 'About',
+		tabContent: `<h3>Paris 2017</h3>
+									<p>After the success of the Extend Conference in 2016, we decided to come back for 2017. If you're interesed in attending our Paris 2017 event. Please email <a href="mailto:plugfests@microsoft.com">plugfests@microsoft.com</a>.</p>`
 	})
 })
 
