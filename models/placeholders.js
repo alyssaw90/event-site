@@ -2155,12 +2155,12 @@ setTimeout(function() {
   		<p>Core concentration during the IO lab week would be on <strong>Interop testing your protocol implementations</strong>.</p>
   		<p>This year’s Windows IO lab will be held in Building 20 in an “open-hall-format”. This will be similar to how the SNIA’s Storage Developer Conference (SDC) Plugfest is organized. We hope this will promote more interactions both amongst the partners and with the Microsoft Product Groups.</p>
   		<h3>Chalk-talk sessions</h3>
-  			<ul class="noStyleUL">
-					<li>The Evolution of Identity on Windows – Edgar Olougouna</li>
-					<li>Engagement around RSVD document – Jeff McCashland</li>
-					<li>MSCR talk – Shawn Richardson/Mechele Gruhn</li>
-					<li>Steps to calculate NTLM keys from network trace – Obaid Farooqi</li>
-				</ul>
+			<table class=" tableWithVerticalLines scheduleTableTextOnly">
+				<tr><td><strong>Monday</strong></td><td class="lightOrangeBackground"> The Evolution of Identity on Windows</td><td class="lightOrangeBackground">Edgar Olougouna</td><td class="lightOrangeBackground">White Room</td></tr>
+				<tr><td><strong>Tuesday</strong></td><td class="lightOrangeBackground"> MSRC talk</td><td class="lightOrangeBackground">Stephen Finnigan</td><td class="lightOrangeBackground">White Room</td></tr>
+				<tr><td><strong>Wedesday</strong></td><td class="lightOrangeBackground"> Steps to calculate NTLM keys from network trace</td><td class="lightOrangeBackground">Obaid Farooqi</td><td class="lightOrangeBackground">White Room</td></tr>
+				<tr><td><strong>Thursday</strong></td><td class="lightOrangeBackground"> Engagement around RSVD document</td><td class="lightOrangeBackground">Jeff McCashland</td><td class="lightOrangeBackground">White Room</td></tr>
+			</table>
 		</div>
 		<div id="redmond2016Technologies" class="tab-content eventTabDiv" style="display:none;">
 			<ul>
