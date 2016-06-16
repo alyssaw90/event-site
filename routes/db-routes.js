@@ -229,11 +229,14 @@ module.exports = function (router) {
 
             city = cityArr.join(' ');
             
-            if (upcomingEvent[i].eventStartDate !== null) {
+            if (upcomingEvent[i].eventStartDate !== null && (upcomingEvent[i].eventStartDate.getMonth() !== 0 && upcomingEvent[i].eventStartDate.getDate() !== 1)) {
               eventDates = `${months[upcomingEvent[i].eventStartDate.getMonth()]} ${upcomingEvent[i].eventStartDate.getDate()} - ${upcomingEvent[i].eventEndDate.getDate()}, ${upcomingEvent[i].eventEndDate.getFullYear()}`;
+            } else if (upcomingEvent[i].eventStartDate !== null && (upcomingEvent[i].eventStartDate.getMonth() === 0 && upcomingEvent[i].eventStartDate.getDate() === 1)) {
+              eventDates = `${upcomingEvent[i].eventEndDate.getFullYear()}`;
             } else {
               eventDates = 'TBD';
             }
+
             let risingText = '';
             eventBlocksHtml += i === 0 ? `<div tabindex="-1" class="col_${12 / numFutureBlocks} event_block" style="background-color: #${continentColors[upcomingEvent[i].eventContinent]};"><a id="beginningOfContent" tabindex="0" href="/${upcomingEvent[i].eventUrl}"><p>More Details</p><h1>${city}</h1><h3>${upcomingEvent[i].eventName}<br />${eventDates}</h3></a>${risingText}</div>` : `<div tabindex="-1" class="col_${12 / numFutureBlocks} event_block" style="background-color: #${continentColors[upcomingEvent[i].eventContinent]};"><a tabindex="0" href="/${upcomingEvent[i].eventUrl}"><p>More Details</p><h1>${city}</h1><h3>${upcomingEvent[i].eventName}<br />${eventDates}</h3></a>${risingText}</div>`;
             // eventBlocksHtml += `<div tabindex="-1" class="col_${12 / numFutureBlocks} event_block" style="background-color: #${continentColors[upcomingEvent[i].eventContinent]};"><a tabindex="0" href="/${upcomingEvent[i].eventUrl}"><p>More Details</p><h1>${city}</h1><h3>${upcomingEvent[i].eventName}<br />${eventDates}</h3></a>${risingText}</div>`;
