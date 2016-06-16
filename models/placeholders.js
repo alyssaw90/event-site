@@ -129,6 +129,19 @@ module.exports = function() {
 			eventEndDate: '2017',
 			eventHeaderImage: 'paris-2017-banner.jpg',
 			eventHomepageImage: 'paris-2017-banner.jpg',
+			eventHighlightColor: '#002050',
+			// eventSpeakers: '1'
+		})
+	})
+	.then(function() {
+		return Event.create({
+			eventName: 'Redmond Protocol Plugfest 2017',
+			eventLocation: 'Redmond',
+			eventContinent: 'North America',
+			eventStartDate: '2017',
+			eventEndDate: '2017',
+			eventHeaderImage: 'redmond-2017-banner.jpg',
+			eventHomepageImage: 'redmond-2017-banner.jpg',
 			eventHighlightColor: '#5c005c',
 			// eventSpeakers: '1'
 		})
@@ -2088,17 +2101,17 @@ setTimeout(function() {
 <table class="scheduleTable tableWithVerticalLines scheduleTableTextOnly">
 	<thead><th class="lightGrayBackground">Time</th><th class="lightGrayBackground">Presentation Zone</th></thead>
 	<tr><td>8:00-9:00</td><td>Breakfast</td></tr>
-	<tr><td>9:00-9:45</td><td class="lightOrangeBackground">File Sharing</td></tr>
-	<tr><td>9:45-10:30</td><td class="lightOrangeBackground">Software-defined Storage and SMB’s Critical Role</td></tr>
+	<tr><td>9:00-9:45</td><td class="lightOrangeBackground">File Sharing<a data-presentationTime="June 16, 2016 9:00" class="button small orange float-right" href="/uploads/SMB3-Low-Latency-Talpey.pptx" download>Download Presentation</a></td></tr>
+	<tr><td>9:45-10:30</td><td class="lightOrangeBackground">Software-defined Storage and SMB’s Critical Role<a data-presentationTime="June 16, 2016 9:45" class="button small orange float-right" href="/uploads/Software-defined-Storage-and-SMBs-critical-role.pptx" download>Download Presentation</a></td></tr>
 	<tr><td>10:30-10:45</td><td>Break</td></tr>
-	<tr><td>10:45-11:30</td><td class="lightOrangeBackground">File Server Test Suite updates and demo<a data-presentationTime="June 16, 2016 10:45" class="button small orange float-right" href="/uploads/File-Server-Family-Test-Suite-Updates.pptx" download>Download Presentation</a></td></tr>
+	<tr><td>10:45-11:30</td><td class="lightOrangeBackground">File Server Test Suite updates and demo<a data-presentationTime="June 16, 2016 10:45" class="button small orange float-right" href="/uploads/File-Server-Family-Test-Suite-Updates-(1).pptx" download>Download Presentation</a></td></tr>
 	<tr><td>11:30-12:00</td><td class="lightOrangeBackground">HVRS+RSVD+SQOS – Iterative updates and Q&A</td></tr>
 	<tr><td>12:00-13:00</td><td>Lunch</td></tr>
-	<tr><td>13:00-13:45</td><td class="lightOrangeBackground">Windows Containers</td></tr>
-	<tr><td>13:45-14:30</td><td class="lightOrangeBackground">Testing hardware components for private/hybrid clouds</td></tr>
+	<tr><td>13:00-13:45</td><td class="lightOrangeBackground">Windows Containers<a data-presentationTime="June 16, 2016 13:00" class="button small orange float-right" href="/uploads/Windows-Container.pptx" download>Download Presentation</a></td></tr>
+	<tr><td>13:45-14:30</td><td class="lightOrangeBackground">Testing hardware components for private/hybrid clouds<a data-presentationTime="June 16, 2016 13:45" class="button small orange float-right" href="/uploads/Validating-Hardware-for-Private-Clouds.pptx" download>Download Presentation</a></td></tr>
 	<tr><td>14:30-14:45</td><td>Break</td></tr>
 	<tr><td>14:45-15:30</td><td class="lightOrangeBackground">Overview documents:  Role of the Message Analyzer parsers and network captures<a data-presentationTime="June 16, 2016 14:45" class="button small orange float-right" href="/uploads/Windows-Overview-Documents-Presentation.pptx" download>Download Presentation</a></td></tr>
-	<tr><td>15:30-16:15</td><td class="lightOrangeBackground">Enhanced User experience in Protocol test suites<a data-presentationTime="June 16, 2016 15:30" class="button small orange float-right" href="/uploads/Enhanced-User-Experience-for-Testsuite.pptx" download>Download Presentation</a></td></tr>
+	<tr><td>15:30-16:15</td><td class="lightOrangeBackground">Windows protocol test suites open source<a data-presentationTime="June 16, 2016 15:30" class="button small orange float-right" href="/uploads/2016-June-Windows-Protocol-Test-Suites-Open-Source.pptx" download>Download Presentation</a></td></tr>
 	<tr><td>16:30-17:30</td><td>Visit the Microsoft Store</td></tr>
 	<tr><td>17:30-19:30</td><td>Dinner at in.gredients – a John Howie restaurant </td></tr>
 </table>
@@ -2110,7 +2123,7 @@ setTimeout(function() {
 	<tr><td>9:00-9:45</td><td class="lightOrangeBackground">Keynote/Nano Server: The Future of Windows Server Starts Now<a data-presentationTime="June 17, 2016 9:00" class="button small orange float-right" href="/uploads/Windows-Nano-Server.pptxs" download>Download Presentation</a></td></tr>
 	<tr><td>9:45-10:30</td><td class="lightOrangeBackground">Open SSH</td></tr>
 	<tr><td>10:30-10:45</td><td>Break</td></tr>
-	<tr><td>10:45-11:30</td><td class="lightOrangeBackground">Windows protocol test suites open source<a data-presentationTime="June 17, 2016 10:45" class="button small orange float-right" href="/uploads/2016-June-Windows-Protocol-Test-Suites-Open-Source.pptx" download>Download Presentation</a></td></tr>
+	<tr><td>10:45-11:30</td><td class="lightOrangeBackground">Enhanced User experience in Protocol test suites<a data-presentationTime="June 17, 2016 10:45" class="button small orange float-right" href="/uploads/Enhanced-User-Experience-For-Protocol-Test-Suites.pptx" download>Download Presentation</a></td></tr>
 	<tr><td>12:00-13:00</td><td>Lunch</td></tr>
 </table>
 <br /><br />
@@ -2377,7 +2390,7 @@ setTimeout(function() {
 .then(function() {
 	return EventTab.create({
 		eventId: 5,
-		tabNumber: 5,
+		tabNumber: 1,
 		tabTitle: 'Venue',
 		tabContent: `<h3>Shanghai Marriott Hotel City Centre</h3>
 <p>555 Xi Zang Road (Middle)</p>
@@ -2392,6 +2405,15 @@ setTimeout(function() {
 		tabTitle: 'About',
 		tabContent: `<h3>Paris 2017</h3>
 									<p>After the success of the Extend Conference in 2016, we decided to come back for 2017. If you're interesed in attending our Paris 2017 event. Please email <a href="mailto:plugfests@microsoft.com">plugfests@microsoft.com</a>.</p>`
+	})
+})
+.then(function() {
+	return EventTab.create({
+		eventId: 7,
+		tabNumber: 1,
+		tabTitle: 'About',
+		tabContent: `<h3>Redmond Protocol Plugfest 2017</h3>
+									<p>Microsoft subject matter experts from both the support organization and the product team gather at the Plugfest to present protocol updates, to answer questions, and to debug with customers. Please email <a href="mailto:plugfests@microsoft.com">plugfests@microsoft.com</a>.</p>`
 	})
 })
 
