@@ -2105,7 +2105,7 @@ setTimeout(function() {
 	<tr><td>9:45-10:30</td><td class="lightOrangeBackground">Software-defined Storage and SMB’s Critical Role<a data-presentationTime="June 16, 2016 9:45" class="button small orange float-right" href="/uploads/Software-defined-Storage-and-SMBs-critical-role.pptx" download>Download Presentation</a></td></tr>
 	<tr><td>10:30-10:45</td><td>Break</td></tr>
 	<tr><td>10:45-11:30</td><td class="lightOrangeBackground">File Server Test Suite updates and demo<a data-presentationTime="June 16, 2016 10:45" class="button small orange float-right" href="/uploads/File-Server-Family-Test-Suite-Updates-(1).pptx" download>Download Presentation</a></td></tr>
-	<tr><td>11:30-12:00</td><td class="lightOrangeBackground">HVRS+RSVD+SQOS – Iterative updates and Q&A</td></tr>
+	<tr><td>11:30-12:00</td><td class="lightOrangeBackground">HVRS+RSVD+SQOS – Iterative updates and Q&A<a data-presentationTime="June 16, 2016 11:30" class="button small orange float-right" href="/uploads/Hyper-V-Storage-HVRS-SQOS-RSVD-VHDX-HRL-2016-Plugfest-mattkur.pptx" download>Download Presentation</a></td></tr>
 	<tr><td>12:00-13:00</td><td>Lunch</td></tr>
 	<tr><td>13:00-13:45</td><td class="lightOrangeBackground">Windows Containers<a data-presentationTime="June 16, 2016 13:00" class="button small orange float-right" href="/uploads/Windows-Container.pptx" download>Download Presentation</a></td></tr>
 	<tr><td>13:45-14:30</td><td class="lightOrangeBackground">Testing hardware components for private/hybrid clouds<a data-presentationTime="June 16, 2016 13:45" class="button small orange float-right" href="/uploads/Validating-Hardware-for-Private-Clouds.pptx" download>Download Presentation</a></td></tr>
