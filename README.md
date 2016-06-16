@@ -11,9 +11,11 @@ After cloning the repo, enter `grunt start` or just `grunt` in the command line 
 
 Once you have started your site, there are two ways to add events and users. The first is to hard code them in the model's file manually or you can use the admin page to create them with an online form. 
 
-Be careful when creating database tables manually. In order to sync with the database, you need to call Sequelize's `.sync()` method. `.sync()` will, based on your model definitions, create any missing tables. If it is called with `{force: true}` then it will first drop the existing tables before creating the tables you have coded, including any that you have soft coded with the online form. This cannot be undone, so be very careful when using this setting. 
+Be careful when creating database tables manually. In order to sync with the database, you need to call Sequelize's `Sql.sync()` method. `Sql.sync()` will, based on your model definitions, create any missing tables. If it is called with `{force: true}` then it will first drop the existing tables before creating the tables you have coded, including any that you have soft coded with the online form. This cannot be undone, so be very careful when using this setting. 
 
-There is one placeholder Event, one placeholder Contact, and one placeholder admin User. The placeholder tables are created from `models/placeholder.js`. These models use `.sync({force: true})` so you will need to either comment them out or delete them or it will drop any tables you have soft coded when the server restarts. The exception is the admin user, you will need this to access the admin section of the website. 
+The default for `Sql.sync()' is `{force: false}`. With this setting Sequelize won't delete anything from the table, it will only add what is coded. If the server restarts it will add the same content again and give you repeated content. You can read more about `Sql.sync()` in the [Sequelize documentation](http://docs.sequelizejs.com/en/latest/api/sequelize/#sync). 
+
+There is one placeholder Event, one placeholder Contact, and one placeholder admin User. The placeholder tables are created from `models/placeholder.js`. These models use `Sql.sync({force: true})` so you will need to either comment them out or delete them or it will drop any tables you have soft coded when the server restarts.
 
 
 
@@ -34,7 +36,7 @@ Unlike Events and Contacts, there is no online form to soft code Users. One may 
 
 ####Code to create a user
 
-If you want to create more users, replace the placeholders below with your data and place this code below the `models/placeholder.js` file to create a new user. Remember that setting `{force: true}` on Sequelize's `.sync()` method will drop all previously created tables. if you want to create another admin user, set the value of `isAdmin` to `true`.
+If you want to create more users, replace the placeholders below with your data and place this code below the `models/placeholder.js` file to create a new user. Remember that setting `{force: true}` on Sequelize's `Sql.sync()` method will drop all previously created tables. if you want to create another admin user, set the value of `isAdmin` to `true`.
 
 ```JavaScript
 User.sync({force: true})
