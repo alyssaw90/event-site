@@ -27,6 +27,18 @@
 	font-style: italic;
 }
 
+.redmond2016ScheduleTable  tr td:first-child {
+	width: 8%;
+}
+
+.redmond2016ScheduleTable  tr td:nth-child(4) {
+	width: 8%;
+}
+
+.redmond2016ScheduleTable  tr td:nth-child(6) {
+	width: 8%;
+}
+
 h1 {
 	font-family: SegoeUILight, sans-serif;
 	font-weight: normal;
