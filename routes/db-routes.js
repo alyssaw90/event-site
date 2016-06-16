@@ -206,12 +206,20 @@ module.exports = function (router) {
             numFutureBlocks = upcomingEvent.length;
           }
           upcomingEvent.sort(function (a, b) {
-            a = new Date(a.eventEndDate);
-            b = new Date(b.eventEndDate);
-            if ( a < b) {
-              return 1;
+            a = a.eventEndDate;
+            b = b.eventEndDate;
+            if (a === null) {
+              let tmpDate = new Date();
+              a = tmpDate.setMonth(11, 31);
+            }
+            if (b === null) {
+              let tmpDate = new Date();
+              b = tmpDate.setMonth(11, 31);
             }
             if (a > b) {
+              return 1;
+            }
+            if (a < b) {
               return -1;
             }
             if (a === b) {
