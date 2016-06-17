@@ -123,6 +123,33 @@ import * as customFunctions from './common-functions.build.js';
 			 		}
 			 		//if there is more than one event returned, create the slider
 					if (data.length > 1) {
+						data.sort(function (a, b) {
+          	  if (a.eventStartDate === 'TBD') {
+          	    let tmpDate = new Date();
+          	    tmpDate.setMonth(11, 31);
+          	    a = tmpDate;
+          	  } else {          	  	
+          	  	a = new Date(a.eventStartDate);
+          	  }
+          	  if (b.eventStartDate === 'TBD') {
+          	    let tmpDate = new Date();
+          	    tmpDate.setMonth(11, 31);
+          	    b = tmpDate;
+          	  } else {
+          	  	b = new Date(b.eventStartDate);
+          	  }
+			 		console.log('a:        ', a);
+          	  if (a > b) {
+          	    return 1;
+          	  }
+          	  if (a < b) {
+          	    return -1;
+          	  }
+          	  if (a === b) {
+          	    return 0;
+          	  }
+          	});
+						console.log('data 2:    ', data)
 						$(data).each(function (i, elem) {
 							let startDate;
 							let startYear;
