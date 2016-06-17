@@ -133,7 +133,7 @@ module.exports = function() {
 			// eventSpeakers: '1'
 		})
 	})
-	.then(function() {
+/*	.then(function() {
 		return Event.create({
 			eventName: 'Redmond Protocol Plugfest 2017',
 			eventLocation: 'Redmond',
@@ -145,7 +145,7 @@ module.exports = function() {
 			eventHighlightColor: '#5c005c',
 			// eventSpeakers: '1'
 		})
-	})
+	})*/
 	.then(function() {
 		return Event.create({
 			eventLocation: 'Göttingen',
@@ -2111,7 +2111,7 @@ setTimeout(function() {
 	<tr><td>13:45-14:30</td><td class="lightOrangeBackground">Testing hardware components for private/hybrid clouds<a data-presentationTime="June 16, 2016 13:45" class="button small orange float-right" href="/uploads/Validating-Hardware-for-Private-Clouds.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Aniket Malatpure, Anagha Koshe</td></tr>
 	<tr><td>14:30-14:45</td><td>Break</td><td></td></tr>
 	<tr><td>14:45-15:30</td><td class="lightOrangeBackground">Overview documents:  Role of the Message Analyzer parsers and network captures<a data-presentationTime="June 16, 2016 14:45" class="button small orange float-right" href="/uploads/Windows-Overview-Documents-Presentation.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Althea Champagnie, Paul Bartos, Randy Dong</td></tr>
-	<tr><td>15:30-16:15</td><td class="lightOrangeBackground">Windows protocol test suites open source<a data-presentationTime="June 16, 2016 15:30" class="button small orange float-right" href="/uploads/2016-June-Windows-Protocol-Test-Suites-Open-Source.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Vivian Tian</td></tr>
+	<tr><td>15:30-16:15</td><td class="lightOrangeBackground">Windows protocol test suites open source<a data-presentationTime="June 16, 2016 15:30" class="button small orange float-right" href="/uploads/2016-June-Windows-Protocol-Test-Suites-Open-Source.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Christine Huang</td></tr>
 	<tr><td>16:30-17:30</td><td>Visit the Microsoft Store</td><td></td></tr>
 	<tr><td>17:30-19:30</td><td>Dinner at in.gredients – a John Howie restaurant </td><td></td></tr>
 </table>
@@ -2123,7 +2123,7 @@ setTimeout(function() {
 	<tr><td>9:00-9:45</td><td class="lightOrangeBackground">Keynote/Nano Server: The Future of Windows Server Starts Now<a data-presentationTime="June 17, 2016 9:00" class="button small orange float-right" href="/uploads/Windows-Nano-Server.pptxs" download>Download Presentation</a></td><td class="lightOrangeBackground">Andrew Mason</td></tr>
 	<tr><td>9:45-10:30</td><td class="lightOrangeBackground">Open SSH</td><td class="lightOrangeBackground">Manoj Ampalam</td></tr>
 	<tr><td>10:30-10:45</td><td>Break</td><td></td></tr>
-	<tr><td>10:45-11:30</td><td class="lightOrangeBackground">Enhanced User experience in Protocol test suites<a data-presentationTime="June 17, 2016 10:45" class="button small orange float-right" href="/uploads/Enhanced-User-Experience-For-Protocol-Test-Suites.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Christine Huang</td></tr>
+	<tr><td>10:45-11:30</td><td class="lightOrangeBackground">Enhanced User experience in Protocol test suites<a data-presentationTime="June 17, 2016 10:45" class="button small orange float-right" href="/uploads/Enhanced-User-Experience-For-Protocol-Test-Suites.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Vivian Tian</td></tr>
 	<tr><td>12:00-13:00</td><td>Lunch</td><td></td></tr>
 </table>
 <br /><br />
