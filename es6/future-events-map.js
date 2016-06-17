@@ -20,12 +20,17 @@ import * as customFunctions from './common-functions.build.js';
  	   		zoom: 2.25,
  	   		enableSearchLogo: false
  	   	});
-	
+
+ 	   	//get use location and set it as the center of the map
+ 	   	let geoLocationProvider = new Microsoft.Maps.GeoLocationProvider(map);
+ 	   	geoLocationProvider.getCurrentPosition({
+ 	   		successCallback: function(object) {
+ 	   			map.setView({zoom: 2.25})
+ 	   		}
+ 	   	}); 
+
 			//add pins to map
 			function getMap() {
-    	  function displayEventInfo(e) {
-    	    window.location = '/redmond2016'
-    	  }
 
 				$.get('/allevents', function(data) {
 					for (let i = 0, j = data.length; i < j; i++) {
@@ -64,8 +69,10 @@ import * as customFunctions from './common-functions.build.js';
 									htmlContent: `<span class="tooltip" title="${city}"><img src="./uploads/${mapIcon}" /></span>`
 								}; 
 								let pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), pushpinOptions);
-								let pushpinClick = Microsoft.Maps.Events.addHandler(pushpin, 'click', function() {window.location = `/${currentEventUrl}`}); 
-								pushpin.setLocation(new Microsoft.Maps.Location(data2.resourceSets[0].resources[0].geocodePoints[0].coordinates[0], data2.resourceSets[0].resources[0].geocodePoints[0].coordinates[1])); 
+								let pushpinClick = Microsoft.Maps.Events.addHandler(pushpin, 'click', function() {window.location = `/${currentEventUrl}`});
+								let latitude = data2.resourceSets[0].resources[0].geocodePoints[0].coordinates[0];
+								let longitude =  data2.resourceSets[0].resources[0].geocodePoints[0].coordinates[1];
+								pushpin.setLocation(new Microsoft.Maps.Location(latitude, longitude)); 
 								map.entities.push(pushpin);
 	    				},
 	    				error: function(err) {
