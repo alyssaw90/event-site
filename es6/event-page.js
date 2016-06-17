@@ -6,7 +6,7 @@ require('jquery-ui');
 import * as customFunctions from './common-functions.build.js';
 
 (function($) {
-	$(function() {
+	$(window).load(function() {
 		const $firstTab = $('.first:first a:first-child');
 		const $tabLinks = $('ul.tabs a[href^="#"]');
 		const $tabContent = $('.tab-content');
