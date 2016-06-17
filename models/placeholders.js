@@ -133,7 +133,7 @@ module.exports = function() {
 			// eventSpeakers: '1'
 		})
 	})
-/*	.then(function() {
+	.then(function() {
 		return Event.create({
 			eventName: 'Redmond Protocol Plugfest 2017',
 			eventLocation: 'Redmond',
@@ -145,7 +145,7 @@ module.exports = function() {
 			eventHighlightColor: '#5c005c',
 			// eventSpeakers: '1'
 		})
-	})*/
+	})
 	.then(function() {
 		return Event.create({
 			eventLocation: 'Göttingen',
@@ -2092,7 +2092,7 @@ setTimeout(function() {
 	<tr><td>13:15-14:00</td><td class="lightOrangeBackground">Azure Files talk<a data-presentationTime="June 15, 2016 13:15" class="button small orange float-right" href="/uploads/Plugfest_2016_Azure_Files.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">David Goebel</td></tr>
 	<tr><td>14:00-14:45</td><td class="lightOrangeBackground">AD/BYOD test suites and updates<a data-presentationTime="June 15, 2016 14:00" class="button small orange float-right" href="/uploads/June-2016-AD-Family-and-BYOD-Protocol-Test-Suite-Updates.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Randy Dong</td></tr>
 	<tr><td>14:45-15:00</td><td>Break</td><td></td></tr>
-	<tr><td>15:00-15:30</td><td class="lightOrangeBackground">New and Modified Windows Protocol Documents<a data-presentationTime="June 15, 2016 15:00" class="button small orange float-right" href="/uploads/Windows-Overview-Documents-Presentation.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Ron Starr</td></tr>
+	<tr><td>15:00-15:30</td><td class="lightOrangeBackground">New and Modified Windows Protocol Documents<a style="margin-left: 1%;" data-presentationTime="June 15, 2016 15:00" class="button small orange float-right" href="/uploads/PlugfestDocList.xlsx" download>Download Document List</a><a data-presentationTime="June 15, 2016 15:00" class="button small orange float-right" href="/uploads/New-and-Modified-Protocols.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Ron Starr</td></tr>
 	<tr><td>15:30-16:00</td><td class="lightOrangeBackground">Adhoc conversation on Open Authoring and use of tools such as Markdown and Github <strong>*(Venue: White Room)</strong></td><td class="lightOrangeBackground">Jim Mauer and Team</td></tr>
 	<tr><td>16:30-19:00</td><td>Dinner from Pacific Northwest Catering</td><td></td></tr>
 </table>
@@ -2123,7 +2123,7 @@ setTimeout(function() {
 	<tr><td>9:00-9:45</td><td class="lightOrangeBackground">Keynote/Nano Server: The Future of Windows Server Starts Now<a data-presentationTime="June 17, 2016 9:00" class="button small orange float-right" href="/uploads/Windows-Nano-Server.pptxs" download>Download Presentation</a></td><td class="lightOrangeBackground">Andrew Mason</td></tr>
 	<tr><td>9:45-10:30</td><td class="lightOrangeBackground">Open SSH</td><td class="lightOrangeBackground">Manoj Ampalam</td></tr>
 	<tr><td>10:30-10:45</td><td>Break</td><td></td></tr>
-	<tr><td>10:45-11:30</td><td class="lightOrangeBackground">Enhanced User experience in Protocol test suites<a data-presentationTime="June 17, 2016 10:45" class="button small orange float-right" href="/uploads/Enhanced-User-Experience-For-Protocol-Test-Suites.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Vivian Tian</td></tr>
+	<tr><td>10:45-11:30</td><td class="lightOrangeBackground">Enhanced User experience in Protocol test suites<a data-presentationTime="June 17, 2016 10:45" class="button small orange float-right" href="/uploads/Enhanced-User-Experience-for-Protocol-Testsuite.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Vivian Tian</td></tr>
 	<tr><td>12:00-13:00</td><td>Lunch</td><td></td></tr>
 </table>
 <br /><br />
