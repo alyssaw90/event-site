@@ -2030,7 +2030,7 @@ setTimeout(function() {
     eventId: 3,
     tabNumber:1, 
     tabTitle: 'Redmond Protocol Plugfest ',
-    tabContent: `<a class="button orange large float-right" target="_blank" href="http://aka.ms/Nma3yz">Register</a><h2>Redmond Protocol Plugfest</h2><p>Enjoy a 5-day Microsoft event centered around Open Specifications, interoperability, and Extensibility. Attendees will learn more about interoperability within Microsoft Office, Exchange, SharePoint, Windows and SQL Server. Office, SharePoint, and Exchange protocol testing will be supported at the event. Hardware will not be provided however; we will have support engineers on site for assistance. Office protocol test resources are available on <a href="https://github.com/OfficeDev/Interop-TestSuites">GitHub</a>.  Any Windows testing is available during the <a href="http://interopevents.com/redmond2016#windowsinteroperabilityiolab">Windows IO Lab</a> from June 20-24, 2016. Windows File Server test suites are also available on <a href="https://github.com/Microsoft/WindowsProtocolTestSuites">GitHub</a>. </p>
+    tabContent: `<h2>Redmond Protocol Plugfest</h2><p>Enjoy a 5-day Microsoft event centered around Open Specifications, interoperability, and Extensibility. Attendees will learn more about interoperability within Microsoft Office, Exchange, SharePoint, Windows and SQL Server. Office, SharePoint, and Exchange protocol testing will be supported at the event. Hardware will not be provided however; we will have support engineers on site for assistance. Office protocol test resources are available on <a href="https://github.com/OfficeDev/Interop-TestSuites">GitHub</a>.  Any Windows testing is available during the <a href="http://interopevents.com/redmond2016#windowsinteroperabilityiolab">Windows IO Lab</a> from June 20-24, 2016. Windows File Server test suites are also available on <a href="https://github.com/Microsoft/WindowsProtocolTestSuites">GitHub</a>. </p>
 <p>Microsoft subject matter experts from both the support organization and the product team gather at the Plugfest to present protocol updates, to answer questions, and to debug with customers. </p>
 <p>Our team at Microsoft also knows the importance of relaxation and fun. The Redmond Protocols Plugfest provides a balance between work and play with evening socials, a visit to the Microsoft company store, and plenty of networking opportunities.</p>
 <ul class="noStyleUL">
@@ -2152,7 +2152,7 @@ setTimeout(function() {
     eventId: 3,
     tabNumber:2, 
     tabTitle: 'Windows Interoperability (IO) Lab',
-    tabContent: `<a class="button orange large float-right" target="_blank" href="http://aka.ms/Nma3yz">Register</a><h4>Windows Interoperability (IO) Lab </h4>
+    tabContent: `<h5 style="margin-top: 0;" class="float-right">If you’re interested in the IO Lab, email <a href="mailto:plugfests@microsoft.com">plugfests@microsoft.com</a></h5><h3>Windows Interoperability (IO) Lab </h3>
     <p>The Windows Interoperability (IO) Lab is the opportunity to test your implementation with Microsoft Windows protocol test suites.   During the IO lab you have the opportunity to directly engage with Windows Protocol Support, Test Suite Development, and Windows development team as well as network with other professionals from all over the world.</p>
     <ul class="noStyleUL">
     	<li><strong>When:</strong>  June 20-24, 2016</li>

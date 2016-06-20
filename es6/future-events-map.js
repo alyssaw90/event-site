@@ -13,7 +13,6 @@ import * as customFunctions from './common-functions.build.js';
 
 		if (window.location.pathname === '/future-events') {
 
-
 			//add pins to map
 			function getMap() {
 				//choose element to place map in and choose options
@@ -90,9 +89,7 @@ import * as customFunctions from './common-functions.build.js';
 	   		});;
    		}
     	  
-		Microsoft.Maps.loadModule('Microsoft.Maps.Overlays.Style', { callback: getMap });
-   		// getMap();
-	
+		Microsoft.Maps.loadModule('Microsoft.Maps.Overlays.Style', { callback: getMap });	
 
 		}
 	 	
