@@ -13,19 +13,27 @@ import * as customFunctions from './common-functions.build.js';
 
 		if (window.location.pathname === '/future-events') {
 
-			let map = new Microsoft.Maps.Map(document.getElementById('eventsMap'), {
- 	   		credentials: 'AsQgDPDncnnJ8Zf6TkAuZVBQUVtzAe2-h_sjl4OxiTF2XFLIJF9rbMMPU5Oucd5v',
- 	   		width: 800,
- 	   		height: 800,
- 	   		zoom: 2.25,
- 	   		enableSearchLogo: false
- 	   	});
-	
+
 			//add pins to map
 			function getMap() {
-    	  function displayEventInfo(e) {
-    	    window.location = '/redmond2016'
-    	  }
+				//choose element to place map in and choose options
+				let map = new Microsoft.Maps.Map(document.getElementById('eventsMap'), {
+ 	   			credentials: 'AsQgDPDncnnJ8Zf6TkAuZVBQUVtzAe2-h_sjl4OxiTF2XFLIJF9rbMMPU5Oucd5v',
+ 	   			width: 800,
+ 	   			height: 800,
+ 	   			zoom: 2.25,
+ 	   			enableSearchLogo: false,
+ 	   			customizeOverlays: true
+ 	   		});
+	
+ 	   		//get use location and set it as the center of the map
+ 	   		let geoLocationProvider = new Microsoft.Maps.GeoLocationProvider(map);
+	
+ 	   		geoLocationProvider.getCurrentPosition({
+ 	   			successCallback: function(object) {
+ 	   				map.setView({zoom: 2.25})
+ 	   			}
+ 	   		}); 	
 
 				$.get('/allevents', function(data) {
 					for (let i = 0, j = data.length; i < j; i++) {
@@ -64,8 +72,10 @@ import * as customFunctions from './common-functions.build.js';
 									htmlContent: `<span class="tooltip" title="${city}"><img src="./uploads/${mapIcon}" /></span>`
 								}; 
 								let pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), pushpinOptions);
-								let pushpinClick = Microsoft.Maps.Events.addHandler(pushpin, 'click', function() {window.location = `/${currentEventUrl}`}); 
-								pushpin.setLocation(new Microsoft.Maps.Location(data2.resourceSets[0].resources[0].geocodePoints[0].coordinates[0], data2.resourceSets[0].resources[0].geocodePoints[0].coordinates[1])); 
+								let pushpinClick = Microsoft.Maps.Events.addHandler(pushpin, 'click', function() {window.location = `/${currentEventUrl}`});
+								let latitude = data2.resourceSets[0].resources[0].geocodePoints[0].coordinates[0];
+								let longitude =  data2.resourceSets[0].resources[0].geocodePoints[0].coordinates[1];
+								pushpin.setLocation(new Microsoft.Maps.Location(latitude, longitude)); 
 								map.entities.push(pushpin);
 	    				},
 	    				error: function(err) {
@@ -75,14 +85,14 @@ import * as customFunctions from './common-functions.build.js';
 					}
 				});
 
+	   		$('.MicrosoftMap').css({
+	   			width: '100%'
+	   		});;
    		}
     	  
+		Microsoft.Maps.loadModule('Microsoft.Maps.Overlays.Style', { callback: getMap });
+   		// getMap();
 	
-   		getMap();
-	
-   		$('.MicrosoftMap').css({
-   			width: '100%'
-   		});;
 
 		}
 	 	
