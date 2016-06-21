@@ -818,7 +818,7 @@ module.exports = function (router) {
       eventInfo.htmlContent = eventInfo.eventUltHtml + eventInfo.eventDivHtml;
       //if there is an event header image create the html for the header image
       if (eventInfo.event.eventHeaderImage) {
-        eventInfo.headerHtml = '<div class="col_12 internetExplorer event-header center" id="eventHeader"><img src="../uploads/' + eventInfo.event.eventHeaderImage + '" /></div>';
+        eventInfo.headerHtml = '<div class="col_12 internetExplorer event-header center" id="eventHeader"><img alt="event banner image" src="../uploads/' + eventInfo.event.eventHeaderImage + '" /></div>';
       }
       //read the blank event html file and turn the returned blob into a string, then replace the placeholder html content with the content created by the event
       fs.readFile(path.join(__dirname, '../views/blank-event.html'), function(err, data) {

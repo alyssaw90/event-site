@@ -86,11 +86,21 @@ import * as customFunctions from './common-functions.build.js';
 
 	   		$('.MicrosoftMap').css({
 	   			width: '100%'
-	   		});;
+	   		});
+
    		}
     	  
 		Microsoft.Maps.loadModule('Microsoft.Maps.Overlays.Style', { callback: getMap });	
-
+		//add title for accessibility
+		window.onload = function() {
+			$('.NavBar_dropIconContainer').attr('title', 'Navigation bar drop icon containter');
+			$('.MicrosoftMap').find('img').attr('alt', 'map image');
+			$('a#null.pushpinLabel.MapPushpinBase').each(function(index, el) {
+				let title = $(this).find('.tooltip').attr('title');
+				$(this).attr('title', title);
+				console.log('CCCCCCC::      ', $(this).find('.tooltip').attr('title'));
+			});
+		}
 		}
 	 	
 	});
