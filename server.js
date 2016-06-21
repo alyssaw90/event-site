@@ -31,6 +31,12 @@ require('./routes/auth-routes')(authRouter, passport);
 
 console.log(secretKeyReminder);
 
+//set header to prevent Clickjacking and Cross-Site Request Forgery (CSRF) attacks
+app.use(function(req, res, next) {
+	res.setHeader('X-Frame-Options', 'DENY');
+	return next();
+});
+
 app.use(express.static(__dirname + '/'));
 
 app.use('/', dbRouter);

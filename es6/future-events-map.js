@@ -37,7 +37,7 @@ import * as customFunctions from './common-functions.build.js';
 				$.get('/allevents', function(data) {
 					for (let i = 0, j = data.length; i < j; i++) {
 						let searchString = data[i].eventLocation.trim().replace(/\s+/g, '%20');;
-						let searchUrl = `http://dev.virtualearth.net/REST/v1/Locations?query=${searchString}&key=AsQgDPDncnnJ8Zf6TkAuZVBQUVtzAe2-h_sjl4OxiTF2XFLIJF9rbMMPU5Oucd5v`;
+						let searchUrl = `https://dev.virtualearth.net/REST/v1/Locations?query=${searchString}&key=AsQgDPDncnnJ8Zf6TkAuZVBQUVtzAe2-h_sjl4OxiTF2XFLIJF9rbMMPU5Oucd5v`;
 						let today = new Date();
 						let mapIcon;
 						let city;
@@ -98,7 +98,7 @@ import * as customFunctions from './common-functions.build.js';
 			$('a#null.pushpinLabel.MapPushpinBase').each(function(index, el) {
 				let title = $(this).find('.tooltip').attr('title');
 				$(this).attr('title', title);
-				console.log('CCCCCCC::      ', $(this).find('.tooltip').attr('title'));
+				console.log('CCCCCCC::      ', title);
 			});
 		}
 		}
