@@ -9,15 +9,15 @@ let jQuery = require('jquery');
 import * as customFunctions from '../common-functions.build.js';
 
 (function($) {
-	$(document).ready(function () {
 
-	let $calendar = $('#calendar');
-	let $pastEventsDiv = $( '#2010_events' )
+  $(document).ready(function () {
 
-	$pastEventsDiv.click(function () {
+    let $calendar = $('#calendar');
+    let $pastEventsDiv = $( '#2010_events' );
 
-
-		let schedule = `<table cellspacing="0" cellpadding="0">
+    let showSchedule = function(e) {
+      let html;
+      let schedule = `<table id="2010PastEvents" tabindex="0" cellspacing="0" cellpadding="0">
 												<thead><tr>
 												<th>Name</th>
 												<th>Date</th>
@@ -81,12 +81,24 @@ import * as customFunctions from '../common-functions.build.js';
 												<td><a href="https://msdn.microsoft.com/openspecifications/dn768081#tile=event011810">Summary</a></td>
 											</tr></tbody>
 										</table>`;
-			let html = $.parseHTML(schedule);
-			customFunctions.showCalendarOfPastEvents(html, $pastEventsDiv, $calendar);
-			customFunctions.stickyFooter();
-	
-		});
-	
-	});
-})(jQuery);
+        
+      
+      html = $.parseHTML(schedule);
+      customFunctions.showCalendarOfPastEvents(html, $pastEventsDiv, $calendar);
+      // console.log('past:    ', $('#firstPastEventHeader'));
+      customFunctions.stickyFooter();
+      $('#2010PastEvents').focus();
+      $('th, td').attr('tabindex', '0');
 
+    }
+
+    $pastEventsDiv.click(showSchedule);
+    $pastEventsDiv.keydown(function (e) {
+      let keyCode = customFunctions.getKeyCode(e);
+      if (keyCode === 13) {
+        showSchedule();
+      }
+    });
+
+  });
+})(jQuery);

@@ -12,10 +12,14 @@ import * as customFunctions from '../common-functions.build.js';
 
 	$(function() {
 		var $pastEvents = $('.past_events');
-		$pastEvents.click(function() {
-			customFunctions.changeHeight('.past_events');
-			customFunctions.homepageStickyFooter();
-			// customFunctions.pastEventBackgroundSwitch();
+		$pastEvents.on('click keydown', function() {
+			let keyCode = customFunctions.getKeyCode(e);
+			if (keyCode === 1 || 9 || 13) {
+				customFunctions.changeHeight('.past_events');
+				customFunctions.homepageStickyFooter();
+				// customFunctions.pastEventBackgroundSwitch();
+				
+			}
 		});
 	});
 

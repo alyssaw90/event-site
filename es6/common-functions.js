@@ -1,5 +1,7 @@
 'use strict';
 
+const jQuery =  require('jquery');
+const $ = jQuery;
 //Logout function
 //Submits an invalid authentication header, causing the user to be 'logged out'
 export let logout = function() {
@@ -129,3 +131,15 @@ export let showCalendarOfPastEvents = function(calendarHtml, divClicked, calenda
     divClicked.siblings().removeClass('selected-year');
   	divClicked.toggleClass('selected-year');
 }
+
+//function to get key code
+export let getKeyCode = function(e) {
+	let keyCode;
+	//get key code
+	if (e.keyCode) {
+		keyCode = e.keyCode;
+	} else {
+		keyCode = e.which;
+	}
+	return keyCode;
+}		

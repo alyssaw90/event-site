@@ -33,35 +33,108 @@
 // 	});
 // });
 
-let jQuery = require('jquery');
 import * as customFunctions from './common-functions.build.js';
+const jQuery = require('jquery');
 
 (function($) {
 
 	$(document).ready(function () {
+		const $learnBlockIcon = $('#learnBlockIcon');
+		const $learnBlock = $('#learnBlock');
+		// const $infoBlockWrapper = $('.infoBlockWrapper');
+		const $infoBlockButton = $('.infoBlockButton');
+		const $infoBlocksContainer = $('.infoBlocksContainer');
+		const $infoBlocksContainer2 = $('.infoBlocksContainer2');
+		const $homepageIntroBlocks = $('.homepageIntroBlocks');
+		const $notANumberBlock = $('#notANumberBlock');
+		const $toHelpYouBlock = $('#toHelpYouBlock');
+		const $whoMadeItBlock = $('#whoMadeItBlock');
+		const $itsYourEventBlock = $('#itsYourEventBlock');
+		const $backToTopButton = $('#backToTop');
+		const $homepageEmailSignUp = $('#homepageEmailSignUp');
+		const $scrollButtonDiv = $('.scroll-button');
+		const $hiddenHomepageSectionsWrapper = $('.hiddenHomepageSectionsWrapper');
+		const $window = $(window);	
 		//array of ms colors at 80% opacity - ms yellow is removed, because it's to light for background color
 		let msColors = ['rgba(216, 59, 1, .8)', 'rgba(232, 17, 35, .8)', 'rgba(180, 0, 158, .8)', 'rgba(92, 45, 145, .8)', 'rgba(0, 120, 215, .8)', 'rgba(0, 130, 114, .8)', 'rgba(16, 124, 16, .8)'];
 		let count = 0;
-		let $learnBlockIcon = $('#learnBlockIcon');
-		let $learnBlock = $('#learnBlock');
-		let $infoBlockWrapper = $('.infoBlockWrapper');
-		let $infoBlockButton = $('.infoBlockButton');
-		let $infoBlocksContainer = $('.infoBlocksContainer');
-		let $infoBlocksContainer2 = $('.infoBlocksContainer2');
-		let $homepageIntroBlocks = $('.homepageIntroBlocks');
-		let $notANumberBlock = $('#notANumberBlock');
-		let $toHelpYouBlock = $('#toHelpYouBlock');
-		let $whoMadeItBlock = $('#whoMadeItBlock');
-		let $itsYourEventBlock = $('#itsYourEventBlock');
-		let $backToTopButton = $('#backToTop');
-		// let $newsletterButton = $('#newsletterButton');
-		let $homepageEmailSignUp = $('#homepageEmailSignUp');
-		let $scrollButtonDiv = $('.scroll-button');
-		let $hiddenHomepageSectionsWrapper = $('.hiddenHomepageSectionsWrapper');
-		let $window = $(window);	
-		
 
-		// console.log($('iframe').contents().css('background-color'));
+		//function to show homepage intro text when the corresponding block is clicked
+		function showHomepageBlock (e) {
+			let $this = $(this);
+			let thisBlockArrowClass = $this.attr('id') + 'ArrowBox';
+			let thisBlockMobileClass = $this.attr('id') + 'Mobile';
+			let thisBlockText = '#' + $this.data('thisblocktext');
+			let blockPosition = $(thisBlockText).parent().offset().top;
+	   	let style = window.getComputedStyle(this, 'hover');
+	   	let mobileStyle = $(this).data('hoverBackgroundColor');
+	   	let backgroundColor = style['background-color'];
+			let keyCode;
+			//get key code
+			if (e.keyCode) {
+				keyCode = e.keyCode;
+			} else {
+				keyCode = e.which;
+			}
+			//if the keyCode is the mouse click (1) or enter (13) show the text block 
+			if (keyCode === 1 || keyCode === 13) {
+				if ($window.width() > 768) {
+					$this.toggleClass(thisBlockArrowClass);
+					$this.find('h3').toggleClass('whiteText');
+					$this.siblings().each(function (i, elem) {
+						let $thisElem = $(this);
+						let arrowClass = elem.id + 'ArrowBox';
+						$thisElem.removeClass(arrowClass);
+						$thisElem.find('h3').removeClass('whiteText');
+					});
+				}
+				if ($window.width() <= 768) {
+					if ($this.hasClass(thisBlockMobileClass)) {
+						$this.removeClass(thisBlockMobileClass).css('background', 'rgb(255, 255, 255)');
+					} else {
+						$this.addClass(thisBlockMobileClass).css('background', $this.attr('data-hoverBackgroundColor'));
+					}
+					$this.siblings().each(function (i, elem) {
+						let $thisMobileElem = $(this);
+						let mobileClass = elem.id + 'Mobile';
+						$thisMobileElem.removeClass(mobileClass).css('background', 'rgb(255, 255, 255)');
+					});
+				}
+				$hiddenHomepageSectionsWrapper.css('background-color', $this.attr('data-hoverBackgroundColor'));
+				$scrollButtonDiv.css('background-color', $hiddenHomepageSectionsWrapper.css('background-color'));
+				if ($(thisBlockText).css('display') === 'none') {
+					$(thisBlockText).fadeIn().attr({
+						'aria-hidden': 'false',
+						'tabindex': '0'
+					}).focus();
+					$(thisBlockText).siblings().hide().attr('aria-hidden', 'true').removeAttr('tabindex');
+					$('html, body').animate({ scrollTop: blockPosition }, 'slow');
+					$scrollButtonDiv.css('color', '#fff');
+					$this.next().attr('tabindex', '1');
+				} else {
+					$(thisBlockText).fadeOut().attr('aria-hidden', 'true').removeAttr('tabindex');
+					$(thisBlockText).siblings().hide().attr('aria-hidden', 'true').removeAttr('tabindex');
+					$this.next().attr('tabindex', '0');
+					$scrollButtonDiv.css('color', '#2F2F2F').css('background-color', '#fff');
+				}
+				//execute the homepageStickyFooter function to correctly position the footer after the new div is added
+		   	customFunctions.homepageStickyFooter();
+		   	setTimeout(customFunctions.homepageStickyFooter, 420); 
+				
+			}
+		}
+
+		function moveTab(e) {
+			e.preventDefault();
+			let keyCode = customFunctions.getKeyCode(e);
+			let parentId = `#${$(this).attr('data-parent')}`;
+			if (keyCode === 9) {
+				$(parentId).next().children('h3').click();
+				$(parentId).next().children('h3').focus();
+			}
+		}
+
+
 		//randomly assign background-color to the slides -- .slideshow li:nth-child(2) h2:first-child
 		$('.slideshow li').each(function (i) {
 			let randomNum = Math.floor(Math.random() * (7 - count));
@@ -86,7 +159,7 @@ import * as customFunctions from './common-functions.build.js';
 		});*/
 		//close textbox and unhighlight introBox when $backToTopButton is clicked
 		$backToTopButton.click(function (e) {
-			$('.hiddenHomepageSections:visible').hide();
+			$('.hiddenHomepageSections:visible').hide().attr('aria-hidden', 'true').removeAttr('tabindex');
 			$scrollButtonDiv.css('background-color', '#fff').css('color', '#2F2F2F');
 			$('.homepageIntroBlocks').each(function (i, elem) {
 				let $this = $(this);
@@ -97,56 +170,16 @@ import * as customFunctions from './common-functions.build.js';
 			});
 			customFunctions.homepageStickyFooter();
 		});
-		//when a homepageIntroBlocks is clicked, show the corresponding div
-		$homepageIntroBlocks.click(function (e) {
-			let $this = $(this);
-			let thisBlockArrowClass = $this.attr('id') + 'ArrowBox';
-			let thisBlockMobileClass = $this.attr('id') + 'Mobile';
-			let thisBlockText = '#' + $this.data('thisblocktext');
-			let blockPosition = $(thisBlockText).parent().offset().top;
-	   	let style = window.getComputedStyle(this, 'hover');
-	   	let mobileStyle = $(this).data('hoverBackgroundColor');
-	   	let backgroundColor = style['background-color'];
-			if ($window.width() > 768) {
-				$this.toggleClass(thisBlockArrowClass);
-				$this.siblings().each(function (i, elem) {
-					let $thisElem = $(this);
-					let arrowClass = elem.id + 'ArrowBox';
-					$thisElem.removeClass(arrowClass);
-				});
-			}
-			if ($window.width() <= 768) {
-					console.log(':::::::   ', $this.attr('data-hoverBackgroundColor'));
-				if ($this.hasClass(thisBlockMobileClass)) {
-					$this.removeClass(thisBlockMobileClass).css('background', 'rgb(255, 255, 255)');
-				} else {
-					$this.addClass(thisBlockMobileClass).css('background', $this.attr('data-hoverBackgroundColor'));
-				}
-				$this.siblings().each(function (i, elem) {
-					let $thisMobileElem = $(this);
-					let mobileClass = elem.id + 'Mobile';
-					$thisMobileElem.removeClass(mobileClass).css('background', 'rgb(255, 255, 255)');
-				});
-			}
-			$hiddenHomepageSectionsWrapper.css('background-color', $this.attr('data-hoverBackgroundColor'));
-			$scrollButtonDiv.css('background-color', $hiddenHomepageSectionsWrapper.css('background-color'));
-			if ($(thisBlockText).css('display') === 'none') {
-				$(thisBlockText).fadeIn();
-				$(thisBlockText).siblings().hide();
-				$('html, body').animate({ scrollTop: blockPosition }, 'slow');
-				$scrollButtonDiv.css('color', '#fff');
-			} else {
-				$(thisBlockText).fadeOut();
-				$(thisBlockText).siblings().hide();
-				$scrollButtonDiv.css('color', '#2F2F2F').css('background-color', '#fff');
-			}
-			//execute the homepageStickyFooter function to correctly position the footer after the new div is added
-	   	customFunctions.homepageStickyFooter();
-	   	setTimeout(customFunctions.homepageStickyFooter, 420); 
-		});
-		
+		//when a homepageIntroBlocks is clicked or enter is clicked, show the corresponding div
+		$homepageIntroBlocks.attr('tabindex', '-1');
+		$homepageIntroBlocks.click(showHomepageBlock);
+		$homepageIntroBlocks.keydown(showHomepageBlock);
+		//when using keyboard navigation hitting tab on the hiddenHomepageSections nextTab item should send user to the next title block
+		$('.nextTab').keydown(moveTab);
+
+
 		//make homepageIntroBlocks zoom in and down
-		setTimeout(function () {
+		/*setTimeout(function () {
 			$notANumberBlock.css('visibility', 'visible').addClass('animated zoomInDown');
 			customFunctions.homepageStickyFooter();
 		}, 10);
@@ -161,7 +194,7 @@ import * as customFunctions from './common-functions.build.js';
 		setTimeout(function () {
 			$itsYourEventBlock.css('visibility', 'visible').addClass('animated zoomInDown');
 			customFunctions.homepageStickyFooter();
-		}, 3000);
+		}, 3000);*/
 	});
 
 	$(window).load(function() {

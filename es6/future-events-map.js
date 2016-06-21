@@ -13,24 +13,26 @@ import * as customFunctions from './common-functions.build.js';
 
 		if (window.location.pathname === '/future-events') {
 
-			let map = new Microsoft.Maps.Map(document.getElementById('eventsMap'), {
- 	   		credentials: 'AsQgDPDncnnJ8Zf6TkAuZVBQUVtzAe2-h_sjl4OxiTF2XFLIJF9rbMMPU5Oucd5v',
- 	   		width: 800,
- 	   		height: 800,
- 	   		zoom: 2.25,
- 	   		enableSearchLogo: false
- 	   	});
-
- 	   	//get use location and set it as the center of the map
- 	   	let geoLocationProvider = new Microsoft.Maps.GeoLocationProvider(map);
- 	   	geoLocationProvider.getCurrentPosition({
- 	   		successCallback: function(object) {
- 	   			map.setView({zoom: 2.25})
- 	   		}
- 	   	}); 
-
 			//add pins to map
 			function getMap() {
+				//choose element to place map in and choose options
+				let map = new Microsoft.Maps.Map(document.getElementById('eventsMap'), {
+ 	   			credentials: 'AsQgDPDncnnJ8Zf6TkAuZVBQUVtzAe2-h_sjl4OxiTF2XFLIJF9rbMMPU5Oucd5v',
+ 	   			width: 800,
+ 	   			height: 800,
+ 	   			zoom: 2.25,
+ 	   			enableSearchLogo: false,
+ 	   			customizeOverlays: true
+ 	   		});
+	
+ 	   		//get use location and set it as the center of the map
+ 	   		let geoLocationProvider = new Microsoft.Maps.GeoLocationProvider(map);
+	
+ 	   		geoLocationProvider.getCurrentPosition({
+ 	   			successCallback: function(object) {
+ 	   				map.setView({zoom: 2.25})
+ 	   			}
+ 	   		}); 	
 
 				$.get('/allevents', function(data) {
 					for (let i = 0, j = data.length; i < j; i++) {
@@ -82,15 +84,23 @@ import * as customFunctions from './common-functions.build.js';
 					}
 				});
 
+	   		$('.MicrosoftMap').css({
+	   			width: '100%'
+	   		});
+
    		}
     	  
-	
-   		getMap();
-	
-   		$('.MicrosoftMap').css({
-   			width: '100%'
-   		});;
-
+		Microsoft.Maps.loadModule('Microsoft.Maps.Overlays.Style', { callback: getMap });	
+		//add title for accessibility
+		window.onload = function() {
+			$('.NavBar_dropIconContainer').attr('title', 'Navigation bar drop icon containter');
+			$('.MicrosoftMap').find('img').attr('alt', 'map image');
+			$('a#null.pushpinLabel.MapPushpinBase').each(function(index, el) {
+				let title = $(this).find('.tooltip').attr('title');
+				$(this).attr('title', title);
+				console.log('CCCCCCC::      ', $(this).find('.tooltip').attr('title'));
+			});
+		}
 		}
 	 	
 	});

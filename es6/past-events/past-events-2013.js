@@ -10,14 +10,14 @@ import * as customFunctions from '../common-functions.build.js';
 
 (function($) {
 
-	$(document).ready(function () {
-		let $calendar = $('#calendar');
-		let $pastEventsDiv = $( '#2013_events' );
+  $(document).ready(function () {
 
-		$pastEventsDiv.click(function () {
+    let $calendar = $('#calendar');
+    let $pastEventsDiv = $( '#2013_events' );
 
-
-			let schedule = `<table cellspacing="0" cellpadding="0">
+    let showSchedule = function(e) {
+      let html;
+      let schedule = `<table id="2013PastEvents" tabindex="0" cellspacing="0" cellpadding="0">
 													<thead><tr>
 													<th>Name</th>
 													<th>Date</th>
@@ -38,7 +38,7 @@ import * as customFunctions from '../common-functions.build.js';
 													<td>SMB, SMB2 and SMB3 file sharing protocols</td>
 													<td><a href="http://www.snia.org/events/storage-developer2013/presentation">Website</a></td>
 												</tr><tr>
-													<td>Redmond Interoperability Protocols Plugfest 2014</td>
+													<td>Redmond Interoperability Protocols Plugfest 2013</td>
 													<td>June 24-28, 2013</td>
 													<td>Redmond, WA</td>
 													<td>Exchange RPC and Web Services and Office SharePoint Specifications; Windows Identity; Active Directory, File Sharing and Authentication Specifications; SQL and OData Protocols</td>
@@ -51,12 +51,24 @@ import * as customFunctions from '../common-functions.build.js';
 													<td><a href="http://channel9.msdn.com/Events/Open-Specifications-Plugfests/Taipei-Interoperability-Protocols-Plugfest-2013">Videos</a></td>
 												</tr></tbody>
 											</table>`;
-			let html = $.parseHTML(schedule);
-			customFunctions.showCalendarOfPastEvents(html, $pastEventsDiv, $calendar);
-			customFunctions.stickyFooter();
+        
+      
+      html = $.parseHTML(schedule);
+      customFunctions.showCalendarOfPastEvents(html, $pastEventsDiv, $calendar);
+      // console.log('past:    ', $('#firstPastEventHeader'));
+      customFunctions.stickyFooter();
+      $('#2013PastEvents').focus();
+      $('th, td').attr('tabindex', '0');
 
-		});
+    }
 
-	});
+    $pastEventsDiv.click(showSchedule);
+    $pastEventsDiv.keydown(function (e) {
+      let keyCode = customFunctions.getKeyCode(e);
+      if (keyCode === 13) {
+        showSchedule();
+      }
+    });
 
+  });
 })(jQuery);

@@ -10,16 +10,14 @@ import * as customFunctions from '../common-functions.build.js';
 
 (function($) {
 
-	$(document).ready(function () {
+  $(document).ready(function () {
 
-		let $calendar = $('#calendar');
-		let $pastEventsDiv = $( "#2015_events" );
-		let imgArr = [];
+    let $calendar = $('#calendar');
+    let $pastEventsDiv = $( '#2015_events' );
 
-		$pastEventsDiv.click(function () {
-
-
-			let schedule = `<table cellspacing="0" cellpadding="0">
+    let showSchedule = function(e) {
+      let html;
+      let schedule = `<table id="2015PastEvents" tabindex="0" cellspacing="0" cellpadding="0">
 											<thead><tr>
 												<th>Name</th>
 												<th>Date</th>
@@ -32,7 +30,7 @@ import * as customFunctions from '../common-functions.build.js';
 												<td>October 21 - 22, 2015</td>
 												<td>Shanghai, China</td>
 												<td>Office Developer Opportunity, Data Platform, OData, Open Specifications, Office Add-ins + APIs</td>
-												<td><a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/Shanghai-Interop-Dev-Days">Videos</a>, <a href="/taipei2016">Event Page</a></td>
+												<td><a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/Shanghai-Interop-Dev-Days">Videos</a>, <a href="/shanghai2015">Event Page</a></td>
 											</tr><tr>
 												<td>Redmond Interoperability Protocols Plugfest 2015</td>
 												<td>June 22-26, 2015</td>
@@ -65,13 +63,24 @@ import * as customFunctions from '../common-functions.build.js';
 												<td><a href="http://connect.microsoft.com/site216/Downloads/DownloadDetails.aspx?DownloadID=57585">Presentation handouts</a></td>
 											</tr></tbody>
 											</table>`;
+        
+      
+      html = $.parseHTML(schedule);
+      customFunctions.showCalendarOfPastEvents(html, $pastEventsDiv, $calendar);
+      // console.log('past:    ', $('#firstPastEventHeader'));
+      customFunctions.stickyFooter();
+      $('#2015PastEvents').focus();
+      $('th, td').attr('tabindex', '0');
 
-			let html = $.parseHTML(schedule);
-			customFunctions.showCalendarOfPastEvents(html, $pastEventsDiv, $calendar);
-			customFunctions.stickyFooter();
+    }
 
-		});
+    $pastEventsDiv.click(showSchedule);
+    $pastEventsDiv.keydown(function (e) {
+      let keyCode = customFunctions.getKeyCode(e);
+      if (keyCode === 13) {
+        showSchedule();
+      }
+    });
 
-	});
-
+  });
 })(jQuery);

@@ -6,16 +6,17 @@
 /*Global Functions*/
 
 
-let jQuery = require('jquery');
+const jQuery = require('jquery');
 import * as customFunctions from './common-functions.build.js';
 
 (function($) {
 	$(function () {
-		let $body = $('body');
-		let $footer = $('.foot');
-		let $backToTopButton = $('.scroll-button .fa-chevron-up');
-		let $travelUlLinks = $('.travelUlLinks');
-		let $pastEvents = $('.past_events');
+		const $body = $('body');
+		const $footer = $('.foot');
+		const $backToTopButton = $('.scroll-button .fa-chevron-up');
+		const $travelUlLinks = $('.travelUlLinks');
+		const $pastEvents = $('.past_events');
+		const $headers = $(':header');
 
 		//make external links open in new tabs
 		$('a[href^="http"]').attr('target','_blank');
@@ -87,6 +88,7 @@ import * as customFunctions from './common-functions.build.js';
 		}
 	});
 
+
 	$(window).load(function() {
 		customFunctions.changeHeight('.past_events');
 		customFunctions.changeHeight('.individual-homepage-expert');
@@ -101,6 +103,43 @@ import * as customFunctions from './common-functions.build.js';
 	  customFunctions.stickyFooter();
 	  customFunctions.homepageStickyFooter();
 	});
+
+	/*//////////////////////////////////////////////////////
+	/																												/ 
+	/																												/ 
+	/										Accessibility												/ 
+	/																												/ 
+	/																												/ 
+	//////////////////////////////////////////////////////*/
+
+
+	let path = window.location.pathname;
+	$('li:not(.tabs > li), th, td').attr('tabindex', '0');
+
+	//add tabindex="0" to paragraphs on the speakers, about abd faq pages
+
+	if (path === '/meet-the-team' || path === '/about' || path === '/faq' || path === '/latest-news', '/contactus') {
+		$('p').attr('tabindex', '0');
+	}
+
+	$('td').each(function(index, el) {
+		let $this = $(this);
+		let $tdContent = $this.html();
+		//add html time element to tds with no letters and a dash and colon
+		if (!/[a-zA-Z]/.test($tdContent) && /[:\-]/.test($tdContent)) {
+			$this.html(`<time>${$tdContent}</time>`);
+		}
+
+	});
+
+	//add aria tab to header elements that aren't links
+	$(':header').each(function(index, el) {
+		let $this = $(this);
+		if (!$this.parent().attr('href')) {
+			$this.attr('tabindex', '0');
+		}
+	});
+
 
 })(jQuery);
 
