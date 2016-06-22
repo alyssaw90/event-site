@@ -17,27 +17,18 @@ import * as customFunctions from './common-functions.build.js';
 			function getMap() {
 				//choose element to place map in and choose options
 				let map = new Microsoft.Maps.Map(document.getElementById('eventsMap'), {
- 	   			credentials: 'AsQgDPDncnnJ8Zf6TkAuZVBQUVtzAe2-h_sjl4OxiTF2XFLIJF9rbMMPU5Oucd5v',
+ 	   			credentials: 'AjtUzWJBHlI3Ma_Ke6Qv2fGRXEs0ua5hUQi54ECwfXTiWsitll4AkETZDihjcfeI',
  	   			width: 800,
  	   			height: 800,
  	   			zoom: 2.25,
  	   			enableSearchLogo: false,
  	   			customizeOverlays: true
  	   		});
-	
- 	   		//get use location and set it as the center of the map
- 	   		let geoLocationProvider = new Microsoft.Maps.GeoLocationProvider(map);
-	
- 	   		geoLocationProvider.getCurrentPosition({
- 	   			successCallback: function(object) {
- 	   				map.setView({zoom: 2.25})
- 	   			}
- 	   		}); 	
 
 				$.get('/allevents', function(data) {
 					for (let i = 0, j = data.length; i < j; i++) {
 						let searchString = data[i].eventLocation.trim().replace(/\s+/g, '%20');;
-						let searchUrl = `https://dev.virtualearth.net/REST/v1/Locations?query=${searchString}&key=AsQgDPDncnnJ8Zf6TkAuZVBQUVtzAe2-h_sjl4OxiTF2XFLIJF9rbMMPU5Oucd5v`;
+						let searchUrl = `https://dev.virtualearth.net/REST/v1/Locations?query=${searchString}&key=AjtUzWJBHlI3Ma_Ke6Qv2fGRXEs0ua5hUQi54ECwfXTiWsitll4AkETZDihjcfeI`;
 						let today = new Date();
 						let mapIcon;
 						let city;
@@ -68,7 +59,7 @@ import * as customFunctions from './common-functions.build.js';
 									typeName: 'pushpinLabel',
 									text: searchString,
 									textOffset : new Microsoft.Maps.Point(-45,-25),
-									htmlContent: `<span class="tooltip" title="${city}"><img src="./uploads/${mapIcon}" /></span>`
+									htmlContent: `<span class="tooltip" title="${city}"><img alt="push pin for ${city}" src="./uploads/${mapIcon}" /></span>`
 								}; 
 								let pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), pushpinOptions);
 								let pushpinClick = Microsoft.Maps.Events.addHandler(pushpin, 'click', function() {window.location = `/${currentEventUrl}`});
@@ -88,19 +79,25 @@ import * as customFunctions from './common-functions.build.js';
 	   			width: '100%'
 	   		});
 
+	   		//get user location and set it as the center of the map
+	   		let geoLocationProvider = new Microsoft.Maps.GeoLocationProvider(map);
+
+	   		geoLocationProvider.getCurrentPosition({
+	   			successCallback: function(object) {
+	   				map.setView({zoom: 2.25})
+	   			}
+	   		}); 	
+
    		}
-    	  
-		Microsoft.Maps.loadModule('Microsoft.Maps.Overlays.Style', { callback: getMap });	
-		//add title for accessibility
-		window.onload = function() {
-			$('.NavBar_dropIconContainer').attr('title', 'Navigation bar drop icon containter');
-			$('.MicrosoftMap').find('img').attr('alt', 'map image');
-			$('a#null.pushpinLabel.MapPushpinBase').each(function(index, el) {
-				let title = $(this).find('.tooltip').attr('title');
-				$(this).attr('title', title);
-				console.log('CCCCCCC::      ', title);
-			});
-		}
+    	
+    	//load bing map theme module and call getMap callback  
+			Microsoft.Maps.loadModule('Microsoft.Maps.Overlays.Style', { callback: getMap });	
+				
+			//add title for accessibility
+			window.onload = function() {
+				$('.NavBar_dropIconContainer').attr('title', 'Navigation bar drop icon containter');
+				$('.MicrosoftMap').find('img').attr('alt', 'map image');
+			}
 		}
 	 	
 	});
