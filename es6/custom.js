@@ -9,6 +9,13 @@
 const jQuery = require('jquery');
 import * as customFunctions from './common-functions.build.js';
 
+//FrameKiller
+if (self === top) {
+	document.documentElement.style.display = 'block';
+} else {
+	top.location = self.location;
+}
+
 (function($) {
 	$(function () {
 		const $body = $('body');
