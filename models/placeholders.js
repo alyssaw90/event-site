@@ -103,7 +103,7 @@ module.exports = function() {
 	  // eventEndDate: new Date('2016-12-13:00:01:00'), // the end date...
 	  eventHeaderImage: 'India-2016.jpg', //link to header image
 	  // eventHomepageImage: null,
-	  eventHighlightColor: '#5C2D91',
+	  eventHighlightColor: '#00188f',
 	  // eventSpeakers: null
 	  });
 	})
@@ -129,7 +129,7 @@ module.exports = function() {
 			eventEndDate: '2017',
 			eventHeaderImage: 'paris-2017-banner.jpg',
 			eventHomepageImage: 'paris-2017-banner.jpg',
-			eventHighlightColor: '#002050',
+			eventHighlightColor: '#5c005c',
 			// eventSpeakers: '1'
 		})
 	})
@@ -142,7 +142,7 @@ module.exports = function() {
 			eventEndDate: '2017',
 			eventHeaderImage: 'redmond-2017-banner.jpg',
 			eventHomepageImage: 'redmond-2017-banner.jpg',
-			eventHighlightColor: '#5c005c',
+			eventHighlightColor: '#a80000',
 			// eventSpeakers: '1'
 		})
 	})

@@ -71,7 +71,6 @@ import * as customFunctions from './common-functions.build.js';
 			let bgColor = $this.css('background-color');
 			let hxC =  rgb2hex(bgColor);
 			let textColor = invertColor(hxC);
-			console.log('hola      ', getContrastYIQ(textColor));
 			$this.find('h1, p, li').css('color', textColor);
 		});
 	});
