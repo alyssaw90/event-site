@@ -268,6 +268,13 @@ module.exports = function (router) {
     });
   });
 
+  //route to send Bing Map API key to front end
+  router.route('/bingmapkey')
+  .get(function(req, res) {
+    res.json(process.env.BING_MAP_API_KEY);
+    res.end();
+  });
+
   //route to send events for header
   router.route('/events')
   .get(function (req, res) {
