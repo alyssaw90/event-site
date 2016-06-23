@@ -99,6 +99,7 @@ import * as customFunctions from './common-functions.build.js';
 			window.onload = function() {
 				$('.NavBar_dropIconContainer').attr('title', 'Navigation bar drop icon containter');
 				$('.MicrosoftMap').find('img').attr('alt', 'map image');
+	   		customFunctions.stickyFooter();
 			}
 		}
 	 	
