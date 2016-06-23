@@ -2022,6 +2022,7 @@ setTimeout(function() {
 		tabContent: `<h2>Extend Event Material</h2>
 									<ul class="noStyleUL">
 									<li><a href="/uploads/Extend-2016-Presentations.zip"><h4>Extend PowerPoint Presentations</h4></a></li>
+									<li><a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/Microsoft-Extend-Paris-2016"><h4>Presentation Videos</h4></a></li>
 									</ul>`
 	})
 })
