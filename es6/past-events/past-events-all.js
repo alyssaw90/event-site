@@ -16,9 +16,7 @@ import * as customFunctions from '../common-functions.build.js';
 			let keyCode = customFunctions.getKeyCode(e);
 			if (keyCode === 1 || 9 || 13) {
 				customFunctions.changeHeight('.past_events');
-				customFunctions.homepageStickyFooter();
-				// customFunctions.pastEventBackgroundSwitch();
-				
+				customFunctions.homepageStickyFooter();				
 			}
 		});
 	});

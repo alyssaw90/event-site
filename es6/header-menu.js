@@ -130,7 +130,6 @@ import * as customFunctions from './common-functions.build.js';
 			 		//if there is more than one event returned, create the slider
 					if (data.length > 1) {
 						data.sort(function (a, b) {
-							console.log(new Date(new Date().getFullYear().toString()).addDays(1).toString() ==  new Date(a.eventStartDate).toString(), '                  ', new Date(new Date().getFullYear().toString()).addDays(1), '                         ', new Date(a.eventStartDate));
           	  if (a.eventStartDate === 'TBD' || new Date(a.eventStartDate).toString() === new Date(new Date().getFullYear().toString()).addDays(1).toString()) {
           	    let tmpDate = new Date();
           	    tmpDate.setMonth(11, 31);
