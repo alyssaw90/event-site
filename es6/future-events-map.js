@@ -39,7 +39,7 @@ import * as customFunctions from './common-functions.build.js';
               cityArr[index] = cityArr[index].charAt(0).toUpperCase() + cityArr[index].slice(1);
             }
             city = cityArr.join(' ');
-						if (new Date(data[i].eventEndDate) > today || data[i].eventEndDate === null) {
+						if (new Date(data[i].eventEndDate) > today || data[i].eventEndDate === null || data[i].eventEndDate === new Date(new Date().getFullYear().toString()).addDays(1).toString()) {
 							mapIcon = 'favicon.png';
 						} else {
 							mapIcon = 'favicon-gray.png';

@@ -137,6 +137,19 @@ module.exports = function() {
 	})
 	.then(function() {
 		return Event.create({
+			eventName: 'DevDays Asia 2017 @ Taipei',
+			eventLocation: 'Taipei',
+			eventContinent: 'Asia',
+			eventStartDate: '2017',
+			eventEndDate: '2017',
+			eventHeaderImage: 'taipei-2017-banner.jpg',
+			eventHomepageImage: 'taipei-2017-banner.jpg',
+			eventHighlightColor: '#0078d7',
+			// eventSpeakers: '1'
+		})
+	})
+	.then(function() {
+		return Event.create({
 			eventName: 'Redmond Protocol Plugfest 2017',
 			eventLocation: 'Redmond',
 			eventContinent: 'North America',
@@ -2413,6 +2426,16 @@ setTimeout(function() {
 .then(function() {
 	return EventTab.create({
 		eventId: 7,
+		tabNumber: 1,
+		tabTitle: 'About',
+		tabContent: `<h3>DevDays Asia 2017 @ Taipei</h3>
+									<p>Microsoft established the Internet of Things (IoT) Industry Development Center in October of 2015 to integrate global and local partners from the ecosystem, accelerating the process of developing IoT solutions for the manufacturing, financial, health care, transportation, and retailing industries.</p>
+									<p>As part of our commitment to helping developers create the next generation of technologies, we're returning to Taipei in 2017 with a team of Microsoft developers from the US to deliver lectures, host workshops, and interact with developers to generate amazing ideas and solutions to real-world problems.</p>`
+	})
+})
+.then(function() {
+	return EventTab.create({
+		eventId: 8,
 		tabNumber: 1,
 		tabTitle: 'About',
 		tabContent: `<h3>Redmond Protocol Plugfest 2017</h3>

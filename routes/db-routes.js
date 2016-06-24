@@ -177,9 +177,9 @@ module.exports = function (router) {
   //find all events that are upcoming and add the next 3 upcoming events to the future-events page
   router.route('/future-events')
   .get(function (req, res) {
-    let eventBlocksHtml = '<main class="events grid" tabindex="0" role="main"><section class="col_12 internetExplorer">';
+    let eventBlocksHtml = '<main class="events grid" tabindex="0" role="main"><section class="col_12 internetExplorer futureEvents">';
     let newHtml = '';
-    let numFutureBlocks = 4;
+    // let numFutureBlocks = 4;
     let eventDates = 'Coming Soon';
     let city;
     let cityArr;
@@ -196,15 +196,16 @@ module.exports = function (router) {
             eventEndDate: {
                 $or: {
                   $gte: new Date(),
-                  $eq: null
+                  $eq: null,
+                  $eq: new Date(new Date().getFullYear().toString())
               }
             }
           }
         })
         .then(function (upcomingEvent) {
-          if (upcomingEvent.length < 4) {
+          /*if (upcomingEvent.length < 4) {
             numFutureBlocks = upcomingEvent.length;
-          }
+          }*/
           upcomingEvent.sort(function (a, b) {
             a = a.eventEndDate;
             b = b.eventEndDate;
@@ -228,7 +229,7 @@ module.exports = function (router) {
           });
 
 
-          for (let i = 0; i < numFutureBlocks; i++) {
+          for (let i = 0; i < upcomingEvent.length; i++) {
             
             cityArr = upcomingEvent[i].eventLocation.split('_');
             for (let index = 0, j = cityArr.length; index < j; index++) {
@@ -246,8 +247,8 @@ module.exports = function (router) {
             }
 
             let risingText = '';
-            eventBlocksHtml += i === 0 ? `<div tabindex="-1" class="col_${12 / numFutureBlocks} event_block" style="background-color: ${upcomingEvent[i].eventHighlightColor};"><a id="beginningOfContent" tabindex="0" href="/${upcomingEvent[i].eventUrl}"><p>More Details</p><h1>${city}</h1><h3>${upcomingEvent[i].eventName}<br />${eventDates}</h3></a>${risingText}</div>` : `<div tabindex="-1" class="col_${12 / numFutureBlocks} event_block" style="background-color: ${upcomingEvent[i].eventHighlightColor};"><a tabindex="0" href="/${upcomingEvent[i].eventUrl}"><p>More Details</p><h1>${city}</h1><h3>${upcomingEvent[i].eventName}<br />${eventDates}</h3></a>${risingText}</div>`;
-            // eventBlocksHtml += `<div tabindex="-1" class="col_${12 / numFutureBlocks} event_block" style="background-color: #${continentColors[upcomingEvent[i].eventContinent]};"><a tabindex="0" href="/${upcomingEvent[i].eventUrl}"><p>More Details</p><h1>${city}</h1><h3>${upcomingEvent[i].eventName}<br />${eventDates}</h3></a>${risingText}</div>`;
+            eventBlocksHtml += i === 0 ? `<div tabindex="-1" class="col_${Math.floor(12 / upcomingEvent.length)} event_block" style="background-color: ${upcomingEvent[i].eventHighlightColor};"><a id="beginningOfContent" tabindex="0" href="/${upcomingEvent[i].eventUrl}"><p>More Details</p><h1>${city}</h1><h3>${upcomingEvent[i].eventName}<br />${eventDates}</h3></a>${risingText}</div>` : `<div tabindex="-1" class="col_${Math.floor(12 / upcomingEvent.length)} event_block" style="background-color: ${upcomingEvent[i].eventHighlightColor};"><a tabindex="0" href="/${upcomingEvent[i].eventUrl}"><p>More Details</p><h1>${city}</h1><h3>${upcomingEvent[i].eventName}<br />${eventDates}</h3></a>${risingText}</div>`;
+            // eventBlocksHtml += `<div tabindex="-1" class="col_${Math.floor(12 / upcomingEvent.length)} event_block" style="background-color: #${continentColors[upcomingEvent[i].eventContinent]};"><a tabindex="0" href="/${upcomingEvent[i].eventUrl}"><p>More Details</p><h1>${city}</h1><h3>${upcomingEvent[i].eventName}<br />${eventDates}</h3></a>${risingText}</div>`;
           }
           eventBlocksHtml += '</section>';
           newHtml = html.toString().replace('<main class="events grid">', eventBlocksHtml);
@@ -298,10 +299,10 @@ module.exports = function (router) {
       let undatedEventArr = [];
       let outputArr;
       let outputJson;
-      let menuEvents = 4;
+     /* let menuEvents = 4;
       if (data.length < 4) {
         menuEvents = data.length;
-      }
+      }*/
       data.sort(function (a, b) {
         a = a.eventStartDate;
         b = b.eventStartDate;
@@ -315,7 +316,7 @@ module.exports = function (router) {
           return 0;
         }
       });
-      for (let i = 0; i < menuEvents; i++) {
+      for (let i = 0; i < data.length; i++) {
         let startDate;
         if (data[i].eventStartDate === null) {
           startDate = 'TBD';

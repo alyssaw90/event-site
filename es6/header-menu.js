@@ -103,7 +103,7 @@ import * as customFunctions from './common-functions.build.js';
 			 		if (data.length <= 0) {
 			 			upcomingPurpleMenu += 'Welcome to Microsoft Interop Events';
 			 		}
-			 		
+			 		console.log('data               ', data);
 			 		//if there is an event returned set the currrent header 
 			 		if (data.length > 0) {
 						//if the next upcoming event starts after today assign it to be the homepage header, otherwise assign it to the next event
