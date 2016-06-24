@@ -10,6 +10,12 @@ import * as customFunctions from './common-functions.build.js';
 (function($) {
 
 	 $(document).ready(function () {
+	 	//extend date object to add days to date
+ 		Date.prototype.addDays = function(days) {
+    	let dat = new Date(this.valueOf());
+    	dat.setDate(dat.getDate() + days);
+    	return dat;
+		}
 
 				function changeWidth () {
 				let widestBlock = 0;
@@ -30,6 +36,7 @@ import * as customFunctions from './common-functions.build.js';
 			})
 			.then(function(siteStyle) {
 				$.get('/events', function (data) {
+
 					let upperGrayMenu = `<!-- Begin upper purple menu -->
 					<div class="menu-overlay hamburger-menu social-icons">
 					<!-- Begin Mobile "Hamburger Menu" -->
@@ -92,7 +99,6 @@ import * as customFunctions from './common-functions.build.js';
 					let theHiddenDiv = `<div class="hidden-div" style="display: none; background-color: #6FB06E">`;
 					let upcomingPurpleMenu = '<div class="col_12 purpleEventMenu">';
 			 		let imageCount = 0;
-
 			 		//add filler text to menu if there are no upcoming events scheduled
 			 		if (data.length <= 0) {
 			 			upcomingPurpleMenu += 'Welcome to Microsoft Interop Events';
@@ -124,21 +130,21 @@ import * as customFunctions from './common-functions.build.js';
 			 		//if there is more than one event returned, create the slider
 					if (data.length > 1) {
 						data.sort(function (a, b) {
-          	  if (a.eventStartDate === 'TBD') {
+							console.log(new Date(new Date().getFullYear().toString()).addDays(1).toString() ==  new Date(a.eventStartDate).toString(), '                  ', new Date(new Date().getFullYear().toString()).addDays(1), '                         ', new Date(a.eventStartDate));
+          	  if (a.eventStartDate === 'TBD' || new Date(a.eventStartDate).toString() === new Date(new Date().getFullYear().toString()).addDays(1).toString()) {
           	    let tmpDate = new Date();
           	    tmpDate.setMonth(11, 31);
           	    a = tmpDate;
           	  } else {          	  	
           	  	a = new Date(a.eventStartDate);
           	  }
-          	  if (b.eventStartDate === 'TBD') {
+          	  if (b.eventStartDate === 'TBD' || new Date(b.eventStartDate).toString() === new Date(new Date().getFullYear().toString()).addDays(1).toString()) {
           	    let tmpDate = new Date();
           	    tmpDate.setMonth(11, 31);
           	    b = tmpDate;
           	  } else {
           	  	b = new Date(b.eventStartDate);
           	  }
-			 		console.log('a:        ', a);
           	  if (a > b) {
           	    return 1;
           	  }
@@ -149,7 +155,11 @@ import * as customFunctions from './common-functions.build.js';
           	    return 0;
           	  }
           	});
-						console.log('data 2:    ', data)
+						//add the past events header if it's set to true
+						if (siteStyle.showPastEventsBanner && siteStyle.showSlider && !siteStyle.hideEventBanners) {
+							homepageImage += `<li><a title="new event link" tabindex="-1" aria-disabled="true" href="/past-events"><section id="headerImage" class="mobileWrapper"><img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../uploads/past-events-banner.jpg" /></section></a></li>`;
+						}
+
 						$(data).each(function (i, elem) {
 							let startDate;
 							let startYear;
@@ -182,14 +192,14 @@ import * as customFunctions from './common-functions.build.js';
 								upcomingPurpleMenu += '<a role="navigation" href="/' + elem.eventUrl + '">' + city + '&nbsp-&nbsp<span class="purpleSubMenu">' + startMonth + '&nbsp' + startYear + '</span></a>';
 
 							}
-								//if there is a homepage image, add it to the slider
-								if (imageCount > 1 && elem.eventHomepageImage && siteStyle.showSlider) {
-									homepageImage += `<li><a title="new event link" tabindex="-1" aria-disabled="true" href="${elem.eventUrl}"><img alt="home page banner" src="uploads/${elem.eventHomepageImage}" /></a></li>`;
-								}
+							//if there is a homepage image, add it to the slider
+							if (imageCount > 1 && elem.eventHomepageImage && siteStyle.showSlider) {
+								homepageImage += `<li><a title="new event link" tabindex="-1" aria-disabled="true" href="${elem.eventUrl}"><img alt="home page banner" src="uploads/${elem.eventHomepageImage}" /></a></li>`;
+							}
 
 						});
 						//if there are multiple images, close the slider <ul> and add the necessary js packages from lib
-						if (imageCount > 1) {
+						if (imageCount > 1 || (siteStyle.showPastEventsBanner && imageCount >= 1)) {
 							homepageImage += '</ul><script type="text/javascript" src="../lib/kickstart.js"></script><script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5660d6c488a1a100" async="async"></script>';
 						}
 						
@@ -226,8 +236,8 @@ import * as customFunctions from './common-functions.build.js';
 						}
 					} 
 					//if there are no images, use the backup homepage image
-					if (!imageCount) {
-						homepageImage = `<section id="headerImage" class="mobileWrapper"><img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../uploads/FillerPhoto.jpg" /></section>`;
+					if (!imageCount || siteStyle.hideEventBanners) {
+						homepageImage = `<a title="past events link" tabindex="-1" aria-disabled="true" href="/past-events"><section id="headerImage" class="mobileWrapper"><img style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../uploads/past-events-banner.jpg" /></section></a>`;
 					}
 					upcomingPurpleMenu += '</div>';
 

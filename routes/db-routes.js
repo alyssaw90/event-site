@@ -280,12 +280,14 @@ module.exports = function (router) {
   .get(function (req, res) {
     models.sql.sync()
     .then(function () {
+      let year = new Date().getFullYear();
       return Event.findAll({
         where: {
           eventEndDate: {
             $or: {
               $gte: new Date(),
-              $eq: null
+              $eq: null,
+              $eq: new Date(new Date().getFullYear().toString())
             }
           }
         }

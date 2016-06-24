@@ -35,7 +35,9 @@ module.exports = function() {
 	
 	.then(function() {
 		return SiteStyle.create({
-			showSlider: false
+			showSlider: true,
+			showPastEventsBanner: true,
+			hideEventBanners: false
 		})
 	})
  
@@ -86,7 +88,7 @@ module.exports = function() {
 	  eventLocation: 'Redmond',
 	  eventContinent: 'North America',
 	  eventStartDate: new Date('2016-06-13:00:01:00'), //the start date...
-	  eventEndDate: new Date('2016-06-24:01:00:00'), // the end date...
+	  eventEndDate: new Date('2016-06-24:23:00:00'), // the end date...
 	  eventHeaderImage: 'Plugfest-and-IO-Website.png', //link to header image
 	  eventHomepageImage: 'Plugfest-and-IO-Website.png',
 	  eventHighlightColor: '#008272',
@@ -99,10 +101,10 @@ module.exports = function() {
 	  // eventRegistrationLink: Sql.STRING, //link to registrationfor event
 	  eventLocation: 'India',
 	  eventContinent: 'Asia',
-	  // eventStartDate: new Date('2016-12-13:00:01:00'), //the start date...
-	  // eventEndDate: new Date('2016-12-13:00:01:00'), // the end date...
+	  eventStartDate: '2016', //the start date...
+	  eventEndDate: '2016', // the end date...
 	  eventHeaderImage: 'India-2016.jpg', //link to header image
-	  // eventHomepageImage: null,
+	  eventHomepageImage: 'India-2016.jpg',
 	  eventHighlightColor: '#00188f',
 	  // eventSpeakers: null
 	  });
