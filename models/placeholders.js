@@ -35,7 +35,9 @@ module.exports = function() {
 	
 	.then(function() {
 		return SiteStyle.create({
-			showSlider: false
+			showSlider: false,
+			showPastEventsBanner: true,
+			hideEventBanners: true
 		})
 	})
  
@@ -86,7 +88,7 @@ module.exports = function() {
 	  eventLocation: 'Redmond',
 	  eventContinent: 'North America',
 	  eventStartDate: new Date('2016-06-13:00:01:00'), //the start date...
-	  eventEndDate: new Date('2016-06-24:01:00:00'), // the end date...
+	  eventEndDate: new Date('2016-06-24:23:00:00'), // the end date...
 	  eventHeaderImage: 'Plugfest-and-IO-Website.png', //link to header image
 	  eventHomepageImage: 'Plugfest-and-IO-Website.png',
 	  eventHighlightColor: '#008272',
@@ -99,10 +101,10 @@ module.exports = function() {
 	  // eventRegistrationLink: Sql.STRING, //link to registrationfor event
 	  eventLocation: 'India',
 	  eventContinent: 'Asia',
-	  // eventStartDate: new Date('2016-12-13:00:01:00'), //the start date...
-	  // eventEndDate: new Date('2016-12-13:00:01:00'), // the end date...
+	  eventStartDate: '2016', //the start date...
+	  eventEndDate: '2016', // the end date...
 	  eventHeaderImage: 'India-2016.jpg', //link to header image
-	  // eventHomepageImage: null,
+	  eventHomepageImage: 'India-2016.jpg',
 	  eventHighlightColor: '#00188f',
 	  // eventSpeakers: null
 	  });
@@ -130,6 +132,19 @@ module.exports = function() {
 			eventHeaderImage: 'paris-2017-banner.jpg',
 			eventHomepageImage: 'paris-2017-banner.jpg',
 			eventHighlightColor: '#5c005c',
+			// eventSpeakers: '1'
+		})
+	})
+	.then(function() {
+		return Event.create({
+			eventName: 'DevDays Asia 2017 @ Taipei',
+			eventLocation: 'Taipei',
+			eventContinent: 'Asia',
+			eventStartDate: '2017',
+			eventEndDate: '2017',
+			eventHeaderImage: 'taipei-2017-banner.jpg',
+			eventHomepageImage: 'taipei-2017-banner.jpg',
+			eventHighlightColor: '#0078d7',
 			// eventSpeakers: '1'
 		})
 	})
@@ -2022,6 +2037,7 @@ setTimeout(function() {
 		tabContent: `<h2>Extend Event Material</h2>
 									<ul class="noStyleUL">
 									<li><a href="/uploads/Extend-2016-Presentations.zip"><h4>Extend PowerPoint Presentations</h4></a></li>
+									<li><a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/Microsoft-Extend-Paris-2016"><h4>Presentation Videos</h4></a></li>
 									</ul>`
 	})
 })
@@ -2410,6 +2426,16 @@ setTimeout(function() {
 .then(function() {
 	return EventTab.create({
 		eventId: 7,
+		tabNumber: 1,
+		tabTitle: 'About',
+		tabContent: `<h3>DevDays Asia 2017 @ Taipei</h3>
+									<p>Microsoft established the Internet of Things (IoT) Industry Development Center in October of 2015 to integrate global and local partners from the ecosystem, accelerating the process of developing IoT solutions for the manufacturing, financial, health care, transportation, and retailing industries.</p>
+									<p>As part of our commitment to helping developers create the next generation of technologies, we're returning to Taipei in 2017 with a team of Microsoft developers from the US to deliver lectures, host workshops, and interact with developers to generate amazing ideas and solutions to real-world problems.</p>`
+	})
+})
+.then(function() {
+	return EventTab.create({
+		eventId: 8,
 		tabNumber: 1,
 		tabTitle: 'About',
 		tabContent: `<h3>Redmond Protocol Plugfest 2017</h3>

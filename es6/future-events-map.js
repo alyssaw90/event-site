@@ -9,15 +9,16 @@ import * as customFunctions from './common-functions.build.js';
 
 	$(function () {
 
-		//create bing map
 
 		if (window.location.pathname === '/future-events') {
 
 			//add pins to map
 			function getMap() {
+			//get bing map
+			$.get('/bingmapkey', function(apiKey) {
 				//choose element to place map in and choose options
 				let map = new Microsoft.Maps.Map(document.getElementById('eventsMap'), {
- 	   			credentials: 'AjtUzWJBHlI3Ma_Ke6Qv2fGRXEs0ua5hUQi54ECwfXTiWsitll4AkETZDihjcfeI',
+ 	   			credentials: apiKey,
  	   			width: 800,
  	   			height: 800,
  	   			zoom: 2.25,
@@ -28,7 +29,7 @@ import * as customFunctions from './common-functions.build.js';
 				$.get('/allevents', function(data) {
 					for (let i = 0, j = data.length; i < j; i++) {
 						let searchString = data[i].eventLocation.trim().replace(/\s+/g, '%20');;
-						let searchUrl = `https://dev.virtualearth.net/REST/v1/Locations?query=${searchString}&key=AjtUzWJBHlI3Ma_Ke6Qv2fGRXEs0ua5hUQi54ECwfXTiWsitll4AkETZDihjcfeI`;
+						let searchUrl = `https://dev.virtualearth.net/REST/v1/Locations?query=${searchString}&key=${apiKey}`;
 						let today = new Date();
 						let mapIcon;
 						let city;
@@ -38,7 +39,7 @@ import * as customFunctions from './common-functions.build.js';
               cityArr[index] = cityArr[index].charAt(0).toUpperCase() + cityArr[index].slice(1);
             }
             city = cityArr.join(' ');
-						if (new Date(data[i].eventEndDate) > today || data[i].eventEndDate === null) {
+						if (new Date(data[i].eventEndDate) > today || data[i].eventEndDate === null || (new Date(data[i].eventEndDate).getMonth() === 11 && new Date(data[i].eventEndDate).getDate() === 31 )) {
 							mapIcon = 'favicon.png';
 						} else {
 							mapIcon = 'favicon-gray.png';
@@ -87,6 +88,7 @@ import * as customFunctions from './common-functions.build.js';
 	   				map.setView({zoom: 2.25})
 	   			}
 	   		}); 	
+			});
 
    		}
     	
@@ -97,6 +99,7 @@ import * as customFunctions from './common-functions.build.js';
 			window.onload = function() {
 				$('.NavBar_dropIconContainer').attr('title', 'Navigation bar drop icon containter');
 				$('.MicrosoftMap').find('img').attr('alt', 'map image');
+	   		customFunctions.stickyFooter();
 			}
 		}
 	 	

@@ -1,12 +1,12 @@
 'use strict';
 
-let jQuery = require('jquery');
+const jQuery = require('jquery');
 import * as customFunctions from './common-functions.build.js';
 
 (function($) {
 
-	console.log('iframe:       ', $('iframe')/*.contents()*/);
 	//accessibility
-
+	// $('.timeline-Tweet-text').attr('tabindex', 0);
+	window.onload = function() {$('.timeline-Widget').find('.timeline-Tweet-text').attr('tabindex', 0);};
 	
 })(jQuery);

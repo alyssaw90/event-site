@@ -29,6 +29,13 @@ import * as customFunctions from '../common-functions.build.js';
                         </tr>
                          </thead>
                       <tbody>
+                        <tr data-eventendtime="June 24, 2016, 23:00">
+                          <td><a href="/redmond2016">Redmond Protocol Plugfest & Windows Interoperability (IO) Lab</a></td>
+                          <td>June 13 - 24, 2016</td>
+                          <td>Redmond, WA</td>
+                          <td>Microsoft Windows Protocol, Interoperability within Microsoft Office, Exchange, SharePoint, Windows and SQL Server. Office, SharePoint, & Exchange Protocol Testing</td>
+                          <td><a href="/redmond2016">Event Page</a></td>
+                        </tr>
                         <tr>
                           <td><a href="/taipei2016">DevDays Asia 2016 @ Taipei</a></td>
                           <td>April 19 - 21, 2016</td>
@@ -49,11 +56,25 @@ import * as customFunctions from '../common-functions.build.js';
       
       html = $.parseHTML(schedule);
       customFunctions.showCalendarOfPastEvents(html, $pastEventsDiv, $calendar);
-      // console.log('past:    ', $('#firstPastEventHeader'));
       customFunctions.stickyFooter();
       $('#2016PastEvents').focus();
       $('th, td').attr('tabindex', '0');
 
+      //hide paste event row until the event is over
+      $('#2016PastEvents').find('tr').each(function(index, el) {
+        let $this = $(this);
+        let endTime = $this.attr('data-eventendtime');    
+        if (typeof endTime !== typeof undefined && endTime !== false) {
+          
+          if (new Date(endTime) > new Date()) {
+            $this.hide();
+    
+          } else {
+            $this.show();
+          }
+    
+        }
+      });
     }
 
     $pastEventsDiv.click(showSchedule);
@@ -63,6 +84,7 @@ import * as customFunctions from '../common-functions.build.js';
         showSchedule();
       }
     });
+
 
   });
 })(jQuery);

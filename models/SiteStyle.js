@@ -3,7 +3,9 @@
 module.exports = function(sql, DataTypes) {
 
 	return sql.define('SiteStyle', {
-		showSlider: DataTypes.BOOLEAN
+		showSlider: DataTypes.BOOLEAN,
+		showPastEventsBanner: DataTypes.BOOLEAN,
+		hideEventBanners: DataTypes.BOOLEAN
 	})
 	
 }
