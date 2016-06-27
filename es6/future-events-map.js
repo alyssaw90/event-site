@@ -39,7 +39,6 @@ import * as customFunctions from './common-functions.build.js';
               cityArr[index] = cityArr[index].charAt(0).toUpperCase() + cityArr[index].slice(1);
             }
             city = cityArr.join(' ');
-            console.log('date:               ', new Date(data[i].eventEndDate), '                    ', new Date(new Date().getFullYear().toString()).addDays(366).toString());
 						if (new Date(data[i].eventEndDate) > today || data[i].eventEndDate === null || (new Date(data[i].eventEndDate).getMonth() === 11 && new Date(data[i].eventEndDate).getDate() === 31 )) {
 							mapIcon = 'favicon.png';
 						} else {
