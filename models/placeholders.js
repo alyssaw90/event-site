@@ -36,8 +36,8 @@ module.exports = function() {
 	.then(function() {
 		return SiteStyle.create({
 			showSlider: false,
-			showPastEventsBanner: false,
-			hideEventBanners: false
+			showPastEventsBanner: true,
+			hideEventBanners: true
 		})
 	})
  

@@ -32,7 +32,7 @@ import * as customFunctions from '../common-functions.build.js';
                         <tr data-eventendtime="June 24, 2016, 23:00">
                           <td><a href="/redmond2016">Redmond Protocol Plugfest & Windows Interoperability (IO) Lab</a></td>
                           <td>June 13 - 24, 2016</td>
-                          <td>Taipei, Taiwan</td>
+                          <td>Redmond, WA</td>
                           <td>Microsoft Windows Protocol, Interoperability within Microsoft Office, Exchange, SharePoint, Windows and SQL Server. Office, SharePoint, & Exchange Protocol Testing</td>
                           <td><a href="/redmond2016">Event Page</a></td>
                         </tr>
