@@ -120,6 +120,8 @@ module.exports = function (grunt) {
         src: ['Gruntfile.js', 'server.js', 'js/**/*.js', 'models/**/*.js', 'routes/**/*.js', '!build/**', '!tests/client/bundle.js', '!tests/karma_tests/bundle.js', '!js/imageMapResizer.min.js', '!js/kickstart.js', '!js/form-validator.js', '!js/imageMapResizer.js', '!js/jquery-ui.min.js', '!js/jquery.base64.js', '!js/kickstart.js'],
         options: {
           node: true,
+          // esversion: 6, //this option should replace esnext, but it doesn't currently work
+          esnext: true,
           globals: {
             describe: true,
             it: true,
@@ -137,6 +139,8 @@ module.exports = function (grunt) {
         src: ['tests/test_entry.js', '!tests/client/bundle.js', '!tests/karma_tests/bundle.js'],
         options: {
           node: true,
+          // esversion: 6, //this option should replace esnext, but it doesn't currently work
+          esnext: true,
           globals: {
             describe: true,
             it: true,
@@ -153,6 +157,8 @@ module.exports = function (grunt) {
         src: ['<%= jshint.dev.src %>', '<%= jshint.mocha.src %>'],
         options: {
           node: true,
+          // esversion: 6, //this option should replace esnext, but it doesn't currently work
+          esnext: true,
           jasmine: true,
           globals: {
             describe: true,

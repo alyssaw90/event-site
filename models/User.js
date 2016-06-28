@@ -18,9 +18,9 @@ module.exports = function(sql, DataTypes) {
           outputString += possible.charAt(Math.floor(Math.random() * possible.length));
         }
         //set randomString to a random string
-        this.setDataValue('randomString',  outputString)
+        this.setDataValue('randomString',  outputString);
         //hash the password
-        this.setDataValue('password', bcrypt.hashSync(val, bcrypt.genSaltSync(8), null))
+        this.setDataValue('password', bcrypt.hashSync(val, bcrypt.genSaltSync(8), null));
       }
     },
     email: DataTypes.STRING,
@@ -44,7 +44,7 @@ module.exports = function(sql, DataTypes) {
 
   });
 
-}
+};
 /*randomString: {
       type: DataTypes.STRING,
       set: function(val) {

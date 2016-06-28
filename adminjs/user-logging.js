@@ -67,7 +67,6 @@
 	
 		$('#testButton').click(function(e) {
 			var ckie = Cookies.get('token');
-			console.log('ladfjhlkadshf', Cookies.get());
 		});
 	
 	

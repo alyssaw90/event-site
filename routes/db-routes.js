@@ -95,14 +95,14 @@ module.exports = function (router) {
         where: {
           showOnMeetTheTeamPage: true
         }
-      })
+      });
     })
     .then(function(speakers) {
       let meetTheTeamSpeakersArr = [];
       let meetTheTeamSpeakersHtml = '<main role="main" class="grid white-bg main-page-content the-team-section">';
       //loop over the returned speakers and splice them into an array using their position number minus one as the index
       for (let key in speakers) {
-        meetTheTeamSpeakersArr.splice(speakers[key].meetTheTeamPageOrder - 1, 0, speakers[key]) 
+        meetTheTeamSpeakersArr.splice(speakers[key].meetTheTeamPageOrder - 1, 0, speakers[key]);
       }
       //create the string of html to add to the page
       meetTheTeamSpeakersHtml += `<section class="col_12 internetExplorer" id="${meetTheTeamSpeakersArr[0].divId}"><h4  id="beginningOfContent">${meetTheTeamSpeakersArr[0].firstName} ${meetTheTeamSpeakersArr[0].lastName}</h4><h5>${meetTheTeamSpeakersArr[0].msTeamTitle}</h5><p><img alt="Image of ${meetTheTeamSpeakersArr[0].fullName}" class="pull-left" src="../uploads/${meetTheTeamSpeakersArr[0].headShot}" />${meetTheTeamSpeakersArr[0].contactDescription}</p><hr class="alt1" /></section>`;
@@ -197,7 +197,9 @@ module.exports = function (router) {
                 $or: {
                   $gte: new Date(),
                   $eq: null,
+                  /* jshint ignore:start */
                   $eq: new Date(new Date().getFullYear().toString())
+                  /* jshint ignore:end */
               }
             }
           }
@@ -262,7 +264,7 @@ module.exports = function (router) {
   router.get('/sitestyle', function(req, res) {
     models.sql.sync()
     .then(function() {
-      return SiteStyle.findOne({where: {id: 1}})
+      return SiteStyle.findOne({where: {id: 1}});
     })
     .then(function(data) {
       res.json(data);
@@ -288,11 +290,13 @@ module.exports = function (router) {
             $or: {
               $gte: new Date(),
               $eq: null,
+              /* jshint ignore:start */
               $eq: new Date(new Date().getFullYear().toString())
+              /* jshint ignore:end */
             }
           }
         }
-      })
+      });
     })
     .then(function (data) {
       let eventArr = [];
@@ -363,14 +367,11 @@ module.exports = function (router) {
         eventHeaderImage: req.files[0].filename,
         eventHomepageImage: req.files[1].filename,
         eventContinent: req.body.newEventContinent,
-        eventLocation: req.body.newEventLocation,
         eventHighlightColor: req.body.newEventColor
       })
       .then(function(newEvent) {
-        // console.log(clc.bgGreen('   ::::::    '), newEvent.eventName);
         res.json(newEvent.id);
-      })
-      // console.log(clc.bgRed('    ::::::   '), req.body.speakersInput);
+      });
     });
   });
 
@@ -378,7 +379,7 @@ module.exports = function (router) {
   router.post('/addspeakers', eatAuth, function(req, res, next) {
     models.sql.sync()
     .then(function() {
-      return Event.findOne({where: {id: req.body.eventId}})
+      return Event.findOne({where: {id: req.body.eventId}});
     })
     .then(function(thisEvent) {
       thisEvent.eventSpeakers = req.body.speakers;
@@ -395,7 +396,7 @@ module.exports = function (router) {
         tabNumber: req.body.tabNumber,
         tabTitle: req.body.tabTitle,
         tabContent: req.body.tabContent
-      })
+      });
       res.end();
     });
   });
@@ -414,7 +415,7 @@ module.exports = function (router) {
           outputHtml += '<img class="imageToInsert" style="height: 50px; margin: 10px 10px 10px 10px" data-clipboard-text="/uploads/' + files[i] + '" src="/uploads/' + files[i] + '" />';
         }
       }
-      outputHtml += '<script type="text/javascript">$(".imageToInsert").click(function() {$(this).toggleClass("animated shake");})'
+      outputHtml += '<script type="text/javascript">$(".imageToInsert").click(function() {$(this).toggleClass("animated shake");})';
       res.send(outputHtml);
     });
   });
@@ -427,7 +428,6 @@ module.exports = function (router) {
         return Event.findOne({where: {id: req.body.eventId}});
       })
       .then(function(data) {
-        console.log(clc.bgRed.white(':::::::::    '), req.file);
         let imageName;
         if (req.file) {
           imageName = req.file.filename;
@@ -439,9 +439,9 @@ module.exports = function (router) {
         }
         var key = req.body.whatToChange;
         data[key] = imageName;
-        data.save()
+        data.save();
         res.end();
-      })
+      });
       
     }
   });
@@ -489,7 +489,7 @@ module.exports = function (router) {
           tabTitle: data.tabTitle,
           tabId: data.id,
           eventId: data.eventId
-        }
+        };
         res.json(tabObj);
       });
     });
@@ -499,7 +499,7 @@ module.exports = function (router) {
   router.post('/edittab', eatAuth, function(req, res) {
     models.sql.sync()
     .then(function() {
-      return EventTab.findOne({where: {id: req.body.tabId}})
+      return EventTab.findOne({where: {id: req.body.tabId}});
     })
     .then(function(tab) {
       if (req.body.tabNumber) {
@@ -552,7 +552,7 @@ module.exports = function (router) {
         where: {
           eventId: theEvent.id
         }
-      })
+      });
     })
     .then(function(tabs) {
       let speakersArr;
@@ -568,7 +568,7 @@ module.exports = function (router) {
         where: {
           id: {$in: speakersArr}
         }
-      })
+      });
     })
     .then(function(speakers) {
       let tabForm = `<form id="editEventTabs">`;
@@ -618,14 +618,14 @@ module.exports = function (router) {
   router.post('/editevent', eatAuth, function(req, res) {
     models.sql.sync()
     .then(function() {
-      return Event.findOne({where:{id: req.body.eventId}})
+      return Event.findOne({where:{id: req.body.eventId}});
     })
     .then(function(eventToEdit) {
       let key = req.body.whatToChange;
       eventToEdit[key] = req.body.editEventInput;
       eventToEdit.save();
       res.end();
-    })
+    });
   });
 
   router.post('/deleteevent', eatAuth, function(req, res) {
@@ -636,8 +636,8 @@ module.exports = function (router) {
     .then(function(tabToDelete) {
       tabToDelete.destroy();
       res.end();
-    })
-  })
+    });
+  });
 
 
 /*  router.route('/allevents/:eventId')
@@ -723,7 +723,7 @@ module.exports = function (router) {
             }
           }
         }
-      })
+      });
     })
     .then(function(theEvent) {
       //assign the event returned from the search to the event key of the eventInfo object
@@ -735,7 +735,7 @@ module.exports = function (router) {
         where: {
           eventId: eventInfo.event.id
         }
-      })
+      });
     })
     .then(function(theTabs) {
       //assign the returned event tabs to the tabs key of the eventInfo object
@@ -753,7 +753,7 @@ module.exports = function (router) {
         where: {
           id: {$in: speakersArr}
         }
-      })
+      });
     })
     .then(function(theSpeakers) {
       //create an array and push each speaker object into it with the needed values and add the array to the eventInfo object
@@ -835,9 +835,9 @@ module.exports = function (router) {
         let theHtml = data.toString();            
         let fullEventHtml = theHtml.replace('<div class="col_12 internetExplorer event-header center" id="eventHeader"></div>', eventInfo.headerHtml).replace('<section class="col_12 internetExplorer event-tabs" id="eventTabs"></section>', '<section class="col_12 internetExplorer event-tabs" id="eventTabs">' + eventInfo.htmlContent + '</section>').replace(`<title></title>`, `<title>${eventInfo.event.eventName}</title>`);
         res.send(fullEventHtml);
-      })
+      });
       
-    })
+    });
   });
 
   //This route has to be last or it will override the other routes

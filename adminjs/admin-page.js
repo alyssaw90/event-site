@@ -224,7 +224,6 @@
         var speakerMenuInput = '';
 
         $.get('/contacts', function(data) {
-          console.log('hello data    ', data);
           for (var i = 0; i < numSpeakers; i++) {
             var thisNameDivId = 'speakers' + i;
             speakerMenuInput = '<select name="' + thisNameDivId + '" id="' + thisNameDivId + '">';

@@ -71,7 +71,6 @@ if (self === top) {
 
 	$('.tabLink').click(function(e) {
 		if ($(this).data('tabid') !== 'undefined') {
-		console.log('tabId', $(this).data('tabid'));
 			e.preventDefault();
 			let tabId = $(this).data('tabid');
 			let tabIDName = '#' + tabId;
@@ -148,9 +147,7 @@ if (self === top) {
 	});
 
 	function fixSocialTabindex() {
-		console.log('social links:                    ', document.getElementsByClassName('at-share-btn'));
 		$('.at-share-btn').attr('tabIndex', 0);
-		document.getElementsByClassName('at-share-btn')
 		
 	}
 	
