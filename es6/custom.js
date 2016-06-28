@@ -148,7 +148,6 @@ if (self === top) {
 	});
 
 	function fixSocialTabindex() {
-		console.log('hola mundo');
 		console.log('social links:                    ', document.getElementsByClassName('at-share-btn'));
 		$('.at-share-btn').attr('tabIndex', 0);
 		document.getElementsByClassName('at-share-btn')
@@ -156,7 +155,7 @@ if (self === top) {
 	}
 	
 	// window.addEventListener ? window.addEventListener('load',fixSocialTabindex,false) : window.attachEvent && window.attachEvent('onload',fixSocialTabindex);
-	setTimeout(fixSocialTabindex, 1000);
+	setTimeout(fixSocialTabindex, 3000);
 
 })(jQuery);
 

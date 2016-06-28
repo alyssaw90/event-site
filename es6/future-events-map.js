@@ -101,6 +101,17 @@ import * as customFunctions from './common-functions.build.js';
 				$('.MicrosoftMap').find('img').attr('alt', 'map image');
 	   		customFunctions.stickyFooter();
 			}
+			setTimeout(function() {
+				$('#mainNav').focus();
+				$('svg').attr('tabindex', '-1');
+				$('.MicrosoftMapDrawing').attr('tabindex', '-1');
+
+				$('a.pushpinLabel').each(function(index, el) {
+					let $this = $(this);
+					let altTag = $this.find('img').attr('alt');
+					$this.attr('aria-label', altTag);
+				});
+			}, 2000);
 		}
 	 	
 	});
