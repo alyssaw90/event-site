@@ -155,6 +155,19 @@ module.exports = function (router) {
     .then(function () { 
       Contact.findAll({where: {showOnHomePage: true}})
       .then(function (data) {
+        data.sort(function(a, b) {
+          a = a.meetTheTeamPageOrder;
+          b = b.meetTheTeamPageOrder;
+          if (a > b) {
+            return 1;
+          }
+          if (a < b) {
+            return -1;
+          }
+          if (a === b) {
+            return 0;
+          }
+        })
         res.json(data);
       })
       .error(function (err) {
@@ -776,6 +789,20 @@ module.exports = function (router) {
       });
     })
     .then(function(theTabs) {
+      theTabs.sort(function(a, b) {
+        a = a.tabNumber;
+        b = b.tabNumber;
+        if (a > b) {
+          return 1;
+        }
+        if (a < b) {
+          return -1;
+        }
+        if (a === b) {
+          return 0;
+        }
+      });
+      console.log(clc.bgBlue('::::::::    '), theTabs);
       //assign the returned event tabs to the tabs key of the eventInfo object
       eventInfo.tabs = theTabs;
     })
