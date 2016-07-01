@@ -26,7 +26,7 @@ import * as customFunctions from './common-functions.build.js';
  	   			customizeOverlays: true
  	   		});
 
-				$.get('/allevents', function(data) {
+				$.get('/mapevents', function(data) {
 					for (let i = 0, j = data.length; i < j; i++) {
 						let searchString = data[i].eventLocation.trim().replace(/\s+/g, '%20');;
 						let searchUrl = `https://dev.virtualearth.net/REST/v1/Locations?query=${searchString}&key=${apiKey}`;

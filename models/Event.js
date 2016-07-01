@@ -38,16 +38,23 @@ module.exports = function(sql, DataTypes) {
         let theEventLocation = this.getDataValue('eventLocation');
         let startDate = this.getDataValue('eventStartDate');
         let realStartDate = this.getDataValue('eventStartDate');
+        let theUrl;
         if (this.getDataValue('eventStartDate')) {
           startDate.setDate(startDate.getDate() + 1);
-          
+
         } else {
-          startDate = new Date(new Date().getFullYear(), 11, 31);
+          startDate = new Date(new Date()
+            .getFullYear(), 11, 31);
         }
-        let theUrl = theEventLocation.replace(/\W/g, '').toLowerCase() + startDate.getFullYear();
+        if (theEventLocation) {
+          theUrl = theEventLocation.replace(/\W/g, '')
+            .toLowerCase() + startDate.getFullYear();
+
+        }
         this.setDataValue('eventStartDate', realStartDate);
-        return theUrl;
-      }/*,
+        return theUrl ? theUrl : '';
+      }
+      /*,
       eventSlideshowImage: function () {
         let idVal = this.getDataValue('id');
         let imgIndex = Math.floor(idVal / randomTabImages.length);

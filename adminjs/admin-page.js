@@ -418,7 +418,20 @@
 
                   $('#chooseTabToDeleteButton').click(function(e) {
                     e.preventDefault();
-                    var tabToDeleteId = $("input[name=chooseEventToEdit]:checked").val();
+                    var tabToDeleteParentEvent = $('input[name=chooseEventToEdit]:checked').attr('data-eventname');
+                    var tabToDeleteName = $('input[name=chooseEventToEdit]:checked').attr('data-tabname');
+                    if (window.confirm(`Are you sure you want to delete the "${tabToDeleteName}" tab frome the "${tabToDeleteParentEvent}" event?`)) {
+                      var tabToDeleteId = $('input[name=chooseEventToEdit]:checked').val();
+                      $.post('/deletetab', {
+                        tabToDeleteId: tabToDeleteId
+                      }, function (data, textStatus, xhr) {
+                        $('#editFormSection')
+                          .html('<h3>Tab deleted</h3>');
+                        checkForChanges();
+                      });
+                    } else {
+                      checkForChanges();
+                    }
 
                     $.post('/deleteevent', {tabToDeleteId: tabToDeleteId}, function(data, textStatus, xhr) {
                       $('#editFormSection').html('<h3>Tab deleted</h3>');

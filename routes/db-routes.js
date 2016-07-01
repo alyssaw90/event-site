@@ -466,16 +466,22 @@ module.exports = function (router) {
     });
   });
 
-/*  router.route('/eventTabs')
-  .get(function(req, res) {
+  //get all events for edit events tab
+  router.get('/mapevents', function (req, res) {
     models.sql.sync()
-    .then(function() {
-      EventTab.findAll()
-      .then(function(data) {
-        res.json(data);
+      .then(function () {
+        return Event.findAll({
+          where: {
+            eventLocation: {
+              $not: null
+            }
+          }
+        });
+      })
+      .then(function (events) {
+        res.json(events);
       });
-    });
-  });*/
+  });
 
   //route to return event tab being searched
   router.post('/eventTabs', eatAuth, function(req, res) {
@@ -588,7 +594,7 @@ module.exports = function (router) {
       }
       //create a form input with the tabs for each event
       for (let i = 0, j = eventInfo.tabs.length; i < j; i++) {
-        tabForm += `<label for="chooseEventToEdit">${eventInfo.tabs[i].tabTitle}</label><input class="col_8" style="margin-left:10px; margin-right:10px;" id="chooseEventToEdit${i}" name="chooseEventToEdit" type="radio" value="${eventInfo.tabs[i].id}"></input></input>`;
+        tabForm += `<label for="chooseEventToEdit">${eventInfo.tabs[i].tabTitle}</label><input class="col_8" style="margin-left:10px; margin-right:10px;" id="chooseEventToEdit${i}" name="chooseEventToEdit" type="radio" value="${eventInfo.tabs[i].id}" data-tabName="${eventInfo.tabs[i].tabTitle}" data-eventName="${eventInfo.theEvent.eventName}"></input></input>`;
       }
       //add the button to the end of the tab form
       tabForm += `<button class="medium" id="chooseTabToEditButton">Choose tab</button></form>`;
