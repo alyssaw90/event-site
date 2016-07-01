@@ -70,6 +70,13 @@ module.exports = function (router) {
   router.use(cookieParser());
 
   /*Begin basic view routes*/
+
+  //404 error route
+  router.route('/404')
+  .get(function(req, res) {
+    res.sendFile(path.join(__dirname, '../views/404.html'));
+  });
+
   router.route('/')
   .get(function (req, res) {
     res.sendFile(path.join(__dirname, '../views/index.html'));
@@ -597,7 +604,7 @@ module.exports = function (router) {
         tabForm += `<label for="chooseEventToEdit">${eventInfo.tabs[i].tabTitle}</label><input class="col_8" style="margin-left:10px; margin-right:10px;" id="chooseEventToEdit${i}" name="chooseEventToEdit" type="radio" value="${eventInfo.tabs[i].id}" data-tabName="${eventInfo.tabs[i].tabTitle}" data-eventName="${eventInfo.theEvent.eventName}"></input></input>`;
       }
       //add the button to the end of the tab form
-      tabForm += `<button class="medium" id="chooseTabToEditButton">Choose tab</button></form>`;
+      tabForm += `<button class="medium" id="chooseTabToEditButton">Delete tab</button></form>`;
       //replace edit with deletes to create delete tab form
       deleteTabForm = tabForm.replace('chooseEventToEdit', 'chooseEventToDelete').replace('chooseTabToEditButton', 'chooseTabToDeleteButton').replace('editEventTabs', 'deleteEventTabs');
       //declare keys and values to send as response
@@ -634,10 +641,32 @@ module.exports = function (router) {
     });
   });
 
+  //delete event route
   router.post('/deleteevent', eatAuth, function(req, res) {
     models.sql.sync()
     .then(function() {
-      return EventTab.findOne({where: {id: req.body.tabToDeleteId}});
+      console.log(clc.black.bgBlue(':::::::::::::::::   '), req.body);
+      return Event.findOne({
+        where: {
+          id: req.body.eventToBeDeletedId
+        }
+      });
+    })
+    .then(function(theEvent) {
+      theEvent.destroy();
+      res.end();
+    });
+  });
+
+  //delete tab route
+  router.post('/deletetab', eatAuth, function(req, res) {
+    models.sql.sync()
+    .then(function() {
+      return EventTab.findOne({
+        where: {
+          id: req.body.tabToDeleteId
+        }
+      });
     })
     .then(function(tabToDelete) {
       tabToDelete.destroy();
@@ -717,7 +746,10 @@ module.exports = function (router) {
       //trim the params to get the city and the year of the event
       let eventSearchCity = req.params.eventUrl.slice(0, -4);
       let eventYear = req.params.eventUrl.slice(-4);
-      let testDate = new Date(eventYear - 1, 11, 31, 11, 59, 59);
+      let testDate = new Date(eventYear - 1, 11, 31, 11, 59, 59) == 'Invalid Date' ? 'not a date' : new Date(eventYear - 1, 11, 31, 11, 59, 59);
+      if (testDate === 'not a date') {
+        return res.status(404).redirect('/404');
+      }
       // search the database for event that matches the city and occurs on or after the year from the params and return the event found
       return Event.findOne({
         where: {

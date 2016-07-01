@@ -31,6 +31,7 @@
       var $addTabToExistingEventDiv = $('#addTabToExistingEventDiv');
       var $newImagesForEditedTabDiv = $('#newImagesForEditedTabDiv');
       var $editFormImageDiv = $('#editFormImageDiv');
+      var $chooseEventToDelete = $('#chooseEventToDelete');
       var tabCount = 1;
 			var newEventId;
       var eventToEditId;
@@ -308,15 +309,42 @@
 
       //Add current events to Edit Events tab
       $.get('/allevents', function(data) {
-        var eventsList = '<ul>';
+        let eventsList = '<ul>';
+        let eventsToDeleteList = '<ul>';
         for (var i = 0, j = data.length; i < j; i++) {
           let currentEventDate = new Date(data[i].eventStartDate).toDateString();
+          //buttons to choose event to edit
           eventsList += `<li><button class="editEventButton" id="${data[i].eventUrl}Button" data-eventUrl="${data[i].eventUrl}">${data[i].eventName}, ${data[i].eventLocation}, ${currentEventDate}</button></li>`;
+          //button to choose event to delete
+          eventsToDeleteList += `<li><button class="deleteEventButton" id="${data[i].eventUrl}DeleteButton" data-eventId="${data[i].id}" data-eventName="${data[i].eventName}">${data[i].eventName}, ${data[i].eventLocation}, ${currentEventDate}</button></li>`;
         }
         eventsList += '</ul>';
+        eventsToDeleteList += '</ul>';
+        $chooseEventToDelete.append(eventsToDeleteList);
         $editEventSection.append(eventsList);
       })
       .done(function() {
+        /*Begin Event Deleting Section*/
+        $('.deleteEventButton').click(function(e) {
+          e.preventDefault();
+          console.log($(this).data());
+          let $this = $(this);
+          let eventToBeDeleted = $this.data('eventname');
+          let eventToBeDeletedId = $this.data('eventid');
+          if (window.confirm(`Are you sure you want to delete the "${eventToBeDeleted}" event? WARNING: THIS CANNOT BE UNDONE`)) {
+            var eventToDeleteId = $this.data('eventid');
+            $.post('/deleteevent', {
+              eventToBeDeletedId: eventToBeDeletedId
+            }, function (data, textStatus, xhr) {
+             alert(`${eventToBeDeleted} has been deleted`);
+              location.reload();
+            });
+          } else {
+            checkForChanges();
+          }
+        });
+            /*End Event Deletion Section*/
+        /*Begin Event Editing Section*/
         //find the event the user wants to edit
         $('.editEventButton').click(function(e) {
           e.preventDefault();
@@ -420,23 +448,17 @@
                     e.preventDefault();
                     var tabToDeleteParentEvent = $('input[name=chooseEventToEdit]:checked').attr('data-eventname');
                     var tabToDeleteName = $('input[name=chooseEventToEdit]:checked').attr('data-tabname');
-                    if (window.confirm(`Are you sure you want to delete the "${tabToDeleteName}" tab frome the "${tabToDeleteParentEvent}" event?`)) {
+                    if (window.confirm(`Are you sure you want to delete the "${tabToDeleteName}" tab frome the "${tabToDeleteParentEvent}" event? WARNING: THIS CANNOT BE UNDONE`)) {
                       var tabToDeleteId = $('input[name=chooseEventToEdit]:checked').val();
                       $.post('/deletetab', {
                         tabToDeleteId: tabToDeleteId
                       }, function (data, textStatus, xhr) {
-                        $('#editFormSection')
-                          .html('<h3>Tab deleted</h3>');
-                        checkForChanges();
+                         alert(`"${tabToDeleteName}" tab" has been deleted from the ${tabToDeleteParentEvent} event`);
+                        location.reload();
                       });
                     } else {
                       checkForChanges();
                     }
-
-                    $.post('/deleteevent', {tabToDeleteId: tabToDeleteId}, function(data, textStatus, xhr) {
-                      $('#editFormSection').html('<h3>Tab deleted</h3>');
-                      checkForChanges();
-                    });
                   });
 
                   $('#chooseTabToEditButton').click(function(e) {
@@ -480,6 +502,8 @@
                 });
               });
             });
+            /*End Event Editing Section*/
+
           })
           .fail(function() {
             console.log('error');
