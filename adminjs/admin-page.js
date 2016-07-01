@@ -32,6 +32,9 @@
     var $newImagesForEditedTabDiv = $('#newImagesForEditedTabDiv');
     var $editFormImageDiv = $('#editFormImageDiv');
     var $chooseEventToDelete = $('#chooseEventToDelete');
+    var $addSpeakerButton = $('#addSpeakerButton');
+    var $addNewSpeakerForm = $('#addNewSpeakerForm');
+    var $addSpeakerDiv = $('#addSpeakerDiv');
     var tabCount = 1;
     var newEventId;
     var eventToEditId;
@@ -255,7 +258,7 @@
       speakersStr = speakersArr.join(',');
       $.ajax({
         type: 'POST',
-        url: 'addspeakers',
+        url: 'addeventspeakers',
         data: { speakers: speakersStr, eventId: newEventId },
         success: function (data) {
           //do something on success
@@ -344,6 +347,7 @@
         }
       });
       /*End Event Deletion Section*/
+
       /*Begin Event Editing Section*/
       //find the event the user wants to edit
       $('.editEventButton').click(function (e) {
@@ -419,7 +423,7 @@
                     newSpeakersHtml += '<button class="medium" id="addNewSpeakersButton" type="submit">Add Speakers</button>';
                     $('#editSpeakerCount').hide();
                     $('#newAddSpeakersForm').append(newSpeakersHtml);
-                    //when the speakers form is submitted create the string for the speakers and save post it to the addspeakers route
+                    //when the speakers form is submitted create the string for the speakers and save post it to the addeventspeakers route
                     $('#newAddSpeakersForm').submit(function (e) {
                       e.preventDefault();
                       var newSpeakersArr = [];
@@ -430,7 +434,7 @@
                       newSpeakersStr = newSpeakersArr.join(',');
                       $.ajax({
                         type: 'POST',
-                        url: 'addspeakers',
+                        url: 'addeventspeakers',
                         data: { speakers: newSpeakersStr, eventId: addSpeakersEventId },
                         success: function (data) {
                           //do something on success
@@ -587,6 +591,21 @@
         // tinymce.get('newEventTabTextArea').setContent(''); 
       })
     })
+
+    /*//////////////////////////////////////////////////////////////////
+  
+    The Routes below are for adding, editing and deleting speakers
+  
+    *//////////////////////////////////////////////////////////////////
+
+    $addSpeakerButton.click(function(e) {
+      e.preventDefault();
+
+      submitForm('addNewSpeakerForm', 'addspeakers');
+      $addNewSpeakerForm.reset();
+      alert('New speaker added');
+
+    });
 
   });
 })(jQuery);

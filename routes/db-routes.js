@@ -396,7 +396,7 @@ module.exports = function (router) {
   });
 
   //Find an event with the id from req.body.eventId and add the string of speakers then save
-  router.post('/addspeakers', eatAuth, function(req, res, next) {
+  router.post('/addeventspeakers', eatAuth, function(req, res, next) {
     models.sql.sync()
     .then(function() {
       return Event.findOne({where: {id: req.body.eventId}});
@@ -687,33 +687,7 @@ module.exports = function (router) {
     });
   });
 
-
-/*  router.route('/allevents/:eventId')
-  .get(function (req, res) {
-    let picsHtml = '<div class="col_12 gallery">';
-    let returnObj = {};
-    models.sql.sync()
-    .then(function () {
-      Event.findOne({where: {id: req.params.eventId}})
-      .then(function (data) {
-        fs.readdir(path.join(__dirname, '../uploads/' + data.eventUrl), function (err, files) {
-          for (let key in files) {
-            picsHtml += '<a href="../uploads/' + data.eventUrl + '/' + files[key] + ' rel="gallery" class="fancybox" type="image" ><img src="../uploads/' + data.eventUrl + '/' + files[key] + '" width="100" height="100" /></a>';
-          }
-          picsHtml += '</div>';
-          // for (let i = 0, j = files.length; i < j; i++) {
-          //   files[i] = '../uploads/' + data.eventUrl + '/' + files[i];
-          // }
-          let testHtml = '<div class="col_12 gallery"><a href="../uploads/shanghaiinteropdevdays2015-2026/_MG_3990.JPG" rel="gallery"><img src="../uploads/shanghaiinteropdevdays2015-2026/_MG_3990.JPG" width="100" height="100" /></a><a href="../uploads/shanghaiinteropdevdays2015-2026/_MG_4077.JPG" rel="gallery"><img src="../uploads/shanghaiinteropdevdays2015-2026/_MG_4077.JPG" width="100" height="100" /></a></div>';
-          returnObj.eventUrl = data.eventUrl;
-          returnObj.picsHtml = picsHtml;
-          returnObj.files = files;
-          res.json(returnObj);
-        });
-      });
-    });
-  });*/
-
+  //get all contacts for editing
   router.get('/contacts', eatAuth, function (req, res) {
     models.sql.sync()
     .then(function () {
@@ -723,26 +697,39 @@ module.exports = function (router) {
       });
     });
   });
-  
-/*  router.route('/upcomingeventurls')
-  .get(function (req, res) {
-    models.sql.sync()
-    .then(function () {
-      Event.findAll({where: {eventStartDate: {$gte: new Date()}}})
-      .then(function (data) {
-        let theUrls = [];
-        for (let i = 0; i < data.length; i++) {
-          let tmpObj = {};
-          tmpObj.url = data[i].eventUrl;
-          tmpObj.eventName = data[i].eventName;
-          theUrls.push(tmpObj);
-        }
-        res.json(theUrls);
-      });
-    });
-  });*/
 
-  //This route creates the html for the event pages. This route MUST be last
+  //route to create speakers
+  router.post('/addspeakers', eatAuth, upload.single('headshot'), function(req, res) {
+    models.sql.sync()
+    .then(function() {
+      console.log(clc.white.bgBlue(':::::::::::::::::    '), req.file, '                  ', req.body);
+      Contact.create({
+        firstName: req.body.newSpeakerFirstName,
+        lastName: req.body.newSpeakerLastName,
+        email: req.body.newSpeakerEmail,
+        contactDescription: req.body.contactDescription,
+        showOnMeetTheTeamPage: req.body.showOnMeetTheTeamPage,
+        meetTheTeamPageOrder: req.body.meetTheTeamPageOrder,
+        msTeamTitle: req.body.msTeamTitle,
+        headShot: req.file.filename,
+        company: req.body.company,
+        address: req.body.address,
+        country: req.body.country,
+      })
+    })
+  })
+  
+
+
+  /*///////////////////////////////////////////////////////////////////////
+
+
+
+  This route creates the html for the event pages. This route MUST be last
+
+
+
+  ///////////////////////////////////////////////////////////////////////*/
   router.route('/:eventUrl')
   .get(function(req, res) {
     //create an eventInfo object to hold the values for the event to be rendered

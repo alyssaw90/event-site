@@ -30,6 +30,7 @@
 					<li><a href="#createEventDiv">Create Event</a></li>
 					<li><a href="#editEventDiv">Edit Event</a></li>
 					<li><a href="#deleteEventDiv">Delete Event</a></li>
+					<li><a href="#addSpeakerDiv">Add Speaker</a></li>
 				</ul>
 				<div id="createEventDiv" class="tab-content">
 					<h2>Create an Event</h2>
@@ -156,6 +157,44 @@
 				</div>
 				<div id="deleteEventDiv" class="tab-content">
 					<div id="chooseEventToDelete" class="col_12"></div>
+				</div>
+				<div id="addSpeakerDiv" class="tab-content">
+					<h2>Add a Speaker</h2>
+					<form id="addNewSpeakerForm" method="POST" enctype="multipart/form-data">
+						<label class="col_4" for="newSpeakerFirstName">Speaker's First Name</label>
+        		<input class="col_8" id="newSpeakerFirstName" name="newSpeakerFirstName" type="text" placeholder="First Name" />
+        		<label class="col_4" for="newSpeakerLastName">Speaker's Last Name</label>
+        		<input class="col_8" id="newSpeakerLastName" name="newSpeakerLastName" type="text" placeholder="Last Name" />
+        		<label class="col_4" for="newSpeakerEmail">Speaker's Email</label>
+        		<input class="col_8" id="newSpeakerEmail" name="newSpeakerEmail" type="email" placeholder="Email" />
+        		<label class="col_12" for="showOnMeetTheTeamPage">Should this speaker appear on the meet the team page?</label>
+        		<label class="col_4" for="showOnMeetTheTeamPage">Yes, place this speaker on the meet the team page</label>
+        		<input class="col_4" type="radio" name="showOnMeetTheTeamPage" id="showOnMeetTheTeamPage1" value="true">
+        		<br />
+        		<label class="col_4" for="showOnMeetTheTeamPage">No, do not place this speaker on the meet the team page</label>
+        		<input class="col_4" type="radio" name="showOnMeetTheTeamPage" id="showOnMeetTheTeamPage2" value="false">
+        		<label class="col_12" for="meetTheTeamPageOrder">What position should this speaker appear on the meet the team page? (if they appear on the meet the team page)</label>
+        		<input class="col_8" type="number" name="meetTheTeamPageOrder" id="meetTheTeamPageOrder">
+        		<label class="col_4" for="company">What company is this speaker with?</label>
+        		<input class="col_8" type="text" name="company" id="company">
+        		<label class="col_4" for="msTeamTitle">What is this speaker's titleh?</label>
+        		<input class="col_8" type="text" name="msTeamTitle" id="msTeamTitle">
+        		<label class="col_4" for="address">Address</label>
+        		<input class="col_8" type="text" name="address" id="address">
+        		<label class="col_4" for="country">Country</label>
+        		<input class="col_8" type="text" name="country" id="country">
+        		<label class="col_4" for="headshot">Head Shot</label>
+        		<input class="col_8" type="file" name="headshot" id="headshot">
+        		<label class="col_4" for="contactDescription">Speaker Description</label>
+        		<input class="col_8" type="textbox" name="contactDescription" id="contactDescription">
+        		<br />
+        		<br />
+					</form>
+					<!-- <form id="addSpeakersHeadshot" method="POST" enctype="multipart/form-data">
+						<label class="col_4" for="headshot">Head Shot</label>
+        		<input class="col_8" type="file" name="headshot" id="headshot">
+					</form> -->
+      		<button class="medium" id="addSpeakerButton" type="submit">Add Speaker</button>
 				</div>
 			</section>
 			<section class="col_12 internetExplorer scroll-button">
