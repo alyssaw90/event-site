@@ -70,6 +70,13 @@ module.exports = function (router) {
   router.use(cookieParser());
 
   /*Begin basic view routes*/
+
+  //404 error route
+  router.route('/404')
+  .get(function(req, res) {
+    res.sendFile(path.join(__dirname, '../views/404.html'));
+  });
+
   router.route('/')
   .get(function (req, res) {
     res.sendFile(path.join(__dirname, '../views/index.html'));
@@ -148,6 +155,19 @@ module.exports = function (router) {
     .then(function () { 
       Contact.findAll({where: {showOnHomePage: true}})
       .then(function (data) {
+        data.sort(function(a, b) {
+          a = a.meetTheTeamPageOrder;
+          b = b.meetTheTeamPageOrder;
+          if (a > b) {
+            return 1;
+          }
+          if (a < b) {
+            return -1;
+          }
+          if (a === b) {
+            return 0;
+          }
+        })
         res.json(data);
       })
       .error(function (err) {
@@ -376,7 +396,7 @@ module.exports = function (router) {
   });
 
   //Find an event with the id from req.body.eventId and add the string of speakers then save
-  router.post('/addspeakers', eatAuth, function(req, res, next) {
+  router.post('/addeventspeakers', eatAuth, function(req, res, next) {
     models.sql.sync()
     .then(function() {
       return Event.findOne({where: {id: req.body.eventId}});
@@ -597,7 +617,7 @@ module.exports = function (router) {
         tabForm += `<label for="chooseEventToEdit">${eventInfo.tabs[i].tabTitle}</label><input class="col_8" style="margin-left:10px; margin-right:10px;" id="chooseEventToEdit${i}" name="chooseEventToEdit" type="radio" value="${eventInfo.tabs[i].id}" data-tabName="${eventInfo.tabs[i].tabTitle}" data-eventName="${eventInfo.theEvent.eventName}"></input></input>`;
       }
       //add the button to the end of the tab form
-      tabForm += `<button class="medium" id="chooseTabToEditButton">Choose tab</button></form>`;
+      tabForm += `<button class="medium" id="chooseTabToEditButton">Delete tab</button></form>`;
       //replace edit with deletes to create delete tab form
       deleteTabForm = tabForm.replace('chooseEventToEdit', 'chooseEventToDelete').replace('chooseTabToEditButton', 'chooseTabToDeleteButton').replace('editEventTabs', 'deleteEventTabs');
       //declare keys and values to send as response
@@ -634,10 +654,32 @@ module.exports = function (router) {
     });
   });
 
+  //delete event route
   router.post('/deleteevent', eatAuth, function(req, res) {
     models.sql.sync()
     .then(function() {
-      return EventTab.findOne({where: {id: req.body.tabToDeleteId}});
+      console.log(clc.black.bgBlue(':::::::::::::::::   '), req.body);
+      return Event.findOne({
+        where: {
+          id: req.body.eventToBeDeletedId
+        }
+      });
+    })
+    .then(function(theEvent) {
+      theEvent.destroy();
+      res.end();
+    });
+  });
+
+  //delete tab route
+  router.post('/deletetab', eatAuth, function(req, res) {
+    models.sql.sync()
+    .then(function() {
+      return EventTab.findOne({
+        where: {
+          id: req.body.tabToDeleteId
+        }
+      });
     })
     .then(function(tabToDelete) {
       tabToDelete.destroy();
@@ -645,33 +687,7 @@ module.exports = function (router) {
     });
   });
 
-
-/*  router.route('/allevents/:eventId')
-  .get(function (req, res) {
-    let picsHtml = '<div class="col_12 gallery">';
-    let returnObj = {};
-    models.sql.sync()
-    .then(function () {
-      Event.findOne({where: {id: req.params.eventId}})
-      .then(function (data) {
-        fs.readdir(path.join(__dirname, '../uploads/' + data.eventUrl), function (err, files) {
-          for (let key in files) {
-            picsHtml += '<a href="../uploads/' + data.eventUrl + '/' + files[key] + ' rel="gallery" class="fancybox" type="image" ><img src="../uploads/' + data.eventUrl + '/' + files[key] + '" width="100" height="100" /></a>';
-          }
-          picsHtml += '</div>';
-          // for (let i = 0, j = files.length; i < j; i++) {
-          //   files[i] = '../uploads/' + data.eventUrl + '/' + files[i];
-          // }
-          let testHtml = '<div class="col_12 gallery"><a href="../uploads/shanghaiinteropdevdays2015-2026/_MG_3990.JPG" rel="gallery"><img src="../uploads/shanghaiinteropdevdays2015-2026/_MG_3990.JPG" width="100" height="100" /></a><a href="../uploads/shanghaiinteropdevdays2015-2026/_MG_4077.JPG" rel="gallery"><img src="../uploads/shanghaiinteropdevdays2015-2026/_MG_4077.JPG" width="100" height="100" /></a></div>';
-          returnObj.eventUrl = data.eventUrl;
-          returnObj.picsHtml = picsHtml;
-          returnObj.files = files;
-          res.json(returnObj);
-        });
-      });
-    });
-  });*/
-
+  //get all contacts for editing
   router.get('/contacts', eatAuth, function (req, res) {
     models.sql.sync()
     .then(function () {
@@ -681,26 +697,39 @@ module.exports = function (router) {
       });
     });
   });
-  
-/*  router.route('/upcomingeventurls')
-  .get(function (req, res) {
-    models.sql.sync()
-    .then(function () {
-      Event.findAll({where: {eventStartDate: {$gte: new Date()}}})
-      .then(function (data) {
-        let theUrls = [];
-        for (let i = 0; i < data.length; i++) {
-          let tmpObj = {};
-          tmpObj.url = data[i].eventUrl;
-          tmpObj.eventName = data[i].eventName;
-          theUrls.push(tmpObj);
-        }
-        res.json(theUrls);
-      });
-    });
-  });*/
 
-  //This route creates the html for the event pages. This route MUST be last
+  //route to create speakers
+  router.post('/addspeakers', eatAuth, upload.single('headshot'), function(req, res) {
+    models.sql.sync()
+    .then(function() {
+      console.log(clc.white.bgBlue(':::::::::::::::::    '), req.file, '                  ', req.body);
+      Contact.create({
+        firstName: req.body.newSpeakerFirstName,
+        lastName: req.body.newSpeakerLastName,
+        email: req.body.newSpeakerEmail,
+        contactDescription: req.body.contactDescription,
+        showOnMeetTheTeamPage: req.body.showOnMeetTheTeamPage,
+        meetTheTeamPageOrder: req.body.meetTheTeamPageOrder,
+        msTeamTitle: req.body.msTeamTitle,
+        headShot: req.file.filename,
+        company: req.body.company,
+        address: req.body.address,
+        country: req.body.country,
+      })
+    })
+  })
+  
+
+
+  /*///////////////////////////////////////////////////////////////////////
+
+
+
+  This route creates the html for the event pages. This route MUST be last
+
+
+
+  ///////////////////////////////////////////////////////////////////////*/
   router.route('/:eventUrl')
   .get(function(req, res) {
     //create an eventInfo object to hold the values for the event to be rendered
@@ -717,7 +746,10 @@ module.exports = function (router) {
       //trim the params to get the city and the year of the event
       let eventSearchCity = req.params.eventUrl.slice(0, -4);
       let eventYear = req.params.eventUrl.slice(-4);
-      let testDate = new Date(eventYear - 1, 11, 31, 11, 59, 59);
+      let testDate = new Date(eventYear - 1, 11, 31, 11, 59, 59) == 'Invalid Date' ? 'not a date' : new Date(eventYear - 1, 11, 31, 11, 59, 59);
+      if (testDate === 'not a date') {
+        return res.status(404).redirect('/404');
+      }
       // search the database for event that matches the city and occurs on or after the year from the params and return the event found
       return Event.findOne({
         where: {
@@ -744,6 +776,20 @@ module.exports = function (router) {
       });
     })
     .then(function(theTabs) {
+      theTabs.sort(function(a, b) {
+        a = a.tabNumber;
+        b = b.tabNumber;
+        if (a > b) {
+          return 1;
+        }
+        if (a < b) {
+          return -1;
+        }
+        if (a === b) {
+          return 0;
+        }
+      });
+      console.log(clc.bgBlue('::::::::    '), theTabs);
       //assign the returned event tabs to the tabs key of the eventInfo object
       eventInfo.tabs = theTabs;
     })
