@@ -10,6 +10,10 @@ module.exports = function(sql, DataTypes) {
     tabNumber: DataTypes.INTEGER,
     tabTitle: DataTypes.TEXT,
     tabContent: DataTypes.TEXT
+  },
+  {
+  	hasTrigger: true,
+    paranoid: true
   });
   
 };

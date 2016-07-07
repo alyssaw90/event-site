@@ -105,6 +105,19 @@ module.exports = function (router) {
       });
     })
     .then(function(speakers) {
+      speakers.sort(function(a, b) {
+        a = a.meetTheTeamPageOrder;
+        b = b.meetTheTeamPageOrder;
+        if (a > b) {
+          return 1;
+        }
+        if (a < b) {
+          return -1;
+        }
+        if (a === b) {
+          return 0;
+        }
+      });
       let meetTheTeamSpeakersArr = [];
       let meetTheTeamSpeakersHtml = '<main role="main" class="grid white-bg main-page-content the-team-section">';
       //loop over the returned speakers and splice them into an array using their position number minus one as the index
@@ -617,7 +630,7 @@ module.exports = function (router) {
         tabForm += `<label for="chooseEventToEdit">${eventInfo.tabs[i].tabTitle}</label><input class="col_8" style="margin-left:10px; margin-right:10px;" id="chooseEventToEdit${i}" name="chooseEventToEdit" type="radio" value="${eventInfo.tabs[i].id}" data-tabName="${eventInfo.tabs[i].tabTitle}" data-eventName="${eventInfo.theEvent.eventName}"></input></input>`;
       }
       //add the button to the end of the tab form
-      tabForm += `<button class="medium" id="chooseTabToEditButton">Delete tab</button></form>`;
+      tabForm += `<button class="medium" id="chooseTabToEditButton">Choose tab</button></form>`;
       //replace edit with deletes to create delete tab form
       deleteTabForm = tabForm.replace('chooseEventToEdit', 'chooseEventToDelete').replace('chooseTabToEditButton', 'chooseTabToDeleteButton').replace('editEventTabs', 'deleteEventTabs');
       //declare keys and values to send as response
@@ -658,7 +671,6 @@ module.exports = function (router) {
   router.post('/deleteevent', eatAuth, function(req, res) {
     models.sql.sync()
     .then(function() {
-      console.log(clc.black.bgBlue(':::::::::::::::::   '), req.body);
       return Event.findOne({
         where: {
           id: req.body.eventToBeDeletedId
@@ -702,23 +714,151 @@ module.exports = function (router) {
   router.post('/addspeakers', eatAuth, upload.single('headshot'), function(req, res) {
     models.sql.sync()
     .then(function() {
-      console.log(clc.white.bgBlue(':::::::::::::::::    '), req.file, '                  ', req.body);
+      let speakerEmail = req.body.newSpeakerEmail ? req.body.newSpeakerEmail : 'plugfests@microsoft.com';
+      let speakerHeadshot = req.file ? req.file.filename : 'placeholder-headshot.jpg';
       Contact.create({
         firstName: req.body.newSpeakerFirstName,
         lastName: req.body.newSpeakerLastName,
-        email: req.body.newSpeakerEmail,
+        email: speakerEmail,
         contactDescription: req.body.contactDescription,
         showOnMeetTheTeamPage: req.body.showOnMeetTheTeamPage,
         meetTheTeamPageOrder: req.body.meetTheTeamPageOrder,
         msTeamTitle: req.body.msTeamTitle,
-        headShot: req.file.filename,
+        headShot: speakerHeadshot,
         company: req.body.company,
         address: req.body.address,
         country: req.body.country,
+      });
+      res.end();
+    });
+  });
+
+  //route to add speakers to edit speakers form
+  router.get('/getspeakers', eatAuth, function(req, res) {
+    models.sql.sync()
+    .then(function() {
+      return Contact.findAll();
+    })
+    .then(function(speakers) {
+      let returnObj = {
+        editSpeakers: [],
+        deleteSpeakers: []
+      };
+      for (var i = 0, len = speakers.length; i < len; i++) {
+        let tmpEditHtml = `<div class="col_12"><img style="height: 165px;" src="/uploads/${speakers[i].headShot}"/><h4>${speakers[i].fullName}</h4><button class="editSpeakersButton" data-speakerId="${speakers[i].id}">Edit ${speakers[i].fullName}</button></div>`;
+        let tmpDeleteHtml = `<div class="col_12"><img style="height: 165px;" src="/uploads/${speakers[i].headShot}"/><h4>${speakers[i].fullName}</h4><button class="deleteSpeakersButton" data-speakerId="${speakers[i].id}" data-speakerName="${speakers[i].fullName}">Delete ${speakers[i].fullName}</button></div>`;
+        returnObj.editSpeakers.push(tmpEditHtml);
+        returnObj.deleteSpeakers.push(tmpDeleteHtml);
+      }
+      res.send(returnObj);
+    });
+  });
+
+  router.post('/showspeakertoedit', eatAuth, function(req, res) {
+    models.sql.sync()
+    .then(function() {
+      return Contact.findOne({
+        where: {
+          id: {
+            $eq: req.body.speakerId
+          }
+        }
       })
     })
-  })
+    .then(function(data) {
+      let speakerToEditHtml = `<h2>Edit Speaker</h2>
+          <form id="editSpeakerForm" method="POST" enctype="multipart/form-data" class="col_12">
+            <input type="hidden" name="editSpeakerId" id="editSpeakerId" value="${data.id}" />
+            <label class="col_4" for="editSpeakerFirstName">Speaker's First Name</label>
+            <input class="col_8" id="editSpeakerFirstName" name="editSpeakerFirstName" type="text" placeholder="${data.firstName}" />
+            <label class="col_4" for="editSpeakerLastName">Speaker's Last Name</label>
+            <input class="col_8" id="editSpeakerLastName" name="editSpeakerLastName" type="text" placeholder="${data.lastName}" />
+            <label class="col_4" for="editSpeakerEmail">Speaker's Email</label>
+            <input class="col_8" id="editSpeakerEmail" name="editSpeakerEmail" type="email" placeholder="${data.email}" />
+            <label class="col_12" for="editShowOnMeetTheTeamPage">Should this speaker appear on the meet the team page?</label>
+            <label class="col_4" for="editShowOnMeetTheTeamPage">Yes, place this speaker on the meet the team page</label>
+            <input class="col_4" type="radio" name="editShowOnMeetTheTeamPage" id="editShowOnMeetTheTeamPage1" value="true">
+            <br />
+            <label class="col_4" for="editShowOnMeetTheTeamPage">No, do not place this speaker on the meet the team page</label>
+            <input class="col_4" type="radio" name="editShowOnMeetTheTeamPage" id="editShowOnMeetTheTeamPage2" value="false">
+            <label class="col_12" for="editMeetTheTeamPageOrder">What position should this speaker appear on the meet the team page? (if they appear on the meet the team page)</label>
+            <input class="col_8" type="number" name="editMeetTheTeamPageOrder" id="editMeetTheTeamPageOrder">
+            <label class="col_4" for="editCompany">What company is this speaker with?</label>
+            <input class="col_8" type="text" name="editCompany" id="editCompany" placeholder="${data.company}">
+            <label class="col_4" for="editmsTeamTitle">What is this speaker's title?</label>
+            <input class="col_8" type="text" name="editmsTeamTitle" id="editmsTeamTitle" placeholder="${data.msTeamTitle}">
+            <label class="col_4" for="editAddress">Address</label>
+            <input class="col_8" type="text" name="editAddress" id="editAddress" placeholder="${data.address}">
+            <label class="col_4" for="editCountry">Country</label>
+            <input class="col_8" type="text" name="editCountry" id="editCountry" placeholder="${data.country}">
+            <label class="col_4" for="editHeadshot">Head Shot</label>
+            <input class="col_8" type="file" name="editHeadshot" id="editHeadshot">
+            <label class="col_12" for="editContactDescription">Speaker Description</label>
+            <textarea class="col_8" spellcheck="true" rows="20" name="editContactDescription" id="editContactDescription" placeholder="${data.contactDescription}"></textarea>
+            <br>
+            <br>
+          </form>
+          <script type="text/javascript">$('#editSpeakerForm').validate();</script>
+          <button id="editSingleSpeakerButton" data-speakerId="${data.id}">Submit</button>`;
+      res.send(speakerToEditHtml);
+    });
+  });
+
+  router.post('/editspeaker', eatAuth, upload.single('editHeadshot'), function(req, res) {
+    models.sql.sync()
+    .then(function() {
+      return Contact.findOne({
+        where: {
+          id: req.body.editSpeakerId
+        }
+      });
+    })
+    .then(function(speaker) {
+      speaker.firstName = req.body.editSpeakerFirstName ? req.body.editSpeakerFirstName : speaker.firstName;
+      speaker.lastName = req.body.editSpeakerLastName ? req.body.editSpeakerLastName : speaker.lastName;
+      speaker.email = req.body.editSpeakerEmail ? req.body.editSpeakerEmail : speaker.email;
+      speaker.contactDescription = req.body.editContactDescription ? req.body.editContactDescription : speaker.contactDescription;
+      speaker.showOnMeetTheTeamPage = req.body.editShowOnMeetTheTeamPage ? req.body.editShowOnMeetTheTeamPage : speaker.showOnMeetTheTeamPage;
+      speaker.meetTheTeamPageOrder = req.body.editMeetTheTeamPageOrder ? req.body.editMeetTheTeamPageOrder : speaker.meetTheTeamPageOrder;
+      speaker.msTeamTitle = req.body.editmsTeamTitle ? req.body.editmsTeamTitle : speaker.msTeamTitle;
+      speaker.headShot = req.file ? req.file.filename : speaker.headShot;
+      speaker.company = req.body.editCompany ? req.body.editCompany : speaker.company;
+      speaker.address = req.body.editAddress ? req.body.editAddress : speaker.address;
+      speaker.country = req.body.editCountry ? req.body.editCountry : speaker.country;
+      speaker.save();
+      res.end();
+    });
+  });
+
+  router.delete('/deletespeaker', eatAuth, function(req, res) {
+    models.sql.sync()
+    .then(function() {
+      return Contact.findOne({
+        where: {
+          id: req.body.speakerId
+        }
+      });
+    })
+    .then(function(theSpeaker) {
+      theSpeaker.destroy();
+      res.end();
+    });
+  });
   
+  router.post('/editslidersettings', eatAuth, function(req, res) {
+    models.sql.sync()
+    .then(function() {
+      return SiteStyle.findOne();
+    })
+    .then(function(sliderSettings) {
+      sliderSettings.showSlider = req.body.showSlider ? req.body.showSlider : sliderSettings.showSlider;
+      sliderSettings.showPastEventsBanner = req.body.showBannersFromPastEvents ? req.body.showBannersFromPastEvents : sliderSettings.showPastEventsBanner;
+      sliderSettings.hideEventBanners = req.body.showFutureEventBanners ? req.body.showFutureEventBanners : sliderSettings.hideEventBanners;
+      sliderSettings.save();
+      res.end();
+    })
+  })
+
 
 
   /*///////////////////////////////////////////////////////////////////////
@@ -732,6 +872,10 @@ module.exports = function (router) {
   ///////////////////////////////////////////////////////////////////////*/
   router.route('/:eventUrl')
   .get(function(req, res) {
+    //check if last 4 digits of url slug (req.params.eventUrl) are a number and end the response  if they're not numbers i.e. not a year and end the response if they're not
+    if (!/^\d+$/.test(req.params.eventUrl.slice(-4))) {
+      return res.end();
+    }
     //create an eventInfo object to hold the values for the event to be rendered
     let eventInfo = {};
     eventInfo.eventUrl = req.params.eventUrl;
@@ -769,11 +913,15 @@ module.exports = function (router) {
     })
     .then(function() {
       // search for all the tabs that are associated with the current event
-      return EventTab.findAll({
-        where: {
-          eventId: eventInfo.event.id
-        }
-      });
+      if (eventInfo.event.id) {
+        return EventTab.findAll({
+          where: {
+            eventId: eventInfo.event.id
+          }
+        });
+      } else {
+        res.end();
+      }
     })
     .then(function(theTabs) {
       theTabs.sort(function(a, b) {
@@ -789,7 +937,6 @@ module.exports = function (router) {
           return 0;
         }
       });
-      console.log(clc.bgBlue('::::::::    '), theTabs);
       //assign the returned event tabs to the tabs key of the eventInfo object
       eventInfo.tabs = theTabs;
     })

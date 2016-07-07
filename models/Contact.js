@@ -3,7 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 
-module.exports = function(sql, DataTypes) {
+module.exports = function (sql, DataTypes) {
 
   return sql.define('Contact', {
     firstName: DataTypes.STRING,
@@ -30,7 +30,7 @@ module.exports = function(sql, DataTypes) {
     allowPersonalInfoSharing: DataTypes.BOOLEAN
   },
   {
-    getterMethods   : {
+    getterMethods: {
       divId: function () {
         let theDate = new Date();
         if (!this.firstName && !this.lastName) {
@@ -41,19 +41,20 @@ module.exports = function(sql, DataTypes) {
         }
         return this.firstName.toLowerCase() + '-' + this.lastName.toLowerCase() + '-' + Date.parse(theDate);
       },
-      fullName: function() {
+      fullName: function () {
         return this.firstName + ' ' + this.lastName;
       }
     },
-  
-    setterMethods   : {
+
+    setterMethods: {
       /*fullName: function(value) {
         console.log(  'VALUE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  ', value);
           let names = value.split('-');
           this.setDataValue('firstName', names.slice(0, -1).join(' '));
           this.setDataValue('lastName', names.slice(-1).join(' '));
       }*/
-    }
+    },
+    hasTrigger: true,
+    paranoid: true
   });
 };
-  
