@@ -6,6 +6,10 @@ module.exports = function(sql, DataTypes) {
 		showSlider: DataTypes.BOOLEAN,
 		showPastEventsBanner: DataTypes.BOOLEAN,
 		hideEventBanners: DataTypes.BOOLEAN
+	},
+	{
+		hasTrigger: true,
+    paranoid: true
 	});
 	
 };

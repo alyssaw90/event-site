@@ -4,14 +4,14 @@ const fs = require('fs');
 const path = require('path');
 const clc = require('cli-color');
 
-module.exports = function(sql, DataTypes) {
+module.exports = function (sql, DataTypes) {
 
   return sql.define('Event', {
     eventName: DataTypes.STRING,
     eventRegistrationLink: DataTypes.STRING, //link to registrationfor event
     eventLocation: {
       type: DataTypes.STRING,
-      set: function(val) {
+      set: function (val) {
         this.setDataValue('eventLocation', val.toLowerCase().replace(' ', '_'));
       }
     },
@@ -23,17 +23,17 @@ module.exports = function(sql, DataTypes) {
     eventHighlightColor: DataTypes.TEXT, //what color to use to highlight the homepage
     eventFuturePageImage: DataTypes.TEXT, //image to appear on event slide on homepage
     eventFuturePageText: DataTypes.TEXT, //slide up text for future events page
-  /*  eventSlideshowImage: {
-      type: DataTypes.TEXT,
-      unique: true,
-      get: function () {
-        return randomTabImages[Math.floor(Math.random() * randomTabImages.length)]
-      }
-    },*/ //image for front page slider
+    /*  eventSlideshowImage: {
+        type: DataTypes.TEXT,
+        unique: true,
+        get: function () {
+          return randomTabImages[Math.floor(Math.random() * randomTabImages.length)]
+        }
+      },*/ //image for front page slider
     eventSpeakers: DataTypes.STRING
   },
   {
-    getterMethods   : {
+    getterMethods: {
       eventUrl: function () {
         let theEventLocation = this.getDataValue('eventLocation');
         let startDate = this.getDataValue('eventStartDate');
@@ -60,7 +60,9 @@ module.exports = function(sql, DataTypes) {
         let imgIndex = Math.floor(idVal / randomTabImages.length);
         return randomTabImages[idVal - imgIndex];
       }*/
-    }
+    },
+    hasTrigger: true,
+    paranoid: true
   });
 
 

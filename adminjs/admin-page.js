@@ -35,6 +35,12 @@
     var $addSpeakerButton = $('#addSpeakerButton');
     var $addNewSpeakerForm = $('#addNewSpeakerForm');
     var $addSpeakerDiv = $('#addSpeakerDiv');
+    var $editSpeakersLi = $('#editSpeakersLi');
+    var $editSpeakerDiv = $('#editSpeakerDiv');
+    var $deleteSpeakerDiv = $('#deleteSpeakerDiv');
+    var $deleteSpeakerLi = $('#deleteSpeakerLi');
+    var $editSliderSettingsButton = $('#editSliderSettingsButton');
+    var $siteStyleForm = $('#siteStyleForm')
     var tabCount = 1;
     var newEventId;
     var eventToEditId;
@@ -598,13 +604,91 @@
   
     *//////////////////////////////////////////////////////////////////
 
+    $.get('getspeakers', function(data) {
+      for (var i = 0, len = data.editSpeakers.length; i < len; i++) {
+        $editSpeakerDiv.append(data.editSpeakers[i]);
+      }
+      for (var i = 0, len = data.deleteSpeakers.length; i < len; i++) {
+        $deleteSpeakerDiv.append(data.deleteSpeakers[i]);
+      }
+    });
+
+    $('#addNewSpeakerForm').validate();
     $addSpeakerButton.click(function(e) {
       e.preventDefault();
-
       submitForm('addNewSpeakerForm', 'addspeakers');
-      $addNewSpeakerForm.reset();
-      alert('New speaker added');
+      $('#addNewSpeakerForm')[0].reset();
+      alert('Speaker Added');
+    });
 
+    $editSpeakersLi.click(function(e) {
+      $.get('getspeakers', function(data) {
+        for (var i = 0, len = data.editSpeakers.length; i < len; i++) {
+          $editSpeakerDiv.append(data.editSpeakers[i]);
+        }
+      })
+      .done(function() {
+        $('.editSpeakersButton').click(function(e) {
+          e.preventDefault();
+          let $this = $(this);
+          $.post('showspeakertoedit', {speakerId: $this.data('speakerid')}, function(data, textStatus, xhr) {
+            $editSpeakerDiv.html(data);
+          })
+          .done(function() {
+            $('#editSingleSpeakerButton').click(function(e) {
+              e.preventDefault();
+              submitForm('editSpeakerForm', 'editspeaker');
+              $editSpeakerDiv.html('');
+              $editSpeakersLi.trigger('click');
+            });
+          });
+        });        
+      });
+    });
+
+    $deleteSpeakerLi.click(function(e) {
+      e.preventDefault();
+      $.get('getspeakers', function(data) {
+        for (var i = 0, len = data.deleteSpeakers.length; i < len; i++) {
+          $deleteSpeakerDiv.append(data.deleteSpeakers[i]);
+        }
+      })
+      .then(function() {
+        $('.deleteSpeakersButton').click(function() {
+          e.preventDefault();
+          let $this = $(this);
+          if (window.confirm(`Are yous sure you want to delete ${$this.data('speakername')}? THIS CANNOT BE UNDONE`)) {
+            $.ajax({
+              url: '/deletespeaker',
+              type: 'DELETE',
+              data: {speakerId: $this.data('speakerid')}
+            })
+            .done(function() {
+              console.log('success');
+              alert(`${$this.data('speakername')} has been removed from the database`);
+              $deleteSpeakerDiv.html('');
+              $deleteSpeakerLi.trigger('click');
+            })
+            .fail(function() {
+              console.log('error');
+            })
+            .always(function() {
+              console.log('complete');
+            });
+          } else {
+            checkForChanges();
+          }
+          
+        });
+      });
+    });
+
+    $editSliderSettingsButton.click(function(e) {
+      e.preventDefault();
+      let settings = $siteStyleForm.serialize();
+      $.post('/editslidersettings', settings, function(data, textStatus, xhr) {
+        location.reload();
+      });
     });
 
   });

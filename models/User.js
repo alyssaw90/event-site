@@ -40,7 +40,9 @@ module.exports = function(sql, DataTypes) {
         return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
       }
       
-    }
+    },
+    hasTrigger: true,
+    paranoid: true
 
   });
 

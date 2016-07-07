@@ -31,7 +31,9 @@
           <li><a href="#editEventDiv">Edit Event</a></li>
           <li><a href="#deleteEventDiv">Delete Event</a></li>
           <li><a href="#addSpeakerDiv">Add Speaker</a></li>
-          <li><a href="#editSpeakerDiv">Edit Speaker</a></li>
+          <li><a href="#editSpeakerDiv" id="editSpeakersLi">Edit Speaker</a></li>
+          <li><a href="#deleteSpeakerDiv" id="deleteSpeakerLi">Delete Speaker</a></li>
+          <li><a href="#editSiteStyleDiv">Edit Slider Settings</a></li>
         </ul>
         <div id="createEventDiv" class="tab-content">
           <h2>Create an Event</h2>
@@ -161,7 +163,7 @@
         </div>
         <div id="addSpeakerDiv" class="tab-content">
           <h2>Add a Speaker</h2>
-          <form id="addNewSpeakerForm" method="POST" enctype="multipart/form-data">
+          <form id="addNewSpeakerForm" class="col_12" method="POST" enctype="multipart/form-data">
             <label class="col_4" for="newSpeakerFirstName">Speaker's First Name</label>
             <input class="col_8" id="newSpeakerFirstName" name="newSpeakerFirstName" type="text" placeholder="First Name" />
             <label class="col_4" for="newSpeakerLastName">Speaker's Last Name</label>
@@ -186,20 +188,43 @@
             <input class="col_8" type="text" name="country" id="country">
             <label class="col_4" for="headshot">Head Shot</label>
             <input class="col_8" type="file" name="headshot" id="headshot">
-            <label class="col_4" for="contactDescription">Speaker Description</label>
-            <input class="col_8" type="textbox" name="contactDescription" id="contactDescription">
+            <label class="col_12" for="contactDescription">Speaker Description</label>
+            <textarea class="col_8" type="textbox" name="contactDescription" id="contactDescription"></textarea>
             <br />
             <br />
           </form>
-          <!-- <form id="addSpeakersHeadshot" method="POST" enctype="multipart/form-data">
-            <label class="col_4" for="headshot">Head Shot</label>
-            <input class="col_8" type="file" name="headshot" id="headshot">
-          </form> -->
           <button class="medium" id="addSpeakerButton" type="submit">Add Speaker</button>
         </div>
         <div id="editSpeakerDiv" class="tab-content">
           <h2>Edit Speakers</h2>
-          <form id="editNewSpeakerForm" method="POST" enctype="multipart/form-data"></form>
+        </div>
+        <div id="deleteSpeakerDiv" class="tab-content">
+          <h2>Delete Speakers</h2>
+        </div>
+        <div id="editSiteStyleDiv" class="tab-content">
+          <h2>Homepage Slider Settings</h2>
+          <form id="siteStyleForm">
+            <label class="col_12" for="showSlider"><h4>Should the slider be displayed?</h4></label>
+            <label class="" for="showSlider1">Yes, show the slider</label>
+            <input class="" type="radio" name="showSlider" id="showSlider1" value="true">
+            <br>
+            <label class="" for="showSlider">No, show just one image</label>
+            <input class="" type="radio" name="showSlider" id="showSlider2" value="false">
+            <label class="col_12" for="showBannersFromPastEvents"><h4>Should the previous events banner be displayed?</h4></label>
+            <label class="" for="showBannersFromPastEvents">Yes, show the previous events banner</label>
+            <input class="" type="radio" name="showBannersFromPastEvents" id="showBannersFromPastEvents1" value="true">
+            <br>
+            <label class="" for="showBannersFromPastEvents">No, hide the previous events banner</label>
+            <input class="" type="radio" name="showBannersFromPastEvents" id="showBannersFromPastEvents2" value="false">
+            <label class="col_12" for="showFutureEventBanners"><h4>Should the banners for upcoming events be displayed?</h4></label>
+            <label class="" for="showFutureEventBanners">Yes, show the banners from future events</label>
+            <input class="" type="radio" name="showFutureEventBanners" id="showFutureEventBanners1" value="true">
+            <br>
+            <label class="" for="showFutureEventBanners">No, hide the banners from future events</label>
+            <input class="" type="radio" name="showFutureEventBanners" id="showFutureEventBanners2" value="false">
+          </form>
+          <br>
+          <button class="medium" id="editSliderSettingsButton">Save Settings</button>
         </div>
       </section>
       <section class="col_12 internetExplorer scroll-button">
@@ -215,6 +240,7 @@
   <script src="//tinymce.cachefly.net/4.3/tinymce.min.js"></script>
   <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.10/clipboard.min.js"></script>
   <script type="text/javascript" src="../lib/js.cookie.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js"></script>
   <script type="text/javascript" src="../dist/build.min.js"></script>
   <script type="text/javascript" src="../adminjs/user-logging.js"></script>
   <script type="text/javascript" src="../adminjs/admin-page.js"></script>
