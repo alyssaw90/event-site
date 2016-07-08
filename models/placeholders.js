@@ -2178,7 +2178,7 @@ setTimeout(function() {
 				eventId: 3,
 				tabNumber: 2,
 				tabTitle: 'Windows Interoperability (IO) Lab',
-				tabContent: `<h5 style="margin-top: 0;" class="float-right">If you’re interested in the IO Lab, email <a href="mailto:plugfests@microsoft.com">plugfests@microsoft.com</a></h5><h3>Windows Interoperability (IO) Lab </h3>
+				tabContent: `<h3>Windows Interoperability (IO) Lab </h3>
     <p>The Windows Interoperability (IO) Lab is the opportunity to test your implementation with Microsoft Windows protocol test suites.   During the IO lab you have the opportunity to directly engage with Windows Protocol Support, Test Suite Development, and Windows development team as well as network with other professionals from all over the world.</p>
     <ul class="noStyleUL">
     	<li><strong>When:</strong>  June 20-24, 2016</li>

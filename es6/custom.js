@@ -110,6 +110,11 @@ if (self === top) {
 	  customFunctions.homepageStickyFooter();
 	});
 
+	setTimeout(function() {
+		customFunctions.stickyFooter();
+	  customFunctions.homepageStickyFooter();
+	}, 1000);
+
 	/*//////////////////////////////////////////////////////
 	/																												/ 
 	/																												/ 
