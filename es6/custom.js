@@ -125,7 +125,7 @@ if (self === top) {
 
 
 	let path = window.location.pathname;
-	$('li:not(.tabs > li), th, td').attr('tabindex', '0');
+	$('li:not(.tabs > li), th, td, .feed_item_description').attr('tabindex', '0');
 
 	//add tabindex="0" to paragraphs on the speakers, about abd faq pages
 

@@ -585,7 +585,7 @@
       var newTabHtmlContent = tinyMCE.activeEditor.getContent();
       $.post('/edittab', {
         tabId: $('#tabId').val(),
-        tabNumber: $('#newTabPosition').val(),
+        tabNumber: $('#editedTabPosition').val(),
         tabTitle: $('#editedTabName').val(),
         tabContent: newTabHtmlContent
       })
@@ -640,6 +640,7 @@
               submitForm('editSpeakerForm', 'editspeaker');
               $editSpeakerDiv.html('');
               $editSpeakersLi.trigger('click');
+              location.reload();
             });
           });
         });        
@@ -668,6 +669,7 @@
               alert(`${$this.data('speakername')} has been removed from the database`);
               $deleteSpeakerDiv.html('');
               $deleteSpeakerLi.trigger('click');
+              location.reload();
             })
             .fail(function() {
               console.log('error');
