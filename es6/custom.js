@@ -67,97 +67,97 @@ if (self === top) {
 	 		
 	 	}());
 	 	
-	});
+		$('.tabLink').click(function(e) {
+			if ($(this).data('tabid') !== 'undefined') {
+				e.preventDefault();
+				let tabId = $(this).data('tabid');
+				let tabIDName = '#' + tabId;
+				let divWithTabId = 'div' + tabIDName.slice(0, -4);
+				$('ul.tabs').children('li').each(function(i, elem) {
+					if ($(this).attr('id') === tabId) {
+						let wantedTab = $(this);
+						let tabs = $(this).parents('ul.tabs').find('li');
+						let tab_next = tabs.filter('.current').find('a').attr('href');
+						let tab_current = tabs.filter(tabIDName).find('a').attr('href');
+						$(tab_current).hide();
+						tabs.removeClass('current');
+						$(this).addClass('current');
+						$(tab_next).show();
+						$(this).parent().parent().children('div').hide();
+						$(this).parent().parent().children(divWithTabId).show();
+						return false;
+					}
+				});
+				
+			}
+		});
 
-	$('.tabLink').click(function(e) {
-		if ($(this).data('tabid') !== 'undefined') {
-			e.preventDefault();
-			let tabId = $(this).data('tabid');
-			let tabIDName = '#' + tabId;
-			let divWithTabId = 'div' + tabIDName.slice(0, -4);
-			$('ul.tabs').children('li').each(function(i, elem) {
-				if ($(this).attr('id') === tabId) {
-					let wantedTab = $(this);
-					let tabs = $(this).parents('ul.tabs').find('li');
-					let tab_next = tabs.filter('.current').find('a').attr('href');
-					let tab_current = tabs.filter(tabIDName).find('a').attr('href');
-					$(tab_current).hide();
-					tabs.removeClass('current');
-					$(this).addClass('current');
-					$(tab_next).show();
-					$(this).parent().parent().children('div').hide();
-					$(this).parent().parent().children(divWithTabId).show();
-					return false;
-				}
-			});
+
+		$(window).load(function() {
+			customFunctions.changeHeight('.past_events');
+			customFunctions.changeHeight('.individual-homepage-expert');
+		  customFunctions.stickyFooter();
+		  customFunctions.homepageStickyFooter();
+		});
+
+
+		$(window).resize(function(){
+			customFunctions.changeHeight('.past_events');
+			customFunctions.changeHeight('.individual-homepage-expert');
+		  customFunctions.stickyFooter();
+		  customFunctions.homepageStickyFooter();
+		});
+
+		setTimeout(function() {
+			customFunctions.stickyFooter();
+		  customFunctions.homepageStickyFooter();
+		}, 1000);
+
+		/*//////////////////////////////////////////////////////
+		/																												/ 
+		/																												/ 
+		/										Accessibility												/ 
+		/																												/ 
+		/																												/ 
+		//////////////////////////////////////////////////////*/
+
+
+		let path = window.location.pathname;
+		$('li:not(.tabs > li), th, td, .feed_item_description').attr('tabindex', '0');
+
+		//add tabindex="0" to paragraphs on the speakers, about abd faq pages
+
+		if (path === '/meet-the-team' || path === '/about' || path === '/faq' || path === '/latest-news', '/contactus') {
+			$('p').attr('tabindex', '0');
+		}
+
+		$('td').each(function(index, el) {
+			let $this = $(this);
+			let $tdContent = $this.html();
+			//add html time element to tds with no letters and a dash and colon so they are read correctly by screen readers
+			if (!/[a-zA-Z]/.test($tdContent) && /[:\-]/.test($tdContent)) {
+				$this.html(`<time>${$tdContent}</time>`);
+			}
+
+		});
+
+		//add aria tab to header elements that aren't links
+		$(':header').each(function(index, el) {
+			let $this = $(this);
+			if (!$this.parent().attr('href')) {
+				$this.attr('tabindex', '0');
+			}
+		});
+
+		function fixSocialTabindex() {
+			$('.at-share-btn').attr('tabIndex', 0);
 			
 		}
-	});
-
-
-	$(window).load(function() {
-		customFunctions.changeHeight('.past_events');
-		customFunctions.changeHeight('.individual-homepage-expert');
-	  customFunctions.stickyFooter();
-	  customFunctions.homepageStickyFooter();
-	});
-
-
-	$(window).resize(function(){
-		customFunctions.changeHeight('.past_events');
-		customFunctions.changeHeight('.individual-homepage-expert');
-	  customFunctions.stickyFooter();
-	  customFunctions.homepageStickyFooter();
-	});
-
-	setTimeout(function() {
-		customFunctions.stickyFooter();
-	  customFunctions.homepageStickyFooter();
-	}, 1000);
-
-	/*//////////////////////////////////////////////////////
-	/																												/ 
-	/																												/ 
-	/										Accessibility												/ 
-	/																												/ 
-	/																												/ 
-	//////////////////////////////////////////////////////*/
-
-
-	let path = window.location.pathname;
-	$('li:not(.tabs > li), th, td, .feed_item_description').attr('tabindex', '0');
-
-	//add tabindex="0" to paragraphs on the speakers, about abd faq pages
-
-	if (path === '/meet-the-team' || path === '/about' || path === '/faq' || path === '/latest-news', '/contactus') {
-		$('p').attr('tabindex', '0');
-	}
-
-	$('td').each(function(index, el) {
-		let $this = $(this);
-		let $tdContent = $this.html();
-		//add html time element to tds with no letters and a dash and colon
-		if (!/[a-zA-Z]/.test($tdContent) && /[:\-]/.test($tdContent)) {
-			$this.html(`<time>${$tdContent}</time>`);
-		}
-
-	});
-
-	//add aria tab to header elements that aren't links
-	$(':header').each(function(index, el) {
-		let $this = $(this);
-		if (!$this.parent().attr('href')) {
-			$this.attr('tabindex', '0');
-		}
-	});
-
-	function fixSocialTabindex() {
-		$('.at-share-btn').attr('tabIndex', 0);
 		
-	}
-	
-	// window.addEventListener ? window.addEventListener('load',fixSocialTabindex,false) : window.attachEvent && window.attachEvent('onload',fixSocialTabindex);
-	setTimeout(fixSocialTabindex, 3000);
+		// window.addEventListener ? window.addEventListener('load',fixSocialTabindex,false) : window.attachEvent && window.attachEvent('onload',fixSocialTabindex);
+		setTimeout(fixSocialTabindex, 3000);
+
+	});
 
 })(jQuery);
 
