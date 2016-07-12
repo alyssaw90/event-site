@@ -54,6 +54,9 @@ const jQuery = require('jquery');
 		const $homepageEmailSignUp = $('#homepageEmailSignUp');
 		const $scrollButtonDiv = $('.scroll-button');
 		const $hiddenHomepageSectionsWrapper = $('.hiddenHomepageSectionsWrapper');
+		const $hiddenHomepageSections = $('.hiddenHomepageSections');
+		const $itsYourEventBlockText = $('#itsYourEventBlockText');
+		const $blockquote = $('blockquote');
 		const $window = $(window);	
 		//array of ms colors at 80% opacity - ms yellow is removed, because it's to light for background color
 		let msColors = ['rgba(216, 59, 1, .8)', 'rgba(232, 17, 35, .8)', 'rgba(180, 0, 158, .8)', 'rgba(92, 45, 145, .8)', 'rgba(0, 120, 215, .8)', 'rgba(0, 130, 114, .8)', 'rgba(16, 124, 16, .8)'];
@@ -128,10 +131,30 @@ const jQuery = require('jquery');
 			e.preventDefault();
 			let keyCode = customFunctions.getKeyCode(e);
 			let parentId = `#${$(this).attr('data-parent')}`;
-			if (keyCode === 9) {
+			if (keyCode === 9 && !e.shiftKey) {
+				hideHomepageSections();
 				$(parentId).next().children('h3').click();
 				$(parentId).next().children('h3').focus();
 			}
+		}
+
+		function hideHomepageSections(e) {
+			$('.hiddenHomepageSections:visible').hide().attr('aria-hidden', 'true').removeAttr('tabindex');
+			$scrollButtonDiv.css('background-color', '#fff').css('color', '#2F2F2F');
+			$('.homepageIntroBlocks').each(function (i, elem) {
+				let $this = $(this);
+				let thisBlockMobileClass = $this.attr('id') + 'Mobile';
+				let thisBlockArrowClass = $this.attr('id') + 'ArrowBox';
+				if ($this.hasClass(thisBlockArrowClass)) {
+					$this.removeClass(thisBlockArrowClass);
+					$this.children('h3').removeClass('whiteText');
+					// $this.children('h3').trigger('click');
+				}
+				if ($this.hasClass(thisBlockMobileClass)) {
+					$this.removeClass(thisBlockMobileClass).css('background', 'rgb(255, 255, 255)');
+				}
+			});
+			customFunctions.homepageStickyFooter();
 		}
 
 
@@ -152,49 +175,32 @@ const jQuery = require('jquery');
 			}
 		});
 
-		/*$newsletterButton.click(function (e) {
-			$homepageEmailSignUp.toggle();
-			$('html, body').animate({ scrollTop: $homepageEmailSignUp.offset().top }, 'slow');
-			customFunctions.homepageStickyFooter();
-		});*/
 		//close textbox and unhighlight introBox when $backToTopButton is clicked
-		$backToTopButton.click(function (e) {
-			$('.hiddenHomepageSections:visible').hide().attr('aria-hidden', 'true').removeAttr('tabindex');
-			$scrollButtonDiv.css('background-color', '#fff').css('color', '#2F2F2F');
-			$('.homepageIntroBlocks').each(function (i, elem) {
-				let $this = $(this);
-				let thisBlockMobileClass = $this.attr('id') + 'Mobile';
-				if ($this.hasClass(thisBlockMobileClass)) {
-					$this.removeClass(thisBlockMobileClass).css('background', 'rgb(255, 255, 255)');
-				}
-			});
-			customFunctions.homepageStickyFooter();
-		});
+		$backToTopButton.click(hideHomepageSections);
 		//when a homepageIntroBlocks is clicked or enter is clicked, show the corresponding div
 		$homepageIntroBlocks.attr('tabindex', '-1');
+		$blockquote.find('span').attr('tabindex', '0');
 		$homepageIntroBlocks.click(showHomepageBlock);
 		$homepageIntroBlocks.keydown(showHomepageBlock);
 		//when using keyboard navigation hitting tab on the hiddenHomepageSections nextTab item should send user to the next title block
 		$('.nextTab').keydown(moveTab);
 
+		//close blocks and move back when shift + tab is clicked
+		$hiddenHomepageSections.keydown(function(e) {
+			let parentId = `#${$(this).attr('id').slice(0, -4)}`;
+			let keyCode = customFunctions.getKeyCode(e);
+			if (e.shiftKey && keyCode === 9) {
+				e.preventDefault();
+				hideHomepageSections();
+				$(parentId).children('h3').focus();
+			}
+		});
 
-		//make homepageIntroBlocks zoom in and down
-		/*setTimeout(function () {
-			$notANumberBlock.css('visibility', 'visible').addClass('animated zoomInDown');
-			customFunctions.homepageStickyFooter();
-		}, 10);
-		setTimeout(function () {
-			$toHelpYouBlock.css('visibility', 'visible').addClass('animated zoomInDown');
-			customFunctions.homepageStickyFooter();
-		}, 1000);
-		setTimeout(function () {
-			$whoMadeItBlock.css('visibility', 'visible').addClass('animated zoomInDown');
-			customFunctions.homepageStickyFooter();
-		}, 2000);
-		setTimeout(function () {
-			$itsYourEventBlock.css('visibility', 'visible').addClass('animated zoomInDown');
-			customFunctions.homepageStickyFooter();
-		}, 3000);*/
+		$('#itsYourEventBlockText :last-child').blur(function(e) {
+			$('.newsletterSubscSection p:first-child').focus();
+			hideHomepageSections();
+		});
+
 	});
 
 	$(window).load(function() {
