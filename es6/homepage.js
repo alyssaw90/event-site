@@ -175,11 +175,6 @@ const jQuery = require('jquery');
 			}
 		});
 
-		/*$newsletterButton.click(function (e) {
-			$homepageEmailSignUp.toggle();
-			$('html, body').animate({ scrollTop: $homepageEmailSignUp.offset().top }, 'slow');
-			customFunctions.homepageStickyFooter();
-		});*/
 		//close textbox and unhighlight introBox when $backToTopButton is clicked
 		$backToTopButton.click(hideHomepageSections);
 		//when a homepageIntroBlocks is clicked or enter is clicked, show the corresponding div
@@ -196,10 +191,6 @@ const jQuery = require('jquery');
 			let keyCode = customFunctions.getKeyCode(e);
 			if (e.shiftKey && keyCode === 9) {
 				e.preventDefault();
-				// $(parentId).children('h3').trigger('keydown');
-				// $(parentId).siblings('.homepageIntroBlocks').attr('tabindex', 0);
-				// $(parentId).attr('tabindex', 0);
-				// $(parentId).children('h3').attr('tabindex', '0');
 				hideHomepageSections();
 				$(parentId).children('h3').focus();
 			}
@@ -210,24 +201,6 @@ const jQuery = require('jquery');
 			hideHomepageSections();
 		});
 
-
-		//make homepageIntroBlocks zoom in and down
-		/*setTimeout(function () {
-			$notANumberBlock.css('visibility', 'visible').addClass('animated zoomInDown');
-			customFunctions.homepageStickyFooter();
-		}, 10);
-		setTimeout(function () {
-			$toHelpYouBlock.css('visibility', 'visible').addClass('animated zoomInDown');
-			customFunctions.homepageStickyFooter();
-		}, 1000);
-		setTimeout(function () {
-			$whoMadeItBlock.css('visibility', 'visible').addClass('animated zoomInDown');
-			customFunctions.homepageStickyFooter();
-		}, 2000);
-		setTimeout(function () {
-			$itsYourEventBlock.css('visibility', 'visible').addClass('animated zoomInDown');
-			customFunctions.homepageStickyFooter();
-		}, 3000);*/
 	});
 
 	$(window).load(function() {
