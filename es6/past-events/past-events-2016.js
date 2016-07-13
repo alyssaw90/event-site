@@ -59,6 +59,7 @@ import * as customFunctions from '../common-functions.build.js';
       customFunctions.stickyFooter();
       $('#2016PastEvents').focus();
       $('th, td').attr('tabindex', '0');
+      $('td a:only-child').parent('td').attr('tabindex', '-1');
 
       //hide paste event row until the event is over
       $('#2016PastEvents').find('tr').each(function(index, el) {
