@@ -55,7 +55,7 @@ import * as customFunctions from './common-functions.build.js';
 					<!-- End "Hamburger" Menu -->
 					<!-- End upper purple upper menu -->
 					<!-- begin Gray Desktop Main menu -->
-		 			<nav tabindex="0" aria-label="Header Menu" role="navigation" class="grid flex desktop-menu gray-menu" id="mainNav">
+		 			<nav class="grid flex desktop-menu gray-menu" id="mainNav">
 		 				<div><a id="navMenuBeginning" class="skipNavigation" href="#eventNavigationMenu">Skip to Event Menu</a></a></div>
 		 				<div><a class="skipNavigation" href="#beginningOfContent">Skip to Main Content</a></a></div>
 		 				<div><a class="skipNavigation" href="#footerStartMenuItem">Skip to Footer</a></a></div>
