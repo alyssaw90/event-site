@@ -68,6 +68,7 @@ const jQuery = require('jquery');
 			let thisBlockArrowClass = $this.attr('id') + 'ArrowBox';
 			let thisBlockMobileClass = $this.attr('id') + 'Mobile';
 			let thisBlockText = '#' + $this.data('thisblocktext');
+			let firstChildElemSelector = `${thisBlockText} :first`;
 			let blockPosition = $(thisBlockText).parent().offset().top;
 	   	let style = window.getComputedStyle(this, 'hover');
 	   	let mobileStyle = $(this).data('hoverBackgroundColor');
@@ -107,9 +108,10 @@ const jQuery = require('jquery');
 				$scrollButtonDiv.css('background-color', $hiddenHomepageSectionsWrapper.css('background-color'));
 				if ($(thisBlockText).css('display') === 'none') {
 					$(thisBlockText).fadeIn().attr({
-						'aria-hidden': 'false',
-						'tabindex': '0'
-					}).focus();
+						'aria-hidden': 'false'/*,
+						'tabindex': '0'*/
+					});
+					$(firstChildElemSelector).focus();
 					$(thisBlockText).siblings().hide().attr('aria-hidden', 'true').removeAttr('tabindex');
 					$('html, body').animate({ scrollTop: blockPosition }, 'slow');
 					$scrollButtonDiv.css('color', '#fff');
@@ -187,7 +189,6 @@ const jQuery = require('jquery');
 
 		//close blocks and move back when shift + tab is clicked
 		$('.hiddenHomepageSections :first-child').keydown(function(e) {
-			console.log('function reached');
 			let parentId = `#${$(this).parent('.hiddenHomepageSections').attr('id').slice(0, -4)}`;
 			let keyCode = customFunctions.getKeyCode(e);
 			if (e.shiftKey && keyCode === 9) {
