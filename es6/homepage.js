@@ -127,7 +127,7 @@ const jQuery = require('jquery');
 			}
 		}
 
-		function moveTab(e) {
+/*		function moveTab(e) {
 			e.preventDefault();
 			let keyCode = customFunctions.getKeyCode(e);
 			let parentId = `#${$(this).attr('data-parent')}`;
@@ -136,7 +136,7 @@ const jQuery = require('jquery');
 				$(parentId).next().children('h3').click();
 				$(parentId).next().children('h3').focus();
 			}
-		}
+		}*/
 
 		function hideHomepageSections(e) {
 			$('.hiddenHomepageSections:visible').hide().attr('aria-hidden', 'true').removeAttr('tabindex');
@@ -183,11 +183,12 @@ const jQuery = require('jquery');
 		$homepageIntroBlocks.click(showHomepageBlock);
 		$homepageIntroBlocks.keydown(showHomepageBlock);
 		//when using keyboard navigation hitting tab on the hiddenHomepageSections nextTab item should send user to the next title block
-		$('.nextTab').keydown(moveTab);
+		// $('.nextTab').keydown(moveTab);
 
 		//close blocks and move back when shift + tab is clicked
-		$hiddenHomepageSections.keydown(function(e) {
-			let parentId = `#${$(this).attr('id').slice(0, -4)}`;
+		$('.hiddenHomepageSections :first-child').keydown(function(e) {
+			console.log('function reached');
+			let parentId = `#${$(this).parent('.hiddenHomepageSections').attr('id').slice(0, -4)}`;
 			let keyCode = customFunctions.getKeyCode(e);
 			if (e.shiftKey && keyCode === 9) {
 				e.preventDefault();
@@ -196,10 +197,10 @@ const jQuery = require('jquery');
 			}
 		});
 
-		$('#itsYourEventBlockText :last-child').blur(function(e) {
+		/*$('#itsYourEventBlockText :last-child').blur(function(e) {
 			$('.newsletterSubscSection p:first-child').focus();
 			hideHomepageSections();
-		});
+		});*/
 
 	});
 
