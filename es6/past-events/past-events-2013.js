@@ -59,6 +59,7 @@ import * as customFunctions from '../common-functions.build.js';
       customFunctions.stickyFooter();
       $('#2013PastEvents').focus();
       $('th, td').attr('tabindex', '0');
+      $('td a:only-child').parent('td').attr('tabindex', '-1');
 
     }
 
