@@ -12,6 +12,8 @@
   <link rel="stylesheet" type="text/css" href="../css/kickstart.css" media="all" />
   <link rel="stylesheet" type="text/css" href="../style.css" media="all" />
   <link rel="stylesheet" type="text/css" href="../css/animate.css" media="all" />
+  <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.2.1/jssocials.css" />
+  <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.2.1/jssocials-theme-flat.css" />
   <link rel="stylesheet" type="text/css" href="../css/custom.build.min.css" media="all" />
   <!-- Azure Analytics -->
   <script type="text/javascript">  var appInsights = window.appInsights || function (config) { function r(config) { t[config] = function () { var i = arguments; t.queue.push(function () { t[config].apply(t, i) }) } } var t = { config: config }, u = document, e = window, o = "script", s = u.createElement(o), i, f; for (s.src = config.url || "//az416426.vo.msecnd.net/scripts/a/ai.0.js", u.getElementsByTagName(o)[0].parentNode.appendChild(s), t.cookie = u.cookie, t.queue = [], i = ["Event", "Exception", "Metric", "PageView", "Trace"]; i.length;) r("track" + i.pop()); return r("setAuthenticatedUserContext"), r("clearAuthenticatedUserContext"), config.disableExceptionTracking || (i = "onerror", r("_" + i), f = e[i], e[i] = function (config, r, u, e, o) { var s = f && f(config, r, u, e, o); return s !== !0 && t["_" + i](config, r, u, e, o), s }), t }({ instrumentationKey: "8413289d-2420-4296-9d99-b586b65f4516" }); window.appInsights = appInsights; appInsights.trackPageView();</script>
@@ -24,6 +26,7 @@
   <div class="mobileWrapper">
     <!-- begin main section -->
     <main role="main" class="grid white-bg main-page-content the-team-section">
+      <div id="socialSharingIcons"></div>
       <section class="col_12 internetExplorer scroll-button">
         <i class="fa fa-chevron-up fa-3x"><p>Back to Top</p></i>
       </section>
@@ -33,10 +36,9 @@
   <!-- Javascript -->
   <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.min.js"></script>
   <script type="text/javascript" src="../lib/kickstart.js"></script>
-  <script type="text/javascript" src="../lib/jquery.base64.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.jssocials/1.2.1/jssocials.min.js"></script> 
+  <script type="text/javascript" src="../scripts/social-icons.js"></script>
   <script type="text/javascript" src="../dist/build.min.js"></script>
-  <!-- Go to www.addthis.com/dashboard to customize your tools -->
-  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5660d6c488a1a100" async="async"></script>
   <script>
     (function (i, s, o, g, r, a, m) {
       i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
