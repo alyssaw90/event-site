@@ -154,7 +154,7 @@ import * as customFunctions from './common-functions.build.js';
           	});
 						//add the past events header if it's set to true
 						if (siteStyle.showPastEventsBanner && siteStyle.showSlider) {
-							homepageImage += `<li><a title="new event link" class="homepageHeaderAnchor" tabindex="0" role="navigation" href="/past-events"><section id="headerImage" class="mobileWrapper"><img alt="past events header" style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../uploads/past-events-banner.jpg" /></section></a></li>`;
+							homepageImage += `<li><a title="past event link" class="homepageHeaderAnchor" tabindex="0" role="navigation" href="/past-events"><section id="headerImage" class="mobileWrapper"><img alt="past events header" style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../uploads/past-events-banner.jpg" /></section></a></li>`;
 						}
 
 						$(data).each(function (i, elem) {

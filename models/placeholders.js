@@ -99,8 +99,8 @@ module.exports = function () {
 				eventContinent: 'North America',
 				eventStartDate: new Date('2016-06-13:00:01:00'), //the start date...
 				eventEndDate: new Date('2016-06-24:23:00:00'), // the end date...
-				eventHeaderImage: 'Plugfest-and-IO-Website.png', //link to header image
-				eventHomepageImage: 'Plugfest-and-IO-Website.png',
+				eventHeaderImage: 'Plugfest-and-IO-Lab-5.jpg', //link to header image
+				eventHomepageImage: 'Plugfest-and-IO-Lab-5.jpg',
 				eventHighlightColor: '#008272',
 				eventSpeakers: '1,2,3,5,9,8,11,15,12,10,6,21,14,18,16,39,40'
 			});
