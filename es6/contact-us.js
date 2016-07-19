@@ -9,7 +9,11 @@ import * as customFunctions from './common-functions.build.js';
 		var $emailButton = $('#emailButton');
 
 		$emailButton.click(function () {
-			$emailButton.attr('href', 'mailto:plugfests@microsoft.com?subject=' + $('#emailSubject').val() + '&body=' + $('#emailBody').val());
+			$emailButton.attr('href', 'mailto:plugfests@microsoft.com?subject=' + $('#emailSubject').val() + '&body=' + $('#emailBody').val())
+			.then(function(){
+				customFunctions.stickyFooter();
+			  customFunctions.homepageStickyFooter();
+			});
 		});
 	});
 

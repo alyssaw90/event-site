@@ -10,6 +10,26 @@ import * as customFunctions from './common-functions.build.js';
 		const $firstTab = $('.first:first a:first-child');
 		const $tabLinks = $('ul.tabs a[href^="#"]');
 		const $tabContent = $('.tab-content');
+
+		function moveTab(e, self) {
+			// e.preventDefault();
+			let keyCode = customFunctions.getKeyCode(e);
+			let parentId = self.parent('.eventTabDiv ').attr('id');
+			let parentLi = '#' + $(`[href="#${parentId}"]`).attr('id');
+
+			if (keyCode === 9 && e.shiftKey) {
+				/*hideHomepageSections();
+				$(parentId).next().children('h3').click();
+				$(parentId.n)ext().children('h3').focus();*/
+				$(parentLi).parent().next().find('a').focus();
+			}
+		}
+
+		$('.eventTabDiv > :first-child').keydown(function(e) {
+			let $this = $(this);
+			moveTab(e, $this);
+		});
+
 		
 		//add #beginningOfContent id to first tab, so it can be navigated to with skip navigation
 		$firstTab.attr('id', 'beginningOfContent');
@@ -33,7 +53,7 @@ import * as customFunctions from './common-functions.build.js';
 
 
 		//add a navigation div to the bottom of tab-content divs to navigate to next item in tab list
-		function addNavAnchor() {
+/*		function addNavAnchor() {
 			
 		 	$tabContent.each(function(i, elem) {
 		 		let $this = $(this);
@@ -62,14 +82,14 @@ import * as customFunctions from './common-functions.build.js';
 		 			'aria-hidden': 'true',
 		 		});
 		 		//append a skipNavigation link to the end of the tab section
-		 		$this.append(`<div><a href="${nextTabId}" class="skipNavigation nextTab" data-parent="${newAnchorTag}" >Click tab or enter to go back to the tab list</a></div>`);
+		 		// $this.append(`<div><a href="${nextTabId}" class="skipNavigation nextTab" data-parent="${newAnchorTag}" >Click tab or enter to go back to the tab list</a></div>`);
 
 		 	});
 
-		}
+		}*/
 
 		//
-		function tabNavigation(e) {
+	/*	function tabNavigation(e) {
 			let $this = $(this);
 			let keyCode = customFunctions.getKeyCode(e);
 			let parentId = `#${$this.attr('data-parent')}`;
@@ -84,7 +104,7 @@ import * as customFunctions from './common-functions.build.js';
 			if (keyCode === 9 && e.shiftKey) {
 				previosEl.focus();
 			}
-		}
+		}*/
 
 
 		// tab click copied from kickstart.js to make it work here
@@ -112,32 +132,39 @@ import * as customFunctions from './common-functions.build.js';
 				$this.find('li:not(.tabs > li), th, td, *:header, .nextTab, .rightArrow, .downArrow').attr('tabindex', '0');
 			}
 		});
+
+		//trigger a click event when a eventTab is focused
+		$tabLinks.focus(function(e) {
+			e.preventDefault();
+			$(this).trigger('click');	
+		});
 		
-		//move focus to div containing content when tab link is clicked
+		//move focus to div containing content when tab link is clicked with enter
 		$tabLinks.keydown(function(e) {
 			let $this = $(this);
 			let divId = $this.attr('href');
 			let keyCode = customFunctions.getKeyCode(e);
-			$(divId).siblings('.tab-content').hide();
-			$(divId).show();
 			//if enter is clicked trigger the links click function and focus on the tab content
 			if (keyCode === 13) {
-				$this.focus();
-				$this.trigger('click');
-				$(divId).attr({ 'aria-hidden': 'false' }).focus();
+				// $this.trigger('click');
+				$(divId).siblings('.tab-content').hide().attr({ 'aria-hidden': 'true' });
+				$(divId).show().attr({ 'aria-hidden': 'false', 'tabindex': 'false' });
+				// $(divId).first().focus();
+				// $(divId).attr({ 'aria-hidden': 'false' });
+				$(`${divId} > :first-child`).focus();
 			
 			}
 			//if tab is clicked and it is the last tab link, hide all content from tab navigation and to go to next section
-			if (keyCode === 9 && $this.parent('li').hasClass('last')) {
+			/*if (keyCode === 9 && $this.parent('li').hasClass('last')) {
 				$(divId).attr('tabindex', -1);
 				$(divId).find('*').attr('tabindex', -1);
-			}
+			}*/
 		});
 
 		//add nav anchors to all sections
-		addNavAnchor();
+		// addNavAnchor();
 
-		$('.nextTab').keydown(tabNavigation);
+		// $('.nextTab').keydown(tabNavigation);
 		
 	})
 	

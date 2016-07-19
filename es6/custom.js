@@ -17,6 +17,14 @@ if (self === top) {
 }
 
 (function($) {
+
+	//window on ready functions
+	$(window).ready(function() {
+	  //check for high-contrast mode
+	  customFunctions.highContrast();
+	});
+
+	//document ready functions
 	$(function () {
 		const $body = $('body');
 		const $footer = $('.foot');
@@ -123,12 +131,13 @@ if (self === top) {
 
 
 		let path = window.location.pathname;
+
 		$('li:not(.tabs > li), th, td, .feed_item_description').attr('tabindex', '0');
 
 		//add tabindex="0" to paragraphs on the speakers, about abd faq pages
 
 		if (path === '/meet-the-team' || path === '/about' || path === '/faq' || path === '/latest-news', '/contactus') {
-			$('p').attr('tabindex', '0');
+			$('p:not(#siteFooter > p)').attr('tabindex', '0');
 		}
 
 		$('td').each(function(index, el) {
@@ -148,14 +157,6 @@ if (self === top) {
 				$this.attr('tabindex', '0');
 			}
 		});
-
-		function fixSocialTabindex() {
-			$('.at-share-btn').attr('tabIndex', 0);
-			
-		}
-		
-		// window.addEventListener ? window.addEventListener('load',fixSocialTabindex,false) : window.attachEvent && window.attachEvent('onload',fixSocialTabindex);
-		setTimeout(fixSocialTabindex, 3000);
 
 	});
 

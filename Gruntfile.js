@@ -36,14 +36,16 @@ module.exports = function (grunt) {
           ]
         },
         files: {
-          'css/custom.build.min.css': 'css/less/*.less'
+          'css/custom.build.min.css': ['css/less/*.less', '!css/less/highcontrast.less', '!css/less/twitter-widget.less'],
+          'css/highcontrast.min.css': 'css/less/highcontrast.less',
+          'css/twitter-widget.min.css': 'css/less/twitter-widget.less'
         }
       }
     },
     //task to clean directories before build
     clean: {
       dev: {
-        src: ['build/**/*.js', 'dist/*.*', 'css/custom.build.min.css']
+        src: ['build/**/*.js', 'dist/*.*', 'css/custom.build.min.css', 'css/highcontrast.min.css', 'css/twitter-widget.min.css']
       }
     },
     //register task to run babel and compile es6
