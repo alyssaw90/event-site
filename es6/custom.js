@@ -158,6 +158,15 @@ if (self === top) {
 			}
 		});
 
+		//show focus on the homepage image
+		$('#homepageSliderSection').focusin(function(e) {
+			$(this).find('img').css({'padding': '5px', 'background-color': '#50B1FE'});;			
+		});
+		$('#homepageSliderSection').focusout(function(e) {
+			$(this).find('img').css({'padding': '', 'background-color': ''});;			
+		});
+
+
 	});
 
 })(jQuery);
