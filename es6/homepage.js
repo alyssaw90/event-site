@@ -38,6 +38,17 @@ const jQuery = require('jquery');
 
 (function($) {
 
+	$(window).load(function() {
+	  customFunctions.changeHeight('.homepageIntroBlocks');
+	  customFunctions.homepageStickyFooter();
+	});
+	
+	
+	$(window).resize(function(){
+	  customFunctions.changeHeight('.homepageIntroBlocks');
+	  customFunctions.homepageStickyFooter();
+	});
+
 	$(document).ready(function () {
 		const $learnBlockIcon = $('#learnBlockIcon');
 		const $learnBlock = $('#learnBlock');
@@ -84,12 +95,12 @@ const jQuery = require('jquery');
 			if (keyCode === 1 || keyCode === 13) {
 				if ($window.width() > 768) {
 					$this.toggleClass(thisBlockArrowClass);
-					$this.find('h3').toggleClass('whiteText');
+					$this.toggleClass('whiteText');
 					$this.siblings().each(function (i, elem) {
 						let $thisElem = $(this);
 						let arrowClass = elem.id + 'ArrowBox';
 						$thisElem.removeClass(arrowClass);
-						$thisElem.find('h3').removeClass('whiteText');
+						$thisElem.removeClass('whiteText');
 					});
 				}
 				if ($window.width() <= 768) {
@@ -115,7 +126,7 @@ const jQuery = require('jquery');
 					$(thisBlockText).siblings().hide().attr('aria-hidden', 'true').removeAttr('tabindex');
 					$('html, body').animate({ scrollTop: blockPosition }, 'slow');
 					$scrollButtonDiv.css('color', '#fff');
-					$this.next().attr('tabindex', '1');
+					// $this.next().attr('tabindex', '1');
 				} else {
 					$(thisBlockText).fadeOut().attr('aria-hidden', 'true').removeAttr('tabindex');
 					$(thisBlockText).siblings().hide().attr('aria-hidden', 'true').removeAttr('tabindex');
@@ -180,7 +191,7 @@ const jQuery = require('jquery');
 		//close textbox and unhighlight introBox when $backToTopButton is clicked
 		$backToTopButton.click(hideHomepageSections);
 		//when a homepageIntroBlocks is clicked or enter is clicked, show the corresponding div
-		$homepageIntroBlocks.attr('tabindex', '-1');
+		// $homepageIntroBlocks.attr('tabindex', '-1');
 		$blockquote.find('span').attr('tabindex', '0');
 		$homepageIntroBlocks.click(showHomepageBlock);
 		$homepageIntroBlocks.keydown(showHomepageBlock);
@@ -194,7 +205,8 @@ const jQuery = require('jquery');
 			if (e.shiftKey && keyCode === 9) {
 				e.preventDefault();
 				hideHomepageSections();
-				$(parentId).children('h3').focus();
+				$(parentId).focus();
+				$(parentId).removeClass('whiteText');
 			}
 		});
 
@@ -205,16 +217,5 @@ const jQuery = require('jquery');
 
 	});
 
-	$(window).load(function() {
-	  customFunctions.changeHeight('.homepageIntroBlocks');
-	  customFunctions.homepageStickyFooter();
-	});
-
-
-	$(window).resize(function(){
-	  customFunctions.changeHeight('.homepageIntroBlocks');
-	  customFunctions.homepageStickyFooter();
-	});
 })(jQuery);
-
 

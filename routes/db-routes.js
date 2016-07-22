@@ -27,9 +27,9 @@ const Contact = models.Contact;
 const Event = models.Event;
 const EventTab = models.EventTab;
 const SiteStyle = models.SiteStyle;
-const placeholders = require('../models/placeholders');
+/*const placeholders = require('../models/placeholders');
 
-placeholders();
+placeholders();*/
 
 models.sql.authenticate()
   .then(function (err) {

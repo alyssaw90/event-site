@@ -18,26 +18,26 @@
   <script type="text/javascript">  var appInsights = window.appInsights || function (config) { function r(config) { t[config] = function () { var i = arguments; t.queue.push(function () { t[config].apply(t, i) }) } } var t = { config: config }, u = document, e = window, o = "script", s = u.createElement(o), i, f; for (s.src = config.url || "//az416426.vo.msecnd.net/scripts/a/ai.0.js", u.getElementsByTagName(o)[0].parentNode.appendChild(s), t.cookie = u.cookie, t.queue = [], i = ["Event", "Exception", "Metric", "PageView", "Trace"]; i.length;) r("track" + i.pop()); return r("setAuthenticatedUserContext"), r("clearAuthenticatedUserContext"), config.disableExceptionTracking || (i = "onerror", r("_" + i), f = e[i], e[i] = function (config, r, u, e, o) { var s = f && f(config, r, u, e, o); return s !== !0 && t["_" + i](config, r, u, e, o), s }), t }({ instrumentationKey: "8413289d-2420-4296-9d99-b586b65f4516" }); window.appInsights = appInsights; appInsights.trackPageView();</script>
 </head>
 <body>
-  <header role="banner">
+  <header role="navigation" aria-label="header menu">
     <div id="grayMenu"></div>
     <div id="homepageSliderSection"></div>
     <div id="purpleMenu"></div>
   </header>
   <main class="main-page-content">
-    <div class="mobileWrapper">
+    <div role="presentation" class="mobileWrapper">
       <h1 id="beginningOfContent" class="center">At Microsoft Interop Events...</h1>
       <div class="grid flex internetExplorer homepageIntroBlocksWrapper">
-        <div class="col_3 homepageIntroBlocks" id="notANumberBlock" data-thisBlockText="notANumberBlockText" data-hoverBackgroundColor="#0073c5">
-          <h3 aria-label="You're a name, not a number, hit enter to hear content" aria-owns="notANumberBlockText">You're a name, not a number</h3>
+        <div class="col_3 homepageIntroBlocks" tabindex="0" id="notANumberBlock" data-thisBlockText="notANumberBlockText" data-hoverBackgroundColor="#0073c5" aria-label="You're a name, not a number, hit enter to hear content" aria-owns="notANumberBlockText">
+          You're a name, not a number
         </div>
-        <div class="col_3 homepageIntroBlocks" id="toHelpYouBlock" data-thisBlockText="toHelpYouBlockText" data-hoverBackgroundColor="#9d5098">
-          <h3 aria-label="We're here to help you, hit enter to hear content" aria-owns="toHelpYouBlockText">We're here to help you</h3>
+        <div class="col_3 homepageIntroBlocks" tabindex="0" id="toHelpYouBlock" data-thisBlockText="toHelpYouBlockText" data-hoverBackgroundColor="#9d5098" aria-label="We're here to help you, hit enter to hear content" aria-owns="toHelpYouBlockText">
+          We're here to help you
         </div>
-        <div class="col_3 homepageIntroBlocks" id="whoMadeItBlock" data-thisBlockText="whoMadeItBlockText" data-hoverBackgroundColor="#ba141a">
-          <h3 aria-label="We're the people who made it, hit enter to hear content" aria-owns="whoMadeItBlockText">We're the people who made it</h3>
+        <div class="col_3 homepageIntroBlocks" tabindex="0" id="whoMadeItBlock" data-thisBlockText="whoMadeItBlockText" data-hoverBackgroundColor="#ba141a" aria-label="We're the people who made it, hit enter to hear content" aria-owns="whoMadeItBlockText">
+          We're the people who made it
         </div>
-        <div class="col_3 homepageIntroBlocks" id="itsYourEventBlock" data-thisBlockText="itsYourEventBlockText" data-hoverBackgroundColor="#107c10">
-          <h3 aria-label="It's your event, on us, hit enter to hear content" aria-owns="itsYourEventBlockText">It's your event, on us</h3>
+        <div class="col_3 homepageIntroBlocks" tabindex="0" id="itsYourEventBlock" data-thisBlockText="itsYourEventBlockText" data-hoverBackgroundColor="#107c10" aria-label="It's your event, on us, hit enter to hear content" aria-owns="itsYourEventBlockText">
+          It's your event, on us
         </div>
       </div>
     </div>
@@ -45,7 +45,7 @@
       <div class="grid" id="hiddenHomepageSectionsGrid">
         <section class="col_12 hiddenHomepageSections" id="notANumberBlockText" role="article" aria-hidden="true" style="display: none;">
           <p>At most tech conferences, you’re another face in the crowd. We’ve designed Microsoft Interop Events to host fewer attendees to allow our team to provide the personalized attention you need. We create a learning environment and open dialogue to build relationships with the people who use Microsoft tools in real life. You’ll work directly with Microsoft developers to create and test your projects, so you can get answers to all your questions—no more searching <a href="http://stackoverflow.com/">Stackoverflow</a>!</p>
-          <div class="col_6" aria-label="Photo of Microsoft Engineer Tom Jebo helping Garret Fick">
+          <div class="col_6" role="presentation">
             <img src="./uploads/tom-helping.jpg" alt="Photo of Microsoft Engineer Tom Jebo helping Garret Fick" tabindex="0" />
             <figcaption>Attendee, Garret Fick (left) and Microsoft Engineer Tom Jebo (right)</figcaption>
           </div>
@@ -79,7 +79,7 @@
         </section>
         <section class="col_12 hiddenHomepageSections" id="whoMadeItBlockText" role="article" aria-hidden="true" style="display: none;">
           <p>Get Microsoft product help directly from the people who designed it. There is no need to scour online docs and help forums when Microsoft engineers are standing right in front of you. Our team is comprised of software engineers and program managers with experience in Microsoft interoperability, Office, Windows, SQL Server, Azure, Cortana, OData, Power BI, and more. Each event is hosted by the people who know our products inside and out. There is no one better to answer your questions and help you solve a problem. You can <a href="/meet-the-team">Meet the Team</a> to learn more about each Microsoft member’s experience and specialties. </p>
-          <div class="col_6" aria-label="Group photo of developers from Beijing 2014 Event">
+          <div role="presentation" class="col_6">
             <img class="align-left" src="./uploads/we-are-the-people-who-made-it.jpg" alt="Group photo of developers from Beijing 2014 Event" tabindex="0" />
           </div>
           <div class="col_6">
@@ -91,7 +91,7 @@
         </section>
         <section class="col_12 hiddenHomepageSections" id="itsYourEventBlockText" role="article" aria-hidden="true" style="display: none;">
           <p>Microsoft interop events are free. Microsoft interoperability events are focused on building knowledge, not selling tickets.  The fundamentals of Microsoft Open Specifications and interoperability are based on providing technical training and documentation free of charge.</p>
-          <div class="col_12">
+          <div role="presentation" class="col_12">
             <img class="pull-right" style="height: 200px; margin-top: 0;" src="./uploads/interop-logo.png" alt="Microsoft Interop Events Logo" tabindex="0" />
             <blockquote>
               <p>We are aligned with the open specifications' values, because we believe you should have access to the latest interoperability knowledge and product support for free. It’s your event, our treat—we'll even cover lunch! </p>

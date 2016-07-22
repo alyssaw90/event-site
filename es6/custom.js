@@ -32,6 +32,7 @@ if (self === top) {
 		const $travelUlLinks = $('.travelUlLinks');
 		const $pastEvents = $('.past_events');
 		const $headers = $(':header');
+		const $homepageIntroBlocks = $('.homepageIntroBlocks');
 
 		//make external links open in new tabs
 		$('a[href^="http"]').attr('target','_blank');
@@ -133,6 +134,7 @@ if (self === top) {
 		let path = window.location.pathname;
 
 		$('li:not(.tabs > li), th, td, .feed_item_description').attr('tabindex', '0');
+		$('.clear, hr').attr('aria-hidden', 'true');
 
 		//add tabindex="0" to paragraphs on the speakers, about abd faq pages
 
@@ -165,7 +167,6 @@ if (self === top) {
 		$('#homepageSliderSection').focusout(function(e) {
 			$(this).find('img').css({'padding': '', 'background-color': ''});;			
 		});
-
 
 	});
 
