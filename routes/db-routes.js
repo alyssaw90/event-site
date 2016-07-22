@@ -27,9 +27,9 @@ const Contact = models.Contact;
 const Event = models.Event;
 const EventTab = models.EventTab;
 const SiteStyle = models.SiteStyle;
-const placeholders = require('../models/placeholders');
+/*const placeholders = require('../models/placeholders');
 
-placeholders();
+placeholders();*/
 
 models.sql.authenticate()
   .then(function (err) {
@@ -119,7 +119,7 @@ module.exports = function (router) {
         }
       });
       let meetTheTeamSpeakersArr = [];
-      let meetTheTeamSpeakersHtml = '<main role="main" class="grid white-bg main-page-content the-team-section">';
+      let meetTheTeamSpeakersHtml = '<main role="presentation" class="grid white-bg main-page-content the-team-section">';
       //loop over the returned speakers and splice them into an array using their position number minus one as the index
       for (let key in speakers) {
         meetTheTeamSpeakersArr.splice(speakers[key].meetTheTeamPageOrder - 1, 0, speakers[key]);
@@ -132,7 +132,7 @@ module.exports = function (router) {
       //read in the meet-the-team.html page and add the speakers html then send the html string
       fs.readFile(path.join(__dirname, '../views/meet-the-team.html'), function(err, speakersPage) {
         let speakersPageHtml = speakersPage.toString();
-        speakersPageHtml = speakersPageHtml.replace('<main role="main" class="grid white-bg main-page-content the-team-section">', meetTheTeamSpeakersHtml);
+        speakersPageHtml = speakersPageHtml.replace('<main role="presentation" class="grid white-bg main-page-content the-team-section">', meetTheTeamSpeakersHtml);
         res.send(speakersPageHtml);
       });
     });
