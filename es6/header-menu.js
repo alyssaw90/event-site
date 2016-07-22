@@ -79,8 +79,7 @@ import * as customFunctions from './common-functions.build.js';
 					</nav>
 					<!-- End gray desktop menu -->`;
 		
-					let purpleMenu = `<section id="headerImage" class="mobileWrapper"></section>
-					<!-- Begin purple desktop menu -->
+					let purpleMenu = `<!-- Begin purple desktop menu -->
 					<nav class="menu-overlay desktop-menu flex clearfix">
 						<div class="col_12 purpleEventMenu"></div>
 					</nav>
@@ -166,7 +165,7 @@ import * as customFunctions from './common-functions.build.js';
 							for (let index = 0, j = cityArr.length; index < j; index++) {
 								cityArr[index] = cityArr[index].charAt(0).toUpperCase() + cityArr[index].slice(1);
 							}
-
+							console.log(i, '                     ', data.length);
 							city = cityArr.join(' ');
 
 							if (elem.eventStartDate === 'TBD') {
@@ -182,8 +181,11 @@ import * as customFunctions from './common-functions.build.js';
 								startYear = startDate.getFullYear();
 								startMonth = '';
 							}
-							if (i < data.length - 1) {
+							if (i === 0) {
 								upcomingPurpleMenu += '<a id="eventNavigationMenu" role="navigation" href="/' + elem.eventUrl + '">' + city + '&nbsp-&nbsp<span class="purpleSubMenu">' + startMonth + '&nbsp' + startYear + '</span></a>| ';
+							}
+							if (i < data.length - 1 && i !== 0) {
+								upcomingPurpleMenu += '<a role="navigation" href="/' + elem.eventUrl + '">' + city + '&nbsp-&nbsp<span class="purpleSubMenu">' + startMonth + '&nbsp' + startYear + '</span></a>| ';
 							}
 							if (i >= data.length - 1) {
 								upcomingPurpleMenu += '<a role="navigation" href="/' + elem.eventUrl + '">' + city + '&nbsp-&nbsp<span class="purpleSubMenu">' + startMonth + '&nbsp' + startYear + '</span></a>';

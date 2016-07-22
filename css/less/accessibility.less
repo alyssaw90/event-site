@@ -1,5 +1,5 @@
 
-a:focus, h1:focus, h2:focus, h3:focus, h4:focus, h5:focus, h6:focus, p:focus, iframe:focus, .tabs > li > a:focus, th:focus, td:focus, li:focus, nav:focus {
+a:focus, h1:focus, h2:focus, h3:focus, h4:focus, h5:focus, h6:focus, p:focus, iframe:focus, .tabs > li > a:not(.homepageHeaderAnchor):focus, th:focus, td:focus, li:focus, nav:focus {
  	box-shadow: 0 0 7px #6DB9FF;
 	border: 3px solid #50B1FE;
 }
@@ -35,10 +35,13 @@ div:focus {
 
 // don't use box on homepage header image
 
-.homepageHeaderAnchor:focus {
-	box-shadow: none;
-	border: none;
-	border-width: 0;
+.homepageHeaderAnchor {
+	&:focus {
+		box-shadow: none;
+		border: none;
+		border-width: 0;		
+	}
+
 }
 
 .addThisSocialIcons {
@@ -47,4 +50,32 @@ div:focus {
 
 #whoMadeItBlockText a {
 	color: #fffc9e;
+}
+
+@media screen and (-ms-high-contrast: active) {
+  /* All high contrast styling rules */
+  .lightBlueBackground {
+		border-top: dashed !important;
+		border-bottom: dashed !important;
+		border-right: dashed !important;
+		border-left: dashed !important;
+		border-width: 3px;
+	}
+
+		.lightGreenBackground {
+	  border-width: 3px;
+	  border-top: dotted !important;
+	  border-bottom: dotted !important;
+	  border-right: dotted !important;
+	  border-left: dotted !important;
+
+	}
+	
+	.lightOrangeBackground {
+	  border-top: double !important;
+	  border-bottom: double !important;
+	  border-right: double !important;
+	  border-left: double !important;
+	  border-width: 3px;
+	}
 }

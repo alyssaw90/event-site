@@ -31,6 +31,15 @@ import * as customFunctions from './common-functions.build.js';
 				$(this).find('p').animate({opacity: 0}, 0);
 			});	
 
+		$eventBlock.focusin(function(e) {
+			console.log('this    ', $(this));
+			$(this).css('border', '3px solid #50B1FE');
+		});
+
+		$eventBlock.focusout(function(e) {
+			$(this).css('border', '');
+		});
+
 		//convert rbg colors to hex
 		function rgb2hex(rgb) {
    		if (  rgb.search('rgb') === -1 ) {
