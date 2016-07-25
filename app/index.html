@@ -8,12 +8,12 @@
   <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/ >
   <!-- CSS -->
-  <link rel="stylesheet" type="text/css" href="../css/kickstart.css" media="all" />
-  <link rel="stylesheet" type="text/css" href="../css/animate.css" media="all" />
-  <link rel="stylesheet" type="text/css" href="../style.css" media="all" />
+  <link rel="stylesheet" type="text/css" href="app/css/kickstart.css" media="all" />
+  <link rel="stylesheet" type="text/css" href="app/css/animate.css" media="all" />
+  <link rel="stylesheet" type="text/css" href="app/style.css" media="all" />
   <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.2.1/jssocials.css" />
   <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.2.1/jssocials-theme-flat.css" />
-  <link rel="stylesheet" type="text/css" href="../css/custom.build.min.css" media="all" />
+  <link rel="stylesheet" type="text/css" href="app/css/custom.build.min.css" media="all" />
   <!-- Azure Analytics -->
   <script type="text/javascript">  var appInsights = window.appInsights || function (config) { function r(config) { t[config] = function () { var i = arguments; t.queue.push(function () { t[config].apply(t, i) }) } } var t = { config: config }, u = document, e = window, o = "script", s = u.createElement(o), i, f; for (s.src = config.url || "//az416426.vo.msecnd.net/scripts/a/ai.0.js", u.getElementsByTagName(o)[0].parentNode.appendChild(s), t.cookie = u.cookie, t.queue = [], i = ["Event", "Exception", "Metric", "PageView", "Trace"]; i.length;) r("track" + i.pop()); return r("setAuthenticatedUserContext"), r("clearAuthenticatedUserContext"), config.disableExceptionTracking || (i = "onerror", r("_" + i), f = e[i], e[i] = function (config, r, u, e, o) { var s = f && f(config, r, u, e, o); return s !== !0 && t["_" + i](config, r, u, e, o), s }), t }({ instrumentationKey: "8413289d-2420-4296-9d99-b586b65f4516" }); window.appInsights = appInsights; appInsights.trackPageView();</script>
 </head>
@@ -46,7 +46,7 @@
         <section class="col_12 hiddenHomepageSections" id="notANumberBlockText" role="article" aria-hidden="true" style="display: none;">
           <p>At most tech conferences, you’re another face in the crowd. We’ve designed Microsoft Interop Events to host fewer attendees to allow our team to provide the personalized attention you need. We create a learning environment and open dialogue to build relationships with the people who use Microsoft tools in real life. You’ll work directly with Microsoft developers to create and test your projects, so you can get answers to all your questions—no more searching <a href="http://stackoverflow.com/">Stackoverflow</a>!</p>
           <div class="col_6" role="presentation">
-            <img src="./uploads/tom-helping.jpg" alt="Photo of Microsoft Engineer Tom Jebo helping Garret Fick" tabindex="0" />
+            <img src="../app/uploads/tom-helping.jpg" alt="Photo of Microsoft Engineer Tom Jebo helping Garret Fick" tabindex="0" />
             <figcaption>Attendee, Garret Fick (left) and Microsoft Engineer Tom Jebo (right)</figcaption>
           </div>
           <div class="col_6">
@@ -80,7 +80,7 @@
         <section class="col_12 hiddenHomepageSections" id="whoMadeItBlockText" role="article" aria-hidden="true" style="display: none;">
           <p>Get Microsoft product help directly from the people who designed it. There is no need to scour online docs and help forums when Microsoft engineers are standing right in front of you. Our team is comprised of software engineers and program managers with experience in Microsoft interoperability, Office, Windows, SQL Server, Azure, Cortana, OData, Power BI, and more. Each event is hosted by the people who know our products inside and out. There is no one better to answer your questions and help you solve a problem. You can <a href="/meet-the-team">Meet the Team</a> to learn more about each Microsoft member’s experience and specialties. </p>
           <div role="presentation" class="col_6">
-            <img class="align-left" src="./uploads/we-are-the-people-who-made-it.jpg" alt="Group photo of developers from Beijing 2014 Event" tabindex="0" />
+            <img class="align-left" src="../app/uploads/we-are-the-people-who-made-it.jpg" alt="Group photo of developers from Beijing 2014 Event" tabindex="0" />
           </div>
           <div class="col_6">
             <blockquote>
@@ -92,12 +92,12 @@
         <section class="col_12 hiddenHomepageSections" id="itsYourEventBlockText" role="article" aria-hidden="true" style="display: none;">
           <p>Microsoft interop events are free. Microsoft interoperability events are focused on building knowledge, not selling tickets.  The fundamentals of Microsoft Open Specifications and interoperability are based on providing technical training and documentation free of charge.</p>
           <div role="presentation" class="col_12">
-            <img class="pull-right" style="height: 200px; margin-top: 0;" src="./uploads/interop-logo.png" alt="Microsoft Interop Events Logo" tabindex="0" />
+            <img class="pull-right" style="height: 200px; margin-top: 0;" src="../app/uploads/interop-logo.png" alt="Microsoft Interop Events Logo" tabindex="0" />
             <blockquote>
               <p>We are aligned with the open specifications' values, because we believe you should have access to the latest interoperability knowledge and product support for free. It’s your event, our treat—we'll even cover lunch! </p>
             </blockquote>
           </div>
-          <!-- <p>Microsoft interop events are free. Microsoft interoperability events are focused on building knowledge, not selling tickets.  The fundamentals of Microsoft Open Specifications and interoperability are based on providing technical training and documentation free of charge.<img class="float-left" style="height: 200px;" src="./uploads/interop-logo.png" /></p>
+          <!-- <p>Microsoft interop events are free. Microsoft interoperability events are focused on building knowledge, not selling tickets.  The fundamentals of Microsoft Open Specifications and interoperability are based on providing technical training and documentation free of charge.<img class="float-left" style="height: 200px;" src="uploads/interop-logo.png" /></p>
           <p>We are aligned with the open specifications' values, because we believe you should have access to the latest interoperability knowledge and product support for free. It’s your event, our treat—we'll even cover lunch! </p> -->
         </section>
       </div>
@@ -111,10 +111,9 @@
   </footer>
   <!-- JavaScript -->
   <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.min.js"></script>
-  <script type="text/javascript" src="../lib/kickstart.js"></script>
+  <script type="text/javascript" src="app/lib/kickstart.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.jssocials/1.2.1/jssocials.min.js"></script> 
-  <script type="text/javascript" src="../scripts/social-icons.js"></script>
-  <script type="text/javascript" src="../dist/build.min.js"></script>
+  <script type="text/javascript" src="app/dist/build.min.js"></script>
   <script charset="UTF-8" type="text/javascript" src="https://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0&s=1"></script>
   <script>
     (function (i, s, o, g, r, a, m) {

@@ -11,7 +11,7 @@ const fs = require('fs');
 const clc = require('cli-color');
 const multer = require('multer');
 const storage = multer.diskStorage({
-  destination: 'uploads/',
+  destination: 'app/uploads/',
   filename: function (req, file, callback) {
     callback(null, Date.now() + '-' + file.originalname);
   }
@@ -74,22 +74,22 @@ module.exports = function (router) {
   //404 error route
   router.route('/404')
   .get(function(req, res) {
-    res.sendFile(path.join(__dirname, '../views/404.html'));
+    res.sendFile(path.join(__dirname, '../app/404.html'));
   });
 
   router.route('/')
   .get(function (req, res) {
-    res.sendFile(path.join(__dirname, '../views/index.html'));
+    res.sendFile(path.join(__dirname, '../app/index.html'));
   });
 
   router.route('/about')
   .get(function (req, res) {
-    res.sendFile(path.join(__dirname, '../views/about.html'));
+    res.sendFile(path.join(__dirname, '../app/about.html'));
   });
 
   router.route('/past-events')
   .get(function (req, res) {
-    res.sendFile(path.join(__dirname, '../views/past-events.html'));
+    res.sendFile(path.join(__dirname, '../app/past-events.html'));
   });
 
   //route to return html for meet the team page
@@ -125,12 +125,12 @@ module.exports = function (router) {
         meetTheTeamSpeakersArr.splice(speakers[key].meetTheTeamPageOrder - 1, 0, speakers[key]);
       }
       //create the string of html to add to the page
-      meetTheTeamSpeakersHtml += `<section class="col_12 internetExplorer" id="${meetTheTeamSpeakersArr[0].divId}"><h4  id="beginningOfContent">${meetTheTeamSpeakersArr[0].firstName} ${meetTheTeamSpeakersArr[0].lastName}</h4><h5>${meetTheTeamSpeakersArr[0].msTeamTitle}</h5><p><img alt="Image of ${meetTheTeamSpeakersArr[0].fullName}" class="pull-left" src="../uploads/${meetTheTeamSpeakersArr[0].headShot}" />${meetTheTeamSpeakersArr[0].contactDescription}</p><hr class="alt1" /></section>`;
+      meetTheTeamSpeakersHtml += `<section class="col_12 internetExplorer" id="${meetTheTeamSpeakersArr[0].divId}"><h4  id="beginningOfContent">${meetTheTeamSpeakersArr[0].firstName} ${meetTheTeamSpeakersArr[0].lastName}</h4><h5>${meetTheTeamSpeakersArr[0].msTeamTitle}</h5><p><img alt="Image of ${meetTheTeamSpeakersArr[0].fullName}" class="pull-left" src="app/uploads/${meetTheTeamSpeakersArr[0].headShot}" />${meetTheTeamSpeakersArr[0].contactDescription}</p><hr class="alt1" /></section>`;
       for (let i = 1, j = meetTheTeamSpeakersArr.length; i < j; i++) {
-        meetTheTeamSpeakersHtml += `<section class="col_12 internetExplorer" id="${meetTheTeamSpeakersArr[i].divId}"><h4>${meetTheTeamSpeakersArr[i].firstName} ${meetTheTeamSpeakersArr[i].lastName}</h4><h5>${meetTheTeamSpeakersArr[i].msTeamTitle}</h5><p><img alt="Image of ${meetTheTeamSpeakersArr[i].fullName}" class="pull-left" src="../uploads/${meetTheTeamSpeakersArr[i].headShot}" />${meetTheTeamSpeakersArr[i].contactDescription}</p><hr class="alt1" /></section>`;
+        meetTheTeamSpeakersHtml += `<section class="col_12 internetExplorer" id="${meetTheTeamSpeakersArr[i].divId}"><h4>${meetTheTeamSpeakersArr[i].firstName} ${meetTheTeamSpeakersArr[i].lastName}</h4><h5>${meetTheTeamSpeakersArr[i].msTeamTitle}</h5><p><img alt="Image of ${meetTheTeamSpeakersArr[i].fullName}" class="pull-left" src="app/uploads/${meetTheTeamSpeakersArr[i].headShot}" />${meetTheTeamSpeakersArr[i].contactDescription}</p><hr class="alt1" /></section>`;
       }
       //read in the meet-the-team.html page and add the speakers html then send the html string
-      fs.readFile(path.join(__dirname, '../views/meet-the-team.html'), function(err, speakersPage) {
+      fs.readFile(path.join(__dirname, '../app/meet-the-team.html'), function(err, speakersPage) {
         let speakersPageHtml = speakersPage.toString();
         speakersPageHtml = speakersPageHtml.replace('<main role="presentation" class="grid white-bg main-page-content the-team-section">', meetTheTeamSpeakersHtml);
         res.send(speakersPageHtml);
@@ -140,26 +140,26 @@ module.exports = function (router) {
 
   router.route('/contactus')
   .get(function (req, res) {
-    res.sendFile(path.join(__dirname, '../views/contact.html'));
+    res.sendFile(path.join(__dirname, '../app/contact.html'));
   });
 
   router.route('/faq')
   .get(function (req, res) {
-    res.sendFile(path.join(__dirname, '../views/faq.html'));
+    res.sendFile(path.join(__dirname, '../app/faq.html'));
   });
 
   router.route('/latest-news')
   .get(function (req, res) {
-    res.sendFile(path.join(__dirname, '../views/latest-news.html'));
+    res.sendFile(path.join(__dirname, '../app/latest-news.html'));
   });
 
   router.get('/curriculum', eatAuth, function(req, res) {
-    res.sendFile(path.join(__dirname, '../views/curriculum.html'));
+    res.sendFile(path.join(__dirname, '../app/curriculum.html'));
   });
 
   router.route('/survey/:eventId')
   .get(function (req, res) {
-    res.sendFile(path.join(__dirname, '../views/survey.html'));
+    res.sendFile(path.join(__dirname, '../app/survey.html'));
   });
 
   router.route('/homepageteam')
@@ -191,20 +191,20 @@ module.exports = function (router) {
   });
 
   router.get('/private', function(req, res) {
-    res.sendFile(path.join(__dirname, '../views/login.html'));
+    res.sendFile(path.join(__dirname, '../app/login.html'));
   });
 
   router.get('/admin', eatAuth, function(req, res) {
     if (req.cookies.interopAdmin === 'true') {
-      res.sendFile(path.join(__dirname, '../views/admin.html'));
+      res.sendFile(path.join(__dirname, '../app/admin.html'));
     } else {
-      res.sendFile(path.join(__dirname, '../views/curriculum.html'));
+      res.sendFile(path.join(__dirname, '../app/curriculum.html'));
     }
   });
 
   router.route('/thankyou')
   .get(function(req, res) {
-    res.sendFile(path.join(__dirname, '../views/loggedout.html'));
+    res.sendFile(path.join(__dirname, '../app/loggedout.html'));
   });
 
   //find all events that are upcoming and add the next 3 upcoming events to the future-events page
@@ -217,7 +217,7 @@ module.exports = function (router) {
     let city;
     let cityArr;
 
-    fs.readFile(path.join(__dirname, '../views/future-events.html'), function (err, html) {
+    fs.readFile(path.join(__dirname, '../app/future-events.html'), function (err, html) {
       if (err) {
         console.log(err);
         res.status(500).json({msg: 'internal server error'});
@@ -436,7 +436,7 @@ module.exports = function (router) {
 
   //show all images
   router.get('/showimages', eatAuth, function(req, res) {
-    fs.readdir(path.join(__dirname, '../uploads'), function(err, files) {
+    fs.readdir(path.join(__dirname, 'app/uploads'), function(err, files) {
       let outputHtml = '';
       if (err) {
         console.log(err);
@@ -445,7 +445,7 @@ module.exports = function (router) {
 
       for (let i = 0, j = files.length; i < j; i ++) {
         if (files[i] !== '.gitignore') {
-          outputHtml += '<img class="imageToInsert" style="height: 50px; margin: 10px 10px 10px 10px" data-clipboard-text="/uploads/' + files[i] + '" src="/uploads/' + files[i] + '" />';
+          outputHtml += '<img class="imageToInsert" style="height: 50px; margin: 10px 10px 10px 10px" data-clipboard-text="app/uploads/' + files[i] + '" src="app/uploads/' + files[i] + '" />';
         }
       }
       outputHtml += '<script type="text/javascript">$(".imageToInsert").click(function() {$(this).toggleClass("animated shake");})';
@@ -467,7 +467,7 @@ module.exports = function (router) {
         } else {
           imageName = req.body.editHeaderWithExistingImage;
         }
-        if (imageName.substr(0, 9) === '/uploads/') {
+        if (imageName.substr(0, 9) === 'app/uploads/') {
           imageName = imageName.slice(9);
         }
         var key = req.body.whatToChange;
@@ -745,8 +745,8 @@ module.exports = function (router) {
         deleteSpeakers: []
       };
       for (var i = 0, len = speakers.length; i < len; i++) {
-        let tmpEditHtml = `<div class="col_12"><img style="height: 165px;" src="/uploads/${speakers[i].headShot}"/><h4>${speakers[i].fullName}</h4><button class="editSpeakersButton" data-speakerId="${speakers[i].id}">Edit ${speakers[i].fullName}</button></div>`;
-        let tmpDeleteHtml = `<div class="col_12"><img style="height: 165px;" src="/uploads/${speakers[i].headShot}"/><h4>${speakers[i].fullName}</h4><button class="deleteSpeakersButton" data-speakerId="${speakers[i].id}" data-speakerName="${speakers[i].fullName}">Delete ${speakers[i].fullName}</button></div>`;
+        let tmpEditHtml = `<div class="col_12"><img style="height: 165px;" src="app/uploads/${speakers[i].headShot}"/><h4>${speakers[i].fullName}</h4><button class="editSpeakersButton" data-speakerId="${speakers[i].id}">Edit ${speakers[i].fullName}</button></div>`;
+        let tmpDeleteHtml = `<div class="col_12"><img style="height: 165px;" src="app/uploads/${speakers[i].headShot}"/><h4>${speakers[i].fullName}</h4><button class="deleteSpeakersButton" data-speakerId="${speakers[i].id}" data-speakerName="${speakers[i].fullName}">Delete ${speakers[i].fullName}</button></div>`;
         returnObj.editSpeakers.push(tmpEditHtml);
         returnObj.deleteSpeakers.push(tmpDeleteHtml);
       }
@@ -978,7 +978,7 @@ module.exports = function (router) {
             eventInfo.speakersHtml += '<h5>' + eventInfo.speakers[i].msTeamTitle + '</h5><p>';
           }
           if (eventInfo.speakers[i].headShot) {
-            eventInfo.speakersHtml += '<img class="pull-left speakersImg" height="165" width="165" src="../uploads/' + eventInfo.speakers[i].headShot + '" />';
+            eventInfo.speakersHtml += '<img class="pull-left speakersImg" height="165" width="165" src="app/uploads/' + eventInfo.speakers[i].headShot + '" />';
           }
           if (eventInfo.speakers[i].contactDescription) {
             eventInfo.speakersHtml += eventInfo.speakers[i].contactDescription + '</p>';
@@ -1027,10 +1027,10 @@ module.exports = function (router) {
       eventInfo.htmlContent = eventInfo.eventUltHtml + eventInfo.eventDivHtml;
       //if there is an event header image create the html for the header image
       if (eventInfo.event.eventHeaderImage) {
-        eventInfo.headerHtml = '<div class="col_12 internetExplorer event-header center" id="eventHeader" role="complementary"><img alt="event banner image" src="../uploads/' + eventInfo.event.eventHeaderImage + '" /></div>';
+        eventInfo.headerHtml = '<div class="col_12 internetExplorer event-header center" id="eventHeader" role="complementary"><img alt="event banner image" src="app/uploads/' + eventInfo.event.eventHeaderImage + '" /></div>';
       }
       //read the blank event html file and turn the returned blob into a string, then replace the placeholder html content with the content created by the event
-      fs.readFile(path.join(__dirname, '../views/blank-event.html'), function(err, data) {
+      fs.readFile(path.join(__dirname, '../app/blank-event.html'), function(err, data) {
         let theHtml = data.toString();            
         let fullEventHtml = theHtml.replace('<div class="col_12 internetExplorer event-header center" id="eventHeader"></div>', eventInfo.headerHtml).replace('<section class="col_12 internetExplorer event-tabs" id="eventTabs"></section>', '<section class="col_12 internetExplorer event-tabs" id="eventTabs">' + eventInfo.htmlContent + '</section>').replace(`<title></title>`, `<title>${eventInfo.event.eventName}</title>`);
         res.send(fullEventHtml);
@@ -1053,11 +1053,11 @@ module.exports = function (router) {
           testArr.push(data[i].eventUrl);
         }
         if (testArr.indexOf(req.params.eventName) !== -1) {
-          res.sendFile(path.join(__dirname, '../views/blank-event.html'));  
+          res.sendFile(path.join(__dirname, '../app/blank-event.html'));  
         } 
         if (testArr.indexOf(req.params.eventName) === -1) {
           res.status(404);
-          // res.send(path.join(__dirname, '../views/thank-you.html')); //I need to make a 404 page
+          // res.send(path.join(__dirname, '../app/thank-you.html')); //I need to make a 404 page
         }
       });
     });

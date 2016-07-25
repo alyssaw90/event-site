@@ -3,18 +3,18 @@
 <html>
 <head>
   <!-- META -->
-  <title>Microsoft Plugfests and Events</title>
+  <title></title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/ >
+  <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'/ >
   <!-- CSS -->
-  <link rel="stylesheet" type="text/css" href="../css/kickstart.css" media="all" />
-  <link rel="stylesheet" type="text/css" href="../style.css" media="all" />
-  <link rel="stylesheet" type="text/css" href="../css/animate.css" media="all" />
+  <link rel="stylesheet" type="text/css" href="app/css/kickstart.css" media="all" />
+  <link rel="stylesheet" type="text/css" href="app/style.css" media="all" />
+  <link rel="stylesheet" type="text/css" href="app/css/animate.css" media="all" />
   <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.2.1/jssocials.css" />
   <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.2.1/jssocials-theme-flat.css" />
-  <link rel="stylesheet" type="text/css" href="../css/custom.build.min.css" media="all" />
+  <link rel="stylesheet" type="text/css" href="app/css/custom.build.min.css" media="all" />
   <!-- Azure Analytics -->
   <script type="text/javascript">  var appInsights = window.appInsights || function (config) { function r(config) { t[config] = function () { var i = arguments; t.queue.push(function () { t[config].apply(t, i) }) } } var t = { config: config }, u = document, e = window, o = "script", s = u.createElement(o), i, f; for (s.src = config.url || "//az416426.vo.msecnd.net/scripts/a/ai.0.js", u.getElementsByTagName(o)[0].parentNode.appendChild(s), t.cookie = u.cookie, t.queue = [], i = ["Event", "Exception", "Metric", "PageView", "Trace"]; i.length;) r("track" + i.pop()); return r("setAuthenticatedUserContext"), r("clearAuthenticatedUserContext"), config.disableExceptionTracking || (i = "onerror", r("_" + i), f = e[i], e[i] = function (config, r, u, e, o) { var s = f && f(config, r, u, e, o); return s !== !0 && t["_" + i](config, r, u, e, o), s }), t }({ instrumentationKey: "8413289d-2420-4296-9d99-b586b65f4516" }); window.appInsights = appInsights; appInsights.trackPageView();</script>
 </head>
@@ -24,22 +24,22 @@
     <div id="purpleMenu"></div>
   </header>
   <div class="mobileWrapper">
-    <main class="grid">
-      <section class="col_12">
-        <form action="/answersurvey" method="POST" class="vertical" id="mainSurvey">
-          <button type="submit">Submit</button>
-        </form>
+    <main class="grid main-page-content">
+      <div class="col_12 internetExplorer event-header center" id="eventHeader"></div>
+      <section class="col_12 internetExplorer event-tabs" id="eventTabs"></section>
+      <section class="col_12 internetExplorer scroll-button">
+        <i class="fa fa-chevron-up fa-3x"><p>Back to Top</p></i>
       </section>
     </main>
   </div>
-  <!-- begin footer -->
-  <footer class="grid flex footer-at-bottom foot"></footer>
+  <div id="socialSharingIcons"></div>
+  <!-- begin bottom menu -->
+  <footer class="grid flex footer-at-bottom foot" role="navigation"></footer>
   <!-- JavaScript -->
   <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.min.js"></script>
-  <script type="text/javascript" src="../lib/kickstart.js"></script>
+  <script type="text/javascript" src="app/lib/kickstart.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.jssocials/1.2.1/jssocials.min.js"></script> 
-  <script type="text/javascript" src="../scripts/social-icons.js"></script>
-  <script type="text/javascript" src="../dist/build.min.js"></script>
+  <script type="text/javascript" src="app/dist/build.min.js"></script>
   <script>
     (function (i, s, o, g, r, a, m) {
       i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {

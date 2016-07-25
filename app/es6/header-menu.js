@@ -153,7 +153,7 @@ import * as customFunctions from './common-functions.build.js';
           	});
 						//add the past events header if it's set to true
 						if (siteStyle.showPastEventsBanner && siteStyle.showSlider) {
-							homepageImage += `<li><a title="past event link" class="homepageHeaderAnchor" href="/past-events"><section id="headerImage" class="mobileWrapper"><img aria-hidden="true" alt="past events header" style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../uploads/past-events-banner.jpg" /></section></a></li>`;
+							homepageImage += `<li><a title="past event link" class="homepageHeaderAnchor" href="/past-events"><section id="headerImage" class="mobileWrapper"><img aria-hidden="true" alt="past events header" style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="./app/uploads/past-events-banner.jpg" /></section></a></li>`;
 						}
 
 						$(data).each(function (i, elem) {
@@ -193,7 +193,7 @@ import * as customFunctions from './common-functions.build.js';
 							}
 							//if there is a homepage image, add it to the slider
 							if (imageCount > 1 && elem.eventHomepageImage && siteStyle.showSlider) {
-								homepageImage += `<li><a title="new event link" class="homepageHeaderAnchor" href="${elem.eventUrl}"><img aria-hidden="true" alt="home page banner" src="uploads/${elem.eventHomepageImage}" /></a></li>`;
+								homepageImage += `<li><a title="new event link" class="homepageHeaderAnchor" href="${elem.eventUrl}"><img aria-hidden="true" alt="home page banner" src="app/uploads/${elem.eventHomepageImage}" /></a></li>`;
 							}
 
 						});
@@ -225,7 +225,7 @@ import * as customFunctions from './common-functions.build.js';
 						eventCity = eventCityArr.join(' ');
 						//if there is a hompepage image create the homepage image style
 						if (data[0] && data[0].eventHomepageImage) {
-							homepageImage = `<a title="new event link" class="homepageHeaderAnchor" href="/${data[0].eventUrl}"><section id="headerImage" class="mobileWrapper"><img aria-hidden="true" alt="home page banner" style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../uploads/${data[0].eventHomepageImage}" /></section></a>`;
+							homepageImage = `<a title="new event link" class="homepageHeaderAnchor" href="/${data[0].eventUrl}"><section id="headerImage" class="mobileWrapper"><img aria-hidden="true" alt="home page banner" style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="./app/uploads/${data[0].eventHomepageImage}" /></section></a>`;
 						}
 						headerBackgroundColor = `<nav class="menu-overlay desktop-menu flex clearfix" style="background-color:${data[0].eventHighlightColor};">`;
 						//if there is only one event create the menu
@@ -236,7 +236,7 @@ import * as customFunctions from './common-functions.build.js';
 					} 
 					//if there are no images, use the backup homepage image
 					if (!imageCount || (siteStyle.showPastEventsBanner && !siteStyle.showSlider && siteStyle.hideEventBanners)) {
-						homepageImage = `<a class="homepageHeaderAnchor" title="past events link" href="/past-events"><section id="headerImage" class="mobileWrapper"><img aria-hidden="true" alt="past events header" style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="../uploads/past-events-banner.jpg" /></section></a>`;
+						homepageImage = `<a class="homepageHeaderAnchor" title="past events link" href="/past-events"><section id="headerImage" class="mobileWrapper"><img aria-hidden="true" alt="past events header" style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="./app/uploads/past-events-banner.jpg" /></section></a>`;
 					}
 					upcomingPurpleMenu += '</div>';
 

@@ -101,6 +101,7 @@ if (self === top) {
 			}
 		});
 
+		$('main').css('position', '');
 
 		$(window).load(function() {
 			customFunctions.changeHeight('.past_events');
@@ -134,7 +135,7 @@ if (self === top) {
 		let path = window.location.pathname;
 
 		$('li:not(.tabs > li), th, td, .feed_item_description').attr('tabindex', '0');
-		$('.clear, hr').attr('aria-hidden', 'true');
+		$('.clear, hr,  ul.tabs, ul.tabs > li, body').attr('aria-hidden', 'true');
 
 		//add tabindex="0" to paragraphs on the speakers, about abd faq pages
 

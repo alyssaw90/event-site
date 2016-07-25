@@ -5,30 +5,28 @@
 /*global changeHeight */
 /*global homepageStickyFooter */
 
-let jQuery = require('jquery');
+const jQuery = require('jquery');
+const elementResizeEvent = require('element-resize-event');
 import * as customFunctions from '../common-functions.build.js';
 
 (function($) {
+	const mainElem = document.getElementsByTagName('main');
 
 	$(function() {
 		var $pastEvents = $('.past_events');
-		$pastEvents.on('click keydown', function() {
+		$pastEvents.on('click keydown', function(e) {
 			let keyCode = customFunctions.getKeyCode(e);
 			if (keyCode === 1 || 9 || 13) {
 				customFunctions.changeHeight('.past_events');
-				customFunctions.homepageStickyFooter();				
 			}
 		});
 	});
 
-	$(window).load(function() {
-		customFunctions.changeHeight('.past_events');
-		customFunctions.homepageStickyFooter();
-	});
+	for (let i = 0, j = mainElem.length; i < j; i++) {
 
-	$(window).resize(function(){
-		customFunctions.changeHeight('.past_events');
-		customFunctions.homepageStickyFooter();
-	});
+		elementResizeEvent(mainElem[i], function() {
+		  customFunctions.homepageStickyFooter();
+		});
+	}
 
 })(jQuery);

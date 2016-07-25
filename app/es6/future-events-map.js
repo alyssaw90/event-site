@@ -60,7 +60,7 @@ import * as customFunctions from './common-functions.build.js';
 									typeName: 'pushpinLabel',
 									text: searchString,
 									textOffset : new Microsoft.Maps.Point(-45,-25),
-									htmlContent: `<span class="tooltip" title="${city}"><img alt="push pin for ${city}" src="./uploads/${mapIcon}" /></span>`
+									htmlContent: `<span class="tooltip" title="${city}"><img alt="push pin for ${city}" src="app/uploads/${mapIcon}" /></span>`
 								}; 
 								let pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), pushpinOptions);
 								let pushpinClick = Microsoft.Maps.Events.addHandler(pushpin, 'click', function() {window.location = `/${currentEventUrl}`});
