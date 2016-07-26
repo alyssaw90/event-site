@@ -11,7 +11,7 @@ import * as customFunctions from './common-functions.build.js';
 	$(document).ready(function () {
 
 		let $footer = $('footer');
-		let footerMenuHTML = `<div class="newsletterSubscSection col_12">
+		let footerMenuHTML = `<div class="newsletterSubscSection col_12" role="presentation">
 					<p tabindex="0">Email <a href="mailto:plugfests@microsoft.com">plugfests@microsoft.com</a> to stay updated</p>
 				</div>
 				<nav class="siteFooter">

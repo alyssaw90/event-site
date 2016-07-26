@@ -136,6 +136,7 @@ if (self === top) {
 
 		$('li:not(.tabs > li), th, td, .feed_item_description').attr('tabindex', '0');
 		$('.clear, hr,  ul.tabs, ul.tabs > li, body').attr('aria-hidden', 'true');
+		$('main').attr('role', 'presentation');
 
 		//add tabindex="0" to paragraphs on the speakers, about abd faq pages
 
