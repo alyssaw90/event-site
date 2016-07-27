@@ -59,6 +59,13 @@ module.exports = function (grunt) {
           {
             expand: true,
             cwd: '',
+            src: ['app/es6/**/*.js', 'app/shared/client.js'],
+            dest: 'app/build/',
+            ext:'.build.js'
+          },
+          {
+            expand: true,
+            cwd: '',
             src: ['app/es6/**/*.js'],
             dest: 'app/build/',
             ext:'.build.js'
