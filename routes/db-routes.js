@@ -119,7 +119,7 @@ module.exports = function (router) {
         }
       });
       let meetTheTeamSpeakersArr = [];
-      let meetTheTeamSpeakersHtml = '<main role="presentation" class="grid white-bg main-page-content the-team-section">';
+      let meetTheTeamSpeakersHtml = '<main class="grid white-bg main-page-content the-team-section">';
       //loop over the returned speakers and splice them into an array using their position number minus one as the index
       for (let key in speakers) {
         meetTheTeamSpeakersArr.splice(speakers[key].meetTheTeamPageOrder - 1, 0, speakers[key]);
@@ -132,7 +132,7 @@ module.exports = function (router) {
       //read in the meet-the-team.html page and add the speakers html then send the html string
       fs.readFile(path.join(__dirname, '../app/meet-the-team.html'), function(err, speakersPage) {
         let speakersPageHtml = speakersPage.toString();
-        speakersPageHtml = speakersPageHtml.replace('<main role="presentation" class="grid white-bg main-page-content the-team-section">', meetTheTeamSpeakersHtml);
+        speakersPageHtml = speakersPageHtml.replace('<main class="grid white-bg main-page-content the-team-section">', meetTheTeamSpeakersHtml);
         res.send(speakersPageHtml);
       });
     });
@@ -962,6 +962,7 @@ module.exports = function (router) {
         speakersArr[i] = {};
         speakersArr[i].firstName = theSpeakers[key].firstName;
         speakersArr[i].lastName = theSpeakers[key].lastName;
+        speakersArr[i].fullName = theSpeakers[key].fullName;
         speakersArr[i].msTeamTitle = theSpeakers[key].msTeamTitle;
         speakersArr[i].headShot = theSpeakers[key].headShot;
         speakersArr[i].contactDescription = theSpeakers[key].contactDescription;
@@ -978,7 +979,7 @@ module.exports = function (router) {
             eventInfo.speakersHtml += '<h5>' + eventInfo.speakers[i].msTeamTitle + '</h5><p>';
           }
           if (eventInfo.speakers[i].headShot) {
-            eventInfo.speakersHtml += '<img class="pull-left speakersImg" height="165" width="165" src="app/uploads/' + eventInfo.speakers[i].headShot + '" />';
+            eventInfo.speakersHtml += `<img class="pull-left speakersImg" height="165" width="165" alt="image of ${speakersArr[i].fullName}" src="app/uploads/${eventInfo.speakers[i].headShot}" />`;
           }
           if (eventInfo.speakers[i].contactDescription) {
             eventInfo.speakersHtml += eventInfo.speakers[i].contactDescription + '</p>';

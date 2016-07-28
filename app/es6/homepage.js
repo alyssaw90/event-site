@@ -118,18 +118,15 @@ const jQuery = require('jquery');
 				$hiddenHomepageSectionsWrapper.css('background-color', $this.attr('data-hoverBackgroundColor'));
 				$scrollButtonDiv.css('background-color', $hiddenHomepageSectionsWrapper.css('background-color'));
 				if ($(thisBlockText).css('display') === 'none') {
-					$(thisBlockText).fadeIn().attr({
-						'aria-hidden': 'false'/*,
-						'tabindex': '0'*/
-					});
-					$(firstChildElemSelector).focus();
-					$(thisBlockText).siblings().hide().attr('aria-hidden', 'true').removeAttr('tabindex');
+					$(thisBlockText).fadeIn();
+					$(thisBlockText).focus();
+					$(thisBlockText).siblings().hide();
 					$('html, body').animate({ scrollTop: blockPosition }, 'slow');
 					$scrollButtonDiv.css('color', '#fff');
 					// $this.next().attr('tabindex', '1');
 				} else {
-					$(thisBlockText).fadeOut().attr('aria-hidden', 'true').removeAttr('tabindex');
-					$(thisBlockText).siblings().hide().attr('aria-hidden', 'true').removeAttr('tabindex');
+					$(thisBlockText).fadeOut();
+					$(thisBlockText).siblings().hide();
 					$this.next().attr('tabindex', '0');
 					$scrollButtonDiv.css('color', '#2F2F2F').css('background-color', '#fff');
 				}
@@ -152,7 +149,7 @@ const jQuery = require('jquery');
 		}
 
 		function hideHomepageSections(e) {
-			$('.hiddenHomepageSections:visible').hide().attr('aria-hidden', 'true').removeAttr('tabindex');
+			$('.hiddenHomepageSections:visible').hide().attr('aria-hidden', 'true');
 			$scrollButtonDiv.css('background-color', '#fff').css('color', '#2F2F2F');
 			$('.homepageIntroBlocks').each(function (i, elem) {
 				let $this = $(this);
@@ -192,14 +189,14 @@ const jQuery = require('jquery');
 		$backToTopButton.click(hideHomepageSections);
 		//when a homepageIntroBlocks is clicked or enter is clicked, show the corresponding div
 		// $homepageIntroBlocks.attr('tabindex', '-1');
-		$blockquote.find('span').attr('tabindex', '0');
+		// $blockquote.find('span').attr('tabindex', '0');
 		$homepageIntroBlocks.click(showHomepageBlock);
 		$homepageIntroBlocks.keydown(showHomepageBlock);
 		//when using keyboard navigation hitting tab on the hiddenHomepageSections nextTab item should send user to the next title block
 		$('.nextTab').keydown(moveTab);
 
 		//close blocks and move back when shift + tab is clicked
-		$('.hiddenHomepageSections :first-child').keydown(function(e) {
+		/*$('.hiddenHomepageSections :first-child').keydown(function(e) {
 			let parentId = `#${$(this).parent('.hiddenHomepageSections').attr('id').slice(0, -4)}`;
 			let keyCode = customFunctions.getKeyCode(e);
 			if (e.shiftKey && keyCode === 9) {
@@ -207,6 +204,16 @@ const jQuery = require('jquery');
 				hideHomepageSections();
 				$(parentId).focus();
 				$(parentId).removeClass('whiteText');
+			}
+		});*/
+		$('.hiddenHomepageSections').keydown(function(e) {
+			let elemId = `#${$(this).attr('id').slice(0, -4)}`;
+			let keyCode = customFunctions.getKeyCode(e);
+			if (e.shiftKey && keyCode === 9) {
+				e.preventDefault();
+				hideHomepageSections();
+				$(elemId).focus();
+				$(elemId).removeClass('whiteText');
 			}
 		});
 

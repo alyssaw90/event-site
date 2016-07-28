@@ -134,15 +134,16 @@ if (self === top) {
 
 		let path = window.location.pathname;
 
-		$('li:not(.tabs > li), th, td, .feed_item_description').attr('tabindex', '0');
-		$('.clear, hr,  ul.tabs, ul.tabs > li, body').attr('aria-hidden', 'true');
-		$('main').attr('role', 'presentation');
+		// $('li:not(.tabs > li), th, td, .feed_item_description').attr('tabindex', '0');
+		$('.feed_item_description').attr('tabindex', '0');
+		// $('.clear, hr,  ul.tabs, ul.tabs > li').attr('aria-hidden', 'true');
+		// $('main').attr('role', 'presentation');
 
 		//add tabindex="0" to paragraphs on the speakers, about abd faq pages
 
-		if (path === '/meet-the-team' || path === '/about' || path === '/faq' || path === '/latest-news', '/contactus') {
+		/*if (path === '/meet-the-team' || path === '/about' || path === '/faq' || path === '/latest-news', '/contactus') {
 			$('p:not(#siteFooter > p)').attr('tabindex', '0');
-		}
+		}*/
 
 		$('td').each(function(index, el) {
 			let $this = $(this);
@@ -155,12 +156,12 @@ if (self === top) {
 		});
 
 		//add aria tab to header elements that aren't links
-		$(':header').each(function(index, el) {
+	/*	$(':header').each(function(index, el) {
 			let $this = $(this);
 			if (!$this.parent().attr('href')) {
 				$this.attr('tabindex', '0');
 			}
-		});
+		});*/
 
 		//show focus on the homepage image
 		$('#homepageSliderSection').focusin(function(e) {
