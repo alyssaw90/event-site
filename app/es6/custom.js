@@ -136,7 +136,7 @@ if (self === top) {
 
 		// $('li:not(.tabs > li), th, td, .feed_item_description').attr('tabindex', '0');
 		$('.feed_item_description').attr('tabindex', '0');
-		// $('.clear, hr,  ul.tabs, ul.tabs > li').attr('aria-hidden', 'true');
+		$('.clear, hr,  ul.tabs, ul.tabs > li').attr('aria-hidden', 'true');
 		// $('main').attr('role', 'presentation');
 
 		//add tabindex="0" to paragraphs on the speakers, about abd faq pages
@@ -154,6 +154,10 @@ if (self === top) {
 			}
 
 		});
+		//find what has focus
+		/*$('*').focusin(function(event) {
+			console.log('this:               ', $(this));
+		});*/
 
 		//add aria tab to header elements that aren't links
 	/*	$(':header').each(function(index, el) {
@@ -162,6 +166,9 @@ if (self === top) {
 				$this.attr('tabindex', '0');
 			}
 		});*/
+
+		//remove focus from resize sensor div
+		$('.resize-sensor').attr('tabindex', '-1');
 
 		//show focus on the homepage image
 		$('#homepageSliderSection').focusin(function(e) {

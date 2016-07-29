@@ -18,7 +18,7 @@
   <!-- Azure Analytics -->
   <script type="text/javascript">  var appInsights = window.appInsights || function (config) { function r(config) { t[config] = function () { var i = arguments; t.queue.push(function () { t[config].apply(t, i) }) } } var t = { config: config }, u = document, e = window, o = "script", s = u.createElement(o), i, f; for (s.src = config.url || "//az416426.vo.msecnd.net/scripts/a/ai.0.js", u.getElementsByTagName(o)[0].parentNode.appendChild(s), t.cookie = u.cookie, t.queue = [], i = ["Event", "Exception", "Metric", "PageView", "Trace"]; i.length;) r("track" + i.pop()); return r("setAuthenticatedUserContext"), r("clearAuthenticatedUserContext"), config.disableExceptionTracking || (i = "onerror", r("_" + i), f = e[i], e[i] = function (config, r, u, e, o) { var s = f && f(config, r, u, e, o); return s !== !0 && t["_" + i](config, r, u, e, o), s }), t }({ instrumentationKey: "8413289d-2420-4296-9d99-b586b65f4516" }); window.appInsights = appInsights; appInsights.trackPageView();</script>
 </head>
-<body>
+<body data-ng-app="eventsApp">
   <header role="navigation" aria-label="header menu">
     <div id="grayMenu"></div>
     <div id="purpleMenu"></div>
@@ -34,7 +34,7 @@
   </div>
   <div id="socialSharingIcons"></div>
   <!-- begin bottom menu -->
-  <footer class="grid flex footer-at-bottom foot" role="navigation"></footer>
+  <div class="grid flex footer-at-bottom foot" id="ngFooter" data-ng-include="'/app/shared/footer/footerView.html'"></div>
   <!-- JavaScript -->
   <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.min.js"></script>
   <script type="text/javascript" src="app/lib/kickstart.js"></script>
