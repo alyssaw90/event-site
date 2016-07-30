@@ -210,7 +210,7 @@ module.exports = function (router) {
   //find all events that are upcoming and add the next 3 upcoming events to the future-events page
   router.route('/future-events')
   .get(function (req, res) {
-    let eventBlocksHtml = '<main class="events grid" role="main"><section class="col_12 internetExplorer futureEvents">';
+    let eventBlocksHtml = '<section role="presentation" class="col_12 internetExplorer futureEvents">';
     let newHtml = '';
     // let numFutureBlocks = 4;
     let eventDates = 'Coming Soon';
@@ -281,12 +281,11 @@ module.exports = function (router) {
               eventDates = 'TBD';
             }
 
-            let risingText = '';
-            eventBlocksHtml += i === 0 ? `<div class="col_${Math.floor(12 / upcomingEvent.length)} event_block" style="background-color: ${upcomingEvent[i].eventHighlightColor};"><a id="beginningOfContent" href="/${upcomingEvent[i].eventUrl}"><p>More Details</p><h1>${city}</h1><h3>${upcomingEvent[i].eventName}<br />${eventDates}</h3></a>${risingText}</div>` : `<div class="col_${Math.floor(12 / upcomingEvent.length)} event_block" style="background-color: ${upcomingEvent[i].eventHighlightColor};"><a href="/${upcomingEvent[i].eventUrl}"><p>More Details</p><h1>${city}</h1><h3>${upcomingEvent[i].eventName}<br />${eventDates}</h3></a>${risingText}</div>`;
+            eventBlocksHtml += i === 0 ? `<div class="col_${Math.floor(12 / upcomingEvent.length)} event_block" style="background-color: ${upcomingEvent[i].eventHighlightColor};"><a id="beginningOfContent" href="/${upcomingEvent[i].eventUrl}"><p>More Details</p><h1>${city}</h1><h3>${upcomingEvent[i].eventName}<br />${eventDates}</h3></a></div>` : `<div class="col_${Math.floor(12 / upcomingEvent.length)} event_block" style="background-color: ${upcomingEvent[i].eventHighlightColor};"><a href="/${upcomingEvent[i].eventUrl}"><p>More Details</p><h1>${city}</h1><h3>${upcomingEvent[i].eventName}<br />${eventDates}</h3></a></div>`;
             // eventBlocksHtml += `<div class="col_${Math.floor(12 / upcomingEvent.length)} event_block" style="background-color: #${continentColors[upcomingEvent[i].eventContinent]};"><a href="/${upcomingEvent[i].eventUrl}"><p>More Details</p><h1>${city}</h1><h3>${upcomingEvent[i].eventName}<br />${eventDates}</h3></a>${risingText}</div>`;
           }
           eventBlocksHtml += '</section>';
-          newHtml = html.toString().replace('<main class="events grid">', eventBlocksHtml);
+          newHtml = html.toString().replace('<section class="col_12 internetExplorer" aria-role="presentation">', eventBlocksHtml);
           res.send(newHtml);
         });
       });
