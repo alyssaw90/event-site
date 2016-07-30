@@ -137,7 +137,7 @@ const jQuery = require('jquery');
 			}
 		}
 
-		function moveTab(e) {
+		function moveHomepageTab(e) {
 			e.preventDefault();
 			let keyCode = customFunctions.getKeyCode(e);
 			let parentId = `#${$(this).attr('data-parent')}`;
@@ -193,7 +193,7 @@ const jQuery = require('jquery');
 		$homepageIntroBlocks.click(showHomepageBlock);
 		$homepageIntroBlocks.keydown(showHomepageBlock);
 		//when using keyboard navigation hitting tab on the hiddenHomepageSections nextTab item should send user to the next title block
-		$('.nextTab').keydown(moveTab);
+		$('.nextTab').keydown(moveHomepageTab);
 
 		//close blocks and move back when shift + tab is clicked
 		/*$('.hiddenHomepageSections :first-child').keydown(function(e) {

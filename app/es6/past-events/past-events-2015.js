@@ -70,8 +70,8 @@ import * as customFunctions from '../common-functions.build.js';
       // console.log('past:    ', $('#firstPastEventHeader'));
       customFunctions.stickyFooter();
       $('#2015PastEvents').focus();
-      $('th, td').attr('tabindex', '0');
-      $('td a:only-child').parent('td').attr('tabindex', '-1');
+     /* $('th, td').attr('tabindex', '0');
+      $('td a:only-child').parent('td').attr('tabindex', '-1');*/
 
     }
 

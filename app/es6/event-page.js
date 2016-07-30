@@ -14,20 +14,26 @@ import * as customFunctions from './common-functions.build.js';
 		function moveTab(e, self) {
 			// e.preventDefault();
 			let keyCode = customFunctions.getKeyCode(e);
-			let parentId = self.parent('.eventTabDiv ').attr('id');
-			let parentLi = '#' + $(`[href="#${parentId}"]`).attr('id');
+			// let parentId = self.parent('.eventTabDiv').attr('id');
+			let selfId = self.parent().attr('id');
+			let parentLi = '#' + $(`[href="#${selfId}"]`).attr('id');
 
 			if (keyCode === 9 && e.shiftKey) {
 				/*hideHomepageSections();
 				$(parentId).next().children('h3').click();
 				$(parentId.n)ext().children('h3').focus();*/
+				console.log('parentLi:  ', self.parent().attr('id'));
 				$(parentLi).parent().next().find('a').focus();
 			}
 		}
 
-		$('.eventTabDiv > :first-child').keydown(function(e) {
+		$('.eventTabDiv > :first-child, .tab-content > :first-child').keydown(function(e) {
 			let $this = $(this);
 			moveTab(e, $this);
+		});
+
+		$('.eventTabDiv *').keydown(function(e) {
+			e.stopPropagation();
 		});
 
 		

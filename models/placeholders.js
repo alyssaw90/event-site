@@ -2067,6 +2067,7 @@ setTimeout(function() {
 </ul>
 <ul class="tabs left"><li class="current"><a href="#redmond2016WindowsAgenda"><span style="font-size: 1.5em">Agenda</span></a></li><li><a href="#redmond2016WindowsTechnologies"><span style="font-size: 1.5em">Technologies</span></a></li></ul>
 <div id="redmond2016WindowsAgenda" class="tab-content eventTabDiv" style="display:block;">
+<div tabindex="0">
 <p>* If you cannot attend the entire Plugfest, we encourage you to attend days and sessions that best fit your schedule.</p>
 <h2>Monday, June 13, 2016</h2>
 <table class="redmond2016ScheduleTable tableWithVerticalLines scheduleTableTextOnly">
@@ -2159,7 +2160,9 @@ setTimeout(function() {
 	<tr><td class="lightOrangeBackground">Windows</td></tr>
 </table>
 </div>
+</div>
     <div id="redmond2016WindowsTechnologies" class="tab-content eventTabDiv" style="display:none;">
+    <div tabindex="0">
     <ul>
     	<li>What's New in Office</li><li>Open Specifications + Interoperability</li>
    		<li>Protocol Test Suites</li><li>Mail Sim</li>
@@ -2170,7 +2173,8 @@ setTimeout(function() {
    		<li>Mail, Calendar + Contacts</li><li>WOPI</li>
    		<li>HyperV SMB3 Storage</li>
    		<li>Private Cloud Simulator</li>
-    </ul></div>`
+    </ul>
+    </div></div>`
 			});
 		})
 		.then(function () {
@@ -2191,6 +2195,7 @@ setTimeout(function() {
     	<li><a href="#redmond2016Technologies"><span style="font-size: 1.5em">Technologies</span></a></li>
   	</ul>
   	<div id="redmond2016Agenda" class="tab-content eventTabDiv" style="display:block;">
+  	<div tabindex="0">
   		<p>Core concentration during the IO lab week would be on <strong>Interop testing your protocol implementations</strong>.</p>
   		<p>This year’s Windows IO lab will be held in Building 20 in an “open-hall-format”. This will be similar to how the SNIA’s Storage Developer Conference (SDC) Plugfest is organized. We hope this will promote more interactions both amongst the partners and with the Microsoft Product Groups.</p>
   		<h3>Chalk-talk sessions</h3>
@@ -2200,8 +2205,10 @@ setTimeout(function() {
 				<tr><td><strong>Wedesday</strong></td><td><strong>11-11:45 AM</strong></td><td class="lightOrangeBackground"> Steps to calculate NTLM keys from network trace</td><td class="lightOrangeBackground">Obaid Farooqi</td><td class="lightOrangeBackground">White Room</td></tr>
 				<tr><td><strong>Thursday</strong></td><td><strong>11-11:45 AM</strong></td><td class="lightOrangeBackground"> Engagement around RSVD document</td><td class="lightOrangeBackground">Jeff McCashland</td><td class="lightOrangeBackground">White Room</td></tr>
 			</table>
+			</div>
 		</div>
 		<div id="redmond2016Technologies" class="tab-content eventTabDiv" style="display:none;">
+		<div tabindex="0">
 			<ul>
 				<li>Server Message Block (SMB2&3)</li><li>Remote Shared Virtual Disk (RSVD)</li>
 				<li>Active Directory (ADOD) and Identity</li><li>Authentication (AUTHSOD and PAC/Kile)</li>
@@ -2209,6 +2216,7 @@ setTimeout(function() {
 				<li>Authorization (AZOD)</li>
 				<li>Claim-Based Access Control (CBAC)</li>
 			</ul>
+			</div>
 		</div>`
 			});
 		})

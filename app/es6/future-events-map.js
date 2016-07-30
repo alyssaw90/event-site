@@ -85,7 +85,8 @@ import * as customFunctions from './common-functions.build.js';
 
 	   		geoLocationProvider.getCurrentPosition({
 	   			successCallback: function(object) {
-	   				map.setView({zoom: 2.25})
+	   				map.setView({zoom: 2.25});
+	   				$('#navMenuBeginning').focus();
 	   			}
 	   		}); 	
 			});

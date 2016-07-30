@@ -119,7 +119,7 @@ module.exports = function (router) {
         }
       });
       let meetTheTeamSpeakersArr = [];
-      let meetTheTeamSpeakersHtml = '<main class="grid white-bg main-page-content the-team-section">';
+      let meetTheTeamSpeakersHtml = '<main tabindex="0" class="grid white-bg main-page-content the-team-section">';
       //loop over the returned speakers and splice them into an array using their position number minus one as the index
       for (let key in speakers) {
         meetTheTeamSpeakersArr.splice(speakers[key].meetTheTeamPageOrder - 1, 0, speakers[key]);
@@ -132,7 +132,7 @@ module.exports = function (router) {
       //read in the meet-the-team.html page and add the speakers html then send the html string
       fs.readFile(path.join(__dirname, '../app/meet-the-team.html'), function(err, speakersPage) {
         let speakersPageHtml = speakersPage.toString();
-        speakersPageHtml = speakersPageHtml.replace('<main class="grid white-bg main-page-content the-team-section">', meetTheTeamSpeakersHtml);
+        speakersPageHtml = speakersPageHtml.replace('<main tabindex="0" class="grid white-bg main-page-content the-team-section">', meetTheTeamSpeakersHtml);
         res.send(speakersPageHtml);
       });
     });
@@ -992,31 +992,31 @@ module.exports = function (router) {
       //if there are speakers, but no tabs add them as the only tab
       if (eventInfo.tabs.length === 0 && eventInfo.speakers.length > 0) {
         eventInfo.eventUltHtml += '<li class="last"><a href="#speakers"><h5>Speakers</h5></a></li></ul>';
-        eventInfo.eventDivHtml += '<div id="speakers" class="tab-content eventTabDiv" style="display:none;">' + eventInfo.speakersHtml  + '</div>';
+        eventInfo.eventDivHtml += `<div id="speakers" class="tab-content eventTabDiv" style="display:none;"><div tabindex="0">${eventInfo.speakersHtml}</div></div>`;
       }
       //if there are event tabs loop over the tabs and create the html for the tabs
       for (let i = 0, j = eventInfo.tabs.length; i < j; i++) {
         //create the first tab with the first and current classes
         if (i === 0) {
           eventInfo.eventUltHtml += '<li class="first current"><a href="#' + eventInfo.tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '').toLowerCase() + '"><h5>' + eventInfo.tabs[i].tabTitle + '</h5></a></li>';
-          eventInfo.eventDivHtml += '<div id="' + eventInfo.tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '').toLowerCase() + '" class="tab-content eventTabDiv" style="display:block;">' + eventInfo.tabs[i].tabContent  + '</div>';
+          eventInfo.eventDivHtml += '<div id="' + eventInfo.tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '').toLowerCase() + '" class="tab-content eventTabDiv" style="display:block;"><div tabindex="0">' + eventInfo.tabs[i].tabContent  + '</div></div>';
 
         }
         //create the tabs that aren't first or last
         if (i > 0 && i <= eventInfo.tabs.length - 1) {
           eventInfo.eventUltHtml += '<li><a href="#' + eventInfo.tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '').toLowerCase() + '"><h5>' + eventInfo.tabs[i].tabTitle + '</h5></a></li>';
-          eventInfo.eventDivHtml += '<div id="' + eventInfo.tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '').toLowerCase() + '" class="tab-content eventTabDiv" style="display:none;">' + eventInfo.tabs[i].tabContent  + '</div>';
+          eventInfo.eventDivHtml += '<div id="' + eventInfo.tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '').toLowerCase() + '" class="tab-content eventTabDiv" style="display:none;"><div tabindex="0">' + eventInfo.tabs[i].tabContent  + '</div></div>';
 
         }
         //if there are speakers add their html as the last tab
         if (eventInfo.speakers.length > 0 && i >= eventInfo.tabs.length - 1) {
           eventInfo.eventUltHtml += '<li class="last"><a href="#speakers"><h5>Speakers</h5></a></li>';
-          eventInfo.eventDivHtml += '<div id="speakers" class="tab-content eventTabDiv" style="display:none;">' + eventInfo.speakersHtml  + '</div>';
+          eventInfo.eventDivHtml += '<div id="speakers" class="tab-content eventTabDiv" style="display:none;"><div tabindex="0">' + eventInfo.speakersHtml  + '</div></div>';
         }
         //if there are no speakers and there is more than one tab add the last eventTab as the last tab
         if (eventInfo.speakers.length <= 0 && i > eventInfo.tabs.length - 1 && eventInfo.tabs.length > 1) {
           eventInfo.eventUltHtml += '<li class="last"><a href="#' + eventInfo.tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '').toLowerCase() + '"><h5>' + eventInfo.tabs[i].tabTitle + '</h5></a></li>';
-          eventInfo.eventDivHtml += '<div id="' + eventInfo.tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '').toLowerCase() + '" class="tab-content eventTabDiv" style="display:none;">' + eventInfo.tabs[i].tabContent  + '</div>';
+          eventInfo.eventDivHtml += '<div id="' + eventInfo.tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '').toLowerCase() + '" class="tab-content eventTabDiv" style="display:none;"><div tabindex="0">' + eventInfo.tabs[i].tabContent  + '</div></div>';
 
         }
         //add the closing ul tag
