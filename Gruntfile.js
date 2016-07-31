@@ -59,7 +59,7 @@ module.exports = function (grunt) {
           {
             expand: true,
             cwd: '',
-            src: ['app/es6/**/*.js', 'app/shared/client.js'],
+            src: ['app/es6/**/*.js', 'app/components/**/*.js'],
             dest: 'app/build/',
             ext:'.build.js'
           },
