@@ -8,7 +8,7 @@ const homepageDirective = (app) => {
 		restrict: 'A',
     link: function postLink(scope, element, attrs) {
 
-	angular.element(window).load(function() {
+	/*angular.element(window).load(function() {
 	  customFunctions.changeHeight('.homepageIntroBlocks');
 	  customFunctions.homepageStickyFooter();
 	});
@@ -17,7 +17,7 @@ const homepageDirective = (app) => {
 	angular.element(window).resize(function(){
 	  customFunctions.changeHeight('.homepageIntroBlocks');
 	  customFunctions.homepageStickyFooter();
-	});
+	});*/
 
 		const $learnBlockIcon = angular.element('#learnBlockIcon');
 		const $learnBlock = angular.element('#learnBlock');
@@ -36,11 +36,13 @@ const homepageDirective = (app) => {
 		const $hiddenHomepageSectionsWrapper = angular.element('.hiddenHomepageSectionsWrapper');
 		const $hiddenHomepageSections = angular.element('.hiddenHomepageSections');
 		const $itsYourEventBlockText = angular.element('#itsYourEventBlockText');
+		const $homepageSliderSection = angular.element('#homepageSliderSection');
 		const $blockquote = angular.element('blockquote');
 		const $window = angular.element(window);	
 		//array of ms colors at 80% opacity - ms yellow is removed, because it's to light for background color
 		let msColors = ['rgba(216, 59, 1, .8)', 'rgba(232, 17, 35, .8)', 'rgba(180, 0, 158, .8)', 'rgba(92, 45, 145, .8)', 'rgba(0, 120, 215, .8)', 'rgba(0, 130, 114, .8)', 'rgba(16, 124, 16, .8)'];
 		let count = 0;
+		customFunctions.changeHeight('.homepageIntroBlocks');
 
 		//function to show homepage intro text when the corresponding block is clicked
 		function showHomepageBlock (e) {

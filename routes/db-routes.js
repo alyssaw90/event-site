@@ -84,7 +84,8 @@ module.exports = function (router) {
 
   router.route('/about')
   .get(function (req, res) {
-    res.sendFile(path.join(__dirname, '../app/about.html'));
+    // res.sendFile(path.join(__dirname, '../app/about.html'));
+    res.sendFile(path.join(__dirname, '../app/index.html'));
   });
 
   router.route('/past-events')
@@ -150,7 +151,13 @@ module.exports = function (router) {
 
   router.route('/latest-news')
   .get(function (req, res) {
+    // res.sendFile(path.join(__dirname, '../app/latest-news.html'));
+    res.sendFile(path.join(__dirname, '../app/index.html'));
+  });
+  router.route('/blah')
+  .get(function (req, res) {
     res.sendFile(path.join(__dirname, '../app/latest-news.html'));
+    // res.sendFile(path.join(__dirname, '../app/index.html'));
   });
 
   router.get('/curriculum', eatAuth, function(req, res) {

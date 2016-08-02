@@ -45,7 +45,7 @@ import * as customFunctions from './common-functions.build.js';
 					</div>
 					<div class="hidden-div" style="display: none">
 						<ul class="hamburger-menu">
-							<li class="mobile-menu"><a href="/"><span class="home">Home</span></a></li>
+							<li class="mobile-menu"><a href="/#/"><span class="home">Home</span></a></li>
 							<li class="mobile-menu"><a href="/future-events"><span>Find an Event</a></span></a></li>
 							<li class="mobile-menu"><a href="/latest-news"><span>Get the Latest</span></a></li>
 							<li class="mobile-menu"><a href="/meet-the-team"><span>Meet the Team</a></span></a></li>
@@ -60,7 +60,7 @@ import * as customFunctions from './common-functions.build.js';
 		 				<div><a class="skipNavigation" target="_self" href="#beginningOfContent">Skip to Main Content</a></a></div>
 		 				<div><a class="skipNavigation" target="_self" href="#footerStartMenuItem">Skip to Footer</a></a></div>
 						<div class="col_2 center-block">
-							<div class="col_2 center-block menu-block home-menu-button"><a href="/">Home</a></div>
+							<div class="col_2 center-block menu-block home-menu-button"><a href="/#/">Home</a></div>
 						</div>
 							<div class="col_2 center-block">
 								<div class="col_2 center-block menu-block upcominEventsBlock"><a href="/future-events">Find an Event</a></div>
@@ -199,7 +199,7 @@ import * as customFunctions from './common-functions.build.js';
 						});
 						//if there are multiple images, close the slider <ul> and add the necessary js packages from lib
 						if (imageCount > 1 || (siteStyle.showPastEventsBanner && imageCount >= 1)) {
-							homepageImage += '</ul><script type="text/javascript" src="../lib/kickstart.js"></script><script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5660d6c488a1a100" async="async"></script>';
+							homepageImage += '</ul><script type="text/javascript" src="app/lib/kickstart.js"></script>';
 						}
 						
 					} 

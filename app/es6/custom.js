@@ -37,6 +37,9 @@ if (self === top) {
 		//make external links open in new tabs
 		$('a[href^="http"]').attr('target','_blank');
 
+		customFunctions.changeHeight('.homepageIntroBlocks');
+	  customFunctions.homepageStickyFooter();
+
 		//hide slider on screens larger than 768px
 		$(window).load(customFunctions.addCSS(768, $('.slider'), 'display', 'none', 'inline'));
 		$(window).resize(customFunctions.addCSS(768, $('.slider'), 'display', 'none', 'inline'));
