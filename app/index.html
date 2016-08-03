@@ -25,30 +25,31 @@
     <div id="purpleMenu"></div>
   </header>
   <!-- <div data-ng-view></div> -->
-  <main class="main-page-content">
+  <main class="main-page-content" data-homepage-directive>
     <div role="presentation" class="mobileWrapper">
-      <h1 id="beginningOfContent" class="center">At Microsoft Interop Events...</h1>
+      <a tabindex="-1" id="beginningOfContent" title="main section"></a>
+      <h1 tabindex="0" class="center">At Microsoft Interop Events...</h1>
       <div class="grid flex internetExplorer homepageIntroBlocksWrapper">
         <div class="col_3 homepageIntroBlocks" tabindex="0" id="notANumberBlock" data-thisBlockText="notANumberBlockText" data-hoverBackgroundColor="#0073c5" aria-label="You're a name, not a number, hit enter to hear content" aria-owns="notANumberBlockText">
-          You're a name, not a number
+          <span aria-hidden="true">You're a name, not a number</span>
         </div>
         <div class="col_3 homepageIntroBlocks" tabindex="0" id="toHelpYouBlock" data-thisBlockText="toHelpYouBlockText" data-hoverBackgroundColor="#9d5098" aria-label="We're here to help you, hit enter to hear content" aria-owns="toHelpYouBlockText">
-          We're here to help you
+          <span aria-hidden="true">We're here to help you</span>
         </div>
         <div class="col_3 homepageIntroBlocks" tabindex="0" id="whoMadeItBlock" data-thisBlockText="whoMadeItBlockText" data-hoverBackgroundColor="#ba141a" aria-label="We're the people who made it, hit enter to hear content" aria-owns="whoMadeItBlockText">
-          We're the people who made it
+          <span aria-hidden="true">We're the people who made it</span>
         </div>
         <div class="col_3 homepageIntroBlocks" tabindex="0" id="itsYourEventBlock" data-thisBlockText="itsYourEventBlockText" data-hoverBackgroundColor="#107c10" aria-label="It's your event, on us, hit enter to hear content" aria-owns="itsYourEventBlockText">
-          It's your event, on us
+          <span aria-hidden="true">It's your event, on us</span>
         </div>
       </div>
     </div>
-    <section class="col_12 hiddenHomepageSectionsWrapper">
+    <section class="col_12 hiddenHomepageSectionsWrapper" role="presentation">
       <div class="grid" id="hiddenHomepageSectionsGrid">
-        <section class="col_12 hiddenHomepageSections" id="notANumberBlockText" role="article" aria-hidden="true" style="display: none;">
+        <section class="col_12 hiddenHomepageSections" id="notANumberBlockText" style="display: none;" tabindex="0">
           <p>At most tech conferences, you’re another face in the crowd. We’ve designed Microsoft Interop Events to host fewer attendees to allow our team to provide the personalized attention you need. We create a learning environment and open dialogue to build relationships with the people who use Microsoft tools in real life. You’ll work directly with Microsoft developers to create and test your projects, so you can get answers to all your questions—no more searching <a href="http://stackoverflow.com/">Stackoverflow</a>!</p>
           <div class="col_6" role="presentation">
-            <img src="./app/uploads/tom-helping.jpg" alt="Photo of Microsoft Engineer Tom Jebo helping Garret Fick" tabindex="0" />
+            <img src="../app/uploads/tom-helping.jpg" alt="Photo of Microsoft Engineer Tom Jebo helping Garret Fick" tabindex="0" />
             <figcaption>Attendee, Garret Fick (left) and Microsoft Engineer Tom Jebo (right)</figcaption>
           </div>
           <div class="col_6">
@@ -64,7 +65,7 @@
             </blockquote>
           </div>
         </section>
-        <section class="col_12 hiddenHomepageSections" id="toHelpYouBlockText" role="article" aria-hidden="true" style="display: none;">
+        <section class="col_12 hiddenHomepageSections" id="toHelpYouBlockText" style="display: none;" tabindex="0">
           <p>
             We travel around the world to work with developers like you to build relationships based on mutual learning, support, and a little fun. We want to get to know you, learn from your experiences, answer your questions, and provide our expertise. To put it another way, we want to sit down with you and dig into the code!
           </p>
@@ -79,10 +80,10 @@
             <iframe id="homepageIframe" src="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/Shanghai-Interop-Dev-Days/An-Inside-Look-at-Shanghai-Interop-Dev-Days/player?format=html5" width="560" height="315" allowFullScreen frameBorder="0"></iframe>
           </div> -->
         </section>
-        <section class="col_12 hiddenHomepageSections" id="whoMadeItBlockText" role="article" aria-hidden="true" style="display: none;">
+        <section class="col_12 hiddenHomepageSections" id="whoMadeItBlockText" style="display: none;" tabindex="0">
           <p>Get Microsoft product help directly from the people who designed it. There is no need to scour online docs and help forums when Microsoft engineers are standing right in front of you. Our team is comprised of software engineers and program managers with experience in Microsoft interoperability, Office, Windows, SQL Server, Azure, Cortana, OData, Power BI, and more. Each event is hosted by the people who know our products inside and out. There is no one better to answer your questions and help you solve a problem. You can <a href="/meet-the-team">Meet the Team</a> to learn more about each Microsoft member’s experience and specialties. </p>
           <div role="presentation" class="col_6">
-            <img class="align-left" src="./app/uploads/we-are-the-people-who-made-it.jpg" alt="Group photo of developers from Beijing 2014 Event" tabindex="0" />
+            <img class="align-left" src="../app/uploads/we-are-the-people-who-made-it.jpg" alt="Group photo of developers from Beijing 2014 Event" tabindex="0" />
           </div>
           <div class="col_6">
             <blockquote>
@@ -91,15 +92,15 @@
             </blockquote>
           </div>
         </section>
-        <section class="col_12 hiddenHomepageSections" id="itsYourEventBlockText" role="article" aria-hidden="true" style="display: none;">
+        <section class="col_12 hiddenHomepageSections" id="itsYourEventBlockText" style="display: none;" tabindex="0">
           <p>Microsoft interop events are free. Microsoft interoperability events are focused on building knowledge, not selling tickets.  The fundamentals of Microsoft Open Specifications and interoperability are based on providing technical training and documentation free of charge.</p>
           <div role="presentation" class="col_12">
-            <img class="pull-right" style="height: 200px; margin-top: 0;" src="./app/uploads/interop-logo.png" alt="Microsoft Interop Events Logo" tabindex="0" />
+            <img class="pull-right" style="height: 200px; margin-top: 0;" src="../app/uploads/interop-logo.png" alt="Microsoft Interop Events Logo" tabindex="0" />
             <blockquote>
               <p>We are aligned with the open specifications' values, because we believe you should have access to the latest interoperability knowledge and product support for free. It’s your event, our treat—we'll even cover lunch! </p>
             </blockquote>
           </div>
-          <!-- <p>Microsoft interop events are free. Microsoft interoperability events are focused on building knowledge, not selling tickets.  The fundamentals of Microsoft Open Specifications and interoperability are based on providing technical training and documentation free of charge.<img class="float-left" style="height: 200px;" src="./app/uploads/interop-logo.png" /></p>
+          <!-- <p>Microsoft interop events are free. Microsoft interoperability events are focused on building knowledge, not selling tickets.  The fundamentals of Microsoft Open Specifications and interoperability are based on providing technical training and documentation free of charge.<img class="float-left" style="height: 200px;" src="uploads/interop-logo.png" /></p>
           <p>We are aligned with the open specifications' values, because we believe you should have access to the latest interoperability knowledge and product support for free. It’s your event, our treat—we'll even cover lunch! </p> -->
         </section>
       </div>
