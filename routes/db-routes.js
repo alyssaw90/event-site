@@ -90,7 +90,8 @@ module.exports = function (router) {
 
   router.route('/past-events')
   .get(function (req, res) {
-    res.sendFile(path.join(__dirname, '../app/past-events.html'));
+    // res.sendFile(path.join(__dirname, '../app/past-events.html'));
+    res.sendFile(path.join(__dirname, '../app/index.html'));
   });
 
   //route to return html for meet the team page
@@ -141,12 +142,14 @@ module.exports = function (router) {
 
   router.route('/contactus')
   .get(function (req, res) {
-    res.sendFile(path.join(__dirname, '../app/contact.html'));
+    // res.sendFile(path.join(__dirname, '../app/contact.html'));
+    res.sendFile(path.join(__dirname, '../app/index.html'));
   });
 
   router.route('/faq')
   .get(function (req, res) {
-    res.sendFile(path.join(__dirname, '../app/faq.html'));
+    // res.sendFile(path.join(__dirname, '../app/faq.html'));
+    res.sendFile(path.join(__dirname, '../app/index.html'));
   });
 
   router.route('/latest-news')

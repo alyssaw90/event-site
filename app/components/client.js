@@ -11,7 +11,7 @@ const eventsApp = angular.module('eventsApp', ['ngRoute']);
 // 	document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document.location.protocol ? 'https://' : 'http://') + 'feed.mikle.com/js/rssmikle.js">\x3C/script>');
 // }
 
-const rss2 = () => {
+/*const rss2 = () => {
 	(function() {var params = {
 		rssmikle_url: "https://msdn.microsoft.com/en-us/openspecifications/dn889925",rssmikle_frame_width: "320",rssmikle_frame_height: "900",frame_height_by_article: "0",
 		rssmikle_target: "_blank",rssmikle_font: "Arial, Helvetica, sans-serif",
@@ -45,12 +45,14 @@ const rss2 = () => {
 
 		feedwind_show_widget_iframe(params);
 	})();
-}
+}*/
 //directives
 require('./homepage/homepageDirective.build.js')(eventsApp);
-require('./latest-news/latestNewsDirective.build.js')(eventsApp);
+require('./latestNews/latestNewsDirective.build.js')(eventsApp);
+require('./contactUs/contactUsDirective.build.js')(eventsApp);
 //controllers
-require('./homepage/homepageCtrl.build.js')(eventsApp);
+require('./homepage/HomepageCtrl.build.js')(eventsApp);
+require('./pastEvents/PastEventsCtrl.build.js')(eventsApp);
 
 eventsApp
 .controller('allPagesCtrl', ['$scope', '$location', '$route', function($scope, $location, $route) {
@@ -61,7 +63,7 @@ eventsApp
 
 		$scope.$on('$routeChangeSuccess', function(next, current) { 
 /*
-	 		if ($location.path() == '/' || '/latest-news') {		      
+	 		if ($location.path() == '/' || '/latestNews') {		      
 				customFunctions.homepageStickyFooter();
 	    } else {
 	    	customFunctions.stickyFooter();
@@ -77,13 +79,25 @@ eventsApp
 	$routeProvider
 	.when('/', {
 		templateUrl: '/app/components/homepage/homepage.html',
-		controller: 'homepageCtrl'
+		controller: 'HomepageCtrl'
 	})
 	.when('/about', {
 		templateUrl: '/app/components/about/about.html'
 	})
-	/*.when('/latest-news', {
-		templateUrl: '/app/components/latest-news/latest-news.html',
+	.when('/contactus', {
+		templateUrl: '/app/components/contactUs/contactUs.html',
+
+	})
+	.when('/faq', {
+		templateUrl: '/app/components/faq/faq.html',
+
+	})
+	.when('/past-events', {
+		templateUrl: '/app/components/pastEvents/pastEvents.html',
+		controller: 'PastEventsCtrl'
+	})
+	/*.when('/latestNews', {
+		templateUrl: '/app/components/latestNews/latestNews.html',
 		// controller: 'latestNewsCtrl'
 	})*/
 
