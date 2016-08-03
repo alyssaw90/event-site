@@ -360,17 +360,17 @@ module.exports = function () {
 <li>可插入的工作窗格(Insertable task panes)</li>
 </ul>
 <h5>增益集命令 (Add-in commands)</h5>
-<p>您可以在Office增益集中添加增益集命令來讓您 擴展 Office for Windows Desktop 與Office Online 的使用者介面。 例如， 您可以在功能區或選定的內容功能表内添加及設置Office 增益集的按鈕，這能允許使用者輕鬆地訪問 Office 增益集。命令按鈕可以啟動不同的行動，如通過自訂的 HTML 或執行一個 JavaScript 函數來顯示一個窗格（或多個窗格）。有關詳細資訊，請參見 <a href="http://dev.office.com/docs/add-ins/overview/office-add-ins">Office Add-ins platform overview</a> > Types of Office add-ins > Add-in Commands. 我們還建議您看<a href="https://channel9.msdn.com/Events/Visual-Studio/Connect-event-2015/316">九 頻道</a>的視頻來更深層次地瞭解此功能。</p>
-<figcaption>有命令的增益集在 Excel Desktop中運行</figcaption>
+<p>您可以在Office增益集中添加增益集命令來讓您 擴展 Office for Windows Desktop 與Office Online 的使用者介面。 例如， 您可以在功能區或選定的內容功能表内添加及設置Office 增益集的按鈕，這能允許使用者輕鬆地訪問 Office 增益集。命令按鈕可以啟動不同的行動，如通過自訂的 HTML 或執行一個 JavaScript 函數來顯示一個窗格（或多個窗格）。有關詳細資訊，請參見 <a href="http://dev.office.com/docs/add-ins/overview/office-add-ins">Office Add-ins platform overview</a> > Types of Office add-ins > Add-in Commands. 我們還建議您看<a href="https://channel9.msdn.com/Events/Visual-Studio/Connect-event-2015/316">九 頻道</a>的視頻來更深層次地瞭解此功能。</p>
+<figcaption>有命令的增益集在 Excel Desktop中運行</figcaption>
 <img src="../uploads/office-web-curriculum-taipei-en-14.jpg" />
-<figcaption>有命令的增益集在 Excel Online中運行</figcaption>
+<figcaption>有命令的增益集在 Excel Online中運行</figcaption>
 <img src="../uploads/office-web-curriculum-taipei-en-16.jpg" />
-<p>通過 VersionOverrides，您可以對增益集資訊清單中的命令設置定義。Office平臺能在本機的使用者介面對它們進行解譯。若要開始，請查閱<a href="https://github.com/OfficeDev/Office-Add-in-Commands-Samples/">GitHub 代碼範例</a>和<a href="http://dev.office.com/docs/add-ins/design/add-in-commands-for-excel-and-word-preview">Excel、 Word、 PowerPoint增益集命令</a>。</p>
-<h5>可插入的 工作窗格</h5>
-<p>用戶端不支援增益集命令有 （Office 2013 ，Office for Mac 與Office for IPad）。這些用戶端 將通過咨詢清單中的DefaultUrl來運行工作窗格增益集。此增益集然后會從Insert Tab中的My Add-ins選項卡中啓動。</p>
+<p>通過 VersionOverrides，您可以對增益集資訊清單中的命令設置定義。Office平臺能在本機的使用者介面對它們進行解譯。若要開始，請查閱<a href="https://github.com/OfficeDev/Office-Add-in-Commands-Samples/">GitHub 代碼範例</a>和<a href="http://dev.office.com/docs/add-ins/design/add-in-commands-for-excel-and-word-preview">Excel、 Word、 PowerPoint增益集命令</a>。</p>
+<h5>可插入的 工作窗格</h5>
+<p>用戶端不支援增益集命令有 （Office 2013 ，Office for Mac 與Office for IPad）。這些用戶端 將通過咨詢清單中的DefaultUrl來運行工作窗格增益集。此增益集然后會從Insert Tab中的My Add-ins選項卡中啓動。</p>
 <table class="tableWithBorders tableFirstRowBold">
 <tr><th>注意事項</th></tr>
-<tr><td>一個咨詢清單内可以有在不支援增益集命令的用戶端中而運行的工作窗格增益集，也可以有在支援增益集命令版本中運行的工作窗格增益集。這允許您在所有支援Office 增益集的用戶端中運行一個增益集。</td></tr>
+<tr><td>一個咨詢清單内可以有在不支援增益集命令的用戶端中而運行的工作窗格增益集，也可以有在支援增益集命令版本中運行的工作窗格增益集。這允許您在所有支援Office 增益集的用戶端中運行一個增益集。</td></tr>
 </table>
 <p>工作窗格增益集能與 Office 文件并行運作，并可讓您提供關聯式資訊和功能，以強化文件檢視及撰寫體驗。例如，工作窗格增益集可以根據文件中選取的產品名稱或組件編號在 Web 服務查詢并擷取產品資訊。</p>
 <figcaption>工作窗格增益集 </figcaption>
@@ -383,7 +383,7 @@ module.exports = function () {
 <p>若要在 Excel 2013 或 Excel Online 中嘗試內容增益集，請安裝 <a href="https://store.office.com/bing-maps-WA102957661.aspx?assetid=WA102957661">Bing 地圖服務</a>增益集。</p>
 <h4>Outlook 增益集</h4>
 <p>當您檢視或撰寫 Outlook 項目時，Outlook 增益集會顯示在該項目旁邊。在讀取案例中 (使用者檢視收到項目時) 或在撰寫案例中 (使用者回覆或建立新的項目時)，它們可以與電子郵件、會議邀請、會議回覆、會議取消或約會搭配使用。</p>
-請參閲<a href="http://dev.office.com/docs/add-ins/outlook/outlook-add-ins">Outlook add-ins</a> 來瞭解Outlook增益集
+請參閲<a href="http://dev.office.com/docs/add-ins/outlook/outlook-add-ins">Outlook add-ins</a> 來瞭解Outlook增益集
 <table class="tableWithBorders tableFirstRowBold">
 <tr><th>注意事項</th></tr>
 <tr><td>Outlook 增益集需要最低的版本爲 Exchange 2013 或 Exchange Online 來主控使用者的信箱。不支援 POP 和 IMAP 電子郵件帳戶。</td></tr>
@@ -435,7 +435,7 @@ module.exports = function () {
 </ol>
 <h3 id="taipei2016-resources-cn">資源</h3>
 <p><a href="https://msdn.microsoft.com/ZH-TW/library/office/jj220082.aspx">Office 增益集平台概觀</a></p>
-<p><a href="https://dev.office.com/docs/add-ins/overview/office-add-ins">Office  增益集平台概觀（Office Dev Center 英文更新版）</a></p>
+<p><a href="https://dev.office.com/docs/add-ins/overview/office-add-ins">Office  增益集平台概觀（Office Dev Center 英文更新版）</a></p>
 <p><a href="https://dev.office.com/getting-started/addins">Getting started with Office Add-ins</a></p>
 <p><a href="https://code.visualstudio.com/Docs/runtimes/office">Office Add-ins with VS code</a></p>
 <p><a href="https://msdn.microsoft.com/ZH-TW/library/office/jj220077.aspx">Office 增益集開發週期</a></p>
@@ -2067,7 +2067,6 @@ setTimeout(function() {
 </ul>
 <ul class="tabs left"><li class="current"><a href="#redmond2016WindowsAgenda"><span style="font-size: 1.5em">Agenda</span></a></li><li><a href="#redmond2016WindowsTechnologies"><span style="font-size: 1.5em">Technologies</span></a></li></ul>
 <div id="redmond2016WindowsAgenda" class="tab-content eventTabDiv" style="display:block;">
-<div tabindex="0">
 <p>* If you cannot attend the entire Plugfest, we encourage you to attend days and sessions that best fit your schedule.</p>
 <h2>Monday, June 13, 2016</h2>
 <table class="redmond2016ScheduleTable tableWithVerticalLines scheduleTableTextOnly">
@@ -2094,7 +2093,7 @@ setTimeout(function() {
 	<tr><td>9:00-9:20</td><td class="lightGreenBackground">SQL 2016 Protocol Overview<a href="/uploads/SQL-Server-Interoperability-Overview_Updated.pptx" class="button green small float-right">Download Presentation</a></td><td class="lightGreenBackground">KB Badu-Antwi</td><td></td><td></td><td></td></tr>
 	<tr><td>9:20-10:15</td><td class="lightGreenBackground">Big Data Overview<a href="/uploads/Redmond_Protocols_Plugfest_Intro_to_ADL_Store_and_Analytics_2016_06_14.pptx" class="button green small float-right">Download Presentation</a></td><td class="lightGreenBackground">Asad Khan + Saveen Reddy </td><td></td><td></td><td></td></tr>
 	<tr><td>10:15-10:30</td><td>Break</td><td></td><td></td><td></td><td></td></tr>
-	<tr><td>10:30-11:15</td><td class="lightGreenBackground">SQL Server: Developing modern applications with Temporal Tables and JSON <a class="button small green float-right" href="/uploads/SQL2016---Developing-modern-applications-with-Temporal-Tables-and-JSON.pptx" download>Download Presentation</a></td><td class="lightGreenBackground">Jos de Bruijn</td><td>10:30-11:15</td><td class="lightBlueBackground">Office Co-authoring (MS-FSSHTTP)</td><td class="lightBlueBackground">Simon Clarke</td></tr>
+	<tr><td>10:30-11:15</td><td class="lightGreenBackground">SQL Server: Developing modern applications with Temporal Tables and JSON <a class="button small green float-right" href="/uploads/SQL2016---Developing-modern-applications-with-Temporal-Tables-and-JSON.pptx" download>Download Presentation</a></td><td class="lightGreenBackground">Jos de Bruijn</td><td>10:30-11:15</td><td class="lightBlueBackground">Office Co-authoring (MS-FSSHTTP)</td><td class="lightBlueBackground">Simon Clarke</td></tr>
 	<tr><td>11:15-12:00</td><td class="lightGreenBackground">SQL Server: Always On<a class="button small green float-right" href="/uploads/SQL-Always-On.pptx" download>Download Presentation</a></td><td class="lightGreenBackground">Kevin Farlee</td><td></td><td></td><td></td></tr>
 	<tr><td>12:00-13:00</td><td>Lunch & Machine Learning Talk<a data-presentationTime="June 14, 2016 12:00" class="button small float-right" href="/uploads/Machine-Learning-Lunch-Session.pptx" download>Download Presentation</a></td><td>Ted Way</td><td></td><td></td><td></td></tr>
 	<tr><td>13:00-13:45</td><td class="lightGreenBackground">SQL Server: Speeding up data ingestion and transaction processing with In-Memory OLTP<a data-presentationTime="June 14, 2016 1:00pm" class="button small green float-right" href="/uploads/SQL2016---In-Memory-OLTP.pptx" download>Download Presentation</a></td><td class="lightGreenBackground">Jos de Bruijn</td><td>13:00-13:45</td><td class="lightBlueBackground">Exchange 2016 Protocol Overview<a class="button small blue float-right" href="/uploads/Exchange-2016-Protocol-Overview.pptx" download>Download Presentation</a></td><td class="lightBlueBackground">Andrew Davidoff</td></tr>
@@ -2160,9 +2159,7 @@ setTimeout(function() {
 	<tr><td class="lightOrangeBackground">Windows</td></tr>
 </table>
 </div>
-</div>
     <div id="redmond2016WindowsTechnologies" class="tab-content eventTabDiv" style="display:none;">
-    <div tabindex="0">
     <ul>
     	<li>What's New in Office</li><li>Open Specifications + Interoperability</li>
    		<li>Protocol Test Suites</li><li>Mail Sim</li>
@@ -2174,7 +2171,7 @@ setTimeout(function() {
    		<li>HyperV SMB3 Storage</li>
    		<li>Private Cloud Simulator</li>
     </ul>
-    </div></div>`
+    </div>`
 			});
 		})
 		.then(function () {

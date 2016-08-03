@@ -12,13 +12,13 @@ import * as customFunctions from './common-functions.build.js';
 		const $tabContent = $('.tab-content');
 
 		function moveTab(e, self) {
-			// e.preventDefault();
+			e.stopImmediatePropagation();
 			let keyCode = customFunctions.getKeyCode(e);
 			// let parentId = self.parent('.eventTabDiv').attr('id');
-			let selfId = self.parent().attr('id');
+			let selfId = self.attr('id');
 			let parentLi = '#' + $(`[href="#${selfId}"]`).attr('id');
 
-			if (keyCode === 9 && e.shiftKey) {
+			if (keyCode === 9 && e.shiftKey && self.is('*:focus')) {
 				/*hideHomepageSections();
 				$(parentId).next().children('h3').click();
 				$(parentId.n)ext().children('h3').focus();*/
@@ -27,14 +27,14 @@ import * as customFunctions from './common-functions.build.js';
 			}
 		}
 
-		$('.eventTabDiv > :first-child, .tab-content > :first-child').keydown(function(e) {
+		$tabContent.keydown(function(e) {
 			let $this = $(this);
 			moveTab(e, $this);
 		});
 
-		$('.eventTabDiv *').keydown(function(e) {
+	/*	$('.eventTabDiv *').keydown(function(e) {
 			e.stopPropagation();
-		});
+		});*/
 
 		
 		//add #beginningOfContent id to first tab, so it can be navigated to with skip navigation
@@ -129,7 +129,7 @@ import * as customFunctions from './common-functions.build.js';
 
 
 		//add tabindexes to tab-content divs when they come into focus
-		$tabContent.focus(function(e) {
+/*		$tabContent.focus(function(e) {
 			let $this = $(this);
 			//if it's the speakers tab add tabindex to the p tag, otherwise don't include the p tags 
 			if ($this.attr('id') === 'speakers') {
@@ -137,7 +137,7 @@ import * as customFunctions from './common-functions.build.js';
 			} else {
 				$this.find('li:not(.tabs > li), th, td, *:header, .nextTab, .rightArrow, .downArrow').attr('tabindex', '0');
 			}
-		});
+		});*/
 
 		//trigger a click event when a eventTab is focused
 		$tabLinks.focus(function(e) {
@@ -154,10 +154,10 @@ import * as customFunctions from './common-functions.build.js';
 			if (keyCode === 13) {
 				// $this.trigger('click');
 				$(divId).siblings('.tab-content').hide().attr({ 'aria-hidden': 'true' });
-				$(divId).show().attr({ 'aria-hidden': 'false', 'tabindex': 'false' });
+				$(divId).show().attr({ 'aria-hidden': 'false'});
 				// $(divId).first().focus();
 				// $(divId).attr({ 'aria-hidden': 'false' });
-				$(`${divId} > :first-child`).focus();
+				$(divId).focus();
 			
 			}
 			//if tab is clicked and it is the last tab link, hide all content from tab navigation and to go to next section

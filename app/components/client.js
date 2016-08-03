@@ -47,10 +47,10 @@ const rss2 = () => {
 	})();
 }
 //directives
-require('./homepage/homepageDirective.build.js')(eventsApp);
+// require('./homepage/homepageDirective.build.js')(eventsApp);
 // require('./latest-news/latestNewsDirective.build.js')(eventsApp);
 //controllers
-require('./homepage/homepageCtrl.build.js')(eventsApp);
+// require('./homepage/homepageCtrl.build.js')(eventsApp);
 
 eventsApp
 .controller('allPagesCtrl', ['$scope', '$location', '$route', function($scope, $location, $route) {
@@ -74,7 +74,7 @@ eventsApp
 	/* Configuration is where you configure providers ( not instances) */
 	console.log("Configuration hook");
 
-	$routeProvider
+	/*$routeProvider
 	.when('/', {
 		templateUrl: '/app/components/homepage/homepage.html',
 		controller: 'homepageCtrl'
@@ -93,7 +93,7 @@ eventsApp
 	   	requireBase: false
 	  });
 		
-	}
+	}*/
 
 }])
 /*.directive('newScript', [function() {
