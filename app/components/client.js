@@ -47,10 +47,10 @@ const rss2 = () => {
 	})();
 }
 //directives
-// require('./homepage/homepageDirective.build.js')(eventsApp);
-// require('./latest-news/latestNewsDirective.build.js')(eventsApp);
+require('./homepage/homepageDirective.build.js')(eventsApp);
+require('./latest-news/latestNewsDirective.build.js')(eventsApp);
 //controllers
-// require('./homepage/homepageCtrl.build.js')(eventsApp);
+require('./homepage/homepageCtrl.build.js')(eventsApp);
 
 eventsApp
 .controller('allPagesCtrl', ['$scope', '$location', '$route', function($scope, $location, $route) {
@@ -60,12 +60,12 @@ eventsApp
 		}
 
 		$scope.$on('$routeChangeSuccess', function(next, current) { 
-
+/*
 	 		if ($location.path() == '/' || '/latest-news') {		      
 				customFunctions.homepageStickyFooter();
 	    } else {
 	    	customFunctions.stickyFooter();
-	    }
+	    }*/
 	
 	 	});
 
@@ -74,7 +74,7 @@ eventsApp
 	/* Configuration is where you configure providers ( not instances) */
 	console.log("Configuration hook");
 
-	/*$routeProvider
+	$routeProvider
 	.when('/', {
 		templateUrl: '/app/components/homepage/homepage.html',
 		controller: 'homepageCtrl'
@@ -82,10 +82,10 @@ eventsApp
 	.when('/about', {
 		templateUrl: '/app/components/about/about.html'
 	})
-	.when('/latest-news', {
+	/*.when('/latest-news', {
 		templateUrl: '/app/components/latest-news/latest-news.html',
 		// controller: 'latestNewsCtrl'
-	})
+	})*/
 
 	if(window.history && window.history.pushState) {
 		$locationProvider.html5Mode({
@@ -93,7 +93,7 @@ eventsApp
 	   	requireBase: false
 	  });
 		
-	}*/
+	}
 
 }])
 /*.directive('newScript', [function() {
@@ -114,11 +114,11 @@ eventsApp
 	console.log("Run hook");
 
 	$rootScope.$on('$routeChangeSuccess', function(next, current) { 
- 		customFunctions.stickyFooter();
- 		/*if ($location.path() == '/') {
+
+ 		if ($location.path() == '/') {
       $rootScope.hideSlider = true;
     };
-*/
+
  	});
 
 }])

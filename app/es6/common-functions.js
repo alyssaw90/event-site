@@ -94,7 +94,7 @@ export let findPos = function(obj) {
 
 //make footer stick to bottom of content or page, whichever is taller.
 export let stickyFooter = function() {
-	var $window = $(window);
+	/*var $window = $(window);
 	var $document = $(document);
 	var $footer = $('.foot');
 	var $backToTopButton = $('.scroll-button');
@@ -109,13 +109,13 @@ export let stickyFooter = function() {
   }
   if ($window.height() > $document.height() - 200 || $window.width() >= 768) {
     $backToTopButton.hide();
-  }
+  }*/
 
 }
 
 //special sticky footer for homepage that switches equals signs in the if statements
 export let homepageStickyFooter = function() {
-	var $window = $(window);
+	/*var $window = $(window);
 	var $document = $(document);
 	var $footer = $('.foot');
 	var $backToTopButton = $('.scroll-button');
@@ -131,7 +131,7 @@ export let homepageStickyFooter = function() {
   }
   if ($window.height() > $document.height() - 200 || $window.width() >= 768) {
     $backToTopButton.hide();
-  }
+  }*/
 }
 
 //function to set divs with equal height

@@ -1,6 +1,35 @@
+//make footer sticky
+* {margin:0;padding:0;} 
+html, body {height: 100%;}
+.mobileWrapper {min-height: 100%;}
+
+main {
+  overflow:auto;
+  padding-bottom: 180px; /* must be same height as the footer */
+}
+
+footer {
+  position: relative;
+  // margin-top: -180px; /* negative value of footer height */
+  height: 180px;
+  clear:both;
+} 
+
+/*Opera Fix thanks to Maleika (Kohoutec)*/
+body:before {
+  content:"";
+  height:100%;
+  float:left;
+  width:0;
+  margin-top:-32767px;/* thank you Erik J - negate effect of float*/
+}
 
 footer a {
-color: #000;
+	color: #000;
+}
+
+footer nav {
+	width: 100%;
 }
 
 .siteFooter {
@@ -14,7 +43,7 @@ color: #000;
 }
 
 .siteFooter p {
-text-align: center;
+	text-align: center;
 }
 
 .siteFooter a:hover,
@@ -70,4 +99,6 @@ text-align: center;
 .newsletterSubscSection button {
 	font-size: 1em;
 	margin: 0 0 10px 40px;
+	width: 100%;
 }
+
