@@ -5,7 +5,7 @@ const PastEventsCtrl = (app) => {
 		$scope.pastEvents = [
 			{
 				year: 2016,
-				calendar: `<table cellspacing="0" cellpadding="0" id="2016PastEvents" tabindex="0">
+				calendarHtml: `<table cellspacing="0" cellpadding="0" id="2016PastEvents" tabindex="0">
                       <caption>Past plugfests and events from 2008</caption>
                           <thead>
                           <tr>
@@ -43,7 +43,7 @@ const PastEventsCtrl = (app) => {
                   },
       {
       	year: 2015,
-      	calendar: `<table id="2015PastEvents" tabindex="0" cellspacing="0" cellpadding="0">
+      	calendarHtml: `<table id="2015PastEvents" tabindex="0" cellspacing="0" cellpadding="0">
 											<thead><tr>
 												<th>Name</th>
 												<th>Date</th>
@@ -92,7 +92,7 @@ const PastEventsCtrl = (app) => {
 										},
       {
       	year: 2014,
-      	calendar: `<table id="2014PastEvents" tabindex="0" cellspacing="0" cellpadding="0">
+      	calendarHtml: `<table id="2014PastEvents" tabindex="0" cellspacing="0" cellpadding="0">
 												<thead><tr>
 													<th>Name</th>
 													<th>Date</th>
@@ -135,7 +135,7 @@ const PastEventsCtrl = (app) => {
 										},
       {
       	year: 2013,
-      	calendar: `<table id="2013PastEvents" tabindex="0" cellspacing="0" cellpadding="0">
+      	calendarHtml: `<table id="2013PastEvents" tabindex="0" cellspacing="0" cellpadding="0">
 													<thead><tr>
 													<th>Name</th>
 													<th>Date</th>
@@ -172,7 +172,7 @@ const PastEventsCtrl = (app) => {
 										},
       {
       	year: 2012,
-      	calendar: `<table id="2012PastEvents" tabindex="0" cellspacing="0" cellpadding="0">
+      	calendarHtml: `<table id="2012PastEvents" tabindex="0" cellspacing="0" cellpadding="0">
 												<thead><tr>
 												<th>Name</th>
 												<th>Date</th>
@@ -245,7 +245,7 @@ const PastEventsCtrl = (app) => {
 									},
       {
       	year: 2011,
-      	calendar: `<table id="2011PastEvents" tabindex="0" cellspacing="0" cellpadding="0">
+      	calendarHtml: `<table id="2011PastEvents" tabindex="0" cellspacing="0" cellpadding="0">
 											<thead><tr>
 												<th>Name</th>
 												<th>Date</th>
@@ -288,7 +288,7 @@ const PastEventsCtrl = (app) => {
 										},
       {
       	year: 2010,
-      	calendar: `<table id="2010PastEvents" tabindex="0" cellspacing="0" cellpadding="0">
+      	calendarHtml: `<table id="2010PastEvents" tabindex="0" cellspacing="0" cellpadding="0">
 												<thead><tr>
 												<th>Name</th>
 												<th>Date</th>
@@ -355,7 +355,7 @@ const PastEventsCtrl = (app) => {
 									},
       {
       	year: 2009,
-      	calendar: `<table id="2009PastEvents" tabindex="0" cellspacing="0" cellpadding="0">
+      	calendarHtml: `<table id="2009PastEvents" tabindex="0" cellspacing="0" cellpadding="0">
 												<thead><tr>
 													<th>Name</th>
 													<th>Date</th>
@@ -422,7 +422,7 @@ const PastEventsCtrl = (app) => {
 										},
 											{
 												year: 2008,
-												calendar: `<table id="2008PastEvents" tabindex="0" cellspacing="0" cellpadding="0">
+												calendarHtml: `<table id="2008PastEvents" tabindex="0" cellspacing="0" cellpadding="0">
 												<thead><tr>
 													<th>Name</th>
 													<th>Date</th>
@@ -481,7 +481,22 @@ const PastEventsCtrl = (app) => {
 												</tr></tbody>
 											</table>` 
 										}
-		]
+		];
+
+		//function to show and hide past event tables on past events page
+		$scope.showCalendarOfPastEvents = (calendarHtml, divClicked, calendarDiv) => {
+		  
+		  if (angular.element(divClicked).hasClass('selected-year')) {
+		    angular.element(calendarDiv).empty();
+		  } else {
+		    angular.element(calendarDiv).empty();
+		    angular.element(calendarDiv).append(calendarHtml);
+		  }
+		  angular.element(divClicked).siblings().removeClass('selected-year');
+		  angular.element(divClicked).toggleClass('selected-year');
+		  angular.element(calendarDiv).focus();
+		};
+
 	}])
 }
 
