@@ -40,7 +40,7 @@
 </div> -->
 
 <main tabindex="0" id="beginningOfContent" class="grid white-bg main-page-content the-team-section" data-ng-controller="MeetTheTeamCtrl" data-ng-init="getTeamMembers()">
-  <section data-ng-repeat="teamMember in teamMembers" class="col_12 internetExplorer" id="{{teamMember.divId}}" role="presentation">
+  <section data-ng-repeat="teamMember in teamMembers | orderBy: 'meetTheTeamPageOrder'" class="col_12 internetExplorer" id="{{teamMember.divId}}" role="presentation">
     <h4>{{teamMember.firstName + ' ' +  teamMember.lastName}}</h4>
     <h5>{{teamMember.msTeamTitle}}</h5>
     <p><img alt="Image of {{teamMember.fullName}}" class="pull-left" src="app/uploads/{{teamMember.headShot}}" />{{teamMember.contactDescription}}</p>
