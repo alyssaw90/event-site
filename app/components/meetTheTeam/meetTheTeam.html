@@ -1,0 +1,49 @@
+<!-- speakers.sort(function(a, b) {
+        a = a.meetTheTeamPageOrder;
+        b = b.meetTheTeamPageOrder;
+        if (a > b) {
+          return 1;
+        }
+        if (a < b) {
+          return -1;
+        }
+        if (a === b) {
+          return 0;
+        }
+      });
+      let meetTheTeamSpeakersArr = [];
+      let meetTheTeamSpeakersHtml = '<main style="overflow:hidden" tabindex="0" id="beginningOfContent" class="grid white-bg main-page-content the-team-section">';
+      //loop over the returned speakers and splice them into an array using their position number minus one as the index
+      for (let key in speakers) {
+        meetTheTeamSpeakersArr.splice(speakers[key].meetTheTeamPageOrder - 1, 0, speakers[key]);
+      }
+      //create the string of html to add to the page
+      // meetTheTeamSpeakersHtml += `<section class="col_12 internetExplorer" id="${meetTheTeamSpeakersArr[0].divId}"><h4  id="beginningOfContent">${meetTheTeamSpeakersArr[0].firstName} ${meetTheTeamSpeakersArr[0].lastName}</h4><h5>${meetTheTeamSpeakersArr[0].msTeamTitle}</h5><p><img alt="Image of ${meetTheTeamSpeakersArr[0].fullName}" class="pull-left" src="app/uploads/${meetTheTeamSpeakersArr[0].headShot}" />${meetTheTeamSpeakersArr[0].contactDescription}</p><hr class="alt1" /></section>`;
+      for (let i = 0, j = meetTheTeamSpeakersArr.length; i < j; i++) {
+        meetTheTeamSpeakersHtml += `<section class="col_12 internetExplorer" id="${meetTheTeamSpeakersArr[i].divId}" role="presentation"><h4>${meetTheTeamSpeakersArr[i].firstName} ${meetTheTeamSpeakersArr[i].lastName}</h4><h5>${meetTheTeamSpeakersArr[i].msTeamTitle}</h5><p><img alt="Image of ${meetTheTeamSpeakersArr[i].fullName}" class="pull-left" src="app/uploads/${meetTheTeamSpeakersArr[i].headShot}" />${meetTheTeamSpeakersArr[i].contactDescription}</p><hr class="alt1" /></section>`;
+      }
+      //read in the meet-the-team.html page and add the speakers html then send the html string
+      fs.readFile(path.join(__dirname, '../app/meet-the-team.html'), function(err, speakersPage) {
+        let speakersPageHtml = speakersPage.toString();
+        speakersPageHtml = speakersPageHtml.replace('<main tabindex="0" id="beginningOfContent" class="grid white-bg main-page-content the-team-section">', meetTheTeamSpeakersHtml);
+        res.send(speakersPageHtml);
+
+<div class="mobileWrapper" role="presentation" data-ng-controller="PastEventsCtrl">
+  <main class="grid past-events-menu" role="presentation">
+    <div class="col_12 internetExplorer gallery" id="pastEventsWrapper" role="presentation">
+      <div class="white-bg" id="calendar">
+      </div>
+      <div data-ng-repeat="pastEvent in pastEvents" data-ng-click="showCalendarOfPastEvents(pastEvent.calendarHtml, '#' + pastEvent.year + '_events', '#calendar', keydownkeycode)" data-ng-keypress="showCalendarOfPastEvents(pastEvent.calendarHtml, '#' + pastEvent.year + '_events', '#calendar', keydownkeycode)" class="col_3 past_events" id="{{pastEvent.year + '_events'}}" role="presentation">
+        <h2 tabindex="0">{{pastEvent.year}} Events</h2>
+      </div>
+  </main>
+</div> -->
+
+<main tabindex="0" id="beginningOfContent" class="grid white-bg main-page-content the-team-section" data-ng-controller="MeetTheTeamCtrl" data-ng-init="getTeamMembers()">
+  <section data-ng-repeat="teamMember in teamMembers" class="col_12 internetExplorer" id="{{teamMember.divId}}" role="presentation">
+    <h4>{{teamMember.firstName + ' ' +  teamMember.lastName}}</h4>
+    <h5>{{teamMember.msTeamTitle}}</h5>
+    <p><img alt="Image of {{teamMember.fullName}}" class="pull-left" src="app/uploads/{{teamMember.headShot}}" />{{teamMember.contactDescription}}</p>
+    <hr class="alt1" />
+  </section>
+</main>

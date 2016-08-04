@@ -484,18 +484,21 @@ const PastEventsCtrl = (app) => {
 		];
 
 		//function to show and hide past event tables on past events page
-		$scope.showCalendarOfPastEvents = (calendarHtml, divClicked, calendarDiv) => {
+		$scope.showCalendarOfPastEvents = (calendarHtml, divClicked, calendarDiv, keyCode) => {
+			if (keyCode === 1 || 13) {
+			  if (angular.element(divClicked).hasClass('selected-year')) {
+			    angular.element(calendarDiv).empty();
+			  } else {
+			    angular.element(calendarDiv).empty();
+			    angular.element(calendarDiv).append(calendarHtml);
+			  }
+			  angular.element(divClicked).siblings().removeClass('selected-year');
+			  angular.element(divClicked).toggleClass('selected-year');
+			  angular.element(calendarDiv).focus();
+			};
+				
+			}
 		  
-		  if (angular.element(divClicked).hasClass('selected-year')) {
-		    angular.element(calendarDiv).empty();
-		  } else {
-		    angular.element(calendarDiv).empty();
-		    angular.element(calendarDiv).append(calendarHtml);
-		  }
-		  angular.element(divClicked).siblings().removeClass('selected-year');
-		  angular.element(divClicked).toggleClass('selected-year');
-		  angular.element(calendarDiv).focus();
-		};
 
 	}])
 }

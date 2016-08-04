@@ -1,35 +1,7 @@
 //make footer sticky
-* {margin:0;padding:0;} 
-html, body {height: 100%;}
-.mobileWrapper {min-height: 100%;}
-
-main {
-  overflow:auto;
-  padding-bottom: 180px; /* must be same height as the footer */
-}
-
-footer {
-  position: relative;
-  // margin-top: -180px; /* negative value of footer height */
-  height: 180px;
-  clear:both;
-} 
-
-/*Opera Fix thanks to Maleika (Kohoutec)*/
-body:before {
-  content:"";
-  height:100%;
-  float:left;
-  width:0;
-  margin-top:-32767px;/* thank you Erik J - negate effect of float*/
-}
-
-footer a {
-	color: #000;
-}
-
-footer nav {
-	width: 100%;
+#siteWrapper {
+	// min-height: 100%;
+	min-height: 90vh;
 }
 
 .siteFooter {

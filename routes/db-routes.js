@@ -94,8 +94,28 @@ module.exports = function (router) {
     res.sendFile(path.join(__dirname, '../app/index.html'));
   });
 
-  //route to return html for meet the team page
   router.route('/meet-the-team')
+  .get(function (req, res) {
+    // res.sendFile(path.join(__dirname, '../app/past-events.html'));
+    res.sendFile(path.join(__dirname, '../app/index.html'));
+  });
+
+  router.route('/getTeam')
+  .get(function(req, res) {
+    models.sql.sync()
+    .then(function() {
+      return Contact.findAll({
+        where: {
+          showOnMeetTheTeamPage: true
+        }
+      })
+    })
+    .then(function(teamMembers) {
+      res.json(teamMembers);
+    })
+  })
+  //route to return html for meet the team page
+  /*router.route('/meet-the-team')
   .get(function(req, res) {
     //sync with the database and search for all speakers where showOnMeetTheTeamPage is true
     models.sql.sync()
@@ -138,7 +158,7 @@ module.exports = function (router) {
         res.send(speakersPageHtml);
       });
     });
-  });
+  });*/
 
   router.route('/contactus')
   .get(function (req, res) {

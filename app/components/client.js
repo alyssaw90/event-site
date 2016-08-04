@@ -46,6 +46,7 @@ const eventsApp = angular.module('eventsApp', ['ngRoute']);
 		feedwind_show_widget_iframe(params);
 	})();
 }*/
+
 //directives
 require('./homepage/homepageDirective.build.js')(eventsApp);
 require('./latestNews/latestNewsDirective.build.js')(eventsApp);
@@ -53,6 +54,9 @@ require('./contactUs/contactUsDirective.build.js')(eventsApp);
 //controllers
 require('./homepage/HomepageCtrl.build.js')(eventsApp);
 require('./pastEvents/PastEventsCtrl.build.js')(eventsApp);
+require('./meetTheTeam/MeetTheTeamCtrl.build.js')(eventsApp);
+//services
+require('./meetTheTeam/meetTheTeamRestResource.build.js')(eventsApp);
 
 eventsApp
 .controller('allPagesCtrl', ['$scope', '$location', '$route', function($scope, $location, $route) {
@@ -72,7 +76,7 @@ eventsApp
 	 	});
 
 }])
-.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider, $rootScope) {
+.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 	/* Configuration is where you configure providers ( not instances) */
 	console.log("Configuration hook");
 
@@ -95,6 +99,10 @@ eventsApp
 	.when('/past-events', {
 		templateUrl: '/app/components/pastEvents/pastEvents.html',
 		controller: 'PastEventsCtrl'
+	})
+	.when('/meet-the-team', {
+		templateUrl: '/app/components/meetTheTeam/meetTheTeam.html',
+		controller: 'MeetTheTeamCtrl'
 	})
 	/*.when('/latestNews', {
 		templateUrl: '/app/components/latestNews/latestNews.html',
@@ -122,7 +130,7 @@ eventsApp
 	}
 
 }])*/
-.run(['$rootScope', function ($rootScope) {
+.run(['$rootScope', '$location', function ($rootScope, $location) {
 	/* Run is when the app gets kicked off */
 	// $rootScope.rss = rss2;
 	console.log("Run hook");
