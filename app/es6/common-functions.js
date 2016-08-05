@@ -81,6 +81,22 @@ export let highContrast = () => {
 	}, 400)
 }
 
+//success and error handlers for angular REST resources
+
+export const handleError = (callback) => {
+  return function (data) {
+    console.log(data);
+    callback(data);
+  }
+};
+
+export const handleSuccess = (callback) => {
+  return function (data) {
+    callback(null, data);
+  }
+};
+
+
 //Finds y value of given object
 export let findPos = function(obj) {
   var curtop = 0;

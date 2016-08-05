@@ -11,6 +11,7 @@
   "license": "MS-PL",
   "dependencies": {
     "angular": "^1.5.8",
+    "angular-aria": "^1.5.8",
     "angular-route": "^1.5.8",
     "bcrypt-nodejs": "latest",
     "body-parser": "^1.15.0",

@@ -237,90 +237,172 @@ module.exports = function (router) {
     res.sendFile(path.join(__dirname, '../app/loggedout.html'));
   });
 
-  //find all events that are upcoming and add the next 3 upcoming events to the future-events page
   router.route('/future-events')
-  .get(function (req, res) {
-    let eventBlocksHtml = '<section role="presentation" class="col_12 internetExplorer futureEvents">';
-    let newHtml = '';
-    // let numFutureBlocks = 4;
+  .get(function(req, res) {
+    res.sendFile(path.join(__dirname, '../app/index.html'));
+  });
+
+  router.route('/futureEventsData')
+  .get(function(req, res) {
     let eventDates = 'Coming Soon';
     let city;
     let cityArr;
-
-    fs.readFile(path.join(__dirname, '../app/future-events.html'), function (err, html) {
-      if (err) {
-        console.log(err);
-        res.status(500).json({msg: 'internal server error'});
-      }
-      models.sql.sync()
-      .then(function () {
-        Event.findAll({
-          where: {
-            eventEndDate: {
-                $or: {
-                  $gte: new Date(),
-                  $eq: null,
-                  /* jshint ignore:start */
-                  $eq: new Date(new Date().getFullYear().toString())
-                  /* jshint ignore:end */
-              }
+    models.sql.sync()
+    .then(function() {
+      return Event.findAll({
+        where: {
+          eventEndDate: {
+              $or: {
+                $gte: new Date(),
+                $eq: null,
+                /* jshint ignore:start */
+                $eq: new Date(new Date().getFullYear().toString())
+                /* jshint ignore:end */
             }
           }
-        })
-        .then(function (upcomingEvent) {
-          /*if (upcomingEvent.length < 4) {
-            numFutureBlocks = upcomingEvent.length;
-          }*/
-          upcomingEvent.sort(function (a, b) {
-            a = a.eventEndDate;
-            b = b.eventEndDate;
-            if (a === null) {
-              let tmpDate = new Date();
-              a = tmpDate.setMonth(11, 31);
-            }
-            if (b === null) {
-              let tmpDate = new Date();
-              b = tmpDate.setMonth(11, 31);
-            }
-            if (a > b) {
-              return 1;
-            }
-            if (a < b) {
-              return -1;
-            }
-            if (a === b) {
-              return 0;
-            }
-          });
-
-
-          for (let i = 0; i < upcomingEvent.length; i++) {
-            
-            cityArr = upcomingEvent[i].eventLocation.split('_');
-            for (let index = 0, j = cityArr.length; index < j; index++) {
-              cityArr[index] = cityArr[index].charAt(0).toUpperCase() + cityArr[index].slice(1);
-            }
-
-            city = cityArr.join(' ');
-            
-            if (upcomingEvent[i].eventStartDate !== null && (upcomingEvent[i].eventStartDate.getMonth() !== 0 && upcomingEvent[i].eventStartDate.getDate() !== 1)) {
-              eventDates = `${months[upcomingEvent[i].eventStartDate.getMonth()]} ${upcomingEvent[i].eventStartDate.getDate()} - ${upcomingEvent[i].eventEndDate.getDate()}, ${upcomingEvent[i].eventEndDate.getFullYear()}`;
-            } else if (upcomingEvent[i].eventStartDate !== null && (upcomingEvent[i].eventStartDate.getMonth() === 0 && upcomingEvent[i].eventStartDate.getDate() === 1)) {
-              eventDates = `${upcomingEvent[i].eventEndDate.getFullYear()}`;
-            } else {
-              eventDates = 'TBD';
-            }
-
-            eventBlocksHtml += i === 0 ? `<div class="col_${Math.floor(12 / upcomingEvent.length)} event_block" style="background-color: ${upcomingEvent[i].eventHighlightColor};"><a id="beginningOfContent" href="/${upcomingEvent[i].eventUrl}"><p>More Details</p><h1>${city}</h1><h3>${upcomingEvent[i].eventName}<br />${eventDates}</h3></a></div>` : `<div class="col_${Math.floor(12 / upcomingEvent.length)} event_block" style="background-color: ${upcomingEvent[i].eventHighlightColor};"><a href="/${upcomingEvent[i].eventUrl}"><p>More Details</p><h1>${city}</h1><h3>${upcomingEvent[i].eventName}<br />${eventDates}</h3></a></div>`;
-            // eventBlocksHtml += `<div class="col_${Math.floor(12 / upcomingEvent.length)} event_block" style="background-color: #${continentColors[upcomingEvent[i].eventContinent]};"><a href="/${upcomingEvent[i].eventUrl}"><p>More Details</p><h1>${city}</h1><h3>${upcomingEvent[i].eventName}<br />${eventDates}</h3></a>${risingText}</div>`;
-          }
-          eventBlocksHtml += '</section>';
-          newHtml = html.toString().replace('<section class="col_12 internetExplorer" aria-role="presentation">', eventBlocksHtml);
-          res.send(newHtml);
-        });
+        }
+      })
+    })
+    .then(function(upcomingEvents) {
+      let outputArr = [];
+      upcomingEvents.sort(function (a, b) {
+        a = a.eventEndDate;
+        b = b.eventEndDate;
+        if (a === null) {
+          let tmpDate = new Date();
+          a = tmpDate.setMonth(11, 31);
+        }
+        if (b === null) {
+          let tmpDate = new Date();
+          b = tmpDate.setMonth(11, 31);
+        }
+        if (a > b) {
+          return 1;
+        }
+        if (a < b) {
+          return -1;
+        }
+        if (a === b) {
+          return 0;
+        }
       });
-    });
-  });
+
+      for (let i = 0, len = upcomingEvents.length; i < len; i++) {
+        let eventObj = {};
+        
+        cityArr = upcomingEvents[i].eventLocation.split('_');
+        
+        for (let index = 0, j = cityArr.length; index < j; index++) {
+          cityArr[index] = cityArr[index].charAt(0).toUpperCase() + cityArr[index].slice(1);
+        }
+
+        city = cityArr.join(' ');
+        
+        if (upcomingEvents[i].eventStartDate !== null && (upcomingEvents[i].eventStartDate.getMonth() !== 0 && upcomingEvents[i].eventStartDate.getDate() !== 1)) {
+          eventDates = `${months[upcomingEvents[i].eventStartDate.getMonth()]} ${upcomingEvents[i].eventStartDate.getDate()} - ${upcomingEvents[i].eventEndDate.getDate()}, ${upcomingEvents[i].eventEndDate.getFullYear()}`;
+        } else if (upcomingEvents[i].eventStartDate !== null && (upcomingEvents[i].eventStartDate.getMonth() === 0 && upcomingEvents[i].eventStartDate.getDate() === 1)) {
+          eventDates = `${upcomingEvents[i].eventEndDate.getFullYear()}`;
+        } else {
+          eventDates = 'TBD';
+        }
+        
+        eventObj.continentColor = continentColors[upcomingEvents[i].eventContinent];
+        eventObj.eventDates = eventDates;
+        eventObj.city = city;
+        eventObj.colNum = Math.floor(12 / upcomingEvents.length);
+        eventObj.eventName = upcomingEvents[i].eventName;
+
+        outputArr.push(eventObj)
+      }
+
+      res.json(outputArr);
+    })
+  })
+
+  //find all events that are upcoming and add the next 3 upcoming events to the future-events page
+  // router.route('/future-events')
+  // .get(function (req, res) {
+  //   let eventBlocksHtml = '<section role="presentation" class="col_12 internetExplorer futureEvents">';
+  //   let newHtml = '';
+  //   // let numFutureBlocks = 4;
+  //   let eventDates = 'Coming Soon';
+  //   let city;
+  //   let cityArr;
+
+  //   fs.readFile(path.join(__dirname, '../app/future-events.html'), function (err, html) {
+  //     if (err) {
+  //       console.log(err);
+  //       res.status(500).json({msg: 'internal server error'});
+  //     }
+  //     models.sql.sync()
+  //     .then(function () {
+  //       Event.findAll({
+  //         where: {
+  //           eventEndDate: {
+  //               $or: {
+  //                 $gte: new Date(),
+  //                 $eq: null,
+  //                 /* jshint ignore:start */
+  //                 $eq: new Date(new Date().getFullYear().toString())
+  //                 /* jshint ignore:end */
+  //             }
+  //           }
+  //         }
+  //       })
+  //       .then(function (upcomingEvent) {
+  //         /*if (upcomingEvent.length < 4) {
+  //           numFutureBlocks = upcomingEvent.length;
+  //         }*/
+  //         upcomingEvent.sort(function (a, b) {
+  //           a = a.eventEndDate;
+  //           b = b.eventEndDate;
+  //           if (a === null) {
+  //             let tmpDate = new Date();
+  //             a = tmpDate.setMonth(11, 31);
+  //           }
+  //           if (b === null) {
+  //             let tmpDate = new Date();
+  //             b = tmpDate.setMonth(11, 31);
+  //           }
+  //           if (a > b) {
+  //             return 1;
+  //           }
+  //           if (a < b) {
+  //             return -1;
+  //           }
+  //           if (a === b) {
+  //             return 0;
+  //           }
+  //         });
+
+
+  //         for (let i = 0; i < upcomingEvent.length; i++) {
+            
+  //           cityArr = upcomingEvent[i].eventLocation.split('_');
+  //           for (let index = 0, j = cityArr.length; index < j; index++) {
+  //             cityArr[index] = cityArr[index].charAt(0).toUpperCase() + cityArr[index].slice(1);
+  //           }
+
+  //           city = cityArr.join(' ');
+            
+  //           if (upcomingEvent[i].eventStartDate !== null && (upcomingEvent[i].eventStartDate.getMonth() !== 0 && upcomingEvent[i].eventStartDate.getDate() !== 1)) {
+  //             eventDates = `${months[upcomingEvent[i].eventStartDate.getMonth()]} ${upcomingEvent[i].eventStartDate.getDate()} - ${upcomingEvent[i].eventEndDate.getDate()}, ${upcomingEvent[i].eventEndDate.getFullYear()}`;
+  //           } else if (upcomingEvent[i].eventStartDate !== null && (upcomingEvent[i].eventStartDate.getMonth() === 0 && upcomingEvent[i].eventStartDate.getDate() === 1)) {
+  //             eventDates = `${upcomingEvent[i].eventEndDate.getFullYear()}`;
+  //           } else {
+  //             eventDates = 'TBD';
+  //           }
+
+  //           eventBlocksHtml += i === 0 ? `<div class="col_${Math.floor(12 / upcomingEvent.length)} event_block" style="background-color: ${upcomingEvent[i].eventHighlightColor};"><a id="beginningOfContent" href="/${upcomingEvent[i].eventUrl}"><p>More Details</p><h1>${city}</h1><h3>${upcomingEvent[i].eventName}<br />${eventDates}</h3></a></div>` : `<div class="col_${Math.floor(12 / upcomingEvent.length)} event_block" style="background-color: ${upcomingEvent[i].eventHighlightColor};"><a href="/${upcomingEvent[i].eventUrl}"><p>More Details</p><h1>${city}</h1><h3>${upcomingEvent[i].eventName}<br />${eventDates}</h3></a></div>`;
+  //           // eventBlocksHtml += `<div class="col_${Math.floor(12 / upcomingEvent.length)} event_block" style="background-color: #${continentColors[upcomingEvent[i].eventContinent]};"><a href="/${upcomingEvent[i].eventUrl}"><p>More Details</p><h1>${city}</h1><h3>${upcomingEvent[i].eventName}<br />${eventDates}</h3></a>${risingText}</div>`;
+  //         }
+  //         eventBlocksHtml += '</section>';
+  //         newHtml = html.toString().replace('<section class="col_12 internetExplorer" aria-role="presentation">', eventBlocksHtml);
+  //         res.send(newHtml);
+  //       });
+  //     });
+  //   });
+  // });
 
   //route to send style choices for website
   router.get('/sitestyle', function(req, res) {

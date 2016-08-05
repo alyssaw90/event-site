@@ -1,0 +1,12 @@
+<main class="events grid" aria-role="presentation" data-ng-controller="FutureEventsCtrl" data-ng-init="getUpcomingEvents()" data-future-events-directive>
+  <section class="col_12 internetExplorer" aria-role="presentation">
+  	<div data-ng-repeat="futureEvent in futureEvents | orderBy: eventStartDate" class="col_{{futureEvent.colNum}} event_block" style="background-color: #{{futureEvent.continentColor}};">
+  		<a href="/{{futureEvent.eventUrl}}">
+  			<p>More Details</p>
+  			<h1>{{futureEvent.city}}</h1>
+  			<h3>{{futureEvent.eventName}}<br />{{futureEvent.eventDates}}</h3>
+  		</a>
+		</div>
+  	<section tabindex="0" aria-label="Map of upcoming events" id="eventsMap" class="col_12"></section>
+  </section>
+</main>

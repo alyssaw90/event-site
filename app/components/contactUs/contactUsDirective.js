@@ -4,7 +4,7 @@ const contactUsDirective = () => {
 	const $emailButton = angular.element('#emailButton');
 
 	$emailButton.click(function (e) {
-		$emailButton.attr('href', 'mailto:v-mibowe@microsoft.com?subject=' + angular.element('#emailSubject').val() + '&body=' + angular.element('#emailBody').val());
+		$emailButton.attr('href', 'mailto:plugfests@microsoft.com?subject=' + angular.element('#emailSubject').val() + '&body=' + angular.element('#emailBody').val());
 	});
 }
 

@@ -3,9 +3,10 @@
 import * as customFunctions from './../es6/common-functions.build.js';
 require('angular/angular');
 require('angular-route');
+require('angular-aria');
 
 // declare a module
-const eventsApp = angular.module('eventsApp', ['ngRoute']);
+const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria']);
 
 // const rss1 = () => {
 // 	document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document.location.protocol ? 'https://' : 'http://') + 'feed.mikle.com/js/rssmikle.js">\x3C/script>');
@@ -51,12 +52,15 @@ const eventsApp = angular.module('eventsApp', ['ngRoute']);
 require('./homepage/homepageDirective.build.js')(eventsApp);
 require('./latestNews/latestNewsDirective.build.js')(eventsApp);
 require('./contactUs/contactUsDirective.build.js')(eventsApp);
+require('./futureEvents/futureEventsDirective.build.js')(eventsApp);
 //controllers
 require('./homepage/HomepageCtrl.build.js')(eventsApp);
 require('./pastEvents/PastEventsCtrl.build.js')(eventsApp);
 require('./meetTheTeam/MeetTheTeamCtrl.build.js')(eventsApp);
+require('./futureEvents/FutureEventsController.build.js')(eventsApp);
 //services
 require('./meetTheTeam/meetTheTeamRestResource.build.js')(eventsApp);
+require('./futureEvents/futureEventsRESTResource.build.js')(eventsApp);
 
 eventsApp
 .controller('allPagesCtrl', ['$scope', '$location', '$route', function($scope, $location, $route) {
@@ -103,6 +107,10 @@ eventsApp
 	.when('/meet-the-team', {
 		templateUrl: '/app/components/meetTheTeam/meetTheTeam.html',
 		controller: 'MeetTheTeamCtrl'
+	})
+	.when('/future-events', {
+		templateUrl: '/app/components/futureEvents/futureEvents.html',
+		controller: 'FutureEventsCtrl'
 	})
 	/*.when('/latestNews', {
 		templateUrl: '/app/components/latestNews/latestNews.html',

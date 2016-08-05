@@ -2,14 +2,14 @@
 
 import * as customFunctions from './../../es6/common-functions.build.js';
 
-const meetTheTeamRESTResource = (app) => {
+const futureEventsRESTResource = (app) => {
 
-	app.factory('meetTheTeamRESTResource', ['$http', function($http) {
+	app.factory('futureEventsRESTResource', ['$http', function($http) {
 
 		return function(callback) {
 			return {
-				getMeetTheTeamSpeakers: function(callback) {
-					$http.get('/getTeam')
+				getFutureEvents: function(callback) {
+					$http.get('/futureEventsData')
           .success(customFunctions.handleSuccess(callback))
           .error(customFunctions.handleError(callback));
 				}
@@ -20,4 +20,4 @@ const meetTheTeamRESTResource = (app) => {
 	}])
 }
 
-module.exports = meetTheTeamRESTResource;
+module.exports = futureEventsRESTResource;
