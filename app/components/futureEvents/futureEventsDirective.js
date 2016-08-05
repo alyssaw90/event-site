@@ -9,9 +9,9 @@ const futureEventsDirective = (app) => {
 			link: function postLink(scope, element, attrs) {
 
 				let $eventBlock = angular.element(document).find('.event_block');
-					setInterval(function() {
-						console.log(document.getElementsByClassName('eventBlock'));
-					}, 500);
+
+						console.log(angular.element('#paris'));
+
 				//make block slide up effect for upcoming event blocks
 				$eventBlock.hover(
 					function () {
