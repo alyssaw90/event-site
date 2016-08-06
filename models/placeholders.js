@@ -167,9 +167,19 @@ module.exports = function () {
 				eventEndDate: '2017',
 				eventHeaderImage: 'redmond-2017-banner.jpg',
 				eventHomepageImage: 'redmond-2017-banner.jpg',
-				eventHighlightColor: '#a80000',
+				eventHighlightColor: '#0a6a05',
 				// eventSpeakers: '1'
 			});
+		})
+		.then(function() {
+			return Event.create({
+				eventName: 'SNIA SMB3 Plugfest',
+				eventLocation: 'Santa Clara',
+				eventContinent: 'North America',
+				eventStartDate: new Date('September 19, 2016'),
+				eventEndDate: new Date('September 22, 2016'),
+				eventHighlightColor: '#5c005c',
+			})
 		})
 		.then(function () {
 			return Event.create({
@@ -2456,6 +2466,17 @@ setTimeout(function() {
 				tabContent: `<h3>Redmond Protocol Plugfest 2017</h3>
 									<p>Microsoft subject matter experts from both the support organization and the product team gather at the Plugfest to present protocol updates, to answer questions, and to debug with customers. Please email <a href="mailto:plugfests@microsoft.com">plugfests@microsoft.com</a>.</p>`
 			});
+		})
+		.then(function() {
+			return EventTab.create({
+				eventId: 9,
+				tabTitle: 'About',
+				tabContent: `
+					<p>Presentations are only part of what is going on at the SNIA’s 2016 <a href="http://www.storagedeveloper.org/">Storage Developer Conference</a>., September 19-22 in Santa Clara, CA.  The SNIA SMB3 Plugfest is also an integral part of the program.</p>
+					<p>Microsoft is happy to announce that once again this year we are under-writing the 2016 SMB3 Plugfest in partnership with NetApp. The purpose of this Plugfest is for vendors to bring their implementations of SMB3 to test, identify, and fix bugs in a collaborative setting with the goal of providing a forum in which companies can develop interoperable products. The SNIA provides and supports networks and infrastructure for the Plugfest, creating a collaborative framework for testing.  The participants of the Plugfest work together to define the testing process, assuring that objectives are accomplished. </p>
+					<p>For complete details on how to participate please visit: <a href="http://www.snia.org/events/storage-developer/plugfest">http://www.snia.org/events/storage-developer/plugfest</a></p>
+					<p>If you have any additional questions, please contact <a href="mailto:prana@microsoft?subject=SNIA%20SMB3%20Plugfest:">Prakash Narayanan</a> or Arnold Jones, SNIA Technical Council Managing Director, at 407-574-7273 or <a href="mailto:arnold@snia.org">arnold@snia.org</a>.`
+			})
 		})
 
 	////////////////////////////////////Contact placeholder/////////////////////////////////////

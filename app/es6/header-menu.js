@@ -153,7 +153,7 @@ import * as customFunctions from './common-functions.build.js';
           	});
 						//add the past events header if it's set to true
 						if (siteStyle.showPastEventsBanner && siteStyle.showSlider) {
-							homepageImage += `<li><a title="past event link" class="homepageHeaderAnchor" href="/past-events"><section id="headerImage" class="mobileWrapper"><img aria-hidden="true" alt="past events header" style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="./app/uploads/past-events-banner.jpg" /></section></a></li>`;
+							homepageImage += `<li><a title="past event link" class="homepageHeaderAnchor" href="/past-events" aria-label="past events banner image"><section id="headerImage" class="mobileWrapper"><img aria-hidden="true" alt="past events header" style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="./app/uploads/past-events-banner.jpg" /></section></a></li>`;
 						}
 
 						$(data).each(function (i, elem) {
@@ -236,7 +236,7 @@ import * as customFunctions from './common-functions.build.js';
 					} 
 					//if there are no images, use the backup homepage image
 					if (!imageCount || (siteStyle.showPastEventsBanner && !siteStyle.showSlider && siteStyle.hideEventBanners)) {
-						homepageImage = `<a class="homepageHeaderAnchor" title="past events link" href="/past-events"><section id="headerImage" class="mobileWrapper"><img aria-hidden="true" alt="past events header" style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="./app/uploads/past-events-banner.jpg" /></section></a>`;
+						homepageImage = `<a class="homepageHeaderAnchor" title="past events link" href="/past-events" aria-label="past events banner image"><section id="headerImage" class="mobileWrapper"><img aria-hidden="true" alt="past events header" style="width:100%; margin: 0 0 0 0; padding: 0 0 0 0;" src="./app/uploads/past-events-banner.jpg" /></section></a>`;
 					}
 					upcomingPurpleMenu += '</div>';
 
