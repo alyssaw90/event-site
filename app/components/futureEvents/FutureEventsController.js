@@ -20,18 +20,6 @@ const FutureEventsCtrl = (app) => {
       })		
 		};
 
-		//make event blocks the same height
-		// customFunctions.changeHeight('.event_block');
-		/*if ($scope.$last) {
-	   	$timeout(function() { 
-	   	   // scope.$eval(attr.onFinishRender);
-	   	   customFunctions.changeHeight('.event_block');
-	   	});
-		}
-*/
-		// $timeout(function() {
-		// 	 customFunctions.changeHeight('.event_block');
-		// 	}, 2000);
 		//make block slide up effect for upcoming event blocks
 		$scope.riseText = (e) => {
 			let $this = angular.element(e.currentTarget);
@@ -55,12 +43,12 @@ const FutureEventsCtrl = (app) => {
 		//add border to show focus
 		$scope.showBorder = (e) => {
 			let $this = angular.element(e.currentTarget);
-			$this.css('border', '3px solid #50B1FE');
+			$this.parent().css('border', '3px solid #50B1FE');
 		};
 
 		$scope.removeBorder = (e) => {
 			let $this = angular.element(e.currentTarget);
-			$this.css('border', '');
+			$this.parent().css('border', '');
 		};
 	
 
