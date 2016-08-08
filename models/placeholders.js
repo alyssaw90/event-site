@@ -179,6 +179,7 @@ module.exports = function () {
 				eventStartDate: new Date('September 19, 2016'),
 				eventEndDate: new Date('September 22, 2016'),
 				eventHighlightColor: '#5c005c',
+				eventHeaderImage: 'header_sdc_2016.jpg'
 			})
 		})
 		.then(function () {

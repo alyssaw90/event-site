@@ -311,6 +311,7 @@ module.exports = function (router) {
         eventObj.city = city;
         eventObj.colNum = Math.floor(12 / upcomingEvents.length);
         eventObj.eventName = upcomingEvents[i].eventName;
+        eventObj.eventUrl = upcomingEvents[i].eventUrl;
 
         outputArr.push(eventObj)
       }

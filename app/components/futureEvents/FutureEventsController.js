@@ -1,7 +1,9 @@
 'use strict';
+const jQuery = require('jquery');
+import * as customFunctions from './../../es6/common-functions.build.js';
 
 const FutureEventsCtrl = (app) => {
-	app.controller('FutureEventsCtrl', ['$scope', '$http', 'futureEventsRESTResource', function($scope, $http, resource) {
+	app.controller('FutureEventsCtrl', ['$scope', '$http', 'futureEventsRESTResource', function($scope, $http, resource/*, $timeout*/) {
 		$scope.errors = [];
 		$scope.futureEvents = [];
 
@@ -15,10 +17,53 @@ const FutureEventsCtrl = (app) => {
         };
         
         $scope.futureEvents = data;
-      })
-			
-		
+      })		
+		};
+
+		//make event blocks the same height
+		// customFunctions.changeHeight('.event_block');
+		/*if ($scope.$last) {
+	   	$timeout(function() { 
+	   	   // scope.$eval(attr.onFinishRender);
+	   	   customFunctions.changeHeight('.event_block');
+	   	});
 		}
+*/
+		// $timeout(function() {
+		// 	 customFunctions.changeHeight('.event_block');
+		// 	}, 2000);
+		//make block slide up effect for upcoming event blocks
+		$scope.riseText = (e) => {
+			let $this = angular.element(e.currentTarget);
+			
+			$this.find('div').stop(true, true).animate({'bottom': '0'}, 200);
+			$this.find('h1').animate({opacity: 0}, 0);
+			$this.find('h3').animate({opacity: 0}, 0);
+			$this.find('p').show();
+			$this.find('p').animate({opacity: 1}, 200);
+		};
+
+		$scope.lowerText = (e) => {
+			let $this = angular.element(e.currentTarget);
+			$this.find('div').stop(true, true).animate({'bottom': '-100%'}, 200);
+			$this.find('h1').animate({opacity: 1}, 0);
+			$this.find('h3').animate({opacity: 1}, 0);
+			$this.find('p').hide();
+			$this.find('p').animate({opacity: 0}, 0);
+		};
+
+		//add border to show focus
+		$scope.showBorder = (e) => {
+			let $this = angular.element(e.currentTarget);
+			$this.css('border', '3px solid #50B1FE');
+		};
+
+		$scope.removeBorder = (e) => {
+			let $this = angular.element(e.currentTarget);
+			$this.css('border', '');
+		};
+	
+
 	}])
 }
 
