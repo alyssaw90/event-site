@@ -12,7 +12,10 @@
   "dependencies": {
     "angular": "^1.5.8",
     "angular-aria": "^1.5.8",
+    "angular-carousel": "^1.0.1",
     "angular-route": "^1.5.8",
+    "angular-simple-slideshow": "0.0.3",
+    "angular-touch": "^1.5.8",
     "bcrypt-nodejs": "latest",
     "body-parser": "^1.15.0",
     "cli-color": "^1.1.0",

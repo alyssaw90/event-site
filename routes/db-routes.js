@@ -27,9 +27,9 @@ const Contact = models.Contact;
 const Event = models.Event;
 const EventTab = models.EventTab;
 const SiteStyle = models.SiteStyle;
-/*const placeholders = require('../models/placeholders');
+const placeholders = require('../models/placeholders');
 
-placeholders();*/
+// placeholders();
 
 models.sql.authenticate()
   .then(function (err) {
@@ -289,6 +289,7 @@ module.exports = function (router) {
 
       for (let i = 0, len = upcomingEvents.length; i < len; i++) {
         let eventObj = {};
+        let startYear;
         
         cityArr = upcomingEvents[i].eventLocation.split('_');
         
@@ -297,7 +298,7 @@ module.exports = function (router) {
         }
 
         city = cityArr.join(' ');
-        
+        //create dates for future-events page
         if (upcomingEvents[i].eventStartDate !== null && (upcomingEvents[i].eventStartDate.getMonth() !== 0 && upcomingEvents[i].eventStartDate.getDate() !== 1)) {
           eventDates = `${months[upcomingEvents[i].eventStartDate.getMonth()]} ${upcomingEvents[i].eventStartDate.getDate()} - ${upcomingEvents[i].eventEndDate.getDate()}, ${upcomingEvents[i].eventEndDate.getFullYear()}`;
         } else if (upcomingEvents[i].eventStartDate !== null && (upcomingEvents[i].eventStartDate.getMonth() === 0 && upcomingEvents[i].eventStartDate.getDate() === 1)) {
@@ -305,13 +306,22 @@ module.exports = function (router) {
         } else {
           eventDates = 'TBD';
         }
-        
+        //make dates for header
+        if (upcomingEvents[i].eventStartDate === null) {
+          startYear = 'TBD';
+        } else {
+          startYear = new Date(upcomingEvents[i].eventStartDate).getFullYear();
+        }
+
         eventObj.continentColor = continentColors[upcomingEvents[i].eventContinent];
         eventObj.eventDates = eventDates;
+        eventObj.startYear = startYear;
         eventObj.city = city;
         eventObj.colNum = Math.floor(12 / upcomingEvents.length);
         eventObj.eventName = upcomingEvents[i].eventName;
         eventObj.eventUrl = upcomingEvents[i].eventUrl;
+        eventObj.eventHighlightColor = upcomingEvents[i].eventHighlightColor;
+        eventObj.eventHomepageImage = upcomingEvents[i].eventHomepageImage;
 
         outputArr.push(eventObj)
       }
@@ -423,73 +433,73 @@ module.exports = function (router) {
     res.end();
   });
 
-  //route to send events for header
-  router.route('/events')
-  .get(function (req, res) {
-    models.sql.sync()
-    .then(function () {
-      let year = new Date().getFullYear();
-      return Event.findAll({
-        where: {
-          eventEndDate: {
-            $or: {
-              $gte: new Date(),
-              $eq: null,
-              /* jshint ignore:start */
-              $eq: new Date(new Date().getFullYear().toString())
-              /* jshint ignore:end */
-            }
-          }
-        }
-      });
-    })
-    .then(function (data) {
-      let eventArr = [];
-      let undatedEventArr = [];
-      let outputArr;
-      let outputJson;
-     /* let menuEvents = 4;
-      if (data.length < 4) {
-        menuEvents = data.length;
-      }*/
-      data.sort(function (a, b) {
-        a = a.eventStartDate;
-        b = b.eventStartDate;
-        if ( a < b) {
-          return -1;
-        }
-        if (a > b) {
-          return 1;
-        }
-        if (a === b) {
-          return 0;
-        }
-      });
-      for (let i = 0; i < data.length; i++) {
-        let startDate;
-        if (data[i].eventStartDate === null) {
-          startDate = 'TBD';
-        } else {
-          startDate = data[i].eventStartDate;
-        }
-        let tmpObj = {
-          eventStartDate: startDate,
-          eventUrl: data[i].eventUrl,
-          eventLocation: data[i].eventLocation,
-          eventHomepageImage: data[i].eventHomepageImage,
-          eventHighlightColor: data[i].eventHighlightColor,
-          eventName: data[i].eventName
-        };
-        if (startDate === 'TBD') {
-          undatedEventArr.push(tmpObj);
-        } else {
-          eventArr.push(tmpObj);
-        }
-      }
-      outputArr = eventArr.concat(undatedEventArr);
-      res.json(outputArr);
-    });
-  });
+  // //route to send events for header
+  // router.route('/events')
+  // .get(function (req, res) {
+  //   models.sql.sync()
+  //   .then(function () {
+  //     let year = new Date().getFullYear();
+  //     return Event.findAll({
+  //       where: {
+  //         eventEndDate: {
+  //           $or: {
+  //             $gte: new Date(),
+  //             $eq: null,
+  //             /* jshint ignore:start */
+  //             $eq: new Date(new Date().getFullYear().toString())
+  //             /* jshint ignore:end */
+  //           }
+  //         }
+  //       }
+  //     });
+  //   })
+  //   .then(function (data) {
+  //     let eventArr = [];
+  //     let undatedEventArr = [];
+  //     let outputArr;
+  //     let outputJson;
+  //    /* let menuEvents = 4;
+  //     if (data.length < 4) {
+  //       menuEvents = data.length;
+  //     }*/
+  //     data.sort(function (a, b) {
+  //       a = a.eventStartDate;
+  //       b = b.eventStartDate;
+  //       if ( a < b) {
+  //         return -1;
+  //       }
+  //       if (a > b) {
+  //         return 1;
+  //       }
+  //       if (a === b) {
+  //         return 0;
+  //       }
+  //     });
+  //     for (let i = 0; i < data.length; i++) {
+  //       let startDate;
+  //       if (data[i].eventStartDate === null) {
+  //         startDate = 'TBD';
+  //       } else {
+  //         startDate = data[i].eventStartDate;
+  //       }
+  //       let tmpObj = {
+  //         eventStartDate: startDate,
+  //         eventUrl: data[i].eventUrl,
+  //         eventLocation: data[i].eventLocation,
+  //         eventHomepageImage: data[i].eventHomepageImage,
+  //         eventHighlightColor: data[i].eventHighlightColor,
+  //         eventName: data[i].eventName
+  //       };
+  //       if (startDate === 'TBD') {
+  //         undatedEventArr.push(tmpObj);
+  //       } else {
+  //         eventArr.push(tmpObj);
+  //       }
+  //     }
+  //     outputArr = eventArr.concat(undatedEventArr);
+  //     res.json(outputArr);
+  //   });
+  // });
   
 
   /*/////////////////////////////////////////////////////////////////////////////////////////

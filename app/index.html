@@ -11,6 +11,7 @@
   <link rel="stylesheet" type="text/css" href="app/css/kickstart.css" media="all" />
   <link rel="stylesheet" type="text/css" href="app/css/animate.css" media="all" />
   <link rel="stylesheet" type="text/css" href="app/style.css" media="all" />
+  <link rel="stylesheet" type="text/css" href="app/css/angular-carousel.css" media="all" />
   <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.2.1/jssocials.css" />
   <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.2.1/jssocials-theme-flat.css" />
   <link rel="stylesheet" type="text/css" href="app/css/custom.build.min.css" media="all" />
@@ -19,19 +20,14 @@
 </head>
 <body data-ng-app="eventsApp" data-ng-controller="allPagesCtrl">
   <div id="siteWrapper">
-    <header role="navigation" aria-label="header menu">
-      <div id="grayMenu"></div>
-      <div id="homepageSliderSection" data-ng-show="isCurrentPage('/')"></div>
-      <div id="purpleMenu"></div>
-    </header>
+    <div data-ng-include="'/app/components/shared/header/headerTemplate.html'"></div>
     <div data-ng-view autoscroll="true"></div>
     <div id="socialSharingIcons" data-ng-show="!isCurrentPage('/')"></div>
     <!-- begin footer -->
   </div>
   <div class="grid flex footer-at-bottom foot" id="ngFooter" data-ng-include="'/app/components/shared/footer/footerView.html'">
-    <section class="col_12 scroll-button">
-      <i class="fa fa-chevron-up fa-3x" id="backToTop"><p>Back to Top</p></i>
-    </section>
+    
+  </div>
   </div>
   <!-- JavaScript -->
   <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.min.js"></script>

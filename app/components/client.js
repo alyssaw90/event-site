@@ -4,9 +4,11 @@ import * as customFunctions from './../es6/common-functions.build.js';
 require('angular/angular');
 require('angular-route');
 require('angular-aria');
+require('angular-touch');
+require('angular-carousel');
 
 // declare a module
-const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria']);
+const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel']);
 
 // const rss1 = () => {
 // 	document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document.location.protocol ? 'https://' : 'http://') + 'feed.mikle.com/js/rssmikle.js">\x3C/script>');
@@ -58,9 +60,11 @@ require('./homepage/HomepageCtrl.build.js')(eventsApp);
 require('./pastEvents/PastEventsCtrl.build.js')(eventsApp);
 require('./meetTheTeam/MeetTheTeamCtrl.build.js')(eventsApp);
 require('./futureEvents/FutureEventsController.build.js')(eventsApp);
+require('./shared/header/HeaderController.build.js')(eventsApp);
 //services
 require('./meetTheTeam/meetTheTeamRestResource.build.js')(eventsApp);
 require('./futureEvents/futureEventsRESTResource.build.js')(eventsApp);
+require('./shared/header/headerRESTResource.build.js')(eventsApp);
 
 eventsApp
 .controller('allPagesCtrl', ['$scope', '$location', '$route', function($scope, $location, $route) {

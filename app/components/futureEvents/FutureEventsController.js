@@ -10,12 +10,20 @@ const FutureEventsCtrl = (app) => {
 		let FutureEvents = resource();
 
 		$scope.getUpcomingEvents = () => {
+			let imageCount = 0;
 
 			FutureEvents.getFutureEvents(function (err, data) {
         if (err) {
           return $scope.errors.push({msg: 'could not retrieve future events'});
         };
+
+        for (let i = 0, len = data.length; i < len; i++) {
+					if (data[i].eventHomepageImage) {
+						imageCount++;
+					}
+				}
         
+        $scope.imageCount = imageCount;
         $scope.futureEvents = data;
       })		
 		};
