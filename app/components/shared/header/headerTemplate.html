@@ -55,10 +55,11 @@
 			</li>
 		</ul>
 		<script type="text/javascript" src="app/lib/kickstart.js"></script> -->
-		<ul rn-carousel rn-carousel-controls-allow-loop rn-carousel-controls rn-carousel-auto-slide="3" class="image" style="margin-left:0;">
-  		<li data-ng-repeat="futureEvent in futureEvents" data-ng-if="$index > 0">
-  		  <div class="layer"><img src="/app/uploads/{{ futureEvent.eventHomepageImage }}"></div>
-  		  <div style="clear:both;"></div>
+		<ul rn-carousel rn-carousel-controls-allow-loop rn-carousel-controls rn-carousel-auto-slide="3" id="carousel" data-ng-style="getHeight();" class="image" style="margin-left:0;margin-bottom:0;">
+  		<li data-ng-repeat="futureEvent in futureEvents" data-ng-init="getHeight($event);" data-ng-if="futureEvent.eventHomepageImage">
+  		  <div class="layer">
+  		  	<img src="/app/uploads/{{ futureEvent.eventHomepageImage }}">
+		  	</div>
   		</li>
 		</ul>
 	</div>
