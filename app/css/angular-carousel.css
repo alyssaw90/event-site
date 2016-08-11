@@ -53,7 +53,7 @@ div.rn-carousel-indicator span {
   transition: opacity 0.2s ease-out;
   font-size: 2rem;
   position: absolute;
-  top: 20%;
+  top: 40%;
   opacity: 0.75;
   cursor: pointer; }
   .rn-carousel-control:hover {

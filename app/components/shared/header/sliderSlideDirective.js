@@ -9,7 +9,7 @@ const sliderSlideDirective = (app) => {
 				scope: true,
 				link: function postLink(scope, element, attrs) {
 					$timeout(function() {
-						//get height of current slide in list and pus the height into the height array
+						//get height of current slide in list and push the height into the height array
 						let elemHeight = jQuery(element[0]).height();
 						//push that height onto array of heights from parent scope
 						scope.$parent.sliderImgsHeights.push(elemHeight);
