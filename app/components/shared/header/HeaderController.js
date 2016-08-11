@@ -21,10 +21,6 @@ const HeaderController = (app) => {
 		
 		};
 
-		$scope.getHeight = (e) => {
-			console.log('eeeee        ', e);
-			return {minHeight: (window.innerHeight * 0.6) /*angular.element('div.layer')[0].height()*/ + 'px'};
-		}
 	}])
 }
 

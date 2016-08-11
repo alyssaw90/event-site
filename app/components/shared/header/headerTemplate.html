@@ -42,23 +42,20 @@
 	<!-- End gray desktop menu -->
 	<!-- Begin Image section/slider -->
 	<div data-ng-show="isCurrentPage('/')" data-ng-controller="HeaderController" data-ng-init="getSiteStyle();" class="clearfix">
-		<!-- <a data-ng-if="(!siteStyles.showSlider && siteStyles.showPastEventsBanner && siteStyles.hideEventBanners) || imageCount > 0" class="homepageHeaderAnchor" title="past events link" href="/past-events" aria-label="past events banner image">
+		<!-- static image of past events banner for homepage -->
+		<!-- <a data-ng-if="(!siteStyles.showSlider && siteStyles.showPastEventsBanner && siteStyles.hideEventBanners) || imageCount <= 0" class="homepageHeaderAnchor" title="past events link" href="/past-events" aria-label="past events banner image">
 			<section id="headerImage" class="mobileWrapper">
 				<img aria-hidden="true" alt="past events header" style="width:100%; margin: 	0 0 0 0; padding: 0 0 0 0;" src="./app/uploads/past-events-banner.jpg" />
 			</section>
 		</a> -->
-		<!-- <ul class="slideshow">
-			<li data-ng-repeat="futureEvent in futureEvents">
-				<a title="new event link" class="homepageHeaderAnchor" href="/{{futureEvent.eventUrl}}">
-					<img aria-hidden="true" alt="home page banner" src="app/uploads/past-events-banner.jpg" />
-				</a>
-			</li>
-		</ul>
-		<script type="text/javascript" src="app/lib/kickstart.js"></script> -->
-		<ul rn-carousel rn-carousel-controls-allow-loop rn-carousel-controls rn-carousel-auto-slide="3" data-slider-directive id="carousel" data-ng-style="getHeight();" class="image" style="margin-left:0;margin-bottom:0;">
-  		<li data-ng-repeat="futureEvent in futureEvents" data-ng-init="getHeight($event);" data-ng-if="futureEvent.eventHomepageImage">
-  		  <div class="layer">
-  		  	<img src="/app/uploads/{{ futureEvent.eventHomepageImage }}">
+		<!-- the rn-carousel package creates the slider https://www.npmjs.com/package/angular-carousel -->
+		<!-- <ul data-ng-if="(siteStyles.showSlider && !siteStyles.showPastEventsBanner && !siteStyles.hideEventBanners) && imageCount > 0" rn-carousel rn-carousel-controls-allow-loop rn-carousel-controls rn-carousel-auto-slide="3" data-slider-directive id="upcoming-events-carousel" class="image" style="margin-left:0;margin-bottom:0;"> -->
+		<ul rn-carousel rn-carousel-controls-allow-loop rn-carousel-controls rn-carousel-auto-slide="3" data-slider-directive id="upcoming-events-carousel" class="image" style="margin-left:0;margin-bottom:0;">
+  		<li data-ng-repeat="futureEvent in futureEvents" data-ng-if="futureEvent.eventHomepageImage">
+  		  <div outer-height class="layer" data-slider-slide-directive>
+  		  	<a href="/{{futureEvent.eventUrl}}">
+  		  		<img class="carousel-img" data-ng-src="/app/uploads/{{ futureEvent.eventHomepageImage }}">
+		  		</a>
 		  	</div>
   		</li>
 		</ul>
