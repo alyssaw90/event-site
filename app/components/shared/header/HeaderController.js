@@ -4,6 +4,7 @@ const HeaderController = (app) => {
 	app.controller('HeaderController', ['$scope', '$http', 'headerRESTResource', function($scope, $http, resource) {
 		$scope.errors = [];
 		$scope.siteStyle = [];
+		$scope.sliderImgsHeights = [];
 
 		let SiteStyle = resource();
 
