@@ -10,6 +10,8 @@ const sliderSlideDirective = (app) => {
 				link: function postLink(scope, element, attrs) {
 
 					const changeHeight = () => {
+						//emptly the height array
+						scope.$parent.sliderImgsHeights.length = 0;
 						//get height of current slide in list and push the height into the height array
 						let elemHeight = jQuery(element[0]).height();
 						//push that height onto array of heights from parent scope
@@ -20,8 +22,15 @@ const sliderSlideDirective = (app) => {
 
 					}
 
-					// changeHeight();
 					$timeout(changeHeight, 1000);
+
+					angular.element(window).bind('resize', function () {
+    				$timeout(function() {
+    					console.log('window width:   ', window.innerWidth);
+  	  				changeHeight();
+    				})
+					});
+					
 
 					scope.$on('$locationChangeSuccess', function(event) {
 						changeHeight();

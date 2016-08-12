@@ -6,6 +6,7 @@ const FutureEventsCtrl = (app) => {
 	app.controller('FutureEventsCtrl', ['$scope', '$http', 'futureEventsRESTResource', function($scope, $http, resource/*, $timeout*/) {
 		$scope.errors = [];
 		$scope.futureEvents = [];
+		$scope.slides = [];
 
 		let FutureEvents = resource();
 
@@ -19,7 +20,13 @@ const FutureEventsCtrl = (app) => {
 
         for (let i = 0, len = data.length; i < len; i++) {
 					if (data[i].eventHomepageImage) {
+						let tmpObj = {};
+						tmpObj.eventHomepageImage = data[i].eventHomepageImage;
+						tmpObj.eventUrl = data[i].eventUrl;
+
 						imageCount++;
+
+						$scope.slides.push(tmpObj);
 					}
 				}
         
@@ -27,6 +34,15 @@ const FutureEventsCtrl = (app) => {
         $scope.futureEvents = data;
       })		
 		};
+
+		for (let i = 0, len = $scope.futureEvents.length; i < len; i++) {
+			if ($scope.futureEvents[i].eventHomepageImage) {
+				let tmpObj = {};
+				tmpObj.eventHomepageImage = $scope.futureEvents[i].eventHomepageImage;
+				tmpObj
+				$scope.slides.push($scope.futureEvents[i].eventHomepageImage)
+			}
+		}
 
 		//make block slide up effect for upcoming event blocks
 		$scope.riseText = (e) => {

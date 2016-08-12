@@ -43,18 +43,17 @@
 	<!-- Begin Image section/slider -->
 	<div class="carousel-container" data-ng-controller="HeaderController" data-ng-init="getSiteStyle();">
 		<!-- static image of past events banner for homepage -->
-		<!-- <a data-ng-if="(!siteStyles.showSlider && siteStyles.showPastEventsBanner && siteStyles.hideEventBanners) || imageCount <= 0" class="homepageHeaderAnchor" title="past events link" href="/past-events" aria-label="past events banner image">
+		<a data-ng-if="(!siteStyles.showSlider && siteStyles.showPastEventsBanner && siteStyles.hideEventBanners) || imageCount <= 0" class="homepageHeaderAnchor" title="past events link" href="/past-events" aria-label="past events banner image">
 			<section id="headerImage" class="mobileWrapper">
 				<img aria-hidden="true" alt="past events header" style="width:100%; margin: 	0 0 0 0; padding: 0 0 0 0;" src="./app/uploads/past-events-banner.jpg" />
 			</section>
-		</a> -->
+		</a>
 		<!-- the rn-carousel package creates the slider https://www.npmjs.com/package/angular-carousel -->
-		<!-- <ul data-ng-if="(siteStyles.showSlider && !siteStyles.showPastEventsBanner && !siteStyles.hideEventBanners) && imageCount > 0" rn-carousel rn-carousel-controls-allow-loop rn-carousel-controls rn-carousel-auto-slide="3" data-slider-directive id="upcoming-events-carousel" class="image" style="margin-left:0;margin-bottom:0;"> -->
-		<ul rn-carousel rn-carousel-controls-allow-loop rn-carousel-controls rn-carousel-auto-slide="3" data-slider-directive id="upcoming-events-carousel" class="image" style="margin-left:0;margin-bottom:0;">
-  		<li data-ng-repeat="futureEvent in futureEvents" data-ng-if="futureEvent.eventHomepageImage">
+		<ul data-ng-if="(siteStyles.showSlider && !siteStyles.showPastEventsBanner && !siteStyles.hideEventBanners) && imageCount > 0" rn-carousel rn-carousel-controls-allow-loop rn-carousel-controls rn-carousel-auto-slide="3" data-slider-directive id="upcoming-events-carousel" class="image" style="margin-left:0;margin-bottom:0;">
+  		<li data-ng-repeat="slide in slides" data-ng-if="slide.eventHomepageImage">
   		  <div class="layer" data-slider-slide-directive>
-  		  	<a href="/{{futureEvent.eventUrl}}">
-  		  		<img class="carousel-img" data-ng-src="/app/uploads/{{ futureEvent.eventHomepageImage }}" />
+  		  	<a href="/{{slide.eventUrl}}">
+  		  		<img class="carousel-img" data-ng-src="/app/uploads/{{ slide.eventHomepageImage }}" />
 		  		</a>
 		  	</div>
   		</li>
@@ -64,7 +63,7 @@
 	<!-- Begin upcoming events desktop menu -->
 	<nav class="menu-overlay desktop-menu flex clearfix" style="background-color:{{futureEvents[0].eventHighlightColor}}">
 		<div class="col_12 purpleEventMenu">
-			<a data-ng-repeat="futureEvent in futureEvents | orderBy: eventStartDate" href="/{{futureEvent.eventUrl}}">{{futureEvent.city}} &nbsp &nbsp<span class="purpleSubMenu">{{futureEvent.startYear}}</span> <span ng-show=" ! $last ">&nbsp &nbsp|</span></a>
+			<a data-ng-repeat="futureEvent in futureEvents | orderBy: eventStartDate" href="/{{futureEvent.eventUrl}}">{{futureEvent.city}} &nbsp<span class="purpleSubMenu">- {{futureEvent.headerEventDates}}</span> <span ng-show=" ! $last ">&nbsp &nbsp|</span></a>
 		</div>
 	</nav>
 	<!-- End upcoming events desktop menu -->

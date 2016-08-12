@@ -245,6 +245,7 @@ module.exports = function (router) {
   router.route('/futureEventsData')
   .get(function(req, res) {
     let eventDates = 'Coming Soon';
+    let eventMonth;
     let city;
     let cityArr;
     models.sql.sync()
@@ -301,10 +302,13 @@ module.exports = function (router) {
         //create dates for future-events page
         if (upcomingEvents[i].eventStartDate !== null && (upcomingEvents[i].eventStartDate.getMonth() !== 0 && upcomingEvents[i].eventStartDate.getDate() !== 1)) {
           eventDates = `${months[upcomingEvents[i].eventStartDate.getMonth()]} ${upcomingEvents[i].eventStartDate.getDate()} - ${upcomingEvents[i].eventEndDate.getDate()}, ${upcomingEvents[i].eventEndDate.getFullYear()}`;
+          eventMonth = months[upcomingEvents[i].eventStartDate.getMonth()];
         } else if (upcomingEvents[i].eventStartDate !== null && (upcomingEvents[i].eventStartDate.getMonth() === 0 && upcomingEvents[i].eventStartDate.getDate() === 1)) {
           eventDates = `${upcomingEvents[i].eventEndDate.getFullYear()}`;
+          eventMonth = '';
         } else {
           eventDates = 'TBD';
+          eventMonth = '';
         }
         //make dates for header
         if (upcomingEvents[i].eventStartDate === null) {
@@ -315,6 +319,7 @@ module.exports = function (router) {
 
         eventObj.continentColor = continentColors[upcomingEvents[i].eventContinent];
         eventObj.eventDates = eventDates;
+        eventObj.headerEventDates = eventMonth ? eventMonth + ', ' + startYear : startYear;
         eventObj.startYear = startYear;
         eventObj.city = city;
         eventObj.colNum = Math.floor(12 / upcomingEvents.length);
