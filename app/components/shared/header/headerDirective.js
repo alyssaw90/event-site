@@ -17,35 +17,44 @@ const headerDirective = (app) => {
 				 	const $carouselContainer = jQuery('.carousel-container');
 				 	let pathname = window.location.pathname;
 
-				 	//hide the slider/carousel
-				 	$carouselContainer.show();
-
-		 			//highlight currently selected menu item
-					if (pathname === '/') {
-						$carouselContainer.show();
-						$homeMenuButton.addClass('current-page');
-					}
-					if (pathname === '/future-events') {
-						$upcominEventsBlock.addClass('current-page');
-						$carouselContainer.hide();
-					}
-					if (pathname === '/latest-news') {
-						$latestNewsMenuBlock.addClass('current-page');
-						$carouselContainer.hide();
-					}
-					if (pathname === '/meet-the-team') {
-						$meetTheTeamMenuBlock.addClass('current-page');
-						$carouselContainer.hide();
-					}
-					if (pathname === '/past-events') {
-						$pastEventsHeaderMenuBlock.addClass('current-page');
-						$carouselContainer.hide();
-					}
+				 	$timeout(function() {
+				 		//hide the slider/carousel
+				 		$carouselContainer.show();
+	
+		 				//highlight currently selected menu item
+						if (pathname === '/') {
+							$carouselContainer.show();
+							$homeMenuButton.addClass('current-page');
+						}
+						if (pathname === '/future-events') {
+							$upcominEventsBlock.addClass('current-page');
+							$carouselContainer.hide();
+						}
+						if (pathname === '/latest-news') {
+							$latestNewsMenuBlock.addClass('current-page');
+							$carouselContainer.hide();
+						}
+						if (pathname === '/meet-the-team') {
+							$meetTheTeamMenuBlock.addClass('current-page');
+							$carouselContainer.hide();
+						}
+						if (pathname === '/past-events') {
+							$pastEventsHeaderMenuBlock.addClass('current-page');
+							$carouselContainer.hide();
+						}
+						if (pathname === '/about' || pathname ===  '/faq' || pathname ===  '/contactus') {
+							$carouselContainer.hide();
+						}
+				 	})
 
 					scope.$on('$locationChangeSuccess', function(event) {
 						pathname = window.location.pathname;
 
 				    $menuBlock.removeClass('current-page');
+				    //hide the slider for pages in footer
+				    if (pathname === '/about' || pathname ===  '/faq' || pathname ===  '/contactus') {
+							$carouselContainer.hide();
+						}
 						//highlight currently selected menu item
 						if (pathname === '/') {
 							$homeMenuButton.addClass('current-page');

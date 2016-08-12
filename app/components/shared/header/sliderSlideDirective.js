@@ -8,6 +8,7 @@ const sliderSlideDirective = (app) => {
 				restrict: 'A',
 				scope: true,
 				link: function postLink(scope, element, attrs) {
+
 					const changeHeight = () => {
 						//get height of current slide in list and push the height into the height array
 						let elemHeight = jQuery(element[0]).height();
@@ -19,7 +20,8 @@ const sliderSlideDirective = (app) => {
 
 					}
 
-					$timeout(changeHeight(), 1000);
+					// changeHeight();
+					$timeout(changeHeight, 1000);
 
 					scope.$on('$locationChangeSuccess', function(event) {
 						changeHeight();
