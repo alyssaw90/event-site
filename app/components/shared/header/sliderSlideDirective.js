@@ -21,9 +21,8 @@ const sliderSlideDirective = (app) => {
 
 					$timeout(changeHeight(), 1000);
 
-					scope.$on('$locationChangeSuccess', function() {
+					scope.$on('$locationChangeSuccess', function(event) {
 						changeHeight();
-						console.log('    changeHeight called');
 					})
 				}
 			};

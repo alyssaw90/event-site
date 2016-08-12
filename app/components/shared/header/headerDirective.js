@@ -45,8 +45,6 @@ const headerDirective = (app) => {
 					scope.$on('$locationChangeSuccess', function(event) {
 						pathname = window.location.pathname;
 
-						console.log('path:    ', window.location.pathname === '/meet-the-team');
-				    console.log(' route changed!!!!');
 				    $menuBlock.removeClass('current-page');
 						//highlight currently selected menu item
 						if (pathname === '/') {
