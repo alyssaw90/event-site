@@ -8,7 +8,7 @@ const sliderSlideDirective = (app) => {
 				restrict: 'A',
 				scope: true,
 				link: function postLink(scope, element, attrs) {
-					$timeout(function() {
+					const changeHeight = () => {
 						//get height of current slide in list and push the height into the height array
 						let elemHeight = jQuery(element[0]).height();
 						//push that height onto array of heights from parent scope
@@ -17,7 +17,14 @@ const sliderSlideDirective = (app) => {
 						let newHeight = Math.max(...scope.$parent.sliderImgsHeights);
 						jQuery('#upcoming-events-carousel').height(newHeight);
 
-					});
+					}
+
+					$timeout(changeHeight(), 1000);
+
+					scope.$on('$locationChangeSuccess', function() {
+						changeHeight();
+						console.log('    changeHeight called');
+					})
 				}
 			};
 	  	return sliderSlideDirectiveDefinitionObject

@@ -1,4 +1,4 @@
-<header role="navigation" aria-label="header menu" data-ng-controller="FutureEventsCtrl" data-ng-init="getUpcomingEvents()">
+<header role="navigation" aria-label="header menu" data-ng-controller="FutureEventsCtrl" data-ng-init="getUpcomingEvents()" data-header-directive>
 	<!-- Begin upper purple menu -->
 	<div class="menu-overlay hamburger-menu social-icons" style="background-color:{{futureEvents[0].eventHighlightColor}}">
 	<!-- Begin Mobile "Hamburger Menu" -->
@@ -41,7 +41,7 @@
 	</nav>
 	<!-- End gray desktop menu -->
 	<!-- Begin Image section/slider -->
-	<div data-ng-show="isCurrentPage('/')" data-ng-controller="HeaderController" data-ng-init="getSiteStyle();">
+	<div class="carousel-container" data-ng-controller="HeaderController" data-ng-init="getSiteStyle();">
 		<!-- static image of past events banner for homepage -->
 		<!-- <a data-ng-if="(!siteStyles.showSlider && siteStyles.showPastEventsBanner && siteStyles.hideEventBanners) || imageCount <= 0" class="homepageHeaderAnchor" title="past events link" href="/past-events" aria-label="past events banner image">
 			<section id="headerImage" class="mobileWrapper">
@@ -52,7 +52,7 @@
 		<!-- <ul data-ng-if="(siteStyles.showSlider && !siteStyles.showPastEventsBanner && !siteStyles.hideEventBanners) && imageCount > 0" rn-carousel rn-carousel-controls-allow-loop rn-carousel-controls rn-carousel-auto-slide="3" data-slider-directive id="upcoming-events-carousel" class="image" style="margin-left:0;margin-bottom:0;"> -->
 		<ul rn-carousel rn-carousel-controls-allow-loop rn-carousel-controls rn-carousel-auto-slide="3" data-slider-directive id="upcoming-events-carousel" class="image" style="margin-left:0;margin-bottom:0;">
   		<li data-ng-repeat="futureEvent in futureEvents" data-ng-if="futureEvent.eventHomepageImage">
-  		  <div outer-height class="layer" data-slider-slide-directive>
+  		  <div class="layer" data-slider-slide-directive>
   		  	<a href="/{{futureEvent.eventUrl}}">
   		  		<img class="carousel-img" data-ng-src="/app/uploads/{{ futureEvent.eventHomepageImage }}" />
 		  		</a>

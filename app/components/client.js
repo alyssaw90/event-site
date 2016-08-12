@@ -56,6 +56,7 @@ require('./latestNews/latestNewsDirective.build.js')(eventsApp);
 require('./contactUs/contactUsDirective.build.js')(eventsApp);
 require('./futureEvents/futureEventsDirective.build.js')(eventsApp);
 require('./shared/header/sliderSlideDirective.build.js')(eventsApp);
+require('./shared/header/headerDirective.build.js')(eventsApp);
 
 //controllers
 require('./homepage/HomepageCtrl.build.js')(eventsApp);
