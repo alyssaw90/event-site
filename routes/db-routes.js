@@ -74,7 +74,8 @@ module.exports = function (router) {
   //404 error route
   router.route('/404')
   .get(function(req, res) {
-    res.sendFile(path.join(__dirname, '../app/404.html'));
+    res.status(404);
+    res.sendFile(path.join(__dirname, '../app/index.html'));
   });
 
   router.route('/')
@@ -97,6 +98,29 @@ module.exports = function (router) {
   router.route('/meet-the-team')
   .get(function (req, res) {
     // res.sendFile(path.join(__dirname, '../app/past-events.html'));
+    res.sendFile(path.join(__dirname, '../app/index.html'));
+  });
+
+  router.route('/admin')
+  .get(function(req, res) {
+    res.sendFile(path.join(__dirname, '../app/index.html'));
+  })
+
+  /*router.get('/admin', eatAuth, function(req, res) {
+    if (req.cookies.interopAdmin === 'true') {
+      res.sendFile(path.join(__dirname, '../app/admin.html'));
+    } else {
+      res.sendFile(path.join(__dirname, '../app/curriculum.html'));
+    }
+  });*/
+
+  router.route('/thankyou')
+  .get(function(req, res) {
+    res.sendFile(path.join(__dirname, '../app/loggedout.html'));
+  });
+
+  router.route('/future-events')
+  .get(function(req, res) {
     res.sendFile(path.join(__dirname, '../app/index.html'));
   });
 
@@ -222,24 +246,6 @@ module.exports = function (router) {
 
   router.get('/private', function(req, res) {
     res.sendFile(path.join(__dirname, '../app/login.html'));
-  });
-
-  router.get('/admin', eatAuth, function(req, res) {
-    if (req.cookies.interopAdmin === 'true') {
-      res.sendFile(path.join(__dirname, '../app/admin.html'));
-    } else {
-      res.sendFile(path.join(__dirname, '../app/curriculum.html'));
-    }
-  });
-
-  router.route('/thankyou')
-  .get(function(req, res) {
-    res.sendFile(path.join(__dirname, '../app/loggedout.html'));
-  });
-
-  router.route('/future-events')
-  .get(function(req, res) {
-    res.sendFile(path.join(__dirname, '../app/index.html'));
   });
 
   router.route('/futureEventsData')
@@ -827,7 +833,7 @@ module.exports = function (router) {
   });
 
   //get all contacts for editing
-  router.get('/contacts', eatAuth, function (req, res) {
+  router.get('/contacts'/*, eatAuth*/, function (req, res) {
     models.sql.sync()
     .then(function () {
       Contact.findAll()

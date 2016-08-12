@@ -8,6 +8,8 @@ module.exports = function (sql, DataTypes) {
 
   return sql.define('Event', {
     eventName: DataTypes.STRING,
+    isPublished: DataTypes.BOOLEAN,
+    lastModifiedBy: DataTypes.STRING,
     eventRegistrationLink: DataTypes.STRING, //link to registrationfor event
     eventLocation: {
       type: DataTypes.STRING,

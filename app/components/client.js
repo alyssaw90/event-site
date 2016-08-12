@@ -64,10 +64,12 @@ require('./pastEvents/PastEventsCtrl.build.js')(eventsApp);
 require('./meetTheTeam/MeetTheTeamCtrl.build.js')(eventsApp);
 require('./futureEvents/FutureEventsController.build.js')(eventsApp);
 require('./shared/header/HeaderController.build.js')(eventsApp);
+require('./admin/EventsController.build.js')(eventsApp);
 //services
 require('./meetTheTeam/meetTheTeamRestResource.build.js')(eventsApp);
 require('./futureEvents/futureEventsRESTResource.build.js')(eventsApp);
 require('./shared/header/headerRESTResource.build.js')(eventsApp);
+require('./admin/eventsRESTResource.build.js')(eventsApp);
 
 eventsApp
 .controller('allPagesCtrl', ['$scope', '$location', '$route', function($scope, $location, $route) {
@@ -100,12 +102,11 @@ eventsApp
 		templateUrl: '/app/components/about/about.html'
 	})
 	.when('/contactus', {
-		templateUrl: '/app/components/contactUs/contactUs.html',
+		templateUrl: '/app/components/contactUs/contactUs.html'
 
 	})
 	.when('/faq', {
-		templateUrl: '/app/components/faq/faq.html',
-
+		templateUrl: '/app/components/faq/faq.html'
 	})
 	.when('/past-events', {
 		templateUrl: '/app/components/pastEvents/pastEvents.html',
@@ -119,11 +120,19 @@ eventsApp
 		templateUrl: '/app/components/futureEvents/futureEvents.html',
 		controller: 'FutureEventsCtrl'
 	})
+	.when('/admin', {
+		templateUrl: '/app/components/admin/admin.html'
+	})
+	.when('/404', {
+		templateUrl: '/app/components/404/404.html'
+	})
+	.otherwise({
+		redirectTo: '/404'
+	})
 	/*.when('/latestNews', {
 		templateUrl: '/app/components/latestNews/latestNews.html',
 		// controller: 'latestNewsCtrl'
 	})*/
-
 	if(window.history && window.history.pushState) {
 		$locationProvider.html5Mode({
 	   	enabled: true,

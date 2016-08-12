@@ -21,6 +21,9 @@ const headerDirective = (app) => {
 				 		//hide the slider/carousel
 				 		$carouselContainer.show();
 	
+						if (pathname !== '/') {
+							$carouselContainer.hide();
+						}
 		 				//highlight currently selected menu item
 						if (pathname === '/') {
 							$carouselContainer.show();
@@ -28,22 +31,15 @@ const headerDirective = (app) => {
 						}
 						if (pathname === '/future-events') {
 							$upcominEventsBlock.addClass('current-page');
-							$carouselContainer.hide();
 						}
 						if (pathname === '/latest-news') {
 							$latestNewsMenuBlock.addClass('current-page');
-							$carouselContainer.hide();
 						}
 						if (pathname === '/meet-the-team') {
 							$meetTheTeamMenuBlock.addClass('current-page');
-							$carouselContainer.hide();
 						}
 						if (pathname === '/past-events') {
 							$pastEventsHeaderMenuBlock.addClass('current-page');
-							$carouselContainer.hide();
-						}
-						if (pathname === '/about' || pathname ===  '/faq' || pathname ===  '/contactus') {
-							$carouselContainer.hide();
 						}
 				 	})
 
@@ -52,7 +48,7 @@ const headerDirective = (app) => {
 
 				    $menuBlock.removeClass('current-page');
 				    //hide the slider for pages in footer
-				    if (pathname === '/about' || pathname ===  '/faq' || pathname ===  '/contactus') {
+				    if (pathname !== '/') {
 							$carouselContainer.hide();
 						}
 						//highlight currently selected menu item
@@ -62,19 +58,15 @@ const headerDirective = (app) => {
 						}
 						if (pathname === '/future-events') {
 							$upcominEventsBlock.addClass('current-page');
-							$carouselContainer.hide();
 						}
 						if (pathname === '/latest-news') {
 							$latestNewsMenuBlock.addClass('current-page');
-							$carouselContainer.hide();
 						}
 						if (pathname === '/meet-the-team') {
 							$meetTheTeamMenuBlock.addClass('current-page');
-							$carouselContainer.hide();
 						}
 						if (pathname === '/past-events') {
 							$pastEventsHeaderMenuBlock.addClass('current-page');
-							$carouselContainer.hide();
 						}
 					});
 				}

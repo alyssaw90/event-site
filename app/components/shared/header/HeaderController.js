@@ -12,7 +12,7 @@ const HeaderController = (app) => {
 
 			SiteStyle.getSiteStyle(function (err, data) {
         if (err) {
-          return $scope.errors.push({msg: 'could not retrieve team members'});
+          return $scope.errors.push({msg: 'could not retrieve header events'});
         };
         
         $scope.siteStyles = data;

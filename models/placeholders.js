@@ -73,7 +73,8 @@ module.exports = function () {
 				eventHeaderImage: 'TAIPEIHeader.png',
 				eventHomepageImage: 'TAIPEIHeader.png',
 				eventHighlightColor: '#4668c5',
-				eventSpeakers: '1,2,8,11,15,9,12,10,6,32,33,34,35,38,26'
+				eventSpeakers: '1,2,8,11,15,9,12,10,6,32,33,34,35,38,26',
+				isPublished: true
 
 			});
 		})
@@ -88,7 +89,8 @@ module.exports = function () {
 				eventHeaderImage: 'Extend-banniereV2-(002).gif', //link to header image
 				eventHomepageImage: 'ExtendWebsiteBanner.jpg',
 				eventHighlightColor: '#5c2d91',
-				eventSpeakers: '1,2,5,10,8,11,35,36,37'
+				eventSpeakers: '1,2,5,10,8,11,35,36,37',
+				isPublished: true
 			});
 		})
 		.then(function () {
@@ -102,7 +104,8 @@ module.exports = function () {
 				eventHeaderImage: 'Plugfest-and-IO-Lab-5.jpg', //link to header image
 				eventHomepageImage: 'Plugfest-and-IO-Lab-5.jpg',
 				eventHighlightColor: '#008272',
-				eventSpeakers: '1,2,3,5,9,8,11,15,12,10,6,21,14,18,16,39,40'
+				eventSpeakers: '1,2,3,5,9,8,11,15,12,10,6,21,14,18,16,39,40',
+				isPublished: true
 			});
 		})
 		.then(function () {
@@ -129,7 +132,8 @@ module.exports = function () {
 				eventHeaderImage: 'shanghai-header.jpg',
 				eventHomepageImage: 'shanghai-header.jpg',
 				eventHighlightColor: '#3bb300',
-				eventSpeakers: '1,2,13,9,8,10,6,11,35,26'
+				eventSpeakers: '1,2,13,9,8,10,6,11,35,26',
+				isPublished: true
 			});
 		})
 		.then(function () {
@@ -142,7 +146,8 @@ module.exports = function () {
 				eventHeaderImage: 'paris-2017-banner.jpg',
 				eventHomepageImage: 'paris-2017-banner.jpg',
 				eventHighlightColor: '#5c005c',
-				// eventSpeakers: '1'
+				// eventSpeakers: '1',
+				isPublished: true
 			});
 		})
 		.then(function () {
@@ -155,7 +160,8 @@ module.exports = function () {
 				eventHeaderImage: 'taipei-2017-banner.jpg',
 				eventHomepageImage: 'taipei-2017-banner.jpg',
 				eventHighlightColor: '#0078d7',
-				// eventSpeakers: '1'
+				// eventSpeakers: '1',
+				isPublished: true
 			});
 		})
 		.then(function () {
@@ -168,7 +174,8 @@ module.exports = function () {
 				eventHeaderImage: 'redmond-2017-banner.jpg',
 				eventHomepageImage: 'redmond-2017-banner.jpg',
 				eventHighlightColor: '#0a6a05',
-				// eventSpeakers: '1'
+				// eventSpeakers: '1',
+				isPublished: true
 			});
 		})
 		.then(function() {
@@ -179,7 +186,8 @@ module.exports = function () {
 				eventStartDate: new Date('September 19, 2016'),
 				eventEndDate: new Date('September 22, 2016'),
 				eventHighlightColor: '#5c005c',
-				eventHeaderImage: 'header_sdc_2016.jpg'
+				eventHeaderImage: 'header_sdc_2016.jpg',
+				isPublished: true
 			})
 		})
 		.then(function () {
