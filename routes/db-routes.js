@@ -69,61 +69,7 @@ module.exports = function (router) {
   }));
   router.use(cookieParser());
 
-  /*Begin basic view routes*/
-
-  //404 error route
-  router.route('/404')
-  .get(function(req, res) {
-    res.status(404);
-    res.sendFile(path.join(__dirname, '../app/index.html'));
-  });
-
-  router.route('/')
-  .get(function (req, res) {
-    res.sendFile(path.join(__dirname, '../app/index.html'));
-  });
-
-  router.route('/about')
-  .get(function (req, res) {
-    // res.sendFile(path.join(__dirname, '../app/about.html'));
-    res.sendFile(path.join(__dirname, '../app/index.html'));
-  });
-
-  router.route('/past-events')
-  .get(function (req, res) {
-    // res.sendFile(path.join(__dirname, '../app/past-events.html'));
-    res.sendFile(path.join(__dirname, '../app/index.html'));
-  });
-
-  router.route('/meet-the-team')
-  .get(function (req, res) {
-    // res.sendFile(path.join(__dirname, '../app/past-events.html'));
-    res.sendFile(path.join(__dirname, '../app/index.html'));
-  });
-
-  router.route('/admin')
-  .get(function(req, res) {
-    res.sendFile(path.join(__dirname, '../app/index.html'));
-  })
-
-  /*router.get('/admin', eatAuth, function(req, res) {
-    if (req.cookies.interopAdmin === 'true') {
-      res.sendFile(path.join(__dirname, '../app/admin.html'));
-    } else {
-      res.sendFile(path.join(__dirname, '../app/curriculum.html'));
-    }
-  });*/
-
-  router.route('/thankyou')
-  .get(function(req, res) {
-    res.sendFile(path.join(__dirname, '../app/loggedout.html'));
-  });
-
-  router.route('/future-events')
-  .get(function(req, res) {
-    res.sendFile(path.join(__dirname, '../app/index.html'));
-  });
-
+  //get Contacts to show on meet the team page
   router.route('/getTeam')
   .get(function(req, res) {
     models.sql.sync()
@@ -138,116 +84,7 @@ module.exports = function (router) {
       res.json(teamMembers);
     })
   })
-  //route to return html for meet the team page
-  /*router.route('/meet-the-team')
-  .get(function(req, res) {
-    //sync with the database and search for all speakers where showOnMeetTheTeamPage is true
-    models.sql.sync()
-    .then(function() {
-      return Contact.findAll({
-        where: {
-          showOnMeetTheTeamPage: true
-        }
-      });
-    })
-    .then(function(speakers) {
-      speakers.sort(function(a, b) {
-        a = a.meetTheTeamPageOrder;
-        b = b.meetTheTeamPageOrder;
-        if (a > b) {
-          return 1;
-        }
-        if (a < b) {
-          return -1;
-        }
-        if (a === b) {
-          return 0;
-        }
-      });
-      let meetTheTeamSpeakersArr = [];
-      let meetTheTeamSpeakersHtml = '<main style="overflow:hidden" tabindex="0" id="beginningOfContent" class="grid white-bg main-page-content the-team-section">';
-      //loop over the returned speakers and splice them into an array using their position number minus one as the index
-      for (let key in speakers) {
-        meetTheTeamSpeakersArr.splice(speakers[key].meetTheTeamPageOrder - 1, 0, speakers[key]);
-      }
-      //create the string of html to add to the page
-      // meetTheTeamSpeakersHtml += `<section class="col_12 internetExplorer" id="${meetTheTeamSpeakersArr[0].divId}"><h4  id="beginningOfContent">${meetTheTeamSpeakersArr[0].firstName} ${meetTheTeamSpeakersArr[0].lastName}</h4><h5>${meetTheTeamSpeakersArr[0].msTeamTitle}</h5><p><img alt="Image of ${meetTheTeamSpeakersArr[0].fullName}" class="pull-left" src="app/uploads/${meetTheTeamSpeakersArr[0].headShot}" />${meetTheTeamSpeakersArr[0].contactDescription}</p><hr class="alt1" /></section>`;
-      for (let i = 0, j = meetTheTeamSpeakersArr.length; i < j; i++) {
-        meetTheTeamSpeakersHtml += `<section class="col_12 internetExplorer" id="${meetTheTeamSpeakersArr[i].divId}" role="presentation"><h4>${meetTheTeamSpeakersArr[i].firstName} ${meetTheTeamSpeakersArr[i].lastName}</h4><h5>${meetTheTeamSpeakersArr[i].msTeamTitle}</h5><p><img alt="Image of ${meetTheTeamSpeakersArr[i].fullName}" class="pull-left" src="app/uploads/${meetTheTeamSpeakersArr[i].headShot}" />${meetTheTeamSpeakersArr[i].contactDescription}</p><hr class="alt1" /></section>`;
-      }
-      //read in the meet-the-team.html page and add the speakers html then send the html string
-      fs.readFile(path.join(__dirname, '../app/meet-the-team.html'), function(err, speakersPage) {
-        let speakersPageHtml = speakersPage.toString();
-        speakersPageHtml = speakersPageHtml.replace('<main tabindex="0" id="beginningOfContent" class="grid white-bg main-page-content the-team-section">', meetTheTeamSpeakersHtml);
-        res.send(speakersPageHtml);
-      });
-    });
-  });*/
-
-  router.route('/contactus')
-  .get(function (req, res) {
-    // res.sendFile(path.join(__dirname, '../app/contact.html'));
-    res.sendFile(path.join(__dirname, '../app/index.html'));
-  });
-
-  router.route('/faq')
-  .get(function (req, res) {
-    // res.sendFile(path.join(__dirname, '../app/faq.html'));
-    res.sendFile(path.join(__dirname, '../app/index.html'));
-  });
-
-  router.route('/latest-news')
-  .get(function (req, res) {
-    res.sendFile(path.join(__dirname, '../app/latest-news.html'));
-    // res.sendFile(path.join(__dirname, '../app/index.html'));
-  });
-  /*router.route('/blah')
-  .get(function (req, res) {
-    res.sendFile(path.join(__dirname, '../app/latest-news.html'));
-    // res.sendFile(path.join(__dirname, '../app/index.html'));
-  });
-*/
-  router.get('/curriculum', eatAuth, function(req, res) {
-    res.sendFile(path.join(__dirname, '../app/curriculum.html'));
-  });
-
-  router.route('/survey/:eventId')
-  .get(function (req, res) {
-    res.sendFile(path.join(__dirname, '../app/survey.html'));
-  });
-
-  router.route('/homepageteam')
-  .get(function (req, res) {
-    models.sql.sync()
-    .then(function () { 
-      Contact.findAll({where: {showOnHomePage: true}})
-      .then(function (data) {
-        data.sort(function(a, b) {
-          a = a.meetTheTeamPageOrder;
-          b = b.meetTheTeamPageOrder;
-          if (a > b) {
-            return 1;
-          }
-          if (a < b) {
-            return -1;
-          }
-          if (a === b) {
-            return 0;
-          }
-        })
-        res.json(data);
-      })
-      .error(function (err) {
-        console.log(err);
-        res.status(500).json({msg: 'internal server error'});
-      });
-    });
-  });
-
-  router.get('/private', function(req, res) {
-    res.sendFile(path.join(__dirname, '../app/login.html'));
-  });
-
+  //Get upcoming events for header, carousel, and upcoming events page
   router.route('/futureEventsData')
   .get(function(req, res) {
     let eventDates = 'Coming Soon';
@@ -341,91 +178,6 @@ module.exports = function (router) {
     })
   })
 
-  //find all events that are upcoming and add the next 3 upcoming events to the future-events page
-  // router.route('/future-events')
-  // .get(function (req, res) {
-  //   let eventBlocksHtml = '<section role="presentation" class="col_12 internetExplorer futureEvents">';
-  //   let newHtml = '';
-  //   // let numFutureBlocks = 4;
-  //   let eventDates = 'Coming Soon';
-  //   let city;
-  //   let cityArr;
-
-  //   fs.readFile(path.join(__dirname, '../app/future-events.html'), function (err, html) {
-  //     if (err) {
-  //       console.log(err);
-  //       res.status(500).json({msg: 'internal server error'});
-  //     }
-  //     models.sql.sync()
-  //     .then(function () {
-  //       Event.findAll({
-  //         where: {
-  //           eventEndDate: {
-  //               $or: {
-  //                 $gte: new Date(),
-  //                 $eq: null,
-  //                 /* jshint ignore:start */
-  //                 $eq: new Date(new Date().getFullYear().toString())
-  //                 /* jshint ignore:end */
-  //             }
-  //           }
-  //         }
-  //       })
-  //       .then(function (upcomingEvent) {
-  //         /*if (upcomingEvent.length < 4) {
-  //           numFutureBlocks = upcomingEvent.length;
-  //         }*/
-  //         upcomingEvent.sort(function (a, b) {
-  //           a = a.eventEndDate;
-  //           b = b.eventEndDate;
-  //           if (a === null) {
-  //             let tmpDate = new Date();
-  //             a = tmpDate.setMonth(11, 31);
-  //           }
-  //           if (b === null) {
-  //             let tmpDate = new Date();
-  //             b = tmpDate.setMonth(11, 31);
-  //           }
-  //           if (a > b) {
-  //             return 1;
-  //           }
-  //           if (a < b) {
-  //             return -1;
-  //           }
-  //           if (a === b) {
-  //             return 0;
-  //           }
-  //         });
-
-
-  //         for (let i = 0; i < upcomingEvent.length; i++) {
-            
-  //           cityArr = upcomingEvent[i].eventLocation.split('_');
-  //           for (let index = 0, j = cityArr.length; index < j; index++) {
-  //             cityArr[index] = cityArr[index].charAt(0).toUpperCase() + cityArr[index].slice(1);
-  //           }
-
-  //           city = cityArr.join(' ');
-            
-  //           if (upcomingEvent[i].eventStartDate !== null && (upcomingEvent[i].eventStartDate.getMonth() !== 0 && upcomingEvent[i].eventStartDate.getDate() !== 1)) {
-  //             eventDates = `${months[upcomingEvent[i].eventStartDate.getMonth()]} ${upcomingEvent[i].eventStartDate.getDate()} - ${upcomingEvent[i].eventEndDate.getDate()}, ${upcomingEvent[i].eventEndDate.getFullYear()}`;
-  //           } else if (upcomingEvent[i].eventStartDate !== null && (upcomingEvent[i].eventStartDate.getMonth() === 0 && upcomingEvent[i].eventStartDate.getDate() === 1)) {
-  //             eventDates = `${upcomingEvent[i].eventEndDate.getFullYear()}`;
-  //           } else {
-  //             eventDates = 'TBD';
-  //           }
-
-  //           eventBlocksHtml += i === 0 ? `<div class="col_${Math.floor(12 / upcomingEvent.length)} event_block" style="background-color: ${upcomingEvent[i].eventHighlightColor};"><a id="beginningOfContent" href="/${upcomingEvent[i].eventUrl}"><p>More Details</p><h1>${city}</h1><h3>${upcomingEvent[i].eventName}<br />${eventDates}</h3></a></div>` : `<div class="col_${Math.floor(12 / upcomingEvent.length)} event_block" style="background-color: ${upcomingEvent[i].eventHighlightColor};"><a href="/${upcomingEvent[i].eventUrl}"><p>More Details</p><h1>${city}</h1><h3>${upcomingEvent[i].eventName}<br />${eventDates}</h3></a></div>`;
-  //           // eventBlocksHtml += `<div class="col_${Math.floor(12 / upcomingEvent.length)} event_block" style="background-color: #${continentColors[upcomingEvent[i].eventContinent]};"><a href="/${upcomingEvent[i].eventUrl}"><p>More Details</p><h1>${city}</h1><h3>${upcomingEvent[i].eventName}<br />${eventDates}</h3></a>${risingText}</div>`;
-  //         }
-  //         eventBlocksHtml += '</section>';
-  //         newHtml = html.toString().replace('<section class="col_12 internetExplorer" aria-role="presentation">', eventBlocksHtml);
-  //         res.send(newHtml);
-  //       });
-  //     });
-  //   });
-  // });
-
   //route to send style choices for website
   router.get('/sitestyle', function(req, res) {
     models.sql.sync()
@@ -442,76 +194,7 @@ module.exports = function (router) {
   .get(function(req, res) {
     res.json(process.env.BING_MAP_API_KEY);
     res.end();
-  });
-
-  // //route to send events for header
-  // router.route('/events')
-  // .get(function (req, res) {
-  //   models.sql.sync()
-  //   .then(function () {
-  //     let year = new Date().getFullYear();
-  //     return Event.findAll({
-  //       where: {
-  //         eventEndDate: {
-  //           $or: {
-  //             $gte: new Date(),
-  //             $eq: null,
-  //             /* jshint ignore:start */
-  //             $eq: new Date(new Date().getFullYear().toString())
-  //             /* jshint ignore:end */
-  //           }
-  //         }
-  //       }
-  //     });
-  //   })
-  //   .then(function (data) {
-  //     let eventArr = [];
-  //     let undatedEventArr = [];
-  //     let outputArr;
-  //     let outputJson;
-  //    /* let menuEvents = 4;
-  //     if (data.length < 4) {
-  //       menuEvents = data.length;
-  //     }*/
-  //     data.sort(function (a, b) {
-  //       a = a.eventStartDate;
-  //       b = b.eventStartDate;
-  //       if ( a < b) {
-  //         return -1;
-  //       }
-  //       if (a > b) {
-  //         return 1;
-  //       }
-  //       if (a === b) {
-  //         return 0;
-  //       }
-  //     });
-  //     for (let i = 0; i < data.length; i++) {
-  //       let startDate;
-  //       if (data[i].eventStartDate === null) {
-  //         startDate = 'TBD';
-  //       } else {
-  //         startDate = data[i].eventStartDate;
-  //       }
-  //       let tmpObj = {
-  //         eventStartDate: startDate,
-  //         eventUrl: data[i].eventUrl,
-  //         eventLocation: data[i].eventLocation,
-  //         eventHomepageImage: data[i].eventHomepageImage,
-  //         eventHighlightColor: data[i].eventHighlightColor,
-  //         eventName: data[i].eventName
-  //       };
-  //       if (startDate === 'TBD') {
-  //         undatedEventArr.push(tmpObj);
-  //       } else {
-  //         eventArr.push(tmpObj);
-  //       }
-  //     }
-  //     outputArr = eventArr.concat(undatedEventArr);
-  //     res.json(outputArr);
-  //   });
-  // });
-  
+  });  
 
   /*/////////////////////////////////////////////////////////////////////////////////////////
 
@@ -1003,7 +686,7 @@ module.exports = function (router) {
 
 
   ///////////////////////////////////////////////////////////////////////*/
-  router.route('/:eventUrl')
+  router.route('/api/:eventUrl')
   .get(function(req, res) {
     //check if last 4 digits of url slug (req.params.eventUrl) are a number and end the response  if they're not numbers i.e. not a year and end the response if they're not
     if (!/^\d+$/.test(req.params.eventUrl.slice(-4))) {
@@ -1173,28 +856,10 @@ module.exports = function (router) {
     });
   });
 
-  //This route has to be last or it will override the other routes
-  /*router.route('/:eventName')
-  .get(function (req, res) {
-    // var cat = req.params.eventName.toLowerCase().replace(/\s+/g, '');
-    var theParam = req.params.eventName.toLowerCase().slice(1);
-    models.sql.sync()
-    .then(function () {
-      Event.findAll()
-      .then(function (data) {
-        var testArr = [];
-        for (var i = 0; i < data.length; i++) {
-          testArr.push(data[i].eventUrl);
-        }
-        if (testArr.indexOf(req.params.eventName) !== -1) {
-          res.sendFile(path.join(__dirname, '../app/blank-event.html'));  
-        } 
-        if (testArr.indexOf(req.params.eventName) === -1) {
-          res.status(404);
-          // res.send(path.join(__dirname, '../app/thank-you.html')); //I need to make a 404 page
-        }
-      });
-    });
+  /*Send index.html for all routes that aren't used for data*/
+  router.route('/*')
+  .get(function(req, res) {
+    res.sendFile(path.join(__dirname, '../app/index.html'));
   });
-  */
+
 };
