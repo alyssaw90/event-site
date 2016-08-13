@@ -156,20 +156,12 @@ eventsApp
       pageTitle: '404 error Page - Microsoft Plugfests and Events'
     }
 	})
-/*	.when('/:name*', {
-    templateUrl: '/app/component/events/event.html'
-  })*/
 	.when('/:slug', {
-		templateUrl: '/app/component/events/event.html',
-		controller: 'EventsCtrl'
-	})
-/*	.otherwise({
-		redirectTo: '/404'
-	})*/
-	/*.when('/latestNews', {
-		templateUrl: '/app/components/latestNews/latestNews.html',
-		// controller: 'latestNewsCtrl'
-	})*/
+    templateUrl: '/app/components/events/event.html',
+    controller: 'EventsCtrl'
+  })
+
+	//turn on html5Mode so routes don't include # symbol
 	if(window.history && window.history.pushState) {
 		$locationProvider.html5Mode({
 	   	enabled: true,
