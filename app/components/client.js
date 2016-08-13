@@ -6,9 +6,10 @@ require('angular-route');
 require('angular-aria');
 require('angular-touch');
 require('angular-carousel');
+require('ng-page-title');
 
 // declare a module
-const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel']);
+const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle']);
 
 // const rss1 = () => {
 // 	document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document.location.protocol ? 'https://' : 'http://') + 'feed.mikle.com/js/rssmikle.js">\x3C/script>');
@@ -65,6 +66,7 @@ require('./meetTheTeam/MeetTheTeamCtrl.build.js')(eventsApp);
 require('./futureEvents/FutureEventsController.build.js')(eventsApp);
 require('./shared/header/HeaderController.build.js')(eventsApp);
 require('./admin/AdminCtrl.build.js')(eventsApp);
+require('./events/EventsCtrl.build.js')(eventsApp);
 //services
 require('./meetTheTeam/meetTheTeamRestResource.build.js')(eventsApp);
 require('./futureEvents/futureEventsRESTResource.build.js')(eventsApp);
@@ -96,40 +98,74 @@ eventsApp
 	$routeProvider
 	.when('/', {
 		templateUrl: '/app/components/homepage/homepage.html',
-		controller: 'HomepageCtrl'
+		controller: 'HomepageCtrl',
+		data: {
+      pageTitle: 'Home Page - Microsoft Plugfests and Events'
+    }
 	})
 	.when('/about', {
-		templateUrl: '/app/components/about/about.html'
+		templateUrl: '/app/components/about/about.html',
+		data: {
+      pageTitle: 'About Us Page - Microsoft Plugfests and Events'
+    }
 	})
 	.when('/contactus', {
-		templateUrl: '/app/components/contactUs/contactUs.html'
+		templateUrl: '/app/components/contactUs/contactUs.html',
+		data: {
+      pageTitle: 'Contact Us Page - Microsoft Plugfests and Events'
+    }
 
 	})
 	.when('/faq', {
-		templateUrl: '/app/components/faq/faq.html'
+		templateUrl: '/app/components/faq/faq.html',
+		data: {
+      pageTitle: 'Frequently Asked Questions Page - Microsoft Plugfests and Events'
+    }
 	})
 	.when('/past-events', {
 		templateUrl: '/app/components/pastEvents/pastEvents.html',
-		controller: 'PastEventsCtrl'
+		controller: 'PastEventsCtrl',
+		data: {
+      pageTitle: 'Past Events Page - Microsoft Plugfests and Events'
+    }
 	})
 	.when('/meet-the-team', {
 		templateUrl: '/app/components/meetTheTeam/meetTheTeam.html',
-		controller: 'MeetTheTeamCtrl'
+		controller: 'MeetTheTeamCtrl',
+		data: {
+      pageTitle: 'Meet the Team Page - Microsoft Plugfests and Events'
+    }
 	})
 	.when('/future-events', {
 		templateUrl: '/app/components/futureEvents/futureEvents.html',
-		controller: 'FutureEventsCtrl'
+		controller: 'FutureEventsCtrl',
+		data: {
+      pageTitle: 'Future Events Page - Microsoft Plugfests and Events'
+    }
 	})
 	.when('/admin', {
 		templateUrl: '/app/components/admin/admin.html',
-		controller: 'AdminCtrl'
+		controller: 'AdminCtrl',
+		data: {
+      pageTitle: 'Admin Page - Microsoft Plugfests and Events'
+    }
 	})
 	.when('/404', {
-		templateUrl: '/app/components/404/404.html'
+		templateUrl: '/app/components/404/404.html',
+		data: {
+      pageTitle: '404 error Page - Microsoft Plugfests and Events'
+    }
 	})
-	.otherwise({
+/*	.when('/:name*', {
+    templateUrl: '/app/component/events/event.html'
+  })*/
+	.when('/:slug', {
+		templateUrl: '/app/component/events/event.html',
+		controller: 'EventsCtrl'
+	})
+/*	.otherwise({
 		redirectTo: '/404'
-	})
+	})*/
 	/*.when('/latestNews', {
 		templateUrl: '/app/components/latestNews/latestNews.html',
 		// controller: 'latestNewsCtrl'

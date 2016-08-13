@@ -1,24 +1,23 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-ng-app="eventsApp">
 <head>
-  <!-- META -->
-  <title>Microsoft Plugfests and Events - Home Page</title>
+  <title page-title></title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/ >
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/ >
   <!-- CSS -->
-  <link rel="stylesheet" type="text/css" href="app/css/kickstart.css" media="all" />
-  <link rel="stylesheet" type="text/css" href="app/css/animate.css" media="all" />
-  <link rel="stylesheet" type="text/css" href="app/style.css" media="all" />
-  <link rel="stylesheet" type="text/css" href="app/css/angular-carousel.css" media="all" />
+  <link rel="stylesheet" type="text/css" href="/app/css/kickstart.css" media="all" />
+  <link rel="stylesheet" type="text/css" href="/app/css/animate.css" media="all" />
+  <link rel="stylesheet" type="text/css" href="/app/style.css" media="all" />
+  <link rel="stylesheet" type="text/css" href="/app/css/angular-carousel.css" media="all" />
   <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.2.1/jssocials.css" />
   <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.2.1/jssocials-theme-flat.css" />
-  <link rel="stylesheet" type="text/css" href="app/css/custom.build.min.css" media="all" />
+  <link rel="stylesheet" type="text/css" href="/app/css/custom.build.min.css" media="all" />
   <!-- Azure Analytics -->
   <script type="text/javascript">  var appInsights = window.appInsights || function (config) { function r(config) { t[config] = function () { var i = arguments; t.queue.push(function () { t[config].apply(t, i) }) } } var t = { config: config }, u = document, e = window, o = "script", s = u.createElement(o), i, f; for (s.src = config.url || "//az416426.vo.msecnd.net/scripts/a/ai.0.js", u.getElementsByTagName(o)[0].parentNode.appendChild(s), t.cookie = u.cookie, t.queue = [], i = ["Event", "Exception", "Metric", "PageView", "Trace"]; i.length;) r("track" + i.pop()); return r("setAuthenticatedUserContext"), r("clearAuthenticatedUserContext"), config.disableExceptionTracking || (i = "onerror", r("_" + i), f = e[i], e[i] = function (config, r, u, e, o) { var s = f && f(config, r, u, e, o); return s !== !0 && t["_" + i](config, r, u, e, o), s }), t }({ instrumentationKey: "8413289d-2420-4296-9d99-b586b65f4516" }); window.appInsights = appInsights; appInsights.trackPageView();</script>
 </head>
-<body data-ng-app="eventsApp" data-ng-controller="allPagesCtrl">
+<body data-ng-controller="allPagesCtrl">
   <div id="siteWrapper">
     <div data-ng-include="'/app/components/shared/header/headerTemplate.html'"></div>
     <div data-ng-view autoscroll="true"></div>
@@ -31,7 +30,7 @@
   </div>
   <!-- JavaScript -->
   <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.min.js"></script>
-  <script type="text/javascript" src="app/lib/kickstart.js"></script>
+  <script type="text/javascript" src="/app/lib/kickstart.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.jssocials/1.2.1/jssocials.min.js"></script> 
   <!-- <script type="text/javascript">
     document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document.location.protocol ? 'https://' : 'http://') + 'feed.mikle.com/js/rssmikle.js">\x3C/script>');
@@ -41,7 +40,7 @@
   });
   </script> -->
   <script charset="UTF-8" type="text/javascript" src="https://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0&s=1"></script>
-  <script type="text/javascript" src="app/dist/build.min.js"></script>
+  <script type="text/javascript" src="/app/dist/build.min.js"></script>
   <script>
     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];
         if(!d.getElementById(id)){js=d.createElement(s);js.id=id;
@@ -49,7 +48,7 @@
         fjs.parentNode.insertBefore(js,fjs);}
     }(document,"script","twitter-wjs");
   </script>
-  <script type="text/javascript" src="app/lib/customize-twitter-1.1.min.js"></script>
+  <script type="text/javascript" src="/app/lib/customize-twitter-1.1.min.js"></script>
   <script>
     var options = {
         "url": "/app/css/twitter-widget.min.css",
