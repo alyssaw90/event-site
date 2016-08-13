@@ -1,7 +1,7 @@
 'use strict';
 
-const EventsController = (app) => {
-	app.controller('EventsController', ['$scope', '$http', 'eventsRESTResource', function($scope, $http, resource) {
+const AdminCtrl = (app) => {
+	app.controller('AdminCtrl', ['$scope', '$http', 'adminRESTResource', function($scope, $http, resource) {
 		$scope.errors = [];
 		$scope.theEvents = [];
 		$scope.theSpeakers = [];
@@ -35,4 +35,4 @@ const EventsController = (app) => {
 	}])
 }
 
-module.exports = EventsController;
+module.exports = AdminCtrl;

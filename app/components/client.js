@@ -64,12 +64,12 @@ require('./pastEvents/PastEventsCtrl.build.js')(eventsApp);
 require('./meetTheTeam/MeetTheTeamCtrl.build.js')(eventsApp);
 require('./futureEvents/FutureEventsController.build.js')(eventsApp);
 require('./shared/header/HeaderController.build.js')(eventsApp);
-require('./admin/EventsController.build.js')(eventsApp);
+require('./admin/AdminCtrl.build.js')(eventsApp);
 //services
 require('./meetTheTeam/meetTheTeamRestResource.build.js')(eventsApp);
 require('./futureEvents/futureEventsRESTResource.build.js')(eventsApp);
 require('./shared/header/headerRESTResource.build.js')(eventsApp);
-require('./admin/eventsRESTResource.build.js')(eventsApp);
+require('./admin/adminRESTResource.build.js')(eventsApp);
 
 eventsApp
 .controller('allPagesCtrl', ['$scope', '$location', '$route', function($scope, $location, $route) {
@@ -121,7 +121,8 @@ eventsApp
 		controller: 'FutureEventsCtrl'
 	})
 	.when('/admin', {
-		templateUrl: '/app/components/admin/admin.html'
+		templateUrl: '/app/components/admin/admin.html',
+		controller: 'AdminCtrl'
 	})
 	.when('/404', {
 		templateUrl: '/app/components/404/404.html'

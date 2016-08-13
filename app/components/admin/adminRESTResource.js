@@ -2,9 +2,9 @@
 
 import * as customFunctions from './../../es6/common-functions.build.js';
 
-const eventsRESTResource = (app) => {
+const adminRESTResource = (app) => {
 
-	app.factory('eventsRESTResource', ['$http', function($http) {
+	app.factory('adminRESTResource', ['$http', function($http) {
 
 		return function(resourceName, callback) {
 			return {
@@ -25,4 +25,4 @@ const eventsRESTResource = (app) => {
 	}])
 }
 
-module.exports = eventsRESTResource;
+module.exports = adminRESTResource;
