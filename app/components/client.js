@@ -58,6 +58,7 @@ require('./contactUs/contactUsDirective.build.js')(eventsApp);
 require('./futureEvents/futureEventsDirective.build.js')(eventsApp);
 require('./shared/header/sliderSlideDirective.build.js')(eventsApp);
 require('./shared/header/headerDirective.build.js')(eventsApp);
+require('./events/eventsDirective.build.js')(eventsApp);
 
 //controllers
 require('./homepage/HomepageCtrl.build.js')(eventsApp);
@@ -72,6 +73,7 @@ require('./meetTheTeam/meetTheTeamRestResource.build.js')(eventsApp);
 require('./futureEvents/futureEventsRESTResource.build.js')(eventsApp);
 require('./shared/header/headerRESTResource.build.js')(eventsApp);
 require('./admin/adminRESTResource.build.js')(eventsApp);
+require('./events/eventsRESTResource.build.js')(eventsApp);
 
 eventsApp
 .controller('allPagesCtrl', ['$scope', '$location', '$route', function($scope, $location, $route) {
