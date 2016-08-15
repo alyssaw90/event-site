@@ -689,6 +689,63 @@ module.exports = function (router) {
 
 
   ///////////////////////////////////////////////////////////////////////*/
+
+  /*Get events from URL path/slug */
+  router.route('/taco/:slug')
+  .get(function(req, res) {
+    //check if last 4 digits of url slug (req.params.eventUrl) are a number and end the response  if they're not numbers i.e. not a year and end the response if they're not
+    /*if (!/^\d+$/.test(req.params.slug.slice(-4))) {
+      return res.end();
+    }*/
+    //create an eventInfo object to hold the values for the event to be rendered
+    let eventInfo = {};
+    eventInfo.isEvent = true;
+    models.sql.sync()
+    .then(function() {
+      //trim the params to get the city and the year of the event
+      let eventSearchCity = req.params.slug.slice(0, -4);
+      let eventYear = req.params.slug.slice(-4);
+      let testDate = new Date(eventYear - 1, 11, 31, 11, 59, 59) == 'Invalid Date' ? new Date(1970, 1, 1) : new Date(eventYear - 1, 11, 31, 11, 59, 59);
+     /* if (testDate === 'not a date') {
+        return res.status(404).redirect('/404');
+      }*/
+
+      // search the database for event that matches the city and occurs on or after the year from the params and return the event found
+      return Event.findOne({
+        where: {
+          eventLocation: eventSearchCity,
+          eventStartDate: {
+            $or: {
+              $gte: testDate,
+              $eq: null
+            }
+          }
+        }
+      });
+
+    })
+    //get the related tabs and speakers for the event and add them to the return object
+    .then(function(event) {
+      if (!event) {
+        eventInfo.isEvent = false;
+        res.json(eventInfo);
+      } else {
+        eventInfo.event = event;
+        event.getTabs()
+        .then(function(tabs) {
+          eventInfo.tabs = tabs;
+          event.getContacts()
+          .then(function(speakers) {
+            eventInfo.speakers = speakers;
+            res.json(eventInfo);
+          });
+        });
+        
+      }
+    });
+  });
+
+
   router.route('/api/:eventUrl')
   .get(function(req, res) {
     //check if last 4 digits of url slug (req.params.eventUrl) are a number and end the response  if they're not numbers i.e. not a year and end the response if they're not
