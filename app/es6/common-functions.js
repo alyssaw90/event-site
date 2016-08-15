@@ -108,46 +108,10 @@ export let findPos = function(obj) {
   }
 }
 
-//make footer stick to bottom of content or page, whichever is taller.
-export let stickyFooter = function() {
-	/*var $window = jQuery(window);
-	var $document = jQuery(document);
-	var $footer = jQuery('.foot');
-	var $backToTopButton = jQuery('.scroll-button');
-  if ($window.height() <= $document.height()) {
-  	$footer.css('position', 'relative');
-  }
-  if ($window.height() > $document.height()) {
-    $footer.css('position', 'absolute').css('bottom', 0);
-  }
-	if ($window.height() < $document.height() - 200 && $window.width() < 768) {
-  	$backToTopButton.show();
-  }
-  if ($window.height() > $document.height() - 200 || $window.width() >= 768) {
-    $backToTopButton.hide();
-  }*/
+//URlify a string
 
-}
-
-//special sticky footer for homepage that switches equals signs in the if statements
-export let homepageStickyFooter = function() {
-	/*var $window = jQuery(window);
-	var $document = jQuery(document);
-	var $footer = jQuery('.foot');
-	var $backToTopButton = jQuery('.scroll-button');
-
-  if ($window.height() < $document.height()) {
-  	$footer.css('position', 'relative');
-  }
-  if ($window.height() >= $document.height()) {
-    $footer.css('position', 'absolute').css('bottom', 0);
-  }
-	if ($window.height() < $document.height() - 200 && $window.width() < 768) {
-  	$backToTopButton.show();
-  }
-  if ($window.height() > $document.height() - 200 || $window.width() >= 768) {
-    $backToTopButton.hide();
-  }*/
+export const urlify = (str) => {
+	return str.trim().replace(/\s+/g, '').replace(/[^\w\s]|_/g, '').toLowerCase();
 }
 
 //function to set divs with equal height
@@ -163,6 +127,10 @@ export let changeHeight = function(div) {
 	jQuery(div).each(function () {
 		jQuery(this).height(tallestBlock);
 	});
+}
+
+export const parseToHtml = (str) => {
+	return jQuery.parseHTML(str);
 }
 
 // function to set divs with equal width

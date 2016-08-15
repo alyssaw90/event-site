@@ -38,7 +38,6 @@ if (self === top) {
 		$('a[href^="http"]').attr('target','_blank');
 
 		customFunctions.changeHeight('.homepageIntroBlocks');
-	  customFunctions.homepageStickyFooter();
 
 		//hide slider on screens larger than 768px
 		$(window).load(customFunctions.addCSS(768, $('.slider'), 'display', 'none', 'inline'));
@@ -109,22 +108,13 @@ if (self === top) {
 		$(window).load(function() {
 			customFunctions.changeHeight('.past_events');
 			customFunctions.changeHeight('.individual-homepage-expert');
-		  customFunctions.stickyFooter();
-		  customFunctions.homepageStickyFooter();
 		});
 
 
 		$(window).resize(function(){
 			customFunctions.changeHeight('.past_events');
 			customFunctions.changeHeight('.individual-homepage-expert');
-		  customFunctions.stickyFooter();
-		  customFunctions.homepageStickyFooter();
 		});
-
-		setTimeout(function() {
-			customFunctions.stickyFooter();
-		  customFunctions.homepageStickyFooter();
-		}, 1000);
 
 		/*//////////////////////////////////////////////////////
 		/																												/ 

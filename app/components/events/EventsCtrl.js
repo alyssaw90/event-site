@@ -1,7 +1,9 @@
 'use strict';
+import * as customFunctions from './../../es6/common-functions.build.js';
+const jQuery = require('jquery');
 
 const EventsCtrl = (app) => {
-	app.controller('EventsCtrl', ['$scope', '$http', 'eventsRESTResource', function($scope, $http, resource) {
+	app.controller('EventsCtrl', ['$scope', '$http', '$sce', 'eventsRESTResource', function($scope, $http, $sce, resource) {
 		$scope.errors = [];
 		$scope.events;
 
@@ -16,12 +18,29 @@ const EventsCtrl = (app) => {
         };
         
         $scope.events = data;
+        //loop over html string for tabs and tell angular to trust it as html
+				for (let i = 0, len = $scope.events.tabs.length; i < len; i++) {
+					$scope.events.tabs[i].tabContent = $sce.trustAsHtml($scope.events.tabs[i].tabContent);
+
+				}
       })
 			
 		
 		};
 
+
+		$scope.showOnlyFirst = function(index) {
+			if (index === 0) {
+				return 'block';
+			} else {
+				return 'none';
+			}
+		}
+
+		$scope.urlify = customFunctions.urlify;
+
 	}])
+
 }
 
 module.exports = EventsCtrl;

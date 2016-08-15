@@ -224,6 +224,30 @@ module.exports = function (router) {
 
   /////////////////////////////////////////////////////////////////////////////////////////*/
 
+  //get all contacts for editing
+  router.get('/contacts'/*, eatAuth*/, function (req, res) {
+    models.sql.sync()
+    .then(function () {
+      Contact.findAll()
+      .then(function (data) {
+        res.json(data);
+      });
+    });
+  });
+
+  //get all events for edit events tab
+  router.get('/allevents', function(req, res) {
+    models.sql.sync()
+    .then(function() {
+      return Event.findAll();
+    })
+    .then(function(events) {
+      res.json(events);
+    });
+  });
+
+
+
   //create basic event
   // router.post('/createevent', eatAuth, upload.array('images', 2), function (req, res, next) {
   //   models.sql.sync()
@@ -313,16 +337,6 @@ module.exports = function (router) {
   //     });
       
   //   }
-  // });
-  // //get all events for edit events tab
-  // router.get('/allevents', function(req, res) {
-  //   models.sql.sync()
-  //   .then(function() {
-  //     return Event.findAll();
-  //   })
-  //   .then(function(events) {
-  //     res.json(events);
-  //   });
   // });
 
   // router.get('/alltabs', eatAuth, function(req, res) {
@@ -518,16 +532,6 @@ module.exports = function (router) {
   //   });
   // });
 
-  // //get all contacts for editing
-  // router.get('/contacts'/*, eatAuth*/, function (req, res) {
-  //   models.sql.sync()
-  //   .then(function () {
-  //     Contact.findAll()
-  //     .then(function (data) {
-  //       res.json(data);
-  //     });
-  //   });
-  // });
 
   // //route to create speakers
   // router.post('/addspeakers', eatAuth, upload.single('headshot'), function(req, res) {

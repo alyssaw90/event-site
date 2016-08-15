@@ -1,4 +1,24 @@
 <div class="mobileWrapper" data-ng-init="getEvents()" data-events-directive>
   <main class="grid main-page-content">
+  	<ul class="tabs left">
+  		<li data-ng-repeat="tab in events.tabs" ng-class="$first ? 'first current' : ''">
+  			<a href="#{{urlify(tab.tabTitle)}}"><h5>{{ tab.tabTitle }}</h5></a>
+  		</li>
+  		<li data-ng-if="events.speakers" class="last">
+  			<a target="_self" href="#speakers"><h5>Speakers</h5></a>
+			</li>
+		</ul>
+		<div data-ng-repeat="tab in events.tabs" id="{{urlify(tab.tabTitle)}}" class="tab-content eventTabDiv" data-ng-class="{'current': $first}" style="display: {{showOnlyFirst($index)}}" data-ng-bind-html="tab.tabContent" ></div>
+  	<div data-ng-if="events.speakers" id="speakers" class="last tab-content eventTabDiv clearfix" style="display:none">
+			<div data-ng-repeat="speaker in events.speakers" class="col_12 internetExplorer" id="{{speaker.divId}}" aria-label="Bio of {{speaker.fullName}}" role="presentation">
+ 		  	<h4>{{speaker.fullName}}</h4>
+ 		  	<h5>{{speaker.msTeamTitle}}</h5>
+ 		  	<p>
+ 		  		<img class="pull-left speakersImg" height="165" width="165" alt="image of {{speaker.fullName}}" src="app/uploads/{{speaker.headShot}}" />
+ 		  		{{speaker.contactDescription}}
+	  		</p>
+ 		  	<hr class="alt1" />
+ 			</div>
+  	</div>
   </main>
 </div>

@@ -16,7 +16,7 @@
 			<div id="edit-speakers-home-tab" class="last tab-content eventTabDiv" style="display:none;">
 			<h3>All Speakers</h3>
 			<table>
-				<tr><th><h4>Speaker Name</h4></th><th><h4>Display on Meet the Team</h4></th><th><h4>Last Modified By</h4></th><th><h4>Status</h4></th><th>&nbsp;</th></tr>
+				<tr><th><h4>Speaker Name</h4></th><th><h4>Display on Meet the Team</h4></th><th><h4>Last Modified By</h4></th><th><h4>Last Modified</h4></th><th><h4>Status</h4></th><th>&nbsp;</th></tr>
 				<tr data-ng-repeat="speaker in theSpeakers"><td>{{speaker.fullName}}</td><td>{{speaker.showOnMeetTheTeamPage}}</td><td>{{speaker.updatedAt | date: 'MM/dd/yyyy'}}</td><td>{{publishedOrNot = speaker.isPublished ? 'published' : 'unpublished';}}</td><td><button>Edit</button></td></tr>
 			</table>
 			</div>

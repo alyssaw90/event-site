@@ -9,7 +9,6 @@ const eventsDirective = (app) => {
 			link: function postLink(scope, element, attrs) {
 				$timeout(function() {
 					let theHtml = jQuery.parseHTML(scope.events);
-					console.log('scope.events      ', theHtml);
 					jQuery('main').append(theHtml);
 				}, 500);
 			}

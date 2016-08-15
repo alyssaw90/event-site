@@ -7,9 +7,10 @@ require('angular-aria');
 require('angular-touch');
 require('angular-carousel');
 require('ng-page-title');
+require('angular-sanitize');
 
 // declare a module
-const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle']);
+const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize']);
 
 // const rss1 = () => {
 // 	document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document.location.protocol ? 'https://' : 'http://') + 'feed.mikle.com/js/rssmikle.js">\x3C/script>');
