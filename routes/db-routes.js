@@ -28,17 +28,19 @@ const Event = models.Event;
 const EventTab = models.EventTab;
 const SiteStyle = models.SiteStyle;
 const placeholders = require('../models/placeholders');
-
-placeholders();
+const dbRelationships = require('../models/relationships');
+/*Use the methods below to create the placeholder data. First uncomment the placeholder() and start the server, then comment out the placeholder() and uncomment the dbRelationships() and restart the server. Finally, comment both placeholder() and dbRelationships out and restart the server. At this point, all your placeholder data will be created. Do this only once, if you need to recreate your placeholder data, delete all the tables from the database and repeat these same steps*/
+// placeholders();
+// dbRelationships();
 
 models.sql.authenticate()
-  .then(function (err) {
-    if (err) {
-      console.log(clc.xterm(202)('Unable to connect to the database with db router: '), err);
-    } else {
-      console.log(clc.xterm(202)('Connection has been established successfully with db router.'));
-    }
-  });
+.then(function (err) {
+  if (err) {
+    console.log(clc.xterm(202)('Unable to connect to the database with db router: '), err);
+  } else {
+    console.log(clc.xterm(202)('Connection has been established successfully with db router.'));
+  }
+});
 
 let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 let continentColors = {'North America': 'ffb900', 'South America': '107c10', 'Africa': 'e81123', 'Asia': '0078d7', 'Europe': '5c2d91', 'Oceania': 'b4009e'};
@@ -61,49 +63,6 @@ function shuffle (arr) {
 
   return arr;
 }
-
-/*models.sql.sync()
-.then(function() {
-  return Event.findOne({
-    where: {
-      id: 1
-    }
-  })
-})
-.then(function(event) {
-  console.log(clc.cyan(':::::::::::::::    '), event);
-  event.setSpeakers([1,2,8,11,15,9,12,10,6,32,33,34,35,38,26]);
-})
-.then(function() {
-  return Event.findOne({
-    where: {
-      id: 2
-    }
-  })
-})
-.then(function(event) {
-  event.setSpeakers([1,2,5,10,8,11,35,36,37]);
-})
-.then(function() {
-  return Event.findOne({
-    where: {
-      id: 3
-    }
-  })
-})
-.then(function(event) {
-  event.setSpeakers([1,2,3,5,9,8,11,15,12,10,6,21,14,18,16,39,40]);
-})
-.then(function() {
-  return Event.findOne({
-    where: {
-      id: 5
-    }
-  })
-})
-.then(function(event) {
-  event.setSpeakers([1,2,13,9,8,10,6,11,35,26]);
-})*/
 
 module.exports = function (router) {
   router.use(bodyparser.json());

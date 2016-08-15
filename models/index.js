@@ -47,10 +47,10 @@ models.forEach(function(model) {
   module.exports[model] = sql.import(__dirname + '/' + model);
 });
 //create model associations
-sql.models.Event.belongsToMany(sql.models.Contact, {through: 'EventSpeakers'});
-sql.models.Event.belongsToMany(sql.models.EventTab, {through: 'EventTabsAssc'});
-sql.models.EventTab.belongsToMany(sql.models.Event, {through: 'EventTabs'});
-sql.models.Contact.belongsToMany(sql.models.Event, {through: 'EventSpeakers'});
+sql.sync()
+sql.models.Event.belongsToMany(sql.models.Contact, {through: 'EventSpeakersAssc'});
+sql.models.Contact.belongsToMany(sql.models.Event, {through: 'EventSpeakersAssc'});
+sql.models.Event.hasMany(sql.models.EventTab, {as: 'Tabs'});
 
 
 //export connection
