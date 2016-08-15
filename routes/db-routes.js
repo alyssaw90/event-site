@@ -29,7 +29,7 @@ const EventTab = models.EventTab;
 const SiteStyle = models.SiteStyle;
 const placeholders = require('../models/placeholders');
 
-// placeholders();
+placeholders();
 
 models.sql.authenticate()
   .then(function (err) {
@@ -61,6 +61,49 @@ function shuffle (arr) {
 
   return arr;
 }
+
+/*models.sql.sync()
+.then(function() {
+  return Event.findOne({
+    where: {
+      id: 1
+    }
+  })
+})
+.then(function(event) {
+  console.log(clc.cyan(':::::::::::::::    '), event);
+  event.setSpeakers([1,2,8,11,15,9,12,10,6,32,33,34,35,38,26]);
+})
+.then(function() {
+  return Event.findOne({
+    where: {
+      id: 2
+    }
+  })
+})
+.then(function(event) {
+  event.setSpeakers([1,2,5,10,8,11,35,36,37]);
+})
+.then(function() {
+  return Event.findOne({
+    where: {
+      id: 3
+    }
+  })
+})
+.then(function(event) {
+  event.setSpeakers([1,2,3,5,9,8,11,15,12,10,6,21,14,18,16,39,40]);
+})
+.then(function() {
+  return Event.findOne({
+    where: {
+      id: 5
+    }
+  })
+})
+.then(function(event) {
+  event.setSpeakers([1,2,13,9,8,10,6,11,35,26]);
+})*/
 
 module.exports = function (router) {
   router.use(bodyparser.json());

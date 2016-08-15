@@ -78,6 +78,10 @@ module.exports = function () {
 
 			});
 		})
+		.then(function(event) {
+		  console.log(clc.cyan(':::::::::::::::    '), event);
+		  event.setSpeakers([1,2,8,11,15,9,12,10,6,32,33,34,35,38,26]);
+		})
 		.then(function () {
 			return Event.create({
 				eventName: 'Extend Conference',
