@@ -12,11 +12,11 @@ require('angular-sanitize');
 // declare a module
 const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize']);
 
-// const rss1 = () => {
-// 	document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document.location.protocol ? 'https://' : 'http://') + 'feed.mikle.com/js/rssmikle.js">\x3C/script>');
-// }
+/*const rss1 = () => {
+	document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document.location.protocol ? 'https://' : 'http://') + 'feed.mikle.com/js/rssmikle.js">\x3C/script>');
+}
 
-/*const rss2 = () => {
+const rss2 = () => {
 	(function() {var params = {
 		rssmikle_url: "https://msdn.microsoft.com/en-us/openspecifications/dn889925",rssmikle_frame_width: "320",rssmikle_frame_height: "900",frame_height_by_article: "0",
 		rssmikle_target: "_blank",rssmikle_font: "Arial, Helvetica, sans-serif",
@@ -71,6 +71,7 @@ require('./futureEvents/FutureEventsController.build.js')(eventsApp);
 require('./futureEvents/BingMapCtrl.build.js')(eventsApp);
 require('./shared/header/HeaderController.build.js')(eventsApp);
 require('./admin/AdminCtrl.build.js')(eventsApp);
+require('./latestNews/LatestNewsCtrl.build.js')(eventsApp);
 require('./events/EventsCtrl.build.js')(eventsApp);
 //services
 require('./meetTheTeam/meetTheTeamRestResource.build.js')(eventsApp);
@@ -148,6 +149,13 @@ eventsApp
 		controller: 'FutureEventsCtrl',
 		data: {
       pageTitle: 'Future Events Page - Microsoft Plugfests and Events'
+    }
+	})
+	.when('/latest-news', {
+		templateUrl: '/app/components/latestNews/latestNews.html',
+		controller: 'LatestNewsCtrl',
+		data: {
+      pageTitle: 'Latest Page - Microsoft Plugfests and Events'
     }
 	})
 	.when('/admin', {

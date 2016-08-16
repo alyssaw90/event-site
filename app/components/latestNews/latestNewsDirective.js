@@ -4,7 +4,16 @@ const jQuery = require('jquery');
 
 const latestNewsDirective = (app) => {
 	app.directive('latestNewsDirective', [function() {
-
+		const latestNewsDirectiveObj = {
+			restrict: 'A',
+			scope: true,
+			link: function postLink(scope, elem, attrs) {
+				scope.rss1(); 
+				scope.rss2();
+				
+			}
+		}
+		return latestNewsDirectiveObj;
 	}])
 };
 

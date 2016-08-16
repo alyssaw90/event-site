@@ -1,6 +1,6 @@
 <div class="mobileWrapper" role="presentation">
   <!-- begin main section -->
-  <main class="grid white-bg main-page-content" role="presentation">
+  <main class="grid white-bg main-page-content" role="presentation" data-latest-news-directive>
     <section class="col_12 internetExplorer" role="presentation">
       <h2>Become a Part of the Interoperability Community</h2>
       <!-- Tabs Center -->
@@ -8,7 +8,7 @@
         <li id="recentNewsSection-tab" class="current"><a target="_self" id="beginningOfContent" aria-label="Recent News, click enter/return to read contents" aria-owns="recentNewsSection" href="#recentNewsSection"><h4>Recent News</h4></a></li>
         <li id="developmentSupportSection-tab"><a target="_self" aria-label="Development Support, click enter/return to read contents" href="#developmentSupportSection"><h4>Development Support</h4></a></li>
       </ul>
-      <div id="recentNewsSection" class="tab-content" tabindex="0">
+      <div id="recentNewsSection" class="tab-content clearfix" tabindex="0">
         <div tabindex="0">
           <div tabindex="0" aria-label="open specifications on twitter" class="col_4">
           <a  class="twitter-timeline" 
@@ -22,7 +22,7 @@
           </div>
           <div class="col_8" id="rssFeed">
             <p>The following posts are consolidated from the latest <a href="http://blogs.msdn.com/b/officeinteroperability/">Office Interoperability</a>, <a href="http://blogs.msdn.com/b/openspecification/">Microsoft Open Specifications Support</a>, and <a href="http://openness.microsoft.com/blog">Microsoft Openness</a> news.<a class="float-right" href="http://sxp.microsoft.com/feeds/3.0/msdntn/MSDNOpenSpecificationFeeds/" title="Interop Events RSS feed"><img src="app/uploads/rss-feed-button.jpg" alt="Subscribe to Interop Events Blog"></a></p>
-            <!-- {{rss1(); rss2();}} -->
+            <!-- <div style="width: 200px">{{rss1(); rss2();}}</div> -->
           </div>
         </div>
       </div>
