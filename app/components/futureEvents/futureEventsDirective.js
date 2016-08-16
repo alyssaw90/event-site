@@ -3,7 +3,7 @@ import * as customFunctions from './../../es6/common-functions.build.js';
 const jQuery = require('jquery');
 
 const futureEventsDirective = (app) => {
-	app.directive('futureEventsDirective', function($timeout) {
+	app.directive('futureEventsDirective', ['$timeout', function($timeout) {
 		const futureEventsDirectiveDefinitionObject = {
 			restrict: 'A',
 			scope: true,
@@ -22,7 +22,7 @@ const futureEventsDirective = (app) => {
 			}
 		};
   	return futureEventsDirectiveDefinitionObject
-	})
+	}])
 };
 
 module.exports = futureEventsDirective;

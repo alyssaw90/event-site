@@ -4,7 +4,7 @@ import * as customFunctions from './../../es6/common-functions.build.js';
 const jQuery = require('jquery');
 
 const allPagesDirective = (app) => {
-	app.directive('allPagesDirective', function($timeout) {
+	app.directive('allPagesDirective', ['$timeout', function($timeout) {
 		const allPagesDirectiveObj = {
 			restrict: 'A',
 			scope: true,
@@ -59,7 +59,7 @@ const allPagesDirective = (app) => {
 			
 		}
 		return allPagesDirectiveObj;
-	})
+	}])
 }
 
 module.exports = allPagesDirective;

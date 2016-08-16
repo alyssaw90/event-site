@@ -3,7 +3,7 @@ import * as customFunctions from './../../es6/common-functions.build.js';
 const jQuery = require('jquery');
 
 const homepageDirective = (app) => {
-	app.directive('homepageDirective', function() {
+	app.directive('homepageDirective', [function() {
 		const homepageDirectiveDefinitionObject = {
 		restrict: 'A',
     link: function postLink(scope, element, attrs) {
@@ -196,7 +196,7 @@ const homepageDirective = (app) => {
     }
   };
   return homepageDirectiveDefinitionObject
-	})
+	}])
 };
 
 module.exports = homepageDirective;
