@@ -20,7 +20,7 @@
 <body data-ng-controller="allPagesCtrl">
   <div id="siteWrapper">
     <div data-ng-include="'/app/components/shared/header/headerTemplate.html'"></div>
-    <div data-ng-view autoscroll="true"></div>
+    <div data-ng-view autoscroll="true" data-all-dages-directive></div>
     <div id="socialSharingIcons" data-ng-show="!isCurrentPage('/')"></div>
     <!-- begin footer -->
   </div>
@@ -30,7 +30,7 @@
   </div>
   <!-- JavaScript -->
   <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.min.js"></script>
-  <script type="text/javascript" src="/app/lib/kickstart.js"></script>
+  <!-- <script type="text/javascript" src="/app/lib/kickstart.js"></script> -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.jssocials/1.2.1/jssocials.min.js"></script> 
   <!-- <script type="text/javascript">
     document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document.location.protocol ? 'https://' : 'http://') + 'feed.mikle.com/js/rssmikle.js">\x3C/script>');

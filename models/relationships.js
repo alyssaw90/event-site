@@ -76,13 +76,26 @@ module.exports = function() {
 	.then(function(event) {
 	  models.sql.sync()
 	  .then(function() {
-	  	event.setTabs([24]);
+	  	event.setTabs([23]);
 	  })
 	})
   .then(function() {
 		return Event.findOne({
 			where: {
 				id: 6
+			}
+		})
+	})
+	.then(function(event) {
+	  models.sql.sync()
+	  .then(function() {
+	  	event.setTabs([24]);
+	  })
+	})
+  .then(function() {
+		return Event.findOne({
+			where: {
+				id: 7
 			}
 		})
 	})
@@ -92,10 +105,10 @@ module.exports = function() {
 	  	event.setTabs([25]);
 	  })
 	})
-  .then(function() {
+	.then(function() {
 		return Event.findOne({
 			where: {
-				id: 6
+				id: 8
 			}
 		})
 	})
@@ -105,10 +118,10 @@ module.exports = function() {
 	  	event.setTabs([26]);
 	  })
 	})
-  .then(function() {
+	.then(function() {
 		return Event.findOne({
 			where: {
-				id: 7
+				id: 9
 			}
 		})
 	})

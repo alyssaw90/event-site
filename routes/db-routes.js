@@ -29,7 +29,7 @@ const EventTab = models.EventTab;
 const SiteStyle = models.SiteStyle;
 const placeholders = require('../models/placeholders');
 const dbRelationships = require('../models/relationships');
-/*Use the methods below to create the placeholder data. First uncomment the placeholder() and start the server, then comment out the placeholder() and uncomment the dbRelationships() and restart the server. Finally, comment both placeholder() and dbRelationships out and restart the server. At this point, all your placeholder data will be created. Do this only once, if you need to recreate your placeholder data, delete all the tables from the database and repeat these same steps*/
+/*Use the methods below to create the placeholder data. First uncomment the placeholder() and start the server this will create the data in the database, then comment out the placeholder() and uncomment the dbRelationships() and restart the server, this will create the relationships between the data tables. Finally, comment both placeholder() and dbRelationships out and restart the server. At this point, all your placeholder data will be created. Do this only once, if you need to recreate your placeholder data, delete all the tables from the database and repeat these same steps*/
 // placeholders();
 // dbRelationships();
 
@@ -695,7 +695,7 @@ module.exports = function (router) {
   ///////////////////////////////////////////////////////////////////////*/
 
   /*Get events from URL path/slug */
-  router.route('/taco/:slug')
+  router.route('/api/:slug')
   .get(function(req, res) {
     //check if last 4 digits of url slug (req.params.eventUrl) are a number and end the response  if they're not numbers i.e. not a year and end the response if they're not
     /*if (!/^\d+$/.test(req.params.slug.slice(-4))) {
@@ -746,180 +746,6 @@ module.exports = function (router) {
         });
         
       }
-    });
-  });
-
-
-  router.route('/api/:eventUrl')
-  .get(function(req, res) {
-    //check if last 4 digits of url slug (req.params.eventUrl) are a number and end the response  if they're not numbers i.e. not a year and end the response if they're not
-    if (!/^\d+$/.test(req.params.eventUrl.slice(-4))) {
-      return res.end();
-    }
-    //create an eventInfo object to hold the values for the event to be rendered
-    let eventInfo = {};
-    eventInfo.eventUrl = req.params.eventUrl;
-    eventInfo.htmlContent = '';
-    eventInfo.eventUltHtml = '<ul class="tabs left" id="eventTabLinks">';
-    eventInfo.eventDivHtml = '';
-    eventInfo.speakersHtml =  '';
-    eventInfo.headerHtml = '';
-    //sync with the database
-    models.sql.sync()
-    .then(function() {
-      //trim the params to get the city and the year of the event
-      let eventSearchCity = req.params.eventUrl.slice(0, -4);
-      let eventYear = req.params.eventUrl.slice(-4);
-      let testDate = new Date(eventYear - 1, 11, 31, 11, 59, 59) == 'Invalid Date' ? 'not a date' : new Date(eventYear - 1, 11, 31, 11, 59, 59);
-      if (testDate === 'not a date') {
-        return res.status(404).redirect('/404');
-      }
-      // search the database for event that matches the city and occurs on or after the year from the params and return the event found
-      return Event.findOne({
-        where: {
-          eventLocation: eventSearchCity,
-          eventStartDate: {
-            $or: {
-              $gte: testDate,
-              $eq: null
-            }
-          }
-        }
-      });
-    })
-    .then(function(theEvent) {
-      //assign the event returned from the search to the event key of the eventInfo object
-      eventInfo.event = theEvent;
-    })
-    .then(function() {
-      // search for all the tabs that are associated with the current event
-      if (eventInfo.event.id) {
-        return EventTab.findAll({
-          where: {
-            eventId: eventInfo.event.id
-          }
-        });
-      } else {
-        res.end();
-      }
-    })
-    .then(function(theTabs) {
-      theTabs.sort(function(a, b) {
-        a = a.tabNumber;
-        b = b.tabNumber;
-        if (a > b) {
-          return 1;
-        }
-        if (a < b) {
-          return -1;
-        }
-        if (a === b) {
-          return 0;
-        }
-      });
-      //assign the returned event tabs to the tabs key of the eventInfo object
-      eventInfo.tabs = theTabs;
-    })
-    .then(function() {
-      let speakersArr;
-      //split the speaker IDs into an array then search for all Contacts that haver an ID that appears in the array and return the result
-      if (eventInfo.event.eventSpeakers !== null) {
-        speakersArr = eventInfo.event.eventSpeakers.split(',');
-      } else {
-        speakersArr = [];
-      }
-      return Contact.findAll({
-        where: {
-          id: {$in: speakersArr}
-        }
-      });
-    })
-    .then(function(theSpeakers) {
-      //create an array and push each speaker object into it with the needed values and add the array to the eventInfo object
-      let speakersArr =  [];
-      let i = 0;
-      for (let key in theSpeakers) {
-        speakersArr[i] = {};
-        speakersArr[i].firstName = theSpeakers[key].firstName;
-        speakersArr[i].lastName = theSpeakers[key].lastName;
-        speakersArr[i].fullName = theSpeakers[key].fullName;
-        speakersArr[i].msTeamTitle = theSpeakers[key].msTeamTitle;
-        speakersArr[i].headShot = theSpeakers[key].headShot;
-        speakersArr[i].contactDescription = theSpeakers[key].contactDescription;
-        i++;
-      }
-      eventInfo.speakers = speakersArr;
-      
-      //if there are speakers in the speakers array
-      if (eventInfo.speakers.length > 0) {
-      //loop over the speakers array and create html for speakers tab
-        for (let i = 0, j = eventInfo.speakers.length; i < j; i++) {
-          eventInfo.speakersHtml += '<h4>' + eventInfo.speakers[i].firstName + ' ' + eventInfo.speakers[i].lastName + '</h4>';
-          if (eventInfo.speakers[i].msTeamTitle) {
-            eventInfo.speakersHtml += '<h5>' + eventInfo.speakers[i].msTeamTitle + '</h5><p>';
-          }
-          if (eventInfo.speakers[i].headShot) {
-            eventInfo.speakersHtml += `<img class="pull-left speakersImg" height="165" width="165" alt="image of ${speakersArr[i].fullName}" src="app/uploads/${eventInfo.speakers[i].headShot}" />`;
-          }
-          if (eventInfo.speakers[i].contactDescription) {
-            eventInfo.speakersHtml += eventInfo.speakers[i].contactDescription + '</p>';
-          }
-          eventInfo.speakersHtml += '<hr class="alt1" />';
-        }
-        
-      }
-
-      //if there are speakers, but no tabs add them as the only tab
-      if (eventInfo.tabs.length === 0 && eventInfo.speakers.length > 0) {
-        eventInfo.eventUltHtml += '<li class="last"><a href="#speakers"><h5>Speakers</h5></a></li></ul>';
-        eventInfo.eventDivHtml += `<div id="speakers" class="tab-content eventTabDiv" style="display:none;">${eventInfo.speakersHtml}</div>`;
-      }
-      //if there are event tabs loop over the tabs and create the html for the tabs
-      for (let i = 0, j = eventInfo.tabs.length; i < j; i++) {
-        //create the first tab with the first and current classes
-        if (i === 0) {
-          eventInfo.eventUltHtml += '<li class="first current"><a href="#' + eventInfo.tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '').toLowerCase() + '"><h5>' + eventInfo.tabs[i].tabTitle + '</h5></a></li>';
-          eventInfo.eventDivHtml += '<div id="' + eventInfo.tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '').toLowerCase() + '" class="tab-content eventTabDiv" style="display:block;">' + eventInfo.tabs[i].tabContent  + '</div>';
-
-        }
-        //create the tabs that aren't first or last
-        if (i > 0 && i <= eventInfo.tabs.length - 1) {
-          eventInfo.eventUltHtml += '<li><a href="#' + eventInfo.tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '').toLowerCase() + '"><h5>' + eventInfo.tabs[i].tabTitle + '</h5></a></li>';
-          eventInfo.eventDivHtml += '<div id="' + eventInfo.tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '').toLowerCase() + '" class="tab-content eventTabDiv" style="display:none;">' + eventInfo.tabs[i].tabContent  + '</div>';
-
-        }
-        //if there are speakers add their html as the last tab
-        if (eventInfo.speakers.length > 0 && i >= eventInfo.tabs.length - 1) {
-          eventInfo.eventUltHtml += '<li class="last"><a href="#speakers"><h5>Speakers</h5></a></li>';
-          eventInfo.eventDivHtml += '<div id="speakers" class="tab-content eventTabDiv" style="display:none;">' + eventInfo.speakersHtml  + '</div>';
-        }
-        //if there are no speakers and there is more than one tab add the last eventTab as the last tab
-        if (eventInfo.speakers.length <= 0 && i > eventInfo.tabs.length - 1 && eventInfo.tabs.length > 1) {
-          eventInfo.eventUltHtml += '<li class="last"><a href="#' + eventInfo.tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '').toLowerCase() + '"><h5>' + eventInfo.tabs[i].tabTitle + '</h5></a></li>';
-          eventInfo.eventDivHtml += '<div id="' + eventInfo.tabs[i].tabTitle.replace(/[^A-Z0-9]/ig, '').toLowerCase() + '" class="tab-content eventTabDiv" style="display:none;">' + eventInfo.tabs[i].tabContent  + '</div>';
-
-        }
-        //add the closing ul tag
-        if (i >= eventInfo.tabs.length - 1) {
-          eventInfo.eventUltHtml += '</ul>';
-        }
-      }
-      //combint the html for the UL menu and the divs
-      eventInfo.htmlContent = eventInfo.eventUltHtml + eventInfo.eventDivHtml;
-      //if there is an event header image create the html for the header image
-      if (eventInfo.event.eventHeaderImage) {
-        eventInfo.headerHtml = '<div class="col_12 internetExplorer event-header center" id="eventHeader" role="complementary"><img alt="event banner image" src="app/uploads/' + eventInfo.event.eventHeaderImage + '" /></div>';
-      }
-      let theEventHtml = eventInfo.headerHtml + '<section class="col_12 internetExplorer event-tabs" id="eventTabs">' + eventInfo.htmlContent + '</section>';
-      
-      res.json(theEventHtml);
-      //read the blank event html file and turn the returned blob into a string, then replace the placeholder html content with the content created by the event
-      /*fs.readFile(path.join(__dirname, '../app/blank-event.html'), function(err, data) {
-        let theHtml = data.toString();            
-        let fullEventHtml = theHtml.replace('<div class="col_12 internetExplorer event-header center" id="eventHeader"></div>', eventInfo.headerHtml).replace('<section class="col_12 internetExplorer event-tabs" id="eventTabs"></section>', '<section class="col_12 internetExplorer event-tabs" id="eventTabs">' + eventInfo.htmlContent + '</section>').replace(`<title></title>`, `<title>${eventInfo.event.eventName}</title>`);
-        res.send(fullEventHtml);
-      });*/
-      
     });
   });
 

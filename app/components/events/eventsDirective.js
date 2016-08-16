@@ -7,10 +7,7 @@ const eventsDirective = (app) => {
 		const eventsDirectiveObj = {
 			restrict: 'A',
 			link: function postLink(scope, element, attrs) {
-				$timeout(function() {
-					let theHtml = jQuery.parseHTML(scope.events);
-					jQuery('main').append(theHtml);
-				}, 500);
+				
 			}
 			
 		}

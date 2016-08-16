@@ -60,6 +60,7 @@ require('./futureEvents/futureEventsDirective.build.js')(eventsApp);
 require('./shared/header/sliderSlideDirective.build.js')(eventsApp);
 require('./shared/header/headerDirective.build.js')(eventsApp);
 require('./events/eventsDirective.build.js')(eventsApp);
+require('./shared/allPagesDirective.build.js')(eventsApp);
 
 //controllers
 require('./homepage/HomepageCtrl.build.js')(eventsApp);
