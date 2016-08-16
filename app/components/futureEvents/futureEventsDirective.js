@@ -7,18 +7,18 @@ const futureEventsDirective = (app) => {
 		const futureEventsDirectiveDefinitionObject = {
 			restrict: 'A',
 			scope: true,
-			link: function postLink(scope, element, attrs, $timeout) {
+			link: function postLink(scope, element, attrs) {
 				//set heights of .event_block divs to match
 				$timeout(function() {
 				 	customFunctions.changeHeight('.event_block');
 				}, 500);
 				//change the heigts if the page starts on a different path
-				/*scope.$on('$locationChangeStart', function(event) {
-					console.log('hola');
+				scope.$on('$locationChangeSuccess', function(event) {
+					
 					$timeout(function() {
 				 		customFunctions.changeHeight('.event_block');
 					}, 500);
-				})*/
+				})
 			}
 		};
   	return futureEventsDirectiveDefinitionObject

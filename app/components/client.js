@@ -53,26 +53,29 @@ const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', '
 }*/
 
 //directives
+require('./shared/allPagesDirective.build.js')(eventsApp);
 require('./homepage/homepageDirective.build.js')(eventsApp);
 require('./latestNews/latestNewsDirective.build.js')(eventsApp);
 require('./contactUs/contactUsDirective.build.js')(eventsApp);
 require('./futureEvents/futureEventsDirective.build.js')(eventsApp);
+require('./futureEvents/bingMapDirective.build.js')(eventsApp);
 require('./shared/header/sliderSlideDirective.build.js')(eventsApp);
 require('./shared/header/headerDirective.build.js')(eventsApp);
 require('./events/eventsDirective.build.js')(eventsApp);
-require('./shared/allPagesDirective.build.js')(eventsApp);
 
 //controllers
 require('./homepage/HomepageCtrl.build.js')(eventsApp);
 require('./pastEvents/PastEventsCtrl.build.js')(eventsApp);
 require('./meetTheTeam/MeetTheTeamCtrl.build.js')(eventsApp);
 require('./futureEvents/FutureEventsController.build.js')(eventsApp);
+require('./futureEvents/BingMapCtrl.build.js')(eventsApp);
 require('./shared/header/HeaderController.build.js')(eventsApp);
 require('./admin/AdminCtrl.build.js')(eventsApp);
 require('./events/EventsCtrl.build.js')(eventsApp);
 //services
 require('./meetTheTeam/meetTheTeamRestResource.build.js')(eventsApp);
 require('./futureEvents/futureEventsRESTResource.build.js')(eventsApp);
+require('./futureEvents/bingMapRESTResource.build.js')(eventsApp);
 require('./shared/header/headerRESTResource.build.js')(eventsApp);
 require('./admin/adminRESTResource.build.js')(eventsApp);
 require('./events/eventsRESTResource.build.js')(eventsApp);
@@ -154,15 +157,12 @@ eventsApp
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
     }
 	})
-	.when('/404', {
-		templateUrl: '/app/components/404/404.html',
-		data: {
-      pageTitle: '404 error Page - Microsoft Plugfests and Events'
-    }
-	})
 	.when('/:slug', {
     templateUrl: '/app/components/events/event.html',
-    controller: 'EventsCtrl'
+    controller: 'EventsCtrl',
+    data: {
+      pageTitle: 'Interoperability Event Page - Microsoft Plugfests and Events'
+    }
   })
 
 	//turn on html5Mode so routes don't include # symbol

@@ -115,7 +115,7 @@ export const urlify = (str) => {
 }
 
 //function to set divs with equal height
-export let changeHeight = function(div) {
+export const changeHeight = function(div) {
 	jQuery(div).css('height','auto');
 	var tallestBlock = 0;
 	jQuery(div).each(function () {
