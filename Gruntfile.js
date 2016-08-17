@@ -64,21 +64,21 @@ module.exports = function (grunt) {
             cwd: '',
             src: ['app/es6/**/*.js', 'app/components/**/*.js'],
             dest: 'app/build/',
-            ext:'.build.js'
+            // ext:'.build.js'
           },
           {
             expand: true,
             cwd: '',
             src: ['app/es6/**/*.js'],
             dest: 'app/build/',
-            ext:'.build.js'
+            // ext:'.build.js'
           },
           {
             expand: true,
             cwd: '',
             src: ['app/lib/kickstart.js'],
             dest: 'app/build/',
-            ext:'.build.js'
+            // ext:'.build.js'
           }
         ]
       }

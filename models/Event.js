@@ -17,6 +17,8 @@ module.exports = function (sql, DataTypes) {
         this.setDataValue('eventLocation', val.toLowerCase().replace(' ', '_'));
       }
     },
+    eventState: DataTypes.TEXT,
+    eventCountry: DataTypes.TEXT,
     eventContinent: DataTypes.ENUM('North America', 'South America', 'Africa', 'Asia', 'Europe', 'Oceania'),
     eventStartDate: DataTypes.DATE, //the start date...
     eventEndDate: DataTypes.DATE, // the end date...
