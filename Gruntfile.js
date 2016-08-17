@@ -46,6 +46,9 @@ module.exports = function (grunt) {
     clean: {
       dev: {
         src: ['app/build/**/*.js', 'app/dist/*.*', 'app/css/custom.build.min.css', 'app/css/highcontrast.min.css', 'app/css/twitter-widget.min.css']
+      },
+      prod: {
+        src: ['app/build/**/*.*', 'app/build/app/**/**', '!app/build/build.min.js', '!app/build/.gitignore']
       }
     },
     //register task to run babel and compile es6
@@ -84,7 +87,7 @@ module.exports = function (grunt) {
     browserify: {
       dist: {
         files: {
-          'app/dist/build.browserify.js': ['app/build/**/*.js']
+          'app/build/build.browserify.js': ['app/build/**/*.js']
         },
         options: {
           // transform: ['coffeeify']
@@ -98,7 +101,7 @@ module.exports = function (grunt) {
           sourceMap: true
         },
         files: {
-          'app/dist/build.min.js': ['app/dist/build.browserify.js']
+          'app/build/build.min.js': ['app/build/build.browserify.js']
         }
       }
     },
@@ -229,8 +232,8 @@ module.exports = function (grunt) {
 	// register mocha test task
 	grunt.registerTask('test', ['simplemocha:dev']);
   grunt.registerTask('lessProd', ['less:prod']);
-  grunt.registerTask('bbl', ['clean', 'babel']);
-  grunt.registerTask('build', ['clean', 'babel', 'browserify', 'uglify', 'lessProd']);
+  grunt.registerTask('bbl', ['clean:dev', 'babel']);
+  grunt.registerTask('build', ['clean:dev', 'babel', 'browserify', 'uglify', 'lessProd', 'clean:prod']);
   grunt.registerTask('start', ['build', 'nodemon:dev']);
 	grunt.registerTask('test', ['build', 'test']);
   grunt.registerTask('default', ['concurrent:target2']);

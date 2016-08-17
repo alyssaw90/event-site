@@ -55,3 +55,5 @@ User.sync({force: true})
 * Add documentation
 
 * Move map to use AngularJS $http
+
+* Add to start and build tasks to clean browserified files after babilifying
