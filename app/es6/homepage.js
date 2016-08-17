@@ -33,7 +33,7 @@
 // // 	});
 // // });
 
-// import * as customFunctions from './common-functions.build.js';
+// import * as customFunctions from './common-functions.js';
 // const jQuery = require('jquery');
 
 // (function($) {

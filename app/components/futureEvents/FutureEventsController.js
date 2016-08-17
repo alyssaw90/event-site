@@ -1,6 +1,6 @@
 'use strict';
 const jQuery = require('jquery');
-import * as customFunctions from './../../es6/common-functions.build.js';
+import * as customFunctions from '../shared/methods/common-functions.js';
 
 const FutureEventsCtrl = (app) => {
 	app.controller('FutureEventsCtrl', ['$scope', '$http', 'futureEventsRESTResource', function($scope, $http, resource/*, $timeout*/) {

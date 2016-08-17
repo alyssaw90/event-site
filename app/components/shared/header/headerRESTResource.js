@@ -1,6 +1,6 @@
 'use strict';
 
-import * as customFunctions from './../../../es6/common-functions.build.js';
+import * as customFunctions from '../methods/common-functions.js';
 
 const headerRESTResource = (app) => {
 

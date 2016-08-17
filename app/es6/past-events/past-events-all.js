@@ -7,7 +7,7 @@
 
 // const jQuery = require('jquery');
 // const elementResizeEvent = require('element-resize-event');
-// import * as customFunctions from '../common-functions.build.js';
+// import * as customFunctions from '../common-functions.js';
 
 // (function($) {
 // 	const mainElem = document.getElementsByTagName('main');

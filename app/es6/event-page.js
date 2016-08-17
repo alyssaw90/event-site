@@ -3,7 +3,7 @@
 const jQuery = require('jquery');
 require('jquery-ui');
 
-import * as customFunctions from './common-functions.build.js';
+import * as customFunctions from './common-functions.js';
 
 (function($) {
 	$(window).load(function() {

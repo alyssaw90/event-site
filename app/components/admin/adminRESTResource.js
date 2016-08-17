@@ -1,6 +1,6 @@
 'use strict';
 
-import * as customFunctions from './../../es6/common-functions.build.js';
+import * as customFunctions from '../shared/methods/common-functions.js';
 
 const adminRESTResource = (app) => {
 

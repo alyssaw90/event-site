@@ -6,7 +6,7 @@
 // /*jshint multistr: true */ 
 
 // let jQuery = require('jquery');
-// import * as customFunctions from '../common-functions.build.js';
+// import * as customFunctions from '../common-functions.js';
 
 // (function($) {
 
