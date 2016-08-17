@@ -1,6 +1,7 @@
 'use strict';
 
 import * as customFunctions from './../es6/common-functions.build.js';
+const jQuery = require('jQuery');
 require('angular/angular');
 require('angular-route');
 require('angular-aria');
@@ -64,6 +65,7 @@ require('./shared/header/headerDirective.build.js')(eventsApp);
 require('./events/eventsDirective.build.js')(eventsApp);
 
 //controllers
+require('./shared/AllPagesCtrl.build.js')(eventsApp);
 require('./homepage/HomepageCtrl.build.js')(eventsApp);
 require('./pastEvents/PastEventsCtrl.build.js')(eventsApp);
 require('./meetTheTeam/MeetTheTeamCtrl.build.js')(eventsApp);
@@ -82,23 +84,23 @@ require('./admin/adminRESTResource.build.js')(eventsApp);
 require('./events/eventsRESTResource.build.js')(eventsApp);
 
 eventsApp
-.controller('allPagesCtrl', ['$scope', '$location', '$route', function($scope, $location, $route) {
-	$scope.showSlider = false;
-		$scope.isCurrentPage = (pageUrl) => {
-	   return pageUrl === $location.path();
-		}
+// .controller('allPagesCtrl', ['$scope', '$location', '$route', function($scope, $location, $route) {
+// 	$scope.showSlider = false;
+// 		$scope.isCurrentPage = (pageUrl) => {
+// 	   return pageUrl === $location.path();
+// 		}
 
-		$scope.$on('$routeChangeSuccess', function(next, current) { 
-/*
-	 		if ($location.path() == '/' || '/latestNews') {		      
-				customFunctions.homepageStickyFooter();
-	    } else {
-	    	customFunctions.stickyFooter();
-	    }*/
+// 		$scope.$on('$routeChangeSuccess', function(next, current) { 
+// /*
+// 	 		if ($location.path() == '/' || '/latestNews') {		      
+// 				customFunctions.homepageStickyFooter();
+// 	    } else {
+// 	    	customFunctions.stickyFooter();
+// 	    }*/
 	
-	 	});
+// 	 	});
 
-}])
+// }])
 .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 	/* Configuration is where you configure providers ( not instances) */
 	console.log("Configuration hook");
@@ -111,6 +113,17 @@ eventsApp
       pageTitle: 'Home Page - Microsoft Plugfests and Events'
     }
 	})
+	/*These redirect routes take care of 404 errors cause by angular stripping the hash from routes even when they're meant for in page navigation*/
+	.when('/eventNavigationMenu', {
+		redirectTo: '/'
+	})
+	.when('/beginningOfContent', {
+		redirectTo: '/'
+	})
+	.when('/footerStartMenuItem', {
+		redirectTo: '/'
+	})
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	.when('/about', {
 		templateUrl: '/app/components/about/about.html',
 		data: {
@@ -195,12 +208,17 @@ eventsApp
 	}
 
 }])*/
-.run(['$rootScope', '$location', function ($rootScope, $location) {
-	/* Run is when the app gets kicked off */
-	// $rootScope.rss = rss2;
-	console.log("Run hook");
+.run(['$rootScope', '$location', '$anchorScroll', '$routeParams', '$timeout', function ($rootScope, $location, $anchorScroll, $routeParams, $timeout) {
+	
+	$rootScope.$on('$viewContentLoaded', function () {
+			// document.getElementById('screenreader-summary').trigger('focus');
+		
+	});
 
-	$rootScope.$on('$routeChangeSuccess', function(next, current) { 
+	$rootScope.$on('$routeChangeSuccess', function(newRoute, oldRoute) { 
+
+		// $location.hash($routeParams.scrollTo);
+    $anchorScroll();
 
  		if ($location.path() == '/') {
       $rootScope.hideSlider = true;

@@ -52,6 +52,16 @@ div:focus {
 	color: #fffc9e;
 }
 
+#screenreader-summary {
+  position: absolute;
+  left:-10000px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+  outline: none; /* Important, don't show an outline on-focus */
+}
+
 @media screen and (-ms-high-contrast: active) {
   /* All high contrast styling rules */
   .lightBlueBackground {

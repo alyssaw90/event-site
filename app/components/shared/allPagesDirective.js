@@ -4,12 +4,25 @@ import * as customFunctions from './../../es6/common-functions.build.js';
 const jQuery = require('jquery');
 
 const allPagesDirective = (app) => {
-	app.directive('allPagesDirective', ['$timeout', function($timeout) {
+	app.directive('allPagesDirective', ['$timeout', '$rootScope', '$location', function($timeout, $rootScope, $location) {
 		const allPagesDirectiveObj = {
 			restrict: 'A',
 			scope: true,
 			link: function postLink(scope, element, attrs, $timeout) {
-				$timeout(function() {
+
+					$rootScope.$on('$viewContentLoaded', function () {
+						// $timeout(function() {
+							// console.log('path     ', !$location.hash());
+							if (!$location.hash()) {
+								jQuery('#screenreader-summary').trigger('focus');
+							}
+							
+						// });
+		
+					});
+
+
+				setTimeout(function() {
 
 						/*---------------------------------
 							Tabs

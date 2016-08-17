@@ -8,11 +8,11 @@
 	</div>
 	<div class="hidden-div" style="display: none" style="background-color:{{futureEvents[0].eventHighlightColor}}">
 		<ul class="hamburger-menu">
-			<li class="mobile-menu"><a href="/#/"><span class="home">Home</span></a></li>
-			<li class="mobile-menu"><a href="/future-events"><span>Find an Event</a></span></a></li>
-			<li class="mobile-menu"><a href="/latest-news"><span>Get the Latest</span></a></li>
-			<li class="mobile-menu"><a href="/meet-the-team"><span>Meet the Team</a></span></a></li>
-			<li class="mobile-menu"><a href="/past-events"><span>Past Events</span></a></li>
+			<li class="mobile-menu"><a target="_self" href="/"><span class="home">Home</span></a></li>
+			<li class="mobile-menu"><a target="_self" href="/future-events"><span>Find an Event</a></span></a></li>
+			<li class="mobile-menu"><a target="_self" href="/latest-news"><span>Get the Latest</span></a></li>
+			<li class="mobile-menu"><a target="_self" href="/meet-the-team"><span>Meet the Team</a></span></a></li>
+			<li class="mobile-menu"><a target="_self" href="/past-events"><span>Past Events</span></a></li>
 		</ul>
 	</div>
 	<!-- End "Hamburger" Menu -->
@@ -22,7 +22,7 @@
 			<div><a class="skipNavigation" target="_self" href="#beginningOfContent">Skip to Main Content</a></a></div>
 			<div><a class="skipNavigation" target="_self" href="#footerStartMenuItem">Skip to Footer</a></a></div>
 		<div class="col_2 center-block">
-			<div class="col_2 center-block menu-block home-menu-button"><a href="/#/">Home</a></div>
+			<div class="col_2 center-block menu-block home-menu-button"><a id="home-button" href="/">Home</a></div>
 		</div>
 			<div class="col_2 center-block">
 				<div class="col_2 center-block menu-block upcominEventsBlock"><a href="/future-events">Find an Event</a></div>
@@ -63,7 +63,7 @@
 	<!-- Begin upcoming events desktop menu -->
 	<nav class="menu-overlay desktop-menu flex clearfix" style="background-color:{{futureEvents[0].eventHighlightColor}}">
 		<div class="col_12 purpleEventMenu">
-			<a data-ng-repeat="futureEvent in futureEvents | orderBy: eventStartDate" href="/{{futureEvent.eventUrl}}">{{futureEvent.city}} &nbsp<span class="purpleSubMenu">- {{futureEvent.headerEventDates}}</span> <span ng-show=" ! $last ">&nbsp &nbsp|</span></a>
+			<a data-ng-repeat="futureEvent in futureEvents | orderBy: eventStartDate" id="{{isFirstEventInLIst($index)}}" href="/{{futureEvent.eventUrl}}">{{futureEvent.city}} &nbsp<span class="purpleSubMenu">- {{futureEvent.headerEventDates}}</span> <span ng-show=" ! $last ">&nbsp &nbsp|</span></a>
 		</div>
 	</nav>
 	<!-- End upcoming events desktop menu -->

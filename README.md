@@ -49,3 +49,9 @@ User.sync({force: true})
   });
 });
 ```
+
+##To Do
+
+* Add documentation
+
+* Move map to use AngularJS $http

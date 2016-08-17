@@ -37,6 +37,14 @@ const EventsCtrl = (app) => {
 			}
 		}
 
+		$scope.addMainContentId = (index) => {
+			if (index === 0) {
+				return 'beginningOfContent';
+			} else {
+				return '';
+			}
+		}
+
 		$scope.urlify = customFunctions.urlify;
 
 	}])
