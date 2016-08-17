@@ -8,8 +8,8 @@ const latestNewsDirective = (app) => {
 			restrict: 'A',
 			scope: true,
 			link: function postLink(scope, elem, attrs) {
-				scope.rss1(); 
-				scope.rss2();
+				// scope.rss1(); 
+				// scope.rss2();
 				
 			}
 		}
