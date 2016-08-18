@@ -9,9 +9,10 @@ require('angular-touch');
 require('angular-carousel');
 require('ng-page-title');
 require('angular-sanitize');
+require('angular-google-analytics');
 
 // declare a module
-const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize']);
+const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize', 'angular-google-analytics']);
 
 /*const rss1 = () => {
 	document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document.location.protocol ? 'https://' : 'http://') + 'feed.mikle.com/js/rssmikle.js">\x3C/script>');
@@ -105,8 +106,10 @@ eventsApp
 
 // }])
 .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
-	/* Configuration is where you configure providers ( not instances) */
-	console.log("Configuration hook");
+
+	//Enable Google Analytics
+	AnalyticsProvider
+	.setAccount(process.env.GOOGLE_ANALYTICS_KEY_DEV);
 
 	$routeProvider
 	.when('/', {

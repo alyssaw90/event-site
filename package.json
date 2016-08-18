@@ -13,6 +13,7 @@
     "angular": "^1.5.8",
     "angular-aria": "^1.5.8",
     "angular-carousel": "^1.0.1",
+    "angular-google-analytics": "^1.1.7",
     "angular-route": "^1.5.8",
     "angular-sanitize": "^1.5.8",
     "angular-simple-slideshow": "0.0.3",
