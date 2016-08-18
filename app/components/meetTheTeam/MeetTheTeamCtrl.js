@@ -1,7 +1,7 @@
 'use strict';
 
 const MeetTheTeamCtrl = (app) => {
-	app.controller('MeetTheTeamCtrl', ['$scope', '$http', 'meetTheTeamRESTResource', function($scope, $http, resource) {
+	app.controller('MeetTheTeamCtrl', ['$scope', '$http', '$sce', 'meetTheTeamRESTResource', function($scope, $http, $sce, resource) {
 		$scope.errors = [];
 		$scope.teamMembers = [];
 
@@ -15,6 +15,9 @@ const MeetTheTeamCtrl = (app) => {
         };
         
         $scope.teamMembers = data;
+        for (let i = 0, len = $scope.teamMembers.length; i < len; i++) {
+        	$scope.teamMembers[i].contactDescription = $sce.trustAsHtml($scope.teamMembers[i].contactDescription);
+        }
       })
 			
 		

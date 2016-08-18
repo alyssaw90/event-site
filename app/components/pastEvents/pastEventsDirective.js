@@ -12,6 +12,11 @@ const pastEventsDirective = (app) => {
 				$timeout(function() {
 				 	customFunctions.changeHeight('.past_events');
 				});
+				//change the heights on window resize
+				jQuery(window).resize(function(){
+				  customFunctions.changeHeight('.past_events');
+				  // customFunctions.homepageStickyFooter();
+				});
 				//change the heigts if the page starts on a different path
 				scope.$on('$locationChangeSuccess', function(event) {
 					

@@ -7,7 +7,7 @@ const AllPagesCtrl = (app) => {
 		$scope.announceOnViewChange;
 		$scope.currentPath = $location.path();
 		$scope.isCurrentPage = (pageUrl) => {
-		console.log('ladjfaf   ', $location.path(), '      ', /\/admin.*$/.test('/admin'));
+		// console.log('ladjfaf   ', $location.path(), '      ', /\/admin.*$/.test('/admin'));
 	   	return pageUrl === $location.path();
 		}
 

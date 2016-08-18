@@ -105,7 +105,7 @@ eventsApp
 // 	 	});
 
 // }])
-.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+.config(['$routeProvider', '$locationProvider', 'AnalyticsProvider', function ($routeProvider, $locationProvider, AnalyticsProvider) {
 
 	//Enable Google Analytics
 	AnalyticsProvider
@@ -177,7 +177,7 @@ eventsApp
       pageTitle: 'Latest Page - Microsoft Plugfests and Events'
     }
 	})
-	.when('/admin', {
+/*	.when('/admin', {
 		templateUrl: '/app/components/admin/admin.html',
 		controller: 'AdminCtrl',
 		data: {
@@ -190,7 +190,7 @@ eventsApp
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
     }
-	})
+	})*/
 	.when('/:slug', {
     templateUrl: '/app/components/events/event.html',
     controller: 'EventsCtrl',

@@ -63,7 +63,7 @@
 	<!-- Begin upcoming events desktop menu -->
 	<nav class="menu-overlay desktop-menu flex clearfix" style="background-color:{{futureEvents[0].eventHighlightColor}}">
 		<div class="col_12 purpleEventMenu">
-			<a data-ng-repeat="futureEvent in futureEvents | orderBy: eventStartDate" id="{{isFirstEventInLIst($index)}}" href="/{{futureEvent.eventUrl}}">{{futureEvent.city}} &nbsp<span class="purpleSubMenu">- {{futureEvent.headerEventDates}}</span> <span ng-show=" ! $last ">&nbsp &nbsp|</span></a>
+			<span data-ng-repeat="futureEvent in futureEvents | orderBy: eventStartDate" role="presentation"><a id="{{isFirstEventInLIst($index)}}" href="/{{futureEvent.eventUrl}}">{{futureEvent.city}} &nbsp<span class="purpleSubMenu">- {{futureEvent.headerEventDates}}</span></a> <span ng-show=" ! $last ">|&nbsp</span></span>
 		</div>
 	</nav>
 	<!-- End upcoming events desktop menu -->

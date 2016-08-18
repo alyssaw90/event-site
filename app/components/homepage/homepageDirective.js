@@ -11,13 +11,13 @@ const homepageDirective = (app) => {
 	/*angular.element(window).load(function() {
 	  customFunctions.changeHeight('.homepageIntroBlocks');
 	  customFunctions.homepageStickyFooter();
-	});
+	});*/
 	
 	
 	angular.element(window).resize(function(){
 	  customFunctions.changeHeight('.homepageIntroBlocks');
-	  customFunctions.homepageStickyFooter();
-	});*/
+	  // customFunctions.homepageStickyFooter();
+	});
 
 		const $learnBlockIcon = angular.element('#learnBlockIcon');
 		const $learnBlock = angular.element('#learnBlock');

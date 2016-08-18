@@ -8,16 +8,16 @@ const allPagesDirective = (app) => {
 		const allPagesDirectiveObj = {
 			restrict: 'A',
 			scope: true,
-			link: function postLink(scope, element, attrs, $timeout) {
+			link: function postLink(scope, element, attrs) {
 
 					$rootScope.$on('$viewContentLoaded', function () {
-						// $timeout(function() {
+						$timeout(function() {
 							// console.log('path     ', !$location.hash());
 							if (!$location.hash()) {
 								jQuery('#screenreader-summary').trigger('focus');
 							}
 							
-						// });
+						}, 300);
 		
 					});
 
