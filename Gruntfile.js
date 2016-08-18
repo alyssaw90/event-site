@@ -48,7 +48,7 @@ module.exports = function (grunt) {
         src: ['app/build/**/*.js', 'app/dist/*.*', 'app/css/custom.build.min.css', 'app/css/highcontrast.min.css', 'app/css/twitter-widget.min.css']
       },
       prod: {
-        src: ['app/build/**/*.*', 'app/build/app/**/**', '!app/build/build.min.js', '!app/build/.gitignore']
+        src: ['app/build/**/*.*', 'app/build/app/**/**', '!app/build/build.min.js', '!app/build/build.min.js.map', '!app/build/.gitignore']
       }
     },
     //register task to run babel and compile es6
