@@ -7,14 +7,19 @@ const AllPagesCtrl = (app) => {
 		$scope.announceOnViewChange;
 		$scope.currentPath = $location.path();
 		$scope.isCurrentPage = (pageUrl) => {
-		// console.log('ladjfaf   ', $location.path(), '      ', /\/admin.*$/.test('/admin'));
+		console.log('ladjfaf   ', $location.path(), '      ', /\/admin.*$/.test($location.path()));
 	   	return pageUrl === $location.path();
 		}
 
 		$scope.isAdminPage = (pageUrl) => {
 	   	// return /\/admin.*$/.test(pageUrl);
-	   	return pageUrl ==='/admin'
+	   	return /\/admin.*$/.test(pageUrl);
 		}
+
+		$scope.$on('$locationChangeSuccess', function(event) {
+			
+			$scope.currentPath = $location.path();
+		});
 		
 		$scope.isFirstEventInLIst = (index) => {
 			if (index === 0) {
