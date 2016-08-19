@@ -10,10 +10,9 @@ require('angular-carousel');
 require('ng-page-title');
 require('angular-sanitize');
 require('angular-google-analytics');
-require('ng-file-upload');
 
 // declare a module
-const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize', 'angular-google-analytics', 'ngFileUpload']);
+const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize', 'angular-google-analytics']);
 
 /*const rss1 = () => {
 	document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document.location.protocol ? 'https://' : 'http://') + 'feed.mikle.com/js/rssmikle.js">\x3C/script>');
