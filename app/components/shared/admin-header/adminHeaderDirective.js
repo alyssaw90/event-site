@@ -11,34 +11,21 @@ const adminHeaderDirective = (app) => {
 
 					$timeout(function() {
 						let path = window.location.pathname;
-						let $currentAdminLi = jQuery(`#admin-menu-ul > a[href="${path}"]`).parent('li');
-						let $allAdminLi = jQuery('#admin-menu-ul').find('li');
-
-						$allAdminLi.removeClass('current');
-						if (path === '/admin') {
-							jQuery('#admin-menu-ul').children('li')[0].addClass('current');
-						} else {
-							$currentAdminLi.addClass('current');
-						}
-
+						let $currentAdminAnchor = jQuery(`a[href="${path}"]`);
+						let $allAdminAnchors = jQuery('#admin-menu-ul').find('a');
+						$allAdminAnchors.removeClass('inset');
+						$currentAdminAnchor.addClass('inset');
 					}, 500);
 
 					scope.$on('$locationChangeSuccess', function(event) {
 						$timeout(function() {
 						let path = window.location.pathname;
-						let $currentAdminLi = jQuery(`#admin-menu-ul > a[href="${path}"]`).parent('li');
-						let $allAdminLi = jQuery('#admin-menu-ul').find('li');
-							
+						let $currentAdminAnchor = jQuery(`a[href="${path}"]`);
+						let $allAdminAnchors = jQuery('#admin-menu-ul').find('a');
+						$allAdminAnchors.removeClass('inset');
+						$currentAdminAnchor.addClass('inset');
 
-						$allAdminLi.removeClass('current');
-						if (path === '/admin') {
-							jQuery('#admin-menu-ul').children('li')[0].addClass('current');
-						} else {
-							$currentAdminLi.addClass('current');
-						}
-
-					
-						}, 500);
+					}, 500);
 					});
 				}
 			};

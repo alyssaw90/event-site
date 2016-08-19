@@ -1,13 +1,13 @@
-<nav class="admin-menu container-fluid dropdown">
-	<ul class="nav nav-justified">
+<nav class="admin-menu container-fluid dropdown" data-admin-header-directive>
+	<ul class="nav nav-justified button-bar" id="admin-menu-ul">
 		<li role="presentation dropdown">
 	  	<a class="dropdown-toggle navbar-link admin-navbar-link" data-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="false">
 	      Create New 
 	      <span class="win-icon win-icon-MapCompassBottom win-icon-size-ml" aria-hidden="true"></span>
 	    </a>
 	    <ul class="dropdown-menu">
-			<li><a href="/admin/createevent">Create New Event</a></li>
-			<li><a href="/admin/createspeaker">Create New Speaker</a></li>
+			<li><a href="/admin/create-event">Create Event</a></li>
+			<li><a href="/admin/create-speaker">Create Speaker</a></li>
 		</ul>
 	  </li>
 	  <li role="presentation dropdown">
@@ -16,9 +16,9 @@
 	      <span class="win-icon win-icon-MapCompassBottom win-icon-size-ml" aria-hidden="true"></span>
 	    </a>
 	    <ul class="dropdown-menu">
-				<li><a href="/admin/editevent">Edit Event</a></li>
-				<li><a href="/admin/editspeaker">Edit Speaker</a></li>
-				<li><a href="/admin/editslider">Edit Homepage Slide Show</a></li>
+				<li><a href="/admin/edit-event">Edit Event</a></li>
+				<li><a href="/admin/edit-speaker">Edit Speaker</a></li>
+				<li><a href="/admin/edit-slider">Edit Homepage Slide Show</a></li>
 			</ul>
 	  </li>
 	  <li role="presentation dropdown">
@@ -27,11 +27,18 @@
 	     <span class="win-icon win-icon-MapCompassBottom win-icon-size-ml" aria-hidden="true"></span>
 	    </a>
 	    <ul class="dropdown-menu">
-				<li><a href="/admin/editevent">Edit Event</a></li>
-				<li><a href="/admin/editspeaker">Edit Speaker</a></li>
-				<li><a href="/admin/editslider">Edit Homepage Slide Show</a></li>
+				<li><a href="/admin/delete-event">Delete Event</a></li>
+				<li><a href="/admin/delete-speaker">Delete Speaker</a></li>
 			</ul>
 	  </li>
-	  <li><a href="/admin/help">Help</a></li>
+	  <li role="presentation dropdown">
+	  	<a class="dropdown-toggle navbar-link admin-navbar-link" data-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="false">
+	     Delete Elements 
+	     <span class="win-icon win-icon-MapCompassBottom win-icon-size-ml" aria-hidden="true"></span>
+	    </a>
+	    <ul class="dropdown-menu">
+				<li><a href="/admin/help">Help</a></li>
+			</ul>
+	  </li>
 	</ul>
 </nav>

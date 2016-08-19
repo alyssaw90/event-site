@@ -246,27 +246,32 @@ module.exports = function (router) {
     });
   });
 
+router.post('/multer', upload.single('photo'), function (req, res) {
 
+    res.end("File uploaded.");
+});
 
-  //create basic event
-  // router.post('/createevent', eatAuth, upload.array('images', 2), function (req, res, next) {
-  //   models.sql.sync()
-  //   .then(function () {
-  //     Event.create({
-  //       eventName: req.body.newEventName,
-  //       eventStartDate: req.body.newEventStartDate,
-  //       eventEndDate: req.body.newEventEndDate,
-  //       eventLocation: req.body.newEventLocation,
-  //       eventHeaderImage: req.files[0].filename,
-  //       eventHomepageImage: req.files[1].filename,
-  //       eventContinent: req.body.newEventContinent,
-  //       eventHighlightColor: req.body.newEventColor
-  //     })
-  //     .then(function(newEvent) {
-  //       res.json(newEvent.id);
-  //     });
-  //   });
-  // });
+  // create basic event
+  router.post('/api/createevent', /*eatAuth,*/ upload.single('newEventHeaderImage'), function (req, res, next) {
+        console.log(clc.bgGreen('::::::::::   '), req.file);
+    models.sql.sync()
+    .then(function () {
+      Event.create({
+        eventName: req.body.newEventName,
+        eventRegistrationLink: req.body.newEventRegistrationLink,
+        eventStartDate: req.body.newEventStartDate,
+        eventEndDate: req.body.newEventEndDate,
+        eventLocation: req.body.newEventCity,
+        eventState: req.body.eventState,
+        eventCountry: req.body.eventCountry,
+        eventHeaderImage: req.file.filename,
+        eventHighlightColor: req.body.newEventThemeColor
+      })
+      .then(function(newEvent) {
+        res.json(newEvent.id);
+      });
+    });
+  });
 
   // //Find an event with the id from req.body.eventId and add the string of speakers then save
   // router.post('/addeventspeakers', eatAuth, function(req, res, next) {

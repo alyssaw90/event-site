@@ -1,0 +1,15 @@
+
+<div class="mobileWrapper" role="presentation" data-ng-init="getEvents(); getAllSpeakers()" >
+  <main style="overflow:hidden;" id="beginningOfContent" tabindex="0" class="grid main-page-content">
+    <section role="presentation" class="col_12 internetExplorer">
+			<div id="edit-events-home-tab">
+				<h3>All Events</h3>
+				<button class="large">Add New Event</button>
+				<table>
+				<tr><th><h4>Speaker Name</h4></th><th><h4>Display on Meet the Team</h4></th><th><h4>Last Modified By</h4></th><th><h4>Last Modified</h4></th><th><h4>Status</h4></th><th>&nbsp;</th></tr>
+				<tr data-ng-repeat="speaker in theSpeakers"><td>{{speaker.fullName}}</td><td>{{speaker.showOnMeetTheTeamPage}}</td><td>{{speaker.updatedAt | date: 'MM/dd/yyyy'}}</td><td>{{publishedOrNot = speaker.isPublished ? 'published' : 'unpublished';}}</td><td><button>Edit</button></td></tr>
+			</table>
+			</div>
+    </section>
+  </main>
+</div>

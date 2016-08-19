@@ -17,7 +17,12 @@ const adminRESTResource = (app) => {
 					$http.get('/contacts')
           .success(customFunctions.handleSuccess(callback))
           .error(customFunctions.handleError(callback));
-				}
+				},
+				createEvent: function(resourceData, callback) {
+          $http.post('/api/createevent', resourceData)
+          .success(customFunctions.handleSuccess(callback))
+          .error(customFunctions.handleError(callback));
+        }
 			}
 			
 		}

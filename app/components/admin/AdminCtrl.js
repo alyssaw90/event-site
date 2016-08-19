@@ -1,10 +1,11 @@
 'use strict';
 
 const AdminCtrl = (app) => {
-	app.controller('AdminCtrl', ['$scope', '$http', 'adminRESTResource', function($scope, $http, resource) {
+	app.controller('AdminCtrl', ['$scope', '$http', 'Upload', 'adminRESTResource', function($scope, $http, Upload, resource) {
 		$scope.errors = [];
 		$scope.theEvents = [];
 		$scope.theSpeakers = [];
+		$scope.newEvent = {};
 
 		let DataForEditingEvents = resource();
 
@@ -30,7 +31,20 @@ const AdminCtrl = (app) => {
 
 				$scope.theSpeakers = speakers;
 			})
-		}
+		};
+
+		$scope.createNewEvent = (event) => {
+			let fd = new FormData();
+     	for ( let key in event ) {
+		    fd.append(key, event[key]);
+			}
+			// console.log('the event              ', $files);
+      DataForEditingEvents.createEvent(event, function (err, data) {
+        if (err) {
+          $scope.errors.push({msg: 'could not save event: ' + $scope.newEvent.eventName});
+        };
+      });
+    };
 
 	}])
 }

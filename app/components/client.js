@@ -1,7 +1,7 @@
 'use strict';
 
 import * as customFunctions from './shared/methods/common-functions.js';
-const jQuery = require('jQuery');
+const jQuery = require('jquery');
 require('angular/angular');
 require('angular-route');
 require('angular-aria');
@@ -10,9 +10,10 @@ require('angular-carousel');
 require('ng-page-title');
 require('angular-sanitize');
 require('angular-google-analytics');
+require('ng-file-upload');
 
 // declare a module
-const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize', 'angular-google-analytics']);
+const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize', 'angular-google-analytics', 'ngFileUpload']);
 
 /*const rss1 = () => {
 	document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document.location.protocol ? 'https://' : 'http://') + 'feed.mikle.com/js/rssmikle.js">\x3C/script>');
@@ -178,14 +179,27 @@ eventsApp
     }
 	})
 	.when('/admin', {
-		templateUrl: '/app/components/admin/admin.html',
-		controller: 'AdminCtrl',
+		redirectTo: '/admin/edit-event',
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
     }
 	})
 	.when('/admin/create-event', {
 		templateUrl: '/app/components/admin/admin-create-event.html',
+		controller: 'AdminCtrl',
+		data: {
+      pageTitle: 'Admin Page - Microsoft Plugfests and Events'
+    }
+	})
+	.when('/admin/edit-event', {
+		templateUrl: '/app/components/admin/admin-edit-event.html',
+		controller: 'AdminCtrl',
+		data: {
+      pageTitle: 'Admin Page - Microsoft Plugfests and Events'
+    }
+	})
+	.when('/admin/edit-speaker', {
+		templateUrl: '/app/components/admin/admin-edit-speakers.html',
 		controller: 'AdminCtrl',
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'

@@ -26,7 +26,7 @@ module.exports = function (sql, DataTypes) {
     eventHomepageImage: DataTypes.TEXT, //link to homepage image
     eventHighlightColor: DataTypes.TEXT, //what color to use to highlight the homepage
     eventFuturePageImage: DataTypes.TEXT, //image to appear on event slide on homepage
-    eventFuturePageText: DataTypes.TEXT, //slide up text for future events page
+    eventAboutTabText: DataTypes.TEXT, //text for About Page
     /*  eventSlideshowImage: {
         type: DataTypes.TEXT,
         unique: true,
