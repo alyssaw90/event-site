@@ -253,7 +253,6 @@ router.post('/multer', upload.single('photo'), function (req, res) {
 
   // create basic event
   router.post('/api/createevent', /*eatAuth,*/ upload.single('newEventHeaderImage'), function (req, res, next) {
-        console.log(clc.bgGreen('::::::::::   '), req.file);
     models.sql.sync()
     .then(function () {
       Event.create({
@@ -262,13 +261,31 @@ router.post('/multer', upload.single('photo'), function (req, res) {
         eventStartDate: req.body.newEventStartDate,
         eventEndDate: req.body.newEventEndDate,
         eventLocation: req.body.newEventCity,
-        eventState: req.body.eventState,
-        eventCountry: req.body.eventCountry,
+        eventState: req.body.newEventState,
+        eventCountry: req.body.newEventCountry,
         eventHeaderImage: req.file.filename,
-        eventHighlightColor: req.body.newEventThemeColor
+        eventHighlightColor: req.body.newEventThemeColor,
+        isPublished: req.body.publishStatus
       })
       .then(function(newEvent) {
-        res.json(newEvent.id);
+        models.sql.sync()
+        .then(function() {
+          let speakersArr = [];
+          for(let key in req.body){
+              let speakerId = key.slice(7);
+            if (key.slice(0, 7) === 'speaker' && req.body[key]) {
+              speakersArr.push({speakerId: speakerId, position: req.body[key]  })
+            }
+          }
+
+          for(let i = 0, length1 = speakersArr.length; i < length1; i++){
+            newEvent.addContact(speakersArr[i].speakerId, {sortPosition: speakersArr[i].position});
+          }
+          
+          res.json(newEvent);
+          
+        })
+
       });
     });
   });

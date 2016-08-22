@@ -1,11 +1,12 @@
 'use strict';
 
 const AdminCtrl = (app) => {
-	app.controller('AdminCtrl', ['$scope', '$http', 'Upload', 'adminRESTResource', function($scope, $http, Upload, resource) {
+	app.controller('AdminCtrl', ['$scope', '$http', 'adminRESTResource', function($scope, $http, resource) {
 		$scope.errors = [];
 		$scope.theEvents = [];
 		$scope.theSpeakers = [];
 		$scope.newEvent = {};
+		$scope.hideModal = true;
 
 		let DataForEditingEvents = resource();
 
@@ -33,18 +34,19 @@ const AdminCtrl = (app) => {
 			})
 		};
 
-		$scope.createNewEvent = (event) => {
-			let fd = new FormData();
-     	for ( let key in event ) {
-		    fd.append(key, event[key]);
-			}
-			// console.log('the event              ', $files);
-      DataForEditingEvents.createEvent(event, function (err, data) {
+		$scope.createNewEvent = (newEvent) => {
+
+      DataForEditingEvents.createEvent(newEvent, function (err, data) {
         if (err) {
-          $scope.errors.push({msg: 'could not save event: ' + $scope.newEvent.eventName});
-        };
+          $scope.errors.push({msg: 'could not save newEvent: ' + $scope.newEvent.eventName});
+        }
+        console.log('data:     ', data);
       });
     };
+
+    $scope.closeModalWindow = () => {
+    	$scope.hideModal = !$scope.hideModal;
+    }
 
 	}])
 }

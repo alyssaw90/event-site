@@ -185,21 +185,21 @@ eventsApp
 	})
 	.when('/admin/create-event', {
 		templateUrl: '/app/components/admin/admin-create-event.html',
-		controller: 'AdminCtrl',
+		// controller: 'AdminCtrl',
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
     }
 	})
 	.when('/admin/edit-event', {
 		templateUrl: '/app/components/admin/admin-edit-event.html',
-		controller: 'AdminCtrl',
+		// controller: 'AdminCtrl',
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
     }
 	})
 	.when('/admin/edit-speaker', {
 		templateUrl: '/app/components/admin/admin-edit-speakers.html',
-		controller: 'AdminCtrl',
+		// controller: 'AdminCtrl',
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
     }

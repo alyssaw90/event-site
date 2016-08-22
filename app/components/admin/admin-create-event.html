@@ -1,10 +1,9 @@
 
-<div class="mobileWrapper" role="presentation" data-ng-init="getEvents(); getAllSpeakers()" >
+<div class="mobileWrapper" role="presentation" data-ng-init="getEvents(); getAllSpeakers()" data-admin-page-directive>
   <main style="overflow:hidden;" id="beginningOfContent" tabindex="0" class="grid main-page-content">
     <section role="presentation" class="col_12 internetExplorer">
 			<h3>New Event</h3>
-			<!-- {{newEvent}} -->
-			<form id="add-new-event-form" method="post" enctype="multipart/form-data">
+			<form id="add-new-event-form" action="/api/createevent" method="post" enctype="multipart/form-data">
 				<label class="col_12" for="newEventName">Event Name*</label>
 				<input class="col_12" type="text" data-ng-model="newEvent.eventName" name="newEventName" id="newEventName" required="true">
 				<!-- <label class="col_12" for="new-event-url">Event URL</label>
@@ -13,10 +12,10 @@
 				<input class="col_12" type="url" data-ng-model="newEvent.eventRegistrationLink" name="newEventRegistrationLink" id="newEventRegistrationLink">
 				<label class="col_12" for="newEventCity">Event City*</label>
 				<input class="col_12" type="text" data-ng-model="newEvent.eventLocation" name="newEventCity" id="newEventCity" required="true">
-				<label class="col_12" for="new-event-state">Event State</label>
-				<input class="col_12" type="text" data-ng-model="newEvent.eventState" name="new-event-state" id="new-event-state">
-				<label class="col_12" for="new-event-country">Event Country</label>
-				<input class="col_12" type="text" data-ng-model="newEvent.eventCountry" name="new-event-country" id="new-event-country">
+				<label class="col_12" for="newEventState">Event State</label>
+				<input class="col_12" type="text" data-ng-model="newEvent.eventState" name="newEventState" id="newEventState">
+				<label class="col_12" for="newEventCountry">Event Country</label>
+				<input class="col_12" type="text" data-ng-model="newEvent.eventCountry" name="newEventCountry" id="newEventCountry">
 				<label class="col_12" for="newEventStartDate">Event Start Date (Can include time of day)</label>
 				<input class="col_12" type="date" data-ng-model="newEvent.eventStartDate" name="newEventStartDate" id="newEventStartDate">
 				<label class="col_12" for="newEventEndDate">Event End Date (Can include time of day)</label>
@@ -25,18 +24,39 @@
 				<input class="col_12" type="color" data-ng-model="newEvent.eventHighlightColor" name="newEventThemeColor" id="newEventThemeColor">
 				<label class="col_12" for="newEventHeaderImage">Choose Header Image for Event Page</label>
 				<input class="col_12" type="file" data-ng-model="newEvent.eventHeaderImage" name="newEventHeaderImage" id="newEventHeaderImage">
+				<br>
+				<div data-ng-controller="AdminCtrl" data-ng-init="getAllSpeakers();">
+					<a class="button medium float-left" target="_self"  href="" data-ng-click="closeModalWindow()">Select Speakers</a>
+					<!-- lightbox container hidden with CSS -->
+					<div class="lightbox" data-ng-hide="hideModal" id="speakersForm">
+					  <div class="inner-lightbox-box">
+						<a class="closeModal" data-ng-click="closeModalWindow()" target="_self" href="">X</a>
+					    <p data-ng-hide="hideModal" class="modal-title">Select Speakers</p>
+					    <div class="modal-content">
+					    	<div data-ng-repeat="speaker in theSpeakers" for="speaker{{speaker.id}}">
+					    		<div class="col_5">{{speaker.fullName}}</div>
+					  			<!-- <input class="col_6" name="speakers[]" type="checkbox" value="{{speaker.id}}"> -->
+					  			<input class="col_1" class="speakersOrder" type="number" name="speaker{{speaker.id}}" id="speakerOrder{{speaker.id}}" min="1">
+					  		</div>
+					  		<br>
+					  	</div>
+					  </div>
+					</div>
+					
+				</div>
 				<label class="col_12" for="new-event-description">Event Description for About page</label>
 				<br>
 				<textarea class="col_12" data-ng-model="newEvent.eventAboutTabText" name="new-event-description" id="new-event-description" style="min-height: 200px"></textarea>
-				<div class="col_12"></div>
-				<button class="medium float-left" style="margin: 5px" id="cancel-new-event-button">Cancel</button>
-				<button class="medium float-left" style="margin: 5px" data-ng-click="createNewEvent(newEvent)" id="save-new-event-as-draft-button">Save as Draft</button>
-				<button class="medium float-left" style="margin: 5px" id="save-and-publish-new-event-button">Save and Publish</button>
+				<radiogroup class="col_12">
+					<label for="publishedTrue">Publish Now</label>
+					<input type="radio" id="publishedTrue" name="publishStatus" value="true">
+					<br>
+					<label for="publishedFalse">Save as Draft</label>
+					<input type="radio" id="publishedFalse" name="publishStatus" value="false" checked="true">
+				</radiogroup>
+				<button type="button" class="medium float-left" style="margin: 5px" id="cancel-new-event-button">Cancel</button>
+				<button type="button" class="medium float-left" style="margin: 5px" data-ng-click="createNewEvent(newEvent);" id="save-new-event-as-draft-button">Save</button>
 			</form>
-			<!-- <form action="/multer" method="post" enctype="multipart/form-data">
-				<input type="file" id="photo" name="photo"/> 
-				<button id="Button1">Upload</button>
-			</form> -->
     </section>
   </main>
 </div>

@@ -20,8 +20,22 @@ module.exports = function() {
 	.then(function(event) {
 	  models.sql.sync()
 	  .then(function() {
-	  	event.setContacts([1,2,8,11,15,9,12,10,6,32,33,34,35,38,26]);
 			event.setTabs([1,2,3,4,5,6,7]);
+			event.addContact(1, {sortPosition: 1});
+			event.addContact(2, {sortPosition: 2});
+			event.addContact(8, {sortPosition: 3});
+			event.addContact(11, {sortPosition: 4});
+			event.addContact(15, {sortPosition: 5});
+			event.addContact(9, {sortPosition: 6});
+			event.addContact(12, {sortPosition: 7});
+			event.addContact(10, {sortPosition: 8});
+			event.addContact(6, {sortPosition: 9});
+			event.addContact(32, {sortPosition: 10});
+			event.addContact(33, {sortPosition: 11});
+			event.addContact(34, {sortPosition: 12});
+			event.addContact(35, {sortPosition: 13});
+			event.addContact(38, {sortPosition: 14});
+			event.addContact(26, {sortPosition: 15});
 	  })
 	})
 	.then(function() {
@@ -34,8 +48,16 @@ module.exports = function() {
 	.then(function(event) {
 	  models.sql.sync()
 	  .then(function() {
-	  	event.setContacts([1,2,5,10,8,11,35,36,37]);
 			event.setTabs([8,9,10,11,12,13]);
+			event.addContact(1, {sortPosition: 1});
+			event.addContact(2, {sortPosition: 2});
+			event.addContact(5, {sortPosition: 3});
+			event.addContact(10, {sortPosition: 4});
+			event.addContact(8, {sortPosition: 5});
+			event.addContact(11, {sortPosition: 6});
+			event.addContact(35, {sortPosition: 7});
+			event.addContact(36, {sortPosition: 8});
+			event.addContact(37, {sortPosition: 9});
 	  })
 	})
 	.then(function() {
@@ -48,8 +70,23 @@ module.exports = function() {
 	.then(function(event) {
 	  models.sql.sync()
 	  .then(function() {
-	  	event.setContacts([1,2,3,5,9,8,11,15,12,10,6,21,14,18,16,39,40]);
 			event.setTabs([14,15,16,17,18]);
+			event.addContact(1, {sortPosition: 1});
+			event.addContact(2, {sortPosition: 2});
+			event.addContact(3, {sortPosition: 3});
+			event.addContact(5, {sortPosition: 4});
+			event.addContact(9, {sortPosition: 5});
+			event.addContact(8, {sortPosition: 6});
+			event.addContact(11, {sortPosition: 7});
+			event.addContact(15, {sortPosition: 8});
+			event.addContact(12, {sortPosition: 9});
+			event.addContact(10, {sortPosition: 10});
+			event.addContact(21, {sortPosition: 11});
+			event.addContact(14, {sortPosition: 12});
+			event.addContact(18, {sortPosition: 13});
+			event.addContact(16, {sortPosition: 14});
+			event.addContact(39, {sortPosition: 15});
+			event.addContact(40, {sortPosition: 16});
 	  })
 	})
 	.then(function() {
@@ -62,8 +99,17 @@ module.exports = function() {
 	.then(function(event) {
 	  models.sql.sync()
 	  .then(function() {
-	  	event.setContacts([1,2,13,9,8,10,6,11,35,26]);
 			event.setTabs([19,20,21,22,23]);
+			event.addContact(1, {sortPosition: 1});
+			event.addContact(2, {sortPosition: 2});
+			event.addContact(13, {sortPosition: 3});
+			event.addContact(9, {sortPosition: 4});
+			event.addContact(8, {sortPosition: 5});
+			event.addContact(10, {sortPosition: 6});
+			event.addContact(6, {sortPosition: 7});
+			event.addContact(11, {sortPosition: 8});
+			event.addContact(35, {sortPosition: 9});
+			event.addContact(26, {sortPosition: 10});
 	  })
 	})
 	.then(function() {

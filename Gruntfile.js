@@ -232,8 +232,9 @@ module.exports = function (grunt) {
 	// register mocha test task
 	grunt.registerTask('test', ['simplemocha:dev']);
   grunt.registerTask('lessProd', ['less:prod']);
-  grunt.registerTask('bbl', ['clean:dev', 'babel', 'browserify', 'lessProd']);
+  grunt.registerTask('build:dev', ['clean:dev', 'babel', 'browserify', 'lessProd']);
   grunt.registerTask('build', ['clean:dev', 'babel', 'browserify', 'uglify', 'lessProd', 'clean:prod']);
+  grunt.registerTask('start:dev', ['build:dev', 'nodemon:dev']);
   grunt.registerTask('start', ['build', 'nodemon:dev']);
 	grunt.registerTask('test', ['build', 'test']);
   grunt.registerTask('default', ['concurrent:target2']);
