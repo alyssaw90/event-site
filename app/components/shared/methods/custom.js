@@ -145,8 +145,8 @@ if (self === top) {
 		//find what has focus
 		/*$('*').focusin(function(event) {
 			console.log('this:               ', $(this));
-		});*/
-
+		});
+*/
 		//remove focus from resize sensor div
 		$('.resize-sensor').attr('tabindex', '-1');
 

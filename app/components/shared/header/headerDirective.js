@@ -15,6 +15,7 @@ const headerDirective = (app) => {
 				 	const $pastEventsHeaderMenuBlock = jQuery('.past-events-header-menu-block');
 				 	const $menuBlock = jQuery('.menu-block');
 				 	const $carouselContainer = jQuery('.carousel-container');
+				 	const $menuOverlays = jQuery('.menu-overlay');
 				 	let pathname = window.location.pathname;
 
 				 	$timeout(function() {

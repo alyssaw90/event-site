@@ -101,9 +101,6 @@ const homepageDirective = (app) => {
 					$this.next().attr('tabindex', '0');
 					$scrollButtonDiv.css('color', '#2F2F2F').css('background-color', '#fff');
 				}
-				//execute the homepageStickyFooter function to correctly position the footer after the new div is added
-		   	customFunctions.homepageStickyFooter();
-		   	setTimeout(customFunctions.homepageStickyFooter, 420); 
 				
 			}
 		}
@@ -128,6 +125,7 @@ const homepageDirective = (app) => {
 				let thisBlockArrowClass = $this.attr('id') + 'ArrowBox';
 				if ($this.hasClass(thisBlockArrowClass)) {
 					$this.removeClass(thisBlockArrowClass);
+					$this.removeClass('whiteText');
 					$this.children('h3').removeClass('whiteText');
 					// $this.children('h3').trigger('click');
 				}
@@ -135,7 +133,7 @@ const homepageDirective = (app) => {
 					$this.removeClass(thisBlockMobileClass).css('background', 'rgb(255, 255, 255)');
 				}
 			});
-			customFunctions.homepageStickyFooter();
+
 		}
 
 
@@ -164,7 +162,7 @@ const homepageDirective = (app) => {
 		$homepageIntroBlocks.click(showHomepageBlock);
 		$homepageIntroBlocks.keydown(showHomepageBlock);
 		//when using keyboard navigation hitting tab on the hiddenHomepageSections nextTab item should send user to the next title block
-		angular.element('.nextTab').keydown(moveHomepageTab);
+		// angular.element('.nextTab').keydown(moveHomepageTab);
 
 		//close blocks and move back when shift + tab is clicked
 		/*angular.element('.hiddenHomepageSections :first-child').keydown(function(e) {
@@ -177,16 +175,29 @@ const homepageDirective = (app) => {
 				angular.element(parentId).removeClass('whiteText');
 			}
 		});*/
+		//hide homepage sections when you use shift + tab 
 		angular.element('.hiddenHomepageSections').keydown(function(e) {
 			let elemId = `#${angular.element(this).attr('id').slice(0, -4)}`;
 			let keyCode = customFunctions.getKeyCode(e);
-			if (e.shiftKey && keyCode === 9) {
+			if (e.shiftKey && keyCode) === 9) {
 				e.preventDefault();
+				console.log('this and that:    ', angular.element(elemId))
 				hideHomepageSections();
 				angular.element(elemId).focus();
 				angular.element(elemId).removeClass('whiteText');
 			}
 		});
+		//hide homepage sections when you use caps lock + arrow key
+		angular.element('.homepageIntroBlocks').focus(function(e) {
+			let elemId = `#${angular.element(this).attr('id')}`;
+			let keyCode = customFunctions.getKeyCode(e);
+			if (angular.element(elemId).hasClass('whiteText')) {
+				e.preventDefault();
+				hideHomepageSections();
+				angular.element(elemId).focus();
+				angular.element(elemId).removeClass('whiteText');
+			}
+		})
 
 		/*angular.element('#itsYourEventBlockText :last-child').blur(function(e) {
 			angular.element('.newsletterSubscSection p:first-child').focus();
