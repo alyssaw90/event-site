@@ -1,7 +1,7 @@
 'use strict';
 
-const AdminCtrl = (app) => {
-	app.controller('AdminCtrl', ['$scope', '$http', 'Upload', 'adminRESTResource', function($scope, $http, Upload, resource) {
+const AdminFileUploadCtrl = (app) => {
+	app.controller('AdminFileUploadCtrl', ['$scope', '$http', 'Upload', '$timeout', 'adminRESTResource', function($scope, $http, Upload, $timeout, resource) {
 		$scope.errors = [];
 		$scope.theEvents = [];
 		$scope.theSpeakers = [];
@@ -10,7 +10,7 @@ const AdminCtrl = (app) => {
 
 		let DataForEditingEvents = resource();
 
-		$scope.getEvents = () => {
+		/*$scope.getEvents = () => {
 
 			DataForEditingEvents.getAllEvents(function (err, data) {
         if (err) {
@@ -36,22 +36,23 @@ const AdminCtrl = (app) => {
 
 		$scope.createNewEvent = (newEvent) => {
 
-        console.log('data:     ', newEvent);
       DataForEditingEvents.createEvent(newEvent, function (err, data) {
         if (err) {
           $scope.errors.push({msg: 'could not save newEvent: ' + $scope.newEvent.eventName});
         }
+        console.log('data:     ', data);
       });
-    };
+    };*/
 
-    $scope.closeModalWindow = () => {
+    /*$scope.closeModalWindow = () => {
     	$scope.hideModal = !$scope.hideModal;
-    }
+    }*/
 
         // upload on file select or drop 
-    /*$scope.uploadNewFile = (file) => {
+    $scope.uploadNewFile = (file) => {
+      console.log('file upload function called');
       Upload.upload({
-          url: 'multer',
+          url: '../multer',
           data: {file: file}
       }).then(function (resp) {
           console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
@@ -61,9 +62,9 @@ const AdminCtrl = (app) => {
           var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
           console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
       });
- 		};*/
-
-/* 		$scope.uploadNewFile = function(file, errFiles) {
+ 		};
+/*
+ 		$scope.uploadNewFile = function(file, errFiles) {
         $scope.f = file;
         $scope.errFile = errFiles && errFiles[0];
         if (file) {
@@ -86,7 +87,36 @@ const AdminCtrl = (app) => {
         }   
     }*/
 
+    $scope.uploadFiles = (file, errFiles) => {
+        $scope.uploadedFile = file;
+        $scope.errFile = errFiles && errFiles[0];
+        if (file) {
+            file.upload = Upload.upload({
+                url: '../multer',
+                headers: {
+                  'enctype': 'multipart/form-data'
+                },
+                data: {
+                  file: file,
+                  fileFormDataName: 'photo'
+                }
+            });
+
+            file.upload.then(function (response) {
+                $timeout(function () {
+                    file.result = response.data;
+                });
+            }, function (response) {
+                if (response.status > 0)
+                    $scope.errorMsg = response.status + ': ' + response.data;
+            }, function (evt) {
+                file.progress = Math.min(100, parseInt(100.0 * 
+                                         evt.loaded / evt.total));
+            });
+        }   
+    };
+
 	}])
 }
 
-module.exports = AdminCtrl;
+module.exports = AdminFileUploadCtrl;

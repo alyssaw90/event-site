@@ -10,9 +10,10 @@ require('angular-carousel');
 require('ng-page-title');
 require('angular-sanitize');
 require('angular-google-analytics');
+require('ng-file-upload');
 
 // declare a module
-const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize', 'angular-google-analytics']);
+const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize', 'angular-google-analytics', 'ngFileUpload']);
 
 /*const rss1 = () => {
 	document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document.location.protocol ? 'https://' : 'http://') + 'feed.mikle.com/js/rssmikle.js">\x3C/script>');
@@ -76,6 +77,7 @@ require('./meetTheTeam/MeetTheTeamCtrl.js')(eventsApp);
 require('./futureEvents/FutureEventsController.js')(eventsApp);
 require('./futureEvents/BingMapCtrl.js')(eventsApp);
 require('./shared/header/HeaderController.js')(eventsApp);
+require('./admin/AdminFileUploadCtrl.js')(eventsApp);
 require('./admin/AdminCtrl.js')(eventsApp);
 require('./latestNews/LatestNewsCtrl.js')(eventsApp);
 require('./events/EventsCtrl.js')(eventsApp);

@@ -29,6 +29,11 @@ const EventTab = models.EventTab;
 const SiteStyle = models.SiteStyle;
 const placeholders = require('../models/placeholders');
 const dbRelationships = require('../models/relationships');
+const multipart = require('connect-multiparty');
+const multipartMiddleware = multipart({
+  autoFiles: true,
+  uploadDir: 'app/uploads/'
+});
 /*Use the methods below to create the placeholder data. First uncomment the placeholder() and start the server this will create the data in the database, then comment out the placeholder() and uncomment the dbRelationships() and restart the server, this will create the relationships between the data tables. Finally, comment both placeholder() and dbRelationships out and restart the server. At this point, all your placeholder data will be created. Do this only once, if you need to recreate your placeholder data, delete all the tables from the database and repeat these same steps*/
 // placeholders();
 // dbRelationships();
@@ -246,13 +251,26 @@ module.exports = function (router) {
     });
   });
 
-router.post('/multer', upload.single('photo'), function (req, res) {
-
-    res.end("File uploaded.");
+router.post('/multer', multipartMiddleware, function (req, res) {
+  let tmpFilename = req.files.file.path.slice(12);
+  let newFilename = req.files.file.originalFilename;
+  console.log('req:::::     ', req.files.file.path.slice(12), ':::::::::::::::::    ', req.files);
+  fs.readdir('app/uploads/', (err, data) => {
+    for (let i = 0, len = data.length; i < len; i++) {
+      // console.log('data:    ', data[i] === tmpFilename);
+      if (data[i] === tmpFilename) {
+        fs.rename('app/uploads/' + data[i], 'app/uploads/' + newFilename + new Date(), () => {
+          console.log('file rename    ', data[i]);
+        });
+      }
+    }
+  })
+  res.end("File uploaded.");
 });
 
   // create basic event
-  router.post('/api/createevent', /*eatAuth,*/ upload.single('newEventHeaderImage'), function (req, res, next) {
+  router.post('/api/createevent', /*eatAuth,*/ function (req, res, next) {
+    console.log(clc.bgGreen(':::::::::   '), req.body);
     models.sql.sync()
     .then(function () {
       Event.create({
@@ -263,21 +281,21 @@ router.post('/multer', upload.single('photo'), function (req, res) {
         eventLocation: req.body.newEventCity,
         eventState: req.body.newEventState,
         eventCountry: req.body.newEventCountry,
-        eventHeaderImage: req.file.filename,
+        // eventHeaderImage: req.file.filename,
         eventHighlightColor: req.body.newEventThemeColor,
-        isPublished: req.body.publishStatus
+        isPublished: req.body.publishStatus,
+        eventAboutTabText: req.body.eventAboutTabText
       })
       .then(function(newEvent) {
         models.sql.sync()
         .then(function() {
+          console.log(clc.bgGreen('::::::::::::::::    '), req.body);
           let speakersArr = [];
-          for(let key in req.body){
-              let speakerId = key.slice(7);
-            if (key.slice(0, 7) === 'speaker' && req.body[key]) {
-              speakersArr.push({speakerId: speakerId, position: req.body[key]  })
-            }
+          for(let key in req.body.speakers){
+            speakersArr.push({speakerId: key, position: req.body.speakers[key]  });    
+           
           }
-
+          
           for(let i = 0, length1 = speakersArr.length; i < length1; i++){
             newEvent.addContact(speakersArr[i].speakerId, {sortPosition: speakersArr[i].position});
           }

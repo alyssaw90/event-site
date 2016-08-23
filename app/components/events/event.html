@@ -7,14 +7,21 @@
   <main data-ng-if="events.isEvent" class="grid main-page-content">
   	<div data-ng-if="events.event.eventHeaderImage" class="col_12 internetExplorer event-header center" id="eventHeader" role="complementary"><img alt="event banner image" src="app/uploads/{{events.event.eventHeaderImage}}" /></div>
   	<ul class="tabs left">
-  		<li data-ng-repeat="tab in events.tabs" id="{{addMainContentId($index)}}" ng-class="$first ? 'first current' : ''">
+      <li class="first">
+        <a target="_self" href="#aboutTab"><h5>About</h5></a>
+      </li>
+  		<li data-ng-repeat="tab in events.tabs" id="{{addMainContentId($index)}}">
   			<a target="_self" href="#{{urlify(tab.tabTitle)}}"><h5>{{ tab.tabTitle }}</h5></a>
   		</li>
   		<li data-ng-if="events.speakers.length > 0" class="last">
   			<a target="_self" href="#speakers"><h5>Speakers</h5></a>
 			</li>
 		</ul>
-		<div data-ng-repeat="tab in events.tabs" id="{{urlify(tab.tabTitle)}}" class="tab-content eventTabDiv" data-ng-class="{'current': $first}" style="display: {{showOnlyFirst($index)}}" data-ng-bind-html="tab.tabContent" ></div>
+    <div id="aboutTab" class="tab-content eventTabDiv" style="display: block" >
+      <h2>{{events.event.eventName}}</h2>
+      <p>{{events.event.eventAboutTabText}}</p>
+    </div>
+		<div data-ng-repeat="tab in events.tabs" id="{{urlify(tab.tabTitle)}}" class="tab-content eventTabDiv" data-ng-class="{'current': $first}" style="display: none" data-ng-bind-html="tab.tabContent" ></div>
   	<div data-ng-if="events.speakers.length > 0" id="speakers" class="last tab-content eventTabDiv clearfix" style="display:none">
 			<div data-ng-repeat="speaker in events.speakers" class="col_12 internetExplorer" id="{{speaker.divId}}" aria-label="Bio of {{speaker.fullName}}" role="presentation">
  		  	<h4>{{speaker.fullName}}</h4>

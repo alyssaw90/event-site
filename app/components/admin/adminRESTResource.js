@@ -19,7 +19,7 @@ const adminRESTResource = (app) => {
           .error(customFunctions.handleError(callback));
 				},
 				createEvent: function(resourceData, callback) {
-				let file = $scope.newEvent;
+				/*let file = $scope.newEvent;
         let uploadUrl = '/api/createevent';
         let fd = new FormData();
         fd.append('file', file);
@@ -27,8 +27,8 @@ const adminRESTResource = (app) => {
         $http.post(uploadUrl,fd, {
             transformRequest: angular.identity,
             headers: {'Content-Type': undefined}
-        })
-          // $http.post('/api/createevent', resourceData)
+        })*/
+          $http.post('/api/createevent', resourceData)
           .success(customFunctions.handleSuccess(callback))
           .error(customFunctions.handleError(callback));
         }
