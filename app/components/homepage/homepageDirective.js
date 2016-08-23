@@ -179,7 +179,7 @@ const homepageDirective = (app) => {
 		angular.element('.hiddenHomepageSections').keydown(function(e) {
 			let elemId = `#${angular.element(this).attr('id').slice(0, -4)}`;
 			let keyCode = customFunctions.getKeyCode(e);
-			if (e.shiftKey && keyCode) === 9) {
+			if (e.shiftKey && keyCode === 9) {
 				e.preventDefault();
 				console.log('this and that:    ', angular.element(elemId))
 				hideHomepageSections();
