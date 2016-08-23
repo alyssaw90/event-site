@@ -253,13 +253,13 @@ module.exports = function (router) {
 
 router.post('/multer', multipartMiddleware, function (req, res) {
   let tmpFilename = req.files.file.path.slice(12);
-  let newFilename = req.files.file.originalFilename;
+  let newFilename = req.files.file.size + '-' + req.files.file.originalFilename;
   console.log('req:::::     ', req.files.file.path.slice(12), ':::::::::::::::::    ', req.files);
   fs.readdir('app/uploads/', (err, data) => {
     for (let i = 0, len = data.length; i < len; i++) {
       // console.log('data:    ', data[i] === tmpFilename);
       if (data[i] === tmpFilename) {
-        fs.rename('app/uploads/' + data[i], 'app/uploads/' + newFilename + new Date(), () => {
+        fs.rename('app/uploads/' + data[i], 'app/uploads/' + newFilename, () => {
           console.log('file rename    ', data[i]);
         });
       }
@@ -281,7 +281,7 @@ router.post('/multer', multipartMiddleware, function (req, res) {
         eventLocation: req.body.newEventCity,
         eventState: req.body.newEventState,
         eventCountry: req.body.newEventCountry,
-        // eventHeaderImage: req.file.filename,
+        eventHeaderImage: req.body.newEventHeaderImage,
         eventHighlightColor: req.body.newEventThemeColor,
         isPublished: req.body.publishStatus,
         eventAboutTabText: req.body.eventAboutTabText

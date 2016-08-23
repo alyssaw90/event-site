@@ -1,12 +1,13 @@
 'use strict';
 
 const AdminCtrl = (app) => {
-	app.controller('AdminCtrl', ['$scope', '$http', 'Upload', 'adminRESTResource', function($scope, $http, Upload, resource) {
+	app.controller('AdminCtrl', ['$rootScope', '$scope', '$http', 'Upload', 'adminRESTResource', function($rootScope, $scope, $http, Upload, resource) {
 		$scope.errors = [];
 		$scope.theEvents = [];
 		$scope.theSpeakers = [];
 		$scope.newEvent = {};
 		$scope.hideModal = true;
+    $scope.hideEventPreview = true;
 
 		let DataForEditingEvents = resource();
 
@@ -35,8 +36,8 @@ const AdminCtrl = (app) => {
 		};
 
 		$scope.createNewEvent = (newEvent) => {
-
-        console.log('data:     ', newEvent);
+        newEvent.newEventHeaderImage = $rootScope.uploadedFile.name ? $rootScope.uploadedFile.size + '-' + $rootScope.uploadedFile.name : '';
+        console.log('data:     ', newEvent, '      ', newEvent.newEventHeaderImage);
       DataForEditingEvents.createEvent(newEvent, function (err, data) {
         if (err) {
           $scope.errors.push({msg: 'could not save newEvent: ' + $scope.newEvent.eventName});
@@ -46,7 +47,22 @@ const AdminCtrl = (app) => {
 
     $scope.closeModalWindow = () => {
     	$scope.hideModal = !$scope.hideModal;
+    };
+
+    $scope.toggleEventPreview = () => {
+      $scope.hideEventPreview = !$scope.hideEventPreview;
+    };
+
+    $scope.getPreviewSpeakers = (theSpeakers) => {
+      let keysArr = Object.keys(newEvent.speakers);
+      // $scope.test = keysArr.indexOf(speakerId) > -1;
+      console.log('array :::   ', keysArr, '   obj   ' , speakersObj);
+      // return keysArr.indexOf(speakerId) > -1;
+      return $scope.theSpeakers.filter(function (speaker) {
+        return $scope.keysArr.indexOf(speaker.id) !== -1;
+      });
     }
+
 
         // upload on file select or drop 
     /*$scope.uploadNewFile = (file) => {
