@@ -4,6 +4,12 @@
 	min-height: 90vh;
 }
 
+footer {
+	& p {
+		line-height: normal;
+	}
+}
+
 .siteFooter {
 	background-color: #fff;
 	float: right;
@@ -17,10 +23,13 @@
 .siteFooter p {
 	text-align: center;
 }
-
-.siteFooter a:hover,
-.siteFooter a:focus {
-	text-shadow: 0 0 10px rgba(80, 80, 80, 1);
+.siteFooter a {
+	font-size: 1.2em;
+	&:hover,
+	&:focus {
+		text-shadow: 0 0 10px rgba(80, 80, 80, 1);
+	}
+	
 }
 
 .footer-at-bottom {
