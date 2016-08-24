@@ -1,6 +1,6 @@
 <div class="mobileWrapper" role="presentation">
   <!-- begin main section -->
-  <main class="grid white-bg main-page-content" role="presentation" data-ng-controller="LatestNewsCtrl" data-latest-news-directive>
+  <main class="grid white-bg main-page-content" role="presentation" data-ng-controller="LatestNewsCtrl" data-latest-news-directive data-events-directive>
     <section class="col_12 internetExplorer" role="presentation">
       <h2>Become a Part of the Interoperability Community</h2>
       <!-- Tabs Center -->
@@ -27,7 +27,8 @@
               <h2>Latest Interoperability News</h2>
             </div>
             <div class="blog-post" data-ng-repeat="post in blogPosts.Items | limitTo: 14">
-              <h4><a data-ng-href="{{post.Link}}"> {{post.Title}}</a></h4>
+              <h4 role="presentation"><a data-ng-href="{{post.Link}}"> {{post.Title !== '' ? post.Title : 'Title Missing';}}</a></h4>
+              <p>{{getDate(post.PublishDate)}}</p>
               <p>{{post.MobileContent.substring(0, post.MobileContent.indexOf('Read more') > -1 ? post.MobileContent.indexOf('Read more') : 250)}}</p>
             </div>
           </div>

@@ -19,6 +19,10 @@ const LatestNewsCtrl = (app) => {
 
 		}
 
+		$scope.getDate = (dateStr) => {
+			return new Date(dateStr).toDateString();
+		}
+
 
 		/*$scope.rss1 = () => {
 			document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document.location.protocol ? 'https://' : 'http://') + 'feed.mikle.com/js/rssmikle.js">\x3C/script>');
