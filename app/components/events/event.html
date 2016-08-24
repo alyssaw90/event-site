@@ -11,7 +11,7 @@
         <a target="_self" href="#aboutTab"><h5>About</h5></a>
       </li>
   		<li data-ng-repeat="tab in events.tabs" id="{{addMainContentId($index)}}">
-  			<a target="_self" href="#{{urlify(tab.tabTitle)}}"><h5>{{ tab.tabTitle }}</h5></a>
+  			<a class="eventTabAnchor" target="_self" href="#{{urlify(tab.tabTitle)}}"><h5>{{ tab.tabTitle }}</h5></a>
   		</li>
   		<li data-ng-if="events.speakers.length > 0" class="last">
   			<a target="_self" href="#speakers"><h5>Speakers</h5></a>
