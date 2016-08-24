@@ -88,6 +88,7 @@ require('./futureEvents/bingMapRESTResource.js')(eventsApp);
 require('./shared/header/headerRESTResource.js')(eventsApp);
 require('./admin/adminRESTResource.js')(eventsApp);
 require('./events/eventsRESTResource.js')(eventsApp);
+require('./latestNews/latestNewsRESTResource.js')(eventsApp);
 
 eventsApp
 // .controller('allPagesCtrl', ['$scope', '$location', '$route', function($scope, $location, $route) {
@@ -107,11 +108,14 @@ eventsApp
 // 	 	});
 
 // }])
-.config(['$routeProvider', '$locationProvider', 'AnalyticsProvider', function ($routeProvider, $locationProvider, AnalyticsProvider) {
+.config(['$routeProvider', '$locationProvider', 'AnalyticsProvider', '$httpProvider', function ($routeProvider, $locationProvider, AnalyticsProvider, $httpProvider) {
 
 	//Enable Google Analytics
 	AnalyticsProvider
 	.setAccount(process.env.GOOGLE_ANALYTICS_KEY_DEV);
+
+	$httpProvider.defaults.useXDomain = true;
+  delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
 	$routeProvider
 	.when('/', {

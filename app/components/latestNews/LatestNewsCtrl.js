@@ -2,12 +2,29 @@
 'use strict';
 
 const LatestNewsCtrl = (app) => {
-	app.controller('LatestNewsCtrl', ['$scope', '$timeout', function($scope, $timeout) {
-		$scope.rss1 = () => {
-			document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document.location.protocol ? 'https://' : 'http://') + 'feed.mikle.com/js/rssmikle.js">\x3C/script>');
+	app.controller('LatestNewsCtrl', ['$scope', '$timeout', 'latestNewsRESTResource', function($scope, $timeout, resource) {
+		$scope.blogPosts;
+
+		let BlogPostsREST = resource();
+
+		$scope.getBlogPosts = () => {
+
+			BlogPostsREST.getBlogPosts(function(err, data) {
+				if (err) {
+					return console.log({msg: 'could not retrieve blog posts'});
+				}
+				$scope.blogPosts = data;
+
+			});
+
 		}
 
-		$scope.rss2 = () => {
+
+		/*$scope.rss1 = () => {
+			document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document.location.protocol ? 'https://' : 'http://') + 'feed.mikle.com/js/rssmikle.js">\x3C/script>');
+		}
+*/
+		/*$scope.rss2 = () => {
 			// $timeout(function() {
 				const params = {
 					rssmikle_url: "https://msdn.microsoft.com/en-us/openspecifications/dn889925",
@@ -46,7 +63,7 @@ const LatestNewsCtrl = (app) => {
 					feedwind_show_widget_iframe(params);
 				
 			// }, 500);
-		}
+		}*/
 		
 
 	}])
