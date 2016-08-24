@@ -1,7 +1,7 @@
 'use strict';
 
 const PastEventsCtrl = (app) => {
-	app.controller('PastEventsCtrl', ['$scope', function($scope) {
+	app.controller('PastEventsCtrl', ['$scope', '$timeout', function($scope, $timeout) {
 		$scope.pastEvents = [
 			{
 				year: 2016,
@@ -494,7 +494,10 @@ const PastEventsCtrl = (app) => {
 			  }
 			  angular.element(divClicked).siblings().removeClass('selected-year');
 			  angular.element(divClicked).toggleClass('selected-year');
-			  angular.element(calendarDiv).focus();
+			  $timeout(function() {
+			  	angular.element('#calendar').find('table').focus();
+			  	
+			  }, 100);
 			};
 				
 			}

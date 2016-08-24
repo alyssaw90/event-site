@@ -56,4 +56,8 @@ User.sync({force: true})
 
 * Move map to use AngularJS $http
 
-* Add to start and build tasks to clean browserified files after babilifying
+* move upload folder to root and fix the dependent file paths
+
+* remove all 99lime CSS and move to WebCore/bootstrap
+
+* move custom.js functions into all pages directive

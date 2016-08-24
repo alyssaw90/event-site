@@ -179,9 +179,9 @@ const homepageDirective = (app) => {
 		angular.element('.hiddenHomepageSections').keydown(function(e) {
 			let elemId = `#${angular.element(this).attr('id').slice(0, -4)}`;
 			let keyCode = customFunctions.getKeyCode(e);
+			console.log('keyCOde    ', keyCode);
 			if (e.shiftKey && keyCode === 9) {
 				e.preventDefault();
-				console.log('this and that:    ', angular.element(elemId))
 				hideHomepageSections();
 				angular.element(elemId).focus();
 				angular.element(elemId).removeClass('whiteText');
@@ -191,6 +191,7 @@ const homepageDirective = (app) => {
 		angular.element('.homepageIntroBlocks').focus(function(e) {
 			let elemId = `#${angular.element(this).attr('id')}`;
 			let keyCode = customFunctions.getKeyCode(e);
+			console.log('elemId    ', elemId);
 			if (angular.element(elemId).hasClass('whiteText')) {
 				e.preventDefault();
 				hideHomepageSections();
