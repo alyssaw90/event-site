@@ -7,7 +7,7 @@ const adminHeaderDirective = (app) => {
 			const adminHeaderDirectiveDefinitionObject = {
 				restrict: 'A',
 				scope: true,
-				link: function postLink(scope, element, attrs) {
+				link: function postLink(scope, element, attrs) {/*
 
 					$timeout(function() {
 						let path = window.location.pathname;
@@ -27,7 +27,7 @@ const adminHeaderDirective = (app) => {
 
 					}, 500);
 					});
-				}
+				*/}
 			};
 	  	return adminHeaderDirectiveDefinitionObject
 		}])
