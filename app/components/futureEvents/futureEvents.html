@@ -1,4 +1,4 @@
-<main class="events grid" aria-role="presentation" data-ng-controller="FutureEventsCtrl" data-ng-init="getUpcomingEvents()" data-future-events-directive data-ng-cloak>
+<main class="events grid ng-cloak" aria-role="presentation" data-ng-controller="FutureEventsCtrl" data-ng-init="getUpcomingEvents()" data-future-events-directive>
   <section class="col_12 internetExplorer" aria-role="presentation" id="{{futureEvent.city}}">
   	<div data-ng-repeat="futureEvent in futureEvents | orderBy: eventStartDate" data-ng-mouseover="$parent.riseText($event)" data-ng-mouseleave="$parent.lowerText($event)" class="col_{{futureEvent.colNum}} event_block clearfix" data-ng-attr-style="background-color: {{futureEvent.eventHighlightColor}}">
   		<a href="/{{futureEvent.eventUrl}}" data-ng-focus="$parent.showBorder($event)" data-ng-blur="$parent.removeBorder($event)">
