@@ -1,5 +1,5 @@
 
-<div class="mobileWrapper" role="presentation" data-ng-controller="AdminCreateEventCtrl" data-ng-init="getEvents(); getAllSpeakers()" data-admin-page-directive>
+<div class="mobileWrapper ng-cloak ng-cloak" role="presentation" data-ng-controller="AdminCreateEventCtrl" data-ng-init="getEvents(); getAllSpeakers()" data-admin-page-directive>
   <main style="overflow:hidden;" id="beginningOfContent" tabindex="0" class="grid main-page-content">
     <section role="presentation" class="col_12 internetExplorer">
     <div data-ng-controller="AdminFileUploadCtrl">
@@ -19,7 +19,7 @@
 	  	{{errorMsg}}
     		
     </div>
-			<h3>New Event</h3>
+			<h3>New Event</h3>{{newEvent}}
 			<div class="button" ngf-select="uploadNewFile($file)">Upload on file select</div>
 			<form id="add-new-event-form" method="post" enctype="multipart/form-data" data-ng-init="getAllSpeakers();" data-ng-submit="createNewEvent(newEvent);">
 				<label class="col_12" for="newEventName">Event Name*</label>
@@ -74,7 +74,7 @@
 				</radiogroup>
 				<button type="button" class="medium float-left" style="margin: 5px" id="cancel-new-event-button">Cancel</button>
 				<button type="button" class="closeModal button medium float-left" data-ng-click="toggleEventPreview()" target="_self" href="">Preview</a>
-				<button type="submit" class="medium float-left" style="margin: 5px" id="save-new-event-as-draft-button">Save</button>
+				<button type="submit" class="medium float-left green" style="margin: 5px" id="save-new-event-as-draft-button">Save</button>
 				<!-- lightbox container hidden with data-ng-hide -->
 					<div class="lightbox" data-ng-hide="hideEventPreview" id="speakersForm">
 					  <div class="inner-lightbox-event-preview-box">

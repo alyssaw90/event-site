@@ -1,4 +1,4 @@
-<header role="navigation" aria-label="header menu" data-ng-controller="FutureEventsCtrl" data-ng-init="getUpcomingEvents()" data-header-directive>
+<header class="ng-cloak" role="navigation" aria-label="header menu" data-ng-controller="FutureEventsCtrl" data-ng-init="getUpcomingEvents()" data-header-directive>
 	<!-- Begin upper purple menu -->
 	<div class="menu-overlay hamburger-menu social-icons" data-ng-style="{'background-color':futureEvents[0].eventHighlightColor}">
 	<!-- Begin Mobile "Hamburger Menu" -->
@@ -43,7 +43,7 @@
 		<!-- static image of past events banner for homepage -->
 		<a data-ng-if="(!siteStyles.showSlider && siteStyles.showPastEventsBanner && siteStyles.hideEventBanners) || imageCount <= 0" class="homepageHeaderAnchor" title="past events link" href="/past-events" aria-label="past events banner image">
 			<section id="headerImage" class="mobileWrapper" role="presentation" aria-hidden="true">
-				<img aria-hidden="true" alt="past events header" style="width:100%; margin: 	0 0 0 0; padding: 0 0 0 0;" src="./app/uploads/past-events-banner.jpg" />
+				<img aria-hidden="true" alt="past events header" style="width:100%; margin: 	0 0 0 0; padding: 0 0 0 0;" data-ng-src="./app/uploads/past-events-banner.jpg" />
 			</section>
 		</a>
 		<!-- the rn-carousel package creates the slider https://www.npmjs.com/package/angular-carousel -->
