@@ -8,8 +8,8 @@ const CreateSpeakerCtrl = (app) => {
 		let CreateSpeakerData = resource();
 
 		$scope.createNewSpeaker = (newSpeaker) => {
-      newSpeaker.headshot = $rootScope.uploadedFile.name ? $rootScope.uploadedFile.size + '-' + $rootScope.uploadedFile.name : '';
-      console.log('blah blah    ', newSpeaker.headshot);
+      newSpeaker.headshot = $rootScope.uploadedFile.name ? $rootScope.uploadedFile.size + '-' + $rootScope.uploadedFile.name : 'placeholder-headshot.jpg';
+
       CreateSpeakerData.createSpeaker(newSpeaker, (err, data) => {
         if (err) {
           $scope.errors.push({msg: 'could not save speaker: ' + $scope.newSpeaker.newFirstName + ' ' + $scope.newSpeaker.newLastName});

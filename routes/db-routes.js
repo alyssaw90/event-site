@@ -1,12 +1,7 @@
 'use strict';
 /*global interests */
 /*global ContactsSuggestedCity */
-// require('dotenv').load();
-/*let Contact = require('../models/Contact');
-let Event = require('../models/Event');
-let EventTab = require('../models/EventTab');
-let EventImage = require('../models/EventImage');
-let User = require('../models/User');*/
+
 const fs = require('fs');
 const clc = require('cli-color');
 const multer = require('multer');

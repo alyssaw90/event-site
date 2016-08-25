@@ -10,7 +10,7 @@ const latestNewsRESTResource = (app) => {
 			return {
 				getBlogPosts: function(callback) {
 					// $http.jsonp('http://sxp.microsoft.com/feeds/3.0/msdntn/MSDNOpenSpecificationFeeds/json?callback=JSON_CALLBACK')
-					$http.jsonp('http://sxp.microsoft.com/feeds/3.0/msdntn/MSDNOpenSpecificationFeeds/?JSONP=JSON_CALLBACK')
+					$http.jsonp('//sxp.microsoft.com/feeds/3.0/msdntn/MSDNOpenSpecificationFeeds/?JSONP=JSON_CALLBACK')
           .success(customFunctions.handleSuccess(callback))
           .error(customFunctions.handleError(callback));
 				}

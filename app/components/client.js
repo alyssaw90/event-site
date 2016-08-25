@@ -11,9 +11,10 @@ require('ng-page-title');
 require('angular-sanitize');
 require('angular-google-analytics');
 require('ng-file-upload');
+require('angular-resource');
 
 // declare a module
-const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize', 'angular-google-analytics', 'ngFileUpload']);
+const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize', 'angular-google-analytics', 'ngFileUpload', 'ngResource']);
 
 //directives
 require('./shared/allPagesDirective.js')(eventsApp);
@@ -74,8 +75,8 @@ eventsApp
 
 	//Enable Google Analytics
 	AnalyticsProvider
-	.setAccount(process.env.GOOGLE_ANALYTICS_KEY_DEV);
-
+	.setAccount('UA-74698663-1');
+	//enable cross origin for jsonp
 	$httpProvider.defaults.useXDomain = true;
   delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
@@ -145,7 +146,7 @@ eventsApp
       pageTitle: 'Latest Page - Microsoft Plugfests and Events'
     }
 	})
-	.when('/admin', {
+	/*.when('/admin', {
 		redirectTo: '/admin/edit-event',
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
@@ -177,10 +178,10 @@ eventsApp
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
     }
-	})
+	})*/
 	.when('/:slug', {
     templateUrl: '/app/components/events/event.html',
-    // controller: 'EventsCtrl',
+    controller: 'EventsCtrl',
     data: {
       pageTitle: 'Interoperability Event Page - Microsoft Plugfests and Events'
     }
@@ -208,7 +209,9 @@ eventsApp
 	}
 
 }])*/
-.run(['$rootScope', '$location', '$anchorScroll', '$routeParams', '$timeout', function ($rootScope, $location, $anchorScroll, $routeParams, $timeout) {
+.run(['$rootScope', '$location', '$anchorScroll', '$routeParams', 'Analytics', function ($rootScope, $location, $anchorScroll, $routeParams, Analytics) {
+
+	Analytics.pageView();
 	
 	$rootScope.$on('$viewContentLoaded', function () {
 			// document.getElementById('screenreader-summary').trigger('focus');

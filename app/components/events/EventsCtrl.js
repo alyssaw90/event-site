@@ -5,6 +5,8 @@ const jQuery = require('jquery');
 const EventsCtrl = (app) => {
 	app.controller('EventsCtrl', ['$scope', '$http', '$sce', 'eventsRESTResource', function($scope, $http, $sce, resource) {
 		$scope.errors = [];
+		//hide the 404 page when loading the page
+		$scope.show404 = false;
 		$scope.events;
 
 		let Events = resource();
@@ -14,7 +16,7 @@ const EventsCtrl = (app) => {
 
 			Events.getEvents(path, function (err, data) {
         if (err) {
-          return $scope.errors.push({msg: 'could not retrieve header events'});
+          return $scope.errors.push({msg: 'could not retrieve event'});
         };
         
         $scope.events = data;
@@ -46,6 +48,10 @@ const EventsCtrl = (app) => {
 		}
 
 		$scope.urlify = customFunctions.urlify;
+		//if there is no event found, show the 404 page
+		if ($scope.events) {
+			$scope.show404 = true;
+		}
 
 	}])
 
