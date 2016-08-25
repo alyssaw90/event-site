@@ -55,9 +55,7 @@ const AdminCreateEventCtrl = (app) => {
 
     $scope.getPreviewSpeakers = (theSpeakers) => {
       let keysArr = Object.keys(newEvent.speakers);
-      // $scope.test = keysArr.indexOf(speakerId) > -1;
-      console.log('array :::   ', keysArr, '   obj   ' , speakersObj);
-      // return keysArr.indexOf(speakerId) > -1;
+
       return $scope.theSpeakers.filter(function (speaker) {
         return $scope.keysArr.indexOf(speaker.id) !== -1;
       });

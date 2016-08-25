@@ -254,18 +254,16 @@ module.exports = function (router) {
 router.post('/multer', multipartMiddleware, function (req, res) {
   let tmpFilename = req.files.file.path.slice(12);
   let newFilename = req.files.file.size + '-' + req.files.file.originalFilename;
-  console.log('req:::::     ', req.files.file.path.slice(12), ':::::::::::::::::    ', req.files);
   fs.readdir('app/uploads/', (err, data) => {
     for (let i = 0, len = data.length; i < len; i++) {
-      // console.log('data:    ', data[i] === tmpFilename);
+
       if (data[i] === tmpFilename) {
-        fs.rename('app/uploads/' + data[i], 'app/uploads/' + newFilename, () => {
-          console.log('file rename    ', data[i]);
-        });
+        fs.rename('app/uploads/' + data[i], 'app/uploads/' + newFilename, () => {});
       }
+
     }
   })
-  res.end("File uploaded.");
+  res.end('File uploaded.');
 });
 
   // create new event
@@ -309,7 +307,6 @@ router.post('/multer', multipartMiddleware, function (req, res) {
 
   //route to create speakers
   router.post('/api/addspeakers', /*eatAuth,*/ function(req, res) {
-    console.log(clc.white.bgBlue(':::::::::   '), req.body);
     models.sql.sync()
     .then(function() {
       let speakerEmail = req.body.newMsTeamEmail ? req.body.newMsTeamEmail : 'plugfests@microsoft.com';
