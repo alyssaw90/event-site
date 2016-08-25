@@ -1,10 +1,10 @@
 'use strict';
 
-import * as customFunctions from '../shared/methods/common-functions.js';
+import * as customFunctions from '../../shared/methods/common-functions.js';
 
-const adminRESTResource = (app) => {
+const createEventRESTResource = (app) => {
 
-	app.factory('adminRESTResource', ['$http', function($http) {
+	app.factory('createEventRESTResource', ['$http', function($http) {
 
 		return function(resourceName, callback) {
 			return {
@@ -39,4 +39,4 @@ const adminRESTResource = (app) => {
 	}])
 }
 
-module.exports = adminRESTResource;
+module.exports = createEventRESTResource;

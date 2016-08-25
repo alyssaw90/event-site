@@ -268,9 +268,8 @@ router.post('/multer', multipartMiddleware, function (req, res) {
   res.end("File uploaded.");
 });
 
-  // create basic event
+  // create new event
   router.post('/api/createevent', /*eatAuth,*/ function (req, res, next) {
-    console.log(clc.bgGreen(':::::::::   '), req.body);
     models.sql.sync()
     .then(function () {
       Event.create({
@@ -289,7 +288,6 @@ router.post('/multer', multipartMiddleware, function (req, res) {
       .then(function(newEvent) {
         models.sql.sync()
         .then(function() {
-          console.log(clc.bgGreen('::::::::::::::::    '), req.body);
           let speakersArr = [];
           for(let key in req.body.speakers){
             speakersArr.push({speakerId: key, position: req.body.speakers[key]  });    
@@ -307,6 +305,29 @@ router.post('/multer', multipartMiddleware, function (req, res) {
       });
     });
   });
+
+
+  //route to create speakers
+  router.post('/api/addspeakers', /*eatAuth,*/ function(req, res) {
+    console.log(clc.white.bgBlue(':::::::::   '), req.body);
+    models.sql.sync()
+    .then(function() {
+      let speakerEmail = req.body.newMsTeamEmail ? req.body.newMsTeamEmail : 'plugfests@microsoft.com';
+      // let speakerHeadshot = req.body.headshot ? req.body.headshot : 'placeholder-headshot.jpg';
+      Contact.create({
+        firstName: req.body.newFirstName,
+        lastName: req.body.newLastName,
+        email: speakerEmail,
+        contactDescription: req.body.newSpeakerDescription,
+        showOnMeetTheTeamPage: req.body.showOnMeetTheTeamPage,
+        meetTheTeamPageOrder: req.body.meetTheTeamPageOrder,
+        msTeamTitle: req.body.newMsTeamTitle,
+        headShot: req.body.headshot
+      });
+      res.end();
+    });
+  });
+ 
 
   // //Find an event with the id from req.body.eventId and add the string of speakers then save
   // router.post('/addeventspeakers', eatAuth, function(req, res, next) {
@@ -568,30 +589,6 @@ router.post('/multer', multipartMiddleware, function (req, res) {
   //   })
   //   .then(function(tabToDelete) {
   //     tabToDelete.destroy();
-  //     res.end();
-  //   });
-  // });
-
-
-  // //route to create speakers
-  // router.post('/addspeakers', eatAuth, upload.single('headshot'), function(req, res) {
-  //   models.sql.sync()
-  //   .then(function() {
-  //     let speakerEmail = req.body.newSpeakerEmail ? req.body.newSpeakerEmail : 'plugfests@microsoft.com';
-  //     let speakerHeadshot = req.file ? req.file.filename : 'placeholder-headshot.jpg';
-  //     Contact.create({
-  //       firstName: req.body.newSpeakerFirstName,
-  //       lastName: req.body.newSpeakerLastName,
-  //       email: speakerEmail,
-  //       contactDescription: req.body.contactDescription,
-  //       showOnMeetTheTeamPage: req.body.showOnMeetTheTeamPage,
-  //       meetTheTeamPageOrder: req.body.meetTheTeamPageOrder,
-  //       msTeamTitle: req.body.msTeamTitle,
-  //       headShot: speakerHeadshot,
-  //       company: req.body.company,
-  //       address: req.body.address,
-  //       country: req.body.country,
-  //     });
   //     res.end();
   //   });
   // });

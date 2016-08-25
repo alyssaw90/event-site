@@ -15,46 +15,6 @@ require('ng-file-upload');
 // declare a module
 const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize', 'angular-google-analytics', 'ngFileUpload']);
 
-/*const rss1 = () => {
-	document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document.location.protocol ? 'https://' : 'http://') + 'feed.mikle.com/js/rssmikle.js">\x3C/script>');
-}
-
-const rss2 = () => {
-	(function() {var params = {
-		rssmikle_url: "https://msdn.microsoft.com/en-us/openspecifications/dn889925",rssmikle_frame_width: "320",rssmikle_frame_height: "900",frame_height_by_article: "0",
-		rssmikle_target: "_blank",rssmikle_font: "Arial, Helvetica, sans-serif",
-		rssmikle_font_size: "12",rssmikle_border: "off",
-		responsive: "on",
-		rssmikle_css_url: "",
-		text_align: "left",text_align2: "left",corner: "off",
-		scrollbar: "on",autoscroll: "off",
-		scrolldirection: "up",scrollstep: "3",
-		mcspeed: "20",
-		sort: "New",
-		rssmikle_title: "on",
-		rssmikle_title_sentence: "Latest Interoperability News",
-		rssmikle_title_link: "",
-		rssmikle_title_bgcolor: "#002050",
-		rssmikle_title_color: "#FFFFFF",
-		rssmikle_title_bgimage: "",
-		rssmikle_item_bgcolor: "#FFFFFF",
-		rssmikle_item_bgimage: "",
-		rssmikle_item_title_length: "55",
-		rssmikle_item_title_color: "#002050",
-		rssmikle_item_border_bottom: "off",
-		rssmikle_item_description: "on",
-		item_link: "off",rssmikle_item_description_length: "150",
-		rssmikle_item_description_color: "#666666",rssmikle_item_date: "gl1",
-		rssmikle_timezone: "Etc/GMT",datetime_format: "%b %e, %Y %l:%M %p",
-		item_description_style: "text",item_thumbnail: "full",
-		item_thumbnail_selection: "auto",article_num: "14",
-		rssmikle_item_podcast: "off",keyword_inc: "",
-		keyword_exc: ""};
-
-		feedwind_show_widget_iframe(params);
-	})();
-}*/
-
 //directives
 require('./shared/allPagesDirective.js')(eventsApp);
 require('./homepage/homepageDirective.js')(eventsApp);
@@ -66,7 +26,7 @@ require('./shared/header/sliderSlideDirective.js')(eventsApp);
 require('./shared/header/headerDirective.js')(eventsApp);
 require('./events/eventsDirective.js')(eventsApp);
 require('./admin/adminPageDirective.js')(eventsApp);
-require('./shared/admin-header/adminHeaderDirective.js')(eventsApp);
+require('./admin/admin-header/adminHeaderDirective.js')(eventsApp);
 require('./pastEvents/pastEventsDirective.js')(eventsApp);
 
 //controllers
@@ -78,17 +38,19 @@ require('./futureEvents/FutureEventsController.js')(eventsApp);
 require('./futureEvents/BingMapCtrl.js')(eventsApp);
 require('./shared/header/HeaderController.js')(eventsApp);
 require('./admin/AdminFileUploadCtrl.js')(eventsApp);
-require('./admin/AdminCtrl.js')(eventsApp);
+require('./admin/createEvent/AdminCreateEventCtrl.js')(eventsApp);
 require('./latestNews/LatestNewsCtrl.js')(eventsApp);
 require('./events/EventsCtrl.js')(eventsApp);
+require('./admin/createSpeaker/CreateSpeakerCtrl.js')(eventsApp);
 //services
 require('./meetTheTeam/meetTheTeamRestResource.js')(eventsApp);
 require('./futureEvents/futureEventsRESTResource.js')(eventsApp);
 require('./futureEvents/bingMapRESTResource.js')(eventsApp);
 require('./shared/header/headerRESTResource.js')(eventsApp);
-require('./admin/adminRESTResource.js')(eventsApp);
+require('./admin/createEvent/createEventRESTResource.js')(eventsApp);
 require('./events/eventsRESTResource.js')(eventsApp);
 require('./latestNews/latestNewsRESTResource.js')(eventsApp);
+require('./admin/createSpeaker/createSpeakerRESTResource.js')(eventsApp);
 
 eventsApp
 // .controller('allPagesCtrl', ['$scope', '$location', '$route', function($scope, $location, $route) {
@@ -190,29 +152,35 @@ eventsApp
     }
 	})
 	.when('/admin/create-event', {
-		templateUrl: '/app/components/admin/admin-create-event.html',
-		// controller: 'AdminCtrl',
+		templateUrl: '/app/components/admin/createEvent/admin-create-event.html',
+		// controller: 'AdminCreateEventCtrl',
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
     }
 	})
+	.when('/admin/create-speaker', {
+		templateUrl: '/app/components/admin/createSpeaker/admin-create-speaker.html',
+		data: {
+			pageTitle: 'Admin Page - Microsoft Plugfests and Events, create new speaker'
+		}
+	})
 	.when('/admin/edit-event', {
-		templateUrl: '/app/components/admin/admin-edit-event.html',
-		// controller: 'AdminCtrl',
+		templateUrl: '/app/components/admin/editEvent/admin-edit-event.html',
+		// controller: 'AdminCreateEventCtrl',
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
     }
 	})
 	.when('/admin/edit-speaker', {
-		templateUrl: '/app/components/admin/admin-edit-speakers.html',
-		// controller: 'AdminCtrl',
+		templateUrl: '/app/components/admin/editSpeaker/admin-edit-speakers.html',
+		// controller: 'AdminCreateEventCtrl',
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
     }
 	})
 	.when('/:slug', {
     templateUrl: '/app/components/events/event.html',
-    controller: 'EventsCtrl',
+    // controller: 'EventsCtrl',
     data: {
       pageTitle: 'Interoperability Event Page - Microsoft Plugfests and Events'
     }

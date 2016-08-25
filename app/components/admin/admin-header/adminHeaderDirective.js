@@ -1,5 +1,5 @@
 'use strict';
-import * as customFunctions from '../methods/common-functions.js';
+import * as customFunctions from '../../shared/methods/common-functions.js';
 const jQuery = require('jquery');
 
 const adminHeaderDirective = (app) => {
