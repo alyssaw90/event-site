@@ -251,20 +251,21 @@ module.exports = function (router) {
     });
   });
 
-router.post('/multer', multipartMiddleware, function (req, res) {
-  let tmpFilename = req.files.file.path.slice(12);
-  let newFilename = req.files.file.size + '-' + req.files.file.originalFilename;
-  fs.readdir('app/uploads/', (err, data) => {
-    for (let i = 0, len = data.length; i < len; i++) {
-
-      if (data[i] === tmpFilename) {
-        fs.rename('app/uploads/' + data[i], 'app/uploads/' + newFilename, () => {});
+  //route for uploading files
+  router.post('/multer', multipartMiddleware, function (req, res) {
+    let tmpFilename = req.files.file.path.slice(12);
+    let newFilename = req.files.file.size + '-' + req.files.file.originalFilename;
+    fs.readdir('app/uploads/', (err, data) => {
+      for (let i = 0, len = data.length; i < len; i++) {
+  
+        if (data[i] === tmpFilename) {
+          fs.rename('app/uploads/' + data[i], 'app/uploads/' + newFilename, () => {});
+        }
+  
       }
-
-    }
-  })
-  res.end('File uploaded.');
-});
+    })
+    res.end('File uploaded.');
+  });
 
   // create new event
   router.post('/api/createevent', /*eatAuth,*/ function (req, res, next) {
