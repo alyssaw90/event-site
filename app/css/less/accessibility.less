@@ -1,0 +1,102 @@
+
+a:focus,/* h1:focus, h2:focus, h3:focus, h4:focus, h5:focus, h6:focus, p:focus,*/ iframe:focus, .tabs > li > a:not(.homepageHeaderAnchor):focus, th:focus, td:focus, li:focus, nav:focus {
+ 	box-shadow: 0 0 7px #6DB9FF;
+	border: 3px solid #50B1FE;
+}
+
+/*
+div:focus {
+	box-shadow: 0 0 30px #6DB9FF;
+	border: 20px solid #50B1FE;
+}*/
+
+.skipNavigation {
+	position:absolute;
+	left:-10000px;
+	top:auto;
+	width:1px;
+	height:1px;
+	overflow:hidden;
+	&:focus {
+		position:static;
+		left:10px;
+		top:auto;
+		width:auto;
+		height:auto;
+		overflow:visible;
+		float: left;
+		margin-left: 45%;
+		margin-right: 45%;
+		color: #040334;
+	};
+	a, a:hover, a:focus {
+		color: #000;
+	}
+}
+
+// don't use box on homepage header image
+
+.homepageHeaderAnchor {
+	&:focus {
+		box-shadow: none;
+		border: none;
+		border-width: 0;		
+	}
+
+}
+
+.addThisSocialIcons {
+	float: right
+}
+
+#whoMadeItBlockText a {
+	color: #fffc9e;
+}
+
+#screenreader-summary {
+  position: absolute;
+  left:-10000px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+  outline: none; /* Important, don't show an outline on-focus */
+}
+ 	#emailIcon {
+ 	  outline-style: solid !important;
+ 	  outline-color: #fff !important;
+ 	}
+
+@media screen and (-ms-high-contrast: active) {
+  /* All high contrast styling rules */
+  .lightBlueBackground {
+		border-top: dashed !important;
+		border-bottom: dashed !important;
+		border-right: dashed !important;
+		border-left: dashed !important;
+		border-width: 3px;
+	}
+
+		.lightGreenBackground {
+	  border-width: 3px;
+	  border-top: dotted !important;
+	  border-bottom: dotted !important;
+	  border-right: dotted !important;
+	  border-left: dotted !important;
+
+	}
+	
+	.lightOrangeBackground {
+	  border-top: double !important;
+	  border-bottom: double !important;
+	  border-right: double !important;
+	  border-left: double !important;
+	  border-width: 3px;
+	}
+
+ 	#emailIcon {
+ 	  outline-style: solid !important;
+ 	  outline-color: #fff !important;
+ 	}
+
+}

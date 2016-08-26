@@ -16,15 +16,15 @@ module.exports = function (grunt) {
     less: {
       dev: {
         options: {
-          paths: ['css/**/**']
+          paths: ['app/css/**/**']
         },
         files: {
-          'dist/custom.build.min.css': 'css/less/*.less'
+          'dist/custom.build.min.css': 'app/css/less/*.less'
         }
       },
       prod: {
         options: {
-          paths: ['css/', 'css/fonts/', 'css/img/'],
+          paths: ['app/css/', 'app/css/fonts/', 'app/css/img/'],
           plugins: [
             new (require('less-plugin-autoprefix'))({
               browsers: ['last 2 versions', '> 1%', 'ie > 6']
@@ -36,16 +36,19 @@ module.exports = function (grunt) {
           ]
         },
         files: {
-          'css/custom.build.min.css': ['css/less/*.less', '!css/less/highcontrast.less', '!css/less/twitter-widget.less'],
-          'css/highcontrast.min.css': 'css/less/highcontrast.less',
-          'css/twitter-widget.min.css': 'css/less/twitter-widget.less'
+          'app/css/custom.build.min.css': ['app/css/less/*.less', '!app/css/less/highcontrast.less', '!app/css/less/twitter-widget.less'],
+          'app/css/highcontrast.min.css': 'app/css/less/highcontrast.less',
+          'app/css/twitter-widget.min.css': 'app/css/less/twitter-widget.less'
         }
       }
     },
     //task to clean directories before build
     clean: {
       dev: {
-        src: ['build/**/*.js', 'dist/*.*', 'css/custom.build.min.css', 'css/highcontrast.min.css', 'css/twitter-widget.min.css']
+        src: ['app/build/**/*.js', 'app/dist/*.*', 'app/css/custom.build.min.css', 'app/css/highcontrast.min.css', 'app/css/twitter-widget.min.css']
+      },
+      prod: {
+        src: ['app/build/**/*.*', 'app/build/app/**/**', '!app/build/build.min.js', '!app/build/build.min.js.map', '!app/build/.gitignore']
       }
     },
     //register task to run babel and compile es6
@@ -59,9 +62,23 @@ module.exports = function (grunt) {
           {
             expand: true,
             cwd: '',
-            src: ['es6/**/*.js'],
-            dest: 'build/',
-            ext:'.build.js'
+            src: ['app/es6/**/*.js', 'app/components/**/*.js'],
+            dest: 'app/build/',
+            // ext:'.build.js'
+          },
+          {
+            expand: true,
+            cwd: '',
+            src: ['app/es6/**/*.js'],
+            dest: 'app/build/',
+            // ext:'.build.js'
+          },
+          {
+            expand: true,
+            cwd: '',
+            src: ['app/lib/kickstart.js'],
+            dest: 'app/build/',
+            // ext:'.build.js'
           }
         ]
       }
@@ -70,7 +87,7 @@ module.exports = function (grunt) {
     browserify: {
       dist: {
         files: {
-          'dist/build.browserify.js': ['build/**/*.js']
+          'app/build/build.browserify.js': ['app/build/**/*.js']
         },
         options: {
           // transform: ['coffeeify']
@@ -84,7 +101,7 @@ module.exports = function (grunt) {
           sourceMap: true
         },
         files: {
-          'dist/build.min.js': ['dist/build.browserify.js']
+          'app/build/build.min.js': ['app/build/build.browserify.js']
         }
       }
     },
@@ -97,7 +114,7 @@ module.exports = function (grunt) {
     //watch for changes in es6 files
     watch: {
       scripts: {
-        files: ['./es6/*.js', './admin/*.js', './models/*.js', './routes/*.js', './scripts/*.js', './*.js', './css/less/*.less', './views/*.html'],
+        files: ['.app/es6/*.js', '.app/admin/*.js', '.app/models/*.js', '.app/routes/*.js', '.app/scripts/*.js', '.app/*.js', '.app/css/less/*.less', './views/*.html'],
         tasks: ['build'],
         options: {
           interrupt: true,
@@ -119,7 +136,7 @@ module.exports = function (grunt) {
     jshint: {
       dev: {
         // tell jshint what check
-        src: ['Gruntfile.js', 'server.js', 'js/**/*.js', 'models/**/*.js', 'routes/**/*.js', '!build/**', '!tests/client/bundle.js', '!tests/karma_tests/bundle.js', '!js/imageMapResizer.min.js', '!js/kickstart.js', '!js/form-validator.js', '!js/imageMapResizer.js', '!js/jquery-ui.min.js', '!js/jquery.base64.js', '!js/kickstart.js'],
+        src: ['Gruntfile.js', 'server.js', 'app/js/**/*.js', 'models/**/*.js', 'routes/**/*.js', '!app/build/**', '!tests/client/bundle.js', '!tests/karma_tests/bundle.js', '!app/lib/kickstart.js', '!app/lib/imageMapResizer.js'],
         options: {
           node: true,
           // esversion: 6, //this option should replace esnext, but it doesn't currently work
@@ -215,8 +232,9 @@ module.exports = function (grunt) {
 	// register mocha test task
 	grunt.registerTask('test', ['simplemocha:dev']);
   grunt.registerTask('lessProd', ['less:prod']);
-  grunt.registerTask('bbl', ['clean', 'babel']);
-  grunt.registerTask('build', ['clean', 'babel', 'browserify', 'uglify', 'lessProd']);
+  grunt.registerTask('build:dev', ['clean:dev', 'babel', 'browserify', 'lessProd']);
+  grunt.registerTask('build', ['clean:dev', 'babel', 'browserify', 'uglify', 'lessProd', 'clean:prod']);
+  grunt.registerTask('start:dev', ['build:dev', 'nodemon:dev']);
   grunt.registerTask('start', ['build', 'nodemon:dev']);
 	grunt.registerTask('test', ['build', 'test']);
   grunt.registerTask('default', ['concurrent:target2']);

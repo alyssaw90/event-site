@@ -1,0 +1,37 @@
+<div class="mobileWrapper grid main-page-content ng-cloak" data-ng-init="getEvents()" data-events-directive>
+  <main data-ng-if="show404" class="col_12 ng-cloak">
+    <section class="col_12">
+      <h1>Sorry we can't find the page you're looking for</h1>
+    </section>
+  </main>
+  <main data-ng-if="events.isEvent" class="grid main-page-content">
+  	<div data-ng-if="events.event.eventHeaderImage" class="col_12 internetExplorer event-header center" id="eventHeader" role="complementary"><img alt="event banner image" src="app/uploads/{{events.event.eventHeaderImage}}" /></div>
+  	<ul class="tabs left">
+      <li data-ng-if="events.event.eventAboutTabText" data-ng-class="{'first current': events.event.eventAboutTabText}">
+        <a target="_self" href="#aboutTab"><h5>About</h5></a>
+      </li>
+  		<li data-ng-repeat="tab in events.tabs" id="{{addMainContentId($index)}}" data-ng-class="{'first current': !events.event.eventAboutTabText}">
+  			<a class="eventTabAnchor" target="_self" href="#{{urlify(tab.tabTitle)}}"><h5>{{ tab.tabTitle }}</h5></a>
+  		</li>
+  		<li data-ng-if="events.speakers.length > 0" class="last">
+  			<a target="_self" href="#speakers"><h5>Speakers</h5></a>
+			</li>
+		</ul>
+    <div id="aboutTab" data-ng-if="events.event.eventAboutTabText" data-ng-class="{'current': events.event.eventAboutTabText}" class="tab-content eventTabDiv" style="display: block" >
+      <h2>{{events.event.eventName}}</h2>
+      <p>{{events.event.eventAboutTabText}}</p>
+    </div>
+		<div data-ng-repeat="tab in events.tabs" id="{{urlify(tab.tabTitle)}}" class="tab-content eventTabDiv" data-ng-class="{'current': !events.event.eventAboutTabText}" data-ng-style="{'display': events.event.eventAboutTabText ? 'none' : 'block'}" data-ng-bind-html="tab.tabContent" ></div>
+  	<div data-ng-if="events.speakers.length > 0" id="speakers" class="last tab-content eventTabDiv clearfix" style="display:none">
+			<div data-ng-repeat="speaker in events.speakers" class="col_12 internetExplorer" id="{{speaker.divId}}" aria-label="Bio of {{speaker.fullName}}" role="presentation">
+ 		  	<h4>{{speaker.fullName}}</h4>
+ 		  	<h5>{{speaker.msTeamTitle}}</h5>
+ 		  	<p>
+ 		  		<img class="pull-left speakersImg" height="165" width="165" alt="image of {{speaker.fullName}}" src="app/uploads/{{speaker.headShot}}" />
+ 		  		{{speaker.contactDescription}}
+	  		</p>
+ 		  	<hr class="alt1" />
+ 			</div>
+  	</div>
+  </main>
+</div>

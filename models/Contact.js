@@ -15,6 +15,8 @@ module.exports = function (sql, DataTypes) {
         isEmail: true
       }
     },
+    isPublished: DataTypes.BOOLEAN,
+    lastModifiedBy: DataTypes.STRING,
     newsletterSubscription: DataTypes.BOOLEAN,
     contactDescription: DataTypes.TEXT,
     showOnMeetTheTeamPage: DataTypes.BOOLEAN,

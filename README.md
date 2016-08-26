@@ -49,3 +49,15 @@ User.sync({force: true})
   });
 });
 ```
+
+##To Do
+
+* Add documentation
+
+* Move map to use AngularJS $http
+
+* move upload folder to root and fix the dependent file paths
+
+* remove all 99lime CSS and move to WebCore/bootstrap
+
+* move custom.js functions into all pages directive

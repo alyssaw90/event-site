@@ -1,0 +1,9 @@
+<main role="presentation" id="beginningOfContent" class="grid white-bg main-page-content the-team-section clearfix ng-cloak" data-ng-controller="MeetTheTeamCtrl" data-ng-init="getTeamMembers()">
+  <section data-ng-repeat="teamMember in teamMembers | orderBy: 'meetTheTeamPageOrder'" class="col_12 internetExplorer" id="{{teamMember.divId}}" aria-label="Bio of {{teamMember.firstName + ' ' +  teamMember.lastName}}" role="presentation">
+    <h4>{{teamMember.firstName + ' ' +  teamMember.lastName}}</h4>
+    <h5>{{teamMember.msTeamTitle}}</h5>
+    <img alt="Image of {{teamMember.fullName}}" class="pull-left" data-ng-src="app/uploads/{{teamMember.headShot}}"  />
+    <p data-ng-bind-html="teamMember.contactDescription"></p>
+    <hr aria-hidden="true" role="presentation" class="alt1" />
+  </section>
+</main>

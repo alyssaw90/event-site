@@ -1,0 +1,14 @@
+
+<div class="mobileWrapper ng-cloak" role="presentation" data-ng-controller="AdminCreateEventCtrl" data-ng-init="getEvents(); getAllSpeakers()" >
+  <main style="overflow:hidden;" id="beginningOfContent" tabindex="0" class="grid main-page-content">
+    <section role="presentation" class="col_12 internetExplorer">
+			<div id="edit-events-home-tab">
+				<h3>All Events</h3>
+				<table id="all-events-table">
+					<tr><th><h4>Event Name</h4></th><th><h4>Event Location</h4></th><th><h4>Event Date</h4></th><th><h4>Last Modified By</h4></th><th><h4>Last Modified</h4></th><th><h4>Status</h4></th><th>&nbsp;</th></tr>
+					<tr data-ng-repeat="event in theEvents"><td>{{event.eventName}}</td><td>{{event.eventLocation}}</td><td>{{event.eventStartDate | date: 'MM/dd/yyyy'}}</td><td>{{event.lastModifiedBy}}</td><td>{{event.updatedAt | date: 'MM/dd/yyyy'}}</td><td>{{publishedOrNot = event.isPublished ? 'published' : 'unpublished';}}</td><td><button>Edit</button></td></tr>
+				</table>
+			</div>
+    </section>
+  </main>
+</div>

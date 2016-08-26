@@ -8,6 +8,8 @@ module.exports = function (sql, DataTypes) {
 
   return sql.define('Event', {
     eventName: DataTypes.STRING,
+    isPublished: DataTypes.BOOLEAN,
+    lastModifiedBy: DataTypes.STRING,
     eventRegistrationLink: DataTypes.STRING, //link to registrationfor event
     eventLocation: {
       type: DataTypes.STRING,
@@ -15,6 +17,8 @@ module.exports = function (sql, DataTypes) {
         this.setDataValue('eventLocation', val.toLowerCase().replace(' ', '_'));
       }
     },
+    eventState: DataTypes.TEXT,
+    eventCountry: DataTypes.TEXT,
     eventContinent: DataTypes.ENUM('North America', 'South America', 'Africa', 'Asia', 'Europe', 'Oceania'),
     eventStartDate: DataTypes.DATE, //the start date...
     eventEndDate: DataTypes.DATE, // the end date...
@@ -22,7 +26,7 @@ module.exports = function (sql, DataTypes) {
     eventHomepageImage: DataTypes.TEXT, //link to homepage image
     eventHighlightColor: DataTypes.TEXT, //what color to use to highlight the homepage
     eventFuturePageImage: DataTypes.TEXT, //image to appear on event slide on homepage
-    eventFuturePageText: DataTypes.TEXT, //slide up text for future events page
+    eventAboutTabText: DataTypes.TEXT, //text for About Page
     /*  eventSlideshowImage: {
         type: DataTypes.TEXT,
         unique: true,

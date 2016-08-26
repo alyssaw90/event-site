@@ -1,0 +1,118 @@
+
+<div class="mobileWrapper ng-cloak ng-cloak" role="presentation" data-ng-controller="AdminCreateEventCtrl" data-ng-init="getEvents(); getAllSpeakers()" data-admin-page-directive>
+  <main style="overflow:hidden;" id="beginningOfContent" tabindex="0" class="grid main-page-content">
+    <section role="presentation" class="col_12 internetExplorer">
+    <div data-ng-controller="AdminFileUploadCtrl">
+	  	    <h4>Upload on file select</h4>
+	  	<button name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles)">Select File</button>
+	  	<!-- <img ngf-thumbnail="uploadedFile || '/thumb.jpg'" style="width: 500px;"> -->
+	  	<!-- <label class="col_12" for="photo">Choose Header Image for Event Page</label>
+			<input class="col_12" type="file" ngf-select="uploadFiles($file, $invalidFiles)" name="photo" id="photo"> -->
+	  	<br><br>
+	  	File:
+	  	<div style="font:smaller">{{uploadedFile.path}}{{uploadedFile.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+	  	    <span class="progress" ng-show="uploadedFile.progress >= 0">
+	  	        <div style="width:{{uploadedFile.progress}}%"  
+	  	             ng-bind="uploadedFile.progress + '%'"></div>
+	  	    </span>
+	  	</div>     
+	  	{{errorMsg}}
+    		
+    </div>
+			<h3>New Event</h3>{{newEvent}}
+			<div class="button" ngf-select="uploadNewFile($file)">Upload on file select</div>
+			<form id="add-new-event-form" method="post" enctype="multipart/form-data" data-ng-init="getAllSpeakers();" data-ng-submit="createNewEvent(newEvent);">
+				<label class="col_12" for="newEventName">Event Name*</label>
+				<input class="col_12" type="text" data-ng-model="newEvent.newEventName" name="newEventName" id="newEventName" required="true">
+				<!-- <label class="col_12" for="new-event-url">Event URL</label>
+				<input class="col_12" type="ur" data-ng-model="newEvent." name="new-event-url" id="new-event-url"> -->
+				<label class="col_12" for="newEventRegistrationLink">Event Registration Link</label>
+				<input class="col_12" type="url" data-ng-model="newEvent.newEventRegistrationLink" name="newEventRegistrationLink" id="newEventRegistrationLink">
+				<label class="col_12" for="newEventCity">Event City*</label>
+				<input class="col_12" type="text" data-ng-model="newEvent.newEventCity" name="newEventCity" id="newEventCity" required="true">
+				<label class="col_12" for="newEventState">Event State</label>
+				<input class="col_12" type="text" data-ng-model="newEvent.newEventState" name="newEventState" id="newEventState">
+				<label class="col_12" for="newEventCountry">Event Country</label>
+				<input class="col_12" type="text" data-ng-model="newEvent.newEventCountry" name="newEventCountry" id="newEventCountry">
+				<label class="col_12" for="newEventStartDate">Event Start Date (Can include time of day)</label>
+				<input class="col_12" type="date" data-ng-model="newEvent.newEventStartDate" name="newEventStartDate" id="newEventStartDate">
+				<label class="col_12" for="newEventEndDate">Event End Date (Can include time of day)</label>
+				<input class="col_12" type="date" data-ng-model="newEvent.newEventEndDate" name="newEventEndDate" id="newEventEndDate">
+				<label class="col_12" for="newEventThemeColor">Choose Event Theme Color</label>
+				<input class="col_12" type="color" data-ng-model="newEvent.newEventThemeColor" name="newEventThemeColor" id="newEventThemeColor">
+				<!-- <label class="col_12" for="newEventHeaderImage">Choose Header Image for Event Page</label>
+				<input class="col_12" type="file" data-ng-model="newEvent.newEventHeaderImage" name="newEventHeaderImage" id="newEventHeaderImage"> -->
+				<br>
+				<div>
+					<a class="button medium float-left" target="_self"  href="" data-ng-click="closeModalWindow()">Select Speakers</a>
+					<!-- lightbox container hidden with data-ng-hide -->
+					<div class="lightbox" data-ng-hide="hideModal" id="speakersForm">
+					  <div class="inner-lightbox-box">
+					    <p data-ng-hide="hideModal" class="modal-title">Select Speakers</p>
+					    <div class="modal-content">
+					    	<div data-ng-repeat="speaker in theSpeakers" for="speaker{{speaker.id}}">
+					    		<div class="col_5">{{speaker.fullName}}</div>
+					  			<!-- <input class="col_6" name="speakers[]" type="checkbox" value="{{speaker.id}}"> -->
+					  			<input class="col_1" class="speakersOrder" data-ng-model="newEvent.speakers[speaker.id]" type="number" name="speaker{{speaker.id}}" id="speakerOrder{{speaker.id}}" min="1">
+					  		</div>
+								<a class="closeModal button" data-ng-click="closeModalWindow()" target="_self" href="">Select</a>
+					  		<br>
+					  	</div>
+					  </div>
+					</div>
+					
+				</div>
+				<label class="col_12" for="new-event-description">Event Description for About page</label>
+				<br>
+				<textarea class="col_12" data-ng-model="newEvent.eventAboutTabText" name="new-event-description" id="new-event-description" style="min-height: 200px" required="true"></textarea>
+				<radiogroup class="col_12">
+					<label for="publishedTrue">Publish Now</label>
+					<input type="radio" id="publishedTrue" name="publishStatus" value="true">
+					<br>
+					<label for="publishedFalse">Save as Draft</label>
+					<input type="radio" id="publishedFalse" name="publishStatus" value="false" checked="true">
+				</radiogroup>
+				<button type="button" class="medium float-left" style="margin: 5px" id="cancel-new-event-button">Cancel</button>
+				<button type="button" class="closeModal button medium float-left" data-ng-click="toggleEventPreview()" target="_self" href="">Preview</a>
+				<button type="submit" class="medium float-left green" style="margin: 5px" id="save-new-event-as-draft-button">Save</button>
+				<!-- lightbox container hidden with data-ng-hide -->
+					<div class="lightbox" data-ng-hide="hideEventPreview" id="speakersForm">
+					  <div class="inner-lightbox-event-preview-box">
+					    <p class="modal-title">Preview</p>{{test}}
+					    <a class="closeModal button" data-ng-click="toggleEventPreview()" target="_self" href="">Close</a>
+					    <div class="modal-content">
+							  <section class="grid main-page-content mobileWrapper">
+							  	<div data-ng-if="uploadedFile" class="col_12 internetExplorer event-header center" id="eventHeader" role="complementary"><img alt="event banner image" data-ng-src="/app/uploads/{{uploadedFile.size + '-' + uploadedFile.name}}" /></div>
+									<ul class="tabs left">
+							  	  <li class="first">
+							  	    <a target="_self" href="#aboutTab"><h5>About</h5></a>
+							  	  </li>
+										<li class="last">
+											<a target="_self" href="#speakers"><h5>Speakers</h5></a>
+										</li>
+									</ul>
+							  	<div id="aboutTab" class="tab-content eventTabDiv" style="display: block" >
+							  	  <h2>{{newEvent.newEventName}}</h2>
+							  	  <p>{{newEvent.eventAboutTabText}}</p>
+							  	</div>
+									<div id="speakers" class="last tab-content eventTabDiv clearfix" style="display:none">
+										<div data-ng-repeat="speaker in getPreviewSpeakers(theSpeakers)" class="col_12 internetExplorer" id="{{speaker.divId}}" aria-label="Bio of {{speaker.fullName}}" role	="presentation">{{speaker.id}}
+										  	<h4>{{speaker.fullName}}</h4>
+										  	<h5>{{speaker.msTeamTitle}}</h5>
+										  	<p>
+										  		<img class="pull-left speakersImg" height="165" width="165" alt="image of {{speaker.fullName}}" data-ng-src="/app/uploads/{{speaker.headShot}}" />
+										  		{{speaker.contactDescription}}
+							  			</p>
+										  	<hr class="alt1" />
+											</div>
+									</div>	
+							  </section>
+								
+					  		<br>
+					  	</div>
+					  </div>
+					</div>
+			</form>
+    </section>
+  </main>
+</div>
