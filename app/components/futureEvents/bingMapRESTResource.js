@@ -9,7 +9,7 @@ const bingMapRESTResource = (app) => {
 		return function(searchPath, callback) {
 			return {
 				getBingMapKey: function(callback) {
-					$http.get('/bingmapkey')
+					$http.get('/api/bingmapkey')
           .success(customFunctions.handleSuccess(callback))
           .error(customFunctions.handleError(callback));
 				},

@@ -177,4 +177,17 @@ module.exports = function() {
 	  	event.setTabs([27]);
 	  })
 	})
+	.then(function() {
+		return Event.findOne({
+			where: {
+				id: 20
+			}
+		})
+	})
+	.then(function(event) {
+	  models.sql.sync()
+	  .then(function() {
+	  	event.setTabs([28]);
+	  })
+	})
 }

@@ -9,11 +9,12 @@ const eventsDirective = (app) => {
 			link: function postLink(scope, element, attrs) {
 				$timeout(function() {
 
-
-					const $firstTab = jQuery('.first:first a:first-child');
+					const $firstTab = jQuery('#eventsPageUl').find('li:first-child');
+					const $lastTab = jQuery('#eventsPageUl').find('li:last-child');
 					const $tabLinks = jQuery('ul.tabs a[href^="#"]');
 					const $tabContent = jQuery('.tab-content');
-				console.log('$tabLinks  ', jQuery('.eventTabAnchor'));
+
+
 					function moveTab(e, self) {	
 						e.stopImmediatePropagation();
 						let keyCode = customFunctions.getKeyCode(e);
@@ -100,7 +101,7 @@ const eventsDirective = (app) => {
 		
 					
 				
-				}, 300);
+				}, 1000);
 			}
 			
 		}

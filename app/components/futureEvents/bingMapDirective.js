@@ -50,7 +50,7 @@ const bingMapDirective = (app) => {
  	  //add pins to map
 			function getMap() {
 				//get bing map
-				jQuery.get('/bingmapkey', function(apiKey) {
+				jQuery.get('/api/bingmapkey', function(apiKey) {
 					//choose element to place map in and choose options
 					let map = new Microsoft.Maps.Map(document.getElementById('eventsMap'), {
  	   				credentials: apiKey,
@@ -63,8 +63,8 @@ const bingMapDirective = (app) => {
 	
 					jQuery.get('/mapevents', function(data) {
 						for (let i = 0, j = data.length; i < j; i++) {
-							let searchString = data[i].eventLocation.trim().replace(/\s+/g, '%20');;
-							let searchUrl = `https://dev.virtualearth.net/REST/v1/Locations?query=${searchString}&key=${apiKey}`;
+							let searchString = data[i].eventLocation.trim().replace(/\s+/g, '%20');
+							let searchUrl = `//dev.virtualearth.net/REST/v1/Locations?query=${searchString}&key=${apiKey}`;
 							let today = new Date();
 							let mapIcon;
 							let city;

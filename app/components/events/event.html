@@ -6,11 +6,11 @@
   </main>
   <main data-ng-if="events.isEvent" class="grid main-page-content">
   	<div data-ng-if="events.event.eventHeaderImage" class="col_12 internetExplorer event-header center" id="eventHeader" role="complementary"><img alt="event banner image" src="app/uploads/{{events.event.eventHeaderImage}}" /></div>
-  	<ul class="tabs left">
-      <li data-ng-if="events.event.eventAboutTabText" data-ng-class="{'first current': events.event.eventAboutTabText}">
+  	<ul class="tabs left" id="eventsPageUl">
+      <li data-ng-if="events.event.eventAboutTabText" >
         <a target="_self" href="#aboutTab"><h5>About</h5></a>
       </li>
-  		<li data-ng-repeat="tab in events.tabs" id="{{addMainContentId($index)}}" data-ng-class="{'first current': !events.event.eventAboutTabText}">
+  		<li data-ng-repeat="tab in events.tabs" id="{{addMainContentId($index)}}" data-ng-class="{'current': !events.event.eventAboutTabText && $first}" >
   			<a class="eventTabAnchor" target="_self" href="#{{urlify(tab.tabTitle)}}"><h5>{{ tab.tabTitle }}</h5></a>
   		</li>
   		<li data-ng-if="events.speakers.length > 0" class="last">

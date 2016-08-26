@@ -42,6 +42,7 @@ models.sql.authenticate()
   }
 });
 
+
 let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 let continentColors = {'North America': 'ffb900', 'South America': '107c10', 'Africa': 'e81123', 'Asia': '0078d7', 'Europe': '5c2d91', 'Oceania': 'b4009e'};
 
@@ -192,7 +193,7 @@ module.exports = function (router) {
   });
 
   //route to send Bing Map API key to front end
-  router.route('/bingmapkey')
+  router.route('/api/bingmapkey')
   .get(function(req, res) {
     res.json(process.env.BING_MAP_API_KEY);
     res.end();
@@ -264,6 +265,7 @@ module.exports = function (router) {
 
   // create new event
   router.post('/api/createevent', /*eatAuth,*/ function (req, res, next) {
+    console.log(clc.bgGreen('::::::::::::   '), req.body);
     models.sql.sync()
     .then(function () {
       Event.create({

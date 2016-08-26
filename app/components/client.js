@@ -29,6 +29,7 @@ require('./events/eventsDirective.js')(eventsApp);
 require('./admin/adminPageDirective.js')(eventsApp);
 require('./admin/admin-header/adminHeaderDirective.js')(eventsApp);
 require('./pastEvents/pastEventsDirective.js')(eventsApp);
+require('./admin/createEvent/createEventDirective.js')(eventsApp);
 
 //controllers
 require('./shared/AllPagesCtrl.js')(eventsApp);
@@ -146,7 +147,7 @@ eventsApp
       pageTitle: 'Latest Page - Microsoft Plugfests and Events'
     }
 	})
-	/*.when('/admin', {
+	.when('/admin', {
 		redirectTo: '/admin/edit-event',
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
@@ -178,7 +179,7 @@ eventsApp
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
     }
-	})*/
+	})
 	.when('/:slug', {
     templateUrl: '/app/components/events/event.html',
     controller: 'EventsCtrl',

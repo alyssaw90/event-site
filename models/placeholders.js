@@ -260,6 +260,18 @@ module.exports = function () {
 				eventStartDate: new Date('March 17, 2015')
 			});
 		})
+		.then(function() {
+			return Event.create({
+				eventName: 'DevDays Asia 2016 @ Beijing ',
+				eventLocation: 'Beijing',
+				eventContinent: 'Asia',
+				eventStartDate: new Date('October 21, 2016'),
+				eventEndDate: new Date('October 23, 2016'),
+				eventHighlightColor: '#107c10',
+				eventHeaderImage: 'Beijing-Header-8.26.jpg',
+				isPublished: true
+			})
+		})
 
 
 	////////////////////////////////////EventTab placeholder/////////////////////////////////////
@@ -2485,6 +2497,37 @@ setTimeout(function() {
 					<p>Microsoft is happy to announce that once again this year we are under-writing the 2016 SMB3 Plugfest in partnership with NetApp. The purpose of this Plugfest is for vendors to bring their implementations of SMB3 to test, identify, and fix bugs in a collaborative setting with the goal of providing a forum in which companies can develop interoperable products. The SNIA provides and supports networks and infrastructure for the Plugfest, creating a collaborative framework for testing.  The participants of the Plugfest work together to define the testing process, assuring that objectives are accomplished. </p>
 					<p>For complete details on how to participate please visit: <a href="http://www.snia.org/events/storage-developer/plugfest">http://www.snia.org/events/storage-developer/plugfest</a></p>
 					<p>If you have any additional questions, please contact <a href="mailto:prana@microsoft?subject=SNIA%20SMB3%20Plugfest:">Prakash Narayanan</a> or Arnold Jones, SNIA Technical Council Managing Director, at 407-574-7273 or <a href="mailto:arnold@snia.org">arnold@snia.org</a>.`
+			})
+		})
+		.then(function() {
+			return EventTab.create({
+				eventId: 10,
+				tabTitle: 'About',
+				tabContent: `
+				<h2>DevDays Asia 2016 @ Beijing</h2>
+				<h4>October 21-23, 2016</h4>
+				<h4>Beijing, China</h4>
+				<h4>Microsoft Beijing West Campus </h4>
+				<h4>5 Danling St, Haidian, Beijing, China, 100080</h4>
+				 
+				<h5>Audience: Developers, students, tech startups, ISVs, businesses</h5>
+				 
+				<h5>Cost: Free</h5>
+			 	<p>Microsoft Office 365 and Open Specifications present DevDays Asia 2016 @Beijing - an extension of the "Biggest Developer Event in Asia," DevDays Asia @ Taipei.  Join DevDays Asia 2016 @Beijing from October 21-23, 2016 at Microsoft Beijing West Campus for technical presentations, hands on workshops, interactive sessions, and a hackathon!</p>
+			 	<p>We encourage developers, students, ISVs and businesses to attend DevDays Asia @Beijing to learn about the advantages of developing within Microsoft Office. In addition, DevDays Asia @Beijing will include a track dedicated to Microsoft's commitment to interoperability including Open Specifications and protocol content. As always, the event will host a team of Microsoft engineers who are eager to provide their expertise and answer your questions.</p>
+			 	<p>Here are some of the technologies to be presented at DevDays Asia @Beijing:</p>
+			 	<ul>
+					<li>Microsoft Office Add-ins for Word, Excel, PowerPoint, and Outlook</li>
+					<li>Microsoft Graph: The easiest way to call Microsoft APIs to access data, intelligence, insights, users, files, mail, calendar, contacts, and folders </li>
+					<li>Microsoft SQL Server </li>
+					<li>OData: Building and consuming RESTful APIs</li>
+					<li>Office File Formats</li>
+					<li>Office, SharePoint, or Exchange Protocols </li>
+					<li>Open Specifications for Microsoft Office and Data Platform</li>
+			 	</ul>
+				<h6><b>Registration opens in September. <a href="mailto:plugfests@microsoft.com?subject=Notify%20me%20about%20DevDays%20Asia%20@%20Beijing">Stay updated by adding your email to our notification list</a>!</b></h6>
+
+				`
 			})
 		})
 

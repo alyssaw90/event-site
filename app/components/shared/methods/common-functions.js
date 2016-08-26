@@ -96,7 +96,6 @@ export const handleSuccess = (callback) => {
   }
 };
 
-
 //Finds y value of given object
 export let findPos = function(obj) {
   var curtop = 0;
