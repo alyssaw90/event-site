@@ -12,9 +12,11 @@ require('angular-sanitize');
 require('angular-google-analytics');
 require('ng-file-upload');
 require('angular-resource');
+require('angular-cookies');
+require('angular-base64');
 
 // declare a module
-const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize', 'angular-google-analytics', 'ngFileUpload', 'ngResource']);
+const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize', 'angular-google-analytics', 'ngFileUpload', 'ngResource', 'ngCookies', 'base64']);
 
 //directives
 require('./shared/allPagesDirective.js')(eventsApp);
@@ -44,6 +46,7 @@ require('./admin/createEvent/AdminCreateEventCtrl.js')(eventsApp);
 require('./latestNews/LatestNewsCtrl.js')(eventsApp);
 require('./events/EventsCtrl.js')(eventsApp);
 require('./admin/createSpeaker/CreateSpeakerCtrl.js')(eventsApp);
+require('./admin/userLogging/UserLoggingCtrl.js')(eventsApp);
 //services
 require('./meetTheTeam/meetTheTeamRestResource.js')(eventsApp);
 require('./futureEvents/futureEventsRESTResource.js')(eventsApp);
@@ -53,6 +56,7 @@ require('./admin/createEvent/createEventRESTResource.js')(eventsApp);
 require('./events/eventsRESTResource.js')(eventsApp);
 require('./latestNews/latestNewsRESTResource.js')(eventsApp);
 require('./admin/createSpeaker/createSpeakerRESTResource.js')(eventsApp);
+require('./admin/userLogging/userLoggingRESTResources.js')(eventsApp);
 
 eventsApp
 // .controller('allPagesCtrl', ['$scope', '$location', '$route', function($scope, $location, $route) {
@@ -175,6 +179,13 @@ eventsApp
 	})
 	.when('/admin/edit-speaker', {
 		templateUrl: '/app/components/admin/editSpeaker/admin-edit-speakers.html',
+		// controller: 'AdminCreateEventCtrl',
+		data: {
+      pageTitle: 'Admin Page - Microsoft Plugfests and Events'
+    }
+	})
+	.when('/admin/login', {
+		templateUrl: '/app/components/admin/userLogging/login.html',
 		// controller: 'AdminCreateEventCtrl',
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
