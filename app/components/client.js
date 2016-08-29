@@ -233,7 +233,7 @@ eventsApp
 
 }])*/
 .run(['$rootScope', '$location', '$anchorScroll', '$routeParams', '$http', 'Analytics', '$cookies', function ($rootScope, $location, $anchorScroll, $routeParams, $http, Analytics, $cookies) {
-	$cookies.put('fuck', 'fuck me');
+	$http.defaults.headers.common.Authorization = 'hola';
 	Analytics.pageView();
 	$rootScope.isAuthenticated = false;
 	
@@ -244,10 +244,9 @@ eventsApp
 
 	$rootScope.$on('$routeChangeSuccess', function(newRoute, oldRoute) { 
 
-		if ( /\/admin.*$/.test($location.path()) ) {
+		/*if ( /\/admin.*$/.test($location.path()) ) {
 			$http.get('/verifylogin')
 			.success( (data) => {
-				console.log('data::::   ', data);
 				// alert('hola');
 				
 			})
@@ -255,7 +254,7 @@ eventsApp
 				// alert('adios');
 			})
 		}
-
+*/
 		// $location.hash($routeParams.scrollTo);
     $anchorScroll();
 
