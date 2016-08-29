@@ -207,7 +207,7 @@ module.exports = function (router) {
   /////////////////////////////////////////////////////////////////////////////////////////*/
 
   //verify login
-  router.get('/verifylogin', (req, res) => {
+  router.get('/admin/verifylogin', eatAuth, (req, res) => {
     console.log(clc.white.bgGreen(':::::::::::::    '), req);
     res.end('end');
   })
