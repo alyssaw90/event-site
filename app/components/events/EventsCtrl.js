@@ -18,7 +18,7 @@ const EventsCtrl = (app) => {
         if (err) {
           return $scope.errors.push({msg: 'could not retrieve event'});
         };
-        $scope.headerImage = 'app/uploads/' + data.event.eventHeaderImage;
+        $scope.headerImage = 'uploads/' + data.event.eventHeaderImage;
         $scope.events = data;
         //loop over html string for tabs and tell angular to trust it as html
 				for (let i = 0, len = $scope.events.tabs.length; i < len; i++) {
@@ -27,7 +27,7 @@ const EventsCtrl = (app) => {
 				}
 				//add folder path to image names
 				for (let i = 0, len = $scope.events.speakers.length; i < len; i++) {
-					 $scope.events.speakers[i].headShot = 'app/uploads/' + $scope.events.speakers[i].headShot;
+					 $scope.events.speakers[i].headShot = 'uploads/' + $scope.events.speakers[i].headShot;
 				}
       })
 			

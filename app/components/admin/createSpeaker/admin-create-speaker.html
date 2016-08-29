@@ -8,7 +8,7 @@
  			<section class="col_12 internetExplorer the-team-section" role="presentation">
   		  <h4>{{newSpeaker.newFirstName + ' ' +  newSpeaker.newLastName}}</h4>
   		  <h5>{{newSpeaker.newMsTeamTitle}}</h5>
-  		  <img class="pull-left" data-ng-if="uploadedFile.name" data-ng-src="/app/uploads/{{uploadedFile.size + '-' + uploadedFile.name}}" />
+  		  <img class="pull-left" data-ng-if="uploadedFile.name" data-ng-src="/uploads/{{uploadedFile.size + '-' + uploadedFile.name}}" />
 
   		  <p data-ng-bind-html="newSpeaker.newSpeakerDescription"></p>
   		  <hr aria-hidden="true" role="presentation" class="alt1" />

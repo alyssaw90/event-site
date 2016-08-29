@@ -6,7 +6,7 @@ const fs = require('fs');
 const clc = require('cli-color');
 const multer = require('multer');
 const storage = multer.diskStorage({
-  destination: 'app/uploads/',
+  destination: 'uploads/',
   filename: function (req, file, callback) {
     callback(null, Date.now() + '-' + file.originalname);
   }
@@ -27,7 +27,7 @@ const dbRelationships = require('../models/relationships');
 const multipart = require('connect-multiparty');
 const multipartMiddleware = multipart({
   autoFiles: true,
-  uploadDir: 'app/uploads/'
+  uploadDir: 'uploads/'
 });
 /*Use the methods below to create the placeholder data. First uncomment the placeholder() and start the server this will create the data in the database, then comment out the placeholder() and uncomment the dbRelationships() and restart the server, this will create the relationships between the data tables. Finally, comment both placeholder() and dbRelationships out and restart the server. At this point, all your placeholder data will be created. Do this only once, if you need to recreate your placeholder data, delete all the tables from the database and repeat these same steps*/
 // placeholders();
@@ -238,11 +238,11 @@ module.exports = function (router) {
   router.post('/multer', multipartMiddleware, function (req, res) {
     let tmpFilename = req.files.file.path.slice(12);
     let newFilename = req.files.file.size + '-' + req.files.file.originalFilename;
-    fs.readdir('app/uploads/', (err, data) => {
+    fs.readdir('uploads/', (err, data) => {
       for (let i = 0, len = data.length; i < len; i++) {
   
         if (data[i] === tmpFilename) {
-          fs.rename('app/uploads/' + data[i], 'app/uploads/' + newFilename, () => {});
+          fs.rename('uploads/' + data[i], 'uploads/' + newFilename, () => {});
         }
   
       }
@@ -395,7 +395,7 @@ module.exports = function (router) {
 
   // //show all images
   // router.get('/showimages', eatAuth, function(req, res) {
-  //   fs.readdir(path.join(__dirname, 'app/uploads'), function(err, files) {
+  //   fs.readdir(path.join(__dirname, 'uploads'), function(err, files) {
   //     let outputHtml = '';
   //     if (err) {
   //       console.log(err);
@@ -404,7 +404,7 @@ module.exports = function (router) {
 
   //     for (let i = 0, j = files.length; i < j; i ++) {
   //       if (files[i] !== '.gitignore') {
-  //         outputHtml += '<img class="imageToInsert" style="height: 50px; margin: 10px 10px 10px 10px" data-clipboard-text="app/uploads/' + files[i] + '" src="app/uploads/' + files[i] + '" />';
+  //         outputHtml += '<img class="imageToInsert" style="height: 50px; margin: 10px 10px 10px 10px" data-clipboard-text="uploads/' + files[i] + '" src="uploads/' + files[i] + '" />';
   //       }
   //     }
   //     outputHtml += '<script type="text/javascript">$(".imageToInsert").click(function() {$(this).toggleClass("animated shake");})';
@@ -426,7 +426,7 @@ module.exports = function (router) {
   //       } else {
   //         imageName = req.body.editHeaderWithExistingImage;
   //       }
-  //       if (imageName.substr(0, 9) === 'app/uploads/') {
+  //       if (imageName.substr(0, 9) === 'uploads/') {
   //         imageName = imageName.slice(9);
   //       }
   //       var key = req.body.whatToChange;
@@ -643,8 +643,8 @@ module.exports = function (router) {
   //       deleteSpeakers: []
   //     };
   //     for (var i = 0, len = speakers.length; i < len; i++) {
-  //       let tmpEditHtml = `<div class="col_12"><img style="height: 165px;" src="app/uploads/${speakers[i].headShot}"/><h4>${speakers[i].fullName}</h4><button class="editSpeakersButton" data-speakerId="${speakers[i].id}">Edit ${speakers[i].fullName}</button></div>`;
-  //       let tmpDeleteHtml = `<div class="col_12"><img style="height: 165px;" src="app/uploads/${speakers[i].headShot}"/><h4>${speakers[i].fullName}</h4><button class="deleteSpeakersButton" data-speakerId="${speakers[i].id}" data-speakerName="${speakers[i].fullName}">Delete ${speakers[i].fullName}</button></div>`;
+  //       let tmpEditHtml = `<div class="col_12"><img style="height: 165px;" src="uploads/${speakers[i].headShot}"/><h4>${speakers[i].fullName}</h4><button class="editSpeakersButton" data-speakerId="${speakers[i].id}">Edit ${speakers[i].fullName}</button></div>`;
+  //       let tmpDeleteHtml = `<div class="col_12"><img style="height: 165px;" src="uploads/${speakers[i].headShot}"/><h4>${speakers[i].fullName}</h4><button class="deleteSpeakersButton" data-speakerId="${speakers[i].id}" data-speakerName="${speakers[i].fullName}">Delete ${speakers[i].fullName}</button></div>`;
   //       returnObj.editSpeakers.push(tmpEditHtml);
   //       returnObj.deleteSpeakers.push(tmpDeleteHtml);
   //     }

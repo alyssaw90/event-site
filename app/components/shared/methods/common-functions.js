@@ -33,7 +33,7 @@ export let highContrast = () => {
 		let pathname = window.location.pathname;
 
 		//inject div with background image in to dom to use for high-contrast check
-		let hcDetect = jQuery(`<div id="jQHighContrastDetect"></div>`).css('background', 'url(app/uploads/Microsoft-logo_rgb_c-wht-small.png)');
+		let hcDetect = jQuery(`<div id="jQHighContrastDetect"></div>`).css('background', 'url(uploads/Microsoft-logo_rgb_c-wht-small.png)');
 		//get the html tags
 		let htmlTag = document.getElementsByTagName('html');
 		//append the high-contrast check div to the body

@@ -43,7 +43,7 @@
 		<!-- static image of past events banner for homepage -->
 		<a data-ng-if="(!siteStyles.showSlider && siteStyles.showPastEventsBanner && siteStyles.hideEventBanners) || imageCount <= 0" class="homepageHeaderAnchor" title="past events link" href="/past-events" aria-label="past events banner image">
 			<section id="headerImage" class="mobileWrapper" role="presentation" aria-hidden="true">
-				<img aria-hidden="true" alt="past events header" style="width:100%; margin: 	0 0 0 0; padding: 0 0 0 0;" data-ng-src="./app/uploads/past-events-banner.jpg" />
+				<img aria-hidden="true" alt="past events header" style="width:100%; margin: 	0 0 0 0; padding: 0 0 0 0;" data-ng-src="./uploads/past-events-banner.jpg" />
 			</section>
 		</a>
 		<!-- the rn-carousel package creates the slider https://www.npmjs.com/package/angular-carousel -->
@@ -51,7 +51,7 @@
   		<li data-ng-repeat="slide in slides" data-ng-if="slide.eventHomepageImage">
   		  <div class="layer" data-slider-slide-directive>
   		  	<a href="/{{slide.eventUrl}}">
-  		  		<img class="carousel-img" data-ng-src="/app/uploads/{{ slide.eventHomepageImage }}" />
+  		  		<img class="carousel-img" data-ng-src="/uploads/{{ slide.eventHomepageImage }}" />
 		  		</a>
 		  	</div>
   		</li>

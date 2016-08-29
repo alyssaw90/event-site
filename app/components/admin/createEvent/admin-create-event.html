@@ -82,7 +82,7 @@
 					    <a class="closeModal button" data-ng-click="toggleEventPreview()" target="_self" href="">Close</a>
 					    <div class="modal-content">
 							  <section class="grid main-page-content mobileWrapper">
-							  	<div data-ng-if="uploadedFile" class="col_12 internetExplorer event-header center" id="eventHeader" role="complementary"><img alt="event banner image" data-ng-src="/app/uploads/{{uploadedFile.size + '-' + uploadedFile.name}}" /></div>
+							  	<div data-ng-if="uploadedFile" class="col_12 internetExplorer event-header center" id="eventHeader" role="complementary"><img alt="event banner image" data-ng-src="/uploads/{{uploadedFile.size + '-' + uploadedFile.name}}" /></div>
 									<ul class="tabs left">
 							  	  <li class="first">
 							  	    <a target="_self" href="#aboutTab"><h5>About</h5></a>
@@ -100,7 +100,7 @@
 										  	<h4>{{speaker.fullName}}</h4>
 										  	<h5>{{speaker.msTeamTitle}}</h5>
 										  	<p>
-										  		<img class="pull-left speakersImg" height="165" width="165" alt="image of {{speaker.fullName}}" data-ng-src="/app/uploads/{{speaker.headShot}}" />
+										  		<img class="pull-left speakersImg" height="165" width="165" alt="image of {{speaker.fullName}}" data-ng-src="/uploads/{{speaker.headShot}}" />
 										  		{{speaker.contactDescription}}
 							  			</p>
 										  	<hr class="alt1" />
@@ -116,7 +116,7 @@
     </section>
 	  <section  role="presentation" class="col_12 internetExplorer"">
   		<p class="modal-title">Preview</p>
-	  	<div data-ng-if="uploadedFile" class="col_12 internetExplorer event-header center" id="eventHeader" role="complementary"><img alt="event banner image" data-ng-src="/app/uploads/{{uploadedFile.size + '-' + uploadedFile.name}}" /></div>
+	  	<div data-ng-if="uploadedFile" class="col_12 internetExplorer event-header center" id="eventHeader" role="complementary"><img alt="event banner image" data-ng-src="/uploads/{{uploadedFile.size + '-' + uploadedFile.name}}" /></div>
 			<ul class="tabs left" id="previewEventUl">
 	  	  <li data-ng-if="newEvent.newEventName || newEvent.eventAboutTabText" class="current">
 	  	    <a target="_self" href="#aboutTab"><h5>About</h5></a>
@@ -134,7 +134,7 @@
 				  	<h4>{{speaker.fullName}}</h4>
 				  	<h5>{{speaker.msTeamTitle}}</h5>
 				  	<p>
-				  		<img class="pull-left speakersImg" height="165" width="165" alt="image of {{speaker.fullName}}" data-ng-src="/app/uploads/{{speaker.headShot}}" />
+				  		<img class="pull-left speakersImg" height="165" width="165" alt="image of {{speaker.fullName}}" data-ng-src="/uploads/{{speaker.headShot}}" />
 				  		{{speaker.contactDescription}}
 	  			</p>
 				  	<hr class="alt1" />
