@@ -174,7 +174,7 @@ module.exports = function (router) {
   });
 
   //route to send Bing Map API key to front end
-  router.route('/api/bingmapkey')
+  router.route('/bingmapkey')
   .get(function(req, res) {
     res.json(process.env.BING_MAP_API_KEY);
     res.end();
@@ -207,7 +207,7 @@ module.exports = function (router) {
   /////////////////////////////////////////////////////////////////////////////////////////*/
 
   //verify login
-  router.get('/admin/verifylogin', eatAuth, (req, res) => {
+  router.get('/verifylogin', eatAuth, (req, res) => {
     console.log(clc.white.bgGreen(':::::::::::::    '), req);
     res.end('end');
   })
@@ -251,7 +251,7 @@ module.exports = function (router) {
   });
 
   // create new event
-  router.post('/api/createevent', /*eatAuth,*/ function (req, res, next) {
+  router.post('/createevent', /*eatAuth,*/ function (req, res, next) {
     console.log(clc.bgGreen('::::::::::::   '), req.body);
     models.sql.sync()
     .then(function () {
@@ -291,7 +291,7 @@ module.exports = function (router) {
 
 
   //route to create speakers
-  router.post('/api/addspeakers', /*eatAuth,*/ function(req, res) {
+  router.post('/addspeakers', /*eatAuth,*/ function(req, res) {
     models.sql.sync()
     .then(function() {
       let speakerEmail = req.body.newMsTeamEmail ? req.body.newMsTeamEmail : 'plugfests@microsoft.com';
@@ -311,7 +311,7 @@ module.exports = function (router) {
   });
  
   /*Get events from URL path/slug and either send the event if there is one or set isEvent to false to show 404 page */
-  router.route('/api/:slug')
+  router.route('/:slug')
   .get(function(req, res) {
     //check if last 4 digits of url slug (req.params.eventUrl) are a number and end the response  if they're not numbers i.e. not a year and end the response if they're not
     /*if (!/^\d+$/.test(req.params.slug.slice(-4))) {
@@ -363,12 +363,6 @@ module.exports = function (router) {
         
       }
     });
-  });
-
-  /*Catch all route to send index.html for all routes that aren't used for data THIS ROUTE MUST BE LAST*/
-  router.route('/*')
-  .get(function(req, res) {
-    res.sendFile(path.join(__dirname, '../app/index.html'));
   });
 
 };

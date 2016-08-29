@@ -61,7 +61,7 @@ const bingMapDirective = (app) => {
  	   				customizeOverlays: true
  	   			});
 	
-					jQuery.get('/mapevents', function(data) {
+					jQuery.get('/api/mapevents', function(data) {
 						for (let i = 0, j = data.length; i < j; i++) {
 							let searchString = data[i].eventLocation.trim().replace(/\s+/g, '%20');
 							let searchUrl = `//dev.virtualearth.net/REST/v1/Locations?query=${searchString}&key=${apiKey}`;

@@ -9,7 +9,7 @@ const futureEventsRESTResource = (app) => {
 		return (callback) => {
 			return {
 				getFutureEvents: (callback) => {
-					$http.get('/futureEventsData')
+					$http.get('/api/futureEventsData')
           .success(customFunctions.handleSuccess(callback))
           .error(customFunctions.handleError(callback));
 				}

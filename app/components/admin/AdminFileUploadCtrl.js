@@ -9,7 +9,7 @@ const AdminFileUploadCtrl = (app) => {
       if (file) {
         // Upload.rename(file, 'AAAAA.jpg');
         file.upload = Upload.upload({
-          url: '../multer',
+          url: '../api/multer',
           headers: {
             'enctype': 'multipart/form-data'
           },

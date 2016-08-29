@@ -14,7 +14,7 @@ const bingMapRESTResource = (app) => {
           .error(customFunctions.handleError(callback));
 				},
 				getMapEvents: function(callback) {
-					$http.get('/mapevents')
+					$http.get('/api/mapevents')
           .success(customFunctions.handleSuccess(callback))
           .error(customFunctions.handleError(callback));
 				},

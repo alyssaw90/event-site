@@ -9,12 +9,12 @@ const createEventRESTResource = (app) => {
 		return function(resourceName, callback) {
 			return {
 				getAllEvents: function(callback) {
-					$http.get('/allevents')
+					$http.get('/api/allevents')
           .success(customFunctions.handleSuccess(callback))
           .error(customFunctions.handleError(callback));
 				},
 				getAllSpeakers: function(callback) {
-					$http.get('/contacts')
+					$http.get('/api/contacts')
           .success(customFunctions.handleSuccess(callback))
           .error(customFunctions.handleError(callback));
 				},
