@@ -25,7 +25,7 @@
 
 
 		<section data-ng-controller="UserLoggingCtrl">
-		  <form data-ng-submit="signIn(user)">
+		  <form data-ng-submit="signIn(user)" name="loginForm" id="loginForm">
 		    <label for="username">Username</label>
 		    <input type="text" name="username" data-ng-model="user.username">
 		    <label for="password">Password</label>

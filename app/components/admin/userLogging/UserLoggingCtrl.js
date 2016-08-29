@@ -1,10 +1,16 @@
 'use strict';
+const jQuery = require('jquery');
 
 const UserLoggingCtrl = (app) => {
 
-	app.controller('UserLoggingCtrl', ['$scope', '$base64', '$cookies', 'userLoggingRESTResources', ($scope, $base64, $cookies, resource) => {
+	app.controller('UserLoggingCtrl', ['$scope', '$base64', '$cookies', '$timeout', '$location', '$rootScope', 'userLoggingRESTResources', ($scope, $base64, $cookies, $timeout, $location, $rootScope, resource) => {
 		$scope.newSpeaker = {};
     $scope.errors = [];
+    $scope.loginForm = {
+      username: 'username',
+      password: 'password'
+    };
+
 
 		let auth = resource();
 
@@ -12,12 +18,15 @@ const UserLoggingCtrl = (app) => {
     $scope.signIn = (user) => {
 
   		auth.signIn(user, (err) => {
-        if (err) {
-          console.log(err);
-          return $scope.errors.push({msg: 'could not create user'});
-        }
-
-        // $location.path('/notes');
+            
+          if (err) {
+            console.log(err);
+            return $scope.errors.push({msg: 'could not log in user'});
+          }
+          if(!err) {
+            $rootScope.isAuthenticated = true;
+            $location.path('/admin/edit-event');
+          }
       });      
     
     };

@@ -84,6 +84,8 @@ eventsApp
 	//enable cross origin for jsonp
 	$httpProvider.defaults.useXDomain = true;
   delete $httpProvider.defaults.headers.common['X-Requested-With'];
+  //tell angular to send verification credentials with requests
+  $httpProvider.defaults.withCredentials = true;
 
 	$routeProvider
 	.when('/', {
@@ -157,6 +159,22 @@ eventsApp
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
     }
 	})
+	.when('/admin/edit-event', {
+		templateUrl: '/app/components/admin/editEvent/admin-edit-event.html',
+		// controller: 'AdminCreateEventCtrl',
+		data: {
+      pageTitle: 'Admin Page - Microsoft Plugfests and Events'
+    },
+    resolve: ($q, $location) => {
+      let deferred = $q.defer(); 
+      deferred.resolve();
+      if (!isAuthenticated) {
+         $location.path('/admin/login');
+      }
+
+      return deferred.promise;
+    }
+	})
 	.when('/admin/create-event', {
 		templateUrl: '/app/components/admin/createEvent/admin-create-event.html',
 		// controller: 'AdminCreateEventCtrl',
@@ -169,13 +187,6 @@ eventsApp
 		data: {
 			pageTitle: 'Admin Page - Microsoft Plugfests and Events, create new speaker'
 		}
-	})
-	.when('/admin/edit-event', {
-		templateUrl: '/app/components/admin/editEvent/admin-edit-event.html',
-		// controller: 'AdminCreateEventCtrl',
-		data: {
-      pageTitle: 'Admin Page - Microsoft Plugfests and Events'
-    }
 	})
 	.when('/admin/edit-speaker', {
 		templateUrl: '/app/components/admin/editSpeaker/admin-edit-speakers.html',
@@ -221,9 +232,10 @@ eventsApp
 	}
 
 }])*/
-.run(['$rootScope', '$location', '$anchorScroll', '$routeParams', 'Analytics', function ($rootScope, $location, $anchorScroll, $routeParams, Analytics) {
-
+.run(['$rootScope', '$location', '$anchorScroll', '$routeParams', '$http', 'Analytics', '$cookies', function ($rootScope, $location, $anchorScroll, $routeParams, $http, Analytics, $cookies) {
+	$cookies.put('fuck', 'fuck me');
 	Analytics.pageView();
+	$rootScope.isAuthenticated = false;
 	
 	$rootScope.$on('$viewContentLoaded', function () {
 			// document.getElementById('screenreader-summary').trigger('focus');
@@ -231,6 +243,18 @@ eventsApp
 	});
 
 	$rootScope.$on('$routeChangeSuccess', function(newRoute, oldRoute) { 
+
+		if ( /\/admin.*$/.test($location.path()) ) {
+			$http.get('/verifylogin')
+			.success( (data) => {
+				console.log('data::::   ', data);
+				// alert('hola');
+				
+			})
+			.error( (err) => {
+				// alert('adios');
+			})
+		}
 
 		// $location.hash($routeParams.scrollTo);
     $anchorScroll();

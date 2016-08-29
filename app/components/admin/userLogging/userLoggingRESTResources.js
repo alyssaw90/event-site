@@ -4,9 +4,9 @@ import * as customFunctions from '../../shared/methods/common-functions.js';
 
 const userLoggingRESTResources = (app) => {
 
-	app.factory('userLoggingRESTResources', ['$http', '$base64', '$cookies', ($http, $base64, $cookies) => {
+	app.factory('userLoggingRESTResources', ['$http', '$base64', '$cookies', '$window', ($http, $base64, $cookies, $window) => {
 		return (user, callback) => {
-			return {
+		return {
     	  signIn: (user, callback) => {
     	    var encoded = $base64.encode(user.username + ':' + user.password);
     	    $http.get('/auth/login', {
@@ -14,8 +14,14 @@ const userLoggingRESTResources = (app) => {
     	    })
     	    .success( (data) => {
     	  	console.log('data:   ', data);
+            //set expiration to one day from login
+            let today = new Date();
+            let expired = new Date(today);
+            expired.setDate(today.getDate() + 1); //Set expired date to tomorrow
     	      $cookies.put('token', data.token);
     	      $cookies.put('interopAdmin', data.admin);
+            $window.sessionStorage.token = data.token;
+            $http.defaults.headers.common.Authorization = data.token;
     	      callback(null);
     	    })
     	    .error( (data) => {

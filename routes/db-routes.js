@@ -206,6 +206,12 @@ module.exports = function (router) {
 
   /////////////////////////////////////////////////////////////////////////////////////////*/
 
+  //verify login
+  router.get('/verifylogin', (req, res) => {
+    console.log(clc.white.bgGreen(':::::::::::::    '), req);
+    res.end('end');
+  })
+
   //get all contacts for editing
   router.get('/contacts'/*, eatAuth*/, function (req, res) {
     models.sql.sync()

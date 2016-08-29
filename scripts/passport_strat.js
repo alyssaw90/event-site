@@ -62,13 +62,13 @@ var clc = require('cli-color');
 }*/
 
 // This route works!!!!!!
-module.exports = function(passport) {
-  passport.use('basic', new Basic({}, function(email, password, done) {
+module.exports = (passport) => {
+  passport.use('basic', new Basic({}, (email, password, done) => {
     var userInfo = email + password + '}';
     // var userEmail = JSON.parse(userInfo);
         // console.log(clc.blueBright('email ::::   '), email);
     User.findOne({where: {email: email}})
-      .then(function(user) {
+      .then( (user) => {
         if (user) {
           var verified = user.$modelOptions.instanceMethods.verifyPassword(password, user.dataValues.password);
         }
@@ -83,7 +83,7 @@ module.exports = function(passport) {
           done(null, user);
         }
       })
-      .error(function(err) {
+      .error( (err) => {
         console.log(err);
         res.status(500).json({msg: 'there was a problem logging in to your account'});
         done(err);

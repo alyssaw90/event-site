@@ -58,6 +58,8 @@ User.sync({force: true})
 
 * move upload folder to root and fix the dependent file paths
 
+* Divide routes into separate files
+
 * remove all 99lime CSS and move to WebCore/bootstrap
 
 * move custom.js functions into all pages directive
