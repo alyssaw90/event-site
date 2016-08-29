@@ -12,7 +12,9 @@
   "dependencies": {
     "angular": "^1.5.8",
     "angular-aria": "^1.5.8",
+    "angular-base64": "^2.0.5",
     "angular-carousel": "^1.0.1",
+    "angular-cookies": "^1.5.8",
     "angular-google-analytics": "^1.1.7",
     "angular-resource": "^1.5.8",
     "angular-route": "^1.5.8",
@@ -30,7 +32,6 @@
     "eat": "^0.1.1",
     "element-resize-event": "^2.0.5",
     "express": "^4.13.4",
-    "install": "^0.8.1",
     "jquery": "^2.2.3",
     "jquery-ui": "^1.10.5",
     "js.cookie": "0.0.4",
@@ -39,7 +40,6 @@
     "ng-page-title": "^1.3.1",
     "passport": "^0.3.2",
     "passport-http": "^0.3.0",
-    "result": "^2.0.9",
     "sequelize": "^3.19.3",
     "sequelize-encrypted": "^0.1.0",
     "tedious": "^1.13.2"

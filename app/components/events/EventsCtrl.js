@@ -18,12 +18,16 @@ const EventsCtrl = (app) => {
         if (err) {
           return $scope.errors.push({msg: 'could not retrieve event'});
         };
-        
+        $scope.headerImage = 'app/uploads/' + data.event.eventHeaderImage;
         $scope.events = data;
         //loop over html string for tabs and tell angular to trust it as html
 				for (let i = 0, len = $scope.events.tabs.length; i < len; i++) {
 					$scope.events.tabs[i].tabContent = $sce.trustAsHtml($scope.events.tabs[i].tabContent);
 
+				}
+				//add folder path to image names
+				for (let i = 0, len = $scope.events.speakers.length; i < len; i++) {
+					 $scope.events.speakers[i].headShot = 'app/uploads/' + $scope.events.speakers[i].headShot;
 				}
       })
 			
