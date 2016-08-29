@@ -34,7 +34,7 @@ const multipartMiddleware = multipart({
 // dbRelationships();
 
 models.sql.authenticate()
-.then(function (err) {
+.then( (err) => {
   if (err) {
     console.log(clc.xterm(202)('Unable to connect to the database with db router: '), err);
   } else {
@@ -46,7 +46,7 @@ models.sql.authenticate()
 let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 let continentColors = {'North America': 'ffb900', 'South America': '107c10', 'Africa': 'e81123', 'Asia': '0078d7', 'Europe': '5c2d91', 'Oceania': 'b4009e'};
 
-module.exports = function (router) {
+module.exports = (router) => {
   router.use(bodyparser.json());
   router.use(bodyparser.urlencoded({
     extended: true
@@ -64,19 +64,19 @@ module.exports = function (router) {
         }
       })
     })
-    .then(function(teamMembers) {
+    .then( (teamMembers) => {
       res.json(teamMembers);
     })
   })
   //Get upcoming events for header, carousel, and upcoming events page
   router.route('/futureEventsData')
-  .get(function(req, res) {
+  .get( (req, res) => {
     let eventDates = 'Coming Soon';
     let eventMonth;
     let city;
     let cityArr;
     models.sql.sync()
-    .then(function() {
+    .then( () => {
       return Event.findAll({
         where: {
           eventEndDate: {
@@ -91,9 +91,9 @@ module.exports = function (router) {
         }
       })
     })
-    .then(function(upcomingEvents) {
+    .then( (upcomingEvents) => {
       let outputArr = [];
-      upcomingEvents.sort(function (a, b) {
+      upcomingEvents.sort( (a, b) => {
         a = a.eventEndDate;
         b = b.eventEndDate;
         if (a === null) {
@@ -163,28 +163,28 @@ module.exports = function (router) {
   })
 
   //route to send style choices for website
-  router.get('/sitestyle', function(req, res) {
+  router.get('/sitestyle', (req, res) => {
     models.sql.sync()
-    .then(function() {
+    .then( () => {
       return SiteStyle.findOne({where: {id: 1}});
     })
-    .then(function(data) {
+    .then( (data) => {
       res.json(data);
     });
   });
 
   //route to send Bing Map API key to front end
   router.route('/bingmapkey')
-  .get(function(req, res) {
+  .get( (req, res) => {
     res.json(process.env.BING_MAP_API_KEY);
     res.end();
   });
 
 
   //get all events for edit events tab
-  router.get('/mapevents', function (req, res) {
+  router.get('/mapevents', (req, res) => {
     models.sql.sync()
-      .then(function () {
+      .then( () => {
         return Event.findAll({
           where: {
             eventLocation: {
@@ -193,7 +193,7 @@ module.exports = function (router) {
           }
         });
       })
-      .then(function (events) {
+      .then( (events) => {
         res.json(events);
       });
   });  
@@ -213,29 +213,29 @@ module.exports = function (router) {
   })
 
   //get all contacts for editing
-  router.get('/contacts'/*, eatAuth*/, function (req, res) {
+  router.get('/contacts'/*, eatAuth*/, (req, res) => {
     models.sql.sync()
-    .then(function () {
+    .then( () => {
       Contact.findAll()
-      .then(function (data) {
+      .then( (data) => {
         res.json(data);
       });
     });
   });
 
   //get all events for edit events tab
-  router.get('/allevents', function(req, res) {
+  router.get('/allevents', (req, res) => {
     models.sql.sync()
-    .then(function() {
+    .then( () => {
       return Event.findAll();
     })
-    .then(function(events) {
+    .then( (events) => {
       res.json(events);
     });
   });
 
   //route for uploading files
-  router.post('/multer', multipartMiddleware, function (req, res) {
+  router.post('/multer', multipartMiddleware, (req, res) => {
     let tmpFilename = req.files.file.path.slice(12);
     let newFilename = req.files.file.size + '-' + req.files.file.originalFilename;
     fs.readdir('uploads/', (err, data) => {
@@ -251,7 +251,7 @@ module.exports = function (router) {
   });
 
   // create new event
-  router.post('/createevent', /*eatAuth,*/ function (req, res, next) {
+  router.post('/createevent', /*eatAuth,*/ (req, res, next) => {
     console.log(clc.bgGreen('::::::::::::   '), req.body);
     models.sql.sync()
     .then(function () {
@@ -268,9 +268,9 @@ module.exports = function (router) {
         isPublished: req.body.publishStatus,
         eventAboutTabText: req.body.eventAboutTabText
       })
-      .then(function(newEvent) {
+      .then( (newEvent) => {
         models.sql.sync()
-        .then(function() {
+        .then( () => {
           let speakersArr = [];
           for(let key in req.body.speakers){
             speakersArr.push({speakerId: key, position: req.body.speakers[key]  });    
@@ -291,9 +291,9 @@ module.exports = function (router) {
 
 
   //route to create speakers
-  router.post('/addspeakers', /*eatAuth,*/ function(req, res) {
+  router.post('/addspeakers', /*eatAuth,*/ (req, res) => {
     models.sql.sync()
-    .then(function() {
+    .then( () => {
       let speakerEmail = req.body.newMsTeamEmail ? req.body.newMsTeamEmail : 'plugfests@microsoft.com';
       // let speakerHeadshot = req.body.headshot ? req.body.headshot : 'placeholder-headshot.jpg';
       Contact.create({
@@ -312,7 +312,7 @@ module.exports = function (router) {
  
   /*Get events from URL path/slug and either send the event if there is one or set isEvent to false to show 404 page */
   router.route('/:slug')
-  .get(function(req, res) {
+  .get( (req, res) => {
     //check if last 4 digits of url slug (req.params.eventUrl) are a number and end the response  if they're not numbers i.e. not a year and end the response if they're not
     /*if (!/^\d+$/.test(req.params.slug.slice(-4))) {
       return res.end();
@@ -321,7 +321,7 @@ module.exports = function (router) {
     let eventInfo = {};
     eventInfo.isEvent = true;
     models.sql.sync()
-    .then(function() {
+    .then( () => {
       //trim the params to get the city and the year of the event
       let eventSearchCity = req.params.slug.slice(0, -4);
       let eventYear = req.params.slug.slice(-4);
@@ -345,17 +345,17 @@ module.exports = function (router) {
 
     })
     //get the related tabs and speakers for the event and add them to the return object
-    .then(function(event) {
+    .then( (event) => {
       if (!event) {
         eventInfo.isEvent = false;
         res.json(eventInfo);
       } else {
         eventInfo.event = event;
         event.getTabs()
-        .then(function(tabs) {
+        .then( (tabs) => {
           eventInfo.tabs = tabs;
           event.getContacts()
-          .then(function(speakers) {
+          .then( (speakers) => {
             eventInfo.speakers = speakers;
             res.json(eventInfo);
           });
