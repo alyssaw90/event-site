@@ -15,6 +15,12 @@ if (self === top) {
 } else {
 	top.location = self.location;
 }
+//create selector for focusable elements
+jQuery.extend(jQuery.expr[':'], {
+    focusable: function(el, index, selector){
+    return jQuery(el).is('a, button, :input, [tabindex]');
+    }
+});
 
 (function($) {
 

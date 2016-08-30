@@ -50,8 +50,9 @@ const eventsDirective = (app) => {
 						let $this = jQuery(this);
 						let divId = $this.attr('href');
 						let anchorId = $this.attr('id') === 'beginningOfContent' ? 'beginningOfContent' : `${divId.slice(1)}Anchor`;
+						jQuery(divId).prepend(`<a id="${divId + 'start'}" class="tabStartAnchor" aria-live="polite" tabindex="-1" role="presentation" aria-hidden="true" aria-label="${$this.text()} section open"></a>`)
 						
-						jQuery(divId).attr('tabindex', '0');
+						// jQuery(divId).attr('tabindex', '0');
 						$this.attr({
 							'aria-role': 'navigation',
 							'aria-label': `${$this.text()}, click enter/return to read contents, click tab to go to next section`,
@@ -88,13 +89,12 @@ const eventsDirective = (app) => {
 						let keyCode = customFunctions.getKeyCode(e);
 						//if enter is clicked trigger the links click function and focus on the tab content
 						if (keyCode === 13) {
-							console.log('enter key event!!!');
 							// $this.trigger('click');
 							jQuery(divId).siblings('.tab-content').hide().attr({ 'aria-hidden': 'true' });
 							jQuery(divId).show().attr({ 'aria-hidden': 'false'});
 							// jQuery(divId).first().focus();
 							// jQuery(divId).attr({ 'aria-hidden': 'false' });
-							jQuery(divId).focus();
+							jQuery(divId).find('tabStartAnchor')[0].focus();
 						
 						}
 					});

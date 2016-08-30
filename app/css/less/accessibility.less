@@ -10,13 +10,17 @@ div:focus {
 	border: 20px solid #50B1FE;
 }*/
 
-.skipNavigation {
+.tabStartAnchor {
 	position:absolute;
 	left:-10000px;
 	top:auto;
 	width:1px;
 	height:1px;
 	overflow:hidden;
+}
+
+.skipNavigation {
+	.tabStartAnchor;
 	&:focus {
 		position:static;
 		left:10px;
