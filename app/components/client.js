@@ -153,7 +153,7 @@ eventsApp
       pageTitle: 'Latest Page - Microsoft Plugfests and Events'
     }
 	})
-	.when('/admin', {
+	/*.when('/admin', {
 		redirectTo: '/admin/edit-event',
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
@@ -201,7 +201,7 @@ eventsApp
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
     }
-	})
+	})*/
 	.when('/:slug', {
     templateUrl: '/app/components/events/event.html',
     controller: 'EventsCtrl',

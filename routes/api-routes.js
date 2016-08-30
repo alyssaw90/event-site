@@ -87,7 +87,8 @@ module.exports = (router) => {
                 $eq: new Date(new Date().getFullYear().toString())
                 /* jshint ignore:end */
             }
-          }
+          },
+          isPublished: true
         }
       })
     })
@@ -189,7 +190,8 @@ module.exports = (router) => {
           where: {
             eventLocation: {
               $not: null
-            }
+            },
+            isPublished: true
           }
         });
       })
@@ -322,24 +324,11 @@ module.exports = (router) => {
     eventInfo.isEvent = true;
     models.sql.sync()
     .then( () => {
-      //trim the params to get the city and the year of the event
-      let eventSearchCity = req.params.slug.slice(0, -4);
-      let eventYear = req.params.slug.slice(-4);
-      let testDate = new Date(eventYear - 1, 11, 31, 11, 59, 59) == 'Invalid Date' ? new Date(1970, 1, 1) : new Date(eventYear - 1, 11, 31, 11, 59, 59);
-     /* if (testDate === 'not a date') {
-        return res.status(404).redirect('/404');
-      }*/
 
       // search the database for event that matches the city and occurs on or after the year from the params and return the event found
       return Event.findOne({
         where: {
-          eventLocation: eventSearchCity,
-          eventStartDate: {
-            $or: {
-              $gte: testDate,
-              $eq: null
-            }
-          }
+          eventUrl: req.params.slug
         }
       });
 

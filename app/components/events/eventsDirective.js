@@ -94,7 +94,7 @@ const eventsDirective = (app) => {
 							jQuery(divId).show().attr({ 'aria-hidden': 'false'});
 							// jQuery(divId).first().focus();
 							// jQuery(divId).attr({ 'aria-hidden': 'false' });
-							jQuery(divId).find('tabStartAnchor')[0].focus();
+							jQuery(divId).find('a')[0].focus();
 						
 						}
 					});

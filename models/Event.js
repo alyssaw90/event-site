@@ -11,6 +11,7 @@ module.exports = function (sql, DataTypes) {
     isPublished: DataTypes.BOOLEAN,
     lastModifiedBy: DataTypes.STRING,
     eventRegistrationLink: DataTypes.STRING, //link to registrationfor event
+    eventUrl: DataTypes.STRING,
     eventLocation: {
       type: DataTypes.STRING,
       set: function (val) {
@@ -37,34 +38,6 @@ module.exports = function (sql, DataTypes) {
     eventSpeakers: DataTypes.STRING
   },
   {
-    getterMethods: {
-      eventUrl: function () {
-        let theEventLocation = this.getDataValue('eventLocation');
-        let startDate = this.getDataValue('eventStartDate');
-        let realStartDate = this.getDataValue('eventStartDate');
-        let theUrl;
-        if (this.getDataValue('eventStartDate')) {
-          startDate.setDate(startDate.getDate() + 1);
-
-        } else {
-          startDate = new Date(new Date()
-            .getFullYear(), 11, 31);
-        }
-        if (theEventLocation) {
-          theUrl = theEventLocation.replace(/\W/g, '')
-            .toLowerCase() + startDate.getFullYear();
-
-        }
-        this.setDataValue('eventStartDate', realStartDate);
-        return theUrl ? theUrl : '';
-      }
-      /*,
-      eventSlideshowImage: function () {
-        let idVal = this.getDataValue('id');
-        let imgIndex = Math.floor(idVal / randomTabImages.length);
-        return randomTabImages[idVal - imgIndex];
-      }*/
-    },
     hasTrigger: true,
     paranoid: true
   });

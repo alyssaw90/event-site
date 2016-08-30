@@ -66,6 +66,7 @@ module.exports = function () {
 	.then(function () {
 			return Event.create({
 				eventName: 'DevDays Asia 2016 @Taipei',
+				eventUrl: 'taipei2016',
 				eventStartDate: new Date('2016-04-19:08:00:00'),
 				eventEndDate: new Date('2016-04-21:23:00:00'),
 				eventLocation: 'Taipei',
@@ -82,6 +83,7 @@ module.exports = function () {
 			return Event.create({
 				eventName: 'Extend Conference',
 				// eventRegistrationLink: , //link to registrationfor event
+				eventUrl: 'paris2016',
 				eventLocation: 'Paris',
 				eventContinent: 'Europe',
 				eventStartDate: new Date('2016-05-12:00:00:01'), //the start date...
@@ -97,6 +99,7 @@ module.exports = function () {
 			return Event.create({
 				eventName: 'Redmond Protocols Plugfest & Windows Interoperability (IO) Lab',
 				// eventRegistrationLink: Sql.STRING, //link to registrationfor event
+				eventUrl: 'redmond2016',
 				eventLocation: 'Redmond',
 				eventContinent: 'North America',
 				eventStartDate: new Date('2016-06-13:00:01:00'), //the start date...
@@ -125,6 +128,7 @@ module.exports = function () {
 		.then(function () {
 			return Event.create({
 				eventName: 'Shanghai Interop Dev Days 2015',
+				eventUrl: 'shanghai2015',
 				eventLocation: 'Shanghai',
 				eventContinent: 'Asia',
 				eventStartDate: new Date('2015-10-20:00:01:00'),
@@ -139,6 +143,7 @@ module.exports = function () {
 		.then(function () {
 			return Event.create({
 				eventName: 'Paris 2017',
+				eventUrl: 'paris2017',
 				eventLocation: 'Paris',
 				eventContinent: 'Europe',
 				eventStartDate: '2017',
@@ -153,6 +158,7 @@ module.exports = function () {
 		.then(function () {
 			return Event.create({
 				eventName: 'DevDays Asia 2017 @ Taipei',
+				eventUrl: 'taipei2017',
 				eventLocation: 'Taipei',
 				eventContinent: 'Asia',
 				eventStartDate: '2017',
@@ -167,6 +173,7 @@ module.exports = function () {
 		.then(function () {
 			return Event.create({
 				eventName: 'Redmond Protocol Plugfest 2017',
+				eventUrl: 'redmond2017',
 				eventLocation: 'Redmond',
 				eventContinent: 'North America',
 				eventStartDate: '2017',
@@ -181,6 +188,7 @@ module.exports = function () {
 		.then(function() {
 			return Event.create({
 				eventName: 'SNIA SMB3 Plugfest',
+				eventUrl: 'santa_clara2016',
 				eventLocation: 'Santa Clara',
 				eventContinent: 'North America',
 				eventStartDate: new Date('September 19, 2016'),
@@ -194,75 +202,86 @@ module.exports = function () {
 			return Event.create({
 				eventLocation: 'Göttingen',
 				eventEndDate: new Date('May 22, 2015'),
-				eventStartDate: new Date('May 22, 2015')
+				eventStartDate: new Date('May 22, 2015'),
+				isPublished: true
 			});
 		})
 		.then(function () {
 			return Event.create({
 				eventLocation: 'Zaragoza, Spain',
 				eventEndDate: new Date('May 14, 2015'),
-				eventStartDate: new Date('May 14, 2015')
+				eventStartDate: new Date('May 14, 2015'),
+				isPublished: true
 			});
 		})
 		.then(function () {
 			return Event.create({
 				eventLocation: 'Beijing',
 				eventEndDate: new Date('March 17, 2015'),
-				eventStartDate: new Date('March 17, 2015')
+				eventStartDate: new Date('March 17, 2015'),
+				isPublished: true
 			});
 		})
 		.then(function () {
 			return Event.create({
 				eventLocation: 'Santa Clara',
 				eventEndDate: new Date('March 17, 2015'),
-				eventStartDate: new Date('March 17, 2015')
+				eventStartDate: new Date('March 17, 2015'),
+				isPublished: true
 			});
 		})
 		.then(function () {
 			return Event.create({
 				eventLocation: 'Las Vegas',
 				eventEndDate: new Date('March 17, 2015'),
-				eventStartDate: new Date('March 17, 2015')
+				eventStartDate: new Date('March 17, 2015'),
+				isPublished: true
 			});
 		})
 		.then(function () {
 			return Event.create({
 				eventLocation: 'Cambridge, MA',
 				eventEndDate: new Date('March 17, 2015'),
-				eventStartDate: new Date('March 17, 2015')
+				eventStartDate: new Date('March 17, 2015'),
+				isPublished: true
 			});
 		})
 		.then(function () {
 			return Event.create({
 				eventLocation: 'London',
 				eventEndDate: new Date('March 17, 2015'),
-				eventStartDate: new Date('March 17, 2015')
+				eventStartDate: new Date('March 17, 2015'),
+				isPublished: true
 			});
 		})
 		.then(function () {
 			return Event.create({
 				eventLocation: 'Tokyo',
 				eventEndDate: new Date('March 17, 2015'),
-				eventStartDate: new Date('March 17, 2015')
+				eventStartDate: new Date('March 17, 2015'),
+				isPublished: true
 			});
 		})
 		.then(function () {
 			return Event.create({
 				eventLocation: 'Munich',
 				eventEndDate: new Date('March 17, 2015'),
-				eventStartDate: new Date('March 17, 2015')
+				eventStartDate: new Date('March 17, 2015'),
+				isPublished: true
 			});
 		})
 		.then(function () {
 			return Event.create({
 				eventLocation: 'Seoul',
 				eventEndDate: new Date('March 17, 2015'),
-				eventStartDate: new Date('March 17, 2015')
+				eventStartDate: new Date('March 17, 2015'),
+				isPublished: true
 			});
 		})
 		.then(function() {
 			return Event.create({
 				eventName: 'DevDays Asia 2016 @ Beijing ',
+				eventUrl: 'beijing2017',
 				eventLocation: 'Beijing',
 				eventContinent: 'Asia',
 				eventStartDate: new Date('October 21, 2016'),
