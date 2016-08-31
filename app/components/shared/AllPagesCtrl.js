@@ -10,6 +10,14 @@ const AllPagesCtrl = (app) => {
 	   	return pageUrl === $location.path();
 		}
 
+		$scope.isEmptyObj = (obj) => {
+			if ( angular.equals({}, obj) ) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
 		$scope.isAdminPage = (pageUrl) => {
 	   	// return /\/admin.*$/.test(pageUrl);
 	   	return /\/admin.*$/.test(pageUrl);

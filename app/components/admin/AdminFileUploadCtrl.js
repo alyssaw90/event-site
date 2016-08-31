@@ -1,10 +1,10 @@
 'use strict';
 
 const AdminFileUploadCtrl = (app) => {
-	app.controller('AdminFileUploadCtrl', ['$rootScope', '$scope', 'Upload', '$timeout', function($rootScope, $scope, Upload, $timeout) {
+	app.controller('AdminFileUploadCtrl', ['$rootScope', '$scope', 'Upload', '$timeout', ($rootScope, $scope, Upload, $timeout) => {
 
-    $scope.uploadFiles = (file, errFiles) => {
-      $rootScope.uploadedFile = file;
+    $scope.uploadFiles = (file, errFiles, rootScopeKey) => {
+      $rootScope[rootScopeKey] = file;
       $rootScope.errFile = errFiles && errFiles[0];
       if (file) {
         // Upload.rename(file, 'AAAAA.jpg');
@@ -20,14 +20,14 @@ const AdminFileUploadCtrl = (app) => {
           }
         });
 
-        file.upload.then(function (response) {
-            $timeout(function () {
-                file.result = response.data;
+        file.upload.then( (response) => {
+            $timeout( () => {
+              file.result = response.data;
             });
-        }, function (response) {
+        }, (response) => {
             if (response.status > 0)
-                $rootScope.errorMsg = response.status + ': ' + response.data;
-        }, function (evt) {
+              $rootScope.errorMsg = response.status + ': ' + response.data;
+        }, (evt) => {
             file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
         });
       }   

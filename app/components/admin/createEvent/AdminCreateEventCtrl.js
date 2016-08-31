@@ -1,15 +1,17 @@
 'use strict';
 
 const AdminCreateEventCtrl = (app) => {
-	app.controller('AdminCreateEventCtrl', ['$rootScope', '$scope', '$http', 'Upload', 'createEventRESTResource', ($rootScope, $scope, $http, Upload, resource) => {
+	app.controller('AdminCreateEventCtrl', ['$rootScope', '$scope', '$http', 'Upload', '$window', 'createEventRESTResource', ($rootScope, $scope, $http, Upload, $window, resource) => {
 		$scope.errors = [];
 		$scope.theEvents = [];
 		$scope.theSpeakers = [];
 		$scope.newEvent = {};
 		$scope.hideModal = true;
+    $scope.hideVenueModal = true;
     $scope.hideEventPreview = true;
-    $scope.speakersAdded = false;
+    $scope.speakersAdded = 0;
     $scope.displaySpeakerDivStyle = false;
+    $scope.previewSpeakers = [];
 
 
     let DataForEditingEvents = resource();
@@ -44,26 +46,34 @@ const AdminCreateEventCtrl = (app) => {
     };
 
     $scope.createNewEvent = (newEventData) => {
-      newEventData.newEventHeaderImage = $rootScope.uploadedFile.name ? $rootScope.uploadedFile.size + '-' + $rootScope.uploadedFile.name : '';
+      if ($rootScope.eventHeaderImg.name) {
+        newEventData.newEventHeaderImage = $rootScope.eventHeaderImg.name ? $rootScope.eventHeaderImg.size + '-' + $rootScope.eventHeaderImg.name : '';
+      }
+      if ($rootScope.eventVenueImg.name) {
+        newEventData.newEventVenueImg = $rootScope.eventVenueImg.name ? $rootScope.eventVenueImg.size + '-' + $rootScope.eventVenueImg.name : '';
+      }
 
       DataForEditingEvents.createEvent(newEventData, (err, data) => {
         if (err) {
           $scope.errors.push({msg: 'could not save newEvent: ' + $scope.newEvent.eventName});
         }
         if (!err) {
-          // Reset the form model.
-          // vm.project = {};
-          // Set back to pristine.
-          $scope.addNewEventForm.$setPristine();
-          // Since Angular 1.3, set back to untouched state.
-          $scope.addNewEventForm.$setUntouched();
-          alert('Saved');
+
+          $scope.newEvent = {};
+          $rootScope.eventHeaderImg = undefined;
+          $rootScope.eventVenueImg = undefined;
+
+          $window.location.reload();
+          alert('Event Saved');
         }
       });
     };
 
     $scope.closeModalWindow = () => {
       $scope.hideModal = !$scope.hideModal;
+    };
+    $scope.closeVenueModal = () => {
+      $scope.hideVenueModal = !$scope.hideVenueModal;
     };
 
     $scope.toggleEventPreview = () => {
@@ -72,18 +82,19 @@ const AdminCreateEventCtrl = (app) => {
 
     $scope.getPreviewSpeakers = (theSpeakers) => {
       if ($scope.newEvent.speakers) {
-        $scope.speakersAdded = true;
-        if (!$scope.newEvent.newEventName && !$scope.newEvent.eventAboutTabText && $scope.speakersAdded) {
-
-          $scope.displaySpeakerDivStyle = true;
-        }
+        $scope.displaySpeakerDivStyle = true;
         let keysArr = Object.keys($scope.newEvent.speakers);
-        return $scope.theSpeakers.filter(function (speaker) {
-          return keysArr.indexOf(speaker.id.toString()) !== -1;
+        return $scope.theSpeakers.filter( (speaker) => {
+          $scope.speakersAdded++;
+          return keysArr.indexOf(speaker.id.toString()) !== -1 && $scope.newEvent.speakers[speaker.id] !== null;
         });
         
       }
     }
+
+   /* $scope.$watchCollection( $scope.previewSpeakers, (newVal, oldVal) => {
+      alert('new: ', newVal, '   old:   ', oldVal);
+      } )*/
 
 	}])
 }

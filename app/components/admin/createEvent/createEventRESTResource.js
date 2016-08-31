@@ -4,21 +4,21 @@ import * as customFunctions from '../../shared/methods/common-functions.js';
 
 const createEventRESTResource = (app) => {
 
-	app.factory('createEventRESTResource', ['$http', function($http) {
+	app.factory('createEventRESTResource', ['$http', ($http) => {
 
-		return function(resourceName, callback) {
+		return (resourceName, callback) => {
 			return {
-				getAllEvents: function(callback) {
+				getAllEvents: (callback) => {
 					$http.get('/api/allevents')
           .success(customFunctions.handleSuccess(callback))
           .error(customFunctions.handleError(callback));
 				},
-				getAllSpeakers: function(callback) {
+				getAllSpeakers: (callback) => {
 					$http.get('/api/contacts')
           .success(customFunctions.handleSuccess(callback))
           .error(customFunctions.handleError(callback));
 				},
-				createEvent: function(resourceData, callback) {
+				createEvent: (resourceData, callback) => {
 				/*let file = $scope.newEvent;
         let uploadUrl = '/api/createevent';
         let fd = new FormData();

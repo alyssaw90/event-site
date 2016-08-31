@@ -43,7 +43,8 @@ models.sql.authenticate()
 });
 
 
-let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const continentColors = {'North America': '#007233', 'South America': '#D13900', 'Africa': '#B4009E', 'Asia': '#0072C6', 'Europe': '#442359', 'Oceania': '#008272'};
 
 module.exports = (router) => {
   router.use(bodyparser.json());
@@ -59,7 +60,8 @@ module.exports = (router) => {
     .then(function() {
       return Contact.findAll({
         where: {
-          showOnMeetTheTeamPage: true
+          showOnMeetTheTeamPage: true,
+          isPublished: true
         }
       })
     })
@@ -151,7 +153,7 @@ module.exports = (router) => {
         eventObj.colNum = Math.floor(12 / upcomingEvents.length);
         eventObj.eventName = upcomingEvents[i].eventName;
         eventObj.eventUrl = upcomingEvents[i].eventUrl;
-        eventObj.eventHighlightColor = upcomingEvents[i].eventHighlightColor;
+        eventObj.eventHighlightColor = continentColors[upcomingEvents[i].eventContinent];
         eventObj.eventHomepageImage = upcomingEvents[i].eventHomepageImage;
 
         outputArr.push(eventObj)
@@ -207,13 +209,13 @@ module.exports = (router) => {
   /////////////////////////////////////////////////////////////////////////////////////////*/
 
   //verify login
-  router.get('/user/checklogin', eatAuth, (req, res) => {
+  router.get('/user/checklogin', /*eatAuth,*/ (req, res) => {
     console.log(clc.white.bgGreen(':::::::::::::    '), req);
     res.end('end');
   });
 
   //get all contacts for editing
-  router.get('/contacts', eatAuth, (req, res) => {
+  router.get('/contacts', /*eatAuth,*/ (req, res) => {
     models.sql.sync()
     .then( () => {
       Contact.findAll()
@@ -224,7 +226,7 @@ module.exports = (router) => {
   });
 
   //get all events for edit events tab
-  router.get('/allevents', eatAuth, (req, res) => {
+  router.get('/allevents', /*eatAuth,*/ (req, res) => {
     models.sql.sync()
     .then( () => {
       return Event.findAll();
@@ -251,8 +253,8 @@ module.exports = (router) => {
   });
 
   // create new event
-  router.post('/createevent', eatAuth, (req, res, next) => {
-
+  router.post('/createevent', /*eatAuth,*/ (req, res, next) => {
+    console.log(clc.white.bgBlue('REQ.BODY::::    '), req.body);
     models.sql.sync()
     .then(function () {
       Event.create({
@@ -267,14 +269,22 @@ module.exports = (router) => {
         eventHeaderImage: req.body.newEventHeaderImage,
         eventContinent: req.body.newEventContinent,
         isPublished: req.body.publishStatus,
-        eventAboutTabText: req.body.eventAboutTabText
+        eventAboutTabText: req.body.eventAboutTabText,
+        eventVenueName: req.body.newEventVenueName,
+        eventVenueAddressLine1: req.body.newVenduAddressLine1,
+        eventVenueAddressLine2: req.body.newVenueAddressLine2,
+        eventParkingInfo: req.body.newVenueParkingInfo,
+        eventVenueImg: req.body.newEventVenueImg
       })
       .then( (newEvent) => {
         models.sql.sync()
         .then( () => {
           let speakersArr = [];
           for(let key in req.body.speakers){
-            speakersArr.push({speakerId: key, position: req.body.speakers[key]  });    
+            if (req.body.speakers[key]) {
+              speakersArr.push({speakerId: key, position: req.body.speakers[key]  });    
+              
+            }
            
           }
           
@@ -292,7 +302,7 @@ module.exports = (router) => {
 
 
   //route to create speakers
-  router.post('/addspeakers', eatAuth, (req, res) => {
+  router.post('/addspeakers', /*eatAuth,*/ (req, res) => {
     models.sql.sync()
     .then( () => {
       let speakerEmail = req.body.newMsTeamEmail ? req.body.newMsTeamEmail : 'plugfests@microsoft.com';
@@ -305,7 +315,8 @@ module.exports = (router) => {
         showOnMeetTheTeamPage: req.body.showOnMeetTheTeamPage,
         meetTheTeamPageOrder: req.body.meetTheTeamPageOrder,
         msTeamTitle: req.body.newMsTeamTitle,
-        headShot: req.body.headshot
+        headShot: req.body.headshot,
+        isPublished: req.body.showOnMeetTheTeamPage
       });
       res.end();
     });

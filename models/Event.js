@@ -29,27 +29,16 @@ module.exports = (sql, DataTypes) => {
     eventEndDate: DataTypes.DATE, // the end date...
     eventHeaderImage: DataTypes.TEXT, //link to header image
     eventHomepageImage: DataTypes.TEXT, //link to homepage image
-    eventHighlightColor: { 
-      type: DataTypes.TEXT,
-      get: function() {
-        let continent = this.getDataValue('eventContinent');
-        let continentColors = {'North America': 'ffb900', 'South America': '107c10', 'Africa': 'e81123', 'Asia': '0078d7', 'Europe': '5c2d91', 'Oceania': 'b4009e'};
-        return continentColors[continent];
-      }
-    }, //what color to use to highlight the homepage
     eventFuturePageImage: DataTypes.TEXT, //image to appear on event slide on homepage
     eventAboutTabText: {
       type: DataTypes.TEXT,
       required: true
     }, //text for About Page
-    /*  eventSlideshowImage: {
-        type: DataTypes.TEXT,
-        unique: true,
-        get: function () {
-          return randomTabImages[Math.floor(Math.random() * randomTabImages.length)]
-        }
-      },*/ //image for front page slider
-    eventSpeakers: DataTypes.STRING
+    eventVenueName: DataTypes.STRING,
+    eventVenueAddressLine1: DataTypes.STRING,
+    eventVenueAddressLine2: DataTypes.STRING,
+    eventParkingInfo: DataTypes.TEXT,
+    eventVenueImg: DataTypes.STRING
   },
   {
     hasTrigger: true,

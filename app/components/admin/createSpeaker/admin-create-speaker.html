@@ -8,7 +8,7 @@
  			<section class="col_12 internetExplorer the-team-section" role="presentation">
   		  <h4>{{newSpeaker.newFirstName + ' ' +  newSpeaker.newLastName}}</h4>
   		  <h5>{{newSpeaker.newMsTeamTitle}}</h5>
-  		  <img class="pull-left" data-ng-if="uploadedFile.name" data-ng-src="/uploads/{{uploadedFile.size + '-' + uploadedFile.name}}" />
+  		  <img class="pull-left" data-ng-if="newSpeakerImg.name" data-ng-src="/uploads/{{newSpeakerImg.size + '-' + newSpeakerImg.name}}" />
 
   		  <p data-ng-bind-html="newSpeaker.newSpeakerDescription"></p>
   		  <hr aria-hidden="true" role="presentation" class="alt1" />
@@ -17,13 +17,13 @@
     <section role="presentation" class="col_12 internetExplorer">
     	<div data-ng-controller="AdminFileUploadCtrl">
 	  	  <p>Select Headshot</p>
-	  		<button name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles)">Select File</button>
+	  		<button name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'newSpeakerImg')">Select File</button>
 	  		<br><br>
 	  		File:
-	  		<div style="font:smaller">{{uploadedFile.path}}{{uploadedFile.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
-	  		    <span class="progress" ng-show="uploadedFile.progress >= 0">
-	  		        <div style="width:{{uploadedFile.progress}}%"  
-	  		             ng-bind="uploadedFile.progress + '%'"></div>
+	  		<div style="font:smaller">{{newSpeakerImg.path}}{{newSpeakerImg.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+	  		    <span class="progress" ng-show="newSpeakerImg.progress >= 0">
+	  		        <div style="width:{{newSpeakerImg.progress}}%"  
+	  		             ng-bind="newSpeakerImg.progress + '%'"></div>
 	  		    </span>
 	  		</div>     
 	  		{{errorMsg}}
@@ -53,14 +53,15 @@
 				<textarea class="col_12" data-ng-model="newSpeaker.newSpeakerDescription" name="newSpeakerDescription" id="newSpeakerDescription" style="min-height: 200px" required="true"></textarea>
 				<radiogroup class="col_12">
 					<label for="publishedTrue">Publish Now</label>
-					<input type="radio" id="publishedTrue" name="publishStatus" value="true">
+					<input type="radio" data-ng-model="newSpeaker.publishStatus" id="publishedTrue" name="publishStatus" value="true">
 					<br>
 					<label for="publishedFalse">Save as Draft</label>
-					<input type="radio" id="publishedFalse" name="publishStatus" value="false" checked="true">
+					<input type="radio" data-ng-model="newSpeaker.publishStatus" id="publishedFalse" name="publishStatus" value="false" checked="true">
 				</radiogroup>
 				<button type="button" class="medium float-left" style="margin: 5px" id="cancel-new-event-button">Cancel</button>
 				<button type="submit" class="medium float-left green" style="margin: 5px" id="save-new-event-as-draft-button">Save</button>
 			</form>
     </section>
+    {{newSpeaker}}
   </main>
 </div>

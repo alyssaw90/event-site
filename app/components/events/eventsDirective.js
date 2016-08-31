@@ -13,6 +13,8 @@ const eventsDirective = (app) => {
 					const $lastTab = jQuery('#eventsPageUl').find('li:last-child');
 					const $tabLinks = jQuery('ul.tabs a[href^="#"]');
 					const $tabContent = jQuery('.tab-content');
+					$firstTab.addClass('first').addClass('current');
+					$lastTab.addClass('last');
 
 
 					function moveTab(e, self) {	

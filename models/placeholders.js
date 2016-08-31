@@ -2554,6 +2554,7 @@ setTimeout(function() {
 
 	.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Michael',
 				lastName: 'Bowman',
 				newsletterSubscription: true,
@@ -2572,6 +2573,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Kwabena (K.B.)',
 				lastName: 'Badu-Antwi',
 				newsletterSubscription: true,
@@ -2591,6 +2593,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Prakash',
 				lastName: 'Narayanan',
 				newsletterSubscription: true,
@@ -2609,6 +2612,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Diane',
 				lastName: 'Larsen',
 				contactDescription: 'Diane Larsen is a Senior Program Manager in the Enterprise Cloud Group. She has been with Microsoft since 2000, and has been working on protocol interoperability initiatives for Windows and Windows Server since 2008. Prior to this role, she wrote documentation for SQL Server, managed a content publishing team, and managed web development projects.<br /><br />Diane graduated from the University of Washington with a Bachelor of Science degree in Technical Communication. She spends as much time as possible outdoors, watches movies, takes classes, and travels to warmer places during the really rainy season.',
@@ -2625,6 +2629,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Rich',
 				lastName: 'McLain',
 				newsletterSubscription: true,
@@ -2643,6 +2648,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Donny',
 				lastName: 'Luu',
 				newsletterSubscription: true,
@@ -2661,6 +2667,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Bailey',
 				lastName: 'Chauner',
 				newsletterSubscription: true,
@@ -2679,6 +2686,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Andrew',
 				lastName: 'Davidoff',
 				newsletterSubscription: true,
@@ -2697,6 +2705,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Jinghui',
 				lastName: 'Zhang',
 				newsletterSubscription: true,
@@ -2715,6 +2724,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Pui',
 				lastName: 'Leung',
 				newsletterSubscription: true,
@@ -2733,6 +2743,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Tom',
 				lastName: 'Jebo',
 				newsletterSubscription: true,
@@ -2751,6 +2762,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Jingyu',
 				lastName: 'Shao',
 				newsletterSubscription: true,
@@ -2769,6 +2781,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Jinlin',
 				lastName: 'Xu',
 				newsletterSubscription: true,
@@ -2787,6 +2800,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Christine',
 				lastName: 'Huang',
 				newsletterSubscription: true,
@@ -2805,6 +2819,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Tarun',
 				lastName: 'Chopra',
 				newsletterSubscription: true,
@@ -2823,6 +2838,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Tom',
 				lastName: 'Devey',
 				newsletterSubscription: true,
@@ -2841,6 +2857,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Hector',
 				lastName: 'Sandino',
 				newsletterSubscription: true,
@@ -2858,6 +2875,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Bryan S.',
 				lastName: 'Burgin',
 				newsletterSubscription: true,
@@ -2876,6 +2894,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Feng',
 				lastName: 'Han',
 				newsletterSubscription: true,
@@ -2894,6 +2913,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Guozhao',
 				lastName: 'Wu',
 				newsletterSubscription: true,
@@ -2911,6 +2931,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Obaid',
 				lastName: 'Farooqi',
 				newsletterSubscription: true,
@@ -2929,6 +2950,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Guqing',
 				lastName: 'Fang',
 				newsletterSubscription: true,
@@ -2947,6 +2969,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Mai-Ing',
 				lastName: 'Cheng',
 				newsletterSubscription: true,
@@ -2964,6 +2987,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Yuqing',
 				lastName: 'Zhao',
 				newsletterSubscription: true,
@@ -2981,6 +3005,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Michelle',
 				lastName: 'Hammond',
 				newsletterSubscription: true,
@@ -2998,6 +3023,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'David',
 				lastName: 'Robinson',
 				msTeamTitle: 'Principal Group SW Eng Mgr',
@@ -3009,6 +3035,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Congyong',
 				lastName: 'Su',
 				msTeamTitle: 'Senior Software Eng Mgr',
@@ -3018,6 +3045,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Baoming',
 				lastName: 'Yu',
 				msTeamTitle: '',
@@ -3027,6 +3055,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Layla',
 				lastName: 'Liu',
 				msTeamTitle: 'Software Engineer II ',
@@ -3036,6 +3065,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Dong',
 				lastName: 'Liu',
 				msTeamTitle: 'Software Engineer',
@@ -3045,6 +3075,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Challen',
 				lastName: 'He',
 				msTeamTitle: 'Software Engineer II ',
@@ -3054,6 +3085,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Ted',
 				lastName: 'Way',
 				newsletterSubscription: true,
@@ -3071,6 +3103,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Darwin',
 				lastName: 'Schweitzer',
 				newsletterSubscription: true,
@@ -3088,6 +3121,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Seth',
 				lastName: 'Mottaghinejad',
 				newsletterSubscription: false,
@@ -3105,6 +3139,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Mark',
 				lastName: 'Stafford',
 				contactDescription: 'Mark Stafford is a Program Manager at Microsoft contributing to the future of the OData protocol. Mark has a unique perspective on data access technologies given his many years of pre-Microsoft experience building and deploying real-world applications, managing developers and directing a business intelligence team.',
@@ -3122,6 +3157,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Jamie',
 				lastName: 'Olson',
 				contactDescription: 'Jamie Olson is a Senior Data Scientist at Microsoft, where he works with customers and partners to build advanced analytics application, designing and developing end-to-end data pipelines across the entire range of Cortana Analytics products.  He has more than 10 years of experience with the R programming language, the last four of which have focused on using R inside Big Data platforms like Hadoop. Jamie’s expertise in computer science, machine learning and big data allows customers to quickly and easily transition and scale their advanced analytics projects with Microsoft technologies.',
@@ -3138,6 +3174,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Vivek',
 				lastName: 'Gupta',
 				contactDescription: 'Vivek Gupta is a Senior Data Scientist at Microsoft. He works with customers to understand their analytical business problems and how to use the Cortana Intelligence Suite to help solve them. Most recently, Vivek was part of Nokia’s Smart Devices division where he worked on applying data analytics solution to problems in the areas of understanding user behavior around location information, photography and application usage. Prior to joining Nokia, Vivek worked in a variety of industries designing and building backend services.',
@@ -3154,6 +3191,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Tristan',
 				lastName: 'Davis',
 				contactDescription: 'Tristan Davis is the Group Program Manager of the APIs & Extensions team within Office Extensibility. His team is responsible for improvements to the Office 365 APIs, the new Apps for Office client extensibility model, as well as all existing flavors of Office programmability. Prior to joining the team, he was a member of the Word program management team from Office 2003 through Office 2013.',
@@ -3170,6 +3208,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Jos',
 				lastName: ' de Bruijn',
 				contactDescription: 'Jos de Bruijn is a Senior Program Manager in the Database Systems team. He works on in-memory technologies in SQL Server. His main focus is on query processing, programmability, and transaction semantics. In a previous life, he obtained a PhD in knowledge representation and semantic web technology, and worked in academia for several years as an assistant professor.',
@@ -3186,6 +3225,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Kevin',
 				lastName: 'Farlee',
 				contactDescription: 'Kevin Farlee has over 30 years in the industry, in both database as well as storage management software. In his current role as a Senior Program Manager on the Microsoft SQL Server team, he is responsible for the SQL Server High Availability roadmap, as well as the high performance OLTP and Analytics features within the SQL Server product.',

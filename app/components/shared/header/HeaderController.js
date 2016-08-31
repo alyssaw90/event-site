@@ -1,7 +1,7 @@
 'use strict';
 
 const HeaderController = (app) => {
-	app.controller('HeaderController', ['$scope', '$http', 'headerRESTResource', function($scope, $http, resource) {
+	app.controller('HeaderController', ['$scope', '$http', 'headerRESTResource', ($scope, $http, resource) => {
 		$scope.errors = [];
 		$scope.siteStyle = [];
 		$scope.sliderImgsHeights = [];
@@ -10,7 +10,7 @@ const HeaderController = (app) => {
 
 		$scope.getSiteStyle = () => {
 
-			SiteStyle.getSiteStyle(function (err, data) {
+			SiteStyle.getSiteStyle( (err, data) => {
         if (err) {
           return $scope.errors.push({msg: 'could not retrieve header events'});
         };
