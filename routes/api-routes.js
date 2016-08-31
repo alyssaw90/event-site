@@ -44,7 +44,6 @@ models.sql.authenticate()
 
 
 let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-let continentColors = {'North America': 'ffb900', 'South America': '107c10', 'Africa': 'e81123', 'Asia': '0078d7', 'Europe': '5c2d91', 'Oceania': 'b4009e'};
 
 module.exports = (router) => {
   router.use(bodyparser.json());
@@ -145,7 +144,6 @@ module.exports = (router) => {
           startYear = new Date(upcomingEvents[i].eventStartDate).getFullYear();
         }
 
-        eventObj.continentColor = continentColors[upcomingEvents[i].eventContinent];
         eventObj.eventDates = eventDates;
         eventObj.headerEventDates = eventMonth ? eventMonth + ', ' + startYear : startYear;
         eventObj.startYear = startYear;
@@ -215,7 +213,7 @@ module.exports = (router) => {
   });
 
   //get all contacts for editing
-  router.get('/contacts'/*, eatAuth*/, (req, res) => {
+  router.get('/contacts', eatAuth, (req, res) => {
     models.sql.sync()
     .then( () => {
       Contact.findAll()
@@ -226,7 +224,7 @@ module.exports = (router) => {
   });
 
   //get all events for edit events tab
-  router.get('/allevents', (req, res) => {
+  router.get('/allevents', eatAuth, (req, res) => {
     models.sql.sync()
     .then( () => {
       return Event.findAll();
@@ -253,12 +251,13 @@ module.exports = (router) => {
   });
 
   // create new event
-  router.post('/createevent', /*eatAuth,*/ (req, res, next) => {
-    console.log(clc.bgGreen('::::::::::::   '), req.body);
+  router.post('/createevent', eatAuth, (req, res, next) => {
+
     models.sql.sync()
     .then(function () {
       Event.create({
         eventName: req.body.newEventName,
+        eventUrl: req.body.eventUrl,
         eventRegistrationLink: req.body.newEventRegistrationLink,
         eventStartDate: req.body.newEventStartDate,
         eventEndDate: req.body.newEventEndDate,
@@ -266,7 +265,7 @@ module.exports = (router) => {
         eventState: req.body.newEventState,
         eventCountry: req.body.newEventCountry,
         eventHeaderImage: req.body.newEventHeaderImage,
-        eventHighlightColor: req.body.newEventThemeColor,
+        eventContinent: req.body.newEventContinent,
         isPublished: req.body.publishStatus,
         eventAboutTabText: req.body.eventAboutTabText
       })
@@ -293,7 +292,7 @@ module.exports = (router) => {
 
 
   //route to create speakers
-  router.post('/addspeakers', /*eatAuth,*/ (req, res) => {
+  router.post('/addspeakers', eatAuth, (req, res) => {
     models.sql.sync()
     .then( () => {
       let speakerEmail = req.body.newMsTeamEmail ? req.body.newMsTeamEmail : 'plugfests@microsoft.com';

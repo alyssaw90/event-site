@@ -24,8 +24,8 @@
 			<form id="addNewEventForm" name="addNewEventForm" method="post" enctype="multipart/form-data" data-ng-init="getAllSpeakers();" data-ng-submit="createNewEvent(newEvent);">
 				<label class="col_12" for="newEventName">Event Name*</label>
 				<input class="col_12" type="text" data-ng-model="newEvent.newEventName" name="newEventName" id="newEventName" required="true">
-				<!-- <label class="col_12" for="new-event-url">Event URL</label>
-				<input class="col_12" type="ur" data-ng-model="newEvent." name="new-event-url" id="new-event-url"> -->
+				<label class="col_12" for="eventUrl">Event URL (cAsE sEnSiTiVe)*</label>
+				<input class="col_12" type="ur" data-ng-model="newEvent.eventUrl" name="eventUrl" id="eventUrl">
 				<label class="col_12" for="newEventRegistrationLink">Event Registration Link</label>
 				<input class="col_12" type="url" data-ng-model="newEvent.newEventRegistrationLink" name="newEventRegistrationLink" id="newEventRegistrationLink">
 				<label class="col_12" for="newEventCity">Event City*</label>
@@ -34,15 +34,31 @@
 				<input class="col_12" type="text" data-ng-model="newEvent.newEventState" name="newEventState" id="newEventState">
 				<label class="col_12" for="newEventCountry">Event Country</label>
 				<input class="col_12" type="text" data-ng-model="newEvent.newEventCountry" name="newEventCountry" id="newEventCountry">
-				<label class="col_12" for="newEventStartDate">Event Start Date (Can include time of day)</label>
-				<input class="col_12" type="date" data-ng-model="newEvent.newEventStartDate" name="newEventStartDate" id="newEventStartDate">
-				<label class="col_12" for="newEventEndDate">Event End Date (Can include time of day)</label>
-				<input class="col_12" type="date" data-ng-model="newEvent.newEventEndDate" name="newEventEndDate" id="newEventEndDate">
-				<label class="col_12" for="newEventThemeColor">Choose Event Theme Color</label>
-				<input class="col_12" type="color" data-ng-model="newEvent.newEventThemeColor" name="newEventThemeColor" id="newEventThemeColor">
-				<!-- <label class="col_12" for="newEventHeaderImage">Choose Header Image for Event Page</label>
-				<input class="col_12" type="file" data-ng-model="newEvent.newEventHeaderImage" name="newEventHeaderImage" id="newEventHeaderImage"> -->
-				<br>
+				<label class="col_3" for="newEventStartDate">Event Start Date (Can include time of day)</label>
+				<input class="col_3" type="date" data-ng-model="newEvent.newEventStartDate" name="newEventStartDate" id="newEventStartDate">
+				<label class="col_3" for="newEventEndDate">Event End Date (Can include time of day)</label>
+				<input class="col_3" type="date" data-ng-model="newEvent.newEventEndDate" name="newEventEndDate" id="newEventEndDate">
+				<label class="col_12" for="continentsInput">Choose Event Continent Color</label>
+				<radiogroup class="col_12" id="continentsInput">
+					<label for="northAmerica">North America</label>
+					<input type="radio" id="northAmerica" name="newEventContinent" value="North America">
+					&nbsp;
+					<label for="southAmerica">South America</label>
+					<input type="radio" id="southAmerica" name="newEventContinent" value="South America">
+					&nbsp;
+					<label for="asia">Asia</label>
+					<input type="radio" id="asia" name="newEventContinent" value="Asia">
+					&nbsp;
+					<label for="europe">Europe</label>
+					<input type="radio" id="europe" name="newEventContinent" value="Europe">
+					&nbsp;
+					<label for="africa">Africa</label>
+					<input type="radio" id="africa" name="newEventContinent" value="Africa">
+					&nbsp;
+					<label for="australia">Australia</label>
+					<input type="radio" id="australia" name="newEventContinent" value="africa">
+				</radiogroup>
+				<br><br><br>
 				<div>
 					<a class="button medium float-left" target="_self"  href="" data-ng-click="closeModalWindow()">Select Speakers</a>
 					<!-- lightbox container hidden with data-ng-hide -->
@@ -62,6 +78,10 @@
 					</div>
 					
 				</div>
+				<br>
+				<ul>
+					<li data-ng-repeat="speaker in getPreviewSpeakers(theSpeakers)">{{speaker.fullName}}</li>
+				</ul>
 				<label class="col_12" for="new-event-description">Event Description for About page</label>
 				<br>
 				<textarea class="col_12" data-ng-model="newEvent.eventAboutTabText" name="new-event-description" id="new-event-description" style="min-height: 200px" required="true"></textarea>

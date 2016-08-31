@@ -21,7 +21,7 @@ const userLoggingRESTResources = (app) => {
                 $cookies.put('interopAdmin', data.admin);
                 $window.sessionStorage.token = data.token;
                 $http.defaults.headers.common.Authorization = data.token;
-                console.log('cookies   ', $cookies.get())
+                console.log('cookies   ', $cookies.getAll())
                 callback(null);
     	       })
     	       .error( (data) => {

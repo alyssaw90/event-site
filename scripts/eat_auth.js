@@ -11,14 +11,12 @@ module.exports = (secret) => {
 		let token = req.cookies.token || req.headers.token || req.body.token || req.headers.authorization;
 		if (!token) {
 			console.log(clc.white.bgRed('no token in request'));
-			return res.status(401).redirect('/private');
-			// return res.status(401).json({msg: 'not authorized'});
+			return res.status(401).json({msg: 'not authorized'});
 		}
 		eat.decode(token, secret, (err, decoded) => {
 			if (err) {
 				console.log(clc.white.bgRed('Error, login failed:   '), err);
-				return res.status(401).redirect('/private');
-				// return res.status(401).json({msg: 'not authorized'});
+				return res.status(401).json({msg: 'not authorized'});
 			}
 
 			User.findOne({where: {id: decoded.id}})
@@ -26,8 +24,7 @@ module.exports = (secret) => {
 				// console.log(user);
 				if (!user) {
 					console.log(clc.white.bgRed('user not found'));
-					return res.status(401).redirect('/private');
-					// return res.status(401).json({msg: 'not authorized'});
+						return res.status(401).json({msg: 'not authorized'});
 				}
 
 				req.user = user;
@@ -35,8 +32,7 @@ module.exports = (secret) => {
 			})
 			.error( (error) => {
 				console.log(clc.white.bgRed( 'Error:  '), err);
-				return res.status(401).redirect('/private');
-				// return res.status(401).json({msg: 'not authorized'});
+				return res.status(401).json({msg: 'not authorized'});
 			});
 		});
 	};

@@ -1,17 +1,21 @@
 'use strict';
 
-const fs = require('fs');
-const path = require('path');
-const clc = require('cli-color');
-
-module.exports = function (sql, DataTypes) {
+module.exports = (sql, DataTypes) => {
 
   return sql.define('Event', {
-    eventName: DataTypes.STRING,
+    eventName: {
+      type: DataTypes.STRING,
+      required: true
+    },
     isPublished: DataTypes.BOOLEAN,
     lastModifiedBy: DataTypes.STRING,
     eventRegistrationLink: DataTypes.STRING, //link to registrationfor event
-    eventUrl: DataTypes.STRING,
+    eventUrl: {
+      type: DataTypes.STRING,
+      // unique: true,
+      allowNull: true,
+      // required: true
+    },
     eventLocation: {
       type: DataTypes.STRING,
       set: function (val) {
@@ -25,9 +29,19 @@ module.exports = function (sql, DataTypes) {
     eventEndDate: DataTypes.DATE, // the end date...
     eventHeaderImage: DataTypes.TEXT, //link to header image
     eventHomepageImage: DataTypes.TEXT, //link to homepage image
-    eventHighlightColor: DataTypes.TEXT, //what color to use to highlight the homepage
+    eventHighlightColor: { 
+      type: DataTypes.TEXT,
+      get: function() {
+        let continent = this.getDataValue('eventContinent');
+        let continentColors = {'North America': 'ffb900', 'South America': '107c10', 'Africa': 'e81123', 'Asia': '0078d7', 'Europe': '5c2d91', 'Oceania': 'b4009e'};
+        return continentColors[continent];
+      }
+    }, //what color to use to highlight the homepage
     eventFuturePageImage: DataTypes.TEXT, //image to appear on event slide on homepage
-    eventAboutTabText: DataTypes.TEXT, //text for About Page
+    eventAboutTabText: {
+      type: DataTypes.TEXT,
+      required: true
+    }, //text for About Page
     /*  eventSlideshowImage: {
         type: DataTypes.TEXT,
         unique: true,

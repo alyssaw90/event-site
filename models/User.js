@@ -1,6 +1,5 @@
 'use strict';
 
-const clc = require('cli-color');
 const bcrypt = require('bcrypt-nodejs');
 const eat = require('eat');
 
