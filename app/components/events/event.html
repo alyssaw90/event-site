@@ -22,6 +22,7 @@
 		</ul>
     <div id="aboutTab" data-ng-if="events.event.eventVenueName || events.event.eventVenueAddressLine1 || events.event.eventVenueAddressLine2 || events.event.eventParkingInfo || events.event.eventVenueImg" class="tab-content clearfix eventTabDiv" style="display: block" >
       <h2>{{events.event.eventName}}</h2>
+      <h4>{{getReadableDate(events.event.eventStartDate) + ' - ' + getReadableDate(events.event.eventEndDate) }}</h4>
       <p>{{events.event.eventAboutTabText}}</p>
     </div>
     <div id="venueTab" data-ng-if="events.event.eventAboutTabText" class="tab-content clearfix eventTabDiv" style="display: none" >

@@ -29,10 +29,18 @@ const EventsCtrl = (app) => {
 				for (let i = 0, len = $scope.events.speakers.length; i < len; i++) {
 					 $scope.events.speakers[i].headShot = 'uploads/' + $scope.events.speakers[i].headShot;
 				}
+				for (let i = 0, len = $scope.events.length; i < len; i++) {
+					$scope.events.tabs[i].tabContent = $sce.trustAsHtml($scope.events.tabs[i].tabContent);
+
+				}
       })
 			
 		
 		};
+
+		$scope.getReadableDate = (dateObj) => {
+			return new Date(dateObj).toDateString();
+		}
 
 
 		$scope.showOnlyFirst = function(index) {
