@@ -209,9 +209,8 @@ module.exports = (router) => {
   /////////////////////////////////////////////////////////////////////////////////////////*/
 
   //verify login
-  router.get('/user/checklogin', /*eatAuth,*/ (req, res) => {
-    console.log(clc.white.bgGreen(':::::::::::::    '), req);
-    res.end('end');
+  router.get('/user/checklogin', eatAuth, (req, res) => {
+    res.json({authenticated: true});
   });
 
   //get all contacts for editing

@@ -232,30 +232,37 @@ eventsApp
 	}
 
 }])
-.run(['$rootScope', '$location', '$anchorScroll', '$routeParams', '$http', 'Analytics', '$cookies', function ($rootScope, $location, $anchorScroll, $routeParams, $http, Analytics, $cookies) {
+.run(['$rootScope', '$location', '$anchorScroll', '$routeParams', '$http', 'Analytics', '$cookies', ($rootScope, $location, $anchorScroll, $routeParams, $http, Analytics, $cookies) => {
 	//start Google analytics
 	Analytics.pageView();
 	$rootScope.isAuthenticated = false;
 	$cookies.put('test_token', 'I am a test token');
 	
-	$rootScope.$on('$viewContentLoaded', function () {
+	$rootScope.$on('$viewContentLoaded', () => {
 			// document.getElementById('screenreader-summary').trigger('focus');
 		
 	});
 
-	$rootScope.$on('$routeChangeSuccess', function(newRoute, oldRoute) { 
+	$rootScope.$on( '$routeChangeStart', function(event, next, current) {   
 
-		/*if ( /\/admin.*$/.test($location.path()) ) {
-			$http.get('/verifylogin')
+		if ( /\/admin.*$/.test($location.path()) ) {
+			$http.get('/api/user/checklogin')
 			.success( (data) => {
-				// alert('hola');
+				console.log('data   ', data);
+				alert('hola');
 				
 			})
 			.error( (err) => {
-				// alert('adios');
+				$cookies.remove('token');
+				alert('adios');
+				$location.path('/admin/login');
 			})
 		}
-*/
+	});
+
+	$rootScope.$on('$routeChangeSuccess', (newRoute, oldRoute) => { 
+
+
 		// $location.hash($routeParams.scrollTo);
     $anchorScroll();
 

@@ -2,7 +2,7 @@
 
 const AllPagesCtrl = (app) => {
 
-	app.controller('AllPagesCtrl', ['$scope', '$location', '$route', '$rootScope', function($scope, $location, $route, $rootScope) {
+	app.controller('AllPagesCtrl', ['$scope', '$location', '$route', '$rootScope', '$cookies', ($scope, $location, $route, $rootScope, $cookies) => {
 		$scope.showSlider = false;
 		$scope.announceOnViewChange;
 		$scope.currentPath = $location.path();
@@ -18,13 +18,15 @@ const AllPagesCtrl = (app) => {
 			}
 		}
 
-		$scope.isAdminPage = (pageUrl) => {
+		$scope.isLoggedIn = () => {
 	   	// return /\/admin.*$/.test(pageUrl);
-	   	return /\/admin.*$/.test(pageUrl);
+	   	// return /\/admin.*$/.test(pageUrl);
+			let tokenLength = $cookies.get('token') ? $cookies.get('token').length : 0;
+			// let showAdminHeader = theToken.length || false;
+	   	return tokenLength > 0;
 		}
 
-		$scope.$on('$locationChangeSuccess', function(event) {
-			
+		$scope.$on('$locationChangeSuccess', (event) => {
 			$scope.currentPath = $location.path();
 		});
 		
@@ -36,7 +38,7 @@ const AllPagesCtrl = (app) => {
 			}
 		}
 
-		$rootScope.$on('$viewContentLoaded', function(next, current) { 
+		$rootScope.$on('$viewContentLoaded', (next, current) => { 
 			$scope.announceOnViewChange = document.title + ', view loaded';
 	 	});
 	

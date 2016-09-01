@@ -26,7 +26,7 @@ const userLoggingRESTResources = (app) => {
                 callback(null);
     	       })
     	       .error( (data) => {
-    	         callback(data);
+                callback(data);
     	       })
     	     },
 	   
