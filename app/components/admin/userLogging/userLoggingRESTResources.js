@@ -15,13 +15,13 @@ const userLoggingRESTResources = (app) => {
     	       .success( (data) => {
                 //set expiration to one day from login
                 let today = new Date();
-                let expired = new Date(today);
-                expired.setDate(today.getDate() + 1); //Set expired date to tomorrow
-                $cookies.put('token', data.token);
-                $cookies.put('interopAdmin', data.admin);
+                let expireDate = new Date(today);
+                expireDate.setDate(today.getDate() + 1); //Set expireDate date to tomorrow
+                $cookies.put('token', data.token, {'expires': expireDate, 'path': '/'});
+                $cookies.put('interopAdmin', data.admin, {'expires': expireDate, 'path': '/'});
                 $window.sessionStorage.token = data.token;
                 $http.defaults.headers.common.Authorization = data.token;
-                console.log('cookies   ', $cookies.getAll())
+                console.log('cookies   ', $cookies.getAll(), '    data:   ', data);
                 callback(null);
     	       })
     	       .error( (data) => {

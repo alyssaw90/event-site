@@ -42,4 +42,4 @@ app.use(compression()) //use compression
 }) //error handling
 .listen(port, () => {
 	console.log(clc.cyanBright('server started on port ' + port + ' at ' + time));
-}); //liste to the port and log when the server has started
+}); //listen to the port and log when the server has started

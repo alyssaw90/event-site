@@ -215,7 +215,7 @@ module.exports = (router) => {
   });
 
   //get all contacts for editing
-  router.get('/contacts', /*eatAuth,*/ (req, res) => {
+  router.get('/contacts', eatAuth, (req, res) => {
     models.sql.sync()
     .then( () => {
       Contact.findAll()
@@ -226,7 +226,7 @@ module.exports = (router) => {
   });
 
   //get all events for edit events tab
-  router.get('/allevents', /*eatAuth,*/ (req, res) => {
+  router.get('/allevents', eatAuth, (req, res) => {
     models.sql.sync()
     .then( () => {
       return Event.findAll();
@@ -253,7 +253,7 @@ module.exports = (router) => {
   });
 
   // create new event
-  router.post('/createevent', /*eatAuth,*/ (req, res, next) => {
+  router.post('/createevent', eatAuth, (req, res, next) => {
     console.log(clc.white.bgBlue('REQ.BODY::::    '), req.body);
     models.sql.sync()
     .then(function () {
@@ -302,7 +302,7 @@ module.exports = (router) => {
 
 
   //route to create speakers
-  router.post('/addspeakers', /*eatAuth,*/ (req, res) => {
+  router.post('/addspeakers', eatAuth, (req, res) => {
     models.sql.sync()
     .then( () => {
       let speakerEmail = req.body.newMsTeamEmail ? req.body.newMsTeamEmail : 'plugfests@microsoft.com';

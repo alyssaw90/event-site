@@ -236,6 +236,7 @@ eventsApp
 	//start Google analytics
 	Analytics.pageView();
 	$rootScope.isAuthenticated = false;
+	$cookies.put('test_token', 'I am a test token');
 	
 	$rootScope.$on('$viewContentLoaded', function () {
 			// document.getElementById('screenreader-summary').trigger('focus');
