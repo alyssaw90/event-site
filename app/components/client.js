@@ -87,6 +87,27 @@ eventsApp
   //tell angular to send verification credentials with requests
   $httpProvider.defaults.withCredentials = true;
 
+  //method to check if user is logged in
+  const requireAuthentication = () => {
+		return {
+	    load: function ($q, $location) {
+        console.log('Can user access route?');
+        var deferred = $q.defer();
+        deferred.resolve();
+        if (g_isloggedIn === true) { // fire $routeChangeSuccess
+            console.log('Yes they can!');
+            return deferred.promise;
+        } else { // fire $routeChangeError
+            console.log('No they cant!');
+            $location.path('/admin/login');
+
+            // I don't think this is still necessary:
+            return $q.reject("'/admin/login'");
+        };
+	    }
+		};
+	};
+
 	$routeProvider
 	.when('/', {
 		templateUrl: '/app/components/homepage/homepage.html',
@@ -164,15 +185,6 @@ eventsApp
 		// controller: 'AdminCreateEventCtrl',
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
-    },
-    resolve: ($q, $location) => {
-      let deferred = $q.defer(); 
-      deferred.resolve();
-      if (!isAuthenticated) {
-         $location.path('/admin/login');
-      }
-
-      return deferred.promise;
     }
 	})
 	.when('/admin/create-event', {
@@ -220,18 +232,6 @@ eventsApp
 	}
 
 }])
-/*.directive('newScript', [function() {
-	return {
-		restrict: 'A',
-		link: function(scope, elem, attr) {
-			console.log('hola');
-	angular.element('.internetExplorer > h2').hide();
-	angular.element('#recentNewsSection').append('</script><script type="text/javascript" src="/app/es6/rssFeed2.js"></script>')
-			
-		}
-	}
-
-}])*/
 .run(['$rootScope', '$location', '$anchorScroll', '$routeParams', '$http', 'Analytics', '$cookies', function ($rootScope, $location, $anchorScroll, $routeParams, $http, Analytics, $cookies) {
 	//start Google analytics
 	Analytics.pageView();

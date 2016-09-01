@@ -19,9 +19,10 @@ const userLoggingRESTResources = (app) => {
                 expireDate.setDate(today.getDate() + 1); //Set expireDate date to tomorrow
                 $cookies.put('token', data.token, {'expires': expireDate, 'path': '/'});
                 $cookies.put('interopAdmin', data.admin, {'expires': expireDate, 'path': '/'});
+                $cookies.put('username', data.username, {'expires': expireDate, 'path': '/'});
+                $cookies.put('useremail', data.email, {'expires': expireDate, 'path': '/'});
                 $window.sessionStorage.token = data.token;
                 $http.defaults.headers.common.Authorization = data.token;
-                console.log('cookies   ', $cookies.getAll(), '    data:   ', data);
                 callback(null);
     	       })
     	       .error( (data) => {

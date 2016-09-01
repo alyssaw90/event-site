@@ -4,13 +4,15 @@ const jQuery = require('jquery');
 const UserLoggingCtrl = (app) => {
 
 	app.controller('UserLoggingCtrl', ['$scope', '$base64', '$cookies', '$timeout', '$location', '$rootScope', 'userLoggingRESTResources', ($scope, $base64, $cookies, $timeout, $location, $rootScope, resource) => {
-		$scope.newSpeaker = {};
+		$scope.user = {};
     $scope.errors = [];
-    $scope.loginForm = {
-      username: 'username',
-      password: 'password'
-    };
-
+    $scope.showSpinner = false;
+    $scope.retryMsg = 'There was a problem with your login, please try again'
+        /*$scope.loginForm = {
+          username: 'username',
+          password: 'password'
+        };*/
+    
 
 		let auth = resource();
 
@@ -18,10 +20,17 @@ const UserLoggingCtrl = (app) => {
     $scope.signIn = (user) => {
 
   		auth.signIn(user, (err) => {
-            
+          
           if (err) {
-            console.log(err);
-            return $scope.errors.push({msg: 'could not log in user'});
+            $scope.showSpinner = true;
+            $timeout( () => {
+              $scope.showSpinner = false;
+              console.log(err);
+              $scope.errors.push({msg: 'could not log in user'});
+              $scope.user = {};
+              return;
+              
+            }, 2000)
           }
           if(!err) {
             $rootScope.isAuthenticated = true;

@@ -22,14 +22,22 @@
 				<i class="fa fa-chevron-up fa-3x"><p>Back to Top</p></i>
 			</section>
     </section> -->
-
-
+    <!-- lightbox container hidden with data-ng-hide -->
 		<section data-ng-controller="UserLoggingCtrl">
+			<div class="lightbox" data-ng-if="showSpinner" >
+			  <div class="inner-lightbox-box">
+			    <p data-ng-if="showSpinner" class="modal-title">{{retryMsg}}</p>
+			    <div class="modal-content">
+				    	<i class="fa fa-spinner fa-spin fa-5x fa-fw logout-spinner"></i>
+			  		<br>
+			  	</div>
+			  </div>
+			</div>
 		  <form data-ng-submit="signIn(user)" name="loginForm" id="loginForm">
-		    <label for="username">Username</label>
-		    <input type="text" name="username" data-ng-model="user.username">
+		    <label for="username">Username/email</label>
+		    <input type="text" name="username" data-ng-model="user.username" placeholder="username/email">
 		    <label for="password">Password</label>
-		    <input type="password" name="password" data-ng-model="user.password">
+		    <input type="password" name="password" data-ng-model="user.password" placeholder="password">
 		    <button type="submit">Sign In</button>
 		  </form>
 		</section>
