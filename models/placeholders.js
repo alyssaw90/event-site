@@ -291,6 +291,32 @@ module.exports = function () {
 				isPublished: true
 			})
 		})
+		.then(function() {
+			return Event.create({
+				eventName: 'Remote Desktop Protocol (RDP) IO lab',
+				eventUrl: 'redmondrdp2016',
+				eventLocation: 'Redmond',
+				eventContinent: 'North America',
+				eventStartDate: new Date('November 1, 2016'),
+				eventEndDate: new Date('November 3, 2016'),
+				eventHeaderImage: 'RDP-Banner.jpg',
+		    eventVenueName: 'Microsoft Building 25',
+    		eventVenueAddressLine1: '15700 NE 39th St',
+    		eventVenueAddressLine2: 'Redmond, WA 98052',
+    		eventVenueImg: 'B25_web.jpg',
+    		eventAboutTabText:`<h2>Remote Desktop Protocol (RDP) IO lab</h2>
+				<p>The purpose of the event is to provide an opportunity for you to use the RDP test suites with assistance from the test suite developers and support engineers, as well as an opportunity to hear from and interact with the Remote Desktop engineering team. The focus will be on testing, with limited presentations provided.</p>
+				<br>
+				<ul class="noStyleUl">
+					<li><b>When:</b> November 1-3, 2016</li>
+					<li><b>Where:</b> Building 25, Microsoft headquarters in Redmond, Washington </li>
+					<li><b>Who:</b> RDP implementers</li>
+					<li><b>Cost:</b> Free</li>
+				</ul>
+				<p>If you are interested in participating or have additional questions, please contact <a href="mailto:prana@microsoft.com?subject=RDP%20IO%20Lab">Prakash Narayanan</a> </p>`,
+				isPublished: true
+			})
+		})
 
 
 	////////////////////////////////////EventTab placeholder/////////////////////////////////////
@@ -2547,6 +2573,30 @@ setTimeout(function() {
 				<h6><b>Registration opens in September. <a href="mailto:plugfests@microsoft.com?subject=Notify%20me%20about%20DevDays%20Asia%20@%20Beijing">Stay updated by adding your email to our notification list</a>!</b></h6>
 
 				`
+			})
+		})
+		/*.then(function() {
+			return EventTab.create({
+				tabTitle: 'About',
+				tabContent: `<h2>Remote Desktop Protocol (RDP) IO lab</h2>
+				<p>The purpose of the event is to provide an opportunity for you to use the RDP test suites with assistance from the test suite developers and support engineers, as well as an opportunity to hear from and interact with the Remote Desktop engineering team. The focus will be on testing, with limited presentations provided.</p>
+				<br>
+				<ul style="list-style-type: none;">
+					<li><b>When:</b> November 1-3, 2016</li>
+					<li><b>Where:</b> Building 25, Microsoft headquarters in Redmond, Washington </li>
+					<li><b>Who:</b> RDP implementers</li>
+					<li><b>Cost:</b> Free</li>
+				</ul>
+				<p>If you are interested in participating or have additional questions, please contact <a href="mailto:prana@microsoft.com?subject=RDP%20IO%20Lab">Prakash Narayanan</a> </p>`
+			})
+		})*/
+		.then(function() {
+			return EventTab.create({
+				tabTitle: 'Accommodations',
+				tabContent: `<h2>Silver Cloud Inn and Hotels</H2>
+				<p>The rate is at $159 for either a King room or a Two Queen guest bedroom. Amenities include hot breakfast, parking and in-room Wi-Fi</p>
+				<p>To book online, please go to: www.silvercloud.com</p>
+				<p>Under ‘MAKE A RESERVATION’ is ‘Destination’, click onto the tab and select Redmond, enter your arrival/departure date, enter number adults/children, click on ‘CHECK AVAILABILITY’, and under ‘Corporate or Group Login, Group ID: <span style="color:red">RDPIOLAB</span>; Password: <span style="color:red">RDPIOLAB</span> and click on ‘LOG IN’, then click on ‘reserve’ tab and follow the instructions until done.</p>`
 			})
 		})
 

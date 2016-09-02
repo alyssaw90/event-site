@@ -14,9 +14,11 @@ require('ng-file-upload');
 require('angular-resource');
 require('angular-cookies');
 require('angular-base64');
+require('angular-animate');
+require('angular-ui-bootstrap');
 
 // declare a module
-const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize', 'angular-google-analytics', 'ngFileUpload', 'ngResource', 'ngCookies', 'base64']);
+const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize', 'angular-google-analytics', 'ngFileUpload', 'ngResource', 'ngCookies', 'base64', 'ngAnimate', 'ui.bootstrap']);
 
 //directives
 require('./shared/allPagesDirective.js')(eventsApp);
@@ -47,6 +49,7 @@ require('./latestNews/LatestNewsCtrl.js')(eventsApp);
 require('./events/EventsCtrl.js')(eventsApp);
 require('./admin/createSpeaker/CreateSpeakerCtrl.js')(eventsApp);
 require('./admin/userLogging/UserLoggingCtrl.js')(eventsApp);
+require('./admin/admin-header/AdminHeaderCtrl.js')(eventsApp);
 //services
 require('./meetTheTeam/meetTheTeamRestResource.js')(eventsApp);
 require('./futureEvents/futureEventsRESTResource.js')(eventsApp);
@@ -81,33 +84,23 @@ eventsApp
 	//Enable Google Analytics
 	AnalyticsProvider
 	.setAccount('UA-74698663-1');
+
 	//enable cross origin for jsonp
 	$httpProvider.defaults.useXDomain = true;
   delete $httpProvider.defaults.headers.common['X-Requested-With'];
+
   //tell angular to send verification credentials with requests
   $httpProvider.defaults.withCredentials = true;
 
-  //method to check if user is logged in
-  const requireAuthentication = () => {
-		return {
-	    load: function ($q, $location) {
-        console.log('Can user access route?');
-        var deferred = $q.defer();
-        deferred.resolve();
-        if (g_isloggedIn === true) { // fire $routeChangeSuccess
-            console.log('Yes they can!');
-            return deferred.promise;
-        } else { // fire $routeChangeError
-            console.log('No they cant!');
-            $location.path('/admin/login');
-
-            // I don't think this is still necessary:
-            return $q.reject("'/admin/login'");
-        };
-	    }
-		};
-	};
-
+	//turn on html5Mode so routes don't include # symbol
+	if(window.history && window.history.pushState) {
+		$locationProvider.html5Mode({
+	   	enabled: true,
+	   	requireBase: false
+	  });
+		
+	}
+	//set up angularjs front-end routes
 	$routeProvider
 	.when('/', {
 		templateUrl: '/app/components/homepage/homepage.html',
@@ -116,7 +109,7 @@ eventsApp
       pageTitle: 'Home Page - Microsoft Plugfests and Events'
     }
 	})
-	/*These redirect routes take care of 404 errors cause by angular stripping the hash from routes even when they're meant for in page navigation*/
+	/*These 3 redirect routes take care of 404 errors cause by angular stripping the hash from routes even when they're meant for in page navigation*/
 	.when('/eventNavigationMenu', {
 		redirectTo: '/'
 	})
@@ -126,7 +119,6 @@ eventsApp
 	.when('/footerStartMenuItem', {
 		redirectTo: '/'
 	})
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	.when('/about', {
 		templateUrl: '/app/components/about/about.html',
 		data: {
@@ -222,21 +214,22 @@ eventsApp
     }
   })
 
-	//turn on html5Mode so routes don't include # symbol
-	if(window.history && window.history.pushState) {
-		$locationProvider.html5Mode({
-	   	enabled: true,
-	   	requireBase: false
-	  });
-		
-	}
-
 }])
 .run(['$rootScope', '$location', '$anchorScroll', '$routeParams', '$http', 'Analytics', '$cookies', ($rootScope, $location, $anchorScroll, $routeParams, $http, Analytics, $cookies) => {
 	//start Google analytics
 	Analytics.pageView();
-	$rootScope.isAuthenticated = false;
-	$cookies.put('test_token', 'I am a test token');
+
+	//when the route starts with /admin, call the /api/user/checklogin route to check if the user is logged in and redirect them to the login page if they aren't
+	if ( /\/admin.*$/.test($location.path()) ) {
+		$http.get('/api/user/checklogin')
+		.success( (data) => {
+			
+		})
+		.error( (err) => {
+			$cookies.remove('token');
+			$location.path('/admin/login');
+		})
+	}
 	
 	$rootScope.$on('$viewContentLoaded', () => {
 			// document.getElementById('screenreader-summary').trigger('focus');
@@ -244,17 +237,14 @@ eventsApp
 	});
 
 	$rootScope.$on( '$routeChangeStart', function(event, next, current) {   
-
+		//when the route starts with /admin, call the /api/user/checklogin route to check if the user is logged in and redirect them to the login page if they aren't
 		if ( /\/admin.*$/.test($location.path()) ) {
 			$http.get('/api/user/checklogin')
 			.success( (data) => {
-				console.log('data   ', data);
-				alert('hola');
 				
 			})
 			.error( (err) => {
 				$cookies.remove('token');
-				alert('adios');
 				$location.path('/admin/login');
 			})
 		}
@@ -263,13 +253,13 @@ eventsApp
 	$rootScope.$on('$routeChangeSuccess', (newRoute, oldRoute) => { 
 
 
-		// $location.hash($routeParams.scrollTo);
+		// scroll the window to the top when a new page is opened
     $anchorScroll();
-
- 		if ($location.path() == '/') {
+    //if the path is the root, 
+ 		/*if ($location.path() == '/') {
       $rootScope.hideSlider = true;
     };
-
+*/
  	});
 
 }])

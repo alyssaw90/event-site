@@ -14,11 +14,14 @@ module.exports = (sql, DataTypes) => {
       type: DataTypes.STRING,
       // unique: true,
       allowNull: true,
-      // required: true
+      // required: true,
+      set: function(val) {
+        this.setDataValue('eventUrl', val.replace(/\s+/g, '').toLowerCase() );
+      }
     },
     eventLocation: {
       type: DataTypes.STRING,
-      set: function (val) {
+      set: function(val) {
         this.setDataValue('eventLocation', val.toLowerCase().replace(' ', '_'));
       }
     },

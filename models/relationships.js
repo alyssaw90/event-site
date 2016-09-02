@@ -190,4 +190,17 @@ module.exports = function() {
 	  	event.setTabs([28]);
 	  })
 	})
+	.then(function() {
+		return Event.findOne({
+			where: {
+				id: 21
+			}
+		})
+	})
+	.then(function(event) {
+	  models.sql.sync()
+	  .then(function() {
+	  	event.setTabs([29]);
+	  })
+	})
 }

@@ -43,7 +43,7 @@
 		<!-- static image of past events banner for homepage -->
 		<a data-ng-if="(!siteStyles.showSlider && siteStyles.showPastEventsBanner && siteStyles.hideEventBanners) || imageCount <= 0" class="homepageHeaderAnchor" title="past events link" href="/past-events" aria-label="past events banner image">
 			<section id="headerImage" class="mobileWrapper" role="presentation" aria-hidden="true">
-				<img aria-hidden="true" alt="past events header" style="width:100%; margin: 	0 0 0 0; padding: 0 0 0 0;" data-ng-src="./uploads/past-events-banner.jpg" />
+				<img aria-hidden="true" alt="past events header" style="width:100%; margin: 	0 0 0 0; padding: 0 0 0 0;" data-ng-src="{{pastEventsImg}}" />
 			</section>
 		</a>
 		<!-- the rn-carousel package creates the slider https://www.npmjs.com/package/angular-carousel -->
@@ -51,7 +51,7 @@
   		<li data-ng-repeat="slide in slides" data-ng-if="slide.eventHomepageImage">
   		  <div class="layer" data-slider-slide-directive>
   		  	<a href="/{{slide.eventUrl}}">
-  		  		<img class="carousel-img" data-ng-src="/uploads/{{ slide.eventHomepageImage }}" />
+  		  		<img class="carousel-img" data-ng-src="{{ slide.eventHomepageImage }}" />
 		  		</a>
 		  	</div>
   		</li>
@@ -61,7 +61,7 @@
 	<!-- Begin upcoming events desktop menu -->
 	<nav class="menu-overlay desktop-menu flex clearfix" data-ng-style="{'background-color':futureEvents[0].eventHighlightColor}">
 		<div class="col_12 purpleEventMenu">
-			<span data-ng-repeat="futureEvent in futureEvents | orderBy: eventStartDate" role="presentation"><a title="Navigate to page for {{futureEvent.city}} {{futureEvent.headerEventDates}} event" aria-label="{{futureEvent.city}} {{futureEvent.headerEventDates}}" id="{{isFirstEventInLIst($index)}}" href="/{{futureEvent.eventUrl}}">{{futureEvent.city}} &nbsp<span class="purpleSubMenu">- {{futureEvent.headerEventDates}}</span></a> <span aria-hidden="true" role="presentation" ng-show=" ! $last ">|&nbsp</span></span>
+			<span data-ng-repeat="futureEvent in futureEvents | orderBy: eventStartDate | limitTo: 4" role="presentation"><a title="Navigate to page for {{futureEvent.city}} {{futureEvent.headerEventDates}} event" aria-label="{{futureEvent.city}} {{futureEvent.headerEventDates}}" id="{{isFirstEventInLIst($index)}}" href="/{{futureEvent.eventUrl}}">{{futureEvent.city}} &nbsp<span class="purpleSubMenu">- {{futureEvent.headerEventDates}}</span></a> <span aria-hidden="true" role="presentation" ng-show=" ! $last ">|&nbsp</span></span>
 		</div>
 	</nav>
 	<!-- End upcoming events desktop menu -->

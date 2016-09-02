@@ -12,9 +12,13 @@ const eventsDirective = (app) => {
 					const $firstTab = jQuery('#eventsPageUl').find('li:first-child');
 					const $lastTab = jQuery('#eventsPageUl').find('li:last-child');
 					const $tabLinks = jQuery('ul.tabs a[href^="#"]');
-					const $tabContent = jQuery('.tab-content');
+					const $firstEventTabDiv = jQuery('.eventTabDiv').is('.eventTabDiv:first');
+					const $otherEventTabDivs = jQuery('.eventTabDiv').not('.eventTabDiv:first');
+					const $tabContent = jQuery('.tab-content').not('.eventTabDiv:first');
 					$firstTab.addClass('first').addClass('current');
 					$lastTab.addClass('last');
+					$otherEventTabDivs.attr('style', 'display:none');
+					$firstEventTabDiv.attr('style', 'display:block');
 
 
 					function moveTab(e, self) {	
@@ -103,7 +107,7 @@ const eventsDirective = (app) => {
 		
 					
 				
-				}, 1000);
+				}, 300);
 			}
 			
 		}

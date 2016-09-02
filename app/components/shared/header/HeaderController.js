@@ -5,7 +5,7 @@ const HeaderController = (app) => {
 		$scope.errors = [];
 		$scope.siteStyle = [];
 		$scope.sliderImgsHeights = [];
-
+		$scope.pastEventsImg = './uploads/past-events-banner.jpg';
 		let SiteStyle = resource();
 
 		$scope.getSiteStyle = () => {
