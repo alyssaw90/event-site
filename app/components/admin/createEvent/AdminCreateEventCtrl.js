@@ -1,7 +1,8 @@
 'use strict';
-
+// require('tinymce');
 const AdminCreateEventCtrl = (app) => {
-	app.controller('AdminCreateEventCtrl', ['$rootScope', '$scope', '$http', 'Upload', '$window', 'createEventRESTResource', ($rootScope, $scope, $http, Upload, $window, resource) => {
+  app.controller('AdminCreateEventCtrl', ['$rootScope', '$scope', '$http', 'Upload', '$window', 'createEventRESTResource', ($rootScope, $scope, $http, Upload, $window, resource) => {
+    require('angular-ui-tinymce');
 		$scope.errors = [];
 		$scope.theEvents = [];
 		$scope.theSpeakers = [];
@@ -9,10 +10,30 @@ const AdminCreateEventCtrl = (app) => {
 		$scope.hideModal = true;
     $scope.hideVenueModal = true;
     $scope.hideEventPreview = true;
+    $scope.hideImageModal = true;
     $scope.speakersAdded = 0;
     $scope.displaySpeakerDivStyle = false;
     $scope.previewSpeakers = [];
 
+    /*$scope.tinymceOptions = { 
+      height: 500,
+      theme: 'modern',
+      automatic_uploads: true,
+      plugins: [
+      'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+      'searchreplace wordcount visualblocks visualchars code fullscreen',
+      'insertdatetime media nonbreaking save table contextmenu directionality',
+      'emoticons template paste textcolor colorpicker textpattern imagetools',
+      'textcolor colorpicker'
+      ],
+      paste_data_images: true,
+      inline: false,
+      toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | forecolor backcolor | link image',
+      content_css: [
+        '//fast.fonts.net/cssapi/e6dc9b99-64fe-4292-ad98-6974f93cd2a2.css',
+        '//www.tinymce.com/css/codepen.min.css'
+      ]
+    };*/
 
     let DataForEditingEvents = resource();
 
@@ -75,6 +96,9 @@ const AdminCreateEventCtrl = (app) => {
     $scope.closeVenueModal = () => {
       $scope.hideVenueModal = !$scope.hideVenueModal;
     };
+    $scope.toggleImageModal = () => {
+      $scope.hideImageModal = !$scope.hideImageModal;
+    };
 
     $scope.toggleEventPreview = () => {
       $scope.hideEventPreview = !$scope.hideEventPreview;
@@ -92,9 +116,20 @@ const AdminCreateEventCtrl = (app) => {
       }
     }
 
-   /* $scope.$watchCollection( $scope.previewSpeakers, (newVal, oldVal) => {
-      alert('new: ', newVal, '   old:   ', oldVal);
-      } )*/
+    $scope.tinymceModel = 'Initial content';
+
+    $scope.getContent = function() {
+      console.log('Editor content:', $scope.tinymceModel);
+    };
+  
+    $scope.setContent = function() {
+      $scope.tinymceModel = 'Time: ' + (new Date());
+    };
+  
+    $scope.tinymceOptions = {
+      plugins: 'link image code',
+      toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
+    };
 
 	}])
 }

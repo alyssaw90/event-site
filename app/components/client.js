@@ -16,9 +16,9 @@ require('angular-cookies');
 require('angular-base64');
 require('angular-animate');
 require('angular-ui-bootstrap');
+require('angular-ui-tinymce');
 
-// declare a module
-const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize', 'angular-google-analytics', 'ngFileUpload', 'ngResource', 'ngCookies', 'base64', 'ngAnimate', 'ui.bootstrap']);
+const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize', 'angular-google-analytics', 'ngFileUpload', 'ngResource', 'ngCookies', 'base64', 'ngAnimate', 'ui.bootstrap', 'ui.tinymce']);
 
 //directives
 require('./shared/allPagesDirective.js')(eventsApp);

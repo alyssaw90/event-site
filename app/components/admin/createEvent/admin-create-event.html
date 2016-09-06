@@ -5,26 +5,27 @@
 			<h3>New Event</h3>
 			<form id="addNewEventForm" name="addNewEventForm" method="post" enctype="multipart/form-data" data-ng-init="getAllSpeakers();" data-ng-submit="createNewEvent(newEvent);">
 				<label class="col_12" for="newEventName">Event Name*</label>
-				<input class="col_12" type="text" data-ng-model="newEvent.newEventName" name="newEventName" id="newEventName" required="true">
+				<input class="col_12" type="text" data-ng-model="newEvent.newEventName" name="newEventName" id="newEventName" data-ng-required="required">
 				<label class="col_12" for="eventUrl">Event URL (cAsE sEnSiTiVe)*</label>
-				<div class="col_2"> interopevents.com/</div><input class="col_10" type="text" data-ng-model="newEvent.eventUrl" name="eventUrl" id="eventUrl">
+				<div class="col_2"> interopevents.com/</div>
+				<input class="col_10" type="text" data-ng-model="newEvent.eventUrl" name="eventUrl" id="eventUrl">
 				<label class="col_12" for="newEventRegistrationLink">Event Registration Link</label>
 				<input class="col_12" type="url" data-ng-model="newEvent.newEventRegistrationLink" name="newEventRegistrationLink" id="newEventRegistrationLink">
 				<label class="col_12" for="newEventCity">Event City*</label>
-				<input class="col_12" type="text" data-ng-model="newEvent.newEventCity" name="newEventCity" id="newEventCity" required="true">
+				<input class="col_12" type="text" data-ng-model="newEvent.newEventCity" name="newEventCity" id="newEventCity" data-ng-required="required">
 				<label class="col_12" for="newEventState">Event State</label>
 				<input class="col_12" type="text" data-ng-model="newEvent.newEventState" name="newEventState" id="newEventState">
 				<label class="col_12" for="newEventCountry">Event Country</label>
 				<input class="col_12" type="text" data-ng-model="newEvent.newEventCountry" name="newEventCountry" id="newEventCountry">
 				<div class="col_12">
 					<label class="" for="newEventStartDate">Event Start Date (Can include time of day)</label>
-					<input class="" type="date" data-ng-model="newEvent.newEventStartDate" name="newEventStartDate" id="newEventStartDate">
+					<input class="" type="datetime-local" data-ng-model="newEvent.newEventStartDate" name="newEventStartDate" id="newEventStartDate">
 					<br><br>
 					<label class="" for="newEventEndDate">Event End Date (Can include time of day)</label>
-					<input class="" type="date" data-ng-model="newEvent.newEventEndDate" name="newEventEndDate" id="newEventEndDate">
+					<input class="" type="datetime-local" data-ng-model="newEvent.newEventEndDate" name="newEventEndDate" id="newEventEndDate">
 				</div>
 				<label class="col_12" for="continentsInput">Choose Event Continent</label>
-				<radiogroup class="col_12" id="continentsInput" required="true">
+				<radiogroup class="col_12" id="continentsInput" data-ng-required="required">
 					<label for="northAmericaInput">North America</label>
 					<input data-ng-model="newEvent.newEventContinent" type="radio" id="northAmericaInput" name="newEventContinent" value="North America">
 					&nbsp;
@@ -45,7 +46,28 @@
 				</radiogroup>
 				<br><br><br>
 				<label class="col_12" for="new-event-description">Event Description for About page</label>
-				<textarea class="col_12" data-ng-model="newEvent.eventAboutTabText" name="new-event-description" id="new-event-description" style="min-height: 200px" required="true"></textarea>
+				<textarea class="col_12 form-control" data-ng-model="newEvent.eventAboutTabText" name="new-event-description" style="min-height: 200px" data-ng-required="required" 
+				data-ui-tinymce="{ 
+					height: 500,
+      		theme: 'modern',
+      		automatic_uploads: true,
+      		plugins: [
+      		'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+      		'searchreplace wordcount visualblocks visualchars code fullscreen',
+      		'insertdatetime media nonbreaking save table contextmenu directionality',
+      		'emoticons template paste textcolor colorpicker textpattern imagetools',
+      		'textcolor colorpicker'
+      		],
+      		paste_data_images: true,
+      		inline: false,
+      		toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | forecolor backcolor | link image',
+      		image_list: '/api/showimages',
+  				image_advtab: true,
+      		content_css: [
+      		  '//fast.fonts.net/cssapi/e6dc9b99-64fe-4292-ad98-6974f93cd2a2.css',
+      		  '//www.tinymce.com/css/codepen.min.css'
+      		]}">
+      	</textarea>
 	    	<div data-ng-controller="AdminFileUploadCtrl">
 		  		<button name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventHeaderImg')">Select Header Image</button>
 		  		<br><br>

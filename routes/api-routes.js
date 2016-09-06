@@ -320,6 +320,24 @@ module.exports = (router) => {
       res.end();
     });
   });
+    //show all images
+  router.get('/showimages', eatAuth, function(req, res) {
+    fs.readdir('uploads', function(err, files) {
+      let imageNamesArr = [];
+      if (err) {
+        console.log(err);
+        res.status(500).json({msg: 'internal server error'});
+      }
+
+      for (let i = 0, j = files.length; i < j; i ++) {
+        if (files[i] !== '.gitignore') {
+          imageNamesArr.push(files[i]);
+        }
+      }
+      let output = JSON.stringify(imageNamesArr);
+      res.json(output);
+    });
+  });
  
   /*Get events from URL path/slug and either send the event if there is one or set isEvent to false to show 404 page */
   router.route('/:slug')
@@ -362,6 +380,7 @@ module.exports = (router) => {
       }
     });
   });
+
 
 };
 
