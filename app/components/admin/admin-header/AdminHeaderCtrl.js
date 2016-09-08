@@ -3,9 +3,9 @@ const jQuery = require('jquery');
 
 const AdminHeaderCtrl = (app) => {
 
-	app.controller('AdminHeaderCtrl', ['$scope', '$log', '$cookies', ($scope, $log, $cookies) => {
+	app.controller('AdminHeaderCtrl', ['$scope', '$log', '$cookies', '$window', '$location', ($scope, $log, $cookies, $window, $location) => {
 
-  $scope.items = [
+/*  $scope.items = [
     'The first choice!',
     'And another choice for you.',
     'but wait! A third!'
@@ -25,11 +25,18 @@ const AdminHeaderCtrl = (app) => {
     $scope.status.isopen = !$scope.status.isopen;
   };
 
-  $scope.appendToEl = angular.element(document.querySelector('#dropdown-long-content'));
+  $scope.appendToEl = angular.element(document.querySelector('#dropdown-long-content'));*/
 
   $scope.logout = () => {
-    $cookies.remove('token');
-    alert('hola')
+    let currentPath = $location.path();
+    console.log('current path', currentPath);
+    $cookies.remove('token', {'path': '/'});
+    $cookies.remove('interopAdmin', {'path': '/'});
+    $cookies.remove('username', {'path': '/'});
+    $cookies.remove('useremail', {'path': '/'});
+    $window.sessionStorage.token = '';
+    $window.location.reload();
+    // $location.path(currentPath);
   }
 
   }]);
