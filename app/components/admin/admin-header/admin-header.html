@@ -43,39 +43,47 @@
 	</ul>
 </nav> -->
 	<div class="grid clearfix" data-ng-controller="AdminHeaderCtrl">
-    <div class="btn-group" uib-dropdown keyboard-nav dropdown-append-to="main">
-        <button id="admin-menu-events" type="button" class="btn btn-info btn-lg" uib-dropdown-toggle>
-            Events <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="simple-btn-keyboard-nav">
-            <li role="menuitem"><a href="/admin/create-event">Create Event</a></li>
-            <li role="menuitem"><a href="/admin/edit-event">Edit Event</a></li>
-            <li role="menuitem"><a href="/admin/delete-event">Delete Event</a></li>
-        </ul>
-    </div>
-  	<div class="btn-group" uib-dropdown keyboard-nav dropdown-append-to="main">
-      <button id="admin-menu-speakers" type="button" class="btn btn-info btn-lg" uib-dropdown-toggle>
-          Speakers <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="simple-btn-keyboard-nav">
-          <li role="menuitem"><a href="/admin/create-speaker">Create Speaker</a></li>
-          <li role="menuitem"><a href="/admin/edit-speaker">Edit Speaker</a></li>
-          <li role="menuitem"><a href="/admin/delete-speaker">Delete Speaker</a></li>
-      </ul>
-    </div>
-    <div class="btn-group" >
-      <button href="/admin/help" id="admin-menu-slider" type="button" class="btn btn-info btn-lg">
-          Slider Settings
-      </button>
-    </div>
-    <div class="btn-group" >
-      <button id="admin-menu-help" type="button" class="btn btn-info btn-lg">
-          Help
-      </button>
-    </div>
-    <div class="btn-group" >
-      <button id="admin-menu-help" type="button" class="btn btn-info btn-lg" data-ng-click="logout()">
-          Logout
-      </button>
-    </div>
+		<div class="admin-header-wrapper" aria-hidde="true" role="presentation">
+	    <div class="btn-group" uib-dropdown keyboard-nav>
+	      <button id="admin-menu-button-events" type="button" class="btn btn-primary btn-lg" data-ng-click="goToPage('/admin/edit-event')">
+	          Events
+	      </button>
+	      <button class="btn btn-primary btn-lg" uib-dropdown-toggle>
+				  <span class="caret"></span>
+				</button>
+	      <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="admin-menu-button-events">
+	          <li role="menuitem"><a href="/admin/create-event">Create Event</a></li>
+	          <li role="menuitem"><a href="/admin/edit-event">Edit Event</a></li>
+	          <li role="menuitem"><a href="/admin/delete-event">Delete Event</a></li>
+	      </ul>
+	    </div>
+	  	<div class="btn-group" uib-dropdown keyboard-nav>
+	      <button id="admin-menu-speakers" type="button" class="btn btn-primary btn-lg" data-ng-click="goToPage('/admin/edit-speaker')">
+	          Speakers
+	      </button>
+	      <button class="btn btn-primary btn-lg" uib-dropdown-toggle>
+				  <span class="caret"></span>
+				</button>
+	      <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="admin-menu-speakers">
+	          <li role="menuitem"><a href="/admin/create-speaker">Create Speaker</a></li>
+	          <li role="menuitem"><a href="/admin/edit-speaker">Edit Speaker</a></li>
+	          <li role="menuitem"><a href="/admin/delete-speaker">Delete Speaker</a></li>
+	      </ul>
+	    </div>
+	    <div class="btn-group" >
+	      <button id="admin-menu-slideshow" type="button" class="btn btn-primary btn-lg" data-ng-click="goToPage('/admin/slideshow')">
+	          Slideshow Settings
+	      </button>
+	    </div>
+	    <div class="btn-group" >
+	      <button id="admin-menu-help" type="button" class="btn btn-primary btn-lg" data-ng-click="goToPage('/admin/help')">
+	          Help
+	      </button>
+	    </div>
+	    <div class="btn-group" >
+	      <button id="admin-menu-help" type="button" class="btn btn-primary btn-lg" data-ng-click="logout()">
+	          Logout
+	      </button>
+	    </div>
+		</div>
   </div>

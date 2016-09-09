@@ -164,24 +164,6 @@ module.exports = (router) => {
     })
   })
 
-  //route to send style choices for website
-  router.get('/slideshow/:slideName', (req, res) => {
-    models.sql.sync()
-    .then( () => {
-      return Slideshow.findOne({
-        where: {
-          slideshowName: req.params.slideName
-        }
-      });
-    })
-    .then( (slideshowData) => {
-      return slideshowData.getSlides();
-    })
-    .then( (slides) => {
-      // res.json(clc.white.bgCyan('slides::::    '), slideshowData);
-      res.json(slides);
-    })
-  });
 
   //route to send Bing Map API key to front end
   router.route('/bingmapkey')
@@ -216,6 +198,34 @@ module.exports = (router) => {
 
 
   /////////////////////////////////////////////////////////////////////////////////////////*/
+
+  //route to send style choices for website
+  router.get('/slideshow/:slideName', (req, res) => {
+    models.sql.sync()
+    .then( () => {
+      return Slideshow.findOne({
+        where: {
+          slideshowName: req.params.slideName
+        }
+      });
+    })
+    .then( (slideshowData) => {
+      return slideshowData.getSlides();
+    })
+    .then( (slides) => {
+      res.json(slides);
+    })
+  });
+
+  router.get('/allSlideshows', eatAuth, (req, res) => {
+    models.sql.sync()
+    .then( () => {
+      return Slideshow.findAll();
+    })
+    .then( (slideshows) => {
+      res.json(slideshows);
+    });
+  });
 
   //verify login
   router.get('/user/checklogin', eatAuth, (req, res) => {

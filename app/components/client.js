@@ -50,6 +50,7 @@ require('./events/EventsCtrl.js')(eventsApp);
 require('./admin/createSpeaker/CreateSpeakerCtrl.js')(eventsApp);
 require('./admin/userLogging/UserLoggingCtrl.js')(eventsApp);
 require('./admin/admin-header/AdminHeaderCtrl.js')(eventsApp);
+require('./admin/editSlideshow/editSlideshowCtrl.js')(eventsApp);
 //services
 require('./meetTheTeam/meetTheTeamRestResource.js')(eventsApp);
 require('./futureEvents/futureEventsRESTResource.js')(eventsApp);
@@ -60,25 +61,9 @@ require('./events/eventsRESTResource.js')(eventsApp);
 require('./latestNews/latestNewsRESTResource.js')(eventsApp);
 require('./admin/createSpeaker/createSpeakerRESTResource.js')(eventsApp);
 require('./admin/userLogging/userLoggingRESTResources.js')(eventsApp);
+require('./admin/editSlideshow/editSlideshowRESTResource.js')(eventsApp);
 
 eventsApp
-// .controller('allPagesCtrl', ['$scope', '$location', '$route', function($scope, $location, $route) {
-// 	$scope.showSlider = false;
-// 		$scope.isCurrentPage = (pageUrl) => {
-// 	   return pageUrl === $location.path();
-// 		}
-
-// 		$scope.$on('$routeChangeSuccess', function(next, current) { 
-// /*
-// 	 		if ($location.path() == '/' || '/latestNews') {		      
-// 				customFunctions.homepageStickyFooter();
-// 	    } else {
-// 	    	customFunctions.stickyFooter();
-// 	    }*/
-	
-// 	 	});
-
-// }])
 .config(['$routeProvider', '$locationProvider', 'AnalyticsProvider', '$httpProvider', function ($routeProvider, $locationProvider, AnalyticsProvider, $httpProvider) {
 
 	//Enable Google Analytics
@@ -165,6 +150,12 @@ eventsApp
 		data: {
       pageTitle: 'Latest Page - Microsoft Plugfests and Events'
     }
+	})
+	.when('/admin/slideshow', {
+		templateUrl: '/app/components/admin/editSlideshow/editSlideshowTemplate.html',
+		data: {
+			pageTitle: 'Edit Slideshow Settings'
+		}
 	})
 	.when('/admin', {
 		redirectTo: '/admin/edit-event',
