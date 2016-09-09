@@ -8,14 +8,17 @@ const HeaderController = (app) => {
 		$scope.pastEventsImg = './uploads/past-events-banner.jpg';
 		let Slideshow = resource();
 
-		$scope.getSiteStyle = () => {
+		$scope.getSlides = (slideshowName) => {
 
-			Slideshow.getSiteStyle( (err, data) => {
+			Slideshow.getSlides(slideshowName, (err, data) => {
         if (err) {
-          return $scope.errors.push({msg: 'could not retrieve header events'});
+          return $scope.errors.push({msg: 'could not retrieve slideshow images'});
         };
         
-        $scope.siteStyles = data;
+        $scope.slides = data;
+        for (let i = 0, len = $scope.slides.length; i < len; i++) {
+        	$scope.slides[i].imgSrcUrl = 'uploads/' + $scope.slides[i].imgSrcUrl;
+        }
       })
 			
 		

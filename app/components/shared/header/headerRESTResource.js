@@ -6,10 +6,10 @@ const headerRESTResource = (app) => {
 
 	app.factory('headerRESTResource', ['$http', function($http) {
 
-		return function(callback) {
+		return function(slideshowName, callback) {
 			return {
-				getSiteStyle: function(callback) {
-					$http.get('/api/slideshow')
+				getSlides: function(slideshowName, callback) {
+					$http.get('/api/slideshow/' + slideshowName)
           .success(customFunctions.handleSuccess(callback))
           .error(customFunctions.handleError(callback));
 				}

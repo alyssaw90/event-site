@@ -26,7 +26,6 @@ const sliderSlideDirective = (app) => {
 
 					angular.element(window).bind('resize', function () {
     				$timeout(function() {
-    					console.log('window width:   ', window.innerWidth);
   	  				changeHeight();
     				})
 					});
