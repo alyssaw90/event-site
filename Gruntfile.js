@@ -44,10 +44,10 @@ module.exports = function (grunt) {
     },
     //task to clean directories before build
     clean: {
-      dev: {
-        src: ['app/build/**/*.js', 'app/dist/*.*', 'app/css/custom.build.min.css', 'app/css/highcontrast.min.css', 'app/css/twitter-widget.min.css']
+      all: {
+        src: ['app/build/**/*.*', 'app/dist/*.*', 'app/css/custom.build.min.css', 'app/css/highcontrast.min.css', 'app/css/twitter-widget.min.css']
       },
-      prod: {
+      build: {
         src: ['app/build/**/*.*', 'app/build/app/**/**', '!app/build/build.min.js', '!app/build/build.min.js.map', '!app/build/.gitignore']
       }
     },
@@ -232,8 +232,8 @@ module.exports = function (grunt) {
 	// register mocha test task
 	grunt.registerTask('test', ['simplemocha:dev']);
   grunt.registerTask('lessProd', ['less:prod']);
-  grunt.registerTask('build:dev', ['clean:dev', 'babel', 'browserify', 'lessProd']);
-  grunt.registerTask('build', ['clean:dev', 'babel', 'browserify', 'uglify', 'lessProd', 'clean:prod']);
+  grunt.registerTask('build:dev', ['clean:all', 'babel', 'browserify', 'lessProd']);
+  grunt.registerTask('build', ['clean:all', 'babel', 'browserify', 'uglify', 'lessProd', 'clean:build']);
   grunt.registerTask('start:dev', ['build:dev', 'nodemon:dev']);
   grunt.registerTask('start', ['build', 'nodemon:dev']);
 	grunt.registerTask('test', ['build', 'test']);

@@ -9,7 +9,7 @@ const headerRESTResource = (app) => {
 		return function(callback) {
 			return {
 				getSiteStyle: function(callback) {
-					$http.get('/api/sitestyle')
+					$http.get('/api/slideshow')
           .success(customFunctions.handleSuccess(callback))
           .error(customFunctions.handleError(callback));
 				}

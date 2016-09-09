@@ -6,11 +6,11 @@ const HeaderController = (app) => {
 		$scope.siteStyle = [];
 		$scope.sliderImgsHeights = [];
 		$scope.pastEventsImg = './uploads/past-events-banner.jpg';
-		let SiteStyle = resource();
+		let Slideshow = resource();
 
 		$scope.getSiteStyle = () => {
 
-			SiteStyle.getSiteStyle( (err, data) => {
+			Slideshow.getSiteStyle( (err, data) => {
         if (err) {
           return $scope.errors.push({msg: 'could not retrieve header events'});
         };

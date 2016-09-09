@@ -41,7 +41,7 @@ let sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.
 */
 
 //load models
-let models = ['Contact', 'Event', 'EventTab', 'User', 'SiteStyle', 'EventSpeakersAsscs'];
+let models = ['Contact', 'Event', 'EventTab', 'User', 'Slideshow', 'EventSpeakersAsscs', 'Slide', 'SlideshowSlideAssc'];
 
 models.forEach(function(model) {
   module.exports[model] = sql.import(__dirname + '/' + model);
@@ -51,6 +51,8 @@ sql.sync()
 sql.models.Event.belongsToMany(sql.models.Contact, {through: sql.models.EventSpeakersAsscs});
 sql.models.Contact.belongsToMany(sql.models.Event, {through: sql.models.EventSpeakersAsscs});
 sql.models.Event.hasMany(sql.models.EventTab, {as: 'Tabs'});
+sql.models.Slide.belongsToMany(sql.models.Slideshow, {through: sql.models.SlideshowSlideAssc});
+sql.models.Slideshow.belongsToMany(sql.models.Slide, {through: sql.models.SlideshowSlideAssc});
 
 
 //export connection

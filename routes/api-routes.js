@@ -21,7 +21,8 @@ const User = models.User;
 const Contact = models.Contact;
 const Event = models.Event;
 const EventTab = models.EventTab;
-const SiteStyle = models.SiteStyle;
+const Slideshow = models.Slideshow;
+const Slide = models.Slide;
 const placeholders = require('../models/placeholders');
 const dbRelationships = require('../models/relationships');
 const multipart = require('connect-multiparty');
@@ -164,14 +165,22 @@ module.exports = (router) => {
   })
 
   //route to send style choices for website
-  router.get('/sitestyle', (req, res) => {
+  router.get('/slideshow/:slideName', (req, res) => {
     models.sql.sync()
     .then( () => {
-      return SiteStyle.findOne({where: {id: 1}});
+      return Slideshow.findOne({
+        where: {
+          slideshowName: req.params.slideName
+        }
+      });
     })
-    .then( (data) => {
-      res.json(data);
-    });
+    .then( (slideshowData) => {
+      return slideshowData.getSlides();
+    })
+    .then( (slides) => {
+      // res.json(clc.white.bgCyan('slides::::    '), slideshowData);
+      res.json(slides);
+    })
   });
 
   //route to send Bing Map API key to front end
@@ -763,7 +772,7 @@ module.exports = (router) => {
   // router.post('/editslidersettings', eatAuth, function(req, res) {
   //   models.sql.sync()
   //   .then(function() {
-  //     return SiteStyle.findOne();
+  //     return Slideshow.findOne();
   //   })
   //   .then(function(sliderSettings) {
   //     sliderSettings.showSlider = req.body.showSlider ? req.body.showSlider : sliderSettings.showSlider;

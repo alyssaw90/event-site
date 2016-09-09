@@ -5,11 +5,27 @@ const User = models.User;
 const Contact = models.Contact;
 const Event = models.Event;
 const EventTab = models.EventTab;
-const SiteStyle = models.SiteStyle;
+const Slideshow = models.Slideshow;
+const Slide = models.Slide;
 const clc = require('cli-color');
 
 module.exports = function() {
 	models.sql.sync()
+	.then(function() {
+		return Slideshow.findOne({
+			where: {
+				id: 1
+			}
+		})
+	})
+	.then(function(slideshow) {
+		models.sql.sync()
+		.then(function() {
+			slideshow.addSlide(1, {sortPosition: 1});
+			slideshow.addSlide(2, {sortPosition: 2});
+			slideshow.addSlide(3, {sortPosition: 3});
+		})
+	})
 	.then(function() {
 		return Event.findOne({
 			where: {
