@@ -216,17 +216,22 @@ module.exports = (router) => {
       res.json(slides);
     })
   });
-
-  router.get('/allSlideshows', eatAuth, (req, res) => {
+/*
+  router.get('/homepageslides', eatAuth, (req, res) => {
     models.sql.sync()
     .then( () => {
-      return Slideshow.findAll();
+      return Slideshow.findOne({
+        where: {
+          slideshowName: 
+        }
+      });
     })
-    .then( (slideshows) => {
+    .then( (slideshow) => {
+      return slideshow.
       res.json(slideshows);
     });
   });
-
+*/
   //verify login
   router.get('/user/checklogin', eatAuth, (req, res) => {
     res.json({authenticated: true});
