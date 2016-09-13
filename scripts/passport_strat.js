@@ -35,7 +35,6 @@ module.exports = (passport) => {
         done('wrong password');
       }
       if (user && verified) {
-        // console.log(clc.blueBright('user :::::    '), user);
         done(null, user);
       }
     })

@@ -301,8 +301,8 @@ module.exports = function () {
 		.then(function() {
 			return Event.create({
 				eventName: 'DevDays Asia 2016 @ Beijing ',
-				eventUrl: 'beijing2017',
 				eventLocation: 'Beijing',
+				eventUrl: 'beijing2016',
 				eventContinent: 'Asia',
 				eventStartDate: new Date('October 21, 2016'),
 				eventEndDate: new Date('October 23, 2016'),

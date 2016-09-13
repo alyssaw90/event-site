@@ -6,8 +6,7 @@ module.exports = function(sql, DataTypes) {
 		sortPosition: DataTypes.INTEGER
 	},
 	{
-		hasTrigger: true,
-    paranoid: true
+		hasTrigger: true
 	});
 	
 };

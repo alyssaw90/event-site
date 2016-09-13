@@ -1,10 +1,62 @@
 
-<div class="mobileWrapper ng-cloak" role="presentation" data-ng-controller="editSlideshowCtrl" data-ng-init="getAllSlideshows('homepageSlideshow')" >
+<div class="mobileWrapper ng-cloak" role="presentation" data-ng-controller="editSlideshowCtrl" data-ng-init="getAllSlideshows('homepageSlideshow'); getAllSlides();" >
   <main style="overflow:hidden;" id="beginningOfContent" tabindex="0" class="grid main-page-content">
     <section role="presentation" class="col_12 internetExplorer">
 			<div id="edit-slideshows">
 				<h3>Slideshow</h3>
-				{{slides}}
+				{{compareArr}}
+			  <div class="slide-table-container clearfix">
+			    <div ui-sortable="sortableOptions" data-ng-model="slides" class="slides slide-table-container col_6">
+			      <div data-ng-repeat="slideshowSlide in slides" class="slideshowSlide">
+			      	<h5>Title: {{slideshowSlide.title}}</h5>
+			      	<p>alt-text: {{slideshowSlide.altText}}</p>
+			      	<p>linK: {{slideshowSlide.imgDestUrl}}</p>
+			      	<img class="slideshowSettingsImg" data-ng-src="{{slideshowSlide.imgSrcUrl}}" />
+		      	</div>
+			    </div>
+			    <div ui-sortable="sortableOptions" data-ng-model="slideshowSlides" class="slideshowSlides slide-table-container col_6">
+			      <div data-ng-repeat="slideshowSlide in slideshowSlides" class="slideshowSlide">
+			      	<h5>Title: {{slideshowSlide.title}}</h5>
+			      	<p>New position: {{$index + 1}} : Old position: {{slideshowSlide.SlideshowSlideAssc.sortPosition}}</p>
+			      	<p>alt-text: {{slideshowSlide.altText}}</p>
+			      	<p>linK: {{slideshowSlide.imgDestUrl}}</p>
+			      	<img class="slideshowSettingsImg" data-ng-src="{{slideshowSlide.imgSrcUrl}}" />
+		      	</div>
+			    </div>
+			    <!-- <div style="clear: both;"></div> -->
+				</div>
+				<button class="button large" data-ng-click="setNewSlideshowOrder()">Submit</button>
+
+				<!-- <table class="table table-bordered">
+        	<thead>
+      	    <tr>
+    	        <th>Index</th>
+    	        <th>Count</th>
+      	    </tr>
+        	</thead>
+        	<tbody ui-sortable="sortableOptions" data-ng-model="slideshowSlides" class="slideshowSlides slide-table-container">
+      	    <tr data-ng-repeat="slideshowSlide in slideshowSlides" class="slideshowSlide" style="cursor: move;">
+    	        <td>{{$index}}</td>
+    	        <td>{{slideshowSlide.title}}</td>
+      	    </tr>
+        	</tbody>
+        </table>
+
+        <table class="table table-bordered">
+        	<thead>
+      	    <tr>
+    	        <th>Index</th>
+    	        <th>Count</th>
+      	    </tr>
+        	</thead>
+        	<tbody ui-sortable="sortableOptions" data-ng-model="slides" class="slides slide-table-container">
+      	    <tr data-ng-repeat="slideshowSlide in slides" class="slideshowSlide" style="cursor: move;">
+    	        <td>{{$index}}</td>
+    	        <td>{{slideshowSlide.title}}</td>
+      	    </tr>
+        	</tbody>
+        </table> -->
+
 			</div>
     </section>
   </main>

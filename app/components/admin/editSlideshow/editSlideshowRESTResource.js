@@ -12,10 +12,23 @@ const editSlideshowRESTResource = (app) => {
 					$http.get('/api/slideshow/' + slideshowName)
 					.success(customFunctions.handleSuccess(callback))
 					.error(customFunctions.handleError(callback));
+				},
+
+				getAllSlides: (callback) => {
+					$http.get('/api/allslides')
+					.success(customFunctions.handleSuccess(callback))
+					.error(customFunctions.handleError(callback));
+				},
+
+				setNewSlideshowOrder: (slideData, callback) => {
+					$http.post('/api/sethomepageslides', slideData)
+					.success(customFunctions.handleSuccess(callback))
+					.error(customFunctions.handleError(callback));
 				}
+
 			}
 				
-			}
+		}
 
 	}])
 };

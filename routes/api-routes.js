@@ -191,15 +191,7 @@ module.exports = (router) => {
       });
   });  
 
-  /*/////////////////////////////////////////////////////////////////////////////////////////
-
-
-               ********The Routes below are for event Creation******
-
-
-  /////////////////////////////////////////////////////////////////////////////////////////*/
-
-  //route to send style choices for website
+  //route to send slides related to a slidesho
   router.get('/slideshow/:slideName', (req, res) => {
     models.sql.sync()
     .then( () => {
@@ -216,22 +208,48 @@ module.exports = (router) => {
       res.json(slides);
     })
   });
-/*
-  router.get('/homepageslides', eatAuth, (req, res) => {
+  //route to get all slides
+  router.get('/allslides', eatAuth, (req, res) => {
+    models.sql.sync()
+    .then( () => {
+      return Slide.findAll();
+    })
+    .then( (slides) => {
+      res.json(slides);
+    })
+  });
+
+  //route to set homepage slides
+  router.post('/sethomepageslides', eatAuth, (req, res) => {
     models.sql.sync()
     .then( () => {
       return Slideshow.findOne({
         where: {
-          slideshowName: 
+          slideshowName: 'homepageSlideshow'
         }
       });
     })
     .then( (slideshow) => {
-      return slideshow.
-      res.json(slideshows);
-    });
-  });
-*/
+      let slideArr = [];
+      models.sql.sync()
+      slideshow.setSlides([])
+      .then( () => {
+        models.sql.sync()
+        .then( () => {
+          for (let i = 0, len = req.body.length; i < len; i++) {
+            slideshow.addSlide(req.body[i].id, {sortPosition: i});
+          }
+          res.end();
+          
+        })
+        /*.then( function(slides) {
+          console.log(clc.blue.bgWhite('req:::::::::::     '), slides);
+        })*/
+        
+      })
+    })
+  })
+
   //verify login
   router.get('/user/checklogin', eatAuth, (req, res) => {
     res.json({authenticated: true});

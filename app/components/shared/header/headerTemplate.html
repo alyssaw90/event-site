@@ -38,17 +38,10 @@
 		</div>
 	</nav>
 	<!-- End gray desktop menu -->
-	<!-- Begin Image section/slider -->
+	<!-- Begin Image section/slideshow -->
 	<div class="carousel-container" data-ng-controller="HeaderController" data-ng-init="getSlides('homepageSlideshow');">
-		<!-- static image of past events banner for homepage -->
-		<!-- <a data-ng-if="(!slides.showSlider && slides.showPastEventsBanner && slides.hideEventBanners) || imageCount <= 0" class="homepageHeaderAnchor" title="past events link" href="/past-events" aria-label="past events banner image">
-			<section id="headerImage" class="mobileWrapper" role="presentation" aria-hidden="true">
-				<img aria-hidden="true" alt="past events header" style="width:100%; margin: 	0 0 0 0; padding: 0 0 0 0;" data-ng-src="{{pastEventsImg}}" />
-			</section>
-		</a> -->
-		<!-- the rn-carousel package creates the slider https://www.npmjs.com/package/angular-carousel -->
 		<ul rn-carousel rn-carousel-controls-allow-loop rn-carousel-controls rn-carousel-auto-slide="3" rn-carousel-duration="1000" data-slider-directive id="upcoming-events-carousel" class="image" style="margin-left:0;margin-bottom:0;">
-  		<li data-ng-repeat="slide in slides | orderBy: SlideshowSlideAssc.sortPosition">
+  		<li data-ng-repeat="slide in slides | orderBy: 'SlideshowSlideAssc.sortPosition'">
   		  <div class="layer" data-slider-slide-directive>
   		  	<a href="/{{slide.imgDestUrl}}">
   		  		<img data-ng-cloak class="carousel-img" data-ng-src="{{ slide.imgSrcUrl }}" />

@@ -7,7 +7,6 @@ const clc = require('cli-color');
 
 module.exports = (secret) => {
 	return (req, res, next) => {
-		console.log(clc.bgCyanBright(':::::::   '), req);
 		let token = req.cookies.token || req.headers.token || req.body.token || req.headers.authorization;
 		if (!token) {
 			console.log(clc.white.bgRed('no token in request'));

@@ -46,7 +46,7 @@ const allPagesDirective = (app) => {
 							tabs.removeClass('current');
 							jQuery(this).parent().addClass('current');
 							jQuery(tab_next).show();
-							history.pushState( null, null, window.location.search + jQuery(this).attr('href') );
+							// history.pushState( null, null, window.location.search + jQuery(this).attr('href') );
 							return false;
 						});
 					

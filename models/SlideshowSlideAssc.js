@@ -7,7 +7,6 @@ module.exports = function(sql, DataTypes) {
 	},
 	{
 		hasTrigger: true,
-    paranoid: true
 	});
 	
 };
