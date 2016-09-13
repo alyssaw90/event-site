@@ -5,7 +5,7 @@
     </section>
   </main>
   <main data-ng-if="events.isEvent" class="grid main-page-content">
-  	<div data-ng-if="events.event.eventHeaderImage" class="ng-cloak col_12 internetExplorer event-header center" id="eventHeader" role="complementary"><img alt="event banner image" data-ng-src="{{headerImage}}" /></div>
+  	<div data-ng-if="events.event.eventHeaderImage" class="ng-cloak col_12 internetExplorer event-header centered" id="eventHeader" role="complementary"><img alt="event banner image" data-ng-src="{{headerImage}}" /></div>
   	<ul class="tabs left" id="eventsPageUl">
       <li data-ng-if="events.event.eventAboutTabText" >
         <a target="_self" href="#aboutTab"><h5>About</h5></a>
@@ -27,7 +27,7 @@
     </div>
     <div id="venueTab" data-ng-if="events.event.eventVenueName || events.event.eventVenueAddressLine1 || events.event.eventVenueAddressLine2 || events.event.eventParkingInfo || events.event.eventVenueImg" class="tab-content clearfix eventTabDiv" >
       <h2>{{events.event.eventVenueName}}</h2>
-      <div data-ng-if="events.event.eventVenueImg" class="col_12 internetExplorer event-header center" id="venueImg" role="complementary">
+      <div data-ng-if="events.event.eventVenueImg" class="col_12 internetExplorer event-header centered" id="venueImg" role="complementary">
         <img alt="{{events.event.eventVenueName}} image" data-ng-src="/uploads/{{events.event.eventVenueImg}}" />
       </div>
       <address>

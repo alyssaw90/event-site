@@ -147,7 +147,7 @@
 					    <a class="closeModal button" data-ng-click="toggleEventPreview()" target="_self" href="">Close</a>
 					    <div class="modal-content">
 							  <section class="grid main-page-content mobileWrapper">
-							  	<div data-ng-if="eventHeaderImg" class="col_12 internetExplorer event-header center" id="eventHeader" role="complementary"><img alt="event banner image" data-ng-src="/uploads/{{eventHeaderImg.size + '-' + eventHeaderImg.name}}" /></div>
+							  	<div data-ng-if="eventHeaderImg" class="col_12 internetExplorer event-header centered" id="eventHeader" role="complementary"><img alt="event banner image" data-ng-src="/uploads/{{eventHeaderImg.size + '-' + eventHeaderImg.name}}" /></div>
 									<ul class="tabs left">
 							  	  <li class="first">
 							  	    <a target="_self" href="#aboutTab"><h5>About</h5></a>
@@ -181,7 +181,7 @@
     </section>
 	  <section data-ng-show="!isEmptyObj(newEvent) || eventHeaderImg || eventVenueImg" role="presentation" class="col_12 internetExplorer"">
   		<p class="modal-title">Preview</p>
-	  	<div data-ng-if="eventHeaderImg" class="col_12 internetExplorer event-header center" id="eventHeader" role="complementary">
+	  	<div data-ng-if="eventHeaderImg" class="col_12 internetExplorer event-header centered" id="eventHeader" role="complementary">
 	  		<img alt="event banner image" data-ng-src="/uploads/{{eventHeaderImg.size + '-' + eventHeaderImg.name}}" />
   		</div>
 			<ul class="tabs left" id="previewEventUl">
@@ -201,7 +201,7 @@
 	  	</div>
 	  	<div id="venueTab" class="tab-content clearfix eventTabDiv">
 	  	  <h2>{{newEvent.newEventVenueName}}</h2>
-	  	  <div data-ng-if="eventVenueImg" class="col_12 internetExplorer event-header center" id="venueImg" role="complementary">
+	  	  <div data-ng-if="eventVenueImg" class="col_12 internetExplorer event-header centered" id="venueImg" role="complementary">
 	  			<img alt="event venue image" data-ng-src="/uploads/{{eventVenueImg.size + '-' + eventVenueImg.name}}" />
   			</div>
 	  	  <p>{{newEvent.newVenduAddressLine1}}</p>

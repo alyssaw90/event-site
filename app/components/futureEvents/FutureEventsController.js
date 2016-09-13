@@ -6,43 +6,28 @@ const FutureEventsCtrl = (app) => {
 	app.controller('FutureEventsCtrl', ['$scope', '$http', 'futureEventsRESTResource', ($scope, $http, resource/*, $timeout*/) => {
 		$scope.errors = [];
 		$scope.futureEvents = [];
-		$scope.slides = [];
+		const testArr = [];
 
 		let FutureEvents = resource();
 
 		$scope.getUpcomingEvents = () => {
-			let imageCount = 0;
 
 			FutureEvents.getFutureEvents( (err, data) => {
         if (err) {
           return $scope.errors.push({msg: 'could not retrieve future events'});
         };
 
-        for (let i = 0, len = data.length; i < len; i++) {
-					if (data[i].eventHomepageImage) {
-						let tmpObj = {};
-						tmpObj.eventHomepageImage = '/uploads/' + data[i].eventHomepageImage;
-						tmpObj.eventUrl = data[i].eventUrl;
+        for (let i = 0, j = data.length; i < j; i++) {
+        	let testObj = {city: data[i].city, dates: data[i].eventDates};
 
-						imageCount++;
-
-						$scope.slides.push(tmpObj);
-					}
-				}
+        	if (!customFunctions.containsObj(testObj, testArr )) {
+        		$scope.futureEvents.push(data[i]);
+        		testArr.push(testObj);
+        	}
+        }
         
-        $scope.imageCount = imageCount;
-        $scope.futureEvents = data;
       })		
 		};
-
-		/*for (let i = 0, len = $scope.futureEvents.length; i < len; i++) {
-			if ($scope.futureEvents[i].eventHomepageImage) {
-				let tmpObj = {};
-				tmpObj.eventHomepageImage = $scope.futureEvents[i].eventHomepageImage;
-				
-				$scope.slides.push($scope.futureEvents[i].eventHomepageImage)
-			}
-		}*/
 
 		//make block slide up effect for upcoming event blocks
 		$scope.riseText = (e) => {

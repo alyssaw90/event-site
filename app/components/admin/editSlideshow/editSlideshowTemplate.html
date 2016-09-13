@@ -1,5 +1,5 @@
 
-<div class="mobileWrapper ng-cloak" role="presentation" data-ng-controller="editSlideshowCtrl" data-ng-init="getAllSlideshows('homepageSlideshow'); getAllSlides();" >
+<div class="mobileWrapper ng-cloak" role="presentation" data-ng-controller="editSlideshowCtrl" data-ng-init="getAllSlideshows('homepageSlideshow')" >
   <main style="overflow:hidden;" id="beginningOfContent" tabindex="0" class="grid main-page-content">
     <section role="presentation" class="col_12 internetExplorer">
 			<div id="edit-slideshows">
@@ -7,6 +7,7 @@
 				{{compareArr}}
 			  <div class="slide-table-container clearfix">
 			    <div ui-sortable="sortableOptions" data-ng-model="slides" class="slides slide-table-container col_6">
+			    	<h4>Available Slides, Not Displayed</h4>
 			      <div data-ng-repeat="slideshowSlide in slides" class="slideshowSlide">
 			      	<h5>Title: {{slideshowSlide.title}}</h5>
 			      	<p>alt-text: {{slideshowSlide.altText}}</p>
@@ -15,6 +16,7 @@
 		      	</div>
 			    </div>
 			    <div ui-sortable="sortableOptions" data-ng-model="slideshowSlides" class="slideshowSlides slide-table-container col_6">
+			    	<h4>Slides to Be Displayed on Homepage</h4>
 			      <div data-ng-repeat="slideshowSlide in slideshowSlides" class="slideshowSlide">
 			      	<h5>Title: {{slideshowSlide.title}}</h5>
 			      	<p>New position: {{$index + 1}} : Old position: {{slideshowSlide.SlideshowSlideAssc.sortPosition}}</p>
@@ -26,37 +28,33 @@
 			    <!-- <div style="clear: both;"></div> -->
 				</div>
 				<button class="button large" data-ng-click="setNewSlideshowOrder()">Submit</button>
-
-				<!-- <table class="table table-bordered">
-        	<thead>
-      	    <tr>
-    	        <th>Index</th>
-    	        <th>Count</th>
-      	    </tr>
-        	</thead>
-        	<tbody ui-sortable="sortableOptions" data-ng-model="slideshowSlides" class="slideshowSlides slide-table-container">
-      	    <tr data-ng-repeat="slideshowSlide in slideshowSlides" class="slideshowSlide" style="cursor: move;">
-    	        <td>{{$index}}</td>
-    	        <td>{{slideshowSlide.title}}</td>
-      	    </tr>
-        	</tbody>
-        </table>
-
-        <table class="table table-bordered">
-        	<thead>
-      	    <tr>
-    	        <th>Index</th>
-    	        <th>Count</th>
-      	    </tr>
-        	</thead>
-        	<tbody ui-sortable="sortableOptions" data-ng-model="slides" class="slides slide-table-container">
-      	    <tr data-ng-repeat="slideshowSlide in slides" class="slideshowSlide" style="cursor: move;">
-    	        <td>{{$index}}</td>
-    	        <td>{{slideshowSlide.title}}</td>
-      	    </tr>
-        	</tbody>
-        </table> -->
-
+			</div>
+			<div class="container">
+			  <h2>Modal Example</h2>
+			  <!-- Trigger the modal with a button -->
+			  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+			
+			  <!-- Modal -->
+			  <div class="modal fade" id="myModal" role="dialog">
+			    <div class="modal-dialog">
+			    
+			      <!-- Modal content-->
+			      <div class="modal-content">
+			        <div class="modal-header">
+			          <button type="button" class="close" data-dismiss="modal">&times;</button>
+			          <h4 class="modal-title">Modal Header</h4>
+			        </div>
+			        <div class="modal-body">
+			          <p>Some text in the modal.</p>
+			        </div>
+			        <div class="modal-footer">
+			          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        </div>
+			      </div>
+			      
+			    </div>
+			  </div>
+			  
 			</div>
     </section>
   </main>

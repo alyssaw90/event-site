@@ -202,3 +202,18 @@ export let getKeyCode = function(e) {
 	}
 	return keyCode;
 }		
+
+//function to return a new array with only unique values
+export function uniqueOnly(arrayLikeObj) {
+   return Array.from(new Set(arrayLikeObj));
+}
+
+export function containsObj(obj, arr) {
+	for (let i = 0, j = arr.length; i < j; i++) {
+		console.log('blah:  ', obj, arr[i]);
+		if (angular.equals(obj, arr[i])) {
+			return true;
+		}
+	}
+	return false;
+}

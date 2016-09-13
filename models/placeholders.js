@@ -337,7 +337,53 @@ module.exports = function () {
 				isPublished: true
 			})
 		})
+		.then(function() {
+			return Event.create({
+				eventName: 'DevDays Asia 2016 @ Beijing ',
+				eventLocation: 'Beijing',
+				eventUrl: 'beijing2016cn',
+				eventContinent: 'Asia',
+				eventStartDate: new Date('October 21, 2016'),
+				eventEndDate: new Date('October 23, 2016'),
+				eventHighlightColor: '#107c10',
+				eventHeaderImage: 'Beijing-Header-8.26.jpg',
+				eventAboutTabText:`
+				<a href="/beijing2016" class="btn btn-info float-right">English</a>
+				<h2>DevDays Asia 2016 @ Beijing</h2>
+				<h4>10/21-10/23，2016</h4>
+				<h4>中国北京市</h4>
+				<h4>活动对象︰ 开发人员、 独立软件供应商、 学生、 科技创业、 企业</h4>
+				<h4>费用：免费</h4>
+				<p>微软Office 365与开放文档团队将在中国北京市举办 DevDays Asia 2016 @Beijing。此次北京的活动是自DevDays Asia @Taipei（<a href="http://www.prnewswire.com/news-releases/microsoft-launches-the-biggest-developer-event-in-asia-taking-iot-development-in-taiwan-to-new-heights-300253810.html">亚州最大的开发者活动</a>）以来另一次延伸性的活动。快来参加在北京微软亚太研发集团召开的技术研讨。 日期为2016年10月21日至23日。内容包括演示、现场实践与操作、互动与交流、还有hackathon! 这是一场属于开发人员的技术盛宴，我们将围绕Office 365，数据平台以及开放性规范等技术话题，为您带来丰富的技术内容。您将在本次活动中聆听来自微软产品团队工程师带来的技术演讲，参与动手实验，与研发工程师直接一对一互动。您还可以带着您的Office 365项目参与48小时黑客马拉松活动，在技术专家的指导下加速完善您的项目，更有机会赢得Windows平板电脑、无人机、VR眼镜、平衡车等精彩大礼！</p>
+				<p><strong>DevDays Asia 2016</strong>活动分为两个部分： <strong>DevDays Asia 2016北京技术峰会</strong>(10月22日 9:00-17:00)以及<strong>Office 365应用开发马拉松</strong>(10月21日17:00-10月23日17:00)。您可以在注册DevDays Asia 2016北京技术峰会时选择是否参与应用开发马拉松活动。</p>
+				<p class="blue-border"><span class="bg-primary">DevDays Asia 2016开发者高峰 会&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;10月22日 9:00 – 18:00</p>
+				 
+				<p>您将在活动中详细了解到Microsoft Office 365的广阔市场机会，以及以Office 365作为平台进行开发的技术细节。此外我们还将向您介绍微软在互操作性开放性规范方面的承诺。大会技术课程将涵盖以下内容： </p>
+				<ul>
+					<li>内置在 Word、 Excel、PowerPoint、Outlook中的Microsoft Office 外接程序</li>
+					<li>Microsoft Graph (旧称 “Office 365 统一API”) ：Microsoft Graph是访问数据、商务消息、用户、文件、邮件、日历、联系人 及文件夹最轻松简易的方式。</li>
+					<li>Microsoft SQL Server</li>
+					<li>开放数据（OData）： 构建及使用RESTful APIs</li>
+					<li>Office文件格式</li>
+					<li>Office, SharePoint, or Exchange 协议</li>
+					<li>Microsoft Office与数据平台的开放文档</li>
+					<li>Windows 互操作</li>
+					<li>Windows 协议测试组件</li>
+				</ul>
+				<p class="blue-border"><span class="bg-primary">Office 365 黑客马拉松 (Hackathon)&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;10月21日 17:00 - 10月23日 17:00</p>
+				<p>Office 365强劲的增长势头为ISV、企业、初创公司以及开发者都带来了无限的机会，基于Office 365构建的应用解决方案为诸多行业和场景带来了新的效率和革新。10月21日17点至10月23日17点，带上您的创意、项目和团队，参与48小时的Office 365应用开发马拉松，在现场与来自各地的开发团队同场竞技，面对面交流微软产品组技术专家，解决开发过程中遇到的问题，并在技术指导下不断加速和完善您的项目。
+				我们会为您提供完善的后勤保障服务，餐食茶点、休息娱乐，以确保您能够在48小时内最大程度地完善您的项目。我们还为您准备了丰厚的奖品，以激励您的极致创意和出色的项目成果：</p>
+				<img src="uploads/things-beijing-2016.png" class="centered" title="images of laptop, drone, virtual reality goggles, and scooter" alt="images of laptop, drone, virtual reality goggles, and scooter">
+				<hr>
+				<a href="https://www.microsoftevents.com/profile/form/index.cfm?PKformID=0x6209970001"><img src="uploads/RegisterNowCN.png" class="centered" title="现在就注册吧" alt="现在就注册吧！"></a>
+				<p class="small">* 请在注册页面中选择参与应用开发马拉松选项，报名参与Office 365应用开发马拉松需先提交项目信息，具体规则将在审核后通过邮件及网站公布。</p>
+				<p class="small">* 更多奖品将陆续公布，请以最终公布规则及奖励说明中的描述为准。 </p>
+				<p class="small">*问题和帮助</p>
 
+				`,
+				isPublished: true
+			})
+		})
 
 	////////////////////////////////////EventTab placeholder/////////////////////////////////////
 
@@ -2540,47 +2586,43 @@ setTimeout(function() {
 			return EventTab.create({
 				tabTitle: 'About',
 				tabContent: `
+				<a href="/beijing2016cn" class="btn btn-info float-right">汉语</a>
 				<h2>DevDays Asia 2016 @ Beijing</h2>
 				<h4>October 21-23, 2016</h4>
 				<h4>Beijing, China</h4>
-				<h4>Microsoft Beijing West Campus </h4>
-				<h4>5 Danling St, Haidian, Beijing, China, 100080</h4>
+				<h4>For: Developers, ISVs, students, tech startups, and businesses</h4>
+				<h4>Cost: Free</h4>
+				<p>Microsoft Office 365 and Open Specifications present DevDays Asia 2016 @Beijing - an extension of the <a href=http://www.prnewswire.com/news-releases/microsoft-launches-the-biggest-developer-event-in-asia-taking-iot-development-in-taiwan-to-new-heights-300253810.html">Biggest Developer Event in Asia,"</a> DevDays Asia @ Taipei. Join DevDays Asia 2016 @Beijing from October 21-23, 2016 at Microsoft Beijing West Campus for technical presentations, hands on workshops, interactive sessions, and a hackathon! The event will include 20+ technical sessions with hands-on experience, experts 1:1, and direct access to Microsoft engineers. You can also come bring current Office 365 projects to the 48 hours Hackathon, fine tune your solution with Microsoft experts support, also get the chance to win a prize!</p>
+				<p>We encourage developers, students, ISVs and businesses to attend DevDays Asia @Beijing to learn about the advantages of developing within Microsoft Office. In addition, DevDays Asia @Beijing will include a track dedicated to Microsoft's commitment to interoperability including Open Specifications and protocol content. As always, the event will host a team of Microsoft engineers who are eager to provide their expertise and answer your questions</p>
+				<p><strong>DevDays Asia 2016</strong> includes 2 major parts: The full day <strong>Developer Technical Summit (9am-6pm on Oct. 22) </strong> and a <strong>48 hours Office 365 Developer Hackathon (from 5pm Oct. 21 to 5pm Oct 23)</strong>, you can choose to opt-in the Developer Hackathon while you registering the DevDays Asia 2016.</p>
+				<p class="blue-border"><span class="bg-primary">DevDays Asia 2016 Developer Summit&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;Oct. 22 9:00-18:00</p>
 				 
-				<h5>Audience: Developers, students, tech startups, ISVs, businesses</h5>
-				 
-				<h5>Cost: Free</h5>
-			 	<p>Microsoft Office 365 and Open Specifications present DevDays Asia 2016 @Beijing - an extension of the "Biggest Developer Event in Asia," DevDays Asia @ Taipei.  Join DevDays Asia 2016 @Beijing from October 21-23, 2016 at Microsoft Beijing West Campus for technical presentations, hands on workshops, interactive sessions, and a hackathon!</p>
-			 	<p>We encourage developers, students, ISVs and businesses to attend DevDays Asia @Beijing to learn about the advantages of developing within Microsoft Office. In addition, DevDays Asia @Beijing will include a track dedicated to Microsoft's commitment to interoperability including Open Specifications and protocol content. As always, the event will host a team of Microsoft engineers who are eager to provide their expertise and answer your questions.</p>
-			 	<p>Here are some of the technologies to be presented at DevDays Asia @Beijing:</p>
-			 	<ul>
+				<p>We will introduce the wide opportunity of Microsoft Office 365, and deep dive into details of Office 365 development. In addition, DevDays Asia @Beijing will include an additional track dedicated to Microsoft's commitment to interoperability including Open Specifications and protocol content. As always, the event will host our Microsoft team will be onsite to work with you.</p>
+				<p>Some of the topics will include during the event are:</p>
+				<ul>
 					<li>Microsoft Office Add-ins for Word, Excel, PowerPoint, and Outlook</li>
-					<li>Microsoft Graph: The easiest way to call Microsoft APIs to access data, intelligence, insights, users, files, mail, calendar, contacts, and folders </li>
-					<li>Microsoft SQL Server </li>
+					<li>Microsoft Graph: The easiest way to call Microsoft APIs to access data, intelligence, insights, users, files, mail, calendar, contacts, and folders</li>
+					<li>Microsoft SQL Server</li>
 					<li>OData: Building and consuming RESTful APIs</li>
 					<li>Office File Formats</li>
-					<li>Office, SharePoint, or Exchange Protocols </li>
+					<li>Office, SharePoint, or Exchange Protocols</li>
 					<li>Open Specifications for Microsoft Office and Data Platform</li>
-			 	</ul>
-				<h6><b>Registration opens in September. <a href="mailto:plugfests@microsoft.com?subject=Notify%20me%20about%20DevDays%20Asia%20@%20Beijing">Stay updated by adding your email to our notification list</a>!</b></h6>
+					<li>Windows Interoperability and Test Suites</li>
+
+				</ul>
+				<p class="blue-border"><span class="bg-primary">Office 365 Hackathon&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;Oct. 21 17:00 – Oct. 23 17:00</p>
+				<p>The fast growing trend of Office 365 brings huge opportunity to ISV, Enterprises, Startups and Developers. Office 365 based application and solution brought new productivity even innovation in many industries and scenarios.</p>
+				<p>17:00 Oct. 21 to 23, come with your ideas, your projects and your whole team, join our 48 hours Developer Hackathon, compete with teams from all around the country, face the product team engineers, resolve any problems you met, accelerate and polish your project.</p>
+				<p>We will provide 360 degree logistic services, food & beverage, nap or entertainment, all of these to ensure to build your fantastic project in the powerful 48 hours. The most important – we prepared lots of attractive prizes, to reward the outstanding winners:</p>
+				<img src="uploads/things-beijing-2016.png" class="centered" title="images of laptop, drone, virtual reality goggles, and scooter" alt="images of laptop, drone, virtual reality goggles, and scooter">
+				<hr>
+				<a href="http://www.huodongxing.com/event/2351298644100"><img src="uploads/RegisterNowEN.png" class="centered" title="registration button" alt="registration link"></a>
+				<p class="small">* Prizes displayed are not final and are subject to change.</p>
+				<p class="small">* Contact <a href="mailto:plugfests@microsoft.com">plugfests@microsoft.com</a> with questions.</p>
 
 				`
 			})
 		})
-		/*.then(function() {
-			return EventTab.create({
-				tabTitle: 'About',
-				tabContent: `<h2>Remote Desktop Protocol (RDP) IO lab</h2>
-				<p>The purpose of the event is to provide an opportunity for you to use the RDP test suites with assistance from the test suite developers and support engineers, as well as an opportunity to hear from and interact with the Remote Desktop engineering team. The focus will be on testing, with limited presentations provided.</p>
-				<br>
-				<ul style="list-style-type: none;">
-					<li><b>When:</b> November 1-3, 2016</li>
-					<li><b>Where:</b> Building 25, Microsoft headquarters in Redmond, Washington </li>
-					<li><b>Who:</b> RDP implementers</li>
-					<li><b>Cost:</b> Free</li>
-				</ul>
-				<p>If you are interested in participating or have additional questions, please contact <a href="mailto:prana@microsoft.com?subject=RDP%20IO%20Lab">Prakash Narayanan</a> </p>`
-			})
-		})*/
 		.then(function() {
 			return EventTab.create({
 				tabTitle: 'Accommodations',
