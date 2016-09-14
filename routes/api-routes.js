@@ -241,14 +241,69 @@ module.exports = (router) => {
           }
           res.end();
           
-        })
-        /*.then( function(slides) {
-          console.log(clc.blue.bgWhite('req:::::::::::     '), slides);
-        })*/
-        
+        });
+      });
+    });
+  });
+
+  router.post('/addslide', eatAuth, (req, res) => {
+    console.log(clc.white.bgRed(':::::::::::    '), req.body);
+    models.sql.sync()
+    .then( () => {
+      Slide.create({
+        imgSrcUrl: req.body.imgSrcUrl,
+        imgDestUrl: req.body.imgDestUrl,
+        title: req.body.title,
+        altText: req.body.altText
+      })
+      res.end('slide saved');
+    });
+  });
+
+  router.post('/deleteslide', eatAuth, (req, res) => {
+    let slidesToDelete = [];
+    for (let key in req.body) {
+      if (req.body[key]) {
+        slidesToDelete.push({id: key});
+      }
+    }
+    models.sql.sync()
+    //delete images corresponding to slides
+    /*.then( () => {
+      return Slide.findAll({
+        where: {
+          $or: slidesToDelete
+        }
       })
     })
-  })
+    .then( (slides) => {
+      let testArr = [];
+      for (let i = 0, len = slides.length; i < len; i++) {
+        testArr.push(slides[i].imgSrcUrl);
+      }
+      fs.readdir('uploads/', (err, data) => {
+        if (err) {
+          console.log(err);
+        }
+        for (let i = 0, len = data.length; i < len; i++) {
+          if (testArr.indexOf(data[i]) > -1) {
+            fs.unlink('uploads/' + data[i]);
+            console.log(clc.green.bgWhite(':::::::::::::::::::  deleted '), data[i]);
+          }
+        }
+      })
+
+    })*/
+    .then( () => {
+      Slide.destroy({
+        where: {
+          $or: slidesToDelete
+        }
+      })
+      res.end('slide(s) deleted');
+    })
+
+  });
 
   //verify login
   router.get('/user/checklogin', eatAuth, (req, res) => {
@@ -279,7 +334,7 @@ module.exports = (router) => {
 
   //route for uploading files
   router.post('/multer', multipartMiddleware, (req, res) => {
-    let tmpFilename = req.files.file.path.slice(12);
+    let tmpFilename = req.files.file.path.slice(8);
     let newFilename = req.files.file.size + '-' + req.files.file.originalFilename;
     fs.readdir('uploads/', (err, data) => {
       for (let i = 0, len = data.length; i < len; i++) {

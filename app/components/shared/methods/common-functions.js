@@ -210,10 +210,20 @@ export function uniqueOnly(arrayLikeObj) {
 
 export function containsObj(obj, arr) {
 	for (let i = 0, j = arr.length; i < j; i++) {
-		console.log('blah:  ', obj, arr[i]);
 		if (angular.equals(obj, arr[i])) {
 			return true;
 		}
 	}
 	return false;
+}
+
+//randome string generator
+export function makeRandomString () {
+  let outputString = '';
+  let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let randomNumber = Math.ceil(Math.random() * 10) + 10;
+  for ( let i = 0; i < randomNumber; i++ ) {
+    outputString += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
+  return outputString;
 }

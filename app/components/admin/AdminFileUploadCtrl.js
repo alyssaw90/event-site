@@ -23,6 +23,7 @@ const AdminFileUploadCtrl = (app) => {
         file.upload.then( (response) => {
             $timeout( () => {
               file.result = response.data;
+              console.log('response   ', response);
             });
         }, (response) => {
             if (response.status > 0)

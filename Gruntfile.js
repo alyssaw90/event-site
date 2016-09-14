@@ -45,10 +45,10 @@ module.exports = function (grunt) {
     //task to clean directories before build
     clean: {
       all: {
-        src: ['app/build/**/*.*', 'app/build/app', 'app/css/custom.build.min.css', 'app/css/highcontrast.min.css', 'app/css/twitter-widget.min.css', '!app/build/.gitignore']
+        src: ['app/build/**/*.*', 'app/build/app/', 'app/css/custom.build.min.css', 'app/css/highcontrast.min.css', 'app/css/twitter-widget.min.css', '!app/build/.gitignore']
       },
       build: {
-        src: ['app/build/**/*.*', 'app/build/app', '!app/build/build.min.js', '!app/build/build.min.js.map', '!app/build/.gitignore']
+        src: ['app/build/**/*.*', 'app/build/app/', '!app/build/build.min.js', '!app/build/build.min.js.map', '!app/build/.gitignore']
       }
     },
     //register task to run babel and compile es6

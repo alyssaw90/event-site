@@ -57,7 +57,7 @@ module.exports = function () {
 	.then(function() {
 		return Slide.create({
 			imgSrcUrl: 'Beijing-Header-8.26.jpg',
-			imgDestUrl: 'beijing2017',
+			imgDestUrl: 'beijing2016',
 			title: 'DevDays Asia 2016 @ Beijing banner',
 			altText: 'Banner image for DevDays Asia 2016 @ Beijing'
 		})

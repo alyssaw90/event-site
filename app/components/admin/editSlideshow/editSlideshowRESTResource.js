@@ -24,6 +24,18 @@ const editSlideshowRESTResource = (app) => {
 					$http.post('/api/sethomepageslides', slideData)
 					.success(customFunctions.handleSuccess(callback))
 					.error(customFunctions.handleError(callback));
+				},
+
+				addSlide: (newSlideData, callback) => {
+					$http.post('/api/addslide', newSlideData)
+					.success(customFunctions.handleSuccess(callback))
+					.error(customFunctions.handleError(callback));
+				},
+
+				deleteSlide: (slideId, callback) => {
+					$http.post('/api/deleteslide', slideId)
+					.success(customFunctions.handleSuccess(callback))
+					.error(customFunctions.handleError(callback));
 				}
 
 			}
