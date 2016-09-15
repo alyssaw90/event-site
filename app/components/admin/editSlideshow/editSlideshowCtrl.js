@@ -88,7 +88,6 @@ const editSlideshowCtrl = (app) => {
 
 		$scope.deleteSlide = (slideIds) => {
 			let testQuestion = $window.confirm('Permanently delete slide(s)?');
-			console.log('test    ', testQuestion);
 			if (testQuestion) {
 				SlideshowData.deleteSlide(slideIds, (err, data) => {
 					if (err) {

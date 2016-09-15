@@ -191,6 +191,45 @@ module.exports = (router) => {
       });
   });  
 
+  //route to get all files and delet files
+  router.get('/files', eatAuth, (req, res) => {
+    fs.readdir('uploads/', (err, data) => {
+      if (err) {
+        console.log(clc.white.bgRed('Error: '), err);
+      }
+      let outputArr = [];
+      for (let i = 0, len = data.length; i < len; i++) {
+        if (data[i] !== '.gitignore') {
+          outputArr.push(data[i]);
+        }
+      }
+      res.json(outputArr);
+    })
+  })
+
+  router.post('/files', (req, res) => {
+    console.log(clc.blue.bgWhite('::::::::::::::::::   '), req.body);
+    let filesToDelete = [];
+    for (let key in req.body) {
+      if (req.body[key]) {
+        filesToDelete.push(key);
+      }
+    }
+
+    fs.readdir('uploads/', (err, data) => {
+      if (err) {
+        console.log(err);
+      }
+      for (let i = 0, len = data.length; i < len; i++) {
+        if (filesToDelete.indexOf(data[i]) > -1) {
+          fs.unlink('uploads/' + data[i]);
+          console.log(clc.green.bgWhite(':::::::::::::::::::  deleted '), data[i]);
+        }
+      }
+    })
+    res.end();
+  })
+
   //route to send slides related to a slidesho
   router.get('/slideshow/:slideName', (req, res) => {
     models.sql.sync()
@@ -258,51 +297,6 @@ module.exports = (router) => {
       })
       res.end('slide saved');
     });
-  });
-
-  router.post('/deleteslide', eatAuth, (req, res) => {
-    let slidesToDelete = [];
-    for (let key in req.body) {
-      if (req.body[key]) {
-        slidesToDelete.push({id: key});
-      }
-    }
-    models.sql.sync()
-    //delete images corresponding to slides
-    /*.then( () => {
-      return Slide.findAll({
-        where: {
-          $or: slidesToDelete
-        }
-      })
-    })
-    .then( (slides) => {
-      let testArr = [];
-      for (let i = 0, len = slides.length; i < len; i++) {
-        testArr.push(slides[i].imgSrcUrl);
-      }
-      fs.readdir('uploads/', (err, data) => {
-        if (err) {
-          console.log(err);
-        }
-        for (let i = 0, len = data.length; i < len; i++) {
-          if (testArr.indexOf(data[i]) > -1) {
-            fs.unlink('uploads/' + data[i]);
-            console.log(clc.green.bgWhite(':::::::::::::::::::  deleted '), data[i]);
-          }
-        }
-      })
-
-    })*/
-    .then( () => {
-      Slide.destroy({
-        where: {
-          $or: slidesToDelete
-        }
-      })
-      res.end('slide(s) deleted');
-    })
-
   });
 
   //verify login

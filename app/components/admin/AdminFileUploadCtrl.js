@@ -3,7 +3,7 @@
 const AdminFileUploadCtrl = (app) => {
 	app.controller('AdminFileUploadCtrl', ['$rootScope', '$scope', 'Upload', '$timeout', ($rootScope, $scope, Upload, $timeout) => {
 
-    $scope.uploadFiles = (file, errFiles, rootScopeKey) => {
+    $scope.uploadFiles = (file, errFiles, rootScopeKey, callback) => {
       $rootScope[rootScopeKey] = file;
       $rootScope.errFile = errFiles && errFiles[0];
       if (file) {
@@ -23,7 +23,9 @@ const AdminFileUploadCtrl = (app) => {
         file.upload.then( (response) => {
             $timeout( () => {
               file.result = response.data;
-              console.log('response   ', response);
+              if (callback) {
+                callback();
+              }
             });
         }, (response) => {
             if (response.status > 0)

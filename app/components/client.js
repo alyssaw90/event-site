@@ -53,6 +53,7 @@ require('./admin/createSpeaker/CreateSpeakerCtrl.js')(eventsApp);
 require('./admin/userLogging/UserLoggingCtrl.js')(eventsApp);
 require('./admin/admin-header/AdminHeaderCtrl.js')(eventsApp);
 require('./admin/editSlideshow/editSlideshowCtrl.js')(eventsApp);
+require('./admin/editFiles/EditFilesCtrl.js')(eventsApp);
 //services
 require('./meetTheTeam/meetTheTeamRestResource.js')(eventsApp);
 require('./futureEvents/futureEventsRESTResource.js')(eventsApp);
@@ -64,6 +65,7 @@ require('./latestNews/latestNewsRESTResource.js')(eventsApp);
 require('./admin/createSpeaker/createSpeakerRESTResource.js')(eventsApp);
 require('./admin/userLogging/userLoggingRESTResources.js')(eventsApp);
 require('./admin/editSlideshow/editSlideshowRESTResource.js')(eventsApp);
+require('./admin/editFiles/editFilesRESTResource.js')(eventsApp);
 
 eventsApp
 .config(['$routeProvider', '$locationProvider', 'AnalyticsProvider', '$httpProvider', function ($routeProvider, $locationProvider, AnalyticsProvider, $httpProvider) {
@@ -188,6 +190,13 @@ eventsApp
 	.when('/admin/edit-speaker', {
 		templateUrl: '/app/components/admin/editSpeaker/admin-edit-speakers.html',
 		// controller: 'AdminCreateEventCtrl',
+		data: {
+      pageTitle: 'Admin Page - Microsoft Plugfests and Events'
+    }
+	})
+	.when('/admin/edit-files', {
+		templateUrl: '/app/components/admin/editFiles/edit-files-template.html',
+		// controller: 'EditFilesCtrl',
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
     }
