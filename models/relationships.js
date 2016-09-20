@@ -203,7 +203,7 @@ module.exports = function() {
 	.then(function(event) {
 	  models.sql.sync()
 	  .then(function() {
-	  	event.setTabs([28]);
+	  	event.setTabs([28, 30]);
 	  })
 	})
 	.then(function() {
@@ -217,6 +217,19 @@ module.exports = function() {
 	  models.sql.sync()
 	  .then(function() {
 	  	event.setTabs([29]);
+	  })
+	})
+	.then(function() {
+		return Event.findOne({
+			where: {
+				id: 22
+			}
+		})
+	})
+	.then(function(event) {
+	  models.sql.sync()
+	  .then(function() {
+	  	event.setTabs([31]);
 	  })
 	})
 }

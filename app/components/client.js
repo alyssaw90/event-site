@@ -211,6 +211,7 @@ eventsApp
 	.when('/:slug', {
     templateUrl: '/app/components/events/event.html',
     controller: 'EventsCtrl',
+    reloadOnSearch: false,
     data: {
       pageTitle: 'Interoperability Event Page - Microsoft Plugfests and Events'
     }
@@ -235,6 +236,8 @@ eventsApp
 	
 	$rootScope.$on('$viewContentLoaded', () => {
 			// document.getElementById('screenreader-summary').trigger('focus');
+			/*let anchor = $location.hash();
+			$anchorScroll(anchor);*/
 		
 	});
 

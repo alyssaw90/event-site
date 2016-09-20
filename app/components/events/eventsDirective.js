@@ -12,7 +12,7 @@ const eventsDirective = (app) => {
 					const $firstTab = jQuery('#eventsPageUl').find('li:first-child');
 					const $lastTab = jQuery('#eventsPageUl').find('li:last-child');
 					const $tabLinks = jQuery('ul.tabs a[href^="#"]');
-					const $firstEventTabDiv = jQuery('.eventTabDiv').is('.eventTabDiv:first');
+					const $firstEventTabDiv = jQuery('.eventTabDiv:first')/*.is('.eventTabDiv:first')*/;
 					const $otherEventTabDivs = jQuery('.eventTabDiv').not('.eventTabDiv:first');
 					const $tabContent = jQuery('.tab-content').not('.eventTabDiv:first');
 					$firstTab.addClass('first').addClass('current');
