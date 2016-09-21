@@ -43,8 +43,8 @@
 		<ul rn-carousel rn-carousel-controls-allow-loop rn-carousel-controls rn-carousel-auto-slide="3" rn-carousel-duration="1000" data-slider-directive id="upcoming-events-carousel" class="image" style="margin-left:0;margin-bottom:0;">
   		<li data-ng-repeat="slide in slides | orderBy: 'SlideshowSlideAssc.sortPosition'">
   		  <div class="layer" data-slider-slide-directive>
-  		  	<a href="/{{slide.imgDestUrl}}">
-  		  		<img data-ng-cloak class="carousel-img" data-ng-src="{{ slide.imgSrcUrl }}" />
+  		  	<a title="{{slide.title}}" alt="{{slide.altText}}" data-ng-href="/{{slide.imgDestUrl}}">
+  		  		<img  data-ng-cloak class="carousel-img" data-ng-src="{{ slide.imgSrcUrl }}" />
 		  		</a>
 		  	</div>
   		</li>

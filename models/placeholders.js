@@ -2332,7 +2332,7 @@ setTimeout(function() {
 			</div>
 		</div>
 		<div id="redmond2016Technologies" class="tab-content eventTabDiv" style="display:none;">
-		<div tabindex="0">
+		<div>
 			<ul>
 				<li>Server Message Block (SMB2&3)</li><li>Remote Shared Virtual Disk (RSVD)</li>
 				<li>Active Directory (ADOD) and Identity</li><li>Authentication (AUTHSOD and PAC/Kile)</li>
