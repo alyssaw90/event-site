@@ -36,7 +36,7 @@ module.exports = function() {
 	.then(function(event) {
 	  models.sql.sync()
 	  .then(function() {
-			event.setTabs([1,2,3,4,5,6,7]);
+			event.setEventTabs([1,2,3,4,5,6,7]);
 			event.addContact(1, {sortPosition: 1});
 			event.addContact(2, {sortPosition: 2});
 			event.addContact(8, {sortPosition: 3});
@@ -64,7 +64,7 @@ module.exports = function() {
 	.then(function(event) {
 	  models.sql.sync()
 	  .then(function() {
-			event.setTabs([8,9,10,11,12,13]);
+			event.setEventTabs([8,9,10,11,12,13]);
 			event.addContact(1, {sortPosition: 1});
 			event.addContact(2, {sortPosition: 2});
 			event.addContact(5, {sortPosition: 3});
@@ -86,7 +86,7 @@ module.exports = function() {
 	.then(function(event) {
 	  models.sql.sync()
 	  .then(function() {
-			event.setTabs([14,15,16,17,18]);
+			event.setEventTabs([14,15,16,17,18]);
 			event.addContact(1, {sortPosition: 1});
 			event.addContact(2, {sortPosition: 2});
 			event.addContact(3, {sortPosition: 3});
@@ -115,7 +115,7 @@ module.exports = function() {
 	.then(function(event) {
 	  models.sql.sync()
 	  .then(function() {
-			event.setTabs([19,20,21,22,23]);
+			event.setEventTabs([19,20,21,22,23]);
 			event.addContact(1, {sortPosition: 1});
 			event.addContact(2, {sortPosition: 2});
 			event.addContact(13, {sortPosition: 3});
@@ -138,7 +138,7 @@ module.exports = function() {
 	.then(function(event) {
 	  models.sql.sync()
 	  .then(function() {
-	  	event.setTabs([23]);
+	  	event.setEventTabs([23]);
 	  })
 	})
   .then(function() {
@@ -151,7 +151,7 @@ module.exports = function() {
 	.then(function(event) {
 	  models.sql.sync()
 	  .then(function() {
-	  	event.setTabs([24]);
+	  	event.setEventTabs([24]);
 	  })
 	})
   .then(function() {
@@ -164,7 +164,7 @@ module.exports = function() {
 	.then(function(event) {
 	  models.sql.sync()
 	  .then(function() {
-	  	event.setTabs([25]);
+	  	event.setEventTabs([25]);
 	  })
 	})
 	.then(function() {
@@ -177,7 +177,7 @@ module.exports = function() {
 	.then(function(event) {
 	  models.sql.sync()
 	  .then(function() {
-	  	event.setTabs([26]);
+	  	event.setEventTabs([26]);
 	  })
 	})
 	.then(function() {
@@ -190,7 +190,7 @@ module.exports = function() {
 	.then(function(event) {
 	  models.sql.sync()
 	  .then(function() {
-	  	event.setTabs([27]);
+	  	event.setEventTabs([27]);
 	  })
 	})
 	.then(function() {
@@ -203,7 +203,7 @@ module.exports = function() {
 	.then(function(event) {
 	  models.sql.sync()
 	  .then(function() {
-	  	event.setTabs([28, 30]);
+	  	event.setEventTabs([28, 30, 32, 35]);
 	  })
 	})
 	.then(function() {
@@ -216,7 +216,7 @@ module.exports = function() {
 	.then(function(event) {
 	  models.sql.sync()
 	  .then(function() {
-	  	event.setTabs([29]);
+	  	event.setEventTabs([29]);
 	  })
 	})
 	.then(function() {
@@ -229,7 +229,7 @@ module.exports = function() {
 	.then(function(event) {
 	  models.sql.sync()
 	  .then(function() {
-	  	event.setTabs([31]);
+	  	event.setEventTabs([33, 34, 31]);
 	  })
 	})
 }

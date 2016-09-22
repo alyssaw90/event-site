@@ -23,7 +23,6 @@ const eventsDirective = (app) => {
 					$lastTab.addClass('last');
 					$otherEventTabDivs.attr('style', 'display:none');
 					$firstEventTabDiv.attr('style', 'display:block');
-					console.log('tabLinks   ', jQuery('ul.tabs'));
 					function moveTab(e, self) {	
 						e.stopImmediatePropagation();
 						let keyCode = customFunctions.getKeyCode(e);
@@ -31,7 +30,6 @@ const eventsDirective = (app) => {
 						let parentId = self.closest('.tab-content').attr('id');
 						let selfId = self.attr('id');
 						let parentLi = '#' + jQuery(`[href="#${selfId}"]`).attr('id');
-						console.log('holadhfalsf    ', parentId);
 						if (keyCode === 9 && e.shiftKey && self.is('*:focus')) {
 							/*hideHomepageSections();
 							jQuery(parentId).next().children('h3').click();
@@ -60,12 +58,12 @@ const eventsDirective = (app) => {
 						let $this = jQuery(this);
 						let divId = $this.attr('href');
 						let anchorId = $this.attr('id') === 'beginningOfContent' ? 'beginningOfContent' : `${divId.slice(1)}Anchor`;
-						jQuery(divId).prepend(`<a id="${divId + 'start'}" class="tabStartAnchor" aria-live="polite" tabindex="-1" role="presentation" aria-hidden="true" aria-label="${$this.text()} section open"></a>`)
+						jQuery(divId).prepend(`<a class="tabStartAnchor" aria-live="polite" tabindex="-1" role="presentation" aria-hidden="true" aria-label="${$this.text()} section open"></a>`)
 						
 						// jQuery(divId).attr('tabindex', '0');
 						$this.attr({
 							'aria-role': 'navigation',
-							'aria-label': `${$this.text()}, click enter/return to read contents, click tab to go to next section`,
+							'aria-label': `${$this.text()}, click enter/return to enter section, click tab to go to next section`,
 							'aria-owns': `${divId.slice(1)}`,
 							'id': anchorId
 						});
@@ -155,15 +153,16 @@ const eventsDirective = (app) => {
 						let $this = jQuery(this);
 						let divId = $this.attr('href');
 						let keyCode = customFunctions.getKeyCode(e);
+						console.log('div id   ', divId);
 						//if enter is clicked trigger the links click function and focus on the tab content
 						if (keyCode === 13) {
 							// $this.trigger('click');
-							jQuery(divId).siblings('.tab-content').hide().attr({ 'aria-hidden': 'true' });
-							jQuery(divId).show().attr({ 'aria-hidden': 'false'});
+							// jQuery(divId).siblings('.tab-content').hide().attr({ 'aria-hidden': 'true' });
+							// jQuery(divId).show().attr({ 'aria-hidden': 'false'});
 							// jQuery(divId).first().focus();
 							// jQuery(divId).attr({ 'aria-hidden': 'false' });
-							jQuery(divId).find('*:focusable')[0].focus();
-							return false
+							jQuery(divId).children('.tabStartAnchor')[0].focus();
+							return false;
 						
 						}
 					});

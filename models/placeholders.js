@@ -2306,7 +2306,7 @@ setTimeout(function() {
 			return EventTab.create({
 				tabNumber: 2,
 				tabTitle: 'Windows Interoperability (IO) Lab',
-				tabContent: `<h3>Windows Interoperability (IO) Lab </h3>
+				tabContent: `<div class="col_12"><h3>Windows Interoperability (IO) Lab </h3>
     <p>The Windows Interoperability (IO) Lab is the opportunity to test your implementation with Microsoft Windows protocol test suites.   During the IO lab you have the opportunity to directly engage with Windows Protocol Support, Test Suite Development, and Windows development team as well as network with other professionals from all over the world.</p>
     <ul class="noStyleUL">
     	<li><strong>When:</strong>  June 20-24, 2016</li>
@@ -2314,11 +2314,8 @@ setTimeout(function() {
     	<li><strong>Who:</strong> File sharing (SMB 2&3), Authentication and AD protocol implementers</li>
     	<li><strong>Cost:</strong> Free</li>
     </ul>
-    <ul class="tabs left">
-    	<li class="current"><a target="_self" href="#redmond2016Agenda"><span style="font-size: 1.5em">Agenda</span></a></li>
-    	<li><a target="_self" href="#redmond2016Technologies"><span style="font-size: 1.5em">Technologies</span></a></li>
-  	</ul>
-  	<div id="redmond2016Agenda" class="tab-content eventTabDiv" style="display:block;">
+    </div>
+  	<div class="col_12">
   	<div>
   		<p>Core concentration during the IO lab week would be on <strong>Interop testing your protocol implementations</strong>.</p>
   		<p>This year’s Windows IO lab will be held in Building 20 in an “open-hall-format”. This will be similar to how the SNIA’s Storage Developer Conference (SDC) Plugfest is organized. We hope this will promote more interactions both amongst the partners and with the Microsoft Product Groups.</p>
@@ -2331,7 +2328,7 @@ setTimeout(function() {
 			</table>
 			</div>
 		</div>
-		<div id="redmond2016Technologies" class="tab-content eventTabDiv" style="display:none;">
+		<div class="col_12">
 		<div>
 			<ul>
 				<li>Server Message Block (SMB2&3)</li><li>Remote Shared Virtual Disk (RSVD)</li>
@@ -2585,6 +2582,7 @@ setTimeout(function() {
 		.then(function() {
 			return EventTab.create({
 				tabTitle: 'About',
+				tabNumber: 1,
 				tabContent: `
 				<a href="/beijing2016cn" class="btn btn-info float-right">汉语</a>
 				<h2>DevDays Asia 2016 @ Beijing</h2>
@@ -2634,7 +2632,7 @@ setTimeout(function() {
 		})
 		.then(function() {
 			return EventTab.create({
-				tabTitle: 'Hackathon prep material',
+				tabTitle: 'Hackathon Resources',
 				tabContent: `<h4>Resources are listed below for attendees to prepare for the hackathon.</h4>
 					<ul>
 						<li><h5><a href="#prereqsHeader" du-smooth-scroll>Prerequisites</a></h5></li>
@@ -3170,6 +3168,7 @@ setTimeout(function() {
 		.then(function() {
 			return EventTab.create({
 				tabTitle: 'Hackathon 参赛准备资料',
+				tabNumber: 1,
 				tabContent: `<h2>请参考以下 Hackathon 参赛准备资料。</h2>
 				<ul>
 					<li><a class="slow-scroll" target="_self" href="#prereqsHeader">必要条件</li>
@@ -3218,7 +3217,306 @@ setTimeout(function() {
 				</ul>`
 			})
 		})
+		.then(function() {
+			return EventTab.create({
+				tabTitle: 'Agenda',
+				tabContent: `<h2>DevDays Asia 2016 @ Beijing Agenda</h2>
+				
+				<h4>September 26, 2016: Hackathon opens! </h4>
+				
+				<h4>October 21, 2016: Hackathon Official Kick Off </h4>
+				
+				<h5>Location: Microsoft Beijing West / 5 Danling St, Haidian, Beijing, China, 100080</h5>
+				<ul>
+				<li>17:00 – Welcome participants</li>
+				<li>18:00 – Dinner</li>
+				<li>19:00-21:00 – Team building + hacking</li>
+				</ul>
+				
+				<h4>October 22, 2016: DevDays Asia 2016 @ Beijing Conference Begins and Hackathon Continues </h4>
+				
+				<h5>Location: Microsoft Beijing West / 5 Danling St, Haidian, Beijing, China, 100080</h5>
+				<ul>
+				<li>9:00 – Welcome</li>
+				<li>9:15 – Keynote</li>
+				<li>10:00 – Office developer and interoperability tracks begin</li>
+				<li>12:30 – Lunch</li>
+				<li>13:30-18: 15 – Presentations and workshops</li>
+				<li>18:15- Dinner</li>
+				<li>19:15-0:00 – Work on hackathon projects</li>
+				</ul>
+				<p>*The hackathon will occur all day Saturday at the venue with onsite help from Microsoft engineers.</p>
+				
+				<h4>October 23, 2016: Hackathon continues</h4>
+				
+				<h5>Location: Microsoft Beijing West / 5 Danling St, Haidian, Beijing, China, 100080</h5>
+				<ul>
+				<li>9:00 Venue opens for breakfast</li>
+				<li>9:00-12:00 - Work on hackathon projects</li>
+				<li>12:00 – Lunch</li>
+				<li>13:00-15:00 – Work on hackathon projects</li>
+				<li>15:00 – All hackathon projects completed and submitted</li>
+				<li>15:15 – 17:00 – First round of evaluations of all teams</li>
+				<li>17:00-18:00 – Finalists present to panel of judges</li>
+				<li>18:15 – Hackathon awards and closing </li>
+				</ul>`
+			})
+		})
+		.then(function() {
+			return EventTab.create({
+				tabTitle: 'Hackathon Rules',
+				tabNumber: 4,
+				tabContent: `<h2>黑客马拉松活动规则与制度</h2>
+<h4 class="text-align-center" style="word-break: keep-all"><a target="_self" href="#beijing2016Heading1"> 黑客马拉松项目概述</a> | <a target="_self" href="#beijing2016Heading2">如何参加？</a>| <a target="_self" href="#beijing2016Heading3">黑客马拉松项目需求</a> | <a target="_self" href="#beijing2016Heading4">我的项目将被如何使用？</a>| <a target="_self" href="#beijing2016Heading5"> 我的项目将如何评估？</a>| <a target="_self" href="#beijing2016Heading6"> 黑客马拉松条款和条件</a></h4>
+<h4>DevDays Asia 2016 @ Beijing 是微软举办的一场免费活动，主要包含两部分内容：</h4>
+<ol>
+ 	<li>为期一天的现场技术活动课程（2016 年 10 月 22 日 9am-6pm）</li>
+ 	<li>Microsoft Office 365 黑客马拉松活动<strong>（黑客马拉松活动将于 2016 年 9 月 26 日启动报名，并于 2016 年 10 月 21 日 5:00pm 正式结束。</strong>评选和颁奖将于 2016 年 10 月 23 日 DevDays Asia 2016 @ Beijing 活动现场举行）。<span style="color: #ff00ff;"><u><a target="_blank" href="http://www.interopevents.com/beijing2016">详情请查阅完整议程安排</a></u>。(LINK TO AGENDA)</span></li>
+</ol>
+&nbsp;
+<h4 id="beijing2016Heading1">黑客马拉松项目概述</h4>
 
+<p>Microsoft Office 是全球最受欢迎的生产力工具，拥有超过12 亿的用户。Microsoft Office 365 团队现邀请开发者参与 DevDays Asia 2016 @ Beijing 黑客马拉松活动，基于 Microsoft Office 创建能帮助用户提高生产力的项目。
+
+Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司的全新使命。这是一个很宏伟的目标，而</em> Microsoft Graph 和丰富的加载项工具已经在通过一种全新的方式让生产力大幅飞跃变为现实。
+
+财务、社交媒体、旅行计划、工作安排…… 生活中方方面面的生产力都存在改善空间，我们邀请您通过黑客马拉松项目将这一切变为可能。生产力的提升潜力是无穷的！另外我们还为黑客马拉松活动的冠军准备了丰厚的奖品。</p>
+<h4 id="beijing2016Heading2">如何参加？</h4>
+<ul>
+	<li>首先以个人参赛者身份<a target="_blank" href="http://aka.ms/DevDaysBeijing2016">在线注册 DevDays Asia 2016 @ Beijing</a> 活动，在问及是否参加黑客马拉松活动时请选择“是”。</li>
+	<li>免费注册 <u><a target="_blank" href="http://dev.office.com/devprogram"><u>Microsoft </u><u>开发者帐户</u></a></u>。</li>
+	<li>如果您已完成黑客马拉松团队和项目的注册，请在<span style="color: #ff00ff;">这里 (LINK TO HACKATHON SIGN UP)</span>注册。您也可以在活动现场注册黑客马拉松团队或项目。*请参阅下文的黑客马拉松团队提交详情</li>
+	<li>. 访问<span style="color: #ff00ff;">资源页 (LINK TO CLARE'S PAGE) </span>获取有关 Microsoft Graph 和加载项文档、教程，以及应用创意的链接。</li>
+</ul>
+
+<p>您也可以将自己的黑客马拉松项目注册至某一团队，或在活动现场注册项目并组建团队。</p>
+
+<p>若要参加黑客马拉松竞赛：</p>
+<ul>
+ 	<li>每位团队成员均<a href="http://aka.ms/DevDaysBeijing2016">须注册本次活动</a>。</li>
+ 	<li>每个成员只允许提交一（1）个作品。对于因为任何原因导致未能收到的作品，或虽已收到但由于任何原因无法判读的作品，我们不承担任何责任。</li>
+ 	<li>您的黑客马拉松团队需要有一位领队负责联络事务。如果在黑客马拉松活动正式开始前您希望以其他团队成员身份参赛，须将原团队和新团队信息记录在黑客马拉松团队注册名单中。</li>
+ 	<li>参加黑客马拉松的每个团队必须至少包含 2 位参与者，最多可包含 4 位参与者。</li>
+ 	<li>Microsoft <span>员工以及与</span> Microsoft <span>签署了用工合同的承包商员工禁止参加黑客马拉松。</span></li>
+</ul>
+
+<p>存在下列情况的作品将被自动取消：</p>
+<ul>
+ 	<li>不完整或难以判读的作品； 以及</li>
+ 	<li>虽已收到，但超出上文所述注册限制的作品。</li>
+</ul>
+
+<h4 id="beijing2016Heading3">黑客马拉松项目需求</h4>
+
+<strong>主要需求：</strong>提交能帮助用户改善生产力的应用程序。限全新开发的 <a target="_blank" href="https://msdn.microsoft.com/ZH-CN/library/office/jj220082.aspx">Microsoft Office 365 加载项</a> （扩展）或使用了 <a target="_blank" href="http://graph.microsoft.io/en-us/getting-started">Microsoft Graph</a> 的作品可以获奖。
+
+<p>黑客马拉松的项目和代码编写工作最早可于 2016 年 9 月 26 日启动。黑客马拉松将于 2016 年 10 月 21 日正式结束。<span style="color: #ff00ff;">完整议程安排请参阅这里。(LINK TO AGENDA)</span></p>
+<p>补充需求：</p>
+<ul>
+ 	<li>您提交的作品必须是自己的原创成果；并且</li>
+ 	<li>您所提交的作品必须已获得所有必要的同意、批准，或许可；并且</li>
+ 	<li>您的作品不能包含任何第三方商标（徽标、名称）或有版权材料（音乐、图片、视频、可辨识的人物），除非您已获得使用这些材料的许可。您可以在作品中包含 Microsoft <span>的商标、徽标以及设计，</span>Microsoft <span>将为您提供受限制的许可，该许可仅允许您出于参与本次竞赛的目的，在自己的作品中使用这些材料。</span></li>
+ 	<li>活动现场提供了可以与您合作的开发专家，您可以与他们一起讨论并审查自己的项目。指定给您的专家不会将您的创意告知其他团队。</li>
+ 	<li>黑客马拉松团队不允许使用 Office Store 中提供的任何代码、产品或工作成果。</li>
+ 	<li>您可以在竞赛开始前先行对开发工作进行构思和规划，DevDays Asia 2016 @Beijing 活动允许您使用曾在其他任何黑客马拉松活动中提交或获奖的代码、产品或工作成果。</li>
+</ul>
+<p>作品严禁包含下列任何内容：</p>
+<ul>
+ 	<li>色情；暴力；或对任何民族、种族、性别、宗教、职业或年龄段的贬低；亵渎或淫秽的内容；</li>
+ 	<li>宣传酗酒、毒品或违禁药物、烟草、枪支/<span>武器（或对任何暴力的使用）或任何特定的政治意图；</span></li>
+ 	<li>淫秽的或冒犯性的内容；</li>
+ 	<li>诽谤、曲解其他个人或公司，或包含蔑视的言论；</li>
+ 	<li>和/<span>或任何违法内容；</span></li>
+</ul>
+<p>活动组织方和黑客马拉松评委保留拒绝任何作品的权利，并有权确定作品是否满足上述要求。</p>
+<h4 id="beijing2016Heading4">我的项目将被如何使用？</h4>
+
+<p>除了下列陈述，我们对您的作品不主张任何所有权。提交作品意味着您：</p>
+<ul>
+ 	<li>同意授予我们不可撤销、免版税、全球可用的权利和许可，以供我们：(i) 使用、审查、评估、测试，以及分析您在竞赛中提交的作品中所包含的全部内容；以及 (ii) 通过所有媒体（包括现有的和未来新出现的）在本次竞赛（包括但不限于对内和对外的销售会议、大会演讲、展会，以及媒体新闻稿中使用的大赛作品屏幕截图）的营销、销售，或促销工作中使用您的作品及其包含的内容；</li>
+ 	<li>同意为了让我们获得上述权利，而签署我们或我们指定的人员所要求的任何必要文件；</li>
+ 	<li>理解并知悉：赞助商可能会开发或提交与您提交的内容类似或完全相同的材料，并且您将放弃任何与您作品类似材料的任何主张；</li>
+ 	<li>理解：在参加活动过程中，我们无法控制您向我们的代表人披露的信息，以及我们的代表人对有关您作品信息的任何记忆。同时您也理解，对于能够访问您的作品的代表人，我们无法对其工作任命进行限制。按照本协议，或版权及商业秘密保护法的规定，参与本次竞赛意味着您同意，代表人在我们自己产品或服务的开发或部署过程中，自行使用自己记忆中的信息不会为我们造成法律责任。</li>
+ 	<li>理解：除了正式规则中描述的内容，您不会因为自己作品的使用而获得任何补偿或荣誉。</li>
+</ul>
+<p>请注意，本次竞赛结束后，您的作品可能会发布至我们选择的一个网站，并供该网站的访客查看。对于网站访客未经授权使用您作品的行为，我们不承担任何责任。虽然保留这些权利，但我们没有义务出于任何目的使用您的作品，就算竞赛获胜作品亦是如此。</p>
+
+<p>参加此次黑客马拉松意味着您同意：</p>
+<ul>
+ 	<li>遵守这些正式规则；并且</li>
+ 	<li>为免受损害，对因您参赛或获奖而产生的任何类型的责任、伤害、损失或损害，Microsoft <span>及其合作伙伴、子公司、分支机构、员工以及代理人员不承担任何责任。</span></li>
+ 	<li>接受奖品意味着，Microsoft <span>可以在在线媒体、印刷品或其他任何媒体中使用您与本次竞赛有关的专有名称和居住国家信息，且无须向您付款或提供补偿，除非法律禁止这样做。</span></li>
+</ul>
+<h4 id="beijing2016Heading5">我的项目将如何评估？</h4>
+
+<p><strong>黑客马拉松评审标准</strong></p>
+<p>DevDays Asia 2016 @ Beijing 活动期间提交的黑客马拉松作品将按照下表所示评分标准进行评审。对于所提交的所有黑客马拉松项目，将选出 5 个团队参与最终的第一、第二和第三名角逐。每个团队须通过一场 5 分钟的演讲向评委会展示自己的项目，其中将预留 2 分钟回答评委的问题。评委将使用黑客马拉松评分标准选出获得第一、第二和第三名的项目。</p>
+
+<p>黑客马拉松评委将使用下列标准对每个作品进行评审。</p>
+<table>
+<tbody>
+<tr>
+<td>概念</td>
+<td>30%</td>
+</tr>
+<tr>
+<td>影响力</td>
+<td>40%</td>
+</tr>
+<tr>
+<td>执行情况</td>
+<td>30%</td>
+</tr>
+</tbody>
+</table>
+<ul>
+ 	<li>第一轮评估过程中，所有黑客马拉松选手均有机会向黑客马拉松组委会团队介绍自己的项目。为了向评委介绍自己的项目，黑客马拉松团队将获得一个固定格式的演示文稿模板。</li>
+ 	<li>第一轮评估中，组委会将选出排名前五位的项目。这五个项目的成员将通过相同时长的演讲向黑客马拉松评委介绍自己的项目。</li>
+ 	<li>黑客马拉松评委将根据马拉松评审标准选出前三名获胜者。</li>
+ 	<li>组委会保留审查参赛者资格的权利。</li>
+ 	<li>黑客马拉松评委不会由于年龄、家世、肤色、病事假、性别认同或表现、遗传信息、婚姻状况、身体健康状况、国籍、身体或心智残障、政治立场、退伍军人与否、种族、宗教、性别（包括孕期）、性取向，或受到所适用本地法规、制度以及条例保护的其他特征而区别对待参赛者。</li>
+</ul>
+
+<h4 id="beijing2016Heading6">黑客马拉松条款和条件</h4>
+<ol>
+ 	<li>为得到主办方提供的奖项，参赛选手必须全程参与黑客马拉松活动。</li>
+ 	<li>由于相关税法产生的税务须由获奖者负责。黑客马拉松组委会不承担由于奖品产生的任何税务责任。获奖者同意由黑客马拉松组委会代缴或支付相关税款（若有）。</li>
+ 	<li>获奖者无权将奖品折现或进行其他形式的交换。如若奖品遗失、失窃或损毁，黑客马拉松赞助商不应提供任何额外的奖励或赔偿（无论实物或现金）。</li>
+ 	<li>黑客马拉松组委会保留收回任何未兑现奖品的权利，若使用价值相等的其他物品取代原定奖品，恕不另行通知。</li>
+ 	<li>参赛者提交的数据必须真实准确，不允许进行任何伪造或篡改。参赛者不应将自己的个人信息提供给任何第三方，并由第三方代为参赛，此种行为将被认定为欺诈或盗窃。参赛者的行为不得违背法律。</li>
+ 	<li>评审团对于黑客马拉松活动每个阶段的选手和获奖者有最终决定权。</li>
+ 	<li>竞赛的开发过程中，您可以在自己桌前打盹小憩，或在休息区域休息。</li>
+ 	<li>每个团队成员只允许加入一个团队。</li>
+ 	<li>黑客马拉松的组委会以及活动执行人员有权复制、编辑、转换、分发、公开传输、公开执行、公开呈现、公开广播、公开口头披露、引用、摘录，以及通过其他任何必要行为，在全球范围内的营销活动、促销活动、慈善活动，以及相关媒体，包括出版物、信息、提案、促销材料、宣传册和网站中，无限次数地使用竞赛作品以及参赛者的基本信息，包括但不限于姓名、肖像和照片（下文统称为“竞赛数据”）。</li>
+ 	<li>根据组委会评判，如选手针通对本次黑客马拉松活动的评选（包括竞赛注意事项）、制度、黑客马拉松活动本身或其网站采取不公平、欺骗和欺诈的行为，进而打断黑客马拉松活动，干扰其他参赛选手，通过非法活动参与此次黑客马拉松活动，或违反其他公共秩序，他/她同意组委会立刻撤销他/她的黑客马拉松参会或获奖资格（并退回黑客马拉松组委会提供的奖金、证书和奖杯）。他/她应承担造成的任何法律责任，并为这些损失对活动组织者、赞助商、执行人员，及其管理层、总监、监管人及员工造成的任何损失和费用承担赔偿责任。</li>
+ 	<li>参赛选手须知，任何试图破坏活动网站或黑客马拉松活动进展的团队或个人将触犯相关民法和刑法。在相关制度允许的范围内，针对这些个人造成的损失，活动组织者、赞助商，以及活动执行人员保留索赔的权利。</li>
+ 	<li>活动组织者保留在不事先通知的情况下更改黑客马拉松活动项目的权利。黑客马拉松的参与者一旦参加或注册，意味着同意受到此项目约束。任何未尽事宜将由组织者进行增补，并发布至活动网站。</li>
+ 	<li>如若存在舞弊情况，或遭遇无法合理预期或控制的病毒、Bug、自动化程序、灾难性事件，或任何其他无法预见或意外的事件（即“不可抗力”）影响到本次竞赛的公平性和/或完整性，我们保留取消、更改或暂停本次竞赛的权利。无论活动因为人为或技术故障导致，我们均将保留这些权利。如果无法妥善恢复竞赛的完整性，我们保留在取消、更改或暂停本次竞赛前收到的所有符合资格要求的作品中评选出获胜者的权利。</li>
+ 	<li>如果您试图，或我们有充分的理由相信您通过作弊、黑客行为、创建机器人或其他自动化程序、或通过任何方式舞弊，进而威胁到本次竞赛的完整性或活动的合理运作，我们将在法律允许的最大范围内向您追偿。此外我们可能会撤销您的资格，禁止您参与我们未来举行的任何竞赛活动，请务必公平竞争。</li>
+</ol>
+<h4>隐私条款</h4>
+<p>Microsoft 致力于保护您的隐私。Microsoft 会使用您提供的信息通知获奖者，并在您要求的情况下将您的信息发送至其他 Microsoft 产品和服务。未经您的允许，Microsoft 不会将您提供的信息共享给第三方，除非这样做是完成服务所必须的，或是您自己或法律要求的。Microsoft 承诺为您的个人信息提供安全保护。我们会使用多种安全技术和规程保护您的个人信息防范未经授权的访问、使用，或披露。除上文列出的情况外，未经您的批准，您的个人信息绝不会泄露到公司之外。</p>
+
+<p>如果您认为 Microsoft 未能遵守这些条款，请告知我们，您可以发送邮件至 <a href="mailto:VSIPENG@microsoft.com">VSIPENG@microsoft.com</a>，或发送传统纸质信件至 VSIP Engineering, Microsoft Privacy, Microsoft Corporation, One Microsoft Way, Redmond, WA 98052 USA，我们将采取商业上合理的努力解决您遇到的问题。</p>`
+			})
+		})
+		.then(function() {
+			return EventTab.create({
+				tabTitle: 'Venue',
+				tabNumber: 3,
+				tabContent: `<h2>Microsoft Asia-Pacific R & D Group Headquarters</h2>
+				<h2>微软亚太研发集团总部</h2>
+				<img src="uploads/ms-building-2-haidian.jpg" alt="Microsoft Asia-Pacific R & D Group Headquarters" class="m-x-auto">
+				<a href="http://www.bing.com/mapspreview?where1=Building%202,%20No.%205%20Dan%20Ling%20Street%20Haidian%20District%20Beijing%20%20China%20100080"><p>Building 2, No. 5 Dan Ling Street, </p>
+				<p>Haidian District, </p>
+				<p>Beijing , 100080 </p>
+				<p>China </p></a>
+				<h4>Telephone</h4>
+				<p>(86-10) 5917-8888 </p>
+				<p>*More specific directions are coming soon!</p>
+
+				`
+			})
+		})
+		.then(function() {
+			return EventTab.create({
+				tabNumber: 3,
+				tabTitle: 'Hackathon Rules',
+				tabContent: `<h2>DevDays Asia 2016 @ Beijing: Hackathon Rules and Regulations</h2>
+<h5 class="text-align-center" style="word-break: keep-all"><a target="_self" href="#hackathonProjectOverviewBeijing2016">Hackathon Project Overview</a> | <a target="_self" href="#howCanIEnterBeijing2016">How can I enter?</a> | <a target="_self" href="#hackathonProjectReqsBeijing2016">Hackathon Project Requirements</a> | <a target="_self" href="#howWillMyProjecBeUsedBeijing2016">How will my project be used?</a> | <a target="_self" href="#howWillMyProjectBeEvalueatedBeijing2016">How will my project be evaluated?</a> | <a target="_self" href="#hackathonTermsBeijing2016">Hackathon Terms + Conditions</a></h5>
+<h4>DevDays Asia 2016 @ Beijing is a free Microsoft event that includes 2 major parts: </h4>
+<ol>
+	<li>An onsite event with a full day technical tracks (9am-6pm on October 22, 2016)</li>
+	<li>A Microsoft Office 365 Hackathon (Hackathon opens September 26, 2016. Official kick off begins onsite on October 21, 2016 at 5:00pm. Judging and awards occur onsite at DevDays Asia 2016 @ Beijing on October 23, 2016). <u>See full agenda for details. </u></li>
+</ol>
+<h4 id="hackathonProjectOverviewBeijing2016">Hackathon Project Overview</h4>
+<p>With 1.2 billion users, Microsoft Office is the world&rsquo;s most popular set of productivity tools. The Microsoft Office 365 team is challenging developers to boost productivity by creating a project within Microsoft Office at the DevDays Asia 2016 @ Beijing hackathon.</p>
+<p>Microsoft&rsquo;s new company mission is: to empower every person and every organization on the planet to achieve more. It may seem like a big job, but Microsoft Graph and Add-in tools make hacking productivity possible in a whole new way.</p>
+<p>We invite you to submit a hackathon project that increases productivity in any aspect of your life &ndash; from your finances, to your social media, your travel plans, or your work schedule. The possibilities for productivity improvements are endless! Plus, we have some pretty cool prizes for the hackathon winners.</p>
+<h4 id="howCanIEnterBeijing2016">How can I enter?</h4>
+<p>1) First, <a href="http://aka.ms/DevDaysBeijing2016" target="_blank">register online with DevDays Asia 2016 @ Beijing</a>&nbsp;as an individual contestant. Select &ldquo;Yes&rdquo; when asked if you will participate in the hackathon.</p>
+<p>2) Sign up for your free&nbsp;<a href="http://dev.office.com/devprogram">Microsoft Developer Account.</a></p>
+<p>3) If you&rsquo;re ready to register your hackathon team and idea, sign up <span style="text-decoration: underline;">here</span>. You may also register for a hackathon team or project at the event. *See below for hackathon team submission details</p>
+<p>4) Visit the <span style="text-decoration: underline;">Resources page</span> for links to Microsoft Graph and Add-in documentation, tutorials, and app ideas.&nbsp;You may also register your hackathon project with a team or register your idea and form a team at the event.</p>
+<p>In order to compete in the hackathon:</p>
+<ul>
+<li>Each member of the team must also be <a href="http://aka.ms/DevDaysBeijing2016">registered</a>&nbsp;for the event.</li>
+<li>We will only accept one (1) entry(ies) per entrant. We are not responsible for entries that we do not receive for any reason, or for entries that we receive but are not decipherable for any reason.</li>
+<li>You need to have a hackathon team leader to be your hackathon affairs liaison. If you change which group you want to compete with before the hackathon officially begins, it must be recorded on the official hackathon group signup sheet of both the original and new teams.</li>
+<li>Each hackathon team must have a minimum of 2 participants and a maximum of 4 participants to compete.</li>
+<li>Employees of the Microsoft and contractors currently under contract work for Microsoft are not eligible to enter the hackathon. We will automatically disqualify:</li>
+<li>Any incomplete or illegible entry; and</li>
+<li>Any entries that we receive from you that are in excess of the entry limit described above.</li>
+</ul>
+<h4 id="hackathonProjectReqsBeijing2016">Hackathon Project Requirements</h4>
+<p>Main Requirement: Submit an application that will help users increase their productivity. To be eligible for prizes, submissions must be a new <a href="http://dev.office.com/getting-started/addins">Microsoft Office 365 Add-in (</a>extension) or utilize <a href="http://dev.office.com/getting-started/office365apis">Microsoft Graph</a>. Hackathon projects and coding may start as early as September 26, 2016. The hackathon will kick off onsite on October 21, 2016. <span style="text-decoration: underline;">See full agenda here</span>.</p>
+<p>In addition:</p>
+<ul>
+<li>Your entry must be your own original work; and</li>
+<li>You must have obtained any and all consents, approvals or licenses required for you to submit your entry; and</li>
+<li>Your entry may not include any third party trademarks (logos, names) or copyrighted materials (music, images, video, recognizable people) unless you have obtained permission to use the materials. You may include Microsoft trademarks, logos, and designs, for which Microsoft grants you a limited license to use for the sole purposes of submitting an entry into this Contest.</li>
+<li>There will be development experts on site at the event who can work with you. You can discuss and review your projects with them. Designated experts are not allowed share your ideas with other teams.</li>
+<li>Hackathon teams may not use any code, product, or work available in the Office Store.</li>
+<li>Works for the contest may be shaped and planned for development beforehand.</li>
+</ul>
+<p>Any code, product, or work available that was awarded or submitted to any other hackathon is allowed in the DevDays Asia 2016 @Beijing Entries may NOT contain, as determined by Microsoft event coordinators, in our sole and absolute discretion, any content that:</p>
+<ul>
+<li>is sexually explicit, unnecessarily violent or derogatory of any ethnic, racial, gender, religious, professional or age group; profane or pornographic;</li>
+<li>promotes alcohol, illegal drugs, tobacco, firearms/weapons (or the use of any of the foregoing) or a particular political agenda;</li>
+<li>is obscene or offensive;</li>
+<li>defames, misrepresents or contains disparaging remarks about other people or companies;</li>
+<li>communicates messages or images inconsistent with the positive images and/or good will to which we wish to associate; and/or violates any law; Microsoft event coordinators and hackathon judges reserve the right to reject any entry, in our sole and absolute discretion, that we determine does not meet the above criteria.</li>
+</ul>
+<h4 id="howWillMyProjecBeUsedBeijing2016">How will my project be used?</h4>
+<p>Other than what is set forth below, we are not claiming any ownership rights to your entry.</p>
+<p>However, by submitting your entry, you:</p>
+<ul>
+<li>are granting us an irrevocable, royalty-free, worldwide right and license to: (i) use, review, assess, test and otherwise analyze your entry and all its content in connection with this Contest; and (ii) feature your entry and all content in connection with the marketing, sale, or promotion of this Contest (including but not limited to internal and external sales meetings, conference presentations, tradeshows, and screen shots of the Contest entry in press releases) in all media (now known or later developed);</li>
+<li>agree to sign any necessary documentation that may be required for us and our designees to make use of the rights you granted above;</li>
+<li>understand and acknowledge that the Sponsor(s) may have developed or commissioned materials similar or identical to your submission and you waive any claims you may have resulting from any similarities to your entry;</li>
+<li>understand that we cannot control the incoming information you will disclose to our representatives in the course of entering, or what our representatives will remember about your entry. You also understand that we will not restrict work assignments of representatives who have had access to your entry. By entering this Contest, you agree that use of information in our representatives&rsquo; unaided memories in the development or deployment of our products or services does not create liability for us under this agreement or copyright or trade secret law;</li>
+<li>understand that you will not receive any compensation or credit for use of your entry, other than what is described in these Official Rules Please note that following the end of this Contest your entry may be posted on a website selected by us for viewing by visitors to that website.</li>
+</ul>
+<p>We are not responsible for any unauthorized use of your entry by visitors to this website. While we reserve these rights, we are not obligated to use your entry for any purpose, even if it has been selected as a winning entry. By entering this hackathon, you agree:</p>
+<ul>
+<li>To abide by these Official Rules; and</li>
+<li>To release and hold harmless Microsoft and its respective parents, subsidiaries, affiliates, employees and agents from any and all liability or any injury, loss or damage of any kind arising from or in connection with this Contest or any prize won; and</li>
+<li>That by accepting a prize, Microsoft may use of your proper name and state of residence online and in print, or in any other media, in connection with this Contest, without payment or compensation to you, except where prohibited by law. If you do not want to grant us these rights to your entry, please do not enter this Contest.</li>
+</ul>
+<h4 id="howWillMyProjectBeEvalueatedBeijing2016">How will my project be evaluated? </strong></h4>
+<p>Hackathon Judging Criteria Hackathon submissions during DevDays Asia 2016 @ Beijing are evaluated by the ranking criteria listed in the table below. From all hackathon project submissions, 5 teams will be chosen for the finals to compete for first, second, and third place.</p>
+<p>Each team will exhibit their projects with a 5-minute presentation to the review panel and 2 minutes reserved for questions. Hackathon judges will use the hackathon ranking criteria to choose the projects to be awarded first, second, and third place. Hackathon judges will use the following criteria to judge each submission.</p>
+<p>Concept 30% Impact 40% Execution 30%</p>
+<ul>
+<li>All hackathon contestants are given the opportunity to present their project to a team of hackathon organizers in the first round of evaluations. Hackathon teams will be given a preformatted presentation template to present to the judges.</li>
+<li>Organizers will select the top five projects from the first round of evaluations. The top five projects will be given an equal amount of time to present their projects to the hackathon judges.</li>
+<li>The hackathon judges will select the top three winners of the hackathon based on the hackathon criteria.</li>
+<li>Organizers reserve the right to review your qualifications.</li>
+<li>Hackathon judges will not discriminate against competitors on the basis of age, ancestry, color, family or medical care leave, gender identity or expression, genetic information, marital status, medical condition, national origin, physical or mental disability, political affiliation, protected veteran status, race, religion, sex (including pregnancy), sexual orientation, or any other characteristic protected by applicable local laws, regulations, and ordinances.</li>
+</ul>
+<h4 id="hackathonTermsBeijing2016">Hackathon Terms and Conditions </h4>
+<ol>
+<li>Contestants are required to go through the entire hackathon to get the participation award provided by the sponsor.</li>
+<li>Award winners is responsible for any tax subject to the relevant tax laws. The hackathon organizer shall be in no case held liable to any tax levied due to the award. The award winner consents that the hackathon organizer&rsquo;s withholding or pay the relevant taxes (if any).</li>
+<li>Award winners have no right to exchange their awards for cash or other forms. Hackathon sponsors shall not give any extra awards (either goods or cash) in case the previous one is lost, stolen, or damaged.</li>
+<li>Hackathon organizers reserve the rights to take care of any awards left un-awarded and replace the said awards with other goods with equivalent values without any notice in advance.</li>
+<li>Data submitted by contestants must be true and correct without any forgery or alterations. Contestants shall not provide personal data to any third party in lieu of their own by means of fraud or theft. Contestants shall have no violations against the law.</li>
+<li>The review panel has the final say on the finalists and winners at each stage of this hackathon.</li>
+<li>You may take a rest by napping on the table or in your own sleeping bag at the refreshment zone during the development session of the contest.</li>
+<li>Individual team members may not compete on more than one team.</li>
+<li>Hackathon organizers, sponsors and its execution agents have the rights in reproducing, editing, converting, distributing, publicly transmitting, publicly performing, publicly presenting, publicly broadcasting, publicly verbal disclosing, referencing, or excerpting, and any other act required for using contest works by and basic data of contestants, including but not limited to name, portraits and photos, (hereafter referred to as &ldquo;contest data&rdquo;) unlimited number of times in their worldwide marketing activities, promotional activities, charity activities, and relevant media including publications, information, proposals, promotional materials, brochures and websites.</li>
+<li>In case contestants took actions against measures of this hackathon (including notes on the contests), regulations, the hackathon itself or its website, actions aimed at interrupting this hackathon or interfering with other contestants or participating this hackathon in illegal activities or against the public order and good morals and manner including unfair, deceptive and fraudulent practices, subject to the organizer&rsquo;s judgment, he/she agrees to the organizer&rsquo;s immediate removal of his/her hackathon or award winning qualifications (including recovering the award cash, certificate and trophy by the hackathon organizer). He/she shall be held liable for any legal responsibility and held liable for compensating the organizer, sponsor, execution agent and their executives, directors, supervisors and employees for any of their loss and expenses due to these damages.</li>
+<li>The contestants have learnt that any one of them or any individual attempting to compromise the web site or the progress of this hackathon would breach relevant civil or criminal laws. The organizer, sponsors and their execution agents shall reserve the right in requesting for compensation, to the extent permitted by the relevant regulations, against damage by these individuals. 12. The organizer shall reserve the right to change the program of this hackathon with a notice in advance. Hackathon attendees, once participating in or registering to it, shall consent to be bound by this program. Any matter not covered herein shall be supplemented and publicized on the web site of this hackathon by the organizer.</li>
+<li>If someone cheats, or a virus, bug, bot, catastrophic event, or any other unforeseen or unexpected event that cannot be reasonably anticipated or controlled, (also referred to as force majeure) affects the fairness and / or integrity of this Contest, we reserve the right to cancel, change or suspend this Contest. This right is reserved whether the event is due to human or technical error. If a solution cannot be found to restore the integrity of the Contest, we reserve the right to select winners from among all eligible entries received before we had to cancel, change or suspend the Contest.</li>
+<li>If you attempt or we have strong reason to believe that you have compromised the integrity or the legitimate operation of this Contest by cheating, hacking, creating a bot or other automated program, or by committing fraud in ANY way, we may seek damages from you to the fullest extent permitted by law. Further, we may disqualify you, and ban you from participating in any of our future Contests, so please play fairly.</li>
+</ol>
+<h5>PRIVACY STATEMENT </h5>
+<p>At Microsoft, we are committed to protecting your privacy. Microsoft uses the information you provide to notify prize winners, and to send you information about other Microsoft products and services, if requested by you. Microsoft will not share the information you provide with third parties without your permission except where necessary to complete the services or transactions you have requested, or as required by law. Microsoft is committed to protecting the security of your personal information.</p>
+<p>We use a variety of security technologies and procedures to help protect your personal information from unauthorized access, use, or disclosure. Your personal information is never shared outside the company without your permission, except under conditions explained above. If you believe that Microsoft has not adhered to this statement, please notify us by sending email to VSIPENG@microsoft.com or postal mail to VSIP Engineering, Microsoft Privacy, Microsoft Corporation, One Microsoft Way, Redmond, WA 98052 USA, and we will use commercially reasonable efforts to remedy the situation.</p>
+
+`
+			})
+		})
 	////////////////////////////////////Contact placeholder/////////////////////////////////////
 
 	.then(function () {

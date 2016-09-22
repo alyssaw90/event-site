@@ -50,7 +50,8 @@ models.forEach(function(model) {
 sql.sync()
 sql.models.Event.belongsToMany(sql.models.Contact, {through: sql.models.EventSpeakersAsscs});
 sql.models.Contact.belongsToMany(sql.models.Event, {through: sql.models.EventSpeakersAsscs});
-sql.models.Event.hasMany(sql.models.EventTab, {as: 'Tabs'});
+sql.models.Event.belongsToMany(sql.models.EventTab, {through: 'EventsTabsAccsc'});
+sql.models.EventTab.belongsToMany(sql.models.Event, {through: 'EventsTabsAccsc'});
 sql.models.Slide.belongsToMany(sql.models.Slideshow, {through: sql.models.SlideshowSlideAssc});
 sql.models.Slideshow.belongsToMany(sql.models.Slide, {through: sql.models.SlideshowSlideAssc});
 
