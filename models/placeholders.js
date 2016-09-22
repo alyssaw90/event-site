@@ -2319,7 +2319,7 @@ setTimeout(function() {
     	<li><a target="_self" href="#redmond2016Technologies"><span style="font-size: 1.5em">Technologies</span></a></li>
   	</ul>
   	<div id="redmond2016Agenda" class="tab-content eventTabDiv" style="display:block;">
-  	<div tabindex="0">
+  	<div>
   		<p>Core concentration during the IO lab week would be on <strong>Interop testing your protocol implementations</strong>.</p>
   		<p>This year’s Windows IO lab will be held in Building 20 in an “open-hall-format”. This will be similar to how the SNIA’s Storage Developer Conference (SDC) Plugfest is organized. We hope this will promote more interactions both amongst the partners and with the Microsoft Product Groups.</p>
   		<h3>Chalk-talk sessions</h3>

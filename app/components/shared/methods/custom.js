@@ -84,7 +84,7 @@ jQuery.extend(jQuery.expr[':'], {
 	 		
 	 	}());
 	 	
-		$('.tabLink').click(function(e) {
+		/*$('.tabLink').click(function(e) {
 			if ($(this).data('tabid') !== 'undefined') {
 				e.preventDefault();
 				let tabId = $(this).data('tabid');
@@ -107,7 +107,7 @@ jQuery.extend(jQuery.expr[':'], {
 				});
 				
 			}
-		});
+		});*/
 
 		$('main').css('position', '');
 
@@ -152,7 +152,14 @@ jQuery.extend(jQuery.expr[':'], {
 		/*$('*').focusin(function(event) {
 			console.log('focused elem:               ', $(this));
 		});*/
-
+		
+		//Prevent elements from taking focus when they are clicked
+		$('*').click(function(e) {
+			let keyCode = customFunctions.getKeyCode(e);
+			if (keyCode === 1) {
+				jQuery(this).blur();								
+			}
+		});
 		//remove focus from resize sensor div
 		$('.resize-sensor').attr('tabindex', '-1');
 

@@ -15,7 +15,10 @@ const eventsDirective = (app) => {
 					const $firstEventTabDiv = jQuery('.eventTabDiv:first')/*.is('.eventTabDiv:first')*/;
 					const $otherEventTabDivs = jQuery('.eventTabDiv').not('.eventTabDiv:first');
 					const $firstFocusables = jQuery('div.tab-content').find('*:focusable:first');
-					const $firstFocusablesArr = [];
+					let $tabStartAnchor;
+					$timeout(function() {
+						 $tabStartAnchor = jQuery('.tabStartAnchor');
+						});
 					$firstTab.addClass('first').addClass('current');
 					$lastTab.addClass('last');
 					$otherEventTabDivs.attr('style', 'display:none');
@@ -42,7 +45,7 @@ const eventsDirective = (app) => {
 						let $this = jQuery(this);
 						moveTab(e, $this);
 					});
-			
+
 		/*			jQuery('.eventTabDiv *').keydown(function(e) {
 						e.stopPropagation();
 					});*/
@@ -57,7 +60,7 @@ const eventsDirective = (app) => {
 						let $this = jQuery(this);
 						let divId = $this.attr('href');
 						let anchorId = $this.attr('id') === 'beginningOfContent' ? 'beginningOfContent' : `${divId.slice(1)}Anchor`;
-						// jQuery(divId).prepend(`<a id="${divId + 'start'}" class="tabStartAnchor" aria-live="polite" tabindex="-1" role="presentation" aria-hidden="true" aria-label="${$this.text()} section open"></a>`)
+						jQuery(divId).prepend(`<a id="${divId + 'start'}" class="tabStartAnchor" aria-live="polite" tabindex="-1" role="presentation" aria-hidden="true" aria-label="${$this.text()} section open"></a>`)
 						
 						// jQuery(divId).attr('tabindex', '0');
 						$this.attr({
@@ -66,6 +69,11 @@ const eventsDirective = (app) => {
 							'aria-owns': `${divId.slice(1)}`,
 							'id': anchorId
 						});
+						jQuery('.tabStartAnchor').keydown(function(e) {
+							let $this = jQuery(this);
+							moveTab(e, $this);
+						});
+				
 			
 					});
 
@@ -88,12 +96,16 @@ const eventsDirective = (app) => {
 						// tab click
 						jQuery(document).on('click', 'ul.tabs a[href^="#"]', function(e){
 							e.preventDefault();
+							let keyCode = customFunctions.getKeyCode(e);
 							let tabs = jQuery(this).parents('ul.tabs').find('li');
 							let tab_next = jQuery(this).attr('href');
 							let tab_current = tabs.filter('.current').find('a').attr('href');
 							jQuery(tab_current).hide();
 							tabs.removeClass('current');
 							jQuery(this).parent().addClass('current');
+							if (keyCode === 1) {
+								jQuery(this).blur();								
+							}
 							jQuery(tab_next).show();
 							// history.pushState( null, null, window.location.search + jQuery(this).attr('href') );
 							return false;
@@ -135,7 +147,7 @@ const eventsDirective = (app) => {
 					//trigger a click event when a eventTab is focused
 					$tabLinks.focus(function(e) {
 						e.preventDefault();
-						jQuery(this).trigger('click');	
+						jQuery(this).trigger('click');
 					});
 					
 					//move focus to div containing content when tab link is clicked with enter
