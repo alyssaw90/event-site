@@ -1,5 +1,7 @@
 'use strict';
 
+import * as customFunctions from '../shared/methods/common-functions.js';
+
 const PastEventsCtrl = (app) => {
 	app.controller('PastEventsCtrl', ['$scope', '$timeout', function($scope, $timeout) {
 		$scope.pastEvents = [
@@ -484,10 +486,15 @@ const PastEventsCtrl = (app) => {
 		];
 
 		//function to show and hide past event tables on past events page
-		$scope.showCalendarOfPastEvents = (calendarHtml, divClicked, calendarDiv, keyCode) => {
+		$scope.showCalendarOfPastEvents = (calendarHtml, divClicked, calendarDiv, event) => {
+			let keyCode = customFunctions.getKeyCode(event);
+			console.log('hola', keyCode);
 			if (keyCode === 1 || 13) {
 			  if (angular.element(divClicked).hasClass('selected-year')) {
 			    angular.element(calendarDiv).empty();
+			    if (keyCode === 1) {
+			    	angular.element(divClicked).blur();
+			    }
 			  } else {
 			    angular.element(calendarDiv).empty();
 			    angular.element(calendarDiv).append(calendarHtml);

@@ -180,7 +180,7 @@ export let changeWidth = function(div) {
 	}
 
 //function to show and hide past event tables on past events page
-export let showCalendarOfPastEvents = function(calendarHtml, divClicked, calendarDiv) {
+/*export let showCalendarOfPastEvents = function(calendarHtml, divClicked, calendarDiv) {
     if (divClicked.hasClass('selected-year')) {
       calendarDiv.empty();
     } else {
@@ -189,7 +189,7 @@ export let showCalendarOfPastEvents = function(calendarHtml, divClicked, calenda
     }
     divClicked.siblings().removeClass('selected-year');
   	divClicked.toggleClass('selected-year');
-}
+}*/
 
 //function to get key code
 export let getKeyCode = function(e) {

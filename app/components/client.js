@@ -94,6 +94,7 @@ eventsApp
 	.when('/', {
 		templateUrl: '/app/components/homepage/homepage.html',
 		controller: 'HomepageCtrl',
+		reloadOnSearch: false,
 		data: {
       pageTitle: 'Home Page - Microsoft Plugfests and Events'
     }
@@ -110,12 +111,14 @@ eventsApp
 	})
 	.when('/about', {
 		templateUrl: '/app/components/about/about.html',
+    reloadOnSearch: false,
 		data: {
       pageTitle: 'About Us Page - Microsoft Plugfests and Events'
     }
 	})
 	.when('/contactus', {
 		templateUrl: '/app/components/contactUs/contactUs.html',
+		reloadOnSearch: false,
 		data: {
       pageTitle: 'Contact Us Page - Microsoft Plugfests and Events'
     }
@@ -123,12 +126,14 @@ eventsApp
 	})
 	.when('/faq', {
 		templateUrl: '/app/components/faq/faq.html',
+		reloadOnSearch: false,
 		data: {
       pageTitle: 'Frequently Asked Questions Page - Microsoft Plugfests and Events'
     }
 	})
 	.when('/past-events', {
 		templateUrl: '/app/components/pastEvents/pastEvents.html',
+		reloadOnSearch: false,
 		controller: 'PastEventsCtrl',
 		data: {
       pageTitle: 'Past Events Page - Microsoft Plugfests and Events'
@@ -136,6 +141,7 @@ eventsApp
 	})
 	.when('/meet-the-team', {
 		templateUrl: '/app/components/meetTheTeam/meetTheTeam.html',
+		reloadOnSearch: false,
 		controller: 'MeetTheTeamCtrl',
 		data: {
       pageTitle: 'Meet the Team Page - Microsoft Plugfests and Events'
@@ -143,6 +149,7 @@ eventsApp
 	})
 	.when('/future-events', {
 		templateUrl: '/app/components/futureEvents/futureEvents.html',
+		reloadOnSearch: false,
 		controller: 'FutureEventsCtrl',
 		data: {
       pageTitle: 'Future Events Page - Microsoft Plugfests and Events'
@@ -150,6 +157,7 @@ eventsApp
 	})
 	.when('/latest-news', {
 		templateUrl: '/app/components/latestNews/latestNews.html',
+		reloadOnSearch: false,
 		controller: 'LatestNewsCtrl',
 		data: {
       pageTitle: 'Latest Page - Microsoft Plugfests and Events'
@@ -157,18 +165,21 @@ eventsApp
 	})
 	/*.when('/admin/slideshow', {
 		templateUrl: '/app/components/admin/editSlideshow/editSlideshowTemplate.html',
+		reloadOnSearch: false,
 		data: {
 			pageTitle: 'Edit Slideshow Settings'
 		}
 	})
 	.when('/admin', {
 		redirectTo: '/admin/edit-event',
+		reloadOnSearch: false,
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
     }
 	})
 	.when('/admin/edit-event', {
 		templateUrl: '/app/components/admin/editEvent/admin-edit-event.html',
+		reloadOnSearch: false,
 		// controller: 'AdminCreateEventCtrl',
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
@@ -176,6 +187,7 @@ eventsApp
 	})
 	.when('/admin/create-event', {
 		templateUrl: '/app/components/admin/createEvent/admin-create-event.html',
+		reloadOnSearch: false,
 		// controller: 'AdminCreateEventCtrl',
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
@@ -183,12 +195,14 @@ eventsApp
 	})
 	.when('/admin/create-speaker', {
 		templateUrl: '/app/components/admin/createSpeaker/admin-create-speaker.html',
+		reloadOnSearch: false,
 		data: {
 			pageTitle: 'Admin Page - Microsoft Plugfests and Events, create new speaker'
 		}
 	})
 	.when('/admin/edit-speaker', {
 		templateUrl: '/app/components/admin/editSpeaker/admin-edit-speakers.html',
+		reloadOnSearch: false,
 		// controller: 'AdminCreateEventCtrl',
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
@@ -196,6 +210,7 @@ eventsApp
 	})
 	.when('/admin/edit-files', {
 		templateUrl: '/app/components/admin/editFiles/edit-files-template.html',
+		reloadOnSearch: false,
 		// controller: 'EditFilesCtrl',
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
@@ -203,6 +218,7 @@ eventsApp
 	})
 	.when('/admin/login', {
 		templateUrl: '/app/components/admin/userLogging/login.html',
+		reloadOnSearch: false,
 		// controller: 'AdminCreateEventCtrl',
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
