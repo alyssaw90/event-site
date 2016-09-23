@@ -128,19 +128,6 @@ module.exports = function() {
 			event.addContact(26, {sortPosition: 10});
 	  })
 	})
-	.then(function() {
-		return Event.findOne({
-			where: {
-				id: 5
-			}
-		})
-	})
-	.then(function(event) {
-	  models.sql.sync()
-	  .then(function() {
-	  	event.setEventTabs([23]);
-	  })
-	})
   .then(function() {
 		return Event.findOne({
 			where: {
@@ -203,7 +190,7 @@ module.exports = function() {
 	.then(function(event) {
 	  models.sql.sync()
 	  .then(function() {
-	  	event.setEventTabs([28, 30, 32, 35]);
+	  	event.setEventTabs([28, /*30, */32, 35, 34]);
 	  })
 	})
 	.then(function() {
@@ -229,7 +216,7 @@ module.exports = function() {
 	.then(function(event) {
 	  models.sql.sync()
 	  .then(function() {
-	  	event.setEventTabs([33, 34, 31]);
+	  	event.setEventTabs([33, 34, 31, 36]);
 	  })
 	})
 }

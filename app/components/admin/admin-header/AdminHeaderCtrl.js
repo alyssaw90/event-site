@@ -27,10 +27,6 @@ const AdminHeaderCtrl = (app) => {
 
   $scope.appendToEl = angular.element(document.querySelector('#dropdown-long-content'));*/
 
-  $scope.goToPage = (link) => {
-    $location.path(link);
-  }
-
   $scope.logout = () => {
     let currentPath = $location.path();
     console.log('current path', currentPath);

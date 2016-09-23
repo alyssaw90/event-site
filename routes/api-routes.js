@@ -32,7 +32,7 @@ const multipartMiddleware = multipart({
 });
 /*Use the methods below to create the placeholder data. First uncomment the placeholder() and start the server this will create the data in the database, then comment out the placeholder() and uncomment the dbRelationships() and restart the server, this will create the relationships between the data tables. Finally, comment both placeholder() and dbRelationships out and restart the server. At this point, all your placeholder data will be created. Do this only once, if you need to recreate your placeholder data, delete all the tables from the database and repeat these same steps*/
 // placeholders();
-dbRelationships();
+// dbRelationships();
 
 models.sql.authenticate()
 .then( (err) => {

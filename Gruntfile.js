@@ -73,13 +73,13 @@ module.exports = function (grunt) {
             dest: 'app/build/',
             // ext:'.build.js'
           },
-          {
+          /*{
             expand: true,
             cwd: '',
             src: ['app/lib/kickstart.js'],
             dest: 'app/build/',
             // ext:'.build.js'
-          }
+          }*/
         ]
       }
     },

@@ -348,20 +348,21 @@ module.exports = function () {
 				eventHighlightColor: '#107c10',
 				eventHeaderImage: 'Beijing-Header-8.26.jpg',
 				eventAboutTabText:`
-				<a href="/beijing2016" class="btn btn-info float-right">English</a>
+				<a href="/beijing2016" class="btn btn-info float-right" role="button">English</a>
+				<a href="http://www.aka.ms/devdaysbeijing2016"><img src="uploads/RegisterNowCN.png" style="height: 37px; margin-right: 10px;" class="float-right beijingRegistration2016Button" title="registration button" alt="registration link"></a>
 				<h2>DevDays Asia 2016 @ Beijing</h2>
 				<h4>10/21-10/23，2016</h4>
 				<h4>中国北京市</h4>
 				<h4>活动对象︰ 开发人员、 独立软件供应商、 学生、 科技创业、 企业</h4>
 				<h4>费用：免费</h4>
-				<p>微软Office 365与开放文档团队将在中国北京市举办 DevDays Asia 2016 @Beijing。此次北京的活动是自DevDays Asia @Taipei（<a href="http://www.prnewswire.com/news-releases/microsoft-launches-the-biggest-developer-event-in-asia-taking-iot-development-in-taiwan-to-new-heights-300253810.html">亚州最大的开发者活动</a>）以来另一次延伸性的活动。快来参加在北京微软亚太研发集团召开的技术研讨。 日期为2016年10月21日至23日。内容包括演示、现场实践与操作、互动与交流、还有hackathon! 这是一场属于开发人员的技术盛宴，我们将围绕Office 365，数据平台以及开放性规范等技术话题，为您带来丰富的技术内容。您将在本次活动中聆听来自微软产品团队工程师带来的技术演讲，参与动手实验，与研发工程师直接一对一互动。您还可以带着您的Office 365项目参与48小时黑客马拉松活动，在技术专家的指导下加速完善您的项目，更有机会赢得Windows平板电脑、无人机、VR眼镜、平衡车等精彩大礼！</p>
+				<p>微软Office 365与开放文档团队将在中国北京市举办 DevDays Asia 2016 @Beijing。此次北京的活动是自DevDays Asia @Taipei（<a href="http://www.prnewswire.com/news-releases/microsoft-launches-the-biggest-developer-event-in-asia-taking-iot-development-in-taiwan-to-new-heights-300253810.html">亚州最大的开发者活动</a>）以来另一次延伸性的活动。快来参加在北京微软亚太研发集团召开的技术研讨。 日期为2016年10月21日至23日。内容包括演示、现场实践与操作、互动与交流、还有hackathon! 这是一场属于开发人员的技术盛宴，我们将围绕Office 365，数据平台以及开放性规范等技术话题，为您带来丰富的技术内容。您将在本次活动中聆听来自微软产品团队工程师带来的技术演讲，参与动手实验，与研发工程师直接一对一互动。您还可以带着您的Office 365项目参与48小时应用开发马拉松活动，在技术专家的指导下加速完善您的项目，更有机会赢得Windows平板电脑、无人机、VR眼镜、平衡车等精彩大礼！</p>
 				<p><strong>DevDays Asia 2016</strong>活动分为两个部分： <strong>DevDays Asia 2016北京技术峰会</strong>(10月22日 9:00-17:00)以及<strong>Office 365应用开发马拉松</strong>(10月21日17:00-10月23日17:00)。您可以在注册DevDays Asia 2016北京技术峰会时选择是否参与应用开发马拉松活动。</p>
 				<p class="blue-border"><span class="bg-primary">DevDays Asia 2016开发者高峰 会&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;10月22日 9:00 – 18:00</p>
 				 
 				<p>您将在活动中详细了解到Microsoft Office 365的广阔市场机会，以及以Office 365作为平台进行开发的技术细节。此外我们还将向您介绍微软在互操作性开放性规范方面的承诺。大会技术课程将涵盖以下内容： </p>
 				<ul>
 					<li>内置在 Word、 Excel、PowerPoint、Outlook中的Microsoft Office 外接程序</li>
-					<li>Microsoft Graph (旧称 “Office 365 统一API”) ：Microsoft Graph是访问数据、商务消息、用户、文件、邮件、日历、联系人 及文件夹最轻松简易的方式。</li>
+					<li>Microsoft Graph (旧称 “Office 365 统一API”) ：Microsoft Graph是访问 Microsoft 云服务中数据、商务消息、用户、文件、邮件、日历、联系人 及文件夹最轻松简易的方式。</li>
 					<li>Microsoft SQL Server</li>
 					<li>开放数据（OData）： 构建及使用RESTful APIs</li>
 					<li>Office文件格式</li>
@@ -370,7 +371,7 @@ module.exports = function () {
 					<li>Windows 互操作</li>
 					<li>Windows 协议测试组件</li>
 				</ul>
-				<p class="blue-border"><span class="bg-primary">Office 365 黑客马拉松 (Hackathon)&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;10月21日 17:00 - 10月23日 17:00</p>
+				<p class="blue-border"><span class="bg-primary">Office 365 应用开发马拉松 (Hackathon)&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;10月21日 17:00 - 10月23日 17:00</p>
 				<p>Office 365强劲的增长势头为ISV、企业、初创公司以及开发者都带来了无限的机会，基于Office 365构建的应用解决方案为诸多行业和场景带来了新的效率和革新。10月21日17点至10月23日17点，带上您的创意、项目和团队，参与48小时的Office 365应用开发马拉松，在现场与来自各地的开发团队同场竞技，面对面交流微软产品组技术专家，解决开发过程中遇到的问题，并在技术指导下不断加速和完善您的项目。
 				我们会为您提供完善的后勤保障服务，餐食茶点、休息娱乐，以确保您能够在48小时内最大程度地完善您的项目。我们还为您准备了丰厚的奖品，以激励您的极致创意和出色的项目成果：</p>
 				<img src="uploads/things-beijing-2016.png" class="centered" title="images of laptop, drone, virtual reality goggles, and scooter" alt="images of laptop, drone, virtual reality goggles, and scooter">
@@ -2584,7 +2585,8 @@ setTimeout(function() {
 				tabTitle: 'About',
 				tabNumber: 1,
 				tabContent: `
-				<a href="/beijing2016cn" class="btn btn-info float-right">汉语</a>
+				<a href="/beijing2016cn" class="btn btn-success float-right" role="button">汉语</a>
+				<a class="btn btn-primary float-right" role="button" style="margin-right:10px;" href="http://www.aka.ms/devdaysbeijing2016">Register</a>
 				<h2>DevDays Asia 2016 @ Beijing</h2>
 				<h4>October 21-23, 2016</h4>
 				<h4>Beijing, China</h4>
@@ -2633,7 +2635,11 @@ setTimeout(function() {
 		.then(function() {
 			return EventTab.create({
 				tabTitle: 'Hackathon Resources',
-				tabContent: `<h4>Resources are listed below for attendees to prepare for the hackathon.</h4>
+				tabNumber: 5,
+				tabContent: `
+				<a href="/beijing2016cn" class="btn btn-success float-right" role="button">汉语</a>
+				<a class="btn btn-primary float-right" role="button" style="margin-right:10px;" href="http://www.aka.ms/devdaysbeijing2016">Register</a>
+				<h4>Resources are listed below for attendees to prepare for the hackathon.</h4>
 					<ul>
 						<li><h5><a href="#prereqsHeader" du-smooth-scroll>Prerequisites</a></h5></li>
 						<li><h5><a href="#more-resources-header" du-smooth-scroll>More resources</a></h5></li>
@@ -3168,59 +3174,329 @@ setTimeout(function() {
 		.then(function() {
 			return EventTab.create({
 				tabTitle: 'Hackathon 参赛准备资料',
-				tabNumber: 1,
-				tabContent: `<h2>请参考以下 Hackathon 参赛准备资料。</h2>
-				<ul>
-					<li><a class="slow-scroll" target="_self" href="#prereqsHeader">必要条件</li>
-					<li><a class="slow-scroll" href="#more-resources-header-cn" target="_self">更多资源</a></li>
-					<li><a class="slow-scroll" href="#tutorials-header-cn" target="_self"></a> 有关教程</li>
-				</ul>
-				<h3 id="prereqsHeader-cn">必要条件</h3>
-				<ul>
-					<li>如果您没有Office，请在 <a href="http://dev.office.com/devprogram">Office开发中心</a> 的网站上报名及填写单表（详细步骤，请参考<a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/DevDays-Asia--Taipei-2016/Office-365-Developer-Program-sign-up--Training">九频道的视频</a> 或有关教程 报名注册）。通过Office 365 的开发人员计划，您能拿到免费的Office 365的开发人员账户及为期一年的Office 365 的订阅。</li>
-					<li>
-					 	<a href="http://dev.office.com/getting-started">入门</a>
-						<br>
-						您可以找到有关开发工具的信息与内容：
-						<br>
-						<ul>
-							<li><a href="http://dev.office.com/getting-started">Office Dev Center 入门</a></li>
-							<li><a href="https://github.com/Microsoft/Office-js-docs_zh-cn/tree/master/docs/get-started">Microsoft/Office-js-docs_zh-cn</a></li>
-						</ul>
-						<li>提示：若选用Visual Studio 来开发Office 外接程序, 您可用以下：</li>
-						<li><a href="https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx">Visual Studio Community 201 5 （免费版）</a>和 <a href="https://www.visualstudio.com/features/office-tools-vs">Office开发者工具</a></li>
-					</li>
-				</ul>
-				<h3 id="more-resources-header-cn">更多资源</h3>
-				<h4>开发Office应用程序起点</h4>
-				<ul>
-					<li><a href="https://msdn.microsoft.com/zh-cn/office/aa905340.aspx"Office 开发中心</a></li>
-					<li><a href="https://msdn.microsoft.com/zh-cn/library/office/dn467914.aspx">Office 开发人员文档</a></li>
-					<li><a href="https://msdn.microsoft.com/ZH-CN/library/office/jj220082.aspx">Office 加载项平台概述</a></li>
-					<li><a href="https://graph.microsoft.io/zh-cn/docs/overview/overview">Microsoft Graph (旧称 “Office 365 统一API”) 使用 Microsoft Graph API 的常见查询</a></li>
-					<li><a href="https://graph.microsoft.io/zh-cn/app-registration">Office 365 应用注册工具</a></li>
-					<li><a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/Shanghai-Interop-Dev-Days/Office-Add-ins-Intro-and-Development">Office 外接程序介绍与开发</a></li>
-					<li><a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/Shanghai-Interop-Dev-Days/Build-a-Complete-Office-Add-in-Solution">构建一个完整的 Office 外接程序</a></li>
-					<li><a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/DevDays-Asia--Taipei-2016/Accessing-APIs-through-add-ins">在外接程序中访问 APIs</a></li>
-					<li><a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/DevDays-Asia--Taipei-2016/Mail-Calendar-and-Contacts-REST-Demonstration">有关邮件，日历，联系人的 REST 演示</a></li>
-					<li><a href="https://msdn.microsoft.com/ZH-CN/library/office/fp123515.aspx">发布Office 外接程序</a></li>
-					<li><a href="https://msdn.microsoft.com/zh-cn/library/office/jj220037.aspx">将 Office 与 SharePoint 外接程序和 Office 365 Web 应用提交到 Office 应用商店</a></li>
-				</ul>
-				<h4>代码范例</h4>
-				<ul>
-					<li><a href="https://github.com/Microsoft/Office-js-docs_zh-cn/">外接程序 GitHub 存储库中提供了此 Office 外接程序帮助的最新版本</a></li>
-				</ul>
-				<h3 id="tutorials-header-cn">有关教程</h3>
-				<ul>
-					<li>报名注册</li>
-					<li>发布Office 外接程序及提交到Office 应用商店</li>
-				</ul>`
+				tabNumber: 3,
+				tabContent: `
+				<a href="/beijing2016" class="btn btn-info float-right" role="button">English</a>
+				<a href="http://www.aka.ms/devdaysbeijing2016"><img src="/uploads/RegisterNowCN.png" style="height: 37px; margin-right: 10px;" class="float-right" title="registration button" alt="registration link"></a>
+				<p >请参考以下 Hackathon 参赛准备资料。熟悉这些内容将在活动中帮助您，并会有利于您在 Hackathon 中的表现。</p>
+<h3>资料主题</h3>
+<ul>
+<li><a href="#必要条件-1">必要条件 </a></li>
+<li><a href="#更多资源-1">更多资源</a></li>
+<li><a href="#有关教程-1">有关教程</a></li>
+</ul>
+<h3 id="必要条件-1">必要条件 </h3>
+<ul>
+<li>如果您没有Office，请在 <a href="http://dev.office.com/devprogram">Office开发中心</a> 的网站上报名及填写单表（详细步骤，请参考<a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/DevDays-Asia--Taipei-2016/Office-365-Developer-Program-sign-up--Training">九频道的视频</a> 或有关教程<a href="#_报名注册">报名注册</a>）。通过Office 365 的开发人员计划，您能拿到免费的Office 365的开发人员账户及为期一年的Office 365 的订阅。</li>
+<li>入门</p>
+<p>您可以找到有关开发工具的信息与内容：</p>
+<p><a href="http://dev.office.com/getting-started">Office Dev Center 入门</a></p>
+<p><a href="https://github.com/Microsoft/Office-js-docs_zh-cn/tree/master/docs/get-started">Microsoft Office js docs_zh-cn</a></p>
+<p><strong>提示</strong>：若选用Visual Studio 来开发Office 外接程序, 您可用<a href="https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx">Visual Studio Community 201 5 （免费版）</a>和 <a href="https://www.visualstudio.com/features/office-tools-vs">Office开发者工具</a></li>
+</ul>
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">回到本文开头</button>
+<h3 id="更多资源-1">更多资源 </h3>
+<h4 id="开发office应用程序起点">开发Office应用程序起点</h4>
+<h4 id="英文内容">英文内容</h4>
+<ul>
+<li><a href="http://dev.office.com/">Office Dev Center</a></p>
+<p>Office 开发中心的英文首页涵盖关于以Office 作为平台进行开发的信息与内容。</li>
+<li><a href="http://graph.microsoft.io/en-us/getting-started">Microsoft Graph</a></p>
+<p>Microsoft Graph (旧称 “Office 365 统一API”) ：Microsoft Graph 是访问 Microsoft 云服务中数据、商务消息、用户、文件、邮件、日历、联系人 及文件夹最轻松简易的方式。了解如何在您的平台上通过微软 Graph 访问 Office 365 数据。</li>
+</ul>
+<ul>
+<li><a href="http://graph.microsoft.io/en-us/app-registration">App registration</a></p>
+<p>注册您的应用调用微软Graph</li>
+<p>微软Build 2016年开发者大会九频道视频</p>
+<p>以Office 365作为平台进行开发概述：</p>
+<li><a href="https://channel9.msdn.com/Events/Build/2016/B866">Make your solution a native part of Office on every&nbsp;platform</a></li>
+<li><a href="https://channel9.msdn.com/Events/Build/2016/B872">Office platform overview</a></li>
+<p>以Office 365作为平台进行开发技术细节， 比如怎样访问 Office 服务来构建应用及关于调用微软Graph的技术内容。</p>
+<li><a href="https://channel9.msdn.com/Events/Build/2016/T617">Build cool apps with Microsoft Graph, tap into the intelligence and reach millions of&nbsp;users</a></li>
+<li><a href="https://channel9.msdn.com/events/Build/2016/B820">Build smarter apps by connecting to Office&nbsp;services</a></li>
+<li><a href="https://channel9.msdn.com/Events/Build/2016/P568">Connecting to Outlook Direct Endpoint with Azure AD Auth&nbsp;v2</a></li>
+<li><a href="https://channel9.msdn.com/Events/Build/2016/P555">WebHooks in the Microsoft&nbsp;Graph</a></li>
+<p>有关构建Office 外接程序的内容, 比如怎样通过新的Word 或JavaScript APIs来构建Office 外接程序，怎样使用任何编辑器创建 Office 外接程序, 以及在 Office 外接程序中使用 Office UI 结构等。</p>
+<li><a href="https://channel9.msdn.com/Events/Build/2016/P549">What&rsquo;s new in Word JavaScript APIs</a></li>
+<li><a href="https://channel9.msdn.com/Events/Build/2016/P552">Build Office Add-ins with any code editor and Office&nbsp;Online</a></li>
+<li><a href="https://channel9.msdn.com/Events/Build/2016/P554">Office Add-ins in Office for&nbsp;Mac</a></li>
+<li><a href="https://channel9.msdn.com/Events/Build/2016/P557">What&rsquo;s new in Excel JavaScript APIs v.1.2 in Office&nbsp;Add-ins</a></li>
+<li><a href="https://channel9.msdn.com/Events/Build/2016/T641">Getting to know Office UI Fabric</a></li>
+</ul>
+<h4 id="中文内容">中文内容</h4>
+<ul>
+<li><a href="https://msdn.microsoft.com/zh-cn/office/aa905340.aspx">Office 开发人员文档登陆首页</a></p>
+<p>Office 开发人员的中文文档涵盖关于以Office 作为平台进行开发的信息与内容。从此页您能连接中英文文档以及有关页面。</li>
+<li><a href="https://msdn.microsoft.com/zh-cn/library/office/dn467914.aspx">Office 开发人员文档</a></p>
+<p>在此查找开发解决方案和自定义 Office 桌面（客户端）应用程序以及服务器产品和技术、服务与工具的操作方法内容、示例代码、SDK 和 API 文档、VBA 参考、培训和技术文章。</li>
+<li><a href="https://msdn.microsoft.com/ZH-CN/library/office/jj220082.aspx">Office 加载项平台概述</a></p>
+<p>您若决定开发Office 外接程序，请首先参考概述。</li>
+<li><a href="https://graph.microsoft.io/zh-cn/docs/overview/overview">Microsoft Graph (旧称 “Office 365 统一API”) 使用 Microsoft Graph API 的常见查询</a></p>
+<p>您若决定在您的平台上通过微软Graph访问Office 365数据及进行有关应用开发， 请参考此中文页面。</li>
+<li><a href="https://graph.microsoft.io/zh-cn/app-registration">Office 365 应用注册工具</a></p>
+<p>注册您的应用调用微软Graph</li>
+<li><a href="https://msdn.microsoft.com/ZH-CN/library/office/fp123515.aspx">发布Office 外接程序</a></p>
+<p>构建Office 外接程序之后， 您有几种发布方式。请参考此页。</li>
+<li><a href="https://msdn.microsoft.com/zh-cn/library/office/jj220037.aspx">将 Office 与 SharePoint 外接程序和 Office 365 Web 应用提交到 Office 应用商店</a></p>
+<p>若有兴趣提交您的应用至Office 应用商店，请参考此页及<a href="#有关教程-1"">有关教程</a>。</li>
+</ul>
+<h4 id="代码范例">代码范例</h4>
+<h4 id="英文内容-1">英文内容</h4>
+<ul>
+<li><a href="https://github.com/OfficeDev">Office Developer on GitHub</a></p>
+<p>英文版的Office 开发代码范例</li>
+</ul>
+<h4 id="中文内容-1">中文内容</h4>
+<ul>
+<li><a href="https://github.com/Microsoft/Office-js-docs_zh-cn/tree/master">外接程序 GitHub 存储库中提供了此 Office 外接程序帮助的最新版本</a></p>
+<p>中文版的Office 开发代码范例</li>
+</ul>
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">回到本文开头</button>
+<h3 id="有关教程-1">有关教程 </h3>
+<ul>
+<li><h4 id="报名注册"><a href="#_报名注册">报名注册</a> </h4></li>
+<li><h4 id="发布office-外接程序及提交到office-应用商店"><a href="#发布office-外接程序及提交到office-应用商店-1">发布Office 外接程序及提交到Office 应用商店</a> </h4></li>
+</ul>
+<h3 id="报名注册-1"><span id="_报名注册" class="anchor"><span id="_报名注册" class="anchor"></span></span>报名注册 </h3>
+<p>本文内容</p>
+<ol style="list-style-type: decimal">
+<li><a href="#在office-dev-center网站上报名">在Office Dev Center网站上报名</a></li>
+<li><a href="#获取office-365开发人员账户">获取Office 365开发人员账户</a></li>
+<li><a href="#登入office-365">登入Office 365</a></li>
+<li><a href="#分配office-365许可证">分配Office 365许可证</a></li>
+<li><a href="#资源">资源</a></li>
+</ol>
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">回到本文开头</button>
+<h3 id="在office-dev-center网站上报名">在Office Dev Center网站上报名</h3>
+<p>在<a href="http://dev.office.com/devprogram">Office Dev Center</a>的网站上报名及填写单表。通过 Office 365 开发人员计划，您能拿到免费的Office 365开发人员账户及为期一年Office 365的订阅。</p>
+<p><strong>图 1: Office 365 Dev Program</strong></p>
+<img src="uploads/office-web-curriculum-taipei-5.png">
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">回到本文开头</button>
+<h3 id="获取office-365开发人员账户">获取Office 365开发人员账户</h3>
+<ol style="list-style-type: decimal">
+<li>完成上个环节后您将收到一封来自Office 365 Developer Program的电子邮件。在电子邮件里，请点击连接以便注册免费的 Office 365 开发人员帐户。</li>
+<li>在第一页 的注册表格上请提供有关自己的资讯，选择[下一步]。</li>
+<li>在第二页上(图 2), 指定订阅管理员的使用者识别码。</li>
+<p><strong>图 2. Office 365 开发人员网站网域名称</strong></p>
+<img src="uploads/office-web-curriculum-taipei-6.png">
+<li>建立 <strong>.onmicrosoft.com</strong> 的子网域。注册之后，您必须使用所产生的认证 (格式为 UserID@yourdomain.onmicrosoft.com) 登入您在其中管理帐户的 Office 365 入口网站。 SharePoint Online 开发人员网站会布建于您的新网域中：http://yourdomain.sharepoint.com。</li>
+<li>选择 [下一步]，并填写单表的最后一页。如果您选择用电话号码来取得确认码，则可以提供行动电话或地面通讯电话号码，但不是 VoIP 号码。</li>
+<table >
+<thead>
+<tr class="header">
+<th align="left">注意事项</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>如果您尝试注册开发人员帐户时已登入另一个Microsoft 帐户，可能会收到此讯息“抱歉，您输入的使用者识别码无法运作。它看起来无效。请务必输入组织分配给您的使用者识别码。您的使用者识别码通常看起来像是someone@example.com 或someone@example.onmicrosoft.com。” 如果您看到此讯息，请退出原本使用的Microsoft 帐户然后再试一次。如果仍然收到此讯息，请清除浏览器缓存，或切换到 [InPrivate 浏览]，然后填写单表。</td>
+</tr>
+</tbody>
+</table>
+<p>一旦创建了您的帐户，您将收到另一封电子邮件，请连接<a href="http://portal.office.com/">Office 365</a>。</p>
+</ol>
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">回到本文开头</button>
+<h3 id="登入office-365">登入Office 365</h3>
+<p>您的浏览器会开启 Office 365 安装页面。请选择 [管理] 图示，以开启管理中心页面。</p>
+<p><strong>图 3：Office 365 管理中心页面</strong></p>
+<img src="uploads/office-web-curriculum-taipei-7.png">
+<ol style="list-style-type: decimal">
+<li>您必须等待 开发人员网站准备完成。准备完成之后，请在浏览器中刷新 管理中心页面。</li>
+<li>然后在页面上选择 [建置外接程序]来开启您开发人员网站。您应该会看到像图 4 中的网站。在页面有测试外接程序清单。这会确认网站是否符合SharePoint开发人员网站模板。如果您看到的是普通的小组网站，请稍候几分钟并重新启动您的网站。如果您还没有开发工具，请点击[添加] &quot;Napa&quot; Office 365 开发工具。您即可在此网站上使用Napa及开发Office 外接程序。</li>
+<li>记下网站 URL。在 Visual Studio 中建立 SharePoint Add-ins 专案时会用到它。</li>
+</ol>
+<p><strong>图4：开发人员网站的首页与测试清单中的外接程序</strong></p>
+<img src="uploads/office-web-curriculum-taipei-8.png">
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">回到本文开头</button>
+<h3 id="分配office-365许可证">分配Office 365许可证</h3>
+<p><strong>提示</strong>: 若 Office 365首面已经显示了可用的 Office 的产品 （参考图8）， 您可立即进行下载及跳过以下步骤。以下步骤是通过旧的 Office 365 管理中心页面版本来分配 Office 365 开发者 许可证。若要按照以下步骤来继续此课程，请选择旧的 Office 365 管理中心页面版本。</p>
+<p>分配给自己 （活跃用户）Office 365 许可证。点击 &quot;华夫格&quot; &gt; [管理员] 图示。</p>
+<p><strong>图5： Office 365首页</strong></p>
+<img src="uploads/office-web-curriculum-taipei-10.png">
+<p>2. 在核取方块内选择自己。您的个人资料会显示在右边。点击下方的项目编辑：给自己分配许可证</p>
+<p><strong>图 6：Office 365 管理中心页面 &gt; 活跃用户</strong></p>
+<img src="uploads/office-web-curriculum-taipei-11.png">
+<p>3. 在[用户位置]的组合框设置您的地点。并选择Microsoft Office 365的开发。点击[保存]完成分配的许可证。</p>
+<p><strong>图7：分配活跃用户许可证</strong></p>
+<img src="uploads/office-web-curriculum-taipei-12.png">
+<p>4. 在完成后，回到 Office 365 的主页。页面将显示可用的 Office 的产品。拉下页面，可以看到完整的显示。</p>
+<p><strong>图8：Office 365 首页</strong></p>
+<img src="uploads/office-web-curriculum-taipei-13.png">
+<p>如要回到开发者网站，点击在左上角的&quot;华夫格&quot;&gt; [管理] &gt; [构建的应用程式]。</p>
+<h3 id="资源">资源</h3>
+<p><a href="https://msdn.microsoft.com/zh-cn/office/aa905340.aspx">Office 开发人员文档</a></p>
+<p><a href="https://msdn.microsoft.com/zh-cn/library/office/fp179924.aspx#Anchor_1">注册 Office 365 开发人员网站</a></p>
+<h3 id="发布office-外接程序及提交到office-应用商店-1">发布Office 外接程序及提交到Office 应用商店 </h3>
+<p>本案例演示从美国西岸来发布 Excel Colorizer Add-in for Excel 2016 外接程序及提交至Office 应用商店的步骤， 使用的开发工具是<a href="https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx">Visual Studio Community 201 5 （免费版</a>）和 <a href="https://www.visualstudio.com/features/office-tools-vs">Office开发者工具</a>。微软 Azure 为承载 Excel Colorizer 的主机平台。</p>
+<p>如果您要按照自己的情况来发布您的Office外接程序，请参阅MSDN 资源 &gt; <a href="https://msdn.microsoft.com/ZH-CN/library/office/fp123515.aspx">发布</a>。</p>
+<h3 id="本文内容">本文内容</h3>
+<ol style="list-style-type: decimal">
+<li><a href="#决定发布office-外接程序的通讯端点">决定发布Office 外接程序的通讯端点</a></li>
+<li><a href="#为开发而设定电脑安装.net-的azure-sdk-英文订阅azure账户-及使用office-2016">为开发而设定电脑：安装.NET 的Azure SDK (英文)，订阅Azure账户， 及使用Office 2016</a></li>
+<li><a href="#在azure中建立网站">在Azure中建立网站</a></li>
+<li><a href="#office外接程序发布到azure的网站">Office 外接程序发布到 Azure 网站</a></li>
+<li><a href="#使外接程序资讯清单档案指向在azure中的office外接程序">使外接程序资讯清单档案指向在Azure的Office 外接程序</a></li>
+<li><a href="#在-office-客户端应用程序里运行office外接程序">在Office客户端应用程序里运行Office外接程序</a></li>
+<li><a href="#把外接程序提交至office应用商店">把外接程序提交到Office应用商店</a></li>
+<li><a href="#资源2">资源</a></li>
+</ol>
+<h3 id="决定发布office-外接程序的通讯端点">决定发布Office 外接程序的通讯端点</h3>
+<ol style="list-style-type: lower-alpha">
+<li>Office 应用商店</li>
+<li>SharePoint 上的 Office 外接程序目录</li>
+<li>Exchange 目录</li>
+<li>网路共用的资料夹外接程序目录</li>
+</ol>
+<p>本案例演示如何将Office外接程序<a href="https://msdn.microsoft.com/ZH-CN/library/office/dn622055.aspx">发布到微软 Azure</a>，然后<a href="https://msdn.microsoft.com/zh-cn/library/office/jj220037.aspx">提交至Office 应用商店</a>。</p>
+<h3 id="为开发而设定电脑安装.net-的azure-sdk-英文订阅azure账户-及使用office-2016">为开发而设定电脑：安装.NET 的Azure SDK (英文)，订阅Azure账户， 及使用Office 2016</h3>
+<ol style="list-style-type: decimal">
+<li>在<a href="http://azure.microsoft.com/zh-cn/downloads/">Azure 下载页面</a>安装为.NET 的Azure SDK (英文) 。本案例使用免费的<a href="https://www.microsoft.com/en-us/download/details.aspx?id=48146">Microsoft Visual Studio Community 2015</a>。</li>
+
+	<ol style="list-style-type: lower-alpha">
+		<li>在 [语言]，选择[.NET]。</li>
+		<li>如果您已安装的Visual Studio ，选择符合您的Visual Studio版本的Azure .NET SDK 版本。</li>
+		<li>当询问您是否要执行或储存安装可执行档时，请选择 [执行]。</li>
+		<li>在 Web 平台 Installer 视窗中，选择 [安装]。</li>
+	</ol>
+<li>安装Office 2016或更新Office 2013 。 Excel Colorizer 外接程序只限于在Excel 2016上运行。</li>
+<table>
+<thead>
+<tr class="header">
+<th align="left">注意事项</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>您可以取得<a href="http://office.microsoft.com/zh-cn/try/?WT.intid1=ODC_ENUS_FX101785584_XT104056786">1 个月的Office试用版本</a>。</td>
+</tr>
+</tbody>
+</table>
+<li>取得Azure的帐户。</li>
+<table>
+<thead>
+<tr class="header">
+<th align="left">注意事项</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>如果您是 Microsoft Developer Network (MSDN) 订阅者<a href="http://azure.microsoft.com/zh-cn/pricing/member-offers/msdn-benefits/">Azure的 订阅是MSDN订阅的一部分</a>。</td>
+</tr>
+<tr class="even">
+<td>如果您不是 MSDN 订阅者，您仍然可以在<a href="https://azure.microsoft.com/zh-cn/pricing/free-trial/">Windows Azure网站上取得免费Azure试用版</a>。</td>
+</tr>
+</tbody>
+</table>
+</ol>
+
+<h3 id="在azure中建立网站">在Azure中建立网站</h3>
+<p>建立空白的Azure的网站有几种方式。如果您使用是Visual Studio Community 2015，请遵循从Visual Studio IDE中建立的Azure网站的步骤。</p>
+<p>使用Visual Studio 2015或免费版本来建立空白的Azure的网站。</p>
+<ol style="list-style-type: decimal">
+<li>在Visual Studio中的[检视]功能表中选择 [伺服器档案总管]，按一下滑鼠右键[Azure]并选择[连接到微软Azure订阅]。遵循指示连线您的Azure的订阅。</li>
+<li>在Visual Studio，[伺服器档案总管] 中展开Azure，滑鼠右键按一下[应用程式服务]，然后选择 [建立新的网页应用程式]。</li>
+<li>在 [Windows Azure的上建立的Web应用程式] 对话方块中，提供此资讯：</li>
+<ul>
+<li>输入您网站的唯一的[网络应用程式名称] .Azure验证azurewebsites.net是网域内唯 一的网站名称。</li>
+<li>选择您使用授权建立此网站的[应用程式服务计划]。如果您建立新的计划，您也需要命名它。</li>
+<li>选择您的网站之[资源群组]。如果您建立新的群组，您也需要命名它。</li>
+<li>选择适合您的 [地理区域]。</li>
+<li>针对 [资料库伺服器] ：接受预设值 [没有资料库]，然后选择 [建立]。</p>
+<p>新的网站会出现在被选择的资源群组下：从 [伺服器总管] 进入&gt; [Azure] &gt; [应用程式服务。</li>
+</ul>
+<li>滑鼠右键按一下新增的网站，然后选择 [浏​​览器中的检视]。浏览器中开启并显示网页及此讯息“此网站已成功建立”。</li>
+<li>在浏览器网址列中，更变网站的URL让其使用HTTPS，按 [Enter] 键，并确认已启用HTTPS通讯协定.Office外接程序模型需要外接程序使用HTTPS通讯协定。</li>
+<li>在Visual Studio 2015中，以滑鼠右键按一下 [伺服器档案总管] 中的新网站，并选择[下载发布设定档]，然后将该设定档储存到电脑。发布设定档有您的认证并可让您在Azure的网站上发布您的 Office外接程序。</li>
+</ol>
+
+<h3 id="office外接程序发布到azure的网站">Office外接程序发布到Azure的网站</h3>
+<ol style="list-style-type: decimal">
+<li>把外接程序在Visual Studio中开启，展开[方案总管中] 的解决方案节点，您会看到两个专案的解决方案。</li>
+<li>以滑鼠右键按一下网站专案，然后选择 [发布]。</p>
+<p>Web专案会有厅外接程序网站档案，所以这是您发布到Azure的专案。</li>
+<li>在[发布网站]，选择 [汇入]。</li>
+<li>[汇入发布设定] 中选择[浏览]，然后浏览至您储存发布设定档本主题中前面的地方。选择[确定]以汇入您的设定档。</li>
+<li>在[发布网站]，[连线]索引标签中接受预设值并选择 [下一步]。</p>
+<p>再一次选择 [下一步]&gt;接受预设设定。</li>
+<li>在[预览]标签上选择[启动预览]。预览会显示所有将发布至Azure的网站的网页专案及其档案。</li>
+<li>选择 [发布] 。Visual Studio将Office外接程序的网络专案发布到Azure的网站。</li>
+<li>在Visual Studio中完成发布网络专案后，浏览器中开启并显示网页及文字“此网页应用程式已成功建立。”这是网站目前的预设的页面。</p>
+<p>若要查看外接程序的网页，更变URL及使用HTTPS：并加上外接程序的预设HTML页面的路径。例如，更变的URL看起来应类似https://YourDomain.azurewebsites.net/Addin/Home/ Home.html。这会确认外接程序的网站现在已装载于Azure。拷贝此URL，因为编辑外接程序资讯清单档案时会需要它。</li>
+</ol>
+<h3 id="使外接程序资讯清单档案指向在azure中的office外接程序">使外接程序资讯清单档案指向在Azure中的Office外接程序</h3>
+<ol style="list-style-type: decimal">
+<li>在Visual Studio中把Office外接程序打开，在[方案总管中]展开解决方案以便显示这两个专案。</li>
+<li>打开外接程序资讯清单。</li>
+<li>针对[来源位置]：输入外接程序的主要HTML页面上的URL例如在发布外接程序之后，在上一个步骤中拷贝的URL <a href="https://YourDomain.azurewebsites.net/Addin/Home/Home.html" class="uri">https://YourDomain.azurewebsites.net/Addin/Home/Home.html</a> 。储存此咨询清单。</li>
+</ol>
+<h3 id="在-office-客户端应用程序里运行office外接程序">在 Office 客户端应用程序里运行Office外接程序</h3>
+<p>您的源位置已经从本地服务器的测试环境转变成在Azure中的网站网址。运行的Office外接程序及进行测试。本Colorizer外接程序只限于在Excel 2016，Excel Online中运行。</p>
+<h3 id="把外接程序提交至office应用商店">把外接程序提交至Office应用商店</h3>
+<p>一般在提交外接程序之前，请参阅以下关于提交Office应用商店的文章：</p>
+<p><a href="https://msdn.microsoft.com/zh-cn/library/office/jj220037.aspx">将Office与SharePoint外接程序和Office 365 Web 应用提交到Office 应用商店</a></p>
+<h4 id="发布-excel-colorizer-add-in-for-excel-2016进行了以下事项">发布 Excel Colorizer Add-in for Excel 2016进行了以下事项:</h4>
+<ol style="list-style-type: decimal">
+<li>把外接程序送至 Office 应用商店，请使用 <span id="_Hlk461704539" class="anchor"></span><a href="https://msdn.microsoft.com/zh-cn/library/office/jj220033.aspx">Microsoft卖家面板。</a></li>
+
+<p>如您将需要创建个人或公司帐户，（如适用）添加支出信息。有关详细信息，请参阅：</p>
+
+<ul>
+<li><a href="https://dev.windows.com/zh-cn/programs/join">注册成为应用开发人员</a>。创建您的帐户后，便经历审批过程。</li>
+<li><a href="https://msdn.microsoft.com/zh-cn/library/office/jj220033.aspx">使用卖家面板将您的应用或外接程序提交到 Office 应用商店</a>。</p>
+</ul>
+<p>提示：本演示创建了个人帐户来发布Office外接程序。因为外接程序为免费，买方账户没有建立。</p>
+<p>填写账户信息， 提交并等待批准。</li>
+<li>提交准备图示、应用程式 (外接程序) 徽标、 萤幕截图、 隐私和支援语句的HTML 文件。</li>
+<p>图像的尺寸，参阅 <a href="https://msdn.microsoft.com/zh-cn/library/office/dn356576.aspx">将 Office 和 SharePoint 外接程序和 Office 365 Web 应用程序提交到卖家面板的清单</a> 。</p>
+<li>图示、 隐私和支援的声明 (.html 文件) 发布到 Azure 帐户。</li>
+<li>清单中, 除了预设元素，Excel Colorizer 外接程序添加了 IconUrl、 SupportUrl 和必须要求的元素（Excel Colorizer 外接程序使用Excel 新的API, 并且只限于在Excel 2016 或上线版本中运行）。清单架构档的版本为1.1。</li>
+
+<table>
+<thead>
+<tr class="header">
+<th align="left">注意事项</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>每个外接程序都不同， 为确保外接程序按预期方式工作，请参阅 <a href="https://msdn.microsoft.com/ZH-CN/library/office/dn535871.aspx">指定 Office 主机和 API 需求</a>和<a href="https://msdn.microsoft.com/ZH-CN/library/office/mt590206.aspx">Office 外接程序 要求集</a> 。</td>
+</tr>
+</tbody>
+</table>
+
+<li>如果在外接程序中使用 Office JavaScript API，您必须参照<a href="https://msdn.microsoft.com/ZH-CN/library/office/dn221992.aspx">从 适用于 Office 的 JavaScript API 的内容传送网络 (CDN) 引用 适用于 Office 的 JavaScript API 库</a>。不要在外接程序中包含 Office.js 档案的复本或参照其它地方主控之档案的复本。</li>
+<li>在Visual Studio中，验证外接程序资讯清单， 点击组建 &gt; [发布] &gt; [执行验证检查] 。</li>
+<li>登入 Microsoft 卖方仪表板并添加应用程式（外接程序）。</li>
+
+<ul>
+<li>输入版本编号。在卖方仪表板中提交的版本编号必须与外接程序资讯清单里的版本编号相同。例如:</p>
+<p>卖方仪表板: 1.0.0.0</p>
+<p>外接程序资讯清单：1.0.0.0</li>
+<li>上传截图和 App 徽标。</li>
+<li>上传应用程式套装软体，也就是应用程式（外接程序）的资讯清单。</li>
+<li>提供支援和隐私的 URL。支援语句里并有联络信息（联络信息也可以在外接程序里）。联络信息可以是以下任何一项或全部: 电子邮件地址、 电话号码、 连络人单表，有效的社会媒体连接 (例如Facebook 或 Twitter 上和您接触的 URL) 或其它评论交流形式。</li>
+</ul>
+
+<li>交您的应用程式 (外接程序)，并等待批准。</li>
+<li>提交了外接程序之后，如果它没有通过Office 应用商店的批准，您将会收到一份说明哪些项目需要更改的验证测试报告。这份验证测试报告是根据<a href="https://msdn.microsoft.com/zh-cn/library/office/jj220035.aspx">提交到 Office 应用商店的应用和外接程序的验证策略（版本 1.9）</a>而进行的测试。在进行更改后，您可再次提交外接程序。</li>
+</ol>
+<h3 id="资源2">资源</h3>
+<ul>
+<li><a href="https://msdn.microsoft.com/ZH-CN/library/office/fp123515.aspx">发布 Office 外接程序</a></li>
+<li><a href="https://msdn.microsoft.com/ZH-CN/library/office/dn622055.aspx">发布到微软 Azure</a></li>
+<li><a href="https://msdn.microsoft.com/zh-cn/library/office/jj220037.aspx">将 Office 与 SharePoint 外接程序和 Office 365 Web 应用提交到 Office 应用商店</a></li>
+</ul>
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">回到本文开头</button>`
 			})
 		})
 		.then(function() {
 			return EventTab.create({
 				tabTitle: 'Agenda',
-				tabContent: `<h2>DevDays Asia 2016 @ Beijing Agenda</h2>
+				tabNumber: 2,
+				tabContent: `
+				<a href="/beijing2016cn" class="btn btn-success float-right" role="button">汉语</a>
+				<a class="btn btn-primary float-right" role="button" style="margin-right:10px;" href="http://www.aka.ms/devdaysbeijing2016">Register</a>
+				<h2>DevDays Asia 2016 @ Beijing Agenda</h2>
 				
 				<h4>September 26, 2016: Hackathon opens! </h4>
 				
@@ -3264,10 +3540,13 @@ setTimeout(function() {
 		})
 		.then(function() {
 			return EventTab.create({
-				tabTitle: 'Hackathon Rules',
-				tabNumber: 4,
-				tabContent: `<h2>黑客马拉松活动规则与制度</h2>
-<h4 class="text-align-center" style="word-break: keep-all"><a target="_self" href="#beijing2016Heading1"> 黑客马拉松项目概述</a> | <a target="_self" href="#beijing2016Heading2">如何参加？</a>| <a target="_self" href="#beijing2016Heading3">黑客马拉松项目需求</a> | <a target="_self" href="#beijing2016Heading4">我的项目将被如何使用？</a>| <a target="_self" href="#beijing2016Heading5"> 我的项目将如何评估？</a>| <a target="_self" href="#beijing2016Heading6"> 黑客马拉松条款和条件</a></h4>
+				tabTitle: 'Hackathon 规则与制度',
+				tabNumber: 3,
+				tabContent: `
+				<a href="/beijing2016" class="btn btn-info float-right" role="button">English</a>
+				<a href="http://www.aka.ms/devdaysbeijing2016"><img src="/uploads/RegisterNowCN.png" style="height: 37px; margin-right: 10px;" class="float-right" title="registration button" alt="registration link"></a>
+				<h2>黑客马拉松活动规则与制度</h2>
+<pre class="text-align-center"><span><a target="_self" href="#beijing2016Heading1"> 黑客马拉松项目概述</a> | <a target="_self" href="#beijing2016Heading2">如何参加？</a>| <a target="_self" href="#beijing2016Heading3">黑客马拉松项目需求</a> | <a target="_self" href="#beijing2016Heading4">我的项目将被如何使用？</a>| <a target="_self" href="#beijing2016Heading5"> 我的项目将如何评估？</a>| <a target="_self" href="#beijing2016Heading6"> 黑客马拉松条款和条件</a></span></pre>
 <h4>DevDays Asia 2016 @ Beijing 是微软举办的一场免费活动，主要包含两部分内容：</h4>
 <ol>
  	<li>为期一天的现场技术活动课程（2016 年 10 月 22 日 9am-6pm）</li>
@@ -3281,11 +3560,11 @@ setTimeout(function() {
 Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司的全新使命。这是一个很宏伟的目标，而</em> Microsoft Graph 和丰富的加载项工具已经在通过一种全新的方式让生产力大幅飞跃变为现实。
 
 财务、社交媒体、旅行计划、工作安排…… 生活中方方面面的生产力都存在改善空间，我们邀请您通过黑客马拉松项目将这一切变为可能。生产力的提升潜力是无穷的！另外我们还为黑客马拉松活动的冠军准备了丰厚的奖品。</p>
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">回到本文开头</button>
 <h4 id="beijing2016Heading2">如何参加？</h4>
 <ul>
 	<li>首先以个人参赛者身份<a target="_blank" href="http://aka.ms/DevDaysBeijing2016">在线注册 DevDays Asia 2016 @ Beijing</a> 活动，在问及是否参加黑客马拉松活动时请选择“是”。</li>
 	<li>免费注册 <u><a target="_blank" href="http://dev.office.com/devprogram"><u>Microsoft </u><u>开发者帐户</u></a></u>。</li>
-	<li>如果您已完成黑客马拉松团队和项目的注册，请在<span style="color: #ff00ff;">这里 (LINK TO HACKATHON SIGN UP)</span>注册。您也可以在活动现场注册黑客马拉松团队或项目。*请参阅下文的黑客马拉松团队提交详情</li>
 	<li>. 访问<span style="color: #ff00ff;">资源页 (LINK TO CLARE'S PAGE) </span>获取有关 Microsoft Graph 和加载项文档、教程，以及应用创意的链接。</li>
 </ul>
 
@@ -3305,7 +3584,7 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
  	<li>不完整或难以判读的作品； 以及</li>
  	<li>虽已收到，但超出上文所述注册限制的作品。</li>
 </ul>
-
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">回到本文开头</button>
 <h4 id="beijing2016Heading3">黑客马拉松项目需求</h4>
 
 <strong>主要需求：</strong>提交能帮助用户改善生产力的应用程序。限全新开发的 <a target="_blank" href="https://msdn.microsoft.com/ZH-CN/library/office/jj220082.aspx">Microsoft Office 365 加载项</a> （扩展）或使用了 <a target="_blank" href="http://graph.microsoft.io/en-us/getting-started">Microsoft Graph</a> 的作品可以获奖。
@@ -3329,24 +3608,23 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
  	<li>和/<span>或任何违法内容；</span></li>
 </ul>
 <p>活动组织方和黑客马拉松评委保留拒绝任何作品的权利，并有权确定作品是否满足上述要求。</p>
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">回到本文开头</button>
 <h4 id="beijing2016Heading4">我的项目将被如何使用？</h4>
 
 <p>除了下列陈述，我们对您的作品不主张任何所有权。提交作品意味着您：</p>
 <ul>
- 	<li>同意授予我们不可撤销、免版税、全球可用的权利和许可，以供我们：(i) 使用、审查、评估、测试，以及分析您在竞赛中提交的作品中所包含的全部内容；以及 (ii) 通过所有媒体（包括现有的和未来新出现的）在本次竞赛（包括但不限于对内和对外的销售会议、大会演讲、展会，以及媒体新闻稿中使用的大赛作品屏幕截图）的营销、销售，或促销工作中使用您的作品及其包含的内容；</li>
- 	<li>同意为了让我们获得上述权利，而签署我们或我们指定的人员所要求的任何必要文件；</li>
- 	<li>理解并知悉：赞助商可能会开发或提交与您提交的内容类似或完全相同的材料，并且您将放弃任何与您作品类似材料的任何主张；</li>
- 	<li>理解：在参加活动过程中，我们无法控制您向我们的代表人披露的信息，以及我们的代表人对有关您作品信息的任何记忆。同时您也理解，对于能够访问您的作品的代表人，我们无法对其工作任命进行限制。按照本协议，或版权及商业秘密保护法的规定，参与本次竞赛意味着您同意，代表人在我们自己产品或服务的开发或部署过程中，自行使用自己记忆中的信息不会为我们造成法律责任。</li>
- 	<li>理解：除了正式规则中描述的内容，您不会因为自己作品的使用而获得任何补偿或荣誉。</li>
+<li>同意授予我们免版税、全球可用的权利和许可，以供我们：(i) 审查、评估、测试，以及分析您在竞赛中提交的作品中所包含的全部内容；以及 (ii) 通过所有媒体在本次竞赛的营销、销售，或促销工作中使用您的作品及其包含的内容；</li>
+<li>同意并签署用于公关等上述用途所要求的任何必要文件；</li>
+<li>理解：除了正式规则中描述的内容，您不会因为自己作品的使用而获得任何补偿或荣誉。</li>
 </ul>
-<p>请注意，本次竞赛结束后，您的作品可能会发布至我们选择的一个网站，并供该网站的访客查看。对于网站访客未经授权使用您作品的行为，我们不承担任何责任。虽然保留这些权利，但我们没有义务出于任何目的使用您的作品，就算竞赛获胜作品亦是如此。</p>
-
+<p>请注意，本次竞赛结束后，您的作品可能会发布至我们选择的一个网站，并供该网站的访客查看。对于网站访客未经授权使用您作品的行为，我们不承担任何责任。</p>
 <p>参加此次黑客马拉松意味着您同意：</p>
 <ul>
- 	<li>遵守这些正式规则；并且</li>
- 	<li>为免受损害，对因您参赛或获奖而产生的任何类型的责任、伤害、损失或损害，Microsoft <span>及其合作伙伴、子公司、分支机构、员工以及代理人员不承担任何责任。</span></li>
- 	<li>接受奖品意味着，Microsoft <span>可以在在线媒体、印刷品或其他任何媒体中使用您与本次竞赛有关的专有名称和居住国家信息，且无须向您付款或提供补偿，除非法律禁止这样做。</span></li>
+<li>遵守这些正式规则；并且</li>
+<li>为免受损害，对因您参赛或获奖而产生的任何类型的责任、伤害、损失或损害，Microsoft 及其合作伙伴、子公司、分支机构、员工以及代理人员不承担任何责任。</li>
+<li>接受奖品意味着，Microsoft 可以在在线媒体、印刷品或其他任何媒体中使用您与本次竞赛有关的专有名称和居住国家信息，且无须向您付款或提供补偿，除非法律禁止这样做。</li>
 </ul>
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">回到本文开头</button>
 <h4 id="beijing2016Heading5">我的项目将如何评估？</h4>
 
 <p><strong>黑客马拉松评审标准</strong></p>
@@ -3376,7 +3654,7 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
  	<li>组委会保留审查参赛者资格的权利。</li>
  	<li>黑客马拉松评委不会由于年龄、家世、肤色、病事假、性别认同或表现、遗传信息、婚姻状况、身体健康状况、国籍、身体或心智残障、政治立场、退伍军人与否、种族、宗教、性别（包括孕期）、性取向，或受到所适用本地法规、制度以及条例保护的其他特征而区别对待参赛者。</li>
 </ul>
-
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">回到本文开头</button>
 <h4 id="beijing2016Heading6">黑客马拉松条款和条件</h4>
 <ol>
  	<li>为得到主办方提供的奖项，参赛选手必须全程参与黑客马拉松活动。</li>
@@ -3397,14 +3675,18 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 <h4>隐私条款</h4>
 <p>Microsoft 致力于保护您的隐私。Microsoft 会使用您提供的信息通知获奖者，并在您要求的情况下将您的信息发送至其他 Microsoft 产品和服务。未经您的允许，Microsoft 不会将您提供的信息共享给第三方，除非这样做是完成服务所必须的，或是您自己或法律要求的。Microsoft 承诺为您的个人信息提供安全保护。我们会使用多种安全技术和规程保护您的个人信息防范未经授权的访问、使用，或披露。除上文列出的情况外，未经您的批准，您的个人信息绝不会泄露到公司之外。</p>
 
-<p>如果您认为 Microsoft 未能遵守这些条款，请告知我们，您可以发送邮件至 <a href="mailto:VSIPENG@microsoft.com">VSIPENG@microsoft.com</a>，或发送传统纸质信件至 VSIP Engineering, Microsoft Privacy, Microsoft Corporation, One Microsoft Way, Redmond, WA 98052 USA，我们将采取商业上合理的努力解决您遇到的问题。</p>`
+<p>如果您认为 Microsoft 未能遵守这些条款，请告知我们，您可以发送邮件至 <a href="mailto:VSIPENG@microsoft.com">VSIPENG@microsoft.com</a>，或发送传统纸质信件至 VSIP Engineering, Microsoft Privacy, Microsoft Corporation, One Microsoft Way, Redmond, WA 98052 USA，我们将采取商业上合理的努力解决您遇到的问题。</p>
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">回到本文开头</button>`
 			})
 		})
 		.then(function() {
 			return EventTab.create({
 				tabTitle: 'Venue',
 				tabNumber: 3,
-				tabContent: `<h2>Microsoft Asia-Pacific R & D Group Headquarters</h2>
+				tabContent: `
+				<a href="/beijing2016cn" class="btn btn-success float-right" role="button">汉语</a>
+				<a class="btn btn-primary float-right" role="button" style="margin-right:10px;" href="http://www.aka.ms/devdaysbeijing2016">Register</a>
+				<h2>Microsoft Asia-Pacific R & D Group Headquarters</h2>
 				<h2>微软亚太研发集团总部</h2>
 				<img src="uploads/ms-building-2-haidian.jpg" alt="Microsoft Asia-Pacific R & D Group Headquarters" class="m-x-auto">
 				<a href="http://www.bing.com/mapspreview?where1=Building%202,%20No.%205%20Dan%20Ling%20Street%20Haidian%20District%20Beijing%20%20China%20100080"><p>Building 2, No. 5 Dan Ling Street, </p>
@@ -3420,24 +3702,27 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 		})
 		.then(function() {
 			return EventTab.create({
-				tabNumber: 3,
-				tabTitle: 'Hackathon Rules',
-				tabContent: `<h2>DevDays Asia 2016 @ Beijing: Hackathon Rules and Regulations</h2>
-<h5 class="text-align-center" style="word-break: keep-all"><a target="_self" href="#hackathonProjectOverviewBeijing2016">Hackathon Project Overview</a> | <a target="_self" href="#howCanIEnterBeijing2016">How can I enter?</a> | <a target="_self" href="#hackathonProjectReqsBeijing2016">Hackathon Project Requirements</a> | <a target="_self" href="#howWillMyProjecBeUsedBeijing2016">How will my project be used?</a> | <a target="_self" href="#howWillMyProjectBeEvalueatedBeijing2016">How will my project be evaluated?</a> | <a target="_self" href="#hackathonTermsBeijing2016">Hackathon Terms + Conditions</a></h5>
+				tabNumber: 4,
+				tabTitle: 'Hackathon',
+				tabContent: `
+				<a href="/beijing2016cn" class="btn btn-success float-right" role="button">汉语</a>
+				<a class="btn btn-primary float-right" role="button" style="margin-right:10px;" href="http://www.aka.ms/devdaysbeijing2016">Register</a>
+				<h2>Hackathon Rules and Regulations</h2>
+<pre class="text-align-center"><a target="_self" href="#hackathonProjectOverviewBeijing2016">Hackathon Project Overview</a> | <a target="_self" href="#howCanIEnterBeijing2016">How can I enter?</a> | <a target="_self" href="#hackathonProjectReqsBeijing2016">Hackathon Project Requirements</a> | <a target="_self" href="#howWillMyProjecBeUsedBeijing2016">How will my project be used?</a> | <a target="_self" href="#howWillMyProjectBeEvalueatedBeijing2016">How will my project be evaluated?</a> | <a target="_self" href="#hackathonTermsBeijing2016">Hackathon Terms + Conditions</a></pre>
 <h4>DevDays Asia 2016 @ Beijing is a free Microsoft event that includes 2 major parts: </h4>
 <ol>
 	<li>An onsite event with a full day technical tracks (9am-6pm on October 22, 2016)</li>
-	<li>A Microsoft Office 365 Hackathon (Hackathon opens September 26, 2016. Official kick off begins onsite on October 21, 2016 at 5:00pm. Judging and awards occur onsite at DevDays Asia 2016 @ Beijing on October 23, 2016). <u>See full agenda for details. </u></li>
+	<li>A Microsoft Office 365 Hackathon (Hackathon opens September 26, 2016. Official kick off begins onsite on October 21, 2016 at 5:00pm. Judging and awards occur onsite at DevDays Asia 2016 @ Beijing on October 23, 2016). See Agenda tab for details.</li>
 </ol>
 <h4 id="hackathonProjectOverviewBeijing2016">Hackathon Project Overview</h4>
 <p>With 1.2 billion users, Microsoft Office is the world&rsquo;s most popular set of productivity tools. The Microsoft Office 365 team is challenging developers to boost productivity by creating a project within Microsoft Office at the DevDays Asia 2016 @ Beijing hackathon.</p>
 <p>Microsoft&rsquo;s new company mission is: to empower every person and every organization on the planet to achieve more. It may seem like a big job, but Microsoft Graph and Add-in tools make hacking productivity possible in a whole new way.</p>
 <p>We invite you to submit a hackathon project that increases productivity in any aspect of your life &ndash; from your finances, to your social media, your travel plans, or your work schedule. The possibilities for productivity improvements are endless! Plus, we have some pretty cool prizes for the hackathon winners.</p>
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">Back to top</button>
 <h4 id="howCanIEnterBeijing2016">How can I enter?</h4>
 <p>1) First, <a href="http://aka.ms/DevDaysBeijing2016" target="_blank">register online with DevDays Asia 2016 @ Beijing</a>&nbsp;as an individual contestant. Select &ldquo;Yes&rdquo; when asked if you will participate in the hackathon.</p>
 <p>2) Sign up for your free&nbsp;<a href="http://dev.office.com/devprogram">Microsoft Developer Account.</a></p>
-<p>3) If you&rsquo;re ready to register your hackathon team and idea, sign up <span style="text-decoration: underline;">here</span>. You may also register for a hackathon team or project at the event. *See below for hackathon team submission details</p>
-<p>4) Visit the <span style="text-decoration: underline;">Resources page</span> for links to Microsoft Graph and Add-in documentation, tutorials, and app ideas.&nbsp;You may also register your hackathon project with a team or register your idea and form a team at the event.</p>
+<p>3) Visit the <a href="/beijing2016cn">Resources tab</a> for links to Microsoft Graph and Add-in documentation, tutorials, and app ideas.&nbsp;You may also register your hackathon project with a team or register your idea and form a team at the event.</p>
 <p>In order to compete in the hackathon:</p>
 <ul>
 <li>Each member of the team must also be <a href="http://aka.ms/DevDaysBeijing2016">registered</a>&nbsp;for the event.</li>
@@ -3448,6 +3733,7 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 <li>Any incomplete or illegible entry; and</li>
 <li>Any entries that we receive from you that are in excess of the entry limit described above.</li>
 </ul>
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">Back to top</button>
 <h4 id="hackathonProjectReqsBeijing2016">Hackathon Project Requirements</h4>
 <p>Main Requirement: Submit an application that will help users increase their productivity. To be eligible for prizes, submissions must be a new <a href="http://dev.office.com/getting-started/addins">Microsoft Office 365 Add-in (</a>extension) or utilize <a href="http://dev.office.com/getting-started/office365apis">Microsoft Graph</a>. Hackathon projects and coding may start as early as September 26, 2016. The hackathon will kick off onsite on October 21, 2016. <span style="text-decoration: underline;">See full agenda here</span>.</p>
 <p>In addition:</p>
@@ -3467,6 +3753,7 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 <li>defames, misrepresents or contains disparaging remarks about other people or companies;</li>
 <li>communicates messages or images inconsistent with the positive images and/or good will to which we wish to associate; and/or violates any law; Microsoft event coordinators and hackathon judges reserve the right to reject any entry, in our sole and absolute discretion, that we determine does not meet the above criteria.</li>
 </ul>
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">Back to top</button>
 <h4 id="howWillMyProjecBeUsedBeijing2016">How will my project be used?</h4>
 <p>Other than what is set forth below, we are not claiming any ownership rights to your entry.</p>
 <p>However, by submitting your entry, you:</p>
@@ -3483,6 +3770,7 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 <li>To release and hold harmless Microsoft and its respective parents, subsidiaries, affiliates, employees and agents from any and all liability or any injury, loss or damage of any kind arising from or in connection with this Contest or any prize won; and</li>
 <li>That by accepting a prize, Microsoft may use of your proper name and state of residence online and in print, or in any other media, in connection with this Contest, without payment or compensation to you, except where prohibited by law. If you do not want to grant us these rights to your entry, please do not enter this Contest.</li>
 </ul>
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">Back to top</button>
 <h4 id="howWillMyProjectBeEvalueatedBeijing2016">How will my project be evaluated? </strong></h4>
 <p>Hackathon Judging Criteria Hackathon submissions during DevDays Asia 2016 @ Beijing are evaluated by the ranking criteria listed in the table below. From all hackathon project submissions, 5 teams will be chosen for the finals to compete for first, second, and third place.</p>
 <p>Each team will exhibit their projects with a 5-minute presentation to the review panel and 2 minutes reserved for questions. Hackathon judges will use the hackathon ranking criteria to choose the projects to be awarded first, second, and third place. Hackathon judges will use the following criteria to judge each submission.</p>
@@ -3494,6 +3782,7 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 <li>Organizers reserve the right to review your qualifications.</li>
 <li>Hackathon judges will not discriminate against competitors on the basis of age, ancestry, color, family or medical care leave, gender identity or expression, genetic information, marital status, medical condition, national origin, physical or mental disability, political affiliation, protected veteran status, race, religion, sex (including pregnancy), sexual orientation, or any other characteristic protected by applicable local laws, regulations, and ordinances.</li>
 </ul>
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">Back to top</button>
 <h4 id="hackathonTermsBeijing2016">Hackathon Terms and Conditions </h4>
 <ol>
 <li>Contestants are required to go through the entire hackathon to get the participation award provided by the sponsor.</li>
@@ -3513,10 +3802,56 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 <h5>PRIVACY STATEMENT </h5>
 <p>At Microsoft, we are committed to protecting your privacy. Microsoft uses the information you provide to notify prize winners, and to send you information about other Microsoft products and services, if requested by you. Microsoft will not share the information you provide with third parties without your permission except where necessary to complete the services or transactions you have requested, or as required by law. Microsoft is committed to protecting the security of your personal information.</p>
 <p>We use a variety of security technologies and procedures to help protect your personal information from unauthorized access, use, or disclosure. Your personal information is never shared outside the company without your permission, except under conditions explained above. If you believe that Microsoft has not adhered to this statement, please notify us by sending email to VSIPENG@microsoft.com or postal mail to VSIP Engineering, Microsoft Privacy, Microsoft Corporation, One Microsoft Way, Redmond, WA 98052 USA, and we will use commercially reasonable efforts to remedy the situation.</p>
-
-`
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">Back to top</button>`
 			})
-		})
+})
+.then(function() {
+	return EventTab.create({
+		tabTitle: '议程',
+		tabNumber: 2,
+		tabContent: `<a href="/beijing2016" class="btn btn-success float-right" role="button">汉语</a>
+<a href="http://www.aka.ms/devdaysbeijing2016"><img src="/uploads/RegisterNowCN.png" style="height: 37px; margin-right: 10px;" class="float-right" title="registration button" alt="registration link"></a>
+<h4>2016 年九月二十六日: Hackathon 开始! </h4>	
+<h4>2016 年十月二十一日: Hackathon 正式开幕</h4>
+<p>会场：微软亚太研发集团</p>
+<p>北京市海淀区丹棱街5号</p>
+<p>邮编：100080</p>
+<ul>
+<li>17:00 &ndash; 欢迎参赛者</li>
+<li>18:00 &ndash; 晚餐</li>
+<li>19:00-21:00 &ndash; 建立团队 + 编写程序和应用</li>
+</ul>
+<p><strong>2016 年十月二十二日: DevDays Asia 2016 @ Beijing 会议开始与 Hackathon继续进行</strong></p>
+<p>会场：微软亚太研发集团</p>
+<p>北京市海淀区丹棱街5号</p>
+<p>邮编：100080</p>
+<ul>
+<li>9:00 &ndash; 欢迎</li>
+<li>9:15 &ndash; 开幕演讲</li>
+<li>10:00 &ndash; Office 开发者与互操作环节开始</li>
+<li>12:30 &ndash; 午餐</li>
+<li>13:30-18: 15 &ndash; 技术演讲与动手实验</li>
+<li>18:15- 晚餐</li>
+<li>19:15-0:00 &ndash; 编写程序和应用</li>
+</ul>
+<p>*Hackathon将于周六全天进行，现场有微软工程师的帮助和指导。</p>
+<p><strong>2016 年十月二十三日: Hackathon 继续进行</strong></p>
+<p>会场：微软亚太研发集团</p>
+<p>北京市海淀区丹棱街5号</p>
+<p>邮编：100080</p>
+<ul>
+<li>9:00 会场开放，提供早餐</li>
+<li>9:00-12:00 - 编写程序和应用</li>
+<li>12:00 &ndash; 午餐</li>
+<li>13:00-15:00 &ndash; 编写程序和应用</li>
+<li>15:00 &ndash; 完成程序和应用及提交</li>
+<li>15:15 &ndash; 17:00 &ndash; 第一轮评估参赛团队</li>
+<li>17:00-18:00 &ndash; 参加决赛的团队向评审团展示成果</li>
+<li>18:15 &ndash; Hackathon 颁奖及闭幕</li>
+</ul>
+`
+	})
+})
 	////////////////////////////////////Contact placeholder/////////////////////////////////////
 
 	.then(function () {

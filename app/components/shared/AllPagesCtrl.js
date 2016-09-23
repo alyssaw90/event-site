@@ -1,5 +1,7 @@
 'use strict';
 
+const jQuery = require('jquery');
+
 const AllPagesCtrl = (app) => {
 
 	app.controller('AllPagesCtrl', ['$scope', '$location', '$route', '$rootScope', '$cookies', ($scope, $location, $route, $rootScope, $cookies) => {
@@ -37,6 +39,16 @@ const AllPagesCtrl = (app) => {
 				return '';
 			}
 		}
+
+		  $scope.goToPage = (link) => {
+  		  $location.path(link);
+  		}
+
+  		$scope.scrollToTop = () => {
+  			alert('hola');
+  			jQuery('html, body').animate({ scrollTop: 0 }, 'fast');
+  			
+  		}
 
 		$rootScope.$on('$viewContentLoaded', (next, current) => { 
 			$scope.announceOnViewChange = document.title + ', view loaded';
