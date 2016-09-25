@@ -1,11 +1,13 @@
 'use strict';
 
+import * as customFunctions from '../shared/methods/common-functions.js';
+
 const PastEventsCtrl = (app) => {
 	app.controller('PastEventsCtrl', ['$scope', '$timeout', function($scope, $timeout) {
 		$scope.pastEvents = [
 			{
 				year: 2016,
-				calendarHtml: `<table cellspacing="0" cellpadding="0" id="2016PastEvents" tabindex="0">
+				calendarHtml: `<table cellspacing="0" cellpadding="0" id="2016PastEvents">
                       <caption>Past plugfests and events from 2008</caption>
                           <thead>
                           <tr>
@@ -43,7 +45,7 @@ const PastEventsCtrl = (app) => {
                   },
       {
       	year: 2015,
-      	calendarHtml: `<table id="2015PastEvents" tabindex="0" cellspacing="0" cellpadding="0">
+      	calendarHtml: `<table id="2015PastEvents" cellspacing="0" cellpadding="0">
 											<thead><tr>
 												<th>Name</th>
 												<th>Date</th>
@@ -92,7 +94,7 @@ const PastEventsCtrl = (app) => {
 										},
       {
       	year: 2014,
-      	calendarHtml: `<table id="2014PastEvents" tabindex="0" cellspacing="0" cellpadding="0">
+      	calendarHtml: `<table id="2014PastEvents" cellspacing="0" cellpadding="0">
 												<thead><tr>
 													<th>Name</th>
 													<th>Date</th>
@@ -135,7 +137,7 @@ const PastEventsCtrl = (app) => {
 										},
       {
       	year: 2013,
-      	calendarHtml: `<table id="2013PastEvents" tabindex="0" cellspacing="0" cellpadding="0">
+      	calendarHtml: `<table id="2013PastEvents" cellspacing="0" cellpadding="0">
 													<thead><tr>
 													<th>Name</th>
 													<th>Date</th>
@@ -172,7 +174,7 @@ const PastEventsCtrl = (app) => {
 										},
       {
       	year: 2012,
-      	calendarHtml: `<table id="2012PastEvents" tabindex="0" cellspacing="0" cellpadding="0">
+      	calendarHtml: `<table id="2012PastEvents" cellspacing="0" cellpadding="0">
 												<thead><tr>
 												<th>Name</th>
 												<th>Date</th>
@@ -245,7 +247,7 @@ const PastEventsCtrl = (app) => {
 									},
       {
       	year: 2011,
-      	calendarHtml: `<table id="2011PastEvents" tabindex="0" cellspacing="0" cellpadding="0">
+      	calendarHtml: `<table id="2011PastEvents" cellspacing="0" cellpadding="0">
 											<thead><tr>
 												<th>Name</th>
 												<th>Date</th>
@@ -288,7 +290,7 @@ const PastEventsCtrl = (app) => {
 										},
       {
       	year: 2010,
-      	calendarHtml: `<table id="2010PastEvents" tabindex="0" cellspacing="0" cellpadding="0">
+      	calendarHtml: `<table id="2010PastEvents" cellspacing="0" cellpadding="0">
 												<thead><tr>
 												<th>Name</th>
 												<th>Date</th>
@@ -355,7 +357,7 @@ const PastEventsCtrl = (app) => {
 									},
       {
       	year: 2009,
-      	calendarHtml: `<table id="2009PastEvents" tabindex="0" cellspacing="0" cellpadding="0">
+      	calendarHtml: `<table id="2009PastEvents" cellspacing="0" cellpadding="0">
 												<thead><tr>
 													<th>Name</th>
 													<th>Date</th>
@@ -422,7 +424,7 @@ const PastEventsCtrl = (app) => {
 										},
 											{
 												year: 2008,
-												calendarHtml: `<table id="2008PastEvents" tabindex="0" cellspacing="0" cellpadding="0">
+												calendarHtml: `<table id="2008PastEvents" cellspacing="0" cellpadding="0">
 												<thead><tr>
 													<th>Name</th>
 													<th>Date</th>
@@ -484,10 +486,15 @@ const PastEventsCtrl = (app) => {
 		];
 
 		//function to show and hide past event tables on past events page
-		$scope.showCalendarOfPastEvents = (calendarHtml, divClicked, calendarDiv, keyCode) => {
+		$scope.showCalendarOfPastEvents = (calendarHtml, divClicked, calendarDiv, event) => {
+			let keyCode = customFunctions.getKeyCode(event);
+			console.log('hola', keyCode);
 			if (keyCode === 1 || 13) {
 			  if (angular.element(divClicked).hasClass('selected-year')) {
 			    angular.element(calendarDiv).empty();
+			    if (keyCode === 1) {
+			    	angular.element(divClicked).blur();
+			    }
 			  } else {
 			    angular.element(calendarDiv).empty();
 			    angular.element(calendarDiv).append(calendarHtml);
@@ -495,7 +502,7 @@ const PastEventsCtrl = (app) => {
 			  angular.element(divClicked).siblings().removeClass('selected-year');
 			  angular.element(divClicked).toggleClass('selected-year');
 			  $timeout(function() {
-			  	angular.element('#calendar').find('table').focus();
+			  	angular.element('#calendar').find('a:first').focus();
 			  	
 			  }, 100);
 			};

@@ -1,9 +1,9 @@
 <div class="mobileWrapper ng-cloak" role="presentation" data-ng-controller="PastEventsCtrl" data-past-events-directive>
-  <main class="grid past-events-menu" role="presentation">
+  <main id="beginningOfContent" class="grid past-events-menu" role="presentation">
     <div class="col_12 internetExplorer gallery" id="pastEventsWrapper" role="presentation">
       <div class="white-bg" id="calendar">
       </div>
-      <div data-ng-repeat="pastEvent in pastEvents" data-ng-click="showCalendarOfPastEvents(pastEvent.calendarHtml, '#' + pastEvent.year + '_events', '#calendar', keydownkeycode)" data-ng-keypress="showCalendarOfPastEvents(pastEvent.calendarHtml, '#' + pastEvent.year + '_events', '#calendar', keydownkeycode)" class="col_3 past_events" id="{{pastEvent.year + '_events'}}" aria-label="Hit enter or click to toggle {{pastEvent.year}} Events">
+      <div data-ng-repeat="pastEvent in pastEvents" data-ng-click="showCalendarOfPastEvents(pastEvent.calendarHtml, '#' + pastEvent.year + '_events', '#calendar', $event)" data-ng-keypress="showCalendarOfPastEvents(pastEvent.calendarHtml, '#' + pastEvent.year + '_events', '#calendar', $event)" class="col_3 past_events" id="{{pastEvent.year + '_events'}}" aria-label="Hit enter or click to toggle {{pastEvent.year}} Events">
         <h2>{{pastEvent.year}} Events</h2>
       </div>
   </main>

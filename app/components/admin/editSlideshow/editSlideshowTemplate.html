@@ -1,0 +1,110 @@
+
+<div class="mobileWrapper ng-cloak" role="presentation">
+  <main style="overflow:hidden;" id="beginningOfContent" tabindex="0" class="grid main-page-content" data-ng-controller="editSlideshowCtrl" data-ng-init="getAllSlideshows('homepageSlideshow')" >
+    <section role="presentation" class="col_12 internetExplorer">
+			<div id="edit-slideshows">
+				<h3>Slideshow</h3>
+			  <div class="slide-table-container clearfix">
+			    <div ui-sortable="sortableOptions" data-ng-model="slides" class="slides slide-table-container col_6">
+			    	<h4>Available Slides, Not Displayed</h4>
+			      <div data-ng-repeat="slideshowSlide in slides" class="slideshowSlide">
+			      	<h5>Title: {{slideshowSlide.title}}</h5>
+			      	<p>alt-text: {{slideshowSlide.altText}}</p>
+			      	<p>linK: {{slideshowSlide.imgDestUrl}}</p>
+			      	<img class="slideshowSettingsImg" data-ng-src="{{slideshowSlide.imgSrcUrl}}" />
+		      	</div>
+			    </div>
+			    <div ui-sortable="sortableOptions" data-ng-model="slideshowSlides" class="slideshowSlides slide-table-container col_6">
+			    	<h4>Slides to Be Displayed on Homepage</h4>
+			      <div data-ng-repeat="slideshowSlide in slideshowSlides" class="slideshowSlide">
+			      	<h5>Title: {{slideshowSlide.title}}</h5>
+			      	<p>New position: {{$index + 1}} : Old position: {{slideshowSlide.SlideshowSlideAssc.sortPosition}}</p>
+			      	<p>alt-text: {{slideshowSlide.altText}}</p>
+			      	<p>linK: {{slideshowSlide.imgDestUrl}}</p>
+			      	<img class="slideshowSettingsImg" data-ng-src="{{slideshowSlide.imgSrcUrl}}" />
+		      	</div>
+			    </div>
+			    <!-- <div style="clear: both;"></div> -->
+				</div>
+			</div>
+			<button class="btn btn-success btn-lg float-right" data-ng-click="setNewSlideshowOrder()">Submit</button>
+		  <!-- Trigger the modal with a button -->
+		  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Slide</button>
+		  <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#deleteSlideModal">Select Slides to Delete</button>
+			<div class="container">
+			
+			  <!-- Modal -->
+			  <div class="modal fade" id="myModal" role="dialog">
+			    <div class="modal-dialog">
+			    
+			      <!-- Modal content-->
+			      <div class="modal-content">
+			        <div class="modal-header">
+			          <button type="button" class="close" data-dismiss="modal">&times;</button>
+			          <h4 class="modal-title">Add Slide</h4>
+			        </div>
+			        <div class="modal-body">
+			          <p>Enter the slide information then click submit</p>
+			          <div data-ng-controller="AdminFileUploadCtrl" class="clearfix">
+	  					  	<p>Select Slide Image</p>
+	  							<button class="btn btn-primary" name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'newSlideImage')">Select Image</button>
+	  							<br><br>
+	  							<form id="addNewSlideForm" name="addNewSlideForm" method="post" enctype="multipart/form-data" data-ng-submit="addSlide(newSlide);" >
+	  								<label class="col_12" for="title">Title</label>
+	  								<input class="col_12" type="text" name="title" data-ng-model="newSlide.title" data-ng-required>
+	  								<label class="col_12" for="altText">Alt Text</label>
+	  								<input class="col_12" type="text" name="altText" data-ng-model="newSlide.altText" data-ng-required>
+	  								<label class="col_12" for="imgDestUrl">Destination Url (include full url if the links is external, use only the path if the url is interal)</label>
+	  								<input class="col_12" type="text" name="imgDestUrl" data-ng-model="newSlide.imgDestUrl" data-ng-required>
+										<button type="submit" class="btn btn-success float-left" style="margin: 5px" id="save-new-slide-button">Save</button>
+  								</form>    							
+    						</div>
+			        </div>
+			        <div class="modal-footer">
+			          <button type="button" class="btn btn-default" data-dismiss="modal" id="newSlideModal">Close</button>
+			        </div>
+			      </div>
+			      
+			    </div>
+			  </div>
+			  
+			</div>
+			<div class="container">
+			
+			  <!-- Modal -->
+			  <div class="modal fade" id="deleteSlideModal" role="dialog">
+			    <div class="modal-dialog">
+			    
+			      <!-- Modal content-->
+			      <div class="modal-content">
+			        <div class="modal-header">
+			          <button type="button" class="close" data-dismiss="modal">&times;</button>
+			          <h4 class="modal-title">Delete Slides</h4>
+			        </div>
+			        <div class="modal-body">
+		          	<div>
+	  						  <p>Select Slides to Delete</p>
+	  							<br><br>
+	  							<form id="deleteSlideForm" name="deleteSlideForm" method="post" enctype="multipart/form-data" data-ng-submit="deleteSlide(slidesToDelete);" >
+	  								<label data-ng-repeat="slide in completeListOfSlides">
+	  									{{slide.title}}
+		  								<input type="checkbox" data-ng-model="slidesToDelete[slide.id]" data-ng-init="checked=true">
+		  								<br>
+		  								<img data-ng-src="{{slide.imgSrcUrl}}">	  									
+	  								</label>
+	  								<button type="submit" class="btn btn-danger">Delete</button>
+  								</form>
+    						</div>
+			        </div>
+			        <div class="modal-footer">
+			          <button type="button" class="btn btn-default" data-dismiss="modal" id="deleteSlideModalButton" data-ng-click="cleanDeleteForm()">Cancel</button>
+			        </div>
+			      </div>
+			      
+			    </div>
+			  </div>
+			  
+			</div>
+    </section>
+  </main>
+</div>

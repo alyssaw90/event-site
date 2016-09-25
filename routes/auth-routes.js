@@ -97,11 +97,10 @@ module.exports = function(router, passport) {
     })(req, res, next);
   });*/
 
-  router.post('/login', passport.authenticate('basic', { session: false }), function(req, res) {
+  router.get('/login', passport.authenticate('basic', { session: false }), (req, res) => {
     let userJSON = {randomString: req.user.dataValues.randomString, id: req.user.dataValues.id};
     res.req.headers.authorization = 'hahaha';
     // res.req.rawHeaders.Authorization = 'blah';
-    // console.log(clc.magenta('   groooogggggg    '), req.user);
     for (let key in res.req.rawHeaders) {
       if (res.req.rawHeaders[key].slice(0, 5) === 'Basic') {
         res.req.rawHeaders[key] = 'Basic xxxx';
@@ -109,15 +108,13 @@ module.exports = function(router, passport) {
       
     }
     // console.log(clc.greenBright('Cookies: '), '     :::::     ', res.req.rawHeaders);
-    req.user.$modelOptions.instanceMethods.generateToken(userJSON, process.env.SECRET_KEY, function(err, token) {
+    req.user.$modelOptions.instanceMethods.generateToken(userJSON, process.env.SECRET_KEY, (err, token) => {
         if (err) {
             console.log(err);
             return res.status(500).json({msg: 'error generating token'});
         }
-        // res.req.headers.token = token;
-        // res.header('token', token);
-        // res.json({token: token});
-        res.status('200').header('token', token).json({token: token, 'admin': req.user.dataValues.isAdmin});
+        
+        res.status('200').header('token', token).json({token: token, 'admin': req.user.dataValues.isAdmin, 'username': req.user.dataValues.userName, 'email': req.user.dataValues.email});
       });
     });
 

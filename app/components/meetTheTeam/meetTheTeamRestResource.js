@@ -9,7 +9,7 @@ const meetTheTeamRESTResource = (app) => {
 		return function(callback) {
 			return {
 				getMeetTheTeamSpeakers: function(callback) {
-					$http.get('/getTeam')
+					$http.get('/api/getTeam')
           .success(customFunctions.handleSuccess(callback))
           .error(customFunctions.handleError(callback));
 				}

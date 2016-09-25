@@ -33,7 +33,7 @@ export let highContrast = () => {
 		let pathname = window.location.pathname;
 
 		//inject div with background image in to dom to use for high-contrast check
-		let hcDetect = jQuery(`<div id="jQHighContrastDetect"></div>`).css('background', 'url(app/uploads/Microsoft-logo_rgb_c-wht-small.png)');
+		let hcDetect = jQuery(`<div id="jQHighContrastDetect"></div>`).css('background', 'url(uploads/Microsoft-logo_rgb_c-wht-small.png)');
 		//get the html tags
 		let htmlTag = document.getElementsByTagName('html');
 		//append the high-contrast check div to the body
@@ -81,6 +81,27 @@ export let highContrast = () => {
 	}, 400)
 }
 
+//shuffle function
+
+export const shuffle = (arr) => {
+  let currentIndex = arr.length, tempVal, randomIndex ;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    tempVal = arr[currentIndex];
+    arr[currentIndex] = arr[randomIndex];
+    arr[randomIndex] = tempVal;
+  }
+
+  return arr;
+}
+
 //success and error handlers for angular REST resources
 
 export const handleError = (callback) => {
@@ -96,7 +117,6 @@ export const handleSuccess = (callback) => {
   }
 };
 
-
 //Finds y value of given object
 export let findPos = function(obj) {
   var curtop = 0;
@@ -111,7 +131,7 @@ export let findPos = function(obj) {
 //URlify a string
 
 export const urlify = (str) => {
-	return str.trim().replace(/\s+/g, '').replace(/[^\w\s]|_/g, '').toLowerCase();
+	return str.trim().replace(/\s+/g, '').replace(/[\!@\$\^\*\)]/g,'').toLowerCase();
 }
 
 //function to set divs with equal height
@@ -160,7 +180,7 @@ export let changeWidth = function(div) {
 	}
 
 //function to show and hide past event tables on past events page
-export let showCalendarOfPastEvents = function(calendarHtml, divClicked, calendarDiv) {
+/*export let showCalendarOfPastEvents = function(calendarHtml, divClicked, calendarDiv) {
     if (divClicked.hasClass('selected-year')) {
       calendarDiv.empty();
     } else {
@@ -169,7 +189,7 @@ export let showCalendarOfPastEvents = function(calendarHtml, divClicked, calenda
     }
     divClicked.siblings().removeClass('selected-year');
   	divClicked.toggleClass('selected-year');
-}
+}*/
 
 //function to get key code
 export let getKeyCode = function(e) {
@@ -182,3 +202,28 @@ export let getKeyCode = function(e) {
 	}
 	return keyCode;
 }		
+
+//function to return a new array with only unique values
+export function uniqueOnly(arrayLikeObj) {
+   return Array.from(new Set(arrayLikeObj));
+}
+
+export function containsObj(obj, arr) {
+	for (let i = 0, j = arr.length; i < j; i++) {
+		if (angular.equals(obj, arr[i])) {
+			return true;
+		}
+	}
+	return false;
+}
+
+//randome string generator
+export function makeRandomString () {
+  let outputString = '';
+  let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let randomNumber = Math.ceil(Math.random() * 10) + 10;
+  for ( let i = 0; i < randomNumber; i++ ) {
+    outputString += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
+  return outputString;
+}

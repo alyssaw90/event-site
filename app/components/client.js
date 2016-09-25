@@ -12,9 +12,15 @@ require('angular-sanitize');
 require('angular-google-analytics');
 require('ng-file-upload');
 require('angular-resource');
+require('angular-cookies');
+require('angular-base64');
+require('angular-animate');
+require('angular-ui-bootstrap');
+require('angular-ui-tinymce');
+require('angular-ui-sortable');
+require('angular-bootstrap-confirm');
 
-// declare a module
-const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize', 'angular-google-analytics', 'ngFileUpload', 'ngResource']);
+const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize', 'angular-google-analytics', 'ngFileUpload', 'ngResource', 'ngCookies', 'base64', 'ngAnimate', 'ui.bootstrap', 'ui.tinymce', 'ui.sortable', 'mwl.confirm']);
 
 //directives
 require('./shared/allPagesDirective.js')(eventsApp);
@@ -29,6 +35,7 @@ require('./events/eventsDirective.js')(eventsApp);
 require('./admin/adminPageDirective.js')(eventsApp);
 require('./admin/admin-header/adminHeaderDirective.js')(eventsApp);
 require('./pastEvents/pastEventsDirective.js')(eventsApp);
+require('./admin/createEvent/createEventDirective.js')(eventsApp);
 
 //controllers
 require('./shared/AllPagesCtrl.js')(eventsApp);
@@ -43,6 +50,10 @@ require('./admin/createEvent/AdminCreateEventCtrl.js')(eventsApp);
 require('./latestNews/LatestNewsCtrl.js')(eventsApp);
 require('./events/EventsCtrl.js')(eventsApp);
 require('./admin/createSpeaker/CreateSpeakerCtrl.js')(eventsApp);
+require('./admin/userLogging/UserLoggingCtrl.js')(eventsApp);
+require('./admin/admin-header/AdminHeaderCtrl.js')(eventsApp);
+require('./admin/editSlideshow/editSlideshowCtrl.js')(eventsApp);
+require('./admin/editFiles/EditFilesCtrl.js')(eventsApp);
 //services
 require('./meetTheTeam/meetTheTeamRestResource.js')(eventsApp);
 require('./futureEvents/futureEventsRESTResource.js')(eventsApp);
@@ -52,140 +63,23 @@ require('./admin/createEvent/createEventRESTResource.js')(eventsApp);
 require('./events/eventsRESTResource.js')(eventsApp);
 require('./latestNews/latestNewsRESTResource.js')(eventsApp);
 require('./admin/createSpeaker/createSpeakerRESTResource.js')(eventsApp);
+require('./admin/userLogging/userLoggingRESTResources.js')(eventsApp);
+require('./admin/editSlideshow/editSlideshowRESTResource.js')(eventsApp);
+require('./admin/editFiles/editFilesRESTResource.js')(eventsApp);
 
 eventsApp
-// .controller('allPagesCtrl', ['$scope', '$location', '$route', function($scope, $location, $route) {
-// 	$scope.showSlider = false;
-// 		$scope.isCurrentPage = (pageUrl) => {
-// 	   return pageUrl === $location.path();
-// 		}
-
-// 		$scope.$on('$routeChangeSuccess', function(next, current) { 
-// /*
-// 	 		if ($location.path() == '/' || '/latestNews') {		      
-// 				customFunctions.homepageStickyFooter();
-// 	    } else {
-// 	    	customFunctions.stickyFooter();
-// 	    }*/
-	
-// 	 	});
-
-// }])
 .config(['$routeProvider', '$locationProvider', 'AnalyticsProvider', '$httpProvider', function ($routeProvider, $locationProvider, AnalyticsProvider, $httpProvider) {
 
 	//Enable Google Analytics
 	AnalyticsProvider
 	.setAccount('UA-74698663-1');
+
 	//enable cross origin for jsonp
 	$httpProvider.defaults.useXDomain = true;
   delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
-	$routeProvider
-	.when('/', {
-		templateUrl: '/app/components/homepage/homepage.html',
-		controller: 'HomepageCtrl',
-		data: {
-      pageTitle: 'Home Page - Microsoft Plugfests and Events'
-    }
-	})
-	/*These redirect routes take care of 404 errors cause by angular stripping the hash from routes even when they're meant for in page navigation*/
-	.when('/eventNavigationMenu', {
-		redirectTo: '/'
-	})
-	.when('/beginningOfContent', {
-		redirectTo: '/'
-	})
-	.when('/footerStartMenuItem', {
-		redirectTo: '/'
-	})
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
-	.when('/about', {
-		templateUrl: '/app/components/about/about.html',
-		data: {
-      pageTitle: 'About Us Page - Microsoft Plugfests and Events'
-    }
-	})
-	.when('/contactus', {
-		templateUrl: '/app/components/contactUs/contactUs.html',
-		data: {
-      pageTitle: 'Contact Us Page - Microsoft Plugfests and Events'
-    }
-
-	})
-	.when('/faq', {
-		templateUrl: '/app/components/faq/faq.html',
-		data: {
-      pageTitle: 'Frequently Asked Questions Page - Microsoft Plugfests and Events'
-    }
-	})
-	.when('/past-events', {
-		templateUrl: '/app/components/pastEvents/pastEvents.html',
-		controller: 'PastEventsCtrl',
-		data: {
-      pageTitle: 'Past Events Page - Microsoft Plugfests and Events'
-    }
-	})
-	.when('/meet-the-team', {
-		templateUrl: '/app/components/meetTheTeam/meetTheTeam.html',
-		controller: 'MeetTheTeamCtrl',
-		data: {
-      pageTitle: 'Meet the Team Page - Microsoft Plugfests and Events'
-    }
-	})
-	.when('/future-events', {
-		templateUrl: '/app/components/futureEvents/futureEvents.html',
-		controller: 'FutureEventsCtrl',
-		data: {
-      pageTitle: 'Future Events Page - Microsoft Plugfests and Events'
-    }
-	})
-	.when('/latest-news', {
-		templateUrl: '/app/components/latestNews/latestNews.html',
-		controller: 'LatestNewsCtrl',
-		data: {
-      pageTitle: 'Latest Page - Microsoft Plugfests and Events'
-    }
-	})
-	/*.when('/admin', {
-		redirectTo: '/admin/edit-event',
-		data: {
-      pageTitle: 'Admin Page - Microsoft Plugfests and Events'
-    }
-	})
-	.when('/admin/create-event', {
-		templateUrl: '/app/components/admin/createEvent/admin-create-event.html',
-		// controller: 'AdminCreateEventCtrl',
-		data: {
-      pageTitle: 'Admin Page - Microsoft Plugfests and Events'
-    }
-	})
-	.when('/admin/create-speaker', {
-		templateUrl: '/app/components/admin/createSpeaker/admin-create-speaker.html',
-		data: {
-			pageTitle: 'Admin Page - Microsoft Plugfests and Events, create new speaker'
-		}
-	})
-	.when('/admin/edit-event', {
-		templateUrl: '/app/components/admin/editEvent/admin-edit-event.html',
-		// controller: 'AdminCreateEventCtrl',
-		data: {
-      pageTitle: 'Admin Page - Microsoft Plugfests and Events'
-    }
-	})
-	.when('/admin/edit-speaker', {
-		templateUrl: '/app/components/admin/editSpeaker/admin-edit-speakers.html',
-		// controller: 'AdminCreateEventCtrl',
-		data: {
-      pageTitle: 'Admin Page - Microsoft Plugfests and Events'
-    }
-	})*/
-	.when('/:slug', {
-    templateUrl: '/app/components/events/event.html',
-    controller: 'EventsCtrl',
-    data: {
-      pageTitle: 'Interoperability Event Page - Microsoft Plugfests and Events'
-    }
-  })
+  //tell angular to send verification credentials with requests
+  $httpProvider.defaults.withCredentials = true;
 
 	//turn on html5Mode so routes don't include # symbol
 	if(window.history && window.history.pushState) {
@@ -195,38 +89,198 @@ eventsApp
 	  });
 		
 	}
+	//set up angularjs front-end routes
+	$routeProvider
+	.when('/', {
+		templateUrl: '/app/components/homepage/homepage.html',
+		controller: 'HomepageCtrl',
+		reloadOnSearch: false,
+		data: {
+      pageTitle: 'Home Page - Microsoft Plugfests and Events'
+    }
+	})
+	/*These 3 redirect routes take care of 404 errors cause by angular stripping the hash from routes even when they're meant for in page navigation*/
+	.when('/eventNavigationMenu', {
+		redirectTo: '/'
+	})
+	.when('/beginningOfContent', {
+		redirectTo: '/'
+	})
+	.when('/footerStartMenuItem', {
+		redirectTo: '/'
+	})
+	.when('/about', {
+		templateUrl: '/app/components/about/about.html',
+    reloadOnSearch: false,
+		data: {
+      pageTitle: 'About Us Page - Microsoft Plugfests and Events'
+    }
+	})
+	.when('/contactus', {
+		templateUrl: '/app/components/contactUs/contactUs.html',
+		reloadOnSearch: false,
+		data: {
+      pageTitle: 'Contact Us Page - Microsoft Plugfests and Events'
+    }
+
+	})
+	.when('/faq', {
+		templateUrl: '/app/components/faq/faq.html',
+		reloadOnSearch: false,
+		data: {
+      pageTitle: 'Frequently Asked Questions Page - Microsoft Plugfests and Events'
+    }
+	})
+	.when('/past-events', {
+		templateUrl: '/app/components/pastEvents/pastEvents.html',
+		reloadOnSearch: false,
+		controller: 'PastEventsCtrl',
+		data: {
+      pageTitle: 'Past Events Page - Microsoft Plugfests and Events'
+    }
+	})
+	.when('/meet-the-team', {
+		templateUrl: '/app/components/meetTheTeam/meetTheTeam.html',
+		reloadOnSearch: false,
+		controller: 'MeetTheTeamCtrl',
+		data: {
+      pageTitle: 'Meet the Team Page - Microsoft Plugfests and Events'
+    }
+	})
+	.when('/future-events', {
+		templateUrl: '/app/components/futureEvents/futureEvents.html',
+		reloadOnSearch: false,
+		controller: 'FutureEventsCtrl',
+		data: {
+      pageTitle: 'Future Events Page - Microsoft Plugfests and Events'
+    }
+	})
+	.when('/latest-news', {
+		templateUrl: '/app/components/latestNews/latestNews.html',
+		reloadOnSearch: false,
+		controller: 'LatestNewsCtrl',
+		data: {
+      pageTitle: 'Latest Page - Microsoft Plugfests and Events'
+    }
+	})
+	/*.when('/admin/slideshow', {
+		templateUrl: '/app/components/admin/editSlideshow/editSlideshowTemplate.html',
+		reloadOnSearch: false,
+		data: {
+			pageTitle: 'Edit Slideshow Settings'
+		}
+	})
+	.when('/admin', {
+		redirectTo: '/admin/edit-event',
+		reloadOnSearch: false,
+		data: {
+      pageTitle: 'Admin Page - Microsoft Plugfests and Events'
+    }
+	})
+	.when('/admin/edit-event', {
+		templateUrl: '/app/components/admin/editEvent/admin-edit-event.html',
+		reloadOnSearch: false,
+		// controller: 'AdminCreateEventCtrl',
+		data: {
+      pageTitle: 'Admin Page - Microsoft Plugfests and Events'
+    }
+	})
+	.when('/admin/create-event', {
+		templateUrl: '/app/components/admin/createEvent/admin-create-event.html',
+		reloadOnSearch: false,
+		// controller: 'AdminCreateEventCtrl',
+		data: {
+      pageTitle: 'Admin Page - Microsoft Plugfests and Events'
+    }
+	})
+	.when('/admin/create-speaker', {
+		templateUrl: '/app/components/admin/createSpeaker/admin-create-speaker.html',
+		reloadOnSearch: false,
+		data: {
+			pageTitle: 'Admin Page - Microsoft Plugfests and Events, create new speaker'
+		}
+	})
+	.when('/admin/edit-speaker', {
+		templateUrl: '/app/components/admin/editSpeaker/admin-edit-speakers.html',
+		reloadOnSearch: false,
+		// controller: 'AdminCreateEventCtrl',
+		data: {
+      pageTitle: 'Admin Page - Microsoft Plugfests and Events'
+    }
+	})
+	.when('/admin/edit-files', {
+		templateUrl: '/app/components/admin/editFiles/edit-files-template.html',
+		reloadOnSearch: false,
+		// controller: 'EditFilesCtrl',
+		data: {
+      pageTitle: 'Admin Page - Microsoft Plugfests and Events'
+    }
+	})
+	.when('/admin/login', {
+		templateUrl: '/app/components/admin/userLogging/login.html',
+		reloadOnSearch: false,
+		// controller: 'AdminCreateEventCtrl',
+		data: {
+      pageTitle: 'Admin Page - Microsoft Plugfests and Events'
+    }
+	})*/
+	.when('/:slug', {
+    templateUrl: '/app/components/events/event.html',
+    controller: 'EventsCtrl',
+    reloadOnSearch: false,
+    data: {
+      pageTitle: 'Interoperability Event Page - Microsoft Plugfests and Events'
+    }
+  })
 
 }])
-/*.directive('newScript', [function() {
-	return {
-		restrict: 'A',
-		link: function(scope, elem, attr) {
-			console.log('hola');
-	angular.element('.internetExplorer > h2').hide();
-	angular.element('#recentNewsSection').append('</script><script type="text/javascript" src="/app/es6/rssFeed2.js"></script>')
-			
-		}
-	}
-
-}])*/
-.run(['$rootScope', '$location', '$anchorScroll', '$routeParams', 'Analytics', function ($rootScope, $location, $anchorScroll, $routeParams, Analytics) {
-
+.run(['$rootScope', '$location', '$anchorScroll', '$routeParams', '$http', 'Analytics', '$cookies', ($rootScope, $location, $anchorScroll, $routeParams, $http, Analytics, $cookies) => {
+	//start Google analytics
 	Analytics.pageView();
+
+	//when the route starts with /admin, call the /api/user/checklogin route to check if the user is logged in and redirect them to the login page if they aren't
+	if ( /\/admin.*$/.test($location.path()) ) {
+		$http.get('/api/user/checklogin')
+		.success( (data) => {
+			
+		})
+		.error( (err) => {
+			$cookies.remove('token');
+			$location.path('/admin/login');
+		})
+	}
 	
-	$rootScope.$on('$viewContentLoaded', function () {
+	$rootScope.$on('$viewContentLoaded', () => {
 			// document.getElementById('screenreader-summary').trigger('focus');
+			/*let anchor = $location.hash();
+			$anchorScroll(anchor);*/
 		
 	});
 
-	$rootScope.$on('$routeChangeSuccess', function(newRoute, oldRoute) { 
+	$rootScope.$on( '$routeChangeStart', function(event, next, current) {   
+		//when the route starts with /admin, call the /api/user/checklogin route to check if the user is logged in and redirect them to the login page if they aren't
+		if ( /\/admin.*$/.test($location.path()) ) {
+			$http.get('/api/user/checklogin')
+			.success( (data) => {
+				
+			})
+			.error( (err) => {
+				$cookies.remove('token');
+				$location.path('/admin/login');
+			})
+		}
+	});
 
-		// $location.hash($routeParams.scrollTo);
+	$rootScope.$on('$routeChangeSuccess', (newRoute, oldRoute) => { 
+
+
+		// scroll the window to the top when a new page is opened
     $anchorScroll();
-
- 		if ($location.path() == '/') {
+    //if the path is the root, 
+ 		/*if ($location.path() == '/') {
       $rootScope.hideSlider = true;
     };
-
+*/
  	});
 
 }])

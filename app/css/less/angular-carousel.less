@@ -3,7 +3,8 @@
 }
 
 input[type=range] {
-  width: 300px; }
+  width: 300px; 
+}
 
 ul[rn-carousel] {
   overflow: hidden;
@@ -14,7 +15,8 @@ ul[rn-carousel] {
   -ms-perspective: 1000px;
   perspective: 1000px;
   -ms-touch-action: pan-y;
-  touch-action: pan-y; }
+  touch-action: pan-y; 
+}
   ul[rn-carousel] > li {
     color: black;
     -webkit-backface-visibility: hidden;
@@ -31,40 +33,56 @@ ul[rn-carousel] {
     list-style-type: none;
     width: 100%;
     height: 100%;
-    display: inline-block; }
+    display: inline-block; 
+  }
 
 /* prevent flickering when moving buffer */
 ul[rn-carousel-buffered] > li {
-  display: none; }
+  display: none; 
+}
 
 ul[rn-carousel-transition="hexagon"] {
-  overflow: visible; }
+  overflow: visible; 
+}
 
 /* indicators */
 div.rn-carousel-indicator span {
   cursor: pointer;
-  color: #666; }
-  div.rn-carousel-indicator span.active {
-    color: white; }
+  color: #666; 
+}
+
+div.rn-carousel-indicator span.active {
+    color: white; 
+}
 
 /* prev/next controls */
 .rn-carousel-control {
   -webkit-transition: opacity 0.2s ease-out;
   transition: opacity 0.2s ease-out;
-  font-size: 2rem;
+  font-size: 3em;
+  font-family: FontAwesome;
   position: absolute;
-  top: 40%;
+  top: 20%;
   opacity: 0.75;
-  cursor: pointer; }
-  .rn-carousel-control:hover {
-    opacity: 1; }
-  .rn-carousel-control.rn-carousel-control-prev {
-    left: 0.5em; }
-    .rn-carousel-control.rn-carousel-control-prev:before {
-      content: "<"; }
-  .rn-carousel-control.rn-carousel-control-next {
-    right: 0.5em; }
-    .rn-carousel-control.rn-carousel-control-next:before {
-      content: ">"; }
+  background-color: white;
+  padding: 3px 3px 3px 3px;
+  border-radius: 2px;
+  cursor: pointer; 
+  &:hover {
+    opacity: 1; 
+  }
+  &.rn-carousel-control-prev {
+    left: 0.5em; 
+  }
+  &.rn-carousel-control-prev:before {
+    content: "\f048"; 
+  }
+  &.rn-carousel-control-next {
+    right: 0.5em; 
+  }
+  &.rn-carousel-control-next:before {
+      content: "\f051"; 
+  }
+}
 
 /*# sourceMappingURL=angular-carousel.css.map */

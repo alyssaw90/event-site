@@ -6,7 +6,7 @@ const fs = require('fs');
 const clc = require('cli-color');
 const multer = require('multer');
 const storage = multer.diskStorage({
-  destination: 'app/uploads/',
+  destination: 'uploads/',
   filename: function (req, file, callback) {
     callback(null, Date.now() + '-' + file.originalname);
   }
@@ -21,20 +21,21 @@ const User = models.User;
 const Contact = models.Contact;
 const Event = models.Event;
 const EventTab = models.EventTab;
-const SiteStyle = models.SiteStyle;
+const Slideshow = models.Slideshow;
+const Slide = models.Slide;
 const placeholders = require('../models/placeholders');
 const dbRelationships = require('../models/relationships');
 const multipart = require('connect-multiparty');
 const multipartMiddleware = multipart({
   autoFiles: true,
-  uploadDir: 'app/uploads/'
+  uploadDir: 'uploads/'
 });
 /*Use the methods below to create the placeholder data. First uncomment the placeholder() and start the server this will create the data in the database, then comment out the placeholder() and uncomment the dbRelationships() and restart the server, this will create the relationships between the data tables. Finally, comment both placeholder() and dbRelationships out and restart the server. At this point, all your placeholder data will be created. Do this only once, if you need to recreate your placeholder data, delete all the tables from the database and repeat these same steps*/
 // placeholders();
 // dbRelationships();
 
 models.sql.authenticate()
-.then(function (err) {
+.then( (err) => {
   if (err) {
     console.log(clc.xterm(202)('Unable to connect to the database with db router: '), err);
   } else {
@@ -42,29 +43,11 @@ models.sql.authenticate()
   }
 });
 
-let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-let continentColors = {'North America': 'ffb900', 'South America': '107c10', 'Africa': 'e81123', 'Asia': '0078d7', 'Europe': '5c2d91', 'Oceania': 'b4009e'};
 
-function shuffle (arr) {
-  let currentIndex = arr.length, tempVal, randomIndex ;
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const continentColors = {'North America': '#007233', 'South America': '#D13900', 'Africa': '#B4009E', 'Asia': '#0072C6', 'Europe': '#442359', 'Oceania': '#008272'};
 
-  // While there remain elements to shuffle...
-  while (0 !== currentIndex) {
-
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-
-    // And swap it with the current element.
-    tempVal = arr[currentIndex];
-    arr[currentIndex] = arr[randomIndex];
-    arr[randomIndex] = tempVal;
-  }
-
-  return arr;
-}
-
-module.exports = function (router) {
+module.exports = (router) => {
   router.use(bodyparser.json());
   router.use(bodyparser.urlencoded({
     extended: true
@@ -78,23 +61,24 @@ module.exports = function (router) {
     .then(function() {
       return Contact.findAll({
         where: {
-          showOnMeetTheTeamPage: true
+          showOnMeetTheTeamPage: true,
+          isPublished: true
         }
       })
     })
-    .then(function(teamMembers) {
+    .then( (teamMembers) => {
       res.json(teamMembers);
     })
   })
   //Get upcoming events for header, carousel, and upcoming events page
   router.route('/futureEventsData')
-  .get(function(req, res) {
+  .get( (req, res) => {
     let eventDates = 'Coming Soon';
     let eventMonth;
     let city;
     let cityArr;
     models.sql.sync()
-    .then(function() {
+    .then( () => {
       return Event.findAll({
         where: {
           eventEndDate: {
@@ -105,13 +89,14 @@ module.exports = function (router) {
                 $eq: new Date(new Date().getFullYear().toString())
                 /* jshint ignore:end */
             }
-          }
+          },
+          isPublished: true
         }
       })
     })
-    .then(function(upcomingEvents) {
+    .then( (upcomingEvents) => {
       let outputArr = [];
-      upcomingEvents.sort(function (a, b) {
+      upcomingEvents.sort( (a, b) => {
         a = a.eventEndDate;
         b = b.eventEndDate;
         if (a === null) {
@@ -145,7 +130,7 @@ module.exports = function (router) {
 
         city = cityArr.join(' ');
         //create dates for future-events page
-        if (upcomingEvents[i].eventStartDate !== null && (upcomingEvents[i].eventStartDate.getMonth() !== 0 && upcomingEvents[i].eventStartDate.getDate() !== 1)) {
+        if (upcomingEvents[i].eventStartDate !== null && (upcomingEvents[i].eventStartDate.getMonth() !== 0/* && upcomingEvents[i].eventStartDate.getDate() !== 1*/) ) {
           eventDates = `${months[upcomingEvents[i].eventStartDate.getMonth()]} ${upcomingEvents[i].eventStartDate.getDate()} - ${upcomingEvents[i].eventEndDate.getDate()}, ${upcomingEvents[i].eventEndDate.getFullYear()}`;
           eventMonth = months[upcomingEvents[i].eventStartDate.getMonth()];
         } else if (upcomingEvents[i].eventStartDate !== null && (upcomingEvents[i].eventStartDate.getMonth() === 0 && upcomingEvents[i].eventStartDate.getDate() === 1)) {
@@ -162,7 +147,6 @@ module.exports = function (router) {
           startYear = new Date(upcomingEvents[i].eventStartDate).getFullYear();
         }
 
-        eventObj.continentColor = continentColors[upcomingEvents[i].eventContinent];
         eventObj.eventDates = eventDates;
         eventObj.headerEventDates = eventMonth ? eventMonth + ', ' + startYear : startYear;
         eventObj.startYear = startYear;
@@ -170,7 +154,7 @@ module.exports = function (router) {
         eventObj.colNum = Math.floor(12 / upcomingEvents.length);
         eventObj.eventName = upcomingEvents[i].eventName;
         eventObj.eventUrl = upcomingEvents[i].eventUrl;
-        eventObj.eventHighlightColor = upcomingEvents[i].eventHighlightColor;
+        eventObj.eventHighlightColor = continentColors[upcomingEvents[i].eventContinent];
         eventObj.eventHomepageImage = upcomingEvents[i].eventHomepageImage;
 
         outputArr.push(eventObj)
@@ -180,81 +164,177 @@ module.exports = function (router) {
     })
   })
 
-  //route to send style choices for website
-  router.get('/sitestyle', function(req, res) {
-    models.sql.sync()
-    .then(function() {
-      return SiteStyle.findOne({where: {id: 1}});
-    })
-    .then(function(data) {
-      res.json(data);
-    });
-  });
 
   //route to send Bing Map API key to front end
   router.route('/bingmapkey')
-  .get(function(req, res) {
+  .get( (req, res) => {
     res.json(process.env.BING_MAP_API_KEY);
     res.end();
   });
 
 
   //get all events for edit events tab
-  router.get('/mapevents', function (req, res) {
+  router.get('/mapevents', (req, res) => {
     models.sql.sync()
-      .then(function () {
+      .then( () => {
         return Event.findAll({
           where: {
             eventLocation: {
               $not: null
-            }
+            },
+            isPublished: true
           }
         });
       })
-      .then(function (events) {
+      .then( (events) => {
         res.json(events);
       });
   });  
 
-  /*/////////////////////////////////////////////////////////////////////////////////////////
+  //route to get all files and delet files
+  router.get('/files', eatAuth, (req, res) => {
+    fs.readdir('uploads/', (err, data) => {
+      if (err) {
+        console.log(clc.white.bgRed('Error: '), err);
+      }
+      let outputArr = [];
+      for (let i = 0, len = data.length; i < len; i++) {
+        if (data[i] !== '.gitignore') {
+          outputArr.push(data[i]);
+        }
+      }
+      res.json(outputArr);
+    })
+  })
 
+  router.post('/files', (req, res) => {
+    console.log(clc.blue.bgWhite('::::::::::::::::::   '), req.body);
+    let filesToDelete = [];
+    for (let key in req.body) {
+      if (req.body[key]) {
+        filesToDelete.push(key);
+      }
+    }
 
-               ********The Routes below are for event Creation******
+    fs.readdir('uploads/', (err, data) => {
+      if (err) {
+        console.log(err);
+      }
+      for (let i = 0, len = data.length; i < len; i++) {
+        if (filesToDelete.indexOf(data[i]) > -1) {
+          fs.unlink('uploads/' + data[i]);
+          console.log(clc.green.bgWhite(':::::::::::::::::::  deleted '), data[i]);
+        }
+      }
+    })
+    res.end();
+  })
 
+  //route to send slides related to a slidesho
+  router.get('/slideshow/:slideName', (req, res) => {
+    models.sql.sync()
+    .then( () => {
+      return Slideshow.findOne({
+        where: {
+          slideshowName: req.params.slideName
+        }
+      });
+    })
+    .then( (slideshowData) => {
+      return slideshowData.getSlides();
+    })
+    .then( (slides) => {
+      res.json(slides);
+    })
+  });
+  //route to get all slides
+  router.get('/allslides', eatAuth, (req, res) => {
+    models.sql.sync()
+    .then( () => {
+      return Slide.findAll();
+    })
+    .then( (slides) => {
+      res.json(slides);
+    })
+  });
 
-  /////////////////////////////////////////////////////////////////////////////////////////*/
+  //route to set homepage slides
+  router.post('/sethomepageslides', eatAuth, (req, res) => {
+    models.sql.sync()
+    .then( () => {
+      return Slideshow.findOne({
+        where: {
+          slideshowName: 'homepageSlideshow'
+        }
+      });
+    })
+    .then( (slideshow) => {
+      let slideArr = [];
+      models.sql.sync()
+      slideshow.setSlides([])
+      .then( () => {
+        models.sql.sync()
+        .then( () => {
+          for (let i = 0, len = req.body.length; i < len; i++) {
+            slideshow.addSlide(req.body[i].id, {sortPosition: i});
+          }
+          res.end();
+          
+        });
+      });
+    });
+  });
+
+  router.post('/addslide', eatAuth, (req, res) => {
+    console.log(clc.white.bgRed(':::::::::::    '), req.body);
+    models.sql.sync()
+    .then( () => {
+      Slide.create({
+        imgSrcUrl: req.body.imgSrcUrl,
+        imgDestUrl: req.body.imgDestUrl,
+        title: req.body.title,
+        altText: req.body.altText
+      })
+      res.end('slide saved');
+    });
+  });
+
+  //verify login
+  router.get('/user/checklogin', eatAuth, (req, res) => {
+    res.json({authenticated: true});
+  });
 
   //get all contacts for editing
-  router.get('/contacts'/*, eatAuth*/, function (req, res) {
+  router.get('/contacts', eatAuth, (req, res) => {
     models.sql.sync()
-    .then(function () {
+    .then( () => {
       Contact.findAll()
-      .then(function (data) {
+      .then( (data) => {
         res.json(data);
       });
     });
   });
 
   //get all events for edit events tab
-  router.get('/allevents', function(req, res) {
+  router.get('/allevents', eatAuth, (req, res) => {
     models.sql.sync()
-    .then(function() {
+    .then( () => {
       return Event.findAll();
     })
-    .then(function(events) {
+    .then( (events) => {
       res.json(events);
     });
   });
 
   //route for uploading files
-  router.post('/multer', multipartMiddleware, function (req, res) {
-    let tmpFilename = req.files.file.path.slice(12);
+  router.post('/multer', multipartMiddleware, (req, res) => {
+    let tmpFilename = req.files.file.path.slice(8);
     let newFilename = req.files.file.size + '-' + req.files.file.originalFilename;
-    fs.readdir('app/uploads/', (err, data) => {
+    fs.readdir('uploads/', (err, data) => {
       for (let i = 0, len = data.length; i < len; i++) {
   
         if (data[i] === tmpFilename) {
-          fs.rename('app/uploads/' + data[i], 'app/uploads/' + newFilename, () => {});
+          fs.rename('uploads/' + data[i], 'uploads/' + newFilename, () => {});
         }
   
       }
@@ -263,11 +343,13 @@ module.exports = function (router) {
   });
 
   // create new event
-  router.post('/api/createevent', /*eatAuth,*/ function (req, res, next) {
+  router.post('/createevent', eatAuth, (req, res, next) => {
+    console.log(clc.white.bgBlue('REQ.BODY::::    '), req.body);
     models.sql.sync()
     .then(function () {
       Event.create({
         eventName: req.body.newEventName,
+        eventUrl: req.body.eventUrl,
         eventRegistrationLink: req.body.newEventRegistrationLink,
         eventStartDate: req.body.newEventStartDate,
         eventEndDate: req.body.newEventEndDate,
@@ -275,16 +357,24 @@ module.exports = function (router) {
         eventState: req.body.newEventState,
         eventCountry: req.body.newEventCountry,
         eventHeaderImage: req.body.newEventHeaderImage,
-        eventHighlightColor: req.body.newEventThemeColor,
+        eventContinent: req.body.newEventContinent,
         isPublished: req.body.publishStatus,
-        eventAboutTabText: req.body.eventAboutTabText
+        eventAboutTabText: req.body.eventAboutTabText,
+        eventVenueName: req.body.newEventVenueName,
+        eventVenueAddressLine1: req.body.newVenduAddressLine1,
+        eventVenueAddressLine2: req.body.newVenueAddressLine2,
+        eventParkingInfo: req.body.newVenueParkingInfo,
+        eventVenueImg: req.body.newEventVenueImg
       })
-      .then(function(newEvent) {
+      .then( (newEvent) => {
         models.sql.sync()
-        .then(function() {
+        .then( () => {
           let speakersArr = [];
           for(let key in req.body.speakers){
-            speakersArr.push({speakerId: key, position: req.body.speakers[key]  });    
+            if (req.body.speakers[key]) {
+              speakersArr.push({speakerId: key, position: req.body.speakers[key]  });    
+              
+            }
            
           }
           
@@ -302,9 +392,9 @@ module.exports = function (router) {
 
 
   //route to create speakers
-  router.post('/api/addspeakers', /*eatAuth,*/ function(req, res) {
+  router.post('/addspeakers', eatAuth, (req, res) => {
     models.sql.sync()
-    .then(function() {
+    .then( () => {
       let speakerEmail = req.body.newMsTeamEmail ? req.body.newMsTeamEmail : 'plugfests@microsoft.com';
       // let speakerHeadshot = req.body.headshot ? req.body.headshot : 'placeholder-headshot.jpg';
       Contact.create({
@@ -315,12 +405,75 @@ module.exports = function (router) {
         showOnMeetTheTeamPage: req.body.showOnMeetTheTeamPage,
         meetTheTeamPageOrder: req.body.meetTheTeamPageOrder,
         msTeamTitle: req.body.newMsTeamTitle,
-        headShot: req.body.headshot
+        headShot: req.body.headshot,
+        isPublished: req.body.showOnMeetTheTeamPage
       });
       res.end();
     });
   });
+    //show all images
+  router.get('/showimages', eatAuth, function(req, res) {
+    fs.readdir('uploads', function(err, files) {
+      let imageNamesArr = [];
+      if (err) {
+        console.log(err);
+        res.status(500).json({msg: 'internal server error'});
+      }
+
+      for (let i = 0, j = files.length; i < j; i ++) {
+        if (files[i] !== '.gitignore') {
+          imageNamesArr.push(files[i]);
+        }
+      }
+      let output = JSON.stringify(imageNamesArr);
+      res.json(output);
+    });
+  });
  
+  /*Get events from URL path/slug and either send the event if there is one or set isEvent to false to show 404 page */
+  router.route('/:slug')
+  .get( (req, res) => {
+    //check if last 4 digits of url slug (req.params.eventUrl) are a number and end the response  if they're not numbers i.e. not a year and end the response if they're not
+    /*if (!/^\d+$/.test(req.params.slug.slice(-4))) {
+      return res.end();
+    }*/
+    //create an eventInfo object to hold the values for the event to be rendered
+    let eventInfo = {};
+    eventInfo.isEvent = true;
+    models.sql.sync()
+    .then( () => {
+
+      // search the database for event that matches the city and occurs on or after the year from the params and return the event found
+      return Event.findOne({
+        where: {
+          eventUrl: req.params.slug
+        }
+      });
+
+    })
+    //get the related tabs and speakers for the event and add them to the return object
+    .then( (event) => {
+      if (!event) {
+        eventInfo.isEvent = false;
+        res.json(eventInfo);
+      } else {
+        eventInfo.event = event;
+        event.getEventTabs()
+        .then( (tabs) => {
+          eventInfo.tabs = tabs;
+          event.getContacts()
+          .then( (speakers) => {
+            eventInfo.speakers = speakers;
+            res.json(eventInfo);
+          });
+        });
+        
+      }
+    });
+  });
+
+
+};
 
   // //Find an event with the id from req.body.eventId and add the string of speakers then save
   // router.post('/addeventspeakers', eatAuth, function(req, res, next) {
@@ -350,7 +503,7 @@ module.exports = function (router) {
 
   // //show all images
   // router.get('/showimages', eatAuth, function(req, res) {
-  //   fs.readdir(path.join(__dirname, 'app/uploads'), function(err, files) {
+  //   fs.readdir(path.join(__dirname, 'uploads'), function(err, files) {
   //     let outputHtml = '';
   //     if (err) {
   //       console.log(err);
@@ -359,7 +512,7 @@ module.exports = function (router) {
 
   //     for (let i = 0, j = files.length; i < j; i ++) {
   //       if (files[i] !== '.gitignore') {
-  //         outputHtml += '<img class="imageToInsert" style="height: 50px; margin: 10px 10px 10px 10px" data-clipboard-text="app/uploads/' + files[i] + '" src="app/uploads/' + files[i] + '" />';
+  //         outputHtml += '<img class="imageToInsert" style="height: 50px; margin: 10px 10px 10px 10px" data-clipboard-text="uploads/' + files[i] + '" src="uploads/' + files[i] + '" />';
   //       }
   //     }
   //     outputHtml += '<script type="text/javascript">$(".imageToInsert").click(function() {$(this).toggleClass("animated shake");})';
@@ -381,7 +534,7 @@ module.exports = function (router) {
   //       } else {
   //         imageName = req.body.editHeaderWithExistingImage;
   //       }
-  //       if (imageName.substr(0, 9) === 'app/uploads/') {
+  //       if (imageName.substr(0, 9) === 'uploads/') {
   //         imageName = imageName.slice(9);
   //       }
   //       var key = req.body.whatToChange;
@@ -598,8 +751,8 @@ module.exports = function (router) {
   //       deleteSpeakers: []
   //     };
   //     for (var i = 0, len = speakers.length; i < len; i++) {
-  //       let tmpEditHtml = `<div class="col_12"><img style="height: 165px;" src="app/uploads/${speakers[i].headShot}"/><h4>${speakers[i].fullName}</h4><button class="editSpeakersButton" data-speakerId="${speakers[i].id}">Edit ${speakers[i].fullName}</button></div>`;
-  //       let tmpDeleteHtml = `<div class="col_12"><img style="height: 165px;" src="app/uploads/${speakers[i].headShot}"/><h4>${speakers[i].fullName}</h4><button class="deleteSpeakersButton" data-speakerId="${speakers[i].id}" data-speakerName="${speakers[i].fullName}">Delete ${speakers[i].fullName}</button></div>`;
+  //       let tmpEditHtml = `<div class="col_12"><img style="height: 165px;" src="uploads/${speakers[i].headShot}"/><h4>${speakers[i].fullName}</h4><button class="editSpeakersButton" data-speakerId="${speakers[i].id}">Edit ${speakers[i].fullName}</button></div>`;
+  //       let tmpDeleteHtml = `<div class="col_12"><img style="height: 165px;" src="uploads/${speakers[i].headShot}"/><h4>${speakers[i].fullName}</h4><button class="deleteSpeakersButton" data-speakerId="${speakers[i].id}" data-speakerName="${speakers[i].fullName}">Delete ${speakers[i].fullName}</button></div>`;
   //       returnObj.editSpeakers.push(tmpEditHtml);
   //       returnObj.deleteSpeakers.push(tmpDeleteHtml);
   //     }
@@ -701,7 +854,7 @@ module.exports = function (router) {
   // router.post('/editslidersettings', eatAuth, function(req, res) {
   //   models.sql.sync()
   //   .then(function() {
-  //     return SiteStyle.findOne();
+  //     return Slideshow.findOne();
   //   })
   //   .then(function(sliderSettings) {
   //     sliderSettings.showSlider = req.body.showSlider ? req.body.showSlider : sliderSettings.showSlider;
@@ -723,66 +876,3 @@ module.exports = function (router) {
 
 
   ///////////////////////////////////////////////////////////////////////*/
-
-  /*Get events from URL path/slug */
-  router.route('/api/:slug')
-  .get(function(req, res) {
-    //check if last 4 digits of url slug (req.params.eventUrl) are a number and end the response  if they're not numbers i.e. not a year and end the response if they're not
-    /*if (!/^\d+$/.test(req.params.slug.slice(-4))) {
-      return res.end();
-    }*/
-    //create an eventInfo object to hold the values for the event to be rendered
-    let eventInfo = {};
-    eventInfo.isEvent = true;
-    models.sql.sync()
-    .then(function() {
-      //trim the params to get the city and the year of the event
-      let eventSearchCity = req.params.slug.slice(0, -4);
-      let eventYear = req.params.slug.slice(-4);
-      let testDate = new Date(eventYear - 1, 11, 31, 11, 59, 59) == 'Invalid Date' ? new Date(1970, 1, 1) : new Date(eventYear - 1, 11, 31, 11, 59, 59);
-     /* if (testDate === 'not a date') {
-        return res.status(404).redirect('/404');
-      }*/
-
-      // search the database for event that matches the city and occurs on or after the year from the params and return the event found
-      return Event.findOne({
-        where: {
-          eventLocation: eventSearchCity,
-          eventStartDate: {
-            $or: {
-              $gte: testDate,
-              $eq: null
-            }
-          }
-        }
-      });
-
-    })
-    //get the related tabs and speakers for the event and add them to the return object
-    .then(function(event) {
-      if (!event) {
-        eventInfo.isEvent = false;
-        res.json(eventInfo);
-      } else {
-        eventInfo.event = event;
-        event.getTabs()
-        .then(function(tabs) {
-          eventInfo.tabs = tabs;
-          event.getContacts()
-          .then(function(speakers) {
-            eventInfo.speakers = speakers;
-            res.json(eventInfo);
-          });
-        });
-        
-      }
-    });
-  });
-
-  /*Send index.html for all routes that aren't used for data*/
-  router.route('/*')
-  .get(function(req, res) {
-    res.sendFile(path.join(__dirname, '../app/index.html'));
-  });
-
-};

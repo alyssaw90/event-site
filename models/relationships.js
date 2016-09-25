@@ -5,11 +5,27 @@ const User = models.User;
 const Contact = models.Contact;
 const Event = models.Event;
 const EventTab = models.EventTab;
-const SiteStyle = models.SiteStyle;
+const Slideshow = models.Slideshow;
+const Slide = models.Slide;
 const clc = require('cli-color');
 
 module.exports = function() {
 	models.sql.sync()
+	.then(function() {
+		return Slideshow.findOne({
+			where: {
+				id: 1
+			}
+		})
+	})
+	.then(function(slideshow) {
+		models.sql.sync()
+		.then(function() {
+			slideshow.addSlide(1, {sortPosition: 1});
+			slideshow.addSlide(2, {sortPosition: 2});
+			slideshow.addSlide(3, {sortPosition: 3});
+		})
+	})
 	.then(function() {
 		return Event.findOne({
 			where: {
@@ -20,7 +36,7 @@ module.exports = function() {
 	.then(function(event) {
 	  models.sql.sync()
 	  .then(function() {
-			event.setTabs([1,2,3,4,5,6,7]);
+			event.setEventTabs([1,2,3,4,5,6,7]);
 			event.addContact(1, {sortPosition: 1});
 			event.addContact(2, {sortPosition: 2});
 			event.addContact(8, {sortPosition: 3});
@@ -48,7 +64,7 @@ module.exports = function() {
 	.then(function(event) {
 	  models.sql.sync()
 	  .then(function() {
-			event.setTabs([8,9,10,11,12,13]);
+			event.setEventTabs([8,9,10,11,12,13]);
 			event.addContact(1, {sortPosition: 1});
 			event.addContact(2, {sortPosition: 2});
 			event.addContact(5, {sortPosition: 3});
@@ -70,7 +86,7 @@ module.exports = function() {
 	.then(function(event) {
 	  models.sql.sync()
 	  .then(function() {
-			event.setTabs([14,15,16,17,18]);
+			event.setEventTabs([14,15,16,17,18]);
 			event.addContact(1, {sortPosition: 1});
 			event.addContact(2, {sortPosition: 2});
 			event.addContact(3, {sortPosition: 3});
@@ -99,7 +115,7 @@ module.exports = function() {
 	.then(function(event) {
 	  models.sql.sync()
 	  .then(function() {
-			event.setTabs([19,20,21,22,23]);
+			event.setEventTabs([19,20,21,22,23]);
 			event.addContact(1, {sortPosition: 1});
 			event.addContact(2, {sortPosition: 2});
 			event.addContact(13, {sortPosition: 3});
@@ -112,19 +128,6 @@ module.exports = function() {
 			event.addContact(26, {sortPosition: 10});
 	  })
 	})
-	.then(function() {
-		return Event.findOne({
-			where: {
-				id: 5
-			}
-		})
-	})
-	.then(function(event) {
-	  models.sql.sync()
-	  .then(function() {
-	  	event.setTabs([23]);
-	  })
-	})
   .then(function() {
 		return Event.findOne({
 			where: {
@@ -135,7 +138,7 @@ module.exports = function() {
 	.then(function(event) {
 	  models.sql.sync()
 	  .then(function() {
-	  	event.setTabs([24]);
+	  	event.setEventTabs([24]);
 	  })
 	})
   .then(function() {
@@ -148,7 +151,7 @@ module.exports = function() {
 	.then(function(event) {
 	  models.sql.sync()
 	  .then(function() {
-	  	event.setTabs([25]);
+	  	event.setEventTabs([25]);
 	  })
 	})
 	.then(function() {
@@ -161,7 +164,7 @@ module.exports = function() {
 	.then(function(event) {
 	  models.sql.sync()
 	  .then(function() {
-	  	event.setTabs([26]);
+	  	event.setEventTabs([26]);
 	  })
 	})
 	.then(function() {
@@ -174,7 +177,46 @@ module.exports = function() {
 	.then(function(event) {
 	  models.sql.sync()
 	  .then(function() {
-	  	event.setTabs([27]);
+	  	event.setEventTabs([27]);
+	  })
+	})
+	.then(function() {
+		return Event.findOne({
+			where: {
+				id: 20
+			}
+		})
+	})
+	.then(function(event) {
+	  models.sql.sync()
+	  .then(function() {
+	  	event.setEventTabs([28, /*30, */32, 35, 34]);
+	  })
+	})
+	.then(function() {
+		return Event.findOne({
+			where: {
+				id: 21
+			}
+		})
+	})
+	.then(function(event) {
+	  models.sql.sync()
+	  .then(function() {
+	  	event.setEventTabs([29]);
+	  })
+	})
+	.then(function() {
+		return Event.findOne({
+			where: {
+				id: 22
+			}
+		})
+	})
+	.then(function(event) {
+	  models.sql.sync()
+	  .then(function() {
+	  	event.setEventTabs([33, 34, 31, 36]);
 	  })
 	})
 }

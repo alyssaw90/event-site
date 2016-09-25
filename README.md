@@ -56,7 +56,7 @@ User.sync({force: true})
 
 * Move map to use AngularJS $http
 
-* move upload folder to root and fix the dependent file paths
+* Divide routes into separate files
 
 * remove all 99lime CSS and move to WebCore/bootstrap
 

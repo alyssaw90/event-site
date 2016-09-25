@@ -5,50 +5,78 @@ const User = models.User;
 const Contact = models.Contact;
 const Event = models.Event;
 const EventTab = models.EventTab;
-const SiteStyle = models.SiteStyle;
+const Slideshow = models.Slideshow;
+const Slide = models.Slide;
 const clc = require('cli-color');
 
 module.exports = function () {
 
 	/////////////////////////////Sync Schemas////////////////////////////////////////////////
-	SiteStyle.sync({
-			force: true
+	Slideshow.sync({
+		force: false
+	})
+	.then(function() {
+		return Slide.sync({
+			force: false
 		})
-		.then(function () {
-			return Event.sync({
-				force: true
-			});
-		})
-		.then(function () {
-			return EventTab.sync({
-				force: true
-			});
-		})
-		.then(function () {
-			return Contact.sync({
-				force: true
-			});
-		})
-		.then(function () {
-			return User.sync({
-				force: true
-			});
-		})
-		/*.then(function() {
-			return EventTab.belongsTo(Event, {foreignKey: 'event_id'});
-		})
-		.then(function() {
-			return Event.hasMany(EventTab, {foreignKey: 'event_id'});
-		})*/
+	})
+	.then(function () {
+		return Event.sync({
+			force: false
+		});
+	})
+	.then(function () {
+		return EventTab.sync({
+			force: false
+		});
+	})
+	.then(function () {
+		return Contact.sync({
+			force: false
+		});
+	})
+	.then(function () {
+		return User.sync({
+			force: false
+		});
+	})
+	/*.then(function() {
+		return EventTab.belongsTo(Event, {foreignKey: 'event_id'});
+	})
+	.then(function() {
+		return Event.hasMany(EventTab, {foreignKey: 'event_id'});
+	})*/
 
-	////////////////////////////////////Style Choices//////////////////////////////////////////////
+	////////////////////////////////////Slidshow and Slides//////////////////////////////////////////////
 
 	.then(function () {
-		return SiteStyle.create({
-			showSlider: false,
-			showPastEventsBanner: true,
-			hideEventBanners: true
+		return Slideshow.create({
+			slideshowName: 'homepageSlideshow'
 		});
+	})
+	.then(function() {
+		return Slide.create({
+			imgSrcUrl: 'Beijing-Header-8.26.jpg',
+			imgDestUrl: 'beijing2016',
+			title: 'DevDays Asia 2016 @ Beijing banner',
+			altText: 'Banner image for DevDays Asia 2016 @ Beijing'
+		})
+	})
+	.then(function() {
+		return Slide.create({
+			imgSrcUrl: 'RDP-Banner.jpg',
+			imgDestUrl: 'redmondrdp2016',
+			title: 'Remote Desktop Protocol (RDP) IO lab banner',
+			altText: 'Banner image for Remote Desktop Protocol (RDP) IO lab'
+		})
+	})
+	.then(function() {
+		return Slide.create({
+			imgSrcUrl: 'past-events-banner.jpg',
+			imgDestUrl: 'past-events',
+			title: 'Past Events Page Banner',
+			altText: 'Banner image for Past Events Page'
+		})
 	})
 
 	////////////////////////////////////Admin User placeholder/////////////////////////////////////
@@ -66,12 +94,12 @@ module.exports = function () {
 	.then(function () {
 			return Event.create({
 				eventName: 'DevDays Asia 2016 @Taipei',
+				eventUrl: 'taipei2016',
 				eventStartDate: new Date('2016-04-19:08:00:00'),
 				eventEndDate: new Date('2016-04-21:23:00:00'),
 				eventLocation: 'Taipei',
 				eventContinent: 'Asia',
 				eventHeaderImage: 'TAIPEIHeader.png',
-				eventHomepageImage: 'TAIPEIHeader.png',
 				eventHighlightColor: '#4668c5',
 				eventSpeakers: '1,2,8,11,15,9,12,10,6,32,33,34,35,38,26',
 				isPublished: true
@@ -82,12 +110,12 @@ module.exports = function () {
 			return Event.create({
 				eventName: 'Extend Conference',
 				// eventRegistrationLink: , //link to registrationfor event
+				eventUrl: 'paris2016',
 				eventLocation: 'Paris',
 				eventContinent: 'Europe',
 				eventStartDate: new Date('2016-05-12:00:00:01'), //the start date...
 				eventEndDate: new Date('2016-05-12:23:59:00'), // the end date...
 				eventHeaderImage: 'Extend-banniereV2-(002).gif', //link to header image
-				eventHomepageImage: 'ExtendWebsiteBanner.jpg',
 				eventHighlightColor: '#5c2d91',
 				eventSpeakers: '1,2,5,10,8,11,35,36,37',
 				isPublished: true
@@ -97,12 +125,12 @@ module.exports = function () {
 			return Event.create({
 				eventName: 'Redmond Protocols Plugfest & Windows Interoperability (IO) Lab',
 				// eventRegistrationLink: Sql.STRING, //link to registrationfor event
+				eventUrl: 'redmond2016',
 				eventLocation: 'Redmond',
 				eventContinent: 'North America',
 				eventStartDate: new Date('2016-06-13:00:01:00'), //the start date...
 				eventEndDate: new Date('2016-06-24:23:00:00'), // the end date...
 				eventHeaderImage: 'Plugfest-and-IO-Lab-5.jpg', //link to header image
-				eventHomepageImage: 'Plugfest-and-IO-Lab-5.jpg',
 				eventHighlightColor: '#008272',
 				eventSpeakers: '1,2,3,5,9,8,11,15,12,10,6,21,14,18,16,39,40',
 				isPublished: true
@@ -117,7 +145,6 @@ module.exports = function () {
 				eventStartDate: '2016', //the start date...
 				eventEndDate: '2016', // the end date...
 				eventHeaderImage: 'India-2016.jpg', //link to header image
-				eventHomepageImage: 'India-2016.jpg',
 				eventHighlightColor: '#00188f',
 				// eventSpeakers: null*/
 			});
@@ -125,12 +152,12 @@ module.exports = function () {
 		.then(function () {
 			return Event.create({
 				eventName: 'Shanghai Interop Dev Days 2015',
+				eventUrl: 'shanghai2015',
 				eventLocation: 'Shanghai',
 				eventContinent: 'Asia',
 				eventStartDate: new Date('2015-10-20:00:01:00'),
 				eventEndDate: new Date('2015-10-21:23:00:00'),
 				eventHeaderImage: 'shanghai-header.jpg',
-				eventHomepageImage: 'shanghai-header.jpg',
 				eventHighlightColor: '#3bb300',
 				eventSpeakers: '1,2,13,9,8,10,6,11,35,26',
 				isPublished: true
@@ -139,12 +166,12 @@ module.exports = function () {
 		.then(function () {
 			return Event.create({
 				eventName: 'Paris 2017',
+				eventUrl: 'paris2017',
 				eventLocation: 'Paris',
 				eventContinent: 'Europe',
 				eventStartDate: '2017',
 				eventEndDate: '2017',
 				eventHeaderImage: 'paris-2017-banner.jpg',
-				eventHomepageImage: 'paris-2017-banner.jpg',
 				eventHighlightColor: '#5c005c',
 				// eventSpeakers: '1',
 				isPublished: true
@@ -153,12 +180,12 @@ module.exports = function () {
 		.then(function () {
 			return Event.create({
 				eventName: 'DevDays Asia 2017 @ Taipei',
+				eventUrl: 'taipei2017',
 				eventLocation: 'Taipei',
 				eventContinent: 'Asia',
 				eventStartDate: '2017',
 				eventEndDate: '2017',
 				eventHeaderImage: 'taipei-2017-banner.jpg',
-				eventHomepageImage: 'taipei-2017-banner.jpg',
 				eventHighlightColor: '#0078d7',
 				// eventSpeakers: '1',
 				isPublished: true
@@ -167,12 +194,12 @@ module.exports = function () {
 		.then(function () {
 			return Event.create({
 				eventName: 'Redmond Protocol Plugfest 2017',
+				eventUrl: 'redmond2017',
 				eventLocation: 'Redmond',
 				eventContinent: 'North America',
 				eventStartDate: '2017',
 				eventEndDate: '2017',
 				eventHeaderImage: 'redmond-2017-banner.jpg',
-				eventHomepageImage: 'redmond-2017-banner.jpg',
 				eventHighlightColor: '#0a6a05',
 				// eventSpeakers: '1',
 				isPublished: true
@@ -181,6 +208,7 @@ module.exports = function () {
 		.then(function() {
 			return Event.create({
 				eventName: 'SNIA SMB3 Plugfest',
+				eventUrl: 'santa_clara2016',
 				eventLocation: 'Santa Clara',
 				eventContinent: 'North America',
 				eventStartDate: new Date('September 19, 2016'),
@@ -194,79 +222,174 @@ module.exports = function () {
 			return Event.create({
 				eventLocation: 'Göttingen',
 				eventEndDate: new Date('May 22, 2015'),
-				eventStartDate: new Date('May 22, 2015')
+				eventStartDate: new Date('May 22, 2015'),
+				isPublished: true
 			});
 		})
 		.then(function () {
 			return Event.create({
 				eventLocation: 'Zaragoza, Spain',
 				eventEndDate: new Date('May 14, 2015'),
-				eventStartDate: new Date('May 14, 2015')
+				eventStartDate: new Date('May 14, 2015'),
+				isPublished: true
 			});
 		})
 		.then(function () {
 			return Event.create({
 				eventLocation: 'Beijing',
 				eventEndDate: new Date('March 17, 2015'),
-				eventStartDate: new Date('March 17, 2015')
+				eventStartDate: new Date('March 17, 2015'),
+				isPublished: true
 			});
 		})
 		.then(function () {
 			return Event.create({
 				eventLocation: 'Santa Clara',
 				eventEndDate: new Date('March 17, 2015'),
-				eventStartDate: new Date('March 17, 2015')
+				eventStartDate: new Date('March 17, 2015'),
+				isPublished: true
 			});
 		})
 		.then(function () {
 			return Event.create({
 				eventLocation: 'Las Vegas',
 				eventEndDate: new Date('March 17, 2015'),
-				eventStartDate: new Date('March 17, 2015')
+				eventStartDate: new Date('March 17, 2015'),
+				isPublished: true
 			});
 		})
 		.then(function () {
 			return Event.create({
 				eventLocation: 'Cambridge, MA',
 				eventEndDate: new Date('March 17, 2015'),
-				eventStartDate: new Date('March 17, 2015')
+				eventStartDate: new Date('March 17, 2015'),
+				isPublished: true
 			});
 		})
 		.then(function () {
 			return Event.create({
 				eventLocation: 'London',
 				eventEndDate: new Date('March 17, 2015'),
-				eventStartDate: new Date('March 17, 2015')
+				eventStartDate: new Date('March 17, 2015'),
+				isPublished: true
 			});
 		})
 		.then(function () {
 			return Event.create({
 				eventLocation: 'Tokyo',
 				eventEndDate: new Date('March 17, 2015'),
-				eventStartDate: new Date('March 17, 2015')
+				eventStartDate: new Date('March 17, 2015'),
+				isPublished: true
 			});
 		})
 		.then(function () {
 			return Event.create({
 				eventLocation: 'Munich',
 				eventEndDate: new Date('March 17, 2015'),
-				eventStartDate: new Date('March 17, 2015')
+				eventStartDate: new Date('March 17, 2015'),
+				isPublished: true
 			});
 		})
 		.then(function () {
 			return Event.create({
 				eventLocation: 'Seoul',
 				eventEndDate: new Date('March 17, 2015'),
-				eventStartDate: new Date('March 17, 2015')
+				eventStartDate: new Date('March 17, 2015'),
+				isPublished: true
 			});
 		})
+		.then(function() {
+			return Event.create({
+				eventName: 'DevDays Asia 2016 @ Beijing ',
+				eventLocation: 'Beijing',
+				eventUrl: 'beijing2016',
+				eventContinent: 'Asia',
+				eventStartDate: new Date('October 21, 2016'),
+				eventEndDate: new Date('October 23, 2016'),
+				eventHighlightColor: '#107c10',
+				eventHeaderImage: 'Beijing-Header-8.26.jpg',
+				isPublished: true
+			})
+		})
+		.then(function() {
+			return Event.create({
+				eventName: 'Remote Desktop Protocol (RDP) IO lab',
+				eventUrl: 'redmondrdp2016',
+				eventLocation: 'Redmond',
+				eventContinent: 'North America',
+				eventStartDate: new Date('November 1, 2016'),
+				eventEndDate: new Date('November 3, 2016'),
+				eventHeaderImage: 'RDP-Banner.jpg',
+		    eventVenueName: 'Microsoft Building 25',
+    		eventVenueAddressLine1: '15700 NE 39th St',
+    		eventVenueAddressLine2: 'Redmond, WA 98052',
+    		eventVenueImg: 'B25_web.jpg',
+    		eventAboutTabText:`<h2>Remote Desktop Protocol (RDP) IO lab</h2>
+				<p>The purpose of the event is to provide an opportunity for you to use the RDP test suites with assistance from the test suite developers and support engineers, as well as an opportunity to hear from and interact with the Remote Desktop engineering team. The focus will be on testing, with limited presentations provided.</p>
+				<br>
+				<ul class="noStyleUl">
+					<li><b>When:</b> November 1-3, 2016</li>
+					<li><b>Where:</b> Building 25, Microsoft headquarters in Redmond, Washington </li>
+					<li><b>Who:</b> RDP implementers</li>
+					<li><b>Cost:</b> Free</li>
+				</ul>
+				<p>If you are interested in participating or have additional questions, please contact <a href="mailto:prana@microsoft.com?subject=RDP%20IO%20Lab">Prakash Narayanan</a> </p>`,
+				isPublished: true
+			})
+		})
+		.then(function() {
+			return Event.create({
+				eventName: 'DevDays Asia 2016 @ Beijing ',
+				eventLocation: 'Beijing',
+				eventUrl: 'beijing2016cn',
+				eventContinent: 'Asia',
+				eventStartDate: new Date('October 21, 2016'),
+				eventEndDate: new Date('October 23, 2016'),
+				eventHighlightColor: '#107c10',
+				eventHeaderImage: 'Beijing-Header-8.26.jpg',
+				eventAboutTabText:`
+				<a href="/beijing2016" class="btn btn-info float-right" role="button">English</a>
+				<a href="http://www.aka.ms/devdaysbeijing2016"><img src="uploads/RegisterNowCN.png" style="height: 37px; margin-right: 10px;" class="float-right beijingRegistration2016Button" title="registration button" alt="registration link"></a>
+				<h2>DevDays Asia 2016 @ Beijing</h2>
+				<h4>10/21-10/23，2016</h4>
+				<h4>中国北京市</h4>
+				<h4>活动对象︰ 开发人员、 独立软件供应商、 学生、 科技创业、 企业</h4>
+				<h4>费用：免费</h4>
+				<p>微软Office 365与开放文档团队将在中国北京市举办 DevDays Asia 2016 @Beijing。此次北京的活动是自DevDays Asia @Taipei（<a href="http://www.prnewswire.com/news-releases/microsoft-launches-the-biggest-developer-event-in-asia-taking-iot-development-in-taiwan-to-new-heights-300253810.html">亚州最大的开发者活动</a>）以来另一次延伸性的活动。快来参加在北京微软亚太研发集团召开的技术研讨。 日期为2016年10月21日至23日。内容包括演示、现场实践与操作、互动与交流、还有hackathon! 这是一场属于开发人员的技术盛宴，我们将围绕Office 365，数据平台以及开放性规范等技术话题，为您带来丰富的技术内容。您将在本次活动中聆听来自微软产品团队工程师带来的技术演讲，参与动手实验，与研发工程师直接一对一互动。您还可以带着您的Office 365项目参与48小时应用开发马拉松活动，在技术专家的指导下加速完善您的项目，更有机会赢得Windows平板电脑、无人机、VR眼镜、平衡车等精彩大礼！</p>
+				<p><strong>DevDays Asia 2016</strong>活动分为两个部分： <strong>DevDays Asia 2016北京技术峰会</strong>(10月22日 9:00-17:00)以及<strong>Office 365应用开发马拉松</strong>(10月21日17:00-10月23日17:00)。您可以在注册DevDays Asia 2016北京技术峰会时选择是否参与应用开发马拉松活动。</p>
+				<p class="blue-border"><span class="bg-primary">DevDays Asia 2016开发者高峰 会&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;10月22日 9:00 – 18:00</p>
+				 
+				<p>您将在活动中详细了解到Microsoft Office 365的广阔市场机会，以及以Office 365作为平台进行开发的技术细节。此外我们还将向您介绍微软在互操作性开放性规范方面的承诺。大会技术课程将涵盖以下内容： </p>
+				<ul>
+					<li>内置在 Word、 Excel、PowerPoint、Outlook中的Microsoft Office 外接程序</li>
+					<li>Microsoft Graph (旧称 “Office 365 统一API”) ：Microsoft Graph是访问 Microsoft 云服务中数据、商务消息、用户、文件、邮件、日历、联系人 及文件夹最轻松简易的方式。</li>
+					<li>Microsoft SQL Server</li>
+					<li>开放数据（OData）： 构建及使用RESTful APIs</li>
+					<li>Office文件格式</li>
+					<li>Office, SharePoint, or Exchange 协议</li>
+					<li>Microsoft Office与数据平台的开放文档</li>
+					<li>Windows 互操作</li>
+					<li>Windows 协议测试组件</li>
+				</ul>
+				<p class="blue-border"><span class="bg-primary">Office 365 应用开发马拉松 (Hackathon)&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;10月21日 17:00 - 10月23日 17:00</p>
+				<p>Office 365强劲的增长势头为ISV、企业、初创公司以及开发者都带来了无限的机会，基于Office 365构建的应用解决方案为诸多行业和场景带来了新的效率和革新。10月21日17点至10月23日17点，带上您的创意、项目和团队，参与48小时的Office 365应用开发马拉松，在现场与来自各地的开发团队同场竞技，面对面交流微软产品组技术专家，解决开发过程中遇到的问题，并在技术指导下不断加速和完善您的项目。
+				我们会为您提供完善的后勤保障服务，餐食茶点、休息娱乐，以确保您能够在48小时内最大程度地完善您的项目。我们还为您准备了丰厚的奖品，以激励您的极致创意和出色的项目成果：</p>
+				<img src="uploads/things-beijing-2016.png" class="centered" title="images of laptop, drone, virtual reality goggles, and scooter" alt="images of laptop, drone, virtual reality goggles, and scooter">
+				<hr>
+				<a href="https://www.microsoftevents.com/profile/form/index.cfm?PKformID=0x6209970001"><img src="uploads/RegisterNowCN.png" class="centered" title="现在就注册吧" alt="现在就注册吧！"></a>
+				<p class="small">* 请在注册页面中选择参与应用开发马拉松选项，报名参与Office 365应用开发马拉松需先提交项目信息，具体规则将在审核后通过邮件及网站公布。</p>
+				<p class="small">* 更多奖品将陆续公布，请以最终公布规则及奖励说明中的描述为准。 </p>
+				<p class="small">*问题和帮助</p>
 
+				`,
+				isPublished: true
+			})
+		})
 
 	////////////////////////////////////EventTab placeholder/////////////////////////////////////
 
 	.then(function () {
 			return EventTab.create({
-				eventId: 1,
 				tabNumber: 1,
 				tabTitle: 'About',
 				tabContent: '<h3>DevDays Asia 2016 @ Taipei</h3><h4>April 19th - 21st, TAF Innovation Base</h4><p>Microsoft established the Internet of Things (IoT) Industry Development Center in October of 2015 to integrate global and local partners from the ecosystem, accelerating the process of developing IoT solutions for the manufacturing, financial, health care, transportation, and retailing industries. </p><p>DevDays Asia 2016 @ Taipei, directed by Industrial Development Bureau, and hosted by Microsoft and Digital Content Industry Promotion Office, will be held in April to help developers catch up with new concepts and technologies. </p><p>In the three-day program, Microsoft developers from the US will deliver lectures, host workshops, and interact with participants to generate amazing ideas and solutions. </p><p>On the first day, keynote speeches on new concepts and technologies for enhancing productivity, cloud computing, and data analysis platform will be delivered by the Microsoft developers. The speakers will focus on the technologies for boosting productivity, cloud and data platform. </p><p>In the morning session of the second day, the Microsoft developers will provide code samples and share their tips and guidelines about application development. A HAOckathon ( Hackathon + A for Analytical + O for Open ) that focuses on improving social good will be held in the afternoon of the second day. Contestants will get the chance to use the latest technologies to promote social welfare with the Microsoft developers. </p><p>For the remaining day and a half, the Microsoft developers will help contestants implement their ideas and generate improved solutions. Aligning with the theme of promoting social welfare, contestants can choose a wide letiety of topics, such as Hack for Enhancing Productivity, Hack for the Environment and Marine Eco-system, Hack for the Good, Hack for Government Open Data, Hack for University Education, etc. By better using technologies, it is possible to bring good deeds to a whole new level. Generous prizes will be awarded for the contestants of Hackathon, including a Surface Pro 4, a one-year subscription to Visual Studio Enterprise with MSDN, and a one-year subscription to Office 365. </p><p>Don’t hesitate to reserve your seats for DevDays Asia 2016 in Taipei!<h5>Information</h5><ul><li>Date: 19th-21st April (Tue - Thu)</li><li>Event Plan:<ul type="square"><li>Day 1 Morning: Keynote</li><li>Day 1 Afternoon + Day 2 Morning: Tracks + Workshops</li><li>Day 2 Afternoon + Day 3: HAOckathon (Hackathon)</li></ul></li><li>Contact：02-25622880 # 3671 Mr.Dai</li><li><a href="https://www.microsoft.com/taiwan/events/devdays/">DevDay Asia 2016 @Taipei 亞太開發人員技術年會 - 生產力暨物聯網應用開發元年</a></li></ul><br /><br />'
@@ -274,7 +397,6 @@ module.exports = function () {
 		})
 		.then(function () {
 			return EventTab.create({
-				eventId: 1,
 				tabNumber: 2,
 				tabTitle: 'Agenda',
 				tabContent: '<table class="tableWithVerticalLines eventScheduleTable" style="width: 25%"><thead><tr class=""><th>Presentation</th></tr></thead><tbody><tr><td class="lightGreenBackground">Data Platform</td></tr><tr><td class="lightBlueBackground">Productivity</td></tr><tr><td class="lightOrangeBackground">Open Specifications </td></tr><tr><td class="lightPinkBackground">Lightning Talk</td></tr><tr><td class="lightYellowBackground">Hackathon</td></tr><tr><td class="lightGrayBackground">Breaks & Lunch</td></tr></tbody></table><h2>Day One, April 19</h2><table class="tableWithVerticalLines eventScheduleTable scheduleTable"><thead><tr><th class="lightGreenBackground">Time</th><th class="lightGreenBackground">Room A<br />Data Platform</th><th class="lightBlueBackground">Time</th><th class="lightBlueBackground">Room B<br />Productivity</th><th class="medOrangeBackground">Time</th><th class="medOrangeBackground">Room C<br />Open Specifications </th></tr></thead><tbody><tr><td>9:00-9:40</td><td>Welcome</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td>9:45-10:30</td><td>Office 開發者的趨勢與商機<br />Office Developer Opportunity</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td>10:30-10:45</td><td class="lightGrayBackground">中場休息 Break</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td></tr><tr><td>10:45-11:15</td><td>Keynote: Data Development Opportunity Part I</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td>11:15-11:40</td><td>Keynote: Data Development Opportunity Part II </td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td>11:40-12:00</td><td class="lightYellowBackground">HAOckathon 好客松介紹 <br />HAOckathon Overview & Kickoff</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td>12:00-13:15</td><td class="lightGrayBackground">中午用餐 Lunch and Press</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td></tr><tr><td class="withoutBottomBorder bottomAlignTd">13:15-15:00</td><td class="lightGreenBackground withoutBottomBorder bottomAlignTd">Big Data Ingestion and Storage </td><td>13:15-14:00</td><td class="lightBlueBackground">dev.office.com 資源介紹與開發平台<br />Dev.Office.com: Office Developer Resources</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td>&nbsp;</td><td class="lightGreenBackground">&nbsp;</td><td>14:00-15:00</td><td class="lightBlueBackground">Office 365 APIs: Office Graph</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td>15:00-15:15</td><td class="lightGrayBackground">中場休息 Break</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td></tr><tr><td>15:15-16:15</td><td class="lightGreenBackground">Machine Learning and Advanced Analytics </td><td>15:15-16:00</td><td class="lightBlueBackground">Mail, Calendar, and Contacts REST Demonstration</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td class="withoutBottomBorder bottomAlignTd">16:15-17:15</td><td class="lightGreenBackground withoutBottomBorder bottomAlignTd">R and Python</td><td>16:00-16:45</td><td class="lightBlueBackground">Office Add-Ins 開發介紹<br />Office Add-ins intro and development</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td>&nbsp;</td><td class="lightGreenBackground">&nbsp;</td><td>16:45-17:15</td><td class="lightBlueBackground">Case Studies: How other companies utilize Office</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td>17:15-21:00</td><td class="lightYellowBackground">HAOckathon 好客松團隊創意發想<br />HAOckathon Team Building and Brainstorm</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr></tbody></table><br /><br /><br /><br /><h2>Day Two, April 20</h2><table class="tableWithVerticalLines eventScheduleTable scheduleTable"><thead><tr><th class="lightGreenBackground">Time</th><th class="lightGreenBackground">Room A<br />Data Platform</th><th class="lightBlueBackground">Time</th><th class="lightBlueBackground">Room B<br />Productivity</th><th class="medOrangeBackground">Time</th><th class="medOrangeBackground">Room C<br />Open Specifications </th></tr></thead><tbody><tr><td>9:00-9:30</td><td class="lightYellowBackground">HAOckathon 好客松團隊創意發想<br />Team Building and Brainstorm</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td>9:00-9:20</td><td class="lightOrangeBackground">開發人員必備: Open Specification 和工具介紹<br />Intro to Open Specifications and Tools</td></tr><tr><td class="withoutBottomBorder bottomAlignTd">9:30-10:30</td><td class="lightGreenBackground withoutBottomBorder bottomAlignTd">Power BI with Big Data Stores</td><td>9:30-10:00</td><td class="lightBlueBackground">O365 Developer Program sign-up & Training</td><td>9:20-9:50</td><td class="lightOrangeBackground">SQL Protocol Overview</td></tr><tr><td class="withoutBottomBorder">&nbsp;</td><td class="lightGreenBackground">&nbsp;</td><td>10:00-10:30</td><td class="lightBlueBackground">Accessing APIs through add-ins </td><td>9:50-10:30</td><td class="lightOrangeBackground">OData 服務介紹與應用實戰<br />OData Overviews and Demos</td></tr><tr><td>10:30-10:45</td><td class="lightGrayBackground">中場休息 Break</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td></tr><tr><td class="withoutBottomBorder">&nbsp;</td><td class="lightGreenBackground withoutBottomBorder">&nbsp;<td>10:45-11:15</td><td class="lightBlueBackground">API Explorer</td><td class="withoutBottomBorder">10:45-11:30</td><td class="lightOrangeBackground withoutBottomBorder">Exchange Protocols: ActiveSync, Exchange Web Services, MAPI</td></tr><tr><td class="withoutBottomBorder">10:45-11:45</td><td class="lightGreenBackground withoutBottomBorder">Creating an Azure ML Experiment</td><td class="withoutBottomBorder">11:15-11:45</td><td class="lightBlueBackground withoutBottomBorder">Office UI Fabric </td><td class="withoutBottomBorder">&nbsp;</td><td class="lightOrangeBackground">&nbsp;</td></tr><tr><td>&nbsp;</td><td class="lightGreenBackground">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="lightBlueBackground">&nbsp;</td><td class="withoutBottomBorder">11:30-12:00</td><td class="lightOrangeBackground withoutBottomBorder">SharePoint Protocols </td></tr><tr><td>11:45-12:00</td><td class="lightYellowBackground">HAOckathon Getting Started</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="lightOrangeBackground">&nbsp;</td></tr><tr><td>12:00-13:00</td><td class="lightGrayBackground">中午用餐 Lunch</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td></tr><tr><td class="withoutBottomBorder">13:00-17:00</td><td class="lightYellowBackground withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td>13:00-13:30</td><td class="lightOrangeBackground">Parsing Office Traffic: Message Analyzer & Fiddler</td></tr><tr><td class="withoutBottomBorder">13:30</td><td class="lightYellowBackground withoutBottomBorder bottomAlignTd"><strong>Team Sign-up Deadline 1:30pm</strong></td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td>13:30-13:45</td><td class="lightOrangeBackground">透過 WOPI (Web 應用程式開放平台介面) 實踐 Office Web Apps 整合應用<br />Office Online (MS-WOPI)</td></tr><tr><td class="withoutBottomBorder">&nbsp;</td><td class="lightYellowBackground withoutBottomBorder">&nbsp;</td><td>13:45-14:00</td><td class="lightPinkBackground">Source Control (Managing your project) - Lightning Talk</td><td>13:45-14:15</td><td class="lightOrangeBackground">Office Co-Authoring (MS-FSSHTTP)</td></tr><tr><td class="withoutBottomBorder">&nbsp;</td><td class="lightYellowBackground withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td>14:15-14:30</td><td class="lightOrangeBackground">Office File Formats </td></tr><tr><td class="withoutBottomBorder">&nbsp;</td><td class="lightYellowBackground withoutBottomBorder">&nbsp;</td><td>14:30-14:45</td><td class="lightPinkBackground">Existing Open Source Projects - Lightning Talk</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td class="withoutBottomBorder">&nbsp;</td><td class="lightYellowBackground withoutBottomBorder">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td class="withoutBottomBorder">&nbsp;</td><td class="lightYellowBackground withoutBottomBorder">&nbsp;</td><td>15:30-15:45</td><td class="lightPinkBackground">Auth with Office - Lightning Talk</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td class="withoutBottomBorder">&nbsp;</td><td class="lightYellowBackground withoutBottomBorder">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td>&nbsp;</td><td class="lightYellowBackground">&nbsp;</td><td>16:30-16:45</td><td class="lightPinkBackground">IOT - Lightning Talk</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td class="withoutBottomBorder">&nbsp;</td><td class="lightYellowBackground withoutBottomBorder">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td>17:00-18:00</td><td class="lightGrayBackground">晚餐時間 Dinner</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td></tr><tr><td>18:00-20:00</td><td class="lightYellowBackground withoutBottomBorder">&nbsp;</td><td>18:00-18:15</td><td class="lightPinkBackground">Machine Learning Gallery  - Lightning Talk</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td class="withoutBottomBorder">&nbsp;</td><td class="lightYellowBackground withoutBottomBorder">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td class="withoutBottomBorder">&nbsp;</td><td class="lightYellowBackground">&nbsp;</td><td>19:15-19:30</td><td class="lightPinkBackground">Power BI  - Lightning Talk</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td class="withoutBottomBorder">&nbsp;</td><td class="lightYellowBackground withoutBottomBorder">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td>20:00</td><td class="lightGrayBackground">Evening snacks served</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td></tr><tr><td>20:30-0:00</td><td class="lightYellowBackground withoutBottomBorder">&nbsp;</td><td>20:30-20:45</td><td class="lightPinkBackground">Azure Data Factory  - Lightning Talk</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td class="withoutBottomBorder">&nbsp;</td><td class="lightYellowBackground withoutBottomBorder">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td class="withoutBottomBorder">&nbsp;</td><td class="lightYellowBackground withoutBottomBorder">&nbsp;</td><td>21:30-21:45</td><td class="lightPinkBackground">Azure Data Lake - Lightning Talk</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td class="withoutBottomBorder">&nbsp;</td><td class="lightYellowBackground withoutBottomBorder">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td class="withoutBottomBorder">&nbsp;</td><td class="lightYellowBackground withoutBottomBorder">&nbsp;</td><td>22:30-22:45</td><td class="lightPinkBackground">Project Deployment and Publish - Lightning Talk</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td class="withoutBottomBorder">&nbsp;</td><td class="lightYellowBackground withoutBottomBorder">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr></tbody></table><br /><br /><br /><br /><h2>Day Three, April 21</h2><table class="tableWithVerticalLines eventScheduleTable scheduleTable"><thead><tr><th class="lightGreenBackground">Time</th><th class="lightGreenBackground">Room A<br />Data Platform</th><th class="lightBlueBackground">Time</th><th class="lightBlueBackground">Room B<br />Productivity</th><th class="medOrangeBackground">Time</th><th class="medOrangeBackground">Room C<br />Open Specifications </th></tr></thead><tbody><tr><td>9:00-12:00</td><td class="lightYellowBackground">Hackathon Continues</td><td>9:00-9:15</td><td class="lightPinkBackground">Delivering your pitch - Lightning Talk</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td>12:00</td><td class="lightYellowBackground">提交好客松開發成果<br />HAOckathon projects submitted by 12:00</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td>12:00-14:00</td><td class="lightGrayBackground">中午用餐 & 初審評選<br />Lunch and Preliminary Evaluation</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td>13:30-14:40</td><td class="lightYellowBackground">總決賽 (入圍代表簡報 5 分鐘 + QA 2 分鐘)<br />Final Presentation</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td>14:40-15:00</td><td class="lightYellowBackground">評審決選討論<br />Judge Final Comment and Discussion</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td>15:00-15:30</td><td class="lightYellowBackground">致詞 & 頒獎<br />Awards Ceremony and Closing Remarks</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr></tbody></table><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />'
@@ -282,7 +404,6 @@ module.exports = function () {
 		})
 		.then(function () {
 			return EventTab.create({
-				eventId: 1,
 				tabNumber: 3,
 				tabTitle: 'Venue',
 				tabContent: '<h4>Venue: TAF<h4><h5>(No.177, Sec. 1, Jianguo S. Rd., Da’an Dist., Taipei City 106, Taiwan (R.O.C.))</h5><img src="../uploads/taipei-dev-days-2016-map.png" />'
@@ -290,7 +411,6 @@ module.exports = function () {
 		})
 		.then(function () {
 			return EventTab.create({
-				eventId: 1,
 				tabNumber: 4,
 				tabTitle: 'HAOckathon',
 				tabContent: '<h2>HAOckathon ( Hackathon + A for Analytical + O for Open )</h2><ul class="tabs left"><li class="current"><a target="_self" href="#taipei2016IntroTab"><span style="font-size: 1.5em">Introduction</span></a></li><li><a target="_self" href="#taipei2016TopicsTab"><span style="font-size: 1.5em">Topics</span></a></li><li><a target="_self" href="#taipei2016RegistrationNotes"><span style="font-size: 1.5em">Notes on registration</span></a></li><li><a target="_self" href="#taipei2016Awards"><span style="font-size: 1.5em">Awards</span></a></li><li><a target="_self" href="#taipei2016Regulation"><span style="font-size: 1.5em">Regulation</span></a></li><li><a target="_self" href="#taipei2016Reference"><span style="font-size: 1.5em">Reference</span></a></li></ul><div id="taipei2016IntroTab" class="tab-content" style="display:block;"><h3>Introduction</h3><p>This will be a golden opportunity for contestants of the Hackathon. During the remaining day and a half, Microsoft Experienced Developers from the US will help contestants implement their ideas and hopefully generate improved solutions. Aligning with the theme of promoting social welfare, contestants can choose a wide letiety of topics, such as Hack for Enhancing Productivity, Hack for the Environment and Marine Eco-system, Hack for the Good, Hack for Government Open Data, Hack for University Education, etc. By better utilizing technologies, it is possible to bring good deeds to a whole new level. Generous prizes will be awarded for the contestants of the Hackathon, including a Surface Pro 4, a one-year subscription to Visual Studio Enterprise with MSDN, a one-year subscription to Azure Pass and Office 365.</p><ul><li>Time: From afternoon of April 20<sup>th</sup> to the morning of April 21<sup>st</sup></li><li>Group: <span style="color:#0070c0">Productivity APP</span> and <span style="color:#0070c0">Cloud & Data Platform APP</span>. Each team is to be composed of 4 members; a total of 80 teams is expected.<li>Ranking and its criteria: See table below for ranking and its criteria. There will be 5 teams from each group ranked for the finals. Each of them will exhibit their outcomes and make a 5 minute presentation to the review panel. Each group will generate 3 winning teams, respectively. See below for the awards for individual teams at different places.<ul style="list-style-type:none;"><li><table class="striped tight" style="width:50%" cellspacing="0" cellpadding="0"><thead><tr><th>Ranking Criteria</th><th>Weight</th></tr></thead><tr><td>Impact</td><td>50%</td></tr><tr><td>Concept</td><td>15%</td><tr><td>Execution</td><td>20%</td></tr><tr><td>Feasibility</td><td>15%</td></tr></table></ul></li></ul></div><div id="taipei2016TopicsTab" class="tab-content" style="display:none;"><h3>Topics</h3><ul><li>Theme:  Generate a better solution to enhance social welfare</li><li>App Groups: Productivity APP or Cloud and Data Platform APP</li><li>Topics:<ul type="square"><li>Hack for Enhancing Productivity</li><li>Hack for the Environment and Marine Eco-system</li><li>Hack for the Good</li><li>Hack for Government Open Data</li><li>Hack for University Education</li></ul></ul></div><div id="taipei2016RegistrationNotes" class="tab-content" style="display:none;"><h3>Notes on registration</h3><ul type="square"><li>You are welcome to this race if you are interested in the latest technology and able to form a development team of 4 members. At least one in your team must be equipped with development skills in Office 365 Add-ons or Azure Data Platform (e.g. SQL, ML and Cortana Analytics Suite).</li><li>Please register online with <strong>DevDays Asia 2016 @ Taipei</strong> as an individual contestant and form a team in advance or by recruiting team members on the scene. Register your team at the <strong>DevDays Asia 2016 @ Taipei</strong> Info Desk by filling in the required HAOckathon registration form by April 19th. You need to have a team leader to be your contest affairs liaison. You may change which group you want to race with before the HAOckathon gets started officially on the 20th of April.</li><li>Works for the contest may be shaped and planned for development beforehand, but no code, product, or work available in the market nor the submissions that won or was submitted to any other race will be allowed, except Imagine Cup, AIT Fish Hackathon, BizSpark.</li><li>You may take a rest by napping on the table or in your own sleeping bag at the refreshment zone during the development session of the contest. </li><li>There will be development experts from America who will work with you. You are more than welcome to discuss and review your experiences with them.</li><li>Organizers reserve the right to review your qualifications.</li></ul></div><div id="taipei2016Awards" class="tab-content" style="display:none;"><h3><h3>Awards</h3>  <table class="striped" cellspacing="0" cellpadding="0"><thead><tr><th>&nbsp;</th><th>Productivity APP</th><th>Cloud & Data Platform APP</th></tr></thead><tbody><tr><th><strong>1st place</strong><p>Two teams, one for each group</p></th><td><ul><li>Surface Pro 4 (worth TWD 72,888, one for each team member)</li><li>Visual Studio Enterprise with MSDN one-year subscription (worth TWD 250,000, one for each team member)</li><li>Office 365 Home one-year subscription (worth TWD 3,190, one for each team member)</li></ul></td><td><ul><li>  Surface Pro 4 (worth TWD 72,888, one for each team member)</li><li>Visual Studio Enterprise with MSDN one-year subscription (worth TWD 250,000, one for each team member)</li><li>Office 365 Home one-year subscription (worth TWD 3,190, one for each team member)</li></ul></td></tr><tr><th><strong>2nd place</strong><p>Two teams, one for each group</p></th><td><ul><li>Hardware equipment, worth about TWD 30K (one for each team member)</li><li>Office 365 Home one-year subscription (worth TWD 3,190, one for each team member)</li></ul></td><td><ul><li>Hardware equipment, worth about TWD 30K (one for each team member)</li><li>Office 365 Home one-year subscription (worth TWD 3,190, one for each team member)</li></ul></td></tr><tr><th><strong>3rd place</strong><p>Two teams, one for each group</p></th><td><ul><li>Hardware equipment, worth about TWD 10K (one for each team member)</li><li>Office 365 Home one-year subscription (worth TWD 3,190, one for each team member)</li></ul></td><td><ul><li>Hardware equipment, worth about TWD 10K (one for each team member)</li><li>Office 365 Home one-year subscription (worth TWD 3,190, one for each team member)</li></ul></td></tr></tbody></table><p>* The organizer shall reserve the rights to change awards without any advance notice</p></h3></div><div id="taipei2016Regulation" class="tab-content" style="display:none;"><ol><li>Contestants are required to go through the entire race to get the participation award provided by the sponsor. </li><li>Award winner is responsible for any tax subject to the relevant tax laws. The race organizer shall be in no case held liable to any tax levied due to the award. The award winner consents that the race organizer’s withholding or pay the relevant taxes (if any). For more information on tax regulations, please visit the eTax Portal at <a href="http://www.etax.nat.gov.tw">http://www.etax.nat.gov.tw</a>.</li><li>Award winners have no right to exchange their awards for cash or other forms. Race sponsors shall not give any extra awards (either goods or cash) in case the previous one is lost, stolen, or damaged. </li><li>Race organizers reserve the rights to take care of any awards left un-awarded and replace the said awards with other goods with equivalent values without any notice in advance. </li><li>Data submitted by contestants must be true and correct without any forgery or alterations. Contestants shall not provide personal data to any third party in lieu of their own by means of fraud or theft. Contestants shall have no violations against the law.</li><li>The review panel has the final say on the finalists and winners at each stage of this race. </li><li>Race organizers, sponsors and its execution agents have the rights in reproducing, editing, converting, distributing, publicly transmitting, publicly performing, publicly presenting, publicly broadcasting, publicly verbal disclosing, referencing, or excerpting, and any other act required for using contest works by and basic data of contestants, including but not limited to name, portraits and photos, (hereafter referred to as “contest data”) unlimited number of times in their worldwide marketing activities, promotional activities, charity activities, and relevant media including publications, information, proposals, promotional materials, brochures and websites. </li><li>In case contestants took actions against measures of this race (including notes on the contests), regulations, the race itself or its website, actions aimed at interrupting this race or interfering with other contestants or participating this race in illegal activities or against the public order and good morals and manner including unfair, deceptive and fraudulent practices, subject to the organizer’s judgment, he/she agrees to the organizer’s immediate removal of his/her race or award winning qualifications (including recovering the award cash, certificate and trophy by the race organizer). He/she shall be held liable for any legal responsibility and held liable for compensating the organizer, sponsor, execution agent and their executives, directors, supervisors and employees for any of their loss and expenses due to these damages. </li><li>The contestants have learnt that any one of them or any individual attempting to compromise the web site or the progress of this race would breach relevant civil or criminal laws. The organizer, sponsors and their execution agents shall reserve the right in requesting for compensation, to the extent permitted by the relevant regulations, against damage by these individuals.</li><li>The organizer shall reserve the right to change the program of this race with a notice in advance. Race attendees, once participating in or registering to it, shall consent to be bound by this program. Any matter not covered herein shall be supplemented and publicized on the web site of this race by the organizer.</li></ol></div><div id="taipei2016Reference" class="tab-content" style="display:none;"><ul type="square"><li>Cloud Tools_Azure<ol><li>Visual Studio free download  <a href="https://www.visualstudio.com">https://www.visualstudio.com</a> </li><li>Azure portal <a href="http://portal.azure.com">http://portal.azure.com</a>  </li><li>Azure Documentation  <a href="http://azure.Microsoft.com">http://azure.Microsoft.com</a>  </li><li>Open Data On Azure <a href="https://ossonazure.bhuntr.com/api.php">https://ossonazure.bhuntr.com/api.php</a> </li></ol></li><li>Microsoft Project Oxford (Image recognition and Speech recognition API) <a href="https://www.projectoxford.ai/doc">https://www.projectoxford.ai/doc</a> Office API <a href="http://dev.office.com">http://dev.office.com</a> </li><li>Office API http://dev.office.com</li><li>Azure Web App Deployment<ul style="list-style-type:none;"><li><a href="http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/01/13/azure-amp-visual-studio-2015-web.aspx">http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/01/13/azure-amp-visual-studio-2015-web.aspx</a></li></ul></li><li>Open Source PHP:<ol><li>Build PHP-MySQL Web application with Azure<ul style="list-style-type:none;"><li><a href="http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/02/19/azurer-php-mysql-web.aspx">http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/02/19/azurer-php-mysql-web.aspx</a></li></ul><li>Build PHP website with Azure<ul style="list-style-type:none;"><li><a href="http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/01/13/azure-visual-studio-php.aspx">http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/01/13/azure-visual-studio-php.aspx</a></li></ul></ol></li><li>Cross-platform Development：<ol><li>Build Cross-platform Azure App Service with Xamarin<ul style="list-style-type:none;"><li><a href="http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/01/22/xamarin-azure-app-service.aspx">http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/01/22/xamarin-azure-app-service.aspx</a></li></ul></li></ol></li><li>Use Azure for IoT<ul style="list-style-type:none;"><li><a href="https://azure.microsoft.com/en-us/develop/iot/">https://azure.microsoft.com/en-us/develop/iot/</a> </li></ul></li><li>Virtual Machine:<ol><li>Build up Linux Virtual Machine by Azure<ul style="list-style-type:none;"><li><a href="http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/02/19/azure-vm.aspx">http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/02/19/azure-vm.aspx</a></li></ul></ol></li><li>IoT & Machine Learning demo : <a href="https://channel9.msdn.com/Series/mini-Connect-2016/youbike">https://channel9.msdn.com/Series/mini-Connect-2016/youbike</a> </li><li>Client: UWP : <a href="http://blogs.msdn.com/b/hermanwu/archive/2015/08/03/windows-10-uwa-uwp-app.aspx">http://blogs.msdn.com/b/hermanwu/archive/2015/08/03/windows-10-uwa-uwp-app.aspx</a></li><li>SQL Database : <a href="https://azure.microsoft.com/zh-tw/documentation/services/sql-database/">https://azure.microsoft.com/zh-tw/documentation/services/sql-database/</a> </li><li>Develop support<ol><li>.NET : <a href="http://azure.microsoft.com/zh-tw/develop/net/">http://azure.microsoft.com/zh-tw/develop/net/</a></li><li>R: <a hreg="https://azure.microsoft.com/zh-tw/documentation/articles/machine-learning-r-quickstart/">https://azure.microsoft.com/zh-tw/documentation/articles/machine-learning-r-quickstart/</a> </li><li>PHP : <a href="https://azure.microsoft.com/zh-tw/develop/php/">https://azure.microsoft.com/zh-tw/develop/php/</a> </li><li>JAVA : <a href="http://azure.microsoft.com/zh-tw/develop/java/">http://azure.microsoft.com/zh-tw/develop/java/</a> </li><li>Node.js : <a href="http://azure.microsoft.com/zh-tw/develop/nodejs/">http://azure.microsoft.com/zh-tw/develop/nodejs/</a> </li><li>IOS , Android , Windows : http://azure.microsoft.com/zh-tw/develop/mobile/ </li></ol></li><li>Microsoft Azure documentation : <a href="http://azure.microsoft.com/zh-tw/documentation/">http://azure.microsoft.com/zh-tw/documentation/</a> </li><li>Azure Website: <a href="http://azure.microsoft.com/zh-tw/">http://azure.microsoft.com/zh-tw/</a> </li><li>MSDN : <a href="http://social.msdn.microsoft.com/Forums/zh-tw/home?category=windowsazuretw">http://social.msdn.microsoft.com/Forums/zh-tw/home?category=windowsazuretw</a> </li><li>Microsoft Azure Taiwan User Group : <a href="https://www.facebook.com/groups/AzureTWUG/">https://www.facebook.com/groups/AzureTWUG/</a></li><li>MVA (Microsoft Virtual Academy) : <a href="http://www.microsoftvirtualacademy.com/">http://www.microsoftvirtualacademy.com/</a></li></ul></div>'
@@ -298,7 +418,6 @@ module.exports = function () {
 		})
 		.then(function () {
 			return EventTab.create({
-				eventId: 1,
 				tabNumber: 5,
 				tabTitle: 'Data Platform Track Reference',
 				tabContent: '<ul class="tabs left"><li class="first current"><a target="_self" href="#data-platform-reference-cn"><h6>數據平臺參考</h6></a></li><li class="last"><a target="_self" href="#data-platform-reference-en"><h6>Data Platform Reference</h6></a></li></ul><div class="tab-content" id="data-platform-reference-cn"><p>爲資料平臺主題出席的參會者們，我們在活動及好客松(hackathon) 期間爲您提供了以下參考資料。</p><span class="taipeiDropDown2016"><h5><span class="rightArrow">&#x25B8;</span><span class="downArrow" style="display: none;">&#x25BE;</span> Azure雲端工具</h5><ul style="display: none;"><li><a href="https://www.visualstudio.com">Visual Studio 免費下載</a></li><li><a href="http://portal.azure.com">Azure 登入</a></li><li><a href="http://azure.Microsoft.com">Azure 文檔</a></li><li><a href="https://ossonazure.bhuntr.com/api.php">在 Azure 上的開發數據</a></li></ul></span><h5><a href="https://www.projectoxford.ai/doc">微軟牛津項目(Microsoft Project Oxford): 圖像識別和語音辨別的 API</h5><h5><a href="http://dev.office.com">Office API</a></h5><h5><a href="http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/01/13/azure-amp-visual-studio-2015-web.aspx">Azure 網絡應用程式的開發</a></h5><span class="taipeiDropDown2016"><h5><span class="rightArrow">&#x25B8;</span><span class="downArrow" style="display: none;">&#x25BE;</span> 開放資源(open source) PHP</h5><ul style="display: none;"><li><a href="http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/02/19/azurer-php-mysql-web.aspx">由 Azure 來建立 PHP-MySQL 的網絡應用程式</a></li><li><a href="http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/01/13/azure-visual-studio-php.aspx">由Azure 來建立 PHP 網站 的應用程式</a></li></ul></span><span class="taipeiDropDown2016"><h5><span class="rightArrow">&#x25B8;</span><span class="downArrow" style="display: none;">&#x25BE;</span> 跨平臺開發</h5><ul style="display: none;"><li><a href="http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/01/22/xamarin-azure-app-service.aspx">由Xamarin來建立跨平臺的 Azure 應用程式服務</a></li></ul></span><h5><a href="https://azure.microsoft.com/en-us/develop/iot/">由Azure 來建立物聯網</a></h5><span class="taipeiDropDown2016"><h5><span class="rightArrow">&#x25B8;</span><span class="downArrow" style="display: none;">&#x25BE;</span>虛擬機器</h5><ul style="display: none;"><li><a href="http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/02/19/azure-vm.aspx">由 Azure建立 的 Linux 虛擬機器</a></li></ul></span><h5><a href="https://channel9.msdn.com/Series/mini-Connect-2016/youbike">物聯網與機器學習的演示</a></h5><h5><a href="http://blogs.msdn.com/b/hermanwu/archive/2015/08/03/windows-10-uwa-uwp-app.aspx">用戶端 (通用的 Windows 平臺)</a></h5><h5><a href="https://azure.microsoft.com/zh-tw/documentation/services/sql-database/">SQL 資料庫</a></h5><span class="taipeiDropDown2016"><h5><span class="rightArrow">&#x25B8;</span><span class="downArrow" style="display: none;">&#x25BE;</span> 開發支援</h5><ul style="display: none;"><li><a href="http://azure.microsoft.com/zh-tw/develop/net/">.NET</a></li><li><a href="https://azure.microsoft.com/zh-tw/documentation/articles/machine-learning-r-quickstart/">R</a></li><li><a href="https://azure.microsoft.com/zh-tw/develop/php/">PHP</a></li><li><a href="http://azure.microsoft.com/zh-tw/develop/java/">JAVA</a></li><li><a href="http://azure.microsoft.com/zh-tw/develop/nodejs/">Node.js</a></li><li><a href="http://azure.microsoft.com/zh-tw/develop/mobile/">iOS , Android , Windows</a></li></ul></span><h5><a href="http://azure.microsoft.com/zh-tw/documentation/">微軟 Azure 文檔</a></h5><h5><a href="http://azure.microsoft.com/zh-tw/">微軟Azure網站</a></h5><h5><a href="http://social.msdn.microsoft.com/Forums/zh-tw/home?category=windowsazuretw">MSDN 論壇</a></h5><h5><a href="https://www.facebook.com/groups/AzureTWUG/">微軟 Azure 臺灣用戶組</a></h5><h5><a href="http://www.microsoftvirtualacademy.com/">微軟技術的學習影音檔平台 (Microsoft Virtual Academy)</a></h5></div><div class="tab-content" id="data-platform-reference-en" style="display: none;"><p>For attendees of the Data Platform Track, the resources below are available during the event and the hackathon.</p><span class="taipeiDropDown2016"><h5><span class="rightArrow">&#x25B8;</span><span class="downArrow" style="display: none;">&#x25BE;</span> Azure cloud tools</h5><ul style="display: none;"><li><a href="https://www.visualstudio.com">Visual Studio free download</a></li><li><a href="http://portal.azure.com">Azure portal</a></li><li><a href="http://azure.Microsoft.com">Azure documentation</a></li><li><a href="https://ossonazure.bhuntr.com/api.php">Open data on Azure</a></li></ul></span><h5><a href="https://www.projectoxford.ai/doc">Microsoft Project Oxford</a> (image recognition and speech recognition API)</h5><h5><a href="http://dev.office.com">Office API</a></h5><h5><a href="http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/01/13/azure-amp-visual-studio-2015-web.aspx">Azure web app deployment</a></h5><span class="taipeiDropDown2016"><h5><span class="rightArrow">&#x25B8;</span><span class="downArrow" style="display: none;">&#x25BE;</span> Open source PHP</h5><ul style="display: none;"><li><a href="http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/02/19/azurer-php-mysql-web.aspx">Build PHP-MySQL Web application with Azure</a></li><li><a href="http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/01/13/azure-visual-studio-php.aspx">Build PHP website with Azure</a></li></ul></span><span class="taipeiDropDown2016"><h5><span class="rightArrow">&#x25B8;</span><span class="downArrow" style="display: none;">&#x25BE;</span> Cross-platform development</h5><ul style="display: none;"><li><a href="http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/01/22/xamarin-azure-app-service.aspx">Build Cross-platform Azure App Service with Xamarin</a></li></ul></span><h5><a href="https://azure.microsoft.com/en-us/develop/iot/">Use Azure for IoT</a></h5><span class="taipeiDropDown2016"><h5><span class="rightArrow">&#x25B8;</span><span class="downArrow" style="display: none;">&#x25BE;</span>Virtual machine</h5><ul style="display: none;"><li><a href="http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/02/19/azure-vm.aspx">Build up Linux virtual machine by Azure</a></li></ul></span><h5><a href="https://channel9.msdn.com/Series/mini-Connect-2016/youbike">IoT and machine learning demo</a></h5><h5><a href="http://blogs.msdn.com/b/hermanwu/archive/2015/08/03/windows-10-uwa-uwp-app.aspx">Client (Universal Windows Platform)</a></h5><h5><a href="https://azure.microsoft.com/zh-tw/documentation/services/sql-database/">SQL database</a></h5><span class="taipeiDropDown2016"><h5><span class="rightArrow">&#x25B8;</span><span class="downArrow" style="display: none;">&#x25BE;</span> Developer support</h5><ul style="display: none;"><li><a href="http://azure.microsoft.com/zh-tw/develop/net/">.NET</a></li><li><a href="https://azure.microsoft.com/zh-tw/documentation/articles/machine-learning-r-quickstart/">R</a></li><li><a href="https://azure.microsoft.com/zh-tw/develop/php/">PHP</a></li><li><a href="http://azure.microsoft.com/zh-tw/develop/java/">JAVA</a></li><li><a href="http://azure.microsoft.com/zh-tw/develop/nodejs/">Node.js</a></li><li><a href="http://azure.microsoft.com/zh-tw/develop/mobile/">iOS , Android , Windows</a></li></ul></span><h5><a href="http://azure.microsoft.com/zh-tw/documentation/">Microsoft Azure documentation</a></h5><h5><a href="http://azure.microsoft.com/zh-tw/">Azure website</a></h5><h5><a href="http://social.msdn.microsoft.com/Forums/zh-tw/home?category=windowsazuretw">MSDN forum</a></h5><h5><a href="https://www.facebook.com/groups/AzureTWUG/">Microsoft Azure Taiwan User Group</a></h5><h5><a href="http://www.microsoftvirtualacademy.com/">Microsoft Virtual Academy (MVA)</a></h5></div><script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script><script type="text/javascript">$(".taipeiDropDown2016").on("click keydown", function(event) {var keyCode = event.keyCode || event.which; if (keyCode === 1 || keyCode === 9 || keyCode === 13) { $(this).find(".rightArrow").toggle();$(this).find(".downArrow").toggle();$(this).find("ol").toggle(250);$(this).find("ul").toggle(250);}});</script>'
@@ -306,7 +425,6 @@ module.exports = function () {
 		})
 		.then(function () {
 			return EventTab.create({
-				eventId: 1,
 				tabNumber: 6,
 				tabTitle: 'Productivity Track Reference',
 				tabContent: `<div id="taipei2016-chinese-curriculum">
@@ -1399,7 +1517,6 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
-				eventId: 1,
 				tabNumber: 7,
 				tabTitle: 'DevDays Event Material',
 				tabContent: '<h2>DevDays Event Material</h2><p>Click on the link below to download the materials</p><ul><li><a href="/uploads/Productivity.zip">Productivity</a></li><li><a href="/uploads/Data-Platform.zip">Cloud + Data Platform</a></li><li><a href="/uploads/Open-Specs.zip">Open Specifications</a></li><li><a href="/uploads/Lightening-Talk.zip">Lightening Talks</a></li><li><a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/DevDays-Asia--Taipei-2016">Presentation Videos</a></li></ul><br /><br /><br /><br /><br /><br />'
@@ -1407,7 +1524,6 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
-				eventId: 2,
 				tabNumber: 1,
 				tabTitle: 'About',
 				tabContent: '<a class="button blue float-right" style="height:65px;" href="https://www.facebook.com/events/815243558586451/">Find us on:<br /><i class="fa fa-facebook-square fa-2x"></i> acebook</a><h2>Extend Conference</h2><h4 class="center">Paris, France - May 12, 2016</h4><p>Microsoft introduces Extend – a 1-day event that brings together the latest technologies from Office, Data Platform, and Open Specifications.  Explore updates in Data Platform including machine learning, big data ingestion, and advanced analytics. Find out why Satya Nadella called Office 365, “the most strategic developer surface area” for Microsoft by discovering the potential of Office Add-ins and Office APIs. Finally, get direct access to a team of Microsoft program managers and engineers who are not only subject matter experts, but are excited to help you! Finish up the day at an evening mixer with attendees and Microsoft engineers.</p><h5>Where: Paris, France</h5><h5>Terrass Kardinal</h5><h5>45 Rue Jussieu, 75005 Paris, France</h5><h5>When: May 12, 2016</h5><h5>Cost: Free</h5><br />'
@@ -1415,7 +1531,6 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
-				eventId: 2,
 				tabNumber: 2,
 				tabTitle: 'Agenda',
 				tabContent: `<h2>Thursday, May 12, 2016</h2>
@@ -1447,7 +1562,6 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
-				eventId: 2,
 				tabNumber: 3,
 				tabTitle: 'Venue',
 				tabContent: `
@@ -1461,7 +1575,6 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
-				eventId: 2,
 				tabNumber: 4,
 				tabTitle: 'Data Platform Resources',
 				tabContent: `<span class="taipeiDropDown2016"><h5><span class="rightArrow">&#x25B8;</span><span class="downArrow" style="display: none;">&#x25BE;</span> Azure cloud tools</h5><ul style="display: none;"><li><a href="https://www.visualstudio.com">Visual Studio free download</a></li><li><a href="http://portal.azure.com">Azure portal</a></li><li><a href="http://azure.Microsoft.com">Azure documentation</a></li></ul></span><h5><a href="https://www.projectoxford.ai/doc">Microsoft Cognitive Services</a> (image recognition and speech recognition API, formerly Project Oxford)</h5><h5><a href="http://dev.office.com/getting-started/office365apis">Office API</a></h5><h5><a href="https://azure.microsoft.com/en-us/documentation/articles/web-sites-deploy/">Azure web app deployment</a></h5><span class="taipeiDropDown2016"><h5><span class="rightArrow">&#x25B8;</span><span class="downArrow" style="display: none;">&#x25BE;</span> Open source PHP</h5><ul style="display: none;"><li><a href="https://azure.microsoft.com/en-us/documentation/articles/web-sites-php-mysql-deploy-use-git/">Build PHP-MySQL Web application with Azure</a></li><li><a href="https://azure.microsoft.com/en-us/develop/php/">Build PHP website with Azure</a></li></ul></span><span class="taipeiDropDown2016"><h5><span class="rightArrow">&#x25B8;</span><span class="downArrow" style="display: none;">&#x25BE;</span> Cross-platform development</h5><ul style="display: none;"><li><a href="https://developer.xamarin.com/guides/cross-platform/azure/mobile-services/">Build Cross-platform Azure App Service with Xamarin</a></li></ul></span><h5><a href="https://azure.microsoft.com/en-us/develop/iot/">Use Azure for IoT</a></h5><span class="taipeiDropDown2016"><h5><span class="rightArrow">&#x25B8;</span><span class="downArrow" style="display: none;">&#x25BE;</span>Virtual machine</h5><ul style="display: none;"><li><a href="https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-linux-portal-create/">Build up Linux virtual machine by Azure</a></li></ul></span><h5><a href="https://channel9.msdn.com/Shows/themakershow/The-Maker-Show-Mini-Windows-IoT-Core-and-Azure-Machine-Learning-Demo--First-Robotics-2016">IoT and machine learning demo</a></h5><h5><a href="https://msdn.microsoft.com/en-us/windows/uwp/get-started/whats-a-uwp">Client (Universal Windows Platform)</a></h5><h5><a href="https://azure.microsoft.com/en-us/documentation/services/sql-database/">SQL database</a></h5><span class="taipeiDropDown2016"><h5><span class="rightArrow">&#x25B8;</span><span class="downArrow" style="display: none;">&#x25BE;</span> Developer support</h5><ul style="display: none;"><li><a href="https://azure.microsoft.com/en-us/develop/net/">.NET</a></li><li><a href="https://azure.microsoft.com/en-us/documentation/articles/machine-learning-r-quickstart/">R</a></li><li><a href="https://azure.microsoft.com/en-us/develop/php/">PHP</a></li><li><a href="https://azure.microsoft.com/en-us/develop/java/">JAVA</a></li><li><a href="https://azure.microsoft.com/en-us/develop/nodejs/">Node.js</a></li><li><a href="https://azure.microsoft.com/en-us/documentation/services/app-service/mobile/">iOS , Android , Windows</a></li></ul></span><h5><a href="https://azure.microsoft.com/en-us/documentation/">Microsoft Azure documentation</a></h5><h5><a href="https://azure.microsoft.com/en-us/">Azure website</a></h5><h5><a href="https://social.msdn.microsoft.com/Forums/en-us/home?category=windowsazuretw">MSDN forum</a></h5><h5><a href="https://mva.microsoft.com/">Microsoft Virtual Academy (MVA)</a></h5><script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script><script type="text/javascript">$(".taipeiDropDown2016").click(function(event) {var $this = $(this);$this.find(".rightArrow").toggle();$this.find(".downArrow").toggle();$this.find("ol").toggle(250);$this.find("ul").toggle(250);});$(".taipeiDropDown2016").focus(function(event) {var $this = $(this);$this.find(".rightArrow").show();$this.find(".downArrow").show();$this.find("ol").show(250);$this.find("ul").show(250);$this.find("li").attr("tabindex", "0");});</script>`
@@ -1469,7 +1582,6 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
-				eventId: 2,
 				tabNumber: 5,
 				tabTitle: 'Productivity Resources',
 				tabContent: `<ul class="tabs left curriculumList">
@@ -2060,7 +2172,6 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
-				eventId: 2,
 				tabNumber: 6,
 				tabTitle: 'Extend Event Material',
 				tabContent: `<h2>Extend Event Material</h2>
@@ -2072,7 +2183,6 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
-				eventId: 3,
 				tabNumber: 1,
 				tabTitle: 'Redmond Protocol Plugfest ',
 				tabContent: `<h2>Redmond Protocol Plugfest</h2><p>Enjoy a 5-day Microsoft event centered around Open Specifications, interoperability, and Extensibility. Attendees will learn more about interoperability within Microsoft Office, Exchange, SharePoint, Windows and SQL Server. Office, SharePoint, and Exchange protocol testing will be supported at the event. Hardware will not be provided however; we will have support engineers on site for assistance. Office protocol test resources are available on <a href="https://github.com/OfficeDev/Interop-TestSuites">GitHub</a>.  Any Windows testing is available during the <a href="http://interopevents.com/redmond2016#windowsinteroperabilityiolab">Windows IO Lab</a> from June 20-24, 2016. Windows File Server test suites are also available on <a href="https://github.com/Microsoft/WindowsProtocolTestSuites">GitHub</a>. </p>
@@ -2091,17 +2201,17 @@ setTimeout(function() {
 <table class="redmond2016ScheduleTable tableWithVerticalLines scheduleTableTextOnly">
 	<thead><th class="lightGrayBackground">Time</th><th class="lightGrayBackground">Presentation Zone</th><th class="lightGrayBackground">Speaker</th></thead>
 	<tr><td>8:00-9:00</td><td>Breakfast</td><td>&nbsp</td></tr>
-	<tr><td>9:00-9:30</td><td class="lightBlueBackground">Plugfest Welcome<a class="button small blue float-right" href="/app/uploads/Plugfest-Welcome-2016.pptx" download>Download Presentation</a></td><td class="lightBlueBackground">Bailey Chauner</td></tr>
-	<tr><td>9:30-10:15</td><td class="lightBlueBackground">Office Developer Opportunity<a class="button small blue float-right" href="/app/uploads/Office-Developer-Opp.pptx" download>Download Presentation</a></td><td class="lightBlueBackground">Tristan Davis</td></tr>
+	<tr><td>9:00-9:30</td><td class="lightBlueBackground">Plugfest Welcome<a class="button small blue float-right" href="/uploads/Plugfest-Welcome-2016.pptx" download>Download Presentation</a></td><td class="lightBlueBackground">Bailey Chauner</td></tr>
+	<tr><td>9:30-10:15</td><td class="lightBlueBackground">Office Developer Opportunity<a class="button small blue float-right" href="/uploads/Office-Developer-Opp.pptx" download>Download Presentation</a></td><td class="lightBlueBackground">Tristan Davis</td></tr>
 	<tr><td>10:15-10:30</td><td>Break</td><td>&nbsp</td></tr>
-	<tr><td>10:30-11:15</td><td class="lightBlueBackground">Getting Started with Add-ins and Microsoft Graph<a class="button small blue float-right" href="/app/uploads/Getting-Started-with-Add-ins-and-the-Microsoft-Graph.pptx" download>Download Presentation</a></td><td class="lightBlueBackground">Keyur Patel</td></tr>
-	<tr><td>11:15-12:00</td><td class="lightBlueBackground">Excel Integration using Microsoft Graph APIs<a class="button small blue float-right" href="/app/uploads/Excel-Integration-using-Microsoft-Graph-API.pptx" download>Download Presentation</a></td><td class="lightBlueBackground">Sudhi Ramamurthy</td></tr>
+	<tr><td>10:30-11:15</td><td class="lightBlueBackground">Getting Started with Add-ins and Microsoft Graph<a class="button small blue float-right" href="/uploads/Getting-Started-with-Add-ins-and-the-Microsoft-Graph.pptx" download>Download Presentation</a></td><td class="lightBlueBackground">Keyur Patel</td></tr>
+	<tr><td>11:15-12:00</td><td class="lightBlueBackground">Excel Integration using Microsoft Graph APIs<a class="button small blue float-right" href="/uploads/Excel-Integration-using-Microsoft-Graph-API.pptx" download>Download Presentation</a></td><td class="lightBlueBackground">Sudhi Ramamurthy</td></tr>
 	<tr><td>12:00-13:00</td><td>Lunch</td><td>&nbsp</td></tr>
-	<tr><td>13:00-13:45</td><td class="lightBlueBackground">Build Powerful Add-ins with Excel APIs<a class="button small blue float-right" href="/app/uploads/Build-Powerful-Add-ins-with-Excel-APIs.pptx" download>Download Presentation</a></td><td class="lightBlueBackground">Yu Liu</td></tr>
-	<tr><td>13:45-14:30</td><td class="lightBlueBackground">Mail, Calendar, and Contacts Graph API Demonstration<a class="button small blue float-right" href="/app/uploads/Mail-Calendar-and-Contacts-Graph-API-Demonstration.pptx" download>Download Presentation</a></td><td class="lightBlueBackground">Andrew Davidoff</td></tr>
-	<tr><td>14:30-15:15</td><td class="lightBlueBackground">Office Online Integration (MS-WOPI)<a class="button small blue float-right" href="/app/uploads/Online-Integration-WOPI.pptx" download>Download Presentation</a></td><td class="lightBlueBackground">Nick Simons</td></tr>
+	<tr><td>13:00-13:45</td><td class="lightBlueBackground">Build Powerful Add-ins with Excel APIs<a class="button small blue float-right" href="/uploads/Build-Powerful-Add-ins-with-Excel-APIs.pptx" download>Download Presentation</a></td><td class="lightBlueBackground">Yu Liu</td></tr>
+	<tr><td>13:45-14:30</td><td class="lightBlueBackground">Mail, Calendar, and Contacts Graph API Demonstration<a class="button small blue float-right" href="/uploads/Mail-Calendar-and-Contacts-Graph-API-Demonstration.pptx" download>Download Presentation</a></td><td class="lightBlueBackground">Andrew Davidoff</td></tr>
+	<tr><td>14:30-15:15</td><td class="lightBlueBackground">Office Online Integration (MS-WOPI)<a class="button small blue float-right" href="/uploads/Online-Integration-WOPI.pptx" download>Download Presentation</a></td><td class="lightBlueBackground">Nick Simons</td></tr>
 	<tr><td>15:15-15:30</td><td>Break</td><td>&nbsp</td></tr>
-	<tr><td>15:30-16:15</td><td class="lightBlueBackground">Office File Formats<a class="button small blue float-right" href="/app/uploads/File-Format-Overview-Redmond-2016.pptx" download>Download Presentation</a></td><td class="lightBlueBackground">Tom Jebo</td></tr>
+	<tr><td>15:30-16:15</td><td class="lightBlueBackground">Office File Formats<a class="button small blue float-right" href="/uploads/File-Format-Overview-Redmond-2016.pptx" download>Download Presentation</a></td><td class="lightBlueBackground">Tom Jebo</td></tr>
 	<tr><td>16:30-19:00</td><td>Wood fired pizza dinner </td><td>&nbsp</td></tr>
 </table>
 <br /><br />
@@ -2109,18 +2219,18 @@ setTimeout(function() {
 <table class="redmond2016ScheduleTable tableWithVerticalLines scheduleTableTextOnly">
 	<thead><th class="lightGrayBackground">Time</th><th class="lightGrayBackground">Presentation Zone</th><th class="lightGrayBackground">Speaker</th><th class="lightGrayBackground">Time</th><th class="lightGrayBackground">White Room</th><th class="lightGrayBackground">Speaker</th></thead>
 	<tr><td>8:00-9:00</td><td>Breakfast</td><td></td><td>&nbsp</td><td></td><td></td></tr>
-	<tr><td>9:00-9:20</td><td class="lightGreenBackground">SQL 2016 Protocol Overview<a href="/app/uploads/SQL-Server-Interoperability-Overview_Updated.pptx" class="button green small float-right">Download Presentation</a></td><td class="lightGreenBackground">KB Badu-Antwi</td><td></td><td></td><td></td></tr>
-	<tr><td>9:20-10:15</td><td class="lightGreenBackground">Big Data Overview<a href="/app/uploads/Redmond_Protocols_Plugfest_Intro_to_ADL_Store_and_Analytics_2016_06_14.pptx" class="button green small float-right">Download Presentation</a></td><td class="lightGreenBackground">Asad Khan + Saveen Reddy </td><td></td><td></td><td></td></tr>
+	<tr><td>9:00-9:20</td><td class="lightGreenBackground">SQL 2016 Protocol Overview<a href="/uploads/SQL-Server-Interoperability-Overview_Updated.pptx" class="button green small float-right">Download Presentation</a></td><td class="lightGreenBackground">KB Badu-Antwi</td><td></td><td></td><td></td></tr>
+	<tr><td>9:20-10:15</td><td class="lightGreenBackground">Big Data Overview<a href="/uploads/Redmond_Protocols_Plugfest_Intro_to_ADL_Store_and_Analytics_2016_06_14.pptx" class="button green small float-right">Download Presentation</a></td><td class="lightGreenBackground">Asad Khan + Saveen Reddy </td><td></td><td></td><td></td></tr>
 	<tr><td>10:15-10:30</td><td>Break</td><td></td><td></td><td></td><td></td></tr>
-	<tr><td>10:30-11:15</td><td class="lightGreenBackground">SQL Server: Developing modern applications with Temporal Tables and JSON <a class="button small green float-right" href="/app/uploads/SQL2016---Developing-modern-applications-with-Temporal-Tables-and-JSON.pptx" download>Download Presentation</a></td><td class="lightGreenBackground">Jos de Bruijn</td><td>10:30-11:15</td><td class="lightBlueBackground">Office Co-authoring (MS-FSSHTTP)</td><td class="lightBlueBackground">Simon Clarke</td></tr>
-	<tr><td>11:15-12:00</td><td class="lightGreenBackground">SQL Server: Always On<a class="button small green float-right" href="/app/uploads/SQL-Always-On.pptx" download>Download Presentation</a></td><td class="lightGreenBackground">Kevin Farlee</td><td></td><td></td><td></td></tr>
-	<tr><td>12:00-13:00</td><td>Lunch & Machine Learning Talk<a data-presentationTime="June 14, 2016 12:00" class="button small float-right" href="/app/uploads/Machine-Learning-Lunch-Session.pptx" download>Download Presentation</a></td><td>Ted Way</td><td></td><td></td><td></td></tr>
-	<tr><td>13:00-13:45</td><td class="lightGreenBackground">SQL Server: Speeding up data ingestion and transaction processing with In-Memory OLTP<a data-presentationTime="June 14, 2016 1:00pm" class="button small green float-right" href="/app/uploads/SQL2016---In-Memory-OLTP.pptx" download>Download Presentation</a></td><td class="lightGreenBackground">Jos de Bruijn</td><td>13:00-13:45</td><td class="lightBlueBackground">Exchange 2016 Protocol Overview<a class="button small blue float-right" href="/app/uploads/Exchange-2016-Protocol-Overview.pptx" download>Download Presentation</a></td><td class="lightBlueBackground">Andrew Davidoff</td></tr>
-	<tr><td>13:45-14:30</td><td class="lightGreenBackground">SQL Server: Real-time operational analytics<a class="button small green float-right" href="/app/uploads/SQL-Server-2016 -Real-Time-Operational-Analytics.pptx" download>Download Presentation</a></td><td class="lightGreenBackground">Sunil Agarwal</td><td>13:45-14:15</td><td class="lightBlueBackground">Office Interoperability Test Tools (Test Suites and Open Source Projects)<a data-presentationTime="June 14, 2016 13:45" class="button small blue float-right" href="/app/uploads/Office-Interoperability-Test-Tools-(Test-Suites-and-Open-Source-Projects).pptx" download>Download Presentation</a></td><td class="lightBlueBackground">Jinghui Zhang</td></tr>
-	<tr><td>14:30-15:15</td><td class="lightGreenBackground">SQL Server: R Services<a data-presentationTime="June 14, 2016 14:30" class="button small green float-right" href="/app/uploads/SQL-Server-2016-R-Services.pptx" download>Download Presentation</a></td><td class="lightGreenBackground">Umachandar Jayachandran</td><td></td><td></td><td></td></tr>
+	<tr><td>10:30-11:15</td><td class="lightGreenBackground">SQL Server: Developing modern applications with Temporal Tables and JSON <a class="button small green float-right" href="/uploads/SQL2016---Developing-modern-applications-with-Temporal-Tables-and-JSON.pptx" download>Download Presentation</a></td><td class="lightGreenBackground">Jos de Bruijn</td><td>10:30-11:15</td><td class="lightBlueBackground">Office Co-authoring (MS-FSSHTTP)</td><td class="lightBlueBackground">Simon Clarke</td></tr>
+	<tr><td>11:15-12:00</td><td class="lightGreenBackground">SQL Server: Always On<a class="button small green float-right" href="/uploads/SQL-Always-On.pptx" download>Download Presentation</a></td><td class="lightGreenBackground">Kevin Farlee</td><td></td><td></td><td></td></tr>
+	<tr><td>12:00-13:00</td><td>Lunch & Machine Learning Talk<a data-presentationTime="June 14, 2016 12:00" class="button small float-right" href="/uploads/Machine-Learning-Lunch-Session.pptx" download>Download Presentation</a></td><td>Ted Way</td><td></td><td></td><td></td></tr>
+	<tr><td>13:00-13:45</td><td class="lightGreenBackground">SQL Server: Speeding up data ingestion and transaction processing with In-Memory OLTP<a data-presentationTime="June 14, 2016 1:00pm" class="button small green float-right" href="/uploads/SQL2016---In-Memory-OLTP.pptx" download>Download Presentation</a></td><td class="lightGreenBackground">Jos de Bruijn</td><td>13:00-13:45</td><td class="lightBlueBackground">Exchange 2016 Protocol Overview<a class="button small blue float-right" href="/uploads/Exchange-2016-Protocol-Overview.pptx" download>Download Presentation</a></td><td class="lightBlueBackground">Andrew Davidoff</td></tr>
+	<tr><td>13:45-14:30</td><td class="lightGreenBackground">SQL Server: Real-time operational analytics<a class="button small green float-right" href="/uploads/SQL-Server-2016 -Real-Time-Operational-Analytics.pptx" download>Download Presentation</a></td><td class="lightGreenBackground">Sunil Agarwal</td><td>13:45-14:15</td><td class="lightBlueBackground">Office Interoperability Test Tools (Test Suites and Open Source Projects)<a data-presentationTime="June 14, 2016 13:45" class="button small blue float-right" href="/uploads/Office-Interoperability-Test-Tools-(Test-Suites-and-Open-Source-Projects).pptx" download>Download Presentation</a></td><td class="lightBlueBackground">Jinghui Zhang</td></tr>
+	<tr><td>14:30-15:15</td><td class="lightGreenBackground">SQL Server: R Services<a data-presentationTime="June 14, 2016 14:30" class="button small green float-right" href="/uploads/SQL-Server-2016-R-Services.pptx" download>Download Presentation</a></td><td class="lightGreenBackground">Umachandar Jayachandran</td><td></td><td></td><td></td></tr>
 	<tr><td>15:15-15:30</td><td>Break</td><td></td><td></td><td></td><td></td></tr>
-	<tr><td>15:30-16:15</td><td class="lightGreenBackground">SQL Server: PolyBase<a data-presentationTime="June 14, 2016 15:30" class="button small green float-right" href="/app/uploads/SQL-Server-2016-PolyBase.pptx" download>Download Presentation</a></td><td class="lightGreenBackground">Casey Karst</td><td>15:30-16:00</td><td class="lightBlueBackground">Office Network Parsers (Message Analyzer and Fiddler)<a data-presentationTime="June 14, 2016 15:30" class="button small blue float-right" href="/app/uploads/Office-Network-Parsers---JingyuShao.pptx" download>Download Presentation</a></td><td class="lightBlueBackground">Jingyu Shao</td></tr>
-	<tr><td>16:15-17:00</td><td class="lightGreenBackground">SQL Server: Stretch Database <a data-presentationTime="June 14, 2016 16:15" class="button small green float-right" href="/app/uploads/SQL-Server-2016-Stretch-Database.pptx" download>Download Presentation</a></td><td class="lightGreenBackground">Joe Yong</td><td>16:15-16:45</td><td class="lightBlueBackground">Calling 3rd Party APIs from an Outlook Add-in<a data-presentationTime="June 14, 2016 16:15" class="button small blue float-right" href="/app/uploads/Accessing-APIs-through-Add-Ins.pptx" download>Download Presentation</a></td><td class="lightBlueBackground">Tarun Chopra</td></tr>
+	<tr><td>15:30-16:15</td><td class="lightGreenBackground">SQL Server: PolyBase<a data-presentationTime="June 14, 2016 15:30" class="button small green float-right" href="/uploads/SQL-Server-2016-PolyBase.pptx" download>Download Presentation</a></td><td class="lightGreenBackground">Casey Karst</td><td>15:30-16:00</td><td class="lightBlueBackground">Office Network Parsers (Message Analyzer and Fiddler)<a data-presentationTime="June 14, 2016 15:30" class="button small blue float-right" href="/uploads/Office-Network-Parsers---JingyuShao.pptx" download>Download Presentation</a></td><td class="lightBlueBackground">Jingyu Shao</td></tr>
+	<tr><td>16:15-17:00</td><td class="lightGreenBackground">SQL Server: Stretch Database <a data-presentationTime="June 14, 2016 16:15" class="button small green float-right" href="/uploads/SQL-Server-2016-Stretch-Database.pptx" download>Download Presentation</a></td><td class="lightGreenBackground">Joe Yong</td><td>16:15-16:45</td><td class="lightBlueBackground">Calling 3rd Party APIs from an Outlook Add-in<a data-presentationTime="June 14, 2016 16:15" class="button small blue float-right" href="/uploads/Accessing-APIs-through-Add-Ins.pptx" download>Download Presentation</a></td><td class="lightBlueBackground">Tarun Chopra</td></tr>
 	<tr><td>17:30-19:30</td><td>Barbecue dinner at Lincoln Square in Bellevue, WA</td><td></td><td></td><td></td><td></td></tr>
 </table>
 <br /><br />
@@ -2128,16 +2238,16 @@ setTimeout(function() {
 <table class="redmond2016ScheduleTable tableWithVerticalLines scheduleTableTextOnly">
 	<thead><th class="lightGrayBackground">Time</th><th class="lightGrayBackground">Presentation Zone</th><th class="lightGrayBackground">Speaker</th></thead>
 	<tr><td>8:00-9:15</td><td>Breakfast</td><td></td></tr>
-	<tr><td>9:15-9:45</td><td class="lightOrangeBackground">Plugfest Welcome + Windows Keynote<a data-presentationTime="June 15, 2016 9:15" class="button small orange float-right" href="/app/uploads/Welcome-wednesday.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Neil Martin (Welcome), Mike Neil (Key Note)</td></tr>
-	<tr><td>9:45-10:30</td><td class="lightOrangeBackground">Windows Server telemetry<a data-presentationTime="June 15, 2016 9:45" class="button small orange float-right" href="/app/uploads/Windows-Protocol-&-Privacy.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Neil Martin</td></tr>
+	<tr><td>9:15-9:45</td><td class="lightOrangeBackground">Plugfest Welcome + Windows Keynote<a data-presentationTime="June 15, 2016 9:15" class="button small orange float-right" href="/uploads/Welcome-wednesday.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Neil Martin (Welcome), Mike Neil (Key Note)</td></tr>
+	<tr><td>9:45-10:30</td><td class="lightOrangeBackground">Windows Server telemetry<a data-presentationTime="June 15, 2016 9:45" class="button small orange float-right" href="/uploads/Windows-Protocol-&-Privacy.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Neil Martin</td></tr>
 	<tr><td>10:30-10:45</td><td>Break</td><td></td></tr>
-	<tr><td>10:45-11:30</td><td class="lightOrangeBackground">Windows 10 telemetry<a data-presentationTime="June 15, 2016 10:45" class="button small orange float-right" href="/app/uploads/Windows-Telemetry-Privacy-Plugfest-0616.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Steve May</td></tr>
-	<tr><td>11:30-12:00</td><td class="lightOrangeBackground">Tech talk on Device Management<a data-presentationTime="June 15, 2016 11:30" class="button small orange float-right" href="/app/uploads/Plugfest-June-2016-Device-Health-Attestation.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Kam Kouladjie</td></tr>
+	<tr><td>10:45-11:30</td><td class="lightOrangeBackground">Windows 10 telemetry<a data-presentationTime="June 15, 2016 10:45" class="button small orange float-right" href="/uploads/Windows-Telemetry-Privacy-Plugfest-0616.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Steve May</td></tr>
+	<tr><td>11:30-12:00</td><td class="lightOrangeBackground">Tech talk on Device Management<a data-presentationTime="June 15, 2016 11:30" class="button small orange float-right" href="/uploads/Plugfest-June-2016-Device-Health-Attestation.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Kam Kouladjie</td></tr>
 	<tr><td>12:15-13:15</td><td>Lunch (Members from Auth and AD team will be available for a chat session)</td></tr>
-	<tr><td>13:15-14:00</td><td class="lightOrangeBackground">Azure Files talk<a data-presentationTime="June 15, 2016 13:15" class="button small orange float-right" href="/app/uploads/Plugfest_2016_Azure_Files.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">David Goebel</td></tr>
-	<tr><td>14:00-14:45</td><td class="lightOrangeBackground">AD/BYOD test suites and updates<a data-presentationTime="June 15, 2016 14:00" class="button small orange float-right" href="/app/uploads/June-2016-AD-Family-and-BYOD-Protocol-Test-Suite-Updates.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Randy Dong</td></tr>
+	<tr><td>13:15-14:00</td><td class="lightOrangeBackground">Azure Files talk<a data-presentationTime="June 15, 2016 13:15" class="button small orange float-right" href="/uploads/Plugfest_2016_Azure_Files.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">David Goebel</td></tr>
+	<tr><td>14:00-14:45</td><td class="lightOrangeBackground">AD/BYOD test suites and updates<a data-presentationTime="June 15, 2016 14:00" class="button small orange float-right" href="/uploads/June-2016-AD-Family-and-BYOD-Protocol-Test-Suite-Updates.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Randy Dong</td></tr>
 	<tr><td>14:45-15:00</td><td>Break</td><td></td></tr>
-	<tr><td>15:00-15:30</td><td class="lightOrangeBackground">New and Modified Windows Protocol Documents<a style="margin-left: 1%;" data-presentationTime="June 15, 2016 15:00" class="button small orange float-right" href="/app/uploads/PlugfestDocList.xlsx" download>Download Document List</a><a data-presentationTime="June 15, 2016 15:00" class="button small orange float-right" href="/app/uploads/New-and-Modified-Protocols.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Ron Starr</td></tr>
+	<tr><td>15:00-15:30</td><td class="lightOrangeBackground">New and Modified Windows Protocol Documents<a style="margin-left: 1%;" data-presentationTime="June 15, 2016 15:00" class="button small orange float-right" href="/uploads/PlugfestDocList.xlsx" download>Download Document List</a><a data-presentationTime="June 15, 2016 15:00" class="button small orange float-right" href="/uploads/New-and-Modified-Protocols.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Ron Starr</td></tr>
 	<tr><td>15:30-16:00</td><td class="lightOrangeBackground">Adhoc conversation on Open Authoring and use of tools such as Markdown and Github <strong>*(Venue: White Room)</strong></td><td class="lightOrangeBackground">Jim Mauer and Team</td></tr>
 	<tr><td>16:30-19:00</td><td>Dinner from Pacific Northwest Catering</td><td></td></tr>
 </table>
@@ -2146,17 +2256,17 @@ setTimeout(function() {
 <table class="redmond2016ScheduleTable tableWithVerticalLines scheduleTableTextOnly">
 	<thead><th class="lightGrayBackground">Time</th><th class="lightGrayBackground">Presentation Zone</th><th class="lightGrayBackground">Speaker</th></thead>
 	<tr><td>8:00-9:00</td><td>Breakfast</td></tr>
-	<tr><td>9:00-9:45</td><td class="lightOrangeBackground">File Sharing<a data-presentationTime="June 16, 2016 9:00" class="button small orange float-right" href="/app/uploads/SMB3-Low-Latency-Talpey.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Tom Talpey</td></tr>
-	<tr><td>9:45-10:30</td><td class="lightOrangeBackground">Software-defined Storage and SMB’s Critical Role<a data-presentationTime="June 16, 2016 9:45" class="button small orange float-right" href="/app/uploads/Software-defined-Storage-and-SMBs-critical-role.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Elden Christensen</td></tr>
+	<tr><td>9:00-9:45</td><td class="lightOrangeBackground">File Sharing<a data-presentationTime="June 16, 2016 9:00" class="button small orange float-right" href="/uploads/SMB3-Low-Latency-Talpey.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Tom Talpey</td></tr>
+	<tr><td>9:45-10:30</td><td class="lightOrangeBackground">Software-defined Storage and SMB’s Critical Role<a data-presentationTime="June 16, 2016 9:45" class="button small orange float-right" href="/uploads/Software-defined-Storage-and-SMBs-critical-role.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Elden Christensen</td></tr>
 	<tr><td>10:30-10:45</td><td>Break</td><td></td></tr>
-	<tr><td>10:45-11:30</td><td class="lightOrangeBackground">File Server Test Suite updates and demo<a data-presentationTime="June 16, 2016 10:45" class="button small orange float-right" href="/app/uploads/File-Server-Family-Test-Suite-Updates-(1).pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Yan Zeng, Lu Chen</td></tr>
-	<tr><td>11:30-12:00</td><td class="lightOrangeBackground">HVRS+RSVD+SQOS – Iterative updates and Q&A<a data-presentationTime="June 16, 2016 11:30" class="button small orange float-right" href="/app/uploads/Hyper-V-Storage-HVRS-SQOS-RSVD-VHDX-HRL-2016-Plugfest-mattkur.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Matt Kurjanowicz, Jim Wooldridge</td></tr>
+	<tr><td>10:45-11:30</td><td class="lightOrangeBackground">File Server Test Suite updates and demo<a data-presentationTime="June 16, 2016 10:45" class="button small orange float-right" href="/uploads/File-Server-Family-Test-Suite-Updates-(1).pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Yan Zeng, Lu Chen</td></tr>
+	<tr><td>11:30-12:00</td><td class="lightOrangeBackground">HVRS+RSVD+SQOS – Iterative updates and Q&A<a data-presentationTime="June 16, 2016 11:30" class="button small orange float-right" href="/uploads/Hyper-V-Storage-HVRS-SQOS-RSVD-VHDX-HRL-2016-Plugfest-mattkur.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Matt Kurjanowicz, Jim Wooldridge</td></tr>
 	<tr><td>12:00-13:00</td><td>Lunch</td><td></td></tr>
-	<tr><td>13:00-13:45</td><td class="lightOrangeBackground">Windows Containers<a data-presentationTime="June 16, 2016 13:00" class="button small orange float-right" href="/app/uploads/Windows-Container.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Bhanu Prakash</td></tr>
-	<tr><td>13:45-14:30</td><td class="lightOrangeBackground">Testing hardware components for private/hybrid clouds<a data-presentationTime="June 16, 2016 13:45" class="button small orange float-right" href="/app/uploads/Validating-Hardware-for-Private-Clouds.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Aniket Malatpure, Anagha Koshe</td></tr>
+	<tr><td>13:00-13:45</td><td class="lightOrangeBackground">Windows Containers<a data-presentationTime="June 16, 2016 13:00" class="button small orange float-right" href="/uploads/Windows-Container.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Bhanu Prakash</td></tr>
+	<tr><td>13:45-14:30</td><td class="lightOrangeBackground">Testing hardware components for private/hybrid clouds<a data-presentationTime="June 16, 2016 13:45" class="button small orange float-right" href="/uploads/Validating-Hardware-for-Private-Clouds.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Aniket Malatpure, Anagha Koshe</td></tr>
 	<tr><td>14:30-14:45</td><td>Break</td><td></td></tr>
-	<tr><td>14:45-15:30</td><td class="lightOrangeBackground">Overview documents:  Role of the Message Analyzer parsers and network captures<a data-presentationTime="June 16, 2016 14:45" class="button small orange float-right" href="/app/uploads/Windows-Overview-Documents-Presentation.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Althea Champagnie, Paul Bartos, Randy Dong</td></tr>
-	<tr><td>15:30-16:15</td><td class="lightOrangeBackground">Windows protocol test suites open source<a data-presentationTime="June 16, 2016 15:30" class="button small orange float-right" href="/app/uploads/2016-June-Windows-Protocol-Test-Suites-Open-Source.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Christine Huang</td></tr>
+	<tr><td>14:45-15:30</td><td class="lightOrangeBackground">Overview documents:  Role of the Message Analyzer parsers and network captures<a data-presentationTime="June 16, 2016 14:45" class="button small orange float-right" href="/uploads/Windows-Overview-Documents-Presentation.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Althea Champagnie, Paul Bartos, Randy Dong</td></tr>
+	<tr><td>15:30-16:15</td><td class="lightOrangeBackground">Windows protocol test suites open source<a data-presentationTime="June 16, 2016 15:30" class="button small orange float-right" href="/uploads/2016-June-Windows-Protocol-Test-Suites-Open-Source.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Christine Huang</td></tr>
 	<tr><td>16:30-17:30</td><td>Visit the Microsoft Store</td><td></td></tr>
 	<tr><td>17:30-19:30</td><td>Dinner at in.gredients – a John Howie restaurant </td><td></td></tr>
 </table>
@@ -2165,10 +2275,10 @@ setTimeout(function() {
 <table class="redmond2016ScheduleTable tableWithVerticalLines scheduleTableTextOnly">
 	<thead><th class="lightGrayBackground">Time</th><th class="lightGrayBackground">Presentation Zone</th><th class="lightGrayBackground">Speaker</th></thead>
 	<tr><td>8:00-9:00</td><td>Breakfast</td><td></td></tr>
-	<tr><td>9:00-9:45</td><td class="lightOrangeBackground">Keynote/Nano Server: The Future of Windows Server Starts Now<a data-presentationTime="June 17, 2016 9:00" class="button small orange float-right" href="/app/uploads/Windows-Nano-Server.pptxs" download>Download Presentation</a></td><td class="lightOrangeBackground">Andrew Mason</td></tr>
+	<tr><td>9:00-9:45</td><td class="lightOrangeBackground">Keynote/Nano Server: The Future of Windows Server Starts Now<a data-presentationTime="June 17, 2016 9:00" class="button small orange float-right" href="/uploads/Windows-Nano-Server.pptxs" download>Download Presentation</a></td><td class="lightOrangeBackground">Andrew Mason</td></tr>
 	<tr><td>9:45-10:30</td><td class="lightOrangeBackground">Open SSH</td><td class="lightOrangeBackground">Manoj Ampalam</td></tr>
 	<tr><td>10:30-10:45</td><td>Break</td><td></td></tr>
-	<tr><td>10:45-11:30</td><td class="lightOrangeBackground">Enhanced User experience in Protocol test suites<a data-presentationTime="June 17, 2016 10:45" class="button small orange float-right" href="/app/uploads/Enhanced-User-Experience-for-Protocol-Testsuite.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Vivian Tian</td></tr>
+	<tr><td>10:45-11:30</td><td class="lightOrangeBackground">Enhanced User experience in Protocol test suites<a data-presentationTime="June 17, 2016 10:45" class="button small orange float-right" href="/uploads/Enhanced-User-Experience-for-Protocol-Testsuite.pptx" download>Download Presentation</a></td><td class="lightOrangeBackground">Vivian Tian</td></tr>
 	<tr><td>12:00-13:00</td><td>Lunch</td><td></td></tr>
 </table>
 <br /><br />
@@ -2195,10 +2305,9 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
-				eventId: 3,
 				tabNumber: 2,
 				tabTitle: 'Windows Interoperability (IO) Lab',
-				tabContent: `<h3>Windows Interoperability (IO) Lab </h3>
+				tabContent: `<div class="col_12"><h3>Windows Interoperability (IO) Lab </h3>
     <p>The Windows Interoperability (IO) Lab is the opportunity to test your implementation with Microsoft Windows protocol test suites.   During the IO lab you have the opportunity to directly engage with Windows Protocol Support, Test Suite Development, and Windows development team as well as network with other professionals from all over the world.</p>
     <ul class="noStyleUL">
     	<li><strong>When:</strong>  June 20-24, 2016</li>
@@ -2206,12 +2315,9 @@ setTimeout(function() {
     	<li><strong>Who:</strong> File sharing (SMB 2&3), Authentication and AD protocol implementers</li>
     	<li><strong>Cost:</strong> Free</li>
     </ul>
-    <ul class="tabs left">
-    	<li class="current"><a target="_self" href="#redmond2016Agenda"><span style="font-size: 1.5em">Agenda</span></a></li>
-    	<li><a target="_self" href="#redmond2016Technologies"><span style="font-size: 1.5em">Technologies</span></a></li>
-  	</ul>
-  	<div id="redmond2016Agenda" class="tab-content eventTabDiv" style="display:block;">
-  	<div tabindex="0">
+    </div>
+  	<div class="col_12">
+  	<div>
   		<p>Core concentration during the IO lab week would be on <strong>Interop testing your protocol implementations</strong>.</p>
   		<p>This year’s Windows IO lab will be held in Building 20 in an “open-hall-format”. This will be similar to how the SNIA’s Storage Developer Conference (SDC) Plugfest is organized. We hope this will promote more interactions both amongst the partners and with the Microsoft Product Groups.</p>
   		<h3>Chalk-talk sessions</h3>
@@ -2223,8 +2329,8 @@ setTimeout(function() {
 			</table>
 			</div>
 		</div>
-		<div id="redmond2016Technologies" class="tab-content eventTabDiv" style="display:none;">
-		<div tabindex="0">
+		<div class="col_12">
+		<div>
 			<ul>
 				<li>Server Message Block (SMB2&3)</li><li>Remote Shared Virtual Disk (RSVD)</li>
 				<li>Active Directory (ADOD) and Identity</li><li>Authentication (AUTHSOD and PAC/Kile)</li>
@@ -2238,7 +2344,6 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
-				eventId: 3,
 				tabNumber: 3,
 				tabTitle: 'Accommodations',
 				tabContent: '<h2>Silver Cloud Inns & Hotels</h2><h3>How to Book Online</h3><img src="../uploads/silver-cloud-in.jpg" alt="Silver Cloud Inn Logo" class="align-left" /><p>URL: <a href="http://www.silvercloud.com" targe="_blank">www.silvercloud.com</a></p><p>Destination: Pull down a tab and select <strong>“Redmond”</strong> </p><p>Enter: <strong>Arrival/Departure</strong> date; Enter: Number of Adults / Children</p><p>Click on <strong>“Check for Availability”</strong>, a published room type/rates will populate the page</p><p>Enter Group ID/Login: <strong>RDMDPLUG</strong></p><p>Enter your Password: <strong>plugfest2016</strong> (lower case)</p><p>Click on <strong>“Login”</strong> tab below, Then Click on the <strong>“Check Availability”</strong> tab</p><p>A new page will then populate showing<strong> “Redmond Plugfest 2016”</strong> Room Type/Rate </p><p>Select room type and follow instructions until done.</p><p>You may also copy and paste below link: </p><p>https://redmond.silvercloud.com/irmnet/(S(priycso41uvl2e0n2wk0fjg1))/res/resmain.aspx?hotel=7&Arrival=06%2F20%2F2016&Departure=06%2F24%2F2016&People1=1&People2=0</p><p>Note: you may prepay online by selecting a box marked “Would you like to pay for this now?”</p><ul style="list-style-type: none"><li>Call Reservation Toll Free Line at <a href="tel:8002056934"> 1.800.205.6934</a></li><li>Call the Hotel direct at <a href="tel:4257468200"> 425.746.8200</a> and mention <strong>“Redmond Plugfest”</strong> Group</li><li>Email your reservation request to: <a href="mailto:reservations@redmond.silvercloud.com">reservations@redmond.silvercloud.com</a> </li><li><strong>Rate Validity:</strong> June 12 – June 24, 2016 </li><li><strong>Check-In Time:</strong> 1500 hour (3:00pm - PDT) <strong>Check-Out Time: 1200 hour (12:00pm – PDT)</strong> </li><li><strong>Cancellation Policy:</strong> 24 hours at 1500 hour (3:00pm – PDT), day before arrival date.</li></ul><p style="text-align: center;"><i> We thank you for an opportunity to serve you.</i></p><hr class="alt1" /><p style="text-align: center;"><i>Silver Cloud Inn Redmond | 2122 152nd Avenue NE | Redmond | WA 98052 USA</i></p><p style="text-align: center;"><i>Reservation: 800.205.6934 |Hotel: 425.746.8200 | Fax: 425.747.2078</i></p><p style="text-align: center;"><i><a href="http://www.silvercloud.com"> www.silvercloud.com</a></i></p>'
@@ -2246,7 +2351,6 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
-				eventId: 3,
 				tabNumber: 4,
 				tabTitle: 'Venue',
 				tabContent: `<h3>Building 20</h3>
@@ -2266,7 +2370,6 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
-				eventId: 3,
 				tabNumber: 4,
 				tabTitle: 'Event Resources',
 				tabContent: `<h3>Office</h3>
@@ -2301,7 +2404,6 @@ setTimeout(function() {
 		})
 		/*.then(function() {
 			return EventTab.create({
-				eventId: 4,
 				tabNumber: 1,
 				tabTitle: 'About',
 				tabContent: `<p>With the success of interoperability and developer events in Shanghai, Beijing, Taipei, Paris, and Redmond, Microsoft Office and Data Platform teams are ready to travel to India!</p>
@@ -2313,7 +2415,6 @@ setTimeout(function() {
 		})*/
 		.then(function () {
 			return EventTab.create({
-				eventId: 5,
 				tabNumber: 1,
 				tabTitle: 'About',
 				tabContent: `<ul class="noStyleUL">
@@ -2337,7 +2438,6 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
-				eventId: 5,
 				tabNumber: 2,
 				tabTitle: 'Agenda',
 				tabContent: `<h2>Tuesday, October 20, 2015</h2>
@@ -2378,7 +2478,6 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
-				eventId: 5,
 				tabNumber: 3,
 				tabTitle: 'Event Material',
 				tabContent: `<h2>Shanghai Interop Dev Days Materials</h2>
@@ -2415,7 +2514,6 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
-				eventId: 5,
 				tabNumber: 4,
 				tabTitle: 'Event Recap',
 				tabContent: `
@@ -2439,7 +2537,6 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
-				eventId: 5,
 				tabNumber: 1,
 				tabTitle: 'Venue',
 				tabContent: `<h3>Shanghai Marriott Hotel City Centre</h3>
@@ -2450,7 +2547,6 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
-				eventId: 6,
 				tabNumber: 6,
 				tabTitle: 'About',
 				tabContent: `<h3>Paris 2017</h3>
@@ -2459,7 +2555,6 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
-				eventId: 7,
 				tabNumber: 1,
 				tabTitle: 'About',
 				tabContent: `<h3>DevDays Asia 2017 @ Taipei</h3>
@@ -2469,7 +2564,6 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
-				eventId: 8,
 				tabNumber: 1,
 				tabTitle: 'About',
 				tabContent: `<h3>Redmond Protocol Plugfest 2017</h3>
@@ -2478,7 +2572,6 @@ setTimeout(function() {
 		})
 		.then(function() {
 			return EventTab.create({
-				eventId: 9,
 				tabTitle: 'About',
 				tabContent: `
 					<p>Presentations are only part of what is going on at the SNIA’s 2016 <a href="http://www.storagedeveloper.org/">Storage Developer Conference</a>., September 19-22 in Santa Clara, CA.  The SNIA SMB3 Plugfest is also an integral part of the program.</p>
@@ -2487,11 +2580,1283 @@ setTimeout(function() {
 					<p>If you have any additional questions, please contact <a href="mailto:prana@microsoft?subject=SNIA%20SMB3%20Plugfest:">Prakash Narayanan</a> or Arnold Jones, SNIA Technical Council Managing Director, at 407-574-7273 or <a href="mailto:arnold@snia.org">arnold@snia.org</a>.`
 			})
 		})
+		.then(function() {
+			return EventTab.create({
+				tabTitle: 'About',
+				tabNumber: 1,
+				tabContent: `
+				<a href="/beijing2016cn" class="btn btn-success float-right" role="button">汉语</a>
+				<a class="btn btn-primary float-right" role="button" style="margin-right:10px;" href="http://www.aka.ms/devdaysbeijing2016">Register</a>
+				<h2>DevDays Asia 2016 @ Beijing</h2>
+				<h4>October 21-23, 2016</h4>
+				<h4>Beijing, China</h4>
+				<h4>For: Developers, ISVs, students, tech startups, and businesses</h4>
+				<h4>Cost: Free</h4>
+				<p>Microsoft Office 365 and Open Specifications present DevDays Asia 2016 @Beijing - an extension of the <a href=http://www.prnewswire.com/news-releases/microsoft-launches-the-biggest-developer-event-in-asia-taking-iot-development-in-taiwan-to-new-heights-300253810.html">Biggest Developer Event in Asia,"</a> DevDays Asia @ Taipei. Join DevDays Asia 2016 @Beijing from October 21-23, 2016 at Microsoft Beijing West Campus for technical presentations, hands on workshops, interactive sessions, and a hackathon! The event will include 20+ technical sessions with hands-on experience, experts 1:1, and direct access to Microsoft engineers. You can also come bring current Office 365 projects to the 48 hours Hackathon, fine tune your solution with Microsoft experts support, also get the chance to win a prize!</p>
+				<p>We encourage developers, students, ISVs and businesses to attend DevDays Asia @Beijing to learn about the advantages of developing within Microsoft Office. In addition, DevDays Asia @Beijing will include a track dedicated to Microsoft's commitment to interoperability including Open Specifications and protocol content. As always, the event will host a team of Microsoft engineers who are eager to provide their expertise and answer your questions</p>
+				<p><strong>DevDays Asia 2016</strong> includes 2 major parts: The full day <strong>Developer Technical Summit (9am-6pm on Oct. 22) </strong> and a <strong>48 hours Office 365 Developer Hackathon (from 5pm Oct. 21 to 5pm Oct 23)</strong>, you can choose to opt-in the Developer Hackathon while you registering the DevDays Asia 2016.</p>
+				<p class="blue-border"><span class="bg-primary">DevDays Asia 2016 Developer Summit&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;Oct. 22 9:00-18:00</p>
+				 
+				<p>We will introduce the wide opportunity of Microsoft Office 365, and deep dive into details of Office 365 development. In addition, DevDays Asia @Beijing will include an additional track dedicated to Microsoft's commitment to interoperability including Open Specifications and protocol content. As always, the event will host our Microsoft team will be onsite to work with you.</p>
+				<p>Some of the topics will include during the event are:</p>
+				<ul>
+					<li>Microsoft Office Add-ins for Word, Excel, PowerPoint, and Outlook</li>
+					<li>Microsoft Graph: The easiest way to call Microsoft APIs to access data, intelligence, insights, users, files, mail, calendar, contacts, and folders</li>
+					<li>Microsoft SQL Server</li>
+					<li>OData: Building and consuming RESTful APIs</li>
+					<li>Office File Formats</li>
+					<li>Office, SharePoint, or Exchange Protocols</li>
+					<li>Open Specifications for Microsoft Office and Data Platform</li>
+					<li>Windows Interoperability and Test Suites</li>
 
+				</ul>
+				<p class="blue-border"><span class="bg-primary">Office 365 Hackathon&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;Oct. 21 17:00 – Oct. 23 17:00</p>
+				<p>The fast growing trend of Office 365 brings huge opportunity to ISV, Enterprises, Startups and Developers. Office 365 based application and solution brought new productivity even innovation in many industries and scenarios.</p>
+				<p>17:00 Oct. 21 to 23, come with your ideas, your projects and your whole team, join our 48 hours Developer Hackathon, compete with teams from all around the country, face the product team engineers, resolve any problems you met, accelerate and polish your project.</p>
+				<p>We will provide 360 degree logistic services, food & beverage, nap or entertainment, all of these to ensure to build your fantastic project in the powerful 48 hours. The most important – we prepared lots of attractive prizes, to reward the outstanding winners:</p>
+				<img src="uploads/things-beijing-2016.png" class="centered" title="images of laptop, drone, virtual reality goggles, and scooter" alt="images of laptop, drone, virtual reality goggles, and scooter">
+				<hr>
+				<a href="http://www.aka.ms/devdaysbeijing2016"><img src="uploads/RegisterNowEN.png" class="centered" title="registration button" alt="registration link"></a>
+				<p class="small">* Prizes displayed are not final and are subject to change.</p>
+				<p class="small">* Contact <a href="mailto:plugfests@microsoft.com">plugfests@microsoft.com</a> with questions.</p>
+
+				`
+			})
+		})
+		.then(function() {
+			return EventTab.create({
+				tabTitle: 'Accommodations',
+				tabContent: `<h2>Silver Cloud Inn and Hotels</H2>
+				<p>The rate is at $159 for either a King room or a Two Queen guest bedroom. Amenities include hot breakfast, parking and in-room Wi-Fi</p>
+				<p>To book online, please go to: www.silvercloud.com</p>
+				<p>Under ‘MAKE A RESERVATION’ is ‘Destination’, click onto the tab and select Redmond, enter your arrival/departure date, enter number adults/children, click on ‘CHECK AVAILABILITY’, and under ‘Corporate or Group Login, Group ID: <span style="color:red">RDPIOLAB</span>; Password: <span style="color:red">RDPIOLAB</span> and click on ‘LOG IN’, then click on ‘reserve’ tab and follow the instructions until done.</p>`
+			})
+		})
+		.then(function() {
+			return EventTab.create({
+				tabTitle: 'Hackathon Resources',
+				tabNumber: 5,
+				tabContent: `
+				<a href="/beijing2016cn" class="btn btn-success float-right" role="button">汉语</a>
+				<a class="btn btn-primary float-right" role="button" style="margin-right:10px;" href="http://www.aka.ms/devdaysbeijing2016">Register</a>
+				<h4>Resources are listed below for attendees to prepare for the hackathon.</h4>
+					<ul>
+						<li><h5><a href="#prereqsHeader" du-smooth-scroll>Prerequisites</a></h5></li>
+						<li><h5><a href="#more-resources-header" du-smooth-scroll>More resources</a></h5></li>
+						<li><h5><a href="#tutorials-header" du-smooth-scroll>Tutorials</a> </h5>
+							<ul>
+								<li><a href="#taipei2016-curriculum-registration-en" target="_self">Registration</a></li>
+								<li><a href="#taipei2016-curriculum-publishing-en" target="_self">Publish an Office add-in and submit it to Office Store</a></li>
+							</ul>
+					</li>
+					</ul>
+					<h3 id="prereqsHeader">Prerequisites</h3>
+					<ul>
+						<li>
+							If you don't already have Office, sign up with <a href="http://dev.office.com/devprogram">Office Dev Center</a> by clicking Dev Program sign up to get an Office 365 developer account and receive a one-year, free subscription for an Office 365 Development instance. 
+							<br>
+							For the d	etailed step-by-step instruction, watch this <a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/DevDays-Asia--Taipei-2016/Office-365-Developer-Program-sign-up--Training">Channel 9 video</a> on Office 365 Developer Program sign up training or follow the Registration tutorial for similar info.
+						</li>
+						<li>
+						 	<a href="http://dev.office.com/getting-started">Getting started</a>
+							<br>
+							Getting started has info on IDEs for your development.
+							<br>
+							Note: If you choose to use Visual Studio as your IDE to develop your Office add-ins, there’s a <a href="https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx">free community version</a> available for download. You will also need <a href="https://www.visualstudio.com/features/office-tools-vs">Office Developer Tools</a>.
+						</li>
+					</ul>
+					<h3 id="more-resources-header">More resources</h3>
+					<h4>Starting points for Office app development</h4>
+					<ul>
+						<li><a href="http://dev.office.com">Office Dev Center</a></li>
+						<li><a href="http://graph.microsoft.io/en-us/">Microsoft Graph</a></li>
+						<li><a href="http://graph.microsoft.io/en-us/app-registration">App registration</a></li>
+						<li><a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/Shanghai-Interop-Dev-Days/Office-365-APIs">Office 365 API</a></li>
+						<li><a href="https://channel9.msdn.com/Search?term=pui%20leung#ch9Search">Office 365 developer experience</a></li>
+						<li><a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/Shanghai-Interop-Dev-Days/The-World-of-Connected-APIs ">The world of connected APIs</a></li>
+						<li><a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/Microsoft-Extend-Paris-2016/Office-Add-ins-Intro-and-Development?ocid=player">Office Add-ins intro and development</a></li>
+						<li><a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests">Videos from Open Specifications Plugfests and Interop Dev Days</a></li>
+					</ul>
+					<h4>Code samples</h4>
+					<ul>
+						<li><a href="https://github.com/OfficeDev">Office Developer on GitHub</a></li>
+					</ul>
+					<h3 id="tutorials-header">Tutorials</h3>
+					<ul>
+						<li><a href="#taipei2016-curriculum-registration-en" target="_self">Registration</a></li>
+						<li><a href="#taipei2016-curriculum-publishing-en" target="_self">Publish an Office add-in and submit it to Office Store</a></li>
+					</ul>
+					
+					
+					
+					<h2 id="taipei2016-curriculum-registration-en" >Registration</h2>
+					<h3>Topics</h3>
+					<ol>
+					<li><a target="_self" href="#taipei2016-sign-up-at-office-dev-cenbter-en">Sign up with Office Dev Center</a></li>
+					<li><a target="_self" href="#taipei2016-join-dev-program-en">Get an Office 365 developer account</a></li>
+					<li><a target="_self" href="#taipei2016-access-your-office-365-en">Access your Office 365</a></li>
+					<li><a target="_self" href="#taipei2016-assign-office-365-license-en">Assign Office 365 license</a></li>
+					<li><a target="_self" href="#taipei2016-registration-resources-en">Resources</a></li>
+					</ol>
+					<h3 id="taipei2016-sign-up-at-office-dev-cenbter-en">Sign up with Office Dev Center</h3>
+					<p>Sign up with <a href="http://dev.office.com/devprogram">Office Dev Center</a> to get a free Office 365 developer account and receive a one-year, free subscription for an Office 365 Development instance.  </p>
+					<figcaption>Figure 1. Office 365 Dev Program</figcaption>
+					 <img src="../uploads/office-web-curriculum-taipei-en-5.png" />
+					<h3 id="taipei2016-join-dev-program-en">Get an Office 365 developer account</h3>
+					<ol>
+					<li>You will receive an email from the Office 365 Developer Program. Scroll down the email, click on the provided link to sign up for a free Office 365 developer account.</li>
+					<li>The first page (not shown) of the signup form is self-explanatory. Just supply the information about yourself that is requested and choose <strong>Next</strong>.</li>
+					<li>On the second page, shown in Figure 2, specify a user ID for the administrator of the subscription. </li>
+					</ol>
+					<figcaption>Figure 2. Office 365 Developer Site domain name</figcaption>
+					<img src="../uploads/office-web-curriculum-taipei-en-6.png" />
+					<p>4. Create a subdomain of <strong>.onmicrosoft.com</strong></p>
+					<p class="indentP"> After signup, you have to use the resulting credentials (in the format <a href="mailto:UserID@yourdomain.onmicrosoft.com">UserID@yourdomain.onmicrosoft.com</a>) to sign in to your Office 365 portal site where you administer your account. Your SharePoint Online Developer Site is provisioned at your new domain: http://yourdomain.sharepoint.com.</p>
+					<p>5. Choose <strong>Next</strong> and fill out the final page of the form. If you choose to provide a telephone number to obtain a confirmation code, you can provide a mobile or land line telephone number, but not a VoIP (Voice over Internet Protocol) number.</p>
+					<table class="tableWithBorders tableFirstRowBold">
+					<tr><th>Note</tj></tr>
+					<tr><td><p>If you’re logged on to another Microsoft account when you try to sign up for a developer account, you might get this message: "Sorry, that user ID you entered didn’t work. It looks like it’s not valid. Be sure you enter the user ID that your organization assigned to you. Your user ID usually looks like <i>someone@example.com</i> or <i>someone@example.onmicrosoft.com</i>."</p>
+					<p>If you see this message, log out of the Microsoft account you were using and try again. If you still get the message, clear your browser cache or switch to InPrivate Browsing and then fill out the form.</p>
+					</td></tr>
+					</table>
+					<p>Once your account is created, you will receive another email that contains a link to access your Office 365.</p>
+					<h3 id="taipei2016-access-your-office-365-en">Access your Office 365</h3>
+					<p>Your browser will open the Office 365 installation page. Choose the Admin icon to open the admin center page.</p>
+					<figcaption>Figure 3. Office 365 admin center page</figcaption>
+					<img src="../uploads/office-web-curriculum-taipei-en-7.png" />
+					<ol>
+					<li>You’ll have to wait for your Developer Site to finish provisioning. After provisioning is complete, refresh the admin center page in your browser.</li>
+					<li>Then, choose the Build Add-ins link to open your Developer Site. You should see a site that looks like the one in Figure 4. There is an Add-ins in Testing list on the page. This confirms that the website was made with SharePoint\'s Developer Site template. If you see a regular team site instead, wait a few minutes and launch your site again.<br />If you do not have the development tool, you will be directed to Add the Napa Office 365 Development Tools. You can use Napa to develop your add-ins on this site.</li>
+					<li>Make a note of the URL of the site. It is used when you create SharePoint Add-ins projects in Visual Studio.</li>
+					</ol>
+					<figcaption>Figure 4. Your Developer Site home page with the Add-ins in Testing list</figcaption>
+					 <img src="../uploads/office-web-curriculum-taipei-en-8.png" />
+					<h3 id="taipei2016-assign-office-365-license-en">Assign Office 365 license</h3>
+					<p>To assign Office 365 license for yourself, the active user. Click on the “waffle” icon > Admin icon located on the top left.</p>
+					<figcaption>Figure 5. Office 365 landing page</figcaption>
+					<img src="../uploads/office-web-curriculum-taipei-en-10.png" />
+					<p class="indentP">In the left navigation panel, select <strong>Users</strong> > <strong>Active Users</strong> </p>
+					<p class="indentP">Select yourself by clicking on the checkbox. Your profile will be shown on the right. Click <strong>Edit</strong> under the item: <strong>Assigned license</strong></p>
+					<figcaption>Figure 6. Office 365 admin center > Active Users</figcaption>
+					<img src="../uploads/office-web-curriculum-taipei-en-11.png" />
+					<p class="indentP">3. Select your location in the <strong>Set user location</strong> combo box. And select <strong>Microsoft Office 365 Developer</strong>. Click <strong>Save</strong> to finish assigning the license.</p>
+					<figcaption>Figure 7: Assign license for the active user profile</figcaption>
+					<img src="../uploads/office-web-curriculum-taipei-en-12.png">
+					<p class="indentP">4. After you’re finished, return to the Office 365 homepage. The page will display the products that are available to you, including the Office web apps. Pull down the page to see the full display.</p>
+					<figcaption>Figure 8. Office 365</figcaption>
+					<img src="../uploads/office-web-curriculum-taipei-en-13.png" />
+					<p>To navigate back to the developer site, click on the “waffle” icon (located in the top-left corner) > <strong>Admin</strong> > <strong>Build Apps</strong>.</p>
+					<h3 id="taipei2016-registration-resources-en">Resources</h3>
+					<p><a href="https://msdn.microsoft.com/en-us/library/office/dn467914.aspx">Office developer documentation</a></p>
+					<p><a href="https://msdn.microsoft.com/en-us/library/office/fp179924.aspx#o365_signup">Set up for an Office 365 Developer Site</a></p>
+					</div>
+					<div id="taipei2016-curriculum-napa-en" class="tab-content" style="display: none;">
+					<h2>Napa Office 365 Development Tools</h2>
+					<h3>Topics</h3>
+					<ul>
+					<li> <a target="_self" href="#taipei2016-prerequisites-napa-en">Prerequisites</a></li>
+					<li><a target="_self" href="#taipei2016-create-office-addins-with-napa-en">Create Office Add-ins with Napa on an Office 365 Developer Site</a></li>
+					<li><a target="_self" href="#taipei2016-create-excel=addin-with-napa-en">Create a content add-in for Excel with Napa Office 365 Development Tool </a></li>
+					<li><a target="_self" href="#taipei2016-debug-your-addin-napa-en">Debug your add-in in Internet Explorer </a></li>
+					<li><a target="_self" href="#taipei2016-resources-napa-en">Resources</a></li>
+					</ul>
+					<h3 id="taipei2016-prerequisites-napa-en">Prerequisites</h3>
+					<p>Join the <a href="http://dev.office.com/devprogram">Office 365 Developer Program</a>. See <a class="welcomeTab" data-tabId="taipei2016-curriculum-registration-en-tab">Registration</a></p>
+					<table class="tableWithBorders tableFirstRowBold">
+					<tr><th>Note</th></tr>
+					<tr><td>If you have Office 365, there\'s an alternate version of <a href="https://www.napacloudapp.com/Getting-Started">Napa</a> that doesn\'t use or require an Office 365 Developer Site. That version supports creating only Office Add-ins using your personal <a href="https://www.microsoft.com/en-us/account/default.aspx">Microsoft account</a>. </td></tr>
+					</table>
+					<h3 id="taipei2016-create-office-addins-with-napa-en">Create Office Add-ins with Napa on an Office 365 Developer Site</a></h3>
+					<p>Napa is a great way to get started building Office Add-ins right in a browser window. You don\'t need to install any tools such as Visual Studio.  All you need is an Office 365 account and a supported browser. (Firefox is the recommended browser for Mac users.)</p>
+					<p>To get started, sign up for an Office 365 Developer Site. Then, install Napa on your developer site and you are ready to create Office Add-ins.</p>
+					<ol>
+					<li>If you’ve completed the steps in Registration, you will have access to the Office 365 Developer Site. Sign in with your credential created in Registration at <a href="http://www.portal.office.com/">www.portal.office.com</a> > Click on <strong>Admin</strong> > <strong>Build Apps</strong> to access your developer site.<br />If you do not have the development tool, you will be directed to <strong>Add</strong> the Napa Office 365 Development Tools.</li>
+					<li>Click on <strong>Build Apps</strong> on the developer site to open the Napa Office 365 Development Tools web app in your browser.<br /><h3 style="margin-left: -25px" id="taipei2016-create-excel=addin-with-napa-en">Create a content add-in for Excel with Napa Office 365 Development Tool </h3></li>
+					<li>Open the Napa Office 365 Development Tools web app in your browser and choose the <strong>Add New Project</strong> tile. (The Add New Project tile appears only if you have created other projects.)</li>
+					<li>Try the tutorial: <a href="https://msdn.microsoft.com/EN-US/library/office/jj220065.aspx">Create a content add-in for Excel with Napa Office 365 Development Tools</a></li>
+					</ol>
+					<h3 id="taipei2016-debug-your-addin-napa-en">Debug your add-in in Internet Explorer</h3>
+					<p>If you start your add-in in Excel Online, and you use Internet Explorer (IE), you can use F12 developer tools to debug the JavaScript, HTML, and Cascading Style Sheets (CSS) of your content add-in. See <a href="https://msdn.microsoft.com/library/bg182326(v=vs.85)">Using the F12 developer tools</a> for more information. If you use a browser other than Internet Explorer, search your browser documentation.</p>
+					<h3 id="taipei2016-resources-napa-en">Resources</h3>
+					<p><a href="https://msdn.microsoft.com/EN-US/library/office/jj220038.aspx">Create Office Add-ins with Napa on an Office 365 Developer Site</a></p>
+					<p><a href="https://msdn.microsoft.com/EN-US/library/office/dn974046.aspx">Create Office Add-ins with Napa Office 365 Development Tools</a></p>
+					<p><a href="https://msdn.microsoft.com/EN-US/library/office/jj554660.aspx">Create a task pane add-in with Napa Office 365 Development Tools</a></p>
+					</div>
+					<div id="taipei2016-curriculum-vs2015-en" class="tab-content" style="display: none;">
+					<h2>Visual Studio Community 2015</h2>
+					<h3>Topics</h3>
+					<ul>
+					<li><a target="_self" href="#taipei2016-vs-2015-prerequisites-en">Prerequisites</a></li>
+					<li><a target="_self" href="#taipei2016-vs-2015-setup-en">Set up your free Visual Studio Community 2015</a></li>
+					<li><a target="_self" href="#taipei2016-vs-2015-hello-world-en">Build your first Hello World task pane add-in with Visual Studio</a></li>
+					<li><a target="_self" href="#taipei2016-vs-2015-build-first-excel-addin-en">Build your first Excel add-in</a></li>
+					<li><a target="_self" href="#taipei2016-vs-2015-debuging-en">Debug in Visual Studio</a></li>
+					<li><a target="_self" href="#taipei2016-vs-2015-resources-ens-en">Resources</a></li>
+					</ul>
+					<h3 id="taipei2016-vs-2015-prerequisites-en">Prerequisites</h3>
+					<ul>
+					<li><a href="https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx">Visual Studio community 2015 (free version)</a></li>
+					<li><a href="https://www.visualstudio.com/features/office-tools-vs">Office Developer Tools</a></li>
+					<li>Excel 2013 or later and Word 2013 or later for "Build your first Hello World" and extend on your "Hello World" add-in</li>
+					<li>Excel 2016, Excel Online for "Build your first Excel add-in" (The new API released with Office 2016 has additional functionalities, but works with the latest version of Office or the online version.) </li>
+					</ul>
+					<h3 id="taipei2016-vs-2015-setup-en">Set up your free Visual Studio Community 2015</h3>
+					<p class="indentP">1. If you don\'t have Visual Studio, download <a href="https://go.microsoft.com/fwlink/?LinkId=532606&clcid=0x409">Visual Studio 2015 Community Edition</a> along with <a href="https://www.visualstudio.com/features/office-tools-vs">Office Developer Tools</a>. </p>
+					<img src="../uploads/office-web-curriculum-taipei-14.png" />
+					<table class="tableWithBorders tableFirstRowBold">
+					<tr><th>Note</strong></th>
+					<tr><td>When you develop and debug an add-in in Visual Studio, Visual Studio deploys and runs your add-in\'s webpage files locally with IIS Express, and doesn\'t require an additional web server. Similarly, when you develop and debug with Napa in the browser, it deploys and runs your add-in\'s webpage files from storage associated with the account you used to sign into Napa.</td></tr>
+					</table>
+					<p class="indentP">2. Choose <strong>File</strong> > <strong>New</strong> > <strong>Project</strong>.</p>
+					<p class="indentP">3. In the <strong>New Project</strong> dialog, choose <strong>Templates</strong> > <strong>Visual C#</strong> > <strong>Office/SharePoint</strong> > <strong>Office Add-in</strong> (or App for Office).</p>
+					<img src="../uploads/office-web-curriculum-taipei-15.png" />
+					<p class="indentP">4. Name the project <strong>HelloWorld</strong>, and then choose <strong>OK</strong>.</p>
+					<p class="indentP">5. Select <strong>Task</strong> pane as the app type and then <strong>Next</strong>.</p>
+					<p class="indentP">6.  Select <strong>Excel</strong> as the Office application that you want to host your add-in. You can select multiple options, and your add-in will run in any of the selected applications.</p>
+					<p class="indentP">Visual Studio creates the project, and its files appear in Solution Explorer. The default Home.html page opens in Visual Studio.</p>
+					<p>If you prefer to use an editor other than Visual Studio, keep in mind you can <a href="https://msdn.microsoft.com/library/office/mt628821.aspx">create an Office add-in using any editor.</a>
+					<h3 id="taipei2016-vs-2015-hello-world-en">Build your first Hello World task pane add-in with Visual Studio</h3>
+					<p>Try this tutorial: <a href="https://msdn.microsoft.com/en-us/library/office/fp142161.aspx">Create a task pane or content add-in with Visual Studio</a></p>
+					<h3 id="taipei2016-vs-2015-build-first-excel-addin-en">Build your first Excel add-in</h3>
+					<p>Try this tutorial: <a href="https://msdn.microsoft.com/EN-US/library/office/mt616491.aspx">Build your first Excel add-in</a></p>
+					<p>The new Excel add-in JavaScript API interacts with Excel 2016, and Excel online. If you use Excel 2013 to run your add-in, you will see this error:</p>
+					<table class="tableWithBorders tableFirstRowBold">
+					<tr><td>0x800a1391 - JavaScript runtime error: \'Excel\' is undefined</td></tr>
+					</table>
+					<p>If you do not have Excel 2016, login to your Office 365 Developer Site, see <a class="welcomeTab" data-tabId="taipei2016-curriculum-registration-en-tab">Registration</a>.  Use the Napa development tool and run your add-in using Excel Online.</p>
+					<h3 id="taipei2016-vs-2015-debuging-en">Debug in Visual Studio</h3>
+					<p>Add breakpoints and click <strong>Start Debugging</strong> or press <strong>F5</strong> to start debugging.</p>
+					<h3 id="taipei2016-vs-2015-resources-en">Resources</h3>
+					<p><a href="https://dev.office.com/">Office Dev Center</a></p>
+					</div>
+					<div id="taipei2016-curriculum-api-en" class="tab-content" style="display: none;">
+					<h2>API tutorial </h2>
+					<h3>Topics</h3>
+					<ul>
+					<li><a target="_self" href="#taipei2016-api-programming-overview-en">Programming overview</a></li>
+					<li><a target="_self" href="#taipei2016-api-reference-en">API reference</a></li>
+					<li><a target="_self" href="#taipei2016-api-samples-en">Samples</a></li>
+					<li><a target="_self" href="#taipei2016-api-exercises-en">Exercises</a></li>
+					<li><a target="_self" href="#taipei2016-api-resources-en">Resources</a></li>
+					</ul>
+					<h3 id="taipei2016-api-programming-overview-en">Programming overview</h3>
+					<p>Before you begin writing your add-in, it may be helpful to review <a href="https://msdn.microsoft.com/en-us/library/office/fp160953.aspx">Understanding the JavaScript API for Office</a> and the programming overview for the different types of Office add-in.</p>
+					<p><a href="https://msdn.microsoft.com/EN-US/library/office/mt616487.aspx">Excel</a></p>
+					<p><a href="http://dev.office.com/docs/add-ins/word/word-add-ins-programming-overview">Word</a></p>
+					<p><a href="https://msdn.microsoft.com/EN-US/library/office/fp161015.aspx">Outlook</a></p>
+					<p><a href="https://msdn.microsoft.com/EN-US/library/office/dn610884.aspx">PowerPoint</a></p>
+					<p>Note that if you make use of JavaScript APIs that are only available in some versions of Office; for example, you might use the new JavaScript APIs for Excel in an add-in that runs in Excel 2016, make sure you have Excel 2016 or Excel Online during development and <a href="http://dev.office.com/docs/add-ins/testing/testing-and-troubleshooting">testing</a>. </p>
+					<p>To ensure that your add-in works as expected, see <a href="https://msdn.microsoft.com/EN-US/library/office/dn535871.aspx">Specify Office hosts and API requirements</a>.</p>
+					<h3 id="taipei2016-api-reference-en">API reference</h3>
+					<p>Explore the <a href="https://dev.office.com/reference/add-ins/javascript-api-for-office">JavaScript API for Office reference</a> – or <a href="https://dev.office.com/docs/add-ins/excel/excel-add-ins-javascript-api-reference">Excel add-ins JavaScript API reference</a> for example – along with the code samples may expedite the learning.</p>
+					<h3 id="taipei2016-api-samples-en">Samples</h3>
+					<p><a href="https://dev.office.com/blogs/Add-in-Samples-Have-Moved-To-GitHub">Add-in samples have moved to GitHub</a></p>
+					<p><a href="https://github.com/OfficeDev">Office Developer on GitHub</a></p>
+					<p><a href="https://dev.office.com/code-samples">Office Dev Center  </a></p>
+					<p><a href="https://msdn.microsoft.com/EN-US/library/office/mt616484.aspx">Excel add-in code samples </a></p>
+					<p><a href="https://github.com/OfficeDev/Word-Add-in-ClauseLibrary-Code-Sample">Word-Add-in-ClauseLibrary-Code-Sample</a></p>
+					<p><a href="https://github.com/OfficeDev/office-js-docs">Office JavaScript APIs on GitHub</a></p>
+					<p><a href="https://dev.outlook.com/MailAppsGettingStarted/GetStarted">Get Started with Outlook add-ins for Office 365</a></p>
+					<h3 id="taipei2016-api-exercises-en">Exercises</h3>
+					<p>Try using the Excel add-in JavaScript API with the <a href="../uploads/ColorizerVS.zip">Excel Colorizer Add-in for Excel 2016</a>.</p>
+					<p>Use the following tasks as a guide on how you may extend the basic Colorizer:</p>
+					<ol>
+					<li>Add another pattern option called Square Waves.  The wave amplitude and cycle are controlled by the existing <strong>Pattern Contrast %</strong> and <strong>Pattern Waves</strong> controls. This task consists of the following:
+					<ol type="a">
+					<li>Adjust the UI combo box for the pattern type.</li>
+					<li>Adjust the existing JavaScript code that determines the visibility for the contrast and cycle controls.</li>
+					<li>Add the necessary code to generate square waves.</li>
+					</ol>
+					</li>
+					<li>Add a new feature to enumerate the leftmost column in a table. When enabled, consecutive numbers in the leftmost column are added to the selected range starting with the first row after the header. The numbers are black and in bold. This task consists of the following:
+					<ol type="a">
+					<li>Add a new checkbox control to enable this new functionality.</li>
+					<li>Use the <a href="https://msdn.microsoft.com/EN-US/library/office/mt616490.aspx">Excel add-ins JavaScript API</a> to overwrite the cells’ text values with the right numbers.</li>
+					<li>Use the <a href="https://msdn.microsoft.com/EN-US/library/office/mt616490.aspx">Excel add-ins JavaScript API</a> to format the cells correctly so that fonts are black and in bold.</li>
+					</ol>
+					</li>
+					<li>Add a new feature to create borders for the given selection. This tasks requires a new combo box with the following options: None, Outer, Inner, Outer and Inner. Make the outer border twice as thick as the inner borders. This task consists of the following:
+					<ol type="a">
+					<li>Add new combo box with the right values. “None” is selected as default.</li>
+					<li>Add the required code to create a table based on the specified choice using the <a href="https://msdn.microsoft.com/EN-US/library/office/mt616490.aspx">Excel add-ins JavaScript API</a>.</li>
+					</ol>
+					</li>
+					</ol>
+					<h3 id="taipei2016-api-resources-en">Resources </h3>
+					<p><a href="https://dev.office.com/docs/add-ins/testing/debug-add-ins-using-f12-developer-tools-on-windows-10">Testing</a></p>
+					<p><a href="https://msdn.microsoft.com/EN-US/library/office/mt484317.aspx">Design guidelines for Office Add-ins</a></p>
+					</div>
+					<h2 id="taipei2016-curriculum-publishing-en">Publishing</h2>
+					<p>This tutorial shows the steps to publish the Excel Colorizer Add-in for Excel 2016 from the west U.S. for distribution in Office Store. Visual Studio Community 2015 is the IDE of choice. Microsoft Azure is the web hosting platform for the Colorizer.  </p>
+					<p>To publish your add-in using other methods that are specific to your scenario, please see resources on <a href="http://dev.office.com/docs/add-ins/publish/publish">publishing</a>.</p>
+					<h3>Topics</h3>
+					<ol>
+					<li><a target="_self" href="#taipei2016-publishing-decide-end-point-en">Decide on the Office Add-ins distribution end-points</a></li>
+					<li><a target="_self" href="#taipei2016-publishing-set-up-dev-computer-en">Set up your development computer with Azure SDK for .NET, an Azure subscription, and Office 2016</a></li>
+					<li><a target="_self" href="#taipei2016-publishing-create-azure-website-en">Create a website in Azure</a></li>
+					<li><a target="_self" href="#taipei2016-publishing-publish-add-in-azure-en">Publish your Office Add-in to the Azure website</a></li>
+					<li><a target="_self" href="#taipei2016-publishing-edit-addin-manifest-en">Edit the add-in manifest file to point to the Office Add-in on Azure</a></li>
+					<li><a target="_self" href="#taipei2016-publishing-run-addin-en">Run the add-in in the Office client application</a></li>
+					<li><a target="_self" href="#taipei2016-publishing-submit-to-office-store-en">Submit your add-in to the Office Store</a></li>
+					<li><a target="_self" href="#taipei2016-publishing-publishing-resources-en">Resources</a></li>
+					</ol>
+					<h3 id="taipei2016-publishing-decide-end-point-en">Decide on the Office Add-ins distribution end-points</h3>
+					<p>Decide on the distribution end-points to publish your Office Add-ins:</p>
+					<ol type="a">
+					<li>Office Store </li>
+					<li>Office Add-ins catalog on SharePoint </li>
+					<li>Exchange catalog</li>
+					<li>Network shared folder add-in catalog</li>
+					</ol>
+					<p>This tutorial uses <a href="http://dev.office.com/docs/add-ins/publish/host-an-office-add-in-on-microsoft-azure">Microsoft Azure</a> to host the add-in and <a href="https://msdn.microsoft.com/en-us/library/office/jj220037.aspx">submit the add-ins to the Office Store for publishing</a>.</p>
+					<h3 id="taipei2016-publishing-set-up-dev-computer-en">Set up your development computer with Azure SDK for .NET, an Azure subscription, and Office 2016</h3>
+					<ol>
+					<li>Install the Azure SDK for .NET from the <a href="http://azure.microsoft.com/en-us/downloads/">Azure downloads page</a>. This tutorial uses the free <a href="https://www.microsoft.com/en-us/download/details.aspx?id=48146">Microsoft Visual Studio Community 2015</a>.</a>
+					<ol type="a">
+					<li>Under <strong>Languages</strong>, choose <strong>.NET</strong>.</li>
+					<li>Choose the version of the Azure .NET SDK that matches your version of Visual Studio, if you already have Visual Studio installed.</li>
+					<li>When you’re asked whether to run or save the installation executable, choose <strong>Run</strong>.</li>
+					<li>In the Web Platform Installer window, choose <strong>Install</strong>.</li>
+					</ol>
+					</li>
+					<li>Install Office 2016. (The Colorizer add-in works only in Excel 2016 or Excel Online.)
+					<br />
+					<table class="tableWithBorders tableFirstRowBold">
+					<tr><th>Note</strong></th>
+					<tr><td><a href="https://products.office.com/en-us/try?legRedir=true&WT.intid1=ODC_ENUS_FX101785584_XT104056786&CorrelationId=cae9f0f9-caf0-411f-b512-426d951c2259">You can get a trial version of Office for one month.</a></td></tr>
+					</table>
+					</li> 
+					<li>Get your Azure account. 
+					<br />
+					<table class="tableWithBorders tableFirstRowBold">
+					<tr><th>Note</strong></th>
+					<tr><td>If you’re a Microsoft Developer Network (MSDN) subscriber, <a href="http://www.windowsazure.com/en-us/pricing/member-offers/msdn-benefits/">you get an Azure subscription as part of your MSDN subscription</a>.</a></td></tr>
+					<tr><td>If you\'re not an MSDN subscriber, you can still <a href="https://azure.microsoft.com/en-us/pricing/free-trial/">get a free trial of Azure at the Windows Azure website</a>.</td></tr>
+					</table>
+					</li> 
+					</ol>
+					<h3 id="taipei2016-publishing-create-azure-website-en">Create a website in Azure</h3>
+					<p>There are a couple of ways you can create an empty Azure website. If you\'re using Visual Studio 2015 or the free community version, follow the steps below to create an Azure website from within the Visual Studio IDE.</p>
+					<p><strong>Using Visual Studio Community 2015 </strong></p>
+					<ol>
+					<li>In Visual Studio, in the <strong>View</strong> menu choose <strong>Server Explorer</strong>. Right click <strong>Azure</strong> and choose <strong>Connect to Microsoft Azure subscription</strong>. Follow the instructions for connecting to your Azure subscription.</li>
+					<li>In Visual Studio, in <strong>Server Explorer</strong>, expand <strong>Azure</strong>, right-click <strong>App Service</strong>, and then choose <strong>Create New App Service</strong>.</li>
+					<li>In the <strong>Create Web App on Windows Azure</strong> dialog box, provide this information: 
+					<ul>
+					<li>Enter a unique <strong>Web App name</strong> for your site. Azure verifies that the site name is unique across the azurewebsites.net domain.</li>
+					<li>Choose the <strong>App Service plan</strong> you\'re using to authorize creating this website. If you create a new plan, you also need to name it. </li>
+					<li>Choose the <strong>Resource group</strong> for your site. If you create a new group, you also need to name it.</li>
+					<li>Choose a geographical <strong>Region</strong> appropriate for you.</li>
+					<li><strong>For Database server</strong>: accept the default of No database and then choose <strong>Create</strong>.</li>
+					<li class="noStyleUL">The new website appears under the chosen resource group under <strong>App Service</strong> under <strong>Azure</strong> in <strong>Server Explorer</strong>.</li>
+					</ul>
+					</li>
+					<li>Right-click the new website, and then choose <strong>View in Browser</strong>. Your browser opens and displays a webpage with the message "This web site has been successfully created."</li>
+					<li>In the browser address bar, change the URL for the website so that it uses HTTPS and press <strong>Enter</strong> to confirm that the HTTPS protocol is enabled. The Office Add-in model requires add-ins to use the HTTPS protocol. </li>
+					<li>In Visual Studio 2015, right-click the new website in <strong>Server Explorer</strong>, choose <strong>Download Publish Profile</strong> and then save the profile to your computer. The publish profile contains your credentials and enables you to publish your Office Add-in to the Azure website.</li>
+					</ol>
+					<h3 id="taipei2016-publishing-publish-add-in-azure-en">Publish your Office Add-in to the Azure website</h3>
+					<ol>
+					<li>With your add-in open in Visual Studio, expand the solution node in <strong>Solution Explorer</strong> so that you see both projects for the solution. </li>
+					<li>Right-click the web project, and then choose <strong>Publish</strong>. 
+					<br />
+					The web project contains Office Add-in website files so this is the project that you publish to Azure.</li>
+					<li>In <strong>Publish Web</strong>, choose <strong>Import</strong>. </li>
+					<li>In <strong>Import Publish Settings</strong>, choose <strong>Browse</strong>, and then browse to the place where you saved your publish profile earlier in this topic. Choose <strong>OK</strong> to import your profile.</li>
+					<li>In <strong>Publish Web</strong>, on the <strong>Connection tab</strong>, accept the defaults and choose <strong>Next</strong>. 
+					<br />
+					Choose <strong>Next</strong> > again to accept the default settings.</li>
+					<li>On the <strong>Preview</strong> tab, choose <strong>Start Preview</strong>. The preview shows you all the files in the web project that will be published to the Azure website.</li>
+					<li>Choose <strong>Publish</strong>. Visual Studio publishes the web project for your Office Add-in to your Azure Web Site. </li>
+					<li>When Visual Studio finishes publishing the web project, your browser opens and shows a webpage with the text "This web app has been successfully created." This is the current default page for the website.
+					<br />
+					To see the webpage for your add-in, change the URL to use https: and add the path of your add-in\'s default HTML page. For example, the changed URL should look like https://YourDomain.azurewebsites.net/Addin/Home/Home.html. This confirms that your add-in\'s website is now hosted on Azure. Copy this URL because you\'ll need it when you edit the add-in manifest file later in this topic. </li>
+					</ol>
+					<h3 id="taipei2016-publishing-edit-addin-manifest-en">Edit the add-in manifest file to point to the Office Add-in on Azure</h3>
+					<ol>
+					<li>In Visual Studio with the Office Add-in open in <strong>Solution Explorer</strong>, expand the solution so that both projects are shown.</li>
+					<li>Open the add-in manifest XML file.</li>
+					<li>For <strong>Source Location</strong>: enter the URL for the add-in\'s main HTML page that you copied in the previous step after you published the add-in, for example, https://YourDomain.azurewebsites.net/Addin/Home/Home.html. </li>
+					<li class="noStyleUL">Save the manifest file.</li>
+					</ol>
+					<h3 id="taipei2016-publishing-run-addin-en">Run the add-in in the Office client application</h3>
+					<p>By now, your source location has changed from the local server for the testing environment to the website URL in Azure. </p>
+					<p>Run your add-in in the Office client and test that the add-in is working.</p>
+					<h3 id="taipei2016-publishing-submit-to-office-store-en">Submit your add-in to the Office Store</h3>
+					<h4>The recommended reading for submitting your add-in to the Office Store is as follows:</h4>
+					<p><a href="https://msdn.microsoft.com/en-us/library/office/jj220037.aspx">Submit Office and SharePoint Add-ins and Office 365 web apps to the Office Store</a></p>
+					<p><a href="https://msdn.microsoft.com/EN-US/library/office/dn356576.aspx">Checklist for submitting Office and SharePoint Add-ins and Office 365 web apps to the Seller Dashboard </a></p>
+					<p><a href="https://msdn.microsoft.com/EN-US/library/office/jj591603.aspx">Office Store app and add-in submission FAQ</a></p>
+					<p><a href="https://msdn.microsoft.com/EN-US/library/office/jj220035.aspx">Validation policies for apps and add-ins submitted to the Office Store (version 1.9)</a></p>
+					<p><a href="https://msdn.microsoft.com/EN-US/library/office/fp161044.aspx#O15AgaveManifestOverview_Samplev1_1">Office Add-ins XML manifest</a></p>
+					<p><a href="https://msdn.microsoft.com/EN-US/library/office/dn535869.aspx">Update the version of your JavaScript API for Office and manifest schema files</a></p>
+					<p><a href="https://msdn.microsoft.com/EN-US/library/office/dn221992.aspx">Referencing the JavaScript API for Office library from its content delivery network (CDN)</a></p>
+					<h4>To publish the Excel Colorizer Add-in for Excel 2016, the following tasks are performed:</h4>
+					<ol>
+					<li>To include your app or add-in in the Office Store, submit it to the <a href="https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=12&ct=1434731402&rver=6.4.6456.0&wp=MBI_SSL_SA&wreply=https://sellerdashboard.microsoft.com/Wlid/AfterLogin?returnUrl=https://sellerdashboard.microsoft.com/?culture=en-US&lc=1033&id=284543">Microsoft Seller Dashboard</a>. 
+					<br />
+					Create an individual or company account and, if applicable, add payout information. To open an account, see <a href="https://sellerdashboard.microsoft.com/Registration">Create a seller account and add payout information</a>.
+					<br />
+					For this tutorial, an individual account is created to publish the add-in. Because the add-in is free, no payout information is provided.
+					<br />
+					Fill out the account profile, submit, and wait for the approval. </li>
+					<li>An icon, App logo, screenshots, and .html files containing privacy and support statements are prepared before the submission. Follow the specifications for the image dimensions in the <a href="https://msdn.microsoft.com/EN-US/library/office/dn356576.aspx">Checklist for submitting Office and SharePoint Add-ins and Office 365 web apps to the Seller Dashboard</a>.</li>
+					<li>Publish the icon, privacy and support statements to your Azure account.</li>
+					<li>In the manifest file, add the IconUrl, SupportUrl, and the Requirements elements in addition to the default elements. (The Excel Colorizer uses the new Excel add-in JavaScript APIs that runs in Excel 2016 or Excel Online). The manifest schema version is 1.1.
+					<br /><table class="tableWithBorders tableFirstRowBold">
+					<tr><th>Note</strong></th>
+					<tr><td>Every add-in is different, to ensure that your add-in works as expected, see <a href="https://msdn.microsoft.com/EN-US/library/office/dn535871.aspx">Specify Office hosts and API requirements</a>  and <a href="https://msdn.microsoft.com/EN-US/library/office/mt590206.aspx">Office add-in requirement sets</a>.</td></tr>
+					</table>
+					</li>
+					<li><a href="https://msdn.microsoft.com/en-us/library/dn221992.aspx">Reference the Microsoft hosted Office.js file from its CDN URL</a>. Don\'t include a copy of the Office.js file in your add-in. <a href="https://msdn.microsoft.com/en-us/library/jj591603.aspx">See Office Store app and add-in submission FAQ</a> > How do I reference the JavaScript APIs for Office in my add-ins?</li>
+					<li>If you’re using Visual Studio, validate the manifest by clicking on <strong>Build</strong> > <strong>Publish</strong> > <strong>Perform Validation Check</strong></li>
+					<li>Login to the Microsoft Seller Dashboard to add the App. 
+					<ul>
+					<li>Enter the version number. The version number submitted via the Seller Dashboard must be the same as that in the add-in manifest. For example:
+					<br />Seller Dashboard: 1.0.0.0
+					<br />Add-in Manifest: 1.0.0.0</li>
+					<li>Upload the screenshots and the App logo.</li>
+					<li>Upload the app package (i.e. the manifest XML file). </li>
+					<li>Supply the Support and Privacy Statement URL. Include your contact information in the Support Statement URL or alternatively within your add-in. This can be any or all of the following: email address, phone number, contact form, valid social media link (e.g. a URL to your contact page on Facebook or Twitter), or comments form.</li>
+					</ul>
+					</li>
+					<li>Submit the app and wait for the approval.</li>
+					<li>After your add-in is submitted, a Validation Test Results report will be returned to you if the add-in is not approved by the Office Store. The validation test is performed based on <a href="https://msdn.microsoft.com/en-us/library/office/jj220035.aspx">Validation policies for apps and add-ins submitted to the Office Store (version 1.9)</a>, and lists the required changes. Make the changes and resubmit your add-in. </li>
+					</ol>
+					<h3 id="taipei2016-publishing-publishing-resources-en">Resources</h3>
+					<p><a href="http://dev.office.com/docs/add-ins/publish/publish">Publishing</a></p>
+					<p><a href="http://dev.office.com/docs/add-ins/publish/host-an-office-add-in-on-microsoft-azure">Host an Office Add-in on Microsoft Azure</a></p>
+					<p><a href="https://msdn.microsoft.com/en-us/library/office/jj220037.aspx">Submit Office and SharePoint Add-ins and Office 365 web apps to the Office Store</a></p>
+					
+					<h2 id="taipei2016-curriculum-publishing-en">Publishing</h2>
+					<p>This tutorial shows the steps to publish the Excel Colorizer Add-in for Excel 2016 from the west U.S. for distribution in Office Store. Visual Studio Community 2015 is the IDE of choice. Microsoft Azure is the web hosting platform for the Colorizer.  </p>
+					<p>To publish your add-in using other methods that are specific to your scenario, please see resources on <a href="http://dev.office.com/docs/add-ins/publish/publish">publishing</a>.</p>
+					<h3>Topics</h3>
+					<ol>
+					<li><a target="_self" href="#taipei2016-publishing-decide-end-point-en">Decide on the Office Add-ins distribution end-points</a></li>
+					<li><a target="_self" href="#taipei2016-publishing-set-up-dev-computer-en">Set up your development computer with Azure SDK for .NET, an Azure subscription, and Office 2016</a></li>
+					<li><a target="_self" href="#taipei2016-publishing-create-azure-website-en">Create a website in Azure</a></li>
+					<li><a target="_self" href="#taipei2016-publishing-publish-add-in-azure-en">Publish your Office Add-in to the Azure website</a></li>
+					<li><a target="_self" href="#taipei2016-publishing-edit-addin-manifest-en">Edit the add-in manifest file to point to the Office Add-in on Azure</a></li>
+					<li><a target="_self" href="#taipei2016-publishing-run-addin-en">Run the add-in in the Office client application</a></li>
+					<li><a target="_self" href="#taipei2016-publishing-submit-to-office-store-en">Submit your add-in to the Office Store</a></li>
+					<li><a target="_self" href="#taipei2016-publishing-publishing-resources-en">Resources</a></li>
+					</ol>
+					<h3 id="taipei2016-publishing-decide-end-point-en">Decide on the Office Add-ins distribution end-points</h3>
+					<p>Decide on the distribution end-points to publish your Office Add-ins:</p>
+					<ol type="a">
+					<li>Office Store </li>
+					<li>Office Add-ins catalog on SharePoint </li>
+					<li>Exchange catalog</li>
+					<li>Network shared folder add-in catalog</li>
+					</ol>
+					<p>This tutorial uses <a href="http://dev.office.com/docs/add-ins/publish/host-an-office-add-in-on-microsoft-azure">Microsoft Azure</a> to host the add-in and <a href="https://msdn.microsoft.com/en-us/library/office/jj220037.aspx">submit the add-ins to the Office Store for publishing</a>.</p>
+					<h3 id="taipei2016-publishing-set-up-dev-computer-en">Set up your development computer with Azure SDK for .NET, an Azure subscription, and Office 2016</h3>
+					<ol>
+					<li>Install the Azure SDK for .NET from the <a href="http://azure.microsoft.com/en-us/downloads/">Azure downloads page</a>. This tutorial uses the free <a href="https://www.microsoft.com/en-us/download/details.aspx?id=48146">Microsoft Visual Studio Community 2015</a>.</a>
+					<ol type="a">
+					<li>Under <strong>Languages</strong>, choose <strong>.NET</strong>.</li>
+					<li>Choose the version of the Azure .NET SDK that matches your version of Visual Studio, if you already have Visual Studio installed.</li>
+					<li>When you’re asked whether to run or save the installation executable, choose <strong>Run</strong>.</li>
+					<li>In the Web Platform Installer window, choose <strong>Install</strong>.</li>
+					</ol>
+					</li>
+					<li>Install Office 2016. (The Colorizer add-in works only in Excel 2016 or Excel Online.)
+					<br />
+					<table class="tableWithBorders tableFirstRowBold">
+					<tr><th>Note</strong></th>
+					<tr><td><a href="https://products.office.com/en-us/try?legRedir=true&WT.intid1=ODC_ENUS_FX101785584_XT104056786&CorrelationId=cae9f0f9-caf0-411f-b512-426d951c2259">You can get a trial version of Office for one month.</a></td></tr>
+					</table>
+					</li> 
+					<li>Get your Azure account. 
+					<br />
+					<table class="tableWithBorders tableFirstRowBold">
+					<tr><th>Note</strong></th>
+					<tr><td>If you’re a Microsoft Developer Network (MSDN) subscriber, <a href="http://www.windowsazure.com/en-us/pricing/member-offers/msdn-benefits/">you get an Azure subscription as part of your MSDN subscription</a>.</a></td></tr>
+					<tr><td>If you\'re not an MSDN subscriber, you can still <a href="https://azure.microsoft.com/en-us/pricing/free-trial/">get a free trial of Azure at the Windows Azure website</a>.</td></tr>
+					</table>
+					</li> 
+					</ol>
+					<h3 id="taipei2016-publishing-create-azure-website-en">Create a website in Azure</h3>
+					<p>There are a couple of ways you can create an empty Azure website. If you\'re using Visual Studio 2015 or the free community version, follow the steps below to create an Azure website from within the Visual Studio IDE.</p>
+					<p><strong>Using Visual Studio Community 2015 </strong></p>
+					<ol>
+					<li>In Visual Studio, in the <strong>View</strong> menu choose <strong>Server Explorer</strong>. Right click <strong>Azure</strong> and choose <strong>Connect to Microsoft Azure subscription</strong>. Follow the instructions for connecting to your Azure subscription.</li>
+					<li>In Visual Studio, in <strong>Server Explorer</strong>, expand <strong>Azure</strong>, right-click <strong>App Service</strong>, and then choose <strong>Create New App Service</strong>.</li>
+					<li>In the <strong>Create Web App on Windows Azure</strong> dialog box, provide this information: 
+					<ul>
+					<li>Enter a unique <strong>Web App name</strong> for your site. Azure verifies that the site name is unique across the azurewebsites.net domain.</li>
+					<li>Choose the <strong>App Service plan</strong> you\'re using to authorize creating this website. If you create a new plan, you also need to name it. </li>
+					<li>Choose the <strong>Resource group</strong> for your site. If you create a new group, you also need to name it.</li>
+					<li>Choose a geographical <strong>Region</strong> appropriate for you.</li>
+					<li><strong>For Database server</strong>: accept the default of No database and then choose <strong>Create</strong>.</li>
+					<li class="noStyleUL">The new website appears under the chosen resource group under <strong>App Service</strong> under <strong>Azure</strong> in <strong>Server Explorer</strong>.</li>
+					</ul>
+					</li>
+					<li>Right-click the new website, and then choose <strong>View in Browser</strong>. Your browser opens and displays a webpage with the message "This web site has been successfully created."</li>
+					<li>In the browser address bar, change the URL for the website so that it uses HTTPS and press <strong>Enter</strong> to confirm that the HTTPS protocol is enabled. The Office Add-in model requires add-ins to use the HTTPS protocol. </li>
+					<li>In Visual Studio 2015, right-click the new website in <strong>Server Explorer</strong>, choose <strong>Download Publish Profile</strong> and then save the profile to your computer. The publish profile contains your credentials and enables you to publish your Office Add-in to the Azure website.</li>
+					</ol>
+					<h3 id="taipei2016-publishing-publish-add-in-azure-en">Publish your Office Add-in to the Azure website</h3>
+					<ol>
+					<li>With your add-in open in Visual Studio, expand the solution node in <strong>Solution Explorer</strong> so that you see both projects for the solution. </li>
+					<li>Right-click the web project, and then choose <strong>Publish</strong>. 
+					<br />
+					The web project contains Office Add-in website files so this is the project that you publish to Azure.</li>
+					<li>In <strong>Publish Web</strong>, choose <strong>Import</strong>. </li>
+					<li>In <strong>Import Publish Settings</strong>, choose <strong>Browse</strong>, and then browse to the place where you saved your publish profile earlier in this topic. Choose <strong>OK</strong> to import your profile.</li>
+					<li>In <strong>Publish Web</strong>, on the <strong>Connection tab</strong>, accept the defaults and choose <strong>Next</strong>. 
+					<br />
+					Choose <strong>Next</strong> > again to accept the default settings.</li>
+					<li>On the <strong>Preview</strong> tab, choose <strong>Start Preview</strong>. The preview shows you all the files in the web project that will be published to the Azure website.</li>
+					<li>Choose <strong>Publish</strong>. Visual Studio publishes the web project for your Office Add-in to your Azure Web Site. </li>
+					<li>When Visual Studio finishes publishing the web project, your browser opens and shows a webpage with the text "This web app has been successfully created." This is the current default page for the website.
+					<br />
+					To see the webpage for your add-in, change the URL to use https: and add the path of your add-in\'s default HTML page. For example, the changed URL should look like https://YourDomain.azurewebsites.net/Addin/Home/Home.html. This confirms that your add-in\'s website is now hosted on Azure. Copy this URL because you\'ll need it when you edit the add-in manifest file later in this topic. </li>
+					</ol>
+					<h3 id="taipei2016-publishing-edit-addin-manifest-en">Edit the add-in manifest file to point to the Office Add-in on Azure</h3>
+					<ol>
+					<li>In Visual Studio with the Office Add-in open in <strong>Solution Explorer</strong>, expand the solution so that both projects are shown.</li>
+					<li>Open the add-in manifest XML file.</li>
+					<li>For <strong>Source Location</strong>: enter the URL for the add-in\'s main HTML page that you copied in the previous step after you published the add-in, for example, https://YourDomain.azurewebsites.net/Addin/Home/Home.html. </li>
+					<li class="noStyleUL">Save the manifest file.</li>
+					</ol>
+					<h3 id="taipei2016-publishing-run-addin-en">Run the add-in in the Office client application</h3>
+					<p>By now, your source location has changed from the local server for the testing environment to the website URL in Azure. </p>
+					<p>Run your add-in in the Office client and test that the add-in is working.</p>
+					<h3 id="taipei2016-publishing-submit-to-office-store-en">Submit your add-in to the Office Store</h3>
+					<h4>The recommended reading for submitting your add-in to the Office Store is as follows:</h4>
+					<p><a href="https://msdn.microsoft.com/en-us/library/office/jj220037.aspx">Submit Office and SharePoint Add-ins and Office 365 web apps to the Office Store</a></p>
+					<p><a href="https://msdn.microsoft.com/EN-US/library/office/dn356576.aspx">Checklist for submitting Office and SharePoint Add-ins and Office 365 web apps to the Seller Dashboard </a></p>
+					<p><a href="https://msdn.microsoft.com/EN-US/library/office/jj591603.aspx">Office Store app and add-in submission FAQ</a></p>
+					<p><a href="https://msdn.microsoft.com/EN-US/library/office/jj220035.aspx">Validation policies for apps and add-ins submitted to the Office Store (version 1.9)</a></p>
+					<p><a href="https://msdn.microsoft.com/EN-US/library/office/fp161044.aspx#O15AgaveManifestOverview_Samplev1_1">Office Add-ins XML manifest</a></p>
+					<p><a href="https://msdn.microsoft.com/EN-US/library/office/dn535869.aspx">Update the version of your JavaScript API for Office and manifest schema files</a></p>
+					<p><a href="https://msdn.microsoft.com/EN-US/library/office/dn221992.aspx">Referencing the JavaScript API for Office library from its content delivery network (CDN)</a></p>
+					<h4>To publish the Excel Colorizer Add-in for Excel 2016, the following tasks are performed:</h4>
+					<ol>
+					<li>To include your app or add-in in the Office Store, submit it to the <a href="https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=12&ct=1434731402&rver=6.4.6456.0&wp=MBI_SSL_SA&wreply=https://sellerdashboard.microsoft.com/Wlid/AfterLogin?returnUrl=https://sellerdashboard.microsoft.com/?culture=en-US&lc=1033&id=284543">Microsoft Seller Dashboard</a>. 
+					<br />
+					Create an individual or company account and, if applicable, add payout information. To open an account, see <a href="https://sellerdashboard.microsoft.com/Registration">Create a seller account and add payout information</a>.
+					<br />
+					For this tutorial, an individual account is created to publish the add-in. Because the add-in is free, no payout information is provided.
+					<br />
+					Fill out the account profile, submit, and wait for the approval. </li>
+					<li>An icon, App logo, screenshots, and .html files containing privacy and support statements are prepared before the submission. Follow the specifications for the image dimensions in the <a href="https://msdn.microsoft.com/EN-US/library/office/dn356576.aspx">Checklist for submitting Office and SharePoint Add-ins and Office 365 web apps to the Seller Dashboard</a>.</li>
+					<li>Publish the icon, privacy and support statements to your Azure account.</li>
+					<li>In the manifest file, add the IconUrl, SupportUrl, and the Requirements elements in addition to the default elements. (The Excel Colorizer uses the new Excel add-in JavaScript APIs that runs in Excel 2016 or Excel Online). The manifest schema version is 1.1.
+					<br /><table class="tableWithBorders tableFirstRowBold">
+					<tr><th>Note</strong></th>
+					<tr><td>Every add-in is different, to ensure that your add-in works as expected, see <a href="https://msdn.microsoft.com/EN-US/library/office/dn535871.aspx">Specify Office hosts and API requirements</a>  and <a href="https://msdn.microsoft.com/EN-US/library/office/mt590206.aspx">Office add-in requirement sets</a>.</td></tr>
+					</table>
+					</li>
+					<li><a href="https://msdn.microsoft.com/en-us/library/dn221992.aspx">Reference the Microsoft hosted Office.js file from its CDN URL</a>. Don\'t include a copy of the Office.js file in your add-in. <a href="https://msdn.microsoft.com/en-us/library/jj591603.aspx">See Office Store app and add-in submission FAQ</a> > How do I reference the JavaScript APIs for Office in my add-ins?</li>
+					<li>If you’re using Visual Studio, validate the manifest by clicking on <strong>Build</strong> > <strong>Publish</strong> > <strong>Perform Validation Check</strong></li>
+					<li>Login to the Microsoft Seller Dashboard to add the App. 
+					<ul>
+					<li>Enter the version number. The version number submitted via the Seller Dashboard must be the same as that in the add-in manifest. For example:
+					<br />Seller Dashboard: 1.0.0.0
+					<br />Add-in Manifest: 1.0.0.0</li>
+					<li>Upload the screenshots and the App logo.</li>
+					<li>Upload the app package (i.e. the manifest XML file). </li>
+					<li>Supply the Support and Privacy Statement URL. Include your contact information in the Support Statement URL or alternatively within your add-in. This can be any or all of the following: email address, phone number, contact form, valid social media link (e.g. a URL to your contact page on Facebook or Twitter), or comments form.</li>
+					</ul>
+					</li>
+					<li>Submit the app and wait for the approval.</li>
+					<li>After your add-in is submitted, a Validation Test Results report will be returned to you if the add-in is not approved by the Office Store. The validation test is performed based on <a href="https://msdn.microsoft.com/en-us/library/office/jj220035.aspx">Validation policies for apps and add-ins submitted to the Office Store (version 1.9)</a>, and lists the required changes. Make the changes and resubmit your add-in. </li>
+					</ol>
+					<h3 id="taipei2016-publishing-publishing-resources-en">Resources</h3>
+					<p><a href="http://dev.office.com/docs/add-ins/publish/publish">Publishing</a></p>
+					<p><a href="http://dev.office.com/docs/add-ins/publish/host-an-office-add-in-on-microsoft-azure">Host an Office Add-in on Microsoft Azure</a></p>
+					<p><a href="https://msdn.microsoft.com/en-us/library/office/jj220037.aspx">Submit Office and SharePoint Add-ins and Office 365 web apps to the Office Store</a></p>`
+			})
+		})
+		.then(function() {
+			return EventTab.create({
+				tabTitle: 'Hackathon 参赛准备资料',
+				tabNumber: 3,
+				tabContent: `
+				<a href="/beijing2016" class="btn btn-info float-right" role="button">English</a>
+				<a href="http://www.aka.ms/devdaysbeijing2016"><img src="/uploads/RegisterNowCN.png" style="height: 37px; margin-right: 10px;" class="float-right" title="registration button" alt="registration link"></a>
+				<p >请参考以下 Hackathon 参赛准备资料。熟悉这些内容将在活动中帮助您，并会有利于您在 Hackathon 中的表现。</p>
+<h3>资料主题</h3>
+<ul>
+<li><a href="#必要条件-1">必要条件 </a></li>
+<li><a href="#更多资源-1">更多资源</a></li>
+<li><a href="#有关教程-1">有关教程</a></li>
+</ul>
+<h3 id="必要条件-1">必要条件 </h3>
+<ul>
+<li>如果您没有Office，请在 <a href="http://dev.office.com/devprogram">Office开发中心</a> 的网站上报名及填写单表（详细步骤，请参考<a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/DevDays-Asia--Taipei-2016/Office-365-Developer-Program-sign-up--Training">九频道的视频</a> 或有关教程<a href="#_报名注册">报名注册</a>）。通过Office 365 的开发人员计划，您能拿到免费的Office 365的开发人员账户及为期一年的Office 365 的订阅。</li>
+<li>入门</p>
+<p>您可以找到有关开发工具的信息与内容：</p>
+<p><a href="http://dev.office.com/getting-started">Office Dev Center 入门</a></p>
+<p><a href="https://github.com/Microsoft/Office-js-docs_zh-cn/tree/master/docs/get-started">Microsoft Office js docs_zh-cn</a></p>
+<p><strong>提示</strong>：若选用Visual Studio 来开发Office 外接程序, 您可用<a href="https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx">Visual Studio Community 201 5 （免费版）</a>和 <a href="https://www.visualstudio.com/features/office-tools-vs">Office开发者工具</a></li>
+</ul>
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">回到本文开头</button>
+<h3 id="更多资源-1">更多资源 </h3>
+<h4 id="开发office应用程序起点">开发Office应用程序起点</h4>
+<h4 id="英文内容">英文内容</h4>
+<ul>
+<li><a href="http://dev.office.com/">Office Dev Center</a></p>
+<p>Office 开发中心的英文首页涵盖关于以Office 作为平台进行开发的信息与内容。</li>
+<li><a href="http://graph.microsoft.io/en-us/getting-started">Microsoft Graph</a></p>
+<p>Microsoft Graph (旧称 “Office 365 统一API”) ：Microsoft Graph 是访问 Microsoft 云服务中数据、商务消息、用户、文件、邮件、日历、联系人 及文件夹最轻松简易的方式。了解如何在您的平台上通过微软 Graph 访问 Office 365 数据。</li>
+</ul>
+<ul>
+<li><a href="http://graph.microsoft.io/en-us/app-registration">App registration</a></p>
+<p>注册您的应用调用微软Graph</li>
+<p>微软Build 2016年开发者大会九频道视频</p>
+<p>以Office 365作为平台进行开发概述：</p>
+<li><a href="https://channel9.msdn.com/Events/Build/2016/B866">Make your solution a native part of Office on every&nbsp;platform</a></li>
+<li><a href="https://channel9.msdn.com/Events/Build/2016/B872">Office platform overview</a></li>
+<p>以Office 365作为平台进行开发技术细节， 比如怎样访问 Office 服务来构建应用及关于调用微软Graph的技术内容。</p>
+<li><a href="https://channel9.msdn.com/Events/Build/2016/T617">Build cool apps with Microsoft Graph, tap into the intelligence and reach millions of&nbsp;users</a></li>
+<li><a href="https://channel9.msdn.com/events/Build/2016/B820">Build smarter apps by connecting to Office&nbsp;services</a></li>
+<li><a href="https://channel9.msdn.com/Events/Build/2016/P568">Connecting to Outlook Direct Endpoint with Azure AD Auth&nbsp;v2</a></li>
+<li><a href="https://channel9.msdn.com/Events/Build/2016/P555">WebHooks in the Microsoft&nbsp;Graph</a></li>
+<p>有关构建Office 外接程序的内容, 比如怎样通过新的Word 或JavaScript APIs来构建Office 外接程序，怎样使用任何编辑器创建 Office 外接程序, 以及在 Office 外接程序中使用 Office UI 结构等。</p>
+<li><a href="https://channel9.msdn.com/Events/Build/2016/P549">What&rsquo;s new in Word JavaScript APIs</a></li>
+<li><a href="https://channel9.msdn.com/Events/Build/2016/P552">Build Office Add-ins with any code editor and Office&nbsp;Online</a></li>
+<li><a href="https://channel9.msdn.com/Events/Build/2016/P554">Office Add-ins in Office for&nbsp;Mac</a></li>
+<li><a href="https://channel9.msdn.com/Events/Build/2016/P557">What&rsquo;s new in Excel JavaScript APIs v.1.2 in Office&nbsp;Add-ins</a></li>
+<li><a href="https://channel9.msdn.com/Events/Build/2016/T641">Getting to know Office UI Fabric</a></li>
+</ul>
+<h4 id="中文内容">中文内容</h4>
+<ul>
+<li><a href="https://msdn.microsoft.com/zh-cn/office/aa905340.aspx">Office 开发人员文档登陆首页</a></p>
+<p>Office 开发人员的中文文档涵盖关于以Office 作为平台进行开发的信息与内容。从此页您能连接中英文文档以及有关页面。</li>
+<li><a href="https://msdn.microsoft.com/zh-cn/library/office/dn467914.aspx">Office 开发人员文档</a></p>
+<p>在此查找开发解决方案和自定义 Office 桌面（客户端）应用程序以及服务器产品和技术、服务与工具的操作方法内容、示例代码、SDK 和 API 文档、VBA 参考、培训和技术文章。</li>
+<li><a href="https://msdn.microsoft.com/ZH-CN/library/office/jj220082.aspx">Office 加载项平台概述</a></p>
+<p>您若决定开发Office 外接程序，请首先参考概述。</li>
+<li><a href="https://graph.microsoft.io/zh-cn/docs/overview/overview">Microsoft Graph (旧称 “Office 365 统一API”) 使用 Microsoft Graph API 的常见查询</a></p>
+<p>您若决定在您的平台上通过微软Graph访问Office 365数据及进行有关应用开发， 请参考此中文页面。</li>
+<li><a href="https://graph.microsoft.io/zh-cn/app-registration">Office 365 应用注册工具</a></p>
+<p>注册您的应用调用微软Graph</li>
+<li><a href="https://msdn.microsoft.com/ZH-CN/library/office/fp123515.aspx">发布Office 外接程序</a></p>
+<p>构建Office 外接程序之后， 您有几种发布方式。请参考此页。</li>
+<li><a href="https://msdn.microsoft.com/zh-cn/library/office/jj220037.aspx">将 Office 与 SharePoint 外接程序和 Office 365 Web 应用提交到 Office 应用商店</a></p>
+<p>若有兴趣提交您的应用至Office 应用商店，请参考此页及<a href="#有关教程-1"">有关教程</a>。</li>
+</ul>
+<h4 id="代码范例">代码范例</h4>
+<h4 id="英文内容-1">英文内容</h4>
+<ul>
+<li><a href="https://github.com/OfficeDev">Office Developer on GitHub</a></p>
+<p>英文版的Office 开发代码范例</li>
+</ul>
+<h4 id="中文内容-1">中文内容</h4>
+<ul>
+<li><a href="https://github.com/Microsoft/Office-js-docs_zh-cn/tree/master">外接程序 GitHub 存储库中提供了此 Office 外接程序帮助的最新版本</a></p>
+<p>中文版的Office 开发代码范例</li>
+</ul>
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">回到本文开头</button>
+<h3 id="有关教程-1">有关教程 </h3>
+<ul>
+<li><h4 id="报名注册"><a href="#_报名注册">报名注册</a> </h4></li>
+<li><h4 id="发布office-外接程序及提交到office-应用商店"><a href="#发布office-外接程序及提交到office-应用商店-1">发布Office 外接程序及提交到Office 应用商店</a> </h4></li>
+</ul>
+<h3 id="报名注册-1"><span id="_报名注册" class="anchor"><span id="_报名注册" class="anchor"></span></span>报名注册 </h3>
+<p>本文内容</p>
+<ol style="list-style-type: decimal">
+<li><a href="#在office-dev-center网站上报名">在Office Dev Center网站上报名</a></li>
+<li><a href="#获取office-365开发人员账户">获取Office 365开发人员账户</a></li>
+<li><a href="#登入office-365">登入Office 365</a></li>
+<li><a href="#分配office-365许可证">分配Office 365许可证</a></li>
+<li><a href="#资源">资源</a></li>
+</ol>
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">回到本文开头</button>
+<h3 id="在office-dev-center网站上报名">在Office Dev Center网站上报名</h3>
+<p>在<a href="http://dev.office.com/devprogram">Office Dev Center</a>的网站上报名及填写单表。通过 Office 365 开发人员计划，您能拿到免费的Office 365开发人员账户及为期一年Office 365的订阅。</p>
+<p><strong>图 1: Office 365 Dev Program</strong></p>
+<img src="uploads/office-web-curriculum-taipei-5.png">
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">回到本文开头</button>
+<h3 id="获取office-365开发人员账户">获取Office 365开发人员账户</h3>
+<ol style="list-style-type: decimal">
+<li>完成上个环节后您将收到一封来自Office 365 Developer Program的电子邮件。在电子邮件里，请点击连接以便注册免费的 Office 365 开发人员帐户。</li>
+<li>在第一页 的注册表格上请提供有关自己的资讯，选择[下一步]。</li>
+<li>在第二页上(图 2), 指定订阅管理员的使用者识别码。</li>
+<p><strong>图 2. Office 365 开发人员网站网域名称</strong></p>
+<img src="uploads/office-web-curriculum-taipei-6.png">
+<li>建立 <strong>.onmicrosoft.com</strong> 的子网域。注册之后，您必须使用所产生的认证 (格式为 UserID@yourdomain.onmicrosoft.com) 登入您在其中管理帐户的 Office 365 入口网站。 SharePoint Online 开发人员网站会布建于您的新网域中：http://yourdomain.sharepoint.com。</li>
+<li>选择 [下一步]，并填写单表的最后一页。如果您选择用电话号码来取得确认码，则可以提供行动电话或地面通讯电话号码，但不是 VoIP 号码。</li>
+<table >
+<thead>
+<tr class="header">
+<th align="left">注意事项</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>如果您尝试注册开发人员帐户时已登入另一个Microsoft 帐户，可能会收到此讯息“抱歉，您输入的使用者识别码无法运作。它看起来无效。请务必输入组织分配给您的使用者识别码。您的使用者识别码通常看起来像是someone@example.com 或someone@example.onmicrosoft.com。” 如果您看到此讯息，请退出原本使用的Microsoft 帐户然后再试一次。如果仍然收到此讯息，请清除浏览器缓存，或切换到 [InPrivate 浏览]，然后填写单表。</td>
+</tr>
+</tbody>
+</table>
+<p>一旦创建了您的帐户，您将收到另一封电子邮件，请连接<a href="http://portal.office.com/">Office 365</a>。</p>
+</ol>
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">回到本文开头</button>
+<h3 id="登入office-365">登入Office 365</h3>
+<p>您的浏览器会开启 Office 365 安装页面。请选择 [管理] 图示，以开启管理中心页面。</p>
+<p><strong>图 3：Office 365 管理中心页面</strong></p>
+<img src="uploads/office-web-curriculum-taipei-7.png">
+<ol style="list-style-type: decimal">
+<li>您必须等待 开发人员网站准备完成。准备完成之后，请在浏览器中刷新 管理中心页面。</li>
+<li>然后在页面上选择 [建置外接程序]来开启您开发人员网站。您应该会看到像图 4 中的网站。在页面有测试外接程序清单。这会确认网站是否符合SharePoint开发人员网站模板。如果您看到的是普通的小组网站，请稍候几分钟并重新启动您的网站。如果您还没有开发工具，请点击[添加] &quot;Napa&quot; Office 365 开发工具。您即可在此网站上使用Napa及开发Office 外接程序。</li>
+<li>记下网站 URL。在 Visual Studio 中建立 SharePoint Add-ins 专案时会用到它。</li>
+</ol>
+<p><strong>图4：开发人员网站的首页与测试清单中的外接程序</strong></p>
+<img src="uploads/office-web-curriculum-taipei-8.png">
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">回到本文开头</button>
+<h3 id="分配office-365许可证">分配Office 365许可证</h3>
+<p><strong>提示</strong>: 若 Office 365首面已经显示了可用的 Office 的产品 （参考图8）， 您可立即进行下载及跳过以下步骤。以下步骤是通过旧的 Office 365 管理中心页面版本来分配 Office 365 开发者 许可证。若要按照以下步骤来继续此课程，请选择旧的 Office 365 管理中心页面版本。</p>
+<p>分配给自己 （活跃用户）Office 365 许可证。点击 &quot;华夫格&quot; &gt; [管理员] 图示。</p>
+<p><strong>图5： Office 365首页</strong></p>
+<img src="uploads/office-web-curriculum-taipei-10.png">
+<p>2. 在核取方块内选择自己。您的个人资料会显示在右边。点击下方的项目编辑：给自己分配许可证</p>
+<p><strong>图 6：Office 365 管理中心页面 &gt; 活跃用户</strong></p>
+<img src="uploads/office-web-curriculum-taipei-11.png">
+<p>3. 在[用户位置]的组合框设置您的地点。并选择Microsoft Office 365的开发。点击[保存]完成分配的许可证。</p>
+<p><strong>图7：分配活跃用户许可证</strong></p>
+<img src="uploads/office-web-curriculum-taipei-12.png">
+<p>4. 在完成后，回到 Office 365 的主页。页面将显示可用的 Office 的产品。拉下页面，可以看到完整的显示。</p>
+<p><strong>图8：Office 365 首页</strong></p>
+<img src="uploads/office-web-curriculum-taipei-13.png">
+<p>如要回到开发者网站，点击在左上角的&quot;华夫格&quot;&gt; [管理] &gt; [构建的应用程式]。</p>
+<h3 id="资源">资源</h3>
+<p><a href="https://msdn.microsoft.com/zh-cn/office/aa905340.aspx">Office 开发人员文档</a></p>
+<p><a href="https://msdn.microsoft.com/zh-cn/library/office/fp179924.aspx#Anchor_1">注册 Office 365 开发人员网站</a></p>
+<h3 id="发布office-外接程序及提交到office-应用商店-1">发布Office 外接程序及提交到Office 应用商店 </h3>
+<p>本案例演示从美国西岸来发布 Excel Colorizer Add-in for Excel 2016 外接程序及提交至Office 应用商店的步骤， 使用的开发工具是<a href="https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx">Visual Studio Community 201 5 （免费版</a>）和 <a href="https://www.visualstudio.com/features/office-tools-vs">Office开发者工具</a>。微软 Azure 为承载 Excel Colorizer 的主机平台。</p>
+<p>如果您要按照自己的情况来发布您的Office外接程序，请参阅MSDN 资源 &gt; <a href="https://msdn.microsoft.com/ZH-CN/library/office/fp123515.aspx">发布</a>。</p>
+<h3 id="本文内容">本文内容</h3>
+<ol style="list-style-type: decimal">
+<li><a href="#决定发布office-外接程序的通讯端点">决定发布Office 外接程序的通讯端点</a></li>
+<li><a href="#为开发而设定电脑安装.net-的azure-sdk-英文订阅azure账户-及使用office-2016">为开发而设定电脑：安装.NET 的Azure SDK (英文)，订阅Azure账户， 及使用Office 2016</a></li>
+<li><a href="#在azure中建立网站">在Azure中建立网站</a></li>
+<li><a href="#office外接程序发布到azure的网站">Office 外接程序发布到 Azure 网站</a></li>
+<li><a href="#使外接程序资讯清单档案指向在azure中的office外接程序">使外接程序资讯清单档案指向在Azure的Office 外接程序</a></li>
+<li><a href="#在-office-客户端应用程序里运行office外接程序">在Office客户端应用程序里运行Office外接程序</a></li>
+<li><a href="#把外接程序提交至office应用商店">把外接程序提交到Office应用商店</a></li>
+<li><a href="#资源2">资源</a></li>
+</ol>
+<h3 id="决定发布office-外接程序的通讯端点">决定发布Office 外接程序的通讯端点</h3>
+<ol style="list-style-type: lower-alpha">
+<li>Office 应用商店</li>
+<li>SharePoint 上的 Office 外接程序目录</li>
+<li>Exchange 目录</li>
+<li>网路共用的资料夹外接程序目录</li>
+</ol>
+<p>本案例演示如何将Office外接程序<a href="https://msdn.microsoft.com/ZH-CN/library/office/dn622055.aspx">发布到微软 Azure</a>，然后<a href="https://msdn.microsoft.com/zh-cn/library/office/jj220037.aspx">提交至Office 应用商店</a>。</p>
+<h3 id="为开发而设定电脑安装.net-的azure-sdk-英文订阅azure账户-及使用office-2016">为开发而设定电脑：安装.NET 的Azure SDK (英文)，订阅Azure账户， 及使用Office 2016</h3>
+<ol style="list-style-type: decimal">
+<li>在<a href="http://azure.microsoft.com/zh-cn/downloads/">Azure 下载页面</a>安装为.NET 的Azure SDK (英文) 。本案例使用免费的<a href="https://www.microsoft.com/en-us/download/details.aspx?id=48146">Microsoft Visual Studio Community 2015</a>。</li>
+
+	<ol style="list-style-type: lower-alpha">
+		<li>在 [语言]，选择[.NET]。</li>
+		<li>如果您已安装的Visual Studio ，选择符合您的Visual Studio版本的Azure .NET SDK 版本。</li>
+		<li>当询问您是否要执行或储存安装可执行档时，请选择 [执行]。</li>
+		<li>在 Web 平台 Installer 视窗中，选择 [安装]。</li>
+	</ol>
+<li>安装Office 2016或更新Office 2013 。 Excel Colorizer 外接程序只限于在Excel 2016上运行。</li>
+<table>
+<thead>
+<tr class="header">
+<th align="left">注意事项</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>您可以取得<a href="http://office.microsoft.com/zh-cn/try/?WT.intid1=ODC_ENUS_FX101785584_XT104056786">1 个月的Office试用版本</a>。</td>
+</tr>
+</tbody>
+</table>
+<li>取得Azure的帐户。</li>
+<table>
+<thead>
+<tr class="header">
+<th align="left">注意事项</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>如果您是 Microsoft Developer Network (MSDN) 订阅者<a href="http://azure.microsoft.com/zh-cn/pricing/member-offers/msdn-benefits/">Azure的 订阅是MSDN订阅的一部分</a>。</td>
+</tr>
+<tr class="even">
+<td>如果您不是 MSDN 订阅者，您仍然可以在<a href="https://azure.microsoft.com/zh-cn/pricing/free-trial/">Windows Azure网站上取得免费Azure试用版</a>。</td>
+</tr>
+</tbody>
+</table>
+</ol>
+
+<h3 id="在azure中建立网站">在Azure中建立网站</h3>
+<p>建立空白的Azure的网站有几种方式。如果您使用是Visual Studio Community 2015，请遵循从Visual Studio IDE中建立的Azure网站的步骤。</p>
+<p>使用Visual Studio 2015或免费版本来建立空白的Azure的网站。</p>
+<ol style="list-style-type: decimal">
+<li>在Visual Studio中的[检视]功能表中选择 [伺服器档案总管]，按一下滑鼠右键[Azure]并选择[连接到微软Azure订阅]。遵循指示连线您的Azure的订阅。</li>
+<li>在Visual Studio，[伺服器档案总管] 中展开Azure，滑鼠右键按一下[应用程式服务]，然后选择 [建立新的网页应用程式]。</li>
+<li>在 [Windows Azure的上建立的Web应用程式] 对话方块中，提供此资讯：</li>
+<ul>
+<li>输入您网站的唯一的[网络应用程式名称] .Azure验证azurewebsites.net是网域内唯 一的网站名称。</li>
+<li>选择您使用授权建立此网站的[应用程式服务计划]。如果您建立新的计划，您也需要命名它。</li>
+<li>选择您的网站之[资源群组]。如果您建立新的群组，您也需要命名它。</li>
+<li>选择适合您的 [地理区域]。</li>
+<li>针对 [资料库伺服器] ：接受预设值 [没有资料库]，然后选择 [建立]。</p>
+<p>新的网站会出现在被选择的资源群组下：从 [伺服器总管] 进入&gt; [Azure] &gt; [应用程式服务。</li>
+</ul>
+<li>滑鼠右键按一下新增的网站，然后选择 [浏​​览器中的检视]。浏览器中开启并显示网页及此讯息“此网站已成功建立”。</li>
+<li>在浏览器网址列中，更变网站的URL让其使用HTTPS，按 [Enter] 键，并确认已启用HTTPS通讯协定.Office外接程序模型需要外接程序使用HTTPS通讯协定。</li>
+<li>在Visual Studio 2015中，以滑鼠右键按一下 [伺服器档案总管] 中的新网站，并选择[下载发布设定档]，然后将该设定档储存到电脑。发布设定档有您的认证并可让您在Azure的网站上发布您的 Office外接程序。</li>
+</ol>
+
+<h3 id="office外接程序发布到azure的网站">Office外接程序发布到Azure的网站</h3>
+<ol style="list-style-type: decimal">
+<li>把外接程序在Visual Studio中开启，展开[方案总管中] 的解决方案节点，您会看到两个专案的解决方案。</li>
+<li>以滑鼠右键按一下网站专案，然后选择 [发布]。</p>
+<p>Web专案会有厅外接程序网站档案，所以这是您发布到Azure的专案。</li>
+<li>在[发布网站]，选择 [汇入]。</li>
+<li>[汇入发布设定] 中选择[浏览]，然后浏览至您储存发布设定档本主题中前面的地方。选择[确定]以汇入您的设定档。</li>
+<li>在[发布网站]，[连线]索引标签中接受预设值并选择 [下一步]。</p>
+<p>再一次选择 [下一步]&gt;接受预设设定。</li>
+<li>在[预览]标签上选择[启动预览]。预览会显示所有将发布至Azure的网站的网页专案及其档案。</li>
+<li>选择 [发布] 。Visual Studio将Office外接程序的网络专案发布到Azure的网站。</li>
+<li>在Visual Studio中完成发布网络专案后，浏览器中开启并显示网页及文字“此网页应用程式已成功建立。”这是网站目前的预设的页面。</p>
+<p>若要查看外接程序的网页，更变URL及使用HTTPS：并加上外接程序的预设HTML页面的路径。例如，更变的URL看起来应类似https://YourDomain.azurewebsites.net/Addin/Home/ Home.html。这会确认外接程序的网站现在已装载于Azure。拷贝此URL，因为编辑外接程序资讯清单档案时会需要它。</li>
+</ol>
+<h3 id="使外接程序资讯清单档案指向在azure中的office外接程序">使外接程序资讯清单档案指向在Azure中的Office外接程序</h3>
+<ol style="list-style-type: decimal">
+<li>在Visual Studio中把Office外接程序打开，在[方案总管中]展开解决方案以便显示这两个专案。</li>
+<li>打开外接程序资讯清单。</li>
+<li>针对[来源位置]：输入外接程序的主要HTML页面上的URL例如在发布外接程序之后，在上一个步骤中拷贝的URL <a href="https://YourDomain.azurewebsites.net/Addin/Home/Home.html" class="uri">https://YourDomain.azurewebsites.net/Addin/Home/Home.html</a> 。储存此咨询清单。</li>
+</ol>
+<h3 id="在-office-客户端应用程序里运行office外接程序">在 Office 客户端应用程序里运行Office外接程序</h3>
+<p>您的源位置已经从本地服务器的测试环境转变成在Azure中的网站网址。运行的Office外接程序及进行测试。本Colorizer外接程序只限于在Excel 2016，Excel Online中运行。</p>
+<h3 id="把外接程序提交至office应用商店">把外接程序提交至Office应用商店</h3>
+<p>一般在提交外接程序之前，请参阅以下关于提交Office应用商店的文章：</p>
+<p><a href="https://msdn.microsoft.com/zh-cn/library/office/jj220037.aspx">将Office与SharePoint外接程序和Office 365 Web 应用提交到Office 应用商店</a></p>
+<h4 id="发布-excel-colorizer-add-in-for-excel-2016进行了以下事项">发布 Excel Colorizer Add-in for Excel 2016进行了以下事项:</h4>
+<ol style="list-style-type: decimal">
+<li>把外接程序送至 Office 应用商店，请使用 <span id="_Hlk461704539" class="anchor"></span><a href="https://msdn.microsoft.com/zh-cn/library/office/jj220033.aspx">Microsoft卖家面板。</a></li>
+
+<p>如您将需要创建个人或公司帐户，（如适用）添加支出信息。有关详细信息，请参阅：</p>
+
+<ul>
+<li><a href="https://dev.windows.com/zh-cn/programs/join">注册成为应用开发人员</a>。创建您的帐户后，便经历审批过程。</li>
+<li><a href="https://msdn.microsoft.com/zh-cn/library/office/jj220033.aspx">使用卖家面板将您的应用或外接程序提交到 Office 应用商店</a>。</p>
+</ul>
+<p>提示：本演示创建了个人帐户来发布Office外接程序。因为外接程序为免费，买方账户没有建立。</p>
+<p>填写账户信息， 提交并等待批准。</li>
+<li>提交准备图示、应用程式 (外接程序) 徽标、 萤幕截图、 隐私和支援语句的HTML 文件。</li>
+<p>图像的尺寸，参阅 <a href="https://msdn.microsoft.com/zh-cn/library/office/dn356576.aspx">将 Office 和 SharePoint 外接程序和 Office 365 Web 应用程序提交到卖家面板的清单</a> 。</p>
+<li>图示、 隐私和支援的声明 (.html 文件) 发布到 Azure 帐户。</li>
+<li>清单中, 除了预设元素，Excel Colorizer 外接程序添加了 IconUrl、 SupportUrl 和必须要求的元素（Excel Colorizer 外接程序使用Excel 新的API, 并且只限于在Excel 2016 或上线版本中运行）。清单架构档的版本为1.1。</li>
+
+<table>
+<thead>
+<tr class="header">
+<th align="left">注意事项</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>每个外接程序都不同， 为确保外接程序按预期方式工作，请参阅 <a href="https://msdn.microsoft.com/ZH-CN/library/office/dn535871.aspx">指定 Office 主机和 API 需求</a>和<a href="https://msdn.microsoft.com/ZH-CN/library/office/mt590206.aspx">Office 外接程序 要求集</a> 。</td>
+</tr>
+</tbody>
+</table>
+
+<li>如果在外接程序中使用 Office JavaScript API，您必须参照<a href="https://msdn.microsoft.com/ZH-CN/library/office/dn221992.aspx">从 适用于 Office 的 JavaScript API 的内容传送网络 (CDN) 引用 适用于 Office 的 JavaScript API 库</a>。不要在外接程序中包含 Office.js 档案的复本或参照其它地方主控之档案的复本。</li>
+<li>在Visual Studio中，验证外接程序资讯清单， 点击组建 &gt; [发布] &gt; [执行验证检查] 。</li>
+<li>登入 Microsoft 卖方仪表板并添加应用程式（外接程序）。</li>
+
+<ul>
+<li>输入版本编号。在卖方仪表板中提交的版本编号必须与外接程序资讯清单里的版本编号相同。例如:</p>
+<p>卖方仪表板: 1.0.0.0</p>
+<p>外接程序资讯清单：1.0.0.0</li>
+<li>上传截图和 App 徽标。</li>
+<li>上传应用程式套装软体，也就是应用程式（外接程序）的资讯清单。</li>
+<li>提供支援和隐私的 URL。支援语句里并有联络信息（联络信息也可以在外接程序里）。联络信息可以是以下任何一项或全部: 电子邮件地址、 电话号码、 连络人单表，有效的社会媒体连接 (例如Facebook 或 Twitter 上和您接触的 URL) 或其它评论交流形式。</li>
+</ul>
+
+<li>交您的应用程式 (外接程序)，并等待批准。</li>
+<li>提交了外接程序之后，如果它没有通过Office 应用商店的批准，您将会收到一份说明哪些项目需要更改的验证测试报告。这份验证测试报告是根据<a href="https://msdn.microsoft.com/zh-cn/library/office/jj220035.aspx">提交到 Office 应用商店的应用和外接程序的验证策略（版本 1.9）</a>而进行的测试。在进行更改后，您可再次提交外接程序。</li>
+</ol>
+<h3 id="资源2">资源</h3>
+<ul>
+<li><a href="https://msdn.microsoft.com/ZH-CN/library/office/fp123515.aspx">发布 Office 外接程序</a></li>
+<li><a href="https://msdn.microsoft.com/ZH-CN/library/office/dn622055.aspx">发布到微软 Azure</a></li>
+<li><a href="https://msdn.microsoft.com/zh-cn/library/office/jj220037.aspx">将 Office 与 SharePoint 外接程序和 Office 365 Web 应用提交到 Office 应用商店</a></li>
+</ul>
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">回到本文开头</button>`
+			})
+		})
+		.then(function() {
+			return EventTab.create({
+				tabTitle: 'Agenda',
+				tabNumber: 2,
+				tabContent: `
+				<a href="/beijing2016cn" class="btn btn-success float-right" role="button">汉语</a>
+				<a class="btn btn-primary float-right" role="button" style="margin-right:10px;" href="http://www.aka.ms/devdaysbeijing2016">Register</a>
+				<h2>DevDays Asia 2016 @ Beijing Agenda</h2>
+				
+				<h4>September 26, 2016: Hackathon opens! </h4>
+				
+				<h4>October 21, 2016: Hackathon Official Kick Off </h4>
+				
+				<h5>Location: Microsoft Beijing West / 5 Danling St, Haidian, Beijing, China, 100080</h5>
+				<ul>
+				<li>17:00 – Welcome participants</li>
+				<li>18:00 – Dinner</li>
+				<li>19:00-21:00 – Team building + hacking</li>
+				</ul>
+				
+				<h4>October 22, 2016: DevDays Asia 2016 @ Beijing Conference Begins and Hackathon Continues </h4>
+				
+				<h5>Location: Microsoft Beijing West / 5 Danling St, Haidian, Beijing, China, 100080</h5>
+				<ul>
+				<li>9:00 – Welcome</li>
+				<li>9:15 – Keynote</li>
+				<li>10:00 – Office developer and interoperability tracks begin</li>
+				<li>12:30 – Lunch</li>
+				<li>13:30-18: 15 – Presentations and workshops</li>
+				<li>18:15- Dinner</li>
+				<li>19:15-0:00 – Work on hackathon projects</li>
+				</ul>
+				<p>*The hackathon will occur all day Saturday at the venue with onsite help from Microsoft engineers.</p>
+				
+				<h4>October 23, 2016: Hackathon continues</h4>
+				
+				<h5>Location: Microsoft Beijing West / 5 Danling St, Haidian, Beijing, China, 100080</h5>
+				<ul>
+				<li>9:00 Venue opens for breakfast</li>
+				<li>9:00-12:00 - Work on hackathon projects</li>
+				<li>12:00 – Lunch</li>
+				<li>13:00-15:00 – Work on hackathon projects</li>
+				<li>15:00 – All hackathon projects completed and submitted</li>
+				<li>15:15 – 17:00 – First round of evaluations of all teams</li>
+				<li>17:00-18:00 – Finalists present to panel of judges</li>
+				<li>18:15 – Hackathon awards and closing </li>
+				</ul>`
+			})
+		})
+		.then(function() {
+			return EventTab.create({
+				tabTitle: 'Hackathon 规则与制度',
+				tabNumber: 3,
+				tabContent: `
+				<a href="/beijing2016" class="btn btn-info float-right" role="button">English</a>
+				<a href="http://www.aka.ms/devdaysbeijing2016"><img src="/uploads/RegisterNowCN.png" style="height: 37px; margin-right: 10px;" class="float-right" title="registration button" alt="registration link"></a>
+				<h2>黑客马拉松活动规则与制度</h2>
+<pre class="text-align-center"><span><a target="_self" href="#beijing2016Heading1"> 黑客马拉松项目概述</a> | <a target="_self" href="#beijing2016Heading2">如何参加？</a>| <a target="_self" href="#beijing2016Heading3">黑客马拉松项目需求</a> | <a target="_self" href="#beijing2016Heading4">我的项目将被如何使用？</a>| <a target="_self" href="#beijing2016Heading5"> 我的项目将如何评估？</a>| <a target="_self" href="#beijing2016Heading6"> 黑客马拉松条款和条件</a></span></pre>
+<h4>DevDays Asia 2016 @ Beijing 是微软举办的一场免费活动，主要包含两部分内容：</h4>
+<ol>
+ 	<li>为期一天的现场技术活动课程（2016 年 10 月 22 日 9am-6pm）</li>
+ 	<li>Microsoft Office 365 黑客马拉松活动<strong>（黑客马拉松活动将于 2016 年 9 月 26 日启动报名，并于 2016 年 10 月 21 日 5:00pm 正式结束。</strong>评选和颁奖将于 2016 年 10 月 23 日 DevDays Asia 2016 @ Beijing 活动现场举行）。<span style="color: #ff00ff;"><u><a target="_blank" href="http://www.interopevents.com/beijing2016">详情请查阅完整议程安排</a></u>。(LINK TO AGENDA)</span></li>
+</ol>
+&nbsp;
+<h4 id="beijing2016Heading1">黑客马拉松项目概述</h4>
+
+<p>Microsoft Office 是全球最受欢迎的生产力工具，拥有超过12 亿的用户。Microsoft Office 365 团队现邀请开发者参与 DevDays Asia 2016 @ Beijing 黑客马拉松活动，基于 Microsoft Office 创建能帮助用户提高生产力的项目。
+
+Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司的全新使命。这是一个很宏伟的目标，而</em> Microsoft Graph 和丰富的加载项工具已经在通过一种全新的方式让生产力大幅飞跃变为现实。
+
+财务、社交媒体、旅行计划、工作安排…… 生活中方方面面的生产力都存在改善空间，我们邀请您通过黑客马拉松项目将这一切变为可能。生产力的提升潜力是无穷的！另外我们还为黑客马拉松活动的冠军准备了丰厚的奖品。</p>
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">回到本文开头</button>
+<h4 id="beijing2016Heading2">如何参加？</h4>
+<ul>
+	<li>首先以个人参赛者身份<a target="_blank" href="http://aka.ms/DevDaysBeijing2016">在线注册 DevDays Asia 2016 @ Beijing</a> 活动，在问及是否参加黑客马拉松活动时请选择“是”。</li>
+	<li>免费注册 <u><a target="_blank" href="http://dev.office.com/devprogram"><u>Microsoft </u><u>开发者帐户</u></a></u>。</li>
+	<li>. 访问<span style="color: #ff00ff;">资源页 (LINK TO CLARE'S PAGE) </span>获取有关 Microsoft Graph 和加载项文档、教程，以及应用创意的链接。</li>
+</ul>
+
+<p>您也可以将自己的黑客马拉松项目注册至某一团队，或在活动现场注册项目并组建团队。</p>
+
+<p>若要参加黑客马拉松竞赛：</p>
+<ul>
+ 	<li>每位团队成员均<a href="http://aka.ms/DevDaysBeijing2016">须注册本次活动</a>。</li>
+ 	<li>每个成员只允许提交一（1）个作品。对于因为任何原因导致未能收到的作品，或虽已收到但由于任何原因无法判读的作品，我们不承担任何责任。</li>
+ 	<li>您的黑客马拉松团队需要有一位领队负责联络事务。如果在黑客马拉松活动正式开始前您希望以其他团队成员身份参赛，须将原团队和新团队信息记录在黑客马拉松团队注册名单中。</li>
+ 	<li>参加黑客马拉松的每个团队必须至少包含 2 位参与者，最多可包含 4 位参与者。</li>
+ 	<li>Microsoft <span>员工以及与</span> Microsoft <span>签署了用工合同的承包商员工禁止参加黑客马拉松。</span></li>
+</ul>
+
+<p>存在下列情况的作品将被自动取消：</p>
+<ul>
+ 	<li>不完整或难以判读的作品； 以及</li>
+ 	<li>虽已收到，但超出上文所述注册限制的作品。</li>
+</ul>
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">回到本文开头</button>
+<h4 id="beijing2016Heading3">黑客马拉松项目需求</h4>
+
+<strong>主要需求：</strong>提交能帮助用户改善生产力的应用程序。限全新开发的 <a target="_blank" href="https://msdn.microsoft.com/ZH-CN/library/office/jj220082.aspx">Microsoft Office 365 加载项</a> （扩展）或使用了 <a target="_blank" href="http://graph.microsoft.io/en-us/getting-started">Microsoft Graph</a> 的作品可以获奖。
+
+<p>黑客马拉松的项目和代码编写工作最早可于 2016 年 9 月 26 日启动。黑客马拉松将于 2016 年 10 月 21 日正式结束。<span style="color: #ff00ff;">完整议程安排请参阅这里。(LINK TO AGENDA)</span></p>
+<p>补充需求：</p>
+<ul>
+ 	<li>您提交的作品必须是自己的原创成果；并且</li>
+ 	<li>您所提交的作品必须已获得所有必要的同意、批准，或许可；并且</li>
+ 	<li>您的作品不能包含任何第三方商标（徽标、名称）或有版权材料（音乐、图片、视频、可辨识的人物），除非您已获得使用这些材料的许可。您可以在作品中包含 Microsoft <span>的商标、徽标以及设计，</span>Microsoft <span>将为您提供受限制的许可，该许可仅允许您出于参与本次竞赛的目的，在自己的作品中使用这些材料。</span></li>
+ 	<li>活动现场提供了可以与您合作的开发专家，您可以与他们一起讨论并审查自己的项目。指定给您的专家不会将您的创意告知其他团队。</li>
+ 	<li>黑客马拉松团队不允许使用 Office Store 中提供的任何代码、产品或工作成果。</li>
+ 	<li>您可以在竞赛开始前先行对开发工作进行构思和规划，DevDays Asia 2016 @Beijing 活动允许您使用曾在其他任何黑客马拉松活动中提交或获奖的代码、产品或工作成果。</li>
+</ul>
+<p>作品严禁包含下列任何内容：</p>
+<ul>
+ 	<li>色情；暴力；或对任何民族、种族、性别、宗教、职业或年龄段的贬低；亵渎或淫秽的内容；</li>
+ 	<li>宣传酗酒、毒品或违禁药物、烟草、枪支/<span>武器（或对任何暴力的使用）或任何特定的政治意图；</span></li>
+ 	<li>淫秽的或冒犯性的内容；</li>
+ 	<li>诽谤、曲解其他个人或公司，或包含蔑视的言论；</li>
+ 	<li>和/<span>或任何违法内容；</span></li>
+</ul>
+<p>活动组织方和黑客马拉松评委保留拒绝任何作品的权利，并有权确定作品是否满足上述要求。</p>
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">回到本文开头</button>
+<h4 id="beijing2016Heading4">我的项目将被如何使用？</h4>
+
+<p>除了下列陈述，我们对您的作品不主张任何所有权。提交作品意味着您：</p>
+<ul>
+<li>同意授予我们免版税、全球可用的权利和许可，以供我们：(i) 审查、评估、测试，以及分析您在竞赛中提交的作品中所包含的全部内容；以及 (ii) 通过所有媒体在本次竞赛的营销、销售，或促销工作中使用您的作品及其包含的内容；</li>
+<li>同意并签署用于公关等上述用途所要求的任何必要文件；</li>
+<li>理解：除了正式规则中描述的内容，您不会因为自己作品的使用而获得任何补偿或荣誉。</li>
+</ul>
+<p>请注意，本次竞赛结束后，您的作品可能会发布至我们选择的一个网站，并供该网站的访客查看。对于网站访客未经授权使用您作品的行为，我们不承担任何责任。</p>
+<p>参加此次黑客马拉松意味着您同意：</p>
+<ul>
+<li>遵守这些正式规则；并且</li>
+<li>为免受损害，对因您参赛或获奖而产生的任何类型的责任、伤害、损失或损害，Microsoft 及其合作伙伴、子公司、分支机构、员工以及代理人员不承担任何责任。</li>
+<li>接受奖品意味着，Microsoft 可以在在线媒体、印刷品或其他任何媒体中使用您与本次竞赛有关的专有名称和居住国家信息，且无须向您付款或提供补偿，除非法律禁止这样做。</li>
+</ul>
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">回到本文开头</button>
+<h4 id="beijing2016Heading5">我的项目将如何评估？</h4>
+
+<p><strong>黑客马拉松评审标准</strong></p>
+<p>DevDays Asia 2016 @ Beijing 活动期间提交的黑客马拉松作品将按照下表所示评分标准进行评审。对于所提交的所有黑客马拉松项目，将选出 5 个团队参与最终的第一、第二和第三名角逐。每个团队须通过一场 5 分钟的演讲向评委会展示自己的项目，其中将预留 2 分钟回答评委的问题。评委将使用黑客马拉松评分标准选出获得第一、第二和第三名的项目。</p>
+
+<p>黑客马拉松评委将使用下列标准对每个作品进行评审。</p>
+<table>
+<tbody>
+<tr>
+<td>概念</td>
+<td>30%</td>
+</tr>
+<tr>
+<td>影响力</td>
+<td>40%</td>
+</tr>
+<tr>
+<td>执行情况</td>
+<td>30%</td>
+</tr>
+</tbody>
+</table>
+<ul>
+ 	<li>第一轮评估过程中，所有黑客马拉松选手均有机会向黑客马拉松组委会团队介绍自己的项目。为了向评委介绍自己的项目，黑客马拉松团队将获得一个固定格式的演示文稿模板。</li>
+ 	<li>第一轮评估中，组委会将选出排名前五位的项目。这五个项目的成员将通过相同时长的演讲向黑客马拉松评委介绍自己的项目。</li>
+ 	<li>黑客马拉松评委将根据马拉松评审标准选出前三名获胜者。</li>
+ 	<li>组委会保留审查参赛者资格的权利。</li>
+ 	<li>黑客马拉松评委不会由于年龄、家世、肤色、病事假、性别认同或表现、遗传信息、婚姻状况、身体健康状况、国籍、身体或心智残障、政治立场、退伍军人与否、种族、宗教、性别（包括孕期）、性取向，或受到所适用本地法规、制度以及条例保护的其他特征而区别对待参赛者。</li>
+</ul>
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">回到本文开头</button>
+<h4 id="beijing2016Heading6">黑客马拉松条款和条件</h4>
+<ol>
+ 	<li>为得到主办方提供的奖项，参赛选手必须全程参与黑客马拉松活动。</li>
+ 	<li>由于相关税法产生的税务须由获奖者负责。黑客马拉松组委会不承担由于奖品产生的任何税务责任。获奖者同意由黑客马拉松组委会代缴或支付相关税款（若有）。</li>
+ 	<li>获奖者无权将奖品折现或进行其他形式的交换。如若奖品遗失、失窃或损毁，黑客马拉松赞助商不应提供任何额外的奖励或赔偿（无论实物或现金）。</li>
+ 	<li>黑客马拉松组委会保留收回任何未兑现奖品的权利，若使用价值相等的其他物品取代原定奖品，恕不另行通知。</li>
+ 	<li>参赛者提交的数据必须真实准确，不允许进行任何伪造或篡改。参赛者不应将自己的个人信息提供给任何第三方，并由第三方代为参赛，此种行为将被认定为欺诈或盗窃。参赛者的行为不得违背法律。</li>
+ 	<li>评审团对于黑客马拉松活动每个阶段的选手和获奖者有最终决定权。</li>
+ 	<li>竞赛的开发过程中，您可以在自己桌前打盹小憩，或在休息区域休息。</li>
+ 	<li>每个团队成员只允许加入一个团队。</li>
+ 	<li>黑客马拉松的组委会以及活动执行人员有权复制、编辑、转换、分发、公开传输、公开执行、公开呈现、公开广播、公开口头披露、引用、摘录，以及通过其他任何必要行为，在全球范围内的营销活动、促销活动、慈善活动，以及相关媒体，包括出版物、信息、提案、促销材料、宣传册和网站中，无限次数地使用竞赛作品以及参赛者的基本信息，包括但不限于姓名、肖像和照片（下文统称为“竞赛数据”）。</li>
+ 	<li>根据组委会评判，如选手针通对本次黑客马拉松活动的评选（包括竞赛注意事项）、制度、黑客马拉松活动本身或其网站采取不公平、欺骗和欺诈的行为，进而打断黑客马拉松活动，干扰其他参赛选手，通过非法活动参与此次黑客马拉松活动，或违反其他公共秩序，他/她同意组委会立刻撤销他/她的黑客马拉松参会或获奖资格（并退回黑客马拉松组委会提供的奖金、证书和奖杯）。他/她应承担造成的任何法律责任，并为这些损失对活动组织者、赞助商、执行人员，及其管理层、总监、监管人及员工造成的任何损失和费用承担赔偿责任。</li>
+ 	<li>参赛选手须知，任何试图破坏活动网站或黑客马拉松活动进展的团队或个人将触犯相关民法和刑法。在相关制度允许的范围内，针对这些个人造成的损失，活动组织者、赞助商，以及活动执行人员保留索赔的权利。</li>
+ 	<li>活动组织者保留在不事先通知的情况下更改黑客马拉松活动项目的权利。黑客马拉松的参与者一旦参加或注册，意味着同意受到此项目约束。任何未尽事宜将由组织者进行增补，并发布至活动网站。</li>
+ 	<li>如若存在舞弊情况，或遭遇无法合理预期或控制的病毒、Bug、自动化程序、灾难性事件，或任何其他无法预见或意外的事件（即“不可抗力”）影响到本次竞赛的公平性和/或完整性，我们保留取消、更改或暂停本次竞赛的权利。无论活动因为人为或技术故障导致，我们均将保留这些权利。如果无法妥善恢复竞赛的完整性，我们保留在取消、更改或暂停本次竞赛前收到的所有符合资格要求的作品中评选出获胜者的权利。</li>
+ 	<li>如果您试图，或我们有充分的理由相信您通过作弊、黑客行为、创建机器人或其他自动化程序、或通过任何方式舞弊，进而威胁到本次竞赛的完整性或活动的合理运作，我们将在法律允许的最大范围内向您追偿。此外我们可能会撤销您的资格，禁止您参与我们未来举行的任何竞赛活动，请务必公平竞争。</li>
+</ol>
+<h4>隐私条款</h4>
+<p>Microsoft 致力于保护您的隐私。Microsoft 会使用您提供的信息通知获奖者，并在您要求的情况下将您的信息发送至其他 Microsoft 产品和服务。未经您的允许，Microsoft 不会将您提供的信息共享给第三方，除非这样做是完成服务所必须的，或是您自己或法律要求的。Microsoft 承诺为您的个人信息提供安全保护。我们会使用多种安全技术和规程保护您的个人信息防范未经授权的访问、使用，或披露。除上文列出的情况外，未经您的批准，您的个人信息绝不会泄露到公司之外。</p>
+
+<p>如果您认为 Microsoft 未能遵守这些条款，请告知我们，您可以发送邮件至 <a href="mailto:VSIPENG@microsoft.com">VSIPENG@microsoft.com</a>，或发送传统纸质信件至 VSIP Engineering, Microsoft Privacy, Microsoft Corporation, One Microsoft Way, Redmond, WA 98052 USA，我们将采取商业上合理的努力解决您遇到的问题。</p>
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">回到本文开头</button>`
+			})
+		})
+		.then(function() {
+			return EventTab.create({
+				tabTitle: 'Venue',
+				tabNumber: 3,
+				tabContent: `
+				<a href="/beijing2016cn" class="btn btn-success float-right" role="button">汉语</a>
+				<a class="btn btn-primary float-right" role="button" style="margin-right:10px;" href="http://www.aka.ms/devdaysbeijing2016">Register</a>
+				<h2>Microsoft Asia-Pacific R & D Group Headquarters</h2>
+				<h2>微软亚太研发集团总部</h2>
+				<img src="uploads/ms-building-2-haidian.jpg" alt="Microsoft Asia-Pacific R & D Group Headquarters" class="m-x-auto">
+				<a href="http://www.bing.com/mapspreview?where1=Building%202,%20No.%205%20Dan%20Ling%20Street%20Haidian%20District%20Beijing%20%20China%20100080"><p>Building 2, No. 5 Dan Ling Street, </p>
+				<p>Haidian District, </p>
+				<p>Beijing , 100080 </p>
+				<p>China </p></a>
+				<h4>Telephone</h4>
+				<p>(86-10) 5917-8888 </p>
+				<p>*More specific directions are coming soon!</p>
+
+				`
+			})
+		})
+		.then(function() {
+			return EventTab.create({
+				tabNumber: 4,
+				tabTitle: 'Hackathon',
+				tabContent: `
+				<a href="/beijing2016cn" class="btn btn-success float-right" role="button">汉语</a>
+				<a class="btn btn-primary float-right" role="button" style="margin-right:10px;" href="http://www.aka.ms/devdaysbeijing2016">Register</a>
+				<h2>Hackathon Rules and Regulations</h2>
+<pre class="text-align-center"><a target="_self" href="#hackathonProjectOverviewBeijing2016">Hackathon Project Overview</a> | <a target="_self" href="#howCanIEnterBeijing2016">How can I enter?</a> | <a target="_self" href="#hackathonProjectReqsBeijing2016">Hackathon Project Requirements</a> | <a target="_self" href="#howWillMyProjecBeUsedBeijing2016">How will my project be used?</a> | <a target="_self" href="#howWillMyProjectBeEvalueatedBeijing2016">How will my project be evaluated?</a> | <a target="_self" href="#hackathonTermsBeijing2016">Hackathon Terms + Conditions</a></pre>
+<h4>DevDays Asia 2016 @ Beijing is a free Microsoft event that includes 2 major parts: </h4>
+<ol>
+	<li>An onsite event with a full day technical tracks (9am-6pm on October 22, 2016)</li>
+	<li>A Microsoft Office 365 Hackathon (Hackathon opens September 26, 2016. Official kick off begins onsite on October 21, 2016 at 5:00pm. Judging and awards occur onsite at DevDays Asia 2016 @ Beijing on October 23, 2016). See Agenda tab for details.</li>
+</ol>
+<h4 id="hackathonProjectOverviewBeijing2016">Hackathon Project Overview</h4>
+<p>With 1.2 billion users, Microsoft Office is the world&rsquo;s most popular set of productivity tools. The Microsoft Office 365 team is challenging developers to boost productivity by creating a project within Microsoft Office at the DevDays Asia 2016 @ Beijing hackathon.</p>
+<p>Microsoft&rsquo;s new company mission is: to empower every person and every organization on the planet to achieve more. It may seem like a big job, but Microsoft Graph and Add-in tools make hacking productivity possible in a whole new way.</p>
+<p>We invite you to submit a hackathon project that increases productivity in any aspect of your life &ndash; from your finances, to your social media, your travel plans, or your work schedule. The possibilities for productivity improvements are endless! Plus, we have some pretty cool prizes for the hackathon winners.</p>
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">Back to top</button>
+<h4 id="howCanIEnterBeijing2016">How can I enter?</h4>
+<p>1) First, <a href="http://aka.ms/DevDaysBeijing2016" target="_blank">register online with DevDays Asia 2016 @ Beijing</a>&nbsp;as an individual contestant. Select &ldquo;Yes&rdquo; when asked if you will participate in the hackathon.</p>
+<p>2) Sign up for your free&nbsp;<a href="http://dev.office.com/devprogram">Microsoft Developer Account.</a></p>
+<p>3) Visit the <a href="/beijing2016cn">Resources tab</a> for links to Microsoft Graph and Add-in documentation, tutorials, and app ideas.&nbsp;You may also register your hackathon project with a team or register your idea and form a team at the event.</p>
+<p>In order to compete in the hackathon:</p>
+<ul>
+<li>Each member of the team must also be <a href="http://aka.ms/DevDaysBeijing2016">registered</a>&nbsp;for the event.</li>
+<li>We will only accept one (1) entry(ies) per entrant. We are not responsible for entries that we do not receive for any reason, or for entries that we receive but are not decipherable for any reason.</li>
+<li>You need to have a hackathon team leader to be your hackathon affairs liaison. If you change which group you want to compete with before the hackathon officially begins, it must be recorded on the official hackathon group signup sheet of both the original and new teams.</li>
+<li>Each hackathon team must have a minimum of 2 participants and a maximum of 4 participants to compete.</li>
+<li>Employees of the Microsoft and contractors currently under contract work for Microsoft are not eligible to enter the hackathon. We will automatically disqualify:</li>
+<li>Any incomplete or illegible entry; and</li>
+<li>Any entries that we receive from you that are in excess of the entry limit described above.</li>
+</ul>
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">Back to top</button>
+<h4 id="hackathonProjectReqsBeijing2016">Hackathon Project Requirements</h4>
+<p>Main Requirement: Submit an application that will help users increase their productivity. To be eligible for prizes, submissions must be a new <a href="http://dev.office.com/getting-started/addins">Microsoft Office 365 Add-in (</a>extension) or utilize <a href="http://dev.office.com/getting-started/office365apis">Microsoft Graph</a>. Hackathon projects and coding may start as early as September 26, 2016. The hackathon will kick off onsite on October 21, 2016. <span style="text-decoration: underline;">See full agenda here</span>.</p>
+<p>In addition:</p>
+<ul>
+<li>Your entry must be your own original work; and</li>
+<li>You must have obtained any and all consents, approvals or licenses required for you to submit your entry; and</li>
+<li>Your entry may not include any third party trademarks (logos, names) or copyrighted materials (music, images, video, recognizable people) unless you have obtained permission to use the materials. You may include Microsoft trademarks, logos, and designs, for which Microsoft grants you a limited license to use for the sole purposes of submitting an entry into this Contest.</li>
+<li>There will be development experts on site at the event who can work with you. You can discuss and review your projects with them. Designated experts are not allowed share your ideas with other teams.</li>
+<li>Hackathon teams may not use any code, product, or work available in the Office Store.</li>
+<li>Works for the contest may be shaped and planned for development beforehand.</li>
+</ul>
+<p>Any code, product, or work available that was awarded or submitted to any other hackathon is allowed in the DevDays Asia 2016 @Beijing Entries may NOT contain, as determined by Microsoft event coordinators, in our sole and absolute discretion, any content that:</p>
+<ul>
+<li>is sexually explicit, unnecessarily violent or derogatory of any ethnic, racial, gender, religious, professional or age group; profane or pornographic;</li>
+<li>promotes alcohol, illegal drugs, tobacco, firearms/weapons (or the use of any of the foregoing) or a particular political agenda;</li>
+<li>is obscene or offensive;</li>
+<li>defames, misrepresents or contains disparaging remarks about other people or companies;</li>
+<li>communicates messages or images inconsistent with the positive images and/or good will to which we wish to associate; and/or violates any law; Microsoft event coordinators and hackathon judges reserve the right to reject any entry, in our sole and absolute discretion, that we determine does not meet the above criteria.</li>
+</ul>
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">Back to top</button>
+<h4 id="howWillMyProjecBeUsedBeijing2016">How will my project be used?</h4>
+<p>Other than what is set forth below, we are not claiming any ownership rights to your entry.</p>
+<p>However, by submitting your entry, you:</p>
+<ul>
+<li>are granting us an irrevocable, royalty-free, worldwide right and license to: (i) use, review, assess, test and otherwise analyze your entry and all its content in connection with this Contest; and (ii) feature your entry and all content in connection with the marketing, sale, or promotion of this Contest (including but not limited to internal and external sales meetings, conference presentations, tradeshows, and screen shots of the Contest entry in press releases) in all media (now known or later developed);</li>
+<li>agree to sign any necessary documentation that may be required for us and our designees to make use of the rights you granted above;</li>
+<li>understand and acknowledge that the Sponsor(s) may have developed or commissioned materials similar or identical to your submission and you waive any claims you may have resulting from any similarities to your entry;</li>
+<li>understand that we cannot control the incoming information you will disclose to our representatives in the course of entering, or what our representatives will remember about your entry. You also understand that we will not restrict work assignments of representatives who have had access to your entry. By entering this Contest, you agree that use of information in our representatives&rsquo; unaided memories in the development or deployment of our products or services does not create liability for us under this agreement or copyright or trade secret law;</li>
+<li>understand that you will not receive any compensation or credit for use of your entry, other than what is described in these Official Rules Please note that following the end of this Contest your entry may be posted on a website selected by us for viewing by visitors to that website.</li>
+</ul>
+<p>We are not responsible for any unauthorized use of your entry by visitors to this website. While we reserve these rights, we are not obligated to use your entry for any purpose, even if it has been selected as a winning entry. By entering this hackathon, you agree:</p>
+<ul>
+<li>To abide by these Official Rules; and</li>
+<li>To release and hold harmless Microsoft and its respective parents, subsidiaries, affiliates, employees and agents from any and all liability or any injury, loss or damage of any kind arising from or in connection with this Contest or any prize won; and</li>
+<li>That by accepting a prize, Microsoft may use of your proper name and state of residence online and in print, or in any other media, in connection with this Contest, without payment or compensation to you, except where prohibited by law. If you do not want to grant us these rights to your entry, please do not enter this Contest.</li>
+</ul>
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">Back to top</button>
+<h4 id="howWillMyProjectBeEvalueatedBeijing2016">How will my project be evaluated? </strong></h4>
+<p>Hackathon Judging Criteria Hackathon submissions during DevDays Asia 2016 @ Beijing are evaluated by the ranking criteria listed in the table below. From all hackathon project submissions, 5 teams will be chosen for the finals to compete for first, second, and third place.</p>
+<p>Each team will exhibit their projects with a 5-minute presentation to the review panel and 2 minutes reserved for questions. Hackathon judges will use the hackathon ranking criteria to choose the projects to be awarded first, second, and third place. Hackathon judges will use the following criteria to judge each submission.</p>
+<p>Concept 30% Impact 40% Execution 30%</p>
+<ul>
+<li>All hackathon contestants are given the opportunity to present their project to a team of hackathon organizers in the first round of evaluations. Hackathon teams will be given a preformatted presentation template to present to the judges.</li>
+<li>Organizers will select the top five projects from the first round of evaluations. The top five projects will be given an equal amount of time to present their projects to the hackathon judges.</li>
+<li>The hackathon judges will select the top three winners of the hackathon based on the hackathon criteria.</li>
+<li>Organizers reserve the right to review your qualifications.</li>
+<li>Hackathon judges will not discriminate against competitors on the basis of age, ancestry, color, family or medical care leave, gender identity or expression, genetic information, marital status, medical condition, national origin, physical or mental disability, political affiliation, protected veteran status, race, religion, sex (including pregnancy), sexual orientation, or any other characteristic protected by applicable local laws, regulations, and ordinances.</li>
+</ul>
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">Back to top</button>
+<h4 id="hackathonTermsBeijing2016">Hackathon Terms and Conditions </h4>
+<ol>
+<li>Contestants are required to go through the entire hackathon to get the participation award provided by the sponsor.</li>
+<li>Award winners is responsible for any tax subject to the relevant tax laws. The hackathon organizer shall be in no case held liable to any tax levied due to the award. The award winner consents that the hackathon organizer&rsquo;s withholding or pay the relevant taxes (if any).</li>
+<li>Award winners have no right to exchange their awards for cash or other forms. Hackathon sponsors shall not give any extra awards (either goods or cash) in case the previous one is lost, stolen, or damaged.</li>
+<li>Hackathon organizers reserve the rights to take care of any awards left un-awarded and replace the said awards with other goods with equivalent values without any notice in advance.</li>
+<li>Data submitted by contestants must be true and correct without any forgery or alterations. Contestants shall not provide personal data to any third party in lieu of their own by means of fraud or theft. Contestants shall have no violations against the law.</li>
+<li>The review panel has the final say on the finalists and winners at each stage of this hackathon.</li>
+<li>You may take a rest by napping on the table or in your own sleeping bag at the refreshment zone during the development session of the contest.</li>
+<li>Individual team members may not compete on more than one team.</li>
+<li>Hackathon organizers, sponsors and its execution agents have the rights in reproducing, editing, converting, distributing, publicly transmitting, publicly performing, publicly presenting, publicly broadcasting, publicly verbal disclosing, referencing, or excerpting, and any other act required for using contest works by and basic data of contestants, including but not limited to name, portraits and photos, (hereafter referred to as &ldquo;contest data&rdquo;) unlimited number of times in their worldwide marketing activities, promotional activities, charity activities, and relevant media including publications, information, proposals, promotional materials, brochures and websites.</li>
+<li>In case contestants took actions against measures of this hackathon (including notes on the contests), regulations, the hackathon itself or its website, actions aimed at interrupting this hackathon or interfering with other contestants or participating this hackathon in illegal activities or against the public order and good morals and manner including unfair, deceptive and fraudulent practices, subject to the organizer&rsquo;s judgment, he/she agrees to the organizer&rsquo;s immediate removal of his/her hackathon or award winning qualifications (including recovering the award cash, certificate and trophy by the hackathon organizer). He/she shall be held liable for any legal responsibility and held liable for compensating the organizer, sponsor, execution agent and their executives, directors, supervisors and employees for any of their loss and expenses due to these damages.</li>
+<li>The contestants have learnt that any one of them or any individual attempting to compromise the web site or the progress of this hackathon would breach relevant civil or criminal laws. The organizer, sponsors and their execution agents shall reserve the right in requesting for compensation, to the extent permitted by the relevant regulations, against damage by these individuals. 12. The organizer shall reserve the right to change the program of this hackathon with a notice in advance. Hackathon attendees, once participating in or registering to it, shall consent to be bound by this program. Any matter not covered herein shall be supplemented and publicized on the web site of this hackathon by the organizer.</li>
+<li>If someone cheats, or a virus, bug, bot, catastrophic event, or any other unforeseen or unexpected event that cannot be reasonably anticipated or controlled, (also referred to as force majeure) affects the fairness and / or integrity of this Contest, we reserve the right to cancel, change or suspend this Contest. This right is reserved whether the event is due to human or technical error. If a solution cannot be found to restore the integrity of the Contest, we reserve the right to select winners from among all eligible entries received before we had to cancel, change or suspend the Contest.</li>
+<li>If you attempt or we have strong reason to believe that you have compromised the integrity or the legitimate operation of this Contest by cheating, hacking, creating a bot or other automated program, or by committing fraud in ANY way, we may seek damages from you to the fullest extent permitted by law. Further, we may disqualify you, and ban you from participating in any of our future Contests, so please play fairly.</li>
+</ol>
+<h5>PRIVACY STATEMENT </h5>
+<p>At Microsoft, we are committed to protecting your privacy. Microsoft uses the information you provide to notify prize winners, and to send you information about other Microsoft products and services, if requested by you. Microsoft will not share the information you provide with third parties without your permission except where necessary to complete the services or transactions you have requested, or as required by law. Microsoft is committed to protecting the security of your personal information.</p>
+<p>We use a variety of security technologies and procedures to help protect your personal information from unauthorized access, use, or disclosure. Your personal information is never shared outside the company without your permission, except under conditions explained above. If you believe that Microsoft has not adhered to this statement, please notify us by sending email to VSIPENG@microsoft.com or postal mail to VSIP Engineering, Microsoft Privacy, Microsoft Corporation, One Microsoft Way, Redmond, WA 98052 USA, and we will use commercially reasonable efforts to remedy the situation.</p>
+<button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">Back to top</button>`
+			})
+})
+.then(function() {
+	return EventTab.create({
+		tabTitle: '议程',
+		tabNumber: 2,
+		tabContent: `<a href="/beijing2016" class="btn btn-success float-right" role="button">汉语</a>
+<a href="http://www.aka.ms/devdaysbeijing2016"><img src="/uploads/RegisterNowCN.png" style="height: 37px; margin-right: 10px;" class="float-right" title="registration button" alt="registration link"></a>
+<h4>2016 年九月二十六日: Hackathon 开始! </h4>	
+<h4>2016 年十月二十一日: Hackathon 正式开幕</h4>
+<p>会场：微软亚太研发集团</p>
+<p>北京市海淀区丹棱街5号</p>
+<p>邮编：100080</p>
+<ul>
+<li>17:00 &ndash; 欢迎参赛者</li>
+<li>18:00 &ndash; 晚餐</li>
+<li>19:00-21:00 &ndash; 建立团队 + 编写程序和应用</li>
+</ul>
+<p><strong>2016 年十月二十二日: DevDays Asia 2016 @ Beijing 会议开始与 Hackathon继续进行</strong></p>
+<p>会场：微软亚太研发集团</p>
+<p>北京市海淀区丹棱街5号</p>
+<p>邮编：100080</p>
+<ul>
+<li>9:00 &ndash; 欢迎</li>
+<li>9:15 &ndash; 开幕演讲</li>
+<li>10:00 &ndash; Office 开发者与互操作环节开始</li>
+<li>12:30 &ndash; 午餐</li>
+<li>13:30-18: 15 &ndash; 技术演讲与动手实验</li>
+<li>18:15- 晚餐</li>
+<li>19:15-0:00 &ndash; 编写程序和应用</li>
+</ul>
+<p>*Hackathon将于周六全天进行，现场有微软工程师的帮助和指导。</p>
+<p><strong>2016 年十月二十三日: Hackathon 继续进行</strong></p>
+<p>会场：微软亚太研发集团</p>
+<p>北京市海淀区丹棱街5号</p>
+<p>邮编：100080</p>
+<ul>
+<li>9:00 会场开放，提供早餐</li>
+<li>9:00-12:00 - 编写程序和应用</li>
+<li>12:00 &ndash; 午餐</li>
+<li>13:00-15:00 &ndash; 编写程序和应用</li>
+<li>15:00 &ndash; 完成程序和应用及提交</li>
+<li>15:15 &ndash; 17:00 &ndash; 第一轮评估参赛团队</li>
+<li>17:00-18:00 &ndash; 参加决赛的团队向评审团展示成果</li>
+<li>18:15 &ndash; Hackathon 颁奖及闭幕</li>
+</ul>
+`
+	})
+})
 	////////////////////////////////////Contact placeholder/////////////////////////////////////
 
 	.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Michael',
 				lastName: 'Bowman',
 				newsletterSubscription: true,
@@ -2510,6 +3875,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Kwabena (K.B.)',
 				lastName: 'Badu-Antwi',
 				newsletterSubscription: true,
@@ -2529,6 +3895,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Prakash',
 				lastName: 'Narayanan',
 				newsletterSubscription: true,
@@ -2547,6 +3914,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Diane',
 				lastName: 'Larsen',
 				contactDescription: 'Diane Larsen is a Senior Program Manager in the Enterprise Cloud Group. She has been with Microsoft since 2000, and has been working on protocol interoperability initiatives for Windows and Windows Server since 2008. Prior to this role, she wrote documentation for SQL Server, managed a content publishing team, and managed web development projects.<br /><br />Diane graduated from the University of Washington with a Bachelor of Science degree in Technical Communication. She spends as much time as possible outdoors, watches movies, takes classes, and travels to warmer places during the really rainy season.',
@@ -2563,6 +3931,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Rich',
 				lastName: 'McLain',
 				newsletterSubscription: true,
@@ -2581,6 +3950,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Donny',
 				lastName: 'Luu',
 				newsletterSubscription: true,
@@ -2599,6 +3969,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Bailey',
 				lastName: 'Chauner',
 				newsletterSubscription: true,
@@ -2617,6 +3988,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Andrew',
 				lastName: 'Davidoff',
 				newsletterSubscription: true,
@@ -2635,6 +4007,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Jinghui',
 				lastName: 'Zhang',
 				newsletterSubscription: true,
@@ -2653,6 +4026,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Pui',
 				lastName: 'Leung',
 				newsletterSubscription: true,
@@ -2671,6 +4045,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Tom',
 				lastName: 'Jebo',
 				newsletterSubscription: true,
@@ -2689,6 +4064,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Jingyu',
 				lastName: 'Shao',
 				newsletterSubscription: true,
@@ -2707,6 +4083,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Jinlin',
 				lastName: 'Xu',
 				newsletterSubscription: true,
@@ -2725,6 +4102,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Christine',
 				lastName: 'Huang',
 				newsletterSubscription: true,
@@ -2743,6 +4121,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Tarun',
 				lastName: 'Chopra',
 				newsletterSubscription: true,
@@ -2761,6 +4140,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Tom',
 				lastName: 'Devey',
 				newsletterSubscription: true,
@@ -2779,6 +4159,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Hector',
 				lastName: 'Sandino',
 				newsletterSubscription: true,
@@ -2796,6 +4177,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Bryan S.',
 				lastName: 'Burgin',
 				newsletterSubscription: true,
@@ -2814,6 +4196,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Feng',
 				lastName: 'Han',
 				newsletterSubscription: true,
@@ -2832,6 +4215,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Guozhao',
 				lastName: 'Wu',
 				newsletterSubscription: true,
@@ -2849,6 +4233,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Obaid',
 				lastName: 'Farooqi',
 				newsletterSubscription: true,
@@ -2867,6 +4252,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Guqing',
 				lastName: 'Fang',
 				newsletterSubscription: true,
@@ -2885,6 +4271,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Mai-Ing',
 				lastName: 'Cheng',
 				newsletterSubscription: true,
@@ -2902,6 +4289,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Yuqing',
 				lastName: 'Zhao',
 				newsletterSubscription: true,
@@ -2919,6 +4307,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Michelle',
 				lastName: 'Hammond',
 				newsletterSubscription: true,
@@ -2936,6 +4325,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'David',
 				lastName: 'Robinson',
 				msTeamTitle: 'Principal Group SW Eng Mgr',
@@ -2947,6 +4337,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Congyong',
 				lastName: 'Su',
 				msTeamTitle: 'Senior Software Eng Mgr',
@@ -2956,6 +4347,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Baoming',
 				lastName: 'Yu',
 				msTeamTitle: '',
@@ -2965,6 +4357,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Layla',
 				lastName: 'Liu',
 				msTeamTitle: 'Software Engineer II ',
@@ -2974,6 +4367,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Dong',
 				lastName: 'Liu',
 				msTeamTitle: 'Software Engineer',
@@ -2983,6 +4377,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Challen',
 				lastName: 'He',
 				msTeamTitle: 'Software Engineer II ',
@@ -2992,6 +4387,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Ted',
 				lastName: 'Way',
 				newsletterSubscription: true,
@@ -3009,6 +4405,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Darwin',
 				lastName: 'Schweitzer',
 				newsletterSubscription: true,
@@ -3026,6 +4423,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Seth',
 				lastName: 'Mottaghinejad',
 				newsletterSubscription: false,
@@ -3043,6 +4441,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Mark',
 				lastName: 'Stafford',
 				contactDescription: 'Mark Stafford is a Program Manager at Microsoft contributing to the future of the OData protocol. Mark has a unique perspective on data access technologies given his many years of pre-Microsoft experience building and deploying real-world applications, managing developers and directing a business intelligence team.',
@@ -3060,6 +4459,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Jamie',
 				lastName: 'Olson',
 				contactDescription: 'Jamie Olson is a Senior Data Scientist at Microsoft, where he works with customers and partners to build advanced analytics application, designing and developing end-to-end data pipelines across the entire range of Cortana Analytics products.  He has more than 10 years of experience with the R programming language, the last four of which have focused on using R inside Big Data platforms like Hadoop. Jamie’s expertise in computer science, machine learning and big data allows customers to quickly and easily transition and scale their advanced analytics projects with Microsoft technologies.',
@@ -3076,6 +4476,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Vivek',
 				lastName: 'Gupta',
 				contactDescription: 'Vivek Gupta is a Senior Data Scientist at Microsoft. He works with customers to understand their analytical business problems and how to use the Cortana Intelligence Suite to help solve them. Most recently, Vivek was part of Nokia’s Smart Devices division where he worked on applying data analytics solution to problems in the areas of understanding user behavior around location information, photography and application usage. Prior to joining Nokia, Vivek worked in a variety of industries designing and building backend services.',
@@ -3092,6 +4493,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Tristan',
 				lastName: 'Davis',
 				contactDescription: 'Tristan Davis is the Group Program Manager of the APIs & Extensions team within Office Extensibility. His team is responsible for improvements to the Office 365 APIs, the new Apps for Office client extensibility model, as well as all existing flavors of Office programmability. Prior to joining the team, he was a member of the Word program management team from Office 2003 through Office 2013.',
@@ -3108,6 +4510,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Jos',
 				lastName: ' de Bruijn',
 				contactDescription: 'Jos de Bruijn is a Senior Program Manager in the Database Systems team. He works on in-memory technologies in SQL Server. His main focus is on query processing, programmability, and transaction semantics. In a previous life, he obtained a PhD in knowledge representation and semantic web technology, and worked in academia for several years as an assistant professor.',
@@ -3124,6 +4527,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return Contact.create({
+				isPublished: true,
 				firstName: 'Kevin',
 				lastName: 'Farlee',
 				contactDescription: 'Kevin Farlee has over 30 years in the industry, in both database as well as storage management software. In his current role as a Senior Program Manager on the Microsoft SQL Server team, he is responsible for the SQL Server High Availability roadmap, as well as the high performance OLTP and Analytics features within the SQL Server product.',

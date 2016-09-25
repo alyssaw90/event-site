@@ -44,11 +44,11 @@ module.exports = function (grunt) {
     },
     //task to clean directories before build
     clean: {
-      dev: {
-        src: ['app/build/**/*.js', 'app/dist/*.*', 'app/css/custom.build.min.css', 'app/css/highcontrast.min.css', 'app/css/twitter-widget.min.css']
+      all: {
+        src: ['app/build/**/*.*', 'app/build/app/', 'app/css/custom.build.min.css', 'app/css/highcontrast.min.css', 'app/css/twitter-widget.min.css', '!app/build/.gitignore']
       },
-      prod: {
-        src: ['app/build/**/*.*', 'app/build/app/**/**', '!app/build/build.min.js', '!app/build/build.min.js.map', '!app/build/.gitignore']
+      build: {
+        src: ['app/build/**/*.*', 'app/build/app/', '!app/build/build.min.js', '!app/build/build.min.js.map', '!app/build/.gitignore']
       }
     },
     //register task to run babel and compile es6
@@ -73,13 +73,13 @@ module.exports = function (grunt) {
             dest: 'app/build/',
             // ext:'.build.js'
           },
-          {
+          /*{
             expand: true,
             cwd: '',
             src: ['app/lib/kickstart.js'],
             dest: 'app/build/',
             // ext:'.build.js'
-          }
+          }*/
         ]
       }
     },
@@ -91,6 +91,11 @@ module.exports = function (grunt) {
         },
         options: {
           // transform: ['coffeeify']
+        }
+      },
+      dev: {
+        files: {
+          'app/build/build.min.js': ['app/build/**/*.js']
         }
       }
     },
@@ -232,8 +237,8 @@ module.exports = function (grunt) {
 	// register mocha test task
 	grunt.registerTask('test', ['simplemocha:dev']);
   grunt.registerTask('lessProd', ['less:prod']);
-  grunt.registerTask('build:dev', ['clean:dev', 'babel', 'browserify', 'lessProd']);
-  grunt.registerTask('build', ['clean:dev', 'babel', 'browserify', 'uglify', 'lessProd', 'clean:prod']);
+  grunt.registerTask('build:dev', ['clean:all', 'babel', 'browserify:dev', 'lessProd']);
+  grunt.registerTask('build', ['clean:all', 'babel', 'browserify:dist', 'uglify', 'lessProd', 'clean:build']);
   grunt.registerTask('start:dev', ['build:dev', 'nodemon:dev']);
   grunt.registerTask('start', ['build', 'nodemon:dev']);
 	grunt.registerTask('test', ['build', 'test']);

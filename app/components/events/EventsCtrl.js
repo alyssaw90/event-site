@@ -16,19 +16,29 @@ const EventsCtrl = (app) => {
 
 			Events.getEvents(path, function (err, data) {
         if (err) {
-          return $scope.errors.push({msg: 'could not retrieve event'});
+          return $scope.errors.push({msg: 'no event found'});
         };
-        
+        $scope.headerImage = 'uploads/' + data.event.eventHeaderImage;
         $scope.events = data;
         //loop over html string for tabs and tell angular to trust it as html
 				for (let i = 0, len = $scope.events.tabs.length; i < len; i++) {
 					$scope.events.tabs[i].tabContent = $sce.trustAsHtml($scope.events.tabs[i].tabContent);
-
+				}
+				//add folder path to image names
+				for (let i = 0, len = $scope.events.speakers.length; i < len; i++) {
+					 $scope.events.speakers[i].headShot = 'uploads/' + $scope.events.speakers[i].headShot;
+				}
+				for (let i = 0, len = $scope.events.length; i < len; i++) {
+					$scope.events[i].eventAboutTabText = $sce.trustAsHtml($scope.events[i].eventAboutTabText);
 				}
       })
 			
 		
 		};
+
+		$scope.getReadableDate = (dateObj) => {
+			return new Date(dateObj).toDateString();
+		}
 
 
 		$scope.showOnlyFirst = function(index) {

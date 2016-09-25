@@ -9,12 +9,12 @@ const bingMapRESTResource = (app) => {
 		return function(searchPath, callback) {
 			return {
 				getBingMapKey: function(callback) {
-					$http.get('/bingmapkey')
+					$http.get('/api/bingmapkey')
           .success(customFunctions.handleSuccess(callback))
           .error(customFunctions.handleError(callback));
 				},
 				getMapEvents: function(callback) {
-					$http.get('/mapevents')
+					$http.get('/api/mapevents')
           .success(customFunctions.handleSuccess(callback))
           .error(customFunctions.handleError(callback));
 				},

@@ -15,6 +15,12 @@ if (self === top) {
 } else {
 	top.location = self.location;
 }
+//create selector for focusable elements
+jQuery.extend(jQuery.expr[':'], {
+    focusable: function(el, index, selector){
+    return jQuery(el).is('a, button, :input, [tabindex]');
+    }
+});
 
 (function($) {
 
@@ -78,7 +84,7 @@ if (self === top) {
 	 		
 	 	}());
 	 	
-		$('.tabLink').click(function(e) {
+		/*$('.tabLink').click(function(e) {
 			if ($(this).data('tabid') !== 'undefined') {
 				e.preventDefault();
 				let tabId = $(this).data('tabid');
@@ -101,7 +107,7 @@ if (self === top) {
 				});
 				
 			}
-		});
+		});*/
 
 		$('main').css('position', '');
 
@@ -147,6 +153,18 @@ if (self === top) {
 			console.log('focused elem:               ', $(this));
 		});*/
 
+		//find what's clicked
+		$('*').keydown(function(e) {
+			console.log('this   ', $(this));
+		});
+
+		//Prevent elements from taking focus when they are clicked
+		$('*').click(function(e) {
+			let keyCode = customFunctions.getKeyCode(e);
+			if (keyCode === 1) {
+				jQuery(this).blur();								
+			}
+		});
 		//remove focus from resize sensor div
 		$('.resize-sensor').attr('tabindex', '-1');
 

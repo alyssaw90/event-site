@@ -38,20 +38,13 @@
 		</div>
 	</nav>
 	<!-- End gray desktop menu -->
-	<!-- Begin Image section/slider -->
-	<div class="carousel-container" data-ng-controller="HeaderController" data-ng-init="getSiteStyle();">
-		<!-- static image of past events banner for homepage -->
-		<a data-ng-if="(!siteStyles.showSlider && siteStyles.showPastEventsBanner && siteStyles.hideEventBanners) || imageCount <= 0" class="homepageHeaderAnchor" title="past events link" href="/past-events" aria-label="past events banner image">
-			<section id="headerImage" class="mobileWrapper" role="presentation" aria-hidden="true">
-				<img aria-hidden="true" alt="past events header" style="width:100%; margin: 	0 0 0 0; padding: 0 0 0 0;" data-ng-src="./app/uploads/past-events-banner.jpg" />
-			</section>
-		</a>
-		<!-- the rn-carousel package creates the slider https://www.npmjs.com/package/angular-carousel -->
-		<ul data-ng-if="(siteStyles.showSlider && !siteStyles.showPastEventsBanner && !siteStyles.hideEventBanners) && imageCount > 0" rn-carousel rn-carousel-controls-allow-loop rn-carousel-controls rn-carousel-auto-slide="3" data-slider-directive id="upcoming-events-carousel" class="image" style="margin-left:0;margin-bottom:0;">
-  		<li data-ng-repeat="slide in slides" data-ng-if="slide.eventHomepageImage">
+	<!-- Begin Image section/slideshow -->
+	<div class="carousel-container" data-ng-controller="HeaderController" data-ng-init="getSlides('homepageSlideshow');">
+		<ul rn-carousel rn-carousel-controls-allow-loop rn-carousel-controls rn-carousel-auto-slide="3" rn-carousel-duration="1000" data-slider-directive id="upcoming-events-carousel" class="image" style="margin-left:0;margin-bottom:0;">
+  		<li data-ng-repeat="slide in slides | orderBy: 'SlideshowSlideAssc.sortPosition'">
   		  <div class="layer" data-slider-slide-directive>
-  		  	<a href="/{{slide.eventUrl}}">
-  		  		<img class="carousel-img" data-ng-src="/app/uploads/{{ slide.eventHomepageImage }}" />
+  		  	<a title="{{slide.title}}" alt="{{slide.altText}}" data-ng-href="/{{slide.imgDestUrl}}">
+  		  		<img  data-ng-cloak class="carousel-img" data-ng-src="{{ slide.imgSrcUrl }}" />
 		  		</a>
 		  	</div>
   		</li>
@@ -61,7 +54,7 @@
 	<!-- Begin upcoming events desktop menu -->
 	<nav class="menu-overlay desktop-menu flex clearfix" data-ng-style="{'background-color':futureEvents[0].eventHighlightColor}">
 		<div class="col_12 purpleEventMenu">
-			<span data-ng-repeat="futureEvent in futureEvents | orderBy: eventStartDate" role="presentation"><a title="Navigate to page for {{futureEvent.city}} {{futureEvent.headerEventDates}} event" aria-label="{{futureEvent.city}} {{futureEvent.headerEventDates}}" id="{{isFirstEventInLIst($index)}}" href="/{{futureEvent.eventUrl}}">{{futureEvent.city}} &nbsp<span class="purpleSubMenu">- {{futureEvent.headerEventDates}}</span></a> <span aria-hidden="true" role="presentation" ng-show=" ! $last ">|&nbsp</span></span>
+			<span data-ng-repeat="futureEvent in futureEvents | orderBy: eventStartDate | limitTo: 4" role="presentation"><a title="Navigate to page for {{futureEvent.city}} {{futureEvent.headerEventDates}} event" aria-label="{{futureEvent.city}} {{futureEvent.headerEventDates}}" id="{{isFirstEventInLIst($index)}}" href="/{{futureEvent.eventUrl}}">{{futureEvent.city}} &nbsp<span class="purpleSubMenu">- {{futureEvent.headerEventDates}}</span></a> <span aria-hidden="true" role="presentation" ng-show=" ! $last ">|&nbsp</span></span>
 		</div>
 	</nav>
 	<!-- End upcoming events desktop menu -->

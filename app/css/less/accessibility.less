@@ -1,5 +1,5 @@
 
-a:focus,/* h1:focus, h2:focus, h3:focus, h4:focus, h5:focus, h6:focus, p:focus,*/ iframe:focus, .tabs > li > a:not(.homepageHeaderAnchor):focus, th:focus, td:focus, li:focus, nav:focus {
+a:focus:not(:hover),/* h1:focus:not(:hover), h2:focus:not(:hover), h3:focus:not(:hover), h4:focus:not(:hover), h5:focus:not(:hover), h6:focus:not(:hover), p:focus:not(:hover),*/ iframe:focus:not(:hover), .tabs > li > a:not(.homepageHeaderAnchor):focus:not(:hover), th:focus:not(:hover), td:focus:not(:hover), li:focus:not(:hover), nav:focus:not(:hover), .carousel-img:focus:not(:hover), div:focus:not(:hover) {
  	box-shadow: 0 0 7px #6DB9FF;
 	border: 3px solid #50B1FE;
 }
@@ -10,13 +10,17 @@ div:focus {
 	border: 20px solid #50B1FE;
 }*/
 
-.skipNavigation {
+.tabStartAnchor {
 	position:absolute;
 	left:-10000px;
 	top:auto;
 	width:1px;
 	height:1px;
 	overflow:hidden;
+}
+
+.skipNavigation {
+	.tabStartAnchor;
 	&:focus {
 		position:static;
 		left:10px;
