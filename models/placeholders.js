@@ -57,7 +57,7 @@ module.exports = function () {
 	.then(function() {
 		return Slide.create({
 			imgSrcUrl: 'Beijing-Header-8.26.jpg',
-			imgDestUrl: 'beijing2016',
+			imgDestUrl: 'beijing2016cn',
 			title: 'DevDays Asia 2016 @ Beijing banner',
 			altText: 'Banner image for DevDays Asia 2016 @ Beijing'
 		})
@@ -174,7 +174,8 @@ module.exports = function () {
 				eventHeaderImage: 'paris-2017-banner.jpg',
 				eventHighlightColor: '#5c005c',
 				// eventSpeakers: '1',
-				isPublished: true
+				isPublished: true,
+				showOnHeader: true
 			});
 		})
 		.then(function () {
@@ -188,7 +189,8 @@ module.exports = function () {
 				eventHeaderImage: 'taipei-2017-banner.jpg',
 				eventHighlightColor: '#0078d7',
 				// eventSpeakers: '1',
-				isPublished: true
+				isPublished: true,
+				showOnHeader: true
 			});
 		})
 		.then(function () {
@@ -308,7 +310,8 @@ module.exports = function () {
 				eventEndDate: new Date('October 23, 2016'),
 				eventHighlightColor: '#107c10',
 				eventHeaderImage: 'Beijing-Header-8.26.jpg',
-				isPublished: true
+				isPublished: true,
+				showOnHeader: false
 			})
 		})
 		.then(function() {
@@ -334,7 +337,8 @@ module.exports = function () {
 					<li><b>Cost:</b> Free</li>
 				</ul>
 				<p>If you are interested in participating or have additional questions, please contact <a href="mailto:prana@microsoft.com?subject=RDP%20IO%20Lab">Prakash Narayanan</a> </p>`,
-				isPublished: true
+				isPublished: true,
+				showOnHeader: true
 			})
 		})
 		.then(function() {
@@ -347,42 +351,8 @@ module.exports = function () {
 				eventEndDate: new Date('October 23, 2016'),
 				eventHighlightColor: '#107c10',
 				eventHeaderImage: 'Beijing-Header-8.26.jpg',
-				eventAboutTabText:`
-				<a href="/beijing2016" class="btn btn-info float-right" role="button">English</a>
-				<a href="http://www.aka.ms/devdaysbeijing2016"><img src="uploads/RegisterNowCN.png" style="height: 37px; margin-right: 10px;" class="float-right beijingRegistration2016Button" title="registration button" alt="registration link"></a>
-				<h2>DevDays Asia 2016 @ Beijing</h2>
-				<h4>10/21-10/23，2016</h4>
-				<h4>中国北京市</h4>
-				<h4>活动对象︰ 开发人员、 独立软件供应商、 学生、 科技创业、 企业</h4>
-				<h4>费用：免费</h4>
-				<p>微软Office 365与开放文档团队将在中国北京市举办 DevDays Asia 2016 @Beijing。此次北京的活动是自DevDays Asia @Taipei（<a href="http://www.prnewswire.com/news-releases/microsoft-launches-the-biggest-developer-event-in-asia-taking-iot-development-in-taiwan-to-new-heights-300253810.html">亚州最大的开发者活动</a>）以来另一次延伸性的活动。快来参加在北京微软亚太研发集团召开的技术研讨。 日期为2016年10月21日至23日。内容包括演示、现场实践与操作、互动与交流、还有hackathon! 这是一场属于开发人员的技术盛宴，我们将围绕Office 365，数据平台以及开放性规范等技术话题，为您带来丰富的技术内容。您将在本次活动中聆听来自微软产品团队工程师带来的技术演讲，参与动手实验，与研发工程师直接一对一互动。您还可以带着您的Office 365项目参与48小时应用开发马拉松活动，在技术专家的指导下加速完善您的项目，更有机会赢得Windows平板电脑、无人机、VR眼镜、平衡车等精彩大礼！</p>
-				<p><strong>DevDays Asia 2016</strong>活动分为两个部分： <strong>DevDays Asia 2016北京技术峰会</strong>(10月22日 9:00-17:00)以及<strong>Office 365应用开发马拉松</strong>(10月21日17:00-10月23日17:00)。您可以在注册DevDays Asia 2016北京技术峰会时选择是否参与应用开发马拉松活动。</p>
-				<p class="blue-border"><span class="bg-primary">DevDays Asia 2016开发者高峰 会&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;10月22日 9:00 – 18:00</p>
-				 
-				<p>您将在活动中详细了解到Microsoft Office 365的广阔市场机会，以及以Office 365作为平台进行开发的技术细节。此外我们还将向您介绍微软在互操作性开放性规范方面的承诺。大会技术课程将涵盖以下内容： </p>
-				<ul>
-					<li>内置在 Word、 Excel、PowerPoint、Outlook中的Microsoft Office 外接程序</li>
-					<li>Microsoft Graph (旧称 “Office 365 统一API”) ：Microsoft Graph是访问 Microsoft 云服务中数据、商务消息、用户、文件、邮件、日历、联系人 及文件夹最轻松简易的方式。</li>
-					<li>Microsoft SQL Server</li>
-					<li>开放数据（OData）： 构建及使用RESTful APIs</li>
-					<li>Office文件格式</li>
-					<li>Office, SharePoint, or Exchange 协议</li>
-					<li>Microsoft Office与数据平台的开放文档</li>
-					<li>Windows 互操作</li>
-					<li>Windows 协议测试组件</li>
-				</ul>
-				<p class="blue-border"><span class="bg-primary">Office 365 应用开发马拉松 (Hackathon)&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;10月21日 17:00 - 10月23日 17:00</p>
-				<p>Office 365强劲的增长势头为ISV、企业、初创公司以及开发者都带来了无限的机会，基于Office 365构建的应用解决方案为诸多行业和场景带来了新的效率和革新。10月21日17点至10月23日17点，带上您的创意、项目和团队，参与48小时的Office 365应用开发马拉松，在现场与来自各地的开发团队同场竞技，面对面交流微软产品组技术专家，解决开发过程中遇到的问题，并在技术指导下不断加速和完善您的项目。
-				我们会为您提供完善的后勤保障服务，餐食茶点、休息娱乐，以确保您能够在48小时内最大程度地完善您的项目。我们还为您准备了丰厚的奖品，以激励您的极致创意和出色的项目成果：</p>
-				<img src="uploads/things-beijing-2016.png" class="centered" title="images of laptop, drone, virtual reality goggles, and scooter" alt="images of laptop, drone, virtual reality goggles, and scooter">
-				<hr>
-				<a href="https://www.microsoftevents.com/profile/form/index.cfm?PKformID=0x6209970001"><img src="uploads/RegisterNowCN.png" class="centered" title="现在就注册吧" alt="现在就注册吧！"></a>
-				<p class="small">* 请在注册页面中选择参与应用开发马拉松选项，报名参与Office 365应用开发马拉松需先提交项目信息，具体规则将在审核后通过邮件及网站公布。</p>
-				<p class="small">* 更多奖品将陆续公布，请以最终公布规则及奖励说明中的描述为准。 </p>
-				<p class="small">*问题和帮助</p>
-
-				`,
-				isPublished: true
+				isPublished: true,
+				showOnHeader: true
 			})
 		})
 
@@ -1116,6 +1086,7 @@ Web 專案會有Office 增益集網站檔案, 所以這是您發佈到Azure的�
 <figcaption>Figure 4. Your Developer Site home page with the Add-ins in Testing list</figcaption>
  <img src="../uploads/office-web-curriculum-taipei-en-8.png" />
 <h3 id="taipei2016-assign-office-365-license-en">Assign Office 365 license</h3>
+<p><strong>Note:</strong> The following steps are not needed if the Office 365 homepage automatically displays the products that are available for download (See Figure 8). The steps below are based on the Old Office 365 Admin Center.</p> 
 <p>To assign Office 365 license for yourself, the active user. Click on the “waffle” icon > Admin icon located on the top left.</p>
 <figcaption>Figure 5. Office 365 landing page</figcaption>
 <img src="../uploads/office-web-curriculum-taipei-en-10.png" />
@@ -2641,12 +2612,12 @@ setTimeout(function() {
 				<a class="btn btn-primary float-right" role="button" style="margin-right:10px;" href="http://www.aka.ms/devdaysbeijing2016">Register</a>
 				<h4>Resources are listed below for attendees to prepare for the hackathon.</h4>
 					<ul>
-						<li><h5><a href="#prereqsHeader" du-smooth-scroll>Prerequisites</a></h5></li>
-						<li><h5><a href="#more-resources-header" du-smooth-scroll>More resources</a></h5></li>
-						<li><h5><a href="#tutorials-header" du-smooth-scroll>Tutorials</a> </h5>
+						<li><h5><a target="_self" href="#prereqsHeader" du-smooth-scroll>Prerequisites</a></h5></li>
+						<li><h5><a target="_self" href="#more-resources-header" du-smooth-scroll>More resources</a></h5></li>
+						<li><h5><a target="_self" href="#tutorials-header" du-smooth-scroll>Tutorials</a> </h5>
 							<ul>
-								<li><a href="#taipei2016-curriculum-registration-en" target="_self">Registration</a></li>
-								<li><a href="#taipei2016-curriculum-publishing-en" target="_self">Publish an Office add-in and submit it to Office Store</a></li>
+								<li><a target="_self" href="#taipei2016-curriculum-registration-en" target="_self">Registration</a></li>
+								<li><a target="_self" href="#taipei2016-curriculum-publishing-en" target="_self">Publish an Office add-in and submit it to Office Store</a></li>
 							</ul>
 					</li>
 					</ul>
@@ -2683,8 +2654,8 @@ setTimeout(function() {
 					</ul>
 					<h3 id="tutorials-header">Tutorials</h3>
 					<ul>
-						<li><a href="#taipei2016-curriculum-registration-en" target="_self">Registration</a></li>
-						<li><a href="#taipei2016-curriculum-publishing-en" target="_self">Publish an Office add-in and submit it to Office Store</a></li>
+						<li><a target="_self" href="#taipei2016-curriculum-registration-en" target="_self">Registration</a></li>
+						<li><a target="_self" href="#taipei2016-curriculum-publishing-en" target="_self">Publish an Office add-in and submit it to Office Store</a></li>
 					</ul>
 					
 					
@@ -3181,13 +3152,13 @@ setTimeout(function() {
 				<p >请参考以下 Hackathon 参赛准备资料。熟悉这些内容将在活动中帮助您，并会有利于您在 Hackathon 中的表现。</p>
 <h3>资料主题</h3>
 <ul>
-<li><a href="#必要条件-1">必要条件 </a></li>
-<li><a href="#更多资源-1">更多资源</a></li>
-<li><a href="#有关教程-1">有关教程</a></li>
+<li><a target="_self" href="#hackathonHashcn1">必要条件 </a></li>
+<li><a target="_self" href="#hackathonHashcn2">更多资源</a></li>
+<li><a target="_self" href="#hackathonHashcn3">有关教程</a></li>
 </ul>
-<h3 id="必要条件-1">必要条件 </h3>
+<h3 id="hackathonHashcn1">必要条件 </h3>
 <ul>
-<li>如果您没有Office，请在 <a href="http://dev.office.com/devprogram">Office开发中心</a> 的网站上报名及填写单表（详细步骤，请参考<a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/DevDays-Asia--Taipei-2016/Office-365-Developer-Program-sign-up--Training">九频道的视频</a> 或有关教程<a href="#_报名注册">报名注册</a>）。通过Office 365 的开发人员计划，您能拿到免费的Office 365的开发人员账户及为期一年的Office 365 的订阅。</li>
+<li>如果您没有Office，请在 <a href="http://dev.office.com/devprogram">Office开发中心</a> 的网站上报名及填写单表（详细步骤，请参考<a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/DevDays-Asia--Taipei-2016/Office-365-Developer-Program-sign-up--Training">九频道的视频</a> 或有关教程<a target="_self" href="#_报名注册">报名注册</a>）。通过Office 365 的开发人员计划，您能拿到免费的Office 365的开发人员账户及为期一年的Office 365 的订阅。</li>
 <li>入门</p>
 <p>您可以找到有关开发工具的信息与内容：</p>
 <p><a href="http://dev.office.com/getting-started">Office Dev Center 入门</a></p>
@@ -3195,7 +3166,7 @@ setTimeout(function() {
 <p><strong>提示</strong>：若选用Visual Studio 来开发Office 外接程序, 您可用<a href="https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx">Visual Studio Community 201 5 （免费版）</a>和 <a href="https://www.visualstudio.com/features/office-tools-vs">Office开发者工具</a></li>
 </ul>
 <button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">回到本文开头</button>
-<h3 id="更多资源-1">更多资源 </h3>
+<h3 id="hackathonHashcn2">更多资源 </h3>
 <h4 id="开发office应用程序起点">开发Office应用程序起点</h4>
 <h4 id="英文内容">英文内容</h4>
 <ul>
@@ -3209,9 +3180,9 @@ setTimeout(function() {
 <p>注册您的应用调用微软Graph</li>
 <p>微软Build 2016年开发者大会九频道视频</p>
 <p>以Office 365作为平台进行开发概述：</p>
-<li><a href="https://channel9.msdn.com/Events/Build/2016/B866">Make your solution a native part of Office on every&nbsp;platform</a></li>
+<li><a href="https://channel9.msdn.com/Events/Build/2016/B866">Make your solution a native part of Office on every platform</a></li>
 <li><a href="https://channel9.msdn.com/Events/Build/2016/B872">Office platform overview</a></li>
-<p>以Office 365作为平台进行开发技术细节， 比如怎样访问 Office 服务来构建应用及关于调用微软Graph的技术内容。</p>
+<p>以Office 作为平台进行开发技术细节， 比如怎样访问 Office 服务来构建应用及关于调用微软Graph的技术内容。</p>
 <li><a href="https://channel9.msdn.com/Events/Build/2016/T617">Build cool apps with Microsoft Graph, tap into the intelligence and reach millions of&nbsp;users</a></li>
 <li><a href="https://channel9.msdn.com/events/Build/2016/B820">Build smarter apps by connecting to Office&nbsp;services</a></li>
 <li><a href="https://channel9.msdn.com/Events/Build/2016/P568">Connecting to Outlook Direct Endpoint with Azure AD Auth&nbsp;v2</a></li>
@@ -3238,7 +3209,7 @@ setTimeout(function() {
 <li><a href="https://msdn.microsoft.com/ZH-CN/library/office/fp123515.aspx">发布Office 外接程序</a></p>
 <p>构建Office 外接程序之后， 您有几种发布方式。请参考此页。</li>
 <li><a href="https://msdn.microsoft.com/zh-cn/library/office/jj220037.aspx">将 Office 与 SharePoint 外接程序和 Office 365 Web 应用提交到 Office 应用商店</a></p>
-<p>若有兴趣提交您的应用至Office 应用商店，请参考此页及<a href="#有关教程-1"">有关教程</a>。</li>
+<p>若有兴趣提交您的应用至Office 应用商店，请参考此页及<a target="_self" href="#hackathonHashcn3"">有关教程</a>。</li>
 </ul>
 <h4 id="代码范例">代码范例</h4>
 <h4 id="英文内容-1">英文内容</h4>
@@ -3252,19 +3223,19 @@ setTimeout(function() {
 <p>中文版的Office 开发代码范例</li>
 </ul>
 <button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">回到本文开头</button>
-<h3 id="有关教程-1">有关教程 </h3>
+<h3 id="hackathonHashcn3">有关教程 </h3>
 <ul>
-<li><h4 id="报名注册"><a href="#_报名注册">报名注册</a> </h4></li>
-<li><h4 id="发布office-外接程序及提交到office-应用商店"><a href="#发布office-外接程序及提交到office-应用商店-1">发布Office 外接程序及提交到Office 应用商店</a> </h4></li>
+<li><h4 id="报名注册"><a target="_self" href="#_报名注册">报名注册</a> </h4></li>
+<li><h4 id="发布office-外接程序及提交到office-应用商店"><a target="_self" href="#发布office-外接程序及提交到office-应用商店-1">发布Office 外接程序及提交到Office 应用商店</a> </h4></li>
 </ul>
 <h3 id="报名注册-1"><span id="_报名注册" class="anchor"><span id="_报名注册" class="anchor"></span></span>报名注册 </h3>
 <p>本文内容</p>
 <ol style="list-style-type: decimal">
-<li><a href="#在office-dev-center网站上报名">在Office Dev Center网站上报名</a></li>
-<li><a href="#获取office-365开发人员账户">获取Office 365开发人员账户</a></li>
-<li><a href="#登入office-365">登入Office 365</a></li>
-<li><a href="#分配office-365许可证">分配Office 365许可证</a></li>
-<li><a href="#资源">资源</a></li>
+<li><a target="_self" href="#在office-dev-center网站上报名">在Office Dev Center网站上报名</a></li>
+<li><a target="_self" href="#获取office-365开发人员账户">获取Office 365开发人员账户</a></li>
+<li><a target="_self" href="#登入office-365">登入Office 365</a></li>
+<li><a target="_self" href="#分配office-365许可证">分配Office 365许可证</a></li>
+<li><a target="_self" href="#资源">资源</a></li>
 </ol>
 <button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">回到本文开头</button>
 <h3 id="在office-dev-center网站上报名">在Office Dev Center网站上报名</h3>
@@ -3331,14 +3302,14 @@ setTimeout(function() {
 <p>如果您要按照自己的情况来发布您的Office外接程序，请参阅MSDN 资源 &gt; <a href="https://msdn.microsoft.com/ZH-CN/library/office/fp123515.aspx">发布</a>。</p>
 <h3 id="本文内容">本文内容</h3>
 <ol style="list-style-type: decimal">
-<li><a href="#决定发布office-外接程序的通讯端点">决定发布Office 外接程序的通讯端点</a></li>
-<li><a href="#为开发而设定电脑安装.net-的azure-sdk-英文订阅azure账户-及使用office-2016">为开发而设定电脑：安装.NET 的Azure SDK (英文)，订阅Azure账户， 及使用Office 2016</a></li>
-<li><a href="#在azure中建立网站">在Azure中建立网站</a></li>
-<li><a href="#office外接程序发布到azure的网站">Office 外接程序发布到 Azure 网站</a></li>
-<li><a href="#使外接程序资讯清单档案指向在azure中的office外接程序">使外接程序资讯清单档案指向在Azure的Office 外接程序</a></li>
-<li><a href="#在-office-客户端应用程序里运行office外接程序">在Office客户端应用程序里运行Office外接程序</a></li>
-<li><a href="#把外接程序提交至office应用商店">把外接程序提交到Office应用商店</a></li>
-<li><a href="#资源2">资源</a></li>
+<li><a target="_self" href="#决定发布office-外接程序的通讯端点">决定发布Office 外接程序的通讯端点</a></li>
+<li><a target="_self" href="#为开发而设定电脑安装.net-的azure-sdk-英文订阅azure账户-及使用office-2016">为开发而设定电脑：安装.NET 的Azure SDK (英文)，订阅Azure账户， 及使用Office 2016</a></li>
+<li><a target="_self" href="#在azure中建立网站">在Azure中建立网站</a></li>
+<li><a target="_self" href="#office外接程序发布到azure的网站">Office 外接程序发布到 Azure 网站</a></li>
+<li><a target="_self" href="#使外接程序资讯清单档案指向在azure中的office外接程序">使外接程序资讯清单档案指向在Azure的Office 外接程序</a></li>
+<li><a target="_self" href="#在-office-客户端应用程序里运行office外接程序">在Office客户端应用程序里运行Office外接程序</a></li>
+<li><a target="_self" href="#把外接程序提交至office应用商店">把外接程序提交到Office应用商店</a></li>
+<li><a target="_self" href="#资源2">资源</a></li>
 </ol>
 <h3 id="决定发布office-外接程序的通讯端点">决定发布Office 外接程序的通讯端点</h3>
 <ol style="list-style-type: lower-alpha">
@@ -3494,7 +3465,7 @@ setTimeout(function() {
 				tabTitle: 'Agenda',
 				tabNumber: 2,
 				tabContent: `
-				<a href="/beijing2016cn" class="btn btn-success float-right" role="button">汉语</a>
+				<a href="/beijing2016cn#3575831243" class="btn btn-success float-right" role="button">汉语</a>
 				<a class="btn btn-primary float-right" role="button" style="margin-right:10px;" href="http://www.aka.ms/devdaysbeijing2016">Register</a>
 				<h2>DevDays Asia 2016 @ Beijing Agenda</h2>
 				
@@ -3543,14 +3514,14 @@ setTimeout(function() {
 				tabTitle: 'Hackathon 规则与制度',
 				tabNumber: 3,
 				tabContent: `
-				<a href="/beijing2016" class="btn btn-info float-right" role="button">English</a>
+				<a href="/beijing2016#hackathon" class="btn btn-info float-right" role="button">English</a>
 				<a href="http://www.aka.ms/devdaysbeijing2016"><img src="/uploads/RegisterNowCN.png" style="height: 37px; margin-right: 10px;" class="float-right" title="registration button" alt="registration link"></a>
 				<h2>黑客马拉松活动规则与制度</h2>
 <pre class="text-align-center"><span><a target="_self" href="#beijing2016Heading1"> 黑客马拉松项目概述</a> | <a target="_self" href="#beijing2016Heading2">如何参加？</a>| <a target="_self" href="#beijing2016Heading3">黑客马拉松项目需求</a> | <a target="_self" href="#beijing2016Heading4">我的项目将被如何使用？</a>| <a target="_self" href="#beijing2016Heading5"> 我的项目将如何评估？</a>| <a target="_self" href="#beijing2016Heading6"> 黑客马拉松条款和条件</a></span></pre>
 <h4>DevDays Asia 2016 @ Beijing 是微软举办的一场免费活动，主要包含两部分内容：</h4>
 <ol>
  	<li>为期一天的现场技术活动课程（2016 年 10 月 22 日 9am-6pm）</li>
- 	<li>Microsoft Office 365 黑客马拉松活动<strong>（黑客马拉松活动将于 2016 年 9 月 26 日启动报名，并于 2016 年 10 月 21 日 5:00pm 正式结束。</strong>评选和颁奖将于 2016 年 10 月 23 日 DevDays Asia 2016 @ Beijing 活动现场举行）。<span style="color: #ff00ff;"><u><a target="_blank" href="http://www.interopevents.com/beijing2016">详情请查阅完整议程安排</a></u>。(LINK TO AGENDA)</span></li>
+ 	<li>Microsoft Office 365 黑客马拉松活动<strong>（黑客马拉松活动将于 2016 年 9 月 26 日启动报名，并于 2016 年 10 月 21 日 5:00pm 正式结束。</strong>评选和颁奖将于 2016 年 10 月 23 日 DevDays Asia 2016 @ Beijing 活动现场举行）。<a target="_blank" href="/beijing2016cn#3575831243">详情请查阅完整议程安排</a>。</li>
 </ol>
 &nbsp;
 <h4 id="beijing2016Heading1">黑客马拉松项目概述</h4>
@@ -3565,7 +3536,7 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 <ul>
 	<li>首先以个人参赛者身份<a target="_blank" href="http://aka.ms/DevDaysBeijing2016">在线注册 DevDays Asia 2016 @ Beijing</a> 活动，在问及是否参加黑客马拉松活动时请选择“是”。</li>
 	<li>免费注册 <u><a target="_blank" href="http://dev.office.com/devprogram"><u>Microsoft </u><u>开发者帐户</u></a></u>。</li>
-	<li>. 访问<span style="color: #ff00ff;">资源页 (LINK TO CLARE'S PAGE) </span>获取有关 Microsoft Graph 和加载项文档、教程，以及应用创意的链接。</li>
+	<li>. 访问<a href="/beijing2016cn#hackathon214423618720934227913616426009">资源页 </a>获取有关 Microsoft Graph 和加载项文档、教程，以及应用创意的链接。</li>
 </ul>
 
 <p>您也可以将自己的黑客马拉松项目注册至某一团队，或在活动现场注册项目并组建团队。</p>
@@ -3589,7 +3560,7 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 
 <strong>主要需求：</strong>提交能帮助用户改善生产力的应用程序。限全新开发的 <a target="_blank" href="https://msdn.microsoft.com/ZH-CN/library/office/jj220082.aspx">Microsoft Office 365 加载项</a> （扩展）或使用了 <a target="_blank" href="http://graph.microsoft.io/en-us/getting-started">Microsoft Graph</a> 的作品可以获奖。
 
-<p>黑客马拉松的项目和代码编写工作最早可于 2016 年 9 月 26 日启动。黑客马拉松将于 2016 年 10 月 21 日正式结束。<span style="color: #ff00ff;">完整议程安排请参阅这里。(LINK TO AGENDA)</span></p>
+<p>黑客马拉松的项目和代码编写工作最早可于 2016 年 9 月 26 日启动。黑客马拉松将于 2016 年 10 月 21 日正式结束。<a href="/beijing2016cn#hackathon3526821017199822104624230">完整议程安排请参阅这里。</a></p>
 <p>补充需求：</p>
 <ul>
  	<li>您提交的作品必须是自己的原创成果；并且</li>
@@ -3681,11 +3652,14 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 		})
 		.then(function() {
 			return EventTab.create({
-				tabTitle: 'Venue',
-				tabNumber: 3,
+				tabTitle: 'Venue / 会场',
+				tabNumber: 4,
 				tabContent: `
-				<a href="/beijing2016cn" class="btn btn-success float-right" role="button">汉语</a>
+				<a href="/beijing2016cn#venue472025022330" class="btn btn-success float-right" role="button">汉语</a>
 				<a class="btn btn-primary float-right" role="button" style="margin-right:10px;" href="http://www.aka.ms/devdaysbeijing2016">Register</a>
+				<br><br>
+				<a href="/beijing2016#venue472025022330" class="btn btn-info float-right" role="button">English</a>
+				<a href="http://www.aka.ms/devdaysbeijing2016"><img src="/uploads/RegisterNowCN.png" style="height: 37px; margin-right: 10px;" class="float-right" title="registration button" alt="registration link"></a>
 				<h2>Microsoft Asia-Pacific R & D Group Headquarters</h2>
 				<h2>微软亚太研发集团总部</h2>
 				<img src="uploads/ms-building-2-haidian.jpg" alt="Microsoft Asia-Pacific R & D Group Headquarters" class="m-x-auto">
@@ -3702,10 +3676,10 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 		})
 		.then(function() {
 			return EventTab.create({
-				tabNumber: 4,
+				tabNumber: 3,
 				tabTitle: 'Hackathon',
 				tabContent: `
-				<a href="/beijing2016cn" class="btn btn-success float-right" role="button">汉语</a>
+				<a href="/beijing2016cn#hackathon3526821017199822104624230" class="btn btn-success float-right" role="button">汉语</a>
 				<a class="btn btn-primary float-right" role="button" style="margin-right:10px;" href="http://www.aka.ms/devdaysbeijing2016">Register</a>
 				<h2>Hackathon Rules and Regulations</h2>
 <pre class="text-align-center"><a target="_self" href="#hackathonProjectOverviewBeijing2016">Hackathon Project Overview</a> | <a target="_self" href="#howCanIEnterBeijing2016">How can I enter?</a> | <a target="_self" href="#hackathonProjectReqsBeijing2016">Hackathon Project Requirements</a> | <a target="_self" href="#howWillMyProjecBeUsedBeijing2016">How will my project be used?</a> | <a target="_self" href="#howWillMyProjectBeEvalueatedBeijing2016">How will my project be evaluated?</a> | <a target="_self" href="#hackathonTermsBeijing2016">Hackathon Terms + Conditions</a></pre>
@@ -3735,7 +3709,7 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 </ul>
 <button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">Back to top</button>
 <h4 id="hackathonProjectReqsBeijing2016">Hackathon Project Requirements</h4>
-<p>Main Requirement: Submit an application that will help users increase their productivity. To be eligible for prizes, submissions must be a new <a href="http://dev.office.com/getting-started/addins">Microsoft Office 365 Add-in (</a>extension) or utilize <a href="http://dev.office.com/getting-started/office365apis">Microsoft Graph</a>. Hackathon projects and coding may start as early as September 26, 2016. The hackathon will kick off onsite on October 21, 2016. <span style="text-decoration: underline;">See full agenda here</span>.</p>
+<p>Main Requirement: Submit an application that will help users increase their productivity. To be eligible for prizes, submissions must be a new <a href="http://dev.office.com/getting-started/addins">Microsoft Office 365 Add-in (</a>extension) or utilize <a href="http://dev.office.com/getting-started/office365apis">Microsoft Graph</a>. Hackathon projects and coding may start as early as September 26, 2016. The hackathon will kick off onsite on October 21, 2016. <a targe="_self" href="/beijing2016#agenda">See full agenda here</a>.</p>
 <p>In addition:</p>
 <ul>
 <li>Your entry must be your own original work; and</li>
@@ -3809,8 +3783,8 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 	return EventTab.create({
 		tabTitle: '议程',
 		tabNumber: 2,
-		tabContent: `<a href="/beijing2016" class="btn btn-success float-right" role="button">汉语</a>
-<a href="http://www.aka.ms/devdaysbeijing2016"><img src="/uploads/RegisterNowCN.png" style="height: 37px; margin-right: 10px;" class="float-right" title="registration button" alt="registration link"></a>
+		tabContent: `<a href="/beijing2016#agenda" class="btn btn-info float-right" role="button">English</a>
+				<a href="http://www.aka.ms/devdaysbeijing2016"><img src="uploads/RegisterNowCN.png" style="height: 37px; margin-right: 10px;" class="float-right beijingRegistration2016Button" title="registration button" alt="registration link"></a>
 <h4>2016 年九月二十六日: Hackathon 开始! </h4>	
 <h4>2016 年十月二十一日: Hackathon 正式开幕</h4>
 <p>会场：微软亚太研发集团</p>
@@ -3850,6 +3824,47 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 <li>18:15 &ndash; Hackathon 颁奖及闭幕</li>
 </ul>
 `
+	})
+})
+.then(function() {
+	return EventTab.create({
+		tabTitle: '关于',
+		tabNumber: 1,
+		tabContent: `
+				<a href="/beijing2016" class="btn btn-info float-right" role="button">English</a>
+				<a href="http://www.aka.ms/devdaysbeijing2016"><img src="uploads/RegisterNowCN.png" style="height: 37px; margin-right: 10px;" class="float-right beijingRegistration2016Button" title="registration button" alt="registration link"></a>
+				<h2>DevDays Asia 2016 @ Beijing</h2>
+				<h4>10/21-10/23，2016</h4>
+				<h4>中国北京市</h4>
+				<h4>活动对象︰ 开发人员、 独立软件供应商、 学生、 科技创业、 企业</h4>
+				<h4>费用：免费</h4>
+				<p>微软Office 365与开放文档团队将在中国北京市举办 DevDays Asia 2016 @Beijing。此次北京的活动是自DevDays Asia @Taipei（<a href="http://www.prnewswire.com/news-releases/microsoft-launches-the-biggest-developer-event-in-asia-taking-iot-development-in-taiwan-to-new-heights-300253810.html">亚州最大的开发者活动</a>）以来另一次延伸性的活动。快来参加在北京微软亚太研发集团召开的技术研讨。 日期为2016年10月21日至23日。内容包括演示、现场实践与操作、互动与交流、还有hackathon! 这是一场属于开发人员的技术盛宴，我们将围绕Office 365，数据平台以及开放性规范等技术话题，为您带来丰富的技术内容。您将在本次活动中聆听来自微软产品团队工程师带来的技术演讲，参与动手实验，与研发工程师直接一对一互动。您还可以带着您的Office 365项目参与48小时应用开发马拉松活动，在技术专家的指导下加速完善您的项目，更有机会赢得Windows平板电脑、无人机、VR眼镜、平衡车等精彩大礼！</p>
+				<p><strong>DevDays Asia 2016</strong>活动分为两个部分： <strong>DevDays Asia 2016北京技术峰会</strong>(10月22日 9:00-17:00)以及<strong>Office 365应用开发马拉松</strong>(10月21日17:00-10月23日17:00)。您可以在注册DevDays Asia 2016北京技术峰会时选择是否参与应用开发马拉松活动。</p>
+				<p class="blue-border"><span class="bg-primary">DevDays Asia 2016开发者高峰 会&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;10月22日 9:00 – 18:00</p>
+				 
+				<p>您将在活动中详细了解到Microsoft Office 365的广阔市场机会，以及以Office 365作为平台进行开发的技术细节。此外我们还将向您介绍微软在互操作性开放性规范方面的承诺。大会技术课程将涵盖以下内容： </p>
+				<ul>
+					<li>内置在 Word、 Excel、PowerPoint、Outlook中的Microsoft Office 外接程序</li>
+					<li>Microsoft Graph (旧称 “Office 365 统一API”) ：Microsoft Graph是访问 Microsoft 云服务中数据、商务消息、用户、文件、邮件、日历、联系人 及文件夹最轻松简易的方式。</li>
+					<li>Microsoft SQL Server</li>
+					<li>开放数据（OData）： 构建及使用RESTful APIs</li>
+					<li>Office文件格式</li>
+					<li>Office, SharePoint, or Exchange 协议</li>
+					<li>Microsoft Office与数据平台的开放文档</li>
+					<li>Windows 互操作</li>
+					<li>Windows 协议测试组件</li>
+				</ul>
+				<p class="blue-border"><span class="bg-primary">Office 365 应用开发马拉松 (Hackathon)&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;10月21日 17:00 - 10月23日 17:00</p>
+				<p>Office 365强劲的增长势头为ISV、企业、初创公司以及开发者都带来了无限的机会，基于Office 365构建的应用解决方案为诸多行业和场景带来了新的效率和革新。10月21日17点至10月23日17点，带上您的创意、项目和团队，参与48小时的Office 365应用开发马拉松，在现场与来自各地的开发团队同场竞技，面对面交流微软产品组技术专家，解决开发过程中遇到的问题，并在技术指导下不断加速和完善您的项目。
+				我们会为您提供完善的后勤保障服务，餐食茶点、休息娱乐，以确保您能够在48小时内最大程度地完善您的项目。我们还为您准备了丰厚的奖品，以激励您的极致创意和出色的项目成果：</p>
+				<img src="uploads/things-beijing-2016.png" class="centered" title="images of laptop, drone, virtual reality goggles, and scooter" alt="images of laptop, drone, virtual reality goggles, and scooter">
+				<hr>
+				<a href="https://www.microsoftevents.com/profile/form/index.cfm?PKformID=0x6209970001"><img src="uploads/RegisterNowCN.png" class="centered" title="现在就注册吧" alt="现在就注册吧！"></a>
+				<p class="small">* 请在注册页面中选择参与应用开发马拉松选项，报名参与Office 365应用开发马拉松需先提交项目信息，具体规则将在审核后通过邮件及网站公布。</p>
+				<p class="small">* 更多奖品将陆续公布，请以最终公布规则及奖励说明中的描述为准。 </p>
+				<p class="small">*问题和帮助</p>
+
+				`
 	})
 })
 	////////////////////////////////////Contact placeholder/////////////////////////////////////

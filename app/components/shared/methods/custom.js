@@ -154,9 +154,9 @@ jQuery.extend(jQuery.expr[':'], {
 		});*/
 
 		//find what's clicked
-		$('*').keydown(function(e) {
+		/*$('*').keydown(function(e) {
 			console.log('this   ', $(this));
-		});
+		});*/
 
 		//Prevent elements from taking focus when they are clicked
 		$('*').click(function(e) {

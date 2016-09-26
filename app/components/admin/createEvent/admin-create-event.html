@@ -24,6 +24,9 @@
 					<label class="" for="newEventEndDate">Event End Date (Can include time of day)</label>
 					<input class="" type="datetime-local" data-ng-model="newEvent.newEventEndDate" name="newEventEndDate" id="newEventEndDate">
 				</div>
+				<label class="col_12" for="showOnHeader">Show this event on the header menu?&nbsp;&nbsp;
+				<input class="" type="checkbox" id="showOnHeader" data-ng-model="newEvent.showOnHeader" value="true">
+				</label>
 				<label class="col_12" for="continentsInput">Choose Event Continent</label>
 				<radiogroup class="col_12" id="continentsInput" data-ng-required="required">
 					<label for="northAmericaInput">North America</label>

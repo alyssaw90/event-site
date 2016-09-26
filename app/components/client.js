@@ -234,7 +234,7 @@ eventsApp
   })
 
 }])
-.run(['$rootScope', '$location', '$anchorScroll', '$routeParams', '$http', 'Analytics', '$cookies', ($rootScope, $location, $anchorScroll, $routeParams, $http, Analytics, $cookies) => {
+.run(['$rootScope', '$location', '$anchorScroll', '$routeParams', '$http', 'Analytics', '$cookies', '$timeout', ($rootScope, $location, $anchorScroll, $routeParams, $http, Analytics, $cookies, $timeout) => {
 	//start Google analytics
 	Analytics.pageView();
 
@@ -252,8 +252,27 @@ eventsApp
 	
 	$rootScope.$on('$viewContentLoaded', () => {
 			// document.getElementById('screenreader-summary').trigger('focus');
-			/*let anchor = $location.hash();
-			$anchorScroll(anchor);*/
+			let anchor = $location.hash();
+			$timeout(function() {
+				if (anchor) {
+					// angular.element(`ul.tabs a[href="#${anchor}"]`).triggerHandler('click');
+					// tab hashtag identification and auto-focus
+			  	let wantedTag = window.location.hash;
+			  	if (wantedTag != "") {
+					// This code can and does fail, hard, killing the entire app.
+					// Esp. when used with the jQuery.Address project.
+							let allTabs = angular.element("ul.tabs a[href^=" + wantedTag + "]").parents('ul.tabs').find('li');
+							let defaultTab = allTabs.filter('.current').find('a').attr('href');
+							jQuery(defaultTab).hide();
+							allTabs.removeClass('current');
+							angular.element("ul.tabs a[href^=" + wantedTag + "]").parent().addClass('current');
+							angular.element("#" + wantedTag.replace('#','')).show();
+
+					}
+				}
+				
+			}, 901);
+			// $anchorScroll(anchor);
 		
 	});
 

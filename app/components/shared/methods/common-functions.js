@@ -131,7 +131,9 @@ export let findPos = function(obj) {
 //URlify a string
 
 export const urlify = (str) => {
-	return str.trim().replace(/\s+/g, '').replace(/[\!@\$\^\*\)]/g,'').toLowerCase();
+	return str.trim().toLowerCase().replace(/\s+/g, '').replace(/[^\w\s]|_/g, function(char) {
+		return char.charCodeAt(0);
+	});
 }
 
 //function to set divs with equal height
