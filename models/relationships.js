@@ -191,6 +191,12 @@ module.exports = function() {
 	  models.sql.sync()
 	  .then(function() {
 	  	event.setEventTabs([28, /*30, */32, 35, 34]);
+			event.addContact(6, {sortPosition: 1});
+			event.addContact(1, {sortPosition: 2});
+			event.addContact(9, {sortPosition: 3});
+			event.addContact(8, {sortPosition: 4});
+			event.addContact(11, {sortPosition: 5});
+			event.addContact(15, {sortPosition: 6});
 	  })
 	})
 	.then(function() {
@@ -217,6 +223,12 @@ module.exports = function() {
 	  models.sql.sync()
 	  .then(function() {
 	  	event.setEventTabs([33, 34, 31, 36, 37]);
+	  	event.addContact(6, {sortPosition: 1});
+			event.addContact(1, {sortPosition: 2});
+			event.addContact(9, {sortPosition: 3});
+			event.addContact(8, {sortPosition: 4});
+			event.addContact(11, {sortPosition: 5});
+			event.addContact(15, {sortPosition: 6});
 	  })
 	})
 }

@@ -39,7 +39,7 @@
     </div>
 		<div data-ng-repeat="tab in events.tabs | orderBy: 'tabNumber'" id="{{urlify(tab.tabTitle)}}" class="tab-content clearfix eventTabDiv" data-ng-bind-html="tab.tabContent" ></div>
   	<div data-ng-if="events.speakers.length > 0" id="speakers" class="tab-content clearfix eventTabDiv clearfix">
-			<div data-ng-repeat="speaker in events.speakers" class="col_12 internetExplorer" id="{{speaker.divId}}" aria-label="Bio of {{speaker.fullName}}" role="presentation">
+			<div data-ng-repeat="speaker in events.speakers | orderBy: 'EventSpeakersAsscs.sortPosition'" class="col_12 internetExplorer" id="{{speaker.divId}}" aria-label="Bio of {{speaker.fullName}}" role="presentation">
  		  	<h4>{{speaker.fullName}}</h4>
  		  	<h5>{{speaker.msTeamTitle}}</h5>
  		  	<p>
