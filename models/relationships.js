@@ -197,6 +197,7 @@ module.exports = function() {
 			event.addSpeaker(8, {sortPosition: 4});
 			event.addSpeaker(11, {sortPosition: 5});
 			event.addSpeaker(15, {sortPosition: 6});
+			event.addSpeaker(41, {sortPosition: 7});
 	  })
 	})
 	.then(function() {
@@ -229,6 +230,7 @@ module.exports = function() {
 			event.addSpeaker(8, {sortPosition: 4});
 			event.addSpeaker(11, {sortPosition: 5});
 			event.addSpeaker(15, {sortPosition: 6});
+			event.addSpeaker(41, {sortPosition: 7});
 	  })
 	})
 }

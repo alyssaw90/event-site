@@ -3973,7 +3973,7 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: true,
 				meetTheTeamPageOrder: 6,
-				msTeamTitle: 'Software Engineering Manager, Office Developer Experience Team',
+				msTeamTitle: 'Principal Software Engineer Manager',
 				showOnHomePage: true,
 				headShot: 'donny-luu-headshot.jpg',
 				company: 'Microsoft',
@@ -4556,5 +4556,23 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 				allowNotifications: false,
 				allowPersonalInfoSharing: false
 			});
-		});
+		})
+		.then(function() {
+			return Speaker.create({
+				isPublished: true,
+				firstName: 'Lu',
+				lastName: 'Chen',
+				speakerDescription: '<p>Lu Chen is a Software Engineer on Windows Server Interoperability & Tools team in Shanghai, China. She has worked on the development and support of test tools for Windows interoperability, specifically on the File Server Protocol family and BranchCache Protocol family. She has joined several interoperability events supporting synthetic test suites and helping partners use Windows test tools to identity their product issues.</p><p>She graduated from Shanghai TongJi University with a master’s degree in Software Engineering. Prior to joining Microsoft as a full time employee, Lu worked as an intern on Microsoft’s System Center Atlanta team.</p>',
+				eventRole: 'speaker',
+				showOnMeetTheTeamPage: false,
+				msTeamTitle: 'Software Engineer, Windows Server Interoperability & Tools Team, Microsoft (China) Corporation',
+				showOnHomePage: false,
+				headShot: 'lu-chen-headshot.jpg',
+				company: 'Microsoft',
+				country: 'China',
+				allowNotifications: false,
+				allowPersonalInfoSharing: false
+
+			})
+		})
 };
