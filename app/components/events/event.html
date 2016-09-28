@@ -44,9 +44,9 @@
  		  	<h5>{{speaker.msTeamTitle}}</h5>
  		  	<p>
  		  		<img class="ng-cloak pull-left speakersImg" height="165" width="165" alt="image of {{speaker.fullName}}" data-ng-src="{{speaker.headShot}}" />
- 		  		{{speaker.speakerDescription}}
+ 		  		<span data-ng-bind-html="speaker.speakerDescription">{{speaker.speakerDescription}}</span>
 	  		</p>
- 		  	<hr class="alt1" />
+ 		  	<hr aria-hidden="true" role="presentaion" class="alt1" />
  			</div>
   	</div>
   </main>
