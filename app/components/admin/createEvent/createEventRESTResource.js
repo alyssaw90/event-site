@@ -14,7 +14,7 @@ const createEventRESTResource = (app) => {
           .error(customFunctions.handleError(callback));
 				},
 				getAllSpeakers: (callback) => {
-					$http.get('/api/contacts')
+					$http.get('/api/speakers')
           .success(customFunctions.handleSuccess(callback))
           .error(customFunctions.handleError(callback));
 				},

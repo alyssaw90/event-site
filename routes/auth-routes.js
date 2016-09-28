@@ -7,7 +7,7 @@ let cookieParser = require('cookie-parser');
 let clc = require('cli-color');
 let models = require('../models');
 let User = models.User;
-let Contact = models.Contact;
+let Speaker = models.Speaker;
 let Event = models.Event;
 let EventTab = models.EventTab;
 

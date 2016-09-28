@@ -163,7 +163,7 @@ eventsApp
       pageTitle: 'Latest Page - Microsoft Plugfests and Events'
     }
 	})
-	/*.when('/admin/slideshow', {
+	.when('/admin/slideshow', {
 		templateUrl: '/app/components/admin/editSlideshow/editSlideshowTemplate.html',
 		reloadOnSearch: false,
 		data: {
@@ -223,7 +223,7 @@ eventsApp
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
     }
-	})*/
+	})
 	.when('/:slug', {
     templateUrl: '/app/components/events/event.html',
     controller: 'EventsCtrl',

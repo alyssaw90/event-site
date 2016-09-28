@@ -1,6 +1,6 @@
 'use strict';
 /*global interests */
-/*global ContactsSuggestedCity */
+/*global SpeakersSuggestedCity */
 
 const fs = require('fs');
 const clc = require('cli-color');
@@ -18,7 +18,7 @@ const path = require('path');
 const eatAuth = require('../scripts/eat_auth')(process.env.SECRET_KEY);
 const models = require('../models');
 const User = models.User;
-const Contact = models.Contact;
+const Speaker = models.Speaker;
 const Event = models.Event;
 const EventTab = models.EventTab;
 const Slideshow = models.Slideshow;
@@ -54,12 +54,12 @@ module.exports = (router) => {
   }));
   router.use(cookieParser());
 
-  //get Contacts to show on meet the team page
+  //get Speakers to show on meet the team page
   router.route('/getTeam')
   .get(function(req, res) {
     models.sql.sync()
     .then(function() {
-      return Contact.findAll({
+      return Speaker.findAll({
         where: {
           showOnMeetTheTeamPage: true,
           isPublished: true
@@ -305,11 +305,11 @@ module.exports = (router) => {
     res.json({authenticated: true});
   });
 
-  //get all contacts for editing
-  router.get('/contacts', eatAuth, (req, res) => {
+  //get all speakers for editing
+  router.get('/speakers', eatAuth, (req, res) => {
     models.sql.sync()
     .then( () => {
-      Contact.findAll()
+      Speaker.findAll()
       .then( (data) => {
         res.json(data);
       });
@@ -380,7 +380,7 @@ module.exports = (router) => {
           }
           
           for(let i = 0, length1 = speakersArr.length; i < length1; i++){
-            newEvent.addContact(speakersArr[i].speakerId, {sortPosition: speakersArr[i].position});
+            newEvent.addSpeaker(speakersArr[i].speakerId, {sortPosition: speakersArr[i].position});
           }
           
           res.json(newEvent);
@@ -398,11 +398,11 @@ module.exports = (router) => {
     .then( () => {
       let speakerEmail = req.body.newMsTeamEmail ? req.body.newMsTeamEmail : 'plugfests@microsoft.com';
       // let speakerHeadshot = req.body.headshot ? req.body.headshot : 'placeholder-headshot.jpg';
-      Contact.create({
+      Speaker.create({
         firstName: req.body.newFirstName,
         lastName: req.body.newLastName,
         email: speakerEmail,
-        contactDescription: req.body.newSpeakerDescription,
+        speakerDescription: req.body.newSpeakerDescription,
         showOnMeetTheTeamPage: req.body.showOnMeetTheTeamPage,
         meetTheTeamPageOrder: req.body.meetTheTeamPageOrder,
         msTeamTitle: req.body.newMsTeamTitle,
@@ -462,7 +462,7 @@ module.exports = (router) => {
         event.getEventTabs()
         .then( (tabs) => {
           eventInfo.tabs = tabs;
-          event.getContacts()
+          event.getSpeakers()
           .then( (speakers) => {
             eventInfo.speakers = speakers;
             res.json(eventInfo);
@@ -637,14 +637,14 @@ module.exports = (router) => {
   //   .then(function(tabs) {
   //     let speakersArr;
   //     eventInfo.tabs = tabs;
-  //     //split the speaker IDs into an array then search for all Contacts that haver an ID that appears in the array and return the result
+  //     //split the speaker IDs into an array then search for all Speakers that haver an ID that appears in the array and return the result
   //     if (eventInfo.theEvent.eventSpeakers) {
   //       speakersArr = eventInfo.theEvent.eventSpeakers.split(',');
   //     } else {
   //       speakersArr = [];
   //     }
         
-  //     return Contact.findAll({
+  //     return Speaker.findAll({
   //       where: {
   //         id: {$in: speakersArr}
   //       }
@@ -663,7 +663,7 @@ module.exports = (router) => {
   //       speakersArr[i].lastName = speakers[key].lastName;
   //       speakersArr[i].msTeamTitle = speakers[key].msTeamTitle;
   //       speakersArr[i].headShot = speakers[key].headShot;
-  //       speakersArr[i].contactDescription = speakers[key].contactDescription;
+  //       speakersArr[i].speakerDescription = speakers[key].speakerDescription;
   //       i++;
   //     }
   //     //create a form input with the tabs for each event
@@ -744,7 +744,7 @@ module.exports = (router) => {
   // router.get('/getspeakers', eatAuth, function(req, res) {
   //   models.sql.sync()
   //   .then(function() {
-  //     return Contact.findAll();
+  //     return Speaker.findAll();
   //   })
   //   .then(function(speakers) {
   //     let returnObj = {
@@ -764,7 +764,7 @@ module.exports = (router) => {
   // router.post('/showspeakertoedit', eatAuth, function(req, res) {
   //   models.sql.sync()
   //   .then(function() {
-  //     return Contact.findOne({
+  //     return Speaker.findOne({
   //       where: {
   //         id: {
   //           $eq: req.body.speakerId
@@ -800,8 +800,8 @@ module.exports = (router) => {
   //           <input class="col_8" type="text" name="editCountry" id="editCountry" placeholder="${data.country}">
   //           <label class="col_4" for="editHeadshot">Head Shot</label>
   //           <input class="col_8" type="file" name="editHeadshot" id="editHeadshot">
-  //           <label class="col_12" for="editContactDescription">Speaker Description</label>
-  //           <textarea class="col_8" spellcheck="true" rows="20" name="editContactDescription" id="editContactDescription" placeholder="${data.contactDescription}"></textarea>
+  //           <label class="col_12" for="editSpeakerDescription">Speaker Description</label>
+  //           <textarea class="col_8" spellcheck="true" rows="20" name="editSpeakerDescription" id="editSpeakerDescription" placeholder="${data.speakerDescription}"></textarea>
   //           <br>
   //           <br>
   //         </form>
@@ -814,7 +814,7 @@ module.exports = (router) => {
   // router.post('/editspeaker', eatAuth, upload.single('editHeadshot'), function(req, res) {
   //   models.sql.sync()
   //   .then(function() {
-  //     return Contact.findOne({
+  //     return Speaker.findOne({
   //       where: {
   //         id: req.body.editSpeakerId
   //       }
@@ -824,7 +824,7 @@ module.exports = (router) => {
   //     speaker.firstName = req.body.editSpeakerFirstName ? req.body.editSpeakerFirstName : speaker.firstName;
   //     speaker.lastName = req.body.editSpeakerLastName ? req.body.editSpeakerLastName : speaker.lastName;
   //     speaker.email = req.body.editSpeakerEmail ? req.body.editSpeakerEmail : speaker.email;
-  //     speaker.contactDescription = req.body.editContactDescription ? req.body.editContactDescription : speaker.contactDescription;
+  //     speaker.speakerDescription = req.body.editSpeakerDescription ? req.body.editSpeakerDescription : speaker.speakerDescription;
   //     speaker.showOnMeetTheTeamPage = req.body.editShowOnMeetTheTeamPage ? req.body.editShowOnMeetTheTeamPage : speaker.showOnMeetTheTeamPage;
   //     speaker.meetTheTeamPageOrder = req.body.editMeetTheTeamPageOrder ? req.body.editMeetTheTeamPageOrder : speaker.meetTheTeamPageOrder;
   //     speaker.msTeamTitle = req.body.editmsTeamTitle ? req.body.editmsTeamTitle : speaker.msTeamTitle;
@@ -840,7 +840,7 @@ module.exports = (router) => {
   // router.delete('/deletespeaker', eatAuth, function(req, res) {
   //   models.sql.sync()
   //   .then(function() {
-  //     return Contact.findOne({
+  //     return Speaker.findOne({
   //       where: {
   //         id: req.body.speakerId
   //       }

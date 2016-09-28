@@ -41,15 +41,15 @@ let sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.
 
 
 //load models
-let models = ['Contact', 'Event', 'EventTab', 'User', 'Slideshow', 'EventSpeakersAsscs', 'Slide', 'SlideshowSlideAssc'];
+let models = ['Speaker', 'Event', 'EventTab', 'User', 'Slideshow', 'EventSpeakersAsscs', 'Slide', 'SlideshowSlideAssc'];
 
 models.forEach(function(model) {
   module.exports[model] = sql.import(__dirname + '/' + model);
 });
 //create model associations
 sql.sync()
-sql.models.Event.belongsToMany(sql.models.Contact, {through: sql.models.EventSpeakersAsscs});
-sql.models.Contact.belongsToMany(sql.models.Event, {through: sql.models.EventSpeakersAsscs});
+sql.models.Event.belongsToMany(sql.models.Speaker, {through: sql.models.EventSpeakersAsscs});
+sql.models.Speaker.belongsToMany(sql.models.Event, {through: sql.models.EventSpeakersAsscs});
 sql.models.Event.belongsToMany(sql.models.EventTab, {through: 'EventsTabsAccsc'});
 sql.models.EventTab.belongsToMany(sql.models.Event, {through: 'EventsTabsAccsc'});
 sql.models.Slide.belongsToMany(sql.models.Slideshow, {through: sql.models.SlideshowSlideAssc});
