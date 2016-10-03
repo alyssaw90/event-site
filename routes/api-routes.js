@@ -209,7 +209,6 @@ module.exports = (router) => {
   })
 
   router.post('/files', (req, res) => {
-    console.log(clc.blue.bgWhite('::::::::::::::::::   '), req.body);
     let filesToDelete = [];
     for (let key in req.body) {
       if (req.body[key]) {
@@ -224,7 +223,6 @@ module.exports = (router) => {
       for (let i = 0, len = data.length; i < len; i++) {
         if (filesToDelete.indexOf(data[i]) > -1) {
           fs.unlink('uploads/' + data[i]);
-          console.log(clc.green.bgWhite(':::::::::::::::::::  deleted '), data[i]);
         }
       }
     })
@@ -415,7 +413,7 @@ module.exports = (router) => {
     //show all images
   router.get('/showimages', eatAuth, function(req, res) {
     fs.readdir('uploads', function(err, files) {
-      let imageNamesArr = [];
+      let imagesArr = [];
       if (err) {
         console.log(err);
         res.status(500).json({msg: 'internal server error'});
@@ -423,11 +421,12 @@ module.exports = (router) => {
 
       for (let i = 0, j = files.length; i < j; i ++) {
         if (files[i] !== '.gitignore') {
-          imageNamesArr.push(files[i]);
+          imagesArr.push({title: files[i], value: '/uploads/' + files[i]});
         }
       }
-      let output = JSON.stringify(imageNamesArr);
-      res.json(output);
+      console.log(clc.blue.bgWhite(':::::::::::  '), imagesArr);
+      // let output = JSON.stringify(imagesArr);
+      res.json(imagesArr);
     });
   });
  

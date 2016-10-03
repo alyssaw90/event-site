@@ -15,27 +15,11 @@ const AdminCreateEventCtrl = (app) => {
     $scope.displaySpeakerDivStyle = false;
     $scope.previewSpeakers = [];
 
-    /*$scope.tinymceOptions = { 
-      height: 500,
-      theme: 'modern',
-      automatic_uploads: true,
-      plugins: [
-      'advlist autolink lists link image charmap print preview hr anchor pagebreak',
-      'searchreplace wordcount visualblocks visualchars code fullscreen',
-      'insertdatetime media nonbreaking save table contextmenu directionality',
-      'emoticons template paste textcolor colorpicker textpattern imagetools',
-      'textcolor colorpicker'
-      ],
-      paste_data_images: true,
-      inline: false,
-      toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | forecolor backcolor | link image',
-      content_css: [
-        '//fast.fonts.net/cssapi/e6dc9b99-64fe-4292-ad98-6974f93cd2a2.css',
-        '//www.tinymce.com/css/codepen.min.css'
-      ]
-    };*/
-
     let DataForEditingEvents = resource();
+
+    function tinymceUploadHandler(fieldName, url, type, win) {
+      console.log('tinymce upload      ', fieldName, '      ', url, '      ', type, '      ', win);
+    }
 
     if ($scope.newEvent.newEventName && $scope.newEvent.eventAboutTabText) {
       $scope.displaySpeakerDivStyle = false;
@@ -125,10 +109,42 @@ const AdminCreateEventCtrl = (app) => {
     $scope.setContent = function() {
       $scope.tinymceModel = 'Time: ' + (new Date());
     };
+
+    tinymce.activeEditor.uploadImages(function(success) {
+      $.post('/multer', tinymce.activeEditor.getContent()).done(function() {
+        console.log("Uploaded images and posted content as an ajax request.");
+      });
+    });
   
-    $scope.tinymceOptions = {
-      plugins: 'link image code',
-      toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
+    $scope.tinymceOptions = { 
+      selector: 'textarea',
+      height: 500,
+      theme: 'modern',
+      automatic_uploads: true,
+      images_upload_url: '/multer',
+      file_picker_types: 'file image media',
+      file_browser_callback : function(fieldName, url, type, win) {
+        if (type === 'image') {
+          console.log('tinymce upload      ', fieldName, '      ', url, '      ', type, '      ', win);
+          
+        }
+      },
+      plugins: [
+      'advlist autolink lists link image charmap print preview hr anchor pagebreak spellchecker',
+      'searchreplace wordcount visualblocks visualchars code fullscreen',
+      'insertdatetime media nonbreaking save table contextmenu directionality',
+      'emoticons template paste textcolor colorpicker textpattern imagetools',
+      'textcolor colorpicker'
+      ],
+      paste_data_images: true,
+      inline: false,
+      toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | forecolor backcolor | link image | spellchecker',
+      image_list: '/api/showimages',
+      image_advtab: true,
+      content_css: [
+        '//fast.fonts.net/cssapi/e6dc9b99-64fe-4292-ad98-6974f93cd2a2.css',
+        '//www.tinymce.com/css/codepen.min.css'
+      ]
     };
 
 	}])

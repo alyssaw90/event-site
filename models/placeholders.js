@@ -3179,10 +3179,10 @@ setTimeout(function() {
 <li><a href="http://graph.microsoft.io/en-us/app-registration">App registration</a></p>
 <p>注册您的应用调用微软Graph</li>
 <p>微软Build 2016年开发者大会九频道视频</p>
-<p>以Office 365作为平台进行开发概述：</p>
+<p>以Office作为平台进行开发概述：</p>
 <li><a href="https://channel9.msdn.com/Events/Build/2016/B866">Make your solution a native part of Office on every platform</a></li>
 <li><a href="https://channel9.msdn.com/Events/Build/2016/B872">Office platform overview</a></li>
-<p>以Office 作为平台进行开发技术细节， 比如怎样访问 Office 服务来构建应用及关于调用微软Graph的技术内容。</p>
+<p>以Office 365作为平台进行开发技术细节， 比如怎样访问 Office 服务来构建应用及关于调用微软Graph的技术内容。</p>
 <li><a href="https://channel9.msdn.com/Events/Build/2016/T617">Build cool apps with Microsoft Graph, tap into the intelligence and reach millions of&nbsp;users</a></li>
 <li><a href="https://channel9.msdn.com/events/Build/2016/B820">Build smarter apps by connecting to Office&nbsp;services</a></li>
 <li><a href="https://channel9.msdn.com/Events/Build/2016/P568">Connecting to Outlook Direct Endpoint with Azure AD Auth&nbsp;v2</a></li>
@@ -3521,7 +3521,7 @@ setTimeout(function() {
 <h4>DevDays Asia 2016 @ Beijing 是微软举办的一场免费活动，主要包含两部分内容：</h4>
 <ol>
  	<li>为期一天的现场技术活动课程（2016 年 10 月 22 日 9am-6pm）</li>
- 	<li>Microsoft Office 365 黑客马拉松活动<strong>（黑客马拉松活动将于 2016 年 9 月 26 日启动报名，并于 2016 年 10 月 21 日 5:00pm 正式结束。</strong>评选和颁奖将于 2016 年 10 月 23 日 DevDays Asia 2016 @ Beijing 活动现场举行）。<a target="_blank" href="/beijing2016cn#3575831243">详情请查阅完整议程安排</a>。</li>
+ 	<li>Microsoft Office 365 黑客马拉松活动<strong>（黑客马拉松活动将于 2016 年 9 月 26 日启动报名，并于 2016 年 10 月 21 日 5:00pm 正式开幕</strong>评选和颁奖将于 2016 年 10 月 23 日 DevDays Asia 2016 @ Beijing 活动现场举行）。<a target="_blank" href="/beijing2016cn#3575831243">详情请查阅完整议程安排</a>。</li>
 </ol>
 &nbsp;
 <h4 id="beijing2016Heading1">黑客马拉松项目概述</h4>
@@ -3536,7 +3536,7 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 <ul>
 	<li>首先以个人参赛者身份<a target="_blank" href="http://aka.ms/DevDaysBeijing2016">在线注册 DevDays Asia 2016 @ Beijing</a> 活动，在问及是否参加黑客马拉松活动时请选择“是”。</li>
 	<li>免费注册 <u><a target="_blank" href="http://dev.office.com/devprogram"><u>Microsoft </u><u>开发者帐户</u></a></u>。</li>
-	<li>. 访问<a href="/beijing2016cn#hackathon214423618720934227913616426009">资源页 </a>获取有关 Microsoft Graph 和加载项文档、教程，以及应用创意的链接。</li>
+	<li>. 访问<a target="_self" href="#hackathon214423618720934227913616426009">资源页 </a>获取有关 Microsoft Graph 和加载项文档、教程，以及应用创意的链接。</li>
 </ul>
 
 <p>您也可以将自己的黑客马拉松项目注册至某一团队，或在活动现场注册项目并组建团队。</p>
@@ -3560,7 +3560,7 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 
 <strong>主要需求：</strong>提交能帮助用户改善生产力的应用程序。限全新开发的 <a target="_blank" href="https://msdn.microsoft.com/ZH-CN/library/office/jj220082.aspx">Microsoft Office 365 加载项</a> （扩展）或使用了 <a target="_blank" href="http://graph.microsoft.io/en-us/getting-started">Microsoft Graph</a> 的作品可以获奖。
 
-<p>黑客马拉松的项目和代码编写工作最早可于 2016 年 9 月 26 日启动。黑客马拉松将于 2016 年 10 月 21 日正式结束。<a href="/beijing2016cn#hackathon3526821017199822104624230">完整议程安排请参阅这里。</a></p>
+<p>黑客马拉松的项目和代码编写工作最早可于 2016 年 9 月 26 日启动。黑客马拉松将于 2016 年 10 月 21 日正式开幕<a target="_self" href="/beijing2016cn#hackathon3526821017199822104624230">完整议程安排请参阅这里。</a></p>
 <p>补充需求：</p>
 <ul>
  	<li>您提交的作品必须是自己的原创成果；并且</li>
@@ -3709,7 +3709,7 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 </ul>
 <button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">Back to top</button>
 <h4 id="hackathonProjectReqsBeijing2016">Hackathon Project Requirements</h4>
-<p>Main Requirement: Submit an application that will help users increase their productivity. To be eligible for prizes, submissions must be a new <a href="http://dev.office.com/getting-started/addins">Microsoft Office 365 Add-in (</a>extension) or utilize <a href="http://dev.office.com/getting-started/office365apis">Microsoft Graph</a>. Hackathon projects and coding may start as early as September 26, 2016. The hackathon will kick off onsite on October 21, 2016. <a targe="_self" href="/beijing2016#agenda">See full agenda here</a>.</p>
+<p>Main Requirement: Submit an application that will help users increase their productivity. To be eligible for prizes, submissions must be a new <a href="http://dev.office.com/getting-started/addins">Microsoft Office 365 Add-in (</a>extension) or utilize <a href="http://dev.office.com/getting-started/office365apis">Microsoft Graph</a>. Hackathon projects and coding may start as early as September 26, 2016. The hackathon will kick off onsite on October 21, 2016. <a targe="_self" href="#agenda">See full agenda here</a>.</p>
 <p>In addition:</p>
 <ul>
 <li>Your entry must be your own original work; and</li>
@@ -3838,11 +3838,11 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 				<h4>中国北京市</h4>
 				<h4>活动对象︰ 开发人员、 独立软件供应商、 学生、 科技创业、 企业</h4>
 				<h4>费用：免费</h4>
-				<p>微软Office 365与开放文档团队将在中国北京市举办 DevDays Asia 2016 @Beijing。此次北京的活动是自DevDays Asia @Taipei（<a href="http://www.prnewswire.com/news-releases/microsoft-launches-the-biggest-developer-event-in-asia-taking-iot-development-in-taiwan-to-new-heights-300253810.html">亚州最大的开发者活动</a>）以来另一次延伸性的活动。快来参加在北京微软亚太研发集团召开的技术研讨。 日期为2016年10月21日至23日。内容包括演示、现场实践与操作、互动与交流、还有hackathon! 这是一场属于开发人员的技术盛宴，我们将围绕Office 365，数据平台以及开放性规范等技术话题，为您带来丰富的技术内容。您将在本次活动中聆听来自微软产品团队工程师带来的技术演讲，参与动手实验，与研发工程师直接一对一互动。您还可以带着您的Office 365项目参与48小时应用开发马拉松活动，在技术专家的指导下加速完善您的项目，更有机会赢得Windows平板电脑、无人机、VR眼镜、平衡车等精彩大礼！</p>
+				<p>微软Office 365与开放文档团队将在中国北京市举办 DevDays Asia 2016 @Beijing。此次北京的活动是自DevDays Asia @Taipei（<a href="http://www.prnewswire.com/news-releases/microsoft-launches-the-biggest-developer-event-in-asia-taking-iot-development-in-taiwan-to-new-heights-300253810.html">亚州最大的开发者活动</a>）以来另一次延伸性的活动。快来参加在北京微软亚太研发集团召开的技术研讨。 日期为2016年10月21日至23日。内容包括演示、现场实践与操作、互动与交流、还有hackathon! 这是一场属于开发人员的技术盛宴，我们将围绕Office 365，数据平台以及开放文档等技术话题，为您带来丰富的技术内容。您将在本次活动中聆听来自微软产品团队工程师带来的技术演讲，参与动手实验，与研发工程师直接一对一互动。您还可以带着您的Office 365项目参与48小时应用开发马拉松活动，在技术专家的指导下加速完善您的项目，更有机会赢得Windows平板电脑、无人机、VR眼镜、平衡车等精彩大礼！</p>
 				<p><strong>DevDays Asia 2016</strong>活动分为两个部分： <strong>DevDays Asia 2016北京技术峰会</strong>(10月22日 9:00-17:00)以及<strong>Office 365应用开发马拉松</strong>(10月21日17:00-10月23日17:00)。您可以在注册DevDays Asia 2016北京技术峰会时选择是否参与应用开发马拉松活动。</p>
 				<p class="blue-border"><span class="bg-primary">DevDays Asia 2016开发者高峰 会&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;10月22日 9:00 – 18:00</p>
 				 
-				<p>您将在活动中详细了解到Microsoft Office 365的广阔市场机会，以及以Office 365作为平台进行开发的技术细节。此外我们还将向您介绍微软在互操作性开放性规范方面的承诺。大会技术课程将涵盖以下内容： </p>
+				<p>您将在活动中详细了解到Microsoft Office 365的广阔市场机会，以及以Office 365作为平台进行开发的技术细节。此外我们还将向您介绍微软对互操作之重视与承诺。大会技术课程将涵盖以下内容： </p>
 				<ul>
 					<li>内置在 Word、 Excel、PowerPoint、Outlook中的Microsoft Office 外接程序</li>
 					<li>Microsoft Graph (旧称 “Office 365 统一API”) ：Microsoft Graph是访问 Microsoft 云服务中数据、商务消息、用户、文件、邮件、日历、联系人 及文件夹最轻松简易的方式。</li>
@@ -4562,12 +4562,51 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 				isPublished: true,
 				firstName: 'Lu',
 				lastName: 'Chen',
-				speakerDescription: '<p>Lu Chen is a Software Engineer on Windows Server Interoperability & Tools team in Shanghai, China. She has worked on the development and support of test tools for Windows interoperability, specifically on the File Server Protocol family and BranchCache Protocol family. She has joined several interoperability events supporting synthetic test suites and helping partners use Windows test tools to identity their product issues.</p><p>She graduated from Shanghai TongJi University with a master’s degree in Software Engineering. Prior to joining Microsoft as a full time employee, Lu worked as an intern on Microsoft’s System Center Atlanta team.</p>',
+				speakerDescription: `<p>Lu Chen is a Software Engineer on Windows Server Interoperability & Tools team in Shanghai, China. She has worked on the development and support of test tools for Windows interoperability, specifically on the File Server Protocol family and BranchCache Protocol family. She has joined several interoperability events, supporting synthetic test suites and helping partners to use Windows test tools to identify their product issues.</p>
+				<p>She graduated from Shanghai TongJi University with a master’s degree in Software Engineering. Prior to joining Microsoft as a full-time employee, Lu worked as an intern on the Microsoft’s System Center 				Atlanta team.</p>`,
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: false,
 				msTeamTitle: 'Software Engineer, Windows Server Interoperability & Tools Team, Microsoft (China) Corporation',
 				showOnHomePage: false,
 				headShot: 'lu-chen-headshot.jpg',
+				company: 'Microsoft',
+				country: 'China',
+				allowNotifications: false,
+				allowPersonalInfoSharing: false
+
+			})
+		})
+		.then(function() {
+			return Speaker.create({
+				isPublished: true,
+				firstName: 'Sam',
+				lastName: 'Xu',
+				speakerDescription: `<p>Sam Xu is a Software Engineer II from OData Team & SSIS Team in Shanghai, China. He has been working on the design and the development of implementation for OData V4 spec, especially on the Web API OData for three years. Before joining the OData Shanghai team, Sam had worked as a Software Engineer II in the Commerce group for half a year and focused on the Mobile Phone pay. Prior to Microsoft, Sam had developed Location Based Service (LBS) software at Telenav Corp for three years. </p>
+					<p>He graduated from Northwestern Polytechnical University with a master’s degree in Aeronautics and Astronautics Manufacturing Engineering and from Shanghai JiaoTong University with a doctor’s degree in Automotive Engineering.</p>`,
+				eventRole: 'speaker',
+				showOnMeetTheTeamPage: false,
+				msTeamTitle: 'Software Engineer II, OData Team & SSIS Team, Microsoft (China) Corporation',
+				showOnHomePage: false,
+				headShot: 'sam-xu-headshot-2016-09-29.jpg',
+				company: 'Microsoft',
+				country: 'China',
+				allowNotifications: false,
+				allowPersonalInfoSharing: false
+
+			})
+		})
+		.then(function() {
+			return Speaker.create({
+				isPublished: true,
+				firstName: 'Arthur',
+				lastName: 'Jin',
+				speakerDescription: `<p>Arthur Jin is the Principle Program Manager on the Office 365 team. He leads the effort of landing Office 365 services and features to China, focusing on feature development and development planning and implementation. Arthur has worked at Microsoft for 20 years, covering many product and services including Windows, Office and MSN. Prior to Microsoft, Arthur worked at two other software companies developing business software. Arthur has a Master degree from Bowling Green State University in Ohio with a focus in technical communication and computer science.</p>
+				`,
+				eventRole: 'speaker',
+				showOnMeetTheTeamPage: false,
+				msTeamTitle: 'Principle Program Manager for Office 365',
+				showOnHomePage: false,
+				headShot: 'arthur-jin-headshot.jpg',
 				company: 'Microsoft',
 				country: 'China',
 				allowNotifications: false,

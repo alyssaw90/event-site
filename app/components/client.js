@@ -238,6 +238,31 @@ eventsApp
 	//start Google analytics
 	Analytics.pageView();
 
+	function followHashRoute() {
+		let anchor = $location.hash();
+		$timeout(function() {
+			if (anchor) {
+				// angular.element(`ul.tabs a[href="#${anchor}"]`).triggerHandler('click');
+				// tab hashtag identification and auto-focus
+				let hashLink = '#' + $location.hash();
+				let hashDivs = jQuery(hashLink);
+		  	let wantedTag = window.location.hash;
+		  	if (wantedTag != "") {
+				// This code can and does fail, hard, killing the entire app.
+				// Esp. when used with the jQuery.Address project.
+						let allTabs = angular.element("ul.tabs a[href^=" + wantedTag + "]").parents('ul.tabs').find('li');
+						let defaultTab = allTabs.filter('.current').find('a').attr('href');
+						jQuery(defaultTab).hide();
+						allTabs.removeClass('current');
+						angular.element("ul.tabs a[href^=" + wantedTag + "]").parent().addClass('current');
+						angular.element("#" + wantedTag.replace('#','')).show();
+						$anchorScroll();
+				}
+			}
+			
+		}, 901);
+	}
+
 	//when the route starts with /admin, call the /api/user/checklogin route to check if the user is logged in and redirect them to the login page if they aren't
 	if ( /\/admin.*$/.test($location.path()) ) {
 		$http.get('/api/user/checklogin')
@@ -251,32 +276,16 @@ eventsApp
 	}
 	
 	$rootScope.$on('$viewContentLoaded', () => {
+		followHashRoute();
 			// document.getElementById('screenreader-summary').trigger('focus');
-			let anchor = $location.hash();
-			$timeout(function() {
-				if (anchor) {
-					// angular.element(`ul.tabs a[href="#${anchor}"]`).triggerHandler('click');
-					// tab hashtag identification and auto-focus
-			  	let wantedTag = window.location.hash;
-			  	if (wantedTag != "") {
-					// This code can and does fail, hard, killing the entire app.
-					// Esp. when used with the jQuery.Address project.
-							let allTabs = angular.element("ul.tabs a[href^=" + wantedTag + "]").parents('ul.tabs').find('li');
-							let defaultTab = allTabs.filter('.current').find('a').attr('href');
-							jQuery(defaultTab).hide();
-							allTabs.removeClass('current');
-							angular.element("ul.tabs a[href^=" + wantedTag + "]").parent().addClass('current');
-							angular.element("#" + wantedTag.replace('#','')).show();
-
-					}
-				}
-				
-			}, 901);
+			
 			// $anchorScroll(anchor);
 		
 	});
 
-	$rootScope.$on( '$routeChangeStart', function(event, next, current) {   
+	$rootScope.$on( '$routeChangeStart', function(event, next, current) { 
+		
+		followHashRoute();
 		//when the route starts with /admin, call the /api/user/checklogin route to check if the user is logged in and redirect them to the login page if they aren't
 		if ( /\/admin.*$/.test($location.path()) ) {
 			$http.get('/api/user/checklogin')
@@ -290,8 +299,12 @@ eventsApp
 		}
 	});
 
-	$rootScope.$on('$routeChangeSuccess', (newRoute, oldRoute) => { 
+	$rootScope.$on('$routeUpdate', () => {
+		followHashRoute();
+		
+	});
 
+	$rootScope.$on('$routeChangeSuccess', (newRoute, oldRoute) => { 
 
 		// scroll the window to the top when a new page is opened
     $anchorScroll();
