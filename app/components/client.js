@@ -36,6 +36,7 @@ require('./admin/adminPageDirective.js')(eventsApp);
 require('./admin/admin-header/adminHeaderDirective.js')(eventsApp);
 require('./pastEvents/pastEventsDirective.js')(eventsApp);
 require('./admin/createEvent/createEventDirective.js')(eventsApp);
+require('./admin/editEvent/editEventDirective.js')(eventsApp);
 
 //controllers
 require('./shared/AllPagesCtrl.js')(eventsApp);
@@ -54,6 +55,7 @@ require('./admin/userLogging/UserLoggingCtrl.js')(eventsApp);
 require('./admin/admin-header/AdminHeaderCtrl.js')(eventsApp);
 require('./admin/editSlideshow/editSlideshowCtrl.js')(eventsApp);
 require('./admin/editFiles/EditFilesCtrl.js')(eventsApp);
+require('./admin/editEvent/EditEventCtrl.js')(eventsApp);
 //services
 require('./meetTheTeam/meetTheTeamRestResource.js')(eventsApp);
 require('./futureEvents/futureEventsRESTResource.js')(eventsApp);
@@ -66,6 +68,7 @@ require('./admin/createSpeaker/createSpeakerRESTResource.js')(eventsApp);
 require('./admin/userLogging/userLoggingRESTResources.js')(eventsApp);
 require('./admin/editSlideshow/editSlideshowRESTResource.js')(eventsApp);
 require('./admin/editFiles/editFilesRESTResource.js')(eventsApp);
+require('./admin/editEvent/editEventRESTResource.js')(eventsApp);
 
 eventsApp
 .config(['$routeProvider', '$locationProvider', 'AnalyticsProvider', '$httpProvider', function ($routeProvider, $locationProvider, AnalyticsProvider, $httpProvider) {
@@ -180,7 +183,7 @@ eventsApp
 	.when('/admin/edit-event', {
 		templateUrl: '/app/components/admin/editEvent/admin-edit-event.html',
 		reloadOnSearch: false,
-		// controller: 'AdminCreateEventCtrl',
+		controller: 'EditEventCtrl',
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
     }

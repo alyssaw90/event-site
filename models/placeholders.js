@@ -4600,11 +4600,11 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 				isPublished: true,
 				firstName: 'Arthur',
 				lastName: 'Jin',
-				speakerDescription: `<p>Arthur Jin is the Principle Program Manager on the Office 365 team. He leads the effort of landing Office 365 services and features to China, focusing on feature development and development planning and implementation. Arthur has worked at Microsoft for 20 years, covering many product and services including Windows, Office and MSN. Prior to Microsoft, Arthur worked at two other software companies developing business software. Arthur has a Master degree from Bowling Green State University in Ohio with a focus in technical communication and computer science.</p>
+				speakerDescription: `<p>Arthur Jin is the Principal Program Manager on the Office 365 team. He leads the effort of landing Office 365 services and features to China, focusing on feature development and development planning and implementation. Arthur has worked at Microsoft for 20 years, covering many product and services including Windows, Office and MSN. Prior to Microsoft, Arthur worked at two other software companies developing business software. Arthur has a Master degree from Bowling Green State University in Ohio with a focus in technical communication and computer science.</p>
 				`,
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: false,
-				msTeamTitle: 'Principle Program Manager for Office 365',
+				msTeamTitle: 'Principal Program Manager for Office 365',
 				showOnHomePage: false,
 				headShot: 'arthur-jin-headshot.jpg',
 				company: 'Microsoft',
@@ -4612,6 +4612,41 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 				allowNotifications: false,
 				allowPersonalInfoSharing: false
 
+			})
+		})
+		.then(function() {
+			return Speaker.create({
+				isPublished: true,
+				firstName: 'Raymond',
+				lastName: 'Xue',
+				speakerDescription: `<p>Raymond is the Principal Software Engineering Manager in the Office China Incubation Team.  His team focuses on promoting Microsoft productivity services (Office 365) to the Chinese customers through local social network platform such as WeChat.  Applications developed by Raymond’s team involves using wide varieties of Office 365 API, Microsoft Graph API, OneDrive for Business, AAD.  Raymond has been working in Microsoft for more than 15 years.  Before the current project, he has worked in other products including Visual Studio, Ads Platform, Lync and Skype for Business.  He graduated from the University of Auckland (New Zealand) with a master degree in Computer Engineering.</p>`,
+				eventRole: 'speaker',
+				showOnMeetTheTeamPage: false,
+				msTeamTitle: 'Principal Software Engineering Manager',
+				showOnHomePage: false,
+				headShot: 'raymond-xue-headshot.jpg',
+				company: 'Microsoft',
+				country: 'China',
+				allowNotifications: false,
+				allowPersonalInfoSharing: false
+			})
+		})
+		.then(function() {
+			return Speaker.create({
+				isPublished: true,
+				firstName: 'Jim',
+				lastName: 'Maurer',
+				speakerDescription: `<p>Jim is a Principal Manager leading the Open Specifications documentation, delivery, and release efforts for interoperability with Windows, Windows Server, and SQL Server.  Jim has worked in various engineering and customer support management roles for the past ten years.  Before joining Microsoft he held senior and executive positions related to electric power systems control, aircraft heavy maintenance, and governmental reengineering projects.</p>
+				<p>Jim graduated with an electrical engineering degree from the University of Idaho with specializations in electronics and computer architecture.</p>`,
+				eventRole: 'speaker',
+				showOnMeetTheTeamPage: false,
+				msTeamTitle: 'Director Content Publishing, Interop and Protocols',
+				showOnHomePage: false,
+				headShot: 'jim-maurer-headshot.jpg',
+				company: 'Microsoft',
+				country: 'USA',
+				allowNotifications: false,
+				allowPersonalInfoSharing: false
 			})
 		})
 };

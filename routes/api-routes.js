@@ -349,7 +349,6 @@ module.exports = (router) => {
 
   // create new event
   router.post('/createevent', eatAuth, (req, res, next) => {
-    console.log(clc.white.bgBlue('REQ.BODY::::    '), req.body);
     models.sql.sync()
     .then(function () {
       Event.create({
@@ -393,6 +392,11 @@ module.exports = (router) => {
 
       });
     });
+  });
+
+  router.post('/editevent', eatAuth, (req, res, next) => {
+    console.log(clc.white.bgBlue('REQ.BODY::::    '), req.body);
+    
   });
 
 

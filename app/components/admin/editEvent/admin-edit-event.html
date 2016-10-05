@@ -1,14 +1,143 @@
 
 <div class="mobileWrapper ng-cloak" role="presentation" data-ng-controller="AdminCreateEventCtrl" data-ng-init="getEvents(); getAllSpeakers()" >
   <main style="overflow:hidden;" id="beginningOfContent" tabindex="0" class="grid main-page-content">
-    <section role="presentation" class="col_12 internetExplorer">
+		<div id="edit-menu-options" class="btn-group edit-section" role="group" aria-label="edit tab buttons" style="display: none; min-height: 400px">
+			<h2>{{editedEvent.event.eventName}}</h2>
+		  <button type="button" class="btn btn-primary" ng-click="showElem('#edit-event-section, #edit-menu-options', '.edit-section')">Edit Event</button>
+		  <div class="btn-group" role="group">
+  		  <button id="edit-tabs-dropdown" type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle data-toggle="dropdown" aria-haspopup="true">
+  		    Edit Tabs<span class="caret"></span>
+  		  </button>
+  		  <ul class="dropdown-menu" dropdown-menu aria-labelledby="edit-tabs-dropdown">
+	  		  <li ng-repeat="tab in editedEvent.tabs">
+	  		    <a class="dropdown-item" href="">{{tab.tabTitle}}</a>	  		  	
+	  		  </li>
+  		  </ul>
+  		</div>
+		  <button type="button" class="btn btn-primary">Add Tabs</button>
+		  <button type="button" class="btn btn-primary">Delete Tabs</button>
+		  <button type="button" class="btn btn-primary" ng-click="showElem('#main-edit-section', '.edit-section')">Cancel</button>
+		  <!-- <div style="height: 500px">hola</div> -->
+		</div>
+		<!-- <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+			<h2>{{editedEvent.event.eventName}}</h2>
+		  <button type="button" class="btn btn-secondary" ng-click="showElem('#edit-event-section, #edit-menu-options', '.edit-section')">Edit Event</button>
+		  <div class="btn-group" role="group">
+		    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		      Dropdown&nbsp;&nbsp;<span class="caret"></span>
+		    </button>
+		    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+		      <a ng-repeat="tab in editedEvent.tabs" class="dropdown-item" href="" ng-click="showElem('#edit-event-section, #edit-menu-options', '.edit-section')">{{tab.tabTitle}}</a><br>
+		    </div>
+		  </div>
+		  <button type="button" class="btn btn-secondary" ng-click="">2</button>
+	
+		</div> -->
+    <section id="main-edit-section" role="presentation" class="col_12 internetExplorer edit-section">
 			<div id="edit-events-home-tab">
 				<h3>All Events</h3>
 				<table id="all-events-table">
 					<tr><th><h4>Event Name</h4></th><th><h4>Event Location</h4></th><th><h4>Event Date</h4></th><th><h4>Last Modified By</h4></th><th><h4>Last Modified</h4></th><th><h4>Status</h4></th><th>&nbsp;</th></tr>
-					<tr data-ng-repeat="event in theEvents"><td>{{event.eventName}}</td><td>{{event.eventLocation}}</td><td>{{event.eventStartDate | date: 'MM/dd/yyyy'}}</td><td>{{event.lastModifiedBy}}</td><td>{{event.updatedAt | date: 'MM/dd/yyyy'}}</td><td>{{publishedOrNot = event.isPublished ? 'published' : 'unpublished';}}</td><td><button>Edit</button></td></tr>
+					<tr data-ng-repeat="event in theEvents"><td>{{event.eventName}}</td><td>{{event.eventLocation}}</td><td>{{event.eventStartDate | date: 'MM/dd/yyyy'}}</td><td>{{event.lastModifiedBy}}</td><td>{{event.updatedAt | date: 'MM/dd/yyyy'}}</td><td>{{publishedOrNot = event.isPublished ? 'published' : 'unpublished';}}</td><td><button data-ng-click="getSingleEvent(event.eventUrl, '#edit-menu-options', '.edit-section')">Edit</button></td></tr>
 				</table>
 			</div>
+    </section>
+    <section id="edit-tabs-section" class="col_12 edit-section" role="presentation">
+    	<
+    	<form>
+				<input class="col_12" type="hidden" name="country" data-ng-model="editedEvent.tabs.id">
+				<input type="number" name="tabNumber">
+    	</form>
+    </section>
+    <section id="edit-event-section" role="presentation" class="col_12 edit-section" style="display: none">
+    	<img ng-src="/{{headerImage}}">
+			<form id="editEventForm" name="editEventForm" method="post" enctype="multipart/form-data" data-ng-init="getAllSpeakers();" data-ng-submit="editEvent(editedEvent);">
+	    	<div data-ng-controller="AdminFileUploadCtrl">
+		  		<button name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventHeaderImg')">Select Header Image</button>
+		  		<br><br>
+		  		<!-- File:
+		  		<div style="font:smaller">{{eventHeaderImg.path}}{{eventHeaderImg.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+		  		    <span class="progress" ng-show="eventHeaderImg.progress >= 0">
+		  		        <div style="width:{{eventHeaderImg.progress}}%"  
+		  		             ng-bind="eventHeaderImg.progress + '%'"></div>
+		  		    </span>
+		  		</div>     
+		  		{{errorMsg}} -->
+	    			
+	    	</div>
+	    	<br><br>
+				<input class="col_12" type="hidden" name="country" data-ng-model="editedEvent.event.id">
+				<label class="col_12" for="editedEventName">Event Name*</label>
+				<input class="col_12" type="text" data-ng-model="editedEvent.event.eventName" name="editedEventName" id="editedEventName" data-ng-required="required">
+				<label class="col_12" for="eventUrl">Event URL (cAsE sEnSiTiVe)*</label>
+				<div class="col_2"> interopevents.com/</div>
+				<input class="col_10" type="text" data-ng-model="editedEvent.event.eventUrl" name="eventUrl" id="eventUrl">
+				<label class="col_12" for="editedEventRegistrationLink">Event Registration Link</label>
+				<input class="col_12" type="url" data-ng-model="editedEvent.event.eventRegistrationLink" name="editedEventRegistrationLink" id="editedEventRegistrationLink">
+				<label class="col_12" for="editedEventCity">Event City*</label>
+				<input class="col_12" type="text" data-ng-model="editedEvent.event.eventLocation" name="editedEventCity" id="editedEventCity" data-ng-required="required">
+				<label class="col_12" for="editedEventState">Event State</label>
+				<input class="col_12" type="text" data-ng-model="editedEvent.event.eventState" name="editedEventState" id="editedEventState">
+				<label class="col_12" for="editedEventCountry">Event Country</label>
+				<input class="col_12" type="text" data-ng-model="editedEvent.event.eventCountry" name="editedEventCountry" id="editedEventCountry" >
+				<div class="col_12">
+					<label class="" for="editedEventStartDate">Event Start Date (Can include time of day)</label>
+					<input class="" type="date" data-ng-model="editedEvent.event.eventStartDate" name="editedEventStartDate" id="editedEventStartDate" ng-value="startDate">
+					<br><br>
+					<label class="" for="editedEventEndDate">Event End Date (Can include time of day)</label>
+					<input class="" type="date" data-ng-model="editedEvent.event.eventEndDate" name="editedEventEndDate" id="editedEventEndDate" ng-value="endDate">
+				</div>
+				<label class="col_12" for="showOnHeader">Show this event on the header menu?&nbsp;&nbsp;
+				<input class="" type="checkbox" id="showOnHeader" data-ng-model="editedEvent.event.showOnHeader" ng-value="true" data-ng-checked="editedEvent.event.showOnHeader">
+				</label>
+				<label class="col_12" for="continentsInput">Choose Event Continent</label>
+				<radiogroup class="col_12" id="continentsInput" data-ng-required="required">
+					<label for="northAmericaInput">North America</label>
+					<input data-ng-model="editedEvent.event.eventContinent" type="radio" id="northAmericaInput" name="editedEventContinent" value="North America">
+					&nbsp;
+					<label for="southAmericaInput">South America</label>
+					<input data-ng-model="editedEvent.event.eventContinent" type="radio" id="southAmericaInput" name="editedEventContinent" value="South America">
+					&nbsp;
+					<label for="asia">Asia</label>
+					<input data-ng-model="editedEvent.event.eventContinent" type="radio" id="asia" name="editedEventContinent" value="Asia">
+					&nbsp;
+					<label for="europeInput">Europe</label>
+					<input data-ng-model="editedEvent.event.eventContinent" type="radio" id="europeInput" name="editedEventContinent" value="Europe">
+					&nbsp;
+					<label for="africaInput">Africa</label>
+					<input data-ng-model="editedEvent.event.eventContinent" type="radio" id="africaInput" name="editedEventContinent" value="Africa">
+					&nbsp;
+					<label for="australiaInput">Australia</label>
+					<input data-ng-model="editedEvent.event.eventContinent" type="radio" id="australiaInput" name="editedEventContinent" value="Oceania">
+				</radiogroup>
+				<br><br><br>
+				<label class="col_12" for="new-event-description">Event Description for About page</label>
+				<textarea class="col_12 form-control" data-ng-model="editedEvent.event.eventAboutTabText" name="new-event-description" style="min-height: 200px" data-ng-required="required" 
+				data-ui-tinymce="tinymceEditOptions">
+      	</textarea>
+				<br>
+				<br>
+	    	<label class="col_12" for="editedEventVenueName">Venue Name</label>
+				<input class="col_12" type="text" data-ng-model="editedEvent.event.eventVenueName" name="editedEventVenueName" id="editedEventVenueName">
+				<label class="col_12" for="newVenduAddressLine1">Street Address</label>
+				<input class="col_12" type="text" data-ng-model="editedEvent.event.eventVenueAddressLine1" name="newVenduAddressLine1" id="newVenduAddressLine1">
+				<label class="col_12" for="newVenueAddressLine2">City, State, Country</label>
+				<input class="col_12" type="text" data-ng-model="editedEvent.event.eventVenueAddressLine2" name="newVenueAddressLine2" id="newVenueAddressLine2">
+				<label class="col_12" for="newVenueParkingInfo">Parking Information</label>
+				<textarea class="col_12" data-ng-model="editedEvent.event.eventParkingInfo" name="newVenueParkingInfo" id="newVenueParkingInfo"></textarea>
+				<div data-ng-controller="AdminFileUploadCtrl">
+					<button name="venuePhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventVenueImg')">Select Venue Image</button>
+				</div>
+				<radiogroup class="col_12">
+					<label for="publishedTrue">Publish Now</label>
+					<input data-ng-model="editedEvent.event.isPublished" type="radio" id="publishedTrue" name="publishStatus" ng-value="true">
+					<br>
+					<label for="publishedFalse">Save as Draft</label>
+					<input data-ng-model="editedEvent.event.isPublished" type="radio" id="publishedFalse" name="publishStatus" ng-value="false">
+				</radiogroup>
+				<button type="button" class="medium float-left" style="margin: 5px" id="cancel-new-event-button">Cancel</button>
+				<button type="submit" class="medium float-left green" style="margin: 5px" id="save-new-event-as-draft-button">Save</button>
+			</form>
     </section>
   </main>
 </div>
