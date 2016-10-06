@@ -1,52 +1,133 @@
 
 <div class="mobileWrapper ng-cloak" role="presentation" data-ng-controller="AdminCreateEventCtrl" data-ng-init="getEvents(); getAllSpeakers()" >
   <main style="overflow:hidden;" id="beginningOfContent" tabindex="0" class="grid main-page-content">
-		<div id="edit-menu-options" class="btn-group edit-section" role="group" aria-label="edit tab buttons" style="display: none; min-height: 400px">
+		<div id="edit-menu-options" class="btn-group edit-section col_12" role="group" aria-label="edit tab buttons" style="display: none; min-height: 400px">
 			<h2>{{editedEvent.event.eventName}}</h2>
 		  <button type="button" class="btn btn-primary" ng-click="showElem('#edit-event-section, #edit-menu-options', '.edit-section')">Edit Event</button>
 		  <div class="btn-group" role="group">
   		  <button id="edit-tabs-dropdown" type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle data-toggle="dropdown" aria-haspopup="true">
-  		    Edit Tabs<span class="caret"></span>
+  		    Edit Tabs&nbsp;&nbsp;<span class="caret"></span>
   		  </button>
   		  <ul class="dropdown-menu" dropdown-menu aria-labelledby="edit-tabs-dropdown">
 	  		  <li ng-repeat="tab in editedEvent.tabs">
-	  		    <a class="dropdown-item" href="">{{tab.tabTitle}}</a>	  		  	
+	  		    <a class="dropdown-item" href="" ng-click="getTab(tab); showElem('#edit-tabs-section, #edit-menu-options', '.edit-section');">{{tab.tabTitle}}</a>	  		  	
 	  		  </li>
   		  </ul>
   		</div>
-		  <button type="button" class="btn btn-primary">Add Tabs</button>
-		  <button type="button" class="btn btn-primary">Delete Tabs</button>
+		  <button type="button" class="btn btn-primary" ng-click="showElem('#edit-menu-options, #add-tabs-section', '.edit-section')">Add Tabs</button>
+		  <button type="button" class="btn btn-primary" ng-click="showElem('#edit-menu-options, #delete-tabs-section', '.edit-section')">Delete Tabs</button>
 		  <button type="button" class="btn btn-primary" ng-click="showElem('#main-edit-section', '.edit-section')">Cancel</button>
-		  <!-- <div style="height: 500px">hola</div> -->
 		</div>
-		<!-- <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-			<h2>{{editedEvent.event.eventName}}</h2>
-		  <button type="button" class="btn btn-secondary" ng-click="showElem('#edit-event-section, #edit-menu-options', '.edit-section')">Edit Event</button>
-		  <div class="btn-group" role="group">
-		    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		      Dropdown&nbsp;&nbsp;<span class="caret"></span>
-		    </button>
-		    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-		      <a ng-repeat="tab in editedEvent.tabs" class="dropdown-item" href="" ng-click="showElem('#edit-event-section, #edit-menu-options', '.edit-section')">{{tab.tabTitle}}</a><br>
-		    </div>
-		  </div>
-		  <button type="button" class="btn btn-secondary" ng-click="">2</button>
-	
-		</div> -->
     <section id="main-edit-section" role="presentation" class="col_12 internetExplorer edit-section">
 			<div id="edit-events-home-tab">
 				<h3>All Events</h3>
 				<table id="all-events-table">
-					<tr><th><h4>Event Name</h4></th><th><h4>Event Location</h4></th><th><h4>Event Date</h4></th><th><h4>Last Modified By</h4></th><th><h4>Last Modified</h4></th><th><h4>Status</h4></th><th>&nbsp;</th></tr>
-					<tr data-ng-repeat="event in theEvents"><td>{{event.eventName}}</td><td>{{event.eventLocation}}</td><td>{{event.eventStartDate | date: 'MM/dd/yyyy'}}</td><td>{{event.lastModifiedBy}}</td><td>{{event.updatedAt | date: 'MM/dd/yyyy'}}</td><td>{{publishedOrNot = event.isPublished ? 'published' : 'unpublished';}}</td><td><button data-ng-click="getSingleEvent(event.eventUrl, '#edit-menu-options', '.edit-section')">Edit</button></td></tr>
+					<thead>
+						<tr>
+							<th>
+								<h4>Event Name</h4>
+							</th>
+							<th>
+								<h4>Event Location</h4>
+							</th>
+							<th>
+								<h4>Event Date</h4>
+							</th>
+							<th>
+								<h4>Last Modified By</h4>
+							</th>
+							<th>
+								<h4>Last Modified</h4>
+							</th>
+							<th>
+								<h4>Status</h4>
+							</th>
+							<th>&nbsp;</th>
+						</tr>						
+					</thead>
+					<tbody>
+						<tr data-ng-repeat="event in theEvents">
+							<td>{{event.eventName}}</td>
+							<td>{{event.eventLocation}}</td>
+							<td>{{event.eventStartDate | date: 'MM/dd/yyyy'}}</td>
+							<td>{{event.lastModifiedBy}}</td>
+							<td>{{event.updatedAt | date: 'MM/dd/yyyy'}}</td>
+							<td>{{publishedOrNot = event.isPublished ? 'published' : 'unpublished';}}</td>
+							<td>
+								<button data-ng-click="getSingleEvent(event.eventUrl, '#edit-menu-options', '.edit-section')">Edit</button>
+							</td>
+						</tr>						
+					</tbody>
 				</table>
 			</div>
     </section>
-    <section id="edit-tabs-section" class="col_12 edit-section" role="presentation">
-    	<
+    <section id="delete-tabs-section" class="col_12 edit-section" role="presentation" style="display: none;">
+    	<table id="delete-tabs-table">
+    		<thead>
+    			<tr>
+    				<th class="col_6">
+    					<h4>Tab Name</h4>
+    				</th>
+    				<th class="col_3">
+    					<h4>View Tab</h4>
+    				</th>
+    				<th class="col_3">
+    					<h4>Delete Tab</h4>
+    				</th>
+    			</tr>
+    		</thead>
+    		<tbody>
+    			<tr ng-repeat="tab in editedEvent.tabs">
+    				<td class="col_6">
+    					{{tab.tabTitle}}
+  					</td>
+    				<td class="col_3">
+    					<button>View {{tab.tabTitle}}</button>
+    				</td>
+    				<td class="col_3">
+    					<button>Delete {{tab.tabTitle}}</button>
+    				</td>
+    			</tr>
+    		</tbody>
+    	</table>
+    </section>
+    <section id="add-tabs-section" class="col_12 edit-section" role="presentation" style="display: none;">
     	<form>
-				<input class="col_12" type="hidden" name="country" data-ng-model="editedEvent.tabs.id">
-				<input type="number" name="tabNumber">
+				<input class="col_12" type="hidden" name="newTabAsscEventId" data-ng-model="editedEvent.event.id">
+				<label class="col_12" for="newTabTitle">Tab Title</label>
+				<input class="col_12" type="text" name="newTabTitle" ng-model="newTab.newTabTitle">
+				<label class="col_12" for="newTabNumber">Tab Position</label>
+				<div role="presentation" class="col_12">
+					<input type="number" name="newTabNumber" ng-model="newTab.newTabNumber">					
+				</div>
+				<label class="col_12" for="new-event-description">Tab Content</label>
+				<div role="presentation" class="col_12">
+					<textarea class="col_12 form-control" data-ng-model="newTab.newTabContent" name="new-tab-html" style="min-height: 200px" data-ng-required="required" 
+					data-ui-tinymce="tinymceEditOptions">
+	      	</textarea>
+					<br>
+					<br>
+				</div>
+    	</form>
+    </section>
+    <section id="edit-tabs-section" class="col_12 edit-section" role="presentation" style="display: none;">
+    	<form>
+				<input class="col_12" type="hidden" name="asssociatedEventId" data-ng-model="editedEvent.EventsTabsAccsc.EventId">
+				<input class="col_12" type="hidden" name="editedTabId" data-ng-model="editedEvent.id">
+				<label class="col_12" for="tabTitle">Tab Title</label>
+				<input class="col_12" type="text" name="tabTitle" ng-model="tabToEdit.tabTitle">
+				<label class="col_12" for="tabNumber">Tab Position</label>
+				<div role="presentation" class="col_12">
+					<input type="number" name="tabNumber" ng-model="tabToEdit.tabNumber">					
+				</div>
+				<label class="col_12" for="edited-tab-html">Tab Content</label>
+				<div role="presentation" class="col_12">
+					<textarea class="col_12 form-control" data-ng-model="tabToEdit.tabContent" name="edited-tab-html" style="min-height: 200px" data-ng-required="required" 
+					data-ui-tinymce="tinymceEditOptions">
+	      	</textarea>
+					<br>
+					<br>
+				</div>
     	</form>
     </section>
     <section id="edit-event-section" role="presentation" class="col_12 edit-section" style="display: none">
@@ -111,20 +192,21 @@
 					<input data-ng-model="editedEvent.event.eventContinent" type="radio" id="australiaInput" name="editedEventContinent" value="Oceania">
 				</radiogroup>
 				<br><br><br>
-				<label class="col_12" for="new-event-description">Event Description for About page</label>
-				<textarea class="col_12 form-control" data-ng-model="editedEvent.event.eventAboutTabText" name="new-event-description" style="min-height: 200px" data-ng-required="required" 
+				<label class="col_12" for="edited-event-description">Event Description for About page
+				<textarea class="col_12 form-control" data-ng-model="editedEvent.event.eventAboutTabText" name="edited-event-description" style="min-height: 200px" data-ng-required="required" 
 				data-ui-tinymce="tinymceEditOptions">
       	</textarea>
+      	</label>
 				<br>
 				<br>
 	    	<label class="col_12" for="editedEventVenueName">Venue Name</label>
 				<input class="col_12" type="text" data-ng-model="editedEvent.event.eventVenueName" name="editedEventVenueName" id="editedEventVenueName">
-				<label class="col_12" for="newVenduAddressLine1">Street Address</label>
-				<input class="col_12" type="text" data-ng-model="editedEvent.event.eventVenueAddressLine1" name="newVenduAddressLine1" id="newVenduAddressLine1">
-				<label class="col_12" for="newVenueAddressLine2">City, State, Country</label>
-				<input class="col_12" type="text" data-ng-model="editedEvent.event.eventVenueAddressLine2" name="newVenueAddressLine2" id="newVenueAddressLine2">
-				<label class="col_12" for="newVenueParkingInfo">Parking Information</label>
-				<textarea class="col_12" data-ng-model="editedEvent.event.eventParkingInfo" name="newVenueParkingInfo" id="newVenueParkingInfo"></textarea>
+				<label class="col_12" for="editedVenduAddressLine1">Street Address</label>
+				<input class="col_12" type="text" data-ng-model="editedEvent.event.eventVenueAddressLine1" name="editedVenduAddressLine1" id="editedVenduAddressLine1">
+				<label class="col_12" for="editedVenueAddressLine2">City, State, Country</label>
+				<input class="col_12" type="text" data-ng-model="editedEvent.event.eventVenueAddressLine2" name="editedVenueAddressLine2" id="editedVenueAddressLine2">
+				<label class="col_12" for="editedVenueParkingInfo">Parking Information</label>
+				<textarea class="col_12" data-ng-model="editedEvent.event.eventParkingInfo" name="editedVenueParkingInfo" id="editedVenueParkingInfo"></textarea>
 				<div data-ng-controller="AdminFileUploadCtrl">
 					<button name="venuePhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventVenueImg')">Select Venue Image</button>
 				</div>
@@ -135,8 +217,8 @@
 					<label for="publishedFalse">Save as Draft</label>
 					<input data-ng-model="editedEvent.event.isPublished" type="radio" id="publishedFalse" name="publishStatus" ng-value="false">
 				</radiogroup>
-				<button type="button" class="medium float-left" style="margin: 5px" id="cancel-new-event-button">Cancel</button>
-				<button type="submit" class="medium float-left green" style="margin: 5px" id="save-new-event-as-draft-button">Save</button>
+				<button type="button" class="medium float-left" style="margin: 5px" id="cancel-edited-event-button">Cancel</button>
+				<button type="submit" class="medium float-left green" style="margin: 5px" id="save-edited-event-as-draft-button">Save</button>
 			</form>
     </section>
   </main>

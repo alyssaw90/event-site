@@ -7,7 +7,8 @@ const EditEventCtrl = (app) => {
 	app.controller('EditEventCtrl', ['$scope', '$rootScope', 'Upload', 'editEventRESTResource', '$sce', '$filter', ($scope, $rootScope, Upload, resource, $sce, $filter) => {
 		$scope.errors = [];
     $scope.editedEvent = {};
-    $scope.date = $filter("date")(Date.now(), 'yyyy-MM-dd');
+    $scope.tabToEdit = {};
+    $scope.newTab = {};
 		let EditEventData = resource();
 
     $scope.showElem = (elemToShow, elemsToHide) => {
@@ -46,6 +47,10 @@ const EditEventCtrl = (app) => {
       })
 
     };
+
+    $scope.getTab = (tab) => {
+      $scope.tabToEdit = tab;
+    }
 
     $scope.editEvent = (editedEvent) => {
       console.log('hola::::    ',  editedEvent);
