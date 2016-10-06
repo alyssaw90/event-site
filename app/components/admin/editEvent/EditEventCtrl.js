@@ -9,7 +9,12 @@ const EditEventCtrl = (app) => {
     $scope.editedEvent = {};
     $scope.tabToEdit = {};
     $scope.newTab = {};
+    $scope.headerImage = $rootScope.eventHeaderImage ? 'uploads/' + $rootScope.eventHeaderImage.size + '-' + $rootScope.eventHeaderImage.name : '';
 		let EditEventData = resource();
+
+    $rootScope.$watch('eventHeaderImage', (oldVal, newVal) => {
+      $scope.headerImage = $rootScope.eventHeaderImage ? 'uploads/' + $rootScope.eventHeaderImage.size + '-' + $rootScope.eventHeaderImage.name : '';
+    });
 
     $scope.showElem = (elemToShow, elemsToHide) => {
       jQuery(elemToShow).show();
@@ -50,14 +55,10 @@ const EditEventCtrl = (app) => {
 
     $scope.getTab = (tab) => {
       $scope.tabToEdit = tab;
-    }
-
-    $scope.editEvent = (editedEvent) => {
-      console.log('hola::::    ',  editedEvent);
-
     };
 
-    $scope.editEvent = (editedEvent) => {
+    /*$scope.editEvent = (editedEvent) => {
+      editedEvent.headerImage = $scope.headerImage;
 
       EditEventData.editEvent(editedEvent, (err, data) => {
         if (err) {
@@ -67,6 +68,30 @@ const EditEventCtrl = (app) => {
           alert('speaker saved');
         }
 
+      });
+    };
+*/
+    $scope.editEvent = (newEventData) => {
+      if ($rootScope.eventHeaderImage.name) {
+        newEventData.event.eventHeaderImage = $rootScope.eventHeaderImage.name ? $rootScope.eventHeaderImage.size + '-' + $rootScope.eventHeaderImage.name : '';
+      }
+      /*if ($rootScope.eventVenueImg.name) {
+        newEventData.newEventVenueImg = $rootScope.eventVenueImg.name ? $rootScope.eventVenueImg.size + '-' + $rootScope.eventVenueImg.name : '';
+      }*/
+      console.log('new event  :   ', newEventData);
+      EditEventData.editEvent(newEventData, (err, data) => {
+        if (err) {
+          $scope.errors.push({msg: 'could not save newEvent: ' + $scope.newEvent.eventName});
+        }
+        if (!err) {
+
+          $scope.editedEvent = {};
+          $rootScope.eventHeaderImage = undefined;
+          $rootScope.eventVenueImg = undefined;
+
+          // $window.location.reload();
+          // alert('Event Saved');
+        }
       });
     };
 

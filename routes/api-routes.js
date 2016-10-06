@@ -396,7 +396,36 @@ module.exports = (router) => {
 
   router.post('/editevent', eatAuth, (req, res, next) => {
     console.log(clc.white.bgBlue('REQ.BODY::::    '), req.body);
-    
+    models.sql.sync()
+    .then( () => {
+      return Event.findOne({
+        where: {
+          id: req.body.event.id 
+        }
+      })
+    })
+    .then( (event) => {
+      event.update({
+        isPublished: req.body.event.isPublished,
+        eventName: req.body.event.eventName,
+        eventUrl: req.body.event.eventUrl,
+        eventRegistrationLink: req.body.event.eventRegistrationLink,
+        eventStartDate: req.body.event.eventStartDate,
+        eventEndDate: req.body.event.eventEndDate,
+        eventLocation: req.body.event.eventLocation,
+        eventState: req.body.event.eventState,
+        eventCountry: req.body.event.eventCountry,
+        eventHeaderImage: req.body.event.eventHeaderImage,
+        eventContinent: req.body.event.eventContinent,
+        eventAboutTabText: req.body.event.eventAboutTabText,
+        eventVenueName: req.body.event.eventVenueName,
+        eventVenueAddressLine1: req.body.event.eventVenueAddressLine1,
+        eventVenueAddressLine2: req.body.event.eventVenueAddressLine2,
+        eventParkingInfo: req.body.event.eventParkingInfo,
+        eventVenueImg: req.body.event.eventVenueImg
+      })
+      res.end();
+    })
   });
 
 
@@ -456,7 +485,8 @@ module.exports = (router) => {
       // search the database for event that matches the city and occurs on or after the year from the params and return the event found
       return Event.findOne({
         where: {
-          eventUrl: req.params.slug
+          eventUrl: req.params.slug,
+          isPublished: true
         }
       });
 
@@ -468,10 +498,18 @@ module.exports = (router) => {
         res.json(eventInfo);
       } else {
         eventInfo.event = event;
-        event.getEventTabs()
+        event.getEventTabs({
+          where: {
+            isPublished: true
+          }
+        })
         .then( (tabs) => {
           eventInfo.tabs = tabs;
-          event.getSpeakers()
+          event.getSpeakers({
+            where: {
+              isPublished: true
+            }
+          })
           .then( (speakers) => {
             eventInfo.speakers = speakers;
             res.json(eventInfo);
