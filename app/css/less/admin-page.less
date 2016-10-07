@@ -139,20 +139,24 @@ p .lightbox {
   border-radius: 15px;
 }
 
-.slide-table-container {
+.editedEventSpeaker {
 	min-height: 50px;
 	border: 1px solid #eee;
   margin: 0;
   padding: 5px 0 0 0;
   border-radius: 10px;
   margin-right: 10px;
+}
+
+.slide-table-container {
+	.editedEventSpeaker;
 	& img {
 		width: 80%;
 	}
 }
 
 .file-container {
-	.slide-table-container;
+	.editedEventSpeaker;
 	// padding: 0 0 0 0;
 	& img {
 		max-width: 100%;

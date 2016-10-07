@@ -3507,39 +3507,181 @@ setTimeout(function() {
 				<h4>October 21, 2016: Hackathon Official Kick Off </h4>
 				
 				<h5>Location: Microsoft Beijing West / 5 Danling St, Haidian, Beijing, China, 100080</h5>
-				<ul>
-				<li>17:00 – Welcome participants</li>
-				<li>18:00 – Dinner</li>
-				<li>19:00-21:00 – Team building + hacking</li>
-				</ul>
+				<div class="table-responsive">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th><h5>Time</h5></th>
+								<th><h5>Session</h5></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">17:00</th>
+								<td>Welcome participants</td>
+							</tr>
+							<tr class="active">
+								<th scope="row">18:00</th>
+								<td>Dinner</td>
+							</tr>
+							<tr>
+								<th scope="row">19:00-21:00</th>
+								<td>Team building + hacking</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 				
 				<h4>October 22, 2016: DevDays Asia 2016 @ Beijing Conference Begins and Hackathon Continues </h4>
 				
 				<h5>Location: Microsoft Beijing West / 5 Danling St, Haidian, Beijing, China, 100080</h5>
-				<ul>
-				<li>9:00 – Welcome</li>
-				<li>9:15 – Keynote</li>
-				<li>10:00 – Office developer and interoperability tracks begin</li>
-				<li>12:30 – Lunch</li>
-				<li>13:30-18: 15 – Presentations and workshops</li>
-				<li>18:15- Dinner</li>
-				<li>19:15-0:00 – Work on hackathon projects</li>
-				</ul>
+				<div class="table-responsive">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th><h5>Time</h5></th>
+								<th><h5>Office Developer Track</h5></th>
+								<th><h5>Interoperability Track</h5></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">9:00-9:15</th>
+								<td colspan="2">Welcome Speech</td>
+							</tr>
+							<tr>
+								<th scope="row">9:15-10:00</th>
+								<td colspan="2">Keynote</td>
+							</tr>
+							<tr>
+								<th scope="row">10:00-10:45</th>
+								<td>Introducing the Modern Office Platform</td>
+								<td>Introducing Microsoft’s Commitment to Interoperability (Office, Windows, and SQL)</td>
+							</tr>
+							<tr class="active">
+								<td>10:45-11:00</td>
+								<td colspan="2">Break </td>
+							</tr>
+							<tr>
+								<th scope="row">11:00-11:45</th>
+								<td>Make your solution a native part of Office with Office Add-ins</td>
+								<td>Windows Protocol Test Suites</td>
+							</tr>
+							<tr>
+								<th scope="row">11:45-12:30</th>
+								<td>Discover Microsoft Graph: The easiest way to call Microsoft APIs (including Gallatin, examples, case studies, etc.)</td>
+								<td>Discover Exchange Protocols & advancements in ActiveSync, Exchange Web Services, and MAPI</td>
+							</tr>
+							<tr class="active">
+								<td>12:30-13:30</td>
+								<td colspan="2">Lunch</td>
+							</tr>
+							<tr>
+								<th scope="row">13:30-14:15</th>
+								<td>Navigate Dev.Office.com and create an Office Developer account</td>
+								<td>OData Overview and Demo</td>
+							</tr>
+							<tr>
+								<th scope="row">14:15-15:00</th>
+								<td>Intro to Office 365 China Instance</td>
+								<td>OData Validator, a tool for OData service authors to ensure that their service interoperates well with any OData client</td>
+							</tr>
+							<tr>
+								<th scope="row">15:00-15:45</th>
+								<td>Leverage Microsoft Graph through Office Add-ins</td>
+								<td>Introduction to "Model first-tool", a methodology for producing a highly consistent API definition from the resource model</td>
+							</tr>
+							<tr class="active">
+								<td>15:45-16:00</td>
+								<td colspan="2">Break</td>
+							</tr>
+							<tr>
+								<th scope="row">16:00-16:45</th>
+								<td>Build intelligent mail, contacts and calendar apps using Outlook REST APIs </td>
+								<td>Get to know SharePoint protocols, including Office co-authoring (FSSHTTP) and Office Online (WOPI)</td>
+							</tr>
+							<tr>
+								<th scope="row">16:45-17:30</th>
+								<td>Use Office UI Fabric to design applications that blend seamlessly into Microsoft Office</td>
+								<td>Learn about the most commonly used file formats supported by Microsoft Office applications</td>
+							</tr>
+							<tr>
+								<th scope="row">17:30-18:15</th>
+								<td>Publishing your app to the Office Store </td>
+								<td>Utilize Message Analyzer & Fiddler to parse Office, Exchange, and SharePoint traffic (including SQL Parsers)</td>
+							</tr>
+							<tr class="active">
+								<td>18:15-19:15</td>
+								<td colspan="2">Dinner</td>
+							</tr>
+							<tr>
+								<th scope="row">19:15-19:30</th>
+								<td>Source Control (Managing your project) </td>
+							</tr>
+							<tr>
+								<th scope="row">20:00-20:15</th>
+								<td>Existing Open Source Projects </td>
+							</tr>
+							<tr class="active">
+								<td>22:00-22:30</td>
+								<td>Late Night Snack</td>
+							</tr>
+							<tr class="active">
+								<td>0:00</td>
+								<td>Venue Closes</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 				<p>*The hackathon will occur all day Saturday at the venue with onsite help from Microsoft engineers.</p>
 				
 				<h4>October 23, 2016: Hackathon continues</h4>
 				
 				<h5>Location: Microsoft Beijing West / 5 Danling St, Haidian, Beijing, China, 100080</h5>
-				<ul>
-				<li>9:00 Venue opens for breakfast</li>
-				<li>9:00-12:00 - Work on hackathon projects</li>
-				<li>12:00 – Lunch</li>
-				<li>13:00-15:00 – Work on hackathon projects</li>
-				<li>15:00 – All hackathon projects completed and submitted</li>
-				<li>15:15 – 17:00 – First round of evaluations of all teams</li>
-				<li>17:00-18:00 – Finalists present to panel of judges</li>
-				<li>18:15 – Hackathon awards and closing </li>
-				</ul>`
+				<div class="table-responsive">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th><h5>Time</h5></th>
+								<th><h5>Session</h5></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">9:00</th>
+								<td>Venue opens for breakfast</td>
+							</tr>
+							<tr>
+								<th scope="row">9:00-12:00</th>
+								<td>Work on hackathon projects</td>
+							</tr>
+							<tr class="active">
+								<th scope="row">12:00</th>
+								<td>Lunch</td>
+							</tr>
+							<tr>
+								<th scope="row">13:00-15:00</th>
+								<td>Work on hackathon projects</td>
+							</tr>
+							<tr>
+								<th scope="row">15:00</th>
+								<td>All hackathon projects completed and submitted</td>
+							</tr>
+							<tr>
+								<th scope="row">15:15 – 17:00</th>
+								<td>First round of evaluations of all teams</td>
+							</tr>
+							<tr>
+								<th scope="row">17:00-18:00</th>
+								<td>Finalists present to panel of judges</td>
+							</tr>
+							<tr>
+								<th scope="row">18:15</th>
+								<td>Hackathon awards and closing</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>`
 			})
 		})
 		.then(function() {
@@ -3822,45 +3964,186 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 		tabNumber: 2,
 		tabContent: `<a href="/beijing2016#agenda" class="btn btn-info float-right" role="button">English</a>
 				<a href="http://www.aka.ms/devdaysbeijing2016"><img src="uploads/RegisterNowCN.png" style="height: 37px; margin-right: 10px;" class="float-right beijingRegistration2016Button" title="registration button" alt="registration link"></a>
-<h4>2016 年九月二十六日: Hackathon 开始! </h4>	
-<h4>2016 年十月二十一日: Hackathon 正式开幕</h4>
-<p>会场：微软亚太研发集团</p>
-<p>北京市海淀区丹棱街5号</p>
-<p>邮编：100080</p>
-<ul>
-<li>17:00 &ndash; 欢迎参赛者</li>
-<li>18:00 &ndash; 晚餐</li>
-<li>19:00-21:00 &ndash; 建立团队 + 编写程序和应用</li>
-</ul>
-<p><strong>2016 年十月二十二日: DevDays Asia 2016 @ Beijing 会议开始与 Hackathon继续进行</strong></p>
-<p>会场：微软亚太研发集团</p>
-<p>北京市海淀区丹棱街5号</p>
-<p>邮编：100080</p>
-<ul>
-<li>9:00 &ndash; 欢迎</li>
-<li>9:15 &ndash; 开幕演讲</li>
-<li>10:00 &ndash; Office 开发者与互操作环节开始</li>
-<li>12:30 &ndash; 午餐</li>
-<li>13:30-18: 15 &ndash; 技术演讲与动手实验</li>
-<li>18:15- 晚餐</li>
-<li>19:15-0:00 &ndash; 编写程序和应用</li>
-</ul>
-<p>*Hackathon将于周六全天进行，现场有微软工程师的帮助和指导。</p>
-<p><strong>2016 年十月二十三日: Hackathon 继续进行</strong></p>
-<p>会场：微软亚太研发集团</p>
-<p>北京市海淀区丹棱街5号</p>
-<p>邮编：100080</p>
-<ul>
-<li>9:00 会场开放，提供早餐</li>
-<li>9:00-12:00 - 编写程序和应用</li>
-<li>12:00 &ndash; 午餐</li>
-<li>13:00-15:00 &ndash; 编写程序和应用</li>
-<li>15:00 &ndash; 完成程序和应用及提交</li>
-<li>15:15 &ndash; 17:00 &ndash; 第一轮评估参赛团队</li>
-<li>17:00-18:00 &ndash; 参加决赛的团队向评审团展示成果</li>
-<li>18:15 &ndash; Hackathon 颁奖及闭幕</li>
-</ul>
-`
+				<h4>2016 年九月二十六日: Hackathon 开始! </h4>	
+				<h4>2016 年十月二十一日: Hackathon 正式开幕</h4>
+				<p>会场：微软亚太研发集团</p>
+				<p>北京市海淀区丹棱街5号</p>
+				<p>邮编：100080</p>
+				<div class="table-responsive">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th><h5>时间</h5></th>
+								<th><h5>环节内容</h5></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">17:00</th>
+								<td>欢迎参赛者</td>
+							</tr>
+							<tr class="active">
+								<th scope="row">18:00</th>
+								<td>晚餐</td>
+							</tr>
+							<tr>
+								<th scope="row">19:00-21:00</th>
+								<td>建立团队 + 编写程序和应用</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<p><strong>2016 年十月二十二日: DevDays Asia 2016 @ Beijing 会议开始与 Hackathon继续进行</strong></p>
+				<p>会场：微软亚太研发集团</p>
+				<p>北京市海淀区丹棱街5号</p>
+				<p>邮编：100080</p>
+				<div class="table-responsive">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th><h5>时间</h5></th>
+								<th><h5>Office 开发者环节</h5></th>
+								<th><h5>互操作环节</h5></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">9:00-9:15</th>
+								<td colspan="2">欢迎致词</td>
+							</tr>
+							<tr>
+								<th scope="row">9:15-10:00</th>
+								<td colspan="2">会议主旨</td>
+							</tr>
+							<tr>
+								<th scope="row">10:00-10:45</th>
+								<td>介绍现代  Office 平台</td>
+								<td>介绍微软对互操作之承诺(Office, Windows, and SQL)</td>
+							</tr>
+							<tr class="active">
+								<td>10:45-11:00</td>
+								<td colspan="2">休息</td>
+							</tr>
+							<tr>
+								<th scope="row">11:00-11:45</th>
+								<td>通过Office 外接程序使您的解決方案成为 Office 本体的一部分</td>
+								<td>Windows 协议测试组件</td>
+							</tr>
+							<tr>
+								<th scope="row">11:45-12:30</th>
+								<td>探讨Microsoft Graph (旧称 “Office 365 统一API”) 是访问 Microsoft 云服务中数据最轻松简易的方式（内容包括Gallatin、  范例、实例等）。</td>
+								<td>发掘 Exchange 协议 和有关 ActiveSync, Exchange Web 服务及 MAPI方面的进步</td>
+							</tr>
+							<tr class="active">
+								<td>12:30-13:30</td>
+								<td colspan="2">午餐</td>
+							</tr>
+							<tr>
+								<th scope="row">13:30-14:15</th>
+								<td> 探索Dev.Office.com及通过报名注册拿到Office 开发人员账户</td>
+								<td>开放数据协议（OData）概述及演示</td>
+							</tr>
+							<tr>
+								<th scope="row">14:15-15:00</th>
+								<td>介绍Office 365 China Instance</td>
+								<td>开放数据协议（OData）验证工具:  验证以OData 开发的服务能否与 OData客户端正常操作</td>
+							</tr>
+							<tr>
+								<th scope="row">15:00-15:45</th>
+								<td>在Office 外接程序内发掘微软Graph的优势</td>
+								<td>介绍“模型第一工具”，一种从资源模型中产生高度一致的 API 的方法</td>
+							</tr>
+							<tr class="active">
+								<td>15:45-16:00</td>
+								<td colspan="2">休息</td>
+							</tr>
+							<tr>
+								<th scope="row">16:00-16:45</th>
+								<td>通过 Outlook REST APIs 创建智慧的邮件、联系人、日历应用</td>
+								<td>了解SharePoint 协议，包括 Office合著者 (FSSHTTP) 和 Office Online (WOPI)</td>
+							</tr>
+							<tr>
+								<th scope="row">16:45-17:30</th>
+								<td>通过Office UI Fabric来设计应用使您的体验外观和感觉与 Office 相似</td>
+								<td>了解微软 Office应用程序所支持的最常用Office文件格式</td>
+							</tr>
+							<tr>
+								<th scope="row">17:30-18:15</th>
+								<td>发布您的应用至Office 商店</td>
+								<td>利用Message Analyzer 和 Fiddler 解析器来解析Office, Exchange, and SharePoint 协议消息的内容 (包括SQL Parsers)</td>
+							</tr>
+							<tr class="active">
+								<td>18:15-19:15</td>
+								<td colspan="2">晚餐</td>
+							</tr>
+							<tr>
+								<th scope="row">19:15-19:30</th>
+								<td>源代码管理（管理您的项目）</td>
+							</tr>
+							<tr>
+								<th scope="row">20:00-20:15</th>
+								<td>现有的开源项目</td>
+							</tr>
+							<tr class="active">
+								<td>22:00-22:30</td>
+								<td>夜宵</td>
+							</tr>
+							<tr class="active">
+								<td>0:00</td>
+								<td>会场关闭</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<p>*Hackathon将于周六全天进行，现场有微软工程师的帮助和指导。</p>
+				<p><strong>2016 年十月二十三日: Hackathon 继续进行</strong></p>
+				<p>会场：微软亚太研发集团</p>
+				<p>北京市海淀区丹棱街5号</p>
+				<p>邮编：100080</p>
+				<div class="table-responsive">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th><h5>时间</h5></th>
+								<th><h5>环节内容</h5></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">9:00</th>
+								<td>会场开放，提供早餐</td>
+							</tr>
+							<tr>
+								<th scope="row">9:00-12:00</th>
+								<td>编写程序和应用</td>
+							</tr>
+							<tr class="active">
+								<th scope="row">12:00</th>
+								<td>午餐</td>
+							</tr>
+							<tr>
+								<th scope="row">13:00-15:00</th>
+								<td>编写程序和应用</td>
+							</tr>
+							<tr>
+								<th scope="row">15:00</th>
+								<td>完成程序和应用及提交</td>
+							</tr>
+							<tr>
+								<th scope="row">15:15 – 17:00</th>
+								<td>第一轮评估参赛团队</td>
+							</tr>
+							<tr>
+								<th scope="row">17:00-18:00</th>
+								<td>参加决赛的团队向评审团展示成果</td>
+							</tr>
+							<tr>
+								<th scope="row">18:15</th>
+								<td>Hackathon 颁奖及闭幕</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>`
 	})
 })
 .then(function() {
@@ -4638,8 +4921,7 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 				isPublished: true,
 				firstName: 'Arthur',
 				lastName: 'Jin',
-				speakerDescription: `<p>Arthur Jin is the Principal Program Manager on the Office 365 team. He leads the effort of landing Office 365 services and features to China, focusing on feature development and development planning and implementation. Arthur has worked at Microsoft for 20 years, covering many product and services including Windows, Office and MSN. Prior to Microsoft, Arthur worked at two other software companies developing business software. Arthur has a Master degree from Bowling Green State University in Ohio with a focus in technical communication and computer science.</p>
-				`,
+				speakerDescription: `<p>Arthur Jin is a Principle Program Manager on the Office 365 team. He leads the effort of landing Office 365 services and features in China, focusing on feature development and development planning and implementation. Arthur has worked at Microsoft for twenty years, covering many product and services including Windows, Office and MSN. Prior to Microsoft, Arthur worked at two other software companies developing business software. Arthur has a master’s degree from Bowling Green State University in Ohio with a focus in technical communication and computer science.</p>`,
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: false,
 				msTeamTitle: 'Principal Program Manager for Office 365',
@@ -4657,7 +4939,7 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 				isPublished: true,
 				firstName: 'Raymond',
 				lastName: 'Xue',
-				speakerDescription: `<p>Raymond is the Principal Software Engineering Manager in the Office China Incubation Team.  His team focuses on promoting Microsoft productivity services (Office 365) to the Chinese customers through local social network platform such as WeChat.  Applications developed by Raymond’s team involves using wide varieties of Office 365 API, Microsoft Graph API, OneDrive for Business, AAD.  Raymond has been working in Microsoft for more than 15 years.  Before the current project, he has worked in other products including Visual Studio, Ads Platform, Lync and Skype for Business.  He graduated from the University of Auckland (New Zealand) with a master degree in Computer Engineering.</p>`,
+				speakerDescription: `<p>Raymond is a Principal Software Engineering Manager on the Office China Incubation team. His team focuses on promoting Microsoft productivity services (Office 365) to the Chinese customers through local social network platform such as WeChat. Applications developed by Raymond’s team involve using a wide variety of Office 365 API, Microsoft Graph API, OneDrive for Business, AAD. Raymond has worked at Microsoft for more than fifteen years. Before the current project, he has worked on other products including Visual Studio, Ads Platform, Lync and Skype for Business. He graduated from the University of Auckland (New Zealand) with a master’s degree in computer engineering.</p>`,
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: false,
 				msTeamTitle: 'Principal Software Engineering Manager',

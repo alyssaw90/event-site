@@ -29,7 +29,6 @@ const editSlideshowCtrl = (app) => {
 				}
 				for (let i = 0, len = $scope.completeListOfSlides.length; i < len; i++) {
 					if ($scope.completeListOfSlides[i].imgSrcUrl.substr(0, 9) !== '/uploads/') {
-					console.log('substringL:L     ', $scope.completeListOfSlides[i].imgSrcUrl.substr(0, 9));
 						$scope.completeListOfSlides[i].imgSrcUrl = '/uploads/' + $scope.completeListOfSlides[i].imgSrcUrl;						
 					}
 				}
