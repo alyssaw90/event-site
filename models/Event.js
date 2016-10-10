@@ -20,12 +20,7 @@ module.exports = (sql, DataTypes) => {
         this.setDataValue('eventUrl', val.replace(/\s+/g, '').toLowerCase() );
       }
     },
-    eventLocation: {
-      type: DataTypes.STRING,
-      set: function(val) {
-        this.setDataValue('eventLocation', val.toLowerCase().replace(' ', '_'));
-      }
-    },
+    eventLocation:  DataTypes.STRING,
     eventState: DataTypes.TEXT,
     eventCountry: DataTypes.TEXT,
     eventContinent: DataTypes.ENUM('North America', 'South America', 'Africa', 'Asia', 'Europe', 'Oceania'),

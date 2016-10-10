@@ -90,6 +90,8 @@ const EditEventCtrl = (app) => {
         $scope.endDate = $filter('date')($scope.editedEvent.event.eventEndDate, 'yyyy-MM-dd');
         $scope.editedEvent.event.eventStartDate = new Date( $scope.editedEvent.event.eventStartDate );
         $scope.editedEvent.event.eventEndDate = new Date($scope.editedEvent.event.eventEndDate);
+        //assign id to use in associating new tabs
+        $scope.newTab.eventId =  $scope.editedEvent.event.id;
         getUnusedSpeakers();
       })
     };
@@ -121,6 +123,42 @@ const EditEventCtrl = (app) => {
         }
       });
     };
+
+    $scope.editTab = (editedTabData) => {
+      EditEventData.editTab(editedTabData, (err, data) => {
+        if (err) {
+          $scope.errors.push({msg: 'could not save tab'});
+        }
+        if (!err) {
+          alert('Tab Saved');
+          $scope.tabToEdit = {};
+          $scope.showElem('#main-edit-section', '.edit-section');
+
+        }
+      })
+    };
+
+    $scope.editSpeakers = () => {
+      console.log('edited speaker:  ', $scope.editedEvent);
+      EditEventData.editSpeakers($scope.editedEvent, (err, data) => {
+        if (err) {
+          $scope.errors.push({msg: 'could not save speaker'});
+        }
+        
+        alert('New speakers list saved');
+      })
+    };
+
+    $scope.addTab = (newTabData) => {
+      EditEventData.addTab(newTabData, (err, data) => {
+        if (err) {
+          $scope.errors.push({msg: 'could not save tab'});
+        }
+        alert('New Tab Saved');
+        $scope.newTab = {};
+        $scope.showElem('#main-edit-section', '.edit-section');
+      })
+    }
 
     $scope.tinymceEditOptions = { 
       selector: 'textarea',

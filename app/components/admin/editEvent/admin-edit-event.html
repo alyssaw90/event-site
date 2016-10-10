@@ -53,6 +53,7 @@
 			</div>
     </section>
     <section id="edit-speakers-section" class="col_12 edit-section" role="presentation" style="display: none;">
+    <button class="btn btn-success" ng-click="editSpeakers()">Save Speakers</button>
     	<div id="edit-slideshows">
 				<h3>Speakers</h3>
 			  <div class="edited-speaker-table-container clearfix">
@@ -79,8 +80,8 @@
 			</div>
     </section>
     <section id="add-tabs-section" class="col_12 edit-section" role="presentation" style="display: none;">
-    	<form>
-				<input class="col_12" type="hidden" name="newTabAsscEventId" data-ng-model="editedEvent.event.id">
+    	<form ng-submit="addTab(newTab)">{{editedEvent.event.id }}
+				<input class="col_12" type="hidden" name="newTabAsscEventId" data-ng-model="newTab.eventId">
 				<label class="col_12" for="newTabTitle">Tab Title</label>
 				<input class="col_12" type="text" name="newTabTitle" ng-model="newTab.newTabTitle">
 				<label class="col_12" for="newTabNumber">Tab Position</label>
@@ -95,6 +96,14 @@
 					<br>
 					<br>
 				</div>
+				<radiogroup class="col_12">
+					<label for="publishedTrue">Publish Now</label>
+					<input data-ng-model="newTab.isPublished" type="radio" id="newTabPublishedTrue" name="newTabPublishStatus" ng-value="true">
+					<br>
+					<label for="publishedFalse">Save as Draft</label>
+					<input data-ng-model="newTab.isPublished" type="radio" id="newTabPublishedFalse" name="newTabPublishStatus" ng-value="false">
+				</radiogroup>
+				<button type="submit" class="btn btn-success">Save Tab</button>
     	</form>
     </section>
     <section id="edit-tabs-section" class="col_12 edit-section" role="presentation" style="display: none;">
@@ -124,15 +133,15 @@
     					{{tab.isPublished ? 'published' : 'unpublished';}}
   					</td>
     				<td>
-    					<button ng-click="getTab(tab); showElem('#edit-tabs-form', '#select-tabs-to-edit-table');">Edit {{tab.tabTitle}}</button>
+    					<button ng-click="getTab(tab); showElem('#edit-tabs-form', '#select-tabs-to-edit-table');">Edit: "{{tab.tabTitle}}"</button>
     				</td>
     				<td>
-    					<button>Delete {{tab.tabTitle}}</button>
+    					<button>Delete: "{{tab.tabTitle}}"</button>
     				</td>
     			</tr>
     		</tbody>
     	</table>
-    	<form id="edit-tabs-form" class=" edit-section" style="display: none;">
+    	<form id="edit-tabs-form" class="edit-section" ng-submit="editTab(tabToEdit)" style="display: none;">
 				<input class="col_12" type="hidden" name="asssociatedEventId" data-ng-model="editedEvent.EventsTabsAccsc.EventId">
 				<input class="col_12" type="hidden" name="editedTabId" data-ng-model="editedEvent.id">
 				<label class="col_12" for="tabTitle">Tab Title</label>
@@ -156,6 +165,7 @@
 					<label for="publishedFalse">Save as Draft</label>
 					<input data-ng-model="tabToEdit.isPublished" type="radio" id="publishedFalse" name="tabPublishStatus" ng-value="false">
 				</radiogroup>
+				<button type="submit" class="medium float-left green">Save</button>
     	</form>
     </section>
     <section id="edit-event-section" role="presentation" class="col_12 edit-section" style="display: none">
@@ -198,7 +208,7 @@
 					<input class="" type="date" data-ng-model="editedEvent.event.eventEndDate" name="editedEventEndDate" id="editedEventEndDate" ng-value="endDate">
 				</div>
 				<label class="col_12" for="showOnHeader">Show this event on the header menu?&nbsp;&nbsp;
-				<input class="" type="checkbox" id="showOnHeader" data-ng-model="editedEvent.event.showOnHeader" ng-value="true" data-ng-checked="editedEvent.event.showOnHeader">
+					<input class="" type="checkbox" id="showOnHeader" data-ng-model="editedEvent.event.showOnHeader" ng-value="true" data-ng-checked="editedEvent.event.showOnHeader">
 				</label>
 				<label class="col_12" for="continentsInput">Choose Event Continent</label>
 				<radiogroup class="col_12" id="continentsInput" data-ng-required="required">

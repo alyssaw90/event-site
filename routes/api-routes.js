@@ -268,7 +268,6 @@ module.exports = (router) => {
       });
     })
     .then( (slideshow) => {
-      let slideArr = [];
       models.sql.sync()
       slideshow.setSlides([])
       .then( () => {
@@ -285,7 +284,6 @@ module.exports = (router) => {
   });
 
   router.post('/addslide', eatAuth, (req, res) => {
-    console.log(clc.white.bgRed(':::::::::::    '), req.body);
     models.sql.sync()
     .then( () => {
       Slide.create({
@@ -343,7 +341,6 @@ module.exports = (router) => {
 
   //route for uploading files with tinymcd
   router.post('/tinymceUpload', eatAuth, /*upload.single('newImage'),*/ (req, res) => {
-    console.log(clc.white.bgGreen('::::::::::   '), req.body);
     res.json({location: '/uploads/rich-mclain-headshot.jpg'})
   });
 
@@ -363,6 +360,7 @@ module.exports = (router) => {
         eventHeaderImage: req.body.newEventHeaderImage,
         eventContinent: req.body.newEventContinent,
         isPublished: req.body.publishStatus,
+        showOnHeader: req.body.showOnHeader,
         eventAboutTabText: req.body.eventAboutTabText,
         eventVenueName: req.body.newEventVenueName,
         eventVenueAddressLine1: req.body.newVenduAddressLine1,
@@ -395,7 +393,6 @@ module.exports = (router) => {
   });
 
   router.post('/editevent', eatAuth, (req, res, next) => {
-    console.log(clc.white.bgBlue('REQ.BODY::::    '), req.body);
     models.sql.sync()
     .then( () => {
       return Event.findOne({
@@ -406,6 +403,7 @@ module.exports = (router) => {
     })
     .then( (event) => {
       event.update({
+        showOnHeader: req.body.event.showOnHeader,
         isPublished: req.body.event.isPublished,
         eventName: req.body.event.eventName,
         eventUrl: req.body.event.eventUrl,
@@ -428,6 +426,74 @@ module.exports = (router) => {
     })
   });
 
+  router.post('/edittab', eatAuth, (req, res, next) => {
+    models.sql.sync()
+    .then( () => {
+      return EventTab.findOne({
+        where: {
+          id: req.body.id
+        }
+      })
+    })
+    .then( (tab) => {
+      if (typeof req.body.tabContent === 'string') {
+        tab.tabContent = req.body.tabContent;
+      }
+      tab.tabNumber = req.body.tabNumber,
+      tab.tabTitle = req.body.tabTitle,
+      tab.isPublished = req.body.isPublished
+      tab.save()
+      .then((newTab) => {
+        res.end();
+      });
+    });
+  });
+
+  router.post('/addtab', eatAuth, (req, res) => {
+    models.sql.sync()
+    .then( () => {
+      return EventTab.create({
+        tabNumber: req.body.newTabNumber,
+        tabTitle: req.body.newTabTitle,
+        tabContent: req.body.newTabContent,
+        isPublished: req.body.isPublished
+      })
+    })
+    .then( (newTab) => {
+      models.sql.sync()
+      .then( () => {
+        return Event.findOne({
+          where: {
+            id: req.body.eventId
+          }
+        })
+      })
+      .then( (event) => {
+        // event.addEventTab()
+        console.log(clc.green.bgWhite('::::  '), newTab.dataValues.id);
+        event.addEventTab(newTab.dataValues.id);
+        res.end();
+      })
+    })
+  })
+
+  router.post('/editeventspeakers', eatAuth, (req, res) => {
+    console.log(clc.green.bgWhite(':::  '), req.body);
+    models.sql.sync()
+    .then( () => {
+      return Event.findOne({
+        where: {
+          id: req.body.event.id
+        }
+      })
+    })
+    .then( (event) => {
+      for (let i = 0, len = req.body.speakers.length; i < len; i++) {
+        event.addSpeaker(req.body.speakers[i].id, {sortPosition: i});
+      }
+      res.end();
+    });
+  });
 
   //route to create speakers
   router.post('/addspeakers', eatAuth, (req, res) => {

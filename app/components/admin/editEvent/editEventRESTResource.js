@@ -19,7 +19,28 @@ const editEventRESTResource = (app) => {
           $http.post('/api/editevent', resourceData)
           .success(customFunctions.handleSuccess(callback))
           .error(customFunctions.handleError(callback));
-        }
+        },
+
+        editTab: function(resourceData, callback) {
+				
+          $http.post('/api/edittab', resourceData)
+          .success(customFunctions.handleSuccess(callback))
+          .error(customFunctions.handleError(callback));
+        },
+
+        editSpeakers: function(resourceData, callback) {
+				
+          $http.post('/api/editeventspeakers', resourceData)
+          .success(customFunctions.handleSuccess(callback))
+          .error(customFunctions.handleError(callback));
+        },
+
+        addTab: function(resourceData, callback) {
+				
+          $http.post('/api/addtab', resourceData)
+          .success(customFunctions.handleSuccess(callback))
+          .error(customFunctions.handleError(callback));
+        },
 
 			}
 			

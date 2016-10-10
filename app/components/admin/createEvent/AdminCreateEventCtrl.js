@@ -48,10 +48,10 @@ const AdminCreateEventCtrl = (app) => {
     };
 
     $scope.createNewEvent = (newEventData) => {
-      if ($rootScope.eventHeaderImg.name) {
+      if ($rootScope.eventHeaderImg) {
         newEventData.newEventHeaderImage = $rootScope.eventHeaderImg.name ? $rootScope.eventHeaderImg.size + '-' + $rootScope.eventHeaderImg.name : '';
       }
-      if ($rootScope.eventVenueImg.name) {
+      if ($rootScope.eventVenueImg) {
         newEventData.newEventVenueImg = $rootScope.eventVenueImg.name ? $rootScope.eventVenueImg.size + '-' + $rootScope.eventVenueImg.name : '';
       }
 
@@ -65,7 +65,7 @@ const AdminCreateEventCtrl = (app) => {
           $rootScope.eventHeaderImg = undefined;
           $rootScope.eventVenueImg = undefined;
 
-          $window.location.reload();
+          // $window.location.reload();
           alert('Event Saved');
         }
       });
