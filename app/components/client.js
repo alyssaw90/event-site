@@ -56,6 +56,7 @@ require('./admin/admin-header/AdminHeaderCtrl.js')(eventsApp);
 require('./admin/editSlideshow/editSlideshowCtrl.js')(eventsApp);
 require('./admin/editFiles/EditFilesCtrl.js')(eventsApp);
 require('./admin/editEvent/EditEventCtrl.js')(eventsApp);
+require('./admin/editSpeaker/EditSpeakerController.js')(eventsApp);
 //services
 require('./meetTheTeam/meetTheTeamRestResource.js')(eventsApp);
 require('./futureEvents/futureEventsRESTResource.js')(eventsApp);
@@ -206,7 +207,7 @@ eventsApp
 	.when('/admin/edit-speaker', {
 		templateUrl: '/app/components/admin/editSpeaker/admin-edit-speakers.html',
 		reloadOnSearch: false,
-		// controller: 'AdminCreateEventCtrl',
+		controller: 'EditSpeakerController',
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
     }

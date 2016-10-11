@@ -136,7 +136,7 @@
     					<button ng-click="getTab(tab); showElem('#edit-tabs-form', '#select-tabs-to-edit-table');">Edit: "{{tab.tabTitle}}"</button>
     				</td>
     				<td>
-    					<button>Delete: "{{tab.tabTitle}}"</button>
+    					<button ng-click="deleteTab(tab);">Delete: "{{tab.tabTitle}}"</button>
     				</td>
     			</tr>
     		</tbody>
@@ -170,7 +170,6 @@
     </section>
     <section id="edit-event-section" role="presentation" class="col_12 edit-section" style="display: none">
     	<img ng-if="headerImage" ng-src="/{{headerImage}}">
-    	<!-- <img ng-src="/uploads/{{eventHeaderImage.size + '-' + eventHeaderImage.name}}"> -->
 			<form id="editEventForm" name="editEventForm" method="post" enctype="multipart/form-data" data-ng-init="getAllSpeakers();" data-ng-submit="editEvent(editedEvent);">
 	    	<div data-ng-controller="AdminFileUploadCtrl">
 		  		<button name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventHeaderImage')">Select Header Image</button>

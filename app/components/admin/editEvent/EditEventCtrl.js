@@ -157,8 +157,22 @@ const EditEventCtrl = (app) => {
         alert('New Tab Saved');
         $scope.newTab = {};
         $scope.showElem('#main-edit-section', '.edit-section');
-      })
-    }
+      });
+    };
+
+    $scope.deleteTab = (tabToDelete) => {
+      let testQuestion = prompt(`Type "YES" if you want to delete: ${tabToDelete.tabTitle}\n This CANNOT be undone \n note, you can unpublish the tab if you don't want it to display`);
+      if (testQuestion === 'YES') {
+        EditEventData.deleteTab(tabToDelete.id, (err, data) => {
+          if (err) {
+            $scope.errors.push({msg: 'could not delete tab'});
+          }
+          alert(`${tabToDelete.tabTitle} has been deleted`);
+          $scope.showElem('#main-edit-section', '.edit-section');
+        });
+        
+      };
+    };
 
     $scope.tinymceEditOptions = { 
       selector: 'textarea',

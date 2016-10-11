@@ -469,16 +469,28 @@ module.exports = (router) => {
         })
       })
       .then( (event) => {
-        // event.addEventTab()
-        console.log(clc.green.bgWhite('::::  '), newTab.dataValues.id);
         event.addEventTab(newTab.dataValues.id);
         res.end();
+      });
+    });
+  });
+
+  router.delete('/deletetab/:slug', eatAuth, (req, res) => {
+    models.sql.sync()
+    .then( () => {
+      return EventTab.findOne({
+        where: {
+          id: req.params.slug
+        }
       })
+    })
+    .then( (tab) => {
+      tab.destroy();
+      res.end();
     })
   })
 
   router.post('/editeventspeakers', eatAuth, (req, res) => {
-    console.log(clc.green.bgWhite(':::  '), req.body);
     models.sql.sync()
     .then( () => {
       return Event.findOne({
