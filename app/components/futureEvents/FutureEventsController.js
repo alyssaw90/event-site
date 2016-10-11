@@ -31,7 +31,7 @@ const FutureEventsCtrl = (app) => {
 						$scope.slides.push(tmpObj);
 					}
 
-					if (!customFunctions.containsObj(testObj, testArr )) {
+					if (data[i].showOnHeader) {
 						$scope.futureEvents.push(data[i]);
 						testArr.push(testObj);
 					}

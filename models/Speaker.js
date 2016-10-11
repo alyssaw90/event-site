@@ -2,7 +2,7 @@
 
 module.exports = function (sql, DataTypes) {
 
-  return sql.define('Contact', {
+  return sql.define('Speaker', {
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
     email: {
@@ -15,7 +15,7 @@ module.exports = function (sql, DataTypes) {
     isPublished: DataTypes.BOOLEAN,
     lastModifiedBy: DataTypes.STRING,
     newsletterSubscription: DataTypes.BOOLEAN,
-    contactDescription: DataTypes.TEXT,
+    speakerDescription: DataTypes.TEXT,
     showOnMeetTheTeamPage: DataTypes.BOOLEAN,
     meetTheTeamPageOrder: DataTypes.INTEGER,
     msTeamTitle: DataTypes.STRING,

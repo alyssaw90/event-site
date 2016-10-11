@@ -6,7 +6,8 @@ module.exports = function(sql, DataTypes) {
     // eventId: DataTypes.INTEGER,
     tabNumber: DataTypes.INTEGER,
     tabTitle: DataTypes.TEXT,
-    tabContent: DataTypes.TEXT
+    tabContent: DataTypes.TEXT,
+    isPublished: DataTypes.BOOLEAN
   },
   {
   	hasTrigger: true,

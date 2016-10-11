@@ -2,7 +2,7 @@
 
 const models = require('./index');
 const User = models.User;
-const Contact = models.Contact;
+const Speaker = models.Speaker;
 const Event = models.Event;
 const EventTab = models.EventTab;
 const Slideshow = models.Slideshow;
@@ -31,7 +31,7 @@ module.exports = function () {
 		});
 	})
 	.then(function () {
-		return Contact.sync({
+		return Speaker.sync({
 			force: false
 		});
 	})
@@ -57,7 +57,7 @@ module.exports = function () {
 	.then(function() {
 		return Slide.create({
 			imgSrcUrl: 'Beijing-Header-8.26.jpg',
-			imgDestUrl: 'beijing2016',
+			imgDestUrl: 'beijing2016cn',
 			title: 'DevDays Asia 2016 @ Beijing banner',
 			altText: 'Banner image for DevDays Asia 2016 @ Beijing'
 		})
@@ -174,7 +174,8 @@ module.exports = function () {
 				eventHeaderImage: 'paris-2017-banner.jpg',
 				eventHighlightColor: '#5c005c',
 				// eventSpeakers: '1',
-				isPublished: true
+				isPublished: true,
+				showOnHeader: true
 			});
 		})
 		.then(function () {
@@ -188,7 +189,8 @@ module.exports = function () {
 				eventHeaderImage: 'taipei-2017-banner.jpg',
 				eventHighlightColor: '#0078d7',
 				// eventSpeakers: '1',
-				isPublished: true
+				isPublished: true,
+				showOnHeader: true
 			});
 		})
 		.then(function () {
@@ -308,7 +310,8 @@ module.exports = function () {
 				eventEndDate: new Date('October 23, 2016'),
 				eventHighlightColor: '#107c10',
 				eventHeaderImage: 'Beijing-Header-8.26.jpg',
-				isPublished: true
+				isPublished: true,
+				showOnHeader: false
 			})
 		})
 		.then(function() {
@@ -334,7 +337,8 @@ module.exports = function () {
 					<li><b>Cost:</b> Free</li>
 				</ul>
 				<p>If you are interested in participating or have additional questions, please contact <a href="mailto:prana@microsoft.com?subject=RDP%20IO%20Lab">Prakash Narayanan</a> </p>`,
-				isPublished: true
+				isPublished: true,
+				showOnHeader: true
 			})
 		})
 		.then(function() {
@@ -347,42 +351,8 @@ module.exports = function () {
 				eventEndDate: new Date('October 23, 2016'),
 				eventHighlightColor: '#107c10',
 				eventHeaderImage: 'Beijing-Header-8.26.jpg',
-				eventAboutTabText:`
-				<a href="/beijing2016" class="btn btn-info float-right" role="button">English</a>
-				<a href="http://www.aka.ms/devdaysbeijing2016"><img src="uploads/RegisterNowCN.png" style="height: 37px; margin-right: 10px;" class="float-right beijingRegistration2016Button" title="registration button" alt="registration link"></a>
-				<h2>DevDays Asia 2016 @ Beijing</h2>
-				<h4>10/21-10/23，2016</h4>
-				<h4>中国北京市</h4>
-				<h4>活动对象︰ 开发人员、 独立软件供应商、 学生、 科技创业、 企业</h4>
-				<h4>费用：免费</h4>
-				<p>微软Office 365与开放文档团队将在中国北京市举办 DevDays Asia 2016 @Beijing。此次北京的活动是自DevDays Asia @Taipei（<a href="http://www.prnewswire.com/news-releases/microsoft-launches-the-biggest-developer-event-in-asia-taking-iot-development-in-taiwan-to-new-heights-300253810.html">亚州最大的开发者活动</a>）以来另一次延伸性的活动。快来参加在北京微软亚太研发集团召开的技术研讨。 日期为2016年10月21日至23日。内容包括演示、现场实践与操作、互动与交流、还有hackathon! 这是一场属于开发人员的技术盛宴，我们将围绕Office 365，数据平台以及开放性规范等技术话题，为您带来丰富的技术内容。您将在本次活动中聆听来自微软产品团队工程师带来的技术演讲，参与动手实验，与研发工程师直接一对一互动。您还可以带着您的Office 365项目参与48小时应用开发马拉松活动，在技术专家的指导下加速完善您的项目，更有机会赢得Windows平板电脑、无人机、VR眼镜、平衡车等精彩大礼！</p>
-				<p><strong>DevDays Asia 2016</strong>活动分为两个部分： <strong>DevDays Asia 2016北京技术峰会</strong>(10月22日 9:00-17:00)以及<strong>Office 365应用开发马拉松</strong>(10月21日17:00-10月23日17:00)。您可以在注册DevDays Asia 2016北京技术峰会时选择是否参与应用开发马拉松活动。</p>
-				<p class="blue-border"><span class="bg-primary">DevDays Asia 2016开发者高峰 会&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;10月22日 9:00 – 18:00</p>
-				 
-				<p>您将在活动中详细了解到Microsoft Office 365的广阔市场机会，以及以Office 365作为平台进行开发的技术细节。此外我们还将向您介绍微软在互操作性开放性规范方面的承诺。大会技术课程将涵盖以下内容： </p>
-				<ul>
-					<li>内置在 Word、 Excel、PowerPoint、Outlook中的Microsoft Office 外接程序</li>
-					<li>Microsoft Graph (旧称 “Office 365 统一API”) ：Microsoft Graph是访问 Microsoft 云服务中数据、商务消息、用户、文件、邮件、日历、联系人 及文件夹最轻松简易的方式。</li>
-					<li>Microsoft SQL Server</li>
-					<li>开放数据（OData）： 构建及使用RESTful APIs</li>
-					<li>Office文件格式</li>
-					<li>Office, SharePoint, or Exchange 协议</li>
-					<li>Microsoft Office与数据平台的开放文档</li>
-					<li>Windows 互操作</li>
-					<li>Windows 协议测试组件</li>
-				</ul>
-				<p class="blue-border"><span class="bg-primary">Office 365 应用开发马拉松 (Hackathon)&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;10月21日 17:00 - 10月23日 17:00</p>
-				<p>Office 365强劲的增长势头为ISV、企业、初创公司以及开发者都带来了无限的机会，基于Office 365构建的应用解决方案为诸多行业和场景带来了新的效率和革新。10月21日17点至10月23日17点，带上您的创意、项目和团队，参与48小时的Office 365应用开发马拉松，在现场与来自各地的开发团队同场竞技，面对面交流微软产品组技术专家，解决开发过程中遇到的问题，并在技术指导下不断加速和完善您的项目。
-				我们会为您提供完善的后勤保障服务，餐食茶点、休息娱乐，以确保您能够在48小时内最大程度地完善您的项目。我们还为您准备了丰厚的奖品，以激励您的极致创意和出色的项目成果：</p>
-				<img src="uploads/things-beijing-2016.png" class="centered" title="images of laptop, drone, virtual reality goggles, and scooter" alt="images of laptop, drone, virtual reality goggles, and scooter">
-				<hr>
-				<a href="https://www.microsoftevents.com/profile/form/index.cfm?PKformID=0x6209970001"><img src="uploads/RegisterNowCN.png" class="centered" title="现在就注册吧" alt="现在就注册吧！"></a>
-				<p class="small">* 请在注册页面中选择参与应用开发马拉松选项，报名参与Office 365应用开发马拉松需先提交项目信息，具体规则将在审核后通过邮件及网站公布。</p>
-				<p class="small">* 更多奖品将陆续公布，请以最终公布规则及奖励说明中的描述为准。 </p>
-				<p class="small">*问题和帮助</p>
-
-				`,
-				isPublished: true
+				isPublished: true,
+				showOnHeader: true
 			})
 		})
 
@@ -390,6 +360,7 @@ module.exports = function () {
 
 	.then(function () {
 			return EventTab.create({
+				isPublished: true,
 				tabNumber: 1,
 				tabTitle: 'About',
 				tabContent: '<h3>DevDays Asia 2016 @ Taipei</h3><h4>April 19th - 21st, TAF Innovation Base</h4><p>Microsoft established the Internet of Things (IoT) Industry Development Center in October of 2015 to integrate global and local partners from the ecosystem, accelerating the process of developing IoT solutions for the manufacturing, financial, health care, transportation, and retailing industries. </p><p>DevDays Asia 2016 @ Taipei, directed by Industrial Development Bureau, and hosted by Microsoft and Digital Content Industry Promotion Office, will be held in April to help developers catch up with new concepts and technologies. </p><p>In the three-day program, Microsoft developers from the US will deliver lectures, host workshops, and interact with participants to generate amazing ideas and solutions. </p><p>On the first day, keynote speeches on new concepts and technologies for enhancing productivity, cloud computing, and data analysis platform will be delivered by the Microsoft developers. The speakers will focus on the technologies for boosting productivity, cloud and data platform. </p><p>In the morning session of the second day, the Microsoft developers will provide code samples and share their tips and guidelines about application development. A HAOckathon ( Hackathon + A for Analytical + O for Open ) that focuses on improving social good will be held in the afternoon of the second day. Contestants will get the chance to use the latest technologies to promote social welfare with the Microsoft developers. </p><p>For the remaining day and a half, the Microsoft developers will help contestants implement their ideas and generate improved solutions. Aligning with the theme of promoting social welfare, contestants can choose a wide letiety of topics, such as Hack for Enhancing Productivity, Hack for the Environment and Marine Eco-system, Hack for the Good, Hack for Government Open Data, Hack for University Education, etc. By better using technologies, it is possible to bring good deeds to a whole new level. Generous prizes will be awarded for the contestants of Hackathon, including a Surface Pro 4, a one-year subscription to Visual Studio Enterprise with MSDN, and a one-year subscription to Office 365. </p><p>Don’t hesitate to reserve your seats for DevDays Asia 2016 in Taipei!<h5>Information</h5><ul><li>Date: 19th-21st April (Tue - Thu)</li><li>Event Plan:<ul type="square"><li>Day 1 Morning: Keynote</li><li>Day 1 Afternoon + Day 2 Morning: Tracks + Workshops</li><li>Day 2 Afternoon + Day 3: HAOckathon (Hackathon)</li></ul></li><li>Contact：02-25622880 # 3671 Mr.Dai</li><li><a href="https://www.microsoft.com/taiwan/events/devdays/">DevDay Asia 2016 @Taipei 亞太開發人員技術年會 - 生產力暨物聯網應用開發元年</a></li></ul><br /><br />'
@@ -397,6 +368,7 @@ module.exports = function () {
 		})
 		.then(function () {
 			return EventTab.create({
+				isPublished: true,
 				tabNumber: 2,
 				tabTitle: 'Agenda',
 				tabContent: '<table class="tableWithVerticalLines eventScheduleTable" style="width: 25%"><thead><tr class=""><th>Presentation</th></tr></thead><tbody><tr><td class="lightGreenBackground">Data Platform</td></tr><tr><td class="lightBlueBackground">Productivity</td></tr><tr><td class="lightOrangeBackground">Open Specifications </td></tr><tr><td class="lightPinkBackground">Lightning Talk</td></tr><tr><td class="lightYellowBackground">Hackathon</td></tr><tr><td class="lightGrayBackground">Breaks & Lunch</td></tr></tbody></table><h2>Day One, April 19</h2><table class="tableWithVerticalLines eventScheduleTable scheduleTable"><thead><tr><th class="lightGreenBackground">Time</th><th class="lightGreenBackground">Room A<br />Data Platform</th><th class="lightBlueBackground">Time</th><th class="lightBlueBackground">Room B<br />Productivity</th><th class="medOrangeBackground">Time</th><th class="medOrangeBackground">Room C<br />Open Specifications </th></tr></thead><tbody><tr><td>9:00-9:40</td><td>Welcome</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td>9:45-10:30</td><td>Office 開發者的趨勢與商機<br />Office Developer Opportunity</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td>10:30-10:45</td><td class="lightGrayBackground">中場休息 Break</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td></tr><tr><td>10:45-11:15</td><td>Keynote: Data Development Opportunity Part I</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td>11:15-11:40</td><td>Keynote: Data Development Opportunity Part II </td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td>11:40-12:00</td><td class="lightYellowBackground">HAOckathon 好客松介紹 <br />HAOckathon Overview & Kickoff</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td>12:00-13:15</td><td class="lightGrayBackground">中午用餐 Lunch and Press</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td></tr><tr><td class="withoutBottomBorder bottomAlignTd">13:15-15:00</td><td class="lightGreenBackground withoutBottomBorder bottomAlignTd">Big Data Ingestion and Storage </td><td>13:15-14:00</td><td class="lightBlueBackground">dev.office.com 資源介紹與開發平台<br />Dev.Office.com: Office Developer Resources</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td>&nbsp;</td><td class="lightGreenBackground">&nbsp;</td><td>14:00-15:00</td><td class="lightBlueBackground">Office 365 APIs: Office Graph</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td>15:00-15:15</td><td class="lightGrayBackground">中場休息 Break</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td></tr><tr><td>15:15-16:15</td><td class="lightGreenBackground">Machine Learning and Advanced Analytics </td><td>15:15-16:00</td><td class="lightBlueBackground">Mail, Calendar, and Contacts REST Demonstration</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td class="withoutBottomBorder bottomAlignTd">16:15-17:15</td><td class="lightGreenBackground withoutBottomBorder bottomAlignTd">R and Python</td><td>16:00-16:45</td><td class="lightBlueBackground">Office Add-Ins 開發介紹<br />Office Add-ins intro and development</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td>&nbsp;</td><td class="lightGreenBackground">&nbsp;</td><td>16:45-17:15</td><td class="lightBlueBackground">Case Studies: How other companies utilize Office</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td>17:15-21:00</td><td class="lightYellowBackground">HAOckathon 好客松團隊創意發想<br />HAOckathon Team Building and Brainstorm</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr></tbody></table><br /><br /><br /><br /><h2>Day Two, April 20</h2><table class="tableWithVerticalLines eventScheduleTable scheduleTable"><thead><tr><th class="lightGreenBackground">Time</th><th class="lightGreenBackground">Room A<br />Data Platform</th><th class="lightBlueBackground">Time</th><th class="lightBlueBackground">Room B<br />Productivity</th><th class="medOrangeBackground">Time</th><th class="medOrangeBackground">Room C<br />Open Specifications </th></tr></thead><tbody><tr><td>9:00-9:30</td><td class="lightYellowBackground">HAOckathon 好客松團隊創意發想<br />Team Building and Brainstorm</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td>9:00-9:20</td><td class="lightOrangeBackground">開發人員必備: Open Specification 和工具介紹<br />Intro to Open Specifications and Tools</td></tr><tr><td class="withoutBottomBorder bottomAlignTd">9:30-10:30</td><td class="lightGreenBackground withoutBottomBorder bottomAlignTd">Power BI with Big Data Stores</td><td>9:30-10:00</td><td class="lightBlueBackground">O365 Developer Program sign-up & Training</td><td>9:20-9:50</td><td class="lightOrangeBackground">SQL Protocol Overview</td></tr><tr><td class="withoutBottomBorder">&nbsp;</td><td class="lightGreenBackground">&nbsp;</td><td>10:00-10:30</td><td class="lightBlueBackground">Accessing APIs through add-ins </td><td>9:50-10:30</td><td class="lightOrangeBackground">OData 服務介紹與應用實戰<br />OData Overviews and Demos</td></tr><tr><td>10:30-10:45</td><td class="lightGrayBackground">中場休息 Break</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td></tr><tr><td class="withoutBottomBorder">&nbsp;</td><td class="lightGreenBackground withoutBottomBorder">&nbsp;<td>10:45-11:15</td><td class="lightBlueBackground">API Explorer</td><td class="withoutBottomBorder">10:45-11:30</td><td class="lightOrangeBackground withoutBottomBorder">Exchange Protocols: ActiveSync, Exchange Web Services, MAPI</td></tr><tr><td class="withoutBottomBorder">10:45-11:45</td><td class="lightGreenBackground withoutBottomBorder">Creating an Azure ML Experiment</td><td class="withoutBottomBorder">11:15-11:45</td><td class="lightBlueBackground withoutBottomBorder">Office UI Fabric </td><td class="withoutBottomBorder">&nbsp;</td><td class="lightOrangeBackground">&nbsp;</td></tr><tr><td>&nbsp;</td><td class="lightGreenBackground">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="lightBlueBackground">&nbsp;</td><td class="withoutBottomBorder">11:30-12:00</td><td class="lightOrangeBackground withoutBottomBorder">SharePoint Protocols </td></tr><tr><td>11:45-12:00</td><td class="lightYellowBackground">HAOckathon Getting Started</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="lightOrangeBackground">&nbsp;</td></tr><tr><td>12:00-13:00</td><td class="lightGrayBackground">中午用餐 Lunch</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td></tr><tr><td class="withoutBottomBorder">13:00-17:00</td><td class="lightYellowBackground withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td>13:00-13:30</td><td class="lightOrangeBackground">Parsing Office Traffic: Message Analyzer & Fiddler</td></tr><tr><td class="withoutBottomBorder">13:30</td><td class="lightYellowBackground withoutBottomBorder bottomAlignTd"><strong>Team Sign-up Deadline 1:30pm</strong></td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td>13:30-13:45</td><td class="lightOrangeBackground">透過 WOPI (Web 應用程式開放平台介面) 實踐 Office Web Apps 整合應用<br />Office Online (MS-WOPI)</td></tr><tr><td class="withoutBottomBorder">&nbsp;</td><td class="lightYellowBackground withoutBottomBorder">&nbsp;</td><td>13:45-14:00</td><td class="lightPinkBackground">Source Control (Managing your project) - Lightning Talk</td><td>13:45-14:15</td><td class="lightOrangeBackground">Office Co-Authoring (MS-FSSHTTP)</td></tr><tr><td class="withoutBottomBorder">&nbsp;</td><td class="lightYellowBackground withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td>14:15-14:30</td><td class="lightOrangeBackground">Office File Formats </td></tr><tr><td class="withoutBottomBorder">&nbsp;</td><td class="lightYellowBackground withoutBottomBorder">&nbsp;</td><td>14:30-14:45</td><td class="lightPinkBackground">Existing Open Source Projects - Lightning Talk</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td class="withoutBottomBorder">&nbsp;</td><td class="lightYellowBackground withoutBottomBorder">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td class="withoutBottomBorder">&nbsp;</td><td class="lightYellowBackground withoutBottomBorder">&nbsp;</td><td>15:30-15:45</td><td class="lightPinkBackground">Auth with Office - Lightning Talk</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td class="withoutBottomBorder">&nbsp;</td><td class="lightYellowBackground withoutBottomBorder">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td>&nbsp;</td><td class="lightYellowBackground">&nbsp;</td><td>16:30-16:45</td><td class="lightPinkBackground">IOT - Lightning Talk</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td class="withoutBottomBorder">&nbsp;</td><td class="lightYellowBackground withoutBottomBorder">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td>17:00-18:00</td><td class="lightGrayBackground">晚餐時間 Dinner</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td></tr><tr><td>18:00-20:00</td><td class="lightYellowBackground withoutBottomBorder">&nbsp;</td><td>18:00-18:15</td><td class="lightPinkBackground">Machine Learning Gallery  - Lightning Talk</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td class="withoutBottomBorder">&nbsp;</td><td class="lightYellowBackground withoutBottomBorder">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td class="withoutBottomBorder">&nbsp;</td><td class="lightYellowBackground">&nbsp;</td><td>19:15-19:30</td><td class="lightPinkBackground">Power BI  - Lightning Talk</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td class="withoutBottomBorder">&nbsp;</td><td class="lightYellowBackground withoutBottomBorder">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td>20:00</td><td class="lightGrayBackground">Evening snacks served</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td><td class="lightGrayBackground">&nbsp;</td></tr><tr><td>20:30-0:00</td><td class="lightYellowBackground withoutBottomBorder">&nbsp;</td><td>20:30-20:45</td><td class="lightPinkBackground">Azure Data Factory  - Lightning Talk</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td class="withoutBottomBorder">&nbsp;</td><td class="lightYellowBackground withoutBottomBorder">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td class="withoutBottomBorder">&nbsp;</td><td class="lightYellowBackground withoutBottomBorder">&nbsp;</td><td>21:30-21:45</td><td class="lightPinkBackground">Azure Data Lake - Lightning Talk</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td class="withoutBottomBorder">&nbsp;</td><td class="lightYellowBackground withoutBottomBorder">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td class="withoutBottomBorder">&nbsp;</td><td class="lightYellowBackground withoutBottomBorder">&nbsp;</td><td>22:30-22:45</td><td class="lightPinkBackground">Project Deployment and Publish - Lightning Talk</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td class="withoutBottomBorder">&nbsp;</td><td class="lightYellowBackground withoutBottomBorder">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr></tbody></table><br /><br /><br /><br /><h2>Day Three, April 21</h2><table class="tableWithVerticalLines eventScheduleTable scheduleTable"><thead><tr><th class="lightGreenBackground">Time</th><th class="lightGreenBackground">Room A<br />Data Platform</th><th class="lightBlueBackground">Time</th><th class="lightBlueBackground">Room B<br />Productivity</th><th class="medOrangeBackground">Time</th><th class="medOrangeBackground">Room C<br />Open Specifications </th></tr></thead><tbody><tr><td>9:00-12:00</td><td class="lightYellowBackground">Hackathon Continues</td><td>9:00-9:15</td><td class="lightPinkBackground">Delivering your pitch - Lightning Talk</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td>12:00</td><td class="lightYellowBackground">提交好客松開發成果<br />HAOckathon projects submitted by 12:00</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td>12:00-14:00</td><td class="lightGrayBackground">中午用餐 & 初審評選<br />Lunch and Preliminary Evaluation</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td>13:30-14:40</td><td class="lightYellowBackground">總決賽 (入圍代表簡報 5 分鐘 + QA 2 分鐘)<br />Final Presentation</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td>14:40-15:00</td><td class="lightYellowBackground">評審決選討論<br />Judge Final Comment and Discussion</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr><tr><td>15:00-15:30</td><td class="lightYellowBackground">致詞 & 頒獎<br />Awards Ceremony and Closing Remarks</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td><td class="withoutBottomBorder">&nbsp;</td></tr></tbody></table><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />'
@@ -404,6 +376,7 @@ module.exports = function () {
 		})
 		.then(function () {
 			return EventTab.create({
+				isPublished: true,
 				tabNumber: 3,
 				tabTitle: 'Venue',
 				tabContent: '<h4>Venue: TAF<h4><h5>(No.177, Sec. 1, Jianguo S. Rd., Da’an Dist., Taipei City 106, Taiwan (R.O.C.))</h5><img src="../uploads/taipei-dev-days-2016-map.png" />'
@@ -411,6 +384,7 @@ module.exports = function () {
 		})
 		.then(function () {
 			return EventTab.create({
+				isPublished: true,
 				tabNumber: 4,
 				tabTitle: 'HAOckathon',
 				tabContent: '<h2>HAOckathon ( Hackathon + A for Analytical + O for Open )</h2><ul class="tabs left"><li class="current"><a target="_self" href="#taipei2016IntroTab"><span style="font-size: 1.5em">Introduction</span></a></li><li><a target="_self" href="#taipei2016TopicsTab"><span style="font-size: 1.5em">Topics</span></a></li><li><a target="_self" href="#taipei2016RegistrationNotes"><span style="font-size: 1.5em">Notes on registration</span></a></li><li><a target="_self" href="#taipei2016Awards"><span style="font-size: 1.5em">Awards</span></a></li><li><a target="_self" href="#taipei2016Regulation"><span style="font-size: 1.5em">Regulation</span></a></li><li><a target="_self" href="#taipei2016Reference"><span style="font-size: 1.5em">Reference</span></a></li></ul><div id="taipei2016IntroTab" class="tab-content" style="display:block;"><h3>Introduction</h3><p>This will be a golden opportunity for contestants of the Hackathon. During the remaining day and a half, Microsoft Experienced Developers from the US will help contestants implement their ideas and hopefully generate improved solutions. Aligning with the theme of promoting social welfare, contestants can choose a wide letiety of topics, such as Hack for Enhancing Productivity, Hack for the Environment and Marine Eco-system, Hack for the Good, Hack for Government Open Data, Hack for University Education, etc. By better utilizing technologies, it is possible to bring good deeds to a whole new level. Generous prizes will be awarded for the contestants of the Hackathon, including a Surface Pro 4, a one-year subscription to Visual Studio Enterprise with MSDN, a one-year subscription to Azure Pass and Office 365.</p><ul><li>Time: From afternoon of April 20<sup>th</sup> to the morning of April 21<sup>st</sup></li><li>Group: <span style="color:#0070c0">Productivity APP</span> and <span style="color:#0070c0">Cloud & Data Platform APP</span>. Each team is to be composed of 4 members; a total of 80 teams is expected.<li>Ranking and its criteria: See table below for ranking and its criteria. There will be 5 teams from each group ranked for the finals. Each of them will exhibit their outcomes and make a 5 minute presentation to the review panel. Each group will generate 3 winning teams, respectively. See below for the awards for individual teams at different places.<ul style="list-style-type:none;"><li><table class="striped tight" style="width:50%" cellspacing="0" cellpadding="0"><thead><tr><th>Ranking Criteria</th><th>Weight</th></tr></thead><tr><td>Impact</td><td>50%</td></tr><tr><td>Concept</td><td>15%</td><tr><td>Execution</td><td>20%</td></tr><tr><td>Feasibility</td><td>15%</td></tr></table></ul></li></ul></div><div id="taipei2016TopicsTab" class="tab-content" style="display:none;"><h3>Topics</h3><ul><li>Theme:  Generate a better solution to enhance social welfare</li><li>App Groups: Productivity APP or Cloud and Data Platform APP</li><li>Topics:<ul type="square"><li>Hack for Enhancing Productivity</li><li>Hack for the Environment and Marine Eco-system</li><li>Hack for the Good</li><li>Hack for Government Open Data</li><li>Hack for University Education</li></ul></ul></div><div id="taipei2016RegistrationNotes" class="tab-content" style="display:none;"><h3>Notes on registration</h3><ul type="square"><li>You are welcome to this race if you are interested in the latest technology and able to form a development team of 4 members. At least one in your team must be equipped with development skills in Office 365 Add-ons or Azure Data Platform (e.g. SQL, ML and Cortana Analytics Suite).</li><li>Please register online with <strong>DevDays Asia 2016 @ Taipei</strong> as an individual contestant and form a team in advance or by recruiting team members on the scene. Register your team at the <strong>DevDays Asia 2016 @ Taipei</strong> Info Desk by filling in the required HAOckathon registration form by April 19th. You need to have a team leader to be your contest affairs liaison. You may change which group you want to race with before the HAOckathon gets started officially on the 20th of April.</li><li>Works for the contest may be shaped and planned for development beforehand, but no code, product, or work available in the market nor the submissions that won or was submitted to any other race will be allowed, except Imagine Cup, AIT Fish Hackathon, BizSpark.</li><li>You may take a rest by napping on the table or in your own sleeping bag at the refreshment zone during the development session of the contest. </li><li>There will be development experts from America who will work with you. You are more than welcome to discuss and review your experiences with them.</li><li>Organizers reserve the right to review your qualifications.</li></ul></div><div id="taipei2016Awards" class="tab-content" style="display:none;"><h3><h3>Awards</h3>  <table class="striped" cellspacing="0" cellpadding="0"><thead><tr><th>&nbsp;</th><th>Productivity APP</th><th>Cloud & Data Platform APP</th></tr></thead><tbody><tr><th><strong>1st place</strong><p>Two teams, one for each group</p></th><td><ul><li>Surface Pro 4 (worth TWD 72,888, one for each team member)</li><li>Visual Studio Enterprise with MSDN one-year subscription (worth TWD 250,000, one for each team member)</li><li>Office 365 Home one-year subscription (worth TWD 3,190, one for each team member)</li></ul></td><td><ul><li>  Surface Pro 4 (worth TWD 72,888, one for each team member)</li><li>Visual Studio Enterprise with MSDN one-year subscription (worth TWD 250,000, one for each team member)</li><li>Office 365 Home one-year subscription (worth TWD 3,190, one for each team member)</li></ul></td></tr><tr><th><strong>2nd place</strong><p>Two teams, one for each group</p></th><td><ul><li>Hardware equipment, worth about TWD 30K (one for each team member)</li><li>Office 365 Home one-year subscription (worth TWD 3,190, one for each team member)</li></ul></td><td><ul><li>Hardware equipment, worth about TWD 30K (one for each team member)</li><li>Office 365 Home one-year subscription (worth TWD 3,190, one for each team member)</li></ul></td></tr><tr><th><strong>3rd place</strong><p>Two teams, one for each group</p></th><td><ul><li>Hardware equipment, worth about TWD 10K (one for each team member)</li><li>Office 365 Home one-year subscription (worth TWD 3,190, one for each team member)</li></ul></td><td><ul><li>Hardware equipment, worth about TWD 10K (one for each team member)</li><li>Office 365 Home one-year subscription (worth TWD 3,190, one for each team member)</li></ul></td></tr></tbody></table><p>* The organizer shall reserve the rights to change awards without any advance notice</p></h3></div><div id="taipei2016Regulation" class="tab-content" style="display:none;"><ol><li>Contestants are required to go through the entire race to get the participation award provided by the sponsor. </li><li>Award winner is responsible for any tax subject to the relevant tax laws. The race organizer shall be in no case held liable to any tax levied due to the award. The award winner consents that the race organizer’s withholding or pay the relevant taxes (if any). For more information on tax regulations, please visit the eTax Portal at <a href="http://www.etax.nat.gov.tw">http://www.etax.nat.gov.tw</a>.</li><li>Award winners have no right to exchange their awards for cash or other forms. Race sponsors shall not give any extra awards (either goods or cash) in case the previous one is lost, stolen, or damaged. </li><li>Race organizers reserve the rights to take care of any awards left un-awarded and replace the said awards with other goods with equivalent values without any notice in advance. </li><li>Data submitted by contestants must be true and correct without any forgery or alterations. Contestants shall not provide personal data to any third party in lieu of their own by means of fraud or theft. Contestants shall have no violations against the law.</li><li>The review panel has the final say on the finalists and winners at each stage of this race. </li><li>Race organizers, sponsors and its execution agents have the rights in reproducing, editing, converting, distributing, publicly transmitting, publicly performing, publicly presenting, publicly broadcasting, publicly verbal disclosing, referencing, or excerpting, and any other act required for using contest works by and basic data of contestants, including but not limited to name, portraits and photos, (hereafter referred to as “contest data”) unlimited number of times in their worldwide marketing activities, promotional activities, charity activities, and relevant media including publications, information, proposals, promotional materials, brochures and websites. </li><li>In case contestants took actions against measures of this race (including notes on the contests), regulations, the race itself or its website, actions aimed at interrupting this race or interfering with other contestants or participating this race in illegal activities or against the public order and good morals and manner including unfair, deceptive and fraudulent practices, subject to the organizer’s judgment, he/she agrees to the organizer’s immediate removal of his/her race or award winning qualifications (including recovering the award cash, certificate and trophy by the race organizer). He/she shall be held liable for any legal responsibility and held liable for compensating the organizer, sponsor, execution agent and their executives, directors, supervisors and employees for any of their loss and expenses due to these damages. </li><li>The contestants have learnt that any one of them or any individual attempting to compromise the web site or the progress of this race would breach relevant civil or criminal laws. The organizer, sponsors and their execution agents shall reserve the right in requesting for compensation, to the extent permitted by the relevant regulations, against damage by these individuals.</li><li>The organizer shall reserve the right to change the program of this race with a notice in advance. Race attendees, once participating in or registering to it, shall consent to be bound by this program. Any matter not covered herein shall be supplemented and publicized on the web site of this race by the organizer.</li></ol></div><div id="taipei2016Reference" class="tab-content" style="display:none;"><ul type="square"><li>Cloud Tools_Azure<ol><li>Visual Studio free download  <a href="https://www.visualstudio.com">https://www.visualstudio.com</a> </li><li>Azure portal <a href="http://portal.azure.com">http://portal.azure.com</a>  </li><li>Azure Documentation  <a href="http://azure.Microsoft.com">http://azure.Microsoft.com</a>  </li><li>Open Data On Azure <a href="https://ossonazure.bhuntr.com/api.php">https://ossonazure.bhuntr.com/api.php</a> </li></ol></li><li>Microsoft Project Oxford (Image recognition and Speech recognition API) <a href="https://www.projectoxford.ai/doc">https://www.projectoxford.ai/doc</a> Office API <a href="http://dev.office.com">http://dev.office.com</a> </li><li>Office API http://dev.office.com</li><li>Azure Web App Deployment<ul style="list-style-type:none;"><li><a href="http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/01/13/azure-amp-visual-studio-2015-web.aspx">http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/01/13/azure-amp-visual-studio-2015-web.aspx</a></li></ul></li><li>Open Source PHP:<ol><li>Build PHP-MySQL Web application with Azure<ul style="list-style-type:none;"><li><a href="http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/02/19/azurer-php-mysql-web.aspx">http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/02/19/azurer-php-mysql-web.aspx</a></li></ul><li>Build PHP website with Azure<ul style="list-style-type:none;"><li><a href="http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/01/13/azure-visual-studio-php.aspx">http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/01/13/azure-visual-studio-php.aspx</a></li></ul></ol></li><li>Cross-platform Development：<ol><li>Build Cross-platform Azure App Service with Xamarin<ul style="list-style-type:none;"><li><a href="http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/01/22/xamarin-azure-app-service.aspx">http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/01/22/xamarin-azure-app-service.aspx</a></li></ul></li></ol></li><li>Use Azure for IoT<ul style="list-style-type:none;"><li><a href="https://azure.microsoft.com/en-us/develop/iot/">https://azure.microsoft.com/en-us/develop/iot/</a> </li></ul></li><li>Virtual Machine:<ol><li>Build up Linux Virtual Machine by Azure<ul style="list-style-type:none;"><li><a href="http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/02/19/azure-vm.aspx">http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/02/19/azure-vm.aspx</a></li></ul></ol></li><li>IoT & Machine Learning demo : <a href="https://channel9.msdn.com/Series/mini-Connect-2016/youbike">https://channel9.msdn.com/Series/mini-Connect-2016/youbike</a> </li><li>Client: UWP : <a href="http://blogs.msdn.com/b/hermanwu/archive/2015/08/03/windows-10-uwa-uwp-app.aspx">http://blogs.msdn.com/b/hermanwu/archive/2015/08/03/windows-10-uwa-uwp-app.aspx</a></li><li>SQL Database : <a href="https://azure.microsoft.com/zh-tw/documentation/services/sql-database/">https://azure.microsoft.com/zh-tw/documentation/services/sql-database/</a> </li><li>Develop support<ol><li>.NET : <a href="http://azure.microsoft.com/zh-tw/develop/net/">http://azure.microsoft.com/zh-tw/develop/net/</a></li><li>R: <a hreg="https://azure.microsoft.com/zh-tw/documentation/articles/machine-learning-r-quickstart/">https://azure.microsoft.com/zh-tw/documentation/articles/machine-learning-r-quickstart/</a> </li><li>PHP : <a href="https://azure.microsoft.com/zh-tw/develop/php/">https://azure.microsoft.com/zh-tw/develop/php/</a> </li><li>JAVA : <a href="http://azure.microsoft.com/zh-tw/develop/java/">http://azure.microsoft.com/zh-tw/develop/java/</a> </li><li>Node.js : <a href="http://azure.microsoft.com/zh-tw/develop/nodejs/">http://azure.microsoft.com/zh-tw/develop/nodejs/</a> </li><li>IOS , Android , Windows : http://azure.microsoft.com/zh-tw/develop/mobile/ </li></ol></li><li>Microsoft Azure documentation : <a href="http://azure.microsoft.com/zh-tw/documentation/">http://azure.microsoft.com/zh-tw/documentation/</a> </li><li>Azure Website: <a href="http://azure.microsoft.com/zh-tw/">http://azure.microsoft.com/zh-tw/</a> </li><li>MSDN : <a href="http://social.msdn.microsoft.com/Forums/zh-tw/home?category=windowsazuretw">http://social.msdn.microsoft.com/Forums/zh-tw/home?category=windowsazuretw</a> </li><li>Microsoft Azure Taiwan User Group : <a href="https://www.facebook.com/groups/AzureTWUG/">https://www.facebook.com/groups/AzureTWUG/</a></li><li>MVA (Microsoft Virtual Academy) : <a href="http://www.microsoftvirtualacademy.com/">http://www.microsoftvirtualacademy.com/</a></li></ul></div>'
@@ -418,6 +392,7 @@ module.exports = function () {
 		})
 		.then(function () {
 			return EventTab.create({
+				isPublished: true,
 				tabNumber: 5,
 				tabTitle: 'Data Platform Track Reference',
 				tabContent: '<ul class="tabs left"><li class="first current"><a target="_self" href="#data-platform-reference-cn"><h6>數據平臺參考</h6></a></li><li class="last"><a target="_self" href="#data-platform-reference-en"><h6>Data Platform Reference</h6></a></li></ul><div class="tab-content" id="data-platform-reference-cn"><p>爲資料平臺主題出席的參會者們，我們在活動及好客松(hackathon) 期間爲您提供了以下參考資料。</p><span class="taipeiDropDown2016"><h5><span class="rightArrow">&#x25B8;</span><span class="downArrow" style="display: none;">&#x25BE;</span> Azure雲端工具</h5><ul style="display: none;"><li><a href="https://www.visualstudio.com">Visual Studio 免費下載</a></li><li><a href="http://portal.azure.com">Azure 登入</a></li><li><a href="http://azure.Microsoft.com">Azure 文檔</a></li><li><a href="https://ossonazure.bhuntr.com/api.php">在 Azure 上的開發數據</a></li></ul></span><h5><a href="https://www.projectoxford.ai/doc">微軟牛津項目(Microsoft Project Oxford): 圖像識別和語音辨別的 API</h5><h5><a href="http://dev.office.com">Office API</a></h5><h5><a href="http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/01/13/azure-amp-visual-studio-2015-web.aspx">Azure 網絡應用程式的開發</a></h5><span class="taipeiDropDown2016"><h5><span class="rightArrow">&#x25B8;</span><span class="downArrow" style="display: none;">&#x25BE;</span> 開放資源(open source) PHP</h5><ul style="display: none;"><li><a href="http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/02/19/azurer-php-mysql-web.aspx">由 Azure 來建立 PHP-MySQL 的網絡應用程式</a></li><li><a href="http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/01/13/azure-visual-studio-php.aspx">由Azure 來建立 PHP 網站 的應用程式</a></li></ul></span><span class="taipeiDropDown2016"><h5><span class="rightArrow">&#x25B8;</span><span class="downArrow" style="display: none;">&#x25BE;</span> 跨平臺開發</h5><ul style="display: none;"><li><a href="http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/01/22/xamarin-azure-app-service.aspx">由Xamarin來建立跨平臺的 Azure 應用程式服務</a></li></ul></span><h5><a href="https://azure.microsoft.com/en-us/develop/iot/">由Azure 來建立物聯網</a></h5><span class="taipeiDropDown2016"><h5><span class="rightArrow">&#x25B8;</span><span class="downArrow" style="display: none;">&#x25BE;</span>虛擬機器</h5><ul style="display: none;"><li><a href="http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/02/19/azure-vm.aspx">由 Azure建立 的 Linux 虛擬機器</a></li></ul></span><h5><a href="https://channel9.msdn.com/Series/mini-Connect-2016/youbike">物聯網與機器學習的演示</a></h5><h5><a href="http://blogs.msdn.com/b/hermanwu/archive/2015/08/03/windows-10-uwa-uwp-app.aspx">用戶端 (通用的 Windows 平臺)</a></h5><h5><a href="https://azure.microsoft.com/zh-tw/documentation/services/sql-database/">SQL 資料庫</a></h5><span class="taipeiDropDown2016"><h5><span class="rightArrow">&#x25B8;</span><span class="downArrow" style="display: none;">&#x25BE;</span> 開發支援</h5><ul style="display: none;"><li><a href="http://azure.microsoft.com/zh-tw/develop/net/">.NET</a></li><li><a href="https://azure.microsoft.com/zh-tw/documentation/articles/machine-learning-r-quickstart/">R</a></li><li><a href="https://azure.microsoft.com/zh-tw/develop/php/">PHP</a></li><li><a href="http://azure.microsoft.com/zh-tw/develop/java/">JAVA</a></li><li><a href="http://azure.microsoft.com/zh-tw/develop/nodejs/">Node.js</a></li><li><a href="http://azure.microsoft.com/zh-tw/develop/mobile/">iOS , Android , Windows</a></li></ul></span><h5><a href="http://azure.microsoft.com/zh-tw/documentation/">微軟 Azure 文檔</a></h5><h5><a href="http://azure.microsoft.com/zh-tw/">微軟Azure網站</a></h5><h5><a href="http://social.msdn.microsoft.com/Forums/zh-tw/home?category=windowsazuretw">MSDN 論壇</a></h5><h5><a href="https://www.facebook.com/groups/AzureTWUG/">微軟 Azure 臺灣用戶組</a></h5><h5><a href="http://www.microsoftvirtualacademy.com/">微軟技術的學習影音檔平台 (Microsoft Virtual Academy)</a></h5></div><div class="tab-content" id="data-platform-reference-en" style="display: none;"><p>For attendees of the Data Platform Track, the resources below are available during the event and the hackathon.</p><span class="taipeiDropDown2016"><h5><span class="rightArrow">&#x25B8;</span><span class="downArrow" style="display: none;">&#x25BE;</span> Azure cloud tools</h5><ul style="display: none;"><li><a href="https://www.visualstudio.com">Visual Studio free download</a></li><li><a href="http://portal.azure.com">Azure portal</a></li><li><a href="http://azure.Microsoft.com">Azure documentation</a></li><li><a href="https://ossonazure.bhuntr.com/api.php">Open data on Azure</a></li></ul></span><h5><a href="https://www.projectoxford.ai/doc">Microsoft Project Oxford</a> (image recognition and speech recognition API)</h5><h5><a href="http://dev.office.com">Office API</a></h5><h5><a href="http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/01/13/azure-amp-visual-studio-2015-web.aspx">Azure web app deployment</a></h5><span class="taipeiDropDown2016"><h5><span class="rightArrow">&#x25B8;</span><span class="downArrow" style="display: none;">&#x25BE;</span> Open source PHP</h5><ul style="display: none;"><li><a href="http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/02/19/azurer-php-mysql-web.aspx">Build PHP-MySQL Web application with Azure</a></li><li><a href="http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/01/13/azure-visual-studio-php.aspx">Build PHP website with Azure</a></li></ul></span><span class="taipeiDropDown2016"><h5><span class="rightArrow">&#x25B8;</span><span class="downArrow" style="display: none;">&#x25BE;</span> Cross-platform development</h5><ul style="display: none;"><li><a href="http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/01/22/xamarin-azure-app-service.aspx">Build Cross-platform Azure App Service with Xamarin</a></li></ul></span><h5><a href="https://azure.microsoft.com/en-us/develop/iot/">Use Azure for IoT</a></h5><span class="taipeiDropDown2016"><h5><span class="rightArrow">&#x25B8;</span><span class="downArrow" style="display: none;">&#x25BE;</span>Virtual machine</h5><ul style="display: none;"><li><a href="http://blogs.msdn.com/b/microsoft_student_partners_in_taiwan/archive/2016/02/19/azure-vm.aspx">Build up Linux virtual machine by Azure</a></li></ul></span><h5><a href="https://channel9.msdn.com/Series/mini-Connect-2016/youbike">IoT and machine learning demo</a></h5><h5><a href="http://blogs.msdn.com/b/hermanwu/archive/2015/08/03/windows-10-uwa-uwp-app.aspx">Client (Universal Windows Platform)</a></h5><h5><a href="https://azure.microsoft.com/zh-tw/documentation/services/sql-database/">SQL database</a></h5><span class="taipeiDropDown2016"><h5><span class="rightArrow">&#x25B8;</span><span class="downArrow" style="display: none;">&#x25BE;</span> Developer support</h5><ul style="display: none;"><li><a href="http://azure.microsoft.com/zh-tw/develop/net/">.NET</a></li><li><a href="https://azure.microsoft.com/zh-tw/documentation/articles/machine-learning-r-quickstart/">R</a></li><li><a href="https://azure.microsoft.com/zh-tw/develop/php/">PHP</a></li><li><a href="http://azure.microsoft.com/zh-tw/develop/java/">JAVA</a></li><li><a href="http://azure.microsoft.com/zh-tw/develop/nodejs/">Node.js</a></li><li><a href="http://azure.microsoft.com/zh-tw/develop/mobile/">iOS , Android , Windows</a></li></ul></span><h5><a href="http://azure.microsoft.com/zh-tw/documentation/">Microsoft Azure documentation</a></h5><h5><a href="http://azure.microsoft.com/zh-tw/">Azure website</a></h5><h5><a href="http://social.msdn.microsoft.com/Forums/zh-tw/home?category=windowsazuretw">MSDN forum</a></h5><h5><a href="https://www.facebook.com/groups/AzureTWUG/">Microsoft Azure Taiwan User Group</a></h5><h5><a href="http://www.microsoftvirtualacademy.com/">Microsoft Virtual Academy (MVA)</a></h5></div><script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script><script type="text/javascript">$(".taipeiDropDown2016").on("click keydown", function(event) {var keyCode = event.keyCode || event.which; if (keyCode === 1 || keyCode === 9 || keyCode === 13) { $(this).find(".rightArrow").toggle();$(this).find(".downArrow").toggle();$(this).find("ol").toggle(250);$(this).find("ul").toggle(250);}});</script>'
@@ -425,6 +400,7 @@ module.exports = function () {
 		})
 		.then(function () {
 			return EventTab.create({
+				isPublished: true,
 				tabNumber: 6,
 				tabTitle: 'Productivity Track Reference',
 				tabContent: `<div id="taipei2016-chinese-curriculum">
@@ -1116,6 +1092,7 @@ Web 專案會有Office 增益集網站檔案, 所以這是您發佈到Azure的�
 <figcaption>Figure 4. Your Developer Site home page with the Add-ins in Testing list</figcaption>
  <img src="../uploads/office-web-curriculum-taipei-en-8.png" />
 <h3 id="taipei2016-assign-office-365-license-en">Assign Office 365 license</h3>
+<p><strong>Note:</strong> The following steps are not needed if the Office 365 homepage automatically displays the products that are available for download (See Figure 8). The steps below are based on the Old Office 365 Admin Center.</p> 
 <p>To assign Office 365 license for yourself, the active user. Click on the “waffle” icon > Admin icon located on the top left.</p>
 <figcaption>Figure 5. Office 365 landing page</figcaption>
 <img src="../uploads/office-web-curriculum-taipei-en-10.png" />
@@ -1517,6 +1494,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
+				isPublished: true,
 				tabNumber: 7,
 				tabTitle: 'DevDays Event Material',
 				tabContent: '<h2>DevDays Event Material</h2><p>Click on the link below to download the materials</p><ul><li><a href="/uploads/Productivity.zip">Productivity</a></li><li><a href="/uploads/Data-Platform.zip">Cloud + Data Platform</a></li><li><a href="/uploads/Open-Specs.zip">Open Specifications</a></li><li><a href="/uploads/Lightening-Talk.zip">Lightening Talks</a></li><li><a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/DevDays-Asia--Taipei-2016">Presentation Videos</a></li></ul><br /><br /><br /><br /><br /><br />'
@@ -1524,6 +1502,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
+				isPublished: true,
 				tabNumber: 1,
 				tabTitle: 'About',
 				tabContent: '<a class="button blue float-right" style="height:65px;" href="https://www.facebook.com/events/815243558586451/">Find us on:<br /><i class="fa fa-facebook-square fa-2x"></i> acebook</a><h2>Extend Conference</h2><h4 class="center">Paris, France - May 12, 2016</h4><p>Microsoft introduces Extend – a 1-day event that brings together the latest technologies from Office, Data Platform, and Open Specifications.  Explore updates in Data Platform including machine learning, big data ingestion, and advanced analytics. Find out why Satya Nadella called Office 365, “the most strategic developer surface area” for Microsoft by discovering the potential of Office Add-ins and Office APIs. Finally, get direct access to a team of Microsoft program managers and engineers who are not only subject matter experts, but are excited to help you! Finish up the day at an evening mixer with attendees and Microsoft engineers.</p><h5>Where: Paris, France</h5><h5>Terrass Kardinal</h5><h5>45 Rue Jussieu, 75005 Paris, France</h5><h5>When: May 12, 2016</h5><h5>Cost: Free</h5><br />'
@@ -1531,6 +1510,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
+				isPublished: true,
 				tabNumber: 2,
 				tabTitle: 'Agenda',
 				tabContent: `<h2>Thursday, May 12, 2016</h2>
@@ -1562,6 +1542,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
+				isPublished: true,
 				tabNumber: 3,
 				tabTitle: 'Venue',
 				tabContent: `
@@ -1575,6 +1556,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
+				isPublished: true,
 				tabNumber: 4,
 				tabTitle: 'Data Platform Resources',
 				tabContent: `<span class="taipeiDropDown2016"><h5><span class="rightArrow">&#x25B8;</span><span class="downArrow" style="display: none;">&#x25BE;</span> Azure cloud tools</h5><ul style="display: none;"><li><a href="https://www.visualstudio.com">Visual Studio free download</a></li><li><a href="http://portal.azure.com">Azure portal</a></li><li><a href="http://azure.Microsoft.com">Azure documentation</a></li></ul></span><h5><a href="https://www.projectoxford.ai/doc">Microsoft Cognitive Services</a> (image recognition and speech recognition API, formerly Project Oxford)</h5><h5><a href="http://dev.office.com/getting-started/office365apis">Office API</a></h5><h5><a href="https://azure.microsoft.com/en-us/documentation/articles/web-sites-deploy/">Azure web app deployment</a></h5><span class="taipeiDropDown2016"><h5><span class="rightArrow">&#x25B8;</span><span class="downArrow" style="display: none;">&#x25BE;</span> Open source PHP</h5><ul style="display: none;"><li><a href="https://azure.microsoft.com/en-us/documentation/articles/web-sites-php-mysql-deploy-use-git/">Build PHP-MySQL Web application with Azure</a></li><li><a href="https://azure.microsoft.com/en-us/develop/php/">Build PHP website with Azure</a></li></ul></span><span class="taipeiDropDown2016"><h5><span class="rightArrow">&#x25B8;</span><span class="downArrow" style="display: none;">&#x25BE;</span> Cross-platform development</h5><ul style="display: none;"><li><a href="https://developer.xamarin.com/guides/cross-platform/azure/mobile-services/">Build Cross-platform Azure App Service with Xamarin</a></li></ul></span><h5><a href="https://azure.microsoft.com/en-us/develop/iot/">Use Azure for IoT</a></h5><span class="taipeiDropDown2016"><h5><span class="rightArrow">&#x25B8;</span><span class="downArrow" style="display: none;">&#x25BE;</span>Virtual machine</h5><ul style="display: none;"><li><a href="https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-linux-portal-create/">Build up Linux virtual machine by Azure</a></li></ul></span><h5><a href="https://channel9.msdn.com/Shows/themakershow/The-Maker-Show-Mini-Windows-IoT-Core-and-Azure-Machine-Learning-Demo--First-Robotics-2016">IoT and machine learning demo</a></h5><h5><a href="https://msdn.microsoft.com/en-us/windows/uwp/get-started/whats-a-uwp">Client (Universal Windows Platform)</a></h5><h5><a href="https://azure.microsoft.com/en-us/documentation/services/sql-database/">SQL database</a></h5><span class="taipeiDropDown2016"><h5><span class="rightArrow">&#x25B8;</span><span class="downArrow" style="display: none;">&#x25BE;</span> Developer support</h5><ul style="display: none;"><li><a href="https://azure.microsoft.com/en-us/develop/net/">.NET</a></li><li><a href="https://azure.microsoft.com/en-us/documentation/articles/machine-learning-r-quickstart/">R</a></li><li><a href="https://azure.microsoft.com/en-us/develop/php/">PHP</a></li><li><a href="https://azure.microsoft.com/en-us/develop/java/">JAVA</a></li><li><a href="https://azure.microsoft.com/en-us/develop/nodejs/">Node.js</a></li><li><a href="https://azure.microsoft.com/en-us/documentation/services/app-service/mobile/">iOS , Android , Windows</a></li></ul></span><h5><a href="https://azure.microsoft.com/en-us/documentation/">Microsoft Azure documentation</a></h5><h5><a href="https://azure.microsoft.com/en-us/">Azure website</a></h5><h5><a href="https://social.msdn.microsoft.com/Forums/en-us/home?category=windowsazuretw">MSDN forum</a></h5><h5><a href="https://mva.microsoft.com/">Microsoft Virtual Academy (MVA)</a></h5><script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script><script type="text/javascript">$(".taipeiDropDown2016").click(function(event) {var $this = $(this);$this.find(".rightArrow").toggle();$this.find(".downArrow").toggle();$this.find("ol").toggle(250);$this.find("ul").toggle(250);});$(".taipeiDropDown2016").focus(function(event) {var $this = $(this);$this.find(".rightArrow").show();$this.find(".downArrow").show();$this.find("ol").show(250);$this.find("ul").show(250);$this.find("li").attr("tabindex", "0");});</script>`
@@ -1582,6 +1564,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
+				isPublished: true,
 				tabNumber: 5,
 				tabTitle: 'Productivity Resources',
 				tabContent: `<ul class="tabs left curriculumList">
@@ -2172,6 +2155,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
+				isPublished: true,
 				tabNumber: 6,
 				tabTitle: 'Extend Event Material',
 				tabContent: `<h2>Extend Event Material</h2>
@@ -2183,6 +2167,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
+				isPublished: true,
 				tabNumber: 1,
 				tabTitle: 'Redmond Protocol Plugfest ',
 				tabContent: `<h2>Redmond Protocol Plugfest</h2><p>Enjoy a 5-day Microsoft event centered around Open Specifications, interoperability, and Extensibility. Attendees will learn more about interoperability within Microsoft Office, Exchange, SharePoint, Windows and SQL Server. Office, SharePoint, and Exchange protocol testing will be supported at the event. Hardware will not be provided however; we will have support engineers on site for assistance. Office protocol test resources are available on <a href="https://github.com/OfficeDev/Interop-TestSuites">GitHub</a>.  Any Windows testing is available during the <a href="http://interopevents.com/redmond2016#windowsinteroperabilityiolab">Windows IO Lab</a> from June 20-24, 2016. Windows File Server test suites are also available on <a href="https://github.com/Microsoft/WindowsProtocolTestSuites">GitHub</a>. </p>
@@ -2305,6 +2290,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
+				isPublished: true,
 				tabNumber: 2,
 				tabTitle: 'Windows Interoperability (IO) Lab',
 				tabContent: `<div class="col_12"><h3>Windows Interoperability (IO) Lab </h3>
@@ -2344,6 +2330,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
+				isPublished: true,
 				tabNumber: 3,
 				tabTitle: 'Accommodations',
 				tabContent: '<h2>Silver Cloud Inns & Hotels</h2><h3>How to Book Online</h3><img src="../uploads/silver-cloud-in.jpg" alt="Silver Cloud Inn Logo" class="align-left" /><p>URL: <a href="http://www.silvercloud.com" targe="_blank">www.silvercloud.com</a></p><p>Destination: Pull down a tab and select <strong>“Redmond”</strong> </p><p>Enter: <strong>Arrival/Departure</strong> date; Enter: Number of Adults / Children</p><p>Click on <strong>“Check for Availability”</strong>, a published room type/rates will populate the page</p><p>Enter Group ID/Login: <strong>RDMDPLUG</strong></p><p>Enter your Password: <strong>plugfest2016</strong> (lower case)</p><p>Click on <strong>“Login”</strong> tab below, Then Click on the <strong>“Check Availability”</strong> tab</p><p>A new page will then populate showing<strong> “Redmond Plugfest 2016”</strong> Room Type/Rate </p><p>Select room type and follow instructions until done.</p><p>You may also copy and paste below link: </p><p>https://redmond.silvercloud.com/irmnet/(S(priycso41uvl2e0n2wk0fjg1))/res/resmain.aspx?hotel=7&Arrival=06%2F20%2F2016&Departure=06%2F24%2F2016&People1=1&People2=0</p><p>Note: you may prepay online by selecting a box marked “Would you like to pay for this now?”</p><ul style="list-style-type: none"><li>Call Reservation Toll Free Line at <a href="tel:8002056934"> 1.800.205.6934</a></li><li>Call the Hotel direct at <a href="tel:4257468200"> 425.746.8200</a> and mention <strong>“Redmond Plugfest”</strong> Group</li><li>Email your reservation request to: <a href="mailto:reservations@redmond.silvercloud.com">reservations@redmond.silvercloud.com</a> </li><li><strong>Rate Validity:</strong> June 12 – June 24, 2016 </li><li><strong>Check-In Time:</strong> 1500 hour (3:00pm - PDT) <strong>Check-Out Time: 1200 hour (12:00pm – PDT)</strong> </li><li><strong>Cancellation Policy:</strong> 24 hours at 1500 hour (3:00pm – PDT), day before arrival date.</li></ul><p style="text-align: center;"><i> We thank you for an opportunity to serve you.</i></p><hr class="alt1" /><p style="text-align: center;"><i>Silver Cloud Inn Redmond | 2122 152nd Avenue NE | Redmond | WA 98052 USA</i></p><p style="text-align: center;"><i>Reservation: 800.205.6934 |Hotel: 425.746.8200 | Fax: 425.747.2078</i></p><p style="text-align: center;"><i><a href="http://www.silvercloud.com"> www.silvercloud.com</a></i></p>'
@@ -2351,6 +2338,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
+				isPublished: true,
 				tabNumber: 4,
 				tabTitle: 'Venue',
 				tabContent: `<h3>Building 20</h3>
@@ -2370,6 +2358,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
+				isPublished: true,
 				tabNumber: 4,
 				tabTitle: 'Event Resources',
 				tabContent: `<h3>Office</h3>
@@ -2404,6 +2393,7 @@ setTimeout(function() {
 		})
 		/*.then(function() {
 			return EventTab.create({
+				isPublished: true,
 				tabNumber: 1,
 				tabTitle: 'About',
 				tabContent: `<p>With the success of interoperability and developer events in Shanghai, Beijing, Taipei, Paris, and Redmond, Microsoft Office and Data Platform teams are ready to travel to India!</p>
@@ -2415,6 +2405,7 @@ setTimeout(function() {
 		})*/
 		.then(function () {
 			return EventTab.create({
+				isPublished: true,
 				tabNumber: 1,
 				tabTitle: 'About',
 				tabContent: `<ul class="noStyleUL">
@@ -2438,6 +2429,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
+				isPublished: true,
 				tabNumber: 2,
 				tabTitle: 'Agenda',
 				tabContent: `<h2>Tuesday, October 20, 2015</h2>
@@ -2478,6 +2470,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
+				isPublished: true,
 				tabNumber: 3,
 				tabTitle: 'Event Material',
 				tabContent: `<h2>Shanghai Interop Dev Days Materials</h2>
@@ -2514,6 +2507,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
+				isPublished: true,
 				tabNumber: 4,
 				tabTitle: 'Event Recap',
 				tabContent: `
@@ -2537,6 +2531,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
+				isPublished: true,
 				tabNumber: 1,
 				tabTitle: 'Venue',
 				tabContent: `<h3>Shanghai Marriott Hotel City Centre</h3>
@@ -2547,6 +2542,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
+				isPublished: true,
 				tabNumber: 6,
 				tabTitle: 'About',
 				tabContent: `<h3>Paris 2017</h3>
@@ -2555,6 +2551,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
+				isPublished: true,
 				tabNumber: 1,
 				tabTitle: 'About',
 				tabContent: `<h3>DevDays Asia 2017 @ Taipei</h3>
@@ -2564,6 +2561,7 @@ setTimeout(function() {
 		})
 		.then(function () {
 			return EventTab.create({
+				isPublished: true,
 				tabNumber: 1,
 				tabTitle: 'About',
 				tabContent: `<h3>Redmond Protocol Plugfest 2017</h3>
@@ -2572,6 +2570,7 @@ setTimeout(function() {
 		})
 		.then(function() {
 			return EventTab.create({
+				isPublished: true,
 				tabTitle: 'About',
 				tabContent: `
 					<p>Presentations are only part of what is going on at the SNIA’s 2016 <a href="http://www.storagedeveloper.org/">Storage Developer Conference</a>., September 19-22 in Santa Clara, CA.  The SNIA SMB3 Plugfest is also an integral part of the program.</p>
@@ -2582,6 +2581,7 @@ setTimeout(function() {
 		})
 		.then(function() {
 			return EventTab.create({
+				isPublished: true,
 				tabTitle: 'About',
 				tabNumber: 1,
 				tabContent: `
@@ -2625,6 +2625,7 @@ setTimeout(function() {
 		})
 		.then(function() {
 			return EventTab.create({
+				isPublished: true,
 				tabTitle: 'Accommodations',
 				tabContent: `<h2>Silver Cloud Inn and Hotels</H2>
 				<p>The rate is at $159 for either a King room or a Two Queen guest bedroom. Amenities include hot breakfast, parking and in-room Wi-Fi</p>
@@ -2634,6 +2635,7 @@ setTimeout(function() {
 		})
 		.then(function() {
 			return EventTab.create({
+				isPublished: true,
 				tabTitle: 'Hackathon Resources',
 				tabNumber: 5,
 				tabContent: `
@@ -2641,12 +2643,12 @@ setTimeout(function() {
 				<a class="btn btn-primary float-right" role="button" style="margin-right:10px;" href="http://www.aka.ms/devdaysbeijing2016">Register</a>
 				<h4>Resources are listed below for attendees to prepare for the hackathon.</h4>
 					<ul>
-						<li><h5><a href="#prereqsHeader" du-smooth-scroll>Prerequisites</a></h5></li>
-						<li><h5><a href="#more-resources-header" du-smooth-scroll>More resources</a></h5></li>
-						<li><h5><a href="#tutorials-header" du-smooth-scroll>Tutorials</a> </h5>
+						<li><h5><a target="_self" href="#prereqsHeader" du-smooth-scroll>Prerequisites</a></h5></li>
+						<li><h5><a target="_self" href="#more-resources-header" du-smooth-scroll>More resources</a></h5></li>
+						<li><h5><a target="_self" href="#tutorials-header" du-smooth-scroll>Tutorials</a> </h5>
 							<ul>
-								<li><a href="#taipei2016-curriculum-registration-en" target="_self">Registration</a></li>
-								<li><a href="#taipei2016-curriculum-publishing-en" target="_self">Publish an Office add-in and submit it to Office Store</a></li>
+								<li><a target="_self" href="#taipei2016-curriculum-registration-en" target="_self">Registration</a></li>
+								<li><a target="_self" href="#taipei2016-curriculum-publishing-en" target="_self">Publish an Office add-in and submit it to Office Store</a></li>
 							</ul>
 					</li>
 					</ul>
@@ -2683,8 +2685,8 @@ setTimeout(function() {
 					</ul>
 					<h3 id="tutorials-header">Tutorials</h3>
 					<ul>
-						<li><a href="#taipei2016-curriculum-registration-en" target="_self">Registration</a></li>
-						<li><a href="#taipei2016-curriculum-publishing-en" target="_self">Publish an Office add-in and submit it to Office Store</a></li>
+						<li><a target="_self" href="#taipei2016-curriculum-registration-en" target="_self">Registration</a></li>
+						<li><a target="_self" href="#taipei2016-curriculum-publishing-en" target="_self">Publish an Office add-in and submit it to Office Store</a></li>
 					</ul>
 					
 					
@@ -3173,6 +3175,7 @@ setTimeout(function() {
 		})
 		.then(function() {
 			return EventTab.create({
+				isPublished: true,
 				tabTitle: 'Hackathon 参赛准备资料',
 				tabNumber: 3,
 				tabContent: `
@@ -3181,13 +3184,13 @@ setTimeout(function() {
 				<p >请参考以下 Hackathon 参赛准备资料。熟悉这些内容将在活动中帮助您，并会有利于您在 Hackathon 中的表现。</p>
 <h3>资料主题</h3>
 <ul>
-<li><a href="#必要条件-1">必要条件 </a></li>
-<li><a href="#更多资源-1">更多资源</a></li>
-<li><a href="#有关教程-1">有关教程</a></li>
+<li><a target="_self" href="#hackathonHashcn1">必要条件 </a></li>
+<li><a target="_self" href="#hackathonHashcn2">更多资源</a></li>
+<li><a target="_self" href="#hackathonHashcn3">有关教程</a></li>
 </ul>
-<h3 id="必要条件-1">必要条件 </h3>
+<h3 id="hackathonHashcn1">必要条件 </h3>
 <ul>
-<li>如果您没有Office，请在 <a href="http://dev.office.com/devprogram">Office开发中心</a> 的网站上报名及填写单表（详细步骤，请参考<a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/DevDays-Asia--Taipei-2016/Office-365-Developer-Program-sign-up--Training">九频道的视频</a> 或有关教程<a href="#_报名注册">报名注册</a>）。通过Office 365 的开发人员计划，您能拿到免费的Office 365的开发人员账户及为期一年的Office 365 的订阅。</li>
+<li>如果您没有Office，请在 <a href="http://dev.office.com/devprogram">Office开发中心</a> 的网站上报名及填写单表（详细步骤，请参考<a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/DevDays-Asia--Taipei-2016/Office-365-Developer-Program-sign-up--Training">九频道的视频</a> 或有关教程<a target="_self" href="#_报名注册">报名注册</a>）。通过Office 365 的开发人员计划，您能拿到免费的Office 365的开发人员账户及为期一年的Office 365 的订阅。</li>
 <li>入门</p>
 <p>您可以找到有关开发工具的信息与内容：</p>
 <p><a href="http://dev.office.com/getting-started">Office Dev Center 入门</a></p>
@@ -3195,7 +3198,7 @@ setTimeout(function() {
 <p><strong>提示</strong>：若选用Visual Studio 来开发Office 外接程序, 您可用<a href="https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx">Visual Studio Community 201 5 （免费版）</a>和 <a href="https://www.visualstudio.com/features/office-tools-vs">Office开发者工具</a></li>
 </ul>
 <button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">回到本文开头</button>
-<h3 id="更多资源-1">更多资源 </h3>
+<h3 id="hackathonHashcn2">更多资源 </h3>
 <h4 id="开发office应用程序起点">开发Office应用程序起点</h4>
 <h4 id="英文内容">英文内容</h4>
 <ul>
@@ -3208,8 +3211,8 @@ setTimeout(function() {
 <li><a href="http://graph.microsoft.io/en-us/app-registration">App registration</a></p>
 <p>注册您的应用调用微软Graph</li>
 <p>微软Build 2016年开发者大会九频道视频</p>
-<p>以Office 365作为平台进行开发概述：</p>
-<li><a href="https://channel9.msdn.com/Events/Build/2016/B866">Make your solution a native part of Office on every&nbsp;platform</a></li>
+<p>以Office作为平台进行开发概述：</p>
+<li><a href="https://channel9.msdn.com/Events/Build/2016/B866">Make your solution a native part of Office on every platform</a></li>
 <li><a href="https://channel9.msdn.com/Events/Build/2016/B872">Office platform overview</a></li>
 <p>以Office 365作为平台进行开发技术细节， 比如怎样访问 Office 服务来构建应用及关于调用微软Graph的技术内容。</p>
 <li><a href="https://channel9.msdn.com/Events/Build/2016/T617">Build cool apps with Microsoft Graph, tap into the intelligence and reach millions of&nbsp;users</a></li>
@@ -3238,7 +3241,7 @@ setTimeout(function() {
 <li><a href="https://msdn.microsoft.com/ZH-CN/library/office/fp123515.aspx">发布Office 外接程序</a></p>
 <p>构建Office 外接程序之后， 您有几种发布方式。请参考此页。</li>
 <li><a href="https://msdn.microsoft.com/zh-cn/library/office/jj220037.aspx">将 Office 与 SharePoint 外接程序和 Office 365 Web 应用提交到 Office 应用商店</a></p>
-<p>若有兴趣提交您的应用至Office 应用商店，请参考此页及<a href="#有关教程-1"">有关教程</a>。</li>
+<p>若有兴趣提交您的应用至Office 应用商店，请参考此页及<a target="_self" href="#hackathonHashcn3"">有关教程</a>。</li>
 </ul>
 <h4 id="代码范例">代码范例</h4>
 <h4 id="英文内容-1">英文内容</h4>
@@ -3252,19 +3255,19 @@ setTimeout(function() {
 <p>中文版的Office 开发代码范例</li>
 </ul>
 <button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">回到本文开头</button>
-<h3 id="有关教程-1">有关教程 </h3>
+<h3 id="hackathonHashcn3">有关教程 </h3>
 <ul>
-<li><h4 id="报名注册"><a href="#_报名注册">报名注册</a> </h4></li>
-<li><h4 id="发布office-外接程序及提交到office-应用商店"><a href="#发布office-外接程序及提交到office-应用商店-1">发布Office 外接程序及提交到Office 应用商店</a> </h4></li>
+<li><h4 id="报名注册"><a target="_self" href="#_报名注册">报名注册</a> </h4></li>
+<li><h4 id="发布office-外接程序及提交到office-应用商店"><a target="_self" href="#发布office-外接程序及提交到office-应用商店-1">发布Office 外接程序及提交到Office 应用商店</a> </h4></li>
 </ul>
 <h3 id="报名注册-1"><span id="_报名注册" class="anchor"><span id="_报名注册" class="anchor"></span></span>报名注册 </h3>
 <p>本文内容</p>
 <ol style="list-style-type: decimal">
-<li><a href="#在office-dev-center网站上报名">在Office Dev Center网站上报名</a></li>
-<li><a href="#获取office-365开发人员账户">获取Office 365开发人员账户</a></li>
-<li><a href="#登入office-365">登入Office 365</a></li>
-<li><a href="#分配office-365许可证">分配Office 365许可证</a></li>
-<li><a href="#资源">资源</a></li>
+<li><a target="_self" href="#在office-dev-center网站上报名">在Office Dev Center网站上报名</a></li>
+<li><a target="_self" href="#获取office-365开发人员账户">获取Office 365开发人员账户</a></li>
+<li><a target="_self" href="#登入office-365">登入Office 365</a></li>
+<li><a target="_self" href="#分配office-365许可证">分配Office 365许可证</a></li>
+<li><a target="_self" href="#资源">资源</a></li>
 </ol>
 <button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">回到本文开头</button>
 <h3 id="在office-dev-center网站上报名">在Office Dev Center网站上报名</h3>
@@ -3331,14 +3334,14 @@ setTimeout(function() {
 <p>如果您要按照自己的情况来发布您的Office外接程序，请参阅MSDN 资源 &gt; <a href="https://msdn.microsoft.com/ZH-CN/library/office/fp123515.aspx">发布</a>。</p>
 <h3 id="本文内容">本文内容</h3>
 <ol style="list-style-type: decimal">
-<li><a href="#决定发布office-外接程序的通讯端点">决定发布Office 外接程序的通讯端点</a></li>
-<li><a href="#为开发而设定电脑安装.net-的azure-sdk-英文订阅azure账户-及使用office-2016">为开发而设定电脑：安装.NET 的Azure SDK (英文)，订阅Azure账户， 及使用Office 2016</a></li>
-<li><a href="#在azure中建立网站">在Azure中建立网站</a></li>
-<li><a href="#office外接程序发布到azure的网站">Office 外接程序发布到 Azure 网站</a></li>
-<li><a href="#使外接程序资讯清单档案指向在azure中的office外接程序">使外接程序资讯清单档案指向在Azure的Office 外接程序</a></li>
-<li><a href="#在-office-客户端应用程序里运行office外接程序">在Office客户端应用程序里运行Office外接程序</a></li>
-<li><a href="#把外接程序提交至office应用商店">把外接程序提交到Office应用商店</a></li>
-<li><a href="#资源2">资源</a></li>
+<li><a target="_self" href="#决定发布office-外接程序的通讯端点">决定发布Office 外接程序的通讯端点</a></li>
+<li><a target="_self" href="#为开发而设定电脑安装.net-的azure-sdk-英文订阅azure账户-及使用office-2016">为开发而设定电脑：安装.NET 的Azure SDK (英文)，订阅Azure账户， 及使用Office 2016</a></li>
+<li><a target="_self" href="#在azure中建立网站">在Azure中建立网站</a></li>
+<li><a target="_self" href="#office外接程序发布到azure的网站">Office 外接程序发布到 Azure 网站</a></li>
+<li><a target="_self" href="#使外接程序资讯清单档案指向在azure中的office外接程序">使外接程序资讯清单档案指向在Azure的Office 外接程序</a></li>
+<li><a target="_self" href="#在-office-客户端应用程序里运行office外接程序">在Office客户端应用程序里运行Office外接程序</a></li>
+<li><a target="_self" href="#把外接程序提交至office应用商店">把外接程序提交到Office应用商店</a></li>
+<li><a target="_self" href="#资源2">资源</a></li>
 </ol>
 <h3 id="决定发布office-外接程序的通讯端点">决定发布Office 外接程序的通讯端点</h3>
 <ol style="list-style-type: lower-alpha">
@@ -3491,10 +3494,11 @@ setTimeout(function() {
 		})
 		.then(function() {
 			return EventTab.create({
+				isPublished: true,
 				tabTitle: 'Agenda',
 				tabNumber: 2,
 				tabContent: `
-				<a href="/beijing2016cn" class="btn btn-success float-right" role="button">汉语</a>
+				<a href="/beijing2016cn#3575831243" class="btn btn-success float-right" role="button">汉语</a>
 				<a class="btn btn-primary float-right" role="button" style="margin-right:10px;" href="http://www.aka.ms/devdaysbeijing2016">Register</a>
 				<h2>DevDays Asia 2016 @ Beijing Agenda</h2>
 				
@@ -3503,54 +3507,197 @@ setTimeout(function() {
 				<h4>October 21, 2016: Hackathon Official Kick Off </h4>
 				
 				<h5>Location: Microsoft Beijing West / 5 Danling St, Haidian, Beijing, China, 100080</h5>
-				<ul>
-				<li>17:00 – Welcome participants</li>
-				<li>18:00 – Dinner</li>
-				<li>19:00-21:00 – Team building + hacking</li>
-				</ul>
+				<div class="table-responsive">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th><h5>Time</h5></th>
+								<th><h5>Session</h5></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">17:00</th>
+								<td>Welcome participants</td>
+							</tr>
+							<tr class="active">
+								<th scope="row">18:00</th>
+								<td>Dinner</td>
+							</tr>
+							<tr>
+								<th scope="row">19:00-21:00</th>
+								<td>Team building + hacking</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 				
 				<h4>October 22, 2016: DevDays Asia 2016 @ Beijing Conference Begins and Hackathon Continues </h4>
 				
 				<h5>Location: Microsoft Beijing West / 5 Danling St, Haidian, Beijing, China, 100080</h5>
-				<ul>
-				<li>9:00 – Welcome</li>
-				<li>9:15 – Keynote</li>
-				<li>10:00 – Office developer and interoperability tracks begin</li>
-				<li>12:30 – Lunch</li>
-				<li>13:30-18: 15 – Presentations and workshops</li>
-				<li>18:15- Dinner</li>
-				<li>19:15-0:00 – Work on hackathon projects</li>
-				</ul>
+				<div class="table-responsive">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th><h5>Time</h5></th>
+								<th><h5>Office Developer Track</h5></th>
+								<th><h5>Interoperability Track</h5></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">9:00-9:15</th>
+								<td colspan="2">Welcome Speech</td>
+							</tr>
+							<tr>
+								<th scope="row">9:15-10:00</th>
+								<td colspan="2">Keynote</td>
+							</tr>
+							<tr>
+								<th scope="row">10:00-10:45</th>
+								<td>Introducing the Modern Office Platform</td>
+								<td>Introducing Microsoft’s Commitment to Interoperability (Office, Windows, and SQL)</td>
+							</tr>
+							<tr class="active">
+								<td>10:45-11:00</td>
+								<td colspan="2">Break </td>
+							</tr>
+							<tr>
+								<th scope="row">11:00-11:45</th>
+								<td>Make your solution a native part of Office with Office Add-ins</td>
+								<td>Windows Protocol Test Suites</td>
+							</tr>
+							<tr>
+								<th scope="row">11:45-12:30</th>
+								<td>Discover Microsoft Graph: The easiest way to call Microsoft APIs (including Gallatin, examples, case studies, etc.)</td>
+								<td>Discover Exchange Protocols & advancements in ActiveSync, Exchange Web Services, and MAPI</td>
+							</tr>
+							<tr class="active">
+								<td>12:30-13:30</td>
+								<td colspan="2">Lunch</td>
+							</tr>
+							<tr>
+								<th scope="row">13:30-14:15</th>
+								<td>Navigate Dev.Office.com and create an Office Developer account</td>
+								<td>OData Overview and Demo</td>
+							</tr>
+							<tr>
+								<th scope="row">14:15-15:00</th>
+								<td>Intro to Office 365 China Instance</td>
+								<td>OData Validator, a tool for OData service authors to ensure that their service interoperates well with any OData client</td>
+							</tr>
+							<tr>
+								<th scope="row">15:00-15:45</th>
+								<td>Leverage Microsoft Graph through Office Add-ins</td>
+								<td>Introduction to "Model first-tool", a methodology for producing a highly consistent API definition from the resource model</td>
+							</tr>
+							<tr class="active">
+								<td>15:45-16:00</td>
+								<td colspan="2">Break</td>
+							</tr>
+							<tr>
+								<th scope="row">16:00-16:45</th>
+								<td>Build intelligent mail, contacts and calendar apps using Outlook REST APIs </td>
+								<td>Get to know SharePoint protocols, including Office co-authoring (FSSHTTP) and Office Online (WOPI)</td>
+							</tr>
+							<tr>
+								<th scope="row">16:45-17:30</th>
+								<td>Use Office UI Fabric to design applications that blend seamlessly into Microsoft Office</td>
+								<td>Learn about the most commonly used file formats supported by Microsoft Office applications</td>
+							</tr>
+							<tr>
+								<th scope="row">17:30-18:15</th>
+								<td>Publishing your app to the Office Store </td>
+								<td>Utilize Message Analyzer & Fiddler to parse Office, Exchange, and SharePoint traffic (including SQL Parsers)</td>
+							</tr>
+							<tr class="active">
+								<td>18:15-19:15</td>
+								<td colspan="2">Dinner</td>
+							</tr>
+							<tr>
+								<th scope="row">19:15-19:30</th>
+								<td>Source Control (Managing your project) </td>
+							</tr>
+							<tr>
+								<th scope="row">20:00-20:15</th>
+								<td>Existing Open Source Projects </td>
+							</tr>
+							<tr class="active">
+								<td>22:00-22:30</td>
+								<td>Late Night Snack</td>
+							</tr>
+							<tr class="active">
+								<td>0:00</td>
+								<td>Venue Closes</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 				<p>*The hackathon will occur all day Saturday at the venue with onsite help from Microsoft engineers.</p>
 				
 				<h4>October 23, 2016: Hackathon continues</h4>
 				
 				<h5>Location: Microsoft Beijing West / 5 Danling St, Haidian, Beijing, China, 100080</h5>
-				<ul>
-				<li>9:00 Venue opens for breakfast</li>
-				<li>9:00-12:00 - Work on hackathon projects</li>
-				<li>12:00 – Lunch</li>
-				<li>13:00-15:00 – Work on hackathon projects</li>
-				<li>15:00 – All hackathon projects completed and submitted</li>
-				<li>15:15 – 17:00 – First round of evaluations of all teams</li>
-				<li>17:00-18:00 – Finalists present to panel of judges</li>
-				<li>18:15 – Hackathon awards and closing </li>
-				</ul>`
+				<div class="table-responsive">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th><h5>Time</h5></th>
+								<th><h5>Session</h5></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">9:00</th>
+								<td>Venue opens for breakfast</td>
+							</tr>
+							<tr>
+								<th scope="row">9:00-12:00</th>
+								<td>Work on hackathon projects</td>
+							</tr>
+							<tr class="active">
+								<th scope="row">12:00</th>
+								<td>Lunch</td>
+							</tr>
+							<tr>
+								<th scope="row">13:00-15:00</th>
+								<td>Work on hackathon projects</td>
+							</tr>
+							<tr>
+								<th scope="row">15:00</th>
+								<td>All hackathon projects completed and submitted</td>
+							</tr>
+							<tr>
+								<th scope="row">15:15 – 17:00</th>
+								<td>First round of evaluations of all teams</td>
+							</tr>
+							<tr>
+								<th scope="row">17:00-18:00</th>
+								<td>Finalists present to panel of judges</td>
+							</tr>
+							<tr>
+								<th scope="row">18:15</th>
+								<td>Hackathon awards and closing</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>`
 			})
 		})
 		.then(function() {
 			return EventTab.create({
+				isPublished: true,
 				tabTitle: 'Hackathon 规则与制度',
 				tabNumber: 3,
 				tabContent: `
-				<a href="/beijing2016" class="btn btn-info float-right" role="button">English</a>
+				<a href="/beijing2016#hackathon" class="btn btn-info float-right" role="button">English</a>
 				<a href="http://www.aka.ms/devdaysbeijing2016"><img src="/uploads/RegisterNowCN.png" style="height: 37px; margin-right: 10px;" class="float-right" title="registration button" alt="registration link"></a>
 				<h2>黑客马拉松活动规则与制度</h2>
 <pre class="text-align-center"><span><a target="_self" href="#beijing2016Heading1"> 黑客马拉松项目概述</a> | <a target="_self" href="#beijing2016Heading2">如何参加？</a>| <a target="_self" href="#beijing2016Heading3">黑客马拉松项目需求</a> | <a target="_self" href="#beijing2016Heading4">我的项目将被如何使用？</a>| <a target="_self" href="#beijing2016Heading5"> 我的项目将如何评估？</a>| <a target="_self" href="#beijing2016Heading6"> 黑客马拉松条款和条件</a></span></pre>
 <h4>DevDays Asia 2016 @ Beijing 是微软举办的一场免费活动，主要包含两部分内容：</h4>
 <ol>
  	<li>为期一天的现场技术活动课程（2016 年 10 月 22 日 9am-6pm）</li>
- 	<li>Microsoft Office 365 黑客马拉松活动<strong>（黑客马拉松活动将于 2016 年 9 月 26 日启动报名，并于 2016 年 10 月 21 日 5:00pm 正式结束。</strong>评选和颁奖将于 2016 年 10 月 23 日 DevDays Asia 2016 @ Beijing 活动现场举行）。<span style="color: #ff00ff;"><u><a target="_blank" href="http://www.interopevents.com/beijing2016">详情请查阅完整议程安排</a></u>。(LINK TO AGENDA)</span></li>
+ 	<li>Microsoft Office 365 黑客马拉松活动<strong>（黑客马拉松活动将于 2016 年 9 月 26 日启动报名，并于 2016 年 10 月 21 日 5:00pm 正式开幕</strong>评选和颁奖将于 2016 年 10 月 23 日 DevDays Asia 2016 @ Beijing 活动现场举行）。<a target="_blank" href="/beijing2016cn#3575831243">详情请查阅完整议程安排</a>。</li>
 </ol>
 &nbsp;
 <h4 id="beijing2016Heading1">黑客马拉松项目概述</h4>
@@ -3565,7 +3712,7 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 <ul>
 	<li>首先以个人参赛者身份<a target="_blank" href="http://aka.ms/DevDaysBeijing2016">在线注册 DevDays Asia 2016 @ Beijing</a> 活动，在问及是否参加黑客马拉松活动时请选择“是”。</li>
 	<li>免费注册 <u><a target="_blank" href="http://dev.office.com/devprogram"><u>Microsoft </u><u>开发者帐户</u></a></u>。</li>
-	<li>. 访问<span style="color: #ff00ff;">资源页 (LINK TO CLARE'S PAGE) </span>获取有关 Microsoft Graph 和加载项文档、教程，以及应用创意的链接。</li>
+	<li>. 访问<a target="_self" href="#hackathon214423618720934227913616426009">资源页 </a>获取有关 Microsoft Graph 和加载项文档、教程，以及应用创意的链接。</li>
 </ul>
 
 <p>您也可以将自己的黑客马拉松项目注册至某一团队，或在活动现场注册项目并组建团队。</p>
@@ -3589,7 +3736,7 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 
 <strong>主要需求：</strong>提交能帮助用户改善生产力的应用程序。限全新开发的 <a target="_blank" href="https://msdn.microsoft.com/ZH-CN/library/office/jj220082.aspx">Microsoft Office 365 加载项</a> （扩展）或使用了 <a target="_blank" href="http://graph.microsoft.io/en-us/getting-started">Microsoft Graph</a> 的作品可以获奖。
 
-<p>黑客马拉松的项目和代码编写工作最早可于 2016 年 9 月 26 日启动。黑客马拉松将于 2016 年 10 月 21 日正式结束。<span style="color: #ff00ff;">完整议程安排请参阅这里。(LINK TO AGENDA)</span></p>
+<p>黑客马拉松的项目和代码编写工作最早可于 2016 年 9 月 26 日启动。黑客马拉松将于 2016 年 10 月 21 日正式开幕<a target="_self" href="/beijing2016cn#hackathon3526821017199822104624230">完整议程安排请参阅这里。</a></p>
 <p>补充需求：</p>
 <ul>
  	<li>您提交的作品必须是自己的原创成果；并且</li>
@@ -3681,11 +3828,15 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 		})
 		.then(function() {
 			return EventTab.create({
-				tabTitle: 'Venue',
-				tabNumber: 3,
+				isPublished: true,
+				tabTitle: 'Venue / 会场',
+				tabNumber: 4,
 				tabContent: `
-				<a href="/beijing2016cn" class="btn btn-success float-right" role="button">汉语</a>
+				<a href="/beijing2016cn#venue472025022330" class="btn btn-success float-right" role="button">汉语</a>
 				<a class="btn btn-primary float-right" role="button" style="margin-right:10px;" href="http://www.aka.ms/devdaysbeijing2016">Register</a>
+				<br><br>
+				<a href="/beijing2016#venue472025022330" class="btn btn-info float-right" role="button">English</a>
+				<a href="http://www.aka.ms/devdaysbeijing2016"><img src="/uploads/RegisterNowCN.png" style="height: 37px; margin-right: 10px;" class="float-right" title="registration button" alt="registration link"></a>
 				<h2>Microsoft Asia-Pacific R & D Group Headquarters</h2>
 				<h2>微软亚太研发集团总部</h2>
 				<img src="uploads/ms-building-2-haidian.jpg" alt="Microsoft Asia-Pacific R & D Group Headquarters" class="m-x-auto">
@@ -3702,10 +3853,11 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 		})
 		.then(function() {
 			return EventTab.create({
-				tabNumber: 4,
+				isPublished: true,
+				tabNumber: 3,
 				tabTitle: 'Hackathon',
 				tabContent: `
-				<a href="/beijing2016cn" class="btn btn-success float-right" role="button">汉语</a>
+				<a href="/beijing2016cn#hackathon3526821017199822104624230" class="btn btn-success float-right" role="button">汉语</a>
 				<a class="btn btn-primary float-right" role="button" style="margin-right:10px;" href="http://www.aka.ms/devdaysbeijing2016">Register</a>
 				<h2>Hackathon Rules and Regulations</h2>
 <pre class="text-align-center"><a target="_self" href="#hackathonProjectOverviewBeijing2016">Hackathon Project Overview</a> | <a target="_self" href="#howCanIEnterBeijing2016">How can I enter?</a> | <a target="_self" href="#hackathonProjectReqsBeijing2016">Hackathon Project Requirements</a> | <a target="_self" href="#howWillMyProjecBeUsedBeijing2016">How will my project be used?</a> | <a target="_self" href="#howWillMyProjectBeEvalueatedBeijing2016">How will my project be evaluated?</a> | <a target="_self" href="#hackathonTermsBeijing2016">Hackathon Terms + Conditions</a></pre>
@@ -3735,7 +3887,7 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 </ul>
 <button type="button" class="btn btn-sm" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">Back to top</button>
 <h4 id="hackathonProjectReqsBeijing2016">Hackathon Project Requirements</h4>
-<p>Main Requirement: Submit an application that will help users increase their productivity. To be eligible for prizes, submissions must be a new <a href="http://dev.office.com/getting-started/addins">Microsoft Office 365 Add-in (</a>extension) or utilize <a href="http://dev.office.com/getting-started/office365apis">Microsoft Graph</a>. Hackathon projects and coding may start as early as September 26, 2016. The hackathon will kick off onsite on October 21, 2016. <span style="text-decoration: underline;">See full agenda here</span>.</p>
+<p>Main Requirement: Submit an application that will help users increase their productivity. To be eligible for prizes, submissions must be a new <a href="http://dev.office.com/getting-started/addins">Microsoft Office 365 Add-in (</a>extension) or utilize <a href="http://dev.office.com/getting-started/office365apis">Microsoft Graph</a>. Hackathon projects and coding may start as early as September 26, 2016. The hackathon will kick off onsite on October 21, 2016. <a targe="_self" href="#agenda">See full agenda here</a>.</p>
 <p>In addition:</p>
 <ul>
 <li>Your entry must be your own original work; and</li>
@@ -3807,60 +3959,244 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 })
 .then(function() {
 	return EventTab.create({
+		isPublished: true,
 		tabTitle: '议程',
 		tabNumber: 2,
-		tabContent: `<a href="/beijing2016" class="btn btn-success float-right" role="button">汉语</a>
-<a href="http://www.aka.ms/devdaysbeijing2016"><img src="/uploads/RegisterNowCN.png" style="height: 37px; margin-right: 10px;" class="float-right" title="registration button" alt="registration link"></a>
-<h4>2016 年九月二十六日: Hackathon 开始! </h4>	
-<h4>2016 年十月二十一日: Hackathon 正式开幕</h4>
-<p>会场：微软亚太研发集团</p>
-<p>北京市海淀区丹棱街5号</p>
-<p>邮编：100080</p>
-<ul>
-<li>17:00 &ndash; 欢迎参赛者</li>
-<li>18:00 &ndash; 晚餐</li>
-<li>19:00-21:00 &ndash; 建立团队 + 编写程序和应用</li>
-</ul>
-<p><strong>2016 年十月二十二日: DevDays Asia 2016 @ Beijing 会议开始与 Hackathon继续进行</strong></p>
-<p>会场：微软亚太研发集团</p>
-<p>北京市海淀区丹棱街5号</p>
-<p>邮编：100080</p>
-<ul>
-<li>9:00 &ndash; 欢迎</li>
-<li>9:15 &ndash; 开幕演讲</li>
-<li>10:00 &ndash; Office 开发者与互操作环节开始</li>
-<li>12:30 &ndash; 午餐</li>
-<li>13:30-18: 15 &ndash; 技术演讲与动手实验</li>
-<li>18:15- 晚餐</li>
-<li>19:15-0:00 &ndash; 编写程序和应用</li>
-</ul>
-<p>*Hackathon将于周六全天进行，现场有微软工程师的帮助和指导。</p>
-<p><strong>2016 年十月二十三日: Hackathon 继续进行</strong></p>
-<p>会场：微软亚太研发集团</p>
-<p>北京市海淀区丹棱街5号</p>
-<p>邮编：100080</p>
-<ul>
-<li>9:00 会场开放，提供早餐</li>
-<li>9:00-12:00 - 编写程序和应用</li>
-<li>12:00 &ndash; 午餐</li>
-<li>13:00-15:00 &ndash; 编写程序和应用</li>
-<li>15:00 &ndash; 完成程序和应用及提交</li>
-<li>15:15 &ndash; 17:00 &ndash; 第一轮评估参赛团队</li>
-<li>17:00-18:00 &ndash; 参加决赛的团队向评审团展示成果</li>
-<li>18:15 &ndash; Hackathon 颁奖及闭幕</li>
-</ul>
-`
+		tabContent: `<a href="/beijing2016#agenda" class="btn btn-info float-right" role="button">English</a>
+				<a href="http://www.aka.ms/devdaysbeijing2016"><img src="uploads/RegisterNowCN.png" style="height: 37px; margin-right: 10px;" class="float-right beijingRegistration2016Button" title="registration button" alt="registration link"></a>
+				<h4>2016 年九月二十六日: Hackathon 开始! </h4>	
+				<h4>2016 年十月二十一日: Hackathon 正式开幕</h4>
+				<p>会场：微软亚太研发集团</p>
+				<p>北京市海淀区丹棱街5号</p>
+				<p>邮编：100080</p>
+				<div class="table-responsive">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th><h5>时间</h5></th>
+								<th><h5>环节内容</h5></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">17:00</th>
+								<td>欢迎参赛者</td>
+							</tr>
+							<tr class="active">
+								<th scope="row">18:00</th>
+								<td>晚餐</td>
+							</tr>
+							<tr>
+								<th scope="row">19:00-21:00</th>
+								<td>建立团队 + 编写程序和应用</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<p><strong>2016 年十月二十二日: DevDays Asia 2016 @ Beijing 会议开始与 Hackathon继续进行</strong></p>
+				<p>会场：微软亚太研发集团</p>
+				<p>北京市海淀区丹棱街5号</p>
+				<p>邮编：100080</p>
+				<div class="table-responsive">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th><h5>时间</h5></th>
+								<th><h5>Office 开发者环节</h5></th>
+								<th><h5>互操作环节</h5></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">9:00-9:15</th>
+								<td colspan="2">欢迎致词</td>
+							</tr>
+							<tr>
+								<th scope="row">9:15-10:00</th>
+								<td colspan="2">会议主旨</td>
+							</tr>
+							<tr>
+								<th scope="row">10:00-10:45</th>
+								<td>介绍现代  Office 平台</td>
+								<td>介绍微软对互操作之承诺(Office, Windows, and SQL)</td>
+							</tr>
+							<tr class="active">
+								<td>10:45-11:00</td>
+								<td colspan="2">休息</td>
+							</tr>
+							<tr>
+								<th scope="row">11:00-11:45</th>
+								<td>通过Office 外接程序使您的解決方案成为 Office 本体的一部分</td>
+								<td>Windows 协议测试组件</td>
+							</tr>
+							<tr>
+								<th scope="row">11:45-12:30</th>
+								<td>探讨Microsoft Graph (旧称 “Office 365 统一API”) 是访问 Microsoft 云服务中数据最轻松简易的方式（内容包括Gallatin、  范例、实例等）。</td>
+								<td>发掘 Exchange 协议 和有关 ActiveSync, Exchange Web 服务及 MAPI方面的进步</td>
+							</tr>
+							<tr class="active">
+								<td>12:30-13:30</td>
+								<td colspan="2">午餐</td>
+							</tr>
+							<tr>
+								<th scope="row">13:30-14:15</th>
+								<td> 探索Dev.Office.com及通过报名注册拿到Office 开发人员账户</td>
+								<td>开放数据协议（OData）概述及演示</td>
+							</tr>
+							<tr>
+								<th scope="row">14:15-15:00</th>
+								<td>介绍Office 365 China Instance</td>
+								<td>开放数据协议（OData）验证工具:  验证以OData 开发的服务能否与 OData客户端正常操作</td>
+							</tr>
+							<tr>
+								<th scope="row">15:00-15:45</th>
+								<td>在Office 外接程序内发掘微软Graph的优势</td>
+								<td>介绍“模型第一工具”，一种从资源模型中产生高度一致的 API 的方法</td>
+							</tr>
+							<tr class="active">
+								<td>15:45-16:00</td>
+								<td colspan="2">休息</td>
+							</tr>
+							<tr>
+								<th scope="row">16:00-16:45</th>
+								<td>通过 Outlook REST APIs 创建智慧的邮件、联系人、日历应用</td>
+								<td>了解SharePoint 协议，包括 Office合著者 (FSSHTTP) 和 Office Online (WOPI)</td>
+							</tr>
+							<tr>
+								<th scope="row">16:45-17:30</th>
+								<td>通过Office UI Fabric来设计应用使您的体验外观和感觉与 Office 相似</td>
+								<td>了解微软 Office应用程序所支持的最常用Office文件格式</td>
+							</tr>
+							<tr>
+								<th scope="row">17:30-18:15</th>
+								<td>发布您的应用至Office 商店</td>
+								<td>利用Message Analyzer 和 Fiddler 解析器来解析Office, Exchange, and SharePoint 协议消息的内容 (包括SQL Parsers)</td>
+							</tr>
+							<tr class="active">
+								<td>18:15-19:15</td>
+								<td colspan="2">晚餐</td>
+							</tr>
+							<tr>
+								<th scope="row">19:15-19:30</th>
+								<td>源代码管理（管理您的项目）</td>
+							</tr>
+							<tr>
+								<th scope="row">20:00-20:15</th>
+								<td>现有的开源项目</td>
+							</tr>
+							<tr class="active">
+								<td>22:00-22:30</td>
+								<td>夜宵</td>
+							</tr>
+							<tr class="active">
+								<td>0:00</td>
+								<td>会场关闭</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<p>*Hackathon将于周六全天进行，现场有微软工程师的帮助和指导。</p>
+				<p><strong>2016 年十月二十三日: Hackathon 继续进行</strong></p>
+				<p>会场：微软亚太研发集团</p>
+				<p>北京市海淀区丹棱街5号</p>
+				<p>邮编：100080</p>
+				<div class="table-responsive">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th><h5>时间</h5></th>
+								<th><h5>环节内容</h5></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">9:00</th>
+								<td>会场开放，提供早餐</td>
+							</tr>
+							<tr>
+								<th scope="row">9:00-12:00</th>
+								<td>编写程序和应用</td>
+							</tr>
+							<tr class="active">
+								<th scope="row">12:00</th>
+								<td>午餐</td>
+							</tr>
+							<tr>
+								<th scope="row">13:00-15:00</th>
+								<td>编写程序和应用</td>
+							</tr>
+							<tr>
+								<th scope="row">15:00</th>
+								<td>完成程序和应用及提交</td>
+							</tr>
+							<tr>
+								<th scope="row">15:15 – 17:00</th>
+								<td>第一轮评估参赛团队</td>
+							</tr>
+							<tr>
+								<th scope="row">17:00-18:00</th>
+								<td>参加决赛的团队向评审团展示成果</td>
+							</tr>
+							<tr>
+								<th scope="row">18:15</th>
+								<td>Hackathon 颁奖及闭幕</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>`
 	})
 })
-	////////////////////////////////////Contact placeholder/////////////////////////////////////
+.then(function() {
+	return EventTab.create({
+		isPublished: true,
+		tabTitle: '关于',
+		tabNumber: 1,
+		tabContent: `
+				<a href="/beijing2016" class="btn btn-info float-right" role="button">English</a>
+				<a href="http://www.aka.ms/devdaysbeijing2016"><img src="uploads/RegisterNowCN.png" style="height: 37px; margin-right: 10px;" class="float-right beijingRegistration2016Button" title="registration button" alt="registration link"></a>
+				<h2>DevDays Asia 2016 @ Beijing</h2>
+				<h4>10/21-10/23，2016</h4>
+				<h4>中国北京市</h4>
+				<h4>活动对象︰ 开发人员、 独立软件供应商、 学生、 科技创业、 企业</h4>
+				<h4>费用：免费</h4>
+				<p>微软Office 365与开放文档团队将在中国北京市举办 DevDays Asia 2016 @Beijing。此次北京的活动是自DevDays Asia @Taipei（<a href="http://www.prnewswire.com/news-releases/microsoft-launches-the-biggest-developer-event-in-asia-taking-iot-development-in-taiwan-to-new-heights-300253810.html">亚州最大的开发者活动</a>）以来另一次延伸性的活动。快来参加在北京微软亚太研发集团召开的技术研讨。 日期为2016年10月21日至23日。内容包括演示、现场实践与操作、互动与交流、还有hackathon! 这是一场属于开发人员的技术盛宴，我们将围绕Office 365，数据平台以及开放文档等技术话题，为您带来丰富的技术内容。您将在本次活动中聆听来自微软产品团队工程师带来的技术演讲，参与动手实验，与研发工程师直接一对一互动。您还可以带着您的Office 365项目参与48小时应用开发马拉松活动，在技术专家的指导下加速完善您的项目，更有机会赢得Windows平板电脑、无人机、VR眼镜、平衡车等精彩大礼！</p>
+				<p><strong>DevDays Asia 2016</strong>活动分为两个部分： <strong>DevDays Asia 2016北京技术峰会</strong>(10月22日 9:00-17:00)以及<strong>Office 365应用开发马拉松</strong>(10月21日17:00-10月23日17:00)。您可以在注册DevDays Asia 2016北京技术峰会时选择是否参与应用开发马拉松活动。</p>
+				<p class="blue-border"><span class="bg-primary">DevDays Asia 2016开发者高峰 会&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;10月22日 9:00 – 18:00</p>
+				 
+				<p>您将在活动中详细了解到Microsoft Office 365的广阔市场机会，以及以Office 365作为平台进行开发的技术细节。此外我们还将向您介绍微软对互操作之重视与承诺。大会技术课程将涵盖以下内容： </p>
+				<ul>
+					<li>内置在 Word、 Excel、PowerPoint、Outlook中的Microsoft Office 外接程序</li>
+					<li>Microsoft Graph (旧称 “Office 365 统一API”) ：Microsoft Graph是访问 Microsoft 云服务中数据、商务消息、用户、文件、邮件、日历、联系人 及文件夹最轻松简易的方式。</li>
+					<li>Microsoft SQL Server</li>
+					<li>开放数据（OData）： 构建及使用RESTful APIs</li>
+					<li>Office文件格式</li>
+					<li>Office, SharePoint, or Exchange 协议</li>
+					<li>Microsoft Office与数据平台的开放文档</li>
+					<li>Windows 互操作</li>
+					<li>Windows 协议测试组件</li>
+				</ul>
+				<p class="blue-border"><span class="bg-primary">Office 365 应用开发马拉松 (Hackathon)&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;10月21日 17:00 - 10月23日 17:00</p>
+				<p>Office 365强劲的增长势头为ISV、企业、初创公司以及开发者都带来了无限的机会，基于Office 365构建的应用解决方案为诸多行业和场景带来了新的效率和革新。10月21日17点至10月23日17点，带上您的创意、项目和团队，参与48小时的Office 365应用开发马拉松，在现场与来自各地的开发团队同场竞技，面对面交流微软产品组技术专家，解决开发过程中遇到的问题，并在技术指导下不断加速和完善您的项目。
+				我们会为您提供完善的后勤保障服务，餐食茶点、休息娱乐，以确保您能够在48小时内最大程度地完善您的项目。我们还为您准备了丰厚的奖品，以激励您的极致创意和出色的项目成果：</p>
+				<img src="uploads/things-beijing-2016.png" class="centered" title="images of laptop, drone, virtual reality goggles, and scooter" alt="images of laptop, drone, virtual reality goggles, and scooter">
+				<hr>
+				<a href="https://www.microsoftevents.com/profile/form/index.cfm?PKformID=0x6209970001"><img src="uploads/RegisterNowCN.png" class="centered" title="现在就注册吧" alt="现在就注册吧！"></a>
+				<p class="small">* 请在注册页面中选择参与应用开发马拉松选项，报名参与Office 365应用开发马拉松需先提交项目信息，具体规则将在审核后通过邮件及网站公布。</p>
+				<p class="small">* 更多奖品将陆续公布，请以最终公布规则及奖励说明中的描述为准。 </p>
+				<p class="small">*问题和帮助</p>
+
+				`
+	})
+})
+	////////////////////////////////////Speaker placeholder/////////////////////////////////////
 
 	.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Michael',
 				lastName: 'Bowman',
 				newsletterSubscription: true,
-				contactDescription: 'Michael Bowman is a Senior Program Manager on the Microsoft Office Interoperability team. He leads the delivery and release efforts for interoperability events and test tools for the Microsoft Office Division, including SharePoint, Exchange Server, and Office. Prior to joining Microsoft, Michael spent the first part of his career in an engineering role at Hewlett Packard, focusing on developing new industry standard server technologies.<br><br>He graduated from the University of Washington with a Bachelor of Science degree in Computer Science and a Master of Business Administration degree from the Foster School of Business at the University of Washington.',
+				speakerDescription: 'Michael Bowman is a Senior Program Manager on the Microsoft Office Interoperability team. He leads the delivery and release efforts for interoperability events and test tools for the Microsoft Office Division, including SharePoint, Exchange Server, and Office. Prior to joining Microsoft, Michael spent the first part of his career in an engineering role at Hewlett Packard, focusing on developing new industry standard server technologies.<br><br>He graduated from the University of Washington with a Bachelor of Science degree in Computer Science and a Master of Business Administration degree from the Foster School of Business at the University of Washington.',
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: true,
 				meetTheTeamPageOrder: 1,
@@ -3874,12 +4210,12 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Kwabena (K.B.)',
 				lastName: 'Badu-Antwi',
 				newsletterSubscription: true,
-				contactDescription: 'K.B. Badu-Antwi is a Senior Program Manager, responsible for the interoperability initiative spanning the entire Data Group (including SQL Server). He has been at Microsoft for over ten years and currently leads cross-functional domestic and international teams that are responsible for defining, delivering, and monitoring engineering/antitrust compliance and interoperability requirements. <br /><br />Prior to joining the Data Group, K.B. served as the Program Manager on the Xbox Platform team. He graduated from Seattle Pacific University with a Bachelor of Science degree in Computer Science and a Master of Science degree in Information System Management.',
+				speakerDescription: 'K.B. Badu-Antwi is a Senior Program Manager, responsible for the interoperability initiative spanning the entire Data Group (including SQL Server). He has been at Microsoft for over ten years and currently leads cross-functional domestic and international teams that are responsible for defining, delivering, and monitoring engineering/antitrust compliance and interoperability requirements. <br /><br />Prior to joining the Data Group, K.B. served as the Program Manager on the Xbox Platform team. He graduated from Seattle Pacific University with a Bachelor of Science degree in Computer Science and a Master of Science degree in Information System Management.',
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: true,
 				meetTheTeamPageOrder: 2,
@@ -3894,12 +4230,12 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Prakash',
 				lastName: 'Narayanan',
 				newsletterSubscription: true,
-				contactDescription: 'Prakash Narayanan is a Program Manager in the Enterprise Cloud Group. He has been with Microsoft for almost ten years and works on interoperability events for partners who use Windows Protocols. He drives the coordination of those events, reimagining the future engagements and information sharing with the partners. <br /><br />Prior to this event role, Prakash was a Software Engineer across different teams in SharePoint, Microsoft Office, and Office 365 before becoming a Program Manager in the Office 365/Exchange division. In that role, he drove the engineering team\'s responsiveness to address product issues that affect the customers who run Exchange themselves or consume Office 365 from the Microsoft cloud. He graduated from the University of Kentucky with a Master of Science degree in Computer Science.',
+				speakerDescription: 'Prakash Narayanan is a Program Manager in the Enterprise Cloud Group. He has been with Microsoft for almost ten years and works on interoperability events for partners who use Windows Protocols. He drives the coordination of those events, reimagining the future engagements and information sharing with the partners. <br /><br />Prior to this event role, Prakash was a Software Engineer across different teams in SharePoint, Microsoft Office, and Office 365 before becoming a Program Manager in the Office 365/Exchange division. In that role, he drove the engineering team\'s responsiveness to address product issues that affect the customers who run Exchange themselves or consume Office 365 from the Microsoft cloud. He graduated from the University of Kentucky with a Master of Science degree in Computer Science.',
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: true,
 				meetTheTeamPageOrder: 3,
@@ -3913,11 +4249,11 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Diane',
 				lastName: 'Larsen',
-				contactDescription: 'Diane Larsen is a Senior Program Manager in the Enterprise Cloud Group. She has been with Microsoft since 2000, and has been working on protocol interoperability initiatives for Windows and Windows Server since 2008. Prior to this role, she wrote documentation for SQL Server, managed a content publishing team, and managed web development projects.<br /><br />Diane graduated from the University of Washington with a Bachelor of Science degree in Technical Communication. She spends as much time as possible outdoors, watches movies, takes classes, and travels to warmer places during the really rainy season.',
+				speakerDescription: 'Diane Larsen is a Senior Program Manager in the Enterprise Cloud Group. She has been with Microsoft since 2000, and has been working on protocol interoperability initiatives for Windows and Windows Server since 2008. Prior to this role, she wrote documentation for SQL Server, managed a content publishing team, and managed web development projects.<br /><br />Diane graduated from the University of Washington with a Bachelor of Science degree in Technical Communication. She spends as much time as possible outdoors, watches movies, takes classes, and travels to warmer places during the really rainy season.',
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: true,
 				meetTheTeamPageOrder: 4,
@@ -3930,12 +4266,12 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Rich',
 				lastName: 'McLain',
 				newsletterSubscription: true,
-				contactDescription: 'Rich McLain is a Lead Program Manager on the Microsoft Office Interoperability team. Rich has been with Microsoft for fourteen years, and he leads the Compliance, Interoperability and Standards Program Management efforts across the Microsoft Office Division. His responsibilities include all work centering on tools, production, testing and partner engagements for Office, SharePoint, Exchange and Lync protocols as well as Microsoft Office’s engagement with the OOXML, ODF and PDF standards.',
+				speakerDescription: 'Rich McLain is a Lead Program Manager on the Microsoft Office Interoperability team. Rich has been with Microsoft for fourteen years, and he leads the Compliance, Interoperability and Standards Program Management efforts across the Microsoft Office Division. His responsibilities include all work centering on tools, production, testing and partner engagements for Office, SharePoint, Exchange and Lync protocols as well as Microsoft Office’s engagement with the OOXML, ODF and PDF standards.',
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: true,
 				meetTheTeamPageOrder: 5,
@@ -3949,16 +4285,16 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Donny',
 				lastName: 'Luu',
 				newsletterSubscription: true,
-				contactDescription: 'Donny is a Software Engineering Manager on the Office Developer Experience team. He leads the development and release efforts for interoperability tools, documentation, and events for the Microsoft Office Division, including SharePoint, Exchange Server, and Office. The mission of the Developer Experience team is to provide Office 365 developers and IT admins a good on-ramp experience in developing, deploying, and migrating their solutions and documents on Office 365 releases. He strives toward uniting the Office 365 developer communities, helping them discover, learn, build, migrate, and measure the success of their applications. <br /><br />Prior to joining the Office Developer Experience team, Donny was the test director of the Microsoft Analytics and Presentation Services team where he led the testing and release efforts of Excel, PowerBI, and PowerPoint. In earlier Office releases, Donny was the software test manager for the Office Programmability team where he led the integration, testing, and release of VBA, COM-Addin, and PIA. He graduated from the University of Washington with a Bachelor of Science degree in Computer Science and Engineering.',
+				speakerDescription: 'Donny is a Software Engineering Manager on the Office Developer Experience team. He leads the development and release efforts for interoperability tools, documentation, and events for the Microsoft Office Division, including SharePoint, Exchange Server, and Office. The mission of the Developer Experience team is to provide Office 365 developers and IT admins a good on-ramp experience in developing, deploying, and migrating their solutions and documents on Office 365 releases. He strives toward uniting the Office 365 developer communities, helping them discover, learn, build, migrate, and measure the success of their applications. <br /><br />Prior to joining the Office Developer Experience team, Donny was the test director of the Microsoft Analytics and Presentation Services team where he led the testing and release efforts of Excel, PowerBI, and PowerPoint. In earlier Office releases, Donny was the software test manager for the Office Programmability team where he led the integration, testing, and release of VBA, COM-Addin, and PIA. He graduated from the University of Washington with a Bachelor of Science degree in Computer Science and Engineering.',
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: true,
 				meetTheTeamPageOrder: 6,
-				msTeamTitle: 'Software Engineering Manager, Office Developer Experience Team',
+				msTeamTitle: 'Principal Software Engineer Manager',
 				showOnHomePage: true,
 				headShot: 'donny-luu-headshot.jpg',
 				company: 'Microsoft',
@@ -3968,12 +4304,12 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Bailey',
 				lastName: 'Chauner',
 				newsletterSubscription: true,
-				contactDescription: 'Bailey Chauner is the new Event Coordinator for the Office Interoperability team. Bailey graduated from the University of Montana with a Bachelor of Science degree in Marketing and a Minor in Media Arts. She chose to begin her career in Seattle because of the balance between startups, established companies, and her love for the Northwest. <br /><br />Bailey grew up in Montana enjoying the small town life, spending days on the lake, and skiing.  In her free time, she enjoys playing tennis, blogging, and finding new places to eat.',
+				speakerDescription: 'Bailey Chauner is the new Event Coordinator for the Office Interoperability team. Bailey graduated from the University of Montana with a Bachelor of Science degree in Marketing and a Minor in Media Arts. She chose to begin her career in Seattle because of the balance between startups, established companies, and her love for the Northwest. <br /><br />Bailey grew up in Montana enjoying the small town life, spending days on the lake, and skiing.  In her free time, she enjoys playing tennis, blogging, and finding new places to eat.',
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: true,
 				meetTheTeamPageOrder: 7,
@@ -3987,12 +4323,12 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Andrew',
 				lastName: 'Davidoff',
 				newsletterSubscription: true,
-				contactDescription: 'Andrew Davidoff is a Senior Software Test Engineer on the Microsoft Office Interoperability team. He drives Interoperability testing and Test Suites across the Exchange family of Open Specifications and other Office Open Specifications. <br /><br />Prior to joining Office Interoperability team, Andrew has served in the event role  of Senior Test Engineer and Senior Test Lead on the Exchange team at Microsoft. He was responsible for testing major components of Exchange Server for a number of releases. He graduated from the Moscow Aviation Institute, Russia with a bachelor’s degree in Computer Science.',
+				speakerDescription: 'Andrew Davidoff is a Senior Software Test Engineer on the Microsoft Office Interoperability team. He drives Interoperability testing and Test Suites across the Exchange family of Open Specifications and other Office Open Specifications. <br /><br />Prior to joining Office Interoperability team, Andrew has served in the event role  of Senior Test Engineer and Senior Test Lead on the Exchange team at Microsoft. He was responsible for testing major components of Exchange Server for a number of releases. He graduated from the Moscow Aviation Institute, Russia with a bachelor’s degree in Computer Science.',
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: true,
 				meetTheTeamPageOrder: 8,
@@ -4006,12 +4342,12 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Jinghui',
 				lastName: 'Zhang',
 				newsletterSubscription: true,
-				contactDescription: 'Jinghui Zhang is a Software Engineer on the Microsoft Office Extensibility team. She is a developer of dev.office.com and graph.microsoft.io. She also drives the development for the new Office Add-ins, SharePoint and Exchange Test Suites, and Office Open XML and Uniform Office Format interoperability tools.<br /><br />She gives talks on Office Add-in, Protocol Test Suites, and more at the Microsoft Interop events. She also participates in the hack sessions that lead developers to reach their hack success. Her favorite part of the events is the brainstorm and hack session. <br /><br />She graduated from Beijing University of Aeronautics & Astronautics, China with a bachelor’s degree in Information Management and Information Systems.',
+				speakerDescription: 'Jinghui Zhang is a Software Engineer on the Microsoft Office Extensibility team. She is a developer of dev.office.com and graph.microsoft.io. She also drives the development for the new Office Add-ins, SharePoint and Exchange Test Suites, and Office Open XML and Uniform Office Format interoperability tools.<br /><br />She gives talks on Office Add-in, Protocol Test Suites, and more at the Microsoft Interop events. She also participates in the hack sessions that lead developers to reach their hack success. Her favorite part of the events is the brainstorm and hack session. <br /><br />She graduated from Beijing University of Aeronautics & Astronautics, China with a bachelor’s degree in Information Management and Information Systems.',
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: true,
 				meetTheTeamPageOrder: 9,
@@ -4025,12 +4361,12 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Pui',
 				lastName: 'Leung',
 				newsletterSubscription: true,
-				contactDescription: 'Pui Leung is a Software Engineer on the Microsoft Office Extensibility team. He is responsible for Interoperability test suites and test tools development and release testing for the Microsoft Office Division, including SharePoint, Exchange Server, and Office.<br /><br />Prior to joining Microsoft, Pui worked as a System Software Engineer on the latest types of software projects, including Windows kernel device driver and server management software at Compaq and Hewlett Packard. He graduated from Oregon State University with a Bachelor of Science degree in Computer Science.',
+				speakerDescription: 'Pui Leung is a Software Engineer on the Microsoft Office Extensibility team. He is responsible for Interoperability test suites and test tools development and release testing for the Microsoft Office Division, including SharePoint, Exchange Server, and Office.<br /><br />Prior to joining Microsoft, Pui worked as a System Software Engineer on the latest types of software projects, including Windows kernel device driver and server management software at Compaq and Hewlett Packard. He graduated from Oregon State University with a Bachelor of Science degree in Computer Science.',
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: false,
 				meetTheTeamPageOrder: 10,
@@ -4044,12 +4380,12 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Tom',
 				lastName: 'Jebo',
 				newsletterSubscription: true,
-				contactDescription: 'Tom Jebo is a Senior Escalation Engineer on the Microsoft Developer Support Open Specifications team. His primary responsibilities are helping customers implement solutions using WOPI, Exchange RPC/MAPI, ActiveSync, Web Services, Lync/Skype protocols, and Office Open XML and binary formats. Before joining the Open Specifications team, Tom helped customers with Microsoft\'s developer tools, C/C++ languages and COM technologies.<br /><br />Before Microsoft, Tom developed architectural simulation software at Amdhal Corporation in Sunnyvale, California. Tom graduated from Boston University with a bachelor’s degree in Computer Science and currently lives in Seattle Washington.',
+				speakerDescription: 'Tom Jebo is a Senior Escalation Engineer on the Microsoft Developer Support Open Specifications team. His primary responsibilities are helping customers implement solutions using WOPI, Exchange RPC/MAPI, ActiveSync, Web Services, Lync/Skype protocols, and Office Open XML and binary formats. Before joining the Open Specifications team, Tom helped customers with Microsoft\'s developer tools, C/C++ languages and COM technologies.<br /><br />Before Microsoft, Tom developed architectural simulation software at Amdhal Corporation in Sunnyvale, California. Tom graduated from Boston University with a bachelor’s degree in Computer Science and currently lives in Seattle Washington.',
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: true,
 				meetTheTeamPageOrder: 11,
@@ -4063,12 +4399,12 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Jingyu',
 				lastName: 'Shao',
 				newsletterSubscription: true,
-				contactDescription: 'Jingyu Shao is a Software Engineer on the Microsoft Office Extensibility team. She works as a web developer for the Office developer portal: dev.office.com and Microsoft Graph portal: graph.microsoft.io. Jingyu has also developed several Office Add-ins with the new Office JavaScript API. In addition, she drives the development of interoperability tools, such as Fiddler Inspectors which parses Exchange, SharePoint, and WOPI online traffic. <br /><br />Jingyu graduated from Zhejiang University China with a master’s degree in Electronic Information Engineering.',
+				speakerDescription: 'Jingyu Shao is a Software Engineer on the Microsoft Office Extensibility team. She works as a web developer for the Office developer portal: dev.office.com and Microsoft Graph portal: graph.microsoft.io. Jingyu has also developed several Office Add-ins with the new Office JavaScript API. In addition, she drives the development of interoperability tools, such as Fiddler Inspectors which parses Exchange, SharePoint, and WOPI online traffic. <br /><br />Jingyu graduated from Zhejiang University China with a master’s degree in Electronic Information Engineering.',
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: true,
 				meetTheTeamPageOrder: 12,
@@ -4082,12 +4418,12 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Jinlin',
 				lastName: 'Xu',
 				newsletterSubscription: true,
-				contactDescription: 'Jinlin Xu is a Software Engineer on the Microsoft Office Interoperability team. He is responsible for Interoperability tool development and fixes the Interoperability document issues of SharePoint Server, Lync Server and Exchange Server. <br /><br />Prior to joining Microsoft, Jinlin spent one year as a Network Engineer at Huawei focusing on developing software on city routers, and two years as a Software Test Engineer focusing on Lync Server test suites development. He graduated from Nankai University with a bachelor’s degree in Computer Science.',
+				speakerDescription: 'Jinlin Xu is a Software Engineer on the Microsoft Office Interoperability team. He is responsible for Interoperability tool development and fixes the Interoperability document issues of SharePoint Server, Lync Server and Exchange Server. <br /><br />Prior to joining Microsoft, Jinlin spent one year as a Network Engineer at Huawei focusing on developing software on city routers, and two years as a Software Test Engineer focusing on Lync Server test suites development. He graduated from Nankai University with a bachelor’s degree in Computer Science.',
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: true,
 				meetTheTeamPageOrder: 13,
@@ -4101,12 +4437,12 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Christine',
 				lastName: 'Huang',
 				newsletterSubscription: true,
-				contactDescription: 'Christine Huang is a Principal Test Manager on the Microsoft Windows Server and Cloud Interoperability team. She manages the Microsoft Windows Server Interoperability team in China and owns the development and release efforts of test tools for interoperability events for Microsoft Windows Server Division. <br /><br />Prior to joining the Windows Server team, Christine worked in an event role as a Senior Engineer and Manager across several Microsoft products, including Bing and Office. Prior to joining Microsoft, she worked as a Senior Software Developer in the industry. She earned a bachelor’s degree in Business Administration from National Taiwan University, and a master’s degree in Computer Science from Georgia State University.',
+				speakerDescription: 'Christine Huang is a Principal Test Manager on the Microsoft Windows Server and Cloud Interoperability team. She manages the Microsoft Windows Server Interoperability team in China and owns the development and release efforts of test tools for interoperability events for Microsoft Windows Server Division. <br /><br />Prior to joining the Windows Server team, Christine worked in an event role as a Senior Engineer and Manager across several Microsoft products, including Bing and Office. Prior to joining Microsoft, she worked as a Senior Software Developer in the industry. She earned a bachelor’s degree in Business Administration from National Taiwan University, and a master’s degree in Computer Science from Georgia State University.',
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: true,
 				meetTheTeamPageOrder: 14,
@@ -4120,12 +4456,12 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Tarun',
 				lastName: 'Chopra',
 				newsletterSubscription: true,
-				contactDescription: 'Tarun Chopra is a presently a Senior Escalation Engineer on the Microsoft Office Developer Support Open Specifications team. His primary responsibilities include helping customers implement solutions using WOPI, Exchange RPC/MAPI, ActiveSync, Web Services, Lync/Skype protocols, and Office Open XML and binary formats. Before joining Office Open Specifications team, Tarun played a vital role in helping customers to implement Windows protocols. He represented Microsoft at several Plugfest/Interop global events. Authentication, LYNC/RDP, File Sharing protocols are some of his strengths.<br /><br />Prior to Microsoft, Tarun worked as a Development Lead in Developing Test Suites for Validation of Windows Open Specification and has vast experience in developing distributed systems. He played a key role in developing Parking Management Solutions for a Japanese firm and Verification of Ticketing System for Japanese Rail Network. He received a bachelor’s degree in Electronics and Telecommunication from a university in India.',
+				speakerDescription: 'Tarun Chopra is a presently a Senior Escalation Engineer on the Microsoft Office Developer Support Open Specifications team. His primary responsibilities include helping customers implement solutions using WOPI, Exchange RPC/MAPI, ActiveSync, Web Services, Lync/Skype protocols, and Office Open XML and binary formats. Before joining Office Open Specifications team, Tarun played a vital role in helping customers to implement Windows protocols. He represented Microsoft at several Plugfest/Interop global events. Authentication, LYNC/RDP, File Sharing protocols are some of his strengths.<br /><br />Prior to Microsoft, Tarun worked as a Development Lead in Developing Test Suites for Validation of Windows Open Specification and has vast experience in developing distributed systems. He played a key role in developing Parking Management Solutions for a Japanese firm and Verification of Ticketing System for Japanese Rail Network. He received a bachelor’s degree in Electronics and Telecommunication from a university in India.',
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: true,
 				meetTheTeamPageOrder: 15,
@@ -4139,12 +4475,12 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Tom',
 				lastName: 'Devey',
 				newsletterSubscription: true,
-				contactDescription: 'Tom Devey is a Supportability Program Manager on the Microsoft Windows Interoperability team. He leads the Windows Open Specification Partner support and events. Events that include Windows Protocol Plugfests are delivered at Microsoft regularly to Microsoft partners who implement Active Directory, File Sharing and Remote Desktop, and other Microsoft protocols. <br /><br />Prior to joining the Windows Interoperability team, Tom served in a similar event role in the Microsoft Office division, working with partners who developed Exchange, SharePoint, Open XML, and the Office Binary formats solutions.',
+				speakerDescription: 'Tom Devey is a Supportability Program Manager on the Microsoft Windows Interoperability team. He leads the Windows Open Specification Partner support and events. Events that include Windows Protocol Plugfests are delivered at Microsoft regularly to Microsoft partners who implement Active Directory, File Sharing and Remote Desktop, and other Microsoft protocols. <br /><br />Prior to joining the Windows Interoperability team, Tom served in a similar event role in the Microsoft Office division, working with partners who developed Exchange, SharePoint, Open XML, and the Office Binary formats solutions.',
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: true,
 				meetTheTeamPageOrder: 16,
@@ -4158,12 +4494,12 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Hector',
 				lastName: 'Sandino',
 				newsletterSubscription: true,
-				contactDescription: 'Hector Sandino is a Quality Assurance Manager in the Microsoft Office Interoperability team. He leads the development and release efforts for interoperability test tools and events for the Microsoft Office Division, including SharePoint, Exchange Server, and Office. <br /><br />Prior to joining the Office Interoperability team, Hector worked as a Software Developer Engineer across several products of the Microsoft Office brand, including: Outlook, PowerPoint, Visio, Excel, and Word. He graduated from the Pontificia Universidad Javeriana with a Bachelor of Science degree in Industrial Engineering and a Master of Science degree in Industrial Engineering from the University of Puerto Rico.',
+				speakerDescription: 'Hector Sandino is a Quality Assurance Manager in the Microsoft Office Interoperability team. He leads the development and release efforts for interoperability test tools and events for the Microsoft Office Division, including SharePoint, Exchange Server, and Office. <br /><br />Prior to joining the Office Interoperability team, Hector worked as a Software Developer Engineer across several products of the Microsoft Office brand, including: Outlook, PowerPoint, Visio, Excel, and Word. He graduated from the Pontificia Universidad Javeriana with a Bachelor of Science degree in Industrial Engineering and a Master of Science degree in Industrial Engineering from the University of Puerto Rico.',
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: false,
 				msTeamTitle: 'Quality Assurance Manager, Office Interoperability Team',
@@ -4176,12 +4512,12 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Bryan S.',
 				lastName: 'Burgin',
 				newsletterSubscription: true,
-				contactDescription: 'Bryan Burgin is a Senior Escalation Engineer, responsible for support of Microsoft’s open specifications (protocol documents). He primarily works with third-party protocol implementers to address questions and issues related to the open specifications and to champion interoperability with Microsoft platforms. He works extensively with the RDP/RDS and File sharing (SMB2&3) protocol groups and along with his team, supports 500+ on-the-wire Windows protocols. He has been in this event role for three years and at Microsoft for thirteen. <br /><br />Prior to this event role, Bryan supported Kernel driver developers, specializing in network (NDIS) driver development. Prior to joining Microsoft, Bryan spent many years developing products that integrated Wang VS minicomputers with PC networks (terminal emulation, file system redirection, and print redirection).',
+				speakerDescription: 'Bryan Burgin is a Senior Escalation Engineer, responsible for support of Microsoft’s open specifications (protocol documents). He primarily works with third-party protocol implementers to address questions and issues related to the open specifications and to champion interoperability with Microsoft platforms. He works extensively with the RDP/RDS and File sharing (SMB2&3) protocol groups and along with his team, supports 500+ on-the-wire Windows protocols. He has been in this event role for three years and at Microsoft for thirteen. <br /><br />Prior to this event role, Bryan supported Kernel driver developers, specializing in network (NDIS) driver development. Prior to joining Microsoft, Bryan spent many years developing products that integrated Wang VS minicomputers with PC networks (terminal emulation, file system redirection, and print redirection).',
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: true,
 				meetTheTeamPageOrder: 17,
@@ -4195,12 +4531,12 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Feng',
 				lastName: 'Han',
 				newsletterSubscription: true,
-				contactDescription: 'Feng Han is a Software Engineer on Windows Server Interoperability & Tools team in Shanghai, China. He has worked on the development and support of test tools for Windows interoperability for four years, especially on the Remote Desktop Protocol family.<br /><br />He graduated from Zhejiang University with a bachelor’s degree and graduated from Shanghai Jiao Tong University with a master’s degree in Software Engineering. Prior to joining Microsoft, Feng worked as a Software Development Engineer for three years at a startup company.<br /><br />His role in Interop events is to present and support synthetic test suites, and helping partners to use these test tools to identity their product issues.',
+				speakerDescription: 'Feng Han is a Software Engineer on Windows Server Interoperability & Tools team in Shanghai, China. He has worked on the development and support of test tools for Windows interoperability for four years, especially on the Remote Desktop Protocol family.<br /><br />He graduated from Zhejiang University with a bachelor’s degree and graduated from Shanghai Jiao Tong University with a master’s degree in Software Engineering. Prior to joining Microsoft, Feng worked as a Software Development Engineer for three years at a startup company.<br /><br />His role in Interop events is to present and support synthetic test suites, and helping partners to use these test tools to identity their product issues.',
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: true,
 				meetTheTeamPageOrder: 18,
@@ -4214,12 +4550,12 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Guozhao',
 				lastName: 'Wu',
 				newsletterSubscription: true,
-				contactDescription: 'Guozhao Wu is a Software Test Engineer in the Microsoft Office Interoperability team. He drives Test Suites development across the Exchange family of Open Specification and Interoperability tool development for Office OPN parsers. <br /><br />Prior to joining Microsoft, Guozhao worked as a Software Development Engineer in Hangzhou Tiantu focusing on developing System for Highway Emergency. He graduated from the Zhejiang University with bachelor\'s degree & master\'s degree in Software Engineering.',
+				speakerDescription: 'Guozhao Wu is a Software Test Engineer in the Microsoft Office Interoperability team. He drives Test Suites development across the Exchange family of Open Specification and Interoperability tool development for Office OPN parsers. <br /><br />Prior to joining Microsoft, Guozhao worked as a Software Development Engineer in Hangzhou Tiantu focusing on developing System for Highway Emergency. He graduated from the Zhejiang University with bachelor\'s degree & master\'s degree in Software Engineering.',
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: false,
 				msTeamTitle: 'Software Engineer in Test, Office Interoperability Team',
@@ -4232,12 +4568,12 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Obaid',
 				lastName: 'Farooqi',
 				newsletterSubscription: true,
-				contactDescription: 'Obaid Farooqi is an Escalation Engineer on the Microsoft Developer Support, Open Specifications/Protocols/Interoperability team. <br /><br />Obaid is responsible for the support of Microsoft Open Specifications (protocol documentation). He earned a Master of Computer Science degree from University of Texas at Arlington. He primarily works with third-party protocol implementers to address questions and issues related to the open specifications. He works extensively with the Authentication, File sharing (SMB2&3) and Mobile Device Management (MDM) protocols, but is capable of supporting any of the 500+ on-the-wire Windows protocols. He has been in this event role for six years at Microsoft and in the telecommunications industry as a developer for twelve years.',
+				speakerDescription: 'Obaid Farooqi is an Escalation Engineer on the Microsoft Developer Support, Open Specifications/Protocols/Interoperability team. <br /><br />Obaid is responsible for the support of Microsoft Open Specifications (protocol documentation). He earned a Master of Computer Science degree from University of Texas at Arlington. He primarily works with third-party protocol implementers to address questions and issues related to the open specifications. He works extensively with the Authentication, File sharing (SMB2&3) and Mobile Device Management (MDM) protocols, but is capable of supporting any of the 500+ on-the-wire Windows protocols. He has been in this event role for six years at Microsoft and in the telecommunications industry as a developer for twelve years.',
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: true,
 				meetTheTeamPageOrder: 19,
@@ -4251,12 +4587,12 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Guqing',
 				lastName: 'Fang',
 				newsletterSubscription: true,
-				contactDescription: 'Guqing Fang is a Software Development Engineer in Test on the Microsoft Windows Server and Cloud Interoperability team in Shanghai, China. He owns the development and support efforts for the Remote Desktop Protocol family and Mobile Device Management test suites for Microsoft Windows Server Division. <br /><br />Prior to joining the team in Shanghai, Guqing worked as a Software Development Engineer in Test for five years, focusing on testing the model based testing tool Spec Explorer. Guqing graduated from Zhejiang University in Hangzhou, China with a bachelor’s degree in Instrument Engineering.',
+				speakerDescription: 'Guqing Fang is a Software Development Engineer in Test on the Microsoft Windows Server and Cloud Interoperability team in Shanghai, China. He owns the development and support efforts for the Remote Desktop Protocol family and Mobile Device Management test suites for Microsoft Windows Server Division. <br /><br />Prior to joining the team in Shanghai, Guqing worked as a Software Development Engineer in Test for five years, focusing on testing the model based testing tool Spec Explorer. Guqing graduated from Zhejiang University in Hangzhou, China with a bachelor’s degree in Instrument Engineering.',
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: true,
 				meetTheTeamPageOrder: 20,
@@ -4270,12 +4606,12 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Mai-Ing',
 				lastName: 'Cheng',
 				newsletterSubscription: true,
-				contactDescription: 'Mai-Ing Cheng is a Senior Program Manager Lead in the Microsoft Windows Server and Cloud Interoperability team. She manages and owns the Microsoft Windows Protocol Compliance related efforts.  She also manages the delivery and release efforts for Spec Explorer. She is also involved in managing in the area of specification languages, compilers, and message monitor and analyzer for interoperability technologies. <br /><br />Prior to joining Microsoft, Mai-Ing was a Research Engineer at RR Donnelley focusing on developing software solution for real-time digital commercial letiable printing. She also worked as Senior Software Engineer at a Network company focusing developing firmware for network devices. She graduated from Feng Chia University, Taiwan with bachelor\'s degree in Business Administration and a master\'s degree Computer Science from DePaul University.',
+				speakerDescription: 'Mai-Ing Cheng is a Senior Program Manager Lead in the Microsoft Windows Server and Cloud Interoperability team. She manages and owns the Microsoft Windows Protocol Compliance related efforts.  She also manages the delivery and release efforts for Spec Explorer. She is also involved in managing in the area of specification languages, compilers, and message monitor and analyzer for interoperability technologies. <br /><br />Prior to joining Microsoft, Mai-Ing was a Research Engineer at RR Donnelley focusing on developing software solution for real-time digital commercial letiable printing. She also worked as Senior Software Engineer at a Network company focusing developing firmware for network devices. She graduated from Feng Chia University, Taiwan with bachelor\'s degree in Business Administration and a master\'s degree Computer Science from DePaul University.',
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: false,
 				msTeamTitle: 'Principal Program Manager Lead, Windows Server Interoperability Team',
@@ -4288,12 +4624,12 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Yuqing',
 				lastName: 'Zhao',
 				newsletterSubscription: true,
-				contactDescription: 'Yuqing Zhao is a Software Development Engineer in Test in the Microsoft Windows Server and Cloud Interoperability team in Shanghai, China. He owns the development and support efforts for Identity protocol family and OMI test suites for Microsoft Windows Server Division. <br /><br />Prior to joining the team in Shanghai, Yuqing worked as a Software Development Engineer for 4 years, focusing on SaaS development and protocol engineering. Yuqing graduated from Nanjing University of Postage and Telecommunications, Nanjing China, with a bachelor\'s degree in Information Engineering.',
+				speakerDescription: 'Yuqing Zhao is a Software Development Engineer in Test in the Microsoft Windows Server and Cloud Interoperability team in Shanghai, China. He owns the development and support efforts for Identity protocol family and OMI test suites for Microsoft Windows Server Division. <br /><br />Prior to joining the team in Shanghai, Yuqing worked as a Software Development Engineer for 4 years, focusing on SaaS development and protocol engineering. Yuqing graduated from Nanjing University of Postage and Telecommunications, Nanjing China, with a bachelor\'s degree in Information Engineering.',
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: false,
 				msTeamTitle: 'Software Development Engineer in Test, Windows Server Interoperability Team',
@@ -4306,12 +4642,12 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Michelle',
 				lastName: 'Hammond',
 				newsletterSubscription: true,
-				contactDescription: 'Michelle has been involved in technical communication and developer community support for more than 20 years. The teams and projects she has been a part of at Microsoft during that time include the TechNet and MSDN feedback teams, the TechNet webcast program, content management for major Microsoft developer conferences, and extensive technical editing work on a wide range of topics. She has been part of the Office Interoperability team for nearly six years, first as a programmer writer and most recently as a release coordinator covering Open Specifications for Office, SharePoint, Exchange, and Skype for Business. Michelle is also an avid and passionate supporter of video games as a medium for artistic expression, social commentary, and powerful storytelling.',
+				speakerDescription: 'Michelle has been involved in technical communication and developer community support for more than 20 years. The teams and projects she has been a part of at Microsoft during that time include the TechNet and MSDN feedback teams, the TechNet webcast program, content management for major Microsoft developer conferences, and extensive technical editing work on a wide range of topics. She has been part of the Office Interoperability team for nearly six years, first as a programmer writer and most recently as a release coordinator covering Open Specifications for Office, SharePoint, Exchange, and Skype for Business. Michelle is also an avid and passionate supporter of video games as a medium for artistic expression, social commentary, and powerful storytelling.',
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: false,
 				msTeamTitle: 'Release Manager, Office Content Team',
@@ -4324,19 +4660,19 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'David',
 				lastName: 'Robinson',
 				msTeamTitle: 'Principal Group SW Eng Mgr',
-				contactDescription: 'David Robinson is the Director of Engineering for Cortina Intelligence China within Cloud and Enterprise Computing. He is responsible for the global Azure Data Movement services, SSIS, and OData protocols. David Robinson relocated from the United States to Shanghai, China and has spoken at previous Microsoft Interoperability Events.',
+				speakerDescription: 'David Robinson is the Director of Engineering for Cortina Intelligence China within Cloud and Enterprise Computing. He is responsible for the global Azure Data Movement services, SSIS, and OData protocols. David Robinson relocated from the United States to Shanghai, China and has spoken at previous Microsoft Interoperability Events.',
 				headShot: 'darobins.jpg',
 				showOnMeetTheTeamPage: false,
 				eventRole: 'speaker'
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Congyong',
 				lastName: 'Su',
@@ -4346,7 +4682,7 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Baoming',
 				lastName: 'Yu',
@@ -4356,7 +4692,7 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Layla',
 				lastName: 'Liu',
@@ -4366,7 +4702,7 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Dong',
 				lastName: 'Liu',
@@ -4376,7 +4712,7 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Challen',
 				lastName: 'He',
@@ -4386,12 +4722,12 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Ted',
 				lastName: 'Way',
 				newsletterSubscription: true,
-				contactDescription: 'Ted Way is a Program Manager on the Azure Machine Learning engineering team.  The Azure Machine Learning service enables you to quickly create a predictive model and use it in production.  He focuses on insights derived from telemetry and metrics from the service, and he also works on enabling BI analysts to go from hindsight to foresight by integrating Excel, Power BI, and other tools with Azure ML web services.  He received BS degrees in electrical engineering and computer engineering, MS degrees in electrical engineering and biomedical engineering, and a PhD in biomedical engineering, all from the University of Michigan – Ann Arbor.  His PhD dissertation was on "spell check for radiologists," a computer-aided diagnosis (CAD) system that uses image processing and machine learning to estimate lung cancer malignancy on chest CT scans.  Ted was born in Taiwan, grew up in Arizona, and went to high school in Hsin-chu.  While working for Microsoft, he took a leave of absence to fulfill his military service requirement, serving as an Alternative Military Serviceman at the Ministry of Foreign Affairs (MOFA) from 2010-2011.',
+				speakerDescription: 'Ted Way is a Program Manager on the Azure Machine Learning engineering team.  The Azure Machine Learning service enables you to quickly create a predictive model and use it in production.  He focuses on insights derived from telemetry and metrics from the service, and he also works on enabling BI analysts to go from hindsight to foresight by integrating Excel, Power BI, and other tools with Azure ML web services.  He received BS degrees in electrical engineering and computer engineering, MS degrees in electrical engineering and biomedical engineering, and a PhD in biomedical engineering, all from the University of Michigan – Ann Arbor.  His PhD dissertation was on "spell check for radiologists," a computer-aided diagnosis (CAD) system that uses image processing and machine learning to estimate lung cancer malignancy on chest CT scans.  Ted was born in Taiwan, grew up in Arizona, and went to high school in Hsin-chu.  While working for Microsoft, he took a leave of absence to fulfill his military service requirement, serving as an Alternative Military Serviceman at the Ministry of Foreign Affairs (MOFA) from 2010-2011.',
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: false,
 				msTeamTitle: ' Program Manager, Azure Machine Learning Engineering Team',
@@ -4404,12 +4740,12 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Darwin',
 				lastName: 'Schweitzer',
 				newsletterSubscription: true,
-				contactDescription: 'Darwin is a Senior Program Manager at Microsoft focused on Cortana Analytics, Big Data, and Data Science tools and education.  He is part of the Algorithms and Data Science group in Information Management and Machine Learning.  His data experience has been gained through a number of diverse roles at Microsoft as well as at other technology companies like IBM and Business Objects.  Roles have included program manager, instructor, practitioner, data architect, technical lead, consultant, and teaching assistant and he has worked for companies in a letiety of industries (technology, healthcare, financial services, insurance, pharmaceuticals, travel, education, non-profit, and utilities) including local Pacific Northwest organizations like the University of Washington, Washington Mutual, Expedia, and Snohomish County PUD.  The one commonality in his career has been Data and Education.  Darwin is an aspiring Data Engineer/Data Scientist and dedicated lifelong learner who contributes to continuing education as a <a href="https://na01.safelinks.protection.outlook.com/?url=http%3a%2f%2fwww.pce.uw.edu%2fcertificates%2fcloud-data-management-analytics.html&data=01%7c01%7cdarsch%40microsoft.com%7cd7779071e89248487b7508d2c618fd40%7c72f988bf86f141af91ab2d7cd011db47%7c1&sdata=cYAHBivwx5vMq95E5iA1Lw9nNaf7IOJKEnXnDaJATGA%3d">Cloud Data Management & Analytics</a> instructor at the University of Washington and as a volunteer teaching assistant at Henry M. Jackson High School in Millcreek, WA where he helps students learn Java and prepare for the AP Computer Science exam  <a href="http://tealsk12.org">http://tealsk12.org</a> .  In his spare time he likes to travel, hike, read (technology or books about US Presidents), listen to Blues and Jazz, and enjoy an occasional round of golf.  Darwin hopes to help drive Big Data and Data Science education and increase the broad adoption of Data Science products and services like Cortana Analytics and build Data Science community.',
+				speakerDescription: 'Darwin is a Senior Program Manager at Microsoft focused on Cortana Analytics, Big Data, and Data Science tools and education.  He is part of the Algorithms and Data Science group in Information Management and Machine Learning.  His data experience has been gained through a number of diverse roles at Microsoft as well as at other technology companies like IBM and Business Objects.  Roles have included program manager, instructor, practitioner, data architect, technical lead, consultant, and teaching assistant and he has worked for companies in a letiety of industries (technology, healthcare, financial services, insurance, pharmaceuticals, travel, education, non-profit, and utilities) including local Pacific Northwest organizations like the University of Washington, Washington Mutual, Expedia, and Snohomish County PUD.  The one commonality in his career has been Data and Education.  Darwin is an aspiring Data Engineer/Data Scientist and dedicated lifelong learner who contributes to continuing education as a <a href="https://na01.safelinks.protection.outlook.com/?url=http%3a%2f%2fwww.pce.uw.edu%2fcertificates%2fcloud-data-management-analytics.html&data=01%7c01%7cdarsch%40microsoft.com%7cd7779071e89248487b7508d2c618fd40%7c72f988bf86f141af91ab2d7cd011db47%7c1&sdata=cYAHBivwx5vMq95E5iA1Lw9nNaf7IOJKEnXnDaJATGA%3d">Cloud Data Management & Analytics</a> instructor at the University of Washington and as a volunteer teaching assistant at Henry M. Jackson High School in Millcreek, WA where he helps students learn Java and prepare for the AP Computer Science exam  <a href="http://tealsk12.org">http://tealsk12.org</a> .  In his spare time he likes to travel, hike, read (technology or books about US Presidents), listen to Blues and Jazz, and enjoy an occasional round of golf.  Darwin hopes to help drive Big Data and Data Science education and increase the broad adoption of Data Science products and services like Cortana Analytics and build Data Science community.',
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: false,
 				msTeamTitle: 'Senior Program Manager',
@@ -4422,12 +4758,12 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Seth',
 				lastName: 'Mottaghinejad',
 				newsletterSubscription: false,
-				contactDescription: 'Seth is a data scientist with the Azure Machine Learning team at Microsoft, where his primary focus is on Microsoft R Server and its integration with other Microsoft products.  Prior to joining Microsoft, Seth worked as a consultant at Revolution Analytics, an big data platform for analytics using the R programming language.  In his consulting role, Seth helped customers replace their legacy analytics products (such as SAS) with R, integrate R with Hadoop or other distributed platforms, and develop R products or optimize their performance.  He joined Microsoft in 2015 when Microsoft acquired Revolution Analytics, opening the way for MRS (Microsoft R Server).  Seth also worked at American Express and Saks Fifth Avenue, primarily in marketing analytics and retail analytics roles.',
+				speakerDescription: 'Seth is a data scientist with the Azure Machine Learning team at Microsoft, where his primary focus is on Microsoft R Server and its integration with other Microsoft products.  Prior to joining Microsoft, Seth worked as a consultant at Revolution Analytics, an big data platform for analytics using the R programming language.  In his consulting role, Seth helped customers replace their legacy analytics products (such as SAS) with R, integrate R with Hadoop or other distributed platforms, and develop R products or optimize their performance.  He joined Microsoft in 2015 when Microsoft acquired Revolution Analytics, opening the way for MRS (Microsoft R Server).  Seth also worked at American Express and Saks Fifth Avenue, primarily in marketing analytics and retail analytics roles.',
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: false,
 				msTeamTitle: 'Data Scientist',
@@ -4440,11 +4776,11 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Mark',
 				lastName: 'Stafford',
-				contactDescription: 'Mark Stafford is a Program Manager at Microsoft contributing to the future of the OData protocol. Mark has a unique perspective on data access technologies given his many years of pre-Microsoft experience building and deploying real-world applications, managing developers and directing a business intelligence team.',
+				speakerDescription: 'Mark Stafford is a Program Manager at Microsoft contributing to the future of the OData protocol. Mark has a unique perspective on data access technologies given his many years of pre-Microsoft experience building and deploying real-world applications, managing developers and directing a business intelligence team.',
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: true,
 				meetTheTeamPageOrder: 21,
@@ -4458,11 +4794,11 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Jamie',
 				lastName: 'Olson',
-				contactDescription: 'Jamie Olson is a Senior Data Scientist at Microsoft, where he works with customers and partners to build advanced analytics application, designing and developing end-to-end data pipelines across the entire range of Cortana Analytics products.  He has more than 10 years of experience with the R programming language, the last four of which have focused on using R inside Big Data platforms like Hadoop. Jamie’s expertise in computer science, machine learning and big data allows customers to quickly and easily transition and scale their advanced analytics projects with Microsoft technologies.',
+				speakerDescription: 'Jamie Olson is a Senior Data Scientist at Microsoft, where he works with customers and partners to build advanced analytics application, designing and developing end-to-end data pipelines across the entire range of Cortana Analytics products.  He has more than 10 years of experience with the R programming language, the last four of which have focused on using R inside Big Data platforms like Hadoop. Jamie’s expertise in computer science, machine learning and big data allows customers to quickly and easily transition and scale their advanced analytics projects with Microsoft technologies.',
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: false,
 				msTeamTitle: 'Senior Data Scientist',
@@ -4475,11 +4811,11 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Vivek',
 				lastName: 'Gupta',
-				contactDescription: 'Vivek Gupta is a Senior Data Scientist at Microsoft. He works with customers to understand their analytical business problems and how to use the Cortana Intelligence Suite to help solve them. Most recently, Vivek was part of Nokia’s Smart Devices division where he worked on applying data analytics solution to problems in the areas of understanding user behavior around location information, photography and application usage. Prior to joining Nokia, Vivek worked in a variety of industries designing and building backend services.',
+				speakerDescription: 'Vivek Gupta is a Senior Data Scientist at Microsoft. He works with customers to understand their analytical business problems and how to use the Cortana Intelligence Suite to help solve them. Most recently, Vivek was part of Nokia’s Smart Devices division where he worked on applying data analytics solution to problems in the areas of understanding user behavior around location information, photography and application usage. Prior to joining Nokia, Vivek worked in a variety of industries designing and building backend services.',
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: false,
 				msTeamTitle: 'Senior Data Scientist',
@@ -4492,11 +4828,11 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Tristan',
 				lastName: 'Davis',
-				contactDescription: 'Tristan Davis is the Group Program Manager of the APIs & Extensions team within Office Extensibility. His team is responsible for improvements to the Office 365 APIs, the new Apps for Office client extensibility model, as well as all existing flavors of Office programmability. Prior to joining the team, he was a member of the Word program management team from Office 2003 through Office 2013.',
+				speakerDescription: 'Tristan Davis is the Group Program Manager of the APIs & Extensions team within Office Extensibility. His team is responsible for improvements to the Office 365 APIs, the new Apps for Office client extensibility model, as well as all existing flavors of Office programmability. Prior to joining the team, he was a member of the Word program management team from Office 2003 through Office 2013.',
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: false,
 				msTeamTitle: 'Group Program Manager',
@@ -4509,11 +4845,11 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Jos',
 				lastName: ' de Bruijn',
-				contactDescription: 'Jos de Bruijn is a Senior Program Manager in the Database Systems team. He works on in-memory technologies in SQL Server. His main focus is on query processing, programmability, and transaction semantics. In a previous life, he obtained a PhD in knowledge representation and semantic web technology, and worked in academia for several years as an assistant professor.',
+				speakerDescription: 'Jos de Bruijn is a Senior Program Manager in the Database Systems team. He works on in-memory technologies in SQL Server. His main focus is on query processing, programmability, and transaction semantics. In a previous life, he obtained a PhD in knowledge representation and semantic web technology, and worked in academia for several years as an assistant professor.',
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: false,
 				msTeamTitle: 'Senior Program Manager, Database Systems Team',
@@ -4526,11 +4862,11 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			});
 		})
 		.then(function () {
-			return Contact.create({
+			return Speaker.create({
 				isPublished: true,
 				firstName: 'Kevin',
 				lastName: 'Farlee',
-				contactDescription: 'Kevin Farlee has over 30 years in the industry, in both database as well as storage management software. In his current role as a Senior Program Manager on the Microsoft SQL Server team, he is responsible for the SQL Server High Availability roadmap, as well as the high performance OLTP and Analytics features within the SQL Server product.',
+				speakerDescription: 'Kevin Farlee has over 30 years in the industry, in both database as well as storage management software. In his current role as a Senior Program Manager on the Microsoft SQL Server team, he is responsible for the SQL Server High Availability roadmap, as well as the high performance OLTP and Analytics features within the SQL Server product.',
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: false,
 				msTeamTitle: 'Senior Program Manager, SQL Server Team',
@@ -4541,5 +4877,96 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 				allowNotifications: false,
 				allowPersonalInfoSharing: false
 			});
-		});
+		})
+		.then(function() {
+			return Speaker.create({
+				isPublished: true,
+				firstName: 'Lu',
+				lastName: 'Chen',
+				speakerDescription: `<p>Lu Chen is a Software Engineer on Windows Server Interoperability & Tools team in Shanghai, China. She has worked on the development and support of test tools for Windows interoperability, specifically on the File Server Protocol family and BranchCache Protocol family. She has joined several interoperability events, supporting synthetic test suites and helping partners to use Windows test tools to identify their product issues.</p>
+				<p>She graduated from Shanghai TongJi University with a master’s degree in Software Engineering. Prior to joining Microsoft as a full-time employee, Lu worked as an intern on the Microsoft’s System Center 				Atlanta team.</p>`,
+				eventRole: 'speaker',
+				showOnMeetTheTeamPage: false,
+				msTeamTitle: 'Software Engineer, Windows Server Interoperability & Tools Team, Microsoft (China) Corporation',
+				showOnHomePage: false,
+				headShot: 'lu-chen-headshot.jpg',
+				company: 'Microsoft',
+				country: 'China',
+				allowNotifications: false,
+				allowPersonalInfoSharing: false
+
+			})
+		})
+		.then(function() {
+			return Speaker.create({
+				isPublished: true,
+				firstName: 'Sam',
+				lastName: 'Xu',
+				speakerDescription: `<p>Sam Xu is a Software Engineer II from OData Team & SSIS Team in Shanghai, China. He has been working on the design and the development of implementation for OData V4 spec, especially on the Web API OData for three years. Before joining the OData Shanghai team, Sam had worked as a Software Engineer II in the Commerce group for half a year and focused on the Mobile Phone pay. Prior to Microsoft, Sam had developed Location Based Service (LBS) software at Telenav Corp for three years. </p>
+					<p>He graduated from Northwestern Polytechnical University with a master’s degree in Aeronautics and Astronautics Manufacturing Engineering and from Shanghai JiaoTong University with a doctor’s degree in Automotive Engineering.</p>`,
+				eventRole: 'speaker',
+				showOnMeetTheTeamPage: false,
+				msTeamTitle: 'Software Engineer II, OData Team & SSIS Team, Microsoft (China) Corporation',
+				showOnHomePage: false,
+				headShot: 'sam-xu-headshot-2016-09-29.jpg',
+				company: 'Microsoft',
+				country: 'China',
+				allowNotifications: false,
+				allowPersonalInfoSharing: false
+
+			})
+		})
+		.then(function() {
+			return Speaker.create({
+				isPublished: true,
+				firstName: 'Arthur',
+				lastName: 'Jin',
+				speakerDescription: `<p>Arthur Jin is a Principle Program Manager on the Office 365 team. He leads the effort of landing Office 365 services and features in China, focusing on feature development and development planning and implementation. Arthur has worked at Microsoft for twenty years, covering many product and services including Windows, Office and MSN. Prior to Microsoft, Arthur worked at two other software companies developing business software. Arthur has a master’s degree from Bowling Green State University in Ohio with a focus in technical communication and computer science.</p>`,
+				eventRole: 'speaker',
+				showOnMeetTheTeamPage: false,
+				msTeamTitle: 'Principal Program Manager for Office 365',
+				showOnHomePage: false,
+				headShot: 'arthur-jin-headshot.jpg',
+				company: 'Microsoft',
+				country: 'China',
+				allowNotifications: false,
+				allowPersonalInfoSharing: false
+
+			})
+		})
+		.then(function() {
+			return Speaker.create({
+				isPublished: true,
+				firstName: 'Raymond',
+				lastName: 'Xue',
+				speakerDescription: `<p>Raymond is a Principal Software Engineering Manager on the Office China Incubation team. His team focuses on promoting Microsoft productivity services (Office 365) to the Chinese customers through local social network platform such as WeChat. Applications developed by Raymond’s team involve using a wide variety of Office 365 API, Microsoft Graph API, OneDrive for Business, AAD. Raymond has worked at Microsoft for more than fifteen years. Before the current project, he has worked on other products including Visual Studio, Ads Platform, Lync and Skype for Business. He graduated from the University of Auckland (New Zealand) with a master’s degree in computer engineering.</p>`,
+				eventRole: 'speaker',
+				showOnMeetTheTeamPage: false,
+				msTeamTitle: 'Principal Software Engineering Manager',
+				showOnHomePage: false,
+				headShot: 'raymond-xue-headshot.jpg',
+				company: 'Microsoft',
+				country: 'China',
+				allowNotifications: false,
+				allowPersonalInfoSharing: false
+			})
+		})
+		.then(function() {
+			return Speaker.create({
+				isPublished: true,
+				firstName: 'Jim',
+				lastName: 'Maurer',
+				speakerDescription: `<p>Jim is a Principal Manager leading the Open Specifications documentation, delivery, and release efforts for interoperability with Windows, Windows Server, and SQL Server.  Jim has worked in various engineering and customer support management roles for the past ten years.  Before joining Microsoft he held senior and executive positions related to electric power systems control, aircraft heavy maintenance, and governmental reengineering projects.</p>
+				<p>Jim graduated with an electrical engineering degree from the University of Idaho with specializations in electronics and computer architecture.</p>`,
+				eventRole: 'speaker',
+				showOnMeetTheTeamPage: false,
+				msTeamTitle: 'Director Content Publishing, Interop and Protocols',
+				showOnHomePage: false,
+				headShot: 'jim-maurer-headshot.jpg',
+				company: 'Microsoft',
+				country: 'USA',
+				allowNotifications: false,
+				allowPersonalInfoSharing: false
+			})
+		})
 };

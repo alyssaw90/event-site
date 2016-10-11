@@ -2,7 +2,7 @@
 
 const models = require('./index');
 const User = models.User;
-const Contact = models.Contact;
+const Speaker = models.Speaker;
 const Event = models.Event;
 const EventTab = models.EventTab;
 const Slideshow = models.Slideshow;
@@ -37,21 +37,21 @@ module.exports = function() {
 	  models.sql.sync()
 	  .then(function() {
 			event.setEventTabs([1,2,3,4,5,6,7]);
-			event.addContact(1, {sortPosition: 1});
-			event.addContact(2, {sortPosition: 2});
-			event.addContact(8, {sortPosition: 3});
-			event.addContact(11, {sortPosition: 4});
-			event.addContact(15, {sortPosition: 5});
-			event.addContact(9, {sortPosition: 6});
-			event.addContact(12, {sortPosition: 7});
-			event.addContact(10, {sortPosition: 8});
-			event.addContact(6, {sortPosition: 9});
-			event.addContact(32, {sortPosition: 10});
-			event.addContact(33, {sortPosition: 11});
-			event.addContact(34, {sortPosition: 12});
-			event.addContact(35, {sortPosition: 13});
-			event.addContact(38, {sortPosition: 14});
-			event.addContact(26, {sortPosition: 15});
+			event.addSpeaker(1, {sortPosition: 1});
+			event.addSpeaker(2, {sortPosition: 2});
+			event.addSpeaker(8, {sortPosition: 3});
+			event.addSpeaker(11, {sortPosition: 4});
+			event.addSpeaker(15, {sortPosition: 5});
+			event.addSpeaker(9, {sortPosition: 6});
+			event.addSpeaker(12, {sortPosition: 7});
+			event.addSpeaker(10, {sortPosition: 8});
+			event.addSpeaker(6, {sortPosition: 9});
+			event.addSpeaker(32, {sortPosition: 10});
+			event.addSpeaker(33, {sortPosition: 11});
+			event.addSpeaker(34, {sortPosition: 12});
+			event.addSpeaker(35, {sortPosition: 13});
+			event.addSpeaker(38, {sortPosition: 14});
+			event.addSpeaker(26, {sortPosition: 15});
 	  })
 	})
 	.then(function() {
@@ -65,15 +65,15 @@ module.exports = function() {
 	  models.sql.sync()
 	  .then(function() {
 			event.setEventTabs([8,9,10,11,12,13]);
-			event.addContact(1, {sortPosition: 1});
-			event.addContact(2, {sortPosition: 2});
-			event.addContact(5, {sortPosition: 3});
-			event.addContact(10, {sortPosition: 4});
-			event.addContact(8, {sortPosition: 5});
-			event.addContact(11, {sortPosition: 6});
-			event.addContact(35, {sortPosition: 7});
-			event.addContact(36, {sortPosition: 8});
-			event.addContact(37, {sortPosition: 9});
+			event.addSpeaker(1, {sortPosition: 1});
+			event.addSpeaker(2, {sortPosition: 2});
+			event.addSpeaker(5, {sortPosition: 3});
+			event.addSpeaker(10, {sortPosition: 4});
+			event.addSpeaker(8, {sortPosition: 5});
+			event.addSpeaker(11, {sortPosition: 6});
+			event.addSpeaker(35, {sortPosition: 7});
+			event.addSpeaker(36, {sortPosition: 8});
+			event.addSpeaker(37, {sortPosition: 9});
 	  })
 	})
 	.then(function() {
@@ -87,22 +87,22 @@ module.exports = function() {
 	  models.sql.sync()
 	  .then(function() {
 			event.setEventTabs([14,15,16,17,18]);
-			event.addContact(1, {sortPosition: 1});
-			event.addContact(2, {sortPosition: 2});
-			event.addContact(3, {sortPosition: 3});
-			event.addContact(5, {sortPosition: 4});
-			event.addContact(9, {sortPosition: 5});
-			event.addContact(8, {sortPosition: 6});
-			event.addContact(11, {sortPosition: 7});
-			event.addContact(15, {sortPosition: 8});
-			event.addContact(12, {sortPosition: 9});
-			event.addContact(10, {sortPosition: 10});
-			event.addContact(21, {sortPosition: 11});
-			event.addContact(14, {sortPosition: 12});
-			event.addContact(18, {sortPosition: 13});
-			event.addContact(16, {sortPosition: 14});
-			event.addContact(39, {sortPosition: 15});
-			event.addContact(40, {sortPosition: 16});
+			event.addSpeaker(1, {sortPosition: 1});
+			event.addSpeaker(2, {sortPosition: 2});
+			event.addSpeaker(3, {sortPosition: 3});
+			event.addSpeaker(5, {sortPosition: 4});
+			event.addSpeaker(9, {sortPosition: 5});
+			event.addSpeaker(8, {sortPosition: 6});
+			event.addSpeaker(11, {sortPosition: 7});
+			event.addSpeaker(15, {sortPosition: 8});
+			event.addSpeaker(12, {sortPosition: 9});
+			event.addSpeaker(10, {sortPosition: 10});
+			event.addSpeaker(21, {sortPosition: 11});
+			event.addSpeaker(14, {sortPosition: 12});
+			event.addSpeaker(18, {sortPosition: 13});
+			event.addSpeaker(16, {sortPosition: 14});
+			event.addSpeaker(39, {sortPosition: 15});
+			event.addSpeaker(40, {sortPosition: 16});
 	  })
 	})
 	.then(function() {
@@ -116,16 +116,16 @@ module.exports = function() {
 	  models.sql.sync()
 	  .then(function() {
 			event.setEventTabs([19,20,21,22,23]);
-			event.addContact(1, {sortPosition: 1});
-			event.addContact(2, {sortPosition: 2});
-			event.addContact(13, {sortPosition: 3});
-			event.addContact(9, {sortPosition: 4});
-			event.addContact(8, {sortPosition: 5});
-			event.addContact(10, {sortPosition: 6});
-			event.addContact(6, {sortPosition: 7});
-			event.addContact(11, {sortPosition: 8});
-			event.addContact(35, {sortPosition: 9});
-			event.addContact(26, {sortPosition: 10});
+			event.addSpeaker(1, {sortPosition: 1});
+			event.addSpeaker(2, {sortPosition: 2});
+			event.addSpeaker(13, {sortPosition: 3});
+			event.addSpeaker(9, {sortPosition: 4});
+			event.addSpeaker(8, {sortPosition: 5});
+			event.addSpeaker(10, {sortPosition: 6});
+			event.addSpeaker(6, {sortPosition: 7});
+			event.addSpeaker(11, {sortPosition: 8});
+			event.addSpeaker(35, {sortPosition: 9});
+			event.addSpeaker(26, {sortPosition: 10});
 	  })
 	})
   .then(function() {
@@ -191,6 +191,17 @@ module.exports = function() {
 	  models.sql.sync()
 	  .then(function() {
 	  	event.setEventTabs([28, /*30, */32, 35, 34]);
+			event.addSpeaker(6, {sortPosition: 1});
+			event.addSpeaker(43, {sortPosition: 2});
+			event.addSpeaker(44, {sortPosition: 3});
+			event.addSpeaker(45, {sortPosition: 4});
+			event.addSpeaker(1, {sortPosition: 5});
+			event.addSpeaker(9, {sortPosition: 6});
+			event.addSpeaker(8, {sortPosition: 7});
+			event.addSpeaker(11, {sortPosition: 8});
+			event.addSpeaker(15, {sortPosition: 9});
+			event.addSpeaker(41, {sortPosition: 10});
+			event.addSpeaker(42, {sortPosition: 11});
 	  })
 	})
 	.then(function() {
@@ -216,7 +227,18 @@ module.exports = function() {
 	.then(function(event) {
 	  models.sql.sync()
 	  .then(function() {
-	  	event.setEventTabs([33, 34, 31, 36]);
+	  	event.setEventTabs([33, 34, 31, 36, 37]);
+	  	event.addSpeaker(6, {sortPosition: 1});
+			event.addSpeaker(43, {sortPosition: 2});
+			event.addSpeaker(44, {sortPosition: 3});
+			event.addSpeaker(45, {sortPosition: 4});
+			event.addSpeaker(1, {sortPosition: 5});
+			event.addSpeaker(9, {sortPosition: 6});
+			event.addSpeaker(8, {sortPosition: 7});
+			event.addSpeaker(11, {sortPosition: 8});
+			event.addSpeaker(15, {sortPosition: 9});
+			event.addSpeaker(41, {sortPosition: 10});
+			event.addSpeaker(42, {sortPosition: 11});
 	  })
 	})
 }

@@ -126,7 +126,7 @@ const eventsDirective = (app) => {
 							}
 				  	}				
 
-					}, 500);
+					});
 			
 					// tab click copied from kickstart.js to make it work here
 					/*jQuery(document).on('click', 'ul.tabs a[href^="#"]', function(e){
@@ -169,7 +169,7 @@ const eventsDirective = (app) => {
 		
 					
 				
-				}, 1000);
+				}, 900);
 			}
 			
 		}

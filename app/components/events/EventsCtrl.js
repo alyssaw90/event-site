@@ -27,6 +27,7 @@ const EventsCtrl = (app) => {
 				//add folder path to image names
 				for (let i = 0, len = $scope.events.speakers.length; i < len; i++) {
 					 $scope.events.speakers[i].headShot = 'uploads/' + $scope.events.speakers[i].headShot;
+					 $scope.events.speakers[i].speakerDescription = $sce.trustAsHtml($scope.events.speakers[i].speakerDescription);
 				}
 				for (let i = 0, len = $scope.events.length; i < len; i++) {
 					$scope.events[i].eventAboutTabText = $sce.trustAsHtml($scope.events[i].eventAboutTabText);

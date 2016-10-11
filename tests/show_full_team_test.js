@@ -11,14 +11,14 @@ chai.use(chaihttp);
 require('../server.js');
 
 describe('Test /showfullteam route', function () {
-	it('should load all MS contacts from /showfullteam', function (done) {
+	it('should load all MS speakers from /showfullteam', function (done) {
 		chai.request('/')
 		.get('/showfullteam')
 		.end(function (err, res) {
 			// console.log(' ::::::   ', process.env);
 			expect(err).to.eql(null);
 			for (var i = 0; i < res.body.length; i++) {
-				expect(res.body[i]).to.include.keys('firstName', 'lastName', 'email', 'newsletterSubscription', 'contactDescription', 'msTeamMember', 'msTeamTitle', 'showOnHomePage', 'headShot', 'company', 'address', 'country', 'interestId', 'allowNotifications', 'allowPersonalInfoSharing');
+				expect(res.body[i]).to.include.keys('firstName', 'lastName', 'email', 'newsletterSubscription', 'speakerDescription', 'msTeamMember', 'msTeamTitle', 'showOnHomePage', 'headShot', 'company', 'address', 'country', 'interestId', 'allowNotifications', 'allowPersonalInfoSharing');
 				expect(res.body[i].msTeamMember).to.eql(true);
 				expect(typeof res.body[i].firstName).to.be.a('string') || expect(typeof res.body[i].firstName).to.be.a('null');
 				expect(typeof res.body[i].lastName).to.be.a('string') || expect(typeof res.body[i].firstName).to.be.a('null');
@@ -39,7 +39,7 @@ describe('Test /showfullteam route', function () {
 				if (res.body[i].interestId) {
 					assert.isNumber(res.body[i].interestId);
 				}
-				expect(typeof res.body[i].contactDescription).to.be.a('string') || expect(typeof res.body[i].firstName).to.be.a('null');
+				expect(typeof res.body[i].speakerDescription).to.be.a('string') || expect(typeof res.body[i].firstName).to.be.a('null');
 				expect(typeof res.body[i].headShot).to.be.a('string') || expect(typeof res.body[i].firstName).to.be.a('null');
 				expect(typeof res.body[i].company).to.be.a('string') || expect(typeof res.body[i].firstName).to.be.a('null');
 				expect(typeof res.body[i].address).to.be.a('string') || expect(typeof res.body[i].firstName).to.be.a('null');

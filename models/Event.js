@@ -8,6 +8,7 @@ module.exports = (sql, DataTypes) => {
       required: true
     },
     isPublished: DataTypes.BOOLEAN,
+    showOnHeader: DataTypes.BOOLEAN,
     lastModifiedBy: DataTypes.STRING,
     eventRegistrationLink: DataTypes.STRING, //link to registrationfor event
     eventUrl: {
@@ -19,12 +20,7 @@ module.exports = (sql, DataTypes) => {
         this.setDataValue('eventUrl', val.replace(/\s+/g, '').toLowerCase() );
       }
     },
-    eventLocation: {
-      type: DataTypes.STRING,
-      set: function(val) {
-        this.setDataValue('eventLocation', val.toLowerCase().replace(' ', '_'));
-      }
-    },
+    eventLocation:  DataTypes.STRING,
     eventState: DataTypes.TEXT,
     eventCountry: DataTypes.TEXT,
     eventContinent: DataTypes.ENUM('North America', 'South America', 'Africa', 'Asia', 'Europe', 'Oceania'),
@@ -35,7 +31,7 @@ module.exports = (sql, DataTypes) => {
     eventFuturePageImage: DataTypes.TEXT, //image to appear on event slide on homepage
     eventAboutTabText: {
       type: DataTypes.TEXT,
-      required: true
+      // required: true
     }, //text for About Page
     eventVenueName: DataTypes.STRING,
     eventVenueAddressLine1: DataTypes.STRING,

@@ -7,7 +7,7 @@ const createEventDirective = (app) => {
 		const createEventDirectiveObj = {
 			restrict: 'A',
 			link: function postLink(scope, element, attrs) {
-				$timeout(function() {
+				/*$timeout(function() {
 
 					const $firstTab = jQuery('#previewEventUl').find('li:first-child');
 					const $lastTab = jQuery('#previewEventUl').find('li:last-child');
@@ -33,7 +33,7 @@ const createEventDirective = (app) => {
 		    	});
 					
 				
-				}, 1000);
+				}, 1000);*/
 
 				/*scope.tinymceOptions = {
 				  setup: function(editor) {
