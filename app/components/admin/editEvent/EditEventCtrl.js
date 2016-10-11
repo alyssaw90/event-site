@@ -179,6 +179,7 @@ const EditEventCtrl = (app) => {
       height: 500,
       theme: 'modern',
       automatic_uploads: true,
+      relative_urls : false,
       images_upload_url: '/multer',
       file_picker_types: 'file image media',
       file_browser_callback : function(fieldName, url, type, win) {

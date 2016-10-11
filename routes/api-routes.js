@@ -340,7 +340,8 @@ module.exports = (router) => {
   });
 
   //route for uploading files with tinymcd
-  router.post('/tinymceUpload', eatAuth, /*upload.single('newImage'),*/ (req, res) => {
+  router.post('/tinymceUpload', eatAuth, upload.single('newImage'), (req, res) => {
+    console.log(clc.green.bgWhite(':::::  '), req.body);
     res.json({location: '/uploads/rich-mclain-headshot.jpg'})
   });
 

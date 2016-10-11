@@ -148,6 +148,8 @@ const AdminCreateEventCtrl = (app) => {
           // html: `<a class="button" name="venuePhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventVenueImg')">Select Venue Image</a>`,
           resizable : "no",
           inline : "yes",
+          relative_urls : false,
+          images_upload_base_path: '/uploads',
           close_previous : "no",
           buttons: [{
             text: 'Insert',
