@@ -522,11 +522,40 @@ module.exports = (router) => {
         meetTheTeamPageOrder: req.body.meetTheTeamPageOrder,
         msTeamTitle: req.body.newMsTeamTitle,
         headShot: req.body.headshot,
-        isPublished: req.body.showOnMeetTheTeamPage
+        isPublished: req.body.publishStatus
       });
       res.end();
     });
   });
+  //route to edit speakers
+  router.post('/editspeaker', eatAuth, (req, res) => {
+    models.sql.sync()
+    .then( () => {
+      return Speaker.findOne({
+        where: {
+          id: req.body.id
+        }
+      })
+    })
+    .then( (speaker) => {
+      let speakerEmail = req.body.email ? req.body.email : 'plugfests@microsoft.com';
+      speaker.update({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: speakerEmail,
+        speakerDescription: req.body.speakerDescription,
+        showOnMeetTheTeamPage: req.body.showOnMeetTheTeamPage,
+        meetTheTeamPageOrder: req.body.meetTheTeamPageOrder,
+        msTeamTitle: req.body.msTeamTitle,
+        headShot: req.body.headShot,
+        isPublished: req.body.isPublished
+      })
+    })
+    .then( () => {
+      res.end();
+    });
+  });
+  
     //show all images
   router.get('/showimages', eatAuth, function(req, res) {
     fs.readdir('uploads', function(err, files) {

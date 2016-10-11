@@ -70,6 +70,7 @@ require('./admin/userLogging/userLoggingRESTResources.js')(eventsApp);
 require('./admin/editSlideshow/editSlideshowRESTResource.js')(eventsApp);
 require('./admin/editFiles/editFilesRESTResource.js')(eventsApp);
 require('./admin/editEvent/editEventRESTResource.js')(eventsApp);
+require('./admin/editSpeaker/editSpeakerRESTResource.js')(eventsApp);
 
 eventsApp
 .config(['$routeProvider', '$locationProvider', 'AnalyticsProvider', '$httpProvider', function ($routeProvider, $locationProvider, AnalyticsProvider, $httpProvider) {
