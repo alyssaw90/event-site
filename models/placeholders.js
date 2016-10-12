@@ -4969,4 +4969,39 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 				allowPersonalInfoSharing: false
 			})
 		})
+		.then( () => {
+			return Speaker.create({
+				isPublished: true,
+				firstName: 'Jonathan',
+				lastName: 'Tang',
+				speakerDescription: `<p>Jonathan joined Microsoft in Redmond in 2002 from Silicon Valley and worked in various groups including Visual Studio, Microsoft Business Solutions, and Office.  Relocated back to Microsoft Beijing in 2013, Johnathan is currently the Principal Group Engineer Manager for the Office Ecosystem team. His team mainly focuses on making the Office Extensibility an open platform, so ISVs and developers can extend Office everywhere to consume Office 365 services.</p>`,
+				eventRole: 'speaker',
+				showOnMeetTheTeamPage: false,
+				msTeamTitle: 'Principal Group Engineer Manager, Office',
+				showOnHomePage: false,
+				headShot: 'jontang-headshot.jpg',
+				company: 'Microsoft',
+				country: 'USA',
+				allowNotifications: false,
+				allowPersonalInfoSharing: false
+			})
+		})
+		.then( () => {
+			return Speaker.create({
+				isPublished: true,
+				firstName: 'Wenbo',
+				lastName: 'Shi',
+				speakerDescription: `<p>Wenbo Shi is a Principal Software Engineering Manager in Office Ecosystem team, leading the Office Online API and features development effort to enable Office developers to provide their solutions via Office add-ins. Wenbo has worked at Microsoft for eight years as engineering manager for various projects in Lync, Skype and Office. Prior to joining Microsoft, Wenbo has worked at VMware and Oracle for many years leading software engineering effort.</p>
+				<p>Wenbo graduated with an electrical engineering master degree from Xi’an Jiaotong University (China).</p>`,
+				eventRole: 'speaker',
+				showOnMeetTheTeamPage: false,
+				msTeamTitle: 'Principal Software Engineering',
+				showOnHomePage: false,
+				headShot: 'wenbo-shi-headshot.jpg',
+				company: 'Microsoft',
+				country: 'USA',
+				allowNotifications: false,
+				allowPersonalInfoSharing: false
+			})
+		})
 };
