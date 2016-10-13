@@ -91,7 +91,7 @@
 				<label class="col_12" for="new-event-description">Tab Content</label>
 				<div role="presentation" class="col_12">
 					<textarea class="col_12 form-control" data-ng-model="newTab.newTabContent" name="new-tab-html" style="min-height: 200px" data-ng-required="required" 
-					data-ui-tinymce="tinymceEditOptions">
+					data-ui-tinymce="tinymceOptions">
 	      	</textarea>
 					<br>
 					<br>
@@ -136,7 +136,7 @@
     					<button ng-click="getTab(tab); showElem('#edit-tabs-form', '#select-tabs-to-edit-table');">Edit: "{{tab.tabTitle}}"</button>
     				</td>
     				<td>
-    					<button>Delete: "{{tab.tabTitle}}"</button>
+    					<button ng-click="deleteTab(tab);">Delete: "{{tab.tabTitle}}"</button>
     				</td>
     			</tr>
     		</tbody>
@@ -153,7 +153,7 @@
 				<label class="col_12" for="edited-tab-html">Tab Content</label>
 				<div role="presentation" class="col_12">
 					<textarea class="col_12 form-control" data-ng-model="tabToEdit.tabContent" name="edited-tab-html" style="min-height: 200px" data-ng-required="required" 
-					data-ui-tinymce="tinymceEditOptions">
+					data-ui-tinymce="tinymceOptions">
 	      	</textarea>
 					<br>
 					<br>
@@ -170,7 +170,6 @@
     </section>
     <section id="edit-event-section" role="presentation" class="col_12 edit-section" style="display: none">
     	<img ng-if="headerImage" ng-src="/{{headerImage}}">
-    	<!-- <img ng-src="/uploads/{{eventHeaderImage.size + '-' + eventHeaderImage.name}}"> -->
 			<form id="editEventForm" name="editEventForm" method="post" enctype="multipart/form-data" data-ng-init="getAllSpeakers();" data-ng-submit="editEvent(editedEvent);">
 	    	<div data-ng-controller="AdminFileUploadCtrl">
 		  		<button name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventHeaderImage')">Select Header Image</button>
@@ -233,7 +232,7 @@
 				<br><br><br>
 				<label class="col_12" for="edited-event-description">Event Description for About page
 				<textarea class="col_12 form-control" data-ng-model="editedEvent.event.eventAboutTabText" name="edited-event-description" style="min-height: 200px" data-ng-required="required" 
-				data-ui-tinymce="tinymceEditOptions">
+				data-ui-tinymce="tinymceOptions">
       	</textarea>
       	</label>
 				<br>
@@ -260,6 +259,8 @@
 				<button type="button" class="medium float-left" style="margin: 5px" id="cancel-edited-event-button">Cancel</button>
 				<button type="submit" class="medium float-left green" style="margin: 5px" id="save-edited-event-as-draft-button">Save</button>
 			</form>
+			<!-- input below is for tinymce file upload -->
+			<input name="image" type="file" id="upload" class="hideElem" onchange="">
     </section>
   </main>
 </div>

@@ -2,13 +2,73 @@
 <div class="mobileWrapper ng-cloak" role="presentation" data-ng-controller="AdminCreateEventCtrl" data-ng-init="getEvents(); getAllSpeakers()" >
   <main style="overflow:hidden;" id="beginningOfContent" tabindex="0" class="grid main-page-content">
     <section role="presentation" class="col_12 internetExplorer">
-			<div id="edit-events-home-tab">
-				<h3>All Events</h3>
-				<a class="large button orange" href="/admin/create-event">Add New Event</a>
+			<div id="edit-speakers-list">
+				<h3>All Speakers</h3>
 				<table>
-				<tr><th><h4>Speaker Name</h4></th><th><h4>Display on Meet the Team</h4></th><th><h4>Last Modified By</h4></th><th><h4>Last Modified</h4></th><th><h4>Status</h4></th><th>&nbsp;</th></tr>
-				<tr data-ng-repeat="speaker in theSpeakers"><td>{{speaker.fullName}}</td><td>{{speaker.showOnMeetTheTeamPage}}</td><td>{{speaker.updatedAt | date: 'MM/dd/yyyy'}}</td><td>{{publishedOrNot = speaker.isPublished ? 'published' : 'unpublished';}}</td><td><button>Edit</button></td></tr>
-			</table>
+					<tr><th><h4>Speaker Name</h4></th><th><h4>Display on Meet the Team</h4></th><th><h4>Last Modified By</h4></th><th><h4>Last Modified</h4></th><th><h4>Status</h4></th><th>&nbsp;</th></tr>
+					<tr data-ng-repeat="speaker in theSpeakers"><td>{{speaker.fullName}}</td><td>{{speaker.showOnMeetTheTeamPage}}</td><td>{{speaker.updatedAt | date: 'MM/dd/yyyy'}}</td><td>{{publishedOrNot = speaker.isPublished ? 'published' : 'unpublished';}}</td><td><button ng-click="getSpeaker(speaker);">Edit</button></td></tr>
+				</table>
+			</div>
+			<div id="edit-speakers-section" style="display: none;">
+	 			<section class="col_12 internetExplorer the-team-section" role="presentation">
+	  		  <h4>{{speakerToEdit.firstName + ' ' +  speakerToEdit.lastName}}</h4>
+	  		  <h5>{{speakerToEdit.msTeamTitle}}</h5>
+	  		  <img class="pull-left" data-ng-if="speakerToEdit.headShot" data-ng-src="/uploads/{{speakerToEdit.headShot}}" />
+
+	  		  <p data-ng-bind-html="speakerToEdit.speakerDescription"></p>
+	  		  <hr aria-hidden="true" role="presentation" class="alt1" />
+	  		</section>
+				<form id="edit-speaker-form" method="post" enctype="multipart/form-data" data-ng-submit="saveNewSpeaker(speakerToEdit)">
+					<div data-ng-controller="AdminFileUploadCtrl">
+			  	  <p>Select Headshot</p>
+			  		<button name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'editedSpeakerImg')">Select Headshot</button>
+			  		<!-- <br><br>
+			  		File:
+			  		<div style="font:smaller">{{editedSpeakerImg.path}}{{editedSpeakerImg.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+			  		    <span class="progress" ng-show="editedSpeakerImg.progress >= 0">
+			  		        <div style="width:{{editedSpeakerImg.progress}}%"  
+			  		             ng-bind="editedSpeakerImg.progress + '%'"></div>
+			  		    </span>
+			  		</div>     
+			  		{{errorMsg}} -->
+		    			
+		    	</div>
+					<input class="col_12" type="hidden" name="newSpeakerId" data-ng-model="speakerToEdit.id">
+					<label class="col_12" for="firstName">First Name*</label>
+					<input class="col_12" type="text" data-ng-model="speakerToEdit.firstName" name="firstName" id="firstName" required="true">
+					<label class="col_12" for="lastName">Last Name*</label>
+					<input class="col_12" type="text" data-ng-model="speakerToEdit.lastName" name="lastName" id="lastName" required="true">
+					<label class="col_12" for="msTeamTitle">Speaker's Title</label>
+					<input class="col_12" type="text" data-ng-model="speakerToEdit.msTeamTitle" name="msTeamTitle" id="msTeamTitle">
+					<label class="col_12" for="newMsTeamEmail">Speaker's Email</label>
+					<input class="col_12" type="email" data-ng-model="speakerToEdit.newMsTeamEmail" name="newMsTeamEmail" id="newMsTeamEmail">
+					<radiogroup class="col_12">
+					<label class="" for="showOnMeetTheTeamPageTrue">Show Speaker on Meet the Team Page</label>
+						<input type="radio" id="showOnMeetTheTeamPageTrue" data-ng-model="speakerToEdit.showOnMeetTheTeamPage" name="showOnMeetTheTeamPage" ng-value="true">
+						<br>
+						<label for="showOnMeetTheTeamPageFalse">Do Not Show on Meet the Team Page</label>
+						<input type="radio" id="showOnMeetTheTeamPageFalse" data-ng-model="speakerToEdit.showOnMeetTheTeamPage" name="showOnMeetTheTeamPage" ng-value="false">
+					</radiogroup>
+					<br>
+					<label class="col_11" for="meetTheTeamPageOrder">If Speaker Is on Meet the Team Page - What Position on Meet the Team Page</label>
+					<input class="col_1" type="number" data-ng-model="speakerToEdit.meetTheTeamPageOrder" name="meetTheTeamPageOrder" id="meetTheTeamPageOrder">
+					<label class="col_12" for="speakerDescription">Speakers Description</label>
+					<br>
+					<textarea class="col_12 form-control" data-ng-model="speakerToEdit.speakerDescription" name="speakerDescription" style="min-height: 200px" data-ng-required="required" 
+					data-ui-tinymce="tinymceOptions">
+	      	</textarea>
+					<radiogroup class="col_12">
+						<label for="publishedTrue">Publish Now</label>
+						<input type="radio" data-ng-model="speakerToEdit.isPublished" id="publishedTrue" name="isPublished" ng-value="true">
+						<br>
+						<label for="publishedFalse">Save as Draft</label>
+						<input type="radio" data-ng-model="speakerToEdit.isPublished" id="publishedFalse" name="isPublished" ng-value="false">
+					</radiogroup>
+					<button type="button" class="medium float-left" style="margin: 5px" id="cancel-new-speaker-button">Cancel</button>
+					<button type="submit" class="medium float-left green" style="margin: 5px" id="save-new-speaker-button">Save</button>
+				</form>
+				<!-- input below is for tinymce file upload -->
+				<input name="image" type="file" id="upload" class="hideElem" onchange="">
 			</div>
     </section>
   </main>

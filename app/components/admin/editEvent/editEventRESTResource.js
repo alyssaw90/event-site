@@ -42,6 +42,13 @@ const editEventRESTResource = (app) => {
           .error(customFunctions.handleError(callback));
         },
 
+        deleteTab: function(resourceData, callback) {
+				
+          $http.delete('/api/deletetab/' + resourceData)
+          .success(customFunctions.handleSuccess(callback))
+          .error(customFunctions.handleError(callback));
+        }
+
 			}
 			
 		}

@@ -66,7 +66,7 @@
 	    			
 	    	</div>
 				<div>
-					<a class="button medium" style="margin: 5px" target="_self"  href="" data-ng-click="closeModalWindow()">Select Speakers</a>
+					<button style="margin: 5px" target="_self"  href="" data-ng-click="closeModalWindow()">Select Speakers</button>
 					<!-- lightbox container hidden with data-ng-hide -->
 					<div class="lightbox" data-ng-hide="hideModal" id="speakersForm">
 					  <div class="inner-lightbox-box">
@@ -90,7 +90,7 @@
 				</ul>
 				<br>
 				<div>
-					<a class="button medium float-left" style="margin: 5px" target="_self"  href="" data-ng-click="closeVenueModal()">Add Venue</a>
+					<button class="float-left" style="margin: 5px" target="_self"  href="" data-ng-click="closeVenueModal()">Add Venue</button>
 					<!-- lightbox container hidden with data-ng-hide -->
 					<div class="lightbox venueLightbox" data-ng-hide="hideVenueModal" >
 					  <div class="inner-lightbox-box">
@@ -162,6 +162,7 @@
 					  </div>
 					</div> -->
 			</form>
+			<input name="image" type="file" id="upload" class="hideElem" onchange="">
     </section>
 	  <section data-ng-show="!isEmptyObj(newEvent) || eventHeaderImg || eventVenueImg" role="presentation" class="col_12 internetExplorer"">
   		<p class="modal-title">Preview</p>

@@ -339,9 +339,12 @@ module.exports = (router) => {
     res.end('File uploaded.');
   });
 
-  //route for uploading files with tinymcd
-  router.post('/tinymceUpload', eatAuth, /*upload.single('newImage'),*/ (req, res) => {
-    res.json({location: '/uploads/rich-mclain-headshot.jpg'})
+  //route for uploading files with tinymce
+  router.post('/tinymceUpload', eatAuth, (req, res) => {
+    let imageBuffer = new Buffer(req.body.base64String, 'base64');
+    fs.writeFile(`uploads/${req.body.fileName}`, imageBuffer, (err) => {
+      res.end('file saved');
+    });
   });
 
   // create new event
@@ -469,16 +472,28 @@ module.exports = (router) => {
         })
       })
       .then( (event) => {
-        // event.addEventTab()
-        console.log(clc.green.bgWhite('::::  '), newTab.dataValues.id);
         event.addEventTab(newTab.dataValues.id);
         res.end();
+      });
+    });
+  });
+
+  router.delete('/deletetab/:slug', eatAuth, (req, res) => {
+    models.sql.sync()
+    .then( () => {
+      return EventTab.findOne({
+        where: {
+          id: req.params.slug
+        }
       })
+    })
+    .then( (tab) => {
+      tab.destroy();
+      res.end();
     })
   })
 
   router.post('/editeventspeakers', eatAuth, (req, res) => {
-    console.log(clc.green.bgWhite(':::  '), req.body);
     models.sql.sync()
     .then( () => {
       return Event.findOne({
@@ -510,11 +525,40 @@ module.exports = (router) => {
         meetTheTeamPageOrder: req.body.meetTheTeamPageOrder,
         msTeamTitle: req.body.newMsTeamTitle,
         headShot: req.body.headshot,
-        isPublished: req.body.showOnMeetTheTeamPage
+        isPublished: req.body.publishStatus
       });
       res.end();
     });
   });
+  //route to edit speakers
+  router.post('/editspeaker', eatAuth, (req, res) => {
+    models.sql.sync()
+    .then( () => {
+      return Speaker.findOne({
+        where: {
+          id: req.body.id
+        }
+      })
+    })
+    .then( (speaker) => {
+      let speakerEmail = req.body.email ? req.body.email : 'plugfests@microsoft.com';
+      speaker.update({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: speakerEmail,
+        speakerDescription: req.body.speakerDescription,
+        showOnMeetTheTeamPage: req.body.showOnMeetTheTeamPage,
+        meetTheTeamPageOrder: req.body.meetTheTeamPageOrder,
+        msTeamTitle: req.body.msTeamTitle,
+        headShot: req.body.headShot,
+        isPublished: req.body.isPublished
+      })
+    })
+    .then( () => {
+      res.end();
+    });
+  });
+  
     //show all images
   router.get('/showimages', eatAuth, function(req, res) {
     fs.readdir('uploads', function(err, files) {

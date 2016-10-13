@@ -3551,11 +3551,11 @@ setTimeout(function() {
 							</tr>
 							<tr>
 								<th scope="row">9:15-10:00</th>
-								<td colspan="2">Keynote</td>
+								<td colspan="2">Introducing the Modern Office Platform</td>
 							</tr>
 							<tr>
 								<th scope="row">10:00-10:45</th>
-								<td>Introducing the Modern Office Platform</td>
+								<td>Make your solution a native part of Office with Office Add-ins</td>
 								<td>Introducing Microsoft’s Commitment to Interoperability (Office, Windows, and SQL)</td>
 							</tr>
 							<tr class="active">
@@ -3564,12 +3564,12 @@ setTimeout(function() {
 							</tr>
 							<tr>
 								<th scope="row">11:00-11:45</th>
-								<td>Make your solution a native part of Office with Office Add-ins</td>
+								<td>Discover Microsoft Graph: The easiest way to call Microsoft APIs (including Gallatin, examples, case studies, etc.)</td>
 								<td>Windows Protocol Test Suites</td>
 							</tr>
 							<tr>
 								<th scope="row">11:45-12:30</th>
-								<td>Discover Microsoft Graph: The easiest way to call Microsoft APIs (including Gallatin, examples, case studies, etc.)</td>
+								<td>Navigate Dev.Office.com and create an Office Developer account</td>
 								<td>Discover Exchange Protocols & advancements in ActiveSync, Exchange Web Services, and MAPI</td>
 							</tr>
 							<tr class="active">
@@ -3578,7 +3578,7 @@ setTimeout(function() {
 							</tr>
 							<tr>
 								<th scope="row">13:30-14:15</th>
-								<td>Navigate Dev.Office.com and create an Office Developer account</td>
+								<td>Office Developer Account Set Up</td>
 								<td>OData Overview and Demo</td>
 							</tr>
 							<tr>
@@ -4013,11 +4013,11 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 							</tr>
 							<tr>
 								<th scope="row">9:15-10:00</th>
-								<td colspan="2">会议主旨</td>
+								<td colspan="2">介绍现代  Office 平台</td>
 							</tr>
 							<tr>
 								<th scope="row">10:00-10:45</th>
-								<td>介绍现代  Office 平台</td>
+								<td>通过Office 外接程序使您的解決方案成为 Office 本体的一部分</td>
 								<td>介绍微软对互操作之承诺(Office, Windows, and SQL)</td>
 							</tr>
 							<tr class="active">
@@ -4026,12 +4026,12 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 							</tr>
 							<tr>
 								<th scope="row">11:00-11:45</th>
-								<td>通过Office 外接程序使您的解決方案成为 Office 本体的一部分</td>
+								<td>探讨Microsoft Graph (旧称 “Office 365 统一API”) 是访问 Microsoft 云服务中数据最轻松简易的方式（内容包括Gallatin、  范例、实例等）。</td>
 								<td>Windows 协议测试组件</td>
 							</tr>
 							<tr>
 								<th scope="row">11:45-12:30</th>
-								<td>探讨Microsoft Graph (旧称 “Office 365 统一API”) 是访问 Microsoft 云服务中数据最轻松简易的方式（内容包括Gallatin、  范例、实例等）。</td>
+								<td>探索Dev.Office.com及通过报名注册拿到Office 开发人员账户</td>
 								<td>发掘 Exchange 协议 和有关 ActiveSync, Exchange Web 服务及 MAPI方面的进步</td>
 							</tr>
 							<tr class="active">
@@ -4040,7 +4040,7 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 							</tr>
 							<tr>
 								<th scope="row">13:30-14:15</th>
-								<td> 探索Dev.Office.com及通过报名注册拿到Office 开发人员账户</td>
+								<td>Office开发者账户设置</td>
 								<td>开放数据协议（OData）概述及演示</td>
 							</tr>
 							<tr>
@@ -4963,6 +4963,41 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 				msTeamTitle: 'Director Content Publishing, Interop and Protocols',
 				showOnHomePage: false,
 				headShot: 'jim-maurer-headshot.jpg',
+				company: 'Microsoft',
+				country: 'USA',
+				allowNotifications: false,
+				allowPersonalInfoSharing: false
+			})
+		})
+		.then( () => {
+			return Speaker.create({
+				isPublished: true,
+				firstName: 'Jonathan',
+				lastName: 'Tang',
+				speakerDescription: `<p>Jonathan joined Microsoft in Redmond in 2002 from Silicon Valley and worked in various groups including Visual Studio, Microsoft Business Solutions, and Office.  Relocated back to Microsoft Beijing in 2013, Johnathan is currently the Principal Group Engineer Manager for the Office Ecosystem team. His team mainly focuses on making the Office Extensibility an open platform, so ISVs and developers can extend Office everywhere to consume Office 365 services.</p>`,
+				eventRole: 'speaker',
+				showOnMeetTheTeamPage: false,
+				msTeamTitle: 'Principal Group Engineer Manager, Office',
+				showOnHomePage: false,
+				headShot: 'jontang-headshot.jpg',
+				company: 'Microsoft',
+				country: 'USA',
+				allowNotifications: false,
+				allowPersonalInfoSharing: false
+			})
+		})
+		.then( () => {
+			return Speaker.create({
+				isPublished: true,
+				firstName: 'Wenbo',
+				lastName: 'Shi',
+				speakerDescription: `<p>Wenbo Shi is a Principal Software Engineering Manager in Office Ecosystem team, leading the Office Online API and features development effort to enable Office developers to provide their solutions via Office add-ins. Wenbo has worked at Microsoft for eight years as engineering manager for various projects in Lync, Skype and Office. Prior to joining Microsoft, Wenbo has worked at VMware and Oracle for many years leading software engineering effort.</p>
+				<p>Wenbo graduated with an electrical engineering master degree from Xi’an Jiaotong University (China).</p>`,
+				eventRole: 'speaker',
+				showOnMeetTheTeamPage: false,
+				msTeamTitle: 'Principal Software Engineering',
+				showOnHomePage: false,
+				headShot: 'wenbo-shi-headshot.jpg',
 				company: 'Microsoft',
 				country: 'USA',
 				allowNotifications: false,
