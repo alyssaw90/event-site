@@ -55,7 +55,7 @@
 					<label class="col_12" for="speakerDescription">Speakers Description</label>
 					<br>
 					<textarea class="col_12 form-control" data-ng-model="speakerToEdit.speakerDescription" name="speakerDescription" style="min-height: 200px" data-ng-required="required" 
-					data-ui-tinymce="tinymceEditSpeakerOptions">
+					data-ui-tinymce="tinymceOptions">
 	      	</textarea>
 					<radiogroup class="col_12">
 						<label for="publishedTrue">Publish Now</label>
@@ -67,6 +67,8 @@
 					<button type="button" class="medium float-left" style="margin: 5px" id="cancel-new-speaker-button">Cancel</button>
 					<button type="submit" class="medium float-left green" style="margin: 5px" id="save-new-speaker-button">Save</button>
 				</form>
+				<!-- input below is for tinymce file upload -->
+				<input name="image" type="file" id="upload" class="hideElem" onchange="">
 			</div>
     </section>
   </main>
