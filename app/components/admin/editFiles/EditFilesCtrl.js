@@ -42,6 +42,8 @@ const EditFilesCtrl = (app) => {
           if (err) {
             return $scope.errors.push({msg: 'could not delete files'});
           }
+          deleteCount = 0;
+          fileList = '';
           $scope.files.length = 0;
           $scope.getAllFiles();
         })

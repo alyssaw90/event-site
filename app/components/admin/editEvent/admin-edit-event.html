@@ -1,6 +1,6 @@
 
 <div class="mobileWrapper ng-cloak" role="presentation" data-ng-controller="AdminCreateEventCtrl" data-ng-init="getEvents(); getAllSpeakers()" >
-  <main style="overflow:hidden;" id="beginningOfContent" tabindex="0" class="grid main-page-content">
+  <main style="overflow:hidden;" id="beginningOfContent" tabindex="0" class="grid main-page-content" ng-controller="AdminFileUploadCtrl">
 		<div id="edit-menu-options" class="btn-group edit-section col_12" role="group" aria-label="edit tab buttons" style="display: none;">
 			<h2>{{editedEvent.event.eventName}}</h2>
 		  <button type="button" class="btn btn-primary" ng-click="showElem('#edit-event-section, #edit-menu-options', '.edit-section')">Edit Event</button>

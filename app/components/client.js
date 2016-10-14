@@ -194,7 +194,7 @@ eventsApp
 	.when('/admin/create-event', {
 		templateUrl: '/app/components/admin/createEvent/admin-create-event.html',
 		reloadOnSearch: false,
-		// controller: 'AdminCreateEventCtrl',
+		controller: 'AdminCreateEventCtrl',
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
     }

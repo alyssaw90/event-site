@@ -7,6 +7,8 @@ const CreateSpeakerCtrl = (app) => {
 
 		let CreateSpeakerData = resource();
 
+    $scope.tinymceCreateSpeakerOptions = $rootScope.tinymceOptions;
+
 		$scope.createNewSpeaker = (newSpeaker) => {
       newSpeaker.headshot = $rootScope.newSpeakerImg.name ? $rootScope.newSpeakerImg.size + '-' + $rootScope.newSpeakerImg.name : 'placeholder-headshot.jpg';
 

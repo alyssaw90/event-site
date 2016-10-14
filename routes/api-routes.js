@@ -48,9 +48,14 @@ const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 
 const continentColors = {'North America': '#007233', 'South America': '#D13900', 'Africa': '#B4009E', 'Asia': '#0072C6', 'Europe': '#442359', 'Oceania': '#008272'};
 
 module.exports = (router) => {
-  router.use(bodyparser.json());
+  router.use(bodyparser.json({
+    limit: '500mb',
+    type:'application/json'
+  }));
   router.use(bodyparser.urlencoded({
-    extended: true
+    limit: '500mb',
+    extended: true,
+    parameterLimit:50000
   }));
   router.use(cookieParser());
 

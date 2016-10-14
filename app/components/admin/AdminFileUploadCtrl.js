@@ -1,7 +1,7 @@
 'use strict';
 
 const AdminFileUploadCtrl = (app) => {
-	app.controller('AdminFileUploadCtrl', ['$rootScope', '$scope', 'Upload', '$timeout', 'adminPageRESTResource', ($rootScope, $scope, Upload, $timeout, resource) => {
+	app.controller('AdminFileUploadCtrl', ['$rootScope', '$scope', 'Upload', '$timeout', 'adminPageRESTResource', '$http', ($rootScope, $scope, Upload, $timeout, resource, $http) => {
 
     let AdminPageREST = resource();
 
@@ -88,7 +88,7 @@ const AdminFileUploadCtrl = (app) => {
         return false;
       }
   
-    $rootScope.tinymceOptions = { 
+    $scope.tinymceOptions = { 
       selector: 'textarea',
       height: 500,
       theme: 'modern',
