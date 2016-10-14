@@ -3316,6 +3316,7 @@ setTimeout(function() {
 <p>分配给自己 （活跃用户）Office 365 许可证。点击 &quot;华夫格&quot; &gt; [管理员] 图示。</p>
 <p><strong>图5： Office 365首页</strong></p>
 <img src="uploads/office-web-curriculum-taipei-10.png">
+<p>1. 在左侧導航面板中，选择 [用戶] > [活躍用戶]</p>
 <p>2. 在核取方块内选择自己。您的个人资料会显示在右边。点击下方的项目编辑：给自己分配许可证</p>
 <p><strong>图 6：Office 365 管理中心页面 &gt; 活跃用户</strong></p>
 <img src="uploads/office-web-curriculum-taipei-11.png">
@@ -3551,11 +3552,11 @@ setTimeout(function() {
 							</tr>
 							<tr>
 								<th scope="row">9:15-10:00</th>
-								<td colspan="2">Introducing the Modern Office Platform</td>
+								<td colspan="2">Keynote</td>
 							</tr>
 							<tr>
 								<th scope="row">10:00-10:45</th>
-								<td>Make your solution a native part of Office with Office Add-ins</td>
+								<td>Introducing the Modern Office Platform</td>
 								<td>Introducing Microsoft’s Commitment to Interoperability (Office, Windows, and SQL)</td>
 							</tr>
 							<tr class="active">
@@ -3564,12 +3565,12 @@ setTimeout(function() {
 							</tr>
 							<tr>
 								<th scope="row">11:00-11:45</th>
-								<td>Discover Microsoft Graph: The easiest way to call Microsoft APIs (including Gallatin, examples, case studies, etc.)</td>
+								<td>Make your solution a native part of Office with Office Add-ins</td>
 								<td>Windows Protocol Test Suites</td>
 							</tr>
 							<tr>
 								<th scope="row">11:45-12:30</th>
-								<td>Navigate Dev.Office.com and create an Office Developer account</td>
+								<td>Discover Microsoft Graph: The easiest way to call Microsoft APIs (including Gallatin, examples, case studies, etc.)</td>
 								<td>Discover Exchange Protocols & advancements in ActiveSync, Exchange Web Services, and MAPI</td>
 							</tr>
 							<tr class="active">
@@ -3578,7 +3579,7 @@ setTimeout(function() {
 							</tr>
 							<tr>
 								<th scope="row">13:30-14:15</th>
-								<td>Office Developer Account Set Up</td>
+								<td>Navigate Dev.Office.com and create an Office Developer account</td>
 								<td>OData Overview and Demo</td>
 							</tr>
 							<tr>
@@ -4013,11 +4014,11 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 							</tr>
 							<tr>
 								<th scope="row">9:15-10:00</th>
-								<td colspan="2">介绍现代  Office 平台</td>
+								<td colspan="2">会议主旨</td>
 							</tr>
 							<tr>
 								<th scope="row">10:00-10:45</th>
-								<td>通过Office 外接程序使您的解決方案成为 Office 本体的一部分</td>
+								<td>介绍现代  Office 平台</td>
 								<td>介绍微软对互操作之承诺(Office, Windows, and SQL)</td>
 							</tr>
 							<tr class="active">
@@ -4026,12 +4027,12 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 							</tr>
 							<tr>
 								<th scope="row">11:00-11:45</th>
-								<td>探讨Microsoft Graph (旧称 “Office 365 统一API”) 是访问 Microsoft 云服务中数据最轻松简易的方式（内容包括Gallatin、  范例、实例等）。</td>
+								<td>通过Office 外接程序使您的解決方案成为 Office 本体的一部分</td>
 								<td>Windows 协议测试组件</td>
 							</tr>
 							<tr>
 								<th scope="row">11:45-12:30</th>
-								<td>探索Dev.Office.com及通过报名注册拿到Office 开发人员账户</td>
+								<td>探讨Microsoft Graph (旧称 “Office 365 统一API”) 是访问 Microsoft 云服务中数据最轻松简易的方式（内容包括Gallatin、  范例、实例等）。</td>
 								<td>发掘 Exchange 协议 和有关 ActiveSync, Exchange Web 服务及 MAPI方面的进步</td>
 							</tr>
 							<tr class="active">
@@ -4040,7 +4041,7 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 							</tr>
 							<tr>
 								<th scope="row">13:30-14:15</th>
-								<td>Office开发者账户设置</td>
+								<td>探索Dev.Office.com及通过报名注册拿到Office 开发人员账户</td>
 								<td>开放数据协议（OData）概述及演示</td>
 							</tr>
 							<tr>
@@ -4995,9 +4996,27 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 				<p>Wenbo graduated with an electrical engineering master degree from Xi’an Jiaotong University (China).</p>`,
 				eventRole: 'speaker',
 				showOnMeetTheTeamPage: false,
-				msTeamTitle: 'Principal Software Engineering',
+				msTeamTitle: 'Principal Software Engineering Manager',
 				showOnHomePage: false,
 				headShot: 'wenbo-shi-headshot.jpg',
+				company: 'Microsoft',
+				country: 'USA',
+				allowNotifications: false,
+				allowPersonalInfoSharing: false
+			})
+		})
+		.then( () => {
+			return Speaker.create({
+				isPublished: true,
+				firstName: 'Yihua',
+				lastName: 'Xiong',
+				speakerDescription: `<p>Yihua has worked in Microsoft’s Office Division for more than 10 years in Redmond, Washington. He is a Senior Software Engineer working now on the Office Extensibility Platform projects.  In the past a few years, Yihua has made major contributions to the Web Add-ins in Word.  Before that, he worked on various projects such as Word Office Art Graphics, PDF/XPS, Word Arts Fonts, Publisher, and VBA enhancement.</p>
+				<p>Before joining Microsoft, Yihua worked in the avionics industry in the Seattle area. He graduated from the University of Washington Graduate School.</p>`,
+				eventRole: 'speaker',
+				showOnMeetTheTeamPage: false,
+				msTeamTitle: 'Principal Software Engineer',
+				showOnHomePage: false,
+				headShot: 'yihua-xiong-headshot.jpg',
 				company: 'Microsoft',
 				country: 'USA',
 				allowNotifications: false,

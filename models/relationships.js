@@ -194,16 +194,17 @@ module.exports = function() {
 			event.addSpeaker(46, {sortPosition: 1});
 	  	event.addSpeaker(6, {sortPosition: 2});
 			event.addSpeaker(43, {sortPosition: 3});
-			event.addSpeaker(47, {sortPosition: 4});
-			event.addSpeaker(44, {sortPosition: 5});
-			event.addSpeaker(45, {sortPosition: 6});
-			event.addSpeaker(1, {sortPosition: 7});
-			event.addSpeaker(9, {sortPosition: 8});
-			event.addSpeaker(8, {sortPosition: 9});
-			event.addSpeaker(11, {sortPosition: 10});
-			event.addSpeaker(15, {sortPosition: 11});
-			event.addSpeaker(41, {sortPosition: 12});
-			event.addSpeaker(42, {sortPosition: 13});
+			event.addSpeaker(44, {sortPosition: 4});
+			event.addSpeaker(47, {sortPosition: 5});
+			event.addSpeaker(48, {sortPosition: 6});
+			event.addSpeaker(45, {sortPosition: 7});
+			event.addSpeaker(1, {sortPosition: 8});
+			event.addSpeaker(9, {sortPosition: 9});
+			event.addSpeaker(8, {sortPosition: 10});
+			event.addSpeaker(11, {sortPosition: 11});
+			event.addSpeaker(15, {sortPosition: 12});
+			event.addSpeaker(41, {sortPosition: 13});
+			event.addSpeaker(42, {sortPosition: 14});
 	  })
 	})
 	.then(function() {
@@ -235,14 +236,15 @@ module.exports = function() {
 			event.addSpeaker(43, {sortPosition: 3});
 			event.addSpeaker(44, {sortPosition: 4});
 			event.addSpeaker(47, {sortPosition: 5});
-			event.addSpeaker(45, {sortPosition: 6});
-			event.addSpeaker(1, {sortPosition: 7});
-			event.addSpeaker(9, {sortPosition: 8});
-			event.addSpeaker(8, {sortPosition: 9});
-			event.addSpeaker(11, {sortPosition: 10});
-			event.addSpeaker(15, {sortPosition: 11});
-			event.addSpeaker(41, {sortPosition: 12});
-			event.addSpeaker(42, {sortPosition: 13});
+			event.addSpeaker(48, {sortPosition: 6});
+			event.addSpeaker(45, {sortPosition: 7});
+			event.addSpeaker(1, {sortPosition: 8});
+			event.addSpeaker(9, {sortPosition: 9});
+			event.addSpeaker(8, {sortPosition: 10});
+			event.addSpeaker(11, {sortPosition: 11});
+			event.addSpeaker(15, {sortPosition: 12});
+			event.addSpeaker(41, {sortPosition: 13});
+			event.addSpeaker(42, {sortPosition: 14});
 	  })
 	})
 }
