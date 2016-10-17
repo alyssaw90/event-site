@@ -1,7 +1,7 @@
 'use strict';
 
-const AdminFileUploadCtrl = (app) => {
-	app.controller('AdminFileUploadCtrl', ['$rootScope', '$scope', 'Upload', '$timeout', 'adminPageRESTResource', '$http', ($rootScope, $scope, Upload, $timeout, resource, $http) => {
+const AdminPageCtrl = (app) => {
+	app.controller('AdminPageCtrl', ['$rootScope', '$scope', 'Upload', '$timeout', 'adminPageRESTResource', '$http', ($rootScope, $scope, Upload, $timeout, resource, $http) => {
 
     let AdminPageREST = resource();
 
@@ -116,4 +116,4 @@ const AdminFileUploadCtrl = (app) => {
 	}])
 }
 
-module.exports = AdminFileUploadCtrl;
+module.exports = AdminPageCtrl;

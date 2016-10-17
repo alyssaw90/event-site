@@ -1,6 +1,6 @@
 
 <div class="mobileWrapper ng-cloak" role="presentation" data-ng-controller="AdminCreateEventCtrl" data-ng-init="getEvents(); getAllSpeakers()" >
-  <main style="overflow:hidden;" id="beginningOfContent" tabindex="0" class="grid main-page-content" ng-controller="AdminFileUploadCtrl">
+  <main style="overflow:hidden;" id="beginningOfContent" tabindex="0" class="grid main-page-content" ng-controller="AdminPageCtrl">
 		<div id="edit-menu-options" class="btn-group edit-section col_12" role="group" aria-label="edit tab buttons" style="display: none;">
 			<h2>{{editedEvent.event.eventName}}</h2>
 		  <button type="button" class="btn btn-primary" ng-click="showElem('#edit-event-section, #edit-menu-options', '.edit-section')">Edit Event</button>
@@ -171,7 +171,7 @@
     <section id="edit-event-section" role="presentation" class="col_12 edit-section" style="display: none">
     	<img ng-if="headerImage" ng-src="/{{headerImage}}">
 			<form id="editEventForm" name="editEventForm" method="post" enctype="multipart/form-data" data-ng-init="getAllSpeakers();" data-ng-submit="editEvent(editedEvent);">
-	    	<div data-ng-controller="AdminFileUploadCtrl">
+	    	<div data-ng-controller="AdminPageCtrl">
 		  		<button name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventHeaderImage')">Select Header Image</button>
 		  		<br><br>
 		  		<!-- File:
@@ -245,7 +245,7 @@
 				<input class="col_12" type="text" data-ng-model="editedEvent.event.eventVenueAddressLine2" name="editedVenueAddressLine2" id="editedVenueAddressLine2">
 				<label class="col_12" for="editedVenueParkingInfo">Parking Information</label>
 				<textarea class="col_12" data-ng-model="editedEvent.event.eventParkingInfo" name="editedVenueParkingInfo" id="editedVenueParkingInfo"></textarea>
-				<div data-ng-controller="AdminFileUploadCtrl">
+				<div data-ng-controller="AdminPageCtrl">
 					<button name="venuePhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventVenueImg')">Select Venue Image</button>
 				</div>
 				<img ng-src="/{{venueImage}}">

@@ -46,7 +46,7 @@ require('./meetTheTeam/MeetTheTeamCtrl.js')(eventsApp);
 require('./futureEvents/FutureEventsController.js')(eventsApp);
 require('./futureEvents/BingMapCtrl.js')(eventsApp);
 require('./shared/header/HeaderController.js')(eventsApp);
-require('./admin/AdminFileUploadCtrl.js')(eventsApp);
+require('./admin/AdminPageCtrl.js')(eventsApp);
 require('./admin/createEvent/AdminCreateEventCtrl.js')(eventsApp);
 require('./latestNews/LatestNewsCtrl.js')(eventsApp);
 require('./events/EventsCtrl.js')(eventsApp);

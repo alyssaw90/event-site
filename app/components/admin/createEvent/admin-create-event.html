@@ -52,7 +52,7 @@
 				<textarea class="col_12 form-control" data-ng-model="newEvent.eventAboutTabText" name="new-event-description" style="min-height: 200px" data-ng-required="required" 
 				data-ui-tinymce="tinymceOptions">
       	</textarea>
-	    	<div data-ng-controller="AdminFileUploadCtrl">
+	    	<div data-ng-controller="AdminPageCtrl">
 		  		<button name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventHeaderImg')">Select Header Image</button>
 		  		<br><br>
 		  		<!-- File:
@@ -104,7 +104,7 @@
 								<input class="col_12" type="text" data-ng-model="newEvent.newVenueAddressLine2" name="newVenueAddressLine2" id="newVenueAddressLine2">
 								<label class="col_12" for="newVenueParkingInfo">Parking Information</label>
 								<textarea class="col_12" data-ng-model="newEvent.newVenueParkingInfo" name="newVenueParkingInfo" id="newVenueParkingInfo"></textarea>
-								<div data-ng-controller="AdminFileUploadCtrl">
+								<div data-ng-controller="AdminPageCtrl">
 									<a class="button" name="venuePhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventVenueImg')">Select Venue Image</a>
 								</div>
 								<a class="closeModal button" data-ng-click="closeVenueModal()" target="_self" href="">Add Venue</a>

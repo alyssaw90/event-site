@@ -1,6 +1,6 @@
 <div class="mobileWrapper ng-cloak" role="presentation">
   <main style="overflow:hidden;" class="container-fluid main-page-content" role="presentation" data-ng-controller="EditFilesCtrl" data-ng-init="getAllFiles()">
-    <section role="presentation" class="internetExplorer" data-ng-controller="AdminFileUploadCtrl">
+    <section role="presentation" class="internetExplorer" data-ng-controller="AdminPageCtrl">
      <h2>Files:</h2>
      <form id="deleteFilesForm" enctype="multipart/form-data" data-ng-submit="deleteFiles(filesToDelete)">
       <button class="btn btn-primary" name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'newSlideImage', getAllFiles)">Add File</button>
