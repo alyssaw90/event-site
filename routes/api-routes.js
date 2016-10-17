@@ -175,7 +175,6 @@ module.exports = (router) => {
   router.route('/bingmapkey')
   .get( (req, res) => {
     res.json(process.env.BING_MAP_API_KEY);
-    res.end();
   });
 
 

@@ -32,7 +32,7 @@ require('./futureEvents/bingMapDirective.js')(eventsApp);
 require('./shared/header/sliderSlideDirective.js')(eventsApp);
 require('./shared/header/headerDirective.js')(eventsApp);
 require('./events/eventsDirective.js')(eventsApp);
-require('./admin/adminPageDirective.js')(eventsApp);
+require('./admin/adminCityNameAutoCompleteDirective.js')(eventsApp);
 require('./admin/admin-header/adminHeaderDirective.js')(eventsApp);
 require('./pastEvents/pastEventsDirective.js')(eventsApp);
 require('./admin/createEvent/createEventDirective.js')(eventsApp);
@@ -266,7 +266,7 @@ eventsApp
 				}
 			}
 			
-		}, 901);
+		}, 1100);
 	}
 
 	//when the route starts with /admin, call the /api/user/checklogin route to check if the user is logged in and redirect them to the login page if they aren't

@@ -14,6 +14,19 @@ const adminPageRESTResource = (app) => {
           $http.post('/api/tinymceUpload', resourceData)
           .success(customFunctions.handleSuccess(callback))
           .error(customFunctions.handleError(callback));
+        },
+
+        getCityNames: (searchQuery, callback) => {
+        	console.log(' query:: ', callback);
+        	$http.jsonp(`//dev.virtualearth.net/REST/v1/Locations?jsonp=JSON_CALLBACK&key=AjtUzWJBHlI3Ma_Ke6Qv2fGRXEs0ua5hUQi54ECwfXTiWsitll4AkETZDihjcfeI&q&q=${searchQuery}`)
+        	.success(customFunctions.handleSuccess(callback))
+        	.error(customFunctions.handleError(callback));
+        },
+
+        getBingKey: (callback) => {
+        	$http.get('/api/bingmapkey')
+        	.success(customFunctions.handleSuccess(callback))
+        	.error(customFunctions.handleError(callback));
         }
 			}
 			

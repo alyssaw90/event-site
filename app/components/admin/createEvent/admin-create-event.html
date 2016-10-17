@@ -11,8 +11,9 @@
 				<input class="col_10" type="text" data-ng-model="newEvent.eventUrl" name="eventUrl" id="eventUrl">
 				<label class="col_12" for="newEventRegistrationLink">Event Registration Link</label>
 				<input class="col_12" type="url" data-ng-model="newEvent.newEventRegistrationLink" name="newEventRegistrationLink" id="newEventRegistrationLink">
-				<label class="col_12" for="newEventCity">Event City*</label>
-				<input class="col_12" type="text" data-ng-model="newEvent.newEventCity" name="newEventCity" id="newEventCity" data-ng-required="required">
+				<label class="col_12" for="newEventCity">Event City*
+				<input class="col_12" type="text" data-ng-model="newEvent.newEventCity" name="newEventCity" id="newEventCity" data-ng-required="required" admin-city-name-auto-complete-directive>
+				</label>
 				<label class="col_12" for="newEventState">Event State</label>
 				<input class="col_12" type="text" data-ng-model="newEvent.newEventState" name="newEventState" id="newEventState">
 				<label class="col_12" for="newEventCountry">Event Country</label>
