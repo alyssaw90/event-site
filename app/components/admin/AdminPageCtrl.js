@@ -4,32 +4,6 @@ const AdminPageCtrl = (app) => {
 	app.controller('AdminPageCtrl', ['$rootScope', '$scope', 'Upload', '$timeout', 'adminPageRESTResource', '$http', ($rootScope, $scope, Upload, $timeout, resource, $http) => {
 
     const AdminPageREST = resource();
-    let bingKey;
-
-
-    function getBingKey() {
-      AdminPageREST.getBingKey( (err, data) => {
-        if (err) {
-          $scope.errors.push({msg: 'could not retrieve Bing API key'});
-        }
-        if (!err) {
-          return data;
-        }
-      })
-    }
-    bingKey = getBingKey();
-
-    function getCityNames(cityName) {
-      AdminPageREST.getCityNames(cityName, (err, data) => {
-        if (err) {
-          $scope.errors.push({msg: 'could not find location'});
-        }
-        if (!err) {
-          console.log('cities :: ', data.resourceSets[0].resources);
-        }
-      })
-    }
-    getCityNames('Seattle');
 
     $rootScope.uploadFiles = (file, errFiles, rootScopeKey, callback) => {
       $rootScope[rootScopeKey] = file;

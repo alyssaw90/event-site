@@ -10,15 +10,13 @@ const adminPageRESTResource = (app) => {
 			return {
 
 				addTinymceFile: (resourceData, callback) => {
-				
           $http.post('/api/tinymceUpload', resourceData)
           .success(customFunctions.handleSuccess(callback))
           .error(customFunctions.handleError(callback));
         },
 
-        getCityNames: (searchQuery, callback) => {
-        	console.log(' query:: ', callback);
-        	$http.jsonp(`//dev.virtualearth.net/REST/v1/Locations?jsonp=JSON_CALLBACK&key=AjtUzWJBHlI3Ma_Ke6Qv2fGRXEs0ua5hUQi54ECwfXTiWsitll4AkETZDihjcfeI&q&q=${searchQuery}`)
+        getCityNames: (searchQuery, bingKey, callback) => {
+        	$http.jsonp(`//dev.virtualearth.net/REST/v1/Locations?jsonp=JSON_CALLBACK&key=${bingKey}&q&q=${searchQuery}`)
         	.success(customFunctions.handleSuccess(callback))
         	.error(customFunctions.handleError(callback));
         },
