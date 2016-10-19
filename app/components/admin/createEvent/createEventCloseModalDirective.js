@@ -7,18 +7,16 @@ const createEventCloseModalDirective = (app) => {
 		const createEventCloseModalDirectiveObj = {
 			restrict: 'A',
 			link: (scope, elem, attrs) => {
-				console.log('scope :: ', scope, '    elem :: ', elem);
-				//remove selected speakers if the user clicks outside the modal
+				//set speakers to newSpeakers when modal window is closed
 				elem.on('hide.bs.modal', (e) => {
-					console.log('event :: ', e);
-					scope.$parent.newSpeakers = [];
+					scope.$parent.newEvent.speakers = scope.$parent.newSpeakers;
 				});
 
 				//set speakers if they've already been selected
-				elem.on('show.bs.modal', (e) => {
+			/*	elem.on('show.bs.modal', (e) => {
 					scope.$parent.newSpeakers = scope.$parent.newEvent.speakers;
 				})
-
+*/
 			}
 			
 		}

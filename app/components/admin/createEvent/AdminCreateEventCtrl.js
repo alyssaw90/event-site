@@ -10,10 +10,7 @@ const AdminCreateEventCtrl = (app) => {
     $scope.newSpeakers = [];
 		$scope.newEvent = {};
     $scope.newEvent.speakers = [];
-		$scope.hideModal = true;
-    $scope.hideVenueModal = true;
     $scope.hideEventPreview = true;
-    $scope.hideImageModal = true;
     $scope.speakersAdded = 0;
     $scope.displaySpeakerDivStyle = false;
     $scope.previewSpeakers = [];
@@ -49,7 +46,10 @@ const AdminCreateEventCtrl = (app) => {
           return $scope.errors.push({msg: 'could not retrieve speakers'});
         }
 
-        $scope.theSpeakers = speakers;
+        for (let i = 0, len = speakers.length; i < len; i++) {
+          $scope.theSpeakers.push(speakers[i]);
+        }
+
       })
     };
 
@@ -77,12 +77,12 @@ const AdminCreateEventCtrl = (app) => {
       });
     };
 
-  /*  $scope.cancelSpeakers = () => {
-      $scope.newSpeakers = [];
-    }
-*/
-    $scope.saveSpeakers = () => {
-      $scope.newEvent.speakers = $scope.newSpeakers;
+    $scope.cancelVenue = () => {
+      $scope.newEvent.newEventVenueName = null;
+      $scope.newEvent.newVenduAddressLine1 = null;
+      $scope.newEvent.newVenueAddressLine2 = null;
+      $scope.newEvent.newVenueParkingInfo = null;
+      $scope.newEvent.eventVenueImg = null;
     }
 
     $scope.getPreviewSpeakers = (theSpeakers) => {

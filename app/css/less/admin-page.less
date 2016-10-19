@@ -130,7 +130,7 @@ p .lightbox {
 	margin: 25px auto auto 40%;
 }
 
-.slideshowSlide, .newEventSpeaker {
+.slideshowSlide {
 	cursor: move;
 	margin: 0 5px 5px 5px;
   padding: 5px;
@@ -163,6 +163,37 @@ p .lightbox {
 	}
 }
 
+.new-event-speakers-modal-container {
+	display: flex;
+}
+
 .edited-speaker-table-container {
-	min-height: 300px;
+	align-items: stretch;
+}
+
+.new-event-speaker-table-container {
+	background-color: #EEEEEE;
+	border: 1px solid #000;
+	border: 3%;
+}
+
+.newEventSpeaker {
+	cursor: move;
+	border: 1px solid #000;
+	margin: 0 5px 5px 5px;
+	padding: 5px;
+}
+
+.time-input-wrapper {
+	width: 25%;
+  padding-left: 0.83333333333333%;
+	& input {
+		margin-left: 3.33333333333333%
+	}
+}
+
+.continentsInput {
+	& input {
+		margin-left: 1%;
+	}
 }

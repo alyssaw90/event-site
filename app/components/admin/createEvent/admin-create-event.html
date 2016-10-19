@@ -7,11 +7,11 @@
 				<label class="col_12" for="newEventName">Event Name*
 					<input class="col_12" type="text" data-ng-model="newEvent.newEventName" name="newEventName" id="newEventName" data-ng-required="required">
 				</label>
-				<label class="col_12" for="eventUrl">Event URL (cAsE sEnSiTiVe)*
-					<div class="col_2"> interopevents.com/</div>
-					<input class="col_10" type="text" data-ng-model="newEvent.eventUrl" name="eventUrl" id="eventUrl">
-				</label>
-				
+				<label class="col_12" for="eventUrl">Event URL*
+					<br>
+					<div class="col_1 float-left">interopevents.com/</div>
+					<input class="col_11" type="text" data-ng-model="newEvent.eventUrl" name="eventUrl" id="eventUrl">
+				</label>				
 				<label class="col_12" for="newEventRegistrationLink">Event Registration Link
 					<input class="col_12" type="url" data-ng-model="newEvent.newEventRegistrationLink" name="newEventRegistrationLink" id="newEventRegistrationLink">
 				</label>
@@ -24,46 +24,85 @@
 				<label class="col_12" for="newEventCountry">Event Country
 					<input class="col_12" type="text" data-ng-model="newEvent.newEventCountry" name="newEventCountry" id="newEventCountry">
 				</label>
-				<div class="col_12">
-					<label class="" for="newEventStartDate">Event Start Date (Can include time of day)
-						<input class="" type="date" data-ng-model="newEvent.newEventStartDate" name="newEventStartDate" id="newEventStartDate">
+				<br>
+				<br>
+				<div class="time-input-wrapper">
+					<label for="newEventStartDate">Event Start Date (Can include time of day)
+						<input class="col_12" type="datetime-local" data-ng-model="newEvent.newEventStartDate" name="newEventStartDate" id="newEventStartDate">
 					</label>
 					<br><br>
-					<label class="" for="newEventEndDate">Event End Date (Can include time of day)
-						<input class="" type="date" data-ng-model="newEvent.newEventEndDate" name="newEventEndDate" id="newEventEndDate">
+					<label for="newEventEndDate">Event End Date (Can include time of day)
+						<input class="col_12" type="datetime-local" data-ng-model="newEvent.newEventEndDate" name="newEventEndDate" id="newEventEndDate">
 					</label>
 				</div>
-				<label class="col_12" for="showOnHeader">Show this event on the header menu?&nbsp;&nbsp;
-					<input class="" type="checkbox" id="showOnHeader" data-ng-model="newEvent.showOnHeader" value="true">
-				</label>
-				<label class="col_12" for="continentsInput">Choose Event Continent
-					<radiogroup class="col_12" id="continentsInput" data-ng-required="required">
-						<label for="northAmericaInput">North America</label>
-						<input data-ng-model="newEvent.newEventContinent" type="radio" id="northAmericaInput" name="newEventContinent" value="North America">
-						&nbsp;
-						<label for="southAmericaInput">South America</label>
-						<input data-ng-model="newEvent.newEventContinent" type="radio" id="southAmericaInput" name="newEventContinent" value="South America">
-						&nbsp;
-						<label for="asia">Asia</label>
-						<input data-ng-model="newEvent.newEventContinent" type="radio" id="asia" name="newEventContinent" value="Asia">
-						&nbsp;
-						<label for="europeInput">Europe</label>
-						<input data-ng-model="newEvent.newEventContinent" type="radio" id="europeInput" name="newEventContinent" value="Europe">
-						&nbsp;
-						<label for="africaInput">Africa</label>
-						<input data-ng-model="newEvent.newEventContinent" type="radio" id="africaInput" name="newEventContinent" value="Africa">
-						&nbsp;
-						<label for="australiaInput">Australia</label>
-						<input data-ng-model="newEvent.newEventContinent" type="radio" id="australiaInput" name="newEventContinent" value="Oceania">
+				<br>
+				<label class="col_12" for="showOnHeader">Show this event on the header menu?
+					<br>
+					<radiogroup class="time-input-wrapper" id="showOnHeader">
+						<label>Yes
+							<input class="" type="radio" id="showOnHeaderTrue" data-ng-model="newEvent.showOnHeader" value="true">
+						</label>
+						<label>No
+							<input class="" type="radio" id="showOnHeaderFalse" data-ng-model="newEvent.showOnHeader" value="false" ng-checked="true">						
+						</label>
 					</radiogroup>
 				</label>
-				<label class="col_12" for="new-event-description">Event Description for About page
-					<textarea class="col_12 form-control" data-ng-model="newEvent.eventAboutTabText" name="new-event-description" style="min-height: 200px" data-ng-required="required" 
-				data-ui-tinymce="tinymceOptions">
-      		</textarea>
+				<br>
+				<br>
+				<label class="col_12" for="continentsInput">Choose Event Continent
+					<radiogroup class="col_12" id="continentsInput" data-ng-required="required">
+						<label for="northAmericaInput">North America
+							<input class="float-left" data-ng-model="newEvent.newEventContinent" type="radio" id="northAmericaInput" name="newEventContinent" value="North America">
+						</label>
+						<br>
+						<label for="southAmericaInput">South America
+							<input class="float-left" data-ng-model="newEvent.newEventContinent" type="radio" id="southAmericaInput" name="newEventContinent" value="South America">
+						<br>
+						<label for="asia">Asia</label>
+							<input class="float-left" data-ng-model="newEvent.newEventContinent" type="radio" id="asia" name="newEventContinent" value="Asia">
+						</label>
+						<br>
+						<label for="europeInput">Europe
+							<input class="float-left" data-ng-model="newEvent.newEventContinent" type="radio" id="europeInput" name="newEventContinent" value="Europe">
+						</label>
+						<br>
+						<label for="africaInput">Africa
+							<input class="float-left" data-ng-model="newEvent.newEventContinent" type="radio" id="africaInput" name="newEventContinent" value="Africa">
+						</label>
+						<br>
+						<label for="australiaInput">Australia
+							<input class="float-left" data-ng-model="newEvent.newEventContinent" type="radio" id="australiaInput" name="newEventContinent" value="Oceania">
+						</label>
+					</radiogroup>
+				</label>
+				<br>
+				<br>
+				<label class="col_12" for="new-event-description">About page Content*
+					<br>
+					<div class="col_12">
+						<textarea class="col_12 form-control" data-ng-model="newEvent.eventAboutTabText" name="new-event-description" style="min-height: 200px" data-ng-required="required" 
+					data-ui-tinymce="tinymceOptions">
+	      		</textarea>						
+					</div>
       	</label>
+	    	<label class="col_12" for="newEventVenueName">Venue Name
+					<input class="col_12" type="text" data-ng-model="newEvent.newEventVenueName" name="newEventVenueName" id="newEventVenueName">
+				</label>
+				<label class="col_12" for="newVenduAddressLine1">Street Address
+					<input class="col_12" type="text" data-ng-model="newEvent.newVenduAddressLine1" name="newVenduAddressLine1" id="newVenduAddressLine1">
+				</label>
+				<label class="col_12" for="newVenueAddressLine2">City, State, Country
+					<input class="col_12" type="text" data-ng-model="newEvent.newVenueAddressLine2" name="newVenueAddressLine2" id="newVenueAddressLine2">
+				</label>
+				<label class="col_12" for="newVenueParkingInfo">Parking Information
+					<textarea class="col_12" data-ng-model="newEvent.newVenueParkingInfo" name="newVenueParkingInfo" id="newVenueParkingInfo"></textarea>
+				</label>
+				<div data-ng-controller="AdminPageCtrl">
+					<button class="btn btn-default" name="venuePhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventVenueImg')">Select Venue Image</button>
+				</div>
+	  		<br>
 	    	<div data-ng-controller="AdminPageCtrl">
-		  		<button name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventHeaderImg')">Select Header Image</button>
+		  		<button class="btn btn-default" name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventHeaderImg')">Select Header Image</button>
 		  		<br><br>
 		  		<!-- File:
 		  		<div style="font:smaller">{{eventHeaderImg.path}}{{eventHeaderImg.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
@@ -74,32 +113,27 @@
 		  		</div>     
 		  		{{errorMsg}} -->
 	    			
-	    	</div>{{newEvent.speakers}}
-	    	<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Select Speakers</button>
-	    	<div class="container">
-			
-			  <!-- Modal -->
-			  <div class="modal fade" id="myModal" role="dialog" create-event-close-modal-directive>
-			    <div class="modal-dialog">
-			    
-			      <!-- Modal content-->
+	    	</div>
+	    	<button type="button" class="btn btn-default" data-toggle="modal" data-target="#create-event-speakers-modal">Select Speakers</button>
+	    	<div class="container">			
+			  <div class="modal fade" id="create-event-speakers-modal" role="dialog" create-event-close-modal-directive>
+			    <div class="modal-dialog">			    
 			      <div class="modal-content">
 			        <div class="modal-header">
+			          <button type="button" class="btn btn-success float-left" data-dismiss="modal">Save</button>
 			          <button type="button" class="close" data-dismiss="modal">&times;</button>
-			          <button type="button" class="btn btn-default" ng-click="saveSpeakers()">Save Speakers</button>
-			          <h4 class="modal-title">Select Speakers</h4>
 			        </div>
 			        <div class="modal-body">
 			          <div data-ng-controller="AdminPageCtrl" class="clearfix">
-									<h3>Speakers</h3>
-								  <div class="clearfix modal-container">
-								    <div ui-sortable="newEventSortSpeakerOptions" data-ng-model="theSpeakers" class="new-event-speaker-table-container col_6">
+			          	<h4 class="modal-title">Select Speakers</h4>
+								  <div class="clearfix modal-container new-event-speakers-modal-container">
+								    <div ui-sortable="newEventSortSpeakerOptions" data-ng-model="theSpeakers" class="new-event-speaker-table-container col_6 ">
 								    	<h5>Available Speakers, Not Displayed</h5>
 								      <div data-ng-repeat="speaker in theSpeakers" class="newEventSpeaker ui-state-default">
 								      	<p>{{speaker.firstName + ' ' +  speaker.lastName}}</p>
 							      	</div>
 								    </div>
-								    <div ui-sortable="newEventSortSpeakerOptions" data-ng-model="newSpeakers" class="new-event-speaker-table-container col_6">
+								    <div ui-sortable="newEventSortSpeakerOptions" data-ng-model="newSpeakers" class="new-event-speaker-table-container col_6 ">
 								    	<h5>Speakers to Be Displayed with Event</h5>
 								      <div data-ng-repeat="speaker in newSpeakers" class="newEventSpeaker ui-state-default">
 								      	<span ng-hide="true">{{speaker.eventPosition = $index}}</span>
@@ -110,45 +144,19 @@
     						</div>
 			        </div>
 			        <div class="modal-footer">
-			          <button type="button" class="btn btn-default" ng-click="saveSpeakers()">Save Speakers</button>
-			          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			          <button type="button" class="btn btn-success" data-dismiss="modal">Save</button>
 			        </div>
-			      </div>
-			      
+			      </div>			      
 			    </div>
-			  </div>
-			  
+			  </div>			  
 			</div>
 				<br>
-				<ul>
-					<li data-ng-repeat="speaker in getPreviewSpeakers(theSpeakers)">{{speaker.fullName}}</li>
-				</ul>
+				<label for="add-event-speakers-list">
+					<ul id="add-event-speakers-list" class="noStyleUL">
+						<li data-ng-repeat="speaker in newEvent.speakers | orderBy: 'eventPosition'">{{speaker.fullName}}</li>
+					</ul>
+				</label>
 				<br>
-				<div>
-					<button class="float-left" style="margin: 5px" target="_self"  href="" data-ng-click="closeVenueModal()">Add Venue</button>
-					<!-- lightbox container hidden with data-ng-hide -->
-					<div class="lightbox venueLightbox" data-ng-hide="hideVenueModal" >
-					  <div class="inner-lightbox-box">
-					    <p data-ng-hide="hideVenueModal" class="modal-title">Venue Information</p>
-					    <div class="modal-content">
-					    	<label class="col_12" for="newEventVenueName">Venue Name</label>
-								<input class="col_12" type="text" data-ng-model="newEvent.newEventVenueName" name="newEventVenueName" id="newEventVenueName">
-								<label class="col_12" for="newVenduAddressLine1">Street Address</label>
-								<input class="col_12" type="text" data-ng-model="newEvent.newVenduAddressLine1" name="newVenduAddressLine1" id="newVenduAddressLine1">
-								<label class="col_12" for="newVenueAddressLine2">City, State, Country</label>
-								<input class="col_12" type="text" data-ng-model="newEvent.newVenueAddressLine2" name="newVenueAddressLine2" id="newVenueAddressLine2">
-								<label class="col_12" for="newVenueParkingInfo">Parking Information</label>
-								<textarea class="col_12" data-ng-model="newEvent.newVenueParkingInfo" name="newVenueParkingInfo" id="newVenueParkingInfo"></textarea>
-								<div data-ng-controller="AdminPageCtrl">
-									<a class="button" name="venuePhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventVenueImg')">Select Venue Image</a>
-								</div>
-								<a class="closeModal button" data-ng-click="closeVenueModal()" target="_self" href="">Add Venue</a>
-					  		<br>
-					  	</div>
-					  </div>
-					</div>
-					
-				</div>
 				<radiogroup class="col_12">
 					<label for="publishedTrue">Publish Now
 						<input data-ng-model="newEvent.publishStatus" type="radio" id="publishedTrue" name="publishStatus" value="true">
@@ -158,90 +166,70 @@
 						<input data-ng-model="newEvent.publishStatus" type="radio" id="publishedFalse" name="publishStatus" value="false" ng-checked="true">
 					</label>
 				</radiogroup>
-				<button type="button" class="medium float-left" style="margin: 5px" id="cancel-new-event-button">Cancel</button>
-				<!-- <button type="button" class="closeModal button medium float-left" data-ng-click="toggleEventPreview()" target="_self" href="">Preview</a> -->
-				<button type="submit" class="medium float-left green" style="margin: 5px" id="save-new-event-as-draft-button">Save</button>
-				<!-- lightbox container hidden with data-ng-hide -->
-					<!-- <div class="lightbox" data-ng-hide="hideEventPreview" id="speakersForm">
-					  <div class="inner-lightbox-event-preview-box">
-					    <p class="modal-title">Preview</p>{{test}}
-					    <a class="closeModal button" data-ng-click="toggleEventPreview()" target="_self" href="">Close</a>
-					    <div class="modal-content">
-							  <section class="grid main-page-content mobileWrapper">
-							  	<div data-ng-if="eventHeaderImg" class="col_12 internetExplorer event-header centered" id="eventHeader" role="complementary"><img alt="event banner image" data-ng-src="/uploads/{{eventHeaderImg.size + '-' + eventHeaderImg.name}}" /></div>
-									<ul class="tabs left">
-							  	  <li class="first">
-							  	    <a target="_self" href="#aboutTab"><h5>About</h5></a>
-							  	  </li>
-										<li class="last">
-											<a target="_self" href="#speakers"><h5>Speakers</h5></a>
-										</li>
-									</ul>
-							  	<div id="aboutTab" class="tab-content eventTabDiv" style="display: block" >
-							  	  <h2>{{newEvent.newEventName}}</h2>
-							  	  <p>{{newEvent.eventAboutTabText}}</p>
-							  	</div>
-									<div id="speakers" class="last tab-content eventTabDiv clearfix" style="display:none">
-										<div data-ng-repeat="speaker in getPreviewSpeakers(theSpeakers)" class="col_12 internetExplorer" id="{{speaker.divId}}" aria-label="Bio of {{speaker.fullName}}" role	="presentation">{{speaker.id}}
-										  	<h4>{{speaker.fullName}}</h4>
-										  	<h5>{{speaker.msTeamTitle}}</h5>
-										  	<p>
-										  		<img class="pull-left speakersImg" height="165" width="165" alt="image of {{speaker.fullName}}" data-ng-src="/uploads/{{speaker.headShot}}" />
-										  		{{speaker.speakerDescription}}
-							  			</p>
-										  	<hr class="alt1" />
-											</div>
-									</div>	
-							  </section>
-								
-					  		<br>
-					  	</div>
-					  </div>
-					</div> -->
+				<button type="button" class="btn btn-warning btn-lg float-left" style="margin: 5px" id="cancel-new-event-button">Cancel</button>
+				<button type="submit" class="btn btn-success btn-lg float-left" style="margin: 5px" id="save-new-event-as-draft-button">Save</button>
+		    <button type="button" class="btn btn-default btn-lg float-left" data-toggle="modal" data-target="#new-event-add-venue-modal" style="margin: 5px">Preview</button>
 			</form>
 			<input name="image" type="file" id="upload" class="hideElem" onchange="">
     </section>
-	  <section data-ng-show="!isEmptyObj(newEvent) || eventHeaderImg || eventVenueImg" role="presentation" class="col_12 internetExplorer"">
-  		<p class="modal-title">Preview</p>
-	  	<div data-ng-if="eventHeaderImg" class="col_12 internetExplorer event-header centered" id="eventHeader" role="complementary">
-	  		<img alt="event banner image" data-ng-src="/uploads/{{eventHeaderImg.size + '-' + eventHeaderImg.name}}" />
-  		</div>
-			<ul class="tabs left" id="previewEventUl">
-	  	  <li class="current">
-	  	    <a target="_self" href="#aboutTab"><h5>About</h5></a>
-	  	  </li>
-	  	  <li>
-					<a target="_self" href="#venueTab"><h5>Venue</h5></a>
-				</li>
-				<li class="last">
-					<a target="_self" href="#speakersTab"><h5>Speakers</h5></a>
-				</li>
-			</ul>
-	  	<div id="aboutTab" class="current tab-content clearfix eventTabDiv">
-	  	  <h2>{{newEvent.newEventName}}</h2>
-	  	  <p>{{newEvent.eventAboutTabText}}</p>
-	  	</div>
-	  	<div id="venueTab" class="tab-content clearfix eventTabDiv">
-	  	  <h2>{{newEvent.newEventVenueName}}</h2>
-	  	  <div data-ng-if="eventVenueImg" class="col_12 internetExplorer event-header centered" id="venueImg" role="complementary">
-	  			<img alt="event venue image" data-ng-src="/uploads/{{eventVenueImg.size + '-' + eventVenueImg.name}}" />
-  			</div>
-	  	  <p>{{newEvent.newVenduAddressLine1}}</p>
-	  	  <p>{{newEvent.newVenueAddressLine2}}</p>
-	  	  <p>{{newEvent.newEventVenueImg}}</p>
-	  	  <p>{{newEvent.newVenueParkingInfo}}</p>
-	  	</div>
-			<div id="speakersTab" class="tab-content eventTabDiv clearfix">
-				<div data-ng-repeat="speaker in getPreviewSpeakers(theSpeakers)" class="col_12 internetExplorer" id="{{speaker.divId}}" aria-label="Bio of {{speaker.fullName}}" role	="presentation">
-				  	<h4>{{speaker.fullName}}</h4>
-				  	<h5>{{speaker.msTeamTitle}}</h5>
-				  	<p>
-				  		<img class="pull-left speakersImg" height="165" width="165" alt="image of {{speaker.fullName}}" data-ng-src="/uploads/{{speaker.headShot}}" />
-				  		{{speaker.speakerDescription}}
-	  			</p>
-				  	<hr class="alt1" />
-					</div>
-			</div>	
-	  </section>
+		<div class="modal fade" id="new-event-add-venue-modal" tabindex="-1" role="dialog" aria-labelledby="new-event-add-venue-modal-heading" aria-hidden="true">
+		  <div class="modal-dialog modal-lg" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		        <h4 class="modal-title" id="new-event-add-venue-modal-heading">Venue Information</h4>
+		      </div>
+		      <div class="modal-body">
+					  <section data-ng-show="!isEmptyObj(newEvent) || eventHeaderImg || eventVenueImg" role="presentation" class="col_12 internetExplorer"">
+				  		<p>Preview</p>
+					  	<div data-ng-if="eventHeaderImg" class="col_12 internetExplorer event-header centered" id="eventHeader" role="complementary">
+					  		<img alt="event banner image" data-ng-src="/uploads/{{eventHeaderImg.size + '-' + eventHeaderImg.name}}" />
+				  		</div>
+							<ul class="tabs left" id="previewEventUl">
+					  	  <li class="current">
+					  	    <a target="_self" href="#aboutTab"><h5>About</h5></a>
+					  	  </li>
+					  	  <li>
+									<a target="_self" href="#venueTab"><h5>Venue</h5></a>
+								</li>
+								<li class="last">
+									<a target="_self" href="#speakersTab"><h5>Speakers</h5></a>
+								</li>
+							</ul>
+					  	<div id="aboutTab" class="current tab-content clearfix eventTabDiv">
+					  	  <h2>{{newEvent.newEventName}}</h2>
+					  	  <p>{{newEvent.eventAboutTabText}}</p>
+					  	</div>
+					  	<div id="venueTab" class="tab-content clearfix eventTabDiv">
+					  	  <h2>{{newEvent.newEventVenueName}}</h2>
+					  	  <div data-ng-if="eventVenueImg" class="col_12 internetExplorer event-header centered" id="venueImg" role="complementary">
+					  			<img alt="event venue image" data-ng-src="/uploads/{{eventVenueImg.size + '-' + eventVenueImg.name}}" />
+				  			</div>
+					  	  <p>{{newEvent.newVenduAddressLine1}}</p>
+					  	  <p>{{newEvent.newVenueAddressLine2}}</p>
+					  	  <p>{{newEvent.newEventVenueImg}}</p>
+					  	  <p>{{newEvent.newVenueParkingInfo}}</p>
+					  	</div>
+							<div id="speakersTab" class="tab-content eventTabDiv clearfix">
+								<div data-ng-repeat="speaker in getPreviewSpeakers(theSpeakers)" class="col_12 internetExplorer" id="{{speaker.divId}}" aria-label="Bio of {{speaker.fullName}}" role	="presentation">
+								  	<h4>{{speaker.fullName}}</h4>
+								  	<h5>{{speaker.msTeamTitle}}</h5>
+								  	<p>
+								  		<img class="pull-left speakersImg" height="165" width="165" alt="image of {{speaker.fullName}}" data-ng-src="/uploads/{{speaker.headShot}}" />
+								  		{{speaker.speakerDescription}}
+					  			</p>
+								  	<hr class="alt1" />
+									</div>
+							</div>	
+					  </section>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
   </main>
 </div>
