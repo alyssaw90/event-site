@@ -19,15 +19,6 @@ const createEventRESTResource = (app) => {
           .error(customFunctions.handleError(callback));
 				},
 				createEvent: (resourceData, callback) => {
-				/*let file = $scope.newEvent;
-        let uploadUrl = '/api/createevent';
-        let fd = new FormData();
-        fd.append('file', file);
-
-        $http.post(uploadUrl,fd, {
-            transformRequest: angular.identity,
-            headers: {'Content-Type': undefined}
-        })*/
           $http.post('/api/createevent', resourceData)
           .success(customFunctions.handleSuccess(callback))
           .error(customFunctions.handleError(callback));

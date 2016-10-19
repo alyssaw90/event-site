@@ -1,58 +1,67 @@
 
-<div class="mobileWrapper ng-cloak ng-cloak" role="presentation" data-ng-controller="AdminCreateEventCtrl" data-ng-init="getEvents(); getAllSpeakers()" data-admin-page-directive>
+<div class="mobileWrapper ng-cloak ng-cloak" role="presentation" ng-controller="AdminPageCtrl" data-ng-init="getEvents(); getAllSpeakers()" data-admin-page-directive>
   <main style="overflow:hidden;" id="beginningOfContent" tabindex="0" class="grid main-page-content">
     <section role="presentation" class="col_12 internetExplorer">
 			<h3>New Event</h3>
 			<form id="addNewEventForm" name="addNewEventForm" method="post" enctype="multipart/form-data" data-ng-init="getAllSpeakers();" data-ng-submit="createNewEvent(newEvent);">
-				<label class="col_12" for="newEventName">Event Name*</label>
-				<input class="col_12" type="text" data-ng-model="newEvent.newEventName" name="newEventName" id="newEventName" data-ng-required="required">
-				<label class="col_12" for="eventUrl">Event URL (cAsE sEnSiTiVe)*</label>
-				<div class="col_2"> interopevents.com/</div>
-				<input class="col_10" type="text" data-ng-model="newEvent.eventUrl" name="eventUrl" id="eventUrl">
-				<label class="col_12" for="newEventRegistrationLink">Event Registration Link</label>
-				<input class="col_12" type="url" data-ng-model="newEvent.newEventRegistrationLink" name="newEventRegistrationLink" id="newEventRegistrationLink">
-				<label class="col_12 ui-widget" for="newEventCity">Event City*
-				<input class="col_12 ui-widget-content" type="text" data-ng-model="newEvent.newEventCity" name="newEventCity" id="newEventCity" data-ng-required="required" admin-city-name-auto-complete-directive>
+				<label class="col_12" for="newEventName">Event Name*
+					<input class="col_12" type="text" data-ng-model="newEvent.newEventName" name="newEventName" id="newEventName" data-ng-required="required">
 				</label>
-				<label class="col_12" for="newEventState">Event State</label>
-				<input class="col_12" type="text" data-ng-model="newEvent.newEventState" name="newEventState" id="newEventState">
-				<label class="col_12" for="newEventCountry">Event Country</label>
-				<input class="col_12" type="text" data-ng-model="newEvent.newEventCountry" name="newEventCountry" id="newEventCountry">
+				<label class="col_12" for="eventUrl">Event URL (cAsE sEnSiTiVe)*
+					<div class="col_2"> interopevents.com/</div>
+					<input class="col_10" type="text" data-ng-model="newEvent.eventUrl" name="eventUrl" id="eventUrl">
+				</label>
+				
+				<label class="col_12" for="newEventRegistrationLink">Event Registration Link
+					<input class="col_12" type="url" data-ng-model="newEvent.newEventRegistrationLink" name="newEventRegistrationLink" id="newEventRegistrationLink">
+				</label>
+				<label class="col_12 ui-widget" for="newEventCity">Event City*
+					<input class="col_12 ui-widget-content" type="text" data-ng-model="newEvent.newEventCity" name="newEventCity" id="newEventCity" data-ng-required="required" admin-city-name-auto-complete-directive>
+				</label>
+				<label class="col_12" for="newEventState">Event State
+					<input class="col_12" type="text" data-ng-model="newEvent.newEventState" name="newEventState" id="newEventState">
+				</label>
+				<label class="col_12" for="newEventCountry">Event Country
+					<input class="col_12" type="text" data-ng-model="newEvent.newEventCountry" name="newEventCountry" id="newEventCountry">
+				</label>
 				<div class="col_12">
-					<label class="" for="newEventStartDate">Event Start Date (Can include time of day)</label>
-					<input class="" type="date" data-ng-model="newEvent.newEventStartDate" name="newEventStartDate" id="newEventStartDate">
+					<label class="" for="newEventStartDate">Event Start Date (Can include time of day)
+						<input class="" type="date" data-ng-model="newEvent.newEventStartDate" name="newEventStartDate" id="newEventStartDate">
+					</label>
 					<br><br>
-					<label class="" for="newEventEndDate">Event End Date (Can include time of day)</label>
-					<input class="" type="date" data-ng-model="newEvent.newEventEndDate" name="newEventEndDate" id="newEventEndDate">
+					<label class="" for="newEventEndDate">Event End Date (Can include time of day)
+						<input class="" type="date" data-ng-model="newEvent.newEventEndDate" name="newEventEndDate" id="newEventEndDate">
+					</label>
 				</div>
 				<label class="col_12" for="showOnHeader">Show this event on the header menu?&nbsp;&nbsp;
-				<input class="" type="checkbox" id="showOnHeader" data-ng-model="newEvent.showOnHeader" value="true">
+					<input class="" type="checkbox" id="showOnHeader" data-ng-model="newEvent.showOnHeader" value="true">
 				</label>
-				<label class="col_12" for="continentsInput">Choose Event Continent</label>
-				<radiogroup class="col_12" id="continentsInput" data-ng-required="required">
-					<label for="northAmericaInput">North America</label>
-					<input data-ng-model="newEvent.newEventContinent" type="radio" id="northAmericaInput" name="newEventContinent" value="North America">
-					&nbsp;
-					<label for="southAmericaInput">South America</label>
-					<input data-ng-model="newEvent.newEventContinent" type="radio" id="southAmericaInput" name="newEventContinent" value="South America">
-					&nbsp;
-					<label for="asia">Asia</label>
-					<input data-ng-model="newEvent.newEventContinent" type="radio" id="asia" name="newEventContinent" value="Asia">
-					&nbsp;
-					<label for="europeInput">Europe</label>
-					<input data-ng-model="newEvent.newEventContinent" type="radio" id="europeInput" name="newEventContinent" value="Europe">
-					&nbsp;
-					<label for="africaInput">Africa</label>
-					<input data-ng-model="newEvent.newEventContinent" type="radio" id="africaInput" name="newEventContinent" value="Africa">
-					&nbsp;
-					<label for="australiaInput">Australia</label>
-					<input data-ng-model="newEvent.newEventContinent" type="radio" id="australiaInput" name="newEventContinent" value="Oceania">
-				</radiogroup>
-				<br><br><br>
-				<label class="col_12" for="new-event-description">Event Description for About page</label>
-				<textarea class="col_12 form-control" data-ng-model="newEvent.eventAboutTabText" name="new-event-description" style="min-height: 200px" data-ng-required="required" 
+				<label class="col_12" for="continentsInput">Choose Event Continent
+					<radiogroup class="col_12" id="continentsInput" data-ng-required="required">
+						<label for="northAmericaInput">North America</label>
+						<input data-ng-model="newEvent.newEventContinent" type="radio" id="northAmericaInput" name="newEventContinent" value="North America">
+						&nbsp;
+						<label for="southAmericaInput">South America</label>
+						<input data-ng-model="newEvent.newEventContinent" type="radio" id="southAmericaInput" name="newEventContinent" value="South America">
+						&nbsp;
+						<label for="asia">Asia</label>
+						<input data-ng-model="newEvent.newEventContinent" type="radio" id="asia" name="newEventContinent" value="Asia">
+						&nbsp;
+						<label for="europeInput">Europe</label>
+						<input data-ng-model="newEvent.newEventContinent" type="radio" id="europeInput" name="newEventContinent" value="Europe">
+						&nbsp;
+						<label for="africaInput">Africa</label>
+						<input data-ng-model="newEvent.newEventContinent" type="radio" id="africaInput" name="newEventContinent" value="Africa">
+						&nbsp;
+						<label for="australiaInput">Australia</label>
+						<input data-ng-model="newEvent.newEventContinent" type="radio" id="australiaInput" name="newEventContinent" value="Oceania">
+					</radiogroup>
+				</label>
+				<label class="col_12" for="new-event-description">Event Description for About page
+					<textarea class="col_12 form-control" data-ng-model="newEvent.eventAboutTabText" name="new-event-description" style="min-height: 200px" data-ng-required="required" 
 				data-ui-tinymce="tinymceOptions">
-      	</textarea>
+      		</textarea>
+      	</label>
 	    	<div data-ng-controller="AdminPageCtrl">
 		  		<button name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventHeaderImg')">Select Header Image</button>
 		  		<br><br>
@@ -65,26 +74,51 @@
 		  		</div>     
 		  		{{errorMsg}} -->
 	    			
-	    	</div>
-				<div>
-					<button style="margin: 5px" target="_self"  href="" data-ng-click="closeModalWindow()">Select Speakers</button>
-					<!-- lightbox container hidden with data-ng-hide -->
-					<div class="lightbox" data-ng-hide="hideModal" id="speakersForm">
-					  <div class="inner-lightbox-box">
-					    <p data-ng-hide="hideModal" class="modal-title">Select Speakers</p>
-					    <div class="modal-content">
-					    	<div data-ng-repeat="speaker in theSpeakers" for="speaker{{speaker.id}}">
-					    		<div class="col_5">{{speaker.fullName}}</div>
-					  			<!-- <input class="col_6" name="speakers[]" type="checkbox" value="{{speaker.id}}"> -->
-					  			<input class="col_1" class="speakersOrder" data-ng-model="newEvent.speakers[speaker.id]" type="number" name="speaker{{speaker.id}}" id="speakerOrder{{speaker.id}}" min="1">
-					  		</div>
-								<a class="closeModal button" data-ng-click="closeModalWindow()" target="_self" href="">Select</a>
-					  		<br>
-					  	</div>
-					  </div>
-					</div>
-					
-				</div>
+	    	</div>{{newEvent.speakers}}
+	    	<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Select Speakers</button>
+	    	<div class="container">
+			
+			  <!-- Modal -->
+			  <div class="modal fade" id="myModal" role="dialog" create-event-close-modal-directive>
+			    <div class="modal-dialog">
+			    
+			      <!-- Modal content-->
+			      <div class="modal-content">
+			        <div class="modal-header">
+			          <button type="button" class="close" data-dismiss="modal">&times;</button>
+			          <button type="button" class="btn btn-default" ng-click="saveSpeakers()">Save Speakers</button>
+			          <h4 class="modal-title">Select Speakers</h4>
+			        </div>
+			        <div class="modal-body">
+			          <div data-ng-controller="AdminPageCtrl" class="clearfix">
+									<h3>Speakers</h3>
+								  <div class="clearfix modal-container">
+								    <div ui-sortable="newEventSortSpeakerOptions" data-ng-model="theSpeakers" class="new-event-speaker-table-container col_6">
+								    	<h5>Available Speakers, Not Displayed</h5>
+								      <div data-ng-repeat="speaker in theSpeakers" class="newEventSpeaker ui-state-default">
+								      	<p>{{speaker.firstName + ' ' +  speaker.lastName}}</p>
+							      	</div>
+								    </div>
+								    <div ui-sortable="newEventSortSpeakerOptions" data-ng-model="newSpeakers" class="new-event-speaker-table-container col_6">
+								    	<h5>Speakers to Be Displayed with Event</h5>
+								      <div data-ng-repeat="speaker in newSpeakers" class="newEventSpeaker ui-state-default">
+								      	<span ng-hide="true">{{speaker.eventPosition = $index}}</span>
+								      	<p>{{speaker.firstName + ' ' +  speaker.lastName}}</p>
+							      	</div>
+								    </div>
+									</div>
+    						</div>
+			        </div>
+			        <div class="modal-footer">
+			          <button type="button" class="btn btn-default" ng-click="saveSpeakers()">Save Speakers</button>
+			          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        </div>
+			      </div>
+			      
+			    </div>
+			  </div>
+			  
+			</div>
 				<br>
 				<ul>
 					<li data-ng-repeat="speaker in getPreviewSpeakers(theSpeakers)">{{speaker.fullName}}</li>
@@ -116,11 +150,13 @@
 					
 				</div>
 				<radiogroup class="col_12">
-					<label for="publishedTrue">Publish Now</label>
-					<input data-ng-model="newEvent.publishStatus" type="radio" id="publishedTrue" name="publishStatus" value="true">
+					<label for="publishedTrue">Publish Now
+						<input data-ng-model="newEvent.publishStatus" type="radio" id="publishedTrue" name="publishStatus" value="true">
+					</label>
 					<br>
-					<label for="publishedFalse">Save as Draft</label>
-					<input data-ng-model="newEvent.publishStatus" type="radio" id="publishedFalse" name="publishStatus" value="false" checked="true">
+					<label for="publishedFalse">Save as Draft
+						<input data-ng-model="newEvent.publishStatus" type="radio" id="publishedFalse" name="publishStatus" value="false" ng-checked="true">
+					</label>
 				</radiogroup>
 				<button type="button" class="medium float-left" style="margin: 5px" id="cancel-new-event-button">Cancel</button>
 				<!-- <button type="button" class="closeModal button medium float-left" data-ng-click="toggleEventPreview()" target="_self" href="">Preview</a> -->
