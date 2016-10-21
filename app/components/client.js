@@ -37,6 +37,7 @@ require('./admin/admin-header/adminHeaderDirective.js')(eventsApp);
 require('./pastEvents/pastEventsDirective.js')(eventsApp);
 require('./admin/createEvent/createEventCloseModalDirective.js')(eventsApp);
 require('./admin/editEvent/editEventDirective.js')(eventsApp);
+require('./admin/createEvent/createEventButtonDirective.js')(eventsApp);
 
 //controllers
 require('./shared/AllPagesCtrl.js')(eventsApp);

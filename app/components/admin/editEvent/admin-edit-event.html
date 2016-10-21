@@ -1,7 +1,7 @@
 
-<div class="mobileWrapper ng-cloak" role="presentation" data-ng-controller="AdminCreateEventCtrl" data-ng-init="getEvents(); getAllSpeakers()" >
-  <main style="overflow:hidden;" id="beginningOfContent" tabindex="0" class="grid main-page-content" ng-controller="AdminPageCtrl">
-		<div id="edit-menu-options" class="btn-group edit-section col_12" role="group" aria-label="edit tab buttons" style="display: none;">
+<div class="mobileWrapper ng-cloak container" role="presentation" data-ng-controller="AdminCreateEventCtrl" data-ng-init="getEvents(); getAllSpeakers()" >
+  <main style="overflow:hidden;" id="beginningOfContent" class="row" tabindex="0" ng-controller="AdminPageCtrl">
+		<div id="edit-menu-options" class="btn-group edit-section col-lg-24" role="group" aria-label="edit tab buttons" style="display: none;">
 			<h2>{{editedEvent.event.eventName}}</h2>
 		  <button type="button" class="btn btn-primary" ng-click="showElem('#edit-event-section, #edit-menu-options', '.edit-section')">Edit Event</button>
 		  <button id="edit-tabs-dropdown" type="button" class="btn btn-primary" ng-click="showElem('#edit-tabs-section, #edit-menu-options, #select-tabs-to-edit-table', '.edit-section');">Edit Tabs</button>
@@ -9,10 +9,13 @@
 		  <button type="button" class="btn btn-primary" ng-click="showElem('#edit-menu-options, #add-tabs-section', '.edit-section')">Add Tabs</button>
 		  <button type="button" class="btn btn-primary" ng-click="showElem('#main-edit-section', '.edit-section')">Cancel</button>
 		</div>
-    <section id="main-edit-section" role="presentation" class="col_12 internetExplorer edit-section">
+    <section id="main-edit-section" role="presentation" class="col-lg-24 internetExplorer edit-section">
 			<div id="edit-events-home-tab">
-				<h3>All Events</h3>
-				<table id="all-events-table">
+				<div class="admin-header-div-with-button" role="presentation">
+					<h3 class="middle-align">All Events</h3>
+					<a class="btn btn-orange middle-align" href="/admin/create-event">Add New</a>
+				</div>
+				<table id="all-events-table" class="table table-bordered">
 					<thead>
 						<tr>
 							<th>
@@ -52,7 +55,7 @@
 				</table>
 			</div>
     </section>
-    <section id="edit-speakers-section" class="col_12 edit-section" role="presentation" style="display: none;">
+    <section id="edit-speakers-section" class="col-lg-24 edit-section" role="presentation" style="display: none;">
     <button class="btn btn-success" ng-click="editSpeakers()">Save Speakers</button>
     	<div id="edit-slideshows">
 				<h3>Speakers</h3>
@@ -79,7 +82,7 @@
 				</div>
 			</div>
     </section>
-    <section id="add-tabs-section" class="col_12 edit-section" role="presentation" style="display: none;">
+    <section id="add-tabs-section" class=col-lg-24 edit-section" role="presentation" style="display: none;">
     	<form ng-submit="addTab(newTab)">{{editedEvent.event.id }}
 				<input class="col_12" type="hidden" name="newTabAsscEventId" data-ng-model="newTab.eventId">
 				<label class="col_12" for="newTabTitle">Tab Title</label>
@@ -106,7 +109,7 @@
 				<button type="submit" class="btn btn-success">Save Tab</button>
     	</form>
     </section>
-    <section id="edit-tabs-section" class="col_12 edit-section" role="presentation" style="display: none;">
+    <section id="edit-tabs-section" class="col-lg-24 edit-section" role="presentation" style="display: none;">
     	<table id="select-tabs-to-edit-table" class=" edit-section" style="display: none;">
     		<thead>
     			<tr>
@@ -168,7 +171,7 @@
 				<button type="submit" class="medium float-left green">Save</button>
     	</form>
     </section>
-    <section id="edit-event-section" role="presentation" class="col_12 edit-section" style="display: none">
+    <section id="edit-event-section" role="presentation" class="col-lg-24 edit-section" style="display: none">
     	<img ng-if="headerImage" ng-src="/{{headerImage}}">
 			<form id="editEventForm" name="editEventForm" method="post" enctype="multipart/form-data" data-ng-init="getAllSpeakers();" data-ng-submit="editEvent(editedEvent);">
 	    	<div data-ng-controller="AdminPageCtrl">

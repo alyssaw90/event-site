@@ -156,16 +156,16 @@ export const parseToHtml = (str) => {
 }
 
 // function to set divs with equal width
-export let changeWidth = function(div) {
+export let changeWidth = (jQElemArr) => {
 	var widestBlock = 0;
-	jQuery(div).css('width','auto');
-	jQuery(div).each(function () {
+	jQElemArr.css('width','auto');
+	jQElemArr.each( function() {
 		if (jQuery(this).width() > widestBlock) {
 			widestBlock = jQuery(this).width();
 		}
 	});
 
-	jQuery(div).each(function () {
+	jQElemArr.each( function() {
 		jQuery(this).width(widestBlock);
 	});
 }

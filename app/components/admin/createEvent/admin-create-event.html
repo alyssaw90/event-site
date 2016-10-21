@@ -144,7 +144,7 @@
 				</div>
 				<div class="form-group" role="presentation">
 				<label for="new-event-description">About page Content*</label>
-						<textarea class="col_12 form-control" data-ng-model="newEvent.eventAboutTabText" name="new-event-description" data-ng-required="required" 
+						<textarea class="form-control" data-ng-model="newEvent.eventAboutTabText" name="new-event-description" data-ng-required="required" 
 					data-ui-tinymce="tinymceOptions"></textarea>
 				</div>
 				<div class="form-group" role="presentation">
@@ -163,24 +163,26 @@
 					<label for="newVenueParkingInfo">Parking Information</label>
 					<textarea class="form-control" data-ng-model="newEvent.newVenueParkingInfo" name="newVenueParkingInfo" id="newVenueParkingInfo"></textarea>				
 				</div>
-				<div data-ng-controller="AdminPageCtrl">
-					<button class="btn btn-default" name="venuePhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventVenueImg')">Select Venue Image</button>
+				<div role="presentation" create-event-button-directive>
+					<div data-ng-controller="AdminPageCtrl">
+						<button class="btn btn-default" name="venuePhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventVenueImg')">Select Venue Image</button>
+					</div>
+		  		<br>
+		    	<div data-ng-controller="AdminPageCtrl">
+			  		<button class="btn btn-default" name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventHeaderImg')">Select Header Image</button>
+			  		<br><br>
+			  		<!-- File:
+			  		<div style="font:smaller">{{eventHeaderImg.path}}{{eventHeaderImg.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+			  		    <span class="progress" ng-show="eventHeaderImg.progress >= 0">
+			  		        <div style="width:{{eventHeaderImg.progress}}%"  
+			  		             ng-bind="eventHeaderImg.progress + '%'"></div>
+			  		    </span>
+			  		</div>     
+			  		{{errorMsg}} -->
+		    			
+		    	</div>
+		    	<button type="button" class="btn btn-default" data-toggle="modal" data-target="#create-event-speakers-modal">Select Speakers</button>			  
 				</div>
-	  		<br>
-	    	<div data-ng-controller="AdminPageCtrl">
-		  		<button class="btn btn-default" name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventHeaderImg')">Select Header Image</button>
-		  		<br><br>
-		  		<!-- File:
-		  		<div style="font:smaller">{{eventHeaderImg.path}}{{eventHeaderImg.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
-		  		    <span class="progress" ng-show="eventHeaderImg.progress >= 0">
-		  		        <div style="width:{{eventHeaderImg.progress}}%"  
-		  		             ng-bind="eventHeaderImg.progress + '%'"></div>
-		  		    </span>
-		  		</div>     
-		  		{{errorMsg}} -->
-	    			
-	    	</div>
-	    	<button type="button" class="btn btn-default" data-toggle="modal" data-target="#create-event-speakers-modal">Select Speakers</button>			  
 				<br>
 				<label for="add-event-speakers-list">
 					<ul id="add-event-speakers-list" class="noStyleUL">
@@ -198,9 +200,9 @@
 						</label>
 					</radiogroup>
 				</div>
-				<button type="button" class="btn btn-orange btn-lg float-left" style="margin: 5px" id="cancel-new-event-button">Cancel</button>
-				<button type="submit" class="btn btn-green btn-lg float-left" style="margin: 5px" id="save-new-event-as-draft-button">Save</button>
+				<button type="button" class="btn btn-default btn-lg float-left" style="margin: 5px" id="cancel-new-event-button">Cancel</button>
 		    <button type="button" class="btn btn-default btn-lg float-left" data-toggle="modal" data-target="#new-event-add-venue-modal" style="margin: 5px">Preview</button>
+				<button type="submit" class="btn btn-green btn-lg float-left" style="margin: 5px" id="save-new-event-as-draft-button">Save</button>
 				<input name="image" type="file" id="upload" class="hideElem" onchange="">
 			</form>
     </section>
@@ -234,18 +236,17 @@
       </div>			      
     </div>
 		<div class="modal fade" id="new-event-add-venue-modal" tabindex="-1" role="dialog" aria-labelledby="new-event-add-venue-modal-heading" aria-hidden="true">
-		  <div class="modal-dialog modal-lg" role="document">
+		  <div class="modal-dialog preview-modal" role="document">
 		    <div class="modal-content">
 		      <div class="modal-header">
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 		          <span aria-hidden="true">&times;</span>
 		        </button>
-		        <h4 class="modal-title" id="new-event-add-venue-modal-heading">Venue Information</h4>
+		        <h4 class="modal-title" id="new-event-add-venue-modal-heading">Preview</h4>
 		      </div>
-		      <div class="modal-body">
-					  <section data-ng-show="!isEmptyObj(newEvent) || eventHeaderImg || eventVenueImg" role="presentation" class="col_12 internetExplorer"">
-				  		<p>Preview</p>
-					  	<div data-ng-if="eventHeaderImg" class="col_12 internetExplorer event-header centered" id="eventHeader" role="complementary">
+		      <div class="modal-body row">
+					  <section data-ng-show="!isEmptyObj(newEvent) || eventHeaderImg || eventVenueImg" role="presentation" class="col-lg-24 internetExplorer" events-directive>
+					  	<div data-ng-if="eventHeaderImg" class="internetExplorer event-header centered" id="eventHeader" role="complementary">
 					  		<img alt="event banner image" data-ng-src="/uploads/{{eventHeaderImg.size + '-' + eventHeaderImg.name}}" />
 				  		</div>
 							<ul class="tabs left" id="previewEventUl">
@@ -259,9 +260,9 @@
 									<a target="_self" href="#speakersTab"><h5>Speakers</h5></a>
 								</li>
 							</ul>
-					  	<div id="aboutTab" class="current tab-content clearfix eventTabDiv">
-					  	  <h2>{{newEvent.newEventName}}</h2>
-					  	  <p>{{newEvent.eventAboutTabText}}</p>
+					  	<div id="aboutTab" class="current tab-content clearfix eventTabDiv" ng-bind-html="newEvent.eventAboutTabText">
+					  	  <!-- <h2>{{newEvent.newEventName}}</h2>
+					  	  <p>{{newEvent.eventAboutTabText}}</p> -->
 					  	</div>
 					  	<div id="venueTab" class="tab-content clearfix eventTabDiv">
 					  	  <h2>{{newEvent.newEventVenueName}}</h2>
@@ -274,7 +275,7 @@
 					  	  <p>{{newEvent.newVenueParkingInfo}}</p>
 					  	</div>
 							<div id="speakersTab" class="tab-content eventTabDiv clearfix">
-								<div data-ng-repeat="speaker in getPreviewSpeakers(theSpeakers)" class="col_12 internetExplorer" id="{{speaker.divId}}" aria-label="Bio of {{speaker.fullName}}" role	="presentation">
+								<div data-ng-repeat="speaker in newEvent.speakers" class="col_12 internetExplorer" id="{{speaker.divId}}" aria-label="Bio of {{speaker.fullName}}" role	="presentation">
 								  	<h4>{{speaker.fullName}}</h4>
 								  	<h5>{{speaker.msTeamTitle}}</h5>
 								  	<p>

@@ -46,8 +46,8 @@ jQuery.extend(jQuery.expr[':'], {
 		customFunctions.changeHeight('.homepageIntroBlocks');
 
 		//hide slider on screens larger than 768px
-		$(window).load(customFunctions.addCSS(768, $('.slider'), 'display', 'none', 'inline'));
-		$(window).resize(customFunctions.addCSS(768, $('.slider'), 'display', 'none', 'inline'));
+		/*$(window).load(customFunctions.addCSS(768, $('.slider'), 'display', 'none', 'inline'));
+		$(window).resize(customFunctions.addCSS(768, $('.slider'), 'display', 'none', 'inline'));*/
 
 		//make bottom button scroll to top
 		$backToTopButton.click( function() {

@@ -1,68 +1,14 @@
-<nav class="clearfix" data-ng-controller="AdminHeaderCtrl">
-	<div class="admin-header-wrapper container nav-justified" aria-hidden="true" role="presentation">
-    <div class="btn-group">
-    	<div class="dropdown">
-	      <!-- <button id="admin-menu-button-events" type="button" class="btn btn-primary btn-lg" data-ng-click="goToPage('/admin/edit-event')">
-	          Events
-	      </button> -->
-	      <button class="btn btn-primary btn-lg btn-dropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-	      	Events
-				  <span class="caret whiteText"></span>
-				</button>
-	      <ul class="dropdown-menu" role="menu" aria-labelledby="admin-menu-button-events">
-	          <li role="menuitem"><a href="/admin/create-event">Create Event</a></li>
-	          <li role="menuitem"><a href="/admin/edit-event">Edit Event</a></li>
-	          <li role="menuitem"><a href="/admin/delete-event">Delete Event</a></li>
-	      </ul>
-    	</div>
-      <button id="admin-menu-speakers" type="button" class="btn btn-primary btn-lg" data-ng-click="goToPage('/admin/edit-speaker')">
-          Speakers
-      </button>
-      <button class="btn btn-primary btn-lg">
-			  <span class="caret"></span>
-			</button>
-      <ul class="dropdown-menu" role="menu" aria-labelledby="admin-menu-speakers">
-          <li role="menuitem"><a href="/admin/create-speaker">Create Speaker</a></li>
-          <li role="menuitem"><a href="/admin/edit-speaker">Edit Speaker</a></li>
-          <li role="menuitem"><a href="/admin/delete-speaker">Delete Speaker</a></li>
-      </ul>
-      <button id="admin-menu-slideshow" type="button" class="btn btn-primary btn-lg" data-ng-click="goToPage('/admin/slideshow')">
-          Slideshow Settings
-      </button>
-      <button id="admin-menu-help" type="button" class="btn btn-primary btn-lg" data-ng-click="goToPage('/admin/edit-files')">
-          Uploads
-      </button>
-      <button id="admin-files-help" type="button" class="btn btn-primary btn-lg" data-ng-click="goToPage('/admin/help')">
-          Help
-      </button>
-      <button id="admin-menu-help" type="button" class="btn btn-primary btn-lg" data-ng-click="logout()">
-          Logout
-      </button>
-    </div>
-  	<!-- <div class="btn-group" uib-dropdown keyboard-nav>
-    </div>
-    <div class="btn-group" >
-    </div>
-    <div class="btn-group" >
-    </div>
-    <div class="btn-group" >
-    </div>
-    <div class="btn-group" >
-    </div> -->
+<div class="container admin-header-container" role="presentation">
+	<div class="row" role="presentation">
+		<div class="col-lg-24" role="presentation" ng-controller="AdminHeaderCtrl">
+			<ul class="nav nav-tabs nav-justified" admin-header-directive>
+			  <li role="presentation"><a href="/admin/edit-event">Events</a></li>
+			  <li role="presentation"><a href="/admin/edit-speaker">Speakers</a></li>
+			  <li role="presentation"><a href="/admin/slideshow">Slideshow</a></li>
+			  <li role="presentation"><a href="/admin/edit-files">Uploads</a></li>
+			  <li role="presentation"><a href="/admin/help">Help</a></li>
+			  <li role="presentation"><a href="" ng-click="logout()">Logout</a></li>
+			</ul>
+		</div>
 	</div>
-</nav>
-
-<!--   <div class="dropdown">
-    <button id="dropdownSample1" class="btn btn-dropdown no-outline" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-        Dropdown button sample
-        <span class="caret"></span>
-    </button>
-
-    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownSample1">
-        <li class="active"><a href="#">Item 1</a></li>
-        <li class="disabled"><a href="#">Item 2</a></li>
-        <li><a href="#">Item 3</a></li>
-        <li role="separator" class="divider"></li>
-        <li><a href="#">Item 4</a></li>
-    </ul>
-</div> -->
+</div>

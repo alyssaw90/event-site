@@ -353,7 +353,6 @@ module.exports = (router) => {
 
   // create new event
   router.post('/createevent', eatAuth, (req, res, next) => {
-    console.log(clc.white.bgCyan('req.body :: '), req.body);
     models.sql.sync()
     .then(function () {
       Event.create({
@@ -376,20 +375,16 @@ module.exports = (router) => {
         eventParkingInfo: req.body.newVenueParkingInfo,
         eventVenueImg: req.body.newEventVenueImg
       })
+      .catch( (err) => {
+        console.log(clc.red.bgCyan(':::::   '), err.errors);
+        res.json(err.errors);
+      })
       .then( (newEvent) => {
         models.sql.sync()
         .then( () => {
           let speakersArr = [];
-          for(let key in req.body.speakers){
-            if (req.body.speakers[key]) {
-              speakersArr.push({speakerId: key, position: req.body.speakers[key]  });    
-              
-            }
-           
-          }
-          
-          for(let i = 0, length1 = speakersArr.length; i < length1; i++){
-            newEvent.addSpeaker(speakersArr[i].speakerId, {sortPosition: speakersArr[i].position});
+          for (let i = 0, len = req.body.speakers.length; i < len; i++) {
+            newEvent.addSpeaker(req.body.speakers[i].id, {sortPosition: req.body.speakers[i].eventPosition});            
           }
           
           res.json(newEvent);

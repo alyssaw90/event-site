@@ -12,11 +12,6 @@ const createEventCloseModalDirective = (app) => {
 					scope.$parent.newEvent.speakers = scope.$parent.newSpeakers;
 				});
 
-				//set speakers if they've already been selected
-			/*	elem.on('show.bs.modal', (e) => {
-					scope.$parent.newSpeakers = scope.$parent.newEvent.speakers;
-				})
-*/
 			}
 			
 		}

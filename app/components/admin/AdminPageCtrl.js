@@ -42,7 +42,7 @@ const AdminPageCtrl = (app) => {
       AdminPageREST.addTinymceFile(file, (err, data) => {
         if (err) {
           $scope.errors.push({msg: 'could not upload file'});
-          alert('there was a problem sving your file');
+          alert('there was a problem saving your file');
         }
         if (!err) {
           return;
@@ -61,6 +61,7 @@ const AdminPageCtrl = (app) => {
           let fileName =  `${time}-${file.name}`;
           let fileLocation = `/uploads/${fileName}`;
           reader.onloadend = (e) => {
+            console.log('result ::  ', e.target);
             let base64String = e.target.result.split(',')[1];
             addTinymceFile({
               base64String: base64String,

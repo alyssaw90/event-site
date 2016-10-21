@@ -13,9 +13,9 @@ module.exports = (sql, DataTypes) => {
     eventRegistrationLink: DataTypes.STRING, //link to registrationfor event
     eventUrl: {
       type: DataTypes.STRING,
-      // unique: true,
+      unique: true,
       allowNull: true,
-      // required: true,
+      required: true,
       set: function(val) {
         this.setDataValue('eventUrl', val.replace(/\s+/g, '').toLowerCase() );
       }

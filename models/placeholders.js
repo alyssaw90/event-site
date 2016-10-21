@@ -223,6 +223,7 @@ module.exports = function () {
 		.then(function () {
 			return Event.create({
 				eventLocation: 'Göttingen',
+				eventUrl: 'gottingen2015',
 				eventEndDate: new Date('May 22, 2015'),
 				eventStartDate: new Date('May 22, 2015'),
 				isPublished: true
@@ -231,6 +232,7 @@ module.exports = function () {
 		.then(function () {
 			return Event.create({
 				eventLocation: 'Zaragoza, Spain',
+				eventUrl: 'zaragoza2015',
 				eventEndDate: new Date('May 14, 2015'),
 				eventStartDate: new Date('May 14, 2015'),
 				isPublished: true
@@ -239,6 +241,7 @@ module.exports = function () {
 		.then(function () {
 			return Event.create({
 				eventLocation: 'Beijing',
+				eventUrl: 'beijing2015',
 				eventEndDate: new Date('March 17, 2015'),
 				eventStartDate: new Date('March 17, 2015'),
 				isPublished: true
@@ -247,6 +250,7 @@ module.exports = function () {
 		.then(function () {
 			return Event.create({
 				eventLocation: 'Santa Clara',
+				eventUrl: 'santa_clara2015',
 				eventEndDate: new Date('March 17, 2015'),
 				eventStartDate: new Date('March 17, 2015'),
 				isPublished: true
@@ -255,6 +259,7 @@ module.exports = function () {
 		.then(function () {
 			return Event.create({
 				eventLocation: 'Las Vegas',
+				eventUrl: 'lasvegas2015',
 				eventEndDate: new Date('March 17, 2015'),
 				eventStartDate: new Date('March 17, 2015'),
 				isPublished: true
@@ -263,6 +268,7 @@ module.exports = function () {
 		.then(function () {
 			return Event.create({
 				eventLocation: 'Cambridge, MA',
+				eventUrl: 'cambridge2015',
 				eventEndDate: new Date('March 17, 2015'),
 				eventStartDate: new Date('March 17, 2015'),
 				isPublished: true
@@ -271,6 +277,7 @@ module.exports = function () {
 		.then(function () {
 			return Event.create({
 				eventLocation: 'London',
+				eventUrl: 'london2015',
 				eventEndDate: new Date('March 17, 2015'),
 				eventStartDate: new Date('March 17, 2015'),
 				isPublished: true
@@ -279,6 +286,7 @@ module.exports = function () {
 		.then(function () {
 			return Event.create({
 				eventLocation: 'Tokyo',
+				eventUrl: 'tokyo2015',
 				eventEndDate: new Date('March 17, 2015'),
 				eventStartDate: new Date('March 17, 2015'),
 				isPublished: true
@@ -287,6 +295,7 @@ module.exports = function () {
 		.then(function () {
 			return Event.create({
 				eventLocation: 'Munich',
+				eventUrl: 'munich2015',
 				eventEndDate: new Date('March 17, 2015'),
 				eventStartDate: new Date('March 17, 2015'),
 				isPublished: true
@@ -295,6 +304,7 @@ module.exports = function () {
 		.then(function () {
 			return Event.create({
 				eventLocation: 'Seoul',
+				eventUrl: 'seoul2015',
 				eventEndDate: new Date('March 17, 2015'),
 				eventStartDate: new Date('March 17, 2015'),
 				isPublished: true
