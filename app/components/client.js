@@ -38,6 +38,7 @@ require('./pastEvents/pastEventsDirective.js')(eventsApp);
 require('./admin/createEvent/createEventCloseModalDirective.js')(eventsApp);
 require('./admin/editEvent/editEventDirective.js')(eventsApp);
 require('./admin/createEvent/createEventButtonDirective.js')(eventsApp);
+require('./shared/header/hamburgerMenuDirective.js')(eventsApp);
 
 //controllers
 require('./shared/AllPagesCtrl.js')(eventsApp);
