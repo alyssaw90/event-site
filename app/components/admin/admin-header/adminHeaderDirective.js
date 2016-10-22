@@ -3,31 +3,20 @@ import * as customFunctions from '../../shared/methods/common-functions.js';
 const jQuery = require('jquery');
 
 const adminHeaderDirective = (app) => {
-	app.directive('adminHeaderDirective', ['$timeout', function($timeout) {
+	app.directive('adminHeaderDirective', ['$timeout', '$location', function($timeout, $location) {
 			const adminHeaderDirectiveDefinitionObject = {
 				restrict: 'A',
 				scope: true,
-				link: function postLink(scope, element, attrs) {/*
+				link: ($scope, $elem, $attrs) => {
+					//assign active class to current element in admin header
+					$scope.$on('$routeChangeSuccess', (event, current, previous) => {
+						let urlPath = $location.path();
+						$elem.children().removeClass('active');
+						$elem.find(`a[href="${urlPath}"]`).parent('li').addClass('active');
+						
+					})
 
-					$timeout(function() {
-						let path = window.location.pathname;
-						let $currentAdminAnchor = jQuery(`a[href="${path}"]`);
-						let $allAdminAnchors = jQuery('#admin-menu-ul').find('a');
-						$allAdminAnchors.removeClass('inset');
-						$currentAdminAnchor.addClass('inset');
-					}, 500);
-
-					scope.$on('$locationChangeSuccess', function(event) {
-						$timeout(function() {
-						let path = window.location.pathname;
-						let $currentAdminAnchor = jQuery(`a[href="${path}"]`);
-						let $allAdminAnchors = jQuery('#admin-menu-ul').find('a');
-						$allAdminAnchors.removeClass('inset');
-						$currentAdminAnchor.addClass('inset');
-
-					}, 500);
-					});
-				*/}
+				}
 			};
 	  	return adminHeaderDirectiveDefinitionObject
 		}])

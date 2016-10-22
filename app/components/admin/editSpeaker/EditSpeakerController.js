@@ -15,7 +15,9 @@ const EditSpeakerController = (app) => {
       if (newVal) {
         $scope.speakerToEdit.headShot = newVal.size + '-' + newVal.name;
       }
-    })
+    });
+
+    $scope.tinymceEditSpeakerOptions = $rootScope.tinymceOptions;
 
     $scope.getSpeaker = (speaker) => {
       $scope.speakerToEdit = speaker;

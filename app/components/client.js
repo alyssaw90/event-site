@@ -32,11 +32,13 @@ require('./futureEvents/bingMapDirective.js')(eventsApp);
 require('./shared/header/sliderSlideDirective.js')(eventsApp);
 require('./shared/header/headerDirective.js')(eventsApp);
 require('./events/eventsDirective.js')(eventsApp);
-require('./admin/adminPageDirective.js')(eventsApp);
+require('./admin/adminCityNameAutoCompleteDirective.js')(eventsApp);
 require('./admin/admin-header/adminHeaderDirective.js')(eventsApp);
 require('./pastEvents/pastEventsDirective.js')(eventsApp);
-require('./admin/createEvent/createEventDirective.js')(eventsApp);
+require('./admin/createEvent/createEventCloseModalDirective.js')(eventsApp);
 require('./admin/editEvent/editEventDirective.js')(eventsApp);
+require('./admin/createEvent/createEventButtonDirective.js')(eventsApp);
+require('./shared/header/hamburgerMenuDirective.js')(eventsApp);
 
 //controllers
 require('./shared/AllPagesCtrl.js')(eventsApp);
@@ -46,7 +48,7 @@ require('./meetTheTeam/MeetTheTeamCtrl.js')(eventsApp);
 require('./futureEvents/FutureEventsController.js')(eventsApp);
 require('./futureEvents/BingMapCtrl.js')(eventsApp);
 require('./shared/header/HeaderController.js')(eventsApp);
-require('./admin/AdminFileUploadCtrl.js')(eventsApp);
+require('./admin/AdminPageCtrl.js')(eventsApp);
 require('./admin/createEvent/AdminCreateEventCtrl.js')(eventsApp);
 require('./latestNews/LatestNewsCtrl.js')(eventsApp);
 require('./events/EventsCtrl.js')(eventsApp);
@@ -194,7 +196,7 @@ eventsApp
 	.when('/admin/create-event', {
 		templateUrl: '/app/components/admin/createEvent/admin-create-event.html',
 		reloadOnSearch: false,
-		// controller: 'AdminCreateEventCtrl',
+		controller: 'AdminCreateEventCtrl',
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
     }
@@ -266,7 +268,7 @@ eventsApp
 				}
 			}
 			
-		}, 901);
+		}, 1100);
 	}
 
 	//when the route starts with /admin, call the /api/user/checklogin route to check if the user is logged in and redirect them to the login page if they aren't

@@ -14,8 +14,8 @@
   		  <hr aria-hidden="true" role="presentation" class="alt1" />
   		</section>
  		</div>			
-    <section role="presentation" class="col_12 internetExplorer">
-    	<div data-ng-controller="AdminFileUploadCtrl">
+    <section role="presentation" class="col_12 internetExplorer" ng-controller="AdminPageCtrl">
+    	<div data-ng-controller="AdminPageCtrl">
 	  	  <p>Select Headshot</p>
 	  		<button name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'newSpeakerImg')">Select File</button>
 	  		<br><br>

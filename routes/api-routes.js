@@ -48,9 +48,14 @@ const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 
 const continentColors = {'North America': '#007233', 'South America': '#D13900', 'Africa': '#B4009E', 'Asia': '#0072C6', 'Europe': '#442359', 'Oceania': '#008272'};
 
 module.exports = (router) => {
-  router.use(bodyparser.json());
+  router.use(bodyparser.json({
+    limit: '500mb',
+    type:'application/json'
+  }));
   router.use(bodyparser.urlencoded({
-    extended: true
+    limit: '500mb',
+    extended: true,
+    parameterLimit:50000
   }));
   router.use(cookieParser());
 
@@ -170,7 +175,6 @@ module.exports = (router) => {
   router.route('/bingmapkey')
   .get( (req, res) => {
     res.json(process.env.BING_MAP_API_KEY);
-    res.end();
   });
 
 
@@ -371,20 +375,16 @@ module.exports = (router) => {
         eventParkingInfo: req.body.newVenueParkingInfo,
         eventVenueImg: req.body.newEventVenueImg
       })
+      .catch( (err) => {
+        console.log(clc.red.bgCyan(':::::   '), err.errors);
+        res.json(err.errors);
+      })
       .then( (newEvent) => {
         models.sql.sync()
         .then( () => {
           let speakersArr = [];
-          for(let key in req.body.speakers){
-            if (req.body.speakers[key]) {
-              speakersArr.push({speakerId: key, position: req.body.speakers[key]  });    
-              
-            }
-           
-          }
-          
-          for(let i = 0, length1 = speakersArr.length; i < length1; i++){
-            newEvent.addSpeaker(speakersArr[i].speakerId, {sortPosition: speakersArr[i].position});
+          for (let i = 0, len = req.body.speakers.length; i < len; i++) {
+            newEvent.addSpeaker(req.body.speakers[i].id, {sortPosition: req.body.speakers[i].eventPosition});            
           }
           
           res.json(newEvent);

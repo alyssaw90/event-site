@@ -3,20 +3,23 @@ import * as customFunctions from '../../shared/methods/common-functions.js';
 // require('tinymce');
 const AdminCreateEventCtrl = (app) => {
   app.controller('AdminCreateEventCtrl', ['$rootScope', '$scope', '$http', 'Upload', '$window', 'createEventRESTResource', ($rootScope, $scope, $http, Upload, $window, resource) => {
-    require('angular-ui-tinymce');
+    // require('angular-ui-tinymce');
 		$scope.errors = [];
 		$scope.theEvents = [];
 		$scope.theSpeakers = [];
+    $scope.newSpeakers = [];
 		$scope.newEvent = {};
-		$scope.hideModal = true;
-    $scope.hideVenueModal = true;
+    $scope.newEvent.speakers = [];
     $scope.hideEventPreview = true;
-    $scope.hideImageModal = true;
     $scope.speakersAdded = 0;
     $scope.displaySpeakerDivStyle = false;
     $scope.previewSpeakers = [];
+    $scope.newEventSortSpeakerOptions = {
+      placeholder: 'newEventSpeaker',
+      connectWith: '.new-event-speaker-table-container'
+    };
 
-    let DataForEditingEvents = resource();
+    let createEventsREST = resource();
 
     if ($scope.newEvent.newEventName && $scope.newEvent.eventAboutTabText) {
       $scope.displaySpeakerDivStyle = false;
@@ -25,7 +28,7 @@ const AdminCreateEventCtrl = (app) => {
 
     $scope.getEvents = () => {
 
-      DataForEditingEvents.getAllEvents( (err, data) => {
+      createEventsREST.getAllEvents( (err, data) => {
         if (err) {
           return $scope.errors.push({msg: 'could not retrieve events'});
         };
@@ -38,12 +41,15 @@ const AdminCreateEventCtrl = (app) => {
 
     $scope.getAllSpeakers = () => {
 
-      DataForEditingEvents.getAllSpeakers( (err, speakers) => {
+      createEventsREST.getAllSpeakers( (err, speakers) => {
         if (err) {
           return $scope.errors.push({msg: 'could not retrieve speakers'});
         }
 
-        $scope.theSpeakers = speakers;
+        for (let i = 0, len = speakers.length; i < len; i++) {
+          $scope.theSpeakers.push(speakers[i]);
+        }
+
       })
     };
 
@@ -55,7 +61,7 @@ const AdminCreateEventCtrl = (app) => {
         newEventData.newEventVenueImg = $rootScope.eventVenueImg.name ? $rootScope.eventVenueImg.size + '-' + $rootScope.eventVenueImg.name : '';
       }
 
-      DataForEditingEvents.createEvent(newEventData, (err, data) => {
+      createEventsREST.createEvent(newEventData, (err, data) => {
         if (err) {
           $scope.errors.push({msg: 'could not save newEvent: ' + $scope.newEvent.eventName});
         }
@@ -71,19 +77,13 @@ const AdminCreateEventCtrl = (app) => {
       });
     };
 
-    $scope.closeModalWindow = () => {
-      $scope.hideModal = !$scope.hideModal;
-    };
-    $scope.closeVenueModal = () => {
-      $scope.hideVenueModal = !$scope.hideVenueModal;
-    };
-    $scope.toggleImageModal = () => {
-      $scope.hideImageModal = !$scope.hideImageModal;
-    };
-
-    $scope.toggleEventPreview = () => {
-      $scope.hideEventPreview = !$scope.hideEventPreview;
-    };
+    $scope.cancelVenue = () => {
+      $scope.newEvent.newEventVenueName = null;
+      $scope.newEvent.newVenduAddressLine1 = null;
+      $scope.newEvent.newVenueAddressLine2 = null;
+      $scope.newEvent.newVenueParkingInfo = null;
+      $scope.newEvent.eventVenueImg = null;
+    }
 
     $scope.getPreviewSpeakers = (theSpeakers) => {
       if ($scope.newEvent.speakers) {
@@ -97,7 +97,6 @@ const AdminCreateEventCtrl = (app) => {
       }
     }
 
-    $scope.tinymceOptions = $rootScope.tinymceOptions;
 
 	}])
 }

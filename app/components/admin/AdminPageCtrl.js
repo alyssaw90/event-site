@@ -1,9 +1,9 @@
 'use strict';
 
-const AdminFileUploadCtrl = (app) => {
-	app.controller('AdminFileUploadCtrl', ['$rootScope', '$scope', 'Upload', '$timeout', 'adminPageRESTResource', ($rootScope, $scope, Upload, $timeout, resource) => {
+const AdminPageCtrl = (app) => {
+	app.controller('AdminPageCtrl', ['$rootScope', '$scope', 'Upload', '$timeout', 'adminPageRESTResource', '$http', ($rootScope, $scope, Upload, $timeout, resource, $http) => {
 
-    let AdminPageREST = resource();
+    const AdminPageREST = resource();
 
     $rootScope.uploadFiles = (file, errFiles, rootScopeKey, callback) => {
       $rootScope[rootScopeKey] = file;
@@ -42,7 +42,7 @@ const AdminFileUploadCtrl = (app) => {
       AdminPageREST.addTinymceFile(file, (err, data) => {
         if (err) {
           $scope.errors.push({msg: 'could not upload file'});
-          alert('there was a problem sving your file');
+          alert('there was a problem saving your file');
         }
         if (!err) {
           return;
@@ -61,6 +61,7 @@ const AdminFileUploadCtrl = (app) => {
           let fileName =  `${time}-${file.name}`;
           let fileLocation = `/uploads/${fileName}`;
           reader.onloadend = (e) => {
+            console.log('result ::  ', e.target);
             let base64String = e.target.result.split(',')[1];
             addTinymceFile({
               base64String: base64String,
@@ -88,7 +89,7 @@ const AdminFileUploadCtrl = (app) => {
         return false;
       }
   
-    $rootScope.tinymceOptions = { 
+    $scope.tinymceOptions = { 
       selector: 'textarea',
       height: 500,
       theme: 'modern',
@@ -116,4 +117,4 @@ const AdminFileUploadCtrl = (app) => {
 	}])
 }
 
-module.exports = AdminFileUploadCtrl;
+module.exports = AdminPageCtrl;
