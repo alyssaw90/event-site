@@ -11,10 +11,14 @@
 				<div class="form-group clearfix" role="presentation">
 					<label for="eventUrl">Event URL*</label>
 					<br>
+					<div ng-messages="addNewEventForm.eventUrl.$error" role="alert">
+						<div ng-message="uniqueUrl" class="win-color-fg-alert alert-warning col-lg-offset-4">This URL has already been used. Please select a different URL</div>
+						<br>
+					</div>
 					<div role="presentation" class="float-left">
 						interopevents.com/
 					</div>
-					<input class="form-control col-lg-20 float-right" type="text" data-ng-model="newEvent.eventUrl" name="eventUrl" id="eventUrl" style="width: 90%">
+					<input class="form-control col-lg-20 float-right" type="text" data-ng-model="newEvent.eventUrl" name="eventUrl" id="eventUrl" style="width: 90%" unique-url-directive required>
 				</div>
 				<div class="form-group" role="presentation">
 					<label for="newEventRegistrationLink">Event Registration Link (must be a propertly formed url with http:// or https://)</label>
@@ -27,7 +31,7 @@
 				<div class="form-group" role="presentation">
 					<label for="newEventState">Event State</label>
 					<select class="form-control" data-ng-model="newEvent.newEventState" name="newEventState" id="newEventState">
-						<option value="">N/A</option>
+						<option value="N/A">N/A</option>
 						<option value="AK">Alaska</option>
 						<option value="AL">Alabama</option>
 						<option value="AR">Arkansas</option>

@@ -376,8 +376,8 @@ module.exports = (router) => {
         eventVenueImg: req.body.newEventVenueImg
       })
       .catch( (err) => {
-        console.log(clc.red.bgCyan(':::::   '), err.errors);
-        res.json(err.errors);
+        console.log(clc.red.bgCyan(':::::   '), err);
+        next(new Error(err.errors));
       })
       .then( (newEvent) => {
         models.sql.sync()
