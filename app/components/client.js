@@ -38,7 +38,7 @@ require('./admin/admin-header/adminHeaderDirective.js')(eventsApp);
 require('./pastEvents/pastEventsDirective.js')(eventsApp);
 require('./admin/createEvent/createEventCloseModalDirective.js')(eventsApp);
 require('./admin/editEvent/editEventDirective.js')(eventsApp);
-require('./admin/createEvent/createEventButtonDirective.js')(eventsApp);
+require('./admin/createEvent/matchButtonSizeDirective.js')(eventsApp);
 require('./shared/header/hamburgerMenuDirective.js')(eventsApp);
 require('./admin/createEvent/uniqueUrlDirective.js')(eventsApp);
 

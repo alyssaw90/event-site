@@ -90,12 +90,9 @@ const AdminCreateEventCtrl = (app) => {
       });
     };
 
-    $scope.cancelVenue = () => {
-      $scope.newEvent.newEventVenueName = null;
-      $scope.newEvent.newVenduAddressLine1 = null;
-      $scope.newEvent.newVenueAddressLine2 = null;
-      $scope.newEvent.newVenueParkingInfo = null;
-      $scope.newEvent.eventVenueImg = null;
+    $scope.cancelNewEvent = () => {
+      $scope.newEvent = {};
+      $scope.newEvent.speakers = [];
     }
 
     $scope.getPreviewSpeakers = (theSpeakers) => {
