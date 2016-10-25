@@ -82,7 +82,10 @@ const AdminCreateEventCtrl = (app) => {
           $rootScope.eventVenueImg = undefined;
 
           // $window.location.reload();
-          alert('Event Saved');
+          swal({
+            title: 'Event Saved',
+            type: 'success'
+          });
         }
       });
     };

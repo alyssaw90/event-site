@@ -10,8 +10,8 @@ const uniqueUrlDirective = (app) => {
 			require: 'ngModel',
 			link: ($scope, $elem, attrs, ngModel) => {
 				const $createEventForm = jQuery($elem[0].form);
-				//when the urlInput loses focus check if the value is unique and add an error and warning css if it's not unique
-				$elem.blur(function(e) {
+				//function to check for unique URL
+				function uniqueUrl() {
 					if ($scope.$parent.eventUrls.indexOf($elem[0].value) > 0) {
 						ngModel.$setValidity('uniqueUrl', false);
 						$elem.addClass('win-color-border-color-alert');
@@ -20,7 +20,9 @@ const uniqueUrlDirective = (app) => {
 						ngModel.$invalid = true;
 						$elem.removeClass('win-color-border-color-alert');
 					}
-				});
+				};
+				//add unique url check to model $parsers
+				ngModel.$parsers.push(uniqueUrl);
 
 				//bind url check to form submission and prevent submission and focus on elem if it alread exists in URL array
 		    $createEventForm.bind('submit', function(e) {
