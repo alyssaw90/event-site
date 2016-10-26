@@ -126,14 +126,15 @@ module.exports = (router) => {
       for (let i = 0, len = upcomingEvents.length; i < len; i++) {
         let eventObj = {};
         let startYear;
+        cityArr = upcomingEvents[i].eventLocation.split(',');
         
-        cityArr = upcomingEvents[i].eventLocation.split('_');
+        /*cityArr = upcomingEvents[i].eventLocation.split('_');
         
         for (let index = 0, j = cityArr.length; index < j; index++) {
           cityArr[index] = cityArr[index].charAt(0).toUpperCase() + cityArr[index].slice(1);
-        }
+        }*/
 
-        city = cityArr.join(' ');
+        city = cityArr[0];
         //create dates for future-events page
         if (upcomingEvents[i].eventStartDate !== null && (upcomingEvents[i].eventStartDate.getMonth() !== 0/* && upcomingEvents[i].eventStartDate.getDate() !== 1*/) ) {
           eventDates = `${months[upcomingEvents[i].eventStartDate.getMonth()]} ${upcomingEvents[i].eventStartDate.getDate()} - ${upcomingEvents[i].eventEndDate.getDate()}, ${upcomingEvents[i].eventEndDate.getFullYear()}`;
@@ -195,6 +196,54 @@ module.exports = (router) => {
         res.json(events);
       });
   });  
+
+  //get published past events for past events page
+  router.get('/published-past-events', (req, res) => {
+    models.sql.sync()
+    .then( () => {
+      return Event.findAll({
+        where: {
+          eventEndDate: {
+            $and: {
+              $lt: new Date(),
+              $gte: new Date('2016-01-01')
+            }
+          },
+          isPublished: true
+        }
+      })
+      .then( (pastEvents) => {
+        let outputObj = {};
+        let eventNames = [];
+        for (let i = 0, len = pastEvents.length; i < len; i++) {
+          let eventYear = pastEvents[i].eventEndDate.getFullYear();
+          if (!outputObj.hasOwnProperty(eventYear) ) {
+            eventNames.unshift( pastEvents[i].eventName);
+            let eventsArr = [{
+              eventName: pastEvents[i].eventName,
+              eventUrl: pastEvents[i].eventUrl,
+              eventStartDate: pastEvents[i].eventStartDate,
+              eventEndDate: pastEvents[i].eventEndDate,
+              eventTechnicalTopics: pastEvents[i].eventTechnicalTopics,
+              eventLocation: pastEvents[i].eventLocation
+            }];
+            outputObj[eventYear] = eventsArr;
+          } else if (outputObj.hasOwnProperty(eventYear) && eventNames.indexOf( pastEvents[i].eventName) < 0) {
+            eventNames.push( pastEvents[i].eventName);
+            outputObj[eventYear].unshift({
+              eventName: pastEvents[i].eventName,
+              eventUrl: pastEvents[i].eventUrl,
+              eventStartDate: pastEvents[i].eventStartDate,
+              eventEndDate: pastEvents[i].eventEndDate,
+              eventTechnicalTopics: pastEvents[i].eventTechnicalTopics,
+              eventLocation: pastEvents[i].eventLocation
+            });
+          }
+        }
+        res.json(outputObj);
+      });
+    });
+  });
 
   //route to get all files and delet files
   router.get('/files', eatAuth, (req, res) => {
@@ -362,8 +411,6 @@ module.exports = (router) => {
         eventStartDate: req.body.newEventStartDate,
         eventEndDate: req.body.newEventEndDate,
         eventLocation: req.body.newEventCity,
-        eventState: req.body.newEventState,
-        eventCountry: req.body.newEventCountry,
         eventHeaderImage: req.body.newEventHeaderImage,
         eventContinent: req.body.newEventContinent,
         isPublished: req.body.publishStatus,
@@ -373,10 +420,10 @@ module.exports = (router) => {
         eventVenueAddressLine1: req.body.newVenduAddressLine1,
         eventVenueAddressLine2: req.body.newVenueAddressLine2,
         eventParkingInfo: req.body.newVenueParkingInfo,
-        eventVenueImg: req.body.newEventVenueImg
+        eventVenueImg: req.body.newEventVenueImg,
+        eventTechnicalTopics: req.body.eventTechnicalTopics
       })
       .catch( (err) => {
-        console.log(clc.red.bgCyan(':::::   '), err);
         next(new Error(err.errors));
       })
       .then( (newEvent) => {
@@ -413,8 +460,6 @@ module.exports = (router) => {
         eventRegistrationLink: req.body.event.eventRegistrationLink,
         eventStartDate: req.body.event.eventStartDate,
         eventEndDate: req.body.event.eventEndDate,
-        eventLocation: req.body.event.eventLocation,
-        eventState: req.body.event.eventState,
         eventCountry: req.body.event.eventCountry,
         eventHeaderImage: req.body.event.eventHeaderImage,
         eventContinent: req.body.event.eventContinent,
@@ -423,7 +468,8 @@ module.exports = (router) => {
         eventVenueAddressLine1: req.body.event.eventVenueAddressLine1,
         eventVenueAddressLine2: req.body.event.eventVenueAddressLine2,
         eventParkingInfo: req.body.event.eventParkingInfo,
-        eventVenueImg: req.body.event.eventVenueImg
+        eventVenueImg: req.body.event.eventVenueImg,
+        eventTechnicalTopics: req.body.eventTechnicalTopics
       })
       res.end();
     })

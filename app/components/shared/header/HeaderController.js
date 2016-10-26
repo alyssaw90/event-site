@@ -1,12 +1,16 @@
 'use strict';
 
 const HeaderController = (app) => {
-	app.controller('HeaderController', ['$scope', '$http', 'headerRESTResource', ($scope, $http, resource) => {
+	app.controller('HeaderController', ['$scope', '$http', '$location', 'headerRESTResource', ($scope, $http, $location, resource) => {
 		$scope.errors = [];
 		$scope.siteStyle = [];
 		$scope.sliderImgsHeights = [];
 		$scope.pastEventsImg = './uploads/past-events-banner.jpg';
 		let Slideshow = resource();
+		$scope.onHomePage = $location.path() === '/';
+		$scope.$on('$locationChangeSuccess', function(e) {
+			$scope.onHomePage = $location.path() === '/';
+		});
 
 		$scope.getSlides = (slideshowName) => {
 

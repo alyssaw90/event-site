@@ -8,6 +8,7 @@ const uniqueUrlDirective = (app) => {
 		const uniqueUrlDirectiveObj = {
 			restrict: 'A',
 			require: 'ngModel',
+			scope: true,
 			link: ($scope, $elem, attrs, ngModel) => {
 				const $form = jQuery($elem[0].form);
 				let usedUrls;
@@ -17,14 +18,13 @@ const uniqueUrlDirective = (app) => {
 				}
 				
 
-					console.log('scope arr :: ', $scope);
 				$scope.$watch('editedEvent.event', () => {
 					$scope.$parent.getEvents();
 					usedUrls = $scope.$parent.eventUrls.filter(removeCurrentUrl);
 				})
 				//function to check for unique URL
 				function uniqueUrl() {
-					if (usedUrls.indexOf($elem[0].value) > 0) {
+					if (usedUrls.indexOf($elem[0].value) > -1) {
 						ngModel.$setValidity('uniqueUrl', false);
 						$elem.addClass('win-color-border-color-alert');
 					} else {
@@ -38,7 +38,7 @@ const uniqueUrlDirective = (app) => {
 
 				//bind url check to form submission and prevent submission and focus on elem if it alread exists in URL array
 		    $form.bind('submit', function(e) {
-		    	if (usedUrls.indexOf(e.currentTarget[1].value) > 0) {
+		    	if (usedUrls.indexOf(e.currentTarget[1].value) > -1) {
 		    		e.preventDefault();
 		    		ngModel.$setValidity('uniqueUrl', false);
 		    		jQuery(e.currentTarget[1]).addClass('win-color-border-color-alert').focus();

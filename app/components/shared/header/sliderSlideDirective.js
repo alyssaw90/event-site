@@ -7,17 +7,17 @@ const sliderSlideDirective = (app) => {
 			const sliderSlideDirectiveDefinitionObject = {
 				restrict: 'A',
 				scope: true,
-				link: function postLink(scope, element, attrs) {
+				link: function postLink($scope, $elem, attrs) {
 
 					const changeHeight = () => {
 						//emptly the height array
-						scope.$parent.sliderImgsHeights.length = 0;
+						$scope.$parent.sliderImgsHeights.length = 0;
 						//get height of current slide in list and push the height into the height array
-						let elemHeight = jQuery(element[0]).height();
-						//push that height onto array of heights from parent scope
-						scope.$parent.sliderImgsHeights.push(elemHeight);
+						let elemHeight = jQuery($elem[0]).height();
+						//push that height onto array of heights from parent $scope
+						$scope.$parent.sliderImgsHeights.push(elemHeight);
 						//assign the tallest height in array to newHeight variable using es6 spread operator
-						let newHeight = Math.max(...scope.$parent.sliderImgsHeights);
+						let newHeight = Math.max(...$scope.$parent.sliderImgsHeights);
 						jQuery('#upcoming-events-carousel').height(newHeight);
 
 					}
@@ -31,7 +31,7 @@ const sliderSlideDirective = (app) => {
 					});
 					
 
-					scope.$on('$locationChangeSuccess', function(event) {
+					$scope.$on('$locationChangeSuccess', function(event) {
 						changeHeight();
 					})
 				}
