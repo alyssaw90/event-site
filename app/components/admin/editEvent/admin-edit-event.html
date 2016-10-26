@@ -63,30 +63,33 @@
     </section>
     <section id="edit-speakers-section" class="row edit-section" role="presentation" style="display: none;">
     <div class="col-lg-24" role="presentation">
-	    <button class="btn btn-success" ng-click="editSpeakers()">Save Speakers</button>
-	    	<div id="edit-slideshows">
-					<h3>Speakers</h3>
-				  <div class="edited-speaker-table-container clearfix edited-speaker-wrapper" style="display: flex;">
-				    <div ui-sortable="sortableOptions" data-ng-model="unusedSpeakers" class="slides edited-speaker-table-container col-lg-12 the-team-section clearfix ng-cloak">
-				    	<h4>Available Speakers, Not Displayed</h4>
-				      <div data-ng-repeat="editedEventSpeaker in unusedSpeakers" class="editedEventSpeaker">
-				      	<h4>{{editedEventSpeaker.firstName + ' ' +  editedEventSpeaker.lastName}}</h4>
-						    <h5>{{editedEventSpeaker.msTeamTitle}}</h5>
-						    <img alt="Image of {{editedEventSpeaker.fullName}}" class="pull-left" data-ng-src="{{editedEventSpeaker.headShot}}"  />
-						    <p data-ng-bind-html="editedEventSpeaker.speakerDescription"></p>
-			      	</div>
-				    </div>
-				    <div ui-sortable="sortableOptions" data-ng-model="editedEvent.speakers" class="slideshowSlides edited-speaker-table-container col-lg-12 the-team-section clearfix ng-cloak">
-				    	<h4>Speakers to Be Displayed with Event</h4>
-				      <div data-ng-repeat="editedEventSpeaker in editedEvent.speakers | orderBy: 'editedEventSpeaker.EventSpeakersAsscs.sortPosition'" class="editedEventSpeaker">
-				      	<h4>{{editedEventSpeaker.firstName + ' ' +  editedEventSpeaker.lastName}}</h4>
-						    <h5>{{editedEventSpeaker.msTeamTitle}}</h5>
-						    <img alt="Image of {{editedEventSpeaker.fullName}}" class="pull-left" data-ng-src="{{editedEventSpeaker.headShot}}"  />
-						    <p data-ng-bind-html="editedEventSpeaker.speakerDescription"></p>
-			      	</div>
-				    </div>
-					</div>
+		  <button type="button" class="btn form-button" ng-click="showElem('#main-edit-section', '.edit-section'); cancelEditing()">Cancel</button>
+	    <button class="btn btn-green form-button" ng-click="editSpeakers()">Save Speakers</button>
+    	<div id="edit-slideshows">
+				<h3>Speakers</h3>
+			  <div class="edited-speaker-table-container clearfix edited-speaker-wrapper" style="display: flex;">
+			    <div ui-sortable="sortableOptions" data-ng-model="unusedSpeakers" class="slides edited-speaker-table-container col-lg-12 the-team-section clearfix ng-cloak">
+			    	<h4>Available Speakers, Not Displayed</h4>
+			      <div data-ng-repeat="editedEventSpeaker in unusedSpeakers" class="editedEventSpeaker">
+			      	<h4>{{editedEventSpeaker.firstName + ' ' +  editedEventSpeaker.lastName}}</h4>
+					    <h5>{{editedEventSpeaker.msTeamTitle}}</h5>
+					    <img alt="Image of {{editedEventSpeaker.fullName}}" class="pull-left" data-ng-src="{{editedEventSpeaker.headShot}}"  />
+					    <p data-ng-bind-html="editedEventSpeaker.speakerDescription"></p>
+		      	</div>
+			    </div>
+			    <div ui-sortable="sortableOptions" data-ng-model="editedEvent.speakers" class="slideshowSlides edited-speaker-table-container col-lg-12 the-team-section clearfix ng-cloak">
+			    	<h4>Speakers to Be Displayed with Event</h4>
+			      <div data-ng-repeat="editedEventSpeaker in editedEvent.speakers | orderBy: 'editedEventSpeaker.EventSpeakersAsscs.sortPosition'" class="editedEventSpeaker">
+			      	<h4>{{editedEventSpeaker.firstName + ' ' +  editedEventSpeaker.lastName}}</h4>
+					    <h5>{{editedEventSpeaker.msTeamTitle}}</h5>
+					    <img alt="Image of {{editedEventSpeaker.fullName}}" class="pull-left" data-ng-src="{{editedEventSpeaker.headShot}}"  />
+					    <p data-ng-bind-html="editedEventSpeaker.speakerDescription"></p>
+		      	</div>
+			    </div>
 				</div>
+			</div>
+			<button type="button" class="btn form-button" ng-click="showElem('#main-edit-section', '.edit-section'); cancelEditing()">Cancel</button>
+	    <button class="btn btn-green form-button" ng-click="editSpeakers()">Save Speakers</button>
     </div>
     </section>
     <section id="add-tabs-section" class="row" edit-section" role="presentation" style="display: none;">
@@ -182,7 +185,8 @@
 						<input class="form-control" data-ng-model="tabToEdit.isPublished" type="radio" id="publishedFalse" name="tabPublishStatus" ng-value="false">
 					</radiogroup>
     		</div>
-				<button type="submit" class="medium float-left green">Save</button>
+    		<button type="button" class="btn form-button" ng-click="showElem('#main-edit-section', '.edit-section'); cancelEditing()">Cancel</button>
+				<button type="submit" class="btn btn-green form-button">Save</button>
     	</form>
     </section>
     <section id="edit-event-section" role="presentation" class="row edit-section" style="display: none">
@@ -422,8 +426,8 @@
 						<input class="form-control" data-ng-model="editedEvent.event.isPublished" type="radio" id="publishedFalse" name="publishStatus" ng-value="false">
 					</radiogroup>
 				</div>
-				<button type="button" class="medium float-left" style="margin: 5px" id="cancel-edited-event-button">Cancel</button>
-				<button type="submit" class="medium float-left green" style="margin: 5px" id="save-edited-event-as-draft-button">Save</button>
+    		<button type="button" class="btn form-button" ng-click="showElem('#main-edit-section', '.edit-section'); cancelEditing()" id="cancel-edited-event-button">Cancel</button>				
+				<button type="submit" class="btn btn-green form-button" id="save-edited-event-as-draft-button">Save</button>
 			</form>
 			<!-- input below is for tinymce file upload -->
 			<input name="image" type="file" id="upload" class="hideElem" onchange="">

@@ -11,12 +11,11 @@ const uniqueUrlDirective = (app) => {
 			scope: true,
 			link: ($scope, $elem, attrs, ngModel) => {
 				const $form = jQuery($elem[0].form);
-				let usedUrls;
 				//remove current event's URL from duplicate list
 				function removeCurrentUrl(val) {
 					return val !== $scope.$parent.currentEventUrl;
 				}
-				
+				let usedUrls = $scope.$parent.eventUrls;
 
 				$scope.$watch('editedEvent.event', () => {
 					$scope.$parent.getEvents();
@@ -24,7 +23,8 @@ const uniqueUrlDirective = (app) => {
 				})
 				//function to check for unique URL
 				function uniqueUrl() {
-					if (usedUrls.indexOf($elem[0].value) > -1) {
+					let index = $scope.$parent.eventUrls.indexOf($elem[0].value);
+					if (index > -1 && $elem[0].value !== $scope.$parent.currentEventUrl) {
 						ngModel.$setValidity('uniqueUrl', false);
 						$elem.addClass('win-color-border-color-alert');
 					} else {
@@ -38,10 +38,11 @@ const uniqueUrlDirective = (app) => {
 
 				//bind url check to form submission and prevent submission and focus on elem if it alread exists in URL array
 		    $form.bind('submit', function(e) {
-		    	if (usedUrls.indexOf(e.currentTarget[1].value) > -1) {
+		    	let index = $scope.$parent.eventUrls.indexOf($elem[0].value);
+		    	if (index > -1 && $elem[0].value !==  $scope.$parent.currentEventUrl) {
 		    		e.preventDefault();
 		    		ngModel.$setValidity('uniqueUrl', false);
-		    		jQuery(e.currentTarget[1]).addClass('win-color-border-color-alert').focus();
+		    		jQuery($elem[0]).addClass('win-color-border-color-alert').focus();
 		    	}
 		    });
 			}
