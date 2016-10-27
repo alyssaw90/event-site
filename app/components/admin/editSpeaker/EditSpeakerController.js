@@ -25,6 +25,12 @@ const EditSpeakerController = (app) => {
       jQuery('#edit-speakers-list').hide();
     }
 
+    $scope.cancelEditingSpeaker = () => {
+      $scope.speakerToEdit = {};
+      jQuery('#edit-speakers-section').hide();
+      jQuery('#edit-speakers-list').show();
+    }
+
     $scope.saveNewSpeaker = (speaker) => {
 
 

@@ -18,7 +18,6 @@ const EditFilesCtrl = (app) => {
         for (let i = 0, len = data.length; i < len; i++) {
           let fileExtension = data[i].slice(-4).toLowerCase();
           let isImage = true;
-          console.log('fileExtension       ', fileExtension);
           if (imageExtensions.indexOf(fileExtension) === -1) {
             isImage = false;
           }

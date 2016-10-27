@@ -38,7 +38,7 @@ const editSlideshowCtrl = (app) => {
 		
 		$scope.sortableOptions = {
   	  placeholder: 'slideshowSlide',
-  	  connectWith: '.slide-table-container'
+  	  connectWith: '.slide-sort-section'
   	};
   	//function to get all slides currently displayed in slideshow
 		$scope.getAllSlideshows = (slideshowName) => {

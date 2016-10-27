@@ -41,6 +41,7 @@ require('./admin/editEvent/editEventDirective.js')(eventsApp);
 require('./admin/createEvent/matchButtonSizeDirective.js')(eventsApp);
 require('./shared/header/hamburgerMenuDirective.js')(eventsApp);
 require('./admin/createEvent/uniqueUrlDirective.js')(eventsApp);
+require('./admin/editSlideshow/selectableSlideDirective.js')(eventsApp);
 
 //controllers
 require('./shared/AllPagesCtrl.js')(eventsApp);
@@ -177,6 +178,7 @@ eventsApp
 	.when('/admin/slideshow', {
 		templateUrl: '/app/components/admin/editSlideshow/editSlideshowTemplate.html',
 		reloadOnSearch: false,
+		controller: 'editSlideshowCtrl',
 		data: {
 			pageTitle: 'Edit Slideshow Settings'
 		}
