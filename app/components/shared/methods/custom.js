@@ -110,6 +110,13 @@ jQuery.extend(jQuery.expr[':'], {
 		});*/
 
 		$('main').css('position', '');
+		//prevent form submission with enter key
+		$(document).on('keypress', ':input:not(textarea)',function(e) {
+			let keyCode = customFunctions.getKeyCode(e);
+			if (keyCode === 13) {
+				e.preventDefault();
+			}
+		});
 
 		$(window).load(function() {
 			customFunctions.changeHeight('.past_events');

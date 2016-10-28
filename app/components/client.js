@@ -19,8 +19,9 @@ require('angular-ui-bootstrap');
 require('angular-ui-tinymce');
 require('angular-ui-sortable');
 require('angular-bootstrap-confirm');
+require('angular-messages');
 
-const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize', 'angular-google-analytics', 'ngFileUpload', 'ngResource', 'ngCookies', 'base64', 'ngAnimate', 'ui.bootstrap', 'ui.tinymce', 'ui.sortable', 'mwl.confirm']);
+const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize', 'angular-google-analytics', 'ngFileUpload', 'ngResource', 'ngCookies', 'base64', 'ngAnimate', 'ui.bootstrap', 'ui.tinymce', 'ui.sortable', 'mwl.confirm', 'ngMessages']);
 
 //directives
 require('./shared/allPagesDirective.js')(eventsApp);
@@ -37,8 +38,10 @@ require('./admin/admin-header/adminHeaderDirective.js')(eventsApp);
 require('./pastEvents/pastEventsDirective.js')(eventsApp);
 require('./admin/createEvent/createEventCloseModalDirective.js')(eventsApp);
 require('./admin/editEvent/editEventDirective.js')(eventsApp);
-require('./admin/createEvent/createEventButtonDirective.js')(eventsApp);
+require('./admin/createEvent/matchButtonSizeDirective.js')(eventsApp);
 require('./shared/header/hamburgerMenuDirective.js')(eventsApp);
+require('./admin/createEvent/uniqueUrlDirective.js')(eventsApp);
+require('./admin/editSlideshow/selectableSlideDirective.js')(eventsApp);
 
 //controllers
 require('./shared/AllPagesCtrl.js')(eventsApp);
@@ -74,6 +77,7 @@ require('./admin/editFiles/editFilesRESTResource.js')(eventsApp);
 require('./admin/editEvent/editEventRESTResource.js')(eventsApp);
 require('./admin/editSpeaker/editSpeakerRESTResource.js')(eventsApp);
 require('./admin/adminPageRESTResource.js')(eventsApp);
+require('./pastEvents/pastEventsRESTResource.js')(eventsApp);
 
 eventsApp
 .config(['$routeProvider', '$locationProvider', 'AnalyticsProvider', '$httpProvider', function ($routeProvider, $locationProvider, AnalyticsProvider, $httpProvider) {
@@ -174,6 +178,7 @@ eventsApp
 	.when('/admin/slideshow', {
 		templateUrl: '/app/components/admin/editSlideshow/editSlideshowTemplate.html',
 		reloadOnSearch: false,
+		controller: 'editSlideshowCtrl',
 		data: {
 			pageTitle: 'Edit Slideshow Settings'
 		}

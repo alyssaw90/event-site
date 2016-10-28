@@ -1,6 +1,6 @@
 
 <div class="mobileWrapper ng-cloak ng-cloak" role="presentation" ng-controller="AdminPageCtrl" data-ng-init="getEvents(); getAllSpeakers()" data-admin-page-directive>
-  <main style="overflow:hidden;" id="beginningOfContent" tabindex="0" class="container main-page-content">
+  <main style="overflow:hidden;" id="beginningOfContent" tabindex="0" class="container">
     <section role="presentation" class="row internetExplorer">
 			<form id="addNewEventForm" class="col-lg-24" name="addNewEventForm" method="post" enctype="multipart/form-data" data-ng-init="getAllSpeakers();" data-ng-submit="createNewEvent(newEvent);">
 				<h3>New Event</h3>
@@ -14,20 +14,27 @@
 					<div role="presentation" class="float-left">
 						interopevents.com/
 					</div>
-					<input class="form-control col-lg-20 float-right" type="text" data-ng-model="newEvent.eventUrl" name="eventUrl" id="eventUrl" style="width: 90%">
+					<input class="form-control col-lg-20 float-right" type="text" data-ng-model="newEvent.eventUrl" name="eventUrl" id="eventUrl" style="width: 90%" unique-url-directive required>
+					<div ng-messages="addNewEventForm.eventUrl.$error" role="alert" class="col-lg-offset-8 col-lg-16 col-md-offset-12 col-md-12 col-sm-24" style="position: absolute;">
+						<div ng-message="uniqueUrl" class="win-color-fg-alert alert-warning">This URL has already been used. Please select a different URL</div>
+					</div>
 				</div>
 				<div class="form-group" role="presentation">
 					<label for="newEventRegistrationLink">Event Registration Link (must be a propertly formed url with http:// or https://)</label>
 					<input class="form-control" type="url" data-ng-model="newEvent.newEventRegistrationLink" name="newEventRegistrationLink" id="newEventRegistrationLink">				
 				</div>
-				<div class="form-group" role="presentation">
-					<label class="ui-widget" for="newEventCity">Event City*</label>
-					<input class="form-control ui-widget-content" type="text" data-ng-model="newEvent.newEventCity" name="newEventCity" id="newEventCity" data-ng-required="required" admin-city-name-auto-complete-directive>				
+				<div role="presentation" class="form-group">
+					<label for="eventTechnicalTopics">Technical Topics</label>
+					<input class="form-control" type="text" data-ng-model="newEvent.eventTechnicalTopics" name="eventTechnicalTopics" id="eventTechnicalTopics">
 				</div>
 				<div class="form-group" role="presentation">
+					<label class="ui-widget" for="newEventCity">Event Location*</label>
+					<input class="form-control ui-widget-content" type="text" data-ng-model="newEvent.newEventCity" name="newEventCity" id="newEventCity" admin-city-name-auto-complete-directive required>				
+				</div>
+				<!-- <div class="form-group" role="presentation">
 					<label for="newEventState">Event State</label>
 					<select class="form-control" data-ng-model="newEvent.newEventState" name="newEventState" id="newEventState">
-						<option value="">N/A</option>
+						<option value="N/A">N/A</option>
 						<option value="AK">Alaska</option>
 						<option value="AL">Alabama</option>
 						<option value="AR">Arkansas</option>
@@ -86,8 +93,8 @@
 					<label for="newEventCountry">Event Country</label>
 					<input class="form-control" type="text" data-ng-model="newEvent.newEventCountry" name="newEventCountry" id="newEventCountry">				
 				</div>
-				<br>
-				<label for="new-event-date-wrapper">Event Dates (Can include time of day)</label>
+				<br> -->
+				<label for="new-event-date-wrapper">Event Dates (Must include time of day)</label>
 				<div id="new-event-date-wrapper" role="presentation">
 					<div class="time-input-wrapper form-group float-left" role="presentation">
 						<label for="newEventStartDate">Start</label>
@@ -163,7 +170,7 @@
 					<label for="newVenueParkingInfo">Parking Information</label>
 					<textarea class="form-control" data-ng-model="newEvent.newVenueParkingInfo" name="newVenueParkingInfo" id="newVenueParkingInfo"></textarea>				
 				</div>
-				<div role="presentation" create-event-button-directive>
+				<div role="presentation" match-button-size-directive>
 					<div data-ng-controller="AdminPageCtrl">
 						<button class="btn btn-default" name="venuePhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventVenueImg')">Select Venue Image</button>
 					</div>
@@ -200,7 +207,7 @@
 						</label>
 					</radiogroup>
 				</div>
-				<button type="button" class="btn btn-default btn-lg float-left" style="margin: 5px" id="cancel-new-event-button">Cancel</button>
+				<button type="button" class="btn btn-default btn-lg float-left" style="margin: 5px" id="cancel-new-event-button" ng-click="cancelNewEvent()">Cancel</button>
 		    <button type="button" class="btn btn-default btn-lg float-left" data-toggle="modal" data-target="#new-event-add-venue-modal" style="margin: 5px">Preview</button>
 				<button type="submit" class="btn btn-green btn-lg float-left" style="margin: 5px" id="save-new-event-as-draft-button">Save</button>
 				<input name="image" type="file" id="upload" class="hideElem" onchange="">
@@ -216,13 +223,13 @@
           <div data-ng-controller="AdminPageCtrl" class="clearfix">
           	<h4 class="modal-title">Select Speakers</h4>
 					  <div class="clearfix modal-container new-event-speakers-modal-container">
-					    <div ui-sortable="newEventSortSpeakerOptions" data-ng-model="theSpeakers" class="new-event-speaker-table-container col_6 ">
+					    <div ui-sortable="newEventSortSpeakerOptions" data-ng-model="theSpeakers" class="new-event-speaker-table-container col-lg-12 ">
 					    	<h5>Available Speakers, Not Displayed</h5>
 					      <div data-ng-repeat="speaker in theSpeakers" class="newEventSpeaker ui-state-default">
 					      	<p>{{speaker.fullName}}</p>
 				      	</div>
 					    </div>
-					    <div ui-sortable="newEventSortSpeakerOptions" data-ng-model="newSpeakers" class="new-event-speaker-table-container col_6 ">
+					    <div ui-sortable="newEventSortSpeakerOptions" data-ng-model="newSpeakers" class="new-event-speaker-table-container col-lg-12 ">
 					    	<h5>Speakers to Be Displayed with Event</h5>
 					      <div data-ng-repeat="speaker in newSpeakers" class="newEventSpeaker ui-state-default">
 					      	<span ng-hide="true">{{speaker.eventPosition = $index}}</span>

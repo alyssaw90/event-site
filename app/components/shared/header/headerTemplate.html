@@ -1,4 +1,4 @@
-<header class="ng-cloak" role="navigation" aria-label="header menu" data-ng-controller="FutureEventsCtrl" data-ng-init="getUpcomingEvents()" data-header-directive>
+<header class="ng-cloak" role="navigation" aria-label="header menu" data-ng-controller="FutureEventsCtrl" data-ng-init="getUpcomingEvents()">
 	<!-- Begin upper purple menu -->
 	<div class="menu-overlay hamburger-menu social-icons" data-ng-style="{'background-color':futureEvents[0].eventHighlightColor}" hamburger-menu-directive>
 	<!-- Begin Mobile "Hamburger Menu" -->
@@ -22,25 +22,25 @@
 			<div><a class="skipNavigation" target="_self" href="#beginningOfContent">Skip to Main Content</a></div>
 			<div><a class="skipNavigation" target="_self" href="#footerStartMenuItem">Skip to Footer</a></div>
 		<div class="col_2 center-block">
-			<div class="col_2 center-block menu-block home-menu-button"><a title="Navigate to Home page" aria-label="Home" id="home-button" href="/"><span aria-hidden="true" role="presentation">Home</span></a></div>
+			<div class="col_2 center-block menu-block home-menu-button" header-directive><a title="Navigate to Home page" aria-label="Home" id="home-button" href="/"><span aria-hidden="true" role="presentation">Home</span></a></div>
 		</div>
 		<div class="col_2 center-block">
-			<div class="col_2 center-block menu-block upcominEventsBlock"><a title="Navigate to Find an Event page" aria-label="Find an Event" href="/future-events"><span aria-hidden="true" role="presentation">Find an Event</span></a></div>
+			<div class="col_2 center-block menu-block upcominEventsBlock" header-directive><a title="Navigate to Find an Event page" aria-label="Find an Event" href="/future-events"><span aria-hidden="true" role="presentation">Find an Event</span></a></div>
 		</div>
 		<div class="col_2 center-block">
-			<div class="col_2 center-block menu-block latest-news-menu-block"><a title="Navigate to Get the Latest page" aria-label="Get the Latest" href="/latest-news"><span aria-hidden="true" role="presentation">Get the Latest</span></a></div>
+			<div class="col_2 center-block menu-block latest-news-menu-block" header-directive><a title="Navigate to Get the Latest page" aria-label="Get the Latest" href="/latest-news"><span aria-hidden="true" role="presentation">Get the Latest</span></a></div>
 		</div>
 		<div class="col_2 center-block">
-			<div class="col_2 center-block menu-block meet-the-team-menu-block"><a title="Navigate to Meet the Team page" aria-label="Meet the Team" href="/meet-the-team"><span aria-hidden="true" role="presentation">Meet the Team</span></a></div>
+			<div class="col_2 center-block menu-block meet-the-team-menu-block" header-directive><a title="Navigate to Meet the Team page" aria-label="Meet the Team" href="/meet-the-team"><span aria-hidden="true" role="presentation">Meet the Team</span></a></div>
 		</div>
 		<div class="col_2 center-block">
-			<div class="col_2 center-block menu-block past-events-header-menu-block"><a title="Navigate to Meet the Team page" aria-label="Past Events" href="/past-events"><span aria-hidden="true" role="presentation">Past Events</span></a></div>
+			<div class="col_2 center-block menu-block past-events-header-menu-block" header-directive><a title="Navigate to Meet the Team page" aria-label="Past Events" href="/past-events"><span aria-hidden="true" role="presentation">Past Events</span></a></div>
 		</div>
 	</nav>
 	<!-- End gray desktop menu -->
 	<!-- Begin Image section/slideshow -->
 	<div class="carousel-container" data-ng-controller="HeaderController" data-ng-init="getSlides('homepageSlideshow');">
-		<ul rn-carousel rn-carousel-controls-allow-loop rn-carousel-controls rn-carousel-auto-slide="3" rn-carousel-duration="1000" data-slider-directive id="upcoming-events-carousel" class="image" style="margin-left:0;margin-bottom:0;">
+		<ul rn-carousel rn-carousel-controls-allow-loop rn-carousel-controls rn-carousel-auto-slide="3" rn-carousel-duration="1000" id="upcoming-events-carousel" class="image" style="margin-left:0;margin-bottom:0;">
   		<li data-ng-repeat="slide in slides | orderBy: 'SlideshowSlideAssc.sortPosition'">
   		  <div class="layer" data-slider-slide-directive>
   		  	<a title="{{slide.title}}" alt="{{slide.altText}}" data-ng-href="/{{slide.imgDestUrl}}">

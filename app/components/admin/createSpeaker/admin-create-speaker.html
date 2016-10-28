@@ -1,21 +1,22 @@
 
 <div class="mobileWrapper ng-cloak" role="presentation" >
-  <main style="overflow:hidden;" id="beginningOfContent" tabindex="0" class="grid white-bg main-page-content clearfix" data-ng-controller="CreateSpeakerCtrl">
-    <div class="col_12">
-   		<h3>New Speaker</h3>
+  <main style="overflow:hidden;" id="beginningOfContent" tabindex="0" class="container white-bg clearfix" data-ng-controller="CreateSpeakerCtrl">
+    <div class="row" role="presentation">
+    	<div class="col-lg-24">
+   			<h3>New Speaker</h3>
+    	</div>
  		</div>
- 		<div class="col_12">
- 			<section class="col_12 internetExplorer the-team-section" role="presentation">
+ 		<div class="row" role="presentation">
+ 			<section class="col-lg-24 internetExplorer the-team-section" role="presentation">
   		  <h4>{{newSpeaker.newFirstName + ' ' +  newSpeaker.newLastName}}</h4>
   		  <h5>{{newSpeaker.newMsTeamTitle}}</h5>
   		  <img class="pull-left" data-ng-if="newSpeakerImg.name" data-ng-src="/uploads/{{newSpeakerImg.size + '-' + newSpeakerImg.name}}" />
-
   		  <p data-ng-bind-html="newSpeaker.newSpeakerDescription"></p>
   		  <hr aria-hidden="true" role="presentation" class="alt1" />
   		</section>
  		</div>			
-    <section role="presentation" class="col_12 internetExplorer" ng-controller="AdminPageCtrl">
-    	<div data-ng-controller="AdminPageCtrl">
+    <section role="presentation" class="row internetExplorer" ng-controller="AdminPageCtrl">
+    	<div data-ng-controller="AdminPageCtrl" role="presentation" class="col-lg-24">
 	  	  <p>Select Headshot</p>
 	  		<button name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'newSpeakerImg')">Select File</button>
 	  		<br><br>
@@ -26,42 +27,59 @@
 	  		             ng-bind="newSpeakerImg.progress + '%'"></div>
 	  		    </span>
 	  		</div>     
-	  		{{errorMsg}}
-    			
+	  		{{errorMsg}}    			
     	</div>
-			<form id="add-new-speaker-form" method="post" enctype="multipart/form-data" data-ng-submit="createNewSpeaker(newSpeaker);">
-				<label class="col_12" for="newFirstName">First Name*</label>
-				<input class="col_12" type="text" data-ng-model="newSpeaker.newFirstName" name="newFirstName" id="newFirstName" required="true">
-				<label class="col_12" for="newLastName">Last Name*</label>
-				<input class="col_12" type="text" data-ng-model="newSpeaker.newLastName" name="newLastName" id="newLastName" required="true">
-				<label class="col_12" for="newMsTeamTitle">Speaker's Title</label>
-				<input class="col_12" type="text" data-ng-model="newSpeaker.newMsTeamTitle" name="newMsTeamTitle" id="newMsTeamTitle">
-				<label class="col_12" for="newMsTeamEmail">Speaker's Email</label>
-				<input class="col_12" type="email" data-ng-model="newSpeaker.newMsTeamEmail" name="newMsTeamEmail" id="newMsTeamEmail">
-				<radiogroup class="col_12">
-				<label class="" for="showOnMeetTheTeamPageTrue">Show Speaker on Meet the Team Page</label>
-					<input type="radio" id="showOnMeetTheTeamPageTrue" data-ng-model="newSpeaker.showOnMeetTheTeamPage" name="showOnMeetTheTeamPage" value="true">
-					<br>
-					<label for="showOnMeetTheTeamPageFalse">Do Not Show on Meet the Team Page</label>
-					<input type="radio" id="showOnMeetTheTeamPageFalse" data-ng-model="newSpeaker.showOnMeetTheTeamPage" name="showOnMeetTheTeamPage" value="false" checked="true">
-				</radiogroup>
+			<form id="add-new-speaker-form" method="post" enctype="multipart/form-data" data-ng-submit="createNewSpeaker(newSpeaker);" class="col-lg-24">
+				<div class="form-group" role="presentation">
+					<label for="newFirstName">First Name*</label>
+					<input class="form-control" type="text" data-ng-model="newSpeaker.newFirstName" name="newFirstName" id="newFirstName" required="true">
+				</div>
+				<div class="form-group" role="presentation">
+					<label for="newLastName">Last Name*</label>
+					<input class="form-control" type="text" data-ng-model="newSpeaker.newLastName" name="newLastName" id="newLastName" required="true">
+				</div>
+				<div class="form-group" role="presentation">
+					<label for="newMsTeamTitle">Speaker's Title</label>
+					<input class="form-control" type="text" data-ng-model="newSpeaker.newMsTeamTitle" name="newMsTeamTitle" id="newMsTeamTitle">
+				</div>
+				<div class="form-group" role="presentation">
+					<label for="newMsTeamEmail">Speaker's Email</label>
+					<input class="form-control" type="email" data-ng-model="newSpeaker.newMsTeamEmail" name="newMsTeamEmail" id="newMsTeamEmail">
+				</div>
+				<div class="form-group" role="presentation">
+					<radiogroup>
+					<label for="showOnMeetTheTeamPageTrue">Show Speaker on Meet the Team Page</label>
+						<input type="radio" id="showOnMeetTheTeamPageTrue" data-ng-model="newSpeaker.showOnMeetTheTeamPage" name="showOnMeetTheTeamPage" value="true">
+						<br>
+						<label for="showOnMeetTheTeamPageFalse">Do Not Show on Meet the Team Page</label>
+						<input type="radio" id="showOnMeetTheTeamPageFalse" data-ng-model="newSpeaker.showOnMeetTheTeamPage" name="showOnMeetTheTeamPage" value="false" ng-checked="true">
+					</radiogroup>
+				</div>
 				<br>
-				<label class="col_11" for="meetTheTeamPageOrder">If Speaker Is on Meet the Team Page - What Position on Meet the Team Page</label>
-				<input class="col_1" type="number" data-ng-model="newSpeaker.meetTheTeamPageOrder" name="meetTheTeamPageOrder" id="meetTheTeamPageOrder">
-				<label class="col_12" for="newSpeakerDescription">Speakers Description</label>
-				<br>
-				<textarea class="col_12 form-control" data-ng-model="newSpeaker.newSpeakerDescription" name="newSpeakerDescription" style="min-height: 200px" data-ng-required="required" 
-				data-ui-tinymce="tinymceOptions">
-      	</textarea>
-				<radiogroup class="col_12">
-					<label for="publishedTrue">Publish Now</label>
-					<input type="radio" data-ng-model="newSpeaker.publishStatus" id="publishedTrue" name="publishStatus" value="true">
+				<div class="form-group" role="presentation">
+					<label for="meetTheTeamPageOrder">If Speaker Is on Meet the Team Page - What Position on Meet the Team Page</label>
 					<br>
-					<label for="publishedFalse">Save as Draft</label>
-					<input type="radio" data-ng-model="newSpeaker.publishStatus" id="publishedFalse" name="publishStatus" value="false" checked="true">
-				</radiogroup>
+					<input type="number" data-ng-model="newSpeaker.meetTheTeamPageOrder" name="meetTheTeamPageOrder" id="meetTheTeamPageOrder">
+				</div>
+				<br>
+				<div class="form-group" role="presentation">
+					<label for="newSpeakerDescription">Speakers Description</label>
+					<br>
+					<textarea class="col-lg-24 form-control" data-ng-model="newSpeaker.newSpeakerDescription" name="newSpeakerDescription" style="min-height: 200px" data-ng-required="required" 
+					data-ui-tinymce="tinymceOptions">
+	      	</textarea>
+				</div>
+				<div class="form-group" role="presentation">
+					<radiogroup>
+						<label for="publishedTrue">Publish Now</label>
+						<input type="radio" data-ng-model="newSpeaker.publishStatus" id="publishedTrue" name="publishStatus" value="true">
+						<br>
+						<label for="publishedFalse">Save as Draft</label>
+						<input type="radio" data-ng-model="newSpeaker.publishStatus" id="publishedFalse" name="publishStatus" value="false" ng-checked="true">
+					</radiogroup>
+				</div>
 				<button type="button" class="medium float-left" style="margin: 5px" id="cancel-new-event-button">Cancel</button>
-				<button type="submit" class="medium float-left green" style="margin: 5px" id="save-new-event-as-draft-button">Save</button>
+				<button type="submit" class="medium float-left btn-green" style="margin: 5px" id="save-new-event-as-draft-button">Save</button>
 			</form>
 			<!-- input below is for tinymce file upload -->
 			<input name="image" type="file" id="upload" class="hideElem" onchange="">

@@ -3,72 +3,37 @@ import * as customFunctions from '../methods/common-functions.js';
 const jQuery = require('jquery');
 
 const headerDirective = (app) => {
-	app.directive('headerDirective', ['$timeout', function($timeout) {
+	app.directive('headerDirective', [ function() {
 			const headerDirectiveDefinitionObject = {
 				restrict: 'A',
 				scope: true,
-				link: function postLink(scope, element, attrs) {
-				 	const $homeMenuButton = jQuery('.home-menu-button');
-				 	const $upcominEventsBlock = jQuery('.upcominEventsBlock');
-				 	const $latestNewsMenuBlock = jQuery('.latest-news-menu-block');
-				 	const $meetTheTeamMenuBlock = jQuery('.meet-the-team-menu-block');
-				 	const $pastEventsHeaderMenuBlock = jQuery('.past-events-header-menu-block');
-				 	const $menuBlock = jQuery('.menu-block');
-				 	const $carouselContainer = jQuery('.carousel-container');
-				 	const $menuOverlays = jQuery('.menu-overlay');
+				link: ($scope, $elem, attrs) => {
 				 	let pathname = window.location.pathname;
+				 	const $carouselContainer = jQuery('.carousel-container');
 
-				 	$timeout(function() {
-				 		//hide the slider/carousel
-				 		$carouselContainer.show();
-	
-						if (pathname !== '/') {
-							$carouselContainer.hide();
-						}
-		 				//highlight currently selected menu item
-						if (pathname === '/') {
-							$carouselContainer.show();
-							$homeMenuButton.addClass('current-page');
-						}
-						if (pathname === '/future-events') {
-							$upcominEventsBlock.addClass('current-page');
-						}
-						if (pathname === '/latest-news') {
-							$latestNewsMenuBlock.addClass('current-page');
-						}
-						if (pathname === '/meet-the-team') {
-							$meetTheTeamMenuBlock.addClass('current-page');
-						}
-						if (pathname === '/past-events') {
-							$pastEventsHeaderMenuBlock.addClass('current-page');
-						}
-				 	})
-
-					scope.$on('$locationChangeSuccess', function(event) {
+					if ($elem.find('a').attr('href') === pathname) {
+						jQuery('.menu-block').removeClass('current-page');
+						$elem.addClass('current-page');
+					}
+					//hide the slideshow if not on homepage (this would be better with ng-show, but the ng-repeat fails if you leave the homepage and come back or don't start on the homepage)
+					if (pathname === '/') {
+						$carouselContainer.show();
+					} else if (pathname !== '/') {
+						$carouselContainer.hide();
+					}
+					$scope.$on('$locationChangeSuccess', function(e) {
 						pathname = window.location.pathname;
-
-				    $menuBlock.removeClass('current-page');
-				    //hide the slider for pages in footer
-				    if (pathname !== '/') {
+						if ($elem.find('a').attr('href') === pathname) {
+							jQuery('.menu-block').removeClass('current-page');
+							$elem.addClass('current-page');
+						}
+						//hide the slideshow if not on homepage (this would be better with ng-show, but the ng-repeat fails if you leave the homepage and come back or don't start on the homepage)
+						if (pathname === '/') {
+							$carouselContainer.show();
+						} else if (pathname !== '/') {
 							$carouselContainer.hide();
 						}
-						//highlight currently selected menu item
-						if (pathname === '/') {
-							$homeMenuButton.addClass('current-page');
-							$carouselContainer.show();
-						}
-						if (pathname === '/future-events') {
-							$upcominEventsBlock.addClass('current-page');
-						}
-						if (pathname === '/latest-news') {
-							$latestNewsMenuBlock.addClass('current-page');
-						}
-						if (pathname === '/meet-the-team') {
-							$meetTheTeamMenuBlock.addClass('current-page');
-						}
-						if (pathname === '/past-events') {
-							$pastEventsHeaderMenuBlock.addClass('current-page');
-						}
+				
 					});
 				}
 			};

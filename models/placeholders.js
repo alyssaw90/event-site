@@ -97,13 +97,11 @@ module.exports = function () {
 				eventUrl: 'taipei2016',
 				eventStartDate: new Date('2016-04-19:08:00:00'),
 				eventEndDate: new Date('2016-04-21:23:00:00'),
-				eventLocation: 'Taipei',
+				eventLocation: 'Taipei, Taiwan',
 				eventContinent: 'Asia',
 				eventHeaderImage: 'TAIPEIHeader.png',
-				eventHighlightColor: '#4668c5',
-				eventSpeakers: '1,2,8,11,15,9,12,10,6,32,33,34,35,38,26',
+				eventTechnicalTopics: 'Office Developer Opportunity, Office Add-ins and APIs, Machine Learning, Big Data Analytics, Open Specifications, Hackathon',
 				isPublished: true
-
 			});
 		})
 		.then(function () {
@@ -111,13 +109,12 @@ module.exports = function () {
 				eventName: 'Extend Conference',
 				// eventRegistrationLink: , //link to registrationfor event
 				eventUrl: 'paris2016',
-				eventLocation: 'Paris',
+				eventLocation: 'Paris, France',
 				eventContinent: 'Europe',
 				eventStartDate: new Date('2016-05-12:00:00:01'), //the start date...
 				eventEndDate: new Date('2016-05-12:23:59:00'), // the end date...
 				eventHeaderImage: 'Extend-banniereV2-(002).gif', //link to header image
-				eventHighlightColor: '#5c2d91',
-				eventSpeakers: '1,2,5,10,8,11,35,36,37',
+				eventTechnicalTopics: 'Office Developer Opportunity, Office Add-ins and APIs, Machine Learning, Big Data Analytics, Open Specifications',
 				isPublished: true
 			});
 		})
@@ -126,13 +123,12 @@ module.exports = function () {
 				eventName: 'Redmond Protocols Plugfest & Windows Interoperability (IO) Lab',
 				// eventRegistrationLink: Sql.STRING, //link to registrationfor event
 				eventUrl: 'redmond2016',
-				eventLocation: 'Redmond',
+				eventLocation: 'Redmond, WA',
 				eventContinent: 'North America',
 				eventStartDate: new Date('2016-06-13:00:01:00'), //the start date...
 				eventEndDate: new Date('2016-06-24:23:00:00'), // the end date...
 				eventHeaderImage: 'Plugfest-and-IO-Lab-5.jpg', //link to header image
-				eventHighlightColor: '#008272',
-				eventSpeakers: '1,2,3,5,9,8,11,15,12,10,6,21,14,18,16,39,40',
+				eventTechnicalTopics: 'Microsoft Windows Protocol, Interoperability within Microsoft Office, Exchange, SharePoint, Windows and SQL Server. Office, SharePoint, & Exchange Protocol Testing',
 				isPublished: true
 			});
 		})
@@ -153,13 +149,11 @@ module.exports = function () {
 			return Event.create({
 				eventName: 'Shanghai Interop Dev Days 2015',
 				eventUrl: 'shanghai2015',
-				eventLocation: 'Shanghai',
+				eventLocation: 'Shanghai, China',
 				eventContinent: 'Asia',
 				eventStartDate: new Date('2015-10-20:00:01:00'),
 				eventEndDate: new Date('2015-10-21:23:00:00'),
 				eventHeaderImage: 'shanghai-header.jpg',
-				eventHighlightColor: '#3bb300',
-				eventSpeakers: '1,2,13,9,8,10,6,11,35,26',
 				isPublished: true
 			});
 		})
@@ -167,13 +161,11 @@ module.exports = function () {
 			return Event.create({
 				eventName: 'Paris 2017',
 				eventUrl: 'paris2017',
-				eventLocation: 'Paris',
+				eventLocation: 'Paris, France',
 				eventContinent: 'Europe',
 				eventStartDate: '2017',
 				eventEndDate: '2017',
 				eventHeaderImage: 'paris-2017-banner.jpg',
-				eventHighlightColor: '#5c005c',
-				// eventSpeakers: '1',
 				isPublished: true,
 				showOnHeader: true
 			});
@@ -182,13 +174,11 @@ module.exports = function () {
 			return Event.create({
 				eventName: 'DevDays Asia 2017 @ Taipei',
 				eventUrl: 'taipei2017',
-				eventLocation: 'Taipei',
+				eventLocation: 'Taipei, Taiwn',
 				eventContinent: 'Asia',
 				eventStartDate: '2017',
 				eventEndDate: '2017',
 				eventHeaderImage: 'taipei-2017-banner.jpg',
-				eventHighlightColor: '#0078d7',
-				// eventSpeakers: '1',
 				isPublished: true,
 				showOnHeader: true
 			});
@@ -197,13 +187,11 @@ module.exports = function () {
 			return Event.create({
 				eventName: 'Redmond Protocol Plugfest 2017',
 				eventUrl: 'redmond2017',
-				eventLocation: 'Redmond',
+				eventLocation: 'Redmond, WA',
 				eventContinent: 'North America',
 				eventStartDate: '2017',
 				eventEndDate: '2017',
 				eventHeaderImage: 'redmond-2017-banner.jpg',
-				eventHighlightColor: '#0a6a05',
-				// eventSpeakers: '1',
 				isPublished: true
 			});
 		})
@@ -211,11 +199,10 @@ module.exports = function () {
 			return Event.create({
 				eventName: 'SNIA SMB3 Plugfest',
 				eventUrl: 'santa_clara2016',
-				eventLocation: 'Santa Clara',
+				eventLocation: 'Santa Clara, CA',
 				eventContinent: 'North America',
 				eventStartDate: new Date('September 19, 2016'),
 				eventEndDate: new Date('September 22, 2016'),
-				eventHighlightColor: '#5c005c',
 				eventHeaderImage: 'header_sdc_2016.jpg',
 				isPublished: true
 			})
@@ -313,12 +300,11 @@ module.exports = function () {
 		.then(function() {
 			return Event.create({
 				eventName: 'DevDays Asia 2016 @ Beijing ',
-				eventLocation: 'Beijing',
+				eventLocation: 'Beijing, China',
 				eventUrl: 'beijing2016',
 				eventContinent: 'Asia',
 				eventStartDate: new Date('October 21, 2016'),
 				eventEndDate: new Date('October 23, 2016'),
-				eventHighlightColor: '#107c10',
 				eventHeaderImage: 'Beijing-Header-8.26.jpg',
 				isPublished: true,
 				showOnHeader: false
@@ -328,7 +314,7 @@ module.exports = function () {
 			return Event.create({
 				eventName: 'Remote Desktop Protocol (RDP) IO lab',
 				eventUrl: 'redmondrdp2016',
-				eventLocation: 'Redmond',
+				eventLocation: 'Redmond, WA',
 				eventContinent: 'North America',
 				eventStartDate: new Date('November 1, 2016'),
 				eventEndDate: new Date('November 3, 2016'),
@@ -354,12 +340,11 @@ module.exports = function () {
 		.then(function() {
 			return Event.create({
 				eventName: 'DevDays Asia 2016 @ Beijing ',
-				eventLocation: 'Beijing',
+				eventLocation: 'Beijing, China',
 				eventUrl: 'beijing2016cn',
 				eventContinent: 'Asia',
 				eventStartDate: new Date('October 21, 2016'),
 				eventEndDate: new Date('October 23, 2016'),
-				eventHighlightColor: '#107c10',
 				eventHeaderImage: 'Beijing-Header-8.26.jpg',
 				isPublished: true,
 				showOnHeader: true
@@ -3508,191 +3493,196 @@ setTimeout(function() {
 				isPublished: true,
 				tabTitle: 'Agenda',
 				tabNumber: 2,
-				tabContent: `
-				<a href="/beijing2016cn#3575831243" class="btn btn-success float-right" role="button">汉语</a>
-				<a class="btn btn-primary float-right" role="button" style="margin-right:10px;" href="http://www.aka.ms/devdaysbeijing2016">Register</a>
-				<h2>DevDays Asia 2016 @ Beijing Agenda</h2>
-				
-				<h4>September 26, 2016: Hackathon opens! </h4>
-				
-				<h4>October 21, 2016: Hackathon Official Kick Off </h4>
-				
-				<h5>Location: Microsoft Beijing West / 5 Danling St, Haidian, Beijing, China, 100080</h5>
-				<div class="table-responsive">
-					<table class="table table-bordered">
-						<thead>
-							<tr>
-								<th><h5>Time</h5></th>
-								<th><h5>Session</h5></th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<th scope="row">17:00</th>
-								<td>Welcome participants</td>
-							</tr>
-							<tr class="active">
-								<th scope="row">18:00</th>
-								<td>Dinner</td>
-							</tr>
-							<tr>
-								<th scope="row">19:00-21:00</th>
-								<td>Team building + hacking</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				
-				<h4>October 22, 2016: DevDays Asia 2016 @ Beijing Conference Begins and Hackathon Continues </h4>
-				
-				<h5>Location: Microsoft Beijing West / 5 Danling St, Haidian, Beijing, China, 100080</h5>
-				<div class="table-responsive">
-					<table class="table table-bordered">
-						<thead>
-							<tr>
-								<th><h5>Time</h5></th>
-								<th><h5>Office Developer Track</h5></th>
-								<th><h5>Interoperability Track</h5></th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<th scope="row">9:00-9:15</th>
-								<td colspan="2">Welcome Speech</td>
-							</tr>
-							<tr>
-								<th scope="row">9:15-10:00</th>
-								<td colspan="2">Keynote</td>
-							</tr>
-							<tr>
-								<th scope="row">10:00-10:45</th>
-								<td>Introducing the Modern Office Platform</td>
-								<td>Introducing Microsoft’s Commitment to Interoperability (Office, Windows, and SQL)</td>
-							</tr>
-							<tr class="active">
-								<td>10:45-11:00</td>
-								<td colspan="2">Break </td>
-							</tr>
-							<tr>
-								<th scope="row">11:00-11:45</th>
-								<td>Make your solution a native part of Office with Office Add-ins</td>
-								<td>Windows Protocol Test Suites</td>
-							</tr>
-							<tr>
-								<th scope="row">11:45-12:30</th>
-								<td>Discover Microsoft Graph: The easiest way to call Microsoft APIs (including Gallatin, examples, case studies, etc.)</td>
-								<td>Discover Exchange Protocols & advancements in ActiveSync, Exchange Web Services, and MAPI</td>
-							</tr>
-							<tr class="active">
-								<td>12:30-13:30</td>
-								<td colspan="2">Lunch</td>
-							</tr>
-							<tr>
-								<th scope="row">13:30-14:15</th>
-								<td>Navigate Dev.Office.com and create an Office Developer account</td>
-								<td>OData Overview and Demo</td>
-							</tr>
-							<tr>
-								<th scope="row">14:15-15:00</th>
-								<td>Intro to Office 365 China Instance</td>
-								<td>OData Validator, a tool for OData service authors to ensure that their service interoperates well with any OData client</td>
-							</tr>
-							<tr>
-								<th scope="row">15:00-15:45</th>
-								<td>Leverage Microsoft Graph through Office Add-ins</td>
-								<td>Introduction to "Model first-tool", a methodology for producing a highly consistent API definition from the resource model</td>
-							</tr>
-							<tr class="active">
-								<td>15:45-16:00</td>
-								<td colspan="2">Break</td>
-							</tr>
-							<tr>
-								<th scope="row">16:00-16:45</th>
-								<td>Build intelligent mail, contacts and calendar apps using Outlook REST APIs </td>
-								<td>Get to know SharePoint protocols, including Office co-authoring (FSSHTTP) and Office Online (WOPI)</td>
-							</tr>
-							<tr>
-								<th scope="row">16:45-17:30</th>
-								<td>Use Office UI Fabric to design applications that blend seamlessly into Microsoft Office</td>
-								<td>Learn about the most commonly used file formats supported by Microsoft Office applications</td>
-							</tr>
-							<tr>
-								<th scope="row">17:30-18:15</th>
-								<td>Publishing your app to the Office Store </td>
-								<td>Utilize Message Analyzer & Fiddler to parse Office, Exchange, and SharePoint traffic (including SQL Parsers)</td>
-							</tr>
-							<tr class="active">
-								<td>18:15-19:15</td>
-								<td colspan="2">Dinner</td>
-							</tr>
-							<tr>
-								<th scope="row">19:15-19:30</th>
-								<td>Source Control (Managing your project) </td>
-							</tr>
-							<tr>
-								<th scope="row">20:00-20:15</th>
-								<td>Existing Open Source Projects </td>
-							</tr>
-							<tr class="active">
-								<td>22:00-22:30</td>
-								<td>Late Night Snack</td>
-							</tr>
-							<tr class="active">
-								<td>0:00</td>
-								<td>Venue Closes</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<p>*The hackathon will occur all day Saturday at the venue with onsite help from Microsoft engineers.</p>
-				
-				<h4>October 23, 2016: Hackathon continues</h4>
-				
-				<h5>Location: Microsoft Beijing West / 5 Danling St, Haidian, Beijing, China, 100080</h5>
-				<div class="table-responsive">
-					<table class="table table-bordered">
-						<thead>
-							<tr>
-								<th><h5>Time</h5></th>
-								<th><h5>Session</h5></th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<th scope="row">9:00</th>
-								<td>Venue opens for breakfast</td>
-							</tr>
-							<tr>
-								<th scope="row">9:00-12:00</th>
-								<td>Work on hackathon projects</td>
-							</tr>
-							<tr class="active">
-								<th scope="row">12:00</th>
-								<td>Lunch</td>
-							</tr>
-							<tr>
-								<th scope="row">13:00-15:00</th>
-								<td>Work on hackathon projects</td>
-							</tr>
-							<tr>
-								<th scope="row">15:00</th>
-								<td>All hackathon projects completed and submitted</td>
-							</tr>
-							<tr>
-								<th scope="row">15:15 – 17:00</th>
-								<td>First round of evaluations of all teams</td>
-							</tr>
-							<tr>
-								<th scope="row">17:00-18:00</th>
-								<td>Finalists present to panel of judges</td>
-							</tr>
-							<tr>
-								<th scope="row">18:15</th>
-								<td>Hackathon awards and closing</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>`
+				tabContent: `<p><a class="btn btn-success float-right" href="beijing2016cn#3575831243">汉语</a> <a class="btn btn-primary float-right" style="margin-right: 10px;" href="http://www.aka.ms/devdaysbeijing2016">Register</a></p>
+										<h2>DevDays Asia 2016 @ Beijing Agenda</h2>
+										<h4>September 26, 2016: Hackathon opens!</h4>
+										<h4>October 21, 2016: Hackathon Official Kick Off</h4>
+										<h5>Location: Microsoft Beijing West / 5 Danling St, Haidian, Beijing, China, 100080</h5>
+										<div class="table-responsive">
+										<table class="table table-bordered">
+										<thead>
+										<tr>
+										<th>
+										<h5>Time</h5>
+										</th>
+										<th>
+										<h5>Session</h5>
+										</th>
+										</tr>
+										</thead>
+										<tbody>
+										<tr>
+										<th scope="row">17:00</th>
+										<td>Welcome participants</td>
+										</tr>
+										<tr class="active">
+										<th scope="row">18:00</th>
+										<td>Dinner</td>
+										</tr>
+										<tr>
+										<th scope="row">19:00-21:00</th>
+										<td>Team building + hacking</td>
+										</tr>
+										</tbody>
+										</table>
+										</div>
+										<h4>October 22, 2016: DevDays Asia 2016 @ Beijing Conference Begins and Hackathon Continues</h4>
+										<h5>Location: Microsoft Beijing West / 5 Danling St, Haidian, Beijing, China, 100080</h5>
+										<div class="table-responsive">
+										<table class="table table-bordered">
+										<thead>
+										<tr style="height: 95px;">
+										<th style="height: 95px;">
+										<h5>Time</h5>
+										</th>
+										<th style="height: 95px;">
+										<h5>Office Developer Track</h5>
+										</th>
+										<th style="height: 95px;">
+										<h5>Interoperability Track</h5>
+										</th>
+										</tr>
+										</thead>
+										<tbody>
+										<tr style="height: 64px;">
+										<th style="height: 64px;" scope="row">9:00-9:15</th>
+										<td style="height: 64px;" colspan="2">Welcome Speech</td>
+										</tr>
+										<tr style="height: 64px;">
+										<th style="height: 64px;" scope="row">9:15-10:00</th>
+										<td style="height: 64px;" colspan="2">&nbsp;<a title="Keynote" href="uploads/1477100293774-Keynote - DevDays Asia-China.pdf" target="_self">Keynote</a></td>
+										</tr>
+										<tr style="height: 64px;">
+										<th style="height: 64px;" scope="row">10:00-10:45</th>
+										<td style="height: 64px;"><a title="Introducing the Modern Office Platform" href="uploads/1477102910066-Introducing the Modern Office Platform.pdf" target="_self">Introducing the Modern Office Platform</a></td>
+										<td style="height: 64px;"><a title="Introducing Microsoft&rsquo;s commitment to interoperability  (Office, Windows, and SQL)" href="uploads/1477127699476-Introducing Microsoft's Commitment to Interoperabilty.pdf" target="_blank">Introducing Microsoft&rsquo;s commitment to interoperability (Office, Windows, and SQL)</a></td>
+										</tr>
+										<tr class="active" style="height: 64px;">
+										<td style="height: 64px;">10:45-11:00</td>
+										<td style="height: 64px;" colspan="2">Break</td>
+										</tr>
+										<tr style="height: 64px;">
+										<th style="height: 64px;" scope="row">11:00-11:45</th>
+										<td style="height: 64px;"><a title="Make your solution a native part of Office with Office Add-ins" href="uploads/1477105171322-Make your solution a native part of Office with Office Add-ins.pdf" target="_self">Make your solution a native part of Office with Office Add-ins</a></td>
+										<td style="height: 64px;"><a title="Windows Protocol Test Suites" href="uploads/1477105189652-Windows Protocol Test Suites.pdf" target="_self">Windows Protocol Test Suites</a></td>
+										</tr>
+										<tr style="height: 80px;">
+										<th style="height: 80px;" scope="row">11:45-12:30</th>
+										<td style="height: 80px;"><a title="Discover Microsoft Graph: The easiest way to call Microsoft APIs (including Gallatin, examples, case studies, etc.)" href="uploads/1477107132706-Discover Microsoft Graph.pdf" target="_self">Discover Microsoft Graph: The easiest way to call Microsoft APIs (including Gallatin, examples, case studies, etc.)</a></td>
+										<td style="height: 80px;"><a title="Discover Exchange Protocols &amp; advancements in ActiveSync, Exchange Web Services, and MAPI" href="uploads/1477139821077-Discover Exchange Protocols.pdf" target="_self">Discover Exchange Protocols &amp; advancements in ActiveSync, Exchange Web Services, and MAPI</a></td>
+										</tr>
+										<tr class="active" style="height: 64.8px;">
+										<td style="height: 64.8px;">12:30-13:30</td>
+										<td style="height: 64.8px;" colspan="2">Lunch</td>
+										</tr>
+										<tr style="height: 64px;">
+										<th style="height: 64px;" scope="row">13:30-14:15</th>
+										<td style="height: 64px;"><a title="Navigate Dev.Office.com and create an Office Developer account" href="uploads/1477122404214-Navigate Dev.Office.com and create an Office Developer account.pdf" target="_blank">Navigate Dev.Office.com and create an Office Developer account</a></td>
+										<td style="height: 64px;"><a title="OData Overview and Demo" href="uploads/1477122643006-OData Overview.pdf" target="_blank">OData Overview and Demo</a></td>
+										</tr>
+										<tr style="height: 80px;">
+										<th style="height: 80px;" scope="row">14:15-15:00</th>
+										<td style="height: 80px;"><a title="Intro to Office 365 China Instance" href="uploads/1477122452281-Intro to Office 365 China Instance.pdf" target="_blank">Intro to Office 365 China Instance</a></td>
+										<td style="height: 80px;"><a title="OData Validator, a tool for OData service authors to ensure that their service interoperates well with any OData client" href="uploads/1477122669384-OData Validator.pdf" target="_blank">OData Validator, a tool for OData service authors to ensure that their service interoperates well with any OData client</a></td>
+										</tr>
+										<tr style="height: 80px;">
+										<th style="height: 80px;" scope="row">15:00-15:45</th>
+										<td style="height: 80px;"><a title="Leverage Microsoft Graph through Office Add-ins" href="uploads/1477122488460-Leverage Microsoft Graph through Office Add-Ins.pdf" target="_blank">Leverage Microsoft Graph through Office Add-ins</a></td>
+										<td style="height: 80px;"><a title="Introduction to &quot;Model first-tool&quot;, a methodology for producing a highly consistent API definition from the resource model" href="uploads/1477122691437-Model First Intro.pdf" target="_blank">Introduction to "Model first-tool", a methodology for producing a highly consistent API definition from the resource model</a></td>
+										</tr>
+										<tr class="active" style="height: 64px;">
+										<td style="height: 64px;">15:45-16:00</td>
+										<td style="height: 64px;" colspan="2">Break</td>
+										</tr>
+										<tr style="height: 64px;">
+										<th style="height: 64px;" scope="row">16:00-16:45</th>
+										<td style="height: 64px;"><a title="Build Intelligent mail, contacts and calendar apps using the Outlook REST APIs " href="uploads/1477139724321-Build Intelligent mail, contacts and calendar apps using the Outlook REST APIs.pdf" target="_blank">Build Intelligent mail, contacts and calendar apps using the Outlook REST APIs </a></td>
+										<td style="height: 64px;"><a title="Office Online and SharePoint" href="uploads/1477137345948-Office Online and Sharepoint Protocols.pdf" target="_blank">Office Online and SharePoint</a></td>
+										</tr>
+										<tr style="height: 64px;">
+										<th style="height: 64px;" scope="row">16:45-17:30</th>
+										<td style="height: 64px;"><a title="Use Office UI Fabric to design applications that blend seamlessly into Microsoft Office" href="uploads/1477126571436-Use Office UI Fabric to design applications that blend seamlessly into Office.pdf" target="_blank">Use Office UI Fabric to design applications that blend seamlessly into Microsoft Office</a></td>
+										<td style="height: 64px;"><a title="Learn about the most commonly used file formats supported by Microsoft Office applications" href="uploads/1477126591368-Office File Formats.pdf" target="_blank">Learn about the most commonly used file formats supported by Microsoft Office applications</a></td>
+										</tr>
+										<tr style="height: 80px;">
+										<th style="height: 80px;" scope="row">17:30-18:15</th>
+										<td style="height: 80px;"><a title="Publishing your app to the Office Store" href="uploads/1477127611155-Publishing your app to the Office Store.pdf" target="_blank">Publishing your app to the Office Store</a></td>
+										<td style="height: 80px;">Utilize Message Analyzer &amp; Fiddler to parse Office, Exchange, and SharePoint traffic <a title="(including SQL parsers)" href="uploads/1477127656117-Message Analyzer Parsers for SQL.pdf" target="_blank">(including SQL parsers)</a></td>
+										</tr>
+										<tr class="active" style="height: 64px;">
+										<td style="height: 64px;">18:15-19:15</td>
+										<td style="height: 64px;" colspan="2">Dinner</td>
+										</tr>
+										<tr style="height: 64px;">
+										<th style="height: 64px;" scope="row">19:15-19:30</th>
+										<td style="height: 64px;">Source Control (Managing your project)</td>
+										</tr>
+										<tr style="height: 64px;">
+										<th style="height: 64px;" scope="row">20:00-20:15</th>
+										<td style="height: 64px;"><a title="Existing Open Source Projects" href="uploads/1477135279521-Existing Open Source Projects.pdf" target="_blank">Existing Open Source Projects</a></td>
+										</tr>
+										<tr class="active" style="height: 64px;">
+										<td style="height: 64px;">22:00-22:30</td>
+										<td style="height: 64px;">Late Night Snack</td>
+										</tr>
+										<tr class="active" style="height: 47px;">
+										<td style="height: 47px;">0:00</td>
+										<td style="height: 47px;">Venue Closes</td>
+										</tr>
+										</tbody>
+										</table>
+										</div>
+										<p>*The hackathon will occur all day Saturday at the venue with onsite help from Microsoft engineers.</p>
+										<h4>October 23, 2016: Hackathon continues</h4>
+										<h5>Location: Microsoft Beijing West / 5 Danling St, Haidian, Beijing, China, 100080</h5>
+										<div class="table-responsive">
+										<table class="table table-bordered">
+										<thead>
+										<tr style="height: 95px;">
+										<th style="height: 95px;">
+										<h5>Time</h5>
+										</th>
+										<th style="height: 95px;">
+										<h5>Session</h5>
+										</th>
+										</tr>
+										</thead>
+										<tbody>
+										<tr style="height: 47px;">
+										<th style="height: 47px;" scope="row">9:00</th>
+										<td style="height: 47px;">Venue opens for breakfast</td>
+										</tr>
+										<tr style="height: 47px;">
+										<th style="height: 47px;" scope="row">9:00-12:00</th>
+										<td style="height: 47px;">Work on hackathon projects</td>
+										</tr>
+										<tr class="active" style="height: 47px;">
+										<th style="height: 47px;" scope="row">12:00</th>
+										<td style="height: 47px;">Lunch</td>
+										</tr>
+										<tr style="height: 48px;">
+										<th style="height: 48px;" scope="row">13:00-15:00</th>
+										<td style="height: 48px;">Work on hackathon projects</td>
+										</tr>
+										<tr style="height: 47px;">
+										<th style="height: 47px;" scope="row">15:00</th>
+										<td style="height: 47px;">All hackathon projects completed and submitted / <a title="Hackathon Template PDF" href="uploads/1477192653883-Hackathon%20Template.pdf" target="_blank">Hackathon Template&nbsp;PDF</a> or <a title="PPT" href="uploads/1477192667327-Hackathon Template.pptx" target="_blank">PPT</a></td>
+										</tr>
+										<tr style="height: 47px;">
+										<th style="height: 47px;" scope="row">15:15 &ndash; 17:00</th>
+										<td style="height: 47px;">First round of evaluations of all teams</td>
+										</tr>
+										<tr style="height: 47px;">
+										<th style="height: 47px;" scope="row">17:00-18:00</th>
+										<td style="height: 47px;">Finalists present to panel of judges</td>
+										</tr>
+										<tr style="height: 47px;">
+										<th style="height: 47px;" scope="row">18:15</th>
+										<td style="height: 47px;">Hackathon awards and closing</td>
+										</tr>
+										</tbody>
+										</table>
+										</div>`
 			})
 		})
 		.then(function() {
@@ -3842,24 +3832,17 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 				isPublished: true,
 				tabTitle: 'Venue / 会场',
 				tabNumber: 4,
-				tabContent: `
-				<a href="/beijing2016cn#venue472025022330" class="btn btn-success float-right" role="button">汉语</a>
-				<a class="btn btn-primary float-right" role="button" style="margin-right:10px;" href="http://www.aka.ms/devdaysbeijing2016">Register</a>
-				<br><br>
-				<a href="/beijing2016#venue472025022330" class="btn btn-info float-right" role="button">English</a>
-				<a href="http://www.aka.ms/devdaysbeijing2016"><img src="/uploads/RegisterNowCN.png" style="height: 37px; margin-right: 10px;" class="float-right" title="registration button" alt="registration link"></a>
-				<h2>Microsoft Asia-Pacific R & D Group Headquarters</h2>
-				<h2>微软亚太研发集团总部</h2>
-				<img src="uploads/ms-building-2-haidian.jpg" alt="Microsoft Asia-Pacific R & D Group Headquarters" class="m-x-auto">
-				<a href="http://www.bing.com/mapspreview?where1=Building%202,%20No.%205%20Dan%20Ling%20Street%20Haidian%20District%20Beijing%20%20China%20100080"><p>Building 2, No. 5 Dan Ling Street, </p>
-				<p>Haidian District, </p>
-				<p>Beijing , 100080 </p>
-				<p>China </p></a>
-				<h4>Telephone</h4>
-				<p>(86-10) 5917-8888 </p>
-				<p>*More specific directions are coming soon!</p>
-
-				`
+				tabContent: `<p><a class="btn btn-success float-right" href="beijing2016cn#venue472025022330">汉语</a> <a class="btn btn-primary float-right" style="margin-right: 10px;" href="http://www.aka.ms/devdaysbeijing2016">Register</a> <br /><br /> <a class="btn btn-info float-right" href="beijing2016#venue472025022330">English</a> <a href="http://www.aka.ms/devdaysbeijing2016"><img class="float-right" style="height: 37px; margin-right: 10px;" title="registration button" src="uploads/RegisterNowCN.png" alt="registration link" /></a></p>
+										<h2>Microsoft Asia-Pacific R &amp; D Group Headquarters</h2>
+										<h2>微软亚太研发集团总部</h2>
+										<p><img class="m-x-auto" src="uploads/ms-building-2-haidian.jpg" alt="Microsoft Asia-Pacific R &amp; D Group Headquarters" /></p>
+										<p><strong>Building 1, No. 5 Dan Ling Street,</strong></p>
+										<p>Haidian District,</p>
+										<p>Beijing , 100080</p>
+										<p>China</p>
+										<h4>Telephone</h4>
+										<p>(86-10) 5917-8888</p>
+										<p>*More specific directions are coming soon!</p>`
 			})
 		})
 		.then(function() {
@@ -3998,188 +3981,201 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 		isPublished: true,
 		tabTitle: '议程',
 		tabNumber: 2,
-		tabContent: `<a href="/beijing2016#agenda" class="btn btn-info float-right" role="button">English</a>
-				<a href="http://www.aka.ms/devdaysbeijing2016"><img src="uploads/RegisterNowCN.png" style="height: 37px; margin-right: 10px;" class="float-right beijingRegistration2016Button" title="registration button" alt="registration link"></a>
-				<h4>2016 年九月二十六日: Hackathon 开始! </h4>	
-				<h4>2016 年十月二十一日: Hackathon 正式开幕</h4>
-				<p>会场：微软亚太研发集团</p>
-				<p>北京市海淀区丹棱街5号</p>
-				<p>邮编：100080</p>
-				<div class="table-responsive">
-					<table class="table table-bordered">
-						<thead>
-							<tr>
-								<th><h5>时间</h5></th>
-								<th><h5>环节内容</h5></th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
+		tabContent: `<p><a class="btn btn-info float-right" href="beijing2016#agenda">English</a> <a href="http://www.aka.ms/devdaysbeijing2016"><img class="float-right beijingRegistration2016Button" style="height: 37px; margin-right: 10px;" title="registration button" src="uploads/RegisterNowCN.png" alt="registration link" /></a></p>
+								<h4>2016 年九月二十六日: Hackathon 开始!</h4>
+								<h4>2016 年十月二十一日: Hackathon 正式开幕</h4>
+								<p>会场：微软亚太研发集团</p>
+								<p>北京市海淀区丹棱街5号</p>
+								<p>邮编：100080</p>
+								<div class="table-responsive">
+								<table class="table table-bordered">
+								<thead>
+								<tr>
+								<th>
+								<h5>时间</h5>
+								</th>
+								<th>
+								<h5>环节内容</h5>
+								</th>
+								</tr>
+								</thead>
+								<tbody>
+								<tr>
 								<th scope="row">17:00</th>
 								<td>欢迎参赛者</td>
-							</tr>
-							<tr class="active">
+								</tr>
+								<tr class="active">
 								<th scope="row">18:00</th>
 								<td>晚餐</td>
-							</tr>
-							<tr>
+								</tr>
+								<tr>
 								<th scope="row">19:00-21:00</th>
 								<td>建立团队 + 编写程序和应用</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<p><strong>2016 年十月二十二日: DevDays Asia 2016 @ Beijing 会议开始与 Hackathon继续进行</strong></p>
-				<p>会场：微软亚太研发集团</p>
-				<p>北京市海淀区丹棱街5号</p>
-				<p>邮编：100080</p>
-				<div class="table-responsive">
-					<table class="table table-bordered">
-						<thead>
-							<tr>
-								<th><h5>时间</h5></th>
-								<th><h5>Office 开发者环节</h5></th>
-								<th><h5>互操作环节</h5></th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<th scope="row">9:00-9:15</th>
-								<td colspan="2">欢迎致词</td>
-							</tr>
-							<tr>
-								<th scope="row">9:15-10:00</th>
-								<td colspan="2">会议主旨</td>
-							</tr>
-							<tr>
-								<th scope="row">10:00-10:45</th>
-								<td>介绍现代  Office 平台</td>
-								<td>介绍微软对互操作之承诺(Office, Windows, and SQL)</td>
-							</tr>
-							<tr class="active">
-								<td>10:45-11:00</td>
-								<td colspan="2">休息</td>
-							</tr>
-							<tr>
-								<th scope="row">11:00-11:45</th>
-								<td>通过Office 外接程序使您的解決方案成为 Office 本体的一部分</td>
-								<td>Windows 协议测试组件</td>
-							</tr>
-							<tr>
-								<th scope="row">11:45-12:30</th>
-								<td>探讨Microsoft Graph (旧称 “Office 365 统一API”) 是访问 Microsoft 云服务中数据最轻松简易的方式（内容包括Gallatin、  范例、实例等）。</td>
-								<td>发掘 Exchange 协议 和有关 ActiveSync, Exchange Web 服务及 MAPI方面的进步</td>
-							</tr>
-							<tr class="active">
-								<td>12:30-13:30</td>
-								<td colspan="2">午餐</td>
-							</tr>
-							<tr>
-								<th scope="row">13:30-14:15</th>
-								<td>探索Dev.Office.com及通过报名注册拿到Office 开发人员账户</td>
-								<td>开放数据协议（OData）概述及演示</td>
-							</tr>
-							<tr>
-								<th scope="row">14:15-15:00</th>
-								<td>介绍Office 365 China Instance</td>
-								<td>开放数据协议（OData）验证工具:  验证以OData 开发的服务能否与 OData客户端正常操作</td>
-							</tr>
-							<tr>
-								<th scope="row">15:00-15:45</th>
-								<td>在Office 外接程序内发掘微软Graph的优势</td>
-								<td>介绍“模型第一工具”，一种从资源模型中产生高度一致的 API 的方法</td>
-							</tr>
-							<tr class="active">
-								<td>15:45-16:00</td>
-								<td colspan="2">休息</td>
-							</tr>
-							<tr>
-								<th scope="row">16:00-16:45</th>
-								<td>通过 Outlook REST APIs 创建智慧的邮件、联系人、日历应用</td>
-								<td>了解SharePoint 协议，包括 Office合著者 (FSSHTTP) 和 Office Online (WOPI)</td>
-							</tr>
-							<tr>
-								<th scope="row">16:45-17:30</th>
-								<td>通过Office UI Fabric来设计应用使您的体验外观和感觉与 Office 相似</td>
-								<td>了解微软 Office应用程序所支持的最常用Office文件格式</td>
-							</tr>
-							<tr>
-								<th scope="row">17:30-18:15</th>
-								<td>发布您的应用至Office 商店</td>
-								<td>利用Message Analyzer 和 Fiddler 解析器来解析Office, Exchange, and SharePoint 协议消息的内容 (包括SQL Parsers)</td>
-							</tr>
-							<tr class="active">
-								<td>18:15-19:15</td>
-								<td colspan="2">晚餐</td>
-							</tr>
-							<tr>
-								<th scope="row">19:15-19:30</th>
-								<td>源代码管理（管理您的项目）</td>
-							</tr>
-							<tr>
-								<th scope="row">20:00-20:15</th>
-								<td>现有的开源项目</td>
-							</tr>
-							<tr class="active">
-								<td>22:00-22:30</td>
-								<td>夜宵</td>
-							</tr>
-							<tr class="active">
-								<td>0:00</td>
-								<td>会场关闭</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<p>*Hackathon将于周六全天进行，现场有微软工程师的帮助和指导。</p>
-				<p><strong>2016 年十月二十三日: Hackathon 继续进行</strong></p>
-				<p>会场：微软亚太研发集团</p>
-				<p>北京市海淀区丹棱街5号</p>
-				<p>邮编：100080</p>
-				<div class="table-responsive">
-					<table class="table table-bordered">
-						<thead>
-							<tr>
-								<th><h5>时间</h5></th>
-								<th><h5>环节内容</h5></th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
+								</tr>
+								</tbody>
+								</table>
+								</div>
+								<p><strong>2016 年十月二十二日: DevDays Asia 2016 @ Beijing 会议开始与 Hackathon继续进行</strong></p>
+								<p>会场：微软亚太研发集团</p>
+								<p>北京市海淀区丹棱街5号</p>
+								<p>邮编：100080</p>
+								<div class="table-responsive">
+								<table class="table table-bordered">
+								<thead>
+								<tr style="height: 97px;">
+								<th style="height: 97px;">
+								<h5>时间</h5>
+								</th>
+								<th style="height: 97px;">
+								<h5>Office 开发者环节</h5>
+								</th>
+								<th style="height: 97px;">
+								<h5>互操作环节</h5>
+								</th>
+								</tr>
+								</thead>
+								<tbody>
+								<tr style="height: 66px;">
+								<th style="height: 66px;" scope="row">9:00-9:15</th>
+								<td style="height: 66px;" colspan="2">欢迎致词</td>
+								</tr>
+								<tr style="height: 66px;">
+								<th style="height: 66px;" scope="row">9:15-10:00</th>
+								<td style="height: 66px;" colspan="2"><a title="会议主旨" href="uploads/1477100667698-Keynote - DevDays Asia-China.pdf" target="_self">会议主旨</a></td>
+								</tr>
+								<tr style="height: 66px;">
+								<th style="height: 66px;" scope="row">10:00-10:45</th>
+								<td style="height: 66px;"><a title="介绍现代 Office 平台" href="uploads/1477102799774-Introducing the Modern Office Platform.pdf" target="_self">介绍现代 Office 平台</a></td>
+								<td style="height: 66px;"><a title="介绍微软对互操作之承诺(Office, Windows, and SQL)" href="uploads/1477102973672-Introducing Microsoft's Commitment to Interoperabilty.pdf" target="_self">介绍微软对互操作之承诺(Office, Windows, and SQL)</a></td>
+								</tr>
+								<tr class="active" style="height: 66px;">
+								<td style="height: 66px;">10:45-11:00</td>
+								<td style="height: 66px;" colspan="2">休息</td>
+								</tr>
+								<tr style="height: 66px;">
+								<th style="height: 66px;" scope="row">11:00-11:45</th>
+								<td style="height: 66px;"><a title="通过Office 外接程序使您的解決方案成为 Office 本体的一部分" href="uploads/1477105047495-Make your solution a native part of Office with Office Add-ins.pdf" target="_self">通过Office 外接程序使您的解決方案成为 Office 本体的一部分</a></td>
+								<td style="height: 66px;"><a title="Windows 协议测试组件" href="uploads/1477105069786-Windows Protocol Test Suites.pdf" target="_self">Windows 协议测试组件</a></td>
+								</tr>
+								<tr style="height: 66px;">
+								<th style="height: 66px;" scope="row">11:45-12:30</th>
+								<td style="height: 66px;"><a title="探讨Microsoft Graph (旧称 &ldquo;Office 365 统一API&rdquo;) 是访问 Microsoft 云服务中数据最轻松简易的方式（内容包括Gallatin、 范例、实例等）。" href="uploads/1477107201387-Discover Microsoft Graph.pdf" target="_self">探讨Microsoft Graph (旧称 &ldquo;Office 365 统一API&rdquo;) 是访问 Microsoft 云服务中数据最轻松简易的方式（内容包括Gallatin、 范例、实例等）。</a></td>
+								<td style="height: 66px;"><a title="发掘 Exchange 协议 和有关 ActiveSync, Exchange Web 服务及 MAPI方面的进步" href="uploads/1477107220483-Discover Exchange Protocols &amp; advancements in ActiveSync, Exchange Web Services, and MAPI.pdf" target="_blank">发掘 Exchange 协议 和有关 ActiveSync, Exchange Web 服务及 MAPI方面的进步</a></td>
+								</tr>
+								<tr class="active" style="height: 66px;">
+								<td style="height: 66px;">12:30-13:30</td>
+								<td style="height: 66px;" colspan="2">午餐</td>
+								</tr>
+								<tr style="height: 66px;">
+								<th style="height: 66px;" scope="row">13:30-14:15</th>
+								<td style="height: 66px;"><a title="探索Dev.Office.com及通过报名注册拿到Office 开发人员账户" href="uploads/1477121648782-Navigate Dev.Office.com and create an Office Developer account.pdf" target="_blank">探索Dev.Office.com及通过报名注册拿到Office 开发人员账户</a></td>
+								<td style="height: 66px;"><a title="开放数据协议（OData）概述及演示" href="uploads/1477121830645-OData Overview.pdf" target="_blank">开放数据协议（OData）概述及演示</a></td>
+								</tr>
+								<tr style="height: 66px;">
+								<th style="height: 66px;" scope="row">14:15-15:00</th>
+								<td style="height: 66px;"><a title="介绍Office 365 China Instance" href="uploads/1477121736210-Intro to Office 365 China Instance.pdf" target="_blank">介绍Office 365 China Instance</a></td>
+								<td style="height: 66px;"><a title="开放数据协议（OData）验证工具: 验证以OData 开发的服务能否与 OData客户端正常操作" href="uploads/1477122292779-OData Validator.pdf" target="_blank">开放数据协议（OData）验证工具: 验证以OData 开发的服务能否与 OData客户端正常操作</a></td>
+								</tr>
+								<tr style="height: 66px;">
+								<th style="height: 66px;" scope="row">15:00-15:45</th>
+								<td style="height: 66px;"><a title="在Office 外接程序内发掘微软Graph的优势" href="uploads/1477121758460-Leverage Microsoft Graph through Office Add-Ins.pdf" target="_blank">在Office 外接程序内发掘微软Graph的优势</a></td>
+								<td style="height: 66px;"><a title="介绍&ldquo;模型第一工具&rdquo;，一种从资源模型中产生高度一致的 API 的方法" href="uploads/1477121933006-Model First Intro.pdf" target="_blank">介绍&ldquo;模型第一工具&rdquo;，一种从资源模型中产生高度一致的 API 的方法</a></td>
+								</tr>
+								<tr class="active" style="height: 66px;">
+								<td style="height: 66px;">15:45-16:00</td>
+								<td style="height: 66px;" colspan="2">休息</td>
+								</tr>
+								<tr style="height: 66px;">
+								<th style="height: 66px;" scope="row">16:00-16:45</th>
+								<td style="height: 66px;"><a title="通过 Outlook REST APIs 创建智慧的邮件、联系人、日历应用" href="uploads/1477139267732-Outlook REST APIs.pdf" target="_self">通过 Outlook REST APIs 创建智慧的邮件、联系人、日历应用</a></td>
+								<td style="height: 66px;"><a title="了解SharePoint 协议，包括 Office合著者 (FSSHTTP) 和 Office Online (WOPI)" href="uploads/1477137074641-Office Online and Sharepoint Protocols.pdf" target="_blank">了解SharePoint 协议，包括 Office合著者 (FSSHTTP) 和 Office Online (WOPI)</a></td>
+								</tr>
+								<tr style="height: 66px;">
+								<th style="height: 66px;" scope="row">16:45-17:30</th>
+								<td style="height: 66px;"><a title="通过Office UI Fabric来设计应用使您的体验外观和感觉与 Office 相似" href="uploads/1477126688447-Use Office UI Fabric to design applications that blend seamlessly into Office.pdf" target="_blank">通过Office UI Fabric来设计应用使您的体验外观和感觉与 Office 相似</a></td>
+								<td style="height: 66px;"><a title="了解微软 Office应用程序所支持的最常用Office文件格式" href="uploads/1477126735376-Office File Formats.pdf" target="_blank">了解微软 Office应用程序所支持的最常用Office文件格式</a></td>
+								</tr>
+								<tr style="height: 66px;">
+								<th style="height: 66px;" scope="row">17:30-18:15</th>
+								<td style="height: 66px;"><a title="发布您的应用至Office 商店" href="uploads/1477127782465-Publishing your app to the Office Store.pdf" target="_blank">发布您的应用至Office 商店</a></td>
+								<td style="height: 66px;">利用Message Analyzer 和 Fiddler 解析器来解析Office, Exchange, and SharePoint 协议消息的内容 (<a title="包括SQL Parsers" href="uploads/1477127809566-Message Analyzer Parsers for SQL.pdf" target="_blank">包括SQL Parsers</a>)</td>
+								</tr>
+								<tr class="active" style="height: 66px;">
+								<td style="height: 66px;">18:15-19:15</td>
+								<td style="height: 66px;" colspan="2">晚餐</td>
+								</tr>
+								<tr style="height: 66px;">
+								<th style="height: 66px;" scope="row">19:15-19:30</th>
+								<td style="height: 66px;">源代码管理（管理您的项目）</td>
+								</tr>
+								<tr style="height: 66px;">
+								<th style="height: 66px;" scope="row">20:00-20:15</th>
+								<td style="height: 66px;"><a title="现有的开源项目" href="uploads/1477135401737-Existing Open Source Projects.pdf" target="_self">现有的开源项目</a></td>
+								</tr>
+								<tr class="active" style="height: 66px;">
+								<td style="height: 66px;">22:00-22:30</td>
+								<td style="height: 66px;">夜宵</td>
+								</tr>
+								<tr class="active" style="height: 49px;">
+								<td style="height: 49px;">0:00</td>
+								<td style="height: 49px;">会场关闭</td>
+								</tr>
+								</tbody>
+								</table>
+								</div>
+								<p>*Hackathon将于周六全天进行，现场有微软工程师的帮助和指导。</p>
+								<p><strong>2016 年十月二十三日: Hackathon 继续进行</strong></p>
+								<p>会场：微软亚太研发集团</p>
+								<p>北京市海淀区丹棱街5号</p>
+								<p>邮编：100080</p>
+								<div class="table-responsive">
+								<table class="table table-bordered">
+								<thead>
+								<tr>
+								<th>
+								<h5>时间</h5>
+								</th>
+								<th>
+								<h5>环节内容</h5>
+								</th>
+								</tr>
+								</thead>
+								<tbody>
+								<tr>
 								<th scope="row">9:00</th>
 								<td>会场开放，提供早餐</td>
-							</tr>
-							<tr>
+								</tr>
+								<tr>
 								<th scope="row">9:00-12:00</th>
 								<td>编写程序和应用</td>
-							</tr>
-							<tr class="active">
+								</tr>
+								<tr class="active">
 								<th scope="row">12:00</th>
 								<td>午餐</td>
-							</tr>
-							<tr>
+								</tr>
+								<tr>
 								<th scope="row">13:00-15:00</th>
 								<td>编写程序和应用</td>
-							</tr>
-							<tr>
+								</tr>
+								<tr>
 								<th scope="row">15:00</th>
-								<td>完成程序和应用及提交</td>
-							</tr>
-							<tr>
-								<th scope="row">15:15 – 17:00</th>
+								<td>完成程序和应用及提交 /<a title="DevDays Beijing Hackathon Template PDF" href="uploads/1477192078955-Hackathon Template.pdf" target="_self">Hackathon Template PDF</a>&nbsp;- <a title="Hackathon Template PPT" href="uploads/1477192118399-Hackathon Template.pptx" target="_blank">Hackathon Template PPT</a></td>
+								</tr>
+								<tr>
+								<th scope="row">15:15 &ndash; 17:00</th>
 								<td>第一轮评估参赛团队</td>
-							</tr>
-							<tr>
+								</tr>
+								<tr>
 								<th scope="row">17:00-18:00</th>
 								<td>参加决赛的团队向评审团展示成果</td>
-							</tr>
-							<tr>
+								</tr>
+								<tr>
 								<th scope="row">18:15</th>
 								<td>Hackathon 颁奖及闭幕</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>`
+								</tr>
+								</tbody>
+								</table>
+								</div>`
 	})
 })
 .then(function() {

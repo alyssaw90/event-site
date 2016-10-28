@@ -1,49 +1,97 @@
 <div class="mobileWrapper ng-cloak" role="presentation">
-  <main style="overflow:hidden;" class="container-fluid main-page-content" role="presentation" data-ng-controller="EditFilesCtrl" data-ng-init="getAllFiles()">
+  <main style="overflow:hidden;" class="container" role="presentation" data-ng-controller="EditFilesCtrl" data-ng-init="getAllFiles()">
     <section role="presentation" class="internetExplorer" data-ng-controller="AdminPageCtrl">
-     <h2>Files:</h2>
+      <div class="row" role="presentation">
+        <div class="col-lg-24" role="presentation">
+          <h2>Files:</h2>
+        </div>
+      </div>
      <form id="deleteFilesForm" enctype="multipart/form-data" data-ng-submit="deleteFiles(filesToDelete)">
-      <button class="btn btn-primary" name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'newSlideImage', getAllFiles)">Add File</button>
-      <button type="submit" class="btn btn-danger" style="margin: 5px" id="delete-file-button">Delete</button>
-      <div data-ng-repeat="file in files" ng-if="$index % 4 === 0 " class="row">
-        <div class="col-md-3">
+      <div class="row" role="presentation">
+        <div class="col-lg-24" role="presentation">
+          <button class="btn btn-primary" name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'newSlideImage', getAllFiles)">Add File</button>
+          <button type="submit" class="btn btn-danger" style="margin: 5px" id="delete-file-button">Delete</button>
+        </div>
+      </div>
+      <div data-ng-repeat="file in files" ng-if="$index % 8 === 0 " class="row">
+        <div class="col-lg-3" role="presentation">
           <label class="file-container" for="files[$index].fileName">{{files[$index].fileName}}
             <br>
             <input type="checkbox" name="files[$index].fileName" data-ng-model="filesToDelete[files[$index].fileName]" value="files[$index].fileName">
             <br>
             <br>
-            <img data-ng-if="files[$index].isImage" data-ng-src="{{files[$index].fileLink}}">        
-            <i data-ng-if="!files[$index].isImage" class="fa fa-file fa-5x" aria-hidden="true"></i>
+            <img class="img-thumbnail" data-ng-if="files[$index].isImage" data-ng-src="{{files[$index].fileLink}}">        
+            <i data-ng-if="!files[$index].isImage" class="win-icon win-icon-Page win-icon-size-xl" aria-hidden="true"></i>
           </label>        
         </div>
-        <div class="col-md-3">
+        <div class="col-lg-3" role="presentation">
           <label class="file-container" for="files[$index + 1].fileName" data-ng-if="files.length > ($index + 1)">{{files[$index + 1].fileName}}
             <br>
             <input type="checkbox" name="files[$index + 1].fileName" data-ng-model="filesToDelete[files[$index + 1].fileName]" value="files[$index + 1].fileName">
             <br>
             <br>
-            <img data-ng-if="files[$index + 1].isImage" data-ng-src="{{files[$index + 1].fileLink}}">        
-            <i data-ng-if="!files[$index + 1].isImage" class="fa fa-file fa-5x" aria-hidden="true"></i>
+            <img class="img-thumbnail" data-ng-if="files[$index + 1].isImage" data-ng-src="{{files[$index + 1].fileLink}}">        
+            <i data-ng-if="!files[$index + 1].isImage" class="win-icon win-icon-Page win-icon-size-xl" aria-hidden="true"></i>
           </label>          
         </div>
-        <div class="col-md-3">
-          <label class="file-container" for="files[$index + 2].fileName" data-ng-if="files.length > ($index + 2)">{{files[$index + 2].fileName}}
+        <div class="col-lg-3" role="presentation">
+          <label class="file-container" for="files[$index + 6].fileName" data-ng-if="files.length > ($index + 6)">{{files[$index + 2].fileName}}
             <br>
             <input type="checkbox" name="files[$index + 2].fileName" data-ng-model="filesToDelete[files[$index + 2].fileName]" value="files[$index + 2].fileName">
             <br>
             <br>
-            <img data-ng-if="files[$index + 2].isImage" data-ng-src="{{files[$index + 2].fileLink}}">        
-            <i data-ng-if="!files[$index + 2].isImage" class="fa fa-file fa-5x" aria-hidden="true"></i>
+            <img class="img-thumbnail" data-ng-if="files[$index + 2].isImage" data-ng-src="{{files[$index + 2].fileLink}}">        
+            <i data-ng-if="!files[$index + 2].isImage" class="win-icon win-icon-Page win-icon-size-xl" aria-hidden="true"></i>
           </label>          
         </div>
-        <div class="col-md-3">
-          <label class="file-container" for="files[$index + 3].fileName" data-ng-if="files.length > ($index + 3)">{{files[$index + 3].fileName}}
+        <div class="col-lg-3" role="presentation">
+          <label class="file-container" for="files[$index + 7].fileName" data-ng-if="files.length > ($index + 3)">{{files[$index + 7].fileName}}
             <br>
             <input type="checkbox" name="files[$index + 3].fileName" data-ng-model="filesToDelete[files[$index + 3].fileName]" value="files[$index + 3].fileName">
             <br>
             <br>
-            <img data-ng-if="files[$index + 3].isImage" data-ng-src="{{files[$index + 3].fileLink}}">        
-            <i data-ng-if="!files[$index + 3].isImage" class="fa fa-file fa-5x" aria-hidden="true"></i>
+            <img class="img-thumbnail" data-ng-if="files[$index + 3].isImage" data-ng-src="{{files[$index + 3].fileLink}}">        
+            <i data-ng-if="!files[$index + 3].isImage" class="win-icon win-icon-Page win-icon-size-xl" aria-hidden="true"></i>
+          </label>          
+        </div>
+        <div class="col-lg-3" role="presentation">
+          <label class="file-container" for="files[$index + 4].fileName">{{files[$index + 4].fileName}}
+            <br>
+            <input type="checkbox" name="files[$index + 4].fileName" data-ng-model="filesToDelete[files[$index + 4].fileName]" value="files[$index + 4].fileName">
+            <br>
+            <br>
+            <img class="img-thumbnail" data-ng-if="files[$index + 4].isImage" data-ng-src="{{files[$index + 4].fileLink}}">        
+            <i data-ng-if="!files[$index + 4].isImage" class="win-icon win-icon-Page win-icon-size-xl" aria-hidden="true"></i>
+          </label>        
+        </div>
+        <div class="col-lg-3" role="presentation">
+          <label class="file-container" for="files[$index + 5].fileName" data-ng-if="files.length > ($index + 4 + 5)">{{files[$index + 5].fileName}}
+            <br>
+            <input type="checkbox" name="files[$index + 5].fileName" data-ng-model="filesToDelete[files[$index + 5].fileName]" value="files[$index + 5].fileName">
+            <br>
+            <br>
+            <img class="img-thumbnail" data-ng-if="files[$index + 5].isImage" data-ng-src="{{files[$index + 5].fileLink}}">        
+            <i data-ng-if="!files[$index + 5].isImage" class="win-icon win-icon-Page win-icon-size-xl" aria-hidden="true"></i>
+          </label>          
+        </div>
+        <div class="col-lg-3" role="presentation">
+          <label class="file-container" for="files[$index + 6].fileName" data-ng-if="files.length > ($index + 6)">{{files[$index + 6].fileName}}
+            <br>
+            <input type="checkbox" name="files[$index + 6].fileName" data-ng-model="filesToDelete[files[$index + 6].fileName]" value="files[$index + 6].fileName">
+            <br>
+            <br>
+            <img class="img-thumbnail" data-ng-if="files[$index + 6].isImage" data-ng-src="{{files[$index + 6].fileLink}}">        
+            <i data-ng-if="!files[$index + 6].isImage" class="win-icon win-icon-Page win-icon-size-xl" aria-hidden="true"></i>
+          </label>          
+        </div>
+        <div class="col-lg-3" role="presentation">
+          <label class="file-container" for="files[$index + 7].fileName" data-ng-if="files.length > ($index + 3)">{{files[$index + 7].fileName}}
+            <br>
+            <input type="checkbox" name="files[$index + 7].fileName" data-ng-model="filesToDelete[files[$index + 7].fileName]" value="files[$index + 7].fileName">
+            <br>
+            <br>
+            <img class="img-thumbnail" data-ng-if="files[$index + 7].isImage" data-ng-src="{{files[$index + 7].fileLink}}">        
+            <i data-ng-if="!files[$index + 3].isImage" class="win-icon win-icon-Page win-icon-size-xl" aria-hidden="true"></i>
           </label>          
         </div>
       </div>

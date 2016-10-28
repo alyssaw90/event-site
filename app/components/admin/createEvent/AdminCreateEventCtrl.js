@@ -1,6 +1,6 @@
 'use strict';
 import * as customFunctions from '../../shared/methods/common-functions.js';
-// require('tinymce');
+const swal = require('sweetalert');
 const AdminCreateEventCtrl = (app) => {
   app.controller('AdminCreateEventCtrl', ['$rootScope', '$scope', '$http', 'Upload', '$window', 'createEventRESTResource', ($rootScope, $scope, $http, Upload, $window, resource) => {
     // require('angular-ui-tinymce');
@@ -18,6 +18,7 @@ const AdminCreateEventCtrl = (app) => {
       placeholder: 'newEventSpeaker',
       connectWith: '.new-event-speaker-table-container'
     };
+    $scope.eventUrls = [];
 
     let createEventsREST = resource();
 
@@ -32,10 +33,13 @@ const AdminCreateEventCtrl = (app) => {
         if (err) {
           return $scope.errors.push({msg: 'could not retrieve events'});
         };
+
+        for (let i = 0, j = data.length; i < j; i++) {
+          $scope.eventUrls.push(data[i].eventUrl);
+        }
         
         $scope.theEvents = data;
-      })
-      
+      });      
     
     };
 
@@ -63,7 +67,13 @@ const AdminCreateEventCtrl = (app) => {
 
       createEventsREST.createEvent(newEventData, (err, data) => {
         if (err) {
-          $scope.errors.push({msg: 'could not save newEvent: ' + $scope.newEvent.eventName});
+          swal({
+            title: `There was a problem submitting your form`,
+            text: `Please see the form for more details`,
+            type: 'warning',
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: 'Ok'
+          });
         }
         if (!err) {
 
@@ -72,17 +82,17 @@ const AdminCreateEventCtrl = (app) => {
           $rootScope.eventVenueImg = undefined;
 
           // $window.location.reload();
-          alert('Event Saved');
+          swal({
+            title: 'Event Saved',
+            type: 'success'
+          });
         }
       });
     };
 
-    $scope.cancelVenue = () => {
-      $scope.newEvent.newEventVenueName = null;
-      $scope.newEvent.newVenduAddressLine1 = null;
-      $scope.newEvent.newVenueAddressLine2 = null;
-      $scope.newEvent.newVenueParkingInfo = null;
-      $scope.newEvent.eventVenueImg = null;
+    $scope.cancelNewEvent = () => {
+      $scope.newEvent = {};
+      $scope.newEvent.speakers = [];
     }
 
     $scope.getPreviewSpeakers = (theSpeakers) => {

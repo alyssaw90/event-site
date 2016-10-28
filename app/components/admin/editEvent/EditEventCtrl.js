@@ -14,6 +14,8 @@ const EditEventCtrl = (app) => {
     $scope.newTab = {};
     $scope.headerImage = $rootScope.eventHeaderImage ? 'uploads/' + $rootScope.eventHeaderImage.size + '-' + $rootScope.eventHeaderImage.name : '';
     $scope.venueImage = $rootScope.eventVenueImg ? 'uploads/' + $rootScope.eventVenueImg.size + '-' + $rootScope.eventVenueImg.name : '';
+    $scope.buttonStyle = { 'width': 'auto' };
+    $scope.currentEventUrl;
 
 		let EditEventData = resource();
     let CreateEventData = createEventRESTResource();
@@ -92,9 +94,16 @@ const EditEventCtrl = (app) => {
         $scope.editedEvent.event.eventEndDate = new Date($scope.editedEvent.event.eventEndDate);
         //assign id to use in associating new tabs
         $scope.newTab.eventId =  $scope.editedEvent.event.id;
+        $scope.currentEventUrl = data.event.eventUrl;
         getUnusedSpeakers();
       })
     };
+
+    $scope.cancelEditing = () => {
+      $scope.editedEvent = {};
+      $scope.tabToEdit = {};
+      $scope.newTab = {};
+    }
 
     $scope.getTab = (tab) => {
       $scope.tabToEdit = tab;

@@ -3,49 +3,12 @@
 import * as customFunctions from '../shared/methods/common-functions.js';
 
 const PastEventsCtrl = (app) => {
-	app.controller('PastEventsCtrl', ['$scope', '$timeout', function($scope, $timeout) {
+	app.controller('PastEventsCtrl', ['$scope', '$timeout', 'pastEventsRESTResource', function($scope, $timeout, resource) {
+		
 		$scope.pastEvents = [
-			{
-				year: 2016,
-				calendarHtml: `<table cellspacing="0" cellpadding="0" id="2016PastEvents">
-                      <caption>Past plugfests and events from 2008</caption>
-                          <thead>
-                          <tr>
-                           <th>Name</th>
-                           <th>Date</th>
-                           <th>Location</th>
-                           <th>Technical Topics</th>
-                           <th>Related Materials</th>
-                        </tr>
-                         </thead>
-                      <tbody>
-                        <tr data-eventendtime="June 24, 2016, 23:00">
-                          <td><a href="/redmond2016">Redmond Protocol Plugfest & Windows Interoperability (IO) Lab</a></td>
-                          <td>June 13 - 24, 2016</td>
-                          <td>Redmond, WA</td>
-                          <td>Microsoft Windows Protocol, Interoperability within Microsoft Office, Exchange, SharePoint, Windows and SQL Server. Office, SharePoint, & Exchange Protocol Testing</td>
-                          <td><a href="/redmond2016">Event Page</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="/taipei2016">DevDays Asia 2016 @ Taipei</a></td>
-                          <td>April 19 - 21, 2016</td>
-                          <td>Taipei, Taiwan</td>
-                          <td>Office Developer Opportunity, Office Add-ins and APIs, Machine Learning, Big Data Analytics, Open Specifications, Hackathon</td>
-                          <td><a href="/shanghai2015">Event Page</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="/paris2016">Extend Conference</a></td>
-                          <td>May 12, 2016</td>
-                          <td>Paris, France</td>
-                          <td>Office Developer Opportunity, Office Add-ins and APIs, Machine Learning, Big Data Analytics, Open Specifications</td>
-                          <td><a href="/paris2016">Event Page</a></td>
-                        </tr>
-                      </tbody>
-                    </table>`
-                  },
       {
       	year: 2015,
-      	calendarHtml: `<table id="2015PastEvents" cellspacing="0" cellpadding="0">
+      	calendarHtml: `<table id="2015PastEvents" cellspacing="0" cellpadding="0" class="table table-bordered">
 											<thead><tr>
 												<th>Name</th>
 												<th>Date</th>
@@ -94,7 +57,7 @@ const PastEventsCtrl = (app) => {
 										},
       {
       	year: 2014,
-      	calendarHtml: `<table id="2014PastEvents" cellspacing="0" cellpadding="0">
+      	calendarHtml: `<table id="2014PastEvents" cellspacing="0" cellpadding="0" class="table table-bordered">
 												<thead><tr>
 													<th>Name</th>
 													<th>Date</th>
@@ -137,7 +100,7 @@ const PastEventsCtrl = (app) => {
 										},
       {
       	year: 2013,
-      	calendarHtml: `<table id="2013PastEvents" cellspacing="0" cellpadding="0">
+      	calendarHtml: `<table id="2013PastEvents" cellspacing="0" cellpadding="0" class="table table-bordered">
 													<thead><tr>
 													<th>Name</th>
 													<th>Date</th>
@@ -174,7 +137,7 @@ const PastEventsCtrl = (app) => {
 										},
       {
       	year: 2012,
-      	calendarHtml: `<table id="2012PastEvents" cellspacing="0" cellpadding="0">
+      	calendarHtml: `<table id="2012PastEvents" cellspacing="0" cellpadding="0" class="table table-bordered">
 												<thead><tr>
 												<th>Name</th>
 												<th>Date</th>
@@ -247,7 +210,7 @@ const PastEventsCtrl = (app) => {
 									},
       {
       	year: 2011,
-      	calendarHtml: `<table id="2011PastEvents" cellspacing="0" cellpadding="0">
+      	calendarHtml: `<table id="2011PastEvents" cellspacing="0" cellpadding="0" class="table table-bordered">
 											<thead><tr>
 												<th>Name</th>
 												<th>Date</th>
@@ -290,7 +253,7 @@ const PastEventsCtrl = (app) => {
 										},
       {
       	year: 2010,
-      	calendarHtml: `<table id="2010PastEvents" cellspacing="0" cellpadding="0">
+      	calendarHtml: `<table id="2010PastEvents" cellspacing="0" cellpadding="0" class="table table-bordered">
 												<thead><tr>
 												<th>Name</th>
 												<th>Date</th>
@@ -357,7 +320,7 @@ const PastEventsCtrl = (app) => {
 									},
       {
       	year: 2009,
-      	calendarHtml: `<table id="2009PastEvents" cellspacing="0" cellpadding="0">
+      	calendarHtml: `<table id="2009PastEvents" cellspacing="0" cellpadding="0" class="table table-bordered">
 												<thead><tr>
 													<th>Name</th>
 													<th>Date</th>
@@ -424,7 +387,7 @@ const PastEventsCtrl = (app) => {
 										},
 											{
 												year: 2008,
-												calendarHtml: `<table id="2008PastEvents" cellspacing="0" cellpadding="0">
+												calendarHtml: `<table id="2008PastEvents" cellspacing="0" cellpadding="0" class="table table-bordered">
 												<thead><tr>
 													<th>Name</th>
 													<th>Date</th>
@@ -485,10 +448,48 @@ const PastEventsCtrl = (app) => {
 										}
 		];
 
+		const RESTResoures = resource();
+		//get past events that don't already exist in the past events array
+		$scope.getPastEvents = () => {
+			RESTResoures.getPastEvents( (err, data) => {
+				if (err) {
+					return console.log(err);
+				}
+				for (let key in data) {
+					let newYearOfEvents = {
+						year: key,
+						calendarHtml: `<table id="${key}PastEvents" cellspacing="0" cellpadding="0" class="table table-bordered">
+												<thead><tr>
+													<th>Name</th>
+													<th>Date</th>
+													<th>Location</th>
+													<th>Technical Topics</th>
+													<th>Related Materials</th>
+											</tr></thead>
+												<tbody>`
+					};
+
+					for (let i = 0, len = data[key].length; i < len; i++) {
+						let technicalTopics = data[key][i].eventTechnicalTopics !== null ? data[key][i].eventTechnicalTopics : '';
+						let startDate = new Date(data[key][i].eventStartDate).toDateString();
+						newYearOfEvents.calendarHtml += `<tr>
+													<td>${data[key][i].eventName}</td>
+													<td>${startDate}</td>
+													<td>${data[key][i].eventLocation}</td>
+													<td>${technicalTopics}</td>
+													<td><a href="${data[key][i].eventUrl}">Event Page</a></td>
+												</tr>`;
+						
+					}
+					newYearOfEvents.calendarHtml += `</tbody></table>`;
+					$scope.pastEvents.unshift(newYearOfEvents);
+				}
+			})
+		}
+
 		//function to show and hide past event tables on past events page
 		$scope.showCalendarOfPastEvents = (calendarHtml, divClicked, calendarDiv, event) => {
 			let keyCode = customFunctions.getKeyCode(event);
-			console.log('hola', keyCode);
 			if (keyCode === 1 || 13) {
 			  if (angular.element(divClicked).hasClass('selected-year')) {
 			    angular.element(calendarDiv).empty();
