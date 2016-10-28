@@ -307,7 +307,8 @@ module.exports = function () {
 				eventEndDate: new Date('October 23, 2016'),
 				eventHeaderImage: 'Beijing-Header-8.26.jpg',
 				isPublished: true,
-				showOnHeader: false
+				showOnHeader: false,
+				eventTechnicalTopics: 'Microsoft Graph, Office Add-ins, Open Specifications, Windows Protocols, OData'
 			})
 		})
 		.then(function() {
@@ -347,7 +348,8 @@ module.exports = function () {
 				eventEndDate: new Date('October 23, 2016'),
 				eventHeaderImage: 'Beijing-Header-8.26.jpg',
 				isPublished: true,
-				showOnHeader: true
+				showOnHeader: true,
+				eventTechnicalTopics: 'Microsoft Graph, Office Add-ins, Open Specifications, Windows Protocols, OData'
 			})
 		})
 
