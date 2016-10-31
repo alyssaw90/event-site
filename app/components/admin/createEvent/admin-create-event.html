@@ -20,6 +20,12 @@
 					</div>
 				</div>
 				<div class="form-group" role="presentation">
+					<label for="newEventLanguage">Language*</label>
+					<select name="newEventLanguage" ng-model="newEvent.newEventLanguage">
+						<option ng-repeat="code in languageCodes" value="{{code}}">{{code}}</option>
+					</select>
+				</div>
+				<div class="form-group" role="presentation">
 					<label for="newEventRegistrationLink">Event Registration Link (must be a propertly formed url with http:// or https://)</label>
 					<input class="form-control" type="url" data-ng-model="newEvent.newEventRegistrationLink" name="newEventRegistrationLink" id="newEventRegistrationLink">				
 				</div>
@@ -158,7 +164,7 @@
 					  <div class="clearfix modal-container new-event-speakers-modal-container">
 					    <div ui-sortable="newEventSortSpeakerOptions" data-ng-model="theSpeakers" class="new-event-speaker-table-container col-lg-12 ">
 					    	<h5>Available Speakers, Not Displayed</h5>
-					      <div data-ng-repeat="speaker in theSpeakers" class="newEventSpeaker ui-state-default">
+					      <div data-ng-repeat="speaker in theSpeakers | orderBy: 'firstName'" class="newEventSpeaker ui-state-default">
 					      	<p>{{speaker.fullName}}</p>
 				      	</div>
 					    </div>

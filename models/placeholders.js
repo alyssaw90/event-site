@@ -348,7 +348,8 @@ module.exports = function () {
 				eventHeaderImage: 'Beijing-Header-8.26.jpg',
 				isPublished: true,
 				showOnHeader: true,
-				eventTechnicalTopics: 'Microsoft Graph, Office Add-ins, Open Specifications, Windows Protocols, OData'
+				eventTechnicalTopics: 'Microsoft Graph, Office Add-ins, Open Specifications, Windows Protocols, OData',
+				eventLanguage: 'cn'
 			})
 		})
 

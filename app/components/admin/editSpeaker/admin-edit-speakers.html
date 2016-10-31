@@ -18,7 +18,7 @@
 							<th><h4>Last Modified</h4></th>
 							<th colspan="2"><h4>Status</h4></th>
 						</tr>
-						<tr data-ng-repeat="speaker in theSpeakers">
+						<tr data-ng-repeat="speaker in theSpeakers | orderBy: 'firstName'">
 							<td>{{speaker.fullName}}</td>
 							<td>{{speaker.showOnMeetTheTeamPage}}</td>
 							<td>{{speaker.lastModifiedBy}}</td>

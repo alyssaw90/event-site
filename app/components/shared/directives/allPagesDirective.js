@@ -1,6 +1,4 @@
 'use strict';
-
-import * as customFunctions from '../shared/methods/common-functions.js';
 const jQuery = require('jquery');
 
 const allPagesDirective = (app) => {

@@ -24,7 +24,7 @@ require('angular-messages');
 const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize', 'angular-google-analytics', 'ngFileUpload', 'ngResource', 'ngCookies', 'base64', 'ngAnimate', 'ui.bootstrap', 'ui.tinymce', 'ui.sortable', 'mwl.confirm', 'ngMessages']);
 
 //directives
-require('./shared/allPagesDirective.js')(eventsApp);
+require('./shared/directives/allPagesDirective.js')(eventsApp);
 require('./homepage/homepageDirective.js')(eventsApp);
 require('./latestNews/latestNewsDirective.js')(eventsApp);
 require('./contactUs/contactUsDirective.js')(eventsApp);
@@ -44,7 +44,8 @@ require('./admin/createEvent/uniqueUrlDirective.js')(eventsApp);
 require('./admin/editSlideshow/selectableSlideDirective.js')(eventsApp);
 
 //controllers
-require('./shared/AllPagesCtrl.js')(eventsApp);
+require('./shared/controllers/AllPagesCtrl.js')(eventsApp);
+require('./shared/controllers/updateLanguageCtrl.js')(eventsApp);
 require('./homepage/HomepageCtrl.js')(eventsApp);
 require('./pastEvents/PastEventsCtrl.js')(eventsApp);
 require('./meetTheTeam/MeetTheTeamCtrl.js')(eventsApp);

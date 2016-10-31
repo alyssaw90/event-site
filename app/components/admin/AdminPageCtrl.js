@@ -1,9 +1,12 @@
 'use strict';
+const swal = require('sweetalert');
 
 const AdminPageCtrl = (app) => {
 	app.controller('AdminPageCtrl', ['$rootScope', '$scope', 'Upload', '$timeout', 'adminPageRESTResource', '$http', ($rootScope, $scope, Upload, $timeout, resource, $http) => {
 
     const AdminPageREST = resource();
+
+    $scope.languageCodes = ['ab','aa','af','sq','am','ar','an','hy','as','ay','az','ba','eu','bn','dz','bh','bi','br','bg','my','be','km','ca','zh','ns','nt','co','hr','cs','da','nl','en','eo','et','fo','fa','fj','fi','fr','fy','gl','gd','gv','ka','de','el','kl','gn','gu','ht','ha','iw','hi','hu','is','io','in','ia','ie','iu','ik','ga','it','ja','jv','kn','ks','kk','rw','ky','rn','ko','ku','lo','la','lv','li','ln','lt','mk','mg','ms','ml','mt','mi','mr','mo','mn','na','ne','no','oc','or','om','ps','pl','pt','pa','qu','rm','ro','ru','sm','sg','sa','sr','sh','st','tn','sn','ii','sd','si','ss','sk','sl','so','es','su','sw','sv','tl','tg','ta','tt','te','th','bo','ti','to','ts','tr','tk','tw','ug','uk','ur','uz','vi','vo','wa','cy','wo','xh','ji','yo','zu',];
 
     $rootScope.uploadFiles = (file, errFiles, rootScopeKey, callback) => {
       $rootScope[rootScopeKey] = file;
@@ -32,8 +35,20 @@ const AdminPageCtrl = (app) => {
         }, (response) => {
             if (response.status > 0)
               $rootScope.errorMsg = response.status + ': ' + response.data;
+            swal({
+              title: 'Error!',
+              text: 'there was a problem saving your file',
+              type: 'error',
+              confirmButtonText: 'OK'
+            });
         }, (evt) => {
             file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+            swal({
+              title: 'Saved!',
+              text: 'Your file was saved',
+              type: 'success',
+              confirmButtonText: 'OK'
+            })
         });
       }   
     };
@@ -42,7 +57,12 @@ const AdminPageCtrl = (app) => {
       AdminPageREST.addTinymceFile(file, (err, data) => {
         if (err) {
           $scope.errors.push({msg: 'could not upload file'});
-          alert('there was a problem saving your file');
+          swal({
+            title: 'Error!',
+            text: 'there was a problem saving your file',
+            type: 'error',
+            confirmButtonText: 'OK'
+          });
         }
         if (!err) {
           return;

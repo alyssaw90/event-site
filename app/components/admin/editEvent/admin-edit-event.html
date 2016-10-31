@@ -69,7 +69,7 @@
 			  <div class="edited-speaker-table-container clearfix edited-speaker-wrapper" style="display: flex;">
 			    <div ui-sortable="sortableOptions" data-ng-model="unusedSpeakers" class="slides edited-speaker-table-container col-lg-12 the-team-section clearfix ng-cloak">
 			    	<h4>Available Speakers, Not Displayed</h4>
-			      <div data-ng-repeat="editedEventSpeaker in unusedSpeakers" class="editedEventSpeaker">
+			      <div data-ng-repeat="editedEventSpeaker in unusedSpeakers | orderBy: 'firstName'" class="editedEventSpeaker">
 			      	<h4>{{editedEventSpeaker.firstName + ' ' +  editedEventSpeaker.lastName}}</h4>
 					    <h5>{{editedEventSpeaker.msTeamTitle}}</h5>
 					    <img alt="Image of {{editedEventSpeaker.fullName}}" class="pull-left" data-ng-src="{{editedEventSpeaker.headShot}}"  />
