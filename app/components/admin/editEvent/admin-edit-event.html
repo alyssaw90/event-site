@@ -240,32 +240,6 @@
 					<label for="editedEventCity">Event Location*</label>
 					<input class="form-control" type="text" data-ng-model="editedEvent.event.eventLocation" name="editedEventCity" id="editedEventCity" admin-city-name-auto-complete-directive required>
 				</div>
-				<label for="new-event-date-wrapper">Event Dates (Must include time of day)</label>
-				<div id="new-event-date-wrapper" role="presentation">
-					<div class="time-input-wrapper form-group float-left" role="presentation">
-						<label for="editedEventStartDate">Start</label>
-						<input class="form-control" type="datetime-local" data-ng-model="editedEvent.event.eventStartDate" name="editedEventStartDate" id="editedEventStartDate">									
-					</div>
-					<div class="time-input-wrapper form-group float-left" role="presentation">					
-						<label for="editedEventEndDate">End</label>
-						<input class="form-control" type="datetime-local" data-ng-model="editedEvent.event.eventEndDate" name="editedEventEndDate" id="editedEventEndDate">					
-					</div>
-				</div>
-				<div class="clearfix"></div>
-
-				<div class="form-group" role="presentation">
-					<label for="showOnHeader">Show this event on the header menu?
-						<div class="clearfix"></div>
-						<radiogroup class="time-input-wrapper" id="showOnHeader">
-							<label>Yes
-								<input clss="form-control" type="radio" id="showOnHeaderTrue" data-ng-model="newEvent.showOnHeader" value="true" ng-checked="editedEvent.event.showOnHeader">
-							</label>
-							<label>No
-								<input clss="form-control" type="radio" id="showOnHeaderFalse" data-ng-model="newEvent.showOnHeader" value="false" ng-checked="!editedEvent.event.showOnHeader">						
-							</label>
-						</radiogroup>
-					</label>
-				</div>	
 				<div class="form-group" role="presentation">
 					<label for="continentsInput">Choose Event Continent
 						<div class="clearfix"></div>
@@ -296,6 +270,32 @@
 						</radiogroup>
 					</label>
 				</div>
+				<label for="new-event-date-wrapper">Event Dates (Must include time of day)</label>
+				<div id="new-event-date-wrapper" role="presentation">
+					<div class="time-input-wrapper form-group float-left" role="presentation">
+						<label for="editedEventStartDate">Start</label>
+						<input class="form-control" type="datetime-local" data-ng-model="editedEvent.event.eventStartDate" name="editedEventStartDate" id="editedEventStartDate">									
+					</div>
+					<div class="time-input-wrapper form-group float-left" role="presentation">					
+						<label for="editedEventEndDate">End</label>
+						<input class="form-control" type="datetime-local" data-ng-model="editedEvent.event.eventEndDate" name="editedEventEndDate" id="editedEventEndDate">					
+					</div>
+				</div>
+				<div class="clearfix"></div>
+
+				<div class="form-group" role="presentation">
+					<label for="showOnHeader">Show this event on the header menu?
+						<div class="clearfix"></div>
+						<radiogroup class="time-input-wrapper" id="showOnHeader">
+							<label>Yes
+								<input clss="form-control" type="radio" id="showOnHeaderTrue" data-ng-model="newEvent.showOnHeader" value="true" ng-checked="editedEvent.event.showOnHeader">
+							</label>
+							<label>No
+								<input clss="form-control" type="radio" id="showOnHeaderFalse" data-ng-model="newEvent.showOnHeader" value="false" ng-checked="!editedEvent.event.showOnHeader">						
+							</label>
+						</radiogroup>
+					</label>
+				</div>	
 
 				<div class="form-group" role="presentation">
 					<label for="edited-event-description">Event Description for About page</label>
@@ -308,12 +308,8 @@
 					<input class="form-control" type="text" data-ng-model="editedEvent.event.eventVenueName" name="editedEventVenueName" id="editedEventVenueName">
 				</div>
 				<div class="form-group" role="presentation">
-					<label for="editedVenduAddressLine1">Street Address</label>
-					<input class="form-control" type="text" data-ng-model="editedEvent.event.eventVenueAddressLine1" name="editedVenduAddressLine1" id="editedVenduAddressLine1">
-				</div>
-				<div class="form-group" role="presentation">
-					<label for="editedVenueAddressLine2">City, State, Country</label>
-					<input class="form-control" type="text" data-ng-model="editedEvent.event.eventVenueAddressLine2" name="editedVenueAddressLine2" id="editedVenueAddressLine2">
+					<label for="editedVenduAddressLine1">Address</label>
+					<input class="form-control" type="text" data-ng-model="editedEvent.event.eventVenueAddressLine1" name="editedVenduAddressLine1" id="editedVenduAddressLine1" admin-city-name-auto-complete-directive>
 				</div>
 				<div class="form-group" role="presentation">
 					<label for="editedVenueParkingInfo">Parking Information</label>

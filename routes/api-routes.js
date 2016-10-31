@@ -417,8 +417,7 @@ module.exports = (router) => {
         showOnHeader: req.body.showOnHeader,
         eventAboutTabText: req.body.eventAboutTabText,
         eventVenueName: req.body.newEventVenueName,
-        eventVenueAddressLine1: req.body.newVenduAddressLine1,
-        eventVenueAddressLine2: req.body.newVenueAddressLine2,
+        eventVenueAddress: req.body.newVenueAddress,
         eventParkingInfo: req.body.newVenueParkingInfo,
         eventVenueImg: req.body.newEventVenueImg,
         eventTechnicalTopics: req.body.eventTechnicalTopics
@@ -465,8 +464,7 @@ module.exports = (router) => {
         eventContinent: req.body.event.eventContinent,
         eventAboutTabText: req.body.event.eventAboutTabText,
         eventVenueName: req.body.event.eventVenueName,
-        eventVenueAddressLine1: req.body.event.eventVenueAddressLine1,
-        eventVenueAddressLine2: req.body.event.eventVenueAddressLine2,
+        eventVenueAddress: req.body.event.eventVenueAddressLine1,
         eventParkingInfo: req.body.event.eventParkingInfo,
         eventVenueImg: req.body.event.eventVenueImg,
         eventTechnicalTopics: req.body.eventTechnicalTopics

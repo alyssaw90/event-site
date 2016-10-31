@@ -33,8 +33,7 @@ module.exports = (sql, DataTypes) => {
       // required: true
     }, //text for About Page
     eventVenueName: DataTypes.STRING,
-    eventVenueAddressLine1: DataTypes.STRING,
-    eventVenueAddressLine2: DataTypes.STRING,
+    eventVenueAddress: DataTypes.STRING,
     eventParkingInfo: DataTypes.TEXT,
     eventVenueImg: DataTypes.STRING
   },
