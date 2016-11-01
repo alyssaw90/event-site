@@ -4239,7 +4239,7 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 	</thead>
 	<tbody>
 		<tr>
-			<th rowspan="5" scope="row"><h5><strong>Nov 1</strong></h5></th>
+			<th rowspan="4" scope="row"><h5><strong>Nov 1</strong></h5></th>
 			<td>8 AM</td>	
 			<td colspan="2">Event begins</td>
 		</tr>
@@ -4250,11 +4250,6 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 		</tr>
 		<tr>
 			<td>11:00 – 12:00 PM</td>
-			<td>CredSSP and What’s new in decrypting RDP traffic</td>
-			<td>Sreekanth Nadendla and Bryan Burgin</td>
-		</tr>
-		<tr>
-			<td>12:00 – 1:00 PM</td>
 			<td>RDP Test Suites: Open Source and Updates</td>
 			<td>Vivian Tian and Jessie Liu</td>
 		</tr>
@@ -4279,6 +4274,9 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 		</tr>
 		<tr>
 			<th scope="row" rowspan="3"><h5><strong>Nov 3</strong></h5></th>
+			<td>11:00 – 12:00 PM</td>
+			<td>CredSSP and What’s new in decrypting RDP traffic</td>
+			<td>Sreekanth Nadendla and Bryan Burgin</td>
 		</tr>
 		<tr>
 			<td>5:30 PM</td>
