@@ -1,5 +1,6 @@
 'use strict';
 const jQuery = require('jquery');
+const swal = require('sweetalert');
 
 const editSlideshowCtrl = (app) => {
 	app.controller('editSlideshowCtrl', ['editSlideshowRESTResource', '$scope', '$rootScope', '$window', (resource, $scope, $rootScope, $window) => {
@@ -11,6 +12,10 @@ const editSlideshowCtrl = (app) => {
 		$scope.newSlide = {};
 		$scope.slidesToDelete = {};
 		let SlideshowData = resource();
+		$scope.myTxt = "You have not yet clicked submit";
+		$scope.myFunc = function () {
+        $scope.myTxt = "You clicked submit!";
+    }
 
 		//function to retrieve all slides
 		const getAllSlides = () => {
@@ -68,16 +73,24 @@ const editSlideshowCtrl = (app) => {
 		}
 
 		$scope.addSlide = (slideData) => {
-			if ($rootScope.newSlideImage.name) {
+			if ($rootScope.newSlideImage) {
         slideData.imgSrcUrl = $rootScope.newSlideImage.name ? $rootScope.newSlideImage.size + '-' + $rootScope.newSlideImage.name : '';
       }
 
 			SlideshowData.addSlide(slideData, (err, data) => {
 				if (err) {
-					return $scope.errors.push({msg: 'could not edit slideshow'});
+					swal({
+						title: 'could not edit slideshow',
+						type: 'error',
+					 	customClass: 'sweet-alert-hide-input'
+					});
+					return;
 				}
-				alert('new slide saved');
-				jQuery('#newSlideModal').trigger('click');
+				swal({
+						title: 'New slide saved',
+						type: 'success',
+					 	customClass: 'sweet-alert-hide-input'
+					});
 				//empty slides array
 				$scope.slides.length = 0;
 				$scope.newSlide = {};
