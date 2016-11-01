@@ -4,8 +4,11 @@
     <section role="presentation" class="internetExplorer">
 			<div id="edit-slideshows">
 	    	<div class="row" role="presentation">
-	    		<div class="col-lg-24" role="presentation">
-						<h3>Slideshow</h3>
+	    		<div class="col-lg-24 admin-header-div-with-button" role="presentation">
+						<h3 class="middle-align">Slideshow</h3>
+					  <!-- Trigger the modal with a button -->
+					  <button type="button" class="btn form-button btn-orange middle-align" data-toggle="modal" data-target="#myModal">Add Slide</button>
+					  <button type="button" class="btn win-color-bg-yellow form-button middle-align" data-toggle="modal" data-target="#deleteSlideModal">Delete Slides</button>
 	    		</div>
 	    	</div>
 			  <div class="slide-table-container clearfix row">
@@ -33,9 +36,6 @@
 			</div>
 			<button class="btn form-button" ng-click="getAllSlideshows('homepageSlideshow')">Cancel</button>
 			<button class="btn btn-green form-button" data-ng-click="setNewSlideshowOrder()">Save</button>
-		  <!-- Trigger the modal with a button -->
-		  <button type="button" class="btn pull-right form-button" data-toggle="modal" data-target="#myModal">Add Slide</button>
-		  <button type="button" class="btn win-color-bg-yellow pull-right form-button" data-toggle="modal" data-target="#deleteSlideModal">Delet Slides</button>
 			
 			  <!-- Modal -->
 			  <div class="modal fade" id="myModal" role="dialog">
