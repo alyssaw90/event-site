@@ -1,6 +1,7 @@
 'use strict';
 
 const jQuery = require('jquery');
+const swal = require('sweetalert');
 
 const EditEventCtrl = (app) => {
 
@@ -119,15 +120,25 @@ const EditEventCtrl = (app) => {
       EditEventData.editEvent(newEventData, (err, data) => {
         if (err) {
           $scope.errors.push({msg: 'could not save newEvent: ' + $scope.newEvent.eventName});
+          swal({
+            title: 'Error',
+            text: 'There was a problem saving your event',
+            type: 'error',
+            customClass: 'sweet-alert-hide-input'
+          });
         }
         if (!err) {
 
           $scope.editedEvent = {};
           $rootScope.eventHeaderImage = undefined;
           $rootScope.eventVenueImg = undefined;
+          swal({
+            title: 'Event Saved',
+            type: 'success',
+            customClass: 'sweet-alert-hide-input'
+          });
 
           $window.location.reload();
-          alert('Event Saved');
         }
       });
     };
@@ -136,9 +147,19 @@ const EditEventCtrl = (app) => {
       EditEventData.editTab(editedTabData, (err, data) => {
         if (err) {
           $scope.errors.push({msg: 'could not save tab'});
+          swal({
+            title: 'could not save tab',
+            type: 'error',
+            customClass: 'sweet-alert-hide-input'
+          });
         }
         if (!err) {
-          alert('Tab Saved');
+          swal({
+            title: 'Tab Saved',
+            type: 'success',
+            customClass: 'sweet-alert-hide-input'
+          });
+
           $scope.tabToEdit = {};
           $scope.showElem('#main-edit-section', '.edit-section');
 
@@ -152,8 +173,11 @@ const EditEventCtrl = (app) => {
         if (err) {
           $scope.errors.push({msg: 'could not save speaker'});
         }
-        
-        alert('New speakers list saved');
+        swal({
+          title: 'New speakers list saved',
+          type: 'success',
+          customClass: 'sweet-alert-hide-input'
+        });
       })
     };
 
@@ -162,24 +186,52 @@ const EditEventCtrl = (app) => {
         if (err) {
           $scope.errors.push({msg: 'could not save tab'});
         }
-        alert('New Tab Saved');
+        swal({
+          title: 'New Tab Saved',
+          type: 'success',
+          customClass: 'sweet-alert-hide-input'
+        });
         $scope.newTab = {};
         $scope.showElem('#main-edit-section', '.edit-section');
       });
     };
 
     $scope.deleteTab = (tabToDelete) => {
-      let testQuestion = prompt(`Type "YES" if you want to delete: ${tabToDelete.tabTitle}\n This CANNOT be undone \n note, you can unpublish the tab if you don't want it to display`);
-      if (testQuestion === 'YES') {
-        EditEventData.deleteTab(tabToDelete.id, (err, data) => {
-          if (err) {
-            $scope.errors.push({msg: 'could not delete tab'});
-          }
-          alert(`${tabToDelete.tabTitle} has been deleted`);
-          $scope.showElem('#main-edit-section', '.edit-section');
-        });
-        
-      };
+      swal({
+        title: `Delete "${tabToDelete.tabTitle}" Tab?`,
+        type: 'input',
+        text: `This CANNOT be undone \n Note: you can unpublish the tab if you don't want it to display`,
+        showCancelButton: true,
+        closeOnConfirm: false,
+        inputPlaceholder: `Type "YES" to delete tab`
+      },
+      (inputVal) => {
+        if (inputVal === 'YES') {
+          EditEventData.deleteTab(tabToDelete.id, (err, data) => {
+            if (err) {
+              swal({
+                title: `could not delete tab "${tabToDelete.tabTitle}"`,
+                customClass: 'sweet-alert-hide-input',
+                type: 'error'
+              })
+            }
+            swal({
+              title: `"${tabToDelete.tabTitle}" tab has been deleted`,
+              customClass: 'sweet-alert-hide-input',
+              type: 'success'
+            });
+            $scope.showElem('#main-edit-section', '.edit-section');
+          });
+          
+        } else {
+          swal({
+            title: `Please enter "YES" with all capitol letters`,
+            text: `You entered "${inputVal}"`,
+            customClass: 'sweet-alert-hide-input',
+            type: 'error'
+          });
+        }
+      })
     };
 
 	}]);

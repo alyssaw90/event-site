@@ -72,7 +72,8 @@ const AdminCreateEventCtrl = (app) => {
             text: `Please see the form for more details`,
             type: 'warning',
             confirmButtonColor: "#DD6B55",
-            confirmButtonText: 'Ok'
+            confirmButtonText: 'Ok',
+            customClass: 'sweet-alert-hide-input'
           });
         }
         if (!err) {
@@ -84,7 +85,8 @@ const AdminCreateEventCtrl = (app) => {
           // $window.location.reload();
           swal({
             title: 'Event Saved',
-            type: 'success'
+            type: 'success',
+            customClass: 'sweet-alert-hide-input'
           });
         }
       });

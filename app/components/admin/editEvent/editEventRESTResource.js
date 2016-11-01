@@ -9,7 +9,7 @@ const editEventRESTResource = (app) => {
 		return function(resourceName, callback) {
 			return {
 				getSingleEvent: function(resourceName, callback) {
-					$http.get('/api/' + resourceName)
+					$http.get('/api/fulllist/' + resourceName)
           .success(customFunctions.handleSuccess(callback))
           .error(customFunctions.handleError(callback));
 				},

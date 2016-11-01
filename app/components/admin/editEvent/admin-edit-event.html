@@ -9,7 +9,7 @@
 				  <button id="edit-tabs-dropdown" type="button" class="btn btn-primary" ng-click="showElem('#edit-tabs-section, #edit-menu-options, #select-tabs-to-edit-table', '.edit-section');">Edit Tabs</button>
 				  <button type="button" class="btn btn-primary" ng-click="showElem('#edit-speakers-section, #edit-menu-options', '.edit-section')">Edit Speakers</button>
 				  <button type="button" class="btn btn-primary" ng-click="showElem('#edit-menu-options, #add-tabs-section', '.edit-section')">Add Tabs</button>
-				  <button type="button" class="btn btn-primary" ng-click="showElem('#main-edit-section', '.edit-section'); cancelEditing()">Cancel</button>
+				  <button type="button" class="btn" ng-click="showElem('#main-edit-section', '.edit-section'); cancelEditing()">Cancel</button>
 			  </div>
 			</div>
 		</div>
@@ -67,22 +67,16 @@
     	<div id="edit-slideshows">
 				<h3>Speakers</h3>
 			  <div class="edited-speaker-table-container clearfix edited-speaker-wrapper" style="display: flex;">
-			    <div ui-sortable="sortableOptions" data-ng-model="unusedSpeakers" class="slides edited-speaker-table-container col-lg-12 the-team-section clearfix ng-cloak">
+			    <div ui-sortable="sortableOptions" data-ng-model="unusedSpeakers" class="slides edited-speaker-table-container col-lg-12 clearfix ng-cloak">
 			    	<h4>Available Speakers, Not Displayed</h4>
 			      <div data-ng-repeat="editedEventSpeaker in unusedSpeakers | orderBy: 'firstName'" class="editedEventSpeaker">
-			      	<h4>{{editedEventSpeaker.firstName + ' ' +  editedEventSpeaker.lastName}}</h4>
-					    <h5>{{editedEventSpeaker.msTeamTitle}}</h5>
-					    <img alt="Image of {{editedEventSpeaker.fullName}}" class="pull-left" data-ng-src="{{editedEventSpeaker.headShot}}"  />
-					    <p data-ng-bind-html="editedEventSpeaker.speakerDescription"></p>
+					    <p>{{editedEventSpeaker.fullName}}</p>
 		      	</div>
 			    </div>
-			    <div ui-sortable="sortableOptions" data-ng-model="editedEvent.speakers" class="slideshowSlides edited-speaker-table-container col-lg-12 the-team-section clearfix ng-cloak">
+			    <div ui-sortable="sortableOptions" data-ng-model="editedEvent.speakers" class="slideshowSlides edited-speaker-table-container col-lg-12 clearfix ng-cloak">
 			    	<h4>Speakers to Be Displayed with Event</h4>
 			      <div data-ng-repeat="editedEventSpeaker in editedEvent.speakers | orderBy: 'editedEventSpeaker.EventSpeakersAsscs.sortPosition'" class="editedEventSpeaker">
-			      	<h4>{{editedEventSpeaker.firstName + ' ' +  editedEventSpeaker.lastName}}</h4>
-					    <h5>{{editedEventSpeaker.msTeamTitle}}</h5>
-					    <img alt="Image of {{editedEventSpeaker.fullName}}" class="pull-left" data-ng-src="{{editedEventSpeaker.headShot}}"  />
-					    <p data-ng-bind-html="editedEventSpeaker.speakerDescription"></p>
+					    <p>{{editedEventSpeaker.fullName}}</p>
 		      	</div>
 			    </div>
 				</div>
@@ -192,7 +186,7 @@
     	<div role="presentation" class="col-lg-24">
     		<img ng-if="headerImage" ng-src="/{{headerImage}}">
     	</div>
-			<form id="editEventForm" class="col-lg-24" name="editEventForm" method="post" enctype="multipart/form-data" data-ng-init="getAllSpeakers();" data-ng-submit="editEvent(editedEvent);">
+			<form id="editEventForm" class="col-lg-24" name="editEventForm" method="post" enctype="multipart/form-data" data-ng-init="getAllSpeakers();" data-ng-submit="editEvent(editedEvent); showElem('#main-edit-section', '.edit-section');">
 	    	<div data-ng-controller="AdminPageCtrl">
 		  		<button name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventHeaderImage')">Select Header Image</button>
 		  		<br><br>

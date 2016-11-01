@@ -39,7 +39,8 @@ const AdminPageCtrl = (app) => {
               title: 'Error!',
               text: 'there was a problem saving your file',
               type: 'error',
-              confirmButtonText: 'OK'
+              confirmButtonText: 'OK',
+              customClass: 'sweet-alert-hide-input'
             });
         }, (evt) => {
             file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
@@ -47,7 +48,8 @@ const AdminPageCtrl = (app) => {
               title: 'Saved!',
               text: 'Your file was saved',
               type: 'success',
-              confirmButtonText: 'OK'
+              confirmButtonText: 'OK',
+              customClass: 'sweet-alert-hide-input'
             })
         });
       }   
@@ -61,7 +63,8 @@ const AdminPageCtrl = (app) => {
             title: 'Error!',
             text: 'there was a problem saving your file',
             type: 'error',
-            confirmButtonText: 'OK'
+            confirmButtonText: 'OK',
+            customClass: 'sweet-alert-hide-input'
           });
         }
         if (!err) {

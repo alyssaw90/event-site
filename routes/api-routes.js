@@ -620,8 +620,43 @@ module.exports = (router) => {
       res.json(imagesArr);
     });
   });
+
+  /*Get events including unpublished content from URL path/slug */
+  router.route('/fulllist/:slug')
+  .get(eatAuth, (req, res) => {
+    //create an eventInfo object to hold the values for the event to be rendered
+    let eventInfo = {};
+    eventInfo.isEvent = true;
+    models.sql.sync()
+    .then( () => {
+      // search the database for event that matches the city and occurs on or after the year from the params and return the event found
+      return Event.findOne({
+        where: {
+          eventUrl: req.params.slug,
+        }
+      });
+    })
+    //get the related tabs and speakers for the event and add them to the return object
+    .then( (event) => {
+      if (!event) {
+        eventInfo.isEvent = false;
+        res.json(eventInfo);
+      } else {
+        eventInfo.event = event;
+        event.getEventTabs()
+        .then( (tabs) => {
+          eventInfo.tabs = tabs;
+          event.getSpeakers()
+          .then( (speakers) => {
+            eventInfo.speakers = speakers;
+            res.json(eventInfo);
+          });
+        });        
+      }
+    });
+  });
  
-  /*Get events from URL path/slug and either send the event if there is one or set isEvent to false to show 404 page THIS ROUTE MUST BE LAST */
+  /*Get published events from URL path/slug to display and either send the event if there is one or set isEvent to false to show 404 page THIS ROUTE MUST BE LAST */
   router.route('/:slug')
   .get( (req, res) => {
     //create an eventInfo object to hold the values for the event to be rendered
