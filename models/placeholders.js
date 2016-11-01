@@ -4244,17 +4244,17 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			<td colspan="2">Event begins</td>
 		</tr>
 		<tr>
-			<td>9:30 – 10:00 AM</td>
-			<td>Kick-off presentation</td>
+			<td style="overflow:hidden; white-space: nowrap;">9:30 – 10:00 AM</td>
+			<td>Kick-off presentation <a href="/uploads/Welcome_and_kickoff.pptx" target="_self">Download Presentation</a></td>
 			<td>Prakash Narayanan</td>
 		</tr>
 		<tr>
-			<td>11:00 – 12:00 PM</td>
-			<td>RDP Test Suites: Open Source and Updates</td>
+			<td style="overflow:hidden; white-space: nowrap;">11:00 – 12:00 PM</td>
+			<td>RDP Test Suites: Open Source and Updates <a href="/uploads/Windows-Test-Suite-Open-Source.pptx" target="_self">Download Vivian Tian Presentation</a>, <a href="/uploads/RDP-Protocol-Test-Suite.pptx" target="_self">Download Jessie Liu Presentation</a></td>
 			<td>Vivian Tian and Jessie Liu</td>
 		</tr>
 		<tr>
-			<td>5:30 PM</td>
+			<td style="overflow:hidden; white-space: nowrap;">5:30 PM</td>
 			<td colspan="2">Dinner (Thai)</td>
 		</tr>
 		<tr>
@@ -4264,12 +4264,12 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			<td>Scott Manchester</td>
 		</tr>
 		<tr>
-			<td>11:00 – 12:00 PM</td>
+			<td style="overflow:hidden; white-space: nowrap;">11:00 – 12:00 PM</td>
 			<td>USB direction, easy print, hardware redirection</td>
 			<td>Ivan Mladenov</td>
 		</tr>
 		<tr>
-			<td>5:30 PM</td>
+			<td style="overflow:hidden; white-space: nowrap;">5:30 PM</td>
 			<td colspan="2">Social event at Board Walk commons</td>
 		</tr>
 		<tr>
@@ -4279,7 +4279,7 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 			<td>Sreekanth Nadendla and Bryan Burgin</td>
 		</tr>
 		<tr>
-			<td>5:30 PM</td>
+			<td style="overflow:hidden; white-space: nowrap;">5:30 PM</td>
 			<td colspan="2">Dinner (Pizza)</td>
 		</tr>
 		<tr>
