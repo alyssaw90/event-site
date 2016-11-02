@@ -3,7 +3,7 @@ const jQuery = require('jquery');
 const swal = require('sweetalert');
 
 const editSlideshowCtrl = (app) => {
-	app.controller('editSlideshowCtrl', ['editSlideshowRESTResource', '$scope', '$rootScope', '$window', (resource, $scope, $rootScope, $window) => {
+	app.controller('editSlideshowCtrl', ['editSlideshowRESTResource', '$scope', '$rootScope', '$window', '$timeout', (resource, $scope, $rootScope, $window, $timeout) => {
 		$scope.compareArr = [];
 		$scope.errors = [];
 		$scope.slides = [];
@@ -50,7 +50,7 @@ const editSlideshowCtrl = (app) => {
 				if (err) {
 					return $scope.errors.push({msg: 'could not retrieve slideshows'});
 				}
-
+				$scope.compareArr = [];
 				$scope.slideshowSlides = data;
 				for (let i = 0, len = $scope.slideshowSlides.length; i < len; i++) {
 					$scope.compareArr.push($scope.slideshowSlides[i].id);
@@ -81,7 +81,6 @@ const editSlideshowCtrl = (app) => {
       }
 
 			SlideshowData.addSlide(slideData, (err, data) => {
-
 				if (err) {
 					swal({
 						title: 'could not edit slideshow',
@@ -101,26 +100,66 @@ const editSlideshowCtrl = (app) => {
 				// $scope.slides.length = 0;
 				$scope.newSlide = {};
 				getAllSlides();
+				$timeout( () => {
+					jQuery('#newSlideModal').trigger('click');
+				});
 			})
 		}
 
 		$scope.deleteSlide = (slideIds) => {
-			console.log('slideIds :: ', slideIds);
-			let testQuestion = $window.confirm('Permanently delete slide(s)?');
-			if (testQuestion) {
-				SlideshowData.deleteSlide(slideIds, (err, data) => {
-					if (err) {
-						return $scope.errors.push({msg: 'could not delete slides'});
-					}
-					alert('slide(s) deleted');
-					jQuery('#deleteSlideModalButton').trigger('click');
-					$scope.deleteSlideForm.$setPristine();
-					//empty slides array
-					$scope.slidesToDelete.length = 0;
-					$scope.slides.length = 0;
-					getAllSlides();
-				})
-			}
+			swal({
+					  title: 'Permanently delete slide(s)?',
+					  text: 'This CANNOT be undone',
+					  type: 'warning',
+					  showCancelButton: true,
+					  confirmButtonColor: '#DD6B55',
+					  confirmButtonText: 'Delete',
+					  cancelButtonText: 'Cancel!',
+					  closeOnConfirm: false,
+					  closeOnCancel: false,
+				  	customClass: 'sweet-alert-hide-input'
+					},
+					function(isConfirm){
+						let slidesToDelete = [];
+					  if (isConfirm) {
+					  	for (let key in slideIds) {
+					      if (slideIds[key]) {
+					        slidesToDelete.push(key)
+					      }
+					    }
+							SlideshowData.deleteSlide(slidesToDelete, (err, data) => {
+								if (err) {
+									return $scope.errors.push({msg: 'could not delete slides'});
+								}
+								swal({
+									title: 'slide(s) deleted',
+									type: 'success',
+									customClass: 'sweet-alert-hide-input'
+								});
+								
+								$scope.deleteSlideForm.$setPristine();
+								//empty slides array
+								$scope.slidesToDelete.length = 0;
+								$scope.slides.length = 0;
+								getAllSlides();
+								$timeout( () => {
+									jQuery('#deleteSlideModalButton').trigger('click');
+								});
+							})
+						
+					    swal({
+					    	type: 'success',
+					    	title: 'Deleted!',
+					    	customClass: 'sweet-alert-hide-input'
+					    });
+					  } else {
+					    swal({
+					    	title: 'Canceled',
+					    	type: 'error',
+					    	customClass: 'sweet-alert-hide-input'
+					    });
+					  }
+					});
 		}
 
 		$scope.cleanDeleteForm = () => {

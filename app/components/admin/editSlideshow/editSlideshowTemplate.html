@@ -5,7 +5,7 @@
 			<div id="edit-slideshows">
 	    	<div class="row" role="presentation">
 	    		<div class="col-lg-24 admin-header-div-with-button" role="presentation">
-						<h3 class="middle-align">Slideshow</h3>{{compareArr}}
+						<h3 class="middle-align">Slideshow</h3>
 					  <!-- Trigger the modal with a button -->
 					  <button type="button" class="btn form-button btn-orange middle-align" data-toggle="modal" data-target="#myModal">Add Slide</button>
 					  <button type="button" class="btn win-color-bg-yellow form-button middle-align" data-toggle="modal" data-target="#deleteSlideModal">Delete Slides</button>
@@ -101,7 +101,7 @@
 		  								</label>
 		  								<img data-ng-src="{{slide.imgSrcUrl}}">	  									
 	  								</div>
-	  								<button type="submit" class="btn win-color-bg-alert" onclick="jQuery('#deleteSlideModalButton').trigger('click')">Delete</button>
+	  								<button type="submit" class="btn win-color-bg-alert">Delete</button>
 			          		<button type="button" class="btn pull-right" data-dismiss="modal" id="deleteSlideModalButton" data-ng-click="cleanDeleteForm()">Cancel</button>
   								</form>
     						</div>

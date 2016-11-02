@@ -349,6 +349,25 @@ module.exports = (router) => {
     });
   });
 
+  router.post('/deleteslide', eatAuth, (req, res) => {
+    models.sql.sync()
+    .then(() => {
+      return Slide.destroy({
+        where: {
+          id: {
+            $in: req.body
+          }
+        }
+      });      
+    })
+    .then(() => {
+      res.status('200').end();
+    })
+    .error( () => {
+      res.status('501').end();
+    })
+  });
+
   //verify login
   router.get('/user/checklogin', eatAuth, (req, res) => {
     res.json({authenticated: true});
