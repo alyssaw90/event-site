@@ -12,14 +12,13 @@ const editSlideshowCtrl = (app) => {
 		$scope.newSlide = {};
 		$scope.slidesToDelete = {};
 		let SlideshowData = resource();
-		$scope.myTxt = "You have not yet clicked submit";
-		$scope.myFunc = function () {
-        $scope.myTxt = "You clicked submit!";
-    }
 
 		//function to retrieve all slides
 		const getAllSlides = () => {
 			SlideshowData.getAllSlides( (err, data) => {
+				//empty the completeListOfSlides array
+				$scope.completeListOfSlides = [];
+				$scope.slides = [];
 				if (err) {
 					return $scope.errors.push({msg: 'could not retrieve slides'});
 				}
@@ -72,12 +71,17 @@ const editSlideshowCtrl = (app) => {
 			})
 		}
 
+		$scope.cancelAddSlide = () => {
+			$scope.newSlide = {};
+		}
+
 		$scope.addSlide = (slideData) => {
 			if ($rootScope.newSlideImage) {
         slideData.imgSrcUrl = $rootScope.newSlideImage.name ? $rootScope.newSlideImage.size + '-' + $rootScope.newSlideImage.name : '';
       }
 
 			SlideshowData.addSlide(slideData, (err, data) => {
+
 				if (err) {
 					swal({
 						title: 'could not edit slideshow',
@@ -91,14 +95,17 @@ const editSlideshowCtrl = (app) => {
 						type: 'success',
 					 	customClass: 'sweet-alert-hide-input'
 					});
+				let theNewSlide = JSON.parse(JSON.stringify($scope.newSlide));
+				$scope.completeListOfSlides.push(theNewSlide);
 				//empty slides array
-				$scope.slides.length = 0;
+				// $scope.slides.length = 0;
 				$scope.newSlide = {};
 				getAllSlides();
 			})
 		}
 
 		$scope.deleteSlide = (slideIds) => {
+			console.log('slideIds :: ', slideIds);
 			let testQuestion = $window.confirm('Permanently delete slide(s)?');
 			if (testQuestion) {
 				SlideshowData.deleteSlide(slideIds, (err, data) => {

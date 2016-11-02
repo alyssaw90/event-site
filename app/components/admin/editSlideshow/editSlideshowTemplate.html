@@ -5,7 +5,7 @@
 			<div id="edit-slideshows">
 	    	<div class="row" role="presentation">
 	    		<div class="col-lg-24 admin-header-div-with-button" role="presentation">
-						<h3 class="middle-align">Slideshow</h3>
+						<h3 class="middle-align">Slideshow</h3>{{compareArr}}
 					  <!-- Trigger the modal with a button -->
 					  <button type="button" class="btn form-button btn-orange middle-align" data-toggle="modal" data-target="#myModal">Add Slide</button>
 					  <button type="button" class="btn win-color-bg-yellow form-button middle-align" data-toggle="modal" data-target="#deleteSlideModal">Delete Slides</button>
@@ -58,19 +58,19 @@
 		  							<form id="addNewSlideForm" name="addNewSlideForm" method="post" enctype="multipart/form-data" data-ng-submit="addSlide(newSlide);" >
 		  								<div class="form-group" role="presentation">
 			  								<label for="title">Title</label>
-			  								<input class="form-control" type="text" name="title" data-ng-model="newSlide.title" data-ng-required>
+			  								<input class="form-control" type="text" name="title" data-ng-model="newSlide.title" required>
 		  								</div>
 		  								<div class="form-group" role="presentation">
 			  								<label for="altText">Alt Text</label>
-			  								<input class="form-control" type="text" name="altText" data-ng-model="newSlide.altText" data-ng-required>
+			  								<input class="form-control" type="text" name="altText" data-ng-model="newSlide.altText" required>
 		  								</div>
 		  								<div class="form-group" role="presentation">
 			  								<label for="imgDestUrl">Destination Url (include full url if the links is external, use only the path if the url is interal)</label>
-			  								<input class="form-control" type="text" name="imgDestUrl" data-ng-model="newSlide.imgDestUrl" data-ng-required>
+			  								<input class="form-control" type="text" name="imgDestUrl" data-ng-model="newSlide.imgDestUrl" required>
 		  								</div>
 		  								<br>
 			          			<button type="button" class="btn pull-right" data-dismiss="modal" id="newSlideModal" ng-click="getAllSlideshows('homepageSlideshow')">Cancel</button>
-											<button type="submit" class="btn btn-green" id="save-new-slide-button" onclick="jQuery('#newSlideModal').trigger('click');">Save</button>
+											<button type="submit" class="btn btn-green" id="save-new-slide-button">Save</button>
 	  								</form>    							
 	    						</div>
 			        	</div>
@@ -101,7 +101,7 @@
 		  								</label>
 		  								<img data-ng-src="{{slide.imgSrcUrl}}">	  									
 	  								</div>
-	  								<button type="submit" class="btn win-color-bg-alert" data-dismiss="modal">Delete</button>
+	  								<button type="submit" class="btn win-color-bg-alert" onclick="jQuery('#deleteSlideModalButton').trigger('click')">Delete</button>
 			          		<button type="button" class="btn pull-right" data-dismiss="modal" id="deleteSlideModalButton" data-ng-click="cleanDeleteForm()">Cancel</button>
   								</form>
     						</div>
