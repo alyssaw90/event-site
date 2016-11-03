@@ -42,6 +42,7 @@ require('./admin/createEvent/matchButtonSizeDirective.js')(eventsApp);
 require('./shared/header/hamburgerMenuDirective.js')(eventsApp);
 require('./admin/createEvent/uniqueUrlDirective.js')(eventsApp);
 require('./admin/editSlideshow/selectableSlideDirective.js')(eventsApp);
+require('./admin/editFiles/matchFileDisplayHeights.js')(eventsApp);
 
 //controllers
 require('./shared/controllers/AllPagesCtrl.js')(eventsApp);
@@ -79,6 +80,9 @@ require('./admin/editEvent/editEventRESTResource.js')(eventsApp);
 require('./admin/editSpeaker/editSpeakerRESTResource.js')(eventsApp);
 require('./admin/adminPageRESTResource.js')(eventsApp);
 require('./pastEvents/pastEventsRESTResource.js')(eventsApp);
+
+//filters
+require('./admin/editFiles/fileSearch.js')(eventsApp);
 
 eventsApp
 .config(['$routeProvider', '$locationProvider', 'AnalyticsProvider', '$httpProvider', function ($routeProvider, $locationProvider, AnalyticsProvider, $httpProvider) {

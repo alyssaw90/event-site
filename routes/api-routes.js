@@ -88,7 +88,7 @@ module.exports = (router) => {
         where: {
           eventEndDate: {
               $or: {
-                $gte: new Date(),
+                $gte: new Date(new Date().getTime() - 24 * 60 * 60 * 1000),
                 $eq: null,
                 /* jshint ignore:start */
                 $eq: new Date(new Date().getFullYear().toString())
@@ -205,7 +205,7 @@ module.exports = (router) => {
         where: {
           eventEndDate: {
             $and: {
-              $lt: new Date(),
+              $lte: new Date(new Date().getTime() - 24 * 60 * 60 * 1000),
               $gte: new Date('2016-01-01')
             }
           },

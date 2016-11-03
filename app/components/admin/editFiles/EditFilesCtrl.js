@@ -1,4 +1,5 @@
 'use strict';
+const swal = require('sweetalert');
 
 const EditFilesCtrl = (app) => {
 
@@ -7,6 +8,7 @@ const EditFilesCtrl = (app) => {
     $scope.files = [];
     $scope.filesToDelete = {};
     const imageExtensions = [ '.tif', 'tiff', '.gif', 'jpeg', '.jpg', '.jif', '.jfif', '.jp2', '.jpx', '.j2k', '.j2c', '.fpx', '.pcd', '.png'];
+    $scope.fileDisplayHeight = { 'height': 'auto' };
     const FileResources = resource();
 
     $scope.getAllFiles = () => {
@@ -35,8 +37,17 @@ const EditFilesCtrl = (app) => {
           fileList += key + '\n';
         }
       }
-      let testQuestion = $window.confirm(`Are you sure you want to delete ${deleteCount} files?\n ${fileList}`);
-      if (testQuestion) {
+      swal({
+        title: 'Are you sure?',
+        text: 'You will not be able to recover this file!',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#DD6B55',
+        confirmButtonText: 'Yes, delete it!',
+        closeOnConfirm: false,
+        customClass: 'sweet-alert-hide-input'
+      },
+      function(){
         FileResources.deleteFiles (files, (err, data) => {
           if (err) {
             return $scope.errors.push({msg: 'could not delete files'});
@@ -46,9 +57,18 @@ const EditFilesCtrl = (app) => {
           $scope.files.length = 0;
           $scope.getAllFiles();
         })
+        swal({
+          title: 'Deleted!', 
+          text: 'Your imaginary file has been deleted.',
+          type: 'success',
+          customClass: 'sweet-alert-hide-input'
+        });
+      });
+      /*let testQuestion = $window.confirm(`Are you sure you want to delete ${deleteCount} files?\n ${fileList}`);
+      if (testQuestion) {
         
       }
-
+*/
     }
 
   }]);

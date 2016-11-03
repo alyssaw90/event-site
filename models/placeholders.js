@@ -4250,7 +4250,7 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 		</tr>
 		<tr>
 			<td style="overflow:hidden; white-space: nowrap;">11:00 – 12:00 PM</td>
-			<td>RDP Test Suites: Open Source and Updates <a href="/uploads/Windows-Test-Suite-Open-Source.pptx" target="_self">Download Vivian Tian Presentation</a>, <a href="/uploads/RDP-Protocol-Test-Suite.pptx" target="_self">Download Jessie Liu Presentation</a></td>
+			<td>RDP Test Suites: Open Source and Updates <br><a href="/uploads/Windows-Test-Suite-Open-Source.pptx" target="_self">Download Vivian Tian Presentation</a>, <a href="/uploads/RDP-Protocol-Test-Suite.pptx" target="_self">Download Jessie Liu Presentation</a></td>
 			<td>Vivian Tian and Jessie Liu</td>
 		</tr>
 		<tr>
@@ -4275,7 +4275,7 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 		<tr>
 			<th scope="row" rowspan="3"><h5><strong>Nov 3</strong></h5></th>
 			<td>11:00 – 12:00 PM</td>
-			<td>CredSSP and What’s new in decrypting RDP traffic</td>
+			<td>CredSSP and What’s new in decrypting RDP traffic <br><a href="/uploads/CredSSP-Presentation.pptx" target="_self">Download Sreekanth Nadendla Presentation</a>, <br>Download Bryan Burgin Presentations<br><a href="/uploads/2013-RDP-Plugfest-On-the-Wire-UPDATED_2016_10.pptx" target="_self">RDP on the Wire</a>, <a href="/uploads/2014-RDP-Plugfest-Decryption-Using-MA-UPDATED_2016_10.pptx" target="_self">Decrypting RDP Traffic with Message Analyzer</a>, and <a href="/uploads/2014-RDP-Plugfest-MS-RDPEUSB.pptx" target="_self">USB Device Redirection</a></td>
 			<td>Sreekanth Nadendla and Bryan Burgin</td>
 		</tr>
 		<tr>
