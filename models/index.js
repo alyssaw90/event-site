@@ -2,7 +2,7 @@
 const clc = require('cli-color');
 
 let Sql = require('sequelize');
-let sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
+/*let sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
   host: process.env.DB_LOCAL_HOST,
   dialect: 'mssql',
 
@@ -12,8 +12,8 @@ let sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.
     idle: 10000
   }
 
-});
-/*let sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
+});*/
+let sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.DB_DEV_PASS, {
   host: process.env.DB_DEV_HOST,
   dialect: 'mssql',
   pool: {
@@ -24,7 +24,7 @@ let sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.
   dialectOptions: {
     encrypt: true
   }
-});*/
+});
 
 /*let sql = new Sql(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
   host: process.env.DB_HOST,

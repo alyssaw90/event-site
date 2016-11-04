@@ -88,6 +88,22 @@ module.exports = function () {
 			isAdmin: true
 		});
 	})
+	.then( () => {
+		return User.create({
+			userName: 'prakash',
+			password: process.env.PRAKASH_PASSWORD,
+			email: process.env.PRAKASH_EMAIL,
+			isAdmin: true
+		})
+	})
+	.then( () => {
+		return User.create({
+			userName: 'michael',
+			password: process.env.MICHAEL_PASSWORD,
+			email: process.env.MICHAEL_EMAIL,
+			isAdmin: true
+		})
+	})
 
 	////////////////////////////////////Event placeholder/////////////////////////////////////
 
@@ -5028,7 +5044,7 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 				showOnMeetTheTeamPage: false,
 				msTeamTitle: 'Principal Program Manager for Office 365',
 				showOnHomePage: false,
-				headShot: 'arthur-jin-headshot.jpg',
+				headShot: 'arthur-jin-headshot-2.jpg',
 				company: 'Microsoft',
 				country: 'China',
 				allowNotifications: false,
