@@ -43,6 +43,7 @@ require('./shared/header/hamburgerMenuDirective.js')(eventsApp);
 require('./admin/createEvent/uniqueUrlDirective.js')(eventsApp);
 require('./admin/editSlideshow/selectableSlideDirective.js')(eventsApp);
 require('./admin/editFiles/matchFileDisplayHeights.js')(eventsApp);
+require('./shared/header/carouselHeightDirective.js')(eventsApp);
 
 //controllers
 require('./shared/controllers/AllPagesCtrl.js')(eventsApp);

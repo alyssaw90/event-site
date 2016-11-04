@@ -6,6 +6,7 @@ const HeaderController = (app) => {
 		$scope.siteStyle = [];
 		$scope.sliderImgsHeights = [];
 		$scope.pastEventsImg = './uploads/past-events-banner.jpg';
+		$scope.carouselHeight;
 		let Slideshow = resource();
 		$scope.onHomePage = $location.path() === '/';
 		$scope.$on('$locationChangeSuccess', function(e) {

@@ -39,7 +39,7 @@
 	</nav>
 	<!-- End gray desktop menu -->
 	<!-- Begin Image section/slideshow -->
-	<div class="carousel-container" data-ng-controller="HeaderController" data-ng-init="getSlides('homepageSlideshow');">
+	<!-- <div class="carousel-container" data-ng-controller="HeaderController" data-ng-init="getSlides('homepageSlideshow');">
 		<ul rn-carousel rn-carousel-controls-allow-loop rn-carousel-controls rn-carousel-auto-slide="3" rn-carousel-duration="1000" id="upcoming-events-carousel" class="image" style="margin-left:0;margin-bottom:0;">
   		<li data-ng-repeat="slide in slides | orderBy: 'SlideshowSlideAssc.sortPosition'">
   		  <div class="layer" data-slider-slide-directive>
@@ -49,7 +49,40 @@
 		  	</div>
   		</li>
 		</ul>
-	</div>
+	</div> -->
+
+<div id="carousel-revamped" class="carousel carousel-versatile slide" data-ride="carousel" ng-controller="HeaderController" ng-init="getSlides('homepageSlideshow');">
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item ctrl-color-alt" ng-class="{'active' : $index === 0}" ng-repeat="slide in slides | orderBy: 'SlideshowSlideAssc.sortPosition'" ng-style="{height: carouselHeight}" carousel-height-directive>
+      <div class="background fill">
+        <!-- <a title="{{slide.title}}" alt="{{slide.altText}}" data-ng-href="/{{slide.imgDestUrl}}"> -->
+		  		<img class="img-fluid" ng-cloak ng-src="/{{ slide.imgSrcUrl }}" />
+	  		<!-- </a> -->
+      </div>
+
+      <!-- <div class="carousel-caption" style="background: none"> -->
+        <!-- This div must stay to prevenc carousel collapsing -->
+      <!-- </div> -->
+    </div>
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li ng-repeat="slide in slides | orderBy: 'SlideshowSlideAssc.sortPosition'" data-target="#carousel-revamped" data-slide-to="{{$index}}" ng-class="{'active' : $index === 0}" ></li>
+    </ol>
+
+    <!-- Controls -->
+    <div class="ctrl-group">
+      <a class="prev carousel-control" href="#carousel-revamped" role="button" data-slide="prev">
+          <span class="win-icon win-icon-ChevronLeft" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+      </a>
+      <a class="next carousel-control" href="#carousel-revamped" role="button" data-slide="next">
+          <span class="win-icon win-icon-ChevronRight" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+</div>
 	<!-- End image section -->
 	<!-- Begin upcoming events desktop menu -->
 	<nav class="menu-overlay desktop-menu flex clearfix" data-ng-style="{'background-color':futureEvents[0].eventHighlightColor}">

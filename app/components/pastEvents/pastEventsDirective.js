@@ -10,18 +10,18 @@ const pastEventsDirective = (app) => {
 			link: function postLink(scope, element, attrs) {
 				//set heights of .past_events divs to match
 				$timeout(function() {
-				 	customFunctions.changeHeight('.past_events');
+				 	customFunctions.changeHeight(jQuery('.past_events'));
 				});
 				//change the heights on window resize
 				jQuery(window).resize(function(){
-				  customFunctions.changeHeight('.past_events');
+				  customFunctions.changeHeight(jQuery('.past_events'));
 				  // customFunctions.homepageStickyFooter();
 				});
 				//change the heigts if the page starts on a different path
 				scope.$on('$locationChangeSuccess', function(event) {
 					
 					$timeout(function() {
-				 		customFunctions.changeHeight('.past_events');
+				 		customFunctions.changeHeight(jQuery('.past_events'));
 					});
 				})
 			}
