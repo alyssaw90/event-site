@@ -50,7 +50,7 @@ const UserLoggingCtrl = (app) => {
       },
       () => {
         let currentPath = $location.path();
-        $cookies.remove('interopAdmin');
+        $cookies.remove('interopAdmin', {path: '/'});
         auth.logout( (err, data) => {
           $window.location.reload();
         });
