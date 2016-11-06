@@ -17,12 +17,7 @@ const userLoggingRESTResources = (app) => {
                 let today = new Date();
                 let expireDate = new Date(today);
                 expireDate.setDate(today.getDate() + 1); //Set expireDate date to tomorrow
-                $cookies.put('token', data.token, {'expires': expireDate, 'path': '/'});
                 $cookies.put('interopAdmin', data.admin, {'expires': expireDate, 'path': '/'});
-                $cookies.put('username', data.username, {'expires': expireDate, 'path': '/'});
-                $cookies.put('useremail', data.email, {'expires': expireDate, 'path': '/'});
-                $window.sessionStorage.token = data.token;
-                $http.defaults.headers.common.Authorization = data.token;
                 callback(null);
     	       })
     	       .error( (data) => {
@@ -30,25 +25,11 @@ const userLoggingRESTResources = (app) => {
     	       })
     	     },
 	   
-    	     /*create: function (user, callback) {
-    	       $http.post('/api/create_user', user)
-    	         .success(function (data) {
-    	           $cookies.put('eat', data.eat)
-    	           callback(null);
-    	         })
-    	         .error(function (data) {
-    	           callback(data);
-    	         });
-    	     },
-	   
-    	     logout: function () {
-    	       $cookies.put('eat', '');
-    	     },
-	   
-    	     isSignedIn: function () {
-    	       return !!($cookies.get('eat').length);
-	   
-    	     }*/
+    	     logout: (callback) => {
+             $http.get('/auth/logout')
+             .success(customFunctions.handleSuccess(callback))
+             .error(customFunctions.handleError(callback));
+           }
     	   };
 		}
 

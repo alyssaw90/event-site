@@ -34,6 +34,17 @@ const multipartMiddleware = multipart({
 // placeholders();
 // dbRelationships();
 
+function isLoggedIn(req, res, next) {
+  res.header('Access-Control-Allow-Credentials', true);
+  // if user is authenticated in the session, carry on
+  if (req.isAuthenticated()) {
+    return next();    	
+  }
+
+  // if they aren't send not authorized
+  res.status('401').json({err: 'not authorized'});
+}
+
 models.sql.authenticate()
 .then( (err) => {
   if (err) {
@@ -245,8 +256,8 @@ module.exports = (router) => {
     });
   });
 
-  //route to get all files and delet files
-  router.get('/files', eatAuth, (req, res) => {
+  //route to get all files and delete files
+  router.get('/files', isLoggedIn, (req, res) => {
     fs.readdir('uploads/', (err, data) => {
       if (err) {
         console.log(clc.white.bgRed('Error: '), err);
@@ -300,7 +311,7 @@ module.exports = (router) => {
     })
   });
   //route to get all slides
-  router.get('/allslides', eatAuth, (req, res) => {
+  router.get('/allslides', isLoggedIn, (req, res) => {
     models.sql.sync()
     .then( () => {
       return Slide.findAll();
@@ -311,7 +322,7 @@ module.exports = (router) => {
   });
 
   //route to set homepage slides
-  router.post('/sethomepageslides', eatAuth, (req, res) => {
+  router.post('/sethomepageslides', isLoggedIn, (req, res) => {
     models.sql.sync()
     .then( () => {
       return Slideshow.findOne({
@@ -336,7 +347,7 @@ module.exports = (router) => {
     });
   });
 
-  router.post('/addslide', eatAuth, (req, res) => {
+  router.post('/addslide', isLoggedIn, (req, res) => {
     models.sql.sync()
     .then( () => {
       Slide.create({
@@ -349,7 +360,7 @@ module.exports = (router) => {
     });
   });
 
-  router.post('/deleteslide', eatAuth, (req, res) => {
+  router.post('/deleteslide', isLoggedIn, (req, res) => {
     models.sql.sync()
     .then(() => {
       return Slide.destroy({
@@ -369,12 +380,12 @@ module.exports = (router) => {
   });
 
   //verify login
-  router.get('/user/checklogin', eatAuth, (req, res) => {
-    res.json({authenticated: true});
+  router.get('/user/checklogin', isLoggedIn, (req, res) => {
+    res.json(req.session);
   });
 
   //get all speakers for editing
-  router.get('/speakers', eatAuth, (req, res) => {
+  router.get('/speakers', isLoggedIn, (req, res) => {
     models.sql.sync()
     .then( () => {
       Speaker.findAll()
@@ -385,7 +396,7 @@ module.exports = (router) => {
   });
 
   //get all events for edit events tab
-  router.get('/allevents', eatAuth, (req, res) => {
+  router.get('/allevents', isLoggedIn, (req, res) => {
     models.sql.sync()
     .then( () => {
       return Event.findAll();
@@ -412,7 +423,7 @@ module.exports = (router) => {
   });
 
   //route for uploading files with tinymce
-  router.post('/tinymceUpload', eatAuth, (req, res) => {
+  router.post('/tinymceUpload', isLoggedIn, (req, res) => {
     let imageBuffer = new Buffer(req.body.base64String, 'base64');
     fs.writeFile(`uploads/${req.body.fileName}`, imageBuffer, (err) => {
       res.end('file saved');
@@ -420,7 +431,7 @@ module.exports = (router) => {
   });
 
   // create new event
-  router.post('/createevent', eatAuth, (req, res, next) => {
+  router.post('/createevent', isLoggedIn, (req, res, next) => {
     models.sql.sync()
     .then(function () {
       Event.create({
@@ -460,7 +471,7 @@ module.exports = (router) => {
     });
   });
 
-  router.post('/editevent', eatAuth, (req, res, next) => {
+  router.post('/editevent', isLoggedIn, (req, res, next) => {
     models.sql.sync()
     .then( () => {
       return Event.findOne({
@@ -492,7 +503,7 @@ module.exports = (router) => {
     })
   });
 
-  router.post('/edittab', eatAuth, (req, res, next) => {
+  router.post('/edittab', isLoggedIn, (req, res, next) => {
     models.sql.sync()
     .then( () => {
       return EventTab.findOne({
@@ -515,7 +526,7 @@ module.exports = (router) => {
     });
   });
 
-  router.post('/addtab', eatAuth, (req, res) => {
+  router.post('/addtab', isLoggedIn, (req, res) => {
     models.sql.sync()
     .then( () => {
       return EventTab.create({
@@ -541,7 +552,7 @@ module.exports = (router) => {
     });
   });
 
-  router.delete('/deletetab/:slug', eatAuth, (req, res) => {
+  router.delete('/deletetab/:slug', isLoggedIn, (req, res) => {
     models.sql.sync()
     .then( () => {
       return EventTab.findOne({
@@ -556,7 +567,7 @@ module.exports = (router) => {
     })
   })
 
-  router.post('/editeventspeakers', eatAuth, (req, res) => {
+  router.post('/editeventspeakers', isLoggedIn, (req, res) => {
     models.sql.sync()
     .then( () => {
       return Event.findOne({
@@ -574,7 +585,7 @@ module.exports = (router) => {
   });
 
   //route to create speakers
-  router.post('/addspeakers', eatAuth, (req, res) => {
+  router.post('/addspeakers', isLoggedIn, (req, res) => {
     models.sql.sync()
     .then( () => {
       let speakerEmail = req.body.newMsTeamEmail ? req.body.newMsTeamEmail : 'plugfests@microsoft.com';
@@ -594,7 +605,7 @@ module.exports = (router) => {
     });
   });
   //route to edit speakers
-  router.post('/editspeaker', eatAuth, (req, res) => {
+  router.post('/editspeaker', isLoggedIn, (req, res) => {
     models.sql.sync()
     .then( () => {
       return Speaker.findOne({
@@ -623,7 +634,7 @@ module.exports = (router) => {
   });
   
     //show all images
-  router.get('/showimages', eatAuth, function(req, res) {
+  router.get('/showimages', isLoggedIn, function(req, res) {
     fs.readdir('uploads', function(err, files) {
       let imagesArr = [];
       if (err) {
@@ -642,7 +653,7 @@ module.exports = (router) => {
 
   /*Get events including unpublished content from URL path/slug */
   router.route('/fulllist/:slug')
-  .get(eatAuth, (req, res) => {
+  .get(isLoggedIn, (req, res) => {
     //create an eventInfo object to hold the values for the event to be rendered
     let eventInfo = {};
     eventInfo.isEvent = true;

@@ -15,11 +15,7 @@ const AdminHeaderCtrl = (app) => {
     },
     () => {
       let currentPath = $location.path();
-      $cookies.remove('token', {'path': '/'});
       $cookies.remove('interopAdmin', {'path': '/'});
-      $cookies.remove('username', {'path': '/'});
-      $cookies.remove('useremail', {'path': '/'});
-      $window.sessionStorage.token = '';
       $window.location.reload(); 
     });
     

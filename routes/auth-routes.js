@@ -2,14 +2,15 @@
 
 // require('dotenv').load();
 // let User = require('../models/User');
-let bodyparser = require('body-parser');
-let cookieParser = require('cookie-parser');
-let clc = require('cli-color');
-let models = require('../models');
-let User = models.User;
-let Speaker = models.Speaker;
-let Event = models.Event;
-let EventTab = models.EventTab;
+const bodyparser = require('body-parser');
+// const cookieParser = require('cookie-parser');
+const clc = require('cli-color');
+const session = require('express-session');
+const models = require('../models');
+const User = models.User;
+const Speaker = models.Speaker;
+const Event = models.Event;
+const EventTab = models.EventTab;
 
 function makeRandomString () {
   let outputString = '';
@@ -35,7 +36,6 @@ module.exports = function(router, passport) {
   router.use(bodyparser.urlencoded({
     extended: true
   }));
-  router.use(cookieParser());
 
 	router.route('/create-user')
 	.post(function(req, res) {
@@ -56,8 +56,6 @@ module.exports = function(router, passport) {
       let userJSON = {randomString: newUser.dataValues.randomString, id: newUser.dataValues.id};
       delete req.body.password;
       newUser.update({password: hashPass});
-		  // res.status(200).json({msg: 'user created'});
-      // console.log(clc.cyanBright('::::::::   '), newUser.dataValues.randomString);
       newUser.$modelOptions.instanceMethods.generateToken(userJSON, process.env.SECRET_KEY, function(err, token) {
         if (err) {
           console.log(err);
@@ -68,36 +66,7 @@ module.exports = function(router, passport) {
     });
 	});
 
-/*  router.get('/login', function(req, res, next) {
-    passport.authenticate('basic', {session: false}, function(err, user, info) {
-      //if user is found, but there is some other error
-      if (err && user) { 
-        console.log(clc.redBright('Login error: '), err);
-        res.json({msg: 'internal server error'});
-      }
-      // if user is not found due to wrong username or password
-      if (err && !user) {
-        console.log(clc.redBright('Login error: '), err);
-        res.json({msg: 'invalid username or password'});
-      }
-      //if the user is found and there is no error
-      if (user && !err) {
-        let userEmail = user.dataValues.email;
-        let ranJSON = {randomString: user.dataValues.randomString};
-        console.log(clc.red('::::::    '), user.$modelOptions.instanceMethods.generateToken);
-        // res.json({msg: 'authenticated as ', userEmail});
-        user.$modelOptions.instanceMethods.generateToken(ranJSON, process.env.SECRET_KEY, function(err, token) {
-          if (err) {
-            console.log(err);
-            return res.status(500).json({msg: 'error generating token'});
-          }
-          res.json({token: token});
-        });
-      }
-    })(req, res, next);
-  });*/
-
-  router.get('/login', passport.authenticate('basic', { session: false }), (req, res) => {
+  router.get('/login', passport.authenticate('basic', { session: true }), (req, res) => {
     let userJSON = {randomString: req.user.dataValues.randomString, id: req.user.dataValues.id};
     res.req.headers.authorization = 'hahaha';
     // res.req.rawHeaders.Authorization = 'blah';
@@ -113,14 +82,19 @@ module.exports = function(router, passport) {
             console.log(err);
             return res.status(500).json({msg: 'error generating token'});
         }
-        
-        res.status('200').header('token', token).json({token: token, 'admin': req.user.dataValues.isAdmin, 'username': req.user.dataValues.userName, 'email': req.user.dataValues.email});
+        req.session.cookie.maxAge = 1000 * 60 * 60;
+        res.status('200').json({'admin': req.user.dataValues.isAdmin});
+        // res.status('200').header('token', token).json({token: token, 'admin': req.user.dataValues.isAdmin, 'username': req.user.dataValues.userName, 'email': req.user.dataValues.email});
       });
     });
 
-  /*router.get('/logout', function(req, res) {
-    console.log(clc.cyanBright(':::::      '), req.rawHeaders);
-    console.log(clc.greenBright(':::::      '), req.cookies);
-    res.end('the end');
-  })*/
+  router.get('/logout', function(req, res) {
+    req.logout()
+    req.session.destroy(function(err) {
+      // cannot access session here 
+      res.json({msg: 'logged off'});
+    });
+    // console.log(clc.cyanBright(':::::      '), req.rawHeaders);
+    // console.log(clc.greenBright(':::::      '), req.cookies);
+  })
 };
