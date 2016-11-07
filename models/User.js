@@ -6,7 +6,12 @@ const eat = require('eat');
 module.exports = function(sql, DataTypes) {
 
   return sql.define('User', {
-    userName: DataTypes.STRING,
+    userName: {
+      type: DataTypes.STRING,
+      unique: true,
+      allowNull: false,
+      required: true
+    },
     password: {
       type: DataTypes.STRING,
       set: function(val) {

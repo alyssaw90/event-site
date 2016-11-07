@@ -104,6 +104,14 @@ module.exports = function () {
 			isAdmin: true
 		})
 	})
+	.then( () => {
+		return User.create({
+			userName: 'eric',
+			password: process.env.ERIC_PASSWORD,
+			email: process.env.ERIC_EMAIL,
+			isAdmin: true
+		})
+	})
 
 	////////////////////////////////////Event placeholder/////////////////////////////////////
 
