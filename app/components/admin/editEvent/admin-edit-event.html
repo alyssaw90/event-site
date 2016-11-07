@@ -86,7 +86,7 @@
     </div>
     </section>
     <section id="add-tabs-section" class="row edit-section" role="presentation" style="display: none;">
-    	<form ng-submit="addTab(newTab)" class="col-lg-24">
+    	<form ng-submit="addTab(newTab)" class="col-lg-24" make-auto-complete-false-directive>
 				<input type="hidden" name="newTabAsscEventId" data-ng-model="newTab.eventId">
     		<div class="form-group" role="presentation">
 					<label for="newTabTitle">Tab Title</label>
@@ -152,7 +152,7 @@
 	    		</tbody>
 	    	</table>
     	</div>
-    	<form id="edit-tabs-form" class="edit-section col-lg-24" ng-submit="editTab(tabToEdit)" style="display: none;">
+    	<form id="edit-tabs-form" class="edit-section col-lg-24" ng-submit="editTab(tabToEdit)" style="display: none;" make-auto-complete-false-directive>
 				<input type="hidden" name="asssociatedEventId" data-ng-model="editedEvent.EventsTabsAccsc.EventId">
 				<input type="hidden" name="editedTabId" data-ng-model="editedEvent.id">
     		<div class="form-group" role="presentation">
@@ -186,7 +186,7 @@
     	<div role="presentation" class="col-lg-24">
     		<img ng-if="headerImage" ng-src="/{{headerImage}}">
     	</div>
-			<form id="editEventForm" class="col-lg-24" name="editEventForm" method="post" enctype="multipart/form-data" data-ng-init="getAllSpeakers();" data-ng-submit="editEvent(editedEvent); showElem('#main-edit-section', '.edit-section');">
+			<form id="editEventForm" class="col-lg-24" name="editEventForm" method="post" enctype="multipart/form-data" data-ng-init="getAllSpeakers();" data-ng-submit="editEvent(editedEvent); showElem('#main-edit-section', '.edit-section');" make-auto-complete-false-directive>
 	    	<div data-ng-controller="AdminPageCtrl">
 		  		<button name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventHeaderImage')">Select Header Image</button>
 		  		<br><br>

@@ -4,7 +4,7 @@ const clc = require('cli-color');
 let Sql = require('sequelize');
 let sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASS, {
   host: process.env.DB_LOCAL_HOST,
-  dialect: 'mariadb',
+  dialect: 'mssql',
 
   pool: {
     max: 5,

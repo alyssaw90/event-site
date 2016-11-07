@@ -6,7 +6,7 @@
           <h2>Files:</h2>
         </div>
       </div>
-     <form id="deleteFilesForm" enctype="multipart/form-data" data-ng-submit="deleteFiles(filesToDelete)">
+     <form id="deleteFilesForm" enctype="multipart/form-data" data-ng-submit="deleteFiles(filesToDelete)" make-auto-complete-false-directive>
       <div class="row" role="presentation">
         <div class="col-lg-24" role="presentation">
           <button class="btn btn-orange" name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'newSlideImage', getAllFiles)">Add File</button>

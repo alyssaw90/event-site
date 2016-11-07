@@ -55,7 +55,7 @@
 		  					  	<p>Select Slide Image</p>
 		  							<button class="btn" name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'newSlideImage')">Select Image</button>
 		  							<br><br>
-		  							<form id="addNewSlideForm" name="addNewSlideForm" method="post" enctype="multipart/form-data" data-ng-submit="addSlide(newSlide);" >
+		  							<form id="addNewSlideForm" name="addNewSlideForm" method="post" enctype="multipart/form-data" data-ng-submit="addSlide(newSlide);"  make-auto-complete-false-directive>
 		  								<div class="form-group" role="presentation">
 			  								<label for="title">Title</label>
 			  								<input class="form-control" type="text" name="title" data-ng-model="newSlide.title" required>
@@ -92,7 +92,7 @@
 		          	<div class="col-lg-24" role="presentation">
 	  						  <p>Select Slides to Delete</p>
 	  							<br><br>
-	  							<form id="deleteSlideForm" name="deleteSlideForm" method="post" enctype="multipart/form-data" data-ng-submit="deleteSlide(slidesToDelete);">
+	  							<form id="deleteSlideForm" name="deleteSlideForm" method="post" enctype="multipart/form-data" data-ng-submit="deleteSlide(slidesToDelete);" make-auto-complete-false-directive>
 	  								<div class="form-group" data-ng-repeat="slide in completeListOfSlides" selectable-slide-directive>
 		  								<label>
 		  									{{slide.title}}

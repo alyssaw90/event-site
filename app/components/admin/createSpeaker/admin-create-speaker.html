@@ -29,7 +29,7 @@
 	  		</div>     
 	  		{{errorMsg}}    			
     	</div>
-			<form id="add-new-speaker-form" method="post" enctype="multipart/form-data" data-ng-submit="createNewSpeaker(newSpeaker);" class="col-lg-24">
+			<form id="add-new-speaker-form" method="post" enctype="multipart/form-data" data-ng-submit="createNewSpeaker(newSpeaker);" class="col-lg-24" make-auto-complete-false-directive>
 				<div class="form-group" role="presentation">
 					<label for="newFirstName">First Name*</label>
 					<input class="form-control" type="text" data-ng-model="newSpeaker.newFirstName" name="newFirstName" id="newFirstName" required="true">

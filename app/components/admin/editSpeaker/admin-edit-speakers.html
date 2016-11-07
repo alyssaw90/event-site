@@ -40,7 +40,7 @@
 	 				</div>
 	  		</section>
  				<div role="presentation" class="row">
-					<form id="edit-speaker-form" method="post" enctype="multipart/form-data" data-ng-submit="saveNewSpeaker(speakerToEdit)" class="col-lg-24">
+					<form id="edit-speaker-form" method="post" enctype="multipart/form-data" data-ng-submit="saveNewSpeaker(speakerToEdit)" class="col-lg-24" make-auto-complete-false-directive>
 						<div data-ng-controller="AdminPageCtrl">
 				  	  <p>Select Headshot</p>
 				  		<button name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'editedSpeakerImg')">Select Headshot</button>
