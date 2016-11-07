@@ -497,7 +497,8 @@ module.exports = (router) => {
         eventVenueAddress: req.body.event.eventVenueAddressLine1,
         eventParkingInfo: req.body.event.eventParkingInfo,
         eventVenueImg: req.body.event.eventVenueImg,
-        eventTechnicalTopics: req.body.eventTechnicalTopics
+        eventTechnicalTopics: req.body.eventTechnicalTopics,
+        eventLanguage: req.body.newEventLanguage
       })
       res.end();
     })
