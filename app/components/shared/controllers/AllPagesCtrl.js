@@ -20,14 +20,6 @@ const AllPagesCtrl = (app) => {
 			}
 		}
 
-		$scope.isLoggedIn = () => {
-	   	// return /\/admin.*$/.test(pageUrl);
-	   	// return /\/admin.*$/.test(pageUrl);
-			let tokenLength = $cookies.get('token') ? $cookies.get('token').length : 0;
-			// let showAdminHeader = theToken.length || false;
-	   	return tokenLength > 0;
-		}
-
 		$scope.$on('$locationChangeSuccess', (event) => {
 			$scope.currentPath = $location.path();
 		});

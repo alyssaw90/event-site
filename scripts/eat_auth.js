@@ -25,7 +25,6 @@ module.exports = (secret) => {
 					console.log(clc.white.bgRed('user not found'));
 						return res.status(401).json({msg: 'not authorized'});
 				}
-
 				req.user = user;
 				next();
 			})

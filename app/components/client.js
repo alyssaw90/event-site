@@ -286,10 +286,11 @@ eventsApp
 	if ( /\/admin.*$/.test($location.path()) ) {
 		$http.get('/api/user/checklogin')
 		.success( (data) => {
-			
+      $rootScope.isAuthenticated = true;
 		})
 		.error( (err) => {
-			$cookies.remove('token');
+      $rootScope.isAuthenticated = false;
+      $cookies.remove('interopAdmin');
 			$location.path('/admin/login');
 		})
 	}
@@ -309,10 +310,11 @@ eventsApp
 		if ( /\/admin.*$/.test($location.path()) ) {
 			$http.get('/api/user/checklogin')
 			.success( (data) => {
-				
+        $rootScope.isAuthenticated = true;
 			})
 			.error( (err) => {
-				$cookies.remove('token');
+        $rootScope.isAuthenticated = false;
+        $cookies.remove('interopAdmin');
 				$location.path('/admin/login');
 			})
 		}

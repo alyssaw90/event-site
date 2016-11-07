@@ -2,30 +2,6 @@
 
 const jQuery =  require('jquery');
 
-//Logout function
-//Submits an invalid authentication header, causing the user to be 'logged out'
-export let logout = function() {
-	Cookies.set('token', 'not a token');
-  jQuery.ajax({
-    type: 'post',
-    url: '../auth/login',
-    dataType: 'json',
-    async: true,
-    username: 'not_a_real_username',
-    password: 'not_a_real_password',
-    data: '{ "comment" }'
-  })
-	//In our case, we WANT to get access denied, so a success would be a failure.
-	.done(function(){
-	    alert('Error logging off!')
-	})
-	//Likewise, a failure *usually* means we succeeded.
-	//set window.location to redirect the user to wherever you want them to go
-	.fail(function(){
-	    window.location = '/thankyou';
-	});
-}
-
 //determines if user is in high-contrast mode and set needed css
 export let highContrast = () => {
 
@@ -181,17 +157,6 @@ export let changeWidth = (jQElemArr) => {
 
 	}
 
-//function to show and hide past event tables on past events page
-/*export let showCalendarOfPastEvents = function(calendarHtml, divClicked, calendarDiv) {
-    if (divClicked.hasClass('selected-year')) {
-      calendarDiv.empty();
-    } else {
-      calendarDiv.empty();
-      calendarDiv.append(calendarHtml);
-    }
-    divClicked.siblings().removeClass('selected-year');
-  	divClicked.toggleClass('selected-year');
-}*/
 
 //function to get key code
 export let getKeyCode = function(e) {

@@ -6,6 +6,8 @@ const app = express();
 const passport = require('passport');
 const clc = require('cli-color');
 const compression = require('compression');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
 const apiRoutes 		= express.Router();
 const authRoutes 	= express.Router();
 const catchAllRoutes = express.Router();
@@ -27,7 +29,16 @@ if (process.env.SECRET_KEY !== 'change this change this change this!!!') {
 console.log(secretKeyReminder);
 
 app.use(compression()) //use compression 
-.use(passport.initialize()) //initialiaze passport for authentication
+.use(cookieParser(process.env.SESSION_SECRET))
+.use(session({ 
+		secret: process.env.SESSION_SECRET, 
+		resave: false, 
+		saveUninitialized: false,
+		maxAge: 1000*60*60
+	})
+)
+.use(passport.initialize()) //initialize passport
+.use(passport.session()) //restore the session if there is one
 .use( (req, res, next) => { 
 	res.setHeader('X-Frame-Options', 'DENY');
 	return next();
@@ -43,3 +54,11 @@ app.use(compression()) //use compression
 .listen(port, () => {
 	console.log(clc.cyanBright('server started on port ' + port + ' at ' + time));
 }); //listen to the port and log when the server has started
+
+passport.serializeUser(function(user, cb) {
+	cb(null, user);
+});
+
+passport.deserializeUser(function(obj, cb) {
+	cb(null, obj);
+});
