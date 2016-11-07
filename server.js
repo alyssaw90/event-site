@@ -8,6 +8,9 @@ const clc = require('cli-color');
 const compression = require('compression');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const models = require('./models');
+// initalize sequelize with session store 
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const apiRoutes 		= express.Router();
 const authRoutes 	= express.Router();
 const catchAllRoutes = express.Router();
@@ -34,7 +37,11 @@ app.use(compression()) //use compression
 		secret: process.env.SESSION_SECRET, 
 		resave: false, 
 		saveUninitialized: false,
-		maxAge: 1000*60*60
+		maxAge: 1000*60*60,
+		store: new SequelizeStore({
+			db: models.sql
+		}),
+		proxy: true
 	})
 )
 .use(passport.initialize()) //initialize passport

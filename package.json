@@ -34,6 +34,7 @@
     "clipboard": "^1.5.10",
     "compression": "^1.6.2",
     "connect-multiparty": "^2.0.0",
+    "connect-session-sequelize": "^4.1.0-beta.1",
     "cookie-parser": "^1.4.1",
     "dotenv": "^1.2.0",
     "eat": "^0.1.1",
