@@ -23,6 +23,7 @@
 			    </div>
 			    <div ui-sortable="sortableOptions" data-ng-model="slideshowSlides" class="slideshowSlides slide-sort-section col-lg-11">
 			    	<h4>Slides to Be Displayed on Homepage</h4>
+						<p class="center">*Displayed slides <i>should</i> be the same aspect ratio. (ideally 4.97W X 1H).</p>
 			      <div data-ng-repeat="slideshowSlide in slideshowSlides" class="slideshowSlide">
 			      	<h5>Title: {{slideshowSlide.title}}</h5>
 			      	<p>New position: {{$index + 1}} : Old position: {{slideshowSlide.SlideshowSlideAssc.sortPosition}}</p>

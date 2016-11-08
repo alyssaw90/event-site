@@ -47,7 +47,7 @@
 							</tr>						
 						</thead>
 						<tbody>
-							<tr data-ng-repeat="event in theEvents">
+							<tr data-ng-repeat="event in theEvents | orderBy: 'eventEndDate' : reverse = true">
 								<td>{{event.eventName}}</td>
 								<td>{{event.eventLocation}}</td>
 								<td>{{event.eventLanguage}}</td>
@@ -121,7 +121,7 @@
     </section>
     <section id="edit-tabs-section" class="row edit-section" role="presentation" style="display: none;">
     	<div class="col-lg-24" role="presentation">
-	    	<table id="select-tabs-to-edit-table" class="table table-bordered edit-section" style="display: none;">
+	    	<table id="select-tabs-to-edit-table" class="table table-bordered edit-section" style="display: none;" sortable-table-directive>
 	    		<thead>
 	    			<tr>
 	    				<th>
@@ -139,7 +139,7 @@
 	    			</tr>
 	    		</thead>
 	    		<tbody>
-	    			<tr ng-repeat="tab in editedEvent.tabs">
+	    			<tr ng-repeat="tab in editedEvent.tabs" ng-attr-data-eventId="{{tab.EventsTabsAccsc.EventId}}">
 	    				<td>
 	    					{{tab.tabTitle}}
 	  					</td>
@@ -226,7 +226,7 @@
 					</div>
 				</div>
 				<div class="form-group" role="presentation">
-					<label for="newEventLanguage">Language*</label>
+					<label for="newEventLanguage">Display Language</label>
 					<select name="newEventLanguage" ng-model="editedEvent.newEventLanguage">
 						<option ng-repeat="(code, language) in languageCodes" value="{{code}}">{{language}}</option>
 					</select>
