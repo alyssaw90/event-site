@@ -76,7 +76,6 @@ module.exports = function(router, passport) {
       }
       
     }
-    // console.log(clc.greenBright('Cookies: '), '     :::::     ', res.req.rawHeaders);
     req.user.$modelOptions.instanceMethods.generateToken(userJSON, process.env.SECRET_KEY, (err, token) => {
         if (err) {
             console.log(err);
@@ -94,7 +93,5 @@ module.exports = function(router, passport) {
       // cannot access session here 
       res.json({msg: 'logged off'});
     });
-    // console.log(clc.cyanBright(':::::      '), req.rawHeaders);
-    // console.log(clc.greenBright(':::::      '), req.cookies);
   })
 };

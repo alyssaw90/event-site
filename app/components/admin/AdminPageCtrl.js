@@ -84,7 +84,6 @@ const AdminPageCtrl = (app) => {
           let fileName =  `${time}-${file.name}`;
           let fileLocation = `/uploads/${fileName}`;
           reader.onloadend = (e) => {
-            console.log('result ::  ', e.target);
             let base64String = e.target.result.split(',')[1];
             addTinymceFile({
               base64String: base64String,

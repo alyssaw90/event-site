@@ -29,7 +29,6 @@ const futureEventsDirective = (app) => {
 				$rootScope.$on('$viewContentLoaded', function () {
 					// $timeout(function() {
 						if (!$location.hash()) {
-						console.log('path     ', !$location.hash());
 							jQuery('#screenreader-summary').trigger('focus');
 						}
 						

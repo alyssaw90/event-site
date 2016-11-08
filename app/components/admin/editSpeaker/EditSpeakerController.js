@@ -11,7 +11,6 @@ const EditSpeakerController = (app) => {
     const EditSpeakerResource = resource();
 
     $rootScope.$watch('editedSpeakerImg', (newVal, oldVal) => {
-      // console.log('old::  ', oldVal, '\n', 'new::  ', newVal.editedSpeakerImg);
       if (newVal) {
         $scope.speakerToEdit.headShot = newVal.size + '-' + newVal.name;
       }

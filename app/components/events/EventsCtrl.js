@@ -18,7 +18,6 @@ const EventsCtrl = (app) => {
         if (err) {
           return $scope.errors.push({msg: 'no event found'});
         };
-        console.log('data :: ', data.event);
         $rootScope.lang = data.event.eventLanguage || 'en';
         $scope.headerImage = 'uploads/' + data.event.eventHeaderImage;
         $scope.events = data;

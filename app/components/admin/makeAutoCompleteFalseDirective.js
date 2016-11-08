@@ -8,7 +8,6 @@ const makeAutoCompleteFalseDirective = (app) => {
 			restrict: 'A',
 			link: ($scope, $elem, attrs) => {
                 let $inputs = $elem.find('input');
-                // console.log('$elem :: ', $inputs, ' :: ', $elem);
                 $inputs.attr('autcomplete', 'off');
 
 			}

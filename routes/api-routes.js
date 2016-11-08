@@ -542,7 +542,6 @@ module.exports = (router) => {
         let tabId = tab.id.toString();
 
         for (let i = 0, j = req.body.length; i < j; i++) {
-      console.log(clc.green.bgWhite(' ::::  '), tab.id,  ':: ', tab);
           if (req.body[i] === tabId) {
             tab.update({
               tabNumber: i

@@ -10,7 +10,6 @@ const allPagesDirective = (app) => {
 
 					$rootScope.$on('$viewContentLoaded', function () {
 						$timeout(function() {
-							// console.log('path     ', !$location.hash());
 							if (!$location.hash()) {
 								jQuery('#screenreader-summary').trigger('focus');
 							}

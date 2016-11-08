@@ -82,7 +82,6 @@ export const shuffle = (arr) => {
 
 export const handleError = (callback) => {
   return function (data) {
-    console.log(data);
     callback(data);
   }
 };

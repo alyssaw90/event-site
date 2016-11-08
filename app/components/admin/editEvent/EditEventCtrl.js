@@ -168,7 +168,6 @@ const EditEventCtrl = (app) => {
     };
 
     $scope.editSpeakers = () => {
-      console.log('edited speaker:  ', $scope.editedEvent);
       EditEventData.editSpeakers($scope.editedEvent, (err, data) => {
         if (err) {
           $scope.errors.push({msg: 'could not save speaker'});
@@ -255,7 +254,6 @@ const EditEventCtrl = (app) => {
             });
           }
       })
-      console.log('table :: ', newOrder );
     };
 
 	}]);

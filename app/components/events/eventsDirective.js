@@ -153,7 +153,6 @@ const eventsDirective = (app) => {
 						let $this = jQuery(this);
 						let divId = $this.attr('href');
 						let keyCode = customFunctions.getKeyCode(e);
-						console.log('div id   ', divId);
 						//if enter is clicked trigger the links click function and focus on the tab content
 						if (keyCode === 13) {
 							// $this.trigger('click');

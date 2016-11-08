@@ -25,7 +25,6 @@ const UserLoggingCtrl = (app) => {
             $scope.showSpinner = true;
             $timeout( () => {
               $scope.showSpinner = false;
-              console.log(err);
               $scope.errors.push({msg: 'could not log in user'});
               $scope.user = {};
               return;

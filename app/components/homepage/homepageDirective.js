@@ -174,7 +174,6 @@ const homepageDirective = (app) => {
 		angular.element('.hiddenHomepageSections').keydown(function(e) {
 			let elemId = `#${angular.element(this).attr('id').slice(0, -4)}`;
 			let keyCode = customFunctions.getKeyCode(e);
-			console.log('keyCOde    ', keyCode);
 			if (e.shiftKey && keyCode === 9) {
 				e.preventDefault();
 				hideHomepageSections();
@@ -186,7 +185,6 @@ const homepageDirective = (app) => {
 		angular.element('.homepageIntroBlocks').focus(function(e) {
 			let elemId = `#${angular.element(this).attr('id')}`;
 			let keyCode = customFunctions.getKeyCode(e);
-			console.log('elemId    ', elemId);
 			if (angular.element(elemId).hasClass('whiteText')) {
 				e.preventDefault();
 				hideHomepageSections();
@@ -195,11 +193,8 @@ const homepageDirective = (app) => {
 			}
 		})
 
-		/*angular.element('#itsYourEventBlockText :last-child').blur(function(e) {
-			angular.element('.newsletterSubscSection p:first-child').focus();
-			hideHomepageSections();
-		});*/
-    	return console.log('homepage directive run');
+
+    	return;
     }
   };
   return homepageDirectiveDefinitionObject

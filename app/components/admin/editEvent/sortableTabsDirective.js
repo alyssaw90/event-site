@@ -13,19 +13,7 @@ const sortableTabsDirective = (app) => {
 				
                 $timeout( () => {
                     
-                    $elem.find('tbody').sortable({
-						start: function(event, ui) {
-							ui.item.startPos = ui.item.index();
-						},
-						stop: function(event, ui) {
-							ui.item.attr('data-tabPosition', ui.item.index())
-							console.log("Start position: " + ui.item.startPos);
-							console.log("New position: " + ui.item.index());
-							console.log('ui.item :: ', ui);
-						}
-					});
-					
-					$elem.find('tbody').disableSelection();
+                    $elem.find('tbody').sortable().disableSelection();
                 });
 				
 

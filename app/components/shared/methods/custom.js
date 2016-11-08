@@ -155,15 +155,6 @@ jQuery.extend(jQuery.expr[':'], {
 			}
 
 		});
-		//find what has focus
-		/*$('*').focusin(function(event) {
-			console.log('focused elem:               ', $(this));
-		});*/
-
-		//find what's clicked
-		/*$('*').keydown(function(e) {
-			console.log('this   ', $(this));
-		});*/
 
 		//Prevent elements from taking focus when they are clicked
 		$('*').click(function(e) {
