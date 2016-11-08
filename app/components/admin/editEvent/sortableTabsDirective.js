@@ -2,11 +2,11 @@
 const jQuery = require('jquery');
 const jQueryUi = require('jquery-ui');
 
-const sortableTableDirective = (app) => {
-	app.directive('sortableTableDirective', ['$timeout', ($timeout) => {
+const sortableTabsDirective = (app) => {
+	app.directive('sortableTabsDirective', ['$timeout', ($timeout) => {
 		let widestBlock = 0;
 		
-		const sortableTableDirectiveObj = {
+		const sortableTabsDirectiveObj = {
 			restrict: 'A',
 			replace: true,
 			link: ($scope, $elem, attrs) => {
@@ -18,8 +18,10 @@ const sortableTableDirective = (app) => {
 							ui.item.startPos = ui.item.index();
 						},
 						stop: function(event, ui) {
+							ui.item.attr('data-tabPosition', ui.item.index())
 							console.log("Start position: " + ui.item.startPos);
 							console.log("New position: " + ui.item.index());
+							console.log('ui.item :: ', ui);
 						}
 					});
 					
@@ -29,8 +31,8 @@ const sortableTableDirective = (app) => {
 
 			}
 		}
-		return sortableTableDirectiveObj;
+		return sortableTabsDirectiveObj;
 	}])
 };
 
-module.exports = sortableTableDirective;
+module.exports = sortableTabsDirective;

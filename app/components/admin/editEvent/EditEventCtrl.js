@@ -234,6 +234,30 @@ const EditEventCtrl = (app) => {
       })
     };
 
+    $scope.newTabOrder = (tableId) => {
+      let jQRows = jQuery(`#${tableId}`).find('tr.tab-row');
+      let newOrder = [];
+      jQRows.each( function(i, elem) {
+        newOrder.push(jQuery(this).attr(`data-tabId`));
+      });
+      EditEventData.newTabOrder(newOrder, (err, data) => {
+        if (!err) {
+          swal({
+            type: `success`,
+            title: `Saved`,
+            customClass: `sweet-alert-hide-input`
+          }) 
+        } else {
+            swal({
+              type: `error`,
+              title: `There was a problem saving the new order`,
+              customClass: `sweet-alert-hide-input`
+            });
+          }
+      })
+      console.log('table :: ', newOrder );
+    };
+
 	}]);
 };
 

@@ -11,6 +11,10 @@ const AllPagesCtrl = (app) => {
 		$scope.isCurrentPage = (pageUrl) => {
 	   	return pageUrl === $location.path();
 		}
+		$scope.showSocialIcons = true;
+
+		$rootScope.$on('$routeChangeSuccess', (e, oldRoute, newRoute) => {
+		});
 
 		$scope.isEmptyObj = (obj) => {
 			if ( angular.equals({}, obj) ) {
@@ -21,7 +25,13 @@ const AllPagesCtrl = (app) => {
 		}
 
 		$scope.$on('$locationChangeSuccess', (event) => {
+			let adminPath = new RegExp(`^/admin`);
 			$scope.currentPath = $location.path();
+			if(adminPath.test($scope.currentPath) || $scope.currentPath == '/') {
+				$scope.showSocialIcons = false;
+			} else {
+				$scope.showSocialIcons = true;
+			}
 		});
 		
 		$scope.isFirstEventInLIst = (index) => {

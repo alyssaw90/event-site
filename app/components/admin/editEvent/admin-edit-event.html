@@ -8,7 +8,7 @@
 				  <button type="button" class="btn btn-primary" ng-click="showElem('#edit-event-section, #edit-menu-options', '.edit-section')">Edit Event</button>
 				  <button id="edit-tabs-dropdown" type="button" class="btn btn-primary" ng-click="showElem('#edit-tabs-section, #edit-menu-options, #select-tabs-to-edit-table', '.edit-section');">Edit Tabs</button>
 				  <button type="button" class="btn btn-primary" ng-click="showElem('#edit-speakers-section, #edit-menu-options', '.edit-section')">Edit Speakers</button>
-				  <button type="button" class="btn btn-primary" ng-click="showElem('#edit-menu-options, #add-tabs-section', '.edit-section')">Add Tabs</button>
+				  <button type="button" class="btn btn-orange" ng-click="showElem('#edit-menu-options, #add-tabs-section', '.edit-section')">Add New Tab</button>
 				  <button type="button" class="btn" ng-click="showElem('#main-edit-section', '.edit-section'); cancelEditing()">Cancel</button>
 			  </div>
 			</div>
@@ -54,7 +54,7 @@
 								<td>{{event.eventStartDate | date: 'MM/dd/yyyy'}}</td>
 								<td>{{event.lastModifiedBy}}</td>
 								<td>{{event.updatedAt | date: 'MM/dd/yyyy'}}</td>
-								<td>{{publishedOrNot = event.isPublished ? 'published' : 'unpublished';}}</td>
+								<td>{{publishedOrNot = event.isPublished ? 'PUBLISHED' : 'UNPUBLISHED';}}</td>
 								<td>
 									<button data-ng-click="getSingleEvent(event.eventUrl, '#edit-menu-options', '.edit-section')">Edit</button>
 								</td>
@@ -96,10 +96,6 @@
 					<label for="newTabTitle">Tab Title</label>
 					<input class="form-control" type="text" name="newTabTitle" ng-model="newTab.newTabTitle">
     		</div>
-    		<div class="form-group" role="presentation">
-					<label for="newTabNumber">Tab Position</label>
-					<input class="form-control" type="number" name="newTabNumber" ng-model="newTab.newTabNumber">					
-    		</div>
     		<div role="presentation" class="form-group">
 					<label for="new-event-description">Tab Content</label>
 					<textarea class="form-control" data-ng-model="newTab.newTabContent" name="new-tab-html" style="min-height: 200px" data-ng-required="required" 
@@ -121,7 +117,8 @@
     </section>
     <section id="edit-tabs-section" class="row edit-section" role="presentation" style="display: none;">
     	<div class="col-lg-24" role="presentation">
-	    	<table id="select-tabs-to-edit-table" class="table table-bordered edit-section" style="display: none;" sortable-table-directive>
+	    	<table id="select-tabs-to-edit-table" class="table table-bordered edit-section" style="display: none;" sortable-tabs-directive>
+				<p><button class="btn btn-green" ng-click="newTabOrder('select-tabs-to-edit-table');">Save order</button> Drag tabs below to reorder.</p>
 	    		<thead>
 	    			<tr>
 	    				<th>
@@ -139,12 +136,12 @@
 	    			</tr>
 	    		</thead>
 	    		<tbody>
-	    			<tr ng-repeat="tab in editedEvent.tabs" ng-attr-data-eventId="{{tab.EventsTabsAccsc.EventId}}">
+	    			<tr class="tab-row" ng-repeat="tab in editedEvent.tabs | orderBy: 'tabNumber'" ng-attr-data-eventId="{{tab.EventsTabsAccsc.EventId}}" ng-attr-data-tabId="{{tab.id}}" ng-data-tabPosition="{{tab.tabNumber}}">
 	    				<td>
 	    					{{tab.tabTitle}}
 	  					</td>
 	  					<td>
-	    					{{tab.isPublished ? 'published' : 'unpublished';}}
+	    					{{tab.isPublished ? 'PUBLISHED' : 'UNPUBLISHED';}}
 	  					</td>
 	    				<td>
 	    					<button ng-style="buttonStyle" class="pull-right" ng-click="getTab(tab); showElem('#edit-tabs-form', '#select-tabs-to-edit-table');" edit-event-directive>Edit: "{{tab.tabTitle}}"</button>
@@ -162,10 +159,6 @@
     		<div class="form-group" role="presentation">
 					<label for="tabTitle">Tab Title</label>
 					<input class="form-control" type="text" name="tabTitle" ng-model="tabToEdit.tabTitle">
-    		</div>
-    		<div class="form-group" role="presentation">
-					<label" for="tabNumber">Tab Position</label>
-					<input class="form-control" type="number" name="tabNumber" ng-model="tabToEdit.tabNumber">					
     		</div>
     		<div class="form-group" role="presentation">
 					<label" for="edited-tab-html">Tab Content</label>

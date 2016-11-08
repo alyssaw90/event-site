@@ -517,7 +517,6 @@ module.exports = (router) => {
       if (typeof req.body.tabContent === 'string') {
         tab.tabContent = req.body.tabContent;
       }
-      tab.tabNumber = req.body.tabNumber,
       tab.tabTitle = req.body.tabTitle,
       tab.isPublished = req.body.isPublished
       tab.save()
@@ -526,6 +525,34 @@ module.exports = (router) => {
       });
     });
   });
+
+  router.post('/newtaborder', isLoggedIn, (req, res) => {
+    models.sql.sync()
+    .then( () => {
+      return EventTab.findAll({
+        where: {
+          id: {
+            $in: req.body
+          }
+        }
+      })
+    })
+    .then( (tabs) => {
+      tabs.forEach( (tab) => {
+        let tabId = tab.id.toString();
+
+        for (let i = 0, j = req.body.length; i < j; i++) {
+      console.log(clc.green.bgWhite(' ::::  '), tab.id,  ':: ', tab);
+          if (req.body[i] === tabId) {
+            tab.update({
+              tabNumber: i
+            })
+          }
+        }
+      });
+      res.end();
+    })
+  })
 
   router.post('/addtab', isLoggedIn, (req, res) => {
     models.sql.sync()
