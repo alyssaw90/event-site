@@ -73,7 +73,7 @@
 			  <div class="edited-speaker-table-container clearfix edited-speaker-wrapper" style="display: flex;">
 			    <div ui-sortable="sortableOptions" data-ng-model="unusedSpeakers" class="slides edited-speaker-table-container col-lg-12 clearfix ng-cloak">
 			    	<h4>Available Speakers, Not Displayed</h4>
-			      <div data-ng-repeat="editedEventSpeaker in unusedSpeakers | orderBy: 'firstName'" class="editedEventSpeaker">
+			      <div data-ng-repeat="editedEventSpeaker in unusedSpeakers" class="editedEventSpeaker">
 					    <p>{{editedEventSpeaker.fullName}}</p>
 		      	</div>
 			    </div>
@@ -153,18 +153,21 @@
 	    		</tbody>
 	    	</table>
     	</div>
-    	<form id="edit-tabs-form" class="edit-section col-lg-24" ng-submit="editTab(tabToEdit)" style="display: none;" make-auto-complete-false-directive>
+    	<form id="editTabsForm" name="editTabsForm" class="edit-section col-lg-24" ng-submit="editTab(tabToEdit)" style="display: none;" make-auto-complete-false-directive>
 				<input type="hidden" name="asssociatedEventId" data-ng-model="editedEvent.EventsTabsAccsc.EventId">
 				<input type="hidden" name="editedTabId" data-ng-model="editedEvent.id">
     		<div class="form-group" role="presentation">
 					<label for="tabTitle">Tab Title</label>
-					<input class="form-control" type="text" name="tabTitle" ng-model="tabToEdit.tabTitle">
+					<input class="form-control" type="text" name="tabTitle" id="tabTitle" ng-model="tabToEdit.tabTitle" unique-tab-name-directive>
+					<div ng-messages="editTabsForm.tabTitle.$error" role="alert" class="col-lg-offset-8 col-lg-16 col-md-offset-12 col-md-12 col-sm-24" style="position: absolute;">
+						<div ng-message="uniqueTabName" class="win-color-fg-alert alert-warning">This tab name is already in use, please choose a different name</div>
+					</div>
     		</div>
     		<div class="form-group" role="presentation">
-					<label" for="edited-tab-html">Tab Content</label>
+					<label for="edited-tab-html">Tab Content</label>
 					<textarea class="form-control" data-ng-model="tabToEdit.tabContent" name="edited-tab-html" style="min-height: 200px" data-ng-required="required" 
 					data-ui-tinymce="tinymceOptions">
-	      	</textarea>
+	      		</textarea>
     		</div>
     		<div class="form-group" role="presentation">
 					<radiogroup>

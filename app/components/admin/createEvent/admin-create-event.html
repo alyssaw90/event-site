@@ -2,7 +2,7 @@
 <div class="mobileWrapper ng-cloak ng-cloak" role="presentation" ng-controller="AdminPageCtrl" data-ng-init="getEvents(); getAllSpeakers()" data-admin-page-directive>
   <main style="overflow:hidden;" id="beginningOfContent" tabindex="0" class="container">
     <section role="presentation" class="row internetExplorer">
-			<form id="addNewEventForm" class="col-lg-24" name="addNewEventForm" method="post" enctype="multipart/form-data" data-ng-init="getAllSpeakers();" data-ng-submit="createNewEvent(newEvent);" make-auto-complete-false-directive>
+			<form id="addNewEventForm" class="col-lg-24" name="addNewEventForm" method="post" enctype="multipart/form-data" data-ng-submit="createNewEvent(newEvent);" make-auto-complete-false-directive>
 				<h3>New Event</h3>
 				<div role="presentation" class="form-group">
 					<label for="newEventName">Event Name*</label>
@@ -164,7 +164,7 @@
 					  <div class="clearfix modal-container new-event-speakers-modal-container">
 					    <div ui-sortable="newEventSortSpeakerOptions" data-ng-model="theSpeakers" class="new-event-speaker-table-container col-lg-12 ">
 					    	<h5>Available Speakers, Not Displayed</h5>
-					      <div data-ng-repeat="speaker in theSpeakers | orderBy: 'firstName'" class="newEventSpeaker ui-state-default">
+					      <div data-ng-repeat="speaker in theSpeakers" class="newEventSpeaker ui-state-default">
 					      	<p>{{speaker.fullName}}</p>
 				      	</div>
 					    </div>

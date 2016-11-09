@@ -46,6 +46,7 @@ require('./admin/editFiles/matchFileDisplayHeights.js')(eventsApp);
 require('./shared/header/carouselHeightDirective.js')(eventsApp);
 require('./admin/makeAutoCompleteFalseDirective.js')(eventsApp);
 require('./admin/editEvent/sortableTabsDirective.js')(eventsApp);
+require('./admin/editEvent/uniqueTabNameDirective.js')(eventsApp);
 
 //controllers
 require('./shared/controllers/AllPagesCtrl.js')(eventsApp);

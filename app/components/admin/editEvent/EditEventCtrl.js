@@ -10,6 +10,7 @@ const EditEventCtrl = (app) => {
     $scope.tester = [];
     $scope.compareArr = [];
     $scope.unusedSpeakers = [];
+    $scope.usedTabNames = [];
     $scope.editedEvent = {};
     $scope.tabToEdit = {};
     $scope.newTab = {};
@@ -77,6 +78,7 @@ const EditEventCtrl = (app) => {
         //loop over html string for tabs and tell angular to trust it as html
         for (let i = 0, len = $scope.editedEvent.tabs.length; i < len; i++) {
           $scope.editedEvent.tabs[i].tabContent = $sce.trustAsHtml($scope.editedEvent.tabs[i].tabContent);
+          $scope.usedTabNames.push($scope.editedEvent.tabs[i].tabTitle);
         }
         //add folder path to image names
         for (let i = 0, len = $scope.editedEvent.speakers.length; i < len; i++) {
