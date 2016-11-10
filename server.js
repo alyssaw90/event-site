@@ -20,6 +20,7 @@ let time = new Date();
 let secretKeyReminder;
 
 require('./scripts/passport_strat')(passport);
+require(`./scripts/passport_azure`)(passport);
 require('./routes/api-routes')(apiRoutes);
 require('./routes/catch-all-routes.js')(catchAllRoutes);
 require('./routes/auth-routes')(authRoutes, passport);
@@ -35,9 +36,9 @@ app.use(compression()) //use compression
 .use(cookieParser(process.env.SESSION_SECRET))
 .use(session({ 
 		secret: process.env.SESSION_SECRET, 
-		resave: false, 
-		saveUninitialized: false,
-		maxAge: 1000*60*60,
+		resave: true, 
+		saveUninitialized: true,
+		maxAge: 1000*60*60*8,
 		store: new SequelizeStore({
 			db: models.sql
 		}),
@@ -63,9 +64,11 @@ app.use(compression()) //use compression
 }); //listen to the port and log when the server has started
 
 passport.serializeUser(function(user, cb) {
+	console.log(clc.blue.bgWhite(`user ::: `), user);
 	cb(null, user);
 });
 
 passport.deserializeUser(function(obj, cb) {
+	console.log(clc.blue.bgWhite(`obj ::: `), obj);
 	cb(null, obj);
 });

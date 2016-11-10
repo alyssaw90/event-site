@@ -23,7 +23,7 @@
 							<td>{{speaker.showOnMeetTheTeamPage === true ? 'True' : 'False'}}</td>
 							<td>{{speaker.lastModifiedBy}}</td>
 							<td>{{speaker.updatedAt | date: 'MM/dd/yyyy'}}</td>
-							<td>{{publishedOrNot = speaker.isPublished ? 'published' : 'unpublished';}}</td>
+							<td>{{publishedOrNot = speaker.isPublished ? 'Published' : 'Unpublished';}}</td>
 							<td><button ng-click="getSpeaker(speaker);">Edit</button></td>
 						</tr>
 					</table>

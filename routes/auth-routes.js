@@ -77,18 +77,27 @@ module.exports = function(router, passport) {
       
     }
     req.user.$modelOptions.instanceMethods.generateToken(userJSON, process.env.SECRET_KEY, (err, token) => {
-        if (err) {
-            console.log(err);
-            return res.status(500).json({msg: 'error generating token'});
-        }
-        req.session.cookie.maxAge = 1000 * 60 * 60;
-        res.status('200').json({'admin': req.user.dataValues.isAdmin});
-        // res.status('200').header('token', token).json({token: token, 'admin': req.user.dataValues.isAdmin, 'username': req.user.dataValues.userName, 'email': req.user.dataValues.email});
-      });
+      if (err) {
+          console.log(err);
+          return res.status(500).json({msg: 'error generating token'});
+      }
+      req.session.cookie.maxAge = 1000 * 60 * 60;
+      res.status('200').json({'admin': req.user.dataValues.isAdmin});
+      // res.status('200').header('token', token).json({token: token, 'admin': req.user.dataValues.isAdmin, 'username': req.user.dataValues.userName, 'email': req.user.dataValues.email});
     });
+  });
 
+  router.get(`/azurelogin`, passport.authenticate(`provider`, {successRedirect: `/`}), (req, res) => {
+    console.log(clc.blue.bgWhite('REQ::   '), req.isAuthenticated());
+  });
+
+  router.get(`/.auth/login/aad/callback`, passport.authenticate(`provider`, { successRedirect: `/`, failureRedirect: `/admin/login` }), function (req, res) { 
+    res.redirect(`/`); 
+  });
+
+  
   router.get('/logout', function(req, res) {
-    req.logout()
+    req.logout();
     req.session.destroy(function(err) {
       // cannot access session here 
       res.json({msg: 'logged off'});
