@@ -17,20 +17,14 @@ const catchAllRoutes = express.Router();
 process.env.SECRET_KEY = process.env.SECRET_KEY || 'change this change this change this!!!';
 let port = process.env.PORT || 3000;
 let time = new Date();
-let secretKeyReminder;
+let secretKeyReminder = process.env.SECRET_KEY === 'change this change this change this!!!' ?  clc.black.bgRed(`process.env.SECRET_KEY is not secure, change your SECRET_KEY!!!`) : clc.black.bgGreen(`Your SECRET_KEY is secure. You don't need to change your SECRET_KEY`);
+console.log(secretKeyReminder);
 
 require('./scripts/passport_strat')(passport);
 require(`./scripts/passport_azure`)(passport);
 require('./routes/api-routes')(apiRoutes);
 require('./routes/catch-all-routes.js')(catchAllRoutes);
 require('./routes/auth-routes')(authRoutes, passport);
-
-if (process.env.SECRET_KEY !== 'change this change this change this!!!') {
-	secretKeyReminder = clc.black.bgGreen('Your SECRET_KEY is secure. You don\'t need to change your SECRET_KEY');
-} else {
-	secretKeyReminder = clc.black.bgRed('process.env.SECRET_KEY : change this change this change this!!!');
-}
-console.log(secretKeyReminder);
 
 app.use(compression()) //use compression 
 .use(cookieParser(process.env.SESSION_SECRET))

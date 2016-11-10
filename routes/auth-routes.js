@@ -83,15 +83,12 @@ module.exports = function(router, passport) {
       }
       req.session.cookie.maxAge = 1000 * 60 * 60;
       res.status('200').json({'admin': req.user.dataValues.isAdmin});
-      // res.status('200').header('token', token).json({token: token, 'admin': req.user.dataValues.isAdmin, 'username': req.user.dataValues.userName, 'email': req.user.dataValues.email});
     });
   });
 
-  router.get(`/azurelogin`, passport.authenticate(`provider`, {successRedirect: `/`}), (req, res) => {
-    console.log(clc.blue.bgWhite('REQ::   '), req.isAuthenticated());
-  });
+  router.get(`/azurelogin`, passport.authenticate(`provider`, {successRedirect: `/admin/edit-events`}));
 
-  router.get(`/.auth/login/aad/callback`, passport.authenticate(`provider`, { successRedirect: `/`, failureRedirect: `/admin/login` }), function (req, res) { 
+  router.get(`/.auth/login/aad/callback`, passport.authenticate(`provider`, { successRedirect: `/admin/edit-events`, failureRedirect: `/admin/login` }), function (req, res) { 
     res.redirect(`/`); 
   });
 
