@@ -16,8 +16,7 @@ function isLoggedIn(req, res, next) {
       });
     })
     .then( (msUser) => {
-      
-        console.log(clc.white.bgCyan('ONE USER :: '), req.user.unique_name, `\n`,clc.white.bgCyan('Two USER :: '), msUser, `\n`,clc.white.bgCyan('Three USER :: '), msUser.email === req.user.unique_name);
+      console.log(clc.white.bgGreen(' msUser'), msUser.email === req.user.unique_name);      
       if (req.isAuthenticated() && msUser.email === req.user.unique_name) {// if user is authenticated in the session and the user email matches the user found in the db, carry on
         return next();    	
       } else {

@@ -10,7 +10,6 @@ const uniqueTabNameDirective = (app) => {
 			require: 'ngModel',
 			scope: true,
 			link: ($scope, $elem, attrs, ngModel) => {
-                console.log('ngModel :: ', ngModel);
 				const $form = jQuery($elem[0].form);
 				//remove current event's URL from duplicate list
 				/*function removeCurrentUrl(val) {

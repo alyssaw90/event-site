@@ -12,7 +12,7 @@ function AzureOAuthStrategy(passport) {
       resource: `00000002-0000-0000-c000-000000000000`,
       tenant: process.env.AZURE_TENANT_ID,
       prompt: 'consent',
-      state: true
+      state: false
     },
     function (accessToken, refreshtoken, params, profile, done) {
         let user = jwt.decode(params.id_token, "", true);
