@@ -7,6 +7,7 @@ const Event = models.Event;
 const EventTab = models.EventTab;
 const Slideshow = models.Slideshow;
 const Slide = models.Slide;
+const MsUser = models.MsUser;
 const clc = require('cli-color');
 
 module.exports = function () {
@@ -40,12 +41,11 @@ module.exports = function () {
 			force: false
 		});
 	})
-	/*.then(function() {
-		return EventTab.belongsTo(Event, {foreignKey: 'event_id'});
+	.then( () => {
+		return MsUser.sync({
+			force: true
+		})
 	})
-	.then(function() {
-		return Event.hasMany(EventTab, {foreignKey: 'event_id'});
-	})*/
 
 	////////////////////////////////////Slidshow and Slides//////////////////////////////////////////////
 
@@ -109,6 +109,13 @@ module.exports = function () {
 			userName: 'eric',
 			password: process.env.ERIC_PASSWORD,
 			email: process.env.ERIC_EMAIL,
+			isAdmin: true
+		})
+	})
+	/////////////////////////MS Account Users/////////////////////////////////////////////////
+	.then( () => {
+		return MsUser.create({
+			email: `v-mibowe@microsoft.com`,
 			isAdmin: true
 		})
 	})

@@ -24,6 +24,7 @@ const Event = models.Event;
 const EventTab = models.EventTab;
 const Slideshow = models.Slideshow;
 const Slide = models.Slide;
+const MsUser = models.MsUser;
 const placeholders = require('../models/placeholders');
 const dbRelationships = require('../models/relationships');
 const multipart = require('connect-multiparty');

@@ -89,15 +89,20 @@ module.exports = function(router, passport) {
   router.get(`/azurelogin`, passport.authenticate(`provider`, {successRedirect: `/admin/edit-events`}));
 
   router.get(`/.auth/login/aad/callback`, passport.authenticate(`provider`, { successRedirect: `/admin/edit-events`, failureRedirect: `/admin/login` }), function (req, res) { 
+    // console.log(clc.white.bgGreen(`  Blah :: `), req.user);
     res.redirect(`/`); 
   });
 
   
   router.get('/logout', function(req, res) {
-    req.logout();
-    req.session.destroy(function(err) {
+    console.log(clc.red.bgCyan(`REQ.SESSION :: `), req.sessionID);
+    req.session.destroy();
+    req.session = null;
+    res.json({msg: 'logged off'});
+    /*req.session.destroy(function(err) {
+      req.logout();
       // cannot access session here 
       res.json({msg: 'logged off'});
-    });
+    });*/
   })
 };

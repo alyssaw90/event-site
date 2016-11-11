@@ -41,7 +41,7 @@ let sql = new Sql(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.
 */
 
 //load models
-let models = ['Speaker', 'Event', 'EventTab', 'User', 'Slideshow', 'EventSpeakersAsscs', 'Slide', 'SlideshowSlideAssc'];
+let models = ['Speaker', 'Event', 'EventTab', 'User', 'Slideshow', 'EventSpeakersAsscs', 'Slide', 'SlideshowSlideAssc', 'MsUser'];
 
 models.forEach(function(model) {
   module.exports[model] = sql.import(__dirname + '/' + model);

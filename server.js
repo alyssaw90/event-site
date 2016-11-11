@@ -30,9 +30,10 @@ app.use(compression()) //use compression
 .use(cookieParser(process.env.SESSION_SECRET))
 .use(session({ 
 		secret: process.env.SESSION_SECRET, 
-		resave: true, 
-		saveUninitialized: true,
+		resave: false, 
+		saveUninitialized: false,
 		maxAge: 1000*60*60*8,
+		unset: `destroy`,
 		store: new SequelizeStore({
 			db: models.sql
 		}),
@@ -58,11 +59,9 @@ app.use(compression()) //use compression
 }); //listen to the port and log when the server has started
 
 passport.serializeUser(function(user, cb) {
-	console.log(clc.blue.bgWhite(`user ::: `), user);
 	cb(null, user);
 });
 
 passport.deserializeUser(function(obj, cb) {
-	console.log(clc.blue.bgWhite(`obj ::: `), obj);
 	cb(null, obj);
 });
