@@ -372,7 +372,7 @@ module.exports = (router) => {
 
   //verify login
   router.get('/user/checklogin', isLoggedIn, (req, res) => {
-    res.json(req.session);
+    res.json({msg: `logged in`});
   });
 
   //get all speakers for editing

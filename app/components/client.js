@@ -192,13 +192,6 @@ eventsApp
 			pageTitle: 'Edit Slideshow Settings'
 		}
 	})
-	/*.when('/admin', {
-		redirectTo: '/admin/edit-event',
-		reloadOnSearch: false,
-		data: {
-      pageTitle: 'Admin Page - Microsoft Plugfests and Events'
-    }
-	})*/
 	.when('/admin/edit-event', {
 		templateUrl: '/app/components/admin/editEvent/admin-edit-event.html',
 		reloadOnSearch: false,

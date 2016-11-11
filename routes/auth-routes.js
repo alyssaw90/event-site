@@ -89,7 +89,6 @@ module.exports = function(router, passport) {
   router.get(`/azurelogin`, passport.authenticate(`provider`, {successRedirect: `/admin/edit-events`}));
 
   router.get(`/.auth/login/aad/callback`, passport.authenticate(`provider`, { successRedirect: `/admin/edit-events`, failureRedirect: `/admin/login` }), function (req, res) { 
-    console.log(clc.green.bgWhite(' :::  '), req);
     res.redirect(`/`); 
   });
 
