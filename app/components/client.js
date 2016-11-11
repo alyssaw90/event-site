@@ -239,6 +239,13 @@ eventsApp
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
     }
 	})
+	.when(`/admin/account`, {
+		templateUrl: `/app/components/admin/account/account.html`,
+		reloadOnSearch: false,
+		data: {
+			pageTitle: `Admin Page - Manage Account`
+		}
+	})
 	.when(`/admin/redirect`, {
 		redirectTo: `/admin/edit-event`
 	})

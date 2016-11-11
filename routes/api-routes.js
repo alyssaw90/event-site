@@ -375,6 +375,12 @@ module.exports = (router) => {
     res.json({msg: `logged in`});
   });
 
+  //get user info
+  router.get(`/user/accountinfo`, isLoggedIn, (req, res) => {
+    console.log(clc.green( ` :::  `), req);
+    res.json({user: req.session});
+  })
+
   //get all speakers for editing
   router.get('/speakers', isLoggedIn, (req, res) => {
     models.sql.sync()
