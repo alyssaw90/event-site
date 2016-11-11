@@ -239,6 +239,9 @@ eventsApp
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
     }
 	})
+	.when(`/admin/redirect`, {
+		redirectTo: `/admin/edit-event`
+	})
 	.when('/:slug', {
     templateUrl: '/app/components/events/event.html',
     controller: 'EventsCtrl',

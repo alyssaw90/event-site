@@ -21,13 +21,15 @@ function isLoggedIn(req, res, next) {
         return next();    	
       } else {
         // if they aren't send not authorized
+        req.logout();
         res.redirect(401, `/admin/login`);    
 
       }
     })
     .catch( (err) => {
       console.log(clc.red.bgWhite(`ERR  ::::  )`), err);
-        res.redirect(401, `/admin/login`);      
+      req.logout();
+      res.redirect(401, `/admin/login`);      
     })
   } else if (!req.user.hasOwnProperty('unique_name') && req.isAuthenticated() ) { // if user isn't using OAuth' is authenticated in the session, carry on
     return next();
