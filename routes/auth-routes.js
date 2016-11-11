@@ -95,6 +95,6 @@ module.exports = function(router, passport) {
   
   router.get('/logout', function(req, res) {
     req.logout();
-    res.json({msg: 'logged off'});
+    res.clearCookie(`isAdmin`).json({msg: 'logged off'});
   });
 };

@@ -423,9 +423,12 @@ module.exports = (router) => {
 
   // create new event
   router.post('/createevent', isLoggedIn, (req, res, next) => {
+    console.log(clc.green.bgCyan(` req.user :: `), req.user);
+    let userName = req.user.unique_name || req.user.email;
     models.sql.sync()
     .then(function () {
       Event.create({
+        lastModifiedBy: userName,
         eventName: req.body.newEventName,
         eventUrl: req.body.eventUrl,
         eventRegistrationLink: req.body.newEventRegistrationLink,
@@ -472,7 +475,9 @@ module.exports = (router) => {
       })
     })
     .then( (event) => {
+      let userName = req.user.unique_name || req.user.email;
       event.update({
+        lastModifiedBy: userName,
         showOnHeader: req.body.event.showOnHeader,
         isPublished: req.body.event.isPublished,
         eventName: req.body.event.eventName,
@@ -606,9 +611,11 @@ module.exports = (router) => {
   router.post('/addspeakers', isLoggedIn, (req, res) => {
     models.sql.sync()
     .then( () => {
+      let userName = req.user.unique_name || req.user.email;
       let speakerEmail = req.body.newMsTeamEmail ? req.body.newMsTeamEmail : 'plugfests@microsoft.com';
       // let speakerHeadshot = req.body.headshot ? req.body.headshot : 'placeholder-headshot.jpg';
       Speaker.create({
+        lastModifiedBy: userName,
         firstName: req.body.newFirstName,
         lastName: req.body.newLastName,
         email: speakerEmail,
@@ -633,8 +640,10 @@ module.exports = (router) => {
       })
     })
     .then( (speaker) => {
+      let userName = req.user.unique_name || req.user.email;
       let speakerEmail = req.body.email ? req.body.email : 'plugfests@microsoft.com';
       speaker.update({
+        lastModifiedBy: userName,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: speakerEmail,

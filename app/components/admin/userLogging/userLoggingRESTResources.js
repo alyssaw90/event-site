@@ -17,7 +17,8 @@ const userLoggingRESTResources = (app) => {
                 let today = new Date();
                 let expireDate = new Date(today);
                 expireDate.setDate(today.getDate() + 1); //Set expireDate date to tomorrow
-                $cookies.put('interopAdmin', data.admin, {'expires': expireDate, 'path': '/'});
+								let isAdmin = data.admin === true ? true : false;
+                $cookies.put('interopAdmin', isAdmin, {'expires': expireDate, 'path': '/'});
                 callback(null);
     	       })
     	       .error( (data) => {

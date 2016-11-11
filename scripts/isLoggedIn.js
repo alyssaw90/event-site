@@ -4,7 +4,6 @@ const models = require('../models');
 const MsUser = models.MsUser;
 
 function isLoggedIn(req, res, next) {
-  // console.log(clc.red.bgBlue(` ::: `), req.user);
   res.header('Access-Control-Allow-Credentials', true);
   if (req.user.hasOwnProperty('unique_name')) {
     models.sql.sync()
@@ -16,8 +15,9 @@ function isLoggedIn(req, res, next) {
       });
     })
     .then( (msUser) => {
-      console.log(clc.white.bgGreen(' msUser'), msUser);      
       if (req.isAuthenticated() && msUser !== null && msUser.email === req.user.unique_name) {// if user is authenticated in the session and the user email matches the user found in the db, carry on
+        let isAdmin = msUser.isAdmin === true ? true : false;
+        res.cookie(`interopAdmin`, isAdmin);
         return next();    	
       } else {
         // if they aren't send not authorized
@@ -27,7 +27,6 @@ function isLoggedIn(req, res, next) {
       }
     })
     .catch( (err) => {
-      console.log(clc.red.bgWhite(`ERR  ::::  )`), err);
       req.logout();
       res.redirect(401, `/admin/login`);      
     })
