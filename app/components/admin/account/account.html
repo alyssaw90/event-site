@@ -1,7 +1,17 @@
-<div class="mobileWrapper container" role="presentation" data-ng-cloak >
+<div class="mobileWrapper container" role="presentation" data-ng-cloak data-ng-init="getUser();">
+  <div id="edit-menu-options" class="btn-group edit-section row" role="group" aria-label="edit tab buttons" style="display: none;">
+    <div role="presentation" class="col-lg-24">
+      <div class="edit-event-menu-button-wrapper">
+        <button type="button" class="btn btn-primary" data-ng-if="interopAdmin">My Account</button>
+        <button id="edit-tabs-dropdown" type="button" class="btn btn-primary">Other Accounts</button>
+      </div>
+    </div>
+  </div>
   <div style="overflow:hidden;" id="beginningOfContent" tabindex="0" class="row">
 		<div role="presentation" class="col-lg-24">
-			<h2>{{user.name}}</h2>
+      <h2>User:</h2>
+      <button class="btn btn-orange middle-align">Add New Account</button>
+			<p>{{user}}</p>
 		</div>		
   </div>
 </div>

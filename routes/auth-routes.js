@@ -7,6 +7,7 @@ const bodyparser = require('body-parser');
 const clc = require('cli-color');
 const session = require('express-session');
 const models = require('../models');
+const isLoggedIn = require(`../scripts/isLoggedIn`);
 const User = models.User;
 const Speaker = models.Speaker;
 const Event = models.Event;
@@ -97,4 +98,8 @@ module.exports = function(router, passport) {
     req.logout();
     res.clearCookie(`isAdmin`).json({msg: 'logged off'});
   });
+
+  router.get(`/getuser`, isLoggedIn, (req, res) => {
+    res.json(req.user);
+  })
 };

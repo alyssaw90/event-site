@@ -68,6 +68,7 @@ require('./admin/editSlideshow/editSlideshowCtrl.js')(eventsApp);
 require('./admin/editFiles/EditFilesCtrl.js')(eventsApp);
 require('./admin/editEvent/EditEventCtrl.js')(eventsApp);
 require('./admin/editSpeaker/EditSpeakerController.js')(eventsApp);
+require(`./admin/account/AccountController.js`)(eventsApp);
 //services
 require('./meetTheTeam/meetTheTeamRestResource.js')(eventsApp);
 require('./futureEvents/futureEventsRESTResource.js')(eventsApp);
@@ -84,6 +85,7 @@ require('./admin/editEvent/editEventRESTResource.js')(eventsApp);
 require('./admin/editSpeaker/editSpeakerRESTResource.js')(eventsApp);
 require('./admin/adminPageRESTResource.js')(eventsApp);
 require('./pastEvents/pastEventsRESTResource.js')(eventsApp);
+require(`./admin/account/accountRESTResource`)(eventsApp);
 
 //filters
 require('./admin/editFiles/fileSearch.js')(eventsApp);
@@ -242,6 +244,7 @@ eventsApp
 	.when(`/admin/account`, {
 		templateUrl: `/app/components/admin/account/account.html`,
 		reloadOnSearch: false,
+    controller: `AccountController`,
 		data: {
 			pageTitle: `Admin Page - Manage Account`
 		}

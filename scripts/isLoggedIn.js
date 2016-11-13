@@ -17,6 +17,7 @@ function isLoggedIn(req, res, next) {
     .then( (msUser) => {
       if (req.isAuthenticated() && msUser !== null && msUser.email === req.user.unique_name) {// if user is authenticated in the session and the user email matches the user found in the db, carry on
         let isAdmin = msUser.isAdmin === true ? true : false;
+        req.user.interopAdmin = isAdmin;
         res.cookie(`interopAdmin`, isAdmin);
         return next();    	
       } else {
