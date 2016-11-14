@@ -23,6 +23,16 @@ const AccountController = (app) => {
       });
     };
 
+    $scope.updateUser = (userData) => {
+      resource.updateUser(userData, (err, data) => {
+        if (err) {
+          alert('Error');
+        } else if (!err) {
+          alert(`Saved`);
+        }
+      })
+    }
+
   }]);
 };
 

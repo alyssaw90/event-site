@@ -39,8 +39,24 @@ module.exports = function(router, passport) {
     extended: true
   }));
 
-	router.route('/create-user')
-	.post(function(req, res) {
+	router.route('/user')
+  .get(isLoggedIn, (req, res) => {
+    let user = {};
+    if (req.user.strategy === 'AzureAD') {
+      user.name = `${req.user.given_name} ${req.user.family_name}`,
+      user.email = req.user.unique_name,
+      user.interopAdmin = req.user.interopAdmin,
+      user.strategy = req.user.strategy
+    } else if (req.user.strategy === 'basic') {
+      user.id = req.user.id,
+      user.name = req.user.userName,
+      user.email = req.user.email,
+      user.strategy = req.user.strategy
+      user.interopAdmin = req.user.interopAdmin
+    }
+    res.json(user);
+  })
+	.post(isLoggedIn, (req, res) => {
 		models.sql.sync()
 		.then(function() {
 			return User.find({where: {email: req.body.email}});
@@ -66,7 +82,29 @@ module.exports = function(router, passport) {
         res.json({token: token});
       });             
     });
-	});
+	})
+  .patch(isLoggedIn, (req, res) => {
+    models.sql.sync()
+    .then( () => {
+      return User.findOne({
+        where: {
+          id: req.body.id
+        }
+      });
+    })
+    .then( (user) => {
+      console.log(clc.green.bgWhite( ` :: `), req.body);
+      let hasNewPw = req.body.password ? true : false;
+      /*user.userName = req.body.name;
+      user.email = req.body.email;*/
+      if (hasNewPw) user.update({password: req.body.password});
+      delete req.body.password;
+      if (req.body.name) user.update({userName: req.body.name});
+      if (req.body.email) user.update({email: req.body.email});             
+      res.json({msg: `user updated`});
+    })
+  })
+
 
   router.get('/login', passport.authenticate('basic', { session: true }), (req, res) => {
     let userJSON = {randomString: req.user.dataValues.randomString, id: req.user.dataValues.id};
@@ -100,20 +138,4 @@ module.exports = function(router, passport) {
     res.json({msg: 'logged off'});
   });
 
-  router.get(`/getuser`, isLoggedIn, (req, res) => {
-    let user = {};
-    if (req.user.strategy === 'AzureAD') {
-      user.name = `${req.user.given_name} ${req.user.family_name}`,
-      user.email = req.user.unique_name,
-      user.interopAdmin = req.user.interopAdmin,
-      user.strategy = req.user.strategy
-    } else if (req.user.strategy === 'basic') {
-      user.id = req.user.id,
-      user.name = req.user.userName,
-      user.email = req.user.email,
-      user.strategy = req.user.strategy
-      user.interopAdmin = req.user.interopAdmin
-    }
-    res.json(user);
-  })
 };

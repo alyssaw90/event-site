@@ -6,7 +6,12 @@ function accountRESTResource(app) {
     return (resourceName, callback) => {
       return {
         getUser: (callback) => {
-          $http.get(`/auth/getuser`)
+          $http.get(`/auth/user`)
+          .success(customFunctions.handleSuccess(callback))
+          .error(customFunctions.handleError(callback));
+        },
+        updateUser: (resourceData, callback) => {
+          $http.patch(`/auth/user`, resourceData)
           .success(customFunctions.handleSuccess(callback))
           .error(customFunctions.handleError(callback));
         }

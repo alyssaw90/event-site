@@ -15,7 +15,7 @@
 		</div>		
   </div>
   <div class="row" role="presentation">
-    <form id="basicUserForm" class="col-lg-24" name="basicUserForm" method="POST" enctype="multipart/form-data">
+    <form id="basicUserForm" class="col-lg-24" name="basicUserForm" method="POST" enctype="multipart/form-data" data-ng-submit="updateUser(user)">
       <div class="form-group">
         <label for="userName">Username</label>
         <input class="form-control" type="text" data-ng-model="user.name" placeholder="{{user.name}}">
@@ -26,14 +26,15 @@
       </div>
       <div class="form-group">
         <label for="password">Password</label>
-        <input class="form-control" name="password" id="password" type="password" data-ng-model="user.password" placeholder="New Password">
-        <div ng-messages="basicUserForm.pwConfirm.$error" ng-if="basicUserForm.$submitted || basicUserForm.pwConfirm.$dirty" ng-messages-multiple="ng-messages-multiple" class="error-messages slide-right">
+        <input class="form-control" name="passwordConfirm" id="passwordConfirm" type="password" data-ng-model="user.passwordConfirm" placeholder="New Password">
+        <div ng-messages="basicUserForm.password.$error" ng-if="basicUserForm.$submitted || basicUserForm.password.$dirty" ng-messages-multiple="ng-messages-multiple" class="error-messages slide-right">
           <div ng-message="passwordMatch" class="message slide-left win-color-fg-alert">Your passwords did not match</div>
         </div>
       </div>
       <div class="form-group">
-        <input match-password="password" id="pwConfirm" name="pwConfirm" class="form-control" type="password" data-ng-model="user.confirmPw" placeholder="Confirm Password">
+        <input match-password="passwordConfirm" id="password" name="password" class="form-control" type="password" data-ng-model="user.password" placeholder="Confirm Password">
       </div>
+      <button type="submit" class="btn">Save</button>
     </form>
   </div>
 </div>
