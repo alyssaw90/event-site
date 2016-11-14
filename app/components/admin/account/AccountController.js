@@ -5,6 +5,8 @@ const AccountController = (app) => {
   app.controller(`AccountController`, [`$scope`, `$cookies`, `accountRESTResource`, ($scope, $cookies, accountRESTResource) => {
     const resource = accountRESTResource();
     $scope.user;
+    $scope.isAdmin;
+    $scope.basicStrat;
     $scope.getUser = () => {
       resource.getUser( (err, user) => {
         if (err) {
@@ -16,6 +18,8 @@ const AccountController = (app) => {
           });
         }
         $scope.user = user;
+        $scope.interopAdmin = user.interopAdmin;
+        $scope.basicStrat = user.strategy === `basic`;
       });
     };
 

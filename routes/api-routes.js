@@ -16,7 +16,8 @@ const bodyparser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 const eatAuth = require('../scripts/eat_auth')(process.env.SECRET_KEY);
-const isLoggedIn = require(`../scripts/isLoggedIn`);
+const userLogging = require(`../scripts/userLogging`)();
+const isLoggedIn = userLogging.isLoggedIn;
 const models = require('../models');
 const User = models.User;
 const Speaker = models.Speaker;
@@ -377,8 +378,7 @@ module.exports = (router) => {
 
   //get user info
   router.get(`/user/accountinfo`, isLoggedIn, (req, res) => {
-    console.log(clc.green( ` :::  `), req);
-    res.json({user: req.session});
+    res.json({user: req.user});
   })
 
   //get all speakers for editing

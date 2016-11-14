@@ -7,7 +7,8 @@ const bodyparser = require('body-parser');
 const clc = require('cli-color');
 const session = require('express-session');
 const models = require('../models');
-const isLoggedIn = require(`../scripts/isLoggedIn`);
+const userLogging = require(`../scripts/userLogging`)();
+const isLoggedIn = userLogging.isLoggedIn;
 const User = models.User;
 const Speaker = models.Speaker;
 const Event = models.Event;
@@ -83,7 +84,7 @@ module.exports = function(router, passport) {
           return res.status(500).json({msg: 'error generating token'});
       }
       req.session.cookie.maxAge = 1000 * 60 * 60;
-      res.status('200').json({'admin': req.user.dataValues.isAdmin});
+      res.status('200').end();
     });
   });
 
@@ -96,10 +97,23 @@ module.exports = function(router, passport) {
   
   router.get('/logout', function(req, res) {
     req.logout();
-    res.clearCookie(`isAdmin`).json({msg: 'logged off'});
+    res.json({msg: 'logged off'});
   });
 
   router.get(`/getuser`, isLoggedIn, (req, res) => {
-    res.json(req.user);
+    let user = {};
+    if (req.user.strategy === 'AzureAD') {
+      user.name = `${req.user.given_name} ${req.user.family_name}`,
+      user.email = req.user.unique_name,
+      user.interopAdmin = req.user.interopAdmin,
+      user.strategy = req.user.strategy
+    } else if (req.user.strategy === 'basic') {
+      user.id = req.user.id,
+      user.name = req.user.userName,
+      user.email = req.user.email,
+      user.strategy = req.user.strategy
+      user.interopAdmin = req.user.interopAdmin
+    }
+    res.json(user);
   })
 };

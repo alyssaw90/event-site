@@ -13,12 +13,6 @@ const userLoggingRESTResources = (app) => {
     	         headers: {'Authorization': 'Basic ' + encoded}
     	       })
     	       .success( (data) => {
-                //set expiration to one day from login
-                let today = new Date();
-                let expireDate = new Date(today);
-                expireDate.setDate(today.getDate() + 1); //Set expireDate date to tomorrow
-								let isAdmin = data.admin === true ? true : false;
-                $cookies.put('interopAdmin', isAdmin, {'expires': expireDate, 'path': '/'});
                 callback(null);
     	       })
     	       .error( (data) => {

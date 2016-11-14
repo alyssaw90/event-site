@@ -19,6 +19,7 @@
     "angular-cookies": "^1.5.8",
     "angular-google-analytics": "^1.1.7",
     "angular-messages": "^1.5.8",
+    "angular-password": "^1.0.3",
     "angular-resource": "^1.5.8",
     "angular-route": "^1.5.8",
     "angular-sanitize": "^1.5.8",
