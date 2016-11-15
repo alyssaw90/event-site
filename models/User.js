@@ -51,16 +51,3 @@ module.exports = function(sql, DataTypes) {
   });
 
 };
-/*randomString: {
-      type: DataTypes.STRING,
-      set: function(val) {
-        console.log(clc.bgRed.white(`::::::    `));
-        let outputString = '';
-        let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_-+=<,>.?/';
-        let randomNumber = Math.ceil(Math.random() * 10) + 10;
-        for ( let i = 0; i < randomNumber; i++ ) {
-          outputString += possible.charAt(Math.floor(Math.random() * possible.length));
-        }
-        this.setDataValue('randomString',  outputString)
-      }
-    },*/

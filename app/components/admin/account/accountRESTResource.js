@@ -10,6 +10,16 @@ function accountRESTResource(app) {
           .success(customFunctions.handleSuccess(callback))
           .error(customFunctions.handleError(callback));
         },
+        getAllUsers: (callback) => {
+          $http.get(`/auth/allusers`)
+          .success(customFunctions.handleSuccess(callback))
+          .error(customFunctions.handleError(callback));
+        },
+        createUser: (resourceData, callback) => {
+          $http.post(`/auth/user`, resourceData)
+          .success(customFunctions.handleSuccess(callback))
+          .error(customFunctions.handleError(callback));
+        },
         updateUser: (resourceData, callback) => {
           $http.patch(`/auth/user`, resourceData)
           .success(customFunctions.handleSuccess(callback))

@@ -9,10 +9,12 @@ const session = require('express-session');
 const models = require('../models');
 const userLogging = require(`../scripts/userLogging`)();
 const isLoggedIn = userLogging.isLoggedIn;
+const isLoggedInAdmin = userLogging.isLoggedInAdmin;
 const User = models.User;
 const Speaker = models.Speaker;
 const Event = models.Event;
 const EventTab = models.EventTab;
+const MsUser = models.MsUser;
 
 function makeRandomString () {
   let outputString = '';
@@ -42,21 +44,33 @@ module.exports = function(router, passport) {
 	router.route('/user')
   .get(isLoggedIn, (req, res) => {
     let user = {};
-    if (req.user.strategy === 'AzureAD') {
-      user.name = `${req.user.given_name} ${req.user.family_name}`,
-      user.email = req.user.unique_name,
-      user.interopAdmin = req.user.interopAdmin,
-      user.strategy = req.user.strategy
-    } else if (req.user.strategy === 'basic') {
-      user.id = req.user.id,
-      user.name = req.user.userName,
-      user.email = req.user.email,
-      user.strategy = req.user.strategy
-      user.interopAdmin = req.user.interopAdmin
-    }
-    res.json(user);
+    models.sql.sync()
+    .then( () => {
+      if (req.user.strategy === 'basic') {
+        return User.findOne({
+          where: {
+            id: req.user.id
+          }
+        });
+      }
+    })
+    .then( (basicUser) => {
+      if (req.user.strategy === 'AzureAD') {
+        user.name = `${req.user.given_name} ${req.user.family_name}`,
+        user.email = req.user.unique_name,
+        user.interopAdmin = req.user.interopAdmin,
+        user.strategy = req.user.strategy
+      } else if (req.user.strategy === 'basic') {
+        user.id = basicUser.id,
+        user.name = basicUser.userName,
+        user.email = basicUser.email,
+        user.strategy = req.user.strategy
+        user.interopAdmin = basicUser.isAdmin
+      }
+      res.json(user);
+    })
   })
-	.post(isLoggedIn, (req, res) => {
+	.post(isLoggedInAdmin, (req, res) => {
 		models.sql.sync()
 		.then(function() {
 			return User.find({where: {email: req.body.email}});
@@ -66,22 +80,23 @@ module.exports = function(router, passport) {
 				res.status(419).json({msg: 'email address alread in use'});
 			}
 			if (!user) {
-				return User.create({userName: req.body.userName, email: req.body.email, randomString: makeRandomString()});
+        let pw = req.body.password;
+        delete req.body.password;
+				return User.create({
+          userName: req.body.name, 
+          email: req.body.email,
+          isAdmin: req.body.isAdmin, 
+          randomString: makeRandomString(),
+          password: pw
+        });
       }
     })
-    .then(function(newUser) {
-      let hashPass = newUser.$modelOptions.instanceMethods.generateHash(req.body.password);
-      let userJSON = {randomString: newUser.dataValues.randomString, id: newUser.dataValues.id};
-      delete req.body.password;
-      newUser.update({password: hashPass});
-      newUser.$modelOptions.instanceMethods.generateToken(userJSON, process.env.SECRET_KEY, function(err, token) {
-        if (err) {
-          console.log(err);
-          return res.status(500).json({msg: 'error generating token'});
-        }
-        res.json({token: token});
-      });             
-    });
+    .then( (newUser) => {             
+      res.json({msg: `User created successfully`});
+    })
+    .catch( (err) => {
+      res.status(500).json({err: err});
+    })
 	})
   .patch(isLoggedIn, (req, res) => {
     models.sql.sync()
@@ -93,17 +108,45 @@ module.exports = function(router, passport) {
       });
     })
     .then( (user) => {
-      console.log(clc.green.bgWhite( ` :: `), req.body);
       let hasNewPw = req.body.password ? true : false;
-      /*user.userName = req.body.name;
-      user.email = req.body.email;*/
-      if (hasNewPw) user.update({password: req.body.password});
+      let newPw = req.body.password;
       delete req.body.password;
+      if (hasNewPw) user.update({password: newPw});
+      newPw = undefined;
       if (req.body.name) user.update({userName: req.body.name});
       if (req.body.email) user.update({email: req.body.email});             
       res.json({msg: `user updated`});
     })
-  })
+  });
+
+  router.route(`/allusers`)
+  .get(isLoggedInAdmin, (req, res) => {
+    let output = {};
+    models.sql.sync()
+    .then( () => {
+      return User.findAll();
+    })
+    .then( (localUsers) => {
+      let localUserArr = [];
+      for (let i = 0, j = localUsers.length; i < j; i++) {
+        let tmpObj = {
+          id: localUsers[i].id,
+          userName: localUsers[i].userName,
+          email: localUsers[i].email,
+          isAdmin: localUsers[i].isAdmin
+        }
+        localUserArr.push(tmpObj);
+      }
+      output.localUsers = localUserArr;
+    })
+    .then( () => {
+      return MsUser.findAll();
+    })
+    .then( (msUsers) => {
+      output.msUsers = msUsers;
+      res.json(output);
+    });
+  });
 
 
   router.get('/login', passport.authenticate('basic', { session: true }), (req, res) => {

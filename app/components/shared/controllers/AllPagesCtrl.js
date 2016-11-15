@@ -42,18 +42,28 @@ const AllPagesCtrl = (app) => {
 			}
 		}
 
-		  $scope.goToPage = (link) => {
-  		  $location.path(link);
-  		}
+		$scope.goToPage = (link) => {
+			$location.path(link);
+		}
 
-  		$scope.scrollToTop = () => {
-  			jQuery('html, body').animate({ scrollTop: 0 }, 'fast');
-  			
-  		}
+		$scope.scrollToTop = () => {
+			jQuery('html, body').animate({ scrollTop: 0 }, 'fast');
+			
+		}
 
 		$rootScope.$on('$viewContentLoaded', (next, current) => { 
 			$scope.announceOnViewChange = document.title + ', view loaded';
-	 	});
+		});
+		
+		//show element by jQuery selector
+		$rootScope.showElem = (jQelem) => {
+			jQuery(jQelem).show();
+		}
+
+		//hide element by jQuery selector
+		$rootScope.hideElem = (jQelem) => {
+			jQuery(jQelem).hide();
+		}
 	
 	}]);
 };

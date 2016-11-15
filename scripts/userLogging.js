@@ -21,8 +21,10 @@ const userLogging = () => {
         .then( (msUser) => {
           if (req.isAuthenticated() && msUser !== null && msUser.email === req.user.unique_name) {// if user is authenticated in the session and the user email matches the user found in the db, carry on
             let isAdmin = msUser.isAdmin === true ? true : false;
+            res.cookie(`strategy`, req.user.strategy, {path: `/`, expires: new Date(Date.now() + 60*60*24*1000)});
+            res.cookie(`interopAdmin`, msUser.isAdmin, {path: `/`, expires: new Date(Date.now() + 60*60*24*1000)});
             req.user.strategy = `AzureAD`;
-            req.user.interopAdmin = isAdmin;
+            req.user.interopAdmin = msUser.isAdmin;
             return next();    	
           } else {
             // if they aren't send not authorized
@@ -35,8 +37,10 @@ const userLogging = () => {
           req.logout();
           res.redirect(401, `/admin/login`);      
         })
-      } else if (!req.user.hasOwnProperty('unique_name') && req.isAuthenticated() ) { // if user isn't using OAuth' is authenticated in the session, carry on    
-        req.user.interopAdmin = req.user.interopAdmin;
+      } else if (!req.user.hasOwnProperty('unique_name') && req.isAuthenticated() ) { // if user isn't using OAuth' is authenticated in the session, carry on  
+        res.cookie(`strategy`, req.user.strategy, {path: `/`, expires: new Date(Date.now() + 60*60*24*1000)});
+        res.cookie(`interopAdmin`, req.user.isAdmin, {path: `/`, expires: new Date(Date.now() + 60*60*24*1000)});  
+        req.user.interopAdmin = req.user.isAdmin;
         req.user.strategy = `basic`;
         return next();
       } else {
@@ -46,7 +50,7 @@ const userLogging = () => {
 
     },
 
-    isAdmin: (req, res, next) => {
+    isLoggedInAdmin: (req, res, next) => {
       res.header('Access-Control-Allow-Credentials', true);
       if (req.user.hasOwnProperty('unique_name')) {
         models.sql.sync()

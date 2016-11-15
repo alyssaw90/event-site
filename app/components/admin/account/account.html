@@ -1,21 +1,15 @@
-<div class="mobileWrapper container" role="presentation" data-ng-cloak data-ng-init="getUser();">
-  <div id="edit-menu-options" class="btn-group edit-section row" role="group" aria-label="edit tab buttons" style="display: none;">
+<div class="mobileWrapper container" role="presentation" data-ng-cloak data-ng-init="getUser();getAllUsers();">
+  <div class="btn-group row" role="group">
     <div role="presentation" class="col-lg-24">
-      <div class="edit-event-menu-button-wrapper">
-        <button type="button" class="btn btn-primary" data-ng-if="interopAdmin">My Account</button>
-        <button id="edit-tabs-dropdown" type="button" class="btn btn-primary">Other Accounts</button>
-      </div>
+      <p>{{allUsers}}</p> 
+      <dv>
+      <button type="button" class="btn btn-primary" data-ng-if="basicStrat" data-ng-click="hideElem('.userForm'); showElem('#editUserFormContainer')">My Account</button>
+      <button type="button" class="btn btn-primary" data-ng-if="interopAdmin">User Accounts</button>
+      <button type="button" class="btn btn-primary" data-ng-if="interopAdmin" data-ng-click="hideElem('.userForm'); showElem('#createUserFormContainer')">Create Account</button>
     </div>
   </div>
-  <div style="overflow:hidden;" id="beginningOfContent" tabindex="0" class="row">
-		<div role="presentation" class="col-lg-24">
-      <h2>User:</h2>
-      <button class="btn btn-orange middle-align">Add New Account</button>
-			<p>{{user}}</p>
-		</div>		
-  </div>
-  <div class="row" role="presentation">
-    <form id="basicUserForm" class="col-lg-24" name="basicUserForm" method="POST" enctype="multipart/form-data" data-ng-submit="updateUser(user)">
+  <div id="editUserFormContainer" class="row userForm" role="presentation" data-ng-if="basicStrat" style="display: none;">
+    <form id="basicUserForm" class="col-lg-24" name="basicUserForm" method="POST" enctype="multipart/form-data" data-ng-submit="basicUserForm.$valid && updateUser(user)">
       <div class="form-group">
         <label for="userName">Username</label>
         <input class="form-control" type="text" data-ng-model="user.name" placeholder="{{user.name}}">
@@ -32,9 +26,70 @@
         </div>
       </div>
       <div class="form-group">
+        <label for="password">Confirm Password</label>
         <input match-password="passwordConfirm" id="password" name="password" class="form-control" type="password" data-ng-model="user.password" placeholder="Confirm Password">
       </div>
-      <button type="submit" class="btn">Save</button>
+      <div role="presentation" class="btn-group">
+        <button type="submit" class="btn btn-green">Save</button>
+        <button type="button" class="btn" data-ng-click="cancelUserUpdate();">Cancel</button>
+      </div>
     </form>
+  </div>
+  <div id="createUserFormContainer" class="row userForm" role="presentation" data-ng-if="interopAdmin" style="display:none;">
+    <form id="createBasicUserForm" class="col-lg-24" name="createBasicUserForm" method="POST" enctype="multipart/form-data" data-ng-submit="createBasicUserForm.$valid && createUser(newUser)">
+      <div class="form-group">
+        <label for="userName">Username</label>
+        <input class="form-control" type="text" data-ng-model="newUser.name" placeholder="Username" data-ng-required="true">
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input class="form-control" name="email" id="email" type="text" data-ng-model="newUser.email" placeholder="email" data-ng-required="true">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input class="form-control" name="passwordConfirm" id="passwordConfirm" type="password" data-ng-model="newUser.passwordConfirm" placeholder="New Password" data-ng-required="true">
+        <div ng-messages="createBasicUserForm.password.$error" ng-if="createBasicUserForm.$submitted || createBasicUserForm.password.$dirty" ng-messages-multiple="ng-messages-multiple" class="error-messages slide-right">
+          <div ng-message="passwordMatch" class="message slide-left win-color-fg-alert">Your passwords did not match</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Confirm Password</label>
+        <input match-password="passwordConfirm" id="password" name="password" class="form-control" type="password" data-ng-model="newUser.password" placeholder="Confirm Password" data-ng-required="true">
+      </div>
+      <radiogroup class="form-group">
+        <label for="isAdmin">Admin?</label><br>
+        <span class="pull-left">Yes&nbsp;&nbsp;</span><input type="radio" name="isAdmin" class="form-control" data-ng-model="newUser.isAdmin" value="true"><br>
+        <span class="pull-left">No&nbsp;&nbsp;</span><input type="radio" name="isAdmin" class="form-control" data-ng-model="newUser.isAdmin" value="false"><br>
+      </radiogroup>
+      <div role="presentation" class="btn-group">
+        <button type="submit" class="btn btn-green">Save</button>
+        <button type="button" class="btn" data-ng-click="cancelUserUpdate();">Cancel</button>
+      </div>
+    </form>
+  </div>
+  <div class="row" role="presentation" data-ng-if="interopAdmin">
+    <div class="col-lg-24" role="presentation">
+      <h3>Local Users</h3>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>User is Admin?</th>
+            <th>Toggle Admin Status</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-ng-repeat="localUser in allUsers.localUsers">
+            <td>{{localUser.userName}}</td>
+            <td>{{localUser.email}}</td>
+            <td>{{localUser.isAdmin}}</td>
+            <td><button class="btn" data-ng-attr-data-localUserId="{{localUser.id}}" data-ng-attr-data-isAdmin="{{localUser.isAdmin}}">Toggle Admin Status</button></td>
+            <td><button class="btn win-color-bg-alert whiteText" data-ng-attr-data-localUserId="{{localUser.id}}">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

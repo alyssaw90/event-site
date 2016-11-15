@@ -2,7 +2,7 @@
 <div class="mobileWrapper container" role="presentation" data-ng-cloak >
   <div style="overflow:hidden;" id="beginningOfContent" tabindex="0" class="row">
     <!-- lightbox container hidden with data-ng-if -->
-		<section data-ng-controller="UserLoggingCtrl" class="col-lg-6 col-lg-offset-9">
+		<section data-ng-controller="UserLoggingCtrl" class="col-lg-8 col-lg-offset-8 col-md-10 col-md-offset-7 col-sm-18 col-sm-offset-3">
 			<div class="lightbox" data-ng-if="showSpinner" >
 			  <div class="inner-lightbox-box">
 			    <p data-ng-if="showSpinner" class="modal-title">{{retryMsg}}</p>
@@ -22,8 +22,10 @@
 			    <input class="form-control" type="password" name="password" data-ng-model="user.password" placeholder="password">
 		  	</div>
 				<br>
-		    <button type="submit">Sign In</button>
-		    <a class="btn" href="/auth/azurelogin" target="_self">Use Microsoft Account</a>
+				<div class="btn-group">
+					<button type="submit" class="pull-left">Sign In</button>
+					<a class="btn pull-right" href="/auth/azurelogin" target="_self">Use Microsoft Account</a>
+				</div>
 		  </form>
 		</section>
   </div>
