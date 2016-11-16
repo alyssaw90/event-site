@@ -307,6 +307,7 @@ eventsApp
 	
 	$rootScope.$on('$viewContentLoaded', () => {
 		followHashRoute();
+		$rootScope.showAccountButton = $cookies.get(`strategy`) === `basic` || $cookies.get(`interopAdmin`) === `true` ? true : false;
 			// document.getElementById('screenreader-summary').trigger('focus');
 			
 			// $anchorScroll(anchor);
@@ -336,7 +337,7 @@ eventsApp
 	});
 
 	$rootScope.$on('$routeChangeSuccess', (newRoute, oldRoute) => { 
-
+		$rootScope.showAccountButton = $cookies.get(`strategy`) === `basic` || $cookies.get(`interopAdmin`) === `true` ? true : false;
 		// scroll the window to the top when a new page is opened
     $anchorScroll();
     //if the path is the root, 

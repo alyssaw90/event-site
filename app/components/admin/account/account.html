@@ -1,11 +1,11 @@
 <div class="mobileWrapper container" role="presentation" data-ng-cloak data-ng-init="getUser();getAllUsers();">
   <div class="btn-group row" role="group">
     <div role="presentation" class="col-lg-24">
-      <p>{{allUsers}}</p> 
-      <dv>
-      <button type="button" class="btn btn-primary" data-ng-if="basicStrat" data-ng-click="hideElem('.userForm'); showElem('#editUserFormContainer')">My Account</button>
-      <button type="button" class="btn btn-primary" data-ng-if="interopAdmin">User Accounts</button>
-      <button type="button" class="btn btn-primary" data-ng-if="interopAdmin" data-ng-click="hideElem('.userForm'); showElem('#createUserFormContainer')">Create Account</button>
+      <div class="btn-group edit-event-menu-button-wrapper">
+        <button type="button" class="btn btn-primary" data-ng-if="basicStrat" data-ng-click="hideElem('.userForm'); showElem('#editUserFormContainer')">My Account</button>
+        <button type="button" class="btn btn-primary" data-ng-if="interopAdmin" data-ng-click="hideElem('.userForm'); showElem('#editLocalUsers')">Local Accounts</button>
+        <button type="button" class="btn btn-primary" data-ng-if="interopAdmin" data-ng-click="hideElem('.userForm'); showElem('#editMsUsers')">Microsoft Accounts</button>
+      </div>
     </div>
   </div>
   <div id="editUserFormContainer" class="row userForm" role="presentation" data-ng-if="basicStrat" style="display: none;">
@@ -33,6 +33,21 @@
         <button type="submit" class="btn btn-green">Save</button>
         <button type="button" class="btn" data-ng-click="cancelUserUpdate();">Cancel</button>
       </div>
+    </form>
+  </div>
+  <div id="editMsUserFormContainer" class="row userForm" role="presentation" data-ng-if="interopAdmin" style="display:none;">
+    <form id="editMsUserForm" class="col-lg-24" name="editMsUserForm" method="POST" enctype="multipart/form-data" data-ng-submit="addMsUser(msUser);">
+      <div class="form-group">
+        <label for="msEmail">Email</label>
+        <input type="email" class="form-control" name="msEmail" data-ng-model="msUser.email" placeholder="Email" data-ng-required="true">
+      </div>
+      <radiogroup class="form-group">
+        <label for="msIsAdmin">Admin?</label><br>
+        <span class="pull-left">Yes&nbsp;&nbsp;</span><input type="radio" name="msIsAdmin" class="form-control" data-ng-model="msUser.isAdmin" value="true"><br>
+        <span class="pull-left">No&nbsp;&nbsp;</span><input type="radio" name="msIsAdmin" class="form-control" data-ng-model="msUser.isAdmin" value="false"><br>
+      </radiogroup>
+      <button type="submit" class="btn btn-green">Save</button>
+      <button type="button" class="btn" data-ng-click="cancelUserUpdate();">Cancel</button>
     </form>
   </div>
   <div id="createUserFormContainer" class="row userForm" role="presentation" data-ng-if="interopAdmin" style="display:none;">
@@ -67,9 +82,12 @@
       </div>
     </form>
   </div>
-  <div class="row" role="presentation" data-ng-if="interopAdmin">
+  <div id="editLocalUsers" class="row userForm" role="presentation" data-ng-if="interopAdmin" style="display: none;">
+    <div class="admin-header-div-with-button col-lg-24" role="presentation">
+      <h3 class="middle-align">Local Users</h3>
+      <button type="button" class="btn btn-orange middle-align" data-ng-if="interopAdmin" data-ng-click="hideElem('.userForm'); showElem('#createUserFormContainer')">Add Account</button>
+    </div>
     <div class="col-lg-24" role="presentation">
-      <h3>Local Users</h3>
       <table class="table table-bordered">
         <thead>
           <tr>
@@ -81,12 +99,38 @@
           </tr>
         </thead>
         <tbody>
-          <tr data-ng-repeat="localUser in allUsers.localUsers">
+          <tr data-ng-repeat="localUser in allUsers.localUsers | filter: userFilter">
             <td>{{localUser.userName}}</td>
             <td>{{localUser.email}}</td>
             <td>{{localUser.isAdmin}}</td>
-            <td><button class="btn" data-ng-attr-data-localUserId="{{localUser.id}}" data-ng-attr-data-isAdmin="{{localUser.isAdmin}}">Toggle Admin Status</button></td>
-            <td><button class="btn win-color-bg-alert whiteText" data-ng-attr-data-localUserId="{{localUser.id}}">Delete</button></td>
+            <td><button class="btn" data-ng-click="updateUser({id: localUser.id, isAdmin: !localUser.isAdmin})">Toggle Admin Status</button></td>
+            <td><button class="btn win-color-bg-alert whiteText" data-ng-click="deleteUser(localUser);">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div id="editMsUsers" class="row userForm" role="presentation" data-ng-if="interopAdmin" style="display: none;">
+    <div class="admin-header-div-with-button col-lg-24" role="presentation">
+      <h3>Microsoft Account Users</h3>
+      <button type="button" class="btn btn-orange" data-ng-if="interopAdmin" data-ng-click="hideElem('.userForm'); showElem('#editMsUserFormContainer')">Add MS User Account</button>
+    </div>      
+    <div class="col-lg-24" role="presentation">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>User is Admin?</th>
+            <th>Toggle Admin Status</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-ng-repeat="msUser in allUsers.msUsers | filter: {email: '!' + user.email}">
+            <td>{{msUser.email}}</td>
+            <td>{{msUser.isAdmin}}</td>
+            <td><button class="btn" data-ng-click="updateMsUser({id: msUser.id, isAdmin: !msUser.isAdmin})">Toggle Admin Status</button></td>
+            <td><button class="btn win-color-bg-alert whiteText" data-ng-click="deleteMsUser(msUser)">Delete</button></td>
           </tr>
         </tbody>
       </table>

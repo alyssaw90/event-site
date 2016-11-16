@@ -80,6 +80,14 @@ module.exports = function () {
 	})
 
 	////////////////////////////////////Admin User placeholder/////////////////////////////////////
+	.then( () => {
+		return User.create({
+			userName: `root`,
+			password: process.env.ROOT_PASSWORD,
+			email: process.env.ROOT_EMAIL,
+			isAdmin: true
+		})
+	})
 	.then(function () {
 		return User.create({
 			userName: 'Admin',
