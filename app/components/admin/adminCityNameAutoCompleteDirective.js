@@ -7,8 +7,13 @@ const adminCityNameAutoCompleteDirective = (app) => {
 		const adminCityNameAutoCompleteDirectiveObj = {
 			restrict: 'A',
 			scope: true,
-			link: (scope, elem, attrs) => {
+			require: `ngModel`,
+			link: (scope, elem, attrs, ngModel) => {
 				const RESTResources = adminPageRESTResource();
+
+				scope.$on(`autofill:update`, () => {
+						ngModel.$setViewValue(elem.val());
+				});
 
 		    function getBingKey() {
 		    	return new Promise( (resolve, reject) => {

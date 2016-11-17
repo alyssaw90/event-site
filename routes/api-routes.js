@@ -429,7 +429,6 @@ module.exports = (router) => {
 
   // create new event
   router.post('/createevent', isLoggedIn, (req, res, next) => {
-    console.log(clc.green.bgCyan(` req.user :: `), req.user);
     let userName = req.user.unique_name || req.user.email;
     models.sql.sync()
     .then(function () {
@@ -501,10 +500,28 @@ module.exports = (router) => {
         eventVenueImg: req.body.event.eventVenueImg,
         eventTechnicalTopics: req.body.eventTechnicalTopics,
         eventLanguage: req.body.newEventLanguage
-      })
+      });
       res.end();
     })
   });
+
+  router.delete(`/deleteevent/:slug`, isLoggedIn, (req, res) => {
+    models.sql.sync()
+    .then(() => {
+      return Event.findOne({
+        where: {
+          id: req.params.slug
+        }
+      })
+    })
+    .then((event) => {
+      event.destroy();
+      res.end();
+    })
+    .catch((err) => {
+      res.json(err);
+    })
+  })
 
   router.post('/edittab', isLoggedIn, (req, res, next) => {
     models.sql.sync()
@@ -665,6 +682,21 @@ module.exports = (router) => {
       res.end();
     });
   });
+
+  router.delete(`/deletespeaker/:slug`, isLoggedIn, (req, res) => {
+    models.sql.sync()
+    .then(() => {
+      return Speaker.findOne({
+        where: {
+          id: req.params.slug
+        }
+      })
+    })
+    .then( (speaker) => {
+      speaker.destroy();
+      res.end();
+    })
+  })
   
     //show all images
   router.get('/showimages', isLoggedIn, function(req, res) {

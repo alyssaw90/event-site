@@ -14,9 +14,8 @@
 			</div>
 		</div>
     <section id="main-edit-section" role="presentation" class="row internetExplorer edit-section">
-			<div id="edit-events-home-tab">
-				<div class="admin-header-div-with-button col-lg-24" role="presentation">
-					<h3 class="middle-align">All Events</h3>
+			<div id="edit-events-home-tab col-lg-24">
+				<div class="admin-header-div-with-button" role="presentation">
 					<a class="btn btn-orange middle-align" href="/admin/create-event">Add New</a>
 				</div>
 				<div role="presentation" class="col-lg-24">
@@ -41,7 +40,7 @@
 								<th>
 									<h4>Last Modified</h4>
 								</th>
-								<th colspan="2">
+								<th colspan="3">
 									<h4>Status</h4>
 								</th>
 							</tr>						
@@ -57,6 +56,9 @@
 								<td>{{publishedOrNot = event.isPublished ? 'Published' : 'Unpublished';}}</td>
 								<td>
 									<button data-ng-click="getSingleEvent(event.eventUrl, '#edit-menu-options', '.edit-section')">Edit</button>
+								</td>
+								<td>
+									<button ng-style="buttonStyle" class="win-color-bg-alert whiteText pull-right" ng-click="deleteEvent(event);" edit-event-directive>Delete</button>
 								</td>
 							</tr>						
 						</tbody>
@@ -124,6 +126,9 @@
 	    				<th>
 	    					<h4>Tab Name</h4>
 	    				</th>
+							<th>
+	    					<h4>Last Modified</h4>
+	    				</th>
 	    				<th>
 	    					<h4>Status</h4>
 	    				</th>
@@ -140,20 +145,23 @@
 	    				<td>
 	    					{{tab.tabTitle}}
 	  					</td>
+							<td>
+								{{tab.updatedAt | date: 'MM/dd/yyyy HH:mm:ss'}}
+							</td>
 	  					<td>
 	    					{{tab.isPublished ? 'Published' : 'Unpublished';}}
 	  					</td>
 	    				<td>
-	    					<button ng-style="buttonStyle" class="pull-right" ng-click="getTab(tab); showElem('#editTabsForm', '#select-tabs-to-edit-table');" edit-event-directive>Edit: "{{tab.tabTitle}}"</button>
+	    					<button ng-style="buttonStyle" ng-click="getTab(tab); showElem('#editTabsForm', '#select-tabs-to-edit-table');" edit-event-directive>Edit: "{{tab.tabTitle}}"</button>
 	    				</td>
 	    				<td>
-	    					<button ng-style="buttonStyle" class="win-color-bg-alert whiteText pull-right" ng-click="deleteTab(tab);" edit-event-directive>Delete: "{{tab.tabTitle}}"</button>
+	    					<button ng-style="buttonStyle" class="win-color-bg-alert whiteText" ng-click="deleteTab(tab);" edit-event-directive>Delete: "{{tab.tabTitle}}"</button>
 	    				</td>
 	    			</tr>
 	    		</tbody>
 	    	</table>
     	</div>
-    	<form id="editTabsForm" name="editTabsForm" class="edit-section col-lg-24" ng-submit="editTab(tabToEdit)" style="display: none;" make-auto-complete-false-directive>
+    	<form id="editTabsForm" name="editTabsForm" class="edit-section col-lg-24" style="display: none;" make-auto-complete-false-directive>
 				<input type="hidden" name="asssociatedEventId" data-ng-model="editedEvent.EventsTabsAccsc.EventId">
 				<input type="hidden" name="editedTabId" data-ng-model="editedEvent.id">
     		<div class="form-group" role="presentation">
@@ -169,24 +177,17 @@
 					data-ui-tinymce="tinymceOptions">
 	      		</textarea>
     		</div>
-    		<div class="form-group" role="presentation">
-					<radiogroup>
-						<label for="tabPublishedTrue">Publish Now</label>
-						<input class="form-control" data-ng-model="tabToEdit.isPublished" type="radio" id="tabPublishedTrue" name="tabPublishStatus" ng-value="true">
-						<br>
-						<label for="publishedFalse">Save as Draft</label>
-						<input class="form-control" data-ng-model="tabToEdit.isPublished" type="radio" id="publishedFalse" name="tabPublishStatus" ng-value="false">
-					</radiogroup>
-    		</div>
     		<button type="button" class="btn form-button" ng-click="showElem('#main-edit-section', '.edit-section'); cancelEditing()">Cancel</button>
-				<button type="submit" class="btn btn-green form-button">Save</button>
+				<button type="submit" class="btn btn-primary form-button" data-ng-click="editTab(tabToEdit, false)">Save as Draft</button>
+				<button type="submit" class="btn btn-green form-button" data-ng-click="editTab(tabToEdit, true)">Publish Now</button>
+				<p>Last Updated: {{editedEvent.event.updatedAt | date: 'MM/dd/yyyy HH:mm:ss'}}</p>
     	</form>
     </section>
     <section id="edit-event-section" role="presentation" class="row edit-section" style="display: none">
     	<div role="presentation" class="col-lg-24">
     		<img ng-if="headerImage" ng-src="/{{headerImage}}">
     	</div>
-			<form id="editEventForm" class="col-lg-24" name="editEventForm" method="post" enctype="multipart/form-data" data-ng-init="getAllSpeakers();" data-ng-submit="editEvent(editedEvent); showElem('#main-edit-section', '.edit-section');" make-auto-complete-false-directive>
+			<form id="editEventForm" class="col-lg-24" name="editEventForm" method="post" enctype="multipart/form-data" data-ng-init="getAllSpeakers();" make-auto-complete-false-directive>
 	    	<div data-ng-controller="AdminPageCtrl">
 		  		<button name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventHeaderImage')">Select Header Image</button>
 		  		<br><br>
@@ -206,10 +207,6 @@
 					<label for="editedEventName">Event Name*</label>
 					<input class="form-control" type="text" data-ng-model="editedEvent.event.eventName" name="editedEventName" id="editedEventName" required>
 	    	</div>
-				<!-- <label class="col_12" for="eventUrl">Event URL (cAsE sEnSiTiVe)*</label>
-				<div class="col_2"> interopevents.com/</div>
-				<input class="col_10" type="text" data-ng-model="editedEvent.event.eventUrl" name="eventUrl" id="eventUrl"> -->
-
 				<div class="form-group clearfix" role="presentation">
 					<label for="eventUrl">Event URL*</label>
 					<br>
@@ -318,17 +315,10 @@
 					<button name="venuePhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventVenueImg')">Select Venue Image</button>
 				</div>
 				<img ng-src="/{{venueImage}}">
-				<div class="form-group" role="presentation">
-					<radiogroup>
-						<label for="publishedTrue">Publish Now</label>
-						<input class="form-control" data-ng-model="editedEvent.event.isPublished" type="radio" id="publishedTrue" name="publishStatus" ng-value="true">
-						<br>
-						<label for="publishedFalse">Save as Draft</label>
-						<input class="form-control" data-ng-model="editedEvent.event.isPublished" type="radio" id="publishedFalse" name="publishStatus" ng-value="false">
-					</radiogroup>
-				</div>
     		<button type="button" class="btn form-button" ng-click="showElem('#main-edit-section', '.edit-section'); cancelEditing()" id="cancel-edited-event-button">Cancel</button>				
-				<button type="submit" class="btn btn-green form-button" id="save-edited-event-as-draft-button">Save</button>
+				<button type="submit" class="btn btn-primary form-button" id="save-edited-event-as-draft-button" data-ng-click="editEventForm.$valid && editEvent(editedEvent, false); showElem('#main-edit-section', '.edit-section');">Save as Draft</button>
+				<button type="submit" class="btn btn-green form-button" id="save-edited-event-button" data-ng-click="editEventForm.$valid && editEvent(editedEvent, true); showElem('#main-edit-section', '.edit-section');">Publish Now</button>
+				<p>Last Updated: {{editedEvent.event.updatedAt | date: 'MM/dd/yyyy HH:mm:ss'}}</p>
 			</form>
 			<!-- input below is for tinymce file upload -->
 			<input name="image" type="file" id="upload" class="hideElem" onchange="">

@@ -5,7 +5,7 @@ const swal = require('sweetalert');
 
 const EditEventCtrl = (app) => {
 
-	app.controller('EditEventCtrl', ['$scope', '$rootScope', 'Upload', 'editEventRESTResource', '$sce', '$filter', 'createEventRESTResource', ($scope, $rootScope, Upload, resource, $sce, $filter, createEventRESTResource) => {
+	app.controller('EditEventCtrl', ['$scope', '$rootScope', 'Upload', 'editEventRESTResource', '$sce', '$filter', 'createEventRESTResource', `$window`, ($scope, $rootScope, Upload, resource, $sce, $filter, createEventRESTResource, $window) => {
 		$scope.errors = [];
     $scope.tester = [];
     $scope.compareArr = [];
@@ -112,13 +112,15 @@ const EditEventCtrl = (app) => {
       $scope.tabToEdit = tab;
     };
 
-    $scope.editEvent = (newEventData) => {
+    $scope.editEvent = (newEventData, publishStatus) => {
+      $scope.$broadcast(`autofill:update`);
       if ($rootScope.eventHeaderImage) {
         newEventData.event.eventHeaderImage = $rootScope.eventHeaderImage.name ? $rootScope.eventHeaderImage.size + '-' + $rootScope.eventHeaderImage.name : '';
       }
       if ($rootScope.eventVenueImg) {
         newEventData.event.eventVenueImg = $rootScope.eventVenueImg.name ? $rootScope.eventVenueImg.size + '-' + $rootScope.eventVenueImg.name : '';
       }
+      newEventData.event.isPublished = publishStatus;
       EditEventData.editEvent(newEventData, (err, data) => {
         if (err) {
           $scope.errors.push({msg: 'could not save newEvent: ' + $scope.newEvent.eventName});
@@ -145,7 +147,49 @@ const EditEventCtrl = (app) => {
       });
     };
 
-    $scope.editTab = (editedTabData) => {
+    $scope.deleteEvent = (eventToDelete) => {
+      swal({
+        title: `Delete "${eventToDelete.eventName}" event?`,
+        type: 'input',
+        text: `This CANNOT be undone \n Note: you can unpublish the event if you don't want it to display`,
+        showCancelButton: true,
+        closeOnConfirm: false,
+        inputPlaceholder: `Type "YES" to delete event`
+      },
+      (inputVal) => {
+        if (inputVal === 'YES') {
+          EditEventData.deleteEvent(eventToDelete.id, (err, data) => {
+            if (err) {
+              swal({
+                title: `could not delete event "${eventToDelete.eventName}"`,
+                customClass: 'sweet-alert-hide-input',
+                type: 'error'
+              })
+            }
+            swal({
+              title: `"${eventToDelete.eventName}" event has been deleted`,
+              customClass: 'sweet-alert-hide-input',
+              type: 'success'
+            },
+            function() {
+              $rootScope.getEvents();
+            });
+            
+          });
+          
+        } else {
+          swal({
+            title: `Please enter "YES" with all capitol letters`,
+            text: `You entered "${inputVal}"`,
+            customClass: 'sweet-alert-hide-input',
+            type: 'error'
+          });
+        }
+      })
+    };
+
+    $scope.editTab = (editedTabData, publishStatus) => {
+      editedTabData.isPublished = publishStatus;
       EditEventData.editTab(editedTabData, (err, data) => {
         if (err) {
           $scope.errors.push({msg: 'could not save tab'});

@@ -2,11 +2,11 @@
 import * as customFunctions from '../../shared/methods/common-functions.js';
 const swal = require('sweetalert');
 const AdminCreateEventCtrl = (app) => {
-  app.controller('AdminCreateEventCtrl', ['$rootScope', '$scope', '$http', 'Upload', '$window', 'createEventRESTResource', ($rootScope, $scope, $http, Upload, $window, resource) => {
+  app.controller('AdminCreateEventCtrl', ['$rootScope', '$scope', '$http', 'Upload', '$window', 'createEventRESTResource', `$location`, ($rootScope, $scope, $http, Upload, $window, resource, $location) => {
     // require('angular-ui-tinymce');
 		$scope.errors = [];
 		$scope.theEvents = [];
-		$scope.theSpeakers = [];
+		$rootScope.theSpeakers = [];
     $scope.newSpeakers = [];
 		$scope.newEvent = {};
     $scope.newEvent.speakers = [];
@@ -27,7 +27,7 @@ const AdminCreateEventCtrl = (app) => {
 
     }
 
-    $scope.getEvents = () => {
+    $rootScope.getEvents = () => {
 
       createEventsREST.getAllEvents( (err, data) => {
         if (err) {
@@ -43,7 +43,7 @@ const AdminCreateEventCtrl = (app) => {
     
     };
 
-    $scope.getAllSpeakers = () => {
+    $rootScope.getAllSpeakers = () => {
 
       createEventsREST.getAllSpeakers( (err, speakers) => {
         if (err) {
@@ -51,19 +51,21 @@ const AdminCreateEventCtrl = (app) => {
         }
 
         for (let i = 0, len = speakers.length; i < len; i++) {
-          $scope.theSpeakers.push(speakers[i]);
+          $rootScope.theSpeakers.push(speakers[i]);
         }
 
       })
     };
 
-    $scope.createNewEvent = (newEventData) => {
+    $scope.createNewEvent = (newEventData, publishStatus) => {
+      $scope.$broadcast(`autofill:update`);
       if ($rootScope.eventHeaderImg) {
         newEventData.newEventHeaderImage = $rootScope.eventHeaderImg.name ? $rootScope.eventHeaderImg.size + '-' + $rootScope.eventHeaderImg.name : '';
       }
       if ($rootScope.eventVenueImg) {
         newEventData.newEventVenueImg = $rootScope.eventVenueImg.name ? $rootScope.eventVenueImg.size + '-' + $rootScope.eventVenueImg.name : '';
       }
+      newEventData.publishStatus = publishStatus;
 
       createEventsREST.createEvent(newEventData, (err, data) => {
         if (err) {
@@ -71,7 +73,7 @@ const AdminCreateEventCtrl = (app) => {
             title: `There was a problem submitting your form`,
             text: `Please see the form for more details`,
             type: 'warning',
-            confirmButtonColor: "#DD6B55",
+            confirmButtonColor: `#DD6B55`,
             confirmButtonText: 'Ok',
             customClass: 'sweet-alert-hide-input'
           });
@@ -82,11 +84,15 @@ const AdminCreateEventCtrl = (app) => {
           $rootScope.eventHeaderImg = undefined;
           $rootScope.eventVenueImg = undefined;
 
-          // $window.location.reload();
           swal({
             title: 'Event Saved',
             type: 'success',
             customClass: 'sweet-alert-hide-input'
+          },
+          function() {
+            // $window.location.reload();
+            $rootScope.latestDbChangeMadeTime.push(new Date(Date.now()));
+            $location.url(`/admin/edit-event`);
           });
         }
       });

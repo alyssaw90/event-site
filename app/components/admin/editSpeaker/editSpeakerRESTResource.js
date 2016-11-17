@@ -14,7 +14,12 @@ const editSpeakerRESTResource = (app) => {
           $http.post('/api/editspeaker', resourceData)
           .success(customFunctions.handleSuccess(callback))
           .error(customFunctions.handleError(callback));
-        }
+        },
+				deleteSpeaker: (resourceData, callback) => {				
+          $http.delete(`/api/deletespeaker/${resourceData}`)
+          .success(customFunctions.handleSuccess(callback))
+          .error(customFunctions.handleError(callback));
+        },
 			}
 			
 		}

@@ -3,11 +3,13 @@ const jQuery = require('jquery');
 import * as customFunctions from '../shared/methods/common-functions.js';
 
 const FutureEventsCtrl = (app) => {
-	app.controller('FutureEventsCtrl', ['$scope', '$http', 'futureEventsRESTResource', ($scope, $http, resource/*, $timeout*/) => {
+	app.controller('FutureEventsCtrl', ['$scope', '$http', 'futureEventsRESTResource', `$rootScope`, ($scope, $http, resource, $rootScope) => {
 		$scope.errors = [];
 		$scope.futureEvents = [];
 		$scope.slides = [];
 		const testArr = [];
+		//set the watch array for new events
+		$rootScope.latestDbChangeMadeTime = [];
 
 		let FutureEvents = resource();
 
@@ -18,6 +20,8 @@ const FutureEventsCtrl = (app) => {
         if (err) {
           return $scope.errors.push({msg: 'could not retrieve future events'});
         };
+				$scope.futureEvents = [];
+				$scope.slides = [];
 
         for (let i = 0, len = data.length; i < len; i++) {
         	let testObj = {city: data[i].city, dates: data[i].eventDates};
@@ -41,6 +45,11 @@ const FutureEventsCtrl = (app) => {
         // $scope.futureEvents = data;
       })		
 		};
+
+		$rootScope.$watch(`latestDbChangeMadeTime`, () => {
+			console.log(`$watch reached ::::::::::::::  `);
+			$scope.getUpcomingEvents();
+		});
 
 		/*for (let i = 0, len = $scope.futureEvents.length; i < len; i++) {
 			if ($scope.futureEvents[i].eventHomepageImage) {

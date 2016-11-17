@@ -2,11 +2,11 @@
 <div class="mobileWrapper ng-cloak ng-cloak" role="presentation" ng-controller="AdminPageCtrl" data-ng-init="getEvents(); getAllSpeakers()" data-admin-page-directive>
   <main style="overflow:hidden;" id="beginningOfContent" tabindex="0" class="container">
     <section role="presentation" class="row internetExplorer">
-			<form id="addNewEventForm" class="col-lg-24" name="addNewEventForm" method="post" enctype="multipart/form-data" data-ng-submit="createNewEvent(newEvent);" make-auto-complete-false-directive>
-				<h3>New Event</h3>
+			<form id="addNewEventForm" class="col-lg-24" name="addNewEventForm" method="post" enctype="multipart/form-data" make-auto-complete-false-directive>
+				<h3>New Event</h3>{{newEvent}}
 				<div role="presentation" class="form-group">
 					<label for="newEventName">Event Name*</label>
-					<input class="form-control" type="text" data-ng-model="newEvent.newEventName" name="newEventName" id="newEventName" data-ng-required="required">
+					<input class="form-control" type="text" data-ng-model="newEvent.newEventName" name="newEventName" id="newEventName" data-ng-required="true">
 				</div>
 				<div class="form-group clearfix" role="presentation">
 					<label for="eventUrl">Event URL*</label>
@@ -14,8 +14,8 @@
 					<div role="presentation" class="float-left">
 						interopevents.com/
 					</div>
-					<input class="form-control col-lg-20 float-right" type="text" data-ng-model="newEvent.eventUrl" name="eventUrl" id="eventUrl" style="width: 90%" unique-url-directive required>
-					<div ng-messages="addNewEventForm.eventUrl.$error" role="alert" class="col-lg-offset-8 col-lg-16 col-md-offset-12 col-md-12 col-sm-24" style="position: absolute;">
+					<input class="form-control col-lg-20 float-right" type="text" data-ng-model="newEvent.eventUrl" name="eventUrl" id="eventUrl" style="width: 90%" unique-url-directive data-ng-required="true">
+					<div ng-messages="addNewEventForm.eventUrl.$error" role="alert" class="col-lg-offset-8 col-lg-16 col-md-offset-12 col-md-12 col-sm-24">
 						<div ng-message="uniqueUrl" class="win-color-fg-alert alert-warning">This URL has already been used. Please select a different URL</div>
 					</div>
 				</div>
@@ -35,12 +35,12 @@
 				</div>
 				<div class="form-group" role="presentation">
 					<label class="ui-widget" for="newEventCity">Event Location*</label>
-					<input class="form-control ui-widget-content" type="text" data-ng-model="newEvent.newEventCity" name="newEventCity" id="newEventCity" admin-city-name-auto-complete-directive required>				
+					<input class="form-control ui-widget-content" type="text" data-ng-model="newEvent.newEventCity" name="newEventCity" id="newEventCity" admin-city-name-auto-complete-directive data-ng-required="true">				
 				</div>
 				<div class="form-group" role="presentation">
 					<label for="continentsInput">Choose Event Continent
 						<div class="clearfix"></div>
-						<radiogroup id="continentsInput" data-ng-required="required">
+						<radiogroup id="continentsInput" data-ng-required="true">
 							<label for="northAmericaInput">North America
 								<input class="form-control float-left" data-ng-model="newEvent.newEventContinent" type="radio" id="northAmericaInput" name="newEventContinent" value="North America">
 							</label>
@@ -94,7 +94,7 @@
 				</div>				
 				<div class="form-group" role="presentation">
 				<label for="new-event-description">About page Content*</label>
-						<textarea class="form-control" data-ng-model="newEvent.eventAboutTabText" name="new-event-description" data-ng-required="required" 
+						<textarea class="form-control" data-ng-model="newEvent.eventAboutTabText" name="new-event-description" data-ng-required="true" 
 					data-ui-tinymce="tinymceOptions"></textarea>
 				</div>
 				<div class="form-group" role="presentation">
@@ -135,20 +135,10 @@
 						<li data-ng-repeat="speaker in newEvent.speakers | orderBy: 'eventPosition'">{{speaker.fullName}}</li>
 					</ul>
 				</label>
-				<div class="form-group" role="presentation">
-					<radiogroup>
-						<label for="publishedTrue">Publish Now
-							<input data-ng-model="newEvent.publishStatus" type="radio" id="publishedTrue" name="publishStatus" value="true">
-						</label>
-						<br>
-						<label for="publishedFalse">Save as Draft
-							<input data-ng-model="newEvent.publishStatus" type="radio" id="publishedFalse" name="publishStatus" value="false" ng-checked="true">
-						</label>
-					</radiogroup>
-				</div>
 				<button type="button" class="btn btn-default btn-lg float-left" style="margin: 5px" id="cancel-new-event-button" ng-click="cancelNewEvent()">Cancel</button>
-		    <button type="button" class="btn btn-primary btn-lg float-left" data-toggle="modal" data-target="#new-event-add-venue-modal" style="margin: 5px">Preview</button>
-				<button type="submit" class="btn btn-green btn-lg float-left" style="margin: 5px" id="save-new-event-as-draft-button">Save</button>
+		    <button type="button" class="btn btn-lg float-left" data-toggle="modal" data-target="#new-event-add-venue-modal" style="margin: 5px">Preview</button>
+				<button type="submit" class="btn btn-primary btn-lg float-left" style="margin: 5px" id="save-new-event-as-draft-button" data-ng-click="addNewEventForm.$valid && createNewEvent(newEvent, false);">Save as Draft</button>
+				<button type="submit" class="btn btn-green btn-lg float-left" style="margin: 5px" id="save-new-event-button" data-ng-click="addNewEventForm.$valid && createNewEvent(newEvent, true);">Publish Now</button>
 				<input name="image" type="file" id="upload" class="hideElem" onchange="">
 			</form>
     </section>
