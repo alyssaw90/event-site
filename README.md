@@ -4,9 +4,9 @@ This site was designed to promote Microsoft Interoperability events, but it can 
 
 ##Getting Started
 
-This site uses a SQL database with Sequelize as its ORM. If you need to learn about Sequelize, they have [helpful documentation](http://docs.sequelizejs.com/en/latest/). It is currently set up to use SQL Server, but Sequelize will work with any SQL database. If you want to use SQL Server, then you don't need to make any changes, just run `npm install` then store your database name, user name and password in a .env file in the root directory. If you want to use a different SQL you can find how to do that on [this page](http://docs.sequelizejs.com/en/latest/docs/getting-started/) in the Sequelize docs. A note on the Sequelize docs: In the Sequelize docs they declare Sequelize with `var Sequelize = require('sequelize');` and connect to their database with `var sequelize = new Sequelize('database', 'username', 'password');`, instead of this, I use `let Sql = require('sequelize');` and `let sql = new Sql('database', 'username', 'password');`, so I don't have to type as much. It makes no difference, but I want to avoid confusion for anyone comparing my code to the Sequelize docs. Note however that you have to use `var` or `let` using `const` with Sequelize will cause errors.
+This site uses a SQL database with Sequelize as its ORM. If you need to learn about Sequelize, they have [helpful documentation](http://docs.sequelizejs.com/en/latest/). It is currently set up to use SQL Server, but Sequelize will work with any SQL database. If you want to use SQL Server, then you don't need to make any changes, just run `npm install` then store your database name, user name and password in file named `.env` and store it in the in the root directory. If you want to use a different SQL you can find how to do that on [this page](http://docs.sequelizejs.com/en/latest/docs/getting-started/) in the Sequelize docs. A note on the Sequelize docs: In the Sequelize docs they declare Sequelize with `var Sequelize = require('sequelize');` and connect to their database with `var sequelize = new Sequelize('database', 'username', 'password');`, instead of this, I use `let Sql = require('sequelize');` and `let sql = new Sql('database', 'username', 'password');`, so I don't have to type as much. It makes no difference, but I want to avoid confusion for anyone comparing my code to the Sequelize docs. Note however that you have to use `var` or `let` using `const` with Sequelize will cause errors.
 
-Authentication is done with a local strategy as well as with OAuth from Azure Active Directory. To use OAuth and connect to your database you need to create a file called `.env` and save it to the root of your project. And enter the following:
+To use environment variables locally, create a file called `.env` and save it to the root of your project. Then add environment-specific variables on new lines with the following pattern `NAME=VALUE`. `process.env` will now have acccess to the keys and values defined in the `.env` file. The  Authentication is done with a local strategy as well as with OAuth from Azure Active Directory. You do not have to use the OAuth, but the site will not work properly without access to the database, so you must at least include your database connection information. To use OAuth and connect to your database And enter the following keys and values:
 
 ```
 DB_PASS=YourPassword
@@ -18,7 +18,7 @@ AZURE_CLIENT_ID=your_azure_client_id
 AZURE_TENANT_ID=your_azure_tenant_id
 ```
 
-This will work for testing and using your localhost, but for production, you need to provide environment variables with the same names in the way prescribed by your hosting service. 
+This will work for testing and using your localhost, but for production, you need to provide environment variables with the correct keys and values in the way prescribed by your hosting service. 
 
 After cloning the repo, enter `grunt start` or just `grunt` in the command line to build the project and start the server. The site will be up and running at this point with just the placeholder root user. 
 
@@ -55,11 +55,21 @@ The REST api is built with ExpressJS and Node.js. The `api-routes.js` file conta
 The authentication middleware has two methods in `scripts/userLogging`: `isLoggedIn` and `isLoggedInAdmin`. Adding `isLoggedIn` will check if the user is logged in, `isLoggedInAdmin` will check if the user is logged in and whether they are an adming user.
 
 if you want a route to require authentication, simply add the `isLoggedIn` or `isLoggedInAdmin` in the route. e.g.
-```router.get('/myroute', isLoggedIn, (req, res) => {
+```javascript
+app.get(`/myroute`, isLoggedIn, (req, res) => {
   //route that requires login
-})```
+});
+```
 
-##Deploying to Visual Studio
+The actual server files is the `server.js` file in the root of the project. To start the app manually, run `node server.js` and it will start the app and connect to the database. 
+
+##The Angular app
+
+The client side of the app is built with [AngularJS](https://angularjs.org/) and compiled with [Babel](https://babeljs.io/) and [Browserify](http://browserify.org/). All the files for the client side are in the `app/components` folder. Within that folder the files are separated by which pages they relate to and also for shared components such as the header and footer. The files for the admin section of the app, which allow you to edit the app on the client side are in the `app/components/admin` folder. There are some controller and directive modules that are shared by some pages, so if you can't find a controller that is being called in a template, do a search on all files in the components folder (Ctrl+Shift+F in most text editors) to see which page it is saved with. This will hopefully be fixed in the future.
+
+The main entry point for the client side of the app is the `app/components/client.js` file. This file configures the Angular app, sets up the client-side routing, requires in Angular and any Angular modules you want to use, and requires in your controller, directive, and factory modules. If you create additional modules, they must be required in the `client.js` file or they cannot be accessed by the app. 
+
+##A Note on Deploying to Visual Studio
 
 If you deploy with Visual Studio, Visual Studio will not perform `npm install` for you, so you must push your `node_modules` folder, but in order to avoid pushing all you dev dependencies, delete your `node_modules` folder then run `npm install --production` before pushing your files.
 
@@ -69,9 +79,11 @@ If you deploy with Visual Studio, Visual Studio will not perform `npm install` f
 
 * Add documentation
 
+* Reorganize Angular files
+
 * Move map to use AngularJS $http
 
-* Divide routes services into separate files
+* Divide route services into separate files
 
 * remove all 99lime CSS and move to WebCore/bootstrap
 
