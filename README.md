@@ -28,15 +28,15 @@ This site is built with AngularJS, Node.js, Express, and SQL. The task runner is
 
 **task command** | **what it does**
 ---|---
-`grunt lint` | Lints JavaScript files
-`grunt test` | Runs tests
-`grunt clean:all` | Deletes all build files
-`grunt lessProd` | Compiles and minifies .less files
-`grunt build:dev` | Compiles js from ES6 into one file, but does not minify the code and compiles and minifies minifies .less files. useful for debugging
-`grunt build` | Compiles js from ES6 and minifies it into one file and compiles and minifies .less files into css
-`grunt start:dev` |  Compiles js from ES6 into one file, but does not minify the code and compiles and minifies minifies .less files and starts server with nodemon
-`grunt start` | Compiles js from ES6 and minifies it into one file and compiles and minifies .less files and starts server with nodemon
-`grunt` | same as `grunt start`
+grunt lint | Lints JavaScript files
+grunt test | Runs tests
+grunt clean:all | Deletes all build files
+grunt lessProd | Compiles and minifies .less files
+grunt build:dev | Compiles js from ES6 into one file, but does not minify the code and compiles and minifies .less files. useful for debugging
+grunt build | Compiles js from ES6 and minifies it into one file and compiles and minifies .less files into css
+grunt start:dev |  Compiles js from ES6 into one file, but does not minify the code and compiles and minifies .less files and starts server with nodemon
+grunt start | Compiles js from ES6 and minifies it into one file and compiles and minifies .less files and starts server with nodemon
+grunt | same as `grunt start`
 
 `grunt build` and `grunt build:dev` will both compile your front end files, but `build:dev` does not minify the code, which is helpful for debugging, but should not be used in production. 
 
@@ -59,6 +59,9 @@ if you want a route to require authentication, simply add the `isLoggedIn` or `i
   //route that requires login
 })```
 
+##Deploying to Visual Studio
+
+If you deploy with Visual Studio, Visual Studio will not perform `npm install` for you, so you must push your `node_modules` folder, but in order to avoid pushing all you dev dependencies, delete your `node_modules` folder then run `npm install --production` before pushing your files.
 
 ##To Do
 
