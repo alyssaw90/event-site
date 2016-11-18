@@ -44,13 +44,6 @@ const AdminPageCtrl = (app) => {
             });
         }, (evt) => {
             file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
-            swal({
-              title: 'Saved!',
-              text: 'Your file was saved',
-              type: 'success',
-              confirmButtonText: 'OK',
-              customClass: 'sweet-alert-hide-input'
-            })
         });
       }   
     };
@@ -84,12 +77,12 @@ const AdminPageCtrl = (app) => {
           let fileName =  `${time}-${file.name}`;
           let fileLocation = `/uploads/${fileName}`;
           reader.onloadend = (e) => {
+          console.log(`File Location :::: `, fileLocation);
             let base64String = e.target.result.split(',')[1];
             addTinymceFile({
               base64String: base64String,
               fileName: fileName,
             });
-
             // Provide file and text for the link dialog
             if (meta.filetype === 'file') {
               callback(fileLocation, { text: fileName, target: '_self' } );
@@ -111,7 +104,7 @@ const AdminPageCtrl = (app) => {
         return false;
       }
   
-    $scope.tinymceOptions = { 
+    $rootScope.tinymceOptions = { 
       selector: 'textarea',
       height: 500,
       theme: 'modern',

@@ -5,7 +5,7 @@ const swal = require('sweetalert');
 
 const EditEventCtrl = (app) => {
 
-	app.controller('EditEventCtrl', ['$scope', '$rootScope', 'Upload', 'editEventRESTResource', '$sce', '$filter', 'createEventRESTResource', `$window`, ($scope, $rootScope, Upload, resource, $sce, $filter, createEventRESTResource, $window) => {
+	app.controller('EditEventCtrl', ['$scope', '$rootScope', 'Upload', 'editEventRESTResource', '$sce', '$filter', 'createEventRESTResource', `$window`, `$location`, ($scope, $rootScope, Upload, resource, $sce, $filter, createEventRESTResource, $window, $location) => {
 		$scope.errors = [];
     $scope.tester = [];
     $scope.compareArr = [];
@@ -137,12 +137,11 @@ const EditEventCtrl = (app) => {
           $rootScope.eventHeaderImage = undefined;
           $rootScope.eventVenueImg = undefined;
           swal({
-            title: 'Event Saved',
+            title: 'Event Published',
             type: 'success',
             customClass: 'sweet-alert-hide-input'
           });
-
-          $window.location.reload();
+          $scope.getSingleEvent(data, '#edit-event-section, #edit-menu-options', '.edit-section');
         }
       });
     };
@@ -201,14 +200,12 @@ const EditEventCtrl = (app) => {
         }
         if (!err) {
           swal({
-            title: 'Tab Saved',
+            title: 'Tab Published',
             type: 'success',
             customClass: 'sweet-alert-hide-input'
           });
 
-          $scope.tabToEdit = {};
-          $scope.showElem('#main-edit-section', '.edit-section');
-
+          $scope.tabToEdit = data;
         }
       })
     };
@@ -219,25 +216,27 @@ const EditEventCtrl = (app) => {
           $scope.errors.push({msg: 'could not save speaker'});
         }
         swal({
-          title: 'New speakers list saved',
+          title: 'New speakers list Published',
           type: 'success',
           customClass: 'sweet-alert-hide-input'
         });
       })
     };
 
-    $scope.addTab = (newTabData) => {
+    $scope.addTab = (newTabData, publishStatus) => {
+      newTabData.isPublished = publishStatus;
       EditEventData.addTab(newTabData, (err, data) => {
         if (err) {
           $scope.errors.push({msg: 'could not save tab'});
         }
         swal({
-          title: 'New Tab Saved',
+          title: 'New Tab Published',
           type: 'success',
           customClass: 'sweet-alert-hide-input'
         });
         $scope.newTab = {};
-        $scope.showElem('#main-edit-section', '.edit-section');
+        // $scope.showElem('#main-edit-section', '.edit-section');
+        $scope.getSingleEvent($scope.currentEventUrl, '#edit-menu-options', '.edit-section')
       });
     };
 
@@ -289,7 +288,7 @@ const EditEventCtrl = (app) => {
         if (!err) {
           swal({
             type: `success`,
-            title: `Saved`,
+            title: `Published`,
             customClass: `sweet-alert-hide-input`
           }) 
         } else {

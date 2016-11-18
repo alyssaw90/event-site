@@ -30,7 +30,7 @@ module.exports = function (grunt) {
               browsers: ['last 2 versions', '> 1%', 'ie > 6']
             }),
             new (require('less-plugin-clean-css'))({
-              sourceMap: false,
+              sourceMap: true,
               // relativeUrls: true
             })
           ]

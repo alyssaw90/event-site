@@ -71,7 +71,7 @@ const AdminCreateEventCtrl = (app) => {
         if (err) {
           swal({
             title: `There was a problem submitting your form`,
-            text: `Please see the form for more details`,
+            text: err,
             type: 'warning',
             confirmButtonColor: `#DD6B55`,
             confirmButtonText: 'Ok',
@@ -85,7 +85,7 @@ const AdminCreateEventCtrl = (app) => {
           $rootScope.eventVenueImg = undefined;
 
           swal({
-            title: 'Event Saved',
+            title: 'Event Published',
             type: 'success',
             customClass: 'sweet-alert-hide-input'
           },
@@ -101,6 +101,7 @@ const AdminCreateEventCtrl = (app) => {
     $scope.cancelNewEvent = () => {
       $scope.newEvent = {};
       $scope.newEvent.speakers = [];
+      $location.url(`/admin/edit-event`);
     }
 
     $scope.getPreviewSpeakers = (theSpeakers) => {

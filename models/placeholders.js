@@ -88,38 +88,6 @@ module.exports = function () {
 			isAdmin: true
 		})
 	})
-	.then(function () {
-		return User.create({
-			userName: 'Admin',
-			password: process.env.ADMIN_PASSWORD,
-			email: process.env.ADMIN_USERNAME,
-			isAdmin: true
-		});
-	})
-	.then( () => {
-		return User.create({
-			userName: 'prakash',
-			password: process.env.PRAKASH_PASSWORD,
-			email: process.env.PRAKASH_EMAIL,
-			isAdmin: true
-		})
-	})
-	.then( () => {
-		return User.create({
-			userName: 'michael',
-			password: process.env.MICHAEL_PASSWORD,
-			email: process.env.MICHAEL_EMAIL,
-			isAdmin: true
-		})
-	})
-	.then( () => {
-		return User.create({
-			userName: 'eric',
-			password: process.env.ERIC_PASSWORD,
-			email: process.env.ERIC_EMAIL,
-			isAdmin: true
-		})
-	})
 	/////////////////////////MS Account Users/////////////////////////////////////////////////
 	.then( () => {
 		return MsUser.create({
@@ -127,7 +95,12 @@ module.exports = function () {
 			isAdmin: true
 		})
 	})
-
+	.then( () => {
+		return MsUser.create({
+			email: `v-bachau@microsoft.com`,
+			isAdmin: true
+		})
+	})
 	////////////////////////////////////Event placeholder/////////////////////////////////////
 
 	.then(function () {

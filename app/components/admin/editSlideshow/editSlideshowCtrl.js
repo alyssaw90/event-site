@@ -68,7 +68,7 @@ const editSlideshowCtrl = (app) => {
 					return $scope.errors.push({msg: 'could not edit slideshow'});
 				}
 				swal({
-					title: 'new slideshow saved',
+					title: 'new slideshow published',
 					type: 'success',
 					customClass: 'sweet-alert-hide-input'
 				});
@@ -94,7 +94,7 @@ const editSlideshowCtrl = (app) => {
 					return;
 				}
 				swal({
-						title: 'New slide saved',
+						title: 'New slide published',
 						type: 'success',
 					 	customClass: 'sweet-alert-hide-input'
 					});

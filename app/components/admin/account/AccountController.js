@@ -58,7 +58,7 @@ const AccountController = (app) => {
         } else if (!err) {
           swal({
             type: `success`,
-            title: `New user saved`,
+            title: `New user published`,
             customClass: `sweet-alert-hide-input`
           });
           $scope.newUser = {
@@ -82,7 +82,7 @@ const AccountController = (app) => {
           $scope.getAllUsers();
           swal({
             type: `success`,
-            title: `New info saved`,
+            title: `New info published`,
             customClass: `sweet-alert-hide-input`
           });
         }
@@ -139,7 +139,7 @@ const AccountController = (app) => {
           $scope.getAllUsers();
           swal({
             type: `success`,
-            title: `New info saved`,
+            title: `New info published`,
             customClass: `sweet-alert-hide-input`
           });
         }
@@ -161,7 +161,7 @@ const AccountController = (app) => {
           };
           swal({
             type: `success`,
-            title: `New info saved`,
+            title: `New info published`,
             customClass: `sweet-alert-hide-input`
           });
         }

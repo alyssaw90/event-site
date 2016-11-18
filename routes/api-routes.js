@@ -285,7 +285,7 @@ module.exports = (router) => {
     res.end();
   })
 
-  //route to send slides related to a slidesho
+  //route to send slides related to a slideshow
   router.get('/slideshow/:slideName', (req, res) => {
     models.sql.sync()
     .then( () => {
@@ -432,7 +432,7 @@ module.exports = (router) => {
     let userName = req.user.unique_name || req.user.email;
     models.sql.sync()
     .then(function () {
-      Event.create({
+      return Event.create({
         lastModifiedBy: userName,
         eventName: req.body.newEventName,
         eventUrl: req.body.eventUrl,
@@ -452,7 +452,11 @@ module.exports = (router) => {
         eventTechnicalTopics: req.body.eventTechnicalTopics
       })
       .catch( (err) => {
-        next(new Error(err.errors));
+        let errorMsg = ``;
+        for (let i =0, j = err.errors.length; i < j; i++) {
+          errorMsg += err.errors[i].message + `\n`;
+        }
+        res.status(500).send(errorMsg);
       })
       .then( (newEvent) => {
         models.sql.sync()
@@ -481,27 +485,32 @@ module.exports = (router) => {
     })
     .then( (event) => {
       let userName = req.user.unique_name || req.user.email;
-      event.update({
-        lastModifiedBy: userName,
-        showOnHeader: req.body.event.showOnHeader,
-        isPublished: req.body.event.isPublished,
-        eventName: req.body.event.eventName,
-        eventUrl: req.body.event.eventUrl,
-        eventRegistrationLink: req.body.event.eventRegistrationLink,
-        eventStartDate: req.body.event.eventStartDate,
-        eventEndDate: req.body.event.eventEndDate,
-        eventCountry: req.body.event.eventCountry,
-        eventHeaderImage: req.body.event.eventHeaderImage,
-        eventContinent: req.body.event.eventContinent,
-        eventAboutTabText: req.body.event.eventAboutTabText,
-        eventVenueName: req.body.event.eventVenueName,
-        eventVenueAddress: req.body.event.eventVenueAddressLine1,
-        eventParkingInfo: req.body.event.eventParkingInfo,
-        eventVenueImg: req.body.event.eventVenueImg,
-        eventTechnicalTopics: req.body.eventTechnicalTopics,
-        eventLanguage: req.body.newEventLanguage
-      });
-      res.end();
+      return event.update({
+            lastModifiedBy: userName,
+            showOnHeader: req.body.event.showOnHeader,
+            isPublished: req.body.event.isPublished,
+            eventName: req.body.event.eventName,
+            eventUrl: req.body.event.eventUrl,
+            eventRegistrationLink: req.body.event.eventRegistrationLink,
+            eventStartDate: req.body.event.eventStartDate,
+            eventEndDate: req.body.event.eventEndDate,
+            eventCountry: req.body.event.eventCountry,
+            eventHeaderImage: req.body.event.eventHeaderImage,
+            eventContinent: req.body.event.eventContinent,
+            eventAboutTabText: req.body.event.eventAboutTabText,
+            eventVenueName: req.body.event.eventVenueName,
+            eventVenueAddress: req.body.event.eventVenueAddressLine1,
+            eventParkingInfo: req.body.event.eventParkingInfo,
+            eventVenueImg: req.body.event.eventVenueImg,
+            eventTechnicalTopics: req.body.eventTechnicalTopics,
+            eventLanguage: req.body.newEventLanguage
+      })
+      .then((updatedEvent) => {
+        res.end(updatedEvent.eventUrl);
+      })
+      .catch((err) => {
+        res.status(500).json({msg: `there was a problem updating your event`});
+      })
     })
   });
 
@@ -540,7 +549,7 @@ module.exports = (router) => {
       tab.isPublished = req.body.isPublished
       tab.save()
       .then((newTab) => {
-        res.end();
+        res.json(newTab);
       });
     });
   });
@@ -665,7 +674,7 @@ module.exports = (router) => {
     .then( (speaker) => {
       let userName = req.user.unique_name || req.user.email;
       let speakerEmail = req.body.email ? req.body.email : 'plugfests@microsoft.com';
-      speaker.update({
+      return speaker.update({
         lastModifiedBy: userName,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -678,8 +687,8 @@ module.exports = (router) => {
         isPublished: req.body.isPublished
       })
     })
-    .then( () => {
-      res.end();
+    .then( (editedSpeaker) => {
+      res.json(editedSpeaker);
     });
   });
 

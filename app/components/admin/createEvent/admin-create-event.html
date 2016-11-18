@@ -3,7 +3,7 @@
   <main style="overflow:hidden;" id="beginningOfContent" tabindex="0" class="container">
     <section role="presentation" class="row internetExplorer">
 			<form id="addNewEventForm" class="col-lg-24" name="addNewEventForm" method="post" enctype="multipart/form-data" make-auto-complete-false-directive>
-				<h3>New Event</h3>{{newEvent}}
+				<h3>New Event</h3>
 				<div role="presentation" class="form-group">
 					<label for="newEventName">Event Name*</label>
 					<input class="form-control" type="text" data-ng-model="newEvent.newEventName" name="newEventName" id="newEventName" data-ng-required="true">
@@ -31,7 +31,7 @@
 				</div>
 				<div role="presentation" class="form-group">
 					<label for="eventTechnicalTopics">Technical Topics</label>
-					<input class="form-control" type="text" data-ng-model="newEvent.eventTechnicalTopics" name="eventTechnicalTopics" id="eventTechnicalTopics">
+					<input class="form-control" type="text" data-ng-model="newEvent.eventTechnicalTopics" name="eventTechnicalTopics" id="eventTechnicalTopics" placeholder="Please list 3-6 of the most prominent technical topics presented at this event (separate by comma)">
 				</div>
 				<div class="form-group" role="presentation">
 					<label class="ui-widget" for="newEventCity">Event Location*</label>
@@ -80,7 +80,7 @@
 				</div>
 				<div class="clearfix"></div>
 				<div class="form-group" role="presentation">
-					<label for="showOnHeader">Show this event on the header menu?
+					<label for="showOnHeader">Display on the colored events menu underneath gray “Home” menu?
 						<div class="clearfix"></div>
 						<radiogroup class="time-input-wrapper" id="showOnHeader">
 							<label>Yes
@@ -114,18 +114,23 @@
 						<button class="btn btn-default" name="venuePhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventVenueImg')">Select Venue Image</button>
 					</div>
 		  		<br>
+					<div style="font:smaller">{{eventVenueImg.path}}{{eventVenueImg.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+			  		    <span class="progress" ng-show="eventVenueImg.progress >= 0">
+			  		        <div style="width:{{eventVenueImg.progress}}%"  
+			  		             ng-bind="eventVenueImg.progress + '%'"></div>
+			  		    </span>
+			  		{{errorMsg}} 		    			
+		    	</div>
 		    	<div data-ng-controller="AdminPageCtrl">
 			  		<button class="btn btn-default" name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventHeaderImg')">Select Header Image</button>
 			  		<br><br>
-			  		<!-- File:
 			  		<div style="font:smaller">{{eventHeaderImg.path}}{{eventHeaderImg.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
 			  		    <span class="progress" ng-show="eventHeaderImg.progress >= 0">
 			  		        <div style="width:{{eventHeaderImg.progress}}%"  
 			  		             ng-bind="eventHeaderImg.progress + '%'"></div>
 			  		    </span>
 			  		</div>     
-			  		{{errorMsg}} -->
-		    			
+			  		{{errorMsg}} 		    			
 		    	</div>
 		    	<button type="button" class="btn btn-default" data-toggle="modal" data-target="#create-event-speakers-modal">Select Speakers</button>			  
 				</div>

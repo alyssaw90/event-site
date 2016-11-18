@@ -43,7 +43,7 @@ module.exports = (sql, DataTypes) => {
   },
   {
     hasTrigger: true,
-    paranoid: true
+    paranoid: false
   });
 
 
