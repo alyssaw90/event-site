@@ -6,6 +6,8 @@
 
 * npm install
 
+* Add connection strings to `.env` file [see below](#connectionStrings)
+
 * grunt start
 
 ##Getting Started
@@ -14,6 +16,7 @@ This site uses a SQL database with Sequelize as its ORM. If you need to learn ab
 
 To use environment variables locally, create a file called `.env` and save it to the root of your project. Then add environment-specific variables on new lines with the following pattern `NAME=VALUE`. `process.env` will now have acccess to the keys and values defined in the `.env` file. The  Authentication is done with a local strategy as well as with OAuth from Azure Active Directory. You do not have to use the OAuth, but the site will not work properly without access to the database, so you must at least include your database connection information. To use OAuth and connect to your database enter the following keys and values:
 
+<a name="connectionStrings"></a>
 ```
 DB_PASS=YourPassword
 DB_HOST=your.database.host
