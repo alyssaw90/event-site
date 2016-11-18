@@ -250,6 +250,13 @@ eventsApp
 			pageTitle: `Admin Page - Manage Account`
 		}
 	})
+	.when(`/admin/help`, {
+		templateUrl: `/app/components/admin/help/help.html`,
+		reloadOnSearch: false,
+		data: {
+			pageTitle: `Admin Page - help section`
+		}
+	})
 	.when(`/admin/redirect`, {
 		redirectTo: `/admin/edit-event`
 	})
@@ -297,6 +304,9 @@ eventsApp
 		$http.get('/api/user/checklogin')
 		.success( (data) => {
       $rootScope.isAuthenticated = true;
+			if ($location.path() === `/admin/login`) {
+				$location.path(`/admin/edit-event`);
+			}
 		})
 		.error( (err) => {
       $rootScope.isAuthenticated = false;
@@ -322,6 +332,9 @@ eventsApp
 			$http.get('/api/user/checklogin')
 			.success( (data) => {
         $rootScope.isAuthenticated = true;
+				if ($location.path() === `/admin/login`) {
+					$location.path(`/admin/edit-event`);
+				}
 			})
 			.error( (err) => {
         $rootScope.isAuthenticated = false;

@@ -17,18 +17,11 @@ module.exports = function (grunt) {
       dev: {
         options: {
           paths: ['app/css/', 'app/css/fonts/', 'app/css/img/'],
-          plugins: [
-            new (require('less-plugin-autoprefix'))({
-              browsers: ['last 2 versions', '> 1%', 'ie > 6']
-            }),
-            new (require('less-plugin-clean-css'))({
-              sourceMap: false,
-              // relativeUrls: true
-            })
-          ]
         },
         files: {
-          'dist/custom.build.min.css': 'app/css/less/*.less'
+          'app/css/custom.build.min.css': ['app/css/less/*.less', '!app/css/less/highcontrast.less', '!app/css/less/twitter-widget.less'],
+          'app/css/highcontrast.min.css': 'app/css/less/highcontrast.less',
+          'app/css/twitter-widget.min.css': 'app/css/less/twitter-widget.less'
         }
       },
       prod: {
@@ -39,7 +32,7 @@ module.exports = function (grunt) {
               browsers: ['last 2 versions', '> 1%', 'ie > 6']
             }),
             new (require('less-plugin-clean-css'))({
-              sourceMap: true,
+              sourceMap: false,
               // relativeUrls: true
             })
           ]
