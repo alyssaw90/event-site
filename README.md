@@ -1,12 +1,8 @@
-#Promote Your Events Whatever They Are!
-
-This site was designed to promote Microsoft Interoperability events, but it can be used to promote any kind of event you want. 
-
 ##Getting Started
 
 This site uses a SQL database with Sequelize as its ORM. If you need to learn about Sequelize, they have [helpful documentation](http://docs.sequelizejs.com/en/latest/). It is currently set up to use SQL Server, but Sequelize will work with any SQL database. If you want to use SQL Server, then you don't need to make any changes, just run `npm install` then store your database name, user name and password in file named `.env` and store it in the in the root directory. If you want to use a different SQL you can find how to do that on [this page](http://docs.sequelizejs.com/en/latest/docs/getting-started/) in the Sequelize docs. A note on the Sequelize docs: In the Sequelize docs they declare Sequelize with `var Sequelize = require('sequelize');` and connect to their database with `var sequelize = new Sequelize('database', 'username', 'password');`, instead of this, I use `let Sql = require('sequelize');` and `let sql = new Sql('database', 'username', 'password');`, so I don't have to type as much. It makes no difference, but I want to avoid confusion for anyone comparing my code to the Sequelize docs. Note however that you have to use `var` or `let` using `const` with Sequelize will cause errors.
 
-To use environment variables locally, create a file called `.env` and save it to the root of your project. Then add environment-specific variables on new lines with the following pattern `NAME=VALUE`. `process.env` will now have acccess to the keys and values defined in the `.env` file. The  Authentication is done with a local strategy as well as with OAuth from Azure Active Directory. You do not have to use the OAuth, but the site will not work properly without access to the database, so you must at least include your database connection information. To use OAuth and connect to your database And enter the following keys and values:
+To use environment variables locally, create a file called `.env` and save it to the root of your project. Then add environment-specific variables on new lines with the following pattern `NAME=VALUE`. `process.env` will now have acccess to the keys and values defined in the `.env` file. The  Authentication is done with a local strategy as well as with OAuth from Azure Active Directory. You do not have to use the OAuth, but the site will not work properly without access to the database, so you must at least include your database connection information. To use OAuth and connect to your database enter the following keys and values:
 
 ```
 DB_PASS=YourPassword
@@ -40,9 +36,9 @@ grunt | same as `grunt start`
 
 `grunt build` and `grunt build:dev` will both compile your front end files, but `build:dev` does not minify the code, which is helpful for debugging, but should not be used in production. 
 
-##How does it work?
+##Building with Grunt?
 
-When you run a Grunt build task, the JavaScript files are compiled into the `build.min.js` file and the .less files are compiled into the `custom.build.min.css` file. You can create as many css/less files within the `/css/less` folder as you want and as long as they have a `.less` extension they will compiled into the `custom.build.min.css file`. 
+The `Gruntfile.js` in the root of the project contains the grunt tasks. When you run a Grunt build task, the JavaScript files are compiled into the `build.min.js` file and the .less files are compiled into the `custom.build.min.css` file. You can create as many css/less files within the `/css/less` folder as you want and as long as they have a `.less` extension they will compiled into the `custom.build.min.css file`. 
 
 In the same way, any `.js` files within the `app` folder will be compiled into the `build.min.js` and any files that are required or imported in will be included, but AngularJS directive, controller, or factory files must be added to the `app/components/client.js` list of required files with a path relative to the `app/components/` folder. 
 
@@ -50,9 +46,9 @@ The REST api is built with ExpressJS and Node.js and it does not need to be comp
 
 ##The API
 
-The REST api is built with ExpressJS and Node.js. The `api-routes.js` file contains the routes that send data back and forth to the database, the `auth-routes.js` file contains the routes involved with authorization, and the `catch-all-routes.js` sends the index.html to initiate the single page Angular app. 
+The REST api is built with ExpressJS and Node.js. The `routes/api-routes.js` file contains the routes that send data back and forth to the database, the `routes/auth-routes.js` file contains the routes involved with authorization, and the `routes/catch-all-routes.js` sends the `app/index.html` to initiate the single page Angular app. 
 
-The authentication middleware has two methods in `scripts/userLogging`: `isLoggedIn` and `isLoggedInAdmin`. Adding `isLoggedIn` will check if the user is logged in, `isLoggedInAdmin` will check if the user is logged in and whether they are an adming user.
+The authentication middleware is the `scripts/userLogging.js` file. It has two methods: `isLoggedIn` and `isLoggedInAdmin`. Adding `isLoggedIn` will check if the user is logged in, `isLoggedInAdmin` will check if the user is logged in and whether they are an admin user.
 
 if you want a route to require authentication, simply add the `isLoggedIn` or `isLoggedInAdmin` in the route. e.g.
 ```javascript
@@ -65,13 +61,17 @@ The actual server files is the `server.js` file in the root of the project. To s
 
 ##The Angular app
 
-The client side of the app is built with [AngularJS](https://angularjs.org/) and compiled with [Babel](https://babeljs.io/) and [Browserify](http://browserify.org/). All the files for the client side are in the `app/components` folder. Within that folder the files are separated by which pages they relate to and also for shared components such as the header and footer. The files for the admin section of the app, which allow you to edit the app on the client side are in the `app/components/admin` folder. There are some controller and directive modules that are shared by some pages, so if you can't find a controller that is being called in a template, do a search on all files in the components folder (Ctrl+Shift+F in most text editors) to see which page it is saved with. This will hopefully be fixed in the future.
+The client side of the app is built with [AngularJS](https://angularjs.org/) and compiled with [Babel](https://babeljs.io/) and [Browserify](http://browserify.org/). All the files for the client side are in the `app/components` folder. Within that folder the files are separated by which pages they relate to and also for shared components such as the header and footer. The files for the admin section of the app, which allow you to edit the app on the client side are in the `app/components/admin` folder. There are some controller and directive modules that are shared by multiple templates, so if you can't find a controller that is being called in a template, do a search on all files in the components folder (Ctrl+Shift+F in most text editors) to see which page it is saved with. This will hopefully be fixed in the future.
 
 The main entry point for the client side of the app is the `app/components/client.js` file. This file configures the Angular app, sets up the client-side routing, requires in Angular and any Angular modules you want to use, and requires in your controller, directive, and factory modules. If you create additional modules, they must be required in the `client.js` file or they cannot be accessed by the app. 
 
-##A Note on Deploying to Visual Studio
+##A Note on Deploying to Azure
 
-If you deploy with Visual Studio, Visual Studio will not perform `npm install` for you, so you must push your `node_modules` folder, but in order to avoid pushing all you dev dependencies, delete your `node_modules` folder then run `npm install --production` before pushing your files.
+If you deploy to Azure, Azure will not perform `npm install` for you after pushing your files, so you must push your `node_modules` folder. In order to avoid pushing all you dev dependencies, delete your `node_modules` folder then run `npm install --production` before pushing your files. This will install only the dependencies and not the devDependencies from your `package.json` file.
+
+If you deploy with Visual Studio also be awayre that Visual Studio does not respect your `.gitignore` file, so delete or temporarily move any files with sensitiive information such as the `.env` file before deploying with Visual Studio. 
+
+If you deploy to Azure with the cli, it will respect your `.gitignore` but it still does not perform an `npm install` for you, so you will need to temporarily remove your `node_modules` folder from your `.gitignore` before pushing to Azure.  
 
 ##To Do
 
