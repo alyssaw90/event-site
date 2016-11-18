@@ -16,6 +16,8 @@ const bodyparser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 const eatAuth = require('../scripts/eat_auth')(process.env.SECRET_KEY);
+const userLogging = require(`../scripts/userLogging`)();
+const isLoggedIn = userLogging.isLoggedIn;
 const models = require('../models');
 const User = models.User;
 const Speaker = models.Speaker;
@@ -23,6 +25,7 @@ const Event = models.Event;
 const EventTab = models.EventTab;
 const Slideshow = models.Slideshow;
 const Slide = models.Slide;
+const MsUser = models.MsUser;
 const placeholders = require('../models/placeholders');
 const dbRelationships = require('../models/relationships');
 const multipart = require('connect-multiparty');
@@ -88,7 +91,7 @@ module.exports = (router) => {
         where: {
           eventEndDate: {
               $or: {
-                $gte: new Date(),
+                $gte: new Date(new Date().getTime() - 24 * 60 * 60 * 1000),
                 $eq: null,
                 /* jshint ignore:start */
                 $eq: new Date(new Date().getFullYear().toString())
@@ -205,7 +208,7 @@ module.exports = (router) => {
         where: {
           eventEndDate: {
             $and: {
-              $lt: new Date(),
+              $lte: new Date(new Date().getTime() - 24 * 60 * 60 * 1000),
               $gte: new Date('2016-01-01')
             }
           },
@@ -245,8 +248,8 @@ module.exports = (router) => {
     });
   });
 
-  //route to get all files and delet files
-  router.get('/files', eatAuth, (req, res) => {
+  //route to get all files and delete files
+  router.get('/files', isLoggedIn, (req, res) => {
     fs.readdir('uploads/', (err, data) => {
       if (err) {
         console.log(clc.white.bgRed('Error: '), err);
@@ -282,7 +285,7 @@ module.exports = (router) => {
     res.end();
   })
 
-  //route to send slides related to a slidesho
+  //route to send slides related to a slideshow
   router.get('/slideshow/:slideName', (req, res) => {
     models.sql.sync()
     .then( () => {
@@ -300,7 +303,7 @@ module.exports = (router) => {
     })
   });
   //route to get all slides
-  router.get('/allslides', eatAuth, (req, res) => {
+  router.get('/allslides', isLoggedIn, (req, res) => {
     models.sql.sync()
     .then( () => {
       return Slide.findAll();
@@ -311,7 +314,7 @@ module.exports = (router) => {
   });
 
   //route to set homepage slides
-  router.post('/sethomepageslides', eatAuth, (req, res) => {
+  router.post('/sethomepageslides', isLoggedIn, (req, res) => {
     models.sql.sync()
     .then( () => {
       return Slideshow.findOne({
@@ -336,7 +339,7 @@ module.exports = (router) => {
     });
   });
 
-  router.post('/addslide', eatAuth, (req, res) => {
+  router.post('/addslide', isLoggedIn, (req, res) => {
     models.sql.sync()
     .then( () => {
       Slide.create({
@@ -349,13 +352,37 @@ module.exports = (router) => {
     });
   });
 
-  //verify login
-  router.get('/user/checklogin', eatAuth, (req, res) => {
-    res.json({authenticated: true});
+  router.post('/deleteslide', isLoggedIn, (req, res) => {
+    models.sql.sync()
+    .then(() => {
+      return Slide.destroy({
+        where: {
+          id: {
+            $in: req.body
+          }
+        }
+      });      
+    })
+    .then(() => {
+      res.status('200').end();
+    })
+    .error( () => {
+      res.status('501').end();
+    })
   });
 
+  //verify login
+  router.get('/user/checklogin', isLoggedIn, (req, res) => {
+    res.json({msg: `logged in`});
+  });
+
+  //get user info
+  router.get(`/user/accountinfo`, isLoggedIn, (req, res) => {
+    res.json({user: req.user});
+  })
+
   //get all speakers for editing
-  router.get('/speakers', eatAuth, (req, res) => {
+  router.get('/speakers', isLoggedIn, (req, res) => {
     models.sql.sync()
     .then( () => {
       Speaker.findAll()
@@ -366,7 +393,7 @@ module.exports = (router) => {
   });
 
   //get all events for edit events tab
-  router.get('/allevents', eatAuth, (req, res) => {
+  router.get('/allevents', isLoggedIn, (req, res) => {
     models.sql.sync()
     .then( () => {
       return Event.findAll();
@@ -393,7 +420,7 @@ module.exports = (router) => {
   });
 
   //route for uploading files with tinymce
-  router.post('/tinymceUpload', eatAuth, (req, res) => {
+  router.post('/tinymceUpload', isLoggedIn, (req, res) => {
     let imageBuffer = new Buffer(req.body.base64String, 'base64');
     fs.writeFile(`uploads/${req.body.fileName}`, imageBuffer, (err) => {
       res.end('file saved');
@@ -401,10 +428,12 @@ module.exports = (router) => {
   });
 
   // create new event
-  router.post('/createevent', eatAuth, (req, res, next) => {
+  router.post('/createevent', isLoggedIn, (req, res, next) => {
+    let userName = req.user.unique_name || req.user.email;
     models.sql.sync()
     .then(function () {
-      Event.create({
+      return Event.create({
+        lastModifiedBy: userName,
         eventName: req.body.newEventName,
         eventUrl: req.body.eventUrl,
         eventRegistrationLink: req.body.newEventRegistrationLink,
@@ -417,14 +446,17 @@ module.exports = (router) => {
         showOnHeader: req.body.showOnHeader,
         eventAboutTabText: req.body.eventAboutTabText,
         eventVenueName: req.body.newEventVenueName,
-        eventVenueAddressLine1: req.body.newVenduAddressLine1,
-        eventVenueAddressLine2: req.body.newVenueAddressLine2,
+        eventVenueAddress: req.body.newVenueAddress,
         eventParkingInfo: req.body.newVenueParkingInfo,
         eventVenueImg: req.body.newEventVenueImg,
         eventTechnicalTopics: req.body.eventTechnicalTopics
       })
       .catch( (err) => {
-        next(new Error(err.errors));
+        let errorMsg = ``;
+        for (let i =0, j = err.errors.length; i < j; i++) {
+          errorMsg += err.errors[i].message + `\n`;
+        }
+        res.status(500).send(errorMsg);
       })
       .then( (newEvent) => {
         models.sql.sync()
@@ -442,7 +474,7 @@ module.exports = (router) => {
     });
   });
 
-  router.post('/editevent', eatAuth, (req, res, next) => {
+  router.post('/editevent', isLoggedIn, (req, res, next) => {
     models.sql.sync()
     .then( () => {
       return Event.findOne({
@@ -452,30 +484,55 @@ module.exports = (router) => {
       })
     })
     .then( (event) => {
-      event.update({
-        showOnHeader: req.body.event.showOnHeader,
-        isPublished: req.body.event.isPublished,
-        eventName: req.body.event.eventName,
-        eventUrl: req.body.event.eventUrl,
-        eventRegistrationLink: req.body.event.eventRegistrationLink,
-        eventStartDate: req.body.event.eventStartDate,
-        eventEndDate: req.body.event.eventEndDate,
-        eventCountry: req.body.event.eventCountry,
-        eventHeaderImage: req.body.event.eventHeaderImage,
-        eventContinent: req.body.event.eventContinent,
-        eventAboutTabText: req.body.event.eventAboutTabText,
-        eventVenueName: req.body.event.eventVenueName,
-        eventVenueAddressLine1: req.body.event.eventVenueAddressLine1,
-        eventVenueAddressLine2: req.body.event.eventVenueAddressLine2,
-        eventParkingInfo: req.body.event.eventParkingInfo,
-        eventVenueImg: req.body.event.eventVenueImg,
-        eventTechnicalTopics: req.body.eventTechnicalTopics
+      let userName = req.user.unique_name || req.user.email;
+      return event.update({
+            lastModifiedBy: userName,
+            showOnHeader: req.body.event.showOnHeader,
+            isPublished: req.body.event.isPublished,
+            eventName: req.body.event.eventName,
+            eventUrl: req.body.event.eventUrl,
+            eventRegistrationLink: req.body.event.eventRegistrationLink,
+            eventStartDate: req.body.event.eventStartDate,
+            eventEndDate: req.body.event.eventEndDate,
+            eventCountry: req.body.event.eventCountry,
+            eventHeaderImage: req.body.event.eventHeaderImage,
+            eventContinent: req.body.event.eventContinent,
+            eventAboutTabText: req.body.event.eventAboutTabText,
+            eventVenueName: req.body.event.eventVenueName,
+            eventVenueAddress: req.body.event.eventVenueAddressLine1,
+            eventParkingInfo: req.body.event.eventParkingInfo,
+            eventVenueImg: req.body.event.eventVenueImg,
+            eventTechnicalTopics: req.body.eventTechnicalTopics,
+            eventLanguage: req.body.newEventLanguage
       })
-      res.end();
+      .then((updatedEvent) => {
+        res.end(updatedEvent.eventUrl);
+      })
+      .catch((err) => {
+        res.status(500).json({msg: `there was a problem updating your event`});
+      })
     })
   });
 
-  router.post('/edittab', eatAuth, (req, res, next) => {
+  router.delete(`/deleteevent/:slug`, isLoggedIn, (req, res) => {
+    models.sql.sync()
+    .then(() => {
+      return Event.findOne({
+        where: {
+          id: req.params.slug
+        }
+      })
+    })
+    .then((event) => {
+      event.destroy();
+      res.end();
+    })
+    .catch((err) => {
+      res.json(err);
+    })
+  })
+
+  router.post('/edittab', isLoggedIn, (req, res, next) => {
     models.sql.sync()
     .then( () => {
       return EventTab.findOne({
@@ -488,17 +545,43 @@ module.exports = (router) => {
       if (typeof req.body.tabContent === 'string') {
         tab.tabContent = req.body.tabContent;
       }
-      tab.tabNumber = req.body.tabNumber,
       tab.tabTitle = req.body.tabTitle,
       tab.isPublished = req.body.isPublished
       tab.save()
       .then((newTab) => {
-        res.end();
+        res.json(newTab);
       });
     });
   });
 
-  router.post('/addtab', eatAuth, (req, res) => {
+  router.post('/newtaborder', isLoggedIn, (req, res) => {
+    models.sql.sync()
+    .then( () => {
+      return EventTab.findAll({
+        where: {
+          id: {
+            $in: req.body
+          }
+        }
+      })
+    })
+    .then( (tabs) => {
+      tabs.forEach( (tab) => {
+        let tabId = tab.id.toString();
+
+        for (let i = 0, j = req.body.length; i < j; i++) {
+          if (req.body[i] === tabId) {
+            tab.update({
+              tabNumber: i
+            })
+          }
+        }
+      });
+      res.end();
+    })
+  })
+
+  router.post('/addtab', isLoggedIn, (req, res) => {
     models.sql.sync()
     .then( () => {
       return EventTab.create({
@@ -524,7 +607,7 @@ module.exports = (router) => {
     });
   });
 
-  router.delete('/deletetab/:slug', eatAuth, (req, res) => {
+  router.delete('/deletetab/:slug', isLoggedIn, (req, res) => {
     models.sql.sync()
     .then( () => {
       return EventTab.findOne({
@@ -539,7 +622,7 @@ module.exports = (router) => {
     })
   })
 
-  router.post('/editeventspeakers', eatAuth, (req, res) => {
+  router.post('/editeventspeakers', isLoggedIn, (req, res) => {
     models.sql.sync()
     .then( () => {
       return Event.findOne({
@@ -557,12 +640,14 @@ module.exports = (router) => {
   });
 
   //route to create speakers
-  router.post('/addspeakers', eatAuth, (req, res) => {
+  router.post('/addspeakers', isLoggedIn, (req, res) => {
     models.sql.sync()
     .then( () => {
+      let userName = req.user.unique_name || req.user.email;
       let speakerEmail = req.body.newMsTeamEmail ? req.body.newMsTeamEmail : 'plugfests@microsoft.com';
       // let speakerHeadshot = req.body.headshot ? req.body.headshot : 'placeholder-headshot.jpg';
       Speaker.create({
+        lastModifiedBy: userName,
         firstName: req.body.newFirstName,
         lastName: req.body.newLastName,
         email: speakerEmail,
@@ -577,7 +662,7 @@ module.exports = (router) => {
     });
   });
   //route to edit speakers
-  router.post('/editspeaker', eatAuth, (req, res) => {
+  router.post('/editspeaker', isLoggedIn, (req, res) => {
     models.sql.sync()
     .then( () => {
       return Speaker.findOne({
@@ -587,8 +672,10 @@ module.exports = (router) => {
       })
     })
     .then( (speaker) => {
+      let userName = req.user.unique_name || req.user.email;
       let speakerEmail = req.body.email ? req.body.email : 'plugfests@microsoft.com';
-      speaker.update({
+      return speaker.update({
+        lastModifiedBy: userName,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: speakerEmail,
@@ -600,13 +687,28 @@ module.exports = (router) => {
         isPublished: req.body.isPublished
       })
     })
-    .then( () => {
-      res.end();
+    .then( (editedSpeaker) => {
+      res.json(editedSpeaker);
     });
   });
+
+  router.delete(`/deletespeaker/:slug`, isLoggedIn, (req, res) => {
+    models.sql.sync()
+    .then(() => {
+      return Speaker.findOne({
+        where: {
+          id: req.params.slug
+        }
+      })
+    })
+    .then( (speaker) => {
+      speaker.destroy();
+      res.end();
+    })
+  })
   
     //show all images
-  router.get('/showimages', eatAuth, function(req, res) {
+  router.get('/showimages', isLoggedIn, function(req, res) {
     fs.readdir('uploads', function(err, files) {
       let imagesArr = [];
       if (err) {
@@ -622,8 +724,43 @@ module.exports = (router) => {
       res.json(imagesArr);
     });
   });
+
+  /*Get events including unpublished content from URL path/slug */
+  router.route('/fulllist/:slug')
+  .get(isLoggedIn, (req, res) => {
+    //create an eventInfo object to hold the values for the event to be rendered
+    let eventInfo = {};
+    eventInfo.isEvent = true;
+    models.sql.sync()
+    .then( () => {
+      // search the database for event that matches the city and occurs on or after the year from the params and return the event found
+      return Event.findOne({
+        where: {
+          eventUrl: req.params.slug,
+        }
+      });
+    })
+    //get the related tabs and speakers for the event and add them to the return object
+    .then( (event) => {
+      if (!event) {
+        eventInfo.isEvent = false;
+        res.json(eventInfo);
+      } else {
+        eventInfo.event = event;
+        event.getEventTabs()
+        .then( (tabs) => {
+          eventInfo.tabs = tabs;
+          event.getSpeakers()
+          .then( (speakers) => {
+            eventInfo.speakers = speakers;
+            res.json(eventInfo);
+          });
+        });        
+      }
+    });
+  });
  
-  /*Get events from URL path/slug and either send the event if there is one or set isEvent to false to show 404 page THIS ROUTE MUST BE LAST */
+  /*Get published events from URL path/slug to display and either send the event if there is one or set isEvent to false to show 404 page THIS ROUTE MUST BE LAST */
   router.route('/:slug')
   .get( (req, res) => {
     //create an eventInfo object to hold the values for the event to be rendered

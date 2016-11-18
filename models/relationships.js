@@ -217,7 +217,7 @@ module.exports = function() {
 	.then(function(event) {
 	  models.sql.sync()
 	  .then(function() {
-	  	event.setEventTabs([29]);
+	  	event.setEventTabs([29, 38]);
 	  })
 	})
 	.then(function() {

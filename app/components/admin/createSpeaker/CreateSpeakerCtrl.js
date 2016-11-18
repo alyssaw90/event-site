@@ -1,15 +1,22 @@
 'use strict';
+const swal = require(`sweetalert`);
 
 const CreateSpeakerCtrl = (app) => {
 
-	app.controller('CreateSpeakerCtrl', ['$scope', '$rootScope', 'Upload', 'createSpeakerRESTResource', ($scope, $rootScope, Upload, resource) => {
+	app.controller('CreateSpeakerCtrl', ['$scope', '$rootScope', 'Upload', 'createSpeakerRESTResource', `$location`, ($scope, $rootScope, Upload, resource, $location) => {
 		$scope.newSpeaker = {};
 
 		let CreateSpeakerData = resource();
 
     $scope.tinymceCreateSpeakerOptions = $rootScope.tinymceOptions;
 
-		$scope.createNewSpeaker = (newSpeaker) => {
+    $scope.cancelNewSpeaker = () => {
+      $scope.newSpeaker = {};
+      $location.url(`/admin/edit-speaker`);
+    }
+
+		$scope.createNewSpeaker = (newSpeaker, publishStatus) => {
+      newSpeaker.publishStatus = publishStatus;
       newSpeaker.headshot = $rootScope.newSpeakerImg.name ? $rootScope.newSpeakerImg.size + '-' + $rootScope.newSpeakerImg.name : 'placeholder-headshot.jpg';
 
       CreateSpeakerData.createSpeaker(newSpeaker, (err, data) => {
@@ -20,7 +27,12 @@ const CreateSpeakerCtrl = (app) => {
 
           $scope.newSpeaker = {};
           $rootScope.newSpeakerImg = undefined;
-          alert('speaker saved');
+          $location.url(`/admin/edit-speaker`);
+          swal({
+            title: `Speaker published`,
+            type: `success`,
+            customClass: `sweet-alert-hide-input`
+          })
         }
 
       });

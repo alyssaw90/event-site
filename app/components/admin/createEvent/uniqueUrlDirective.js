@@ -10,6 +10,7 @@ const uniqueUrlDirective = (app) => {
 			require: 'ngModel',
 			scope: true,
 			link: ($scope, $elem, attrs, ngModel) => {
+
 				const $form = jQuery($elem[0].form);
 				//remove current event's URL from duplicate list
 				function removeCurrentUrl(val) {
@@ -20,25 +21,28 @@ const uniqueUrlDirective = (app) => {
 				$scope.$watch('editedEvent.event', () => {
 					$scope.$parent.getEvents();
 					usedUrls = $scope.$parent.eventUrls.filter(removeCurrentUrl);
-				})
-				//function to check for unique URL
-				function uniqueUrl() {
-					let index = $scope.$parent.eventUrls.indexOf($elem[0].value);
-					if (index > -1 && $elem[0].value !== $scope.$parent.currentEventUrl) {
-						ngModel.$setValidity('uniqueUrl', false);
-						$elem.addClass('win-color-border-color-alert');
-					} else {
-						ngModel.$setValidity('uniqueUrl', true);						
-						ngModel.$invalid = true;
-						$elem.removeClass('win-color-border-color-alert');
+				});
+				//$watch the value of the form input and add an error if it's already used
+				$scope.$watch(
+					() => {
+						return $elem[0].value
+					}, 
+					(newVal, oldVal) => {
+						let index = usedUrls.length ? usedUrls.indexOf(newVal) : $scope.$parent.eventUrls.indexOf(newVal);
+						if (index > -1) {
+							ngModel.$setValidity('uniqueUrl', false);
+							$elem.addClass('win-color-border-color-alert');
+						} else {
+							ngModel.$setValidity('uniqueUrl', true);						
+							ngModel.$invalid = true;
+							$elem.removeClass('win-color-border-color-alert');
+						}
 					}
-				};
-				//add unique url check to model $parsers
-				ngModel.$parsers.push(uniqueUrl);
+				);
 
 				//bind url check to form submission and prevent submission and focus on elem if it alread exists in URL array
 		    $form.bind('submit', function(e) {
-		    	let index = $scope.$parent.eventUrls.indexOf($elem[0].value);
+		    	let index = usedUrls.length ? usedUrls.indexOf(newVal) : $scope.$parent.eventUrls.indexOf(newVal);
 		    	if (index > -1 && $elem[0].value !==  $scope.$parent.currentEventUrl) {
 		    		e.preventDefault();
 		    		ngModel.$setValidity('uniqueUrl', false);

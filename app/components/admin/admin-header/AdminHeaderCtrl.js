@@ -1,23 +1,28 @@
 'use strict';
-const jQuery = require('jquery');
+const swal = require('sweetalert');
 
 const AdminHeaderCtrl = (app) => {
 
 	app.controller('AdminHeaderCtrl', ['$scope', '$log', '$cookies', '$window', '$location', ($scope, $log, $cookies, $window, $location) => {
 
-  $scope.logout = () => {
-    let confirmationResponse = confirm('Are you sure you want to logout?');
+    // $scope.showAccountButton = $cookies.get(`strategy`) === `basic` || $cookies.get(`interopAdmin`) === `true` ? true : false;
 
-    if (confirmationResponse) {
-      let currentPath = $location.path();
-      $cookies.remove('token', {'path': '/'});
-      $cookies.remove('interopAdmin', {'path': '/'});
-      $cookies.remove('username', {'path': '/'});
-      $cookies.remove('useremail', {'path': '/'});
-      $window.sessionStorage.token = '';
-      $window.location.reload();      
+    $scope.logout = () => {
+      swal({
+        title: 'Logout?',
+        type: 'warning',
+        showCancelButton: true,
+        closeOnConfirm: false,
+        customClass: 'sweet-alert-hide-input'
+      },
+      () => {
+        let currentPath = $location.path();
+        $cookies.remove('strategy', {'path': '/'});
+        $cookies.remove('interopAdmin', {'path': '/'});
+        $window.location.reload(); 
+      });
+      
     }
-  }
 
   }]);
 };

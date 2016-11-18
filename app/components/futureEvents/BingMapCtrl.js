@@ -39,8 +39,7 @@ const BingMapCtrl = (app) => {
 					return $scope.errors.push({msg: 'could not get bing map search results'});
 				}
 
-				console.log('data:     ', data);
-			})
+			});
 		}
 
 		getBingMapKey();

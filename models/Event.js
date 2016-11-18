@@ -10,7 +10,7 @@ module.exports = (sql, DataTypes) => {
     isPublished: DataTypes.BOOLEAN,
     showOnHeader: DataTypes.BOOLEAN,
     lastModifiedBy: DataTypes.STRING,
-    eventRegistrationLink: DataTypes.STRING, //link to registrationfor event
+    eventRegistrationLink: DataTypes.STRING, //link to registration for event
     eventUrl: {
       type: DataTypes.STRING,
       unique: true,
@@ -23,7 +23,10 @@ module.exports = (sql, DataTypes) => {
     eventLocation:  DataTypes.STRING,
     eventState: DataTypes.TEXT,
     eventCountry: DataTypes.TEXT,
-    eventContinent: DataTypes.ENUM('North America', 'South America', 'Africa', 'Asia', 'Europe', 'Oceania'),
+    eventContinent: {
+      type: DataTypes.ENUM('North America', 'South America', 'Africa', 'Asia', 'Europe', 'Oceania'),
+      defaultValue: `North America`
+    },
     eventStartDate: DataTypes.DATE, //the start date...
     eventEndDate: DataTypes.DATE, // the end date...
     eventHeaderImage: DataTypes.TEXT, //link to header image
@@ -33,14 +36,14 @@ module.exports = (sql, DataTypes) => {
       // required: true
     }, //text for About Page
     eventVenueName: DataTypes.STRING,
-    eventVenueAddressLine1: DataTypes.STRING,
-    eventVenueAddressLine2: DataTypes.STRING,
+    eventVenueAddress: DataTypes.STRING,
     eventParkingInfo: DataTypes.TEXT,
-    eventVenueImg: DataTypes.STRING
+    eventVenueImg: DataTypes.STRING,
+    eventLanguage: DataTypes.STRING
   },
   {
     hasTrigger: true,
-    paranoid: true
+    paranoid: false
   });
 
 

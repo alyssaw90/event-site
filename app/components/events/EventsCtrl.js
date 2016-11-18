@@ -3,7 +3,7 @@ import * as customFunctions from '../shared/methods/common-functions.js';
 const jQuery = require('jquery');
 
 const EventsCtrl = (app) => {
-	app.controller('EventsCtrl', ['$scope', '$http', '$sce', 'eventsRESTResource', function($scope, $http, $sce, resource) {
+	app.controller('EventsCtrl', ['$scope', '$http', '$sce', 'eventsRESTResource', '$rootScope', function($scope, $http, $sce, resource, $rootScope) {
 		$scope.errors = [];
 		//hide the 404 page when loading the page
 		$scope.show404 = false;
@@ -18,6 +18,7 @@ const EventsCtrl = (app) => {
         if (err) {
           return $scope.errors.push({msg: 'no event found'});
         };
+        $rootScope.lang = data.event.eventLanguage || 'en';
         $scope.headerImage = 'uploads/' + data.event.eventHeaderImage;
         $scope.events = data;
         //loop over html string for tabs and tell angular to trust it as html

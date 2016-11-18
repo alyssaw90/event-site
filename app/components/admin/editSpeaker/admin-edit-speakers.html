@@ -2,14 +2,13 @@
 <div class="mobileWrapper ng-cloak" role="presentation" data-ng-controller="AdminCreateEventCtrl" data-ng-init="getEvents(); getAllSpeakers()" >
   <main style="overflow:hidden;" id="beginningOfContent" tabindex="0" class="container">
     <section role="presentation" class="internetExplorer">
-    	<div role="presentation" class="row">
-				<div class="col-lg-24 admin-header-div-with-button" role="presentation">
-					<h3 class="middle-align">All Speakers</h3>
-					<a class="btn btn-orange middle-align" href="/admin/create-speaker">Add New</a>
-				</div>
-    	</div>
+    	<!--<div role="presentation" class="row">
+    	</div>-->
     	<div role="presentation" class="row">
 				<div id="edit-speakers-list" class="col-lg-24" role="presentation">
+					<div role="presentation">
+						<a class="btn btn-orange" href="/admin/create-speaker">Add New</a>
+					</div>
 					<table class="table table-bordered">
 						<tr>
 							<th><h4>Speaker Name</h4></th>
@@ -18,13 +17,14 @@
 							<th><h4>Last Modified</h4></th>
 							<th colspan="2"><h4>Status</h4></th>
 						</tr>
-						<tr data-ng-repeat="speaker in theSpeakers">
+						<tr data-ng-repeat="speaker in theSpeakers | orderBy: 'firstName'">
 							<td>{{speaker.fullName}}</td>
-							<td>{{speaker.showOnMeetTheTeamPage}}</td>
+							<td>{{speaker.showOnMeetTheTeamPage === true ? 'True' : 'False'}}</td>
 							<td>{{speaker.lastModifiedBy}}</td>
 							<td>{{speaker.updatedAt | date: 'MM/dd/yyyy'}}</td>
-							<td>{{publishedOrNot = speaker.isPublished ? 'published' : 'unpublished';}}</td>
-							<td><button ng-click="getSpeaker(speaker);">Edit</button></td>
+							<td>{{publishedOrNot = speaker.isPublished ? 'Published' : 'Unpublished';}}</td>
+							<td><button class="btn" ng-click="getSpeaker(speaker);">Edit</button></td>
+							<td><button class="btn win-color-bg-alert whiteText" data-ng-click="deleteSpeaker(speaker);">Delete</button></td>
 						</tr>
 					</table>
 				</div>
@@ -40,20 +40,18 @@
 	 				</div>
 	  		</section>
  				<div role="presentation" class="row">
-					<form id="edit-speaker-form" method="post" enctype="multipart/form-data" data-ng-submit="saveNewSpeaker(speakerToEdit)" class="col-lg-24">
+					<form id="edit-speaker-form" method="post" enctype="multipart/form-data" class="col-lg-24" make-auto-complete-false-directive>
 						<div data-ng-controller="AdminPageCtrl">
-				  	  <p>Select Headshot</p>
-				  		<button name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'editedSpeakerImg')">Select Headshot</button>
-				  		<!-- <br><br>
-				  		File:
+				  		 <br><br>
 				  		<div style="font:smaller">{{editedSpeakerImg.path}}{{editedSpeakerImg.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
 				  		    <span class="progress" ng-show="editedSpeakerImg.progress >= 0">
 				  		        <div style="width:{{editedSpeakerImg.progress}}%"  
 				  		             ng-bind="editedSpeakerImg.progress + '%'"></div>
 				  		    </span>
 				  		</div>     
-				  		{{errorMsg}} -->
-			    			
+				  		{{errorMsg}} 
+				  	  <p>Select Headshot</p>
+				  		<button name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'editedSpeakerImg')">Select Headshot</button>
 			    	</div>
 						<input class="form-control" type="hidden" name="newSpeakerId" data-ng-model="speakerToEdit.id">
 			    	<div class="form-group" role="presentation">
@@ -93,18 +91,11 @@
 							data-ui-tinymce="tinymceOptions">
 			      	</textarea>
 			    	</div>
-			    	<div class="form-group" role="presentation">
-							<radiogroup>
-								<label for="publishedTrue">Publish Now</label>
-								<input type="radio" data-ng-model="speakerToEdit.isPublished" id="publishedTrue" name="isPublished" ng-value="true">
-								<br>
-								<label for="publishedFalse">Save as Draft</label>
-								<input type="radio" data-ng-model="speakerToEdit.isPublished" id="publishedFalse" name="isPublished" ng-value="false">
-							</radiogroup>
-			    	</div>
 						<button type="button" ng-click="cancelEditingSpeaker()">Cancel</button>
-						<button type="submit" class="btn-green" id="save-new-speaker-button">Save</button>
-					</form>
+						<button type="submit" class="btn btn-primary" id="save-new-speaker-as-draft-button" data-ng-click="saveNewSpeaker(speakerToEdit, false)">Revert to Draft</button>
+						<button type="submit" class="btn btn-green" id="save-new-speaker-button" data-ng-click="saveNewSpeaker(speakerToEdit, true)">Publish Now</button>
+						<p>Last Updated: {{speakerToEdit.updatedAt | date: 'MM/dd/yyyy HH:mm:ss'}}</p>
+						</form>
 					<!-- input below is for tinymce file upload -->
 					<input name="image" type="file" id="upload" class="hideElem" onchange="">
  				</div>

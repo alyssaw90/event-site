@@ -152,11 +152,16 @@ img {
 	list-style-type: none;
 }
 
-// fix for sweet-alert bugs
-.sweet-alert {
-  fieldset, .sa-error-container {
-    display: none !important;
+// fix for sweetalert not hiding hiding intput, use on all sweetalerts that don't have an input
+.sweet-alert-hide-input {
+  fieldset {
+    display: none;
   }
+}
+
+//fix for sweetalert alwasys displaying input error
+.sa-error-container {
+	display: none;
 }
 
 /* Flexible iFrame */

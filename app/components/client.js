@@ -20,11 +20,12 @@ require('angular-ui-tinymce');
 require('angular-ui-sortable');
 require('angular-bootstrap-confirm');
 require('angular-messages');
+require(`angular-password`);
 
-const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize', 'angular-google-analytics', 'ngFileUpload', 'ngResource', 'ngCookies', 'base64', 'ngAnimate', 'ui.bootstrap', 'ui.tinymce', 'ui.sortable', 'mwl.confirm', 'ngMessages']);
+const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize', 'angular-google-analytics', 'ngFileUpload', 'ngResource', 'ngCookies', 'base64', 'ngAnimate', 'ui.bootstrap', 'ui.tinymce', 'ui.sortable', 'mwl.confirm', 'ngMessages', `ngPassword`]);
 
 //directives
-require('./shared/allPagesDirective.js')(eventsApp);
+require('./shared/directives/allPagesDirective.js')(eventsApp);
 require('./homepage/homepageDirective.js')(eventsApp);
 require('./latestNews/latestNewsDirective.js')(eventsApp);
 require('./contactUs/contactUsDirective.js')(eventsApp);
@@ -42,9 +43,15 @@ require('./admin/createEvent/matchButtonSizeDirective.js')(eventsApp);
 require('./shared/header/hamburgerMenuDirective.js')(eventsApp);
 require('./admin/createEvent/uniqueUrlDirective.js')(eventsApp);
 require('./admin/editSlideshow/selectableSlideDirective.js')(eventsApp);
+require('./admin/editFiles/matchFileDisplayHeights.js')(eventsApp);
+require('./shared/header/carouselHeightDirective.js')(eventsApp);
+require('./admin/makeAutoCompleteFalseDirective.js')(eventsApp);
+require('./admin/editEvent/sortableTabsDirective.js')(eventsApp);
+require('./admin/editEvent/uniqueTabNameDirective.js')(eventsApp);
 
 //controllers
-require('./shared/AllPagesCtrl.js')(eventsApp);
+require('./shared/controllers/AllPagesCtrl.js')(eventsApp);
+require('./shared/controllers/updateLanguageCtrl.js')(eventsApp);
 require('./homepage/HomepageCtrl.js')(eventsApp);
 require('./pastEvents/PastEventsCtrl.js')(eventsApp);
 require('./meetTheTeam/MeetTheTeamCtrl.js')(eventsApp);
@@ -62,6 +69,7 @@ require('./admin/editSlideshow/editSlideshowCtrl.js')(eventsApp);
 require('./admin/editFiles/EditFilesCtrl.js')(eventsApp);
 require('./admin/editEvent/EditEventCtrl.js')(eventsApp);
 require('./admin/editSpeaker/EditSpeakerController.js')(eventsApp);
+require(`./admin/account/AccountController.js`)(eventsApp);
 //services
 require('./meetTheTeam/meetTheTeamRestResource.js')(eventsApp);
 require('./futureEvents/futureEventsRESTResource.js')(eventsApp);
@@ -78,6 +86,10 @@ require('./admin/editEvent/editEventRESTResource.js')(eventsApp);
 require('./admin/editSpeaker/editSpeakerRESTResource.js')(eventsApp);
 require('./admin/adminPageRESTResource.js')(eventsApp);
 require('./pastEvents/pastEventsRESTResource.js')(eventsApp);
+require(`./admin/account/accountRESTResource`)(eventsApp);
+
+//filters
+require('./admin/editFiles/fileSearch.js')(eventsApp);
 
 eventsApp
 .config(['$routeProvider', '$locationProvider', 'AnalyticsProvider', '$httpProvider', function ($routeProvider, $locationProvider, AnalyticsProvider, $httpProvider) {
@@ -183,13 +195,6 @@ eventsApp
 			pageTitle: 'Edit Slideshow Settings'
 		}
 	})
-	.when('/admin', {
-		redirectTo: '/admin/edit-event',
-		reloadOnSearch: false,
-		data: {
-      pageTitle: 'Admin Page - Microsoft Plugfests and Events'
-    }
-	})
 	.when('/admin/edit-event', {
 		templateUrl: '/app/components/admin/editEvent/admin-edit-event.html',
 		reloadOnSearch: false,
@@ -237,6 +242,17 @@ eventsApp
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
     }
 	})
+	.when(`/admin/account`, {
+		templateUrl: `/app/components/admin/account/account.html`,
+		reloadOnSearch: false,
+    controller: `AccountController`,
+		data: {
+			pageTitle: `Admin Page - Manage Account`
+		}
+	})
+	.when(`/admin/redirect`, {
+		redirectTo: `/admin/edit-event`
+	})
 	.when('/:slug', {
     templateUrl: '/app/components/events/event.html',
     controller: 'EventsCtrl',
@@ -280,16 +296,18 @@ eventsApp
 	if ( /\/admin.*$/.test($location.path()) ) {
 		$http.get('/api/user/checklogin')
 		.success( (data) => {
-			
+      $rootScope.isAuthenticated = true;
 		})
 		.error( (err) => {
-			$cookies.remove('token');
+      $rootScope.isAuthenticated = false;
+      $cookies.remove('interopAdmin');
 			$location.path('/admin/login');
 		})
 	}
 	
 	$rootScope.$on('$viewContentLoaded', () => {
 		followHashRoute();
+		$rootScope.showAccountButton = $cookies.get(`strategy`) === `basic` || $cookies.get(`interopAdmin`) === `true` ? true : false;
 			// document.getElementById('screenreader-summary').trigger('focus');
 			
 			// $anchorScroll(anchor);
@@ -303,10 +321,11 @@ eventsApp
 		if ( /\/admin.*$/.test($location.path()) ) {
 			$http.get('/api/user/checklogin')
 			.success( (data) => {
-				
+        $rootScope.isAuthenticated = true;
 			})
 			.error( (err) => {
-				$cookies.remove('token');
+        $rootScope.isAuthenticated = false;
+        $cookies.remove('interopAdmin');
 				$location.path('/admin/login');
 			})
 		}
@@ -318,7 +337,7 @@ eventsApp
 	});
 
 	$rootScope.$on('$routeChangeSuccess', (newRoute, oldRoute) => { 
-
+		$rootScope.showAccountButton = $cookies.get(`strategy`) === `basic` || $cookies.get(`interopAdmin`) === `true` ? true : false;
 		// scroll the window to the top when a new page is opened
     $anchorScroll();
     //if the path is the root, 

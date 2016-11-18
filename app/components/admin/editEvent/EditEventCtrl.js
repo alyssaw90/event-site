@@ -1,14 +1,16 @@
 'use strict';
 
 const jQuery = require('jquery');
+const swal = require('sweetalert');
 
 const EditEventCtrl = (app) => {
 
-	app.controller('EditEventCtrl', ['$scope', '$rootScope', 'Upload', 'editEventRESTResource', '$sce', '$filter', 'createEventRESTResource', ($scope, $rootScope, Upload, resource, $sce, $filter, createEventRESTResource) => {
+	app.controller('EditEventCtrl', ['$scope', '$rootScope', 'Upload', 'editEventRESTResource', '$sce', '$filter', 'createEventRESTResource', `$window`, `$location`, ($scope, $rootScope, Upload, resource, $sce, $filter, createEventRESTResource, $window, $location) => {
 		$scope.errors = [];
     $scope.tester = [];
     $scope.compareArr = [];
     $scope.unusedSpeakers = [];
+    $scope.usedTabNames = [];
     $scope.editedEvent = {};
     $scope.tabToEdit = {};
     $scope.newTab = {};
@@ -76,6 +78,7 @@ const EditEventCtrl = (app) => {
         //loop over html string for tabs and tell angular to trust it as html
         for (let i = 0, len = $scope.editedEvent.tabs.length; i < len; i++) {
           $scope.editedEvent.tabs[i].tabContent = $sce.trustAsHtml($scope.editedEvent.tabs[i].tabContent);
+          $scope.usedTabNames.push($scope.editedEvent.tabs[i].tabTitle);
         }
         //add folder path to image names
         for (let i = 0, len = $scope.editedEvent.speakers.length; i < len; i++) {
@@ -109,77 +112,193 @@ const EditEventCtrl = (app) => {
       $scope.tabToEdit = tab;
     };
 
-    $scope.editEvent = (newEventData) => {
+    $scope.editEvent = (newEventData, publishStatus) => {
+      $scope.$broadcast(`autofill:update`);
       if ($rootScope.eventHeaderImage) {
         newEventData.event.eventHeaderImage = $rootScope.eventHeaderImage.name ? $rootScope.eventHeaderImage.size + '-' + $rootScope.eventHeaderImage.name : '';
       }
       if ($rootScope.eventVenueImg) {
         newEventData.event.eventVenueImg = $rootScope.eventVenueImg.name ? $rootScope.eventVenueImg.size + '-' + $rootScope.eventVenueImg.name : '';
       }
+      newEventData.event.isPublished = publishStatus;
       EditEventData.editEvent(newEventData, (err, data) => {
         if (err) {
           $scope.errors.push({msg: 'could not save newEvent: ' + $scope.newEvent.eventName});
+          swal({
+            title: 'Error',
+            text: 'There was a problem saving your event',
+            type: 'error',
+            customClass: 'sweet-alert-hide-input'
+          });
         }
         if (!err) {
 
           $scope.editedEvent = {};
           $rootScope.eventHeaderImage = undefined;
           $rootScope.eventVenueImg = undefined;
-
-          $window.location.reload();
-          alert('Event Saved');
+          swal({
+            title: 'Event Published',
+            type: 'success',
+            customClass: 'sweet-alert-hide-input'
+          });
+          $scope.getSingleEvent(data, '#edit-event-section, #edit-menu-options', '.edit-section');
         }
       });
     };
 
-    $scope.editTab = (editedTabData) => {
+    $scope.deleteEvent = (eventToDelete) => {
+      swal({
+        title: `Delete "${eventToDelete.eventName}" event?`,
+        type: 'input',
+        text: `This CANNOT be undone \n Note: you can unpublish the event if you don't want it to display`,
+        showCancelButton: true,
+        closeOnConfirm: false,
+        inputPlaceholder: `Type "YES" to delete event`
+      },
+      (inputVal) => {
+        if (inputVal === 'YES') {
+          EditEventData.deleteEvent(eventToDelete.id, (err, data) => {
+            if (err) {
+              swal({
+                title: `could not delete event "${eventToDelete.eventName}"`,
+                customClass: 'sweet-alert-hide-input',
+                type: 'error'
+              })
+            }
+            swal({
+              title: `"${eventToDelete.eventName}" event has been deleted`,
+              customClass: 'sweet-alert-hide-input',
+              type: 'success'
+            },
+            function() {
+              $rootScope.getEvents();
+            });
+            
+          });
+          
+        } else {
+          swal({
+            title: `Please enter "YES" with all capitol letters`,
+            text: `You entered "${inputVal}"`,
+            customClass: 'sweet-alert-hide-input',
+            type: 'error'
+          });
+        }
+      })
+    };
+
+    $scope.editTab = (editedTabData, publishStatus) => {
+      editedTabData.isPublished = publishStatus;
       EditEventData.editTab(editedTabData, (err, data) => {
         if (err) {
           $scope.errors.push({msg: 'could not save tab'});
+          swal({
+            title: 'could not save tab',
+            type: 'error',
+            customClass: 'sweet-alert-hide-input'
+          });
         }
         if (!err) {
-          alert('Tab Saved');
-          $scope.tabToEdit = {};
-          $scope.showElem('#main-edit-section', '.edit-section');
+          swal({
+            title: 'Tab Published',
+            type: 'success',
+            customClass: 'sweet-alert-hide-input'
+          });
 
+          $scope.tabToEdit = data;
         }
       })
     };
 
     $scope.editSpeakers = () => {
-      console.log('edited speaker:  ', $scope.editedEvent);
       EditEventData.editSpeakers($scope.editedEvent, (err, data) => {
         if (err) {
           $scope.errors.push({msg: 'could not save speaker'});
         }
-        
-        alert('New speakers list saved');
+        swal({
+          title: 'New speakers list Published',
+          type: 'success',
+          customClass: 'sweet-alert-hide-input'
+        });
       })
     };
 
-    $scope.addTab = (newTabData) => {
+    $scope.addTab = (newTabData, publishStatus) => {
+      newTabData.isPublished = publishStatus;
       EditEventData.addTab(newTabData, (err, data) => {
         if (err) {
           $scope.errors.push({msg: 'could not save tab'});
         }
-        alert('New Tab Saved');
+        swal({
+          title: 'New Tab Published',
+          type: 'success',
+          customClass: 'sweet-alert-hide-input'
+        });
         $scope.newTab = {};
-        $scope.showElem('#main-edit-section', '.edit-section');
+        // $scope.showElem('#main-edit-section', '.edit-section');
+        $scope.getSingleEvent($scope.currentEventUrl, '#edit-menu-options', '.edit-section')
       });
     };
 
     $scope.deleteTab = (tabToDelete) => {
-      let testQuestion = prompt(`Type "YES" if you want to delete: ${tabToDelete.tabTitle}\n This CANNOT be undone \n note, you can unpublish the tab if you don't want it to display`);
-      if (testQuestion === 'YES') {
-        EditEventData.deleteTab(tabToDelete.id, (err, data) => {
-          if (err) {
-            $scope.errors.push({msg: 'could not delete tab'});
+      swal({
+        title: `Delete "${tabToDelete.tabTitle}" Tab?`,
+        type: 'input',
+        text: `This CANNOT be undone \n Note: you can unpublish the tab if you don't want it to display`,
+        showCancelButton: true,
+        closeOnConfirm: false,
+        inputPlaceholder: `Type "YES" to delete tab`
+      },
+      (inputVal) => {
+        if (inputVal === 'YES') {
+          EditEventData.deleteTab(tabToDelete.id, (err, data) => {
+            if (err) {
+              swal({
+                title: `could not delete tab "${tabToDelete.tabTitle}"`,
+                customClass: 'sweet-alert-hide-input',
+                type: 'error'
+              })
+            }
+            swal({
+              title: `"${tabToDelete.tabTitle}" tab has been deleted`,
+              customClass: 'sweet-alert-hide-input',
+              type: 'success'
+            });
+            $scope.showElem('#main-edit-section', '.edit-section');
+          });
+          
+        } else {
+          swal({
+            title: `Please enter "YES" with all capitol letters`,
+            text: `You entered "${inputVal}"`,
+            customClass: 'sweet-alert-hide-input',
+            type: 'error'
+          });
+        }
+      })
+    };
+
+    $scope.newTabOrder = (tableId) => {
+      let jQRows = jQuery(`#${tableId}`).find('tr.tab-row');
+      let newOrder = [];
+      jQRows.each( function(i, elem) {
+        newOrder.push(jQuery(this).attr(`data-tabId`));
+      });
+      EditEventData.newTabOrder(newOrder, (err, data) => {
+        if (!err) {
+          swal({
+            type: `success`,
+            title: `Published`,
+            customClass: `sweet-alert-hide-input`
+          }) 
+        } else {
+            swal({
+              type: `error`,
+              title: `There was a problem saving the new order`,
+              customClass: `sweet-alert-hide-input`
+            });
           }
-          alert(`${tabToDelete.tabTitle} has been deleted`);
-          $scope.showElem('#main-edit-section', '.edit-section');
-        });
-        
-      };
+      })
     };
 
 	}]);

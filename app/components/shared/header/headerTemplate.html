@@ -39,7 +39,7 @@
 	</nav>
 	<!-- End gray desktop menu -->
 	<!-- Begin Image section/slideshow -->
-	<div class="carousel-container" data-ng-controller="HeaderController" data-ng-init="getSlides('homepageSlideshow');">
+	 <div class="carousel-container" data-ng-controller="HeaderController" data-ng-init="getSlides('homepageSlideshow');">
 		<ul rn-carousel rn-carousel-controls-allow-loop rn-carousel-controls rn-carousel-auto-slide="3" rn-carousel-duration="1000" id="upcoming-events-carousel" class="image" style="margin-left:0;margin-bottom:0;">
   		<li data-ng-repeat="slide in slides | orderBy: 'SlideshowSlideAssc.sortPosition'">
   		  <div class="layer" data-slider-slide-directive>
@@ -49,7 +49,7 @@
 		  	</div>
   		</li>
 		</ul>
-	</div>
+	</div> 
 	<!-- End image section -->
 	<!-- Begin upcoming events desktop menu -->
 	<nav class="menu-overlay desktop-menu flex clearfix" data-ng-style="{'background-color':futureEvents[0].eventHighlightColor}">

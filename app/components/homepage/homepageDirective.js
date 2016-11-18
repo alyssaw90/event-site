@@ -7,15 +7,10 @@ const homepageDirective = (app) => {
 		const homepageDirectiveDefinitionObject = {
 		restrict: 'A',
     link: function postLink(scope, element, attrs) {
-
-	/*angular.element(window).load(function() {
-	  customFunctions.changeHeight('.homepageIntroBlocks');
-	  customFunctions.homepageStickyFooter();
-	});*/
 	
 	
 	angular.element(window).resize(function(){
-	  customFunctions.changeHeight('.homepageIntroBlocks');
+	  customFunctions.changeHeight(jQuery('.homepageIntroBlocks'));
 	  // customFunctions.homepageStickyFooter();
 	});
 
@@ -42,7 +37,7 @@ const homepageDirective = (app) => {
 		//array of ms colors at 80% opacity - ms yellow is removed, because it's to light for background color
 		let msColors = ['rgba(216, 59, 1, .8)', 'rgba(232, 17, 35, .8)', 'rgba(180, 0, 158, .8)', 'rgba(92, 45, 145, .8)', 'rgba(0, 120, 215, .8)', 'rgba(0, 130, 114, .8)', 'rgba(16, 124, 16, .8)'];
 		let count = 0;
-		customFunctions.changeHeight('.homepageIntroBlocks');
+		customFunctions.changeHeight(jQuery('.homepageIntroBlocks'));
 
 		//function to show homepage intro text when the corresponding block is clicked
 		function showHomepageBlock (e) {
@@ -179,7 +174,6 @@ const homepageDirective = (app) => {
 		angular.element('.hiddenHomepageSections').keydown(function(e) {
 			let elemId = `#${angular.element(this).attr('id').slice(0, -4)}`;
 			let keyCode = customFunctions.getKeyCode(e);
-			console.log('keyCOde    ', keyCode);
 			if (e.shiftKey && keyCode === 9) {
 				e.preventDefault();
 				hideHomepageSections();
@@ -191,7 +185,6 @@ const homepageDirective = (app) => {
 		angular.element('.homepageIntroBlocks').focus(function(e) {
 			let elemId = `#${angular.element(this).attr('id')}`;
 			let keyCode = customFunctions.getKeyCode(e);
-			console.log('elemId    ', elemId);
 			if (angular.element(elemId).hasClass('whiteText')) {
 				e.preventDefault();
 				hideHomepageSections();
@@ -200,11 +193,8 @@ const homepageDirective = (app) => {
 			}
 		})
 
-		/*angular.element('#itsYourEventBlockText :last-child').blur(function(e) {
-			angular.element('.newsletterSubscSection p:first-child').focus();
-			hideHomepageSections();
-		});*/
-    	return console.log('homepage directive run');
+
+    	return;
     }
   };
   return homepageDirectiveDefinitionObject

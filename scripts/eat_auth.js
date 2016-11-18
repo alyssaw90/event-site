@@ -20,12 +20,10 @@ module.exports = (secret) => {
 
 			User.findOne({where: {id: decoded.id}})
 			.then( (user) => {
-				// console.log(user);
 				if (!user) {
 					console.log(clc.white.bgRed('user not found'));
 						return res.status(401).json({msg: 'not authorized'});
 				}
-
 				req.user = user;
 				next();
 			})

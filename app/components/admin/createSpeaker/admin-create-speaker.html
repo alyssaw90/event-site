@@ -20,7 +20,6 @@
 	  	  <p>Select Headshot</p>
 	  		<button name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'newSpeakerImg')">Select File</button>
 	  		<br><br>
-	  		File:
 	  		<div style="font:smaller">{{newSpeakerImg.path}}{{newSpeakerImg.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
 	  		    <span class="progress" ng-show="newSpeakerImg.progress >= 0">
 	  		        <div style="width:{{newSpeakerImg.progress}}%"  
@@ -29,7 +28,7 @@
 	  		</div>     
 	  		{{errorMsg}}    			
     	</div>
-			<form id="add-new-speaker-form" method="post" enctype="multipart/form-data" data-ng-submit="createNewSpeaker(newSpeaker);" class="col-lg-24">
+			<form id="add-new-speaker-form" method="post" enctype="multipart/form-data" class="col-lg-24" make-auto-complete-false-directive>
 				<div class="form-group" role="presentation">
 					<label for="newFirstName">First Name*</label>
 					<input class="form-control" type="text" data-ng-model="newSpeaker.newFirstName" name="newFirstName" id="newFirstName" required="true">
@@ -69,17 +68,9 @@
 					data-ui-tinymce="tinymceOptions">
 	      	</textarea>
 				</div>
-				<div class="form-group" role="presentation">
-					<radiogroup>
-						<label for="publishedTrue">Publish Now</label>
-						<input type="radio" data-ng-model="newSpeaker.publishStatus" id="publishedTrue" name="publishStatus" value="true">
-						<br>
-						<label for="publishedFalse">Save as Draft</label>
-						<input type="radio" data-ng-model="newSpeaker.publishStatus" id="publishedFalse" name="publishStatus" value="false" ng-checked="true">
-					</radiogroup>
-				</div>
-				<button type="button" class="medium float-left" style="margin: 5px" id="cancel-new-event-button">Cancel</button>
-				<button type="submit" class="medium float-left btn-green" style="margin: 5px" id="save-new-event-as-draft-button">Save</button>
+				<button type="button" class="medium float-left" style="margin: 5px" id="cancel-new-event-button" data-ng-click="cancelNewSpeaker();">Cancel</button>
+				<button type="submit" class="medium float-left btn-primary" style="margin: 5px" id="save-new-event-as-draft-button"  data-ng-click="createNewSpeaker(newSpeaker, false);">Save as Draft</button>
+				<button type="submit" class="medium float-left btn-green" style="margin: 5px" id="save-new-event-button"  data-ng-click="createNewSpeaker(newSpeaker, true);">Publish Now</button>
 			</form>
 			<!-- input below is for tinymce file upload -->
 			<input name="image" type="file" id="upload" class="hideElem" onchange="">

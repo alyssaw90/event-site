@@ -7,6 +7,7 @@ const Event = models.Event;
 const EventTab = models.EventTab;
 const Slideshow = models.Slideshow;
 const Slide = models.Slide;
+const MsUser = models.MsUser;
 const clc = require('cli-color');
 
 module.exports = function () {
@@ -40,12 +41,11 @@ module.exports = function () {
 			force: false
 		});
 	})
-	/*.then(function() {
-		return EventTab.belongsTo(Event, {foreignKey: 'event_id'});
+	.then( () => {
+		return MsUser.sync({
+			force: true
+		})
 	})
-	.then(function() {
-		return Event.hasMany(EventTab, {foreignKey: 'event_id'});
-	})*/
 
 	////////////////////////////////////Slidshow and Slides//////////////////////////////////////////////
 
@@ -80,15 +80,27 @@ module.exports = function () {
 	})
 
 	////////////////////////////////////Admin User placeholder/////////////////////////////////////
-	.then(function () {
+	.then( () => {
 		return User.create({
-			userName: 'Admin',
-			password: process.env.ADMIN_PASSWORD,
-			email: process.env.ADMIN_USERNAME,
+			userName: `root`,
+			password: process.env.ROOT_PASSWORD,
+			email: process.env.ROOT_EMAIL,
 			isAdmin: true
-		});
+		})
 	})
-
+	/////////////////////////MS Account Users/////////////////////////////////////////////////
+	.then( () => {
+		return MsUser.create({
+			email: `v-mibowe@microsoft.com`,
+			isAdmin: true
+		})
+	})
+	.then( () => {
+		return MsUser.create({
+			email: `v-bachau@microsoft.com`,
+			isAdmin: true
+		})
+	})
 	////////////////////////////////////Event placeholder/////////////////////////////////////
 
 	.then(function () {
@@ -307,7 +319,8 @@ module.exports = function () {
 				eventEndDate: new Date('October 23, 2016'),
 				eventHeaderImage: 'Beijing-Header-8.26.jpg',
 				isPublished: true,
-				showOnHeader: false
+				showOnHeader: false,
+				eventTechnicalTopics: 'Microsoft Graph, Office Add-ins, Open Specifications, Windows Protocols, OData'
 			})
 		})
 		.then(function() {
@@ -320,8 +333,7 @@ module.exports = function () {
 				eventEndDate: new Date('November 3, 2016'),
 				eventHeaderImage: 'RDP-Banner.jpg',
 		    eventVenueName: 'Microsoft Building 25',
-    		eventVenueAddressLine1: '15700 NE 39th St',
-    		eventVenueAddressLine2: 'Redmond, WA 98052',
+    		eventVenueAddress: '15700 NE 39th St, Redmond, WA 98052',
     		eventVenueImg: 'B25_web.jpg',
     		eventAboutTabText:`<h2>Remote Desktop Protocol (RDP) IO lab</h2>
 				<p>The purpose of the event is to provide an opportunity for you to use the RDP test suites with assistance from the test suite developers and support engineers, as well as an opportunity to hear from and interact with the Remote Desktop engineering team. The focus will be on testing, with limited presentations provided.</p>
@@ -347,7 +359,9 @@ module.exports = function () {
 				eventEndDate: new Date('October 23, 2016'),
 				eventHeaderImage: 'Beijing-Header-8.26.jpg',
 				isPublished: true,
-				showOnHeader: true
+				showOnHeader: true,
+				eventTechnicalTopics: 'Microsoft Graph, Office Add-ins, Open Specifications, Windows Protocols, OData',
+				eventLanguage: 'cn'
 			})
 		})
 
@@ -4220,6 +4234,74 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 				`
 	})
 })
+.then( () => {
+	return EventTab.create({
+		isPublished: true,
+		tabTitle: 'Agenda',
+		tabNumber: 1,
+		tabContent: `<h4>All other times not listed below are devoted to testing</h4>
+<table class="table table-responsive table-bordered">
+	<thead>
+		<tr>
+			<th scope="col"><h5><strong>Date</strong></h5></th>
+			<th scope="col"><h5><strong>Time</strong></h5></th>
+			<th scope="col"><h5><strong>Session</strong></h5></th>
+			<th scope="col"><h5><strong>Speaker</strong></h5></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th rowspan="4" scope="row"><h5><strong>Nov 1</strong></h5></th>
+			<td>8 AM</td>	
+			<td colspan="2">Event begins</td>
+		</tr>
+		<tr>
+			<td style="overflow:hidden; white-space: nowrap;">9:30 – 10:00 AM</td>
+			<td>Kick-off presentation <a href="/uploads/Welcome_and_kickoff.pptx" target="_self">Download Presentation</a></td>
+			<td>Prakash Narayanan</td>
+		</tr>
+		<tr>
+			<td style="overflow:hidden; white-space: nowrap;">11:00 – 12:00 PM</td>
+			<td>RDP Test Suites: Open Source and Updates <br><a href="/uploads/Windows-Test-Suite-Open-Source.pptx" target="_self">Download Vivian Tian Presentation</a>, <a href="/uploads/RDP-Protocol-Test-Suite.pptx" target="_self">Download Jessie Liu Presentation</a></td>
+			<td>Vivian Tian and Jessie Liu</td>
+		</tr>
+		<tr>
+			<td style="overflow:hidden; white-space: nowrap;">5:30 PM</td>
+			<td colspan="2">Dinner (Thai)</td>
+		</tr>
+		<tr>
+			<th scope="row" rowspan="3"><h5><strong>Nov 2</strong></h5></th>
+			<td>9:00 – 10:00 AM</td>
+			<td>RDS state of the union</td>
+			<td>Scott Manchester</td>
+		</tr>
+		<tr>
+			<td style="overflow:hidden; white-space: nowrap;">11:00 – 12:00 PM</td>
+			<td>USB direction, easy print, hardware redirection</td>
+			<td>Ivan Mladenov</td>
+		</tr>
+		<tr>
+			<td style="overflow:hidden; white-space: nowrap;">5:30 PM</td>
+			<td colspan="2">Social event at Board Walk commons</td>
+		</tr>
+		<tr>
+			<th scope="row" rowspan="3"><h5><strong>Nov 3</strong></h5></th>
+			<td>11:00 – 12:00 PM</td>
+			<td>CredSSP and What’s new in decrypting RDP traffic <br><a href="/uploads/CredSSP-Presentation.pptx" target="_self">Download Sreekanth Nadendla Presentation</a>, <br>Download Bryan Burgin Presentations<br><a href="/uploads/2013-RDP-Plugfest-On-the-Wire-UPDATED_2016_10.pptx" target="_self">RDP on the Wire</a>, <a href="/uploads/2014-RDP-Plugfest-Decryption-Using-MA-UPDATED_2016_10.pptx" target="_self">Decrypting RDP Traffic with Message Analyzer</a>, and <a href="/uploads/2014-RDP-Plugfest-MS-RDPEUSB.pptx" target="_self">USB Device Redirection</a></td>
+			<td>Sreekanth Nadendla and Bryan Burgin</td>
+		</tr>
+		<tr>
+			<td style="overflow:hidden; white-space: nowrap;">5:30 PM</td>
+			<td colspan="2">Dinner (Pizza)</td>
+		</tr>
+		<tr>
+			<td>7:00 PM</td>
+			<td colspan="2">Event ends</td>
+		</tr>
+	</tbody>				
+</table>`
+	})
+})
 	////////////////////////////////////Speaker placeholder/////////////////////////////////////
 
 	.then(function () {
@@ -4958,7 +5040,7 @@ Microsoft 以<em>予力全球每一人、每一组织，成就不凡作为公司
 				showOnMeetTheTeamPage: false,
 				msTeamTitle: 'Principal Program Manager for Office 365',
 				showOnHomePage: false,
-				headShot: 'arthur-jin-headshot.jpg',
+				headShot: 'arthur-jin-headshot-2.jpg',
 				company: 'Microsoft',
 				country: 'China',
 				allowNotifications: false,

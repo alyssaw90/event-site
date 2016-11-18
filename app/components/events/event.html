@@ -19,6 +19,9 @@
   		<li data-ng-if="events.speakers.length > 0">
   			<a target="_self" href="#speakers"><h5>Speakers</h5></a>
 			</li>
+      <li class="pull-right" ng-if="events.event.eventRegistrationLink">
+        <a ng-href="{{events.event.eventRegistrationLink}}" class="win-color-bg-green whiteText"><h5>Register</h5></a>
+      </li>
 		</ul>
     <div id="aboutTab" data-ng-if="events.event.eventAboutTabText" class="tab-content clearfix eventTabDiv" data-ng-bind-html="events.event.eventAboutTabText" >
       <h2>{{events.event.eventName}}</h2>

@@ -136,7 +136,6 @@ p .lightbox {
   padding: 5px;
   background-color: #f6f6f6;
   border: solid #EEEEEE;
-  border-radius: 15px;
 }
 
 .editedEventSpeaker {
@@ -144,7 +143,6 @@ p .lightbox {
 	border: 1px solid #eee;
   margin: 0;
   padding: 5px 0 0 0;
-  border-radius: 10px;
   margin-right: 10px;
 }
 
@@ -157,9 +155,11 @@ p .lightbox {
 
 .file-container {
 	.editedEventSpeaker;
-	// padding: 0 0 0 0;
-	& img {
-		max-width: 100%;
+	padding: 5px;
+	width: 10%;
+ 	vertical-align:top;
+	& i {
+		width: 100%;
 	}
 }
 
@@ -172,9 +172,14 @@ p .lightbox {
 }
 
 .new-event-speaker-table-container {
-	background-color: #EEEEEE;
 	border: 1px solid #000;
-	border: 3%;
+}
+
+.editedEventSpeaker {
+	.new-event-speaker-table-container;
+	& p {
+		margin-left: 3%;
+	}
 }
 
 .newEventSpeaker {
@@ -182,6 +187,26 @@ p .lightbox {
 	border: 1px solid #000;
 	margin: 0 5px 5px 5px;
 	padding: 5px;
+}
+
+.tab-row {
+	.newEventSpeaker;
+	background-color: #f6f6f6 !important;
+	& td {
+		border-bottom: 1px solid #000 !important;
+		border-top: 1px solid #000 !important;
+	}
+	& td:first-child {
+		border-left: 1px solid #000 !important;
+	}
+	& td:last-child {
+		border-right: 1px solid #000 !important;
+	}
+}
+
+table#select-tabs-to-edit-table {
+	border-collapse: separate;
+	border-spacing: 0 5px;
 }
 
 .event-preview-modal-body {
@@ -195,11 +220,16 @@ p .lightbox {
 
 .admin-header-container {
 	margin-top: 1%;
+	margin-bottom: 1%;
+	& .nav-tabs {
+		margin-right: 0 !important;
+		margin-left: 0 !important;
+	}
 }
 
 .admin-header-div-with-button {
 	& a {
-		margin-left: 1%;
+		margin-left: 1.5%;
 	}
 	& h1,h2,h3,h4,h5,h6 {
 		display: inline;
@@ -211,6 +241,6 @@ p .lightbox {
 	margin: auto;
 }
 
-/*.file-page-file-icon {
-	font-size: 10em;
-}*/
+#select-tabs-to-edit-table tr {
+	cursor: move;
+}

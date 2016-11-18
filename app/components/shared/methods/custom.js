@@ -43,7 +43,7 @@ jQuery.extend(jQuery.expr[':'], {
 		//make external links open in new tabs
 		$('a[href^="http"]').attr('target','_blank');
 
-		customFunctions.changeHeight('.homepageIntroBlocks');
+		customFunctions.changeHeight(jQuery('.homepageIntroBlocks'));
 
 		//hide slider on screens larger than 768px
 		/*$(window).load(customFunctions.addCSS(768, $('.slider'), 'display', 'none', 'inline'));
@@ -119,14 +119,14 @@ jQuery.extend(jQuery.expr[':'], {
 		});
 
 		$(window).load(function() {
-			customFunctions.changeHeight('.past_events');
-			customFunctions.changeHeight('.individual-homepage-expert');
+			customFunctions.changeHeight(jQuery('.past_events'));
+			customFunctions.changeHeight(jQuery('.individual-homepage-expert'));
 		});
 
 
 		$(window).resize(function(){
-			customFunctions.changeHeight('.past_events');
-			customFunctions.changeHeight('.individual-homepage-expert');
+			customFunctions.changeHeight(jQuery('.past_events'));
+			customFunctions.changeHeight(jQuery('.individual-homepage-expert'));
 		});
 
 		/*//////////////////////////////////////////////////////
@@ -155,15 +155,6 @@ jQuery.extend(jQuery.expr[':'], {
 			}
 
 		});
-		//find what has focus
-		/*$('*').focusin(function(event) {
-			console.log('focused elem:               ', $(this));
-		});*/
-
-		//find what's clicked
-		/*$('*').keydown(function(e) {
-			console.log('this   ', $(this));
-		});*/
 
 		//Prevent elements from taking focus when they are clicked
 		$('*').click(function(e) {

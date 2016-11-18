@@ -2,11 +2,11 @@
 <div class="mobileWrapper ng-cloak ng-cloak" role="presentation" ng-controller="AdminPageCtrl" data-ng-init="getEvents(); getAllSpeakers()" data-admin-page-directive>
   <main style="overflow:hidden;" id="beginningOfContent" tabindex="0" class="container">
     <section role="presentation" class="row internetExplorer">
-			<form id="addNewEventForm" class="col-lg-24" name="addNewEventForm" method="post" enctype="multipart/form-data" data-ng-init="getAllSpeakers();" data-ng-submit="createNewEvent(newEvent);">
+			<form id="addNewEventForm" class="col-lg-24" name="addNewEventForm" method="post" enctype="multipart/form-data" make-auto-complete-false-directive>
 				<h3>New Event</h3>
 				<div role="presentation" class="form-group">
 					<label for="newEventName">Event Name*</label>
-					<input class="form-control" type="text" data-ng-model="newEvent.newEventName" name="newEventName" id="newEventName" data-ng-required="required">
+					<input class="form-control" type="text" data-ng-model="newEvent.newEventName" name="newEventName" id="newEventName" data-ng-required="true">
 				</div>
 				<div class="form-group clearfix" role="presentation">
 					<label for="eventUrl">Event URL*</label>
@@ -14,10 +14,16 @@
 					<div role="presentation" class="float-left">
 						interopevents.com/
 					</div>
-					<input class="form-control col-lg-20 float-right" type="text" data-ng-model="newEvent.eventUrl" name="eventUrl" id="eventUrl" style="width: 90%" unique-url-directive required>
-					<div ng-messages="addNewEventForm.eventUrl.$error" role="alert" class="col-lg-offset-8 col-lg-16 col-md-offset-12 col-md-12 col-sm-24" style="position: absolute;">
+					<input class="form-control col-lg-20 float-right" type="text" data-ng-model="newEvent.eventUrl" name="eventUrl" id="eventUrl" style="width: 90%" unique-url-directive data-ng-required="true">
+					<div ng-messages="addNewEventForm.eventUrl.$error" role="alert" class="col-lg-offset-8 col-lg-16 col-md-offset-12 col-md-12 col-sm-24">
 						<div ng-message="uniqueUrl" class="win-color-fg-alert alert-warning">This URL has already been used. Please select a different URL</div>
 					</div>
+				</div>
+				<div class="form-group" role="presentation">
+					<label for="newEventLanguage">Display Language</label>
+					<select name="newEventLanguage" ng-model="newEvent.newEventLanguage">
+						<option ng-repeat="(code, language) in languageCodes" value="{{code}}">{{language}}</option>
+					</select>
 				</div>
 				<div class="form-group" role="presentation">
 					<label for="newEventRegistrationLink">Event Registration Link (must be a propertly formed url with http:// or https://)</label>
@@ -25,104 +31,16 @@
 				</div>
 				<div role="presentation" class="form-group">
 					<label for="eventTechnicalTopics">Technical Topics</label>
-					<input class="form-control" type="text" data-ng-model="newEvent.eventTechnicalTopics" name="eventTechnicalTopics" id="eventTechnicalTopics">
+					<input class="form-control" type="text" data-ng-model="newEvent.eventTechnicalTopics" name="eventTechnicalTopics" id="eventTechnicalTopics" placeholder="Please list 3-6 of the most prominent technical topics presented at this event (separate by comma)">
 				</div>
 				<div class="form-group" role="presentation">
 					<label class="ui-widget" for="newEventCity">Event Location*</label>
-					<input class="form-control ui-widget-content" type="text" data-ng-model="newEvent.newEventCity" name="newEventCity" id="newEventCity" admin-city-name-auto-complete-directive required>				
+					<input class="form-control ui-widget-content" type="text" data-ng-model="newEvent.newEventCity" name="newEventCity" id="newEventCity" admin-city-name-auto-complete-directive data-ng-required="true">				
 				</div>
-				<!-- <div class="form-group" role="presentation">
-					<label for="newEventState">Event State</label>
-					<select class="form-control" data-ng-model="newEvent.newEventState" name="newEventState" id="newEventState">
-						<option value="N/A">N/A</option>
-						<option value="AK">Alaska</option>
-						<option value="AL">Alabama</option>
-						<option value="AR">Arkansas</option>
-						<option value="AZ">Arizona</option>
-						<option value="CA">California</option>
-						<option value="CO">Colorado</option>
-						<option value="CT">Connecticut</option>
-						<option value="DC">District of Columbia</option>
-						<option value="DE">Delaware</option>
-						<option value="FL">Florida</option>
-						<option value="GA">Georgia</option>
-						<option value="HI">Hawaii</option>
-						<option value="IA">Iowa</option>
-						<option value="ID">Idaho</option>
-						<option value="IL">Illinois</option>
-						<option value="IN">Indiana</option>
-						<option value="KS">Kansas</option>
-						<option value="KY">Kentucky</option>
-						<option value="LA">Louisiana</option>
-						<option value="MA">Massachusetts</option>
-						<option value="MD">Maryland</option>
-						<option value="ME">Maine</option>
-						<option value="MI">Michigan</option>
-						<option value="MN">Minnesota</option>
-						<option value="MO">Missouri</option>
-						<option value="MS">Mississippi</option>
-						<option value="MT">Montana</option>
-						<option value="NC">North Carolina</option>
-						<option value="ND">North Dakota</option>
-						<option value="NE">Nebraska</option>
-						<option value="NH">New Hampshire</option>
-						<option value="NJ">New Jersey</option>
-						<option value="NM">New Mexico</option>
-						<option value="NV">Nevada</option>
-						<option value="NY">New York</option>
-						<option value="OH">Ohio</option>
-						<option value="OK">Oklahoma</option>
-						<option value="OR">Oregon</option>
-						<option value="PA">Pennsylvania</option>
-						<option value="PR">Puerto Rico</option>
-						<option value="RI">Rhode Island</option>
-						<option value="SC">South Carolina</option>
-						<option value="SD">South Dakota</option>
-						<option value="TN">Tennessee</option>
-						<option value="TX">Texas</option>
-						<option value="UT">Utah</option>
-						<option value="VA">Virginia</option>
-						<option value="VT">Vermont</option>
-						<option value="WA">Washington</option>
-						<option value="WI">Wisconsin</option>
-						<option value="WV">West Virginia</option>
-						<option value="WY">Wyoming</option>
-					</select>					
-				</div>
-				<div class="form-group" role="presentation">
-					<label for="newEventCountry">Event Country</label>
-					<input class="form-control" type="text" data-ng-model="newEvent.newEventCountry" name="newEventCountry" id="newEventCountry">				
-				</div>
-				<br> -->
-				<label for="new-event-date-wrapper">Event Dates (Must include time of day)</label>
-				<div id="new-event-date-wrapper" role="presentation">
-					<div class="time-input-wrapper form-group float-left" role="presentation">
-						<label for="newEventStartDate">Start</label>
-						<input class="form-control" type="datetime-local" data-ng-model="newEvent.newEventStartDate" name="newEventStartDate" id="newEventStartDate">									
-					</div>
-					<div class="time-input-wrapper form-group float-left" role="presentation">					
-						<label for="newEventEndDate">End</label>
-						<input class="form-control" type="datetime-local" data-ng-model="newEvent.newEventEndDate" name="newEventEndDate" id="newEventEndDate">					
-					</div>
-				</div>
-				<div class="clearfix"></div>
-				<div class="form-group" role="presentation">
-					<label for="showOnHeader">Show this event on the header menu?
-						<div class="clearfix"></div>
-						<radiogroup class="time-input-wrapper" id="showOnHeader">
-							<label>Yes
-								<input clss="form-control" type="radio" id="showOnHeaderTrue" data-ng-model="newEvent.showOnHeader" value="true">
-							</label>
-							<label>No
-								<input clss="form-control" type="radio" id="showOnHeaderFalse" data-ng-model="newEvent.showOnHeader" value="false" ng-checked="true">						
-							</label>
-						</radiogroup>
-					</label>
-				</div>				
 				<div class="form-group" role="presentation">
 					<label for="continentsInput">Choose Event Continent
 						<div class="clearfix"></div>
-						<radiogroup id="continentsInput" data-ng-required="required">
+						<radiogroup id="continentsInput" data-ng-required="true">
 							<label for="northAmericaInput">North America
 								<input class="form-control float-left" data-ng-model="newEvent.newEventContinent" type="radio" id="northAmericaInput" name="newEventContinent" value="North America">
 							</label>
@@ -149,9 +67,34 @@
 						</radiogroup>
 					</label>
 				</div>
+				<label for="new-event-date-wrapper">Event Dates (Must include time of day)</label>
+				<div id="new-event-date-wrapper" role="presentation">
+					<div class="time-input-wrapper form-group float-left" role="presentation">
+						<label for="newEventStartDate">Start</label>
+						<input class="form-control" type="datetime-local" data-ng-model="newEvent.newEventStartDate" name="newEventStartDate" id="newEventStartDate">									
+					</div>
+					<div class="time-input-wrapper form-group float-left" role="presentation">					
+						<label for="newEventEndDate">End</label>
+						<input class="form-control" type="datetime-local" data-ng-model="newEvent.newEventEndDate" name="newEventEndDate" id="newEventEndDate">					
+					</div>
+				</div>
+				<div class="clearfix"></div>
+				<div class="form-group" role="presentation">
+					<label for="showOnHeader">Display on the colored events menu underneath gray “Home” menu?
+						<div class="clearfix"></div>
+						<radiogroup class="time-input-wrapper" id="showOnHeader">
+							<label>Yes
+								<input class="form-control" type="radio" id="showOnHeaderTrue" data-ng-model="newEvent.showOnHeader" value="true">
+							</label>
+							<label>No
+								<input class="form-control" type="radio" id="showOnHeaderFalse" data-ng-model="newEvent.showOnHeader" value="false" ng-checked="true">						
+							</label>
+						</radiogroup>
+					</label>
+				</div>				
 				<div class="form-group" role="presentation">
 				<label for="new-event-description">About page Content*</label>
-						<textarea class="form-control" data-ng-model="newEvent.eventAboutTabText" name="new-event-description" data-ng-required="required" 
+						<textarea class="form-control" data-ng-model="newEvent.eventAboutTabText" name="new-event-description" data-ng-required="true" 
 					data-ui-tinymce="tinymceOptions"></textarea>
 				</div>
 				<div class="form-group" role="presentation">
@@ -159,12 +102,8 @@
 					<input class="form-control" type="text" data-ng-model="newEvent.newEventVenueName" name="newEventVenueName" id="newEventVenueName">				
 				</div>
 				<div class="form-group" role="presentation">
-					<label for="newVenduAddressLine1">Street Address</label>
-					<input class="form-control" type="text" data-ng-model="newEvent.newVenduAddressLine1" name="newVenduAddressLine1" id="newVenduAddressLine1">				
-				</div>
-				<div class="form-group" role="presentation">
-					<label for="newVenueAddressLine2">City, State, Country</label>
-					<input class="form-control" type="text" data-ng-model="newEvent.newVenueAddressLine2" name="newVenueAddressLine2" id="newVenueAddressLine2">				
+					<label for="newVenueAddress">Address</label>
+					<input class="form-control" type="text" data-ng-model="newEvent.newVenueAddress" name="newVenueAddress" id="newVenueAddress" admin-city-name-auto-complete-directive>				
 				</div>
 				<div class="form-group" role="presentation">
 					<label for="newVenueParkingInfo">Parking Information</label>
@@ -175,18 +114,23 @@
 						<button class="btn btn-default" name="venuePhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventVenueImg')">Select Venue Image</button>
 					</div>
 		  		<br>
+					<div style="font:smaller">{{eventVenueImg.path}}{{eventVenueImg.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+			  		    <span class="progress" ng-show="eventVenueImg.progress >= 0">
+			  		        <div style="width:{{eventVenueImg.progress}}%"  
+			  		             ng-bind="eventVenueImg.progress + '%'"></div>
+			  		    </span>
+			  		{{errorMsg}} 		    			
+		    	</div>
 		    	<div data-ng-controller="AdminPageCtrl">
 			  		<button class="btn btn-default" name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventHeaderImg')">Select Header Image</button>
 			  		<br><br>
-			  		<!-- File:
 			  		<div style="font:smaller">{{eventHeaderImg.path}}{{eventHeaderImg.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
 			  		    <span class="progress" ng-show="eventHeaderImg.progress >= 0">
 			  		        <div style="width:{{eventHeaderImg.progress}}%"  
 			  		             ng-bind="eventHeaderImg.progress + '%'"></div>
 			  		    </span>
 			  		</div>     
-			  		{{errorMsg}} -->
-		    			
+			  		{{errorMsg}} 		    			
 		    	</div>
 		    	<button type="button" class="btn btn-default" data-toggle="modal" data-target="#create-event-speakers-modal">Select Speakers</button>			  
 				</div>
@@ -196,31 +140,21 @@
 						<li data-ng-repeat="speaker in newEvent.speakers | orderBy: 'eventPosition'">{{speaker.fullName}}</li>
 					</ul>
 				</label>
-				<div class="form-group" role="presentation">
-					<radiogroup>
-						<label for="publishedTrue">Publish Now
-							<input data-ng-model="newEvent.publishStatus" type="radio" id="publishedTrue" name="publishStatus" value="true">
-						</label>
-						<br>
-						<label for="publishedFalse">Save as Draft
-							<input data-ng-model="newEvent.publishStatus" type="radio" id="publishedFalse" name="publishStatus" value="false" ng-checked="true">
-						</label>
-					</radiogroup>
-				</div>
 				<button type="button" class="btn btn-default btn-lg float-left" style="margin: 5px" id="cancel-new-event-button" ng-click="cancelNewEvent()">Cancel</button>
-		    <button type="button" class="btn btn-default btn-lg float-left" data-toggle="modal" data-target="#new-event-add-venue-modal" style="margin: 5px">Preview</button>
-				<button type="submit" class="btn btn-green btn-lg float-left" style="margin: 5px" id="save-new-event-as-draft-button">Save</button>
+		    <button type="button" class="btn btn-lg float-left" data-toggle="modal" data-target="#new-event-add-venue-modal" style="margin: 5px">Preview</button>
+				<button type="submit" class="btn btn-primary btn-lg float-left" style="margin: 5px" id="save-new-event-as-draft-button" data-ng-click="addNewEventForm.$valid && createNewEvent(newEvent, false);">Save as Draft</button>
+				<button type="submit" class="btn btn-green btn-lg float-left" style="margin: 5px" id="save-new-event-button" data-ng-click="addNewEventForm.$valid && createNewEvent(newEvent, true);">Publish Now</button>
 				<input name="image" type="file" id="upload" class="hideElem" onchange="">
 			</form>
     </section>
   <div class="modal fade" id="create-event-speakers-modal" role="dialog" create-event-close-modal-directive>
     <div class="modal-dialog">			    
       <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="btn btn-success float-left" data-dismiss="modal">Save</button>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <div class="modal-header clearfix">
+          <button type="button" class="btn btn-green float-left" data-dismiss="modal">Save</button>
+          <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
         </div>
-          <div data-ng-controller="AdminPageCtrl" class="clearfix">
+          <div data-ng-controller="AdminPageCtrl">
           	<h4 class="modal-title">Select Speakers</h4>
 					  <div class="clearfix modal-container new-event-speakers-modal-container">
 					    <div ui-sortable="newEventSortSpeakerOptions" data-ng-model="theSpeakers" class="new-event-speaker-table-container col-lg-12 ">
@@ -276,8 +210,7 @@
 					  	  <div data-ng-if="eventVenueImg" class="col_12 internetExplorer event-header centered" id="venueImg" role="complementary">
 					  			<img alt="event venue image" data-ng-src="/uploads/{{eventVenueImg.size + '-' + eventVenueImg.name}}" />
 				  			</div>
-					  	  <p>{{newEvent.newVenduAddressLine1}}</p>
-					  	  <p>{{newEvent.newVenueAddressLine2}}</p>
+					  	  <p>{{newEvent.newVenueAddress}}</p>
 					  	  <p>{{newEvent.newEventVenueImg}}</p>
 					  	  <p>{{newEvent.newVenueParkingInfo}}</p>
 					  	</div>

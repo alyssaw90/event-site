@@ -2,14 +2,19 @@
 
 // require('dotenv').load();
 // let User = require('../models/User');
-let bodyparser = require('body-parser');
-let cookieParser = require('cookie-parser');
-let clc = require('cli-color');
-let models = require('../models');
-let User = models.User;
-let Speaker = models.Speaker;
-let Event = models.Event;
-let EventTab = models.EventTab;
+const bodyparser = require('body-parser');
+// const cookieParser = require('cookie-parser');
+const clc = require('cli-color');
+const session = require('express-session');
+const models = require('../models');
+const userLogging = require(`../scripts/userLogging`)();
+const isLoggedIn = userLogging.isLoggedIn;
+const isLoggedInAdmin = userLogging.isLoggedInAdmin;
+const User = models.User;
+const Speaker = models.Speaker;
+const Event = models.Event;
+const EventTab = models.EventTab;
+const MsUser = models.MsUser;
 
 function makeRandomString () {
   let outputString = '';
@@ -35,10 +40,37 @@ module.exports = function(router, passport) {
   router.use(bodyparser.urlencoded({
     extended: true
   }));
-  router.use(cookieParser());
 
-	router.route('/create-user')
-	.post(function(req, res) {
+	router.route('/user')
+  .get(isLoggedIn, (req, res) => {
+    let user = {};
+    models.sql.sync()
+    .then( () => {
+      if (req.user.strategy === 'basic') {
+        return User.findOne({
+          where: {
+            id: req.user.id
+          }
+        });
+      }
+    })
+    .then( (basicUser) => {
+      if (req.user.strategy === 'AzureAD') {
+        user.name = `${req.user.given_name} ${req.user.family_name}`,
+        user.email = req.user.unique_name,
+        user.interopAdmin = req.user.interopAdmin,
+        user.strategy = req.user.strategy
+      } else if (req.user.strategy === 'basic') {
+        user.id = basicUser.id,
+        user.name = basicUser.userName,
+        user.email = basicUser.email,
+        user.strategy = req.user.strategy
+        user.interopAdmin = basicUser.isAdmin
+      }
+      res.json(user);
+    })
+  })
+	.post(isLoggedInAdmin, (req, res) => {
 		models.sql.sync()
 		.then(function() {
 			return User.find({where: {email: req.body.email}});
@@ -48,56 +80,133 @@ module.exports = function(router, passport) {
 				res.status(419).json({msg: 'email address alread in use'});
 			}
 			if (!user) {
-				return User.create({userName: req.body.userName, email: req.body.email, randomString: makeRandomString()});
-      }
-    })
-    .then(function(newUser) {
-      let hashPass = newUser.$modelOptions.instanceMethods.generateHash(req.body.password);
-      let userJSON = {randomString: newUser.dataValues.randomString, id: newUser.dataValues.id};
-      delete req.body.password;
-      newUser.update({password: hashPass});
-		  // res.status(200).json({msg: 'user created'});
-      // console.log(clc.cyanBright('::::::::   '), newUser.dataValues.randomString);
-      newUser.$modelOptions.instanceMethods.generateToken(userJSON, process.env.SECRET_KEY, function(err, token) {
-        if (err) {
-          console.log(err);
-          return res.status(500).json({msg: 'error generating token'});
-        }
-        res.json({token: token});
-      });             
-    });
-	});
-
-/*  router.get('/login', function(req, res, next) {
-    passport.authenticate('basic', {session: false}, function(err, user, info) {
-      //if user is found, but there is some other error
-      if (err && user) { 
-        console.log(clc.redBright('Login error: '), err);
-        res.json({msg: 'internal server error'});
-      }
-      // if user is not found due to wrong username or password
-      if (err && !user) {
-        console.log(clc.redBright('Login error: '), err);
-        res.json({msg: 'invalid username or password'});
-      }
-      //if the user is found and there is no error
-      if (user && !err) {
-        let userEmail = user.dataValues.email;
-        let ranJSON = {randomString: user.dataValues.randomString};
-        console.log(clc.red('::::::    '), user.$modelOptions.instanceMethods.generateToken);
-        // res.json({msg: 'authenticated as ', userEmail});
-        user.$modelOptions.instanceMethods.generateToken(ranJSON, process.env.SECRET_KEY, function(err, token) {
-          if (err) {
-            console.log(err);
-            return res.status(500).json({msg: 'error generating token'});
-          }
-          res.json({token: token});
+        let pw = req.body.password;
+        delete req.body.password;
+				return User.create({
+          userName: req.body.name, 
+          email: req.body.email,
+          isAdmin: req.body.isAdmin, 
+          randomString: makeRandomString(),
+          password: pw
         });
       }
-    })(req, res, next);
-  });*/
+    })
+    .then( (newUser) => {             
+      res.json({msg: `User created successfully`});
+    })
+    .catch( (err) => {
+      res.status(500).json({err: err});
+    })
+	})
+  .patch(isLoggedIn, (req, res) => {
+    models.sql.sync()
+    .then( () => {
+      return User.findOne({
+        where: {
+          id: req.body.id
+        }
+      });
+    })
+    .then( (user) => {
+      let hasNewPw = req.body.password ? true : false;
+      let newPw = req.body.password;
+      delete req.body.password;
+      if (hasNewPw) user.update({password: newPw});
+      newPw = undefined;
+      if (req.body.name) user.update({userName: req.body.name});
+      if (req.body.email) user.update({email: req.body.email})
+      if (req.body.isAdmin === true || req.body.isAdmin === false) user.update({isAdmin: req.body.isAdmin});             
+      res.json({msg: `user updated`});
+    })
+  });
 
-  router.get('/login', passport.authenticate('basic', { session: false }), (req, res) => {
+  router.delete(`/user/:slug`, isLoggedInAdmin, (req, res) => {
+    models.sql.sync()
+    .then(() => {
+      return User.findOne({
+        where: {
+          id: req.params.slug
+        }
+      })
+    })
+    .then((userToDelete) => {
+      userToDelete.destroy();
+      res.end();
+    })
+  })
+
+  router.route(`/allusers`)
+  .get(isLoggedInAdmin, (req, res) => {
+    let output = {};
+    models.sql.sync()
+    .then( () => {
+      return User.findAll();
+    })
+    .then( (localUsers) => {
+      let localUserArr = [];
+      for (let i = 0, j = localUsers.length; i < j; i++) {
+        let tmpObj = {
+          id: localUsers[i].id,
+          userName: localUsers[i].userName,
+          email: localUsers[i].email,
+          isAdmin: localUsers[i].isAdmin,
+          strategy: `basic`
+        }
+        localUserArr.push(tmpObj);
+      }
+      output.localUsers = localUserArr;
+    })
+    .then( () => {
+      return MsUser.findAll();
+    })
+    .then( (msUsers) => {
+      output.msUsers = msUsers;
+      for (let i = 0, j = output.msUsers.length; i < j; i++) {
+        output.msUsers[i].strategy = `AzureAD`
+      }
+      res.json(output);
+    });
+  });
+
+  router.route('/msusers')
+  .post(isLoggedInAdmin, (req, res) => {
+    models.sql.sync()
+    .then(() => {
+      MsUser.create(req.body);
+      res.end();
+    })
+  })
+  .patch(isLoggedInAdmin, (req, res) => {
+    models.sql.sync()
+    .then(() => {
+      return MsUser.findOne({
+        where: {
+          id: req.body.id
+        }
+      });
+    })
+    .then( (msUser) => {
+      msUser.update({isAdmin: req.body.isAdmin});
+      res.end();      
+    });
+  });
+  router.delete(`/msusers/:slug`, isLoggedInAdmin, (req, res) => {
+    models.sql.sync()
+    .then(() => {
+      return MsUser.findOne({
+        where: {
+          id: req.params.slug
+        }
+      })
+    })
+    .then((msUserToDelete) => {
+      msUserToDelete.destroy();
+      res.end();
+    })
+  })
+
+
+  router.get('/login', passport.authenticate('basic', { session: true }), (req, res) => {
     let userJSON = {randomString: req.user.dataValues.randomString, id: req.user.dataValues.id};
     res.req.headers.authorization = 'hahaha';
     // res.req.rawHeaders.Authorization = 'blah';
@@ -107,20 +216,26 @@ module.exports = function(router, passport) {
       }
       
     }
-    // console.log(clc.greenBright('Cookies: '), '     :::::     ', res.req.rawHeaders);
     req.user.$modelOptions.instanceMethods.generateToken(userJSON, process.env.SECRET_KEY, (err, token) => {
-        if (err) {
-            console.log(err);
-            return res.status(500).json({msg: 'error generating token'});
-        }
-        
-        res.status('200').header('token', token).json({token: token, 'admin': req.user.dataValues.isAdmin, 'username': req.user.dataValues.userName, 'email': req.user.dataValues.email});
-      });
+      if (err) {
+          console.log(err);
+          return res.status(500).json({msg: 'error generating token'});
+      }
+      req.session.cookie.maxAge = 1000 * 60 * 60;
+      res.status('200').end();
     });
+  });
 
-  /*router.get('/logout', function(req, res) {
-    console.log(clc.cyanBright(':::::      '), req.rawHeaders);
-    console.log(clc.greenBright(':::::      '), req.cookies);
-    res.end('the end');
-  })*/
+  router.get(`/azurelogin`, passport.authenticate(`provider`, {successRedirect: `/admin/redirect`}));
+
+  router.get(`/.auth/login/aad/callback`, passport.authenticate(`provider`, { successRedirect: `/admin/redirect`, failureRedirect: `/admin/login` }), function (req, res) { 
+    res.redirect(`/`); 
+  });
+
+  
+  router.get('/logout', function(req, res) {
+    req.logout();
+    res.json({msg: 'logged off'});
+  });
+
 };
