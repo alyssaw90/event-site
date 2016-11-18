@@ -16,7 +16,16 @@ module.exports = function (grunt) {
     less: {
       dev: {
         options: {
-          paths: ['app/css/**/**']
+          paths: ['app/css/', 'app/css/fonts/', 'app/css/img/'],
+          plugins: [
+            new (require('less-plugin-autoprefix'))({
+              browsers: ['last 2 versions', '> 1%', 'ie > 6']
+            }),
+            new (require('less-plugin-clean-css'))({
+              sourceMap: false,
+              // relativeUrls: true
+            })
+          ]
         },
         files: {
           'dist/custom.build.min.css': 'app/css/less/*.less'
@@ -237,10 +246,10 @@ module.exports = function (grunt) {
 	// register mocha test task
 	grunt.registerTask('test', ['simplemocha:dev']);
   grunt.registerTask('lessProd', ['less:prod']);
-  grunt.registerTask('build:dev', ['clean:all', 'babel', 'browserify:dev', 'lessProd']);
+  grunt.registerTask('build:dev', ['clean:all', 'babel', 'browserify:dev', 'less:dev']);
   grunt.registerTask('build', ['clean:all', 'babel', 'browserify:dist', 'uglify', 'lessProd', 'clean:build']);
   grunt.registerTask('start:dev', ['build:dev', 'nodemon:dev']);
   grunt.registerTask('start', ['build', 'nodemon:dev']);
 	grunt.registerTask('test', ['build', 'test']);
-  grunt.registerTask('default', ['concurrent:target2']);
+  grunt.registerTask('default', ['start']);
 };
