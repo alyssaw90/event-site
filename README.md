@@ -1,3 +1,13 @@
+##Quick start
+
+* git clone < url for this repository >
+
+* cd into `event-site`
+
+* npm install
+
+* grunt start
+
 ##Getting Started
 
 This site uses a SQL database with Sequelize as its ORM. If you need to learn about Sequelize, they have [helpful documentation](http://docs.sequelizejs.com/en/latest/). It is currently set up to use SQL Server, but Sequelize will work with any SQL database. If you want to use SQL Server, then you don't need to make any changes, just run `npm install` then store your database name, user name and password in file named `.env` and store it in the in the root directory. If you want to use a different SQL you can find how to do that on [this page](http://docs.sequelizejs.com/en/latest/docs/getting-started/) in the Sequelize docs. A note on the Sequelize docs: In the Sequelize docs they declare Sequelize with `var Sequelize = require('sequelize');` and connect to their database with `var sequelize = new Sequelize('database', 'username', 'password');`, instead of this, I use `let Sql = require('sequelize');` and `let sql = new Sql('database', 'username', 'password');`, so I don't have to type as much. It makes no difference, but I want to avoid confusion for anyone comparing my code to the Sequelize docs. Note however that you have to use `var` or `let` using `const` with Sequelize will cause errors.
