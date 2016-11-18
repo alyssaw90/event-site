@@ -8,13 +8,15 @@ This site uses a SQL database with Sequelize as its ORM. If you need to learn ab
 
 Authentication is done with a local strategy as well as with OAuth from Azure Active Directory. To use OAuth and connect to your database you need to create a file called `.env` and save it to the root of your project. And enter the following:
 
-```DB_PASS=YourPassword
+```
+DB_PASS=YourPassword
 DB_HOST=your.database.host
 DB_USER=your_user
 DB_NAME=your_db_name
 AZURE_SECRET=your_azure_ad_secret
 AZURE_CLIENT_ID=your_azure_client_id
-AZURE_TENANT_ID=your_azure_tenant_id```
+AZURE_TENANT_ID=your_azure_tenant_id
+```
 
 This will work for testing and using your localhost, but for production, you need to provide environment variables with the same names in the way prescribed by your hosting service. 
 
