@@ -69,7 +69,7 @@ The main entry point for the client side of the app is the `app/components/clien
 
 If you deploy to Azure, Azure will not perform `npm install` for you after pushing your files, so you must push your `node_modules` folder. In order to avoid pushing all you dev dependencies, delete your `node_modules` folder then run `npm install --production` before pushing your files. This will install only the dependencies and not the devDependencies from your `package.json` file.
 
-If you deploy with Visual Studio also be awayre that Visual Studio does not respect your `.gitignore` file, so delete or temporarily move any files with sensitiive information such as the `.env` file before deploying with Visual Studio. 
+If you deploy with Visual Studio also be aware that Visual Studio does not respect your `.gitignore` file, so delete or temporarily move any files with sensitive information such as the `.env` file before deploying with Visual Studio. 
 
 If you deploy to Azure with the cli, it will respect your `.gitignore` but it still does not perform an `npm install` for you, so you will need to temporarily remove your `node_modules` folder from your `.gitignore` before pushing to Azure.  
 
