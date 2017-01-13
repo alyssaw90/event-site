@@ -9,7 +9,7 @@ let port = process.env.PORT || 3000;
 chai.use(chaihttp);
 
 require('../server.js');
-
+// Tests that make sure server can load basic HTML pages
 describe('Test that server can load basic html pages', function () {
   //create task to test that server can load a basic web pages
   it('Should load homepage', function (done) {
