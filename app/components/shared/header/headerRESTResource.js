@@ -10,8 +10,11 @@ const headerRESTResource = (app) => {
 			return {
 				getSlides: function(slideshowName, callback) {
 					$http.get('/api/slideshow/' + slideshowName)
-          .success(customFunctions.handleSuccess(callback))
-          .error(customFunctions.handleError(callback));
+					.then(function successCallback(data){
+						return callback(null, data);
+					}, function errorCallback(data){
+						return callback(data);
+					})
 				}
 			}
 			
