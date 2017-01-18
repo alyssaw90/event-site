@@ -455,7 +455,7 @@ const PastEventsCtrl = (app) => {
 				if (err) {
 					return console.log(err);
 				}
-				for (let key in data) {
+				for (let key in data.data) {
 					let newYearOfEvents = {
 						year: key,
 						calendarHtml: `<table id="${key}PastEvents" cellspacing="0" cellpadding="0" class="table table-bordered">
@@ -469,15 +469,15 @@ const PastEventsCtrl = (app) => {
 												<tbody>`
 					};
 
-					for (let i = 0, len = data[key].length; i < len; i++) {
-						let technicalTopics = data[key][i].eventTechnicalTopics !== null ? data[key][i].eventTechnicalTopics : '';
-						let startDate = new Date(data[key][i].eventStartDate).toDateString();
+					for (let i = 0, len = data.data[key].length; i < len; i++) {
+						let technicalTopics = data.data[key][i].eventTechnicalTopics !== null ? data.data[key][i].eventTechnicalTopics : '';
+						let startDate = new Date(data.data[key][i].eventStartDate).toDateString();
 						newYearOfEvents.calendarHtml += `<tr>
-													<td>${data[key][i].eventName}</td>
+													<td>${data.data[key][i].eventName}</td>
 													<td>${startDate}</td>
-													<td>${data[key][i].eventLocation}</td>
+													<td>${data.data[key][i].eventLocation}</td>
 													<td>${technicalTopics}</td>
-													<td><a href="${data[key][i].eventUrl}">Event Page</a></td>
+													<td><a href="${data.data[key][i].eventUrl}">Event Page</a></td>
 												</tr>`;
 						
 					}

@@ -14,7 +14,6 @@ const LatestNewsCtrl = (app) => {
 					return console.log({msg: 'could not retrieve blog posts'});
 				}
 				$scope.blogPosts = data;
-
 			});
 
 		}

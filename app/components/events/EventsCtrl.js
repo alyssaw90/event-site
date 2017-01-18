@@ -18,9 +18,11 @@ const EventsCtrl = (app) => {
         if (err) {
           return $scope.errors.push({msg: 'no event found'});
         };
-        $rootScope.lang = data.event.eventLanguage || 'en';
-        $scope.headerImage = 'uploads/' + data.event.eventHeaderImage;
-        $scope.events = data;
+		// console.log($scope.events)
+		// console.log(data.data.event)
+        $rootScope.lang = data.data.event.eventLanguage || 'en';
+        $scope.headerImage = 'uploads/' + data.data.event.eventHeaderImage;
+        $scope.events = data.data;
         //loop over html string for tabs and tell angular to trust it as html
 				for (let i = 0, len = $scope.events.tabs.length; i < len; i++) {
 					$scope.events.tabs[i].tabContent = $sce.trustAsHtml($scope.events.tabs[i].tabContent);
