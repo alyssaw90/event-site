@@ -139,7 +139,7 @@ module.exports = function (grunt) {
           }
       }
     },
-		    // create jshint task
+		// create jshint task
     jshint: {
       dev: {
         // tell jshint what check

@@ -10,18 +10,27 @@ const bingMapRESTResource = (app) => {
 			return {
 				getBingMapKey: function(callback) {
 					$http.get('/api/bingmapkey')
-          .success(customFunctions.handleSuccess(callback))
-          .error(customFunctions.handleError(callback));
+					.then(function successCallback(data){
+						return callback(null, data);
+					}, function errorCallback(data){
+						return callback(data)
+					})
 				},
 				getMapEvents: function(callback) {
 					$http.get('/api/mapevents')
-          .success(customFunctions.handleSuccess(callback))
-          .error(customFunctions.handleError(callback));
+					.then(function successCallback(data){
+						return callback(null, data);
+					}, function errorCallback(data){
+						return callback(data)
+					})
 				},
 				addPushpins: function(searchPath, callback) {
 					$http.jsonp(searchPath)
-          .success(customFunctions.handleSuccess(callback))
-          .error(customFunctions.handleError(callback));
+					.then(function successCallback(data){
+						return callback(null, data);
+					}, function errorCallback(data){
+						return callback(data)
+					})
 				}
 			}
 			

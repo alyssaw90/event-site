@@ -14,7 +14,7 @@ const MeetTheTeamCtrl = (app) => {
           return $scope.errors.push({msg: 'could not retrieve team members'});
         };
         
-        $scope.teamMembers = data;
+        $scope.teamMembers = data.data;
         for (let i = 0, len = $scope.teamMembers.length; i < len; i++) {
         	$scope.teamMembers[i].speakerDescription = $sce.trustAsHtml($scope.teamMembers[i].speakerDescription);
         	$scope.teamMembers[i].headShot = 'uploads/' + $scope.teamMembers[i].headShot;

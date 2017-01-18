@@ -20,7 +20,7 @@ const HeaderController = (app) => {
           return $scope.errors.push({msg: 'could not retrieve slideshow images'});
         };
         
-        $scope.slides = data;
+        $scope.slides = data.data;
         for (let i = 0, len = $scope.slides.length; i < len; i++) {
         	$scope.slides[i].imgSrcUrl = 'uploads/' + $scope.slides[i].imgSrcUrl;
         }

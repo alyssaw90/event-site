@@ -9,7 +9,7 @@ var chaihttp = require('chai-http');
 chai.use(chaihttp);
 
 require('../server.js');
-
+// Test /showfull team route and if all of the MS speakers load. 
 describe('Test /showfullteam route', function () {
 	it('should load all MS speakers from /showfullteam', function (done) {
 		chai.request('/')
