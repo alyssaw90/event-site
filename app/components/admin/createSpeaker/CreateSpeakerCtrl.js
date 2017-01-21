@@ -18,7 +18,7 @@ const CreateSpeakerCtrl = (app) => {
 		$scope.createNewSpeaker = (newSpeaker, publishStatus) => {
       newSpeaker.publishStatus = publishStatus;
       newSpeaker.headshot = $rootScope.newSpeakerImg.name ? $rootScope.newSpeakerImg.size + '-' + $rootScope.newSpeakerImg.name : 'placeholder-headshot.jpg';
-
+      // console.log(newSpeaker)
       CreateSpeakerData.createSpeaker(newSpeaker, (err, data) => {
         if (err) {
           $scope.errors.push({msg: 'could not save speaker: ' + $scope.newSpeaker.newFirstName + ' ' + $scope.newSpeaker.newLastName});

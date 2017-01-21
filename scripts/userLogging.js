@@ -8,6 +8,7 @@ const userLogging = () => {
   const userLoggingObj = {
 
     isLoggedIn: (req, res, next) => {
+      console.log(clc.blue('user: ' + req.user))
       res.header('Access-Control-Allow-Credentials', true);
       if (req.user.hasOwnProperty('unique_name')) {
         models.sql.sync()
@@ -88,7 +89,8 @@ const userLogging = () => {
         return next();
       } else {
         // if they aren't send not authorized
-        res.redirect(401, `/admin/login`);    
+        res.redirect(401, `/admin/login`); 
+        res.redirect(500, '/admin/login');   
       }
 
     }

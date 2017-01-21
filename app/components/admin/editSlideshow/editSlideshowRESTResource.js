@@ -10,32 +10,47 @@ const editSlideshowRESTResource = (app) => {
 			return {
 				getAllSlideshows: (slideshowName, callback) => {
 					$http.get('/api/slideshow/' + slideshowName)
-					.success(customFunctions.handleSuccess(callback))
-					.error(customFunctions.handleError(callback));
+					.then(function successCallback(data){
+						callback(null, data)
+					}, function errorCallback(data){
+						callback(data)
+					})
 				},
 
 				getAllSlides: (callback) => {
 					$http.get('/api/allslides')
-					.success(customFunctions.handleSuccess(callback))
-					.error(customFunctions.handleError(callback));
+					.then(function successCallback(data){
+						callback(null, data)
+					}, function errorCallback(data){
+						callback(data)
+					})
 				},
 
 				setNewSlideshowOrder: (slideData, callback) => {
 					$http.post('/api/sethomepageslides', slideData)
-					.success(customFunctions.handleSuccess(callback))
-					.error(customFunctions.handleError(callback));
+					.then(function successCallback(data){
+						callback(null, data)
+					}, function errorCallback(data){
+						callback(data)
+					})
 				},
 
 				addSlide: (newSlideData, callback) => {
 					$http.post('/api/addslide', newSlideData)
-					.success(customFunctions.handleSuccess(callback))
-					.error(customFunctions.handleError(callback));
+					.then(function successCallback(data){
+						callback(null, data)
+					}, function errorCallback(data){
+						callback(data)
+					})
 				},
 
 				deleteSlide: (slideId, callback) => {
 					$http.post('/api/deleteslide', slideId)
-					.success(customFunctions.handleSuccess(callback))
-					.error(customFunctions.handleError(callback));
+					.then(function successCallback(data){
+						callback(null, data)
+					}, function errorCallback(data){
+						callback(data)
+					})
 				}
 
 			}
