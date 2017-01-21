@@ -22,10 +22,10 @@ const editSlideshowCtrl = (app) => {
 				if (err) {
 					return $scope.errors.push({msg: 'could not retrieve slides'});
 				}
-				$scope.completeListOfSlides = data;
-				for (let i = 0, j = data.length; i < j; i++) {
-					if ($scope.compareArr.indexOf(data[i].id) < 0) {
-						$scope.slides.push(data[i]);
+				$scope.completeListOfSlides = data.data;
+				for (let i = 0, j = data.data.length; i < j; i++) {
+					if ($scope.compareArr.indexOf(data.data[i].id) < 0) {
+						$scope.slides.push(data.data[i]);
 					}
 				}
 				for (let i = 0, len = $scope.slides.length; i < len; i++) {

@@ -17,8 +17,8 @@ const EditFilesCtrl = (app) => {
           return $scope.errors.push({msg: 'could not retrieve files'});
         }
         $scope.files.length = 0;
-        for (let i = 0, len = data.length; i < len; i++) {
-          let fileExtension = data[i].slice(-4).toLowerCase();
+        for (let i = 0, len = data.data.length; i < len; i++) {
+          let fileExtension = data.data[i].slice(-4).toLowerCase();
           let isImage = true;
           if (imageExtensions.indexOf(fileExtension) === -1) {
             isImage = false;
