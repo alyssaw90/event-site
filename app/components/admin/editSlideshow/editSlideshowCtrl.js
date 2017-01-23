@@ -51,7 +51,7 @@ const editSlideshowCtrl = (app) => {
 					return $scope.errors.push({msg: 'could not retrieve slideshows'});
 				}
 				$scope.compareArr = [];
-				$scope.slideshowSlides = data;
+				$scope.slideshowSlides = data.data;
 				for (let i = 0, len = $scope.slideshowSlides.length; i < len; i++) {
 					$scope.compareArr.push($scope.slideshowSlides[i].id);
 					$scope.slideshowSlides[i].imgSrcUrl = '/uploads/' + $scope.slideshowSlides[i].imgSrcUrl;

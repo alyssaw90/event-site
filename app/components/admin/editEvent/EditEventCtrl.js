@@ -27,12 +27,12 @@ const EditEventCtrl = (app) => {
         if (err) {
           return $scope.errors.push({msg: 'could not retrieve speakers'});
         }
-        for (let i = 0, j = data.length; i < j; i++) {
-          $scope.tester.push(data[i].id);
-          if ($scope.compareArr.indexOf(data[i].id) < 0) {
-            data[i].headShot = '/uploads/' + data[i].headShot;
-            data[i].speakerDescription = $sce.trustAsHtml(data[i].speakerDescription);
-            $scope.unusedSpeakers.push(data[i]);
+        for (let i = 0, j = data.data.length; i < j; i++) {
+          $scope.tester.push(data.data[i].id);
+          if ($scope.compareArr.indexOf(data.data[i].id) < 0) {
+            data.data[i].headShot = '/uploads/' + data.data[i].headShot;
+            data.data[i].speakerDescription = $sce.trustAsHtml(data.data[i].speakerDescription);
+            $scope.unusedSpeakers.push(data.data[i]);
           }
         }
         /*for (let i = 0, len = $scope.slides.length; i < len; i++) {
@@ -72,9 +72,9 @@ const EditEventCtrl = (app) => {
         if (err) {
           return $scope.errors.push({msg: 'no event found'});
         };
-        $scope.headerImage = 'uploads/' + data.event.eventHeaderImage;
-        $scope.venueImage = 'uploads/' + data.event.eventVenueImg;
-        $scope.editedEvent = data;
+        $scope.headerImage = 'uploads/' + data.data.event.eventHeaderImage;
+        $scope.venueImage = 'uploads/' + data.data.event.eventVenueImg;
+        $scope.editedEvent = data.data;
         //loop over html string for tabs and tell angular to trust it as html
         for (let i = 0, len = $scope.editedEvent.tabs.length; i < len; i++) {
           $scope.editedEvent.tabs[i].tabContent = $sce.trustAsHtml($scope.editedEvent.tabs[i].tabContent);
@@ -89,15 +89,15 @@ const EditEventCtrl = (app) => {
         for (let i = 0, len = $scope.editedEvent.length; i < len; i++) {
           $scope.editedEvent[i].eventAboutTabText = $sce.trustAsHtml($scope.eventToEdit[i].eventAboutTabText);
         }
-        $scope.editedEvent.event.editedEventContinent = data.event.eventContinent;
-        $scope.editedEvent.event.eventAboutTabText = data.event.eventAboutTabText;
+        $scope.editedEvent.event.editedEventContinent = data.data.event.eventContinent;
+        $scope.editedEvent.event.eventAboutTabText = data.data.event.eventAboutTabText;
         $scope.startDate = $filter('date')($scope.editedEvent.event.eventStartDate, 'yyyy-MM-dd');
         $scope.endDate = $filter('date')($scope.editedEvent.event.eventEndDate, 'yyyy-MM-dd');
         $scope.editedEvent.event.eventStartDate = new Date( $scope.editedEvent.event.eventStartDate );
         $scope.editedEvent.event.eventEndDate = new Date($scope.editedEvent.event.eventEndDate);
         //assign id to use in associating new tabs
         $scope.newTab.eventId =  $scope.editedEvent.event.id;
-        $scope.currentEventUrl = data.event.eventUrl;
+        $scope.currentEventUrl = data.data.event.eventUrl;
         getUnusedSpeakers();
       })
     };

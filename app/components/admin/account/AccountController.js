@@ -41,7 +41,7 @@ const AccountController = (app) => {
             customClass: `sweet-alert-hide-input`
           });
         } else if (!err) {
-          $scope.allUsers = data;
+          $scope.allUsers = data.data;
         }
       })
     }

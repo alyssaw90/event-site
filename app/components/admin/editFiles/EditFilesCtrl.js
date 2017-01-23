@@ -23,7 +23,7 @@ const EditFilesCtrl = (app) => {
           if (imageExtensions.indexOf(fileExtension) === -1) {
             isImage = false;
           }
-          $scope.files.push({fileName: data[i], fileLink: '/uploads/' + data[i], isImage: isImage});
+          $scope.files.push({fileName: data.data[i], fileLink: '/uploads/' + data.data[i], isImage: isImage});
         }
       })
     }
