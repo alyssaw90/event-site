@@ -72,9 +72,10 @@ const EditEventCtrl = (app) => {
         if (err) {
           return $scope.errors.push({msg: 'no event found'});
         };
-        $scope.headerImage = 'uploads/' + data.data.event.eventHeaderImage;
-        $scope.venueImage = 'uploads/' + data.data.event.eventVenueImg;
         $scope.editedEvent = data.data;
+        $scope.headerImage = 'uploads/' + $scope.editedEvent.eventHeaderImage;
+        $scope.venueImage = 'uploads/' + $scope.editedEvent.eventVenueImg;
+        
         //loop over html string for tabs and tell angular to trust it as html
         for (let i = 0, len = $scope.editedEvent.tabs.length; i < len; i++) {
           $scope.editedEvent.tabs[i].tabContent = $sce.trustAsHtml($scope.editedEvent.tabs[i].tabContent);
