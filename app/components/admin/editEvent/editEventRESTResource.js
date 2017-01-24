@@ -10,53 +10,77 @@ const editEventRESTResource = (app) => {
 			return {
 				getSingleEvent: (resourceName, callback) => {
 					$http.get('/api/fulllist/' + resourceName)
-          .success(customFunctions.handleSuccess(callback))
-          .error(customFunctions.handleError(callback));
+          .then(function successCallback(data){
+            callback(null, data)
+          }, function errorCallback(data){
+            callback(data)
+          })
 				},
 
 				editEvent: (resourceData, callback) => {
 				
           $http.post('/api/editevent', resourceData)
-          .success(customFunctions.handleSuccess(callback))
-          .error(customFunctions.handleError(callback));
+          .then(function successCallback(data){
+            callback(null, data)
+          }, function errorCallback(data){
+            callback(data)
+          })
         },
         deleteEvent: (resourceData, callback) => {				
           $http.delete(`/api/deleteevent/${resourceData}`)
-          .success(customFunctions.handleSuccess(callback))
-          .error(customFunctions.handleError(callback));
+          .then(function successCallback(data){
+            callback(null, data)
+          }, function errorCallback(data){
+            callback(data)
+          })
         },
         editTab: (resourceData, callback) => {
 				
           $http.post('/api/edittab', resourceData)
-          .success(customFunctions.handleSuccess(callback))
-          .error(customFunctions.handleError(callback));
+          .then(function successCallback(data){
+            callback(null, data)
+          }, function errorCallback(data){
+            callback(data)
+          })
         },
 
         editSpeakers: (resourceData, callback) => {
 				
           $http.post('/api/editeventspeakers', resourceData)
-          .success(customFunctions.handleSuccess(callback))
-          .error(customFunctions.handleError(callback));
+          .then(function successCallback(data){
+            callback(null, data)
+          }, function errorCallback(data){
+            callback(data)
+          })
         },
 
         addTab: (resourceData, callback) => {
 				
           $http.post('/api/addtab', resourceData)
-          .success(customFunctions.handleSuccess(callback))
-          .error(customFunctions.handleError(callback));
+          .then(function successCallback(data){
+            callback(null, data)
+          }, function errorCallback(data){
+            callback(data)
+          })
         },
 
         deleteTab: (resourceData, callback) => {
 				
           $http.delete('/api/deletetab/' + resourceData)
-          .success(customFunctions.handleSuccess(callback))
-          .error(customFunctions.handleError(callback));
+          .then(function successCallback(data){
+            callback(null, data)
+          }, function errorCallback(data){
+            callback(data)
+          })
         },
 
         newTabOrder: (resourceData, callback) => {
           $http.post('/api/newtaborder', resourceData)
-          .success(customFunctions.handleSuccess(callback))
-          .error(customFunctions.handleError(callback));
+          .then(function successCallback(data){
+            callback(null, data)
+          }, function errorCallback(data){
+            callback(data)
+          })
         }
 
 			}

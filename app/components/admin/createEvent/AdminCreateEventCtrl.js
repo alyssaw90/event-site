@@ -34,11 +34,11 @@ const AdminCreateEventCtrl = (app) => {
           return $scope.errors.push({msg: 'could not retrieve events'});
         };
 
-        for (let i = 0, j = data.length; i < j; i++) {
-          $scope.eventUrls.push(data[i].eventUrl);
+        for (let i = 0, j = data.data.length; i < j; i++) {
+          $scope.eventUrls.push(data.data[i].eventUrl);
         }
         
-        $scope.theEvents = data;
+        $scope.theEvents = data.data;
       });      
     
     };
@@ -50,8 +50,8 @@ const AdminCreateEventCtrl = (app) => {
           return $scope.errors.push({msg: 'could not retrieve speakers'});
         }
 
-        for (let i = 0, len = speakers.length; i < len; i++) {
-          $rootScope.theSpeakers.push(speakers[i]);
+        for (let i = 0, len = speakers.data.length; i < len; i++) {
+          $rootScope.theSpeakers.push(speakers.data[i]);
         }
 
       })

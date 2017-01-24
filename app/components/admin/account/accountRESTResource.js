@@ -7,43 +7,67 @@ function accountRESTResource(app) {
       return {
         getUser: (callback) => {
           $http.get(`/auth/user`)
-          .success(customFunctions.handleSuccess(callback))
-          .error(customFunctions.handleError(callback));
+          .then(function successCallback(data){
+            callback(null, data)
+          }, function errorCallback(data){
+            callback(data)
+          })
         },
         getAllUsers: (callback) => {
           $http.get(`/auth/allusers`)
-          .success(customFunctions.handleSuccess(callback))
-          .error(customFunctions.handleError(callback));
+          .then(function successCallback(data){
+            callback(null, data)
+          }, function errorCallback(data){
+            callback(data)
+          })
         },
         createUser: (resourceData, callback) => {
           $http.post(`/auth/user`, resourceData)
-          .success(customFunctions.handleSuccess(callback))
-          .error(customFunctions.handleError(callback));
+          .then(function successCallback(data){
+            callback(null, data)
+          }, function errorCallback(data){
+            callback(data)
+          })
         },
         updateUser: (resourceData, callback) => {
           $http.patch(`/auth/user`, resourceData)
-          .success(customFunctions.handleSuccess(callback))
-          .error(customFunctions.handleError(callback));
+          .then(function successCallback(data){
+            callback(null, data)
+          }, function errorCallback(data){
+            callback(data)
+          })
         },
         deleteUser: (resourceData, callback) => {				
           $http.delete(`/auth/user/${resourceData}`)
-          .success(customFunctions.handleSuccess(callback))
-          .error(customFunctions.handleError(callback));
+          .then(function successCallback(data){
+            callback(null, data)
+          }, function errorCallback(data){
+            callback(data)
+          })
         },
          updateMsUser: (resourceData, callback) => {
           $http.patch(`/auth/msusers`, resourceData)
-          .success(customFunctions.handleSuccess(callback))
-          .error(customFunctions.handleError(callback));
+          .then(function successCallback(data){
+            callback(null, data)
+          }, function errorCallback(data){
+            callback(data)
+          })
         },
         addMsUser: (resourceData, callback) => {
           $http.post(`/auth/msusers`, resourceData)
-          .success(customFunctions.handleSuccess(callback))
-          .error(customFunctions.handleError(callback));
+          .then(function successCallback(data){
+            callback(null, data)
+          }, function errorCallback(data){
+            callback(data)
+          })
         },
         deleteMsUser: (resourceData, callback) => {				
           $http.delete(`/auth/msusers/${resourceData}`)
-          .success(customFunctions.handleSuccess(callback))
-          .error(customFunctions.handleError(callback));
+          .then(function successCallback(data){
+            callback(null, data)
+          }, function errorCallback(data){
+            callback(data)
+          })
         }
       }
     };

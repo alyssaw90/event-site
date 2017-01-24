@@ -10,14 +10,20 @@ const editFilesRESTResource = (app) => {
 			return {
 				getAllFiles: (callback) => {
 					$http.get('/api/files')
-					.success(customFunctions.handleSuccess(callback))
-					.error(customFunctions.handleError(callback));
+					.then(function successCallback(data){
+						callback(null, data)
+					}, function errorCallback(data){
+						callback(data)
+					})
 				},
 
 				deleteFiles: (files, callback) => {
 					$http.post('/api/files', files)
-					.success(customFunctions.handleSuccess(callback))
-					.error(customFunctions.handleError(callback));
+					.then(function successCallback(data){
+						callback(null, data)
+					}, function errorCallback(data){
+						callback(data)
+					})
 				}
 
 			}

@@ -12,18 +12,21 @@ const userLoggingRESTResources = (app) => {
     	       $http.get('/auth/login', {
     	         headers: {'Authorization': 'Basic ' + encoded}
     	       })
-    	       .success( (data) => {
-                callback(null);
-    	       })
-    	       .error( (data) => {
-                callback(data);
-    	       })
+    	       .then(function successCallback (data) {
+                callback(null, data);
+    	       }, function errorCallback(data){
+							 callback(data);
+						 })
+    	       
     	     },
 	   
     	     logout: (callback) => {
              $http.get('/auth/logout')
-             .success(customFunctions.handleSuccess(callback))
-             .error(customFunctions.handleError(callback));
+             .then(function successCallback(data){
+							 callback(null, data)
+						 }, function errorCallback(data){
+							 callback(data)
+						 })
            }
     	   };
 		}

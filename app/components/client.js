@@ -302,15 +302,14 @@ eventsApp
 	//when the route starts with /admin, call the /api/user/checklogin route to check if the user is logged in and redirect them to the login page if they aren't
 	if ( /\/admin.*$/.test($location.path()) ) {
 		$http.get('/api/user/checklogin')
-		.success( (data) => {
+		.then( function successCallback(data) {
       $rootScope.isAuthenticated = true;
 			if ($location.path() === `/admin/login`) {
 				$location.path(`/admin/edit-event`);
 			}
-		})
-		.error( (err) => {
-      $rootScope.isAuthenticated = false;
-      $cookies.remove('interopAdmin');
+		}, function errorCallback(data){
+			$rootScope.isAuthenticated = false;
+      		$cookies.remove('interopAdmin');
 			$location.path('/admin/login');
 		})
 	}
@@ -330,15 +329,14 @@ eventsApp
 		//when the route starts with /admin, call the /api/user/checklogin route to check if the user is logged in and redirect them to the login page if they aren't
 		if ( /\/admin.*$/.test($location.path()) ) {
 			$http.get('/api/user/checklogin')
-			.success( (data) => {
+			.then(function successCallback(data){
         $rootScope.isAuthenticated = true;
 				if ($location.path() === `/admin/login`) {
 					$location.path(`/admin/edit-event`);
 				}
-			})
-			.error( (err) => {
-        $rootScope.isAuthenticated = false;
-        $cookies.remove('interopAdmin');
+			}, function errorCallback(data){
+				$rootScope.isAuthenticated = false;
+        		$cookies.remove('interopAdmin');
 				$location.path('/admin/login');
 			})
 		}

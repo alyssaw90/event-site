@@ -10,19 +10,29 @@ const createEventRESTResource = (app) => {
 			return {
 				getAllEvents: (callback) => {
 					$http.get('/api/allevents')
-          .success(customFunctions.handleSuccess(callback))
-          .error(customFunctions.handleError(callback));
+					.then(function successCallback(data){
+						callback(null, data)
+					}, function errorCallback(data){
+						callback(data)
+					})
 				},
 				getAllSpeakers: (callback) => {
 					$http.get('/api/speakers')
-          .success(customFunctions.handleSuccess(callback))
-          .error(customFunctions.handleError(callback));
+					.then(function successCallback(data){
+						callback(null, data)
+					}, function errorCallback(data){
+						callback(data)
+					})
 				},
 				createEvent: (resourceData, callback) => {
           $http.post('/api/createevent', resourceData)
-          .success(customFunctions.handleSuccess(callback))
-          .error(customFunctions.handleError(callback));
-        }
+		  			.then(function successCallback(data){
+						callback(null, data)
+					}, function errorCallback(data){
+						callback(data)
+					})
+
+        	}
 			}
 			
 		}
