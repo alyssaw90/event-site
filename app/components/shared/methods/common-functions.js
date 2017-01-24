@@ -113,8 +113,8 @@ export const urlify = (str) => {
 
 //function to set divs with equal height
 export const changeHeight = function(jQElemArr) {
-	jQElemArr.css('height','auto');
 	var tallestBlock = 0;
+	jQElemArr.css('height','auto');
 	jQElemArr.each(function () {
 		if (jQuery(this).height() > tallestBlock) {
 			tallestBlock = jQuery(this).height();
