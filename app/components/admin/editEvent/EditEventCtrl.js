@@ -91,11 +91,8 @@ const EditEventCtrl = (app) => {
           $scope.editedEvent[i].eventAboutTabText = $sce.trustAsHtml($scope.eventToEdit[i].eventAboutTabText);
         }
         $scope.editedEvent.event.editedEventContinent = data.data.event.eventContinent;
-        console.log(data.data.event.eventContinent)
-        console.log($scope.editedEvent.event.editedEventContinent)
         $scope.editedEvent.event.showOnHeader = data.data.event.showOnHeader;
-        // console.log(data.data.event.showOnHeader)
-        // console.log($scope.editedEvent.event.showOnHeader)
+        console.log($scope.editedEvent.event.showOnHeader)
         $scope.editedEvent.event.eventAboutTabText = data.data.event.eventAboutTabText;
         $scope.startDate = $filter('date')($scope.editedEvent.event.eventStartDate, 'yyyy-MM-dd');
         $scope.endDate = $filter('date')($scope.editedEvent.event.eventEndDate, 'yyyy-MM-dd');
