@@ -480,6 +480,7 @@ module.exports = (router) => {
   });
 
   router.post('/editevent', isLoggedIn, (req, res, next) => {
+    console.log(clc.red(req.body.event.showOnHeader))
     models.sql.sync()
     .then( () => {
       return Event.findOne({
