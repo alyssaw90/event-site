@@ -22,7 +22,7 @@ require('angular-bootstrap-confirm');
 require('angular-messages');
 require(`angular-password`);
 
-const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize', 'angular-google-analytics', 'ngFileUpload', 'ngResource', 'ngCookies', 'base64', 'ngAnimate', 'ui.bootstrap', 'ui.tinymce', 'ui.sortable', 'mwl.confirm', 'ngMessages', `ngPassword`]);
+const eventsApp = angular.module('eventsApp', ['AdalAngular','ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize', 'angular-google-analytics', 'ngFileUpload', 'ngResource', 'ngCookies', 'base64', 'ngAnimate', 'ui.bootstrap', 'ui.tinymce', 'ui.sortable', 'mwl.confirm', 'ngMessages', `ngPassword`]);
 
 //directives
 require('./shared/directives/allPagesDirective.js')(eventsApp);
@@ -92,7 +92,7 @@ require(`./admin/account/accountRESTResource`)(eventsApp);
 require('./admin/editFiles/fileSearch.js')(eventsApp);
 
 eventsApp
-.config(['$routeProvider', '$locationProvider', 'AnalyticsProvider', '$httpProvider', function ($routeProvider, $locationProvider, AnalyticsProvider, $httpProvider) {
+.config(['$routeProvider', '$locationProvider', 'AnalyticsProvider', '$httpProvider', 'adalAuthenticationServiceProvider', function ($routeProvider, $locationProvider, AnalyticsProvider, $httpProvider, adalProvider) {
 
 	//Enable Google Analytics
 	AnalyticsProvider
@@ -120,8 +120,8 @@ eventsApp
 		controller: 'HomepageCtrl',
 		reloadOnSearch: false,
 		data: {
-      pageTitle: 'Home Page - Microsoft Plugfests and Events'
-    }
+      		pageTitle: 'Home Page - Microsoft Plugfests and Events'
+    	}
 	})
 	/*These 3 redirect routes take care of 404 errors cause by angular stripping the hash from routes even when they're meant for in page navigation*/
 	.when('/eventNavigationMenu', {
@@ -135,10 +135,10 @@ eventsApp
 	})
 	.when('/about', {
 		templateUrl: '/app/components/about/about.html',
-    reloadOnSearch: false,
+    	reloadOnSearch: false,
 		data: {
-      pageTitle: 'About Us Page - Microsoft Plugfests and Events'
-    }
+     		pageTitle: 'About Us Page - Microsoft Plugfests and Events'
+    	}
 	})
 	.when('/contactus', {
 		templateUrl: '/app/components/contactUs/contactUs.html',
@@ -191,6 +191,7 @@ eventsApp
 		templateUrl: '/app/components/admin/editSlideshow/editSlideshowTemplate.html',
 		reloadOnSearch: false,
 		controller: 'editSlideshowCtrl',
+		requireADLogin: true,
 		data: {
 			pageTitle: 'Edit Slideshow Settings'
 		}
@@ -199,6 +200,7 @@ eventsApp
 		templateUrl: '/app/components/admin/editEvent/admin-edit-event.html',
 		reloadOnSearch: false,
 		controller: 'EditEventCtrl',
+		requireADLogin: true,
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
     }
@@ -207,6 +209,7 @@ eventsApp
 		templateUrl: '/app/components/admin/createEvent/admin-create-event.html',
 		reloadOnSearch: false,
 		controller: 'AdminCreateEventCtrl',
+		requireADLogin: true,
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
     }
@@ -214,6 +217,7 @@ eventsApp
 	.when('/admin/create-speaker', {
 		templateUrl: '/app/components/admin/createSpeaker/admin-create-speaker.html',
 		reloadOnSearch: false,
+		requireADLogin: true,
 		data: {
 			pageTitle: 'Admin Page - Microsoft Plugfests and Events, create new speaker'
 		}
@@ -221,6 +225,7 @@ eventsApp
 	.when('/admin/edit-speaker', {
 		templateUrl: '/app/components/admin/editSpeaker/admin-edit-speakers.html',
 		reloadOnSearch: false,
+		requireADLogin: true,
 		controller: 'EditSpeakerController',
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
@@ -229,6 +234,7 @@ eventsApp
 	.when('/admin/edit-files', {
 		templateUrl: '/app/components/admin/editFiles/edit-files-template.html',
 		reloadOnSearch: false,
+		requireADLogin: true,
 		// controller: 'EditFilesCtrl',
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
@@ -245,7 +251,8 @@ eventsApp
 	.when(`/admin/account`, {
 		templateUrl: `/app/components/admin/account/account.html`,
 		reloadOnSearch: false,
-    controller: `AccountController`,
+    	controller: `AccountController`,
+		requireADLogin: true,
 		data: {
 			pageTitle: `Admin Page - Manage Account`
 		}
@@ -253,6 +260,7 @@ eventsApp
 	.when(`/admin/help`, {
 		templateUrl: `/app/components/admin/help/help.html`,
 		reloadOnSearch: false,
+		requireADLogin: true,
 		data: {
 			pageTitle: `Admin Page - help section`
 		}
@@ -268,6 +276,12 @@ eventsApp
       pageTitle: 'Interoperability Event Page - Microsoft Plugfests and Events'
     }
   })
+
+  adalProvider.init({
+	  instance: 'https://login.microsoftonline.com',
+	  tenant: process.env.TENANT_NAME,
+	  clientId: process.env.AZURE_CLIENT_ID
+  }, $httpProvider)
 
 }])
 .run(['$rootScope', '$location', '$anchorScroll', '$routeParams', '$http', 'Analytics', '$cookies', '$timeout', ($rootScope, $location, $anchorScroll, $routeParams, $http, Analytics, $cookies, $timeout) => {

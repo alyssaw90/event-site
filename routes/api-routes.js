@@ -254,7 +254,7 @@ module.exports = (router) => {
   });
 
   //route to get all files and delete files
-  router.get('/files', isLoggedIn, (req, res) => {
+  router.get('/files', (req, res) => {
     fs.readdir('uploads/', (err, data) => {
       if (err) {
         console.log(clc.white.bgRed('Error: '), err);
@@ -308,7 +308,7 @@ module.exports = (router) => {
     })
   });
   //route to get all slides
-  router.get('/allslides', isLoggedIn, (req, res) => {
+  router.get('/allslides', (req, res) => {
     models.sql.sync()
     .then( () => {
       return Slide.findAll();
@@ -319,7 +319,7 @@ module.exports = (router) => {
   });
 
   //route to set homepage slides
-  router.post('/sethomepageslides', isLoggedIn, (req, res) => {
+  router.post('/sethomepageslides', (req, res) => {
     models.sql.sync()
     .then( () => {
       return Slideshow.findOne({
@@ -344,7 +344,7 @@ module.exports = (router) => {
     });
   });
 
-  router.post('/addslide', isLoggedIn, (req, res) => {
+  router.post('/addslide',  (req, res) => {
     models.sql.sync()
     .then( () => {
       Slide.create({
@@ -357,7 +357,7 @@ module.exports = (router) => {
     });
   });
 
-  router.post('/deleteslide', isLoggedIn, (req, res) => {
+  router.post('/deleteslide',  (req, res) => {
     models.sql.sync()
     .then(() => {
       return Slide.destroy({
@@ -377,17 +377,17 @@ module.exports = (router) => {
   });
 
   //verify login
-  router.get('/user/checklogin', isLoggedIn, (req, res) => {
+  router.get('/user/checklogin',  (req, res) => {
     res.json({msg: `logged in`});
   });
 
   //get user info
-  router.get(`/user/accountinfo`, isLoggedIn, (req, res) => {
+  router.get(`/user/accountinfo`,  (req, res) => {
     res.json({user: req.user});
   })
 
   //get all speakers for editing
-  router.get('/speakers', isLoggedIn, (req, res) => {
+  router.get('/speakers',  (req, res) => {
     models.sql.sync()
     .then( () => {
       Speaker.findAll()
@@ -398,7 +398,7 @@ module.exports = (router) => {
   });
 
   //get all events for edit events tab
-  router.get('/allevents', isLoggedIn, (req, res) => {
+  router.get('/allevents',  (req, res) => {
     models.sql.sync()
     .then( () => {
       return Event.findAll();
@@ -425,7 +425,7 @@ module.exports = (router) => {
   });
 
   //route for uploading files with tinymce
-  router.post('/tinymceUpload', isLoggedIn, (req, res) => {
+  router.post('/tinymceUpload',  (req, res) => {
     let imageBuffer = new Buffer(req.body.base64String, 'base64');
     fs.writeFile(`uploads/${req.body.fileName}`, imageBuffer, (err) => {
       res.end('file saved');
@@ -433,7 +433,7 @@ module.exports = (router) => {
   });
 
   // create new event
-  router.post('/createevent', isLoggedIn, (req, res, next) => {
+  router.post('/createevent',  (req, res, next) => {
     let userName = req.user.unique_name || req.user.email;
     models.sql.sync()
     .then(function () {
@@ -479,7 +479,7 @@ module.exports = (router) => {
     });
   });
 
-  router.post('/editevent', isLoggedIn, (req, res, next) => {
+  router.post('/editevent',  (req, res, next) => {
     console.log(clc.red(req.body.event.showOnHeader))
     models.sql.sync()
     .then( () => {
@@ -520,7 +520,7 @@ module.exports = (router) => {
     })
   });
 
-  router.delete(`/deleteevent/:slug`, isLoggedIn, (req, res) => {
+  router.delete(`/deleteevent/:slug`,  (req, res) => {
     models.sql.sync()
     .then(() => {
       return Event.findOne({
@@ -538,7 +538,7 @@ module.exports = (router) => {
     })
   })
 
-  router.post('/edittab', isLoggedIn, (req, res, next) => {
+  router.post('/edittab',  (req, res, next) => {
     models.sql.sync()
     .then( () => {
       return EventTab.findOne({
@@ -560,7 +560,7 @@ module.exports = (router) => {
     });
   });
 
-  router.post('/newtaborder', isLoggedIn, (req, res) => {
+  router.post('/newtaborder',  (req, res) => {
     models.sql.sync()
     .then( () => {
       return EventTab.findAll({
@@ -587,7 +587,7 @@ module.exports = (router) => {
     })
   })
 
-  router.post('/addtab', isLoggedIn, (req, res) => {
+  router.post('/addtab',  (req, res) => {
     models.sql.sync()
     .then( () => {
       return EventTab.create({
@@ -613,7 +613,7 @@ module.exports = (router) => {
     });
   });
 
-  router.delete('/deletetab/:slug', isLoggedIn, (req, res) => {
+  router.delete('/deletetab/:slug',  (req, res) => {
     models.sql.sync()
     .then( () => {
       return EventTab.findOne({
@@ -628,7 +628,7 @@ module.exports = (router) => {
     })
   })
 
-  router.post('/editeventspeakers', isLoggedIn, (req, res) => {
+  router.post('/editeventspeakers',  (req, res) => {
     models.sql.sync()
     .then( () => {
       return Event.findOne({
@@ -646,7 +646,7 @@ module.exports = (router) => {
   });
 
   //route to create speakers
-  router.post('/addspeakers', isLoggedIn, (req, res) => {
+  router.post('/addspeakers',  (req, res) => {
     models.sql.sync()
     .then( () => {
       let userName = req.user.unique_name || req.user.email;
@@ -668,7 +668,7 @@ module.exports = (router) => {
     });
   });
   //route to edit speakers
-  router.post('/editspeaker', isLoggedIn, (req, res) => {
+  router.post('/editspeaker',  (req, res) => {
     models.sql.sync()
     .then( () => {
       return Speaker.findOne({
@@ -698,7 +698,7 @@ module.exports = (router) => {
     });
   });
 
-  router.delete(`/deletespeaker/:slug`, isLoggedIn, (req, res) => {
+  router.delete(`/deletespeaker/:slug`,  (req, res) => {
     models.sql.sync()
     .then(() => {
       return Speaker.findOne({
@@ -714,7 +714,7 @@ module.exports = (router) => {
   })
   
     //show all images
-  router.get('/showimages', isLoggedIn, function(req, res) {
+  router.get('/showimages',  function(req, res) {
     fs.readdir('uploads', function(err, files) {
       let imagesArr = [];
       if (err) {
@@ -733,7 +733,7 @@ module.exports = (router) => {
 
   /*Get events including unpublished content from URL path/slug */
   router.route('/fulllist/:slug')
-  .get(isLoggedIn, (req, res) => {
+  .get( (req, res) => {
     //create an eventInfo object to hold the values for the event to be rendered
     let eventInfo = {};
     eventInfo.isEvent = true;
