@@ -2,7 +2,8 @@
 
 import * as customFunctions from './shared/methods/common-functions.js';
 const jQuery = require('jquery');
-require('angular/angular');
+// require('angular/angular');
+import angular from 'angular';
 require('angular-route');
 require('angular-aria');
 require('angular-touch');
@@ -21,8 +22,10 @@ require('angular-ui-sortable');
 require('angular-bootstrap-confirm');
 require('angular-messages');
 require(`angular-password`);
+// import * as adal from './shared/methods/adal.js';
+import * as AdalAngular from './shared/methods/adal-angular.js';
 
-const eventsApp = angular.module('eventsApp', ['AdalAngular','ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize', 'angular-google-analytics', 'ngFileUpload', 'ngResource', 'ngCookies', 'base64', 'ngAnimate', 'ui.bootstrap', 'ui.tinymce', 'ui.sortable', 'mwl.confirm', 'ngMessages', `ngPassword`]);
+const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize', 'angular-google-analytics', 'ngFileUpload', 'ngResource', 'ngCookies', 'base64', 'ngAnimate', 'ui.bootstrap', 'ui.tinymce', 'ui.sortable', 'mwl.confirm', 'ngMessages', `ngPassword`, 'AdalAngular']);
 
 //directives
 require('./shared/directives/allPagesDirective.js')(eventsApp);
@@ -113,6 +116,9 @@ eventsApp
 	  });
 		
 	}
+
+
+
 	//set up angularjs front-end routes
 	$routeProvider
 	.when('/', {
@@ -191,7 +197,7 @@ eventsApp
 		templateUrl: '/app/components/admin/editSlideshow/editSlideshowTemplate.html',
 		reloadOnSearch: false,
 		controller: 'editSlideshowCtrl',
-		requireADLogin: true,
+	
 		data: {
 			pageTitle: 'Edit Slideshow Settings'
 		}
@@ -200,7 +206,7 @@ eventsApp
 		templateUrl: '/app/components/admin/editEvent/admin-edit-event.html',
 		reloadOnSearch: false,
 		controller: 'EditEventCtrl',
-		requireADLogin: true,
+		
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
     }
@@ -209,7 +215,7 @@ eventsApp
 		templateUrl: '/app/components/admin/createEvent/admin-create-event.html',
 		reloadOnSearch: false,
 		controller: 'AdminCreateEventCtrl',
-		requireADLogin: true,
+		
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
     }
@@ -217,7 +223,7 @@ eventsApp
 	.when('/admin/create-speaker', {
 		templateUrl: '/app/components/admin/createSpeaker/admin-create-speaker.html',
 		reloadOnSearch: false,
-		requireADLogin: true,
+		
 		data: {
 			pageTitle: 'Admin Page - Microsoft Plugfests and Events, create new speaker'
 		}
@@ -225,7 +231,7 @@ eventsApp
 	.when('/admin/edit-speaker', {
 		templateUrl: '/app/components/admin/editSpeaker/admin-edit-speakers.html',
 		reloadOnSearch: false,
-		requireADLogin: true,
+		
 		controller: 'EditSpeakerController',
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
@@ -234,7 +240,7 @@ eventsApp
 	.when('/admin/edit-files', {
 		templateUrl: '/app/components/admin/editFiles/edit-files-template.html',
 		reloadOnSearch: false,
-		requireADLogin: true,
+		
 		// controller: 'EditFilesCtrl',
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
@@ -252,7 +258,7 @@ eventsApp
 		templateUrl: `/app/components/admin/account/account.html`,
 		reloadOnSearch: false,
     	controller: `AccountController`,
-		requireADLogin: true,
+		
 		data: {
 			pageTitle: `Admin Page - Manage Account`
 		}
@@ -260,7 +266,7 @@ eventsApp
 	.when(`/admin/help`, {
 		templateUrl: `/app/components/admin/help/help.html`,
 		reloadOnSearch: false,
-		requireADLogin: true,
+		
 		data: {
 			pageTitle: `Admin Page - help section`
 		}
@@ -277,11 +283,24 @@ eventsApp
     }
   })
 
-  adalProvider.init({
-	  instance: 'https://login.microsoftonline.com',
-	  tenant: process.env.TENANT_NAME,
-	  clientId: process.env.AZURE_CLIENT_ID
-  }, $httpProvider)
+  var endpoints = {
+		  "https://localhost:3000":"https://localhost:3000/api/getTeam",
+		  "https://localhost:3000":"https://localhost:3000/api/getSlideshow"
+	  };
+
+  	adalProvider.init({
+	//   instance: 'https://login.microsoftonline.com',
+		endpoints: endpoints,
+	  tenant: 'interopevents.onmicrosoft.com',
+	  clientId: '4fd1444e-c61a-4859-ad90-d8f7cb3b12c9',
+	  anonymousEndpoints: [
+		  '/components/shared/header/headerTemplate.html',
+		  '/components/shared/footer/footerView.html',
+		  '/components/meetTheTeam/meetTheTeam.html'
+		]
+  	}, $httpProvider)
+
+  
 
 }])
 .run(['$rootScope', '$location', '$anchorScroll', '$routeParams', '$http', 'Analytics', '$cookies', '$timeout', ($rootScope, $location, $anchorScroll, $routeParams, $http, Analytics, $cookies, $timeout) => {

@@ -53,8 +53,8 @@ var tasks = [];
 // Load passport and configure it to use Azure AD Bearer auth
 app.use(passport.initialize());
 passport.use(new OIDCBearerStrategy({
-    "identityMetadata": 'PUT IDENTITY METADATA HERE',
-    "audience": 'PUT AUDIENCE HERE',
+    "identityMetadata": process.env.AZURE_METADATA,
+    "clientID": process.env.AZURE_CLIENT_ID,
     "validateIssuer": false,
 }, function(token, done){
     return done(null, token, null);

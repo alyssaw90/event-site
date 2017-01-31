@@ -10,6 +10,7 @@
   "author": "Michael Bowen",
   "license": "MS-PL",
   "dependencies": {
+    "adal-angular": "^1.0.13",
     "angular": "^1.5.8",
     "angular-animate": "^1.5.8",
     "angular-aria": "^1.5.8",
