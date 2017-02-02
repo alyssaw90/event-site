@@ -1,3 +1,6 @@
+// API routes for consumer facing portion of the site and the admin portal
+// I would like to separate the routes into consumer facing routes file and admin portal routes file
+
 'use strict';
 /*global interests */
 /*global SpeakersSuggestedCity */
@@ -343,7 +346,7 @@ module.exports = (router) => {
       });
     });
   });
-
+ // route to add slide to homepage slides
   router.post('/addslide', isLoggedIn, (req, res) => {
     models.sql.sync()
     .then( () => {
@@ -356,7 +359,7 @@ module.exports = (router) => {
       res.end('slide saved');
     });
   });
-
+// route to delete slides from admin portal
   router.post('/deleteslide', isLoggedIn, (req, res) => {
     models.sql.sync()
     .then(() => {
@@ -478,7 +481,7 @@ module.exports = (router) => {
       });
     });
   });
-
+// route to edit event in admin portal event section
   router.post('/editevent', isLoggedIn, (req, res, next) => {
     console.log(clc.red(req.body.event.showOnHeader))
     models.sql.sync()
@@ -519,7 +522,7 @@ module.exports = (router) => {
       })
     })
   });
-
+// route to delete event on admin portal event page
   router.delete(`/deleteevent/:slug`, isLoggedIn, (req, res) => {
     models.sql.sync()
     .then(() => {
@@ -537,7 +540,7 @@ module.exports = (router) => {
       res.json(err);
     })
   })
-
+// route to edit event tabs
   router.post('/edittab', isLoggedIn, (req, res, next) => {
     models.sql.sync()
     .then( () => {
@@ -559,7 +562,7 @@ module.exports = (router) => {
       });
     });
   });
-
+// route to edit tab order for events
   router.post('/newtaborder', isLoggedIn, (req, res) => {
     models.sql.sync()
     .then( () => {
@@ -586,7 +589,7 @@ module.exports = (router) => {
       res.end();
     })
   })
-
+// route to add a tab to event
   router.post('/addtab', isLoggedIn, (req, res) => {
     models.sql.sync()
     .then( () => {
@@ -612,7 +615,7 @@ module.exports = (router) => {
       });
     });
   });
-
+// route to delete a tab from events
   router.delete('/deletetab/:slug', isLoggedIn, (req, res) => {
     models.sql.sync()
     .then( () => {
@@ -627,7 +630,7 @@ module.exports = (router) => {
       res.end();
     })
   })
-
+// route to edit speakers on events
   router.post('/editeventspeakers', isLoggedIn, (req, res) => {
     models.sql.sync()
     .then( () => {

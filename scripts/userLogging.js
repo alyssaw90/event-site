@@ -6,7 +6,7 @@ const MsUser = models.MsUser;
 const userLogging = () => {
 
   const userLoggingObj = {
-
+    // check if user is logged in
     isLoggedIn: (req, res, next) => {
       console.log(clc.blue('user: ' + req.user))
       res.header('Access-Control-Allow-Credentials', true);
@@ -50,7 +50,7 @@ const userLogging = () => {
       }
 
     },
-
+    // check if admin is logged in
     isLoggedInAdmin: (req, res, next) => {
       res.header('Access-Control-Allow-Credentials', true);
       if (req.user.hasOwnProperty('unique_name')) {

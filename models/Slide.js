@@ -1,3 +1,5 @@
+// Slide model
+// Stores uploaded slides for slideshows
 'use strict';
 
 module.exports = function(sql, DataTypes) {

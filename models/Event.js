@@ -1,3 +1,4 @@
+// Event Model
 'use strict';
 
 module.exports = (sql, DataTypes) => {
@@ -7,8 +8,8 @@ module.exports = (sql, DataTypes) => {
       type: DataTypes.STRING,
       required: true
     },
-    isPublished: DataTypes.BOOLEAN,
-    showOnHeader: DataTypes.BOOLEAN,
+    isPublished: DataTypes.BOOLEAN, // is event published or a draft
+    showOnHeader: DataTypes.BOOLEAN, // show on colored bar or find event page
     lastModifiedBy: DataTypes.STRING,
     eventRegistrationLink: DataTypes.STRING, //link to registration for event
     eventUrl: {
