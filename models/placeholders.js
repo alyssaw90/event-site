@@ -1,3 +1,5 @@
+// Creates placeholder data and placeholder databases
+
 'use strict';
 
 const models = require('./index');

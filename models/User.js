@@ -1,3 +1,7 @@
+// User model
+// Will not need this model after the login flow is updated
+// Useres will only be allowed to use microsoft credentials
+
 'use strict';
 
 const bcrypt = require('bcrypt-nodejs');

@@ -1,3 +1,5 @@
+// Speaker and team member model
+
 'use strict';
 
 module.exports = function (sql, DataTypes) {

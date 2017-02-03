@@ -1,3 +1,5 @@
+// Slideshow position model
+
 'use strict';
 
 module.exports = function(sql, DataTypes) {

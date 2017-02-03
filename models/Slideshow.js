@@ -1,3 +1,4 @@
+// Slideshow name model
 'use strict';
 
 module.exports = function(sql, DataTypes) {
