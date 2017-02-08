@@ -487,6 +487,13 @@ const PastEventsCtrl = (app) => {
 			})
 		}
 
+		var currentYear = new Date().getFullYear();
+		$scope.years = [];
+		for(var i = 2008; i <= currentYear; i++){
+			$scope.years.push(i)
+		}
+		$scope.years.reverse();
+
 		//function to show and hide past event tables on past events page
 		$scope.showCalendarOfPastEvents = (calendarHtml, divClicked, calendarDiv, event) => {
 			let keyCode = customFunctions.getKeyCode(event);
