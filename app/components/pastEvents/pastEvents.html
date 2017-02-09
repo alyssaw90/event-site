@@ -1,4 +1,4 @@
-<div class="mobileWrapper ng-cloak" role="presentation" data-ng-controller="PastEventsCtrl" ng-init="getPastEvents()" data-past-events-directive>
+<!--<div class="mobileWrapper ng-cloak" role="presentation" data-ng-controller="PastEventsCtrl" ng-init="getPastEvents()" data-past-events-directive>-->
   <!--<main id="beginningOfContent" class="grid past-events-menu" role="presentation">
     <div class="col_12 internetExplorer gallery" id="pastEventsWrapper" role="presentation">
       <div class="white-bg" id="calendar">
@@ -7,12 +7,18 @@
         <h2>{{pastEvent.year}} Events</h2>
       </div>
   </main>-->
+  
+<!--</div>-->
+<div data-ng-controller="PastEventsCtrl" ng-init="getPastEvents()">
   <main>
     <div class="col_12" id="pastEventsWrapper" role="presentation">
-      <select name="yearDropdown" class="form-control" id="yearDropdown" placeholder="Select a year">
+      <!--<select name="yearDropdown" class="form-control" id="yearDropdown" placeholder="Select a year">
         <option value="{{year}}" ng-repeat="year in years">{{year}}</option>
-      </select>
-      <p>Year: {{year}}</p>
+      </select>-->
+      <select name="yearDropdown" id="yearDropdown" class="form-control" ng-options="pastEvent as pastEvent.year for pastEvent in pastEvents" ng-model="pastEvent"></select>
+      <p>Year: {{pastEvent.year}}</p>
+      <!--{{pastEvent.calendarHtml}}-->
+      <div ng-bind-html="$sce.trustAsHtml(pastEvent.calendarHtml)"></div>
     </div>
   </main>
 </div>
