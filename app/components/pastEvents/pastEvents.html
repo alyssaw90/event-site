@@ -9,16 +9,19 @@
   </main>-->
   
 <!--</div>-->
-<div data-ng-controller="PastEventsCtrl" ng-init="getPastEvents()">
+<div class="mobileWrapper" role="presentation" data-ng-controller="PastEventsCtrl" ng-init="getPastEvents()">
   <main>
-    <div class="col_12" id="pastEventsWrapper" role="presentation">
+    <div class="col_1"></div>
+    <div class="col_10" id="pastEventsWrapper" role="presentation">
       <!--<select name="yearDropdown" class="form-control" id="yearDropdown" placeholder="Select a year">
         <option value="{{year}}" ng-repeat="year in years">{{year}}</option>
       </select>-->
-      <select name="yearDropdown" id="yearDropdown" class="form-control" ng-options="pastEvent as pastEvent.year for pastEvent in pastEvents" ng-model="pastEvent"></select>
+      <select name="yearDropdown" id="yearDropdown" class="form-control" ng-options="pastEvent as pastEvent.year for pastEvent in pastEvents" ng-model="pastEvent">
+        <option style="display:none" value="">Select a Year</option>
+      </select>
       <p>Year: {{pastEvent.year}}</p>
-      <!--{{pastEvent.calendarHtml}}-->
       <div ng-bind-html="$sce.trustAsHtml(pastEvent.calendarHtml)"></div>
     </div>
+    <div class="col_1"></div>
   </main>
 </div>
