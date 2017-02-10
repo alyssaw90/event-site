@@ -1,10 +1,28 @@
-<div class="mobileWrapper ng-cloak" role="presentation" data-ng-controller="PastEventsCtrl" ng-init="getPastEvents()" data-past-events-directive>
-  <main id="beginningOfContent" class="grid past-events-menu" role="presentation">
+<!--<div class="mobileWrapper ng-cloak" role="presentation" data-ng-controller="PastEventsCtrl" ng-init="getPastEvents()" data-past-events-directive>-->
+  <!--<main id="beginningOfContent" class="grid past-events-menu" role="presentation">
     <div class="col_12 internetExplorer gallery" id="pastEventsWrapper" role="presentation">
       <div class="white-bg" id="calendar">
       </div>
       <div data-ng-repeat="pastEvent in pastEvents" data-ng-click="showCalendarOfPastEvents(pastEvent.calendarHtml, '#' + pastEvent.year + '_events', '#calendar', $event)" data-ng-keypress="showCalendarOfPastEvents(pastEvent.calendarHtml, '#' + pastEvent.year + '_events', '#calendar', $event)" class="col_3 past_events" id="{{pastEvent.year + '_events'}}" aria-label="Hit enter or click to toggle {{pastEvent.year}} Events">
         <h2>{{pastEvent.year}} Events</h2>
       </div>
+  </main>-->
+  
+<!--</div>-->
+<div class="mobileWrapper" role="presentation" data-ng-controller="PastEventsCtrl" ng-init="getPastEvents()">
+  <main>
+    <div class="col_1"></div>
+    <div class="col_10" id="pastEventsWrapper" role="presentation">
+      <h4>Please select a year to view past events.</h4>
+      <select name="yearDropdown" id="yearDropdown" class="form-control" ng-options="pastEvent as pastEvent.year for pastEvent in pastEvents" ng-model="pastEvent">
+        <option value="selectYear">Select a Year</option>
+      </select>
+      <h5>Year: {{pastEvent.year}}</h5>
+      <div ng-if="!pastEvent.year">
+        <h6>No information avaialbe, please select a year.</h6>
+      </div>
+      <div ng-bind-html="$sce.trustAsHtml(pastEvent.calendarHtml)"></div>
+    </div>
+    <div class="col_1"></div>
   </main>
 </div>

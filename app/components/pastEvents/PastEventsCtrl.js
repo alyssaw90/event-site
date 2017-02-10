@@ -3,12 +3,14 @@
 import * as customFunctions from '../shared/methods/common-functions.js';
 
 const PastEventsCtrl = (app) => {
-	app.controller('PastEventsCtrl', ['$scope', '$timeout', 'pastEventsRESTResource', function($scope, $timeout, resource) {
+	app.controller('PastEventsCtrl', ['$scope', '$timeout', '$sce', 'pastEventsRESTResource', function($scope, $timeout, $sce, resource) {
 		
 		$scope.pastEvents = [
-      {
-      	year: 2015,
-      	calendarHtml: `<table id="2015PastEvents" cellspacing="0" cellpadding="0" class="table table-bordered">
+
+      		{
+      			year: 2015,
+				value: 2015,
+      			calendarHtml: `<table id="2015PastEvents" cellspacing="0" cellpadding="0" class="table table-bordered">
 											<thead><tr>
 												<th>Name</th>
 												<th>Date</th>
@@ -54,10 +56,11 @@ const PastEventsCtrl = (app) => {
 												<td><a href="http://connect.microsoft.com/site216/Downloads/DownloadDetails.aspx?DownloadID=57585">Presentation handouts</a></td>
 											</tr></tbody>
 											</table>`
-										},
-      {
-      	year: 2014,
-      	calendarHtml: `<table id="2014PastEvents" cellspacing="0" cellpadding="0" class="table table-bordered">
+			},
+      		{
+      			year: 2014,
+				value: 2014,
+      			calendarHtml: `<table id="2014PastEvents" cellspacing="0" cellpadding="0" class="table table-bordered">
 												<thead><tr>
 													<th>Name</th>
 													<th>Date</th>
@@ -97,10 +100,11 @@ const PastEventsCtrl = (app) => {
 													<td><a href="http://channel9.msdn.com/Events/Open-Specifications-Plugfests/Taipei-Interoperability-Protocols-Plugfest-2014">Videos</a></td>
 												</tr></tbody>
 											</table>`
-										},
-      {
-      	year: 2013,
-      	calendarHtml: `<table id="2013PastEvents" cellspacing="0" cellpadding="0" class="table table-bordered">
+			},
+      		{
+      			year: 2013,
+				value: 2013,
+      			calendarHtml: `<table id="2013PastEvents" cellspacing="0" cellpadding="0" class="table table-bordered">
 													<thead><tr>
 													<th>Name</th>
 													<th>Date</th>
@@ -134,10 +138,11 @@ const PastEventsCtrl = (app) => {
 													<td><a href="http://channel9.msdn.com/Events/Open-Specifications-Plugfests/Taipei-Interoperability-Protocols-Plugfest-2013">Videos</a></td>
 												</tr></tbody>
 											</table>`
-										},
-      {
-      	year: 2012,
-      	calendarHtml: `<table id="2012PastEvents" cellspacing="0" cellpadding="0" class="table table-bordered">
+			},
+      		{
+      			year: 2012,
+				value: 2012,
+      			calendarHtml: `<table id="2012PastEvents" cellspacing="0" cellpadding="0" class="table table-bordered">
 												<thead><tr>
 												<th>Name</th>
 												<th>Date</th>
@@ -207,10 +212,11 @@ const PastEventsCtrl = (app) => {
 												<td><a href="http://channel9.msdn.com/Events/Open-Specifications-Plugfests/Odata-Meetup-2012">Videos</a></td>
 											</tr></tbody>
 										</table>`
-									},
-      {
-      	year: 2011,
-      	calendarHtml: `<table id="2011PastEvents" cellspacing="0" cellpadding="0" class="table table-bordered">
+			},
+      		{
+      			year: 2011,
+				value: 2011,
+      			calendarHtml: `<table id="2011PastEvents" cellspacing="0" cellpadding="0" class="table table-bordered">
 											<thead><tr>
 												<th>Name</th>
 												<th>Date</th>
@@ -250,10 +256,11 @@ const PastEventsCtrl = (app) => {
 													<td><a href="http://channel9.msdn.com/Series/Windows-AD-Protocols-Plugfest-2011">Videos</a></td>
 												</tr></tbody>
 											</table>`
-										},
-      {
-      	year: 2010,
-      	calendarHtml: `<table id="2010PastEvents" cellspacing="0" cellpadding="0" class="table table-bordered">
+			},
+      		{
+      			year: 2010,
+				value: 2010,
+      			calendarHtml: `<table id="2010PastEvents" cellspacing="0" cellpadding="0" class="table table-bordered">
 												<thead><tr>
 												<th>Name</th>
 												<th>Date</th>
@@ -317,10 +324,11 @@ const PastEventsCtrl = (app) => {
 												<td><a href="https://msdn.microsoft.com/openspecifications/dn768081#tile=event011810">Summary</a></td>
 											</tr></tbody>
 										</table>`
-									},
-      {
-      	year: 2009,
-      	calendarHtml: `<table id="2009PastEvents" cellspacing="0" cellpadding="0" class="table table-bordered">
+			},
+			{
+      			year: 2009,
+				value: 2009,
+      			calendarHtml: `<table id="2009PastEvents" cellspacing="0" cellpadding="0" class="table table-bordered">
 												<thead><tr>
 													<th>Name</th>
 													<th>Date</th>
@@ -384,10 +392,11 @@ const PastEventsCtrl = (app) => {
 													<td><a href="https://msdn.microsoft.com/openspecifications/dn767917#tile=event012609">Summary and photos</a></td>
 												</tr></tbody>
 											</table>`
-										},
-											{
-												year: 2008,
-												calendarHtml: `<table id="2008PastEvents" cellspacing="0" cellpadding="0" class="table table-bordered">
+			},
+			{
+				year: 2008,
+				value: 2008,
+				calendarHtml: `<table id="2008PastEvents" cellspacing="0" cellpadding="0" class="table table-bordered">
 												<thead><tr>
 													<th>Name</th>
 													<th>Date</th>
@@ -445,8 +454,11 @@ const PastEventsCtrl = (app) => {
 													<td><a href="https://msdn.microsoft.com/openspecifications/dn786371#tile=event030508">Summary and blog</a></td>
 												</tr></tbody>
 											</table>` 
-										}
+			}
 		];
+		$scope.$sce = $sce
+		$scope.currentYear = new Date().getFullYear();
+		
 
 		const RESTResoures = resource();
 		//get past events that don't already exist in the past events array
@@ -487,28 +499,31 @@ const PastEventsCtrl = (app) => {
 			})
 		}
 
+
+
 		//function to show and hide past event tables on past events page
-		$scope.showCalendarOfPastEvents = (calendarHtml, divClicked, calendarDiv, event) => {
-			let keyCode = customFunctions.getKeyCode(event);
-			if (keyCode === 1 || 13) {
-			  if (angular.element(divClicked).hasClass('selected-year')) {
-			    angular.element(calendarDiv).empty();
-			    if (keyCode === 1) {
-			    	angular.element(divClicked).blur();
-			    }
-			  } else {
-			    angular.element(calendarDiv).empty();
-			    angular.element(calendarDiv).append(calendarHtml);
-			  }
-			  angular.element(divClicked).siblings().removeClass('selected-year');
-			  angular.element(divClicked).toggleClass('selected-year');
-			  $timeout(function() {
-			  	angular.element('#calendar').find('a:first').focus();
+		//FUNCTION NO LONGER NEEDED!
+		// $scope.showCalendarOfPastEvents = (calendarHtml, divClicked, calendarDiv, event) => {
+		// 	let keyCode = customFunctions.getKeyCode(event);
+		// 	if (keyCode === 1 || 13) {
+		// 	  if (angular.element(divClicked).hasClass('selected-year')) {
+		// 	    angular.element(calendarDiv).empty();
+		// 	    if (keyCode === 1) {
+		// 	    	angular.element(divClicked).blur();
+		// 	    }
+		// 	  } else {
+		// 	    angular.element(calendarDiv).empty();
+		// 	    angular.element(calendarDiv).append(calendarHtml);
+		// 	  }
+		// 	  angular.element(divClicked).siblings().removeClass('selected-year');
+		// 	  angular.element(divClicked).toggleClass('selected-year');
+		// 	  $timeout(function() {
+		// 	  	angular.element('#calendar').find('a:first').focus();
 			  	
-			  }, 100);
-			};
+		// 	  }, 100);
+		// 	};
 				
-			}
+		// 	}
 		  
 
 	}])
