@@ -13,13 +13,14 @@
   <main>
     <div class="col_1"></div>
     <div class="col_10" id="pastEventsWrapper" role="presentation">
-      <!--<select name="yearDropdown" class="form-control" id="yearDropdown" placeholder="Select a year">
-        <option value="{{year}}" ng-repeat="year in years">{{year}}</option>
-      </select>-->
+      <h4>Please select a year to view past events.</h4>
       <select name="yearDropdown" id="yearDropdown" class="form-control" ng-options="pastEvent as pastEvent.year for pastEvent in pastEvents" ng-model="pastEvent">
-        <option style="display:none" value="">Select a Year</option>
+        <option value="selectYear">Select a Year</option>
       </select>
-      <p>Year: {{pastEvent.year}}</p>
+      <h5>Year: {{pastEvent.year}}</h5>
+      <div ng-if="!pastEvent.year">
+        <h6>No information avaialbe, please select a year.</h6>
+      </div>
       <div ng-bind-html="$sce.trustAsHtml(pastEvent.calendarHtml)"></div>
     </div>
     <div class="col_1"></div>

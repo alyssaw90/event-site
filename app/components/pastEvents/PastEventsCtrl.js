@@ -457,8 +457,6 @@ const PastEventsCtrl = (app) => {
 			}
 		];
 		$scope.$sce = $sce
-		// $scope.selectedOption = $scope.pastEvents[0]
-		// $scope.option = {type: $scope.pastEvents[0]}
 		$scope.currentYear = new Date().getFullYear();
 		
 
