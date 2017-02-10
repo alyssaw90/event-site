@@ -456,7 +456,9 @@ const PastEventsCtrl = (app) => {
 											</table>` 
 			}
 		];
-		$scope.$sce = $sce
+		$scope.sce = $sce
+		// $scope.tables = $sce.trustAsHtml(pastEvents.calendarHtml)
+
 		$scope.currentYear = new Date().getFullYear();
 		
 

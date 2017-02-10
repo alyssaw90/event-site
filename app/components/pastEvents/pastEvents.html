@@ -22,7 +22,10 @@
       <div ng-if="!pastEvent.year">
         <h6>No information avaialbe, please select a year.</h6>
       </div>
-      <div ng-bind-html="$sce.trustAsHtml(pastEvent.calendarHtml)"></div>
+      <br>
+      {{sce.trustAsHtml(pastEvent.calendarHtml)}}
+      <br>
+      <div ng-bind-html="sce.trustAsHtml(pastEvent.calendarHtml)"></div>
     </div>
     <div class="col_1"></div>
   </main>
