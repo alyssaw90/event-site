@@ -456,8 +456,14 @@ const PastEventsCtrl = (app) => {
 											</table>` 
 			}
 		];
-		$scope.sce = $sce
-		// $scope.tables = $sce.trustAsHtml(pastEvents.calendarHtml)
+		// $scope.sce = $sce
+		// $scope.tables
+
+		// for(var i = 0; i <= $scope.pastEvents.length; i++){
+		// 	// console.log($scope.pastEvents[i])
+		// 	$scope.tables = $sce.trustAsHtml($scope.pastEvents[i].calendarHtml)
+		// 	// console.log($scope.pastEvents[i].calendarHtml)
+		// }
 
 		$scope.currentYear = new Date().getFullYear();
 		
@@ -469,6 +475,7 @@ const PastEventsCtrl = (app) => {
 				if (err) {
 					return console.log(err);
 				}
+				console.log(data.data)
 				for (let key in data.data) {
 					let newYearOfEvents = {
 						year: key,
@@ -498,6 +505,13 @@ const PastEventsCtrl = (app) => {
 					newYearOfEvents.calendarHtml += `</tbody></table>`;
 					$scope.pastEvents.unshift(newYearOfEvents);
 				}
+		// 		$scope.tables
+		// 		for(var i = 0; i <= $scope.pastEvents.length; i++){
+		// 	// console.log($scope.pastEvents[i])
+		// 	$scope.tables = $sce.trustAsHtml($scope.pastEvents[i].calendarHtml)
+		// 	// console.log($scope.pastEvents[i].calendarHtml)
+		// }
+
 			})
 		}
 
