@@ -18,14 +18,9 @@
         <option value="selectYear">Select a Year</option>
       </select>
       <h5>Year: {{pastEvent.year}}</h5>
-      <!--{{pastEvent}}-->
       <div ng-if="!pastEvent.year">
         <h6>No information avaialbe, please select a year.</h6>
       </div>
-      <br>
-      <!--{{sce.trustAsHtml(pastEvent.calendarHtml)}}-->
-      <br>
-      <!--{{pastEvent.calendarHtml}}-->
       <div ng-bind-html="pastEvent.calendarHtml"></div>
     </div>
     <div class="col_1"></div>
