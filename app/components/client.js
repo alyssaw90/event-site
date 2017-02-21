@@ -125,6 +125,7 @@ eventsApp
 		templateUrl: '/app/components/homepage/homepage.html',
 		controller: 'HomepageCtrl',
 		reloadOnSearch: false,
+		requireADLogin: false,
 		data: {
       		pageTitle: 'Home Page - Microsoft Plugfests and Events'
     	}
@@ -142,6 +143,7 @@ eventsApp
 	.when('/about', {
 		templateUrl: '/app/components/about/about.html',
     	reloadOnSearch: false,
+		requireADLogin: false,
 		data: {
      		pageTitle: 'About Us Page - Microsoft Plugfests and Events'
     	}
@@ -149,6 +151,7 @@ eventsApp
 	.when('/contactus', {
 		templateUrl: '/app/components/contactUs/contactUs.html',
 		reloadOnSearch: false,
+		requireADLogin: false,
 		data: {
       pageTitle: 'Contact Us Page - Microsoft Plugfests and Events'
     }
@@ -157,6 +160,7 @@ eventsApp
 	.when('/faq', {
 		templateUrl: '/app/components/faq/faq.html',
 		reloadOnSearch: false,
+		requireADLogin: false,
 		data: {
       pageTitle: 'Frequently Asked Questions Page - Microsoft Plugfests and Events'
     }
@@ -165,6 +169,7 @@ eventsApp
 		templateUrl: '/app/components/pastEvents/pastEvents.html',
 		reloadOnSearch: false,
 		controller: 'PastEventsCtrl',
+		requireADLogin: false,
 		data: {
       pageTitle: 'Past Events Page - Microsoft Plugfests and Events'
     }
@@ -173,6 +178,7 @@ eventsApp
 		templateUrl: '/app/components/meetTheTeam/meetTheTeam.html',
 		reloadOnSearch: false,
 		controller: 'MeetTheTeamCtrl',
+		requireADLogin: false,
 		data: {
       pageTitle: 'Meet the Team Page - Microsoft Plugfests and Events'
     }
@@ -181,6 +187,7 @@ eventsApp
 		templateUrl: '/app/components/futureEvents/futureEvents.html',
 		reloadOnSearch: false,
 		controller: 'FutureEventsCtrl',
+		requireADLogin: false,
 		data: {
       pageTitle: 'Future Events Page - Microsoft Plugfests and Events'
     }
@@ -189,6 +196,7 @@ eventsApp
 		templateUrl: '/app/components/latestNews/latestNews.html',
 		reloadOnSearch: false,
 		controller: 'LatestNewsCtrl',
+		requireADLogin: false,
 		data: {
       pageTitle: 'Latest Page - Microsoft Plugfests and Events'
     }
@@ -197,7 +205,7 @@ eventsApp
 		templateUrl: '/app/components/admin/editSlideshow/editSlideshowTemplate.html',
 		reloadOnSearch: false,
 		controller: 'editSlideshowCtrl',
-	
+		requireADLogin: true,
 		data: {
 			pageTitle: 'Edit Slideshow Settings'
 		}
@@ -206,7 +214,7 @@ eventsApp
 		templateUrl: '/app/components/admin/editEvent/admin-edit-event.html',
 		reloadOnSearch: false,
 		controller: 'EditEventCtrl',
-		
+		requireADLogin: true,
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
     }
@@ -215,7 +223,7 @@ eventsApp
 		templateUrl: '/app/components/admin/createEvent/admin-create-event.html',
 		reloadOnSearch: false,
 		controller: 'AdminCreateEventCtrl',
-		
+		requireADLogin: true,
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
     }
@@ -223,7 +231,7 @@ eventsApp
 	.when('/admin/create-speaker', {
 		templateUrl: '/app/components/admin/createSpeaker/admin-create-speaker.html',
 		reloadOnSearch: false,
-		
+		requireADLogin: true,
 		data: {
 			pageTitle: 'Admin Page - Microsoft Plugfests and Events, create new speaker'
 		}
@@ -231,7 +239,7 @@ eventsApp
 	.when('/admin/edit-speaker', {
 		templateUrl: '/app/components/admin/editSpeaker/admin-edit-speakers.html',
 		reloadOnSearch: false,
-		
+		requireADLogin: true,
 		controller: 'EditSpeakerController',
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
@@ -240,7 +248,7 @@ eventsApp
 	.when('/admin/edit-files', {
 		templateUrl: '/app/components/admin/editFiles/edit-files-template.html',
 		reloadOnSearch: false,
-		
+		requireADLogin: true,
 		// controller: 'EditFilesCtrl',
 		data: {
       pageTitle: 'Admin Page - Microsoft Plugfests and Events'
@@ -258,7 +266,7 @@ eventsApp
 		templateUrl: `/app/components/admin/account/account.html`,
 		reloadOnSearch: false,
     	controller: `AccountController`,
-		
+		requireADLogin: true,
 		data: {
 			pageTitle: `Admin Page - Manage Account`
 		}
@@ -266,13 +274,14 @@ eventsApp
 	.when(`/admin/help`, {
 		templateUrl: `/app/components/admin/help/help.html`,
 		reloadOnSearch: false,
-		
+		requireADLogin: true,
 		data: {
 			pageTitle: `Admin Page - help section`
 		}
 	})
 	.when(`/admin/redirect`, {
-		redirectTo: `/admin/edit-event`
+		redirectTo: `/admin/edit-event`,
+		// requireADLogin: true
 	})
 	.when('/:slug', {
     templateUrl: '/app/components/events/event.html',
@@ -290,13 +299,15 @@ eventsApp
 
   	adalProvider.init({
 	//   instance: 'https://login.microsoftonline.com',
-		endpoints: endpoints,
+		// endpoints: endpoints,
 	  tenant: 'interopevents.onmicrosoft.com',
 	  clientId: '4fd1444e-c61a-4859-ad90-d8f7cb3b12c9',
+	//   redirect_uri: 'http://localhost:3000/admin/edit-event',
 	  anonymousEndpoints: [
-		  '/components/shared/header/headerTemplate.html',
-		  '/components/shared/footer/footerView.html',
-		  '/components/meetTheTeam/meetTheTeam.html'
+		  '/'
+		//   '/components/shared/header/headerTemplate.html',
+		//   '/components/shared/footer/footerView.html',
+		//   '/components/meetTheTeam/meetTheTeam.html'
 		]
   	}, $httpProvider)
 
@@ -307,88 +318,90 @@ eventsApp
 	//start Google analytics
 	Analytics.pageView();
 
-	function followHashRoute() {
-		let anchor = $location.hash();
-		$timeout(function() {
-			if (anchor) {
-				// angular.element(`ul.tabs a[href="#${anchor}"]`).triggerHandler('click');
-				// tab hashtag identification and auto-focus
-				let hashLink = '#' + $location.hash();
-				let hashDivs = jQuery(hashLink);
-		  	let wantedTag = window.location.hash;
-		  	if (wantedTag != "") {
-				// This code can and does fail, hard, killing the entire app.
-				// Esp. when used with the jQuery.Address project.
-						let allTabs = angular.element("ul.tabs a[href^=" + wantedTag + "]").parents('ul.tabs').find('li');
-						let defaultTab = allTabs.filter('.current').find('a').attr('href');
-						jQuery(defaultTab).hide();
-						allTabs.removeClass('current');
-						angular.element("ul.tabs a[href^=" + wantedTag + "]").parent().addClass('current');
-						angular.element("#" + wantedTag.replace('#','')).show();
-						$anchorScroll();
-				}
-			}
+	// function followHashRoute() {
+	// 	let anchor = $location.hash();
+	// 	$timeout(function() {
+	// 		if (anchor) {
+	// 			// angular.element(`ul.tabs a[href="#${anchor}"]`).triggerHandler('click');
+	// 			// tab hashtag identification and auto-focus
+	// 			let hashLink = '#' + $location.hash();
+	// 			let hashDivs = jQuery(hashLink);
+	// 	  	let wantedTag = window.location.hash;
+	// 	  	if (wantedTag != "") {
+	// 			// This code can and does fail, hard, killing the entire app.
+	// 			// Esp. when used with the jQuery.Address project.
+	// 					let allTabs = angular.element("ul.tabs a[href^=" + wantedTag + "]").parents('ul.tabs').find('li');
+	// 					let defaultTab = allTabs.filter('.current').find('a').attr('href');
+	// 					jQuery(defaultTab).hide();
+	// 					allTabs.removeClass('current');
+	// 					angular.element("ul.tabs a[href^=" + wantedTag + "]").parent().addClass('current');
+	// 					angular.element("#" + wantedTag.replace('#','')).show();
+	// 					$anchorScroll();
+	// 			}
+	// 		}
 			
-		}, 1100);
-	}
+	// 	}, 1100);
+	// }
 
-	//when the route starts with /admin, call the /api/user/checklogin route to check if the user is logged in and redirect them to the login page if they aren't
-	if ( /\/admin.*$/.test($location.path()) ) {
-		$http.get('/api/user/checklogin')
-		.then( function successCallback(data) {
-      $rootScope.isAuthenticated = true;
-			if ($location.path() === `/admin/login`) {
-				$location.path(`/admin/edit-event`);
-			}
-		}, function errorCallback(data){
-			$rootScope.isAuthenticated = false;
-      		$cookies.remove('interopAdmin');
-			$location.path('/admin/login');
-		})
-	}
+	// //when the route starts with /admin, call the /api/user/checklogin route to check if the user is logged in and redirect them to the login page if they aren't
+	// if ( /\/admin.*$/.test($location.path()) ) {
+	// 	$http.get('/api/user/checklogin')
+	// 	// console.log(userInfo.isAuthenticated)
+	// 	.then( function successCallback(data) {
+    //  	 	$rootScope.isAuthenticated = true;
+	// 		  console.log(data)
+	// 		if ($location.path() === `/admin/login`) {
+	// 			$location.path(`/admin/edit-event`);
+	// 		}
+	// 	}, function errorCallback(data){
+	// 		$rootScope.isAuthenticated = false;
+    //   		$cookies.remove('interopAdmin');
+	// 		$location.path('/admin/login');
+	// 	})
+	// }
 	
-	$rootScope.$on('$viewContentLoaded', () => {
-		followHashRoute();
-		$rootScope.showAccountButton = $cookies.get(`strategy`) === `basic` || $cookies.get(`interopAdmin`) === `true` ? true : false;
-			// document.getElementById('screenreader-summary').trigger('focus');
+	// $rootScope.$on('$viewContentLoaded', () => {
+	// 	followHashRoute();
+	// 	$rootScope.showAccountButton = $cookies.get(`strategy`) === `basic` || $cookies.get(`interopAdmin`) === `true` ? true : false;
+	// 		// document.getElementById('screenreader-summary').trigger('focus');
 			
-			// $anchorScroll(anchor);
+	// 		// $anchorScroll(anchor);
 		
-	});
+	// });
 
-	$rootScope.$on( '$routeChangeStart', function(event, next, current) { 
+	// $rootScope.$on( '$routeChangeStart', function(event, next, current) { 
 		
-		followHashRoute();
-		//when the route starts with /admin, call the /api/user/checklogin route to check if the user is logged in and redirect them to the login page if they aren't
-		if ( /\/admin.*$/.test($location.path()) ) {
-			$http.get('/api/user/checklogin')
-			.then(function successCallback(data){
-        $rootScope.isAuthenticated = true;
-				if ($location.path() === `/admin/login`) {
-					$location.path(`/admin/edit-event`);
-				}
-			}, function errorCallback(data){
-				$rootScope.isAuthenticated = false;
-        		$cookies.remove('interopAdmin');
-				$location.path('/admin/login');
-			})
-		}
-	});
+	// 	followHashRoute();
+	// 	//when the route starts with /admin, call the /api/user/checklogin route to check if the user is logged in and redirect them to the login page if they aren't
+	// 	if ( /\/admin.*$/.test($location.path()) ) {
+	// 		$http.get('/api/user/checklogin')
+	// 		.then(function successCallback(data){
+    //     		$rootScope.isAuthenticated = true;
+	// 			if ($location.path() === `/admin/login`) {
+	// 				$location.path(`/admin/edit-event`);
+	// 			}
+	// 		}, function errorCallback(data){
+	// 			$rootScope.isAuthenticated = false;
+    //     		$cookies.remove('interopAdmin');
+	// 			$location.path('/admin/login');
+	// 		})
+	// 	}
+	// });
 
-	$rootScope.$on('$routeUpdate', () => {
-		followHashRoute();
+	// $rootScope.$on('$routeUpdate', () => {
+	// 	followHashRoute();
 		
-	});
+	// });
 
-	$rootScope.$on('$routeChangeSuccess', (newRoute, oldRoute) => { 
-		$rootScope.showAccountButton = $cookies.get(`strategy`) === `basic` || $cookies.get(`interopAdmin`) === `true` ? true : false;
-		// scroll the window to the top when a new page is opened
-    $anchorScroll();
-    //if the path is the root, 
- 		/*if ($location.path() == '/') {
-      $rootScope.hideSlider = true;
-    };
-*/
- 	});
+// 	$rootScope.$on('$routeChangeSuccess', (newRoute, oldRoute) => { 
+// 		$rootScope.showAccountButton = $cookies.get(`strategy`) === `basic` || $cookies.get(`interopAdmin`) === `true` ? true : false;
+// 		// scroll the window to the top when a new page is opened
+//     $anchorScroll();
+//     //if the path is the root, 
+//  		/*if ($location.path() == '/') {
+//       $rootScope.hideSlider = true;
+//     };
+// */
+//  	});
 
 }])
