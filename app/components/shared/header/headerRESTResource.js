@@ -1,3 +1,5 @@
+// calls REST API for slidesow data
+
 'use strict';
 
 import * as customFunctions from '../methods/common-functions.js';

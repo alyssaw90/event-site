@@ -1,3 +1,4 @@
+// Calls REST API for event information
 'use strict';
 
 import * as customFunctions from '../shared/methods/common-functions.js';

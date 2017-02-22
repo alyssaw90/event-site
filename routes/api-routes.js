@@ -1,3 +1,6 @@
+// API routes for consumer facing portion of the site and the admin portal
+// I would like to separate the routes into consumer facing routes file and admin portal routes file
+
 'use strict';
 /*global interests */
 /*global SpeakersSuggestedCity */
@@ -344,6 +347,7 @@ module.exports = (router) => {
     });
   });
 
+ // route to add slide to homepage slides
   router.post('/addslide',  (req, res) => {
     models.sql.sync()
     .then( () => {
@@ -357,6 +361,7 @@ module.exports = (router) => {
     });
   });
 
+// route to delete slides from admin portal
   router.post('/deleteslide',  (req, res) => {
     models.sql.sync()
     .then(() => {
@@ -479,6 +484,7 @@ module.exports = (router) => {
     });
   });
 
+// route to edit event in admin portal event section
   router.post('/editevent',  (req, res, next) => {
     console.log(clc.red(req.body.event.showOnHeader))
     models.sql.sync()
@@ -520,6 +526,7 @@ module.exports = (router) => {
     })
   });
 
+// route to delete event on admin portal event page
   router.delete(`/deleteevent/:slug`,  (req, res) => {
     models.sql.sync()
     .then(() => {
@@ -538,6 +545,7 @@ module.exports = (router) => {
     })
   })
 
+// route to edit event tabs
   router.post('/edittab',  (req, res, next) => {
     models.sql.sync()
     .then( () => {
@@ -560,6 +568,7 @@ module.exports = (router) => {
     });
   });
 
+// route to edit tab order for events
   router.post('/newtaborder',  (req, res) => {
     models.sql.sync()
     .then( () => {
@@ -587,6 +596,7 @@ module.exports = (router) => {
     })
   })
 
+// route to add a tab to event
   router.post('/addtab',  (req, res) => {
     models.sql.sync()
     .then( () => {
@@ -613,6 +623,7 @@ module.exports = (router) => {
     });
   });
 
+// route to delete a tab from events
   router.delete('/deletetab/:slug',  (req, res) => {
     models.sql.sync()
     .then( () => {
@@ -628,6 +639,7 @@ module.exports = (router) => {
     })
   })
 
+// route to edit speakers on events
   router.post('/editeventspeakers',  (req, res) => {
     models.sql.sync()
     .then( () => {

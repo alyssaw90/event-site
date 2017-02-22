@@ -10,9 +10,6 @@ mssql_db/
 **/iisnode/
 sh.exe.stackdump
 web.config
-app/css/custom.build.min.css
-app/css/highcontrast.min.css
-app/css/twitter-widget.min.css
 .vscode
 
 ## Ignore Visual Studio temporary files, build results, and
