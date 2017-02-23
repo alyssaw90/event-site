@@ -228,9 +228,9 @@ module.exports = function(router, passport) {
 
   router.get(`/azurelogin`, passport.authenticate(`provider`, {successRedirect: `/admin/redirect`}));
 
-  router.get(`/.auth/login/aad/callback`, passport.authenticate(`provider`, { successRedirect: `/admin/redirect`, failureRedirect: `/admin/login` }), function (req, res) { 
-    res.redirect(`/`); 
-  });
+  // router.get(`/.auth/login/aad/callback`, passport.authenticate(`provider`, { successRedirect: `/admin/redirect`, failureRedirect: `/admin/login` }), function (req, res) { 
+  //   res.redirect(`/`); 
+  // });
 
   
   router.get('/logout', function(req, res) {

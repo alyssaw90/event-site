@@ -281,7 +281,7 @@ eventsApp
 	})
 	.when(`/admin/redirect`, {
 		redirectTo: `/admin/edit-event`,
-		// requireADLogin: true
+		requireADLogin: true
 	})
 	.when('/:slug', {
     templateUrl: '/app/components/events/event.html',
@@ -298,16 +298,14 @@ eventsApp
 	  };
 
   	adalProvider.init({
-	//   instance: 'https://login.microsoftonline.com',
-		// endpoints: endpoints,
+	  instance: 'https://login.microsoftonline.com/',
 	  tenant: 'interopevents.onmicrosoft.com',
 	  clientId: '4fd1444e-c61a-4859-ad90-d8f7cb3b12c9',
-	//   redirect_uri: 'http://localhost:3000/admin/edit-event',
+	  redirectUri: 'http://localhost:3000/admin/edit-event',
+	  postLogoutRedirectUri: 'http://localhost:3000/admin/login',
+	  //cacheLocation: 'localStorage',
 	  anonymousEndpoints: [
 		  '/'
-		//   '/components/shared/header/headerTemplate.html',
-		//   '/components/shared/footer/footerView.html',
-		//   '/components/meetTheTeam/meetTheTeam.html'
 		]
   	}, $httpProvider)
 
