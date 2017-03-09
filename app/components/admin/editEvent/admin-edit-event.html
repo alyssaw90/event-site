@@ -153,12 +153,12 @@
 	    		</tbody>
 	    	</table>
     	</div>
-    	<form id="editTabsForm" name="editTabsForm" class="edit-section col-lg-24" style="display: none;" make-auto-complete-false-directive>
+    	<form id="editTabsForm" name="editTabsForm" class="edit-section col-lg-24" style="display: none;">
 				<input type="hidden" name="asssociatedEventId" data-ng-model="editedEvent.EventsTabsAccsc.EventId">
 				<input type="hidden" name="editedTabId" data-ng-model="editedEvent.id">
     		<div class="form-group" role="presentation">
 					<label for="tabTitle">Tab Title</label>
-					<input class="form-control" type="text" name="tabTitle" id="tabTitle" ng-model="tabToEdit.tabTitle" unique-tab-name-directive>
+					<input class="form-control" type="text" name="tabTitle" id="tabTitle" ng-model="tabToEdit.tabTitle" autocomplete="off" unique-tab-name-directive>
 					<div ng-messages="editTabsForm.tabTitle.$error" role="alert" class="col-lg-offset-8 col-lg-16 col-md-offset-12 col-md-12 col-sm-24" style="position: absolute;">
 						<div ng-message="uniqueTabName" class="win-color-fg-alert alert-warning">This tab name is already in use, please choose a different name</div>
 					</div>
@@ -179,7 +179,7 @@
     	<div role="presentation" class="col-lg-24">
     		<img ng-if="headerImage" ng-src="/{{headerImage}}">
     	</div>
-			<form id="editEventForm" class="col-lg-24" name="editEventForm" method="post" enctype="multipart/form-data" data-ng-init="getAllSpeakers();" make-auto-complete-false-directive>
+			<form id="editEventForm" class="col-lg-24" name="editEventForm" method="post" enctype="multipart/form-data" data-ng-init="getAllSpeakers();">
 	    	<div data-ng-controller="AdminPageCtrl">
 		  		<button name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventHeaderImage')">Select Header Image</button>
 		  		<br><br>
@@ -195,7 +195,7 @@
 				<input class="col_12" type="hidden" name="country" data-ng-model="editedEvent.event.id">
 	    	<div role="presentation" class="form-group">
 					<label for="editedEventName">Event Name*</label>
-					<input class="form-control" type="text" data-ng-model="editedEvent.event.eventName" name="editedEventName" id="editedEventName" required>
+					<input class="form-control" type="text" data-ng-model="editedEvent.event.eventName" name="editedEventName" id="editedEventName" autocomplete="off" required>
 	    	</div>
 				<div class="form-group clearfix" role="presentation">
 					<label for="eventUrl">Event URL*</label>
@@ -203,7 +203,7 @@
 					<div role="presentation" class="float-left">
 						interopevents.com/
 					</div>
-					<input class="form-control col-lg-20 float-right" type="text" data-ng-model="editedEvent.event.eventUrl" name="eventUrl" id="eventUrl" style="width: 90%" unique-url-directive required>
+					<input class="form-control col-lg-20 float-right" type="text" data-ng-model="editedEvent.event.eventUrl" name="eventUrl" id="eventUrl" style="width: 90%" autocomplete="off" unique-url-directive required>
 					<div ng-messages="editEventForm.eventUrl.$error" role="alert" class="col-lg-offset-8 col-lg-16 col-md-offset-12 col-md-12 col-sm-24" style="position: absolute;">
 						<div ng-message="uniqueUrl" class="win-color-fg-alert alert-warning">This URL has already been used. Please select a different URL</div>
 					</div>
@@ -216,15 +216,15 @@
 				</div>
 				<div class="form-group clearfix" role="presentation">
 					<label for="editedEventRegistrationLink">Event Registration Link</label>
-					<input class="form-control" type="url" data-ng-model="editedEvent.event.eventRegistrationLink" name="editedEventRegistrationLink" id="editedEventRegistrationLink">
+					<input class="form-control" type="url" data-ng-model="editedEvent.event.eventRegistrationLink" name="editedEventRegistrationLink" id="editedEventRegistrationLink" autocomplete="off">
 				</div>
 				<div role="presentation" class="form-group">
 					<label for="eventTechnicalTopics">Technical Topics</label>
-					<input class="form-control" type="text" data-ng-model="editedEvent.event.eventTechnicalTopics" name="eventTechnicalTopics" id="eventTechnicalTopics" placeholder="Please list 3-6 of the most prominent technical topics presented at this event (separate by comma)">
+					<input class="form-control" type="text" data-ng-model="editedEvent.event.eventTechnicalTopics" name="eventTechnicalTopics" id="eventTechnicalTopics" placeholder="Please list 3-6 of the most prominent technical topics presented at this event (separate by comma)" autocomplete="off">
 				</div>
 				<div class="form-group clearfix" role="presentation">
 					<label for="editedEventCity">Event Location*</label>
-					<input class="form-control" type="text" data-ng-model="editedEvent.event.eventLocation" name="editedEventCity" id="editedEventCity" admin-city-name-auto-complete-directive required>
+					<input class="form-control" type="text" data-ng-model="editedEvent.event.eventLocation" name="editedEventCity" id="editedEventCity" admin-city-name-auto-complete-directive autocomplete="off" required>
 				</div>
 				<div class="form-group" role="presentation">
 					<label for="continentsInput">Choose Event Continent
@@ -291,11 +291,11 @@
 				</div>
 				<div class="form-group" role="presentation">
 		    	<label for="editedEventVenueName">Venue Name</label>
-					<input class="form-control" type="text" data-ng-model="editedEvent.event.eventVenueName" name="editedEventVenueName" id="editedEventVenueName">
+					<input class="form-control" type="text" data-ng-model="editedEvent.event.eventVenueName" name="editedEventVenueName" id="editedEventVenueName" autocomplete="off">
 				</div>
 				<div class="form-group" role="presentation">
 					<label for="editedVenduAddressLine1">Address</label>
-					<input class="form-control" type="text" data-ng-model="editedEvent.event.eventVenueAddressLine1" name="editedVenduAddressLine1" id="editedVenduAddressLine1" admin-city-name-auto-complete-directive>
+					<input class="form-control" type="text" data-ng-model="editedEvent.event.eventVenueAddressLine1" name="editedVenduAddressLine1" id="editedVenduAddressLine1" autocomplete="off" admin-city-name-auto-complete-directive>
 				</div>
 				<div class="form-group" role="presentation">
 					<label for="editedVenueParkingInfo">Parking Information</label>

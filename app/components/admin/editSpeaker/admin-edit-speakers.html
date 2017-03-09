@@ -40,7 +40,7 @@
 	 				</div>
 	  		</section>
  				<div role="presentation" class="row">
-					<form id="edit-speaker-form" method="post" enctype="multipart/form-data" class="col-lg-24" make-auto-complete-false-directive>
+					<form id="edit-speaker-form" method="post" enctype="multipart/form-data" class="col-lg-24">
 						<div data-ng-controller="AdminPageCtrl">
 				  		 <br><br>
 				  		<div style="font:smaller">{{editedSpeakerImg.path}}{{editedSpeakerImg.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
@@ -56,19 +56,19 @@
 						<input class="form-control" type="hidden" name="newSpeakerId" data-ng-model="speakerToEdit.id">
 			    	<div class="form-group" role="presentation">
 							<label for="firstName">First Name*</label>
-							<input class="form-control" type="text" data-ng-model="speakerToEdit.firstName" name="firstName" id="firstName" required="true">
+							<input class="form-control" type="text" data-ng-model="speakerToEdit.firstName" name="firstName" id="firstName" required="true" autocomplete="off">
 			    	</div>
 			    	<div class="form-group" role="presentation">
 							<label for="lastName">Last Name*</label>
-							<input class="form-control" type="text" data-ng-model="speakerToEdit.lastName" name="lastName" id="lastName" required="true">
+							<input class="form-control" type="text" data-ng-model="speakerToEdit.lastName" name="lastName" id="lastName" required="true" autocomplete="off">
 			    	</div>
 			    	<div class="form-group" role="presentation">
 							<label for="msTeamTitle">Speaker's Title</label>
-							<input class="form-control" type="text" data-ng-model="speakerToEdit.msTeamTitle" name="msTeamTitle" id="msTeamTitle">
+							<input class="form-control" type="text" data-ng-model="speakerToEdit.msTeamTitle" name="msTeamTitle" id="msTeamTitle" autocomplete="off">
 			    	</div>
 			    	<div class="form-group" role="presentation">
 							<label for="newMsTeamEmail">Speaker's Email</label>
-							<input class="form-control" type="email" data-ng-model="speakerToEdit.newMsTeamEmail" name="newMsTeamEmail" id="newMsTeamEmail">
+							<input class="form-control" type="email" data-ng-model="speakerToEdit.newMsTeamEmail" name="newMsTeamEmail" id="newMsTeamEmail" autocomplete="off">
 			    	</div>
 			    	<div class="form-group" role="presentation">
 							<radiogroup>
@@ -82,7 +82,7 @@
 						<br>
 			    	<div class="form-group" role="presentation">
 							<label for="meetTheTeamPageOrder">If Speaker Is on Meet the Team Page - What Position on Meet the Team Page</label>
-							<input type="number" data-ng-model="speakerToEdit.meetTheTeamPageOrder" name="meetTheTeamPageOrder" id="meetTheTeamPageOrder">
+							<input type="number" data-ng-model="speakerToEdit.meetTheTeamPageOrder" name="meetTheTeamPageOrder" id="meetTheTeamPageOrder" autocomplete="off">
 			    	</div>
 			    	<div class="form-group" role="presentation">
 							<label for="speakerDescription">Speakers Description</label>
