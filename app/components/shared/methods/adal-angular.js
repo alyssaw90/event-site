@@ -17,7 +17,7 @@
 // limitations under the License.
 //----------------------------------------------------------------------
 
-    'use strict';
+'use strict';
 (function () {
     // ============= Angular modules- Start =============
 
