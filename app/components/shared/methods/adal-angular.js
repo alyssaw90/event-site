@@ -17,9 +17,9 @@
 // limitations under the License.
 //----------------------------------------------------------------------
 
-'use strict';
 (function () {
     // ============= Angular modules- Start =============
+'use strict';
 
     if (typeof module !== 'undefined' && module.exports) {
         module.exports.inject = function (conf) {
