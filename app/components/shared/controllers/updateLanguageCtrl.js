@@ -2,7 +2,7 @@
 
 const jQuery = require('jquery');
 
-const updateLanguageCtrl = (app) => {
+const updateLanguageCtrl = function(app){
 
 	app.controller('updateLanguageCtrl', ['$rootScope', ($rootScope) => {
 		$rootScope.lang = 'en';
