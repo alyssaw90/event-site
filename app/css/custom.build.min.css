@@ -877,335 +877,157 @@ footer .footerInfo #copyrightPrivacySection .privacyUseLinks a {
   display: none !important;
 }
 
-/*Custom CSS for Plugfest and Events Homepage*/
-.homepageIntroBlocks {
-  /*visibility: hidden;*/
-  background-color: #ffffff;
-  min-height: 100px;
-  padding: 30px 20px 30px 20px;
-  margin-top: 3%;
-  margin-bottom: 3%;
+main .banner {
+  background-image: url('img/banner.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 500px;
   text-align: center;
-  font-size: 2.5em;
-  line-height: 130%;
-}
-.homepageIntroBlocks:hover {
-  cursor: pointer;
-  color: #FFF !important;
-}
-.notANumberBlockArrowBox {
-  position: relative;
-  background: #0073c5;
-  border: 4px solid #00188f;
-}
-.notANumberBlockArrowBox:after,
-.notANumberBlockArrowBox:before {
-  top: 100%;
-  left: 50%;
-  border: solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-}
-.notANumberBlockArrowBox:after {
-  border-color: rgba(104, 196, 235, 0);
-  border-top-color: #0073c5;
-  border-width: 30px;
-  margin-left: -30px;
-}
-.notANumberBlockArrowBox:before {
-  border-color: rgba(71, 106, 198, 0);
-  border-top-color: #00188f;
-  border-width: 36px;
-  margin-left: -36px;
-}
-.toHelpYouBlockArrowBox {
-  position: relative;
-  background: #9d5098;
-  border: 4px solid #442358;
-}
-.toHelpYouBlockArrowBox:after,
-.toHelpYouBlockArrowBox:before {
-  top: 100%;
-  left: 50%;
-  border: solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-}
-.toHelpYouBlockArrowBox:after {
-  border-color: rgba(181, 0, 159, 0);
-  border-top-color: #9d5098;
-  border-width: 30px;
-  margin-left: -30px;
-}
-.toHelpYouBlockArrowBox:before {
-  border-color: rgba(68, 35, 88, 0);
-  border-top-color: #442358;
-  border-width: 36px;
-  margin-left: -36px;
-}
-.whoMadeItBlockArrowBox {
-  position: relative;
-  background: #dc3c00;
-  border: 4px solid #ba141a;
-}
-.whoMadeItBlockArrowBox:after,
-.whoMadeItBlockArrowBox:before {
-  top: 100%;
-  left: 50%;
-  border: solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-}
-.whoMadeItBlockArrowBox:after {
-  border-color: rgba(253, 141, 0, 0);
-  border-top-color: #dc3c00;
-  border-width: 30px;
-  margin-left: -30px;
-}
-.whoMadeItBlockArrowBox:before {
-  border-color: rgba(225, 87, 0, 0);
-  border-top-color: #ba141a;
-  border-width: 36px;
-  margin-left: -36px;
-}
-.itsYourEventBlockArrowBox {
-  position: relative;
-  background: #107c10;
-  border: 4px solid #007234;
-}
-.itsYourEventBlockArrowBox:after,
-.itsYourEventBlockArrowBox:before {
-  top: 100%;
-  left: 50%;
-  border: solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-}
-.itsYourEventBlockArrowBox:after {
-  border-color: rgba(129, 185, 2, 0);
-  border-top-color: #107c10;
-  border-width: 30px;
-  margin-left: -30px;
-}
-.itsYourEventBlockArrowBox:before {
-  border-color: rgba(0, 114, 52, 0);
-  border-top-color: #007234;
-  border-width: 36px;
-  margin-left: -36px;
-}
-.hiddenHomepageSections {
-  min-height: 180px;
-  outline: none;
-}
-.hiddenHomepageSectionsWrapper {
-  /*background-color: #0073c5;*/
   color: #fff;
-  width: 100%;
-  margin: 0 0 0 0;
-  font-size: 1.15em;
 }
-.hiddenHomepageSectionsWrapper img {
+main .banner h1,
+main .banner h3 {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+main .banner h1 {
+  margin: 0;
+  font-size: 50px;
+  top: 23%;
+}
+main .banner h3 {
+  font-size: 36px;
+  top: 28%;
+}
+main .aboutInteropEvents #learnSection img,
+main .aboutInteropEvents #networkingSection img,
+main .aboutInteropEvents #hackathonSection img {
+  height: 330px;
+  width: 530px;
+}
+main .aboutInteropEvents #learnSection p,
+main .aboutInteropEvents #networkingSection p,
+main .aboutInteropEvents #hackathonSection p {
+  font-size: 18px;
+}
+main .aboutInteropEvents #learnSection h2,
+main .aboutInteropEvents #networkingSection h2,
+main .aboutInteropEvents #hackathonSection h2 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+main .aboutInteropEvents #learnSection,
+main .aboutInteropEvents #networkingSection,
+main .aboutInteropEvents #hackathonSection {
+  margin-bottom: 40px;
+}
+main .aboutInteropEvents #learnSection img,
+main .aboutInteropEvents #networkingSection img {
+  float: right;
+}
+main .aboutInteropEvents #hackathonSection img {
+  float: left;
+}
+main .technology {
+  background-color: #e6e6e6;
+}
+main .technology .square {
+  height: 250px;
+  width: 250px;
+  color: #fff;
+  margin: 0 auto;
+}
+main .technology .square h2 {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+main .technology .square p {
+  font-size: 18px;
+  text-align: center;
   margin-top: 30px;
 }
-.hiddenHomepageSectionsWrapper blockquote p {
-  text-align: left;
+main .technology #office {
+  background-color: #d83b01;
+  padding: 42px 30px 30px 30px;
 }
-/*.hiddenHomepageSectionsWrapper iframe {
-	padding: 10px 10px 10px 10px;
-}*/
-#notANumberBlock {
-  color: #00188f;
-  border-width: 4px;
-  border-style: solid;
-  border-color: #00188f;
-  -webkit-transition: background-color 0.5s ease-out;
-  -moz-transition: background-color 0.5s ease-out;
-  -ms-transition: background-color 0.5s ease-out;
-  -o-transition: background-color 0.5s ease-out;
-  transition: background-color 0.5s ease-out;
-}
-.notANumberBlockMobile {
-  background: #0073c5;
-}
-#notANumberBlock:hover {
-  background: #0073c5;
-  -webkit-transition: background-color 0.5s ease-out;
-  -moz-transition: background-color 0.5s ease-out;
-  -ms-transition: background-color 0.5s ease-out;
-  -o-transition: background-color 0.5s ease-out;
-  transition: background-color 0.5s ease-out;
-}
-#toHelpYouBlock {
-  color: #5c2d91;
-  border-width: 4px;
-  border-style: solid;
-  border-color: #442358;
-  -webkit-transition: background-color 0.5s ease-out;
-  -moz-transition: background-color 0.5s ease-out;
-  -ms-transition: background-color 0.5s ease-out;
-  -o-transition: background-color 0.5s ease-out;
-  transition: background-color 0.5s ease-out;
-}
-.toHelpYouBlockMobile {
-  background-color: #9d5098;
-}
-#toHelpYouBlock:hover {
-  background-color: #9d5098;
-  -webkit-transition: background-color 0.5s ease-out;
-  -moz-transition: background-color 0.5s ease-out;
-  -ms-transition: background-color 0.5s ease-out;
-  -o-transition: background-color 0.5s ease-out;
-  transition: background-color 0.5s ease-out;
-}
-#whoMadeItBlock {
-  color: #d83b01;
-  border-width: 4px;
-  border-style: solid;
-  border-color: #ba141a;
-  -webkit-transition: background-color 0.5s ease-out;
-  -moz-transition: background-color 0.5s ease-out;
-  -ms-transition: background-color 0.5s ease-out;
-  -o-transition: background-color 0.5s ease-out;
-  transition: background-color 0.5s ease-out;
-}
-.whoMadeItBlockMobile {
-  background-color: #dc3c00;
-}
-#whoMadeItBlock:hover {
-  background-color: #dc3c00;
-  -webkit-transition: background-color 0.5s ease-out;
-  -moz-transition: background-color 0.5s ease-out;
-  -ms-transition: background-color 0.5s ease-out;
-  -o-transition: background-color 0.5s ease-out;
-  transition: background-color 0.5s ease-out;
-}
-#itsYourEventBlock {
-  color: #107c10;
-  border-width: 4px;
-  border-style: solid;
-  border-color: #007234;
-  -webkit-transition: background-color 0.5s ease-out;
-  -moz-transition: background-color 0.5s ease-out;
-  -ms-transition: background-color 0.5s ease-out;
-  -o-transition: background-color 0.5s ease-out;
-  transition: background-color 0.5s ease-out;
-}
-#notANumberBlockText a {
-  color: #FFD822;
-}
-#notANumberBlockText a:hover {
-  color: #00188f;
-}
-.itsYourEventBlockMobile {
+main .technology #sql {
   background-color: #107c10;
+  padding: 35px 30px 30px 30px;
 }
-#itsYourEventBlock:hover {
-  background-color: #107c10;
-  -webkit-transition: background-color 0.5s ease-out;
-  -moz-transition: background-color 0.5s ease-out;
-  -ms-transition: background-color 0.5s ease-out;
-  -o-transition: background-color 0.5s ease-out;
-  transition: background-color 0.5s ease-out;
-}
-.home-page-experts a {
-  vertical-align: top;
-  color: #000;
-}
-.home-page-experts a:hover {
-  color: blue;
-}
-.home-page-experts p {
-  display: block;
-  margin-top: 3px;
-  font-size: 1em;
-  color: #666;
-  padding: 0px 5px;
-}
-.slide-title {
-  margin-top: 10% auto auto 10%;
-  padding-left: 10%;
-  padding-top: 3%;
-  position: relative;
-  float: left;
-  font-size: 2.5vw;
-  line-height: 120%;
-}
-.sliderRegisterButton {
-  padding: 10px 20px;
-  border-style: solid;
-  border-width: 4px;
-  border-color: #FFFFFF;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  width: 20%;
-  float: right;
-  margin-right: 10%;
+main .technology #sql h2 {
+  font-size: 36px;
   text-align: center;
 }
-.sliderRegisterButton:hover,
-.sliderRegisterButton:focus {
-  background-color: inherit;
+main .technology #windows {
+  background-color: #0078d7;
+  padding: 45px 30px 30px 30px;
 }
-.slideshow-date {
-  padding-left: 10%;
+main .technology .moreInfoLink {
+  font-size: 18px;
+  color: #000;
 }
-.slideshow-city {
-  padding-left: 10%;
-  margin-bottom: -10%;
+main .technology .moreInfoLink:hover,
+main .technology .moreInfoLink:focus {
+  text-decoration: none;
+  color: #002050;
 }
-.sub-title {
-  padding-left: 10%;
+main .technology .row:last-child {
+  text-align: center;
+  margin-bottom: 30px;
 }
-.slideshow {
-  float: left;
-  clear: none;
-  overflow: hidden;
-  width: 100px;
-  position: fixed;
+main .technology .row {
+  margin-top: 30px;
 }
-.slideshow img {
+main .upcomingEvents h1 {
+  margin-top: 30px;
+}
+main .upcomingEvents .upcomingEventBox {
+  height: 500px;
+  width: 500px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 80%;
   position: relative;
 }
-.slideshow .desc {
-  display: block;
+main .upcomingEvents .upcomingEventBox .row {
   position: absolute;
-  width: 70%;
-  top: 35%;
-  left: 10%;
-  text-align: left;
-  margin-left: 0;
+  bottom: 20px;
+  width: 100%;
+  margin: 0 auto;
 }
-.slideshow a {
+main .upcomingEvents h2 {
   color: #fff;
-  display: block;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 200px;
 }
-.slideshow a:hover,
-.slideshow a:focus {
-  color: #d2d2d2;
+main .upcomingEvents .registerButtonCol {
+  text-align: center;
 }
-.slideshow h2 {
+main .upcomingEvents .registerButtonCol .registerButton {
+  background-color: #0078d7;
   color: #fff;
-  text-align: left;
-  font-size: 1.5vw;
-  padding-bottom: 2.5%;
+  border-radius: 0;
+  padding: 10px 30px;
+  margin-top: 22px;
 }
-@media all and (max-width: 1650px) {
-  .quoteWrapper {
-    width: 100% !important;
-  }
+main .upcomingEvents .moreInfoLink {
+  font-size: 18px;
+  color: #000;
+}
+main .upcomingEvents .moreInfoLink:hover,
+main .upcomingEvents .moreInfoLink:focus {
+  text-decoration: none;
+  color: #002050;
+}
+main .upcomingEvents .moreInfoRow {
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+main .upcomingEvents .eventsRow {
+  margin-top: 30px;
 }
 
 @media all and (max-width: 1850px) {
@@ -1531,6 +1353,7 @@ footer .footerInfo #copyrightPrivacySection .privacyUseLinks a {
 .navbar-default {
   border: none;
   background-color: #0078D7;
+  margin-bottom: 0;
 }
 .navbar-default .navbar-brand {
   color: #fff;
@@ -1622,5 +1445,5 @@ h6 {
 }
 p,
 a {
-  font-family: 'Segoe UI Light';
+  font-family: 'Segoe UI SemiLight';
 }

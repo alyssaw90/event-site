@@ -1,3 +1,97 @@
-<main class="clearfix ng-cloak" data-homepage-directive>
-  
+<main class="clearfix ng-cloak">
+    <section class="banner">
+        <div class="container">
+            <h1>Interop Dev Events</h1>
+            <h3>Sub-header tag</h3>
+        </div>
+    </section>
+    <section class="aboutInteropEvents container">
+        <h1>What are Interop Dev Events?</h1>
+        <div class="row" id="learnSection">
+            <div class="col-md-6">
+                <h2>Learn</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent augue nisi, tincidunt non maximus ut, porttitor at libero. Integer magna nisl, malesuada in consectetur sed, hendrerit porta ligula. Ut in sem aliquet, efficitur nibh id, mollis mauris
+                </p>
+            </div>
+            <div class="col-md-76">
+                <img src="app/css/img/Taipei2016.jpg" alt="Taipei 2016 Presentation">
+            </div>
+        </div>
+        <div class="row" id="hackathonSection">
+            <div class="col-md-6">
+                <img src="app/css/img/hackathon.jpg" alt="Hackathons">
+            </div>
+            <div class="col-md-6">
+                <h2>Hackathons</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent augue nisi, tincidunt non maximus ut, porttitor at libero. Integer magna nisl, malesuada in consectetur sed, hendrerit porta ligula. Ut in sem aliquet, efficitur nibh id, mollis mauris
+                </p>
+            </div>
+        </div>
+        <div class="row" id="networkingSection">
+            <div class="col-md-6">
+                <h2>Networking</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent augue nisi, tincidunt non maximus ut, porttitor at libero. Integer magna nisl, malesuada in consectetur sed, hendrerit porta ligula. Ut in sem aliquet, efficitur nibh id, mollis mauris
+                </p>
+            </div>
+            <div class="col-md-6">
+                <img src="app/css/img/Paris2016.jpg" alt="Paris Networking">
+            </div>
+        </div>
+    </section>
+    <section class="technology">
+        <div class="container">
+            <h1>Technology covered at events</h1>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="square" id="office">
+                        <img src="app/css/img/office.svg" alt="Office Logo">
+                        <p>Learn about protocols, Office, SharePoint, Exchange, and more.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="square" id="sql">
+                        <h2>Microsoft SQL Server</h2>
+                        <p>Learn about SQL protocols.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="square" id="windows">
+                        <img src="app/css/img/windows.svg" alt="Windows Logo">
+                        <p>Learn about protocols like SMB, RDP, and Active Directory.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <a href="#" class="moreInfoLink">Click here for more information about technology covered at events.</a>
+            </div>
+        </div>
+    </section>
+    <section class="upcomingEvents" data-ng-controller="FutureEventsCtrl" data-ng-init="getUpcomingEvents()">
+        <div class="container">
+            <h1>Upcoming Events</h1>
+            <div class="row eventsRow">
+                <div class="col-md-6" data-ng-repeat="upcomingEvent in upcomingEvents|limitTo:2">
+                    <div class="upcomingEventBox" data-ng-style="{'background-image': 'url(/uploads/{{upcomingEvent.eventHeaderImage}})'}">
+                        <div class="container">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h2>{{upcomingEvent.eventName}}</h2>
+                                </div>
+                                <div class="col-md-6 registerButtonCol">
+                                    <a data-ng-href="{{upcomingEvent.eventRegistrationLink}}" class="btn registerButton">Register</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row moreInfoRow">
+                <a href="#" class="moreInfoLink">Click here to see upcoming and past events.</a>
+            </div>
+        </div>
+    </section>
 </main>

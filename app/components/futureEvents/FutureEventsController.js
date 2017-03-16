@@ -12,15 +12,18 @@ const FutureEventsCtrl = (app) => {
 		$rootScope.latestDbChangeMadeTime = [];
 
 		let FutureEvents = resource();
+		// console.log(FutureEvents.getFutureEvents);
 
 		$scope.getUpcomingEvents = () => {
 			let imageCount = 0;
 
 			FutureEvents.getFutureEvents( (err, data) => {
+				console.log(data.data)
         if (err) {
           return $scope.errors.push({msg: 'could not retrieve future events'});
         };
 				$scope.futureEvents = [];
+				$scope.upcomingEvents = data.data
 				$scope.slides = [];
 				let events = data.data
 
@@ -42,7 +45,7 @@ const FutureEventsCtrl = (app) => {
 					}
 				}
         
-        $scope.imageCount = imageCount;
+        // $scope.imageCount = imageCount;
         // $scope.futureEvents = data;
       })		
 		};

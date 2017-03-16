@@ -172,8 +172,9 @@ module.exports = (router) => {
         eventObj.eventName = upcomingEvents[i].eventName;
         eventObj.eventUrl = upcomingEvents[i].eventUrl;
         eventObj.eventHighlightColor = continentColors[upcomingEvents[i].eventContinent];
-        eventObj.eventHomepageImage = upcomingEvents[i].eventHomepageImage;
-        eventObj.showOnHeader = upcomingEvents[i].showOnHeader
+        eventObj.eventHeaderImage = upcomingEvents[i].eventHeaderImage;
+        eventObj.showOnHeader = upcomingEvents[i].showOnHeader;
+        eventObj.eventRegistrationLink = upcomingEvents[i].eventRegistrationLink;
 
         outputArr.push(eventObj)
       }
