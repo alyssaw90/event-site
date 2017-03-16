@@ -1,9 +1,11 @@
-<main role="presentation" id="beginningOfContent" class="grid white-bg main-page-content the-team-section mobileWrapper clearfix ng-cloak" data-ng-controller="MeetTheTeamCtrl" data-ng-init="getTeamMembers()">
-  <section data-ng-repeat="teamMember in teamMembers | orderBy: 'meetTheTeamPageOrder'" class="col_12 internetExplorer" id="{{teamMember.divId}}" aria-label="Bio of {{teamMember.firstName + ' ' +  teamMember.lastName}}" role="presentation">
-    <h4>{{teamMember.firstName + ' ' +  teamMember.lastName}}</h4>
-    <h5>{{teamMember.msTeamTitle}}</h5>
-    <img alt="Image of {{teamMember.fullName}}" class="pull-left" data-ng-src="{{teamMember.headShot}}"  />
-    <p data-ng-bind-html="teamMember.speakerDescription"></p>
-    <hr aria-hidden="true" role="presentation" class="alt1" />
-  </section>
+<main role="presentation" id="beginningOfContent" class="clearfix ng-cloak" data-ng-controller="MeetTheTeamCtrl" data-ng-init="getTeamMembers()">
+	<section class="teamSection container">
+		<h1>Meet The Team</h1>
+		<div class="col-md-4" data-ng-repeat="(index, value) in teamMembers">
+    		<img alt="Image of {{value.fullName}}" data-ng-src="{{value.headShot}}"  />
+        	<h4>{{value.firstName + ' ' +  value.lastName}}</h4>
+        	<h5>{{value.msTeamTitle}}</h5>
+			<br ng-show="(index + 1)%3==0"/>
+		</div>
+    </section>
 </main>
