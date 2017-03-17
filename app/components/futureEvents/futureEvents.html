@@ -1,12 +1,9 @@
-<main class="events grid ng-cloak mobileWrapper" aria-role="presentation" data-ng-controller="FutureEventsCtrl" data-ng-init="getUpcomingEvents()" data-future-events-directive>
-  <section class="col_12 internetExplorer" aria-role="presentation" id="{{futureEvent.city}}">
-  	<div data-ng-repeat="futureEvent in futureEvents | orderBy: eventStartDate" class="col_{{futureEvent.colNum}} event_block clearfix" data-ng-attr-style="background-color: {{futureEvent.eventHighlightColor}}">
-  		<a href="/{{futureEvent.eventUrl}}" data-ng-focus="$parent.showBorder($event)" data-ng-blur="$parent.removeBorder($event)">
-  			<p>More Details</p>
-  			<h1>{{futureEvent.city}}</h1>
-  			<h3>{{futureEvent.eventName}}<br />{{futureEvent.eventDates}}</h3>
-  		</a>
-		</div>
-  	<section tabindex="0" aria-label="Map of upcoming events" id="eventsMap" class="col_12" data-ng-controller="BingMapCtrl" data-bing-map-directive></section>
-  </section>
+<main class="ng-cloak" aria-role="presentation">
+	<section class="eventsBanner"></section>
+	<section class="events">
+		<h1>Upcoming Events</h1>
+	</section>
+	<section class="past">
+		<h1>Past Events</h1>
+	</section>
 </main>
