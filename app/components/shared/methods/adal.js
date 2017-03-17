@@ -17,8 +17,8 @@
 // limitations under the License.
 //----------------------------------------------------------------------
 
-'use strict';
 var AuthenticationContext = (function () {
+'use strict';
 
 
     /**
