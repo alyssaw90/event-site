@@ -1,10 +1,21 @@
-<div class="mobileWrapper grid main-page-content ng-cloak" data-ng-init="getEvents()" data-events-directive>
-  <main data-ng-if="show404" class="col_12 ng-cloak">
-    <section class="col_12">
-      <h1>Sorry we can't find the page you're looking for</h1>
-    </section>
-  </main>
-  <main data-ng-if="events.isEvent" class="main-page-content">
+<div class="ng-cloak" data-ng-init="getEvents()">
+	<main data-ng-if="show404" class="col-xs-12 ng-cloak">
+    	<section class="col-xs-12">
+      		<h1>Sorry we can't find the page you're looking for</h1>
+    	</section>
+  	</main>
+  	<main class="eventContent">
+    	<section class="eventBanner" data-ng-style="{'background-image': 'url({{headerImage}})'}">
+			<h1>{{event.eventName}}</h1>
+			<h4>{{getReadableDate(event.eventStartDate) + ' - ' + getReadableDate(event.eventEndDate)}}</h4>
+			<a href="{{event.eventRegistrationLink}}" class="btn eventRegistrationButton">Register</a>
+    	</section>
+    	<section class="eventInfo"></section>
+    	<section class="venueInfo"></section>
+    	<section class="eventAgenda"></section>
+    	<section class="eventAccomodations"></section>
+  	</main>
+  <!-- <main data-ng-if="events.isEvent" class="main-page-content">
   	<div data-ng-if="events.event.eventHeaderImage" class="ng-cloak col_12 internetExplorer event-header centered" id="eventHeader" role="complementary"><img alt="event banner image" data-ng-src="{{ headerImage }}" /></div>
   	<ul class="tabs left" id="eventsPageUl">
       <li data-ng-if="events.event.eventAboutTabText" >
@@ -52,5 +63,5 @@
  		  	<hr aria-hidden="true" role="presentaion" class="alt1" />
  			</div>
   	</div>
-  </main>
+  </main> -->
 </div>
