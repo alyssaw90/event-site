@@ -11,7 +11,8 @@ const LatestNewsCtrl = (app) => {
 
 			BlogPostsREST.getBlogPosts(function(err, data) {
 				if (err) {
-					return console.log({msg: 'could not retrieve blog posts'});
+					// return console.log({msg: 'could not retrieve blog posts'});
+					return console.log(err)
 				}
 				$scope.blogPosts = data;
 			});

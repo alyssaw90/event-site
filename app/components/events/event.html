@@ -5,10 +5,12 @@
     	</section>
   	</main>
   	<main class="eventContent">
-    	<section class="eventBanner" data-ng-style="{'background-image': 'url({{headerImage}})'}">
-			<h1>{{event.eventName}}</h1>
-			<h4>{{getReadableDate(event.eventStartDate) + ' - ' + getReadableDate(event.eventEndDate)}}</h4>
-			<a href="{{event.eventRegistrationLink}}" class="btn eventRegistrationButton">Register</a>
+    	<section class="eventBanner" data-ng-style="{'background-image': 'url('+ headerImage +')'}">
+			<div class="bannerText container">
+				<h1>{{event.eventName}}</h1>
+				<h4>{{getReadableDate(event.eventStartDate) + ' - ' + getReadableDate(event.eventEndDate)}}</h4>
+				<a href="{{event.eventRegistrationLink}}" class="btn eventRegistrationButton">Register</a>
+			</div>
     	</section>
     	<section class="eventInfo"></section>
     	<section class="venueInfo"></section>
