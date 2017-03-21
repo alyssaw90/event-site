@@ -165,6 +165,14 @@ eventsApp
       pageTitle: 'Frequently Asked Questions Page - Microsoft Plugfests and Events'
     }
 	})
+	.when('/support', {
+		templateUrl: '/app/components/support/support.html',
+		reloadOnSearch: false,
+		requireADLogin: false,
+		data: {
+			pageTitle: 'Support Page - Microsoft Plugfests and Events'
+		}
+	})
 	.when('/past-events', {
 		templateUrl: '/app/components/pastEvents/pastEvents.html',
 		reloadOnSearch: false,
