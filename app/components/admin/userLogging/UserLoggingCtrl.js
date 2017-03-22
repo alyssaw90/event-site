@@ -11,19 +11,7 @@ const UserLoggingCtrl = (app) => {
     };
 
     $scope.logout = function() {
-
-      swal({
-        title: 'Logout?',
-        type: 'warning',
-        showCancelButton: true,
-        closeOnConfirm: false,
-        customClass: 'sweet-alert-hide-input'
-      },
-      () => {
-        
-        adalService.logOut();
-     
-      });
+      adalService.logOut();
     };
 
     $scope.isActive = function(viewLocation){
