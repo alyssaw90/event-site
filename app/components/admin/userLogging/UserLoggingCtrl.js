@@ -7,7 +7,7 @@ const UserLoggingCtrl = (app) => {
 
     $scope.login = function() {
       adalService.login();
-      // window.location='/admin/edit-event'
+      window.location='/admin/edit-event'
     };
 
     $scope.logout = function() {
