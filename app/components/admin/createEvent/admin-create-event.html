@@ -1,6 +1,7 @@
 
 <div class="mobileWrapper ng-cloak ng-cloak" role="presentation" ng-controller="AdminPageCtrl" data-ng-init="getEvents(); getAllSpeakers()" data-admin-page-directive>
   <main style="overflow:hidden;" id="beginningOfContent" tabindex="0" class="container">
+		<div data-ng-include="'/app/components/admin/admin-header/admin-header.html'"></div>
     <section role="presentation" class="row internetExplorer">
 			<form id="addNewEventForm" class="col-lg-24" name="addNewEventForm" method="post" enctype="multipart/form-data" make-auto-complete-false-directive>
 				<h3>New Event</h3>
