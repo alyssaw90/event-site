@@ -22,7 +22,22 @@
   <a id="screenreader-summary" aria-live="polite" tabindex="-1" data-ng-bind="announceOnViewChange"></a>
   <div id="siteWrapper">
     <div data-ng-include="'/app/components/shared/header/headerTemplate.html'"></div>
-    <div data-ng-hide="!userInfo.isAuthenticated" data-ng-include="'/app/components/admin/admin-header/admin-header.html'"></div>
+    <!--<div data-ng-include="'/app/components/admin/admin-header/admin-header.html'"></div>-->
+    <div class="container admin-header-container" role="presentation" data-ng-if="userInfo.isAuthenticated">
+	    <div class="row" role="presentation">
+		<div class="col-lg-24" role="presentation" ng-controller="AdminHeaderCtrl">
+			<ul class="nav nav-tabs nav-justified" admin-header-directive>
+			  <li role="presentation"><a href="/admin/edit-event">Events</a></li>
+			  <li role="presentation"><a href="/admin/edit-speaker">Speakers</a></li>
+			  <li role="presentation"><a href="/admin/slideshow">Slideshow</a></li>
+			  <li role="presentation"><a href="/admin/edit-files">Uploads</a></li>
+			  <li role="presentation" data-ng-if="showAccountButton"><a href="/admin/account">Account</a></li>
+			  <li role="presentation"><a href="/admin/help">Help</a></li>
+			  <li role="presentation" ng-controller="UserLoggingCtrl"><a href="#" ng-click="logout()">Logout</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
     <div data-ng-view autoscroll="true"></div>
     <div id="socialSharingIcons" data-ng-show="showSocialIcons"></div>
   </div>
