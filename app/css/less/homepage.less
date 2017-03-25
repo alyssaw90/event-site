@@ -67,6 +67,10 @@ main {
 	.technology {
 		background-color: #e6e6e6;
 
+		.link {
+			text-decoration: none;
+		}
+
 		.square {
 			height: 250px;
 			width: 250px;
@@ -131,19 +135,18 @@ main {
 			margin-top: 30px;
 		}
 		.upcomingEventBox {
+			display: block;
 			height: 500px;
 			width: 500px;
 			background-repeat: no-repeat;
 			background-size: cover;
 			background-position: 80%;
-			position: relative;
-			
-			.row {
-				position: absolute;
-				bottom: 20px;
-				width: 100%;
-				margin: 0 auto;
-			}
+			// position: relative;
+		}
+
+		h2, .registerButton {
+			position: absolute;
+			bottom: 20px;
 		}
 
 		h2 {
@@ -151,18 +154,16 @@ main {
 			margin: 0;
 			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 			max-width: 250px;
+			left: 40px;
 		}
 
-		.registerButtonCol {
-			text-align: center;
-
-			.registerButton {
-				background-color: #0078d7;
-				color: #fff;
-				border-radius: 0;
-				padding: 10px 30px;
-				margin-top: 22px;
-			}
+		.registerButton {
+			background-color: #0078d7;
+			color: #fff;
+			border-radius: 0;
+			padding: 10px 30px;
+			margin-top: 22px;
+			right: 95px;
 		}
 
 		.moreInfoLink {

@@ -34,40 +34,35 @@
 	}
 
 	.eventBox {
+		display: block;
 		height: 500px;
 		width: 500px;
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-position: 80%;
-		position: relative;
+		// position: relative;
 		margin-bottom: 40px;
 
-		.row {
-			position: absolute;
-			bottom: 20px;
-			width: 100%;
-			margin: 0 auto;
-		}
-
 		h2 {
+			position: absolute;
+			bottom: 60px;
 			color: #fff;
 			margin: 0;
 			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 			max-width: 250px;
-		}
-
-		.registerButtonCol {
-			text-align: center;
-
-			.registerButton {
-				background-color: #0078d7;
-				color: #fff;
-				border-radius: 0;
-				padding: 10px 30px;
-				margin-top: 22px;
-			}
+			left: 40px;
 		}
 	}
+	.registerButton {
+			position: absolute;
+			bottom: 60px;
+			background-color: #0078d7;
+			color: #fff;
+			border-radius: 0;
+			padding: 10px 30px;
+			margin-top: 22px;
+			right: 95px;
+		}
 }
 
 .past {

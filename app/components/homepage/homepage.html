@@ -46,22 +46,28 @@
             <h1>Technology covered at events</h1>
             <div class="row">
                 <div class="col-md-4">
-                    <div class="square" id="office">
-                        <img src="app/css/img/office.svg" alt="Office Logo">
-                        <p>Learn about protocols, Office, SharePoint, Exchange, and more.</p>
-                    </div>
+                    <a href="https://www.office.com/" target="_blank" class="link">
+                        <div class="square" id="office">
+                            <img src="app/css/img/office.svg" alt="Office Logo">
+                            <p>Learn about protocols, Office, SharePoint, Exchange, and more.</p>
+                        </div>
+                    </a>
                 </div>
                 <div class="col-md-4">
-                    <div class="square" id="sql">
-                        <h2>Microsoft SQL Server</h2>
-                        <p>Learn about SQL protocols.</p>
-                    </div>
+                    <a href="https://www.microsoft.com/en-us/sql-server/" target="_blank" class="link">
+                        <div class="square" id="sql">
+                            <h2>Microsoft SQL Server</h2>
+                            <p>Learn about SQL protocols.</p>
+                        </div>
+                    </a>
                 </div>
                 <div class="col-md-4">
-                    <div class="square" id="windows">
-                        <img src="app/css/img/windows.svg" alt="Windows Logo">
-                        <p>Learn about protocols like SMB, RDP, and Active Directory.</p>
-                    </div>
+                    <a href="https://www.microsoft.com/en-us/windows/" target="_blank" class="link">
+                        <div class="square" id="windows">
+                            <img src="app/css/img/windows.svg" alt="Windows Logo">
+                            <p>Learn about protocols like SMB, RDP, and Active Directory.</p>
+                        </div>
+                    </a>
                 </div>
             </div>
             <div class="row">
@@ -74,23 +80,14 @@
             <h1>Upcoming Events</h1>
             <div class="row eventsRow">
                 <div class="col-md-6" data-ng-repeat="upcomingEvent in upcomingEvents|limitTo:2">
-                    <div class="upcomingEventBox" data-ng-style="{'background-image': 'url(/uploads/{{upcomingEvent.eventHeaderImage}})'}">
-                        <div class="container">
-
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <h2>{{upcomingEvent.eventName}}</h2>
-                                </div>
-                                <div class="col-md-6 registerButtonCol">
-                                    <a data-ng-href="{{upcomingEvent.eventRegistrationLink}}" class="btn registerButton">Register</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <a href="/{{upcomingEvent.eventUrl}}" class="upcomingEventBox" data-ng-style="{'background-image': 'url(/uploads/{{upcomingEvent.eventHeaderImage}})'}">
+                        <h2>{{upcomingEvent.eventName}}</h2>
+                        <a data-ng-href="{{upcomingEvent.eventRegistrationLink}}" class="btn registerButton">Register</a>
+                    </a> 
                 </div>
             </div>
             <div class="row moreInfoRow">
-                <a href="#" class="moreInfoLink">Click here to see upcoming and past events.</a>
+                <a href="/future-events" class="moreInfoLink">Click here to see upcoming and past events.</a>
             </div>
         </div>
     </section>
