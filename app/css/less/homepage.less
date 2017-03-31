@@ -29,6 +29,12 @@ main {
 	}
 
 	.aboutInteropEvents {
+		// text-align: left;
+		// h1 {
+		// 	font-size: 36px;
+		// }
+
+
 		#learnSection, 
 		#networkingSection,
 		#hackathonSection {
@@ -36,6 +42,14 @@ main {
 				height: 330px;
 				width: 530px;
 			}
+
+			@media all and (min-width: 768px) {
+				img {
+					width: 460px;
+					height: 300px;
+				}
+			}		
+
 			p {
 				font-size: 18px;
 			}
@@ -62,21 +76,41 @@ main {
 				float: left;
 			}
 		}
-	}
 
-	.technology {
-		background-color: #e6e6e6;
-
-		.link {
-			text-decoration: none;
+		@media all and (max-width: 768px) {
+			h1 {
+				text-align: center;
+				font-size: 42px;
+			}
 		}
 
-		.square {
-			height: 250px;
+		@media all and (max-width: 480px) {
+			h1 {
+				font-size: 36px;
+			}
+
+			#learnSection,
+			#networkingSection,
+			#hackathonSection {
+				img{
+					display: none;
+				}
+			}
+		}
+	}
+
+	
+	.technology {
+		background-color: #e6e6e6; 
+		.link {
+			text-decoration: none;
+			display: block;
+			height: 250px; 
 			width: 250px;
 			color: #fff;
 			// padding: 30px;
 			margin: 0 auto;
+
 			h2 {
 				margin: 0;
 				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -89,9 +123,44 @@ main {
 			}
 		}
 
+		@media all and (max-width: 768px) {
+			text-align: center;
+			h1 {
+				font-size: 42px;
+			}
+			.link {
+				height: 600px; 
+				width: 600px;
+				text-align: center;
+				margin-top: 30px;
+				p {
+					font-size: 36px;
+					margin-top: 100px;
+				}
+			}		
+		}
+
+		@media all and (max-width: 480px) {
+			h1 {
+				font-size: 36px;
+			}
+			.link {
+				height: 400px;
+				width: 400px;
+
+				p {
+					font-size: 24px;
+					margin-top: 70px;
+				}
+			}
+		}
+
 		#office {
 			background-color: #d83b01;
 			padding: 42px 30px 30px 30px;
+			img {
+				width: auto;
+			}
 		}
 
 		#sql {
@@ -106,6 +175,55 @@ main {
 		#windows {
 			background-color: #0078d7;
 			padding: 45px 30px 30px 30px;
+			img {
+				width: auto;
+			}
+		}
+
+		@media all and (max-width: 768px) {
+			#office {
+				img {
+					width: 360px;
+					margin-top:70px;
+				}
+			}
+
+			#sql {
+				h2 {
+					font-size: 66px;
+					margin-top:70px;
+				}
+			}
+
+			#windows {
+				img {
+					width: 400px;
+					margin-top:70px;
+				}
+			}
+		}
+
+		@media all and (max-width: 480px) {
+			#office {
+				img {
+					width: 250px;
+					margin-top: 30px;
+				}
+			}
+
+			#sql {
+				h2 {
+					font-size: 55px;
+					margin-top: 30px;
+				}
+			}
+
+			#windows {
+				img {
+					width: 300px;
+					margin-top: 30px;
+				}
+			}
 		}
 
 		.moreInfoLink {
@@ -117,6 +235,18 @@ main {
 		.moreInfoLink:focus {
 			text-decoration: none;
 			color: #002050;
+		}
+
+		@media all and (max-width: 768px) {
+			.moreInfoLink {
+				font-size: 22px;
+			}
+		}
+
+		@media all and (max-width: 480px) {
+			.moreInfoLink {
+				font-size: 20px;
+			}
 		}
 
 		.row:last-child {
@@ -187,5 +317,123 @@ main {
 			margin-top: 30px;
 		}
 
+		@media all and (min-width:992px) and (max-width: 1199px) {
+			.upcomingEventBox {
+				width: 450px;
+				height: 450px;
+			}
+		}
+
+		@media all and (max-width: 768px) {
+			h1 {
+				font-size: 42px;
+				text-align: center;
+			}
+
+			.upcomingEventBox {
+				margin: 0 auto;
+				width: 600px;
+				height: 600px;
+				margin-top: 30px;
+				
+				h2 {
+					left: 110px;
+					font-size: 36px;
+				}
+			}
+
+			.registerButton {
+				right: 110px;
+				font-size: 18px;
+			}
+
+			.moreInfoLink {
+				font-size: 22px;
+			}
+		}
+
+		@media all and (max-width: 480px) {
+			h1 {
+				font-size: 36px; 
+			}
+			.upcomingEventBox {
+				width: 400px;
+				height: 400px;
+				h2 {
+					font-size: 30px;
+					left: 55px;
+				}
+			}
+			.registerButton {
+				font-size: 14px;
+				right: 55px;
+			}
+			.moreInfoLink {
+				font-size: 20px;
+			}
+		}
+
 	}
+
 }
+
+// @media all and (min-width: 375px) {
+// 	.technology {
+// 		.link {
+// 			width: 450px;
+// 			height: 450px; 
+// 		}
+// 	}
+// }
+
+// @media all and (max-width: 768px) {
+
+// 	.aboutInteropEvents {
+// 		h1 {
+// 			font-size: 42px;
+// 			text-align: center;
+// 		}
+// 		#learnSection,
+// 		#networkingSection,
+// 		#hackathonSection {
+// 			img {
+// 				width: 460px;
+// 				height: 300px;
+// 			}
+// 		}
+// 	}
+
+// 	.technology {
+// 		text-align: center;
+// 		h1 {
+// 			font-size: 42px;
+// 		}
+// 		.link {
+// 			height: 600px;
+// 			width: 600px;
+// 			text-align: center;
+// 			margin-top: 30px;
+// 			margin-bottom: 30px;
+// 			p {
+// 				font-size: 36px;
+// 			}
+// 		}
+// 		#sql {
+// 			h2 {
+// 				font-size: 66px;
+// 			}
+// 		}
+// 		#office {
+// 			img {
+// 				width: 360px;
+// 			}
+// 		}
+// 		#windows {
+// 			img {
+// 				width: 400px;
+// 			}
+// 		}
+// 		.moreInfoLink {
+// 			font-size: 22px;
+// 		}
+// 	}
