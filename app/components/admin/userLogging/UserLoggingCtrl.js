@@ -3,10 +3,10 @@ const jQuery = require('jquery');
 
 const UserLoggingCtrl = (app) => {
 
-	app.controller('UserLoggingCtrl', ['$scope', '$base64', '$cookies', '$timeout', '$location', '$rootScope', '$window', 'adalAuthenticationService', ($scope, $base64, $cookies, $timeout, $location, $rootScope, $window, adalService) => {
+	app.controller('UserLoggingCtrl', ['$scope', '$base64', '$cookies', '$timeout', '$location', '$rootScope', '$window', 'adalAuthenticationService', ($scope, $base64, $cookies, $timeout, $location, $rootScope, $window, adalAuthenticationService) => {
 
     $scope.login = function() {
-      adalService.login();
+      adalAuthenticationService.login();
       window.location='/admin/edit-event'
     };
 
@@ -21,7 +21,7 @@ const UserLoggingCtrl = (app) => {
       },
       () => {
        
-        adalService.logOut();
+        adalAuthenticationService.logOut();
       });
       
     };
