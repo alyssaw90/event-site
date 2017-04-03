@@ -43,7 +43,7 @@ main {
 				width: 530px;
 			}
 
-			@media all and (min-width: 768px) {
+			@media all and (min-width:768px) and (max-width:991px) {
 				img {
 					width: 460px;
 					height: 300px;
@@ -80,7 +80,6 @@ main {
 		@media all and (max-width: 768px) {
 			h1 {
 				text-align: center;
-				font-size: 42px;
 			}
 		}
 
@@ -123,11 +122,8 @@ main {
 			}
 		}
 
-		@media all and (max-width: 768px) {
-			text-align: center;
-			h1 {
-				font-size: 42px;
-			}
+		@media all and (min-width: 768px) and (max-width:991px) {
+			// text-align: center;
 			.link {
 				height: 600px; 
 				width: 600px;
@@ -140,13 +136,19 @@ main {
 			}		
 		}
 
-		@media all and (max-width: 480px) {
+		@media all and (max-width: 768px) {
+			text-align: center;
+		}
+
+		@media all and (min-width: 480px) and (max-width: 767px) {
+			text-align: center;
 			h1 {
 				font-size: 36px;
 			}
 			.link {
 				height: 400px;
 				width: 400px;
+				margin-top: 30px;
 
 				p {
 					font-size: 24px;
@@ -180,7 +182,7 @@ main {
 			}
 		}
 
-		@media all and (max-width: 768px) {
+		@media all and (min-width: 768px) and (max-width:991px) {
 			#office {
 				img {
 					width: 360px;
@@ -203,7 +205,7 @@ main {
 			}
 		}
 
-		@media all and (max-width: 480px) {
+		@media all and (min-width: 480px) and (max-width: 767px) {
 			#office {
 				img {
 					width: 250px;
@@ -274,17 +276,18 @@ main {
 			// position: relative;
 		}
 
-		h2, .registerButton {
-			position: absolute;
-			bottom: 20px;
-		}
+		// h2, .registerButton {
+		// 	position: absolute;
+		// 	bottom: 20px;
+		// }
 
 		h2 {
 			color: #fff;
 			margin: 0;
 			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-			max-width: 250px;
-			left: 40px;
+			max-width: 7.5em;
+			padding-top: 82%;
+			padding-left: 5%;
 		}
 
 		.registerButton {
@@ -292,8 +295,9 @@ main {
 			color: #fff;
 			border-radius: 0;
 			padding: 10px 30px;
-			margin-top: 22px;
-			right: 95px;
+			position: absolute;
+			bottom: 2em;
+			right: 7em;
 		}
 
 		.moreInfoLink {
@@ -324,12 +328,7 @@ main {
 			}
 		}
 
-		@media all and (max-width: 768px) {
-			h1 {
-				font-size: 42px;
-				text-align: center;
-			}
-
+		@media all and (min-width: 768px) and (max-width:991px) {
 			.upcomingEventBox {
 				margin: 0 auto;
 				width: 600px;
@@ -337,13 +336,11 @@ main {
 				margin-top: 30px;
 				
 				h2 {
-					left: 110px;
 					font-size: 36px;
 				}
 			}
 
 			.registerButton {
-				right: 110px;
 				font-size: 18px;
 			}
 
@@ -352,21 +349,30 @@ main {
 			}
 		}
 
-		@media all and (max-width: 480px) {
+		@media all and (max-width:768px) {
+			h1 {
+				text-align: center;
+			}
+		}
+
+		@media all and (min-width: 480px) and (max-width: 767px) {
 			h1 {
 				font-size: 36px; 
+				text-align: center;
 			}
-			.upcomingEventBox {
+			.upcomingEventBox { 
+				margin: 0 auto;
 				width: 400px;
 				height: 400px;
 				h2 {
 					font-size: 30px;
-					left: 55px;
+					padding-top: 80%;
 				}
 			}
 			.registerButton {
 				font-size: 14px;
-				right: 55px;
+				bottom: 1em;
+				right: 14.5em;
 			}
 			.moreInfoLink {
 				font-size: 20px;
@@ -376,64 +382,3 @@ main {
 	}
 
 }
-
-// @media all and (min-width: 375px) {
-// 	.technology {
-// 		.link {
-// 			width: 450px;
-// 			height: 450px; 
-// 		}
-// 	}
-// }
-
-// @media all and (max-width: 768px) {
-
-// 	.aboutInteropEvents {
-// 		h1 {
-// 			font-size: 42px;
-// 			text-align: center;
-// 		}
-// 		#learnSection,
-// 		#networkingSection,
-// 		#hackathonSection {
-// 			img {
-// 				width: 460px;
-// 				height: 300px;
-// 			}
-// 		}
-// 	}
-
-// 	.technology {
-// 		text-align: center;
-// 		h1 {
-// 			font-size: 42px;
-// 		}
-// 		.link {
-// 			height: 600px;
-// 			width: 600px;
-// 			text-align: center;
-// 			margin-top: 30px;
-// 			margin-bottom: 30px;
-// 			p {
-// 				font-size: 36px;
-// 			}
-// 		}
-// 		#sql {
-// 			h2 {
-// 				font-size: 66px;
-// 			}
-// 		}
-// 		#office {
-// 			img {
-// 				width: 360px;
-// 			}
-// 		}
-// 		#windows {
-// 			img {
-// 				width: 400px;
-// 			}
-// 		}
-// 		.moreInfoLink {
-// 			font-size: 22px;
-// 		}
-// 	}
