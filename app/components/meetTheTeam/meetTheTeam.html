@@ -1,11 +1,25 @@
 <main role="presentation" id="beginningOfContent" class="clearfix ng-cloak" data-ng-controller="MeetTheTeamCtrl" data-ng-init="getTeamMembers()">
 	<section class="teamSection container">
 		<h1>Meet The Team</h1>
-		<div class="col-md-4" data-ng-repeat="(index, value) in teamMembers">
-    		<img alt="Image of {{value.fullName}}" data-ng-src="{{value.headShot}}"  />
-        	<h4>{{value.firstName + ' ' +  value.lastName}}</h4>
-        	<h5>{{value.msTeamTitle}}</h5>
+		<div class="col-md-4" id="laptop" data-ng-repeat="(index, value) in teamMembers">
+    		<img alt="Image of {{value.fullName}}" data-ng-src="{{value.headShot}}" class="teamMemberHeadshot"/>
+        	<h4 class="teamMemeberName">{{value.firstName + ' ' +  value.lastName}}</h4>
+        	<h5 class="teamMemeberTitle">{{value.msTeamTitle}}</h5>
 			<br ng-show="(index + 1)%3==0"/>
+		</div>
+
+		<div class="col-sm-6" id="tablet" data-ng-repeat="(index,value) in teamMembers">
+			<img alt="Image of {{value.fullName}}" data-ng-src="{{value.headShot}}" class="teamMemberHeadshot"/>
+        	<h4 class="teamMemeberName">{{value.firstName + ' ' +  value.lastName}}</h4>
+        	<h5 class="teamMemeberTitle">{{value.msTeamTitle}}</h5>
+			<br ng-show="(index + 1)%2==0"/>
+		</div>
+
+		<div class="col-xs-12" id="phone" data-ng-repeat="(index,value) in teamMembers">
+			<img alt="Image of {{value.fullName}}" data-ng-src="{{value.headShot}}" class="teamMemberHeadshot"/>
+        	<h4 class="teamMemeberName">{{value.firstName + ' ' +  value.lastName}}</h4>
+        	<h5 class="teamMemeberTitle">{{value.msTeamTitle}}</h5>
+			<!--<br ng-show="(index + 1)%2==0"/>-->
 		</div>
     </section>
 </main>

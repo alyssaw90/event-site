@@ -10,4 +10,35 @@
     h1 {
         margin: 30px 0px;
     }
+
+    #tablet, #phone {
+        display: none;
+    }
+
+    @media all and (min-width: 1200px) and(max-width:1500px) {
+        #laptop {
+            display: block;
+        }
+        #tablet, #phone {
+            display: none;
+        }
+    }
+
+    @media all and (min-width: 768px) and (max-width:1199px) {
+        #laptop, #phone {
+            display: none;
+        }
+        #tablet {
+            display: block;
+        }
+    }
+
+    @media all and (max-width: 767px) {
+        #laptop, #tablet {
+            display: none;
+        }
+        #phone {
+            display: block;
+        }
+    }
 }
