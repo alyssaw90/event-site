@@ -69,7 +69,8 @@ require('./admin/editSlideshow/editSlideshowCtrl.js')(eventsApp);
 require('./admin/editFiles/EditFilesCtrl.js')(eventsApp);
 require('./admin/editEvent/EditEventCtrl.js')(eventsApp);
 require('./admin/editSpeaker/EditSpeakerController.js')(eventsApp);
-require(`./admin/account/AccountController.js`)(eventsApp);
+require('./admin/account/AccountController.js')(eventsApp);
+require('./eventSurvey/surveyController.js')(eventsApp);
 //services
 require('./meetTheTeam/meetTheTeamRestResource.js')(eventsApp);
 require('./futureEvents/futureEventsRESTResource.js')(eventsApp);
@@ -86,7 +87,8 @@ require('./admin/editEvent/editEventRESTResource.js')(eventsApp);
 require('./admin/editSpeaker/editSpeakerRESTResource.js')(eventsApp);
 require('./admin/adminPageRESTResource.js')(eventsApp);
 require('./pastEvents/pastEventsRESTResource.js')(eventsApp);
-require(`./admin/account/accountRESTResource`)(eventsApp);
+require('./admin/account/accountRESTResource')(eventsApp);
+require('./eventSurvey/surveyRESTResource.js')(eventsApp);
 
 //filters
 require('./admin/editFiles/fileSearch.js')(eventsApp);
@@ -186,6 +188,14 @@ eventsApp
 		data: {
       pageTitle: 'Latest Page - Microsoft Plugfests and Events'
     }
+	})
+	.when('/paris-event-survey', {
+		templateUrl: '/app/components/eventSurvey/parisSurvey.html',
+		reloadOnSearch: false,
+		controller: 'surveyController',
+		data: {
+			pageTitle: 'Extend Paris 2017 Event Suvey - Microsoft Plugfests and Events'
+		}
 	})
 	.when('/admin/slideshow', {
 		templateUrl: '/app/components/admin/editSlideshow/editSlideshowTemplate.html',
