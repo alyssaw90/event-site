@@ -189,7 +189,7 @@ eventsApp
       pageTitle: 'Latest Page - Microsoft Plugfests and Events'
     }
 	})
-	.when('/paris-event-survey', {
+	.when('/survey', {
 		templateUrl: '/app/components/eventSurvey/parisSurvey.html',
 		reloadOnSearch: false,
 		controller: 'surveyController',
