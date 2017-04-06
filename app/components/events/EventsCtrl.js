@@ -20,9 +20,8 @@ const EventsCtrl = (app) => {
         };
 		$scope.events = data.data;
         $rootScope.lang = $scope.events.eventLanguage || 'en';
-        $scope.headerImage = 'uploads/' + $scope.events.event.eventHeaderImage;
-		// console.log($scope.headerImage);
-		// console.log($scope.events.event.eventHeaderImage);
+        $scope.headerImage = 'uploads/' + $scope.events.event.eventHeaderImage || 'no photo';
+		
         
         //loop over html string for tabs and tell angular to trust it as html
 				for (let i = 0, len = $scope.events.tabs.length; i < len; i++) {
