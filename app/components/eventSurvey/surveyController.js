@@ -10,10 +10,15 @@ const surveyController = (app) => {
         $scope.createSurvey = (newSurveyData) => {
             createSurveyREST.createSurvey(newSurveyData, (err, data) => {
                 if(err){
-                    console.log(err)
-                    // swal({
-                        
-                    // })
+                    // console.log(err)
+                    swal({
+                        title: 'There was a problem submitting your form',
+                        text: err,
+                        type: 'warning',
+                        confirmButtonColor: '#DD6B55',
+                        confirmButtonText: 'Ok',
+                        customClass: 'sweet-alert-hide-input'
+                    });
                 }
                 if(!err){
                     $scope.newSurvey = {};
@@ -22,10 +27,9 @@ const surveyController = (app) => {
                         type: 'success',
                         customClass: 'sweet-alert-hide-input'
                     },
-                        function() {
-                            $location.url('/');
-                        }
-                    )
+                    function() {
+                        $location.url('/');
+                    });
                 }
             })
         }
