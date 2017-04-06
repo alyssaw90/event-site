@@ -26,6 +26,7 @@ const EventTab = models.EventTab;
 const Slideshow = models.Slideshow;
 const Slide = models.Slide;
 const MsUser = models.MsUser;
+const Surveys = models.Surveys;
 const placeholders = require('../models/placeholders');
 const dbRelationships = require('../models/relationships');
 const multipart = require('connect-multiparty');
@@ -169,7 +170,7 @@ module.exports = (router) => {
         eventObj.eventName = upcomingEvents[i].eventName;
         eventObj.eventUrl = upcomingEvents[i].eventUrl;
         eventObj.eventHighlightColor = continentColors[upcomingEvents[i].eventContinent];
-        eventObj.eventHomepageImage = upcomingEvents[i].eventHomepageImage;
+        eventObj.eventHeaderImage = upcomingEvents[i].eventHeaderImage;
         eventObj.showOnHeader = upcomingEvents[i].showOnHeader
 
         outputArr.push(eventObj)
@@ -178,7 +179,33 @@ module.exports = (router) => {
       res.json(outputArr);
     })
   })
-
+  
+  //route to post survey questions
+  router.post('/survey', (req, res, next) => {
+    models.sql.sync()
+    .then(function() {
+      return Surveys.create({
+        eventName: 'Extend Paris 2017',
+        questionOne: req.body.ratingQuestionOne,
+        questionTwo: req.body.questionTwo,
+        questionThree: req.body.ratingQuestionThree,
+        questionFour: req.body.questionFour,
+        questionFive: req.body.questionFive,
+        ipAddress: req.headers['x-forwarded-for'] || 
+          req.connection.remoteAddress || 
+          req.socket.remoteAddress ||
+          req.connection.socket.remoteAddress
+      })
+      
+      // .catch( (err) => {
+      //   let errorMsg = ``;
+      //   for (let i =0, j = err.errors.length; i < j; i++) {
+      //     errorMsg += err.errors[i].message + `\n`;
+      //   }
+      //   res.status(500).send(errorMsg);
+      // })
+    })
+  })
 
   //route to send Bing Map API key to front end
   router.route('/bingmapkey')

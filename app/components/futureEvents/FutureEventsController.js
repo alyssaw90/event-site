@@ -26,21 +26,25 @@ const FutureEventsCtrl = (app) => {
 
         for (let i = 0, len = events.length; i < len; i++) {
         	let testObj = {city: events[i].city, dates: events[i].eventDates};
-					if (events[i].eventHomepageImage) {
+					if (events[i].eventHeaderImage) {
 						let tmpObj = {};
-						tmpObj.eventHomepageImage = '/uploads/' + events[i].eventHomepageImage;
+						tmpObj.eventHeaderImage = '/uploads/' + events[i].eventHeaderImage;
 						tmpObj.eventUrl = events[i].eventUrl;
 
 						imageCount++;
 
 						$scope.slides.push(tmpObj);
 					}
+					console.log(events[i].eventHeaderImage)
 
 					if (events[i].showOnHeader) {
 						$scope.futureEvents.push(events[i]);
 						testArr.push(testObj);
 					}
 				}
+				// console.log(data.data);
+				// console.log($scope.futureEvents)
+				// console.log($scope.slides)
         
         $scope.imageCount = imageCount;
         // $scope.futureEvents = data;
