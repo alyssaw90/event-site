@@ -29,7 +29,7 @@ module.exports = (sql, DataTypes) => {
     },
     eventStartDate: DataTypes.DATE, //the start date...
     eventEndDate: DataTypes.DATE, // the end date...
-    // eventHeaderImage: DataTypes.TEXT, //link to header image
+    eventHeaderImage: DataTypes.TEXT, //link to header image
     eventTechnicalTopics: DataTypes.TEXT, //List of technical topics to display on past events page
     eventAboutTabText: {
       type: DataTypes.TEXT,

@@ -170,7 +170,7 @@ module.exports = (router) => {
         eventObj.eventName = upcomingEvents[i].eventName;
         eventObj.eventUrl = upcomingEvents[i].eventUrl;
         eventObj.eventHighlightColor = continentColors[upcomingEvents[i].eventContinent];
-        // eventObj.eventHeaderImage = upcomingEvents[i].eventHeaderImage;
+        eventObj.eventHeaderImage = upcomingEvents[i].eventHeaderImage;
         eventObj.showOnHeader = upcomingEvents[i].showOnHeader
 
         outputArr.push(eventObj)
@@ -464,7 +464,7 @@ module.exports = (router) => {
         eventStartDate: req.body.newEventStartDate,
         eventEndDate: req.body.newEventEndDate,
         eventLocation: req.body.newEventCity,
-        // eventHeaderImage: req.body.newEventHeaderImage,
+        eventHeaderImage: req.body.newEventHeaderImage,
         eventContinent: req.body.newEventContinent,
         isPublished: req.body.publishStatus,
         showOnHeader: req.body.showOnHeader,
@@ -520,7 +520,7 @@ module.exports = (router) => {
             eventStartDate: req.body.event.eventStartDate,
             eventEndDate: req.body.event.eventEndDate,
             eventCountry: req.body.event.eventCountry,
-            // eventHeaderImage: req.body.event.eventHeaderImage,
+            eventHeaderImage: req.body.event.eventHeaderImage,
             eventContinent: req.body.event.eventContinent,
             eventAboutTabText: req.body.event.eventAboutTabText,
             eventVenueName: req.body.event.eventVenueName,

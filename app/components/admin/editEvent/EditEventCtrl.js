@@ -14,7 +14,7 @@ const EditEventCtrl = (app) => {
     $scope.editedEvent = {};
     $scope.tabToEdit = {};
     $scope.newTab = {};
-    // $scope.headerImage = $rootScope.eventHeaderImage ? 'uploads/' + $rootScope.eventHeaderImage.size + '-' + $rootScope.eventHeaderImage.name : '';
+    $scope.headerImage = $rootScope.eventHeaderImage ? 'uploads/' + $rootScope.eventHeaderImage.size + '-' + $rootScope.eventHeaderImage.name : '';
     $scope.venueImage = $rootScope.eventVenueImg ? 'uploads/' + $rootScope.eventVenueImg.size + '-' + $rootScope.eventVenueImg.name : '';
     $scope.buttonStyle = { 'width': 'auto' };
     $scope.currentEventUrl;
@@ -52,9 +52,9 @@ const EditEventCtrl = (app) => {
       connectWith: '.edited-speaker-table-container'
     };
 
-    // $rootScope.$watch('eventHeaderImage', (oldVal, newVal) => {
-    //   $scope.headerImage = $rootScope.eventHeaderImage ? 'uploads/' + $rootScope.eventHeaderImage.size + '-' + $rootScope.eventHeaderImage.name : '';
-    // });
+    $rootScope.$watch('eventHeaderImage', (oldVal, newVal) => {
+      $scope.headerImage = $rootScope.eventHeaderImage ? 'uploads/' + $rootScope.eventHeaderImage.size + '-' + $rootScope.eventHeaderImage.name : '';
+    });
     $rootScope.$watch('eventVenueImg', (oldVal, newVal) => {
       $scope.venueImage = $rootScope.eventVenueImg ? 'uploads/' + $rootScope.eventVenueImg.size + '-' + $rootScope.eventVenueImg.name : '';
     });
@@ -73,7 +73,7 @@ const EditEventCtrl = (app) => {
           return $scope.errors.push({msg: 'no event found'});
         };
         $scope.editedEvent = data.data;
-        // $scope.headerImage = 'uploads/' + $scope.editedEvent.eventHeaderImage;
+        $scope.headerImage = 'uploads/' + $scope.editedEvent.eventHeaderImage;
         $scope.venueImage = 'uploads/' + $scope.editedEvent.eventVenueImg;
         //loop over html string for tabs and tell angular to trust it as html
         for (let i = 0, len = $scope.editedEvent.tabs.length; i < len; i++) {
@@ -115,9 +115,9 @@ const EditEventCtrl = (app) => {
 
     $scope.editEvent = (newEventData, publishStatus) => {
       $scope.$broadcast(`autofill:update`);
-      // if ($rootScope.eventHeaderImage) {
-      //   newEventData.event.eventHeaderImage = $rootScope.eventHeaderImage.name ? $rootScope.eventHeaderImage.size + '-' + $rootScope.eventHeaderImage.name : '';
-      // }
+      if ($rootScope.eventHeaderImage) {
+        newEventData.event.eventHeaderImage = $rootScope.eventHeaderImage.name ? $rootScope.eventHeaderImage.size + '-' + $rootScope.eventHeaderImage.name : '';
+      }
       if ($rootScope.eventVenueImg) {
         newEventData.event.eventVenueImg = $rootScope.eventVenueImg.name ? $rootScope.eventVenueImg.size + '-' + $rootScope.eventVenueImg.name : '';
       }
@@ -135,7 +135,7 @@ const EditEventCtrl = (app) => {
         if (!err) {
 
           $scope.editedEvent = {};
-          // $rootScope.eventHeaderImage = undefined;
+          $rootScope.eventHeaderImage = undefined;
           $rootScope.eventVenueImg = undefined;
           swal({
             title: 'Event Published',
