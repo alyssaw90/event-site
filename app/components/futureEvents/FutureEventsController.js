@@ -26,9 +26,9 @@ const FutureEventsCtrl = (app) => {
 
         for (let i = 0, len = events.length; i < len; i++) {
         	let testObj = {city: events[i].city, dates: events[i].eventDates};
-					if (events[i].eventHomepageImage) {
+					if (events[i].eventHeaderImage) {
 						let tmpObj = {};
-						tmpObj.eventHomepageImage = '/uploads/' + events[i].eventHomepageImage;
+						tmpObj.eventHeaderImage = '/uploads/' + events[i].eventHeaderImage;
 						tmpObj.eventUrl = events[i].eventUrl;
 
 						imageCount++;
