@@ -42,10 +42,7 @@ const FutureEventsCtrl = (app) => {
 						testArr.push(testObj);
 					}
 				}
-				// console.log(data.data);
-				// console.log($scope.futureEvents)
-				// console.log($scope.slides)
-        
+				        
         $scope.imageCount = imageCount;
         // $scope.futureEvents = data;
       })		

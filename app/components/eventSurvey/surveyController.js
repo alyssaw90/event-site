@@ -11,9 +11,21 @@ const surveyController = (app) => {
             createSurveyREST.createSurvey(newSurveyData, (err, data) => {
                 if(err){
                     console.log(err)
+                    // swal({
+                        
+                    // })
                 }
                 if(!err){
                     $scope.newSurvey = {};
+                    swal({
+                        title: 'Survey Submitted',
+                        type: 'success',
+                        customClass: 'sweet-alert-hide-input'
+                    },
+                        function() {
+                            $location.url('/');
+                        }
+                    )
                 }
             })
         }
