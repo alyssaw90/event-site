@@ -180,7 +180,7 @@
     		<img ng-if="headerImage" ng-src="/{{headerImage}}">
     	</div>
 			<form id="editEventForm" class="col-lg-24" name="editEventForm" method="post" enctype="multipart/form-data" data-ng-init="getAllSpeakers();">
-	    	<div data-ng-controller="AdminPageCtrl">
+	    	<!--<div data-ng-controller="AdminPageCtrl">
 		  		<button name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventHeaderImage')">Select Header Image</button>
 		  		<br><br>
 		  		<div style="font:smaller">{{eventHeaderImage.path}} {{eventHeaderImage.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
@@ -190,7 +190,7 @@
 		  		    </span>
 		  		</div>     
 		  		{{errorMsg}}	    			 
-	    	</div>
+	    	</div>-->
 	    	<br><br>
 				<input class="col_12" type="hidden" name="country" data-ng-model="editedEvent.event.id">
 	    	<div role="presentation" class="form-group">
