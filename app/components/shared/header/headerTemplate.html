@@ -1,4 +1,4 @@
-<header class="ng-cloak" role="navigation" aria-label="header menu" data-ng-controller="FutureEventsCtrl" data-ng-init="getUpcomingEvents()">
+<header class="ng-cloak" role="navigation" aria-label="header menu">
 	<!-- Begin upper purple menu -->
 	<div class="menu-overlay hamburger-menu social-icons" data-ng-style="{'background-color':futureEvents[0].eventHighlightColor}" hamburger-menu-directive>
 	<!-- Begin Mobile "Hamburger Menu" -->
@@ -52,10 +52,10 @@
 	</div> 
 	<!-- End image section -->
 	<!-- Begin upcoming events desktop menu -->
-	<nav class="menu-overlay desktop-menu flex clearfix" data-ng-style="{'background-color':futureEvents[0].eventHighlightColor}">
+	<!--<nav class="menu-overlay desktop-menu flex clearfix" data-ng-style="{'background-color':futureEvents[0].eventHighlightColor}">
 		<div class="col_12 purpleEventMenu">
 			<span data-ng-repeat="futureEvent in futureEvents | orderBy: eventStartDate" role="presentation"><a title="Navigate to page for {{futureEvent.city}} {{futureEvent.headerEventDates}} event" aria-label="{{futureEvent.city}} {{futureEvent.headerEventDates}}" id="{{isFirstEventInLIst($index)}}" href="/{{futureEvent.eventUrl}}">{{futureEvent.city}} &nbsp<span class="purpleSubMenu">- {{futureEvent.headerEventDates}}</span></a> <span aria-hidden="true" role="presentation" ng-show=" ! $last ">|&nbsp</span></span>
 		</div>
-	</nav>
+	</nav>-->
 	<!-- End upcoming events desktop menu -->
 </header>
