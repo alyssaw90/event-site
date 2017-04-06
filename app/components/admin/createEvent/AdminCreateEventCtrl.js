@@ -59,9 +59,9 @@ const AdminCreateEventCtrl = (app) => {
 
     $scope.createNewEvent = (newEventData, publishStatus) => {
       $scope.$broadcast(`autofill:update`);
-      if ($rootScope.eventHeaderImg) {
-        newEventData.newEventHeaderImage = $rootScope.eventHeaderImg.name ? $rootScope.eventHeaderImg.size + '-' + $rootScope.eventHeaderImg.name : '';
-      }
+      // if ($rootScope.eventHeaderImg) {
+      //   newEventData.newEventHeaderImage = $rootScope.eventHeaderImg.name ? $rootScope.eventHeaderImg.size + '-' + $rootScope.eventHeaderImg.name : '';
+      // }
       if ($rootScope.eventVenueImg) {
         newEventData.newEventVenueImg = $rootScope.eventVenueImg.name ? $rootScope.eventVenueImg.size + '-' + $rootScope.eventVenueImg.name : '';
       }
