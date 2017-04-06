@@ -184,7 +184,7 @@ module.exports = (router) => {
   router.post('/survey', (req, res, next) => {
     models.sql.sync()
     .then(function() {
-      Surveys.create({
+      return Surveys.create({
         eventName: 'Extend Paris 2017',
         questionOne: req.body.ratingQuestionOne,
         questionTwo: req.body.questionTwo,
@@ -196,6 +196,14 @@ module.exports = (router) => {
           req.socket.remoteAddress ||
           req.connection.socket.remoteAddress
       })
+      
+      // .catch( (err) => {
+      //   let errorMsg = ``;
+      //   for (let i =0, j = err.errors.length; i < j; i++) {
+      //     errorMsg += err.errors[i].message + `\n`;
+      //   }
+      //   res.status(500).send(errorMsg);
+      // })
     })
   })
 

@@ -192,7 +192,7 @@ eventsApp
 	.when('/survey', {
 		templateUrl: '/app/components/eventSurvey/parisSurvey.html',
 		reloadOnSearch: false,
-		controller: 'surveyController',
+		// controller: 'surveyController',
 		data: {
 			pageTitle: 'Extend Paris 2017 Event Suvey - Microsoft Plugfests and Events'
 		}

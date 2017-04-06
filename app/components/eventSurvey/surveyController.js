@@ -2,12 +2,13 @@
 
 const swal = require('sweetalert');
 const surveyController = (app) => {
-    app.controller('surveyController', ['$scope', 'surveyRESTResource', '$location', ($scope, resource, $location)=> {
+    app.controller('surveyController', ['$scope', 'surveyRESTResource', '$location', '$window', ($scope, resource, $location)=> {
         
         $scope.newSurvey = {};
         let createSurveyREST = resource();
         $scope.checked = true;
         $scope.createSurvey = (newSurveyData) => {
+            // console.log(newSurveyData)
             createSurveyREST.createSurvey(newSurveyData, (err, data) => {
                 if(err){
                     // console.log(err)
@@ -19,18 +20,17 @@ const surveyController = (app) => {
                         confirmButtonText: 'Ok',
                         customClass: 'sweet-alert-hide-input'
                     });
-                }
-                if(!err){
-                    $scope.newSurvey = {};
+                } 
+                
+                if(data.status=="success") {
                     swal({
-                        title: 'Survey Submitted',
-                        type: 'success',
-                        customClass: 'sweet-alert-hide-input'
-                    },
-                    function() {
-                        $location.url('/');
-                    });
+                        title:'Form submitted',
+                        type: 'success'
+                    })
+                    $location.url('/')
                 }
+
+                
             })
         }
     }])
