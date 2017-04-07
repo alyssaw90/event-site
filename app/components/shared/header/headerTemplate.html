@@ -1,61 +1,27 @@
-<header class="ng-cloak" role="navigation" aria-label="header menu" data-ng-controller="FutureEventsCtrl" data-ng-init="getUpcomingEvents()">
-	<!-- Begin upper purple menu -->
-	<div class="menu-overlay hamburger-menu social-icons" data-ng-style="{'background-color':futureEvents[0].eventHighlightColor}" hamburger-menu-directive>
-	<!-- Begin Mobile "Hamburger Menu" -->
-		<div class="float-right mobileHamburgerIcon">
-			<i class="fa fa-bars fa-3x hamburger-icon"></i>
-		</div>
-	</div>
-	<div class="hidden-div" style="display: none" data-ng-style="{'background-color':futureEvents[0].eventHighlightColor}">
-		<ul class="hamburger-menu">
-			<li class="mobile-menu"><a target="_self" href="/"><span class="home">Home</span></a></li>
-			<li class="mobile-menu"><a target="_self" href="/future-events"><span>Find an Event</a></span></a></li>
-			<li class="mobile-menu"><a target="_self" href="/latest-news"><span>Get the Latest</span></a></li>
-			<li class="mobile-menu"><a target="_self" href="/meet-the-team"><span>Meet the Team</a></span></a></li>
-			<li class="mobile-menu"><a target="_self" href="/past-events"><span>Past Events</span></a></li>
-		</ul>
-	</div>
-	<!-- End "Hamburger" Menu -->
-	<!-- begin Gray Desktop Main menu -->
-		<nav class="grid flex desktop-menu gray-menu" id="mainNav">
-			<div><a id="navMenuBeginning" class="skipNavigation" target="_self" href="#eventNavigationMenu">Skip to Event Menu</a></div>
-			<div><a class="skipNavigation" target="_self" href="#beginningOfContent">Skip to Main Content</a></div>
-			<div><a class="skipNavigation" target="_self" href="#footerStartMenuItem">Skip to Footer</a></div>
-		<div class="col_2 center-block">
-			<div class="col_2 center-block menu-block home-menu-button" header-directive><a title="Navigate to Home page" aria-label="Home" id="home-button" href="/"><span aria-hidden="true" role="presentation">Home</span></a></div>
-		</div>
-		<div class="col_2 center-block">
-			<div class="col_2 center-block menu-block upcominEventsBlock" header-directive><a title="Navigate to Find an Event page" aria-label="Find an Event" href="/future-events"><span aria-hidden="true" role="presentation">Find an Event</span></a></div>
-		</div>
-		<div class="col_2 center-block">
-			<div class="col_2 center-block menu-block latest-news-menu-block" header-directive><a title="Navigate to Get the Latest page" aria-label="Get the Latest" href="/latest-news"><span aria-hidden="true" role="presentation">Get the Latest</span></a></div>
-		</div>
-		<div class="col_2 center-block">
-			<div class="col_2 center-block menu-block meet-the-team-menu-block" header-directive><a title="Navigate to Meet the Team page" aria-label="Meet the Team" href="/meet-the-team"><span aria-hidden="true" role="presentation">Meet the Team</span></a></div>
-		</div>
-		<div class="col_2 center-block">
-			<div class="col_2 center-block menu-block past-events-header-menu-block" header-directive><a title="Navigate to Meet the Team page" aria-label="Past Events" href="/past-events"><span aria-hidden="true" role="presentation">Past Events</span></a></div>
-		</div>
+<header class="ng-cloak" role="navigation" aria-label="header menu">
+	<nav class="navbar navbar-default">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="https://www.microsoft.com/en-us/"><img src="app/css/img/MicrosoftLogo.svg" alt="Microsoft Logo"></a>
+			<a class="navbar-brand" href="/">Interop Dev Events</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/future-events">Events</a></li>
+				<li><a href="#">Event Resources</a></li>
+				<li><a href="/meet-the-team">Team</a></li>
+				<li><a href="latest-news">News</a></li>
+			</ul>
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
 	</nav>
-	<!-- End gray desktop menu -->
-	<!-- Begin Image section/slideshow -->
-	 <div class="carousel-container" data-ng-controller="HeaderController" data-ng-init="getSlides('homepageSlideshow');">
-		<ul rn-carousel rn-carousel-controls-allow-loop rn-carousel-controls rn-carousel-auto-slide="3" rn-carousel-duration="1000" id="upcoming-events-carousel" class="image" style="margin-left:0;margin-bottom:0;">
-  		<li data-ng-repeat="slide in slides | orderBy: 'SlideshowSlideAssc.sortPosition'">
-  		  <div class="layer" data-slider-slide-directive>
-  		  	<a title="{{slide.title}}" alt="{{slide.altText}}" data-ng-href="/{{slide.imgDestUrl}}">
-  		  		<img  data-ng-cloak class="carousel-img" data-ng-src="{{ slide.imgSrcUrl }}" />
-		  		</a>
-		  	</div>
-  		</li>
-		</ul>
-	</div> 
-	<!-- End image section -->
-	<!-- Begin upcoming events desktop menu -->
-	<nav class="menu-overlay desktop-menu flex clearfix" data-ng-style="{'background-color':futureEvents[0].eventHighlightColor}">
-		<div class="col_12 purpleEventMenu">
-			<span data-ng-repeat="futureEvent in futureEvents | orderBy: eventStartDate" role="presentation"><a title="Navigate to page for {{futureEvent.city}} {{futureEvent.headerEventDates}} event" aria-label="{{futureEvent.city}} {{futureEvent.headerEventDates}}" id="{{isFirstEventInLIst($index)}}" href="/{{futureEvent.eventUrl}}">{{futureEvent.city}} &nbsp<span class="purpleSubMenu">- {{futureEvent.headerEventDates}}</span></a> <span aria-hidden="true" role="presentation" ng-show=" ! $last ">|&nbsp</span></span>
-		</div>
-	</nav>
-	<!-- End upcoming events desktop menu -->
 </header>

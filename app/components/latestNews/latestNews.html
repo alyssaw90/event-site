@@ -1,28 +1,18 @@
-<div class="mobileWrapper" role="presentation">
+<div role="presentation">
   <!-- begin main section -->
-  <main class="grid white-bg main-page-content ng-cloak" role="presentation" data-ng-controller="LatestNewsCtrl" data-latest-news-directive data-events-directive>
-    <section class="col_12 internetExplorer" role="presentation">
-      <h2>Become a Part of the Interoperability Community</h2>
-      <!-- Tabs Center -->
-      <ul class="tabs left newsTabsList">
-        <li id="recentNewsSection-tab" class="current"><a target="_self" id="beginningOfContent" aria-label="Recent News, click enter/return to read contents" aria-owns="recentNewsSection" href="#recentNewsSection"><h4>Recent News</h4></a></li>
-        <li id="developmentSupportSection-tab"><a target="_self" aria-label="Development Support, click enter/return to read contents" href="#developmentSupportSection"><h4>Development Support</h4></a></li>
-      </ul>
-      <div id="recentNewsSection" class="tab-content clearfix">
-        <div class="col_8" id="blog-feed" data-ng-init="getBlogPosts()">
-          <p>The following posts are consolidated from the latest <a href="http://blogs.msdn.com/b/officeinteroperability/">Office Interoperability</a>, <a href="http://blogs.msdn.com/b/openspecification/">Microsoft Open Specifications   Support</a>, and <a href="http://openness.microsoft.com/blog">Microsoft Openness</a> news.<a class="float-right" href="http://sxp.microsoft.com/feeds/3.0/msdntn/MSDNOpenSpecificationFeeds/" title="Interop Events RSS feed"><img   src="uploads/rss-feed-button.jpg" alt="Subscribe to Interop Events Blog"></a></p>
-          <hr class="alt1" aria-hidden="true" role="presentation">
-          <div class="blog-feed-title">
-            <h2>Latest Interoperability News</h2>
-          </div>
+  <main class="container ng-cloak" role="presentation" data-ng-controller="LatestNewsCtrl">
+    <section class="row" role="presentation">
+        <h1 align="center">News</h1>
+        <div class="col-md-8" data-ng-init="getBlogPosts()">
+            <h3>Latest Interoperability News</h3>
           <div class="blog-post" data-ng-repeat="post in blogPosts.Items | limitTo: 9">
             <h4 role="presentation"><a data-ng-href="{{post.Link}}"> {{post.Title !== '' ? post.Title : 'Title Missing';}}</a></h4>
             <p class="date">{{getDate(post.PublishDate)}}</p>
             <p>{{post.MobileContent.substring(0, post.MobileContent.indexOf('Read more') > -1 ? post.MobileContent.indexOf('Read more') : 250)}}</p>
           </div>
         </div>
-        <div aria-label="open specifications on twitter" class="col_4">
-        <a  class="twitter-timeline" 
+        <div aria-label="open specifications on twitter" class="col-md-4">
+            <a  class="twitter-timeline" 
             data-chrome="noborders transparent nofooter"
             data-link-color="#0e0aac"
             data-dnt="true"
@@ -31,79 +21,7 @@
             data-widget-id="622196778129985537"
             href="https://twitter.com/OSpecifications"></a>
         </div>
-      </div>
-      <div id="developmentSupportSection" class="tab-content" style="display:none;">
-        <div>
-          <h4>Additional Resources</h4>
-          <p>Developers who are working with and implementing Microsoft Open Specifications can obtain assistance from Microsoft and its engineers, including managed technical support, through a variety of means:</p>
-          <ul>
-            <li>Forums</li>
-            <li>Microsoft Knowledge Base</li>
-            <li>Other support options, including Microsoft Support, chat, blogs, and partner programs</li>
-          </ul>
-          <p>For more information about support options, email the <a href="mailto:dochelp@microsoft.com">Interop Documentation Support Team</a>. To see the latest interoperability news posts, visit the <a data-tabId="recentNewsSection-tab" class="tabLink">news page</a>.</p>
-          <hr />
-          <h4>Ask a Question in the Forums</h4>
-          <!-- Table -->
-          <table cellspacing="0" cellpadding="0" class="striped community">
-            <tbody>
-              <tr>
-                <td><a href="http://social.msdn.microsoft.com/Forums/en-US/home?forum=os_binaryfile">Office XML, ODF, and Binary File Formats</a></td>
-                <td>Discuss the technical content and implementation of the Office binary file formats (.doc, .xls, .ppt, .pst, etc.), the Open XML file formats (ISO/IEC 29500) (.docx, .xlsx, .pptx, etc.), the ODF 1.1 standard, and the Open Packaging Conventions APIs (ISO/IEC 29500-2). For questions about the Open XML format itself, visit the forums on OpenXMLDeveloper.org.</td>
-              </tr>
-              <tr>
-                <td><a href="http://social.msdn.microsoft.com/Forums/en-US/home?forum=os_office">Office Protocols</a></td>
-                <td>Discuss the technical content and implementation of the Office protocols described in the Open Specifications.</td>
-              </tr>
-              <tr>
-                <td><a href="http://social.msdn.microsoft.com/Forums/en-US/home?forum=os_exchangeprotocols">Exchange Server Protocols</a></td>
-                <td>Discuss the technical content and implementation of the Exchange Server protocols described in the Open Specifications.</td>
-              </tr>
-              <tr>
-                <td><a href="http://social.msdn.microsoft.com/Forums/en-US/home?forum=os_sharepoint">SharePoint Server Protocols</a></td>
-                <td>Discuss the technical content and implementation of the SharePoint Server protocols described in the Open Specifications.</td>
-              </tr>
-              <tr>
-                <td><a href="http://social.msdn.microsoft.com/Forums/en-US/home?forum=os_sqlserver">SQL Server Protocols</a></td>
-                <td>Discuss the technical content and implementation of the SQL Server protocols described in the Open Specifications.</td>
-              </tr>
-              <tr>
-                <td><a href="http://social.msdn.microsoft.com/Forums/en-US/home?forum=os_fileservices">Windows File Sharing Protocols</a></td>
-                <td>Discuss the technical content and implementation of Server Message Block (SMB) protocols described in the Open Specifications.</td>
-              </tr>
-              <tr>
-                <td><a href="http://social.msdn.microsoft.com/Forums/en-US/home?forum=os_windowsprotocols">Windows Protocols</a></td>
-                <td>Discuss the technical content and implementation of the Windows (including .NET Framework) protocols described in the Open Specifications.</td>
-              </tr>
-              <tr>
-                <td><a href="http://social.msdn.microsoft.com/Forums/en-US/home?forum=os_specifications">Open Specifications Questions</a></td>
-                <td>Discuss the technical content and implementation of the Open Specifications documents, their organization, language conventions, references, and interoperability scenarios.</td>
-              </tr>
-            </tbody>
-          </table>
-          <hr />
-          <hr />
-          <ul class="alt">
-            <li><a href="http://support.microsoft.com/">Microsoft Support</a></li>
-            <li><a href="http://answers.microsoft.com/en-us/?auth=1">Ask the community</a></li>
-            <li><a href="http://support.microsoft.com/contactus/?ws=support&SegNo=2&wa=wsignin1.0">Chat or call</a></li>
-            <li><a href="http://support.microsoft.com/lifecycle/">How long is my product supported?</a></li>
-            <li><a href="https://technet.microsoft.com/en-us/ms772425.aspx">Microsoft TechNet Technical Support</a></li>
-            <h5>Interoperability at Microsoft:</h5>
-            <li><a href="http://blogs.msdn.com/b/officeinteroperability/">Office Interoperability blog</a></li>
-            <li><a href="http://blogs.msdn.com/b/openspecification/">Open Specifications Support Team blog</a></li>
-            <li><a href="http://openness.microsoft.com/blog/blogs/">Microsoft Openness blog</a></li>
-            <li><a href="http://blogs.msdn.com/interoperability/">Interoperability@Microsoft Blog</a></li>
-            <li><a href="http://www.interoperabilitybridges.com/">Interoperability Bridges and Labs</a></li>
-            <li>Follow us on Twitter: <a href="https://twitter.com/OSpecifications">@OSpecifications</a></li>
-            <h5>Partner Programs:</h5>
-            <li><a href="http://partner.microsoft.com/">Microsoft Partner Program</a></li>
-            <li><a href="https://mspartner.microsoft.com/en/us/pages/sales%20and%20marketing/independent-software-vendor-resources.aspx">Independent Software Vendors</a></li>
-            <li><a href="https://www.microsoft.com/whdc/">Windows Hardware Development Center</a></li>
-          </ul>
-        
-        </div>
-      </div>
+      
     </section>
   </main>
   <!-- end main section -->
