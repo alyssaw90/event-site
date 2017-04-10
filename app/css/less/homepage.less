@@ -38,72 +38,6 @@ main {
 		.fa {
 			color: #0078d7
 		}
-		// h1 {
-		// 	font-size: 36px;
-		// }
-
-
-		// #learnSection, 
-		// #networkingSection,
-		// #hackathonSection {
-		// 	img {
-		// 		height: 330px;
-		// 		width: 530px;
-		// 	}
-
-		// 	@media all and (min-width:768px) and (max-width:991px) {
-		// 		img {
-		// 			width: 460px;
-		// 			height: 300px;
-		// 		}
-		// 	}		
-
-		// 	p {
-		// 		font-size: 18px;
-		// 	}
-		// 	h2 {
-		// 		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-		// 	}
-		// }
-
-		// #learnSection, 
-		// #networkingSection,
-		// #hackathonSection {
-		// 	margin-bottom: 40px;
-		// }
-
-		// #learnSection, 
-		// #networkingSection {
-		// 	img {
-		// 		float: right;
-		// 	}
-		// }
-
-		// #hackathonSection {
-		// 	img {
-		// 		float: left;
-		// 	}
-		// }
-
-		// @media all and (max-width: 768px) {
-		// 	h1 {
-		// 		text-align: center;
-		// 	}
-		// }
-
-		// @media all and (max-width: 480px) {
-		// 	h1 {
-		// 		font-size: 36px;
-		// 	}
-
-		// 	#learnSection,
-		// 	#networkingSection,
-		// 	#hackathonSection {
-		// 		img{
-		// 			display: none;
-		// 		}
-		// 	}
-		// }
 	}
 
 	
@@ -275,38 +209,52 @@ main {
 			margin-top: 30px;
 		}
 		.upcomingEventBox {
-			display: block;
+			// display: block;
 			height: 500px;
 			width: 500px;
+			// background-color: purple;
 			background-repeat: no-repeat;
 			background-size: cover;
 			background-position: 80%;
 			// position: relative;
+
+			.eventText {
+				background-color: #e6e6e6;
+				height: 100px;
+
+				h2 {
+					margin-left: 4%;
+				}
+
+				.registerButton {
+					background-color: #0078d7;
+					color: #fff;
+					border-radius: 0;
+					padding: 10px 30px;
+					margin-top: 20px;
+					margin-right: 5%;
+				}
+			}
 		}
 
-		// h2, .registerButton {
-		// 	position: absolute;
-		// 	bottom: 20px;
+		// h2 {
+		// 	color: #fff;
+		// 	margin: 0;
+		// 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		// 	max-width: 7.5em;
+		// 	padding-top: 82%;
+		// 	padding-left: 5%;
 		// }
 
-		h2 {
-			color: #fff;
-			margin: 0;
-			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-			max-width: 7.5em;
-			padding-top: 82%;
-			padding-left: 5%;
-		}
-
-		.registerButton {
-			background-color: #0078d7;
-			color: #fff;
-			border-radius: 0;
-			padding: 10px 30px;
-			position: absolute;
-			bottom: 2em;
-			right: 7em;
-		}
+		// .registerButton {
+		// 	background-color: #0078d7;
+		// 	color: #fff;
+		// 	border-radius: 0;
+		// 	padding: 10px 30px;
+		// 	position: absolute;
+		// 	bottom: 2em;
+		// 	right: 7em;
+		// }
 
 		.moreInfoLink {
 			font-size: 18px;
@@ -328,65 +276,6 @@ main {
 		.eventsRow {
 			margin-top: 30px;
 		}
-
-		@media all and (min-width:992px) and (max-width: 1199px) {
-			.upcomingEventBox {
-				width: 450px;
-				height: 450px;
-			}
-		}
-
-		@media all and (min-width: 768px) and (max-width:991px) {
-			.upcomingEventBox {
-				margin: 0 auto;
-				width: 600px;
-				height: 600px;
-				margin-top: 30px;
-				
-				h2 {
-					font-size: 36px;
-				}
-			}
-
-			.registerButton {
-				font-size: 18px;
-			}
-
-			.moreInfoLink {
-				font-size: 22px;
-			}
-		}
-
-		@media all and (max-width:768px) {
-			h1 {
-				text-align: center;
-			}
-		}
-
-		@media all and (min-width: 480px) and (max-width: 767px) {
-			h1 {
-				font-size: 36px; 
-				text-align: center;
-			}
-			.upcomingEventBox { 
-				margin: 0 auto;
-				width: 400px;
-				height: 400px;
-				h2 {
-					font-size: 30px;
-					padding-top: 80%;
-				}
-			}
-			.registerButton {
-				font-size: 14px;
-				bottom: 1em;
-				right: 14.5em;
-			}
-			.moreInfoLink {
-				font-size: 20px;
-			}
-		}
-
 	}
 
 }
