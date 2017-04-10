@@ -14,49 +14,15 @@
             </div>
             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                 <span class="fa fa-code fa-3x" aria-hidden="true"></span>
-                <h2>Hackathons</h2>
+                <h2>Create</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent augue nisi, tincidunt non maximus ut, porttitor at libero.</p>
             </div>
             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                 <span class="fa fa-users fa-3x" aria-hidden="true"></span>
-                <h2>Networking</h2>
+                <h2>Interact</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent augue nisi, tincidunt non maximus ut, porttitor at libero.</p>
             </div>
         </div>
-        <!--<h1>What are Interop Dev Events?</h1>
-        <div class="row" id="learnSection">
-            <div class="col-sm-4 col-md-4 col-lg-6">
-                <h2>Learn</h2>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent augue nisi, tincidunt non maximus ut, porttitor at libero. Integer magna nisl, malesuada in consectetur sed, hendrerit porta ligula. Ut in sem aliquet, efficitur nibh id, mollis mauris
-                </p>
-            </div>
-            <div class="col-sm-8 col-md-8 col-lg-6">
-                <img src="app/css/img/Taipei2016.jpg" alt="Taipei 2016 Presentation">
-            </div>
-        </div>
-        <div class="row" id="hackathonSection">
-            <div class="col-sm-8 col-md-8 col-lg-6">
-                <img src="app/css/img/hackathon.jpg" alt="Hackathons">
-            </div>
-            <div class="col-sm-4 col-md-4 col-lg-6">
-                <h2>Hackathons</h2>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent augue nisi, tincidunt non maximus ut, porttitor at libero. Integer magna nisl, malesuada in consectetur sed, hendrerit porta ligula. Ut in sem aliquet, efficitur nibh id, mollis mauris
-                </p>
-            </div>
-        </div>
-        <div class="row" id="networkingSection">
-            <div class="col-sm-4 col-md-4 col-lg-6">
-                <h2>Networking</h2>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent augue nisi, tincidunt non maximus ut, porttitor at libero. Integer magna nisl, malesuada in consectetur sed, hendrerit porta ligula. Ut in sem aliquet, efficitur nibh id, mollis mauris
-                </p>
-            </div>
-            <div class="col-sm-8 col-md-8 col-lg-6">
-                <img src="app/css/img/Paris2016.jpg" alt="Paris Networking">
-            </div>
-        </div>-->
     </section>
     <section class="technology">
         <div class="container">
@@ -97,10 +63,16 @@
             <h1>Upcoming Events</h1>
             <div class="row eventsRow">
                 <div class="col-md-6" data-ng-repeat="upcomingEvent in upcomingEvents|limitTo:2">
-                    <a href="/{{upcomingEvent.eventUrl}}" class="upcomingEventBox" data-ng-style="{'background-image': 'url(/uploads/{{upcomingEvent.eventHeaderImage}})'}">
+                    <!--<a href="/{{upcomingEvent.eventUrl}}" class="upcomingEventBox" data-ng-style="{'background-image': 'url(/uploads/{{upcomingEvent.eventHeaderImage}})'}">
                         <h2>{{upcomingEvent.eventName}}</h2>
                         <a data-ng-href="{{upcomingEvent.eventRegistrationLink}}" class="btn registerButton">Register</a>
-                    </a> 
+                    </a> -->
+                    <div class="upcomingEventBox" data-ng-style="{'background-image': 'url(/uploads/{{upcomingEvent.eventHeaderImage}})'}">
+                        <div class="eventText">
+                            <h2 class="pull-left">{{upcomingEvent.eventName}}</h2>
+                            <a data-ng-href="" class="btn registerButton pull-right">Register</a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row moreInfoRow">
