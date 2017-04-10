@@ -178,7 +178,7 @@ module.exports = (router) => {
 
         outputArr.push(eventObj)
       }
-      console.log(outputArr)
+      // console.log(outputArr)
       res.json(outputArr);
     })
   })
