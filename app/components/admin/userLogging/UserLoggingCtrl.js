@@ -3,15 +3,27 @@ const jQuery = require('jquery');
 
 const UserLoggingCtrl = (app) => {
 
-	app.controller('UserLoggingCtrl', ['$scope', '$base64', '$cookies', '$timeout', '$location', '$rootScope', '$window', 'adalAuthenticationService', ($scope, $base64, $cookies, $timeout, $location, $rootScope, $window, adalService) => {
+	app.controller('UserLoggingCtrl', ['$scope', '$base64', '$cookies', '$timeout', '$location', '$rootScope', '$window', 'adalAuthenticationService', ($scope, $base64, $cookies, $timeout, $location, $rootScope, $window, adalAuthenticationService) => {
 
     $scope.login = function() {
-      adalService.login();
+      adalAuthenticationService.login();
       window.location='/admin/edit-event'
     };
 
     $scope.logout = function() {
-      adalService.logOut();
+
+      swal({
+        title: 'Logout?',
+        type: 'warning',
+        showCancelButton: true,
+        closeOnConfirm: false,
+        customClass: 'sweet-alert-hide-input'
+      },
+      () => {
+       
+        adalAuthenticationService.logOut();
+      });
+      
     };
 
     $scope.isActive = function(viewLocation){

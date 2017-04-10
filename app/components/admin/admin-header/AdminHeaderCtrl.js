@@ -21,7 +21,7 @@ const AdminHeaderCtrl = (app) => {
         $cookies.remove('interopAdmin', {'path': '/'});
         $window.location.reload(); 
       });
-      
+
     }
 
   }]);

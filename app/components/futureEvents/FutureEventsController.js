@@ -18,7 +18,7 @@ const FutureEventsCtrl = (app) => {
 			let imageCount = 0;
 
 			FutureEvents.getFutureEvents( (err, data) => {
-				console.log(data.data)
+				// console.log(data.data)
         if (err) {
           return $scope.errors.push({msg: 'could not retrieve future events'});
         };
@@ -27,23 +27,25 @@ const FutureEventsCtrl = (app) => {
 				$scope.slides = [];
 				let events = data.data
 
-        for (let i = 0, len = events.length; i < len; i++) {
-        	let testObj = {city: events[i].city, dates: events[i].eventDates};
-					if (events[i].eventHomepageImage) {
-						let tmpObj = {};
-						tmpObj.eventHomepageImage = '/uploads/' + events[i].eventHomepageImage;
-						tmpObj.eventUrl = events[i].eventUrl;
+        // for (let i = 0, len = events.length; i < len; i++) {
+        // 	let testObj = {city: events[i].city, dates: events[i].eventDates};
+		// 			if (events[i].eventHomepageImage) {
+		// 				let tmpObj = {};
+		// 				tmpObj.eventHomepageImage = '/uploads/' + events[i].eventHomepageImage;
+		// 				tmpObj.eventUrl = events[i].eventUrl;
 
-						imageCount++;
+		// 				imageCount++;
 
-						$scope.slides.push(tmpObj);
-					}
+		// 				$scope.slides.push(tmpObj);
+		// 			}
 
-					if (events[i].showOnHeader) {
-						$scope.futureEvents.push(events[i]);
-						testArr.push(testObj);
-					}
-				}
+		// 			if (events[i].showOnHeader) {
+		// 				$scope.futureEvents.push(events[i]);
+		// 				testArr.push(testObj);
+		// 			}
+		// 		}
+				// console.log($scope.futureEvents)
+				// console.log($scope.upcomingEvents)
         
         // $scope.imageCount = imageCount;
         // $scope.futureEvents = data;

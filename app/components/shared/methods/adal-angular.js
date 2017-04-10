@@ -18,8 +18,8 @@
 //----------------------------------------------------------------------
 
 (function () {
-    // ============= Angular modules- Start =============
 'use strict';
+    // ============= Angular modules- Start =============
 
     if (typeof module !== 'undefined' && module.exports) {
         module.exports.inject = function (conf) {

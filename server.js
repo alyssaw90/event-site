@@ -1,4 +1,4 @@
-'user strict';
+'use strict';
 
 require('dotenv').load();
 const express = require('express');
