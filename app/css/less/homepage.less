@@ -99,6 +99,12 @@ main {
 			}
 		}
 
+		@media all and (min-width: 320px) and (max-width: 479px) {
+			.link {
+				margin-top: 30px;
+			}
+		}
+
 		#office {
 			background-color: #d83b01;
 			padding: 42px 30px 30px 30px;
@@ -247,25 +253,6 @@ main {
 			}
 		}
 
-		// h2 {
-		// 	color: #fff;
-		// 	margin: 0;
-		// 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-		// 	max-width: 7.5em;
-		// 	padding-top: 82%;
-		// 	padding-left: 5%;
-		// }
-
-		// .registerButton {
-		// 	background-color: #0078d7;
-		// 	color: #fff;
-		// 	border-radius: 0;
-		// 	padding: 10px 30px;
-		// 	position: absolute;
-		// 	bottom: 2em;
-		// 	right: 7em;
-		// }
-
 		.moreInfoLink {
 			font-size: 18px;
 			color: #000;
@@ -285,6 +272,47 @@ main {
 
 		.eventsRow {
 			margin-top: 30px;
+		}
+
+		@media all and (min-width: 992px) and (max-width: 1199px) {
+			.upcomingEventBox {
+				height: 450px;
+				width: 450px;
+			}
+		}
+
+		@media all and (min-width: 768px) and (max-width: 991px) {
+			text-align: center;
+				
+			.upcomingEventBox {
+				margin: 0 auto;
+				width: 600px;
+				height: 600px;
+			}
+			
+			.upcomingEventBox:first-child {
+				margin-bottom: 30px;
+			}
+		}
+
+		@media all and (min-width: 480px) and (max-width: 767px){
+			text-align: center;
+			.upcomingEventBox {
+				margin: 0 auto;
+				height: 400px;
+				width: 400px;
+				margin-bottom: 30px;
+			}
+		}
+
+		@media all and (min-width: 320px) and (max-width: 479px) {
+			text-align: center;
+			.upcomingEventBox {
+				margin: 0 auto;
+				height: 250px;
+				width: 250px;
+				margin-bottom: 30px;
+			}
 		}
 	}
 
