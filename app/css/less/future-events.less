@@ -35,34 +35,28 @@
 
 	.eventBox {
 		display: block;
-		height: 500px;
-		width: 500px;
+		height: 300px;
+		width: 300px;
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-position: 80%;
-		// position: relative;
-		margin-bottom: 40px;
 
-		h2 {
-			position: absolute;
-			bottom: 60px;
-			color: #fff;
-			margin: 0;
-			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-			max-width: 250px;
-			left: 40px;
+		.eventText {
+			background-color: #e6e6e6;
+			height: 100px;
+			padding: 10px;
+			.eventUrl {
+				color: #000;
+				h4 {
+					margin-top: 0;
+				}
+			}
+
+			.eventUrl:hover {
+				color: #002050;
+			}
 		}
 	}
-	.registerButton {
-			position: absolute;
-			bottom: 60px;
-			background-color: #0078d7;
-			color: #fff;
-			border-radius: 0;
-			padding: 10px 30px;
-			margin-top: 22px;
-			right: 95px;
-		}
 }
 
 .past {

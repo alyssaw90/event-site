@@ -7,11 +7,17 @@
 	<section class="events container" data-ng-controller="FutureEventsCtrl" data-ng-init="getUpcomingEvents()">
 		<h1>Upcoming Events</h1>
 		<div class="row eventBoxRow">
-			<div class="col-md-6" data-ng-repeat="event in upcomingEvents">
-				<a href="/{{event.eventUrl}}" class="eventBox" data-ng-style="{'background-image': 'url(/uploads/{{event.eventHeaderImage}})'}">
+			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" data-ng-repeat="event in upcomingEvents">
+				<!--<a href="/{{event.eventUrl}}" class="eventBox" data-ng-style="{'background-image': 'url(/uploads/{{event.eventHeaderImage}})'}">
 					<h2>{{event.eventName}}</h2>
 					<a data-ng-href="{{event.eventRegistrationLink}}" class="btn registerButton">Register</a>
-				</a>
+				</a>-->
+				<div class="eventBox" data-ng-style="{'background-image': 'url(/uploads/{{event.eventHeaderImage}})'}">
+                	<div class="eventText">
+                    	<a class="eventUrl" href="/{{event.eventUrl}}"><h4>{{event.eventName}}</h4></a>
+                         <a class="eventRegistrationLink" data-ng-href="">Register</a>
+                	</div>
+                </div>
 			</div>
 		</div>
 	</section>
