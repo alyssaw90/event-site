@@ -63,14 +63,14 @@
             <h1>Upcoming Events</h1>
             <div class="row eventsRow">
                 <div class="col-xs-12 col-sm-12 col-md-6" data-ng-repeat="upcomingEvent in upcomingEvents|limitTo:2">
-                    <!--<a href="/{{upcomingEvent.eventUrl}}" class="upcomingEventBox" data-ng-style="{'background-image': 'url(/uploads/{{upcomingEvent.eventHeaderImage}})'}">
-                        <h2>{{upcomingEvent.eventName}}</h2>
-                        <a data-ng-href="{{upcomingEvent.eventRegistrationLink}}" class="btn registerButton">Register</a>
-                    </a> -->
                     <div class="upcomingEventBox" data-ng-style="{'background-image': 'url(/uploads/{{upcomingEvent.eventHeaderImage}})'}">
                         <div class="eventText">
                             <a class="pull-left" href="/{{upcomingEvent.eventUrl}}"><h2>{{upcomingEvent.eventName}}</h2></a>
                             <a data-ng-href="" class="btn registerButton pull-right">Register</a>
+                        </div>
+                        <div class="eventTextMobile">
+                            <a class="eventUrl" href="/{{upcomingEvent.eventUrl}}"><h4>{{upcomingEvent.eventName}}</h4></a>
+                            <a class="eventRegistrationLink" data-ng-href="">Register</a>
                         </div>
                     </div>
                 </div>
