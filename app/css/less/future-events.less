@@ -1,68 +1,105 @@
-.eventsBanner {
-	background-image: url('img/banner.png');
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
-	height: 500px;
-	text-align: center;
-	color: #fff;
-
-	h1, 
-	h3 {
-		position: absolute;
-		left: 0;
-		right: 0;
-	}
-
-	h1 {
-		margin: 0;
-		font-size: 50px;
-		top: 23%;
-	}
-
-	h3 {
-		font-size: 36px;
-		top: 28%;
-	}
-}
-
-.events {
-	margin-top: 15px;
-
-	h1 {
-		margin-bottom: 30px;
-	}
-
-	.eventBox {
-		display: block;
-		height: 300px;
-		width: 300px;
+	.eventsBanner {
+		background-image: url('img/banner.png');
 		background-repeat: no-repeat;
 		background-size: cover;
-		background-position: 80%;
+		background-position: center;
+		height: 500px;
+		text-align: center;
+		color: #fff;
 
-		.eventText {
-			background-color: #e6e6e6;
-			height: 100px;
-			padding: 10px;
-			.eventUrl {
-				color: #000;
-				h4 {
-					margin-top: 0;
+		h1, 
+		h3 {
+			position: absolute;
+			left: 0;
+			right: 0;
+		}
+
+		h1 {
+			margin: 0;
+			font-size: 50px;
+			top: 23%;
+		}
+
+		h3 {
+			font-size: 36px;
+			top: 28%;
+		}
+	}
+
+	.events {
+		margin-top: 15px;
+		margin-bottom: 30px;
+
+		h1 {
+			margin-bottom: 30px;
+		}
+
+		.eventBox {
+			display: block;
+			height: 300px;
+			width: 300px;
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: 80%;
+
+			.eventText {
+				background-color: #e6e6e6;
+				height: 100px;
+				padding: 10px;
+				.eventUrl {
+					color: #000;
+					h4 {
+						margin-top: 0;
+					}
 				}
-			}
 
-			.eventUrl:hover {
-				color: #002050;
+				.eventUrl:hover {
+					color: #002050;
+				}
 			}
 		}
 	}
-}
 
-.past {
-	margin-bottom: 40px;
-	h1 {
-		margin-top: 0;
-		margin-bottom: 30px;
+	.past {
+		margin-bottom: 40px;
+		h1 {
+			margin-top: 0;
+			margin-bottom: 30px;
+		}
 	}
-}
+
+	@media all and (min-width: 768px) and (max-width: 991px) {
+		.events {
+			.eventBox {
+				height: 220px;
+				width: 220px;
+			}
+		}
+	}
+
+	@media all and (min-width: 480px) and (max-width: 767px) {
+		.events {
+			h1 {
+				text-align: center;
+			}
+			.eventBox {
+				height: 400px;
+				width: 400px;
+				margin: 0 auto;
+				margin-top: 30px;
+			}
+		}
+	}
+
+	@media all and (min-width: 320px) and (max-width: 479px) {
+		.events {
+			h1 {
+				text-align: center;
+			}
+
+			.eventBox {
+				margin: 0 auto;
+				margin-top: 30px;
+			}
+		}
+	}
