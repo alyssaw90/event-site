@@ -440,11 +440,12 @@ module.exports = (router) => {
 
   // create new event
   router.post('/createevent',  (req, res, next) => {
-    let userName = req.user.unique_name || req.user.email;
+    // let userName = req.user.unique_name || req.user.email;
+    // console.log(req.user.sub)
     models.sql.sync()
     .then(function () {
       return Event.create({
-        lastModifiedBy: userName,
+        // lastModifiedBy: userName,
         eventName: req.body.newEventName,
         eventUrl: req.body.eventUrl,
         eventRegistrationLink: req.body.newEventRegistrationLink,
@@ -497,9 +498,9 @@ module.exports = (router) => {
       })
     })
     .then( (event) => {
-      let userName = req.user.unique_name || req.user.email;
+      // let userName = req.user.unique_name || req.user.email;
       return event.update({
-            lastModifiedBy: userName,
+            // lastModifiedBy: userName,
             showOnHeader: req.body.event.showOnHeader,
             isPublished: req.body.event.isPublished,
             eventName: req.body.event.eventName,
@@ -662,11 +663,11 @@ module.exports = (router) => {
   router.post('/addspeakers',  (req, res) => {
     models.sql.sync()
     .then( () => {
-      let userName = req.user.unique_name || req.user.email;
+      // let userName = req.user.unique_name || req.user.email;
       let speakerEmail = req.body.newMsTeamEmail ? req.body.newMsTeamEmail : 'plugfests@microsoft.com';
       // let speakerHeadshot = req.body.headshot ? req.body.headshot : 'placeholder-headshot.jpg';
       Speaker.create({
-        lastModifiedBy: userName,
+        // lastModifiedBy: userName,
         firstName: req.body.newFirstName,
         lastName: req.body.newLastName,
         email: speakerEmail,
@@ -691,10 +692,10 @@ module.exports = (router) => {
       })
     })
     .then( (speaker) => {
-      let userName = req.user.unique_name || req.user.email;
+      // let userName = req.user.unique_name || req.user.email;
       let speakerEmail = req.body.email ? req.body.email : 'plugfests@microsoft.com';
       return speaker.update({
-        lastModifiedBy: userName,
+        // lastModifiedBy: userName,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: speakerEmail,
