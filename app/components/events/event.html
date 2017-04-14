@@ -22,13 +22,18 @@
 				<h2>Venue Information</h2>
 				<div class="row">
 					<div class="col-md-6">
-						<h3>{{events.event.eventVenueName}}</h3>
-						<p>
-        			{{events.event.eventVenueAddress}}
-      			</p>
+						<div class="venueNameAddress">
+							<h3>{{events.event.eventVenueName}}</h3>
+							<p>
+								{{events.event.eventVenueAddress}}
+							</p>
+						</div>
 						<div class="parkingInfo">
 							<h3>Parking Information</h3>
 							<p>{{events.event.eventParkingInfo}}</p>
+						</div>
+						<div class="moreVenueInfo">
+							<p>For more inforamtion, contact <a href="mailto:plugfest@microsoft.com">plugfest@microsoft.com</a></p>
 						</div>
 					</div>
 					<div class="col-md-6">
