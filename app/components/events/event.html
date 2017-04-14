@@ -14,9 +14,28 @@
     	</section>
     	<section class="eventInfo container">
 				<h2>Event Information</h2>
+				<div class="eventInfoText" data-ng-bind-html="events.event.eventAboutTabText">
+					{{events.event.eventAboutTabText}}
+				</div>
 			</section>
     	<section class="venueInfo container">
 				<h2>Venue Information</h2>
+				<div class="row">
+					<div class="col-md-6">
+						<h3>{{events.event.eventVenueName}}</h3>
+						<p>
+        			{{events.event.eventVenueAddress}}<br>
+        			<!--{{events.event.eventVenueAddressLine2}}<br>-->
+        			{{events.event.eventCountry}}
+      			</p>
+						<p>{{events.event.eventParkingInfo}}</p>
+					</div>
+					<div class="col-md-6">
+						<div id="venueImg">
+							<img data-ng-src="/uploads/{{events.event.eventVenueImg}}" alt="{{events.event.eventVenueName}}">
+						</div>
+					</div>
+				</div>
 			</section>
     	<section class="eventAgenda container">
 				<h2>Agenda</h2>
