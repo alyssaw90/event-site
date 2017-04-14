@@ -9,7 +9,7 @@
 			<div class="bannerText container">
 				<h1>{{event.eventName}}</h1>
 				<h4>{{getReadableDate(event.eventStartDate) + ' - ' + getReadableDate(event.eventEndDate)}}</h4>
-				<a href="{{event.eventRegistrationLink}}" class="btn eventRegistrationButton">Register</a>
+				<a data-ng-if="event.eventRegistrationLink" href="{{event.eventRegistrationLink}}" class="btn eventRegistrationButton">Register</a>
 			</div>
     	</section>
     	<section class="eventInfo container">
@@ -18,17 +18,18 @@
 					{{events.event.eventAboutTabText}}
 				</div>
 			</section>
-    	<section class="venueInfo container">
+    	<section class="venueInfo container" data-ng-if="events.event.eventVenueName || events.event.eventVenueAddress || events.event.eventParkingInfo || events.event.eventVenueImg">
 				<h2>Venue Information</h2>
 				<div class="row">
 					<div class="col-md-6">
 						<h3>{{events.event.eventVenueName}}</h3>
 						<p>
-        			{{events.event.eventVenueAddress}}<br>
-        			<!--{{events.event.eventVenueAddressLine2}}<br>-->
-        			{{events.event.eventCountry}}
+        			{{events.event.eventVenueAddress}}
       			</p>
-						<p>{{events.event.eventParkingInfo}}</p>
+						<div class="parkingInfo">
+							<h3>Parking Information</h3>
+							<p>{{events.event.eventParkingInfo}}</p>
+						</div>
 					</div>
 					<div class="col-md-6">
 						<div id="venueImg">

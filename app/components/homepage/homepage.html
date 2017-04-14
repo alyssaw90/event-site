@@ -66,11 +66,11 @@
                     <div class="upcomingEventBox" data-ng-style="{'background-image': 'url(/uploads/{{upcomingEvent.eventHeaderImage}})'}">
                         <div class="eventText">
                             <a class="pull-left" href="/{{upcomingEvent.eventUrl}}"><h2>{{upcomingEvent.eventName}}</h2></a>
-                            <a data-ng-href="" class="btn registerButton pull-right">Register</a>
+                            <a data-ng-if="upcomingEvent.eventRegistrationLink" data-ng-href="{{upcomingEvent.eventRegistrationLink}}" class="btn registerButton pull-right">Register</a>
                         </div>
                         <div class="eventTextMobile">
                             <a class="eventUrl" href="/{{upcomingEvent.eventUrl}}"><h4>{{upcomingEvent.eventName}}</h4></a>
-                            <a class="eventRegistrationLink" data-ng-href="">Register</a>
+                            <a data-ng-if="upcomingEvent.eventRegistrationLink" class="eventRegistrationLink" data-ng-href="{{upcomingEvent.eventRegistrationLink}}">Register</a>
                         </div>
                     </div>
                 </div>
