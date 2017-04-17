@@ -43,11 +43,32 @@
 					</div>
 				</div>
 			</section>
-    	<section class="eventAgenda container">
+    	<!--<section class="eventAgenda container">
 				<h2>Agenda</h2>
+			</section>-->
+			<section class="eventHackaton container" data-ng-if="events.event.eventHackathon">
+				<h2>Hackathon</h2>
+				<div class="eventHackathonText" data-ng-bind-html="events.event.eventHackathon">
+					{{events.event.eventHackathon}}
+				</div>
 			</section>
-    	<section class="eventAccomodations container">
+			<section class="eventIOLab container" data-ng-if="events.event.eventIOLab">
+				<h2>I/O Lab</h2>
+				<div class="eventIOLabText" data-ng-bind-html="events.event.eventIOLab">
+					{{events.event.eventIOLab}}
+				</div>
+			</section>
+			<section class="eventWorkshop container" data-ng-if="events.event.eventWorkshop">
+				<h2>Workshop</h2>
+				<div class="eventWorkshopText" data-ng-bind-html="events.event.eventWorkshop">
+					{{events.event.eventWorkshop}}
+				</div>
+			</section>
+    	<section class="eventAccomodations container" data-ng-if="events.event.eventAccommodations">
 				<h2>Accomodations</h2>
+				<div class="eventAccommodationText" data-ng-bind-html="events.event.eventAccommodations">
+					{{events.event.eventAccommodations}}
+				</div>
 			</section>
   	</main>
   <!-- <main data-ng-if="events.isEvent" class="main-page-content">
