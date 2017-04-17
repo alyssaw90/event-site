@@ -12,33 +12,38 @@
 				<a data-ng-if="event.eventRegistrationLink" href="{{event.eventRegistrationLink}}" class="btn eventRegistrationButton">Register</a>
 			</div>
     	</section>
-    	<section class="eventInfo container">
-				<h2>Event Information</h2>
-				<div class="eventInfoText" data-ng-bind-html="events.event.eventAboutTabText">
-					{{events.event.eventAboutTabText}}
+    	<section class="eventInfo">
+				<div class="container">
+					<h2>Event Information</h2>
+					<div class="eventInfoText" data-ng-bind-html="events.event.eventAboutTabText">
+						{{events.event.eventAboutTabText}}
+					</div>
 				</div>
 			</section>
-    	<section class="venueInfo container" data-ng-if="events.event.eventVenueName || events.event.eventVenueAddress || events.event.eventParkingInfo || events.event.eventVenueImg">
-				<h2>Venue Information</h2>
-				<div class="row">
-					<div class="col-md-6">
-						<div class="venueNameAddress">
-							<h3>{{events.event.eventVenueName}}</h3>
-							<p>
-								{{events.event.eventVenueAddress}}
-							</p>
+    	<section class="venueInfo" data-ng-if="events.event.eventVenueName || events.event.eventVenueAddress || events.event.eventParkingInfo || events.event.eventVenueImg">
+				<div class="container">
+
+					<h2>Venue Information</h2>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="venueNameAddress">
+								<h3>{{events.event.eventVenueName}}</h3>
+								<p>
+									{{events.event.eventVenueAddress}}
+								</p>
+							</div>
+							<div class="parkingInfo">
+								<h3>Parking Information</h3>
+								<p>{{events.event.eventParkingInfo}}</p>
+							</div>
+							<div class="moreVenueInfo">
+								<p>For more inforamtion, contact <a href="mailto:plugfest@microsoft.com">plugfest@microsoft.com</a></p>
+							</div>
 						</div>
-						<div class="parkingInfo">
-							<h3>Parking Information</h3>
-							<p>{{events.event.eventParkingInfo}}</p>
-						</div>
-						<div class="moreVenueInfo">
-							<p>For more inforamtion, contact <a href="mailto:plugfest@microsoft.com">plugfest@microsoft.com</a></p>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div id="venueImg">
-							<img data-ng-src="/uploads/{{events.event.eventVenueImg}}" alt="{{events.event.eventVenueName}}">
+						<div class="col-md-6">
+							<div id="venueImg">
+								<img data-ng-src="/uploads/{{events.event.eventVenueImg}}" alt="{{events.event.eventVenueName}}">
+							</div>
 						</div>
 					</div>
 				</div>
@@ -46,28 +51,36 @@
     	<!--<section class="eventAgenda container">
 				<h2>Agenda</h2>
 			</section>-->
-			<section class="eventHackaton container" data-ng-if="events.event.eventHackathon">
-				<h2>Hackathon</h2>
-				<div class="eventHackathonText" data-ng-bind-html="events.event.eventHackathon">
-					{{events.event.eventHackathon}}
+			<section class="eventHackaton" data-ng-if="events.event.eventHackathon">
+				<div class="container">
+					<h2>Hackathon</h2>
+					<div class="eventHackathonText" data-ng-bind-html="events.event.eventHackathon">
+						{{events.event.eventHackathon}}
+					</div>
 				</div>
 			</section>
-			<section class="eventIOLab container" data-ng-if="events.event.eventIOLab">
-				<h2>I/O Lab</h2>
-				<div class="eventIOLabText" data-ng-bind-html="events.event.eventIOLab">
-					{{events.event.eventIOLab}}
+			<section class="eventIOLab" data-ng-if="events.event.eventIOLab">
+				<div class="container">
+					<h2>I/O Lab</h2>
+					<div class="eventIOLabText" data-ng-bind-html="events.event.eventIOLab">
+						{{events.event.eventIOLab}}
+					</div>
 				</div>
 			</section>
-			<section class="eventWorkshop container" data-ng-if="events.event.eventWorkshop">
-				<h2>Workshop</h2>
-				<div class="eventWorkshopText" data-ng-bind-html="events.event.eventWorkshop">
-					{{events.event.eventWorkshop}}
+			<section class="eventWorkshop" data-ng-if="events.event.eventWorkshop">
+				<div class="container">
+					<h2>Workshop</h2>
+					<div class="eventWorkshopText" data-ng-bind-html="events.event.eventWorkshop">
+						{{events.event.eventWorkshop}}
+					</div>
 				</div>
 			</section>
-    	<section class="eventAccomodations container" data-ng-if="events.event.eventAccommodations">
-				<h2>Accomodations</h2>
-				<div class="eventAccommodationText" data-ng-bind-html="events.event.eventAccommodations">
-					{{events.event.eventAccommodations}}
+    	<section class="eventAccomodations" data-ng-if="events.event.eventAccommodations">
+				<div class="container">
+					<h2>Accomodations</h2>
+					<div class="eventAccommodationText" data-ng-bind-html="events.event.eventAccommodations">
+						{{events.event.eventAccommodations}}
+					</div>
 				</div>
 			</section>
   	</main>
