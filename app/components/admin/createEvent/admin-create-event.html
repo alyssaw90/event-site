@@ -136,6 +136,22 @@
 			  		    </span>
 			  		{{errorMsg}} 		    			
 		    	</div>
+					<div class="form-group">
+						<label for="newEventAccommodation">Accommodation Information</label>
+						<textarea class="form-control" data-ng-model="newEvent.eventAccommodations" name="newEventAccommodation" data-ui-tinymce="tinymceOptions"></textarea>
+					</div>
+					<div class="form-group">
+						<label for="newEventHackathon">Hackathon Information</label>
+						<textarea class="form-control" name="newEventHackathon" data-ng-model="newEvent.eventHackathon" data-ui-tinymce="tinymceOptions"></textarea>
+					</div>
+					<div class="form-group">
+						<label for="newEventIOLab">I/O Lab Information</label>
+						<textarea class="form-control" name="newEventIOLab" data-ng-model="newEvent.eventIOLab" data-ui-tinymce="tinymceOptions"></textarea>
+					</div>
+					<div class="form-group">
+						<label for="newEventWorkshop">Workshop Information</label>
+						<textarea name="newEventWorkshop" class="form-control" data-ng-model="newEvent.eventWorkshop" data-ui-tinymce="tinymceOptions"></textarea>
+					</div>
 		    	<div data-ng-controller="AdminPageCtrl">
 			  		<button class="btn btn-default" name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventHeaderImg')">Select Header Image</button>
 			  		<br><br>
