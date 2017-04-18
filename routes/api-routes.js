@@ -461,7 +461,11 @@ module.exports = (router) => {
         eventVenueAddress: req.body.newVenueAddress,
         eventParkingInfo: req.body.newVenueParkingInfo,
         eventVenueImg: req.body.newEventVenueImg,
-        eventTechnicalTopics: req.body.eventTechnicalTopics
+        eventTechnicalTopics: req.body.eventTechnicalTopics,
+        eventAccommodations: req.body.eventAccommodations,
+        eventHackathon: req.body.eventHackathon,
+        eventIOLab: req.body.eventIOLab,
+        eventWorkshop: req.body.eventWorkshop
       })
       .catch( (err) => {
         let errorMsg = ``;
@@ -517,7 +521,11 @@ module.exports = (router) => {
             eventParkingInfo: req.body.event.eventParkingInfo,
             eventVenueImg: req.body.event.eventVenueImg,
             eventTechnicalTopics: req.body.eventTechnicalTopics,
-            eventLanguage: req.body.newEventLanguage
+            eventLanguage: req.body.newEventLanguage,
+            eventAccommodations: req.body.event.eventAccommodations,
+            eventHackathon: req.body.event.eventHackathon,
+            eventIOLab: req.body.event.eventIOLab,
+            eventWorkshop: req.body.event.eventWorkshop
       })
       .then((updatedEvent) => {
         res.end(updatedEvent.eventUrl);

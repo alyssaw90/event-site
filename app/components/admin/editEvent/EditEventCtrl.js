@@ -96,6 +96,11 @@ const EditEventCtrl = (app) => {
         $scope.endDate = $filter('date')($scope.editedEvent.event.eventEndDate, 'yyyy-MM-dd');
         $scope.editedEvent.event.eventStartDate = new Date( $scope.editedEvent.event.eventStartDate );
         $scope.editedEvent.event.eventEndDate = new Date($scope.editedEvent.event.eventEndDate);
+        $scope.editedEvent.event.eventAccommodations = data.data.event.eventAccommodations;
+        $scope.editedEvent.event.eventHackathon = data.data.event.eventHackathon;
+        $scope.editedEvent.event.eventIOLab = data.data.event.eventIOLab;
+        $scope.editedEvent.event.eventWorkshop = data.data.event.eventWorkshop;
+        $scope.editedEvent.event.eventVenueAddress = data.data.event.eventVenueAddress;
         //assign id to use in associating new tabs
         $scope.newTab.eventId =  $scope.editedEvent.event.id;
         $scope.currentEventUrl = data.data.event.eventUrl;

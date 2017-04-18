@@ -310,7 +310,7 @@
 				</div>
 				<div class="form-group" role="presentation">
 					<label for="editedVenduAddressLine1">Address</label>
-					<input class="form-control" type="text" data-ng-model="editedEvent.event.eventVenueAddressLine1" name="editedVenduAddressLine1" id="editedVenduAddressLine1" admin-city-name-auto-complete-directive>
+					<input class="form-control" type="text" data-ng-model="editedEvent.event.eventVenueAddress" name="editedVenduAddress" id="editedVenduAddressLine1" admin-city-name-auto-complete-directive>
 				</div>
 				<div class="form-group" role="presentation">
 					<label for="editedVenueParkingInfo">Parking Information</label>
@@ -328,6 +328,23 @@
 		  		{{errorMsg}}
 				</div>
 				<img ng-src="/{{venueImage}}">
+				<div class="form-group">
+					<label for="editedEventAccommodations">Accommodations</label>
+					<textarea class="form-control" data-ng-model="editedEvent.event.eventAccommodations" name="editedEventAccommodations" style="min-height: 200px"
+					data-ui-tinymce="tinymceOptions"></textarea>
+				</div>
+				<div class="form-group">
+					<label for="editedEventHackathon">Hackathon</label>
+					<textarea name="editedEventHackathon" class="form-control" data-ng-model="editedEvent.event.eventHackathon" data-ui-tinymce="tinymceOptions"></textarea>
+				</div>
+				<div class="form-group">
+					<label for="editedEventIOLab">I/O Lab</label>
+					<textarea name="editedEventIOLab" class="form-control" data-ng-model="editedEvent.event.eventIOLab" data-ui-tinymce="tinymceOptions"></textarea>
+				</div>
+				<div class="form-group">
+					<label for="editedEventWorkshop">Workshop</label>
+					<textarea name="editedEventWorkshop" class="form-control" data-ng-model="editedEvent.event.eventWorkshop" data-ui-tinymce="tinymceOptions"></textarea>
+				</div>
     		<button type="button" class="btn form-button" ng-click="showElem('#main-edit-section', '.edit-section'); cancelEditing()" id="cancel-edited-event-button">Cancel</button>				
 				<button type="submit" class="btn btn-primary form-button" id="save-edited-event-as-draft-button" data-ng-click="editEventForm.$valid && editEvent(editedEvent, false); showElem('#main-edit-section', '.edit-section');">Revert to Draft</button>
 				<button type="submit" class="btn btn-green form-button" id="save-edited-event-button" data-ng-click="editEventForm.$valid && editEvent(editedEvent, true); showElem('#main-edit-section', '.edit-section');">Publish Now</button>
