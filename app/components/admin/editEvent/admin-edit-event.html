@@ -208,6 +208,10 @@
 	    	</div>
 	    	<br><br>
 				<input class="col_12" type="hidden" name="country" data-ng-model="editedEvent.event.id">
+				<div class="form-group">
+					<label for="lastModifiedBy">Modified By</label>
+					<input type="radio" class="form-control" data-ng-model="editedEvent.event.lastModifiedBy" name="lastModifiedBy" ng-value="userInfo.userName" data-ng-required="true">{{userInfo.userName}}
+				</div>
 	    	<div role="presentation" class="form-group">
 					<label for="editedEventName">Event Name*</label>
 					<input class="form-control" type="text" data-ng-model="editedEvent.event.eventName" name="editedEventName" id="editedEventName" required>
