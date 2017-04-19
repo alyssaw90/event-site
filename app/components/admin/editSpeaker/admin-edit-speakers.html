@@ -105,6 +105,10 @@
 							<textarea class="form-control" data-ng-model="speakerToEdit.speakerDescription" name="speakerDescription" style="min-height: 200px" data-ng-required="required" 
 							data-ui-tinymce="tinymceOptions">
 			      	</textarea>
+					<div class="form-group">
+						<label for="lastModifiedBy">Modified By</label>
+						<input type="radio" class="form-control" data-ng-model="speakerToEdit.lastModifiedBy" name="lastModifiedBy" ng-value="userInfo.userName" data-ng-required="true">{{userInfo.userName}}
+					</div>
 			    	</div>
 						<button type="button" ng-click="cancelEditingSpeaker()">Cancel</button>
 						<button type="submit" class="btn btn-primary" id="save-new-speaker-as-draft-button" data-ng-click="saveNewSpeaker(speakerToEdit, false)">Revert to Draft</button>

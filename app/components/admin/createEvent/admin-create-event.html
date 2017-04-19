@@ -19,6 +19,10 @@
     <section role="presentation" class="row internetExplorer">
 			<form id="addNewEventForm" class="col-lg-24" name="addNewEventForm" method="post" enctype="multipart/form-data" make-auto-complete-false-directive>
 				<h3>New Event</h3>
+				<div class="form-group">
+					<label for="lastModifiedBy">Modified By</label>
+					<input type="radio" class="form-control" data-ng-model="newEvent.lastModifiedBy" name="lastModifiedBy" ng-value="userInfo.userName" data-ng-required="true">{{userInfo.userName}}
+				</div>
 				<div role="presentation" class="form-group">
 					<label for="newEventName">Event Name*</label>
 					<input class="form-control" type="text" data-ng-model="newEvent.newEventName" name="newEventName" id="newEventName" data-ng-required="true">

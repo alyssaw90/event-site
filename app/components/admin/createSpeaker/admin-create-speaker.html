@@ -83,6 +83,10 @@
 					data-ui-tinymce="tinymceOptions">
 	      	</textarea>
 				</div>
+				<div class="form-group">
+					<label for="lastModifiedBy">Modified By</label>
+					<input type="radio" class="form-control" data-ng-model="newSpeaker.lastModifiedBy" name="lastModifiedBy" ng-value="userInfo.userName" data-ng-required="true">{{userInfo.userName}}
+				</div>
 				<button type="button" class="medium float-left" style="margin: 5px" id="cancel-new-event-button" data-ng-click="cancelNewSpeaker();">Cancel</button>
 				<button type="submit" class="medium float-left btn-primary" style="margin: 5px" id="save-new-event-as-draft-button"  data-ng-click="createNewSpeaker(newSpeaker, false);">Save as Draft</button>
 				<button type="submit" class="medium float-left btn-green" style="margin: 5px" id="save-new-event-button"  data-ng-click="createNewSpeaker(newSpeaker, true);">Publish Now</button>
