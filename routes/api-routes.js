@@ -465,7 +465,8 @@ module.exports = (router) => {
         eventAccommodations: req.body.eventAccommodations,
         eventHackathon: req.body.eventHackathon,
         eventIOLab: req.body.eventIOLab,
-        eventWorkshop: req.body.eventWorkshop
+        eventWorkshop: req.body.eventWorkshop,
+        eventAgenda: req.body.eventAgenda
       })
       .catch( (err) => {
         let errorMsg = ``;
@@ -525,7 +526,8 @@ module.exports = (router) => {
             eventAccommodations: req.body.event.eventAccommodations,
             eventHackathon: req.body.event.eventHackathon,
             eventIOLab: req.body.event.eventIOLab,
-            eventWorkshop: req.body.event.eventWorkshop
+            eventWorkshop: req.body.event.eventWorkshop,
+            eventAgenda: req.body.event.eventAgenda
       })
       .then((updatedEvent) => {
         res.end(updatedEvent.eventUrl);

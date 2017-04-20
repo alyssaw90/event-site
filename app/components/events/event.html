@@ -48,9 +48,14 @@
 					</div>
 				</div>
 			</section>
-    	<!--<section class="eventAgenda container">
-				<h2>Agenda</h2>
-			</section>-->
+    	<section class="eventAgenda" data-ng-if="events.event.eventAgenda">
+				<div class="container">
+					<h2>Agenda</h2>
+					<div class="eventAgendaText" data-ng-bind-html="events.event.eventAgenda">
+						{{events.event.eventAgenda}}
+					</div>
+				</div>
+			</section>
 			<section class="eventHackaton" data-ng-if="events.event.eventHackathon">
 				<div class="container">
 					<h2>Hackathon</h2>
