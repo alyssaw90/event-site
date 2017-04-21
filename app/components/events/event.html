@@ -20,35 +20,7 @@
 					</div>
 				</div>
 			</section>
-    	<section class="venueInfo" data-ng-if="events.event.eventVenueName || events.event.eventVenueAddress || events.event.eventParkingInfo || events.event.eventVenueImg">
-				<div class="container">
-
-					<h2>Venue Information</h2>
-					<div class="row">
-						<div class="col-md-6">
-							<div class="venueNameAddress">
-								<h3>{{events.event.eventVenueName}}</h3>
-								<p>
-									{{events.event.eventVenueAddress}}
-								</p>
-							</div>
-							<div class="parkingInfo">
-								<h3>Parking Information</h3>
-								<p>{{events.event.eventParkingInfo}}</p>
-							</div>
-							<div class="moreVenueInfo">
-								<p>For more inforamtion, contact <a href="mailto:plugfest@microsoft.com">plugfest@microsoft.com</a></p>
-							</div>
-						</div>
-						<div class="col-md-6" data-ng-if="events.event.eventVenueImg">
-							<div id="venueImg">
-								<img data-ng-src="/uploads/{{events.event.eventVenueImg}}" alt="{{events.event.eventVenueName}}">
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-    	<section class="eventAgenda" data-ng-if="events.event.eventAgenda">
+			<section class="eventAgenda" data-ng-if="events.event.eventAgenda">
 				<div class="container">
 					<h2>Agenda</h2>
 					<div class="eventAgendaText" data-ng-bind-html="events.event.eventAgenda">
@@ -107,6 +79,33 @@
 					</div>
 				</div>
 			</section>
+			<section class="venueInfo" data-ng-if="events.event.eventVenueName || events.event.eventVenueAddress || events.event.eventParkingInfo || events.event.eventVenueImg">
+				<div class="container">
+					<h2>Venue Information</h2>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="venueNameAddress">
+								<h3>{{events.event.eventVenueName}}</h3>
+								<p>
+									{{events.event.eventVenueAddress}}
+								</p>
+							</div>
+							<div class="parkingInfo">
+								<h3>Parking Information</h3>
+								<p>{{events.event.eventParkingInfo}}</p>
+							</div>
+							<div class="moreVenueInfo">
+								<p>For more inforamtion, contact <a href="mailto:plugfest@microsoft.com">plugfest@microsoft.com</a></p>
+							</div>
+						</div>
+						<div class="col-md-6" data-ng-if="events.event.eventVenueImg">
+							<div id="venueImg">
+								<img data-ng-src="/uploads/{{events.event.eventVenueImg}}" alt="{{events.event.eventVenueName}}">
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
     	<section class="eventAccommodations" data-ng-if="events.event.eventAccommodations">
 				<div class="container">
 					<h2>Accommodations</h2>
@@ -125,53 +124,4 @@
 				</div>
 			</section>
   	</main>
-  <!-- <main data-ng-if="events.isEvent" class="main-page-content">
-  	<div data-ng-if="events.event.eventHeaderImage" class="ng-cloak col_12 internetExplorer event-header centered" id="eventHeader" role="complementary"><img alt="event banner image" data-ng-src="{{ headerImage }}" /></div>
-  	<ul class="tabs left" id="eventsPageUl">
-      <li data-ng-if="events.event.eventAboutTabText" >
-        <a target="_self" href="#aboutTab"><h5>About</h5></a>
-      </li>
-  		<li data-ng-repeat="tab in events.tabs | orderBy: 'tabNumber'" id="{{addMainContentId($index)}}">
-  			<a class="eventTabAnchor" target="_self" href="#{{urlify(tab.tabTitle)}}"><h5>{{ tab.tabTitle }}</h5></a>
-  		</li>
-      <li data-ng-if="events.event.eventVenueName || events.event.eventVenueAddressLine1 || events.event.eventVenueAddressLine2 || events.event.eventParkingInfo || events.event.eventVenueImg" >
-        <a target="_self" href="#venueTab"><h5>Venue</h5></a>
-      </li>
-  		<li data-ng-if="events.speakers.length > 0">
-  			<a target="_self" href="#speakers"><h5>Speakers</h5></a>
-			</li>
-      <li class="pull-right" ng-if="events.event.eventRegistrationLink">
-        <a ng-href="{{events.event.eventRegistrationLink}}" class="win-color-bg-green whiteText"><h5>Register</h5></a>
-      </li>
-		</ul>
-    <div id="aboutTab" data-ng-if="events.event.eventAboutTabText" class="tab-content clearfix eventTabDiv" data-ng-bind-html="events.event.eventAboutTabText" >
-      <h2>{{events.event.eventName}}</h2>
-      <h4>{{getReadableDate(events.event.eventStartDate) + ' - ' + getReadableDate(events.event.eventEndDate) }}</h4>
-      <p>{{events.event.eventAboutTabText}}</p>
-    </div>
-    <div id="venueTab" data-ng-if="events.event.eventVenueName || events.event.eventVenueAddressLine1 || events.event.eventVenueAddressLine2 || events.event.eventParkingInfo || events.event.eventVenueImg" class="tab-content clearfix eventTabDiv" >
-      <h2>{{events.event.eventVenueName}}</h2>
-      <div data-ng-if="events.event.eventVenueImg" class="col_12 internetExplorer event-header centered" id="venueImg" role="complementary">
-        <img alt="{{events.event.eventVenueName}} image" data-ng-src="/uploads/{{events.event.eventVenueImg}}" />
-      </div>
-      <address>
-        {{events.event.eventVenueAddressLine1}}<br>
-        {{events.event.eventVenueAddressLine2}}<br>
-        {{events.event.eventCountry}}
-      </address>
-      <p>{{events.event.eventParkingInfo}}</p>
-    </div>
-		<div data-ng-repeat="tab in events.tabs | orderBy: 'tabNumber'" id="{{urlify(tab.tabTitle)}}" class="tab-content clearfix eventTabDiv" data-ng-bind-html="tab.tabContent" ></div>
-  	<div data-ng-if="events.speakers.length > 0" id="speakers" class="tab-content clearfix eventTabDiv clearfix">
-			<div data-ng-repeat="speaker in events.speakers | orderBy: 'EventSpeakersAsscs.sortPosition'" class="col_12 internetExplorer" id="{{speaker.divId}}" aria-label="Bio of {{speaker.fullName}}" role="presentation">
- 		  	<h4>{{speaker.fullName}}</h4>
- 		  	<h5>{{speaker.msTeamTitle}}</h5>
- 		  	<p>
- 		  		<img class="ng-cloak pull-left speakersImg" height="165" width="165" alt="image of {{speaker.fullName}}" data-ng-src="{{speaker.headShot}}" />
- 		  		<span data-ng-bind-html="speaker.speakerDescription">{{speaker.speakerDescription}}</span>
-	  		</p>
- 		  	<hr aria-hidden="true" role="presentaion" class="alt1" />
- 			</div>
-  	</div>
-  </main> -->
 </div>
