@@ -4,32 +4,7 @@
     <!-- lightbox container hidden with data-ng-if -->
 		<section data-ng-controller="UserLoggingCtrl" class="">
 			<h2>Admin Portal Login</h2>
-			<a class="btn" ng-click="login()">Sign In.</a>
-			<!--<div class="lightbox" data-ng-if="showSpinner" >
-			  <div class="inner-lightbox-box">
-			    <p data-ng-if="showSpinner" class="modal-title">{{retryMsg}}</p>
-			    <div class="modal-content">
-				    	<i class="fa fa-spinner fa-spin fa-5x fa-fw logout-spinner"></i>
-			  		<br>
-			  	</div>
-			  </div>
-			</div>-->
-		  <!--<form data-ng-submit="signIn(user)" name="loginForm" id="loginForm" make-auto-complete-false-directive>
-		  	<div class="form-group" role="presentation">
-			    <label for="username">Username/email</label>
-			    <input class="form-control" type="text" name="username" data-ng-model="user.username" placeholder="username/email">
-		  	</div>
-		  	<div class="form-group" role="presentation">
-			    <label for="password">Password</label>
-			    <input class="form-control" type="password" name="password" data-ng-model="user.password" placeholder="password">
-		  	</div>
-				<br>
-				<div class="btn-group">
-					<button type="submit" class="pull-left">Sign In</button>
-					<a class="btn pull-right" href="/auth/azurelogin" target="_self">Use Microsoft Account</a>
-					<a class="btn pull-right" ng-click="login()">Use Microsoft Account</a>
-				</div>
-		  </form>-->
+			<a class="btn btn-primary" ng-click="login()">Sign In.</a> 
 		</section>
   </div>
 </div>
