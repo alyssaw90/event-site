@@ -148,18 +148,62 @@
 						<label for="newEventAccommodation">Accommodation Information</label>
 						<textarea class="form-control" data-ng-model="newEvent.eventAccommodations" name="newEventAccommodation" data-ui-tinymce="tinymceOptions"></textarea>
 					</div>
+					<div data-ng-controller="AdminPageCtrl">
+			  		<button class="btn btn-default" name="hotelPhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventAccommodationImg')">Select Accommodation Image</button>
+			  		<br><br>
+			  		<div style="font:smaller">{{eventAccommodationImg.path}}{{eventAccommodationImg.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+			  		    <span class="progress" ng-show="eventAccommodationImg.progress >= 0">
+			  		        <div style="width:{{eventAccommodationImg.progress}}%"  
+			  		             ng-bind="eventAccommodationImg.progress + '%'"></div>
+			  		    </span>
+			  		</div>     
+			  		{{errorMsg}} 		    			
+		    	</div>
 					<div class="form-group">
 						<label for="newEventHackathon">Hackathon Information</label>
 						<textarea class="form-control" name="newEventHackathon" data-ng-model="newEvent.eventHackathon" data-ui-tinymce="tinymceOptions"></textarea>
 					</div>
+					<div data-ng-controller="AdminPageCtrl">
+			  		<button class="btn btn-default" name="hackathonPhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventHackathonImg')">Select Hackathon Image</button>
+			  		<br><br>
+			  		<div style="font:smaller">{{eventHackathonImg.path}}{{eventHackathonImg.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+			  		    <span class="progress" ng-show="eventHackathonImg.progress >= 0">
+			  		        <div style="width:{{eventHackathonImg.progress}}%"  
+			  		             ng-bind="eventHackathonImg.progress + '%'"></div>
+			  		    </span>
+			  		</div>     
+			  		{{errorMsg}} 		    			
+		    	</div>
 					<div class="form-group">
 						<label for="newEventIOLab">I/O Lab Information</label>
 						<textarea class="form-control" name="newEventIOLab" data-ng-model="newEvent.eventIOLab" data-ui-tinymce="tinymceOptions"></textarea>
 					</div>
+					<div data-ng-controller="AdminPageCtrl">
+			  		<button class="btn btn-default" name="ioLabPhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventIOLabImg')">Select I/O Lab Image</button>
+			  		<br><br>
+			  		<div style="font:smaller">{{eventIOLabImg.path}}{{eventIOLabImg.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+			  		    <span class="progress" ng-show="eventIOLabImg.progress >= 0">
+			  		        <div style="width:{{eventIOLabImg.progress}}%"  
+			  		             ng-bind="eventIOLabImg.progress + '%'"></div>
+			  		    </span>
+			  		</div>     
+			  		{{errorMsg}} 		    			
+		    	</div>
 					<div class="form-group">
 						<label for="newEventWorkshop">Workshop Information</label>
 						<textarea name="newEventWorkshop" class="form-control" data-ng-model="newEvent.eventWorkshop" data-ui-tinymce="tinymceOptions"></textarea>
 					</div>
+					<div data-ng-controller="AdminPageCtrl">
+			  		<button class="btn btn-default" name="workshopPhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventWorkshopImg')">Select Workshop Image</button>
+			  		<br><br>
+			  		<div style="font:smaller">{{eventWorkshopImg.path}}{{eventWorkshopImg.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+			  		    <span class="progress" ng-show="eventWorkshopImg.progress >= 0">
+			  		        <div style="width:{{eventWorkshopImg.progress}}%"  
+			  		             ng-bind="eventWorkshopImg.progress + '%'"></div>
+			  		    </span>
+			  		</div>     
+			  		{{errorMsg}} 		    			
+		    	</div>
 		    	<div data-ng-controller="AdminPageCtrl">
 			  		<button class="btn btn-default" name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventHeaderImg')">Select Header Image</button>
 			  		<br><br>

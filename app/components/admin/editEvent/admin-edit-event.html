@@ -341,18 +341,66 @@
 					<textarea class="form-control" data-ng-model="editedEvent.event.eventAccommodations" name="editedEventAccommodations" style="min-height: 200px"
 					data-ui-tinymce="tinymceOptions"></textarea>
 				</div>
+				<div data-ng-controller="AdminPageCtrl">
+					<button name="hotelPhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventAccommodationImg')">Select Accommodation Image</button>
+					<br><br>
+		  		<div style="font:smaller">{{eventAccommodationImg.path}} {{eventAccommodationImg.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+		  		    <span class="progress" ng-show="eventAccommodationImg.progress >= 0">
+		  		        <div style="width:{{eventAccommodationImg.progress}}%"  
+		  		             ng-bind="eventAccommodationImg.progress + '%'"></div>
+		  		    </span>
+		  		</div>     
+		  		{{errorMsg}}
+				</div>
+				<img ng-src="/{{accommodationImage}}">
 				<div class="form-group">
 					<label for="editedEventHackathon">Hackathon</label>
 					<textarea name="editedEventHackathon" class="form-control" data-ng-model="editedEvent.event.eventHackathon" data-ui-tinymce="tinymceOptions"></textarea>
 				</div>
+				<div data-ng-controller="AdminPageCtrl">
+					<button name="hackathonPhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventHackathonImg')">Select Hackathon Image</button>
+					<br><br>
+		  		<div style="font:smaller">{{eventHackathonImg.path}} {{eventHackathonImg.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+		  		    <span class="progress" ng-show="eventHackathonImg.progress >= 0">
+		  		        <div style="width:{{eventHackathonImg.progress}}%"  
+		  		             ng-bind="eventHackathonImg.progress + '%'"></div>
+		  		    </span>
+		  		</div>     
+		  		{{errorMsg}}
+				</div>
+				<img ng-src="/{{hackathonImage}}">
 				<div class="form-group">
 					<label for="editedEventIOLab">I/O Lab</label>
 					<textarea name="editedEventIOLab" class="form-control" data-ng-model="editedEvent.event.eventIOLab" data-ui-tinymce="tinymceOptions"></textarea>
 				</div>
+				<div data-ng-controller="AdminPageCtrl">
+					<button name="ioLabPhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventIOLabImg')">Select I/O Lab Image</button>
+					<br><br>
+		  		<div style="font:smaller">{{eventIOLabImg.path}} {{eventIOLabImg.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+		  		    <span class="progress" ng-show="eventIOLabImg.progress >= 0">
+		  		        <div style="width:{{eventIOLabImg.progress}}%"  
+		  		             ng-bind="eventIOLabImg.progress + '%'"></div>
+		  		    </span>
+		  		</div>     
+		  		{{errorMsg}}
+				</div>
+				<img ng-src="/{{ioLabImage}}">
 				<div class="form-group">
 					<label for="editedEventWorkshop">Workshop</label>
 					<textarea name="editedEventWorkshop" class="form-control" data-ng-model="editedEvent.event.eventWorkshop" data-ui-tinymce="tinymceOptions"></textarea>
 				</div>
+				<div data-ng-controller="AdminPageCtrl">
+					<button name="workshopPhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventWorkshopImg')">Select Workshop Image</button>
+					<br><br>
+		  		<div style="font:smaller">{{eventWorkshopImg.path}} {{eventWorkshopImg.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+		  		    <span class="progress" ng-show="eventWorkshopImg.progress >= 0">
+		  		        <div style="width:{{eventWorkshopImg.progress}}%"  
+		  		             ng-bind="eventWorkshopImg.progress + '%'"></div>
+		  		    </span>
+		  		</div>     
+		  		{{errorMsg}}
+				</div>
+				<img ng-src="/{{workshopImage}}">
     		<button type="button" class="btn form-button" ng-click="showElem('#main-edit-section', '.edit-section'); cancelEditing()" id="cancel-edited-event-button">Cancel</button>				
 				<button type="submit" class="btn btn-primary form-button" id="save-edited-event-as-draft-button" data-ng-click="editEventForm.$valid && editEvent(editedEvent, false); showElem('#main-edit-section', '.edit-section');">Revert to Draft</button>
 				<button type="submit" class="btn btn-green form-button" id="save-edited-event-button" data-ng-click="editEventForm.$valid && editEvent(editedEvent, true); showElem('#main-edit-section', '.edit-section');">Publish Now</button>
