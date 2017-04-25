@@ -1,35 +1,61 @@
 .eventContent {
 
 	.eventBanner {
-		// background-image: url('img/banner.png');
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-position: center;
 		height: 500px;
 		color: #fff;
 
-		h1, 
-		h4,
-		.eventRegistrationButton {
-			position: absolute;
-		}
-
 		h1 {
-			margin: 0;
 			font-size: 50px;
-			top: 23%;
 		}
 
 		h4 {
 			font-size: 24px;
-			top: 29%;
 		}
-		.eventRegistrationButton {
-			background-color: #0078d7;
-			color: #fff;
-			border-radius: 0;
-			padding: 10px 30px;
-			top: 35%;
+		.bannerText {
+			margin-top: 15%;
+			.eventRegistrationButton {
+				background-color: #0078d7;
+				color: #fff;
+				border-radius: 0;
+				padding: 10px 30px;
+				top: 35%;
+			}
+		}
+	}
+
+	@media all and (min-width: 992px) and (max-width: 1199px) {
+		.eventBanner {
+			.bannerText {
+				margin-top: 17%;
+			}
+		}
+	}
+
+	@media all and (min-width: 768px) and (max-width: 991px) {
+		.eventBanner {
+			.bannerText {
+				margin-top: 23%;
+			}
+		}
+	} 
+	
+	@media all and (max-width:767px) {
+		.eventBanner {
+			.bannerText {
+				margin-top: 23%;
+				text-align: center;
+			}
+		}
+	}
+
+	@media all and (min-width:320px) and (max-width: 579px) {
+		.eventBanner {
+			.bannerText {
+				margin-top: 32%;
+			}
 		}
 	}
 

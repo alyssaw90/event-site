@@ -6,10 +6,12 @@
   	</main>
   	<main class="eventContent">
     	<section class="eventBanner" data-ng-style="{'background-image': 'url('+ headerImage +')'}">
-			<div class="bannerText container">
-				<h1>{{event.eventName}}</h1>
-				<h4>{{getReadableDate(event.eventStartDate) + ' - ' + getReadableDate(event.eventEndDate)}}</h4>
-				<a data-ng-if="event.eventRegistrationLink" href="{{event.eventRegistrationLink}}" class="btn eventRegistrationButton">Register</a>
+			<div class="container">
+				<div class="bannerText">
+					<h1>{{event.eventName}}</h1>
+					<h4>{{getReadableDate(event.eventStartDate) + ' - ' + getReadableDate(event.eventEndDate)}}</h4>
+					<a data-ng-if="event.eventRegistrationLink" href="{{event.eventRegistrationLink}}" class="btn eventRegistrationButton">Register</a>
+				</div>
 			</div>
     	</section>
     	<section class="eventInfo">
