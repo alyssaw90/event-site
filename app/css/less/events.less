@@ -7,54 +7,68 @@
 		height: 500px;
 		color: #fff;
 
-		h1 {
-			font-size: 50px;
-		}
+		.gradient {
+			height: 500px;
+			background: linear-gradient(to right, black, transparent);
 
-		h4 {
-			font-size: 24px;
-		}
-		.bannerText {
-			margin-top: 15%;
-			.eventRegistrationButton {
-				background-color: #0078d7;
-				color: #fff;
-				border-radius: 0;
-				padding: 10px 30px;
-				top: 35%;
+			.bannerText {
+				h1 {
+					font-size: 50px;
+				}
+
+				h4 {
+					font-size: 24px;
+				}
+				margin-top: 15%;
+				.eventRegistrationButton {
+					background-color: #0078d7;
+					color: #fff;
+					border-radius: 0;
+					padding: 10px 30px;
+					top: 35%;
+				}
 			}
 		}
+
 	}
 
 	@media all and (min-width: 992px) and (max-width: 1199px) {
 		.eventBanner {
-			.bannerText {
-				margin-top: 17%;
+			.gradient {
+				.bannerText {
+					margin-top: 17%;
+				}
 			}
 		}
 	}
 
 	@media all and (min-width: 768px) and (max-width: 991px) {
 		.eventBanner {
-			.bannerText {
-				margin-top: 23%;
+			.gradient {
+				.bannerText {
+					margin-top: 23%;
+				}
 			}
 		}
 	} 
 	
 	@media all and (max-width:767px) {
 		.eventBanner {
-			.bannerText {
-				margin-top: 23%;
-				text-align: center;
+			.gradient {
+				.bannerText {
+					margin-top: 23%;
+					text-align: center;
+				}
 			}
 		}
 	}
 
 	@media all and (min-width:320px) and (max-width: 579px) {
 		.eventBanner {
-			.bannerText {
-				margin-top: 32%;
+			.gradient {
+				.bannerText {
+					margin-top: 32%;
+				}
 			}
 		}
 	}
