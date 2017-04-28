@@ -168,6 +168,8 @@ module.exports = (router) => {
         eventObj.headerEventDates = eventMonth ? eventMonth + ', ' + startYear : startYear;
         eventObj.startYear = startYear;
         eventObj.city = city;
+        eventObj.eventLocation = upcomingEvents[i].eventLocation;
+        eventObj.eventTechnicalTopics = upcomingEvents[i].eventTechnicalTopics;
         eventObj.colNum = Math.floor(12 / upcomingEvents.length);
         eventObj.eventName = upcomingEvents[i].eventName;
         eventObj.eventUrl = upcomingEvents[i].eventUrl;
