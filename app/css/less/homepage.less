@@ -3,7 +3,8 @@ main {
 		background-image: url('img/Paris2016.jpg');
 		background-repeat: no-repeat;
 		background-size: cover;
-		background-position: center;
+		// background-position: center;
+		background-position: 100% 30%;
 		height: 500px;
 		text-align: center;
 		color: #fff;
@@ -232,46 +233,77 @@ main {
 			margin-top: 30px;
 		}
 		.upcomingEventBox {
-			// display: block;
-			height: 500px;
-			width: 500px;
-			// background-color: purple;
-			background-repeat: no-repeat;
-			background-size: cover;
-			background-position: 80%;
-			// position: relative;
+			width: 100%;
+			height: 300px;
+			background-color: #e6e6e6;
 
-			.eventText {
-				background-color: #e6e6e6;
-				height: 100px;
+			.eventPhoto {
+				height: 300px;
+				width: 35%;
+				background-size: cover;
+				background-position: 50% 100%;
+				background-repeat: no-repeat;
+				display: inline-block;
+				float: left;
+			}
+			.eventInfo {
+				width: 65%;
+				display: inline-block;
+				float: right;
+				padding: 50px;
 
-				a {
-					margin-left: 4%;
-					margin-top: 30px;
-					color: #000;
-					text-decoration: none;
-					h2 {
-						margin: 0;
-					}
+				.eventText {
+					margin-top: 10px
 				}
 
-				a:hover {
-					color: #002050;
-				}
-
-				.registerButton {
+				.eventRegistrationButton {
 					background-color: #0078d7;
 					color: #fff;
 					border-radius: 0;
 					padding: 10px 30px;
-					margin-top: 26px;
-					margin-right: 5%;
+					margin-top: 80px;
 				}
 			}
+			// // display: block;
+			// height: 500px;
+			// width: 500px;
+			// // background-color: purple;
+			// background-repeat: no-repeat;
+			// background-size: cover;
+			// background-position: 80%;
+			// // position: relative;
 
-			.eventTextMobile {
-				display: none;
-			}
+			// .eventText {
+			// 	background-color: #e6e6e6;
+			// 	height: 100px;
+
+			// 	a {
+			// 		margin-left: 4%;
+			// 		margin-top: 30px;
+			// 		color: #000;
+			// 		text-decoration: none;
+			// 		h2 {
+			// 			margin: 0;
+			// 		}
+			// 	}
+
+			// 	a:hover {
+			// 		color: #002050;
+			// 	}
+
+			// 	.registerButton {
+			// 		background-color: #0078d7;
+			// 		color: #fff;
+			// 		border-radius: 0;
+			// 		padding: 10px 30px;
+			// 		margin-top: 26px;
+			// 		margin-right: 5%;
+			// 	}
+			// }
+
+			// .eventTextMobile {
+			// 	display: none;
+			// }
 		}
 
 		.moreInfoLink {
