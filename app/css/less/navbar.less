@@ -5,6 +5,7 @@
     position: fixed;
     width: 100%;
     z-index: 100;
+    border-radius: 0px;
     
     .navbar-brand {
         color: #fff;
@@ -37,6 +38,13 @@
             a:focus {
                 color: #002050;
             }
+        }
+    }
+
+    @media all and (max-width: 392px) {
+        #microsoftLogo, 
+        #pipe {
+            display: none;
         }
     }
 }
