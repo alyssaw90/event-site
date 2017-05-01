@@ -270,46 +270,6 @@ main {
 					// margin-top: 80px;
 				}
 			}
-			// // display: block;
-			// height: 500px;
-			// width: 500px;
-			// // background-color: purple;
-			// background-repeat: no-repeat;
-			// background-size: cover;
-			// background-position: 80%;
-			// // position: relative;
-
-			// .eventText {
-			// 	background-color: #e6e6e6;
-			// 	height: 100px;
-
-			// 	a {
-			// 		margin-left: 4%;
-			// 		margin-top: 30px;
-			// 		color: #000;
-			// 		text-decoration: none;
-			// 		h2 {
-			// 			margin: 0;
-			// 		}
-			// 	}
-
-			// 	a:hover {
-			// 		color: #002050;
-			// 	}
-
-			// 	.registerButton {
-			// 		background-color: #0078d7;
-			// 		color: #fff;
-			// 		border-radius: 0;
-			// 		padding: 10px 30px;
-			// 		margin-top: 26px;
-			// 		margin-right: 5%;
-			// 	}
-			// }
-
-			// .eventTextMobile {
-			// 	display: none;
-			// }
 		}
 
 		.moreInfoLink {
@@ -333,64 +293,97 @@ main {
 			margin-top: 30px;
 		}
 
-		@media all and (min-width: 992px) and (max-width: 1199px) {
-			.upcomingEventBox {
-				height: 450px;
-				width: 450px;
-			}
-		}
-
 		@media all and (min-width: 768px) and (max-width: 991px) {
-			text-align: center;
-				
 			.upcomingEventBox {
-				margin: 0 auto;
-				width: 600px;
-				height: 600px;
+				height: 250px;
+
+				.eventPhoto {
+					height: 250px;
+					background-position: 60% 100%;
+				}
+
+				.eventInfo {
+					padding: 15px 10px 10px 20px;
+				}
 			}
-			
-			.upcomingEventBox:first-child {
-				margin-bottom: 30px;
+
+		}
+
+		@media all and (min-width: 600px) and (max-width: 767px) {
+			.upcomingEventBox {
+				height: 250px;
+
+				.eventPhoto {
+					height: 250px;
+					background-position: 60% 100%;
+				}
+
+				.eventInfo {
+					padding: 15px 10px 10px 20px;
+				}
 			}
 		}
 
-		@media all and (min-width: 480px) and (max-width: 767px){
-			text-align: center;
+		@media all and (min-width: 480px) and (max-width: 599px) {
 			.upcomingEventBox {
-				margin: 0 auto;
-				height: 400px;
-				width: 400px;
-				margin-bottom: 30px;
+				height: 200px;
+
+				.eventPhoto {
+					height: 200px;
+					background-position: 70% 100%;
+				}
+
+				.eventInfo {
+					padding: 0;
+					padding-left: 15px;
+
+					.eventText {
+						h2 {
+							font-size: 28px;
+						}
+
+						h4 {
+							font-size: 16px;
+						}
+					}
+
+					.eventRegistrationButton {
+						padding: 5px 20px;
+					}
+				}
 			}
 		}
 
 		@media all and (min-width: 320px) and (max-width: 479px) {
-			text-align: center;
 			.upcomingEventBox {
-				margin: 0 auto;
-				height: 250px;
-				width: 250px;
-				margin-bottom: 30px;
+				height: 150px;
 
-				.eventText {
+				.eventPhoto {
+					// height: 150px;
 					display: none;
 				}
 
-				.eventTextMobile {
-					display: block;
-					background-color: #e6e6e6;
-					height: 100px;
-					padding: 10px;
-					text-align: left;
-					.eventUrl {
-						color: #000;
+				.eventInfo {
+					padding: 0;
+					padding-top: 10px;
+					padding-left: 15px;
+					float: none;
+					width: 100%;
+
+					.eventText {
+						h2 {
+							font-size: 26px;
+							margin: 0;
+						}
+
 						h4 {
-							margin-top: 0;
+							font-size: 14px;
+							margin: 5px 0px;
 						}
 					}
 
-					.eventUrl:hover {
-						color: #002050;
+					.eventRegistrationButton {
+						padding: 5px 20px;
 					}
 				}
 			}
