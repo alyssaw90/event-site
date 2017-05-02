@@ -22,10 +22,12 @@ require('angular-ui-sortable');
 require('angular-bootstrap-confirm');
 require('angular-messages');
 require(`angular-password`);
+require('slick-carousel');
+require('angular-slick-carousel');
 // import * as adal from './shared/methods/adal.js';
 import * as AdalAngular from './shared/methods/adal-angular.js';
 
-const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize', 'angular-google-analytics', 'ngFileUpload', 'ngResource', 'ngCookies', 'base64', 'ngAnimate', 'ui.bootstrap', 'ui.tinymce', 'ui.sortable', 'mwl.confirm', 'ngMessages', `ngPassword`, 'AdalAngular']);
+const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize', 'angular-google-analytics', 'ngFileUpload', 'ngResource', 'ngCookies', 'base64', 'ngAnimate', 'ui.bootstrap', 'ui.tinymce', 'ui.sortable', 'mwl.confirm', 'ngMessages', `ngPassword`, 'AdalAngular', 'slickCarousel']);
 
 //directives
 require('./shared/directives/allPagesDirective.js')(eventsApp);
