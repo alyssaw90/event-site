@@ -25,6 +25,8 @@ const EventsCtrl = (app) => {
         $scope.headerImage = '/uploads/' + $scope.events.event.eventHeaderImage;
 
 		$scope.eventInformation = $sce.trustAsHtml($scope.event.eventAboutTabText)
+
+		console.log($scope.events.tabs);
 		
         
         //loop over html string for tabs and tell angular to trust it as html
