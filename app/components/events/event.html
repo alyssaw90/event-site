@@ -27,17 +27,14 @@
 			<section class="eventAgenda" data-ng-if="events.tabs.length > 0">
 				<div class="container">
 					<h2>Agenda</h2>
-					<ul class="tabs left">
+					<ul class="tabs">
 						<li data-ng-repeat="tab in events.tabs | orderBy: 'tabNumber'" id="{{addMainContentId($index)}}">
 							<a class="eventTabAnchor" target="_self" href="#{{urlify(tab.tabTitle)}}">
-								<h5>{{tab.tabTitle}}</h5>
+								<h3>{{tab.tabTitle}}</h3>
 							</a>
 						</li>
 					</ul>
 					<div data-ng-repeat="tab in events.tabs | orderBy: 'tabNumber'" id="{{urlify(tab.tabTitle)}}" class="tab-content clearfix eventTabDiv" data-ng-bind-html="tab.tabContent" ></div>
-					<!--<div class="eventAgendaText" data-ng-bind-html="events.event.eventAgenda">
-						{{events.event.eventAgenda}}
-					</div>-->
 				</div>
 			</section>
 			<section class="eventHackathon" data-ng-if="events.event.eventHackathon">
