@@ -9,7 +9,7 @@ const HomepageCtrl = (app) => {
 
 		 $scope.miniGalleryResponsive = [
 			{
-				breakpoint: 1024,
+				breakpoint: 1046,
 				settings: {
 					slidesToShow: 4,
 					slidesToScroll: 1
