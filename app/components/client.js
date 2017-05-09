@@ -129,7 +129,7 @@ eventsApp
 		reloadOnSearch: false,
 		requireADLogin: false,
 		data: {
-      		pageTitle: 'Home Page - Microsoft Plugfests and Events'
+      		pageTitle: 'Home Page - Interop Dev Events'
     	}
 	})
 	/*These 3 redirect routes take care of 404 errors cause by angular stripping the hash from routes even when they're meant for in page navigation*/
@@ -147,24 +147,24 @@ eventsApp
     	reloadOnSearch: false,
 		requireADLogin: false,
 		data: {
-     		pageTitle: 'About Us Page - Microsoft Plugfests and Events'
+     		pageTitle: 'About Us Page - Interop Dev Events'
     	}
 	})
-	.when('/contactus', {
-		templateUrl: '/app/components/contactUs/contactUs.html',
-		reloadOnSearch: false,
-		requireADLogin: false,
-		data: {
-      pageTitle: 'Contact Us Page - Microsoft Plugfests and Events'
-    }
+	// .when('/contactus', {
+	// 	templateUrl: '/app/components/contactUs/contactUs.html',
+	// 	reloadOnSearch: false,
+	// 	requireADLogin: false,
+	// 	data: {
+    //   pageTitle: 'Contact Us Page - Microsoft Plugfests and Events'
+    // }
 
-	})
+	// })
 	.when('/faq', {
 		templateUrl: '/app/components/faq/faq.html',
 		reloadOnSearch: false,
 		requireADLogin: false,
 		data: {
-      pageTitle: 'Frequently Asked Questions Page - Microsoft Plugfests and Events'
+      pageTitle: 'Frequently Asked Questions Page - Interop Dev Events'
     }
 	})
 	.when('/support', {
@@ -172,25 +172,25 @@ eventsApp
 		reloadOnSearch: false,
 		requireADLogin: false,
 		data: {
-			pageTitle: 'Support Page - Microsoft Plugfests and Events'
+			pageTitle: 'Support Page - Interop Dev Events'
 		}
 	})
-	.when('/past-events', {
-		templateUrl: '/app/components/pastEvents/pastEvents.html',
-		reloadOnSearch: false,
-		controller: 'PastEventsCtrl',
-		requireADLogin: false,
-		data: {
-      pageTitle: 'Past Events Page - Microsoft Plugfests and Events'
-    }
-	})
+	// .when('/past-events', {
+	// 	templateUrl: '/app/components/pastEvents/pastEvents.html',
+	// 	reloadOnSearch: false,
+	// 	controller: 'PastEventsCtrl',
+	// 	requireADLogin: false,
+	// 	data: {
+    //   pageTitle: 'Past Events Page - Microsoft Plugfests and Events'
+    // }
+	// })
 	.when('/meet-the-team', {
 		templateUrl: '/app/components/meetTheTeam/meetTheTeam.html',
 		reloadOnSearch: false,
 		controller: 'MeetTheTeamCtrl',
 		requireADLogin: false,
 		data: {
-      pageTitle: 'Meet the Team Page - Microsoft Plugfests and Events'
+      pageTitle: 'Meet the Team Page - Interop Dev Events'
     }
 	})
 	.when('/future-events', {
@@ -199,7 +199,7 @@ eventsApp
 		controller: 'FutureEventsCtrl',
 		requireADLogin: false,
 		data: {
-      pageTitle: 'Future Events Page - Microsoft Plugfests and Events'
+      pageTitle: 'Upcoming and Past Events Page - Interop Dev Events'
     }
 	})
 	.when('/latest-news', {
@@ -208,7 +208,7 @@ eventsApp
 		controller: 'LatestNewsCtrl',
 		requireADLogin: false,
 		data: {
-      pageTitle: 'Latest Page - Microsoft Plugfests and Events'
+      pageTitle: 'Latest News Page - Interop Dev Events'
     }
 	})
 	.when('/admin/slideshow', {
