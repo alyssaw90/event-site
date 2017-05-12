@@ -16,8 +16,8 @@
 				</a>-->
 				<div class="eventBox" data-ng-style="{'background-image': 'url(/uploads/{{event.eventHeaderImage}})'}">
                 	<div class="eventText">
-                    	<a class="eventUrl" href="/{{event.eventUrl}}"><h4>{{event.eventName}}</h4></a>
-                        <a data-ng-if="event.eventRegistrationLink" class="eventRegistrationLink" data-ng-href="{{event.eventRegistrationLink}}">Register</a>
+                    	<a class="eventUrl" href="/{{event.eventUrl}}" title="Navigate to {{event.eventName}} event page" aria-label="{{event.eventName}}"><h4>{{event.eventName}}</h4></a>
+                        <a data-ng-if="event.eventRegistrationLink" class="eventRegistrationLink" data-ng-href="{{event.eventRegistrationLink}}" title="Navigate to registration page">Register</a>
                 	</div>
                 </div>
 			</div>
