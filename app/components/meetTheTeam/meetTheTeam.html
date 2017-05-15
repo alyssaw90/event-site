@@ -1,5 +1,5 @@
 <main role="presentation" id="beginningOfContent" class="clearfix ng-cloak" data-ng-controller="MeetTheTeamCtrl" data-ng-init="getTeamMembers()">
-	<section class="teamSection container">
+	<section class="teamSection container" role="presentation">
 		<h1>Meet The Team</h1>
 		<div class="col-md-4" id="laptop" data-ng-repeat="(index, value) in teamMembers">
     		<img alt="Image of {{value.fullName}}" data-ng-src="{{value.headShot}}" class="teamMemberHeadshot"/>
