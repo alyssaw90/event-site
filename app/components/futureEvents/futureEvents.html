@@ -1,12 +1,12 @@
 <main class="ng-cloak" aria-role="presentation">
-	<section class="eventsBanner">
+	<section class="eventsBanner" aria-role="presentation">
 		<div class="gradient">
 			<div class="container">
 				<h1>Upcoming and Past Events</h1>
 			</div>
 		</div>
 	</section>
-	<section class="events container" data-ng-controller="FutureEventsCtrl" data-ng-init="getUpcomingEvents()">
+	<section class="events container" data-ng-controller="FutureEventsCtrl" data-ng-init="getUpcomingEvents()" aria-role="presentation">
 		<h1>Upcoming Events</h1>
 		<div class="row eventBoxRow">
 			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" data-ng-repeat="event in upcomingEvents">
