@@ -1,7 +1,7 @@
 
-a:focus:not(:hover),/* h1:focus:not(:hover), h2:focus:not(:hover), h3:focus:not(:hover), h4:focus:not(:hover), h5:focus:not(:hover), h6:focus:not(:hover), p:focus:not(:hover),*/ iframe:focus:not(:hover), .tabs > li > a:not(.homepageHeaderAnchor):focus:not(:hover), th:focus:not(:hover), td:focus:not(:hover), li:focus:not(:hover), nav:focus:not(:hover), .carousel-img:focus:not(:hover), div:focus:not(:hover) {
+a:focus:not(:hover),/* h1:focus:not(:hover), h2:focus:not(:hover), h3:focus:not(:hover), h4:focus:not(:hover), h5:focus:not(:hover), h6:focus:not(:hover), p:focus:not(:hover),*/ iframe:focus:not(:hover), .tabs > li > a:not(.homepageHeaderAnchor):focus:not(:hover), th:focus:not(:hover), td:focus:not(:hover), li:focus:not(:hover), nav:focus:not(:hover), .carousel-img:focus:not(:hover), div:focus:not(:hover), button:focus:not(:hover) {
  	box-shadow: 0 0 7px #6DB9FF;
-	border: 3px solid #50B1FE;
+	border: 3px solid #50B1FE !important;
 }
 
 /*
@@ -73,34 +73,64 @@ div:focus {
 
 @media screen and (-ms-high-contrast: active) {
   /* All high contrast styling rules */
-  .lightBlueBackground {
-		border-top: dashed !important;
-		border-bottom: dashed !important;
-		border-right: dashed !important;
-		border-left: dashed !important;
-		border-width: 3px;
-	}
+	 main {
+		 .banner {
+			background-image: url('img/Paris2016-bw.jpg') !important;
+			.gradient {
+				background: none;
+				h1, h3 {
+					background-color: #000;
+					// width: 400px;
+				}
+			}
+		 }
+		 .eventsBanner {
+			 background-image: url('img/Paris2016-2-bw.jpg');
+			 .gradient {
+				 background: none;
+				 h1 {
+					 background-color: #000;
+				 }
+			 }
+		 }
 
-		.lightGreenBackground {
-	  border-width: 3px;
-	  border-top: dotted !important;
-	  border-bottom: dotted !important;
-	  border-right: dotted !important;
-	  border-left: dotted !important;
-
-	}
-	
-	.lightOrangeBackground {
-	  border-top: double !important;
-	  border-bottom: double !important;
-	  border-right: double !important;
-	  border-left: double !important;
-	  border-width: 3px;
-	}
-
- 	#emailIcon {
- 	  outline-style: solid !important;
- 	  outline-color: #fff !important;
- 	}
+		 .eventBanner {
+			 .gradient {
+				 background: none;
+			 }
+		 }
+	 }
 
 }
+
+@media screen and (-ms-high-contrast: black-on-white) {
+	main {
+		.banner {
+			.gradient {
+				h1, h3 {
+					background-color: #fff;
+				}
+			}
+		}
+		.eventsBanner {
+			.gradient {
+				h1, h3 {
+					background-color: #fff;
+				}
+			}
+		}
+	}
+
+	header {
+		.navbar {
+			.container {
+				.navbar-header {
+					.navbar-brand:link {
+						background-color: #000;
+					}
+				}
+			}
+		}
+	}
+}
+	

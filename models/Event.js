@@ -1,3 +1,4 @@
+// Event Model
 'use strict';
 
 module.exports = (sql, DataTypes) => {
@@ -7,8 +8,8 @@ module.exports = (sql, DataTypes) => {
       type: DataTypes.STRING,
       required: true
     },
-    isPublished: DataTypes.BOOLEAN,
-    showOnHeader: DataTypes.BOOLEAN,
+    isPublished: DataTypes.BOOLEAN, // is event published or a draft
+    showOnHeader: DataTypes.BOOLEAN, // show on colored bar or find event page
     lastModifiedBy: DataTypes.STRING,
     eventRegistrationLink: DataTypes.STRING, //link to registration for event
     eventUrl: {
@@ -39,7 +40,16 @@ module.exports = (sql, DataTypes) => {
     eventVenueAddress: DataTypes.STRING,
     eventParkingInfo: DataTypes.TEXT,
     eventVenueImg: DataTypes.STRING,
-    eventLanguage: DataTypes.STRING
+    eventLanguage: DataTypes.STRING,
+    eventAccommodations: DataTypes.STRING,
+    eventHackathon: DataTypes.STRING,
+    eventIOLab: DataTypes.STRING,
+    eventWorkshop: DataTypes.STRING,
+    eventAgenda: DataTypes.STRING,
+    eventAccommodationImg: DataTypes.STRING,
+    eventHackathonImg: DataTypes.STRING,
+    eventWorkshopImg: DataTypes.STRING,
+    eventIOLabImg: DataTypes.STRING
   },
   {
     hasTrigger: true,

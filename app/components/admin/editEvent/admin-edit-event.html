@@ -1,6 +1,21 @@
 
 <div class="mobileWrapper ng-cloak" role="presentation" data-ng-controller="AdminCreateEventCtrl" data-ng-init="getEvents(); getAllSpeakers()" >
   <main style="overflow:hidden;" id="beginningOfContent" tabindex="0" ng-controller="AdminPageCtrl" class="container">
+	  <div class="container admin-header-container" role="presentation">
+	<div class="row" role="presentation">
+		<div class="col-lg-24" role="presentation" ng-controller="AdminHeaderCtrl">
+			<ul class="nav nav-tabs nav-justified" admin-header-directive>
+			  <li role="presentation"><a href="/admin/edit-event">Events</a></li>
+			  <li role="presentation"><a href="/admin/edit-speaker">Speakers</a></li>
+			  <li role="presentation"><a href="/admin/slideshow">Slideshow</a></li>
+			  <li role="presentation"><a href="/admin/edit-files">Uploads</a></li>
+			  <li role="presentation" data-ng-if="showAccountButton"><a href="/admin/account">Account</a></li>
+			  <li role="presentation"><a href="/admin/help">Help</a></li>
+			  <li role="presentation" ng-controller="UserLoggingCtrl"><a href="#" ng-click="logout()">Logout</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
 		<div id="edit-menu-options" class="btn-group edit-section row" role="group" aria-label="edit tab buttons" style="display: none;">
 			<div role="presentation" class="col-lg-24">
 				<h2 class="text-align-center">{{editedEvent.event.eventName}}</h2>
@@ -193,6 +208,10 @@
 	    	</div>
 	    	<br><br>
 				<input class="col_12" type="hidden" name="country" data-ng-model="editedEvent.event.id">
+				<div class="form-group">
+					<label for="lastModifiedBy">Modified By</label>
+					<input type="radio" class="form-control" data-ng-model="editedEvent.event.lastModifiedBy" name="lastModifiedBy" ng-value="userInfo.userName" data-ng-required="true">{{userInfo.userName}}
+				</div>
 	    	<div role="presentation" class="form-group">
 					<label for="editedEventName">Event Name*</label>
 					<input class="form-control" type="text" data-ng-model="editedEvent.event.eventName" name="editedEventName" id="editedEventName" autocomplete="off" required>
@@ -290,12 +309,16 @@
 	      	</textarea>	      	
 				</div>
 				<div class="form-group" role="presentation">
+					<label for="editedEventAgenda">Event Agenda</label>
+					<textarea name="editedEventAgenda" class="form-control" data-ng-model="editedEvent.event.eventAgenda" data-ui-tinymce="tinymceOptions"></textarea>
+				</div>
+				<div class="form-group" role="presentation">
 		    	<label for="editedEventVenueName">Venue Name</label>
 					<input class="form-control" type="text" data-ng-model="editedEvent.event.eventVenueName" name="editedEventVenueName" id="editedEventVenueName" autocomplete="off">
 				</div>
 				<div class="form-group" role="presentation">
 					<label for="editedVenduAddressLine1">Address</label>
-					<input class="form-control" type="text" data-ng-model="editedEvent.event.eventVenueAddressLine1" name="editedVenduAddressLine1" id="editedVenduAddressLine1" autocomplete="off" admin-city-name-auto-complete-directive>
+					<input class="form-control" type="text" data-ng-model="editedEvent.event.eventVenueAddress" name="editedVenueAddress" id="editedVenueAddressLine1" admin-city-name-auto-complete-directive>
 				</div>
 				<div class="form-group" role="presentation">
 					<label for="editedVenueParkingInfo">Parking Information</label>
@@ -313,6 +336,71 @@
 		  		{{errorMsg}}
 				</div>
 				<img ng-src="/{{venueImage}}">
+				<div class="form-group">
+					<label for="editedEventAccommodations">Accommodations</label>
+					<textarea class="form-control" data-ng-model="editedEvent.event.eventAccommodations" name="editedEventAccommodations" style="min-height: 200px"
+					data-ui-tinymce="tinymceOptions"></textarea>
+				</div>
+				<div data-ng-controller="AdminPageCtrl">
+					<button name="hotelPhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventAccommodationImg')">Select Accommodation Image</button>
+					<br><br>
+		  		<div style="font:smaller">{{eventAccommodationImg.path}} {{eventAccommodationImg.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+		  		    <span class="progress" ng-show="eventAccommodationImg.progress >= 0">
+		  		        <div style="width:{{eventAccommodationImg.progress}}%"  
+		  		             ng-bind="eventAccommodationImg.progress + '%'"></div>
+		  		    </span>
+		  		</div>     
+		  		{{errorMsg}}
+				</div>
+				<img ng-src="/{{accommodationImage}}">
+				<div class="form-group">
+					<label for="editedEventHackathon">Hackathon</label>
+					<textarea name="editedEventHackathon" class="form-control" data-ng-model="editedEvent.event.eventHackathon" data-ui-tinymce="tinymceOptions"></textarea>
+				</div>
+				<div data-ng-controller="AdminPageCtrl">
+					<button name="hackathonPhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventHackathonImg')">Select Hackathon Image</button>
+					<br><br>
+		  		<div style="font:smaller">{{eventHackathonImg.path}} {{eventHackathonImg.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+		  		    <span class="progress" ng-show="eventHackathonImg.progress >= 0">
+		  		        <div style="width:{{eventHackathonImg.progress}}%"  
+		  		             ng-bind="eventHackathonImg.progress + '%'"></div>
+		  		    </span>
+		  		</div>     
+		  		{{errorMsg}}
+				</div>
+				<img ng-src="/{{hackathonImage}}">
+				<div class="form-group">
+					<label for="editedEventIOLab">I/O Lab</label>
+					<textarea name="editedEventIOLab" class="form-control" data-ng-model="editedEvent.event.eventIOLab" data-ui-tinymce="tinymceOptions"></textarea>
+				</div>
+				<div data-ng-controller="AdminPageCtrl">
+					<button name="ioLabPhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventIOLabImg')">Select I/O Lab Image</button>
+					<br><br>
+		  		<div style="font:smaller">{{eventIOLabImg.path}} {{eventIOLabImg.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+		  		    <span class="progress" ng-show="eventIOLabImg.progress >= 0">
+		  		        <div style="width:{{eventIOLabImg.progress}}%"  
+		  		             ng-bind="eventIOLabImg.progress + '%'"></div>
+		  		    </span>
+		  		</div>     
+		  		{{errorMsg}}
+				</div>
+				<img ng-src="/{{ioLabImage}}">
+				<div class="form-group">
+					<label for="editedEventWorkshop">Workshop</label>
+					<textarea name="editedEventWorkshop" class="form-control" data-ng-model="editedEvent.event.eventWorkshop" data-ui-tinymce="tinymceOptions"></textarea>
+				</div>
+				<div data-ng-controller="AdminPageCtrl">
+					<button name="workshopPhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventWorkshopImg')">Select Workshop Image</button>
+					<br><br>
+		  		<div style="font:smaller">{{eventWorkshopImg.path}} {{eventWorkshopImg.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+		  		    <span class="progress" ng-show="eventWorkshopImg.progress >= 0">
+		  		        <div style="width:{{eventWorkshopImg.progress}}%"  
+		  		             ng-bind="eventWorkshopImg.progress + '%'"></div>
+		  		    </span>
+		  		</div>     
+		  		{{errorMsg}}
+				</div>
+				<img ng-src="/{{workshopImage}}">
     		<button type="button" class="btn form-button" ng-click="showElem('#main-edit-section', '.edit-section'); cancelEditing()" id="cancel-edited-event-button">Cancel</button>				
 				<button type="submit" class="btn btn-primary form-button" id="save-edited-event-as-draft-button" data-ng-click="editEventForm.$valid && editEvent(editedEvent, false); showElem('#main-edit-section', '.edit-section');">Revert to Draft</button>
 				<button type="submit" class="btn btn-green form-button" id="save-edited-event-button" data-ng-click="editEventForm.$valid && editEvent(editedEvent, true); showElem('#main-edit-section', '.edit-section');">Publish Now</button>

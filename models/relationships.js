@@ -1,3 +1,5 @@
+// Creates relationships between newly created placeholder tables
+
 'use strict';
 
 const models = require('./index');

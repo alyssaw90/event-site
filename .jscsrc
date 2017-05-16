@@ -17,6 +17,7 @@
     "requireCapitalizedConstructors": true,
     "requireDotNotation": true,
     "disallowMultipleLineStrings": false,
+    "requireUseStrict": true,
     "requireCurlyBraces": [
         "do"
     ],

@@ -1,7 +1,22 @@
 
 <div class="mobileWrapper ng-cloak" role="presentation" >
   <main style="overflow:hidden;" id="beginningOfContent" tabindex="0" class="container white-bg clearfix" data-ng-controller="CreateSpeakerCtrl">
-    <div class="row" role="presentation">
+	<div class="container admin-header-container" role="presentation">
+	<div class="row" role="presentation">
+		<div class="col-lg-24" role="presentation" ng-controller="AdminHeaderCtrl">
+			<ul class="nav nav-tabs nav-justified" admin-header-directive>
+			  <li role="presentation"><a href="/admin/edit-event">Events</a></li>
+			  <li role="presentation"><a href="/admin/edit-speaker">Speakers</a></li>
+			  <li role="presentation"><a href="/admin/slideshow">Slideshow</a></li>
+			  <li role="presentation"><a href="/admin/edit-files">Uploads</a></li>
+			  <li role="presentation" data-ng-if="showAccountButton"><a href="/admin/account">Account</a></li>
+			  <li role="presentation"><a href="/admin/help">Help</a></li>
+			  <li role="presentation" ng-controller="UserLoggingCtrl"><a href="#" ng-click="logout()">Logout</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+	<div class="row" role="presentation">
     	<div class="col-lg-24">
    			<h3>New Speaker</h3>
     	</div>
@@ -67,6 +82,10 @@
 					<textarea class="col-lg-24 form-control" data-ng-model="newSpeaker.newSpeakerDescription" name="newSpeakerDescription" style="min-height: 200px" data-ng-required="required" 
 					data-ui-tinymce="tinymceOptions">
 	      	</textarea>
+				</div>
+				<div class="form-group">
+					<label for="lastModifiedBy">Modified By</label>
+					<input type="radio" class="form-control" data-ng-model="newSpeaker.lastModifiedBy" name="lastModifiedBy" ng-value="userInfo.userName" data-ng-required="true">{{userInfo.userName}}
 				</div>
 				<button type="button" class="medium float-left" style="margin: 5px" id="cancel-new-event-button" data-ng-click="cancelNewSpeaker();">Cancel</button>
 				<button type="submit" class="medium float-left btn-primary" style="margin: 5px" id="save-new-event-as-draft-button"  data-ng-click="createNewSpeaker(newSpeaker, false);">Save as Draft</button>

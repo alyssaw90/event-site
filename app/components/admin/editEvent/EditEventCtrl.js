@@ -16,6 +16,11 @@ const EditEventCtrl = (app) => {
     $scope.newTab = {};
     $scope.headerImage = $rootScope.eventHeaderImage ? 'uploads/' + $rootScope.eventHeaderImage.size + '-' + $rootScope.eventHeaderImage.name : '';
     $scope.venueImage = $rootScope.eventVenueImg ? 'uploads/' + $rootScope.eventVenueImg.size + '-' + $rootScope.eventVenueImg.name : '';
+    $scope.accommodationImage = $rootScope.eventAccommodationImg ? 'uploads/' + $rootScope.eventAccommodationImg.size + '-' + $rootScope.eventAccommodationImg.name : '';
+    $scope.hackathonImage = $rootScope.eventHackathonImg ? 'uploads/' + $rootScope.eventHackathonImg.size + '-' + $rootScope.eventHackathonImg.name : '';
+    $scope.workshopImage = $rootScope.eventWorkshopImg ? 'uploads/' + $rootScope.eventWorkshopImg.size + '-' + $rootScope.eventWorkshopImg.name : '';
+    $scope.ioLabImage = $rootScope.eventIOLabImg ? 'uploads/' + $rootScope.eventIOLabImg.size + '-' + $rootScope.eventIOLabImg.name : '';
+    //DO THIS ^^^
     $scope.buttonStyle = { 'width': 'auto' };
     $scope.currentEventUrl;
 
@@ -58,6 +63,18 @@ const EditEventCtrl = (app) => {
     $rootScope.$watch('eventVenueImg', (oldVal, newVal) => {
       $scope.venueImage = $rootScope.eventVenueImg ? 'uploads/' + $rootScope.eventVenueImg.size + '-' + $rootScope.eventVenueImg.name : '';
     });
+    $rootScope.$watch('eventAccommodationImg', (oldVal, newVal) => {
+      $scope.accommodationImage = $rootScope.eventAccommodationImg ? 'uploads/' + $rootScope.eventAccommodationImg.size + '-' + $rootScope.eventAccommodationImg.name : '';
+    });
+    $rootScope.$watch('eventHackathonImg', (oldVal, newVal) => {
+      $scope.hackathonImage = $rootScope.eventHackathonImg ? 'uploads/' + $rootScope.eventHackathonImg.size + '-' + $rootScope.eventHackathonImg.name : '';
+    });
+    $rootScope.$watch('eventWorkshopImg', (oldVal, newVal) => {
+      $scope.workshopImage = $rootScope.eventWorkshopImg ? 'uploads/' + $rootScope.eventWorkshopImg.size + '-' + $rootScope.eventWorkshopImg.name : '';
+    });
+    $rootScope.$watch('eventIOLabImg', (oldVal, newVal) => {
+      $scope.ioLabImage = $rootScope.eventIOLabImg ? 'uploads/' + $rootScope.eventIOLabImg.size + '-' + $rootScope.eventIOLabImg.name : '';
+    });
 
     $scope.showElem = (elemToShow, elemsToHide) => {
       jQuery(elemToShow).show();
@@ -73,8 +90,12 @@ const EditEventCtrl = (app) => {
           return $scope.errors.push({msg: 'no event found'});
         };
         $scope.editedEvent = data.data;
-        $scope.headerImage = 'uploads/' + $scope.editedEvent.eventHeaderImage;
-        $scope.venueImage = 'uploads/' + $scope.editedEvent.eventVenueImg;
+        $scope.headerImage = '/uploads/' + $scope.editedEvent.eventHeaderImage;
+        $scope.venueImage = '/uploads/' + $scope.editedEvent.eventVenueImg;
+        $scope.accommodationImage = '/uploads/' + $scope.editedEvent.eventAccommodationImg;
+        $scope.hackathonImage = '/uploads/' + $scope.editedEvent.eventHackathonImg;
+        $scope.ioLabImage = '/uploads/' + $scope.editedEvent.eventIOLabImg;
+        $scope.workshopImage = '/uploads/' + $scope.editedEvent.eventWorkshopImg;
         //loop over html string for tabs and tell angular to trust it as html
         for (let i = 0, len = $scope.editedEvent.tabs.length; i < len; i++) {
           $scope.editedEvent.tabs[i].tabContent = $sce.trustAsHtml($scope.editedEvent.tabs[i].tabContent);
@@ -96,6 +117,11 @@ const EditEventCtrl = (app) => {
         $scope.endDate = $filter('date')($scope.editedEvent.event.eventEndDate, 'yyyy-MM-dd');
         $scope.editedEvent.event.eventStartDate = new Date( $scope.editedEvent.event.eventStartDate );
         $scope.editedEvent.event.eventEndDate = new Date($scope.editedEvent.event.eventEndDate);
+        $scope.editedEvent.event.eventAccommodations = data.data.event.eventAccommodations;
+        $scope.editedEvent.event.eventHackathon = data.data.event.eventHackathon;
+        $scope.editedEvent.event.eventIOLab = data.data.event.eventIOLab;
+        $scope.editedEvent.event.eventWorkshop = data.data.event.eventWorkshop;
+        $scope.editedEvent.event.eventVenueAddress = data.data.event.eventVenueAddress;
         //assign id to use in associating new tabs
         $scope.newTab.eventId =  $scope.editedEvent.event.id;
         $scope.currentEventUrl = data.data.event.eventUrl;
@@ -121,6 +147,18 @@ const EditEventCtrl = (app) => {
       if ($rootScope.eventVenueImg) {
         newEventData.event.eventVenueImg = $rootScope.eventVenueImg.name ? $rootScope.eventVenueImg.size + '-' + $rootScope.eventVenueImg.name : '';
       }
+      if ($rootScope.eventAccommodationImg) {
+        newEventData.event.eventAccommodationImg = $rootScope.eventAccommodationImg.name ? $rootScope.eventAccommodationImg.size + '-' + $rootScope.eventAccommodationImg.name : '';
+      }
+      if ($rootScope.eventWorkshopImg) {
+        newEventData.event.eventWorkshopImg = $rootScope.eventWorkshopImg.name ? $rootScope.eventWorkshopImg.size + '-' + $rootScope.eventWorkshopImg.name : '';
+      }
+      if ($rootScope.eventHackathonImg) {
+        newEventData.event.eventHackathonImg = $rootScope.eventHackathonImg.name ? $rootScope.eventHackathonImg.size + '-' + $rootScope.eventHackathonImg.name : '';
+      }
+      if ($rootScope.eventIOLabImg) {
+        newEventData.event.eventIOLabImg = $rootScope.eventIOLabImg.name ? $rootScope.eventIOLabImg.size + '-' + $rootScope.eventIOLabImg.name : '';
+      }
       newEventData.event.isPublished = publishStatus;
       EditEventData.editEvent(newEventData, (err, data) => {
         if (err) {
@@ -137,6 +175,11 @@ const EditEventCtrl = (app) => {
           $scope.editedEvent = {};
           $rootScope.eventHeaderImage = undefined;
           $rootScope.eventVenueImg = undefined;
+          $rootScope.eventAccommodationImg = undefined;
+          $rootScope.eventHackathonImg = undefined;
+          $rootScope.eventWorkshopImg = undefined;
+          $rootScope.eventIOLabImg = undefined;          
+
           swal({
             title: 'Event Published',
             type: 'success',
