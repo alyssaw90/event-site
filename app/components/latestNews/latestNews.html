@@ -3,14 +3,17 @@
   <main class="container ng-cloak" role="presentation" data-ng-controller="LatestNewsCtrl">
     <section class="row" role="presentation">
         <h1 align="center">News</h1>
-        <div class="col-md-8" data-ng-init="getBlogPosts()">
-            <h3>Latest Interoperability News</h3>
+          <h3>Latest Interoperability News</h3>
+          <div class="col-md-8">
+            <h4><a href="https://blogs.msdn.microsoft.com/officeinteroperability/">Office Interoperability Blog</a></h4>
+          </div>
+          <!--<div class="col-md-8" data-ng-init="getBlogPosts()">
           <div class="blog-post" data-ng-repeat="post in blogPosts.Items | limitTo: 9">
             <h4 role="presentation"><a data-ng-href="{{post.Link}}"> {{post.Title !== '' ? post.Title : 'Title Missing';}}</a></h4>
             <p class="date">{{getDate(post.PublishDate)}}</p>
             <p>{{post.MobileContent.substring(0, post.MobileContent.indexOf('Read more') > -1 ? post.MobileContent.indexOf('Read more') : 250)}}</p>
           </div>
-        </div>
+        </div>-->
         <div aria-label="open specifications on twitter" class="col-md-4">
             <a  class="twitter-timeline" 
             data-chrome="noborders transparent nofooter"
