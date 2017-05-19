@@ -1,0 +1,55 @@
+.navbar-default {
+    border:none;
+    background-color:#0078D7;
+    margin-bottom: 0;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    border-radius: 0px;
+    
+    .navbar-brand {
+        color: #fff;
+        font-family: 'Segoe UI SemiBold';
+    }
+
+    #microsoftLogo {
+        // padding-right: 0px;
+        padding: 1px;
+        img {
+            height: 50px;
+        }
+    }
+
+    #pipe {
+        margin: 0;
+        padding-left: 0px; 
+    }
+
+    .navbar-brand:focus {
+        color: #002050;
+    }
+
+    #pipe {
+        pointer-events: none;
+    }
+
+    .navbar-nav {
+        li{
+            a {
+                font-size: 18px;
+                color: #fff;
+                font-family: 'Segoe UI SemiBold';
+            }
+            a:focus {
+                color: #002050;
+            }
+        }
+    }
+
+    @media all and (max-width: 392px) {
+        #microsoftLogo, 
+        #pipe {
+            display: none;
+        }
+    }
+}

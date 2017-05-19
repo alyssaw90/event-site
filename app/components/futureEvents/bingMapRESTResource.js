@@ -1,3 +1,5 @@
+// calls REST API for bing map
+
 'use strict';
 
 import * as customFunctions from '../shared/methods/common-functions.js';

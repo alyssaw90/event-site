@@ -1,262 +1,521 @@
-/*---------------------------------
-	TABS
------------------------------------*/
-ul.tabs{
-	margin:10px 0 -1px 0;
-	padding:0;
-	width:100%;
-	border-bottom:1px solid #e5e5e5;
-	float:left;
-	font-size:0;
-}
+.eventContent {
 
-ul.tabs.left {
-	text-align:left;
-}
-ul.tabs.center {
-	text-align:center;
-}
-ul.tabs.right {
-	text-align:right;
-}
-ul.tabs.right li {
-	margin:0 0 0 -2px;
-}
+	.eventBanner {
+		// height: 500px;
+		// overflow: hidden;
+		// img {
+		// 	width: 100%;
+		// 	position: relative;
+		// 	// top: -200px;
+		// }
+		// .gradient {
+		// 	position: absolute;
+		// 	top: 0;
+		// 	height: 500px;
+		// 	width: 100%;
+		// 	background: linear-gradient(to right, black, transparent);
+		// 	.bannerText {
+		// 		color: white;
+		// 		display: flex;
+		// 		align-items: center;
+		// 		height: 500px;
+		// 		.container{
+		// 			h1 {
+		// 				font-size: 50px;
+		// 				font-family: 'Segoe UI SemiLight';
+		// 			}
+		// 			h4 {
+		// 				font-size: 24px;
+		// 				font-family: 'Segoe UI SemiLight';
+		// 			}
+		// 			.eventRegistrationButton {
+		// 				background-color: #0078d7;
+		// 				color: #fff;
+		// 				border-radius: 0;
+		// 				padding: 10px 30px;
+		// 				top: 35%;
+		// 			}
+		// 		}
+		// 	}
+		// }
 
-ul.tabs li{
-	font-size:14px;
-	list-style-type:none;
-	margin:0 -2px 0 0;
-	padding:0;
-	display:inline-block;
-	*display:inline;/*IE ONLY*/
-	position:relative;
-	top:0;
-	left:0;
-	*top:1px;/*IE 7 ONLY*/
-	zoom:1;
-}
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: 100% 30%;
+		height: 500px;
+		color: #fff;
 
-ul.tabs li a {
-	text-decoration:none;
-	color:#666;
-	display:inline-block;
-	padding:9px 15px;
-	position: relative;
-	top:0;
-	left:0;
-	line-height:100%;
-	background:#f5f5f5;
-	-webkit-box-shadow: inset 0 -3px 3px rgba(0,0,0,0.03);
-	-moz-box-shadow: inset 0 -3px 3px rgba(0,0,0,0.03);
-	box-shadow: inset 0 -3px 3px rgba(0,0,0,0.03);
-	border:1px solid #e5e5e5;
-	border-bottom:0;
-	font-size:0.9em;
-	zoom:1;
-}
+		.gradient {
+			height: 500px;
+			background: linear-gradient(to right, black, transparent);
 
-ul.tabs li a:hover {
-	background:#fff;
-}
+			.bannerText {
+				h1 {
+					font-size: 50px;
+					font-family: 'Segoe UI SemiLight';
+				}
 
-ul.tabs li.current a {
-	position:relative;
-	top:1px;
-	left:0;
-	background:#fff;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
-	color:#222;
-}
+				h4 {
+					font-size: 24px;
+					font-family: 'Segoe UI SemiLight';
+				}
+				margin-top: 15%;
+				.eventRegistrationButton {
+					background-color: #0078d7;
+					color: #fff;
+					border-radius: 0;
+					padding: 10px 30px;
+					top: 35%;
+				}
+			}
+		}
 
-	.tab-content{
-		border:1px solid #efefef;
-		border:1px solid #e5e5e5;
-		background:#fff;
-		clear:both;
-		padding:20px;
-		margin:0 0 40px 0;
 	}
-////////////////////////////////////////////
 
-.event-header {
-	text-align: center;
-	width: 100%;
-	display: block;
+	@media all and (min-width: 992px) and (max-width: 1199px) {
+		.eventBanner {
+			.gradient {
+				.bannerText {
+					margin-top: 17%;
+				}
+			}
+		}
+	}
+
+	@media all and (min-width: 768px) and (max-width: 991px) {
+		.eventBanner {
+			.gradient {
+				.bannerText {
+					margin-top: 23%;
+				}
+			}
+		}
+	} 
+	
+	@media all and (max-width:767px) {
+		.eventBanner {
+			.gradient {
+				.bannerText {
+					margin-top: 28%;
+					// text-align: center;
+				}
+			}
+		}
+	}
+
+	@media all and (min-width:480px) and (max-width: 579px) {
+		.eventBanner {
+			.gradient {
+				.bannerText {
+					margin-top: 35%;
+				}
+			}
+		}
+	}
+
+	@media all and (min-width: 320px) and (max-width: 479px) {
+		.eventBanner {
+			.gradient {
+				.bannerText {
+					margin-top: 40%;
+				}
+			}
+		}
+	}
+
+	.eventAgenda {
+		// /*---------------------------------
+		// 	TABS
+		// -----------------------------------*/
+		.tabs{
+			margin: 0;
+			padding:0;
+			width:100%;
+			
+			li {
+				list-style-type:none;
+				display:inline-block;
+				*display:inline;/*IE ONLY*/
+				zoom:1;
+
+				a {
+					text-decoration:none;
+					color:#000;
+					display:inline-block;
+					padding-right: 20px;
+					zoom:1;
+				}
+			}
+
+			.current {
+				a {
+					color:#000;
+
+					h3 {
+						font-family: 'Segoe UI SemiBold';
+					}
+				}
+			}
+		}
+		
+		.tab-content{
+			clear:both;
+			margin:25px 0 40px 0;
+		}
+		// ////////////////////////////////////////////
+	}
+
+	.venueInfo,
+	.eventAccommodations,
+	.eventHackathon,
+	.eventIOLab,
+	.eventWorkshop, 
+	.eventInfo, 
+	.eventAgenda {
+		p {
+			font-size: 18px;
+		}
+	}
+
+	.venueInfo,
+	.eventAccommodations,
+	.eventHackathon,
+	.eventIOLab,
+	.eventWorkshop {
+		.row {
+			margin-bottom: 40px
+		}
+
+		#venueImg,
+		#hotelImg,
+		#hackathonImg, 
+		#ioLabImg,
+		#workshopImg {
+			img {
+				width: 400px;
+				height: auto;
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
+	}
+	
+	section:nth-of-type(odd) {
+		background-color: #e6e6e6;
+	}
+
+	@media all and (min-width: 768px) and (max-width: 991px) {
+		.venueInfo,
+		.eventAccommodations,
+		.eventHackathon,
+		.eventIOLab,
+		.eventWorkshop {
+			#venueImg,
+			#hotelImg,
+			#ioLabImg,
+			#workshopImg,
+			#hackathonImg {
+				img {
+					width: 350px;
+				}
+			}
+		}
+	}
+
+	@media all and (min-width: 480px) and (max-width: 767px) {
+		h2 {
+			text-align: center;
+		}
+	}
+
+	@media all and (min-width: 320px) and (max-width: 479px) {
+		h2 {
+			text-align: center;
+		}
+
+		.venueInfo,
+		.eventAccommodations,
+		.eventHackathon,
+		.eventIOLab,
+		.eventWorkshop {
+			#venueImg,
+			#hotelImg,
+			#ioLabImg,
+			#workshopImg,
+			#hackathonImg {
+				img {
+					width: 280px;
+				}
+			}
+		}
+	}
 }
 
-.event-header img {
-	max-width: 100%;
-	margin-top: 1%;
-	margin-bottom: 1%;
-}
 
-.event-tabs {
-	max-width: 100%;
-}
 
-.event-tabs span {
-	font-size: 1em;
-}
 
-#taipei2016-chinese-curriculum img {
-	display: block;
-	margin-top: 20px;
-	margin-bottom: 20px;
-}
 
-#taipei2016-english-curriculum img {
-	display: block;
-	margin-top: 20px;
-	margin-bottom: 20px;
-}
 
-#taipei2016-chinese-curriculum figcaption {
-	font-weight: bold;
-}
+// /*---------------------------------
+// 	TABS
+// -----------------------------------*/
+// ul.tabs{
+// 	margin:10px 0 -1px 0;
+// 	padding:0;
+// 	width:100%;
+// 	border-bottom:1px solid #e5e5e5;
+// 	float:left;
+// 	font-size:0;
+// }
 
-#taipei2016-english-curriculum figcaption {
-	font-weight: bold;
-}
+// ul.tabs.left {
+// 	text-align:left;
+// }
+// ul.tabs.center {
+// 	text-align:center;
+// }
+// ul.tabs.right {
+// 	text-align:right;
+// }
+// ul.tabs.right li {
+// 	margin:0 0 0 -2px;
+// }
 
-#taipei2016-chinese-curriculum ol li {
-	font-size: 1.05em;
-}
+// ul.tabs li{
+// 	font-size:14px;
+// 	list-style-type:none;
+// 	margin:0 -2px 0 0;
+// 	padding:0;
+// 	display:inline-block;
+// 	*display:inline;/*IE ONLY*/
+// 	position:relative;
+// 	top:0;
+// 	left:0;
+// 	*top:1px;/*IE 7 ONLY*/
+// 	zoom:1;
+// }
 
-#taipei2016-english-curriculum ol li {
-	font-size: 1.05em;
-}
+// ul.tabs li a {
+// 	text-decoration:none;
+// 	color:#666;
+// 	display:inline-block;
+// 	padding:9px 15px;
+// 	position: relative;
+// 	top:0;
+// 	left:0;
+// 	line-height:100%;
+// 	background:#f5f5f5;
+// 	-webkit-box-shadow: inset 0 -3px 3px rgba(0,0,0,0.03);
+// 	-moz-box-shadow: inset 0 -3px 3px rgba(0,0,0,0.03);
+// 	box-shadow: inset 0 -3px 3px rgba(0,0,0,0.03);
+// 	border:1px solid #e5e5e5;
+// 	border-bottom:0;
+// 	font-size:0.9em;
+// 	zoom:1;
+// }
 
-#taipei2016-chinese-curriculum th {
-	text-align: left;
-}
+// ul.tabs li a:hover {
+// 	background:#fff;
+// }
 
-#taipei2016-english-curriculum th {
-	text-align: left;
-}
+// ul.tabs li.current a {
+// 	position:relative;
+// 	top:1px;
+// 	left:0;
+// 	background:#fff;
+// 	-webkit-box-shadow: none;
+// 	-moz-box-shadow: none;
+// 	box-shadow: none;
+// 	color:#222;
+// }
 
-.indentP p {
- text-indent: 50px;
-}
+// 	.tab-content{
+// 		border:1px solid #efefef;
+// 		border:1px solid #e5e5e5;
+// 		background:#fff;
+// 		clear:both;
+// 		padding:20px;
+// 		margin:0 0 40px 0;
+// 	}
+// ////////////////////////////////////////////
 
-#taipei2016-curriculum-welcome-cn {
-	min-height: 700px;
-}
+// .event-header {
+// 	text-align: center;
+// 	width: 100%;
+// 	display: block;
+// }
 
-#taipei2016-curricilum-welcome-en {
-	min-height: 700px;
-}
+// .event-header img {
+// 	max-width: 100%;
+// 	margin-top: 1%;
+// 	margin-bottom: 1%;
+// }
 
-.scheduleTable tr td:first-child {
-	width: 8%;
-}
+// .event-tabs {
+// 	max-width: 100%;
+// }
 
-.scheduleTable tr td:nth-child(3) {
-	width: 8%;
-}
+// .event-tabs span {
+// 	font-size: 1em;
+// }
 
-.scheduleTable tr td:nth-child(5) {
-	width: 8%;
-}
+// #taipei2016-chinese-curriculum img {
+// 	display: block;
+// 	margin-top: 20px;
+// 	margin-bottom: 20px;
+// }
 
-.scheduleTable th {
-	font-size: 1.5em;
-}
+// #taipei2016-english-curriculum img {
+// 	display: block;
+// 	margin-top: 20px;
+// 	margin-bottom: 20px;
+// }
 
-.scheduleTable td {
-	font-size: 1.2em;
-}
+// #taipei2016-chinese-curriculum figcaption {
+// 	font-weight: bold;
+// }
 
-.scheduleTableTextOnly th {
-	font-size: 1.5em;
-}
+// #taipei2016-english-curriculum figcaption {
+// 	font-weight: bold;
+// }
 
-.scheduleTableTextOnly td {
-	font-size: 1.2em;
-}
+// #taipei2016-chinese-curriculum ol li {
+// 	font-size: 1.05em;
+// }
 
-.redmond2016ScheduleTable  tr td:first-child {
-	width: 8%;
-}
+// #taipei2016-english-curriculum ol li {
+// 	font-size: 1.05em;
+// }
 
-.redmond2016ScheduleTable  tr td:nth-child(4) {
-	width: 8%;
-}
+// #taipei2016-chinese-curriculum th {
+// 	text-align: left;
+// }
 
-.redmond2016ScheduleTable  tr td:nth-child(6) {
-	width: 8%;
-}
+// #taipei2016-english-curriculum th {
+// 	text-align: left;
+// }
 
-.medGrayBackground {
-	background-color: #bfbfbf
-}
+// .indentP p {
+//  text-indent: 50px;
+// }
 
-.darkBlueBackground {
-	background-color: #0072c6;
-}
+// #taipei2016-curriculum-welcome-cn {
+// 	min-height: 700px;
+// }
 
-.lightGreenBackground {
-	background-color: #c6e0b4;
-}
+// #taipei2016-curricilum-welcome-en {
+// 	min-height: 700px;
+// }
 
-.lightBlueBackground {
-	background-color: #ddebf7;
-}
+// .scheduleTable tr td:first-child {
+// 	width: 8%;
+// }
 
-.lightOrangeBackground {
-	background-color: #ffc000;
-}
+// .scheduleTable tr td:nth-child(3) {
+// 	width: 8%;
+// }
 
-.lightPinkBackground {
-	background-color: #ff99ff;
-}
+// .scheduleTable tr td:nth-child(5) {
+// 	width: 8%;
+// }
 
-.lightYellowBackground {
-	background-color: #ffe699;
-}
+// .scheduleTable th {
+// 	font-size: 1.5em;
+// }
 
-.lightGrayBackground {
-	background-color: #d9d9d9;
-}
+// .scheduleTable td {
+// 	font-size: 1.2em;
+// }
 
-.lightOrangeBackground {
-	background-color: #fce4d6;
-}
+// .scheduleTableTextOnly th {
+// 	font-size: 1.5em;
+// }
 
-.medOrangeBackground {
-	background-color: #ffc000;
-}
+// .scheduleTableTextOnly td {
+// 	font-size: 1.2em;
+// }
 
-.tableWithVerticalLines {
-	border: solid 1px #000;
-}
+// .redmond2016ScheduleTable  tr td:first-child {
+// 	width: 8%;
+// }
 
-.tableWithVerticalLines td {
-	border-right: solid 1px #000; 
-	border-left: solid 1px #000;
-}
+// .redmond2016ScheduleTable  tr td:nth-child(4) {
+// 	width: 8%;
+// }
 
-.tableWithBorders td {
-	border: solid 1px #000;
-}
-.tableWithBorders:first-child(td) {
-	font-weight: bold;
-}
+// .redmond2016ScheduleTable  tr td:nth-child(6) {
+// 	width: 8%;
+// }
 
-.tableWithBorders tr {
-	border: solid 1px #000;
-}
+// .medGrayBackground {
+// 	background-color: #bfbfbf
+// }
 
-.tableFirstRowBold {
-	margin-top: 8px;
-}
+// .darkBlueBackground {
+// 	background-color: #0072c6;
+// }
 
-.blue-border {
-	border: 1px solid #337ab7;
-}
+// .lightGreenBackground {
+// 	background-color: #c6e0b4;
+// }
 
-.beijingRegistration2016Button {
-	height: 37px;
-}
+// .lightBlueBackground {
+// 	background-color: #ddebf7;
+// }
+
+// .lightOrangeBackground {
+// 	background-color: #ffc000;
+// }
+
+// .lightPinkBackground {
+// 	background-color: #ff99ff;
+// }
+
+// .lightYellowBackground {
+// 	background-color: #ffe699;
+// }
+
+// .lightGrayBackground {
+// 	background-color: #d9d9d9;
+// }
+
+// .lightOrangeBackground {
+// 	background-color: #fce4d6;
+// }
+
+// .medOrangeBackground {
+// 	background-color: #ffc000;
+// }
+
+// .tableWithVerticalLines {
+// 	border: solid 1px #000;
+// }
+
+// .tableWithVerticalLines td {
+// 	border-right: solid 1px #000; 
+// 	border-left: solid 1px #000;
+// }
+
+// .tableWithBorders td {
+// 	border: solid 1px #000;
+// }
+// .tableWithBorders:first-child(td) {
+// 	font-weight: bold;
+// }
+
+// .tableWithBorders tr {
+// 	border: solid 1px #000;
+// }
+
+// .tableFirstRowBold {
+// 	margin-top: 8px;
+// }
+
+// .blue-border {
+// 	border: 1px solid #337ab7;
+// }
+
+// .beijingRegistration2016Button {
+// 	height: 37px;
+// }

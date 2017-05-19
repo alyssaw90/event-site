@@ -12,41 +12,42 @@ const FutureEventsCtrl = (app) => {
 		$rootScope.latestDbChangeMadeTime = [];
 
 		let FutureEvents = resource();
+		// console.log(FutureEvents.getFutureEvents);
 
 		$scope.getUpcomingEvents = () => {
 			let imageCount = 0;
 
 			FutureEvents.getFutureEvents( (err, data) => {
+				// console.log(data.data)
         if (err) {
           return $scope.errors.push({msg: 'could not retrieve future events'});
         };
 				$scope.futureEvents = [];
+				$scope.upcomingEvents = data.data
 				$scope.slides = [];
 				let events = data.data
 
-        for (let i = 0, len = events.length; i < len; i++) {
-        	let testObj = {city: events[i].city, dates: events[i].eventDates};
-					if (events[i].eventHeaderImage) {
-						let tmpObj = {};
-						tmpObj.eventHeaderImage = '/uploads/' + events[i].eventHeaderImage;
-						tmpObj.eventUrl = events[i].eventUrl;
+        // for (let i = 0, len = events.length; i < len; i++) {
+        // 	let testObj = {city: events[i].city, dates: events[i].eventDates};
+		// 			if (events[i].eventHomepageImage) {
+		// 				let tmpObj = {};
+		// 				tmpObj.eventHomepageImage = '/uploads/' + events[i].eventHomepageImage;
+		// 				tmpObj.eventUrl = events[i].eventUrl;
 
-						imageCount++;
+		// 				imageCount++;
 
-						$scope.slides.push(tmpObj);
-					}
-					console.log(events[i].eventHeaderImage)
+		// 				$scope.slides.push(tmpObj);
+		// 			}
 
-					if (events[i].showOnHeader) {
-						$scope.futureEvents.push(events[i]);
-						testArr.push(testObj);
-					}
-				}
-				// console.log(data.data);
+		// 			if (events[i].showOnHeader) {
+		// 				$scope.futureEvents.push(events[i]);
+		// 				testArr.push(testObj);
+		// 			}
+		// 		}
 				// console.log($scope.futureEvents)
-				// console.log($scope.slides)
+				// console.log($scope.upcomingEvents)
         
-        $scope.imageCount = imageCount;
+        // $scope.imageCount = imageCount;
         // $scope.futureEvents = data;
       })		
 		};

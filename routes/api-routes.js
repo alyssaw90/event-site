@@ -1,3 +1,6 @@
+// API routes for consumer facing portion of the site and the admin portal
+// I would like to separate the routes into consumer facing routes file and admin portal routes file
+
 'use strict';
 /*global interests */
 /*global SpeakersSuggestedCity */
@@ -166,16 +169,20 @@ module.exports = (router) => {
         eventObj.headerEventDates = eventMonth ? eventMonth + ', ' + startYear : startYear;
         eventObj.startYear = startYear;
         eventObj.city = city;
+        eventObj.eventLocation = upcomingEvents[i].eventLocation;
+        eventObj.eventTechnicalTopics = upcomingEvents[i].eventTechnicalTopics;
         eventObj.colNum = Math.floor(12 / upcomingEvents.length);
         eventObj.eventName = upcomingEvents[i].eventName;
         eventObj.eventUrl = upcomingEvents[i].eventUrl;
         eventObj.eventHighlightColor = continentColors[upcomingEvents[i].eventContinent];
         eventObj.eventHeaderImage = upcomingEvents[i].eventHeaderImage;
-        eventObj.showOnHeader = upcomingEvents[i].showOnHeader
+        eventObj.showOnHeader = upcomingEvents[i].showOnHeader;
+        eventObj.eventRegistrationLink = upcomingEvents[i].eventRegistrationLink;
+
 
         outputArr.push(eventObj)
       }
-
+      // console.log(outputArr)
       res.json(outputArr);
     })
   })
@@ -281,7 +288,7 @@ module.exports = (router) => {
   });
 
   //route to get all files and delete files
-  router.get('/files', isLoggedIn, (req, res) => {
+  router.get('/files', (req, res) => {
     fs.readdir('uploads/', (err, data) => {
       if (err) {
         console.log(clc.white.bgRed('Error: '), err);
@@ -335,7 +342,7 @@ module.exports = (router) => {
     })
   });
   //route to get all slides
-  router.get('/allslides', isLoggedIn, (req, res) => {
+  router.get('/allslides', (req, res) => {
     models.sql.sync()
     .then( () => {
       return Slide.findAll();
@@ -346,7 +353,7 @@ module.exports = (router) => {
   });
 
   //route to set homepage slides
-  router.post('/sethomepageslides', isLoggedIn, (req, res) => {
+  router.post('/sethomepageslides', (req, res) => {
     models.sql.sync()
     .then( () => {
       return Slideshow.findOne({
@@ -371,7 +378,8 @@ module.exports = (router) => {
     });
   });
 
-  router.post('/addslide', isLoggedIn, (req, res) => {
+ // route to add slide to homepage slides
+  router.post('/addslide',  (req, res) => {
     models.sql.sync()
     .then( () => {
       Slide.create({
@@ -384,7 +392,8 @@ module.exports = (router) => {
     });
   });
 
-  router.post('/deleteslide', isLoggedIn, (req, res) => {
+// route to delete slides from admin portal
+  router.post('/deleteslide',  (req, res) => {
     models.sql.sync()
     .then(() => {
       return Slide.destroy({
@@ -404,17 +413,17 @@ module.exports = (router) => {
   });
 
   //verify login
-  router.get('/user/checklogin', isLoggedIn, (req, res) => {
+  router.get('/user/checklogin',  (req, res) => {
     res.json({msg: `logged in`});
   });
 
   //get user info
-  router.get(`/user/accountinfo`, isLoggedIn, (req, res) => {
+  router.get(`/user/accountinfo`,  (req, res) => {
     res.json({user: req.user});
   })
 
   //get all speakers for editing
-  router.get('/speakers', isLoggedIn, (req, res) => {
+  router.get('/speakers',  (req, res) => {
     models.sql.sync()
     .then( () => {
       Speaker.findAll()
@@ -425,7 +434,7 @@ module.exports = (router) => {
   });
 
   //get all events for edit events tab
-  router.get('/allevents', isLoggedIn, (req, res) => {
+  router.get('/allevents',  (req, res) => {
     models.sql.sync()
     .then( () => {
       return Event.findAll();
@@ -452,7 +461,7 @@ module.exports = (router) => {
   });
 
   //route for uploading files with tinymce
-  router.post('/tinymceUpload', isLoggedIn, (req, res) => {
+  router.post('/tinymceUpload',  (req, res) => {
     let imageBuffer = new Buffer(req.body.base64String, 'base64');
     fs.writeFile(`uploads/${req.body.fileName}`, imageBuffer, (err) => {
       res.end('file saved');
@@ -460,12 +469,13 @@ module.exports = (router) => {
   });
 
   // create new event
-  router.post('/createevent', isLoggedIn, (req, res, next) => {
-    let userName = req.user.unique_name || req.user.email;
+  router.post('/createevent',  (req, res, next) => {
+    // let userName = req.user.unique_name || req.user.email;
+    // console.log(req.user.sub)
     models.sql.sync()
     .then(function () {
       return Event.create({
-        lastModifiedBy: userName,
+        lastModifiedBy: req.body.lastModifiedBy,
         eventName: req.body.newEventName,
         eventUrl: req.body.eventUrl,
         eventRegistrationLink: req.body.newEventRegistrationLink,
@@ -481,7 +491,16 @@ module.exports = (router) => {
         eventVenueAddress: req.body.newVenueAddress,
         eventParkingInfo: req.body.newVenueParkingInfo,
         eventVenueImg: req.body.newEventVenueImg,
-        eventTechnicalTopics: req.body.eventTechnicalTopics
+        eventTechnicalTopics: req.body.eventTechnicalTopics,
+        eventAccommodations: req.body.eventAccommodations,
+        eventHackathon: req.body.eventHackathon,
+        eventIOLab: req.body.eventIOLab,
+        eventWorkshop: req.body.eventWorkshop,
+        eventAgenda: req.body.eventAgenda,
+        eventAccommodationImg: req.body.newEventAccommodationImg,
+        eventHackathonImg: req.body.newEventHackathonImg,
+        eventWorkshopImg: req.body.newEventWorkshopImg,
+        eventIOLabImg: req.body.newEventIOLabImg
       })
       .catch( (err) => {
         let errorMsg = ``;
@@ -506,7 +525,8 @@ module.exports = (router) => {
     });
   });
 
-  router.post('/editevent', isLoggedIn, (req, res, next) => {
+// route to edit event in admin portal event section
+  router.post('/editevent',  (req, res, next) => {
     console.log(clc.red(req.body.event.showOnHeader))
     models.sql.sync()
     .then( () => {
@@ -517,9 +537,9 @@ module.exports = (router) => {
       })
     })
     .then( (event) => {
-      let userName = req.user.unique_name || req.user.email;
+      // let userName = req.user.unique_name || req.user.email;
       return event.update({
-            lastModifiedBy: userName,
+            lastModifiedBy: req.body.event.lastModifiedBy,
             showOnHeader: req.body.event.showOnHeader,
             isPublished: req.body.event.isPublished,
             eventName: req.body.event.eventName,
@@ -536,7 +556,16 @@ module.exports = (router) => {
             eventParkingInfo: req.body.event.eventParkingInfo,
             eventVenueImg: req.body.event.eventVenueImg,
             eventTechnicalTopics: req.body.eventTechnicalTopics,
-            eventLanguage: req.body.newEventLanguage
+            eventLanguage: req.body.newEventLanguage,
+            eventAccommodations: req.body.event.eventAccommodations,
+            eventHackathon: req.body.event.eventHackathon,
+            eventIOLab: req.body.event.eventIOLab,
+            eventWorkshop: req.body.event.eventWorkshop,
+            eventAgenda: req.body.event.eventAgenda,
+            eventAccommodationImg: req.body.event.eventAccommodationImg,
+            eventHackathonImg: req.body.event.eventHackathonImg,
+            eventWorkshopImg: req.body.event.eventWorkshopImg,
+            eventIOLabImg: req.body.event.eventIOLabImg
       })
       .then((updatedEvent) => {
         res.end(updatedEvent.eventUrl);
@@ -547,7 +576,8 @@ module.exports = (router) => {
     })
   });
 
-  router.delete(`/deleteevent/:slug`, isLoggedIn, (req, res) => {
+// route to delete event on admin portal event page
+  router.delete(`/deleteevent/:slug`,  (req, res) => {
     models.sql.sync()
     .then(() => {
       return Event.findOne({
@@ -565,7 +595,8 @@ module.exports = (router) => {
     })
   })
 
-  router.post('/edittab', isLoggedIn, (req, res, next) => {
+// route to edit event tabs
+  router.post('/edittab',  (req, res, next) => {
     models.sql.sync()
     .then( () => {
       return EventTab.findOne({
@@ -587,7 +618,8 @@ module.exports = (router) => {
     });
   });
 
-  router.post('/newtaborder', isLoggedIn, (req, res) => {
+// route to edit tab order for events
+  router.post('/newtaborder',  (req, res) => {
     models.sql.sync()
     .then( () => {
       return EventTab.findAll({
@@ -614,7 +646,8 @@ module.exports = (router) => {
     })
   })
 
-  router.post('/addtab', isLoggedIn, (req, res) => {
+// route to add a tab to event
+  router.post('/addtab',  (req, res) => {
     models.sql.sync()
     .then( () => {
       return EventTab.create({
@@ -640,7 +673,8 @@ module.exports = (router) => {
     });
   });
 
-  router.delete('/deletetab/:slug', isLoggedIn, (req, res) => {
+// route to delete a tab from events
+  router.delete('/deletetab/:slug',  (req, res) => {
     models.sql.sync()
     .then( () => {
       return EventTab.findOne({
@@ -655,7 +689,8 @@ module.exports = (router) => {
     })
   })
 
-  router.post('/editeventspeakers', isLoggedIn, (req, res) => {
+// route to edit speakers on events
+  router.post('/editeventspeakers',  (req, res) => {
     models.sql.sync()
     .then( () => {
       return Event.findOne({
@@ -673,14 +708,14 @@ module.exports = (router) => {
   });
 
   //route to create speakers
-  router.post('/addspeakers', isLoggedIn, (req, res) => {
+  router.post('/addspeakers',  (req, res) => {
     models.sql.sync()
     .then( () => {
-      let userName = req.user.unique_name || req.user.email;
+      // let userName = req.user.unique_name || req.user.email;
       let speakerEmail = req.body.newMsTeamEmail ? req.body.newMsTeamEmail : 'plugfests@microsoft.com';
       // let speakerHeadshot = req.body.headshot ? req.body.headshot : 'placeholder-headshot.jpg';
       Speaker.create({
-        lastModifiedBy: userName,
+        lastModifiedBy: req.body.lastModifiedBy,
         firstName: req.body.newFirstName,
         lastName: req.body.newLastName,
         email: speakerEmail,
@@ -695,7 +730,7 @@ module.exports = (router) => {
     });
   });
   //route to edit speakers
-  router.post('/editspeaker', isLoggedIn, (req, res) => {
+  router.post('/editspeaker',  (req, res) => {
     models.sql.sync()
     .then( () => {
       return Speaker.findOne({
@@ -705,10 +740,10 @@ module.exports = (router) => {
       })
     })
     .then( (speaker) => {
-      let userName = req.user.unique_name || req.user.email;
+      // let userName = req.user.unique_name || req.user.email;
       let speakerEmail = req.body.email ? req.body.email : 'plugfests@microsoft.com';
       return speaker.update({
-        lastModifiedBy: userName,
+        lastModifiedBy: req.body.lastModifiedBy,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: speakerEmail,
@@ -725,7 +760,7 @@ module.exports = (router) => {
     });
   });
 
-  router.delete(`/deletespeaker/:slug`, isLoggedIn, (req, res) => {
+  router.delete(`/deletespeaker/:slug`,  (req, res) => {
     models.sql.sync()
     .then(() => {
       return Speaker.findOne({
@@ -741,7 +776,7 @@ module.exports = (router) => {
   })
   
     //show all images
-  router.get('/showimages', isLoggedIn, function(req, res) {
+  router.get('/showimages',  function(req, res) {
     fs.readdir('uploads', function(err, files) {
       let imagesArr = [];
       if (err) {
@@ -760,7 +795,7 @@ module.exports = (router) => {
 
   /*Get events including unpublished content from URL path/slug */
   router.route('/fulllist/:slug')
-  .get(isLoggedIn, (req, res) => {
+  .get( (req, res) => {
     //create an eventInfo object to hold the values for the event to be rendered
     let eventInfo = {};
     eventInfo.isEvent = true;

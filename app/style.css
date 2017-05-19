@@ -10,10 +10,7 @@
 /*@import url(https://fonts.googleapis.com/css?family=Arimo:400,700);*/
 /*Custom CSS for Plugfest and Events Page*/
 
-@font-face { font-family: 'SegoeUI'; src: url(./fonts/segoeuil.ttf); };
-@font-face { font-family: 'SegoeUILight'; src: url(./fonts/segoeuil.ttf); };
-@font-face { font-family: 'SegoeUI'; font-weight: bold; src: url(./fonts/segoeuib.ttf); }; 
-@font-face { font-family: 'SegoeUI'; font-weight: italic; src: url(./fonts/segoeuib.ttf); };
+
 
 /*---------------------------------
 	OVERRIDES
@@ -64,7 +61,7 @@ padding:0 2%;
 border:1px solid #ccc;
 }
 
-
+/*
 #footer{
 text-align:center;
 padding:20px;
@@ -81,10 +78,10 @@ background:#fff;
 
 	#link-top{
 	display:none;
-	}
+	}*/
 
 /* NAV BAR*/
-.navbar{
+/*.navbar{
 position:fixed;
 top:0;
 left:0;
@@ -130,7 +127,7 @@ z-index:1000;
 		text-transform: uppercase;
 		line-height:100%;
 		font-size: 1.2em;
-		}
+		}*/
 
 .callout{
 background:#4598ef;/*#86dc00;*/
