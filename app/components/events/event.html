@@ -53,12 +53,17 @@
 				<div class="container">
 					<h2>Hackathon</h2>
 					<div class="row">
-						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						<div class="col-xs-12" data-ng-hide="events.event.eventHackathonImg">
 							<div class="eventHackathonText" data-ng-bind-html="events.event.eventHackathon">
 								{{events.event.eventHackathon}}
 							</div>
 						</div>
-						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" data-ng-if="events.event.eventHackathonImg">
+							<div class="eventHackathonText" data-ng-bind-html="events.event.eventHackathon">
+								{{events.event.eventHackathon}}
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" data-ng-if="events.event.eventHackathonImg">
 							<div id="hackathonImg" role="complementary">
 								<img data-ng-src="/uploads/{{events.event.eventHackathonImg}}" alt="Hackathon Image">
 							</div>
@@ -70,7 +75,7 @@
 				<div class="container">
 					<h2>I/O Lab</h2>
 					<div class="row">
-						<div class="col-xs-12">
+						<div class="col-xs-12" data-ng-hide="events.event.eventIOLabImg">
 							<div class="eventIOLabText" data-ng-bind-html="events.event.eventIOLab">
 								{{events.event.eventIOLab}}
 							</div>
@@ -92,12 +97,17 @@
 				<div class="container">
 					<h2>Workshop</h2>
 					<div class="row">
-						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						<div class="col-xs-12" data-ng-hide="events.event.eventWorkshopImg">
 							<div class="eventWorkshopText" data-ng-bind-html="events.event.eventWorkshop">
 								{{events.event.eventWorkshop}}
 							</div>
 						</div>
-						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" data-ng-if="events.event.eventWorkshopImg">
+							<div class="eventWorkshopText" data-ng-bind-html="events.event.eventWorkshop">
+								{{events.event.eventWorkshop}}
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" data-ng-if="events.event.eventWorkshopImg">
 							<div id="workshopImg" role="complementary">
 								<img data-ng-src="/uploads/{{events.event.eventWorkshopImg}}" alt="Workshop Image">
 							</div>
@@ -109,7 +119,22 @@
 				<div class="container">
 					<h2>Venue Information</h2>
 					<div class="row">
-						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						<div class="col-xs-12" data-ng-hide="events.event.eventVenueImg">
+							<div class="venueNameAddress">
+								<h3>{{events.event.eventVenueName}}</h3>
+								<p>
+									{{events.event.eventVenueAddress}}
+								</p>
+							</div>
+							<div class="parkingInfo">
+								<h3>Parking Information</h3>
+								<p>{{events.event.eventParkingInfo}}</p>
+							</div>
+							<div class="moreVenueInfo">
+								<p>For more information, contact <a href="mailto:plugfests@microsoft.com">plugfests@microsoft.com</a></p>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" data-ng-if="events.event.eventVenueImg">
 							<div class="venueNameAddress">
 								<h3>{{events.event.eventVenueName}}</h3>
 								<p>
@@ -136,12 +161,17 @@
 				<div class="container">
 					<h2>Accommodations</h2>
 					<div class="row">
-						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						<div class="col-xs-12" data-ng-hide="events.event.eventAccommodationImg">
 							<div class="eventAccommodationText" data-ng-bind-html="events.event.eventAccommodations">
 								{{events.event.eventAccommodations}}
 							</div>
 						</div>
-						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" data-ng-if="events.event.eventAccommodationImg">
+							<div class="eventAccommodationText" data-ng-bind-html="events.event.eventAccommodations">
+								{{events.event.eventAccommodations}}
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" data-ng-if="events.event.eventAccommodationImg">
 							<div id="hotelImg" role="complementary">
 								<img data-ng-src="/uploads/{{events.event.eventAccommodationImg}}" alt="Accommodation Image">
 							</div>
