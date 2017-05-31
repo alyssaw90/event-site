@@ -90,6 +90,7 @@ const EditEventCtrl = (app) => {
           return $scope.errors.push({msg: 'no event found'});
         };
         $scope.editedEvent = data.data;
+        console.log($scope.editedEvent)
         $scope.headerImage = '/uploads/' + $scope.editedEvent.eventHeaderImage;
         $scope.venueImage = '/uploads/' + $scope.editedEvent.eventVenueImg;
         $scope.accommodationImage = '/uploads/' + $scope.editedEvent.eventAccommodationImg;
@@ -109,6 +110,7 @@ const EditEventCtrl = (app) => {
         }
         for (let i = 0, len = $scope.editedEvent.length; i < len; i++) {
           $scope.editedEvent[i].eventAboutTabText = $sce.trustAsHtml($scope.eventToEdit[i].eventAboutTabText);
+          $scope.editedEvent[i].eventHackathon = $sce.trustAsHtml($scope.eventToEdit[i].eventHackathon);
         }
         $scope.editedEvent.event.editedEventContinent = data.data.event.eventContinent;
         $scope.editedEvent.event.showOnHeader = data.data.event.showOnHeader;
@@ -173,6 +175,7 @@ const EditEventCtrl = (app) => {
         if (!err) {
 
           $scope.editedEvent = {};
+          console.log($scope.editedEvent)
           $rootScope.eventHeaderImage = undefined;
           $rootScope.eventVenueImg = undefined;
           $rootScope.eventAccommodationImg = undefined;

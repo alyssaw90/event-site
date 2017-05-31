@@ -503,10 +503,11 @@ module.exports = (router) => {
         eventIOLabImg: req.body.newEventIOLabImg
       })
       .catch( (err) => {
+        console.log(err)
         let errorMsg = ``;
-        for (let i =0, j = err.errors.length; i < j; i++) {
-          errorMsg += err.errors[i].message + `\n`;
-        }
+        // for (let i =0, j = err.errors.length; i < j; i++) {
+        //   errorMsg += err.errors[i].message + `\n`;
+        // }
         res.status(500).send(errorMsg);
       })
       .then( (newEvent) => {
@@ -571,6 +572,7 @@ module.exports = (router) => {
         res.end(updatedEvent.eventUrl);
       })
       .catch((err) => {
+        console.log(err);
         res.status(500).json({msg: `there was a problem updating your event`});
       })
     })
