@@ -113,7 +113,7 @@
 				</div>				
 				<div class="form-group" role="presentation">
 				<label for="new-event-description">About page Content*</label>
-						<textarea class="form-control" data-ng-model="newEvent.eventAboutTabText" name="new-event-description" data-ng-required="true"></textarea>
+						<textarea class="form-control" data-ng-model="newEvent.eventAboutTabText" name="new-event-description" data-ng-required="true" style="min-height:200px;"></textarea>
 				</div>
 				<div class="form-group" role="presentation">
 	    		<label for="newEventVenueName">Venue Name</label>
@@ -125,7 +125,7 @@
 				</div>
 				<div class="form-group" role="presentation">
 					<label for="newVenueParkingInfo">Parking Information</label>
-					<textarea class="form-control" data-ng-model="newEvent.newVenueParkingInfo" name="newVenueParkingInfo" id="newVenueParkingInfo"></textarea>				
+					<textarea class="form-control" data-ng-model="newEvent.newVenueParkingInfo" name="newVenueParkingInfo" id="newVenueParkingInfo" style="min-height:200px;"></textarea>				
 				</div>
 				<div role="presentation" match-button-size-directive>
 					<div data-ng-controller="AdminPageCtrl">
@@ -141,7 +141,7 @@
 		    	</div>
 					<div class="form-group">
 						<label for="newEventAccommodation">Accommodation Information</label>
-						<textarea class="form-control" data-ng-model="newEvent.eventAccommodations" name="newEventAccommodation"></textarea>
+						<textarea class="form-control" data-ng-model="newEvent.eventAccommodations" name="newEventAccommodation" style="min-height:200px;"></textarea>
 					</div>
 					<div data-ng-controller="AdminPageCtrl">
 			  		<button class="btn btn-default" name="hotelPhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventAccommodationImg')">Select Accommodation Image</button>
@@ -156,7 +156,7 @@
 		    	</div>
 					<div class="form-group">
 						<label for="newEventHackathon">Hackathon Information</label>
-						<textarea class="form-control" name="newEventHackathon" data-ng-model="newEvent.eventHackathon"></textarea>
+						<textarea class="form-control" name="newEventHackathon" data-ng-model="newEvent.eventHackathon" style="min-height:200px;"></textarea>
 					</div>
 					<div data-ng-controller="AdminPageCtrl">
 			  		<button class="btn btn-default" name="hackathonPhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventHackathonImg')">Select Hackathon Image</button>
@@ -171,7 +171,7 @@
 		    	</div>
 					<div class="form-group">
 						<label for="newEventIOLab">I/O Lab Information</label>
-						<textarea class="form-control" name="newEventIOLab" data-ng-model="newEvent.eventIOLab"></textarea>
+						<textarea class="form-control" name="newEventIOLab" data-ng-model="newEvent.eventIOLab" style="min-height:200px;"></textarea>
 					</div>
 					<div data-ng-controller="AdminPageCtrl">
 			  		<button class="btn btn-default" name="ioLabPhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventIOLabImg')">Select I/O Lab Image</button>
@@ -186,7 +186,7 @@
 		    	</div>
 					<div class="form-group">
 						<label for="newEventWorkshop">Workshop Information</label>
-						<textarea name="newEventWorkshop" class="form-control" data-ng-model="newEvent.eventWorkshop"></textarea>
+						<textarea name="newEventWorkshop" class="form-control" data-ng-model="newEvent.eventWorkshop" style="min-height:200px;"></textarea>
 					</div>
 					<div data-ng-controller="AdminPageCtrl">
 			  		<button class="btn btn-default" name="workshopPhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventWorkshopImg')">Select Workshop Image</button>
