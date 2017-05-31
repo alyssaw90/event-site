@@ -22,12 +22,10 @@
         </div>
       </div>
      <form id="deleteFilesForm" enctype="multipart/form-data" data-ng-submit="deleteFiles(filesToDelete)" make-auto-complete-false-directive>
-      <div class="row" role="presentation">
-        <div class="col-lg-24" role="presentation">
+      <div class="row admin-header-div-with-button" role="presentation">
           <button class="btn btn-primary" name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'newSlideImage', getAllFiles)">Add File</button>
           <button type="submit" class="btn btn-danger" style="margin: 5px" id="delete-file-button">Delete</button>
           <label>Search: <input type="text" name="searchBox" ng-model="searchBox"></label>
-        </div>
       </div>
       <div match-file-display-heights>
         <label ng-repeat="file in files | fileSearch:searchBox" class="file-container" for="file.fileName">{{file.fileName}}
