@@ -126,9 +126,11 @@
 									{{events.event.eventVenueAddress}}
 								</p>
 							</div>
-							<div class="parkingInfo">
+							<div class="parkingInfo" data-ng-if="events.event.eventParkingInfo">
 								<h3>Parking Information</h3>
-								<p>{{events.event.eventParkingInfo}}</p>
+								<div data-ng-bind-html="events.event.eventParkingInfo">
+									{{events.event.eventParkingInfo}}
+								</div>
 							</div>
 							<div class="moreVenueInfo">
 								<p>For more information, contact <a href="mailto:plugfests@microsoft.com">plugfests@microsoft.com</a></p>
@@ -141,9 +143,11 @@
 									{{events.event.eventVenueAddress}}
 								</p>
 							</div>
-							<div class="parkingInfo">
+							<div class="parkingInfo" data-ng-if="events.event.eventParkingInfo">
 								<h3>Parking Information</h3>
-								<p>{{events.event.eventParkingInfo}}</p>
+								<div data-ng-bind-html="events.event.eventParkingInfo">
+									{{events.event.eventParkingInfo}}
+								</div>
 							</div>
 							<div class="moreVenueInfo">
 								<p>For more information, contact <a href="mailto:plugfests@microsoft.com">plugfests@microsoft.com</a></p>
