@@ -7,7 +7,7 @@
 			<ul class="nav nav-tabs nav-justified" admin-header-directive>
 			  <li role="presentation"><a href="/admin/edit-event">Events</a></li>
 			  <li role="presentation"><a href="/admin/edit-speaker">Speakers</a></li>
-			  <li role="presentation"><a href="/admin/slideshow">Slideshow</a></li>
+			  <!--<li role="presentation"><a href="/admin/slideshow">Slideshow</a></li>-->
 			  <li role="presentation"><a href="/admin/edit-files">Uploads</a></li>
 			  <li role="presentation" data-ng-if="showAccountButton"><a href="/admin/account">Account</a></li>
 			  <li role="presentation"><a href="/admin/help">Help</a></li>
@@ -22,7 +22,7 @@
     	<div role="presentation" class="row">
 				<div id="edit-speakers-list" class="col-lg-24" role="presentation">
 					<div role="presentation">
-						<a class="btn btn-orange" href="/admin/create-speaker">Add New</a>
+						<a class="btn btn-primary" href="/admin/create-speaker">Add New</a>
 					</div>
 					<table class="table table-bordered">
 						<tr>
@@ -38,8 +38,8 @@
 							<td>{{speaker.lastModifiedBy}}</td>
 							<td>{{speaker.updatedAt | date: 'MM/dd/yyyy'}}</td>
 							<td>{{publishedOrNot = speaker.isPublished ? 'Published' : 'Unpublished';}}</td>
-							<td><button class="btn" ng-click="getSpeaker(speaker);">Edit</button></td>
-							<td><button class="btn win-color-bg-alert whiteText" data-ng-click="deleteSpeaker(speaker);">Delete</button></td>
+							<td><button class="btn btn-primary" ng-click="getSpeaker(speaker);">Edit</button></td>
+							<td><button class="btn btn-danger" data-ng-click="deleteSpeaker(speaker);">Delete</button></td>
 						</tr>
 					</table>
 				</div>

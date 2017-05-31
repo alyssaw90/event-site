@@ -7,7 +7,7 @@
 			<ul class="nav nav-tabs nav-justified" admin-header-directive>
 			  <li role="presentation"><a href="/admin/edit-event">Events</a></li>
 			  <li role="presentation"><a href="/admin/edit-speaker">Speakers</a></li>
-			  <li role="presentation"><a href="/admin/slideshow">Slideshow</a></li>
+			  <!--<li role="presentation"><a href="/admin/slideshow">Slideshow</a></li>-->
 			  <li role="presentation"><a href="/admin/edit-files">Uploads</a></li>
 			  <li role="presentation" data-ng-if="showAccountButton"><a href="/admin/account">Account</a></li>
 			  <li role="presentation"><a href="/admin/help">Help</a></li>
@@ -31,7 +31,7 @@
     <section id="main-edit-section" role="presentation" class="row internetExplorer edit-section">
 			<div id="edit-events-home-tab col-lg-24">
 				<div class="admin-header-div-with-button" role="presentation">
-					<a class="btn btn-orange middle-align" href="/admin/create-event">Add New</a>
+					<a class="btn btn-primary" href="/admin/create-event">Add New</a>
 				</div>
 				<div role="presentation" class="col-lg-24">
 					<table id="all-events-table" class="table table-bordered">
@@ -70,10 +70,10 @@
 								<td>{{event.updatedAt | date: 'MM/dd/yyyy'}}</td>
 								<td>{{publishedOrNot = event.isPublished ? 'Published' : 'Unpublished';}}</td>
 								<td>
-									<button data-ng-click="getSingleEvent(event.eventUrl, '#edit-menu-options', '.edit-section')">Edit</button>
+									<button data-ng-click="getSingleEvent(event.eventUrl, '#edit-menu-options', '.edit-section')" class="btn btn-primary">Edit</button>
 								</td>
 								<td>
-									<button ng-style="buttonStyle" class="win-color-bg-alert whiteText pull-right" ng-click="deleteEvent(event);" edit-event-directive>Delete</button>
+									<button class="btn btn-danger" ng-click="deleteEvent(event);">Delete</button>
 								</td>
 							</tr>						
 						</tbody>

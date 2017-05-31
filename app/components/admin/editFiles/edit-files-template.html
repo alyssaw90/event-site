@@ -6,7 +6,7 @@
 			<ul class="nav nav-tabs nav-justified" admin-header-directive>
 			  <li role="presentation"><a href="/admin/edit-event">Events</a></li>
 			  <li role="presentation"><a href="/admin/edit-speaker">Speakers</a></li>
-			  <li role="presentation"><a href="/admin/slideshow">Slideshow</a></li>
+			  <!--<li role="presentation"><a href="/admin/slideshow">Slideshow</a></li>-->
 			  <li role="presentation"><a href="/admin/edit-files">Uploads</a></li>
 			  <li role="presentation" data-ng-if="showAccountButton"><a href="/admin/account">Account</a></li>
 			  <li role="presentation"><a href="/admin/help">Help</a></li>
@@ -24,7 +24,7 @@
      <form id="deleteFilesForm" enctype="multipart/form-data" data-ng-submit="deleteFiles(filesToDelete)" make-auto-complete-false-directive>
       <div class="row" role="presentation">
         <div class="col-lg-24" role="presentation">
-          <button class="btn btn-orange" name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'newSlideImage', getAllFiles)">Add File</button>
+          <button class="btn btn-primary" name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'newSlideImage', getAllFiles)">Add File</button>
           <button type="submit" class="btn btn-danger" style="margin: 5px" id="delete-file-button">Delete</button>
           <label>Search: <input type="text" name="searchBox" ng-model="searchBox"></label>
         </div>
