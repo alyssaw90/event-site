@@ -317,7 +317,7 @@
 				</div>
 				<div class="form-group" role="presentation">
 					<label for="editedVenueParkingInfo">Parking Information</label>
-					<textarea class="form-control" data-ng-model="editedEvent.event.eventParkingInfo" name="editedVenueParkingInfo" id="editedVenueParkingInfo"></textarea>
+					<textarea class="form-control" data-ng-model="editedEvent.event.eventParkingInfo" name="editedVenueParkingInfo" id="editedVenueParkingInfo" style="min-height:200px;"></textarea>
 				</div>
 				<div data-ng-controller="AdminPageCtrl">
 					<button name="venuePhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventVenueImg')">Select Venue Image</button>
@@ -365,7 +365,7 @@
 				<img ng-src="/{{hackathonImage}}">
 				<div class="form-group">
 					<label for="editedEventIOLab">I/O Lab</label>
-					<textarea name="editedEventIOLab" class="form-control" data-ng-model="editedEvent.event.eventIOLab"></textarea>
+					<textarea name="editedEventIOLab" class="form-control" data-ng-model="editedEvent.event.eventIOLab" style="min-height:200px;"></textarea>
 				</div>
 				<div data-ng-controller="AdminPageCtrl">
 					<button name="ioLabPhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventIOLabImg')">Select I/O Lab Image</button>
@@ -381,7 +381,7 @@
 				<img ng-src="/{{ioLabImage}}">
 				<div class="form-group">
 					<label for="editedEventWorkshop">Workshop</label>
-					<textarea name="editedEventWorkshop" class="form-control" data-ng-model="editedEvent.event.eventWorkshop"></textarea>
+					<textarea name="editedEventWorkshop" class="form-control" data-ng-model="editedEvent.event.eventWorkshop" style="min-height:200px;"></textarea>
 				</div>
 				<div data-ng-controller="AdminPageCtrl">
 					<button name="workshopPhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventWorkshopImg')">Select Workshop Image</button>
