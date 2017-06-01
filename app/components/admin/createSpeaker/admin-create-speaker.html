@@ -32,8 +32,7 @@
  		</div>			
     <section role="presentation" class="row internetExplorer" ng-controller="AdminPageCtrl">
     	<div data-ng-controller="AdminPageCtrl" role="presentation" class="col-lg-24">
-	  	  <p>Select Headshot</p>
-	  		<button name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'newSpeakerImg')">Select File</button>
+	  		<button class="btn btn-default" name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'newSpeakerImg')">Select Headshot</button>
 	  		<br><br>
 	  		<div style="font:smaller">{{newSpeakerImg.path}}{{newSpeakerImg.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
 	  		    <span class="progress" ng-show="newSpeakerImg.progress >= 0">
@@ -62,11 +61,15 @@
 				</div>
 				<div class="form-group" role="presentation">
 					<radiogroup>
-					<label for="showOnMeetTheTeamPageTrue">Show Speaker on Meet the Team Page</label>
-						<input type="radio" id="showOnMeetTheTeamPageTrue" data-ng-model="newSpeaker.showOnMeetTheTeamPage" name="showOnMeetTheTeamPage" value="true" autocomplete="off">
+						<label for="showOnMeetTheTeamPageTrue">
+							<input type="radio" id="showOnMeetTheTeamPageTrue" data-ng-model="newSpeaker.showOnMeetTheTeamPage" name="showOnMeetTheTeamPage" value="true" autocomplete="off">
+							Show Speaker on Meet the Team Page
+						</label>
 						<br>
-						<label for="showOnMeetTheTeamPageFalse">Do Not Show on Meet the Team Page</label>
-						<input type="radio" id="showOnMeetTheTeamPageFalse" data-ng-model="newSpeaker.showOnMeetTheTeamPage" name="showOnMeetTheTeamPage" value="false" ng-checked="true" autocomplete="off">
+						<label for="showOnMeetTheTeamPageFalse">
+							<input type="radio" id="showOnMeetTheTeamPageFalse" data-ng-model="newSpeaker.showOnMeetTheTeamPage" name="showOnMeetTheTeamPage" value="false" ng-checked="true" autocomplete="off">
+							Do Not Show on Meet the Team Page
+						</label>
 					</radiogroup>
 				</div>
 				<br>
@@ -76,20 +79,22 @@
 					<input type="number" data-ng-model="newSpeaker.meetTheTeamPageOrder" name="meetTheTeamPageOrder" id="meetTheTeamPageOrder" autocomplete="off">
 				</div>
 				<br>
-				<div class="form-group" role="presentation">
+				<!--<div class="form-group" role="presentation">
 					<label for="newSpeakerDescription">Speakers Description</label>
 					<br>
 					<textarea class="col-lg-24 form-control" data-ng-model="newSpeaker.newSpeakerDescription" name="newSpeakerDescription" style="min-height: 200px" data-ng-required="required" 
 					data-ui-tinymce="tinymceOptions">
 	      	</textarea>
+				</div>-->
+				<label>Modified By</label> 
+				<div class="radio">
+					<label for="lastModifiedBy">
+					<input type="radio" data-ng-model="newSpeaker.lastModifiedBy" name="lastModifiedBy" ng-value="userInfo.userName" data-ng-required="true">{{userInfo.userName}}
+					</label>
 				</div>
-				<div class="form-group">
-					<label for="lastModifiedBy">Modified By</label>
-					<input type="radio" class="form-control" data-ng-model="newSpeaker.lastModifiedBy" name="lastModifiedBy" ng-value="userInfo.userName" data-ng-required="true">{{userInfo.userName}}
-				</div>
-				<button type="button" class="medium float-left" style="margin: 5px" id="cancel-new-event-button" data-ng-click="cancelNewSpeaker();">Cancel</button>
-				<button type="submit" class="medium float-left btn-primary" style="margin: 5px" id="save-new-event-as-draft-button"  data-ng-click="createNewSpeaker(newSpeaker, false);">Save as Draft</button>
-				<button type="submit" class="medium float-left btn-green" style="margin: 5px" id="save-new-event-button"  data-ng-click="createNewSpeaker(newSpeaker, true);">Publish Now</button>
+				<button type="button" class="btn btn-default" style="margin: 5px" id="cancel-new-event-button" data-ng-click="cancelNewSpeaker();">Cancel</button>
+				<button type="submit" class="btn btn-primary" style="margin: 5px" id="save-new-event-as-draft-button"  data-ng-click="createNewSpeaker(newSpeaker, false);">Save as Draft</button>
+				<button type="submit" class="btn btn-success" style="margin: 5px" id="save-new-event-button"  data-ng-click="createNewSpeaker(newSpeaker, true);">Publish Now</button>
 			</form>
 			<!-- input below is for tinymce file upload -->
 			<input name="image" type="file" id="upload" class="hideElem" onchange="">
