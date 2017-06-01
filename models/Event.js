@@ -41,15 +41,16 @@ module.exports = (sql, DataTypes) => {
     eventParkingInfo: DataTypes.TEXT,
     eventVenueImg: DataTypes.STRING,
     eventLanguage: DataTypes.STRING,
-    eventAccommodations: DataTypes.STRING,
-    eventHackathon: DataTypes.STRING,
-    eventIOLab: DataTypes.STRING,
-    eventWorkshop: DataTypes.STRING,
-    eventAgenda: DataTypes.STRING,
+    eventAccommodations: DataTypes.TEXT,
+    eventHackathon: DataTypes.TEXT,
+    eventIOLab: DataTypes.TEXT,
+    eventWorkshop: DataTypes.TEXT,
+    eventAgenda: DataTypes.TEXT,
     eventAccommodationImg: DataTypes.STRING,
     eventHackathonImg: DataTypes.STRING,
     eventWorkshopImg: DataTypes.STRING,
-    eventIOLabImg: DataTypes.STRING
+    eventIOLabImg: DataTypes.STRING,
+    eventVenueInfo: DataTypes.TEXT
   },
   {
     hasTrigger: true,

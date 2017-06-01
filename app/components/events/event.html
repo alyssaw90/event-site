@@ -120,11 +120,9 @@
 					<h2>Venue Information</h2>
 					<div class="row">
 						<div class="col-xs-12" data-ng-hide="events.event.eventVenueImg">
-							<div class="venueNameAddress">
-								<h3>{{events.event.eventVenueName}}</h3>
-								<p>
-									{{events.event.eventVenueAddress}}
-								</p>
+							<h3>{{events.event.eventVenueName}}</h3>
+							<div class="venueNameAddress" data-ng-bind-html="events.event.eventVenueInfo">
+								{{events.event.eventVenueInfo}}
 							</div>
 							<div class="parkingInfo" data-ng-if="events.event.eventParkingInfo">
 								<h3>Parking Information</h3>
@@ -132,16 +130,14 @@
 									{{events.event.eventParkingInfo}}
 								</div>
 							</div>
-							<div class="moreVenueInfo">
+							<!--<div class="moreVenueInfo">
 								<p>For more information, contact <a href="mailto:plugfests@microsoft.com">plugfests@microsoft.com</a></p>
-							</div>
+							</div>-->
 						</div>
 						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" data-ng-if="events.event.eventVenueImg">
-							<div class="venueNameAddress">
-								<h3>{{events.event.eventVenueName}}</h3>
-								<p>
-									{{events.event.eventVenueAddress}}
-								</p>
+							<h3>{{events.event.eventVenueName}}</h3>
+							<div class="venueNameAddress" data-ng-bind-html="events.event.eventVenueInfo">
+								{{events.event.eventVenueInfo}}
 							</div>
 							<div class="parkingInfo" data-ng-if="events.event.eventParkingInfo">
 								<h3>Parking Information</h3>
@@ -149,9 +145,9 @@
 									{{events.event.eventParkingInfo}}
 								</div>
 							</div>
-							<div class="moreVenueInfo">
+							<!--<div class="moreVenueInfo">
 								<p>For more information, contact <a href="mailto:plugfests@microsoft.com">plugfests@microsoft.com</a></p>
-							</div>
+							</div>-->
 						</div>
 						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" data-ng-if="events.event.eventVenueImg">
 							<div id="venueImg" role="complementary">
