@@ -500,7 +500,8 @@ module.exports = (router) => {
         eventAccommodationImg: req.body.newEventAccommodationImg,
         eventHackathonImg: req.body.newEventHackathonImg,
         eventWorkshopImg: req.body.newEventWorkshopImg,
-        eventIOLabImg: req.body.newEventIOLabImg
+        eventIOLabImg: req.body.newEventIOLabImg,
+        eventVenueInfo: req.body.newEventVenueInfo
       })
       .catch( (err) => {
         console.log(err)
@@ -566,7 +567,8 @@ module.exports = (router) => {
             eventAccommodationImg: req.body.event.eventAccommodationImg,
             eventHackathonImg: req.body.event.eventHackathonImg,
             eventWorkshopImg: req.body.event.eventWorkshopImg,
-            eventIOLabImg: req.body.event.eventIOLabImg
+            eventIOLabImg: req.body.event.eventIOLabImg,
+            eventVenueInfo: req.body.event.eventVenueInfo
       })
       .then((updatedEvent) => {
         res.end(updatedEvent.eventUrl);
