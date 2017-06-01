@@ -17,13 +17,13 @@
 	</div>
 </div>
 		<div id="edit-menu-options" class="btn-group edit-section row" role="group" aria-label="edit tab buttons" style="display: none;">
-			<div role="presentation" class="col-lg-24">
+			<div role="presentation" class="col-xs-12">
 				<h2 class="text-align-center">{{editedEvent.event.eventName}}</h2>
 				<div class="edit-event-menu-button-wrapper">
 				  <button type="button" class="btn btn-primary" ng-click="showElem('#edit-event-section, #edit-menu-options', '.edit-section')">Edit Event</button>
 				  <button id="edit-tabs-dropdown" type="button" class="btn btn-primary" ng-click="showElem('#edit-tabs-section, #edit-menu-options, #select-tabs-to-edit-table', '.edit-section');">Edit Tabs</button>
 				  <button type="button" class="btn btn-primary" ng-click="showElem('#edit-speakers-section, #edit-menu-options', '.edit-section')">Edit Speakers</button>
-				  <button type="button" class="btn btn-orange" ng-click="showElem('#edit-menu-options, #add-tabs-section', '.edit-section')">Add New Tab</button>
+				  <button type="button" class="btn btn-warning" ng-click="showElem('#edit-menu-options, #add-tabs-section', '.edit-section')">Add New Tab</button>
 				  <button type="button" class="btn" ng-click="showElem('#main-edit-section', '.edit-section'); cancelEditing()">Cancel</button>
 			  </div>
 			</div>
@@ -126,7 +126,7 @@
     <section id="edit-tabs-section" class="row edit-section" role="presentation" style="display: none;">
     	<div class="col-lg-24" role="presentation">
 	    	<table id="select-tabs-to-edit-table" class="table table-bordered edit-section" style="display: none;" sortable-tabs-directive>
-				<p><button class="btn btn-green" ng-click="newTabOrder('select-tabs-to-edit-table');">Save order</button> Drag tabs below to reorder.</p>
+				<p><button class="btn btn-success" ng-click="newTabOrder('select-tabs-to-edit-table');">Save order</button> Drag tabs below to reorder.</p>
 	    		<thead>
 	    			<tr>
 	    				<th>
@@ -158,10 +158,10 @@
 	    					{{tab.isPublished ? 'Published' : 'Unpublished';}}
 	  					</td>
 	    				<td>
-	    					<button ng-style="buttonStyle" ng-click="getTab(tab); showElem('#editTabsForm', '#select-tabs-to-edit-table');" edit-event-directive>Edit: "{{tab.tabTitle}}"</button>
+	    					<button class="btn btn-primary" ng-click="getTab(tab); showElem('#editTabsForm', '#select-tabs-to-edit-table');">Edit: "{{tab.tabTitle}}"</button>
 	    				</td>
 	    				<td>
-	    					<button ng-style="buttonStyle" class="win-color-bg-alert whiteText" ng-click="deleteTab(tab);" edit-event-directive>Delete: "{{tab.tabTitle}}"</button>
+	    					<button class="win-color-bg-alert btn btn-danger" ng-click="deleteTab(tab);">Delete: "{{tab.tabTitle}}"</button>
 	    				</td>
 	    			</tr>
 	    		</tbody>
