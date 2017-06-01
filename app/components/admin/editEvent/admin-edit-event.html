@@ -194,7 +194,7 @@
     	</div>
 			<form id="editEventForm" class="col-lg-24" name="editEventForm" method="post" enctype="multipart/form-data" data-ng-init="getAllSpeakers();">
 	    	<div data-ng-controller="AdminPageCtrl">
-		  		<button name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventHeaderImage')">Select Header Image</button>
+		  		<button class="btn btn-default" name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventHeaderImage')">Select Header Image</button>
 		  		<br><br>
 		  		<div style="font:smaller">{{eventHeaderImage.path}} {{eventHeaderImage.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
 		  		    <span class="progress" ng-show="eventHeaderImage.progress >= 0">
@@ -206,10 +206,15 @@
 	    	</div>
 	    	<br><br>
 				<input class="col_12" type="hidden" name="country" data-ng-model="editedEvent.event.id">
-				<div class="form-group">
-					<label for="lastModifiedBy">Modified By</label>
-					<input type="radio" class="form-control" data-ng-model="editedEvent.event.lastModifiedBy" name="lastModifiedBy" ng-value="userInfo.userName" data-ng-required="true">{{userInfo.userName}}
-				</div>
+			
+				<label for="lastModifiedBy">Modified By
+					<div class="radio">
+						<label for="">
+							<input type="radio" data-ng-model="editedEvent.event.lastModifiedBy" name="lastModifiedBy" ng-value="userInfo.userName" data-ng-required="true">{{userInfo.userName}}
+						</label>
+					</div>
+					
+				</label>
 	    	<div role="presentation" class="form-group">
 					<label for="editedEventName">Event Name*</label>
 					<input class="form-control" type="text" data-ng-model="editedEvent.event.eventName" name="editedEventName" id="editedEventName" autocomplete="off" required>
@@ -243,32 +248,38 @@
 					<label for="editedEventCity">Event Location*</label>
 					<input class="form-control" type="text" data-ng-model="editedEvent.event.eventLocation" name="editedEventCity" id="editedEventCity" admin-city-name-auto-complete-directive autocomplete="off" required>
 				</div>
-				<div class="form-group" role="presentation">
+				<div role="presentation">
 					<label for="continentsInput">Choose Event Continent
 						<div class="clearfix"></div>
 						<radiogroup id="continentsInput" data-ng-required="required">
-							<label for="northAmericaInput">North America
-								<input class="form-control float-left" data-ng-model="editedEvent.event.eventContinent" type="radio" id="northAmericaInput" name="newEventContinent" value="North America">
+							<label for="northAmericaInput">
+								<input data-ng-model="editedEvent.event.eventContinent" type="radio" id="northAmericaInput" name="newEventContinent" value="North America">
+								North America
 							</label>
 							<br>
-							<label for="southAmericaInput">South America
-								<input class="form-control float-left" data-ng-model="editedEvent.event.eventContinent" type="radio" id="southAmericaInput" name="newEventContinent" value="South America">
+							<label for="southAmericaInput">
+								<input data-ng-model="editedEvent.event.eventContinent" type="radio" id="southAmericaInput" name="newEventContinent" value="South America">
+								South America
 							</label>
 							<br>
-							<label for="asia">Asia</label>
-								<input class="form-control float-left" data-ng-model="editedEvent.event.eventContinent" type="radio" id="asia" name="newEventContinent" value="Asia">
+							<label for="asia">
+								<input data-ng-model="editedEvent.event.eventContinent" type="radio" id="asia" name="newEventContinent" value="Asia">
+								Asia
 							</label>
 							<br>
-							<label for="europeInput">Europe
-								<input class="form-control float-left" data-ng-model="editedEvent.event.eventContinent" type="radio" id="europeInput" name="newEventContinent" value="Europe">
+							<label for="europeInput">
+								<input data-ng-model="editedEvent.event.eventContinent" type="radio" id="europeInput" name="newEventContinent" value="Europe">
+								Europe
 							</label>
 							<br>
-							<label for="africaInput">Africa
-								<input class="form-control float-left" data-ng-model="editedEvent.event.eventContinent" type="radio" id="africaInput" name="newEventContinent" value="Africa">
+							<label for="africaInput">
+								<input data-ng-model="editedEvent.event.eventContinent" type="radio" id="africaInput" name="newEventContinent" value="Africa">
+								Africa
 							</label>
 							<br>
-							<label for="australiaInput">Australia
-								<input class="form-control float-left" data-ng-model="editedEvent.event.eventContinent" type="radio" id="australiaInput" name="newEventContinent" value="Oceania">
+							<label for="australiaInput">
+								<input data-ng-model="editedEvent.event.eventContinent" type="radio" id="australiaInput" name="newEventContinent" value="Oceania">
+								Australia
 							</label>
 						</radiogroup>
 					</label>
@@ -318,7 +329,7 @@
 					<textarea class="form-control" data-ng-model="editedEvent.event.eventParkingInfo" name="editedVenueParkingInfo" id="editedVenueParkingInfo" style="min-height:200px;"></textarea>
 				</div>
 				<div data-ng-controller="AdminPageCtrl">
-					<button name="venuePhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventVenueImg')">Select Venue Image</button>
+					<button class="btn btn-default" name="venuePhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventVenueImg')">Select Venue Image</button>
 					<br><br>
 		  		<div style="font:smaller">{{eventVenueImg.path}} {{eventVenueImg.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
 		  		    <span class="progress" ng-show="eventVenueImg.progress >= 0">
@@ -334,7 +345,7 @@
 					<textarea class="form-control" data-ng-model="editedEvent.event.eventAccommodations" name="editedEventAccommodations" style="min-height: 200px"></textarea>
 				</div>
 				<div data-ng-controller="AdminPageCtrl">
-					<button name="hotelPhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventAccommodationImg')">Select Accommodation Image</button>
+					<button class="btn btn-default" name="hotelPhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventAccommodationImg')">Select Accommodation Image</button>
 					<br><br>
 		  		<div style="font:smaller">{{eventAccommodationImg.path}} {{eventAccommodationImg.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
 		  		    <span class="progress" ng-show="eventAccommodationImg.progress >= 0">
@@ -350,7 +361,7 @@
 					<textarea name="editedEventHackathon" class="form-control" data-ng-model="editedEvent.event.eventHackathon" style="min-height: 200px"></textarea>
 				</div>
 				<div data-ng-controller="AdminPageCtrl">
-					<button name="hackathonPhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventHackathonImg')">Select Hackathon Image</button>
+					<button class="btn btn-default" name="hackathonPhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventHackathonImg')">Select Hackathon Image</button>
 					<br><br>
 		  		<div style="font:smaller">{{eventHackathonImg.path}} {{eventHackathonImg.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
 		  		    <span class="progress" ng-show="eventHackathonImg.progress >= 0">
@@ -366,7 +377,7 @@
 					<textarea name="editedEventIOLab" class="form-control" data-ng-model="editedEvent.event.eventIOLab" style="min-height:200px;"></textarea>
 				</div>
 				<div data-ng-controller="AdminPageCtrl">
-					<button name="ioLabPhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventIOLabImg')">Select I/O Lab Image</button>
+					<button class="btn btn-default" name="ioLabPhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventIOLabImg')">Select I/O Lab Image</button>
 					<br><br>
 		  		<div style="font:smaller">{{eventIOLabImg.path}} {{eventIOLabImg.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
 		  		    <span class="progress" ng-show="eventIOLabImg.progress >= 0">
@@ -382,7 +393,7 @@
 					<textarea name="editedEventWorkshop" class="form-control" data-ng-model="editedEvent.event.eventWorkshop" style="min-height:200px;"></textarea>
 				</div>
 				<div data-ng-controller="AdminPageCtrl">
-					<button name="workshopPhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventWorkshopImg')">Select Workshop Image</button>
+					<button class="btn btn-default" name="workshopPhoto" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'eventWorkshopImg')">Select Workshop Image</button>
 					<br><br>
 		  		<div style="font:smaller">{{eventWorkshopImg.path}} {{eventWorkshopImg.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
 		  		    <span class="progress" ng-show="eventWorkshopImg.progress >= 0">

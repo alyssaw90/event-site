@@ -19,10 +19,15 @@
     <section role="presentation" class="row internetExplorer">
 			<form id="addNewEventForm" class="col-lg-24" name="addNewEventForm" method="post" enctype="multipart/form-data">
 				<h3>New Event</h3>
-				<div class="form-group">
-					<label for="lastModifiedBy">Modified By</label>
-					<input type="radio" class="form-control" data-ng-model="newEvent.lastModifiedBy" name="lastModifiedBy" ng-value="userInfo.userName" data-ng-required="true">{{userInfo.userName}}
-				</div>
+				
+					<label>Modified by:
+						<div class="radio">
+							<label for="">
+								<input type="radio" data-ng-model="newEvent.lastModifiedBy" name="lastModifiedBy" ng-value="userInfo.userName" data-ng-required="true">{{userInfo.userName}}
+							</label>
+						</div>
+					</label>
+				
 				<div role="presentation" class="form-group">
 					<label for="newEventName">Event Name*</label>
 					<input class="form-control" type="text" data-ng-model="newEvent.newEventName" name="newEventName" id="newEventName" data-ng-required="true" autocomplete="off">
@@ -56,32 +61,38 @@
 					<label class="ui-widget" for="newEventCity">Event Location*</label>
 					<input class="form-control ui-widget-content" type="text" data-ng-model="newEvent.newEventCity" name="newEventCity" id="newEventCity" admin-city-name-auto-complete-directive data-ng-required="true">				
 				</div>
-				<div class="form-group" role="presentation">
+				<div role="presentation">
 					<label for="continentsInput">Choose Event Continent
 						<div class="clearfix"></div>
 						<radiogroup id="continentsInput" data-ng-required="true">
-							<label for="northAmericaInput">North America
-								<input class="form-control float-left" data-ng-model="newEvent.newEventContinent" type="radio" id="northAmericaInput" name="newEventContinent" value="North America">
+							<label for="northAmericaInput">
+								<input data-ng-model="newEvent.newEventContinent" type="radio" id="northAmericaInput" name="newEventContinent" value="North America">
+								North America
 							</label>
 							<br>
-							<label for="southAmericaInput">South America
-								<input class="form-control float-left" data-ng-model="newEvent.newEventContinent" type="radio" id="southAmericaInput" name="newEventContinent" value="South America">
+							<label for="southAmericaInput">
+								<input data-ng-model="newEvent.newEventContinent" type="radio" id="southAmericaInput" name="newEventContinent" value="South America">
+								South America
 							</label>
 							<br>
-							<label for="asia">Asia</label>
-								<input class="form-control float-left" data-ng-model="newEvent.newEventContinent" type="radio" id="asia" name="newEventContinent" value="Asia">
+							<label for="asia">
+								<input data-ng-model="newEvent.newEventContinent" type="radio" id="asia" name="newEventContinent" value="Asia">
+								Asia
 							</label>
 							<br>
-							<label for="europeInput">Europe
-								<input class="form-control float-left" data-ng-model="newEvent.newEventContinent" type="radio" id="europeInput" name="newEventContinent" value="Europe">
+							<label for="europeInput">
+								<input data-ng-model="newEvent.newEventContinent" type="radio" id="europeInput" name="newEventContinent" value="Europe">
+								Europe
 							</label>
 							<br>
-							<label for="africaInput">Africa
-								<input class="form-control float-left" data-ng-model="newEvent.newEventContinent" type="radio" id="africaInput" name="newEventContinent" value="Africa">
+							<label for="africaInput">
+								<input data-ng-model="newEvent.newEventContinent" type="radio" id="africaInput" name="newEventContinent" value="Africa">
+								Africa
 							</label>
 							<br>
-							<label for="australiaInput">Australia
-								<input class="form-control float-left" data-ng-model="newEvent.newEventContinent" type="radio" id="australiaInput" name="newEventContinent" value="Oceania">
+							<label for="australiaInput">
+								<input data-ng-model="newEvent.newEventContinent" type="radio" id="australiaInput" name="newEventContinent" value="Oceania">
+								Australia
 							</label>
 						</radiogroup>
 					</label>
@@ -98,7 +109,7 @@
 					</div>
 				</div>
 				<div class="clearfix"></div>
-				<div class="form-group" role="presentation">
+				<!--<div class="form-group" role="presentation">
 					<label for="showOnHeader">Display on the colored events menu underneath gray “Home” menu?
 						<div class="clearfix"></div>
 						<radiogroup class="time-input-wrapper" id="showOnHeader">
@@ -109,8 +120,8 @@
 								<input class="form-control" type="radio" id="showOnHeaderFalse" data-ng-model="newEvent.showOnHeader" value="false" ng-checked="true">						
 							</label>
 						</radiogroup>
-					</label>
-				</div>				
+					</label>-->
+				<!--</div>				-->
 				<div class="form-group" role="presentation">
 				<label for="new-event-description">About page Content*</label>
 						<textarea class="form-control" data-ng-model="newEvent.eventAboutTabText" name="new-event-description" data-ng-required="true" style="min-height:200px;"></textarea>
