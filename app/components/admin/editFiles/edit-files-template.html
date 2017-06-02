@@ -27,7 +27,7 @@
           <button type="submit" class="btn btn-danger" style="margin: 5px" id="delete-file-button">Delete</button>
           <label>Search: <input type="text" name="searchBox" ng-model="searchBox" class="form-control"></label>
       </div>
-      <div>
+      <div match-file-dispaly-heights>
         <label ng-repeat="file in files | fileSearch:searchBox" class="file-container" for="file.fileName"><p>{{file.fileName}}</p>
           <input type="checkbox" name="file.fileName" data-ng-model="filesToDelete[file.fileName]" value="file.fileName">
           <img class="img-thumbnail" data-ng-if="file.isImage" data-ng-src="{{file.fileLink}}">        
