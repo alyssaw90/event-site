@@ -25,14 +25,11 @@
       <div class="row admin-header-div-with-button" role="presentation">
           <button class="btn btn-primary" name="photo" type="file" ngf-select="uploadFiles($file, $invalidFiles, 'newSlideImage', getAllFiles)">Add File</button>
           <button type="submit" class="btn btn-danger" style="margin: 5px" id="delete-file-button">Delete</button>
-          <label>Search: <input type="text" name="searchBox" ng-model="searchBox"></label>
+          <label>Search: <input type="text" name="searchBox" ng-model="searchBox" class="form-control"></label>
       </div>
-      <div match-file-display-heights>
-        <label ng-repeat="file in files | fileSearch:searchBox" class="file-container" for="file.fileName">{{file.fileName}}
-          <br>
+      <div>
+        <label ng-repeat="file in files | fileSearch:searchBox" class="file-container" for="file.fileName"><p>{{file.fileName}}</p>
           <input type="checkbox" name="file.fileName" data-ng-model="filesToDelete[file.fileName]" value="file.fileName">
-          <br>
-          <br>
           <img class="img-thumbnail" data-ng-if="file.isImage" data-ng-src="{{file.fileLink}}">        
           <i data-ng-if="!file.isImage" class="win-icon win-icon-Page win-icon-size-xl text-align-center" ng-hidden="!file.isImage"></i>
         </label>
