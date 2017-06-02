@@ -145,9 +145,9 @@ p .lightbox {
 .editedEventSpeaker {
 	min-height: 50px;
 	border: 1px solid #eee;
-  margin: 0;
-  padding: 5px 0 0 0;
-  margin-right: 10px;
+  	margin: 0;
+  	padding: 5px 0 0 0;
+  	margin-right: 10px;
 }
 
 .slide-table-container {
@@ -158,13 +158,21 @@ p .lightbox {
 }
 
 .file-container {
-	.editedEventSpeaker;
+	min-height: 50px;
+	border: 1px solid #000;
+  	margin-right: 30px;
+	margin-bottom: 30px;
 	padding: 5px;
-	width: 10%;
+	width: 150px;
  	vertical-align:top;
-	& i {
+	word-wrap: break-word;
+	.img-thumbnail {
+		max-width: 70%;
+	}
+	 & i {
 		width: 100%;
 	}
+
 }
 
 .new-event-speakers-modal-container, .edited-speaker-wrappe, .slide-table-container {
