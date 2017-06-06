@@ -1,10 +1,10 @@
 <div class="ng-cloak" data-ng-init="getEvents()" data-events-directive>
-	<main data-ng-if="show404" class="col-xs-12 ng-cloak">
+	<main data-ng-if="show404" class="col-xs-12 ng-cloak errorSection">
     	<section class="col-xs-12">
       		<h1>Sorry we can't find the page you're looking for</h1>
     	</section>
   	</main>
-  	<main class="eventContent">
+  	<main class="eventContent" data-ng-hide="show404">
     	<section class="eventBanner" data-ng-style="{'background-image': 'url('+ headerImage +')'}">
 			<div class="gradient">
 				<div class="container">

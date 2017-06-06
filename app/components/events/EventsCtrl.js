@@ -70,7 +70,7 @@ const EventsCtrl = (app) => {
 
 		$scope.urlify = customFunctions.urlify;
 		//if there is no event found, show the 404 page
-		if ($scope.events) {
+		if (!$scope.events) {
 			$scope.show404 = true;
 		}
 
