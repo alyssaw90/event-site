@@ -8,7 +8,7 @@ const EventsCtrl = (app) => {
 		//hide the 404 page when loading the page
 		$scope.show404 = false;
 		$scope.events
-
+		
 		let Events = resource();
 
 		$scope.getEvents = () => {
@@ -22,8 +22,7 @@ const EventsCtrl = (app) => {
 				$scope.event = $scope.events.event;
 				$rootScope.lang = $scope.events.eventLanguage || 'en';
 				$scope.headerImage = '/uploads/' + $scope.events.event.eventHeaderImage;
-
-				$scope.eventInformation = $sce.trustAsHtml($scope.event.eventAboutTabText)			
+				$scope.eventInformation = $sce.trustAsHtml($scope.event.eventAboutTabText)	
 				//loop over html string for tabs and tell angular to trust it as html
 				for (let i = 0, len = $scope.events.tabs.length; i < len; i++) {
 					$scope.events.tabs[i].tabContent = $sce.trustAsHtml($scope.events.tabs[i].tabContent);
