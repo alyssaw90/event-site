@@ -4,8 +4,8 @@
       		<h1>Sorry we can't find the page you're looking for</h1>
     	</section>
   	</main>
-  	<main class="eventContent" data-ng-hide="events.isEvent === false">
-    	<section class="eventBanner" data-ng-style="{'background-image': 'url('+ headerImage +')'}">
+  	<main class="eventContent ng-cloak" data-ng-hide="events.isEvent === false">
+    	<section class="eventBanner" data-ng-style="{'background-image': 'url('+ headerImage +')'}" data-ng-if="event.eventName">
 			<div class="gradient">
 				<div class="container">
 					<div class="bannerText">
@@ -28,7 +28,7 @@
 				</div>
 			</div>
 		</section>-->
-    	<section class="eventInfo">
+    	<section class="eventInfo" data-ng-if="events.event.eventAboutTabText">
 				<div class="container">
 					<h2>Event Information</h2>
 					<div class="eventInfoText" data-ng-bind-html="events.event.eventAboutTabText">
