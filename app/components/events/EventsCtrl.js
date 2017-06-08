@@ -7,43 +7,36 @@ const EventsCtrl = (app) => {
 		$scope.errors = [];
 		//hide the 404 page when loading the page
 		$scope.show404 = false;
-		$scope.events;
-
+		$scope.events
+		
 		let Events = resource();
 
 		$scope.getEvents = () => {
 			let path = window.location.pathname.slice(1);
 
 			Events.getEvents(path, function (err, data) {
-        if (err) {
-          return $scope.errors.push({msg: 'no event found'});
-        };
-		$scope.events = data.data;
-		console.log($scope.events.event)
-		$scope.event = $scope.events.event;
-        $rootScope.lang = $scope.events.eventLanguage || 'en';
-        $scope.headerImage = '/uploads/' + $scope.events.event.eventHeaderImage;
-
-		$scope.eventInformation = $sce.trustAsHtml($scope.event.eventAboutTabText)
-
-		console.log($scope.events.tabs);
-
-		
-        
-        //loop over html string for tabs and tell angular to trust it as html
+				if (err) {
+					return $scope.errors.push({msg: 'no event found'});
+				};
+				$scope.events = data.data;
+				$scope.event = $scope.events.event;
+				$rootScope.lang = $scope.events.eventLanguage || 'en';
+				$scope.headerImage = '/uploads/' + $scope.events.event.eventHeaderImage;
+				$scope.eventInformation = $sce.trustAsHtml($scope.event.eventAboutTabText)	
+				//loop over html string for tabs and tell angular to trust it as html
 				for (let i = 0, len = $scope.events.tabs.length; i < len; i++) {
 					$scope.events.tabs[i].tabContent = $sce.trustAsHtml($scope.events.tabs[i].tabContent);
 				}
-				//add folder path to image names
+						//add folder path to image names
 				for (let i = 0, len = $scope.events.speakers.length; i < len; i++) {
-					 $scope.events.speakers[i].headShot = 'uploads/' + $scope.events.speakers[i].headShot;
-					 $scope.events.speakers[i].speakerDescription = $sce.trustAsHtml($scope.events.speakers[i].speakerDescription);
+					$scope.events.speakers[i].headShot = 'uploads/' + $scope.events.speakers[i].headShot;
+					$scope.events.speakers[i].speakerDescription = $sce.trustAsHtml($scope.events.speakers[i].speakerDescription);
 				}
 				for (let i = 0, len = $scope.events.length; i < len; i++) {
 					$scope.events[i].eventAboutTabText = $sce.trustAsHtml($scope.events[i].eventAboutTabText);
 				}
-      })
-			
+			})
+					
 		
 		};
 
@@ -71,6 +64,8 @@ const EventsCtrl = (app) => {
 		$scope.urlify = customFunctions.urlify;
 		//if there is no event found, show the 404 page
 		if ($scope.events) {
+			console.log($scope.events)
+			console.log($scope.show404)
 			$scope.show404 = true;
 		}
 

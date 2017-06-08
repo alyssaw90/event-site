@@ -64,3 +64,10 @@ h1, h2, h3, h4, h5, h6 {
 p, a {
     font-family: 'Segoe UI SemiLight'
 }
+
+// fix for sweetalert not hiding hiding intput, use on all sweetalerts that don't have an input
+.sweet-alert-hide-input {
+  fieldset {
+    display: none;
+  }
+}

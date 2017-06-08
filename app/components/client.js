@@ -311,6 +311,7 @@ eventsApp
       pageTitle: 'Interoperability Event Page - Microsoft Plugfests and Events'
     }
   })
+  .otherwise({redirectTo: '/'})
 
   var endpoints = {
 		  "https://localhost:3000":"https://localhost:3000/api/getTeam",

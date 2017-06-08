@@ -1,16 +1,16 @@
 <div class="ng-cloak" data-ng-init="getEvents()" data-events-directive>
-	<main data-ng-if="show404" class="col-xs-12 ng-cloak">
+	<main data-ng-if="events.isEvent === false" class="col-xs-12 ng-cloak errorSection">
     	<section class="col-xs-12">
       		<h1>Sorry we can't find the page you're looking for</h1>
     	</section>
   	</main>
-  	<main class="eventContent">
-    	<section class="eventBanner" data-ng-style="{'background-image': 'url('+ headerImage +')'}">
+  	<main class="eventContent ng-cloak" data-ng-hide="events.isEvent === false">
+    	<section class="eventBanner" data-ng-style="{'background-image': 'url('+ headerImage +')'}" data-ng-if="event.eventName">
 			<div class="gradient">
 				<div class="container">
 					<div class="bannerText">
 						<h1>{{event.eventName}}</h1>
-						<h4>{{getReadableDate(event.eventStartDate) + ' - ' + getReadableDate(event.eventEndDate)}}</h4>
+						<h4>{{event.eventStartDate | date: 'MMMM'}} {{event.eventStartDate | date: 'd'}} - {{event.eventEndDate | date: 'd'}} {{event.eventStartDate | date: 'yyyy'}}</h4>
 						<a data-ng-if="event.eventRegistrationLink" href="{{event.eventRegistrationLink}}" class="btn eventRegistrationButton" title="Navigate to registration page">Register</a>
 					</div>
 				</div>
@@ -28,7 +28,7 @@
 				</div>
 			</div>
 		</section>-->
-    	<section class="eventInfo">
+    	<section class="eventInfo" data-ng-if="events.event.eventAboutTabText">
 				<div class="container">
 					<h2>Event Information</h2>
 					<div class="eventInfoText" data-ng-bind-html="events.event.eventAboutTabText">
