@@ -1,64 +1,437 @@
 <main role="presentation" class="grid white-bg mobileWrapper clearfix ng-cloak" data-ng-controller="surveyController">
-    <section ng-show="thankYouHide">
+    <section ng-show="thankYouHide" class="thankYouSection container">
         <h1>Thank you for the feedback!</h1>
     </section>
-    <section ng-show="hide">
-        <h1>Extend Paris 2017 Event Survey</h1>
-        <p>Please fill out the following survey is you attended the Extend Paris 2017 event. All answers are annonymous.</p>
+    <section ng-show="hide" class="surveySection container">
+        <h1>Redmond Interoperability Plugfest 2017</h1>
+        <h4>Please fill out the following survey is you attended the Redmond Interoperability Plugest 2017 event. All answers are annonymous.</h4>
         <form method="post" name="surveyForm" id="surveyForm" enctype="multipart/form-data">
-            <!--<div class="form-group">
-                <label for="eventName">Extend Paris 2017
-                    <input type="radio" class="form-control float-left" name="eventName" data-ng-model="newSurvey.eventName" value="Extend Paris 2017">
+            <div class="form-group">
+                <label for="name">Name (optional)</label>
+                <input type="text" class="form-control" name="name" data-ng-model="newSurvey.name">
+            </div>
+            <div class="form-group">
+                <label for="organization">Organization (optional)</label>
+                <input type="text" class="form-control" name="organization" data-ng-model="newSurvey.organization">
+            </div>
+            <div class="form-group">
+                <label for="ratingQuestionOne">1. Please provide feedback for the event logistics:</label>
+                <div class="clearfix"></div>
+                <label for="">Overall Event: 
+					<div class="clearfix"></div>
+                    <radiogroup>
+                        <label for="fourQuestionOne">4 Very Satisfied
+                            <input type="radio" id="fourQuestionOne" data-ng-model="newSurvey.eventRating" name="eventRating" value="4">
+                        </label>
+                        <label for="threeQuestionOne">3 Somewhat Satisfied
+                            <input type="radio" id="threeQuestionOne" data-ng-model="newSurvey.eventRating" name="eventRating" value="3">
+                        </label>
+                        <label for="twoQuestionOne">2 Somewhat Dissatisfied
+                            <input type="radio" id="twoQuestionOne" data-ng-model="newSurvey.eventRating" name="eventRating" value="2">
+                        </label>
+                        <label for="oneQuestionOne">1 Very Dissatisfied
+                            <input type="radio" id="oneQuestionOne" data-ng-model="newSurvey.eventRating" name="eventRating" value="1">
+                        </label>
+                    </radiogroup>
                 </label>
-            </div>-->
-            
+                <label for="">Venue: 
+					<div class="clearfix"></div>
+                    <radiogroup>
+                        <label for="fourQuestionOne">4 Very Satisfied
+                            <input type="radio" id="fourQuestionOne" data-ng-model="newSurvey.venue" name="venue" value="4">
+                        </label>
+                        <label for="threeQuestionOne">3 Somewhat Satisfied
+                            <input type="radio" id="threeQuestionOne" data-ng-model="newSurvey.venue" name="venue" value="3">
+                        </label>
+                        <label for="twoQuestionOne">2 Somewhat Dissatisfied
+                            <input type="radio" id="twoQuestionOne" data-ng-model="newSurvey.venue" name="venue" value="2">
+                        </label>
+                        <label for="oneQuestionOne">1 Very Dissatisfied
+                            <input type="radio" id="oneQuestionOne" data-ng-model="newSurvey.venue" name="venue" value="1">
+                        </label>
+                    </radiogroup>
+                </label>
+                <label for="">Food: 
+					<div class="clearfix"></div>
+                    <radiogroup>
+                        <label for="fourQuestionOne">4 Very Satisfied
+                            <input type="radio" id="fourQuestionOne" data-ng-model="newSurvey.food" name="food" value="4">
+                        </label>
+                        <label for="threeQuestionOne">3 Somewhat Satisfied
+                            <input type="radio" id="threeQuestionOne" data-ng-model="newSurvey.food" name="food" value="3">
+                        </label>
+                        <label for="twoQuestionOne">2 Somewhat Dissatisfied
+                            <input type="radio" id="twoQuestionOne" data-ng-model="newSurvey.food" name="food" value="2">
+                        </label>
+                        <label for="oneQuestionOne">1 Very Dissatisfied
+                            <input type="radio" id="oneQuestionOne" data-ng-model="newSurvey.food" name="food" value="1">
+                        </label>
+                    </radiogroup>
+                </label>
+                <label for="">Socials and networking: 
+					<div class="clearfix"></div>
+                    <radiogroup>
+                        <label for="fourQuestionOne">4 Very Satisfied
+                            <input type="radio" id="fourQuestionOne" data-ng-model="newSurvey.networking" name="networking" value="4">
+                        </label>
+                        <label for="threeQuestionOne">3 Somewhat Satisfied
+                            <input type="radio" id="threeQuestionOne" data-ng-model="newSurvey.networking" name="networking" value="3">
+                        </label>
+                        <label for="twoQuestionOne">2 Somewhat Dissatisfied
+                            <input type="radio" id="twoQuestionOne" data-ng-model="newSurvey.networking" name="networking" value="2">
+                        </label>
+                        <label for="oneQuestionOne">1 Very Dissatisfied
+                            <input type="radio" id="oneQuestionOne" data-ng-model="newSurvey.networking" name="networking" value="1">
+                        </label>
+                    </radiogroup>
+                </label>
+            </div>
             <div class="form-group">
-                <label for="ratingQuestionOne">1. Overall, how satisfied were you with Extend 2017? (Required)</label>
+                <label for="ratingQuestionOne">2. If you atteneded <strong>conference sesssions</strong>, please provide your feedback:</label>
                 <div class="clearfix"></div>
-                <radiogroup>
-                    <label for="fourQuestionOne">4 Very Satisfied
-                        <input type="radio" class="form-control float-left" id="fourQuestionOne" data-ng-model="newSurvey.ratingQuestionOne" name="ratingQuestionOne" value="4">
-                    </label>
-                    <label for="threeQuestionOne">3 Somewhat Satisfied
-                        <input type="radio" class="form-control float-left" id="threeQuestionOne" data-ng-model="newSurvey.ratingQuestionOne" name="ratingQuestionOne" value="3">
-                    </label>
-                    <label for="twoQuestionOne">2 Somewhat Dissatisfied
-                        <input type="radio" class="form-control float-left" id="twoQuestionOne" data-ng-model="newSurvey.ratingQuestionOne" name="ratingQuestionOne" value="2">
-                    </label>
-                    <label for="oneQuestionOne">1 Very Dissatisfied
-                        <input type="radio" class="form-control float-left" id="oneQuestionOne" data-ng-model="newSurvey.ratingQuestionOne" name="ratingQuestionOne" value="1">
-                    </label>
-                </radiogroup>
+                <label for="">Windows content/talks: 
+					<div class="clearfix"></div>
+                    <radiogroup>
+                        <label for="fourQuestionOne">4 Very Satisfied
+                            <input type="radio" id="fourQuestionOne" data-ng-model="newSurvey.windowsTalks" name="windowsTalks" value="4">
+                        </label>
+                        <label for="threeQuestionOne">3 Somewhat Satisfied
+                            <input type="radio" id="threeQuestionOne" data-ng-model="newSurvey.windowsTalks" name="windowsTalks" value="3">
+                        </label>
+                        <label for="twoQuestionOne">2 Somewhat Dissatisfied
+                            <input type="radio" id="twoQuestionOne" data-ng-model="newSurvey.windowsTalks" name="windowsTalks" value="2">
+                        </label>
+                        <label for="oneQuestionOne">1 Very Dissatisfied
+                            <input type="radio" id="oneQuestionOne" data-ng-model="newSurvey.windowsTalks" name="windowsTalks" value="1">
+                        </label>
+                    </radiogroup>
+                </label>
+                <label for="">Windows speakers: 
+					<div class="clearfix"></div>
+                    <radiogroup>
+                        <label for="fourQuestionOne">4 Very Satisfied
+                            <input type="radio" id="fourQuestionOne" data-ng-model="newSurvey.windowsSpeakers" name="windowsSpeakers" value="4">
+                        </label>
+                        <label for="threeQuestionOne">3 Somewhat Satisfied
+                            <input type="radio" id="threeQuestionOne" data-ng-model="newSurvey.windowsSpeakers" name="windowsSpeakers" value="3">
+                        </label>
+                        <label for="twoQuestionOne">2 Somewhat Dissatisfied
+                            <input type="radio" id="twoQuestionOne" data-ng-model="newSurvey.windowsSpeakers" name="windowsSpeakers" value="2">
+                        </label>
+                        <label for="oneQuestionOne">1 Very Dissatisfied
+                            <input type="radio" id="oneQuestionOne" data-ng-model="newSurvey.windowsSpeakers" name="windowsSpeakers" value="1">
+                        </label>
+                    </radiogroup>
+                </label>
+                <label for="">Office content/talks: 
+					<div class="clearfix"></div>
+                    <radiogroup>
+                        <label for="fourQuestionOne">4 Very Satisfied
+                            <input type="radio" id="fourQuestionOne" data-ng-model="newSurvey.officeTalks" name="officeTalks" value="4">
+                        </label>
+                        <label for="threeQuestionOne">3 Somewhat Satisfied
+                            <input type="radio" id="threeQuestionOne" data-ng-model="newSurvey.officeTalks" name="officeTalks" value="3">
+                        </label>
+                        <label for="twoQuestionOne">2 Somewhat Dissatisfied
+                            <input type="radio" id="twoQuestionOne" data-ng-model="newSurvey.officeTalks" name="officeTalks" value="2">
+                        </label>
+                        <label for="oneQuestionOne">1 Very Dissatisfied
+                            <input type="radio" id="oneQuestionOne" data-ng-model="newSurvey.officeTalks" name="officeTalks" value="1">
+                        </label>
+                    </radiogroup>
+                </label>
+                <label for="">Office speakers: 
+					<div class="clearfix"></div>
+                    <radiogroup>
+                        <label for="fourQuestionOne">4 Very Satisfied
+                            <input type="radio" id="fourQuestionOne" data-ng-model="newSurvey.officeSpeakers" name="officeSpeakers" value="4">
+                        </label>
+                        <label for="threeQuestionOne">3 Somewhat Satisfied
+                            <input type="radio" id="threeQuestionOne" data-ng-model="newSurvey.officeSpeakers" name="officeSpeakers" value="3">
+                        </label>
+                        <label for="twoQuestionOne">2 Somewhat Dissatisfied
+                            <input type="radio" id="twoQuestionOne" data-ng-model="newSurvey.officeSpeakers" name="officeSpeakers" value="2">
+                        </label>
+                        <label for="oneQuestionOne">1 Very Dissatisfied
+                            <input type="radio" id="oneQuestionOne" data-ng-model="newSurvey.officeSpeakers" name="officeSpeakers" value="1">
+                        </label>
+                    </radiogroup>
+                </label>
+                <label for="">Data content/talks: 
+					<div class="clearfix"></div>
+                    <radiogroup>
+                        <label for="fourQuestionOne">4 Very Satisfied
+                            <input type="radio" id="fourQuestionOne" data-ng-model="newSurvey.dataTalks" name="dataTalks" value="4">
+                        </label>
+                        <label for="threeQuestionOne">3 Somewhat Satisfied
+                            <input type="radio" id="threeQuestionOne" data-ng-model="newSurvey.dataTalks" name="dataTalks" value="3">
+                        </label>
+                        <label for="twoQuestionOne">2 Somewhat Dissatisfied
+                            <input type="radio" id="twoQuestionOne" data-ng-model="newSurvey.dataTalks" name="dataTalks" value="2">
+                        </label>
+                        <label for="oneQuestionOne">1 Very Dissatisfied
+                            <input type="radio" id="oneQuestionOne" data-ng-model="newSurvey.dataTalks" name="dataTalks" value="1">
+                        </label>
+                    </radiogroup>
+                </label>
+                <label for="">Data speakers: 
+					<div class="clearfix"></div>
+                    <radiogroup>
+                        <label for="fourQuestionOne">4 Very Satisfied
+                            <input type="radio" id="fourQuestionOne" data-ng-model="newSurvey.dataSpeakers" name="dataSpeakers" value="4">
+                        </label>
+                        <label for="threeQuestionOne">3 Somewhat Satisfied
+                            <input type="radio" id="threeQuestionOne" data-ng-model="newSurvey.dataSpeakers" name="dataSpeakers" value="3">
+                        </label>
+                        <label for="twoQuestionOne">2 Somewhat Dissatisfied
+                            <input type="radio" id="twoQuestionOne" data-ng-model="newSurvey.dataSpeakers" name="dataSpeakers" value="2">
+                        </label>
+                        <label for="oneQuestionOne">1 Very Dissatisfied
+                            <input type="radio" id="oneQuestionOne" data-ng-model="newSurvey.dataSpeakers" name="dataSpeakers" value="1">
+                        </label>
+                    </radiogroup>
+                </label>
+                <label for="">Documentation booth: 
+					<div class="clearfix"></div>
+                    <radiogroup>
+                        <label for="fourQuestionOne">4 Very Satisfied
+                            <input type="radio" id="fourQuestionOne" data-ng-model="newSurvey.documentation" name="documentation" value="4">
+                        </label>
+                        <label for="threeQuestionOne">3 Somewhat Satisfied
+                            <input type="radio" id="threeQuestionOne" data-ng-model="newSurvey.documentation" name="documentation" value="3">
+                        </label>
+                        <label for="twoQuestionOne">2 Somewhat Dissatisfied
+                            <input type="radio" id="twoQuestionOne" data-ng-model="newSurvey.documentation" name="documentation" value="2">
+                        </label>
+                        <label for="oneQuestionOne">1 Very Dissatisfied
+                            <input type="radio" id="oneQuestionOne" data-ng-model="newSurvey.documentation" name="documentation" value="1">
+                        </label>
+                    </radiogroup>
+                </label>
             </div>
             <div class="form-group">
-                <label for="questionTwo">2. What did you like most about the Extend 2017 conference?</label>
-                <textarea data-ng-model="newSurvey.questionTwo" name="questionTwo" class="form-control" cols="30" rows="10"></textarea>
+                <label for="questionThree">3. What were your favorite talks and/or speaker(s)? Why?</label>
+                <textarea name="questionThree" cols="30" rows="10" class="form-control" data-ng-model="newSurvey.questionThree"></textarea>
             </div>
             <div class="form-group">
-                <label for="ratingQuestionThree">3. How likely are you to develop with a technology you learned abou at Extend? (Required)</label>
-                <div class="clearfix"></div>
-                <radiogroup id="ratingQuestionThree">
-                    <label for="fourQuestionThree">4 Very Likely
-                        <input type="radio" class="form-control float-left" id="fourQuestionThree" data-ng-model="newSurvey.ratingQuestionThree" name="ratingQuestionThree" value="4">
-                    </label>
-                    <label for="threeQuestionThree">3 Somewhat Likely
-                        <input type="radio" class="form-control float-left" id="threeQuestionThree" data-ng-model="newSurvey.ratingQuestionThree" name="ratingQuestionThree" value="3">
-                    </label>
-                    <label for="twoQuestionThree">2 Somewhat Unlikely
-                        <input type="radio" class="form-control float-left" id="twoQuestionThree" data-ng-model="newSurvey.ratingQuestionThree" name="ratingQuestionThree" value="2">
-                    </label>
-                    <label for="oneQuestionThree">1 Very Unlikely
-                        <input type="radio" class="form-control float-left" id="oneQuestionThree" data-ng-model="newSurvey.ratingQuestionThree" name="ratingQuestionThree" value="1">
-                    </label>
-                </radiogroup>
-            </div>
-            <div class="form-group">
-                <label for="questionFour">4. Which technology are you most likely to develop with and why?</label>
+                <label for="questionFour">4. What were your least favorite talks and/or speaker(s)? Why?</label>
                 <textarea data-ng-model="newSurvey.questionFour" name="questionFour" class="form-control" cols="30" rows="10"></textarea>
             </div>
             <div class="form-group">
-                <label for="questionFive">5. How could we improve the Extend 2017 conference?</label>
-                <textarea data-ng-model="newSurvey.questionFive" name="questionFive" class="form-control" cols="30" rows="10"></textarea>
+                <label for="questionFive">5. If you participated in the IO Lab (testing in Buidling 20), please provide your feedback:</label>
+                <div class="clearfix"></div>
+                <label for="">Overall IO Lab experience:
+					<div class="clearfix"></div> 
+                    <radiogroup>
+                        <label for="fourQuestionOne">4 Very Satisfied
+                            <input type="radio" id="fourQuestionOne" data-ng-model="newSurvey.IOLab" name="IOLab" value="4">
+                        </label>
+                        <label for="threeQuestionOne">3 Somewhat Satisfied
+                            <input type="radio" id="threeQuestionOne" data-ng-model="newSurvey.IOLab" name="IOLab" value="3">
+                        </label>
+                        <label for="twoQuestionOne">2 Somewhat Dissatisfied
+                            <input type="radio" id="twoQuestionOne" data-ng-model="newSurvey.IOLab" name="IOLab" value="2">
+                        </label>
+                        <label for="oneQuestionOne">1 Very Dissatisfied
+                            <input type="radio" id="oneQuestionOne" data-ng-model="newSurvey.IOLab" name="IOLab" value="1">
+                        </label>
+                    </radiogroup>
+                </label>
+                <label for="">Support team engagement: 
+					<div class="clearfix"></div>
+                    <radiogroup>
+                        <label for="fourQuestionOne">4 Very Satisfied
+                            <input type="radio" id="fourQuestionOne" data-ng-model="newSurvey.supportTeam" name="supportTeam" value="4">
+                        </label>
+                        <label for="threeQuestionOne">3 Somewhat Satisfied
+                            <input type="radio" id="threeQuestionOne" data-ng-model="newSurvey.supportTeam" name="supportTeam" value="3">
+                        </label>
+                        <label for="twoQuestionOne">2 Somewhat Dissatisfied
+                            <input type="radio" id="twoQuestionOne" data-ng-model="newSurvey.supportTeam" name="supportTeam" value="2">
+                        </label>
+                        <label for="oneQuestionOne">1 Very Dissatisfied
+                            <input type="radio" id="oneQuestionOne" data-ng-model="newSurvey.supportTeam" name="supportTeam" value="1">
+                        </label>
+                    </radiogroup>
+                </label>
+                <label for="">Test team engagement: 
+					<div class="clearfix"></div>
+                    <radiogroup>
+                        <label for="fourQuestionOne">4 Very Satisfied
+                            <input type="radio" id="fourQuestionOne" data-ng-model="newSurvey.testTeam" name="testTeam" value="4">
+                        </label>
+                        <label for="threeQuestionOne">3 Somewhat Satisfied
+                            <input type="radio" id="threeQuestionOne" data-ng-model="newSurvey.testTeam" name="testTeam" value="3">
+                        </label>
+                        <label for="twoQuestionOne">2 Somewhat Dissatisfied
+                            <input type="radio" id="twoQuestionOne" data-ng-model="newSurvey.testTeam" name="testTeam" value="2">
+                        </label>
+                        <label for="oneQuestionOne">1 Very Dissatisfied
+                            <input type="radio" id="oneQuestionOne" data-ng-model="newSurvey.testTeam" name="testTeam" value="1">
+                        </label>
+                    </radiogroup>
+                </label>
+                <label for="">Product team engagement: 
+					<div class="clearfix"></div>
+                    <radiogroup>
+                        <label for="fourQuestionOne">4 Very Satisfied
+                            <input type="radio" id="fourQuestionOne" data-ng-model="newSurvey.productTeam" name="productTeam" value="4">
+                        </label>
+                        <label for="threeQuestionOne">3 Somewhat Satisfied
+                            <input type="radio" id="threeQuestionOne" data-ng-model="newSurvey.productTeam" name="productTeam" value="3">
+                        </label>
+                        <label for="twoQuestionOne">2 Somewhat Dissatisfied
+                            <input type="radio" id="twoQuestionOne" data-ng-model="newSurvey.productTeam" name="productTeam" value="2">
+                        </label>
+                        <label for="oneQuestionOne">1 Very Dissatisfied
+                            <input type="radio" id="oneQuestionOne" data-ng-model="newSurvey.productTeam" name="productTeam" value="1">
+                        </label>
+                    </radiogroup>
+                </label>
+                <label for="">Network infrastructure/support: 
+					<div class="clearfix"></div>
+                    <radiogroup>
+                        <label for="fourQuestionOne">4 Very Satisfied
+                            <input type="radio" id="fourQuestionOne" data-ng-model="newSurvey.network" name="network" value="4">
+                        </label>
+                        <label for="threeQuestionOne">3 Somewhat Satisfied
+                            <input type="radio" id="threeQuestionOne" data-ng-model="newSurvey.network" name="network" value="3">
+                        </label>
+                        <label for="twoQuestionOne">2 Somewhat Dissatisfied
+                            <input type="radio" id="twoQuestionOne" data-ng-model="newSurvey.network" name="network" value="2">
+                        </label>
+                        <label for="oneQuestionOne">1 Very Dissatisfied
+                            <input type="radio" id="oneQuestionOne" data-ng-model="newSurvey.network" name="network" value="1">
+                        </label>
+                    </radiogroup>
+                </label>
+                <label for="">Test suite usefulness: 
+					<div class="clearfix"></div>
+                    <radiogroup>
+                        <label for="fourQuestionOne">4 Very Satisfied
+                            <input type="radio" id="fourQuestionOne" data-ng-model="newSurvey.testSuite" name="testSuite" value="4">
+                        </label>
+                        <label for="threeQuestionOne">3 Somewhat Satisfied
+                            <input type="radio" id="threeQuestionOne" data-ng-model="newSurvey.testSuite" name="testSuite" value="3">
+                        </label>
+                        <label for="twoQuestionOne">2 Somewhat Dissatisfied
+                            <input type="radio" id="twoQuestionOne" data-ng-model="newSurvey.testSuite" name="testSuite" value="2">
+                        </label>
+                        <label for="oneQuestionOne">1 Very Dissatisfied
+                            <input type="radio" id="oneQuestionOne" data-ng-model="newSurvey.testSuite" name="testSuite" value="1">
+                        </label>
+                    </radiogroup>
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="questionSix">6. What was your most significate benefit attending the IO lab?</label>
+                <textarea name="questionSix" class="form-control" cols="30" rows="10" data-ng-model="newSurvey.questionSix"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="questionSeven">7. What was your least favorite part about the IO lab?</label>
+                <textarea name="questionSeven" class="form-control" cols="30" rows="10" data-ng-model="newSurvey.questionSeven"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="ratingQuestionEight">8. Which protocols are you implementing? (list as many as you wish)</label>
+				<div class="clearfix"></div>
+                <label class="checkbox-inline">
+					<input type="checkbox" id="inlineCheckbox1" data-ng-value="MSSMB23" name="MSSMB23" data-ng-model="newSurvey.MSSMB23"> MS-SMB2/3
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" id="inlineCheckbox2" data-ng-value="MS-FSRVP" name="MSFSRV" data-ng-model="newSurvey.MSFSRVP"> MS-FSRVP
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" id="inlineCheckbox3" data-ng-value="MS-SWN" name="MSSWN" data-ng-model="newSurvey.MSSWN"> MS-SWN
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" id="inlineCheckbox4" data-ng-value="MS-DFSC" name="MSDFSC" data-ng-model="newSurvey.MSDFSC"> MS-DFSC
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" id="inlineCheckbox5" data-ng-value="MS-RSVD" name="MS-RSVD" data-ng-model="newSurvey.MSRSVD"> MS-RSVD
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" id="inlineCheckbox6" data-ng-value="MS-FSA" name="MS-FSA" data-ng-model="newSurvey.MSFSA"> MS-FSA
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" id="inlineCheckbox7" data-ng-value="MS-SQOS" name="MS-SQOS" data-ng-model="newSurvey.MSQOS"> MS-SQOS
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" id="inlineCheckbox8" data-ng-value="MSADA" name="MSADA" data-ng-model="newSurvey.MSADA"> MS-ADA*
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" id="inlineCheckbox9" data-ng-value="MS-ADSC" name="MS-ADSC" data-ng-model="newSurvey.MSADSC"> MS-ADSC
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" id="inlineCheckbox10" data-ng-value="MS-ADLS" name="MS-ADLS" data-ng-model="newSurvey.MSADLS"> MS-ADLS
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" id="inlineCheckbox11" data-ng-value="MS-ADTS" name="MS-ADTS" data-ng-model="newSurvey.MSADTS"> MS-ADTS
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" id="inlineCheckbox12" data-ng-value="MS-APDS" name="MS-APDS" data-ng-model="newSurvey.MSAPDS"> MS-APDS
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" id="inlineCheckbox13" data-ng-value="MS-DRSR" name="MS-DRSR" data-ng-model="newSurvey.MSDRSR"> MS-DRSR
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" id="inlineCheckbox14" data-ng-value="MS-FRS2" name="MS-FRS2" data-ng-model="newSurvey.MSFRS2"> MS-FRS2
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" id="inlineCheckbox15" data-ng-value="MS-LSAD" name="MS-LSAD" data-ng-model="newSurvey.MSLSAD"> MS-LSAD
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" id="inlineCheckbox16" data-ng-value="MS-LSAT" name="MS-LSAT" data-ng-model="newSurvey.MSLSAT"> MS-LSAT
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" id="inlineCheckbox17" data-ng-value="MS-NRPC" name="MS-NRPC" data-ng-model="newSurvey.MSNRPC"> MS-NRPC
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" id="inlineCheckbox18" data-ng-value="MS-SAMR" name="MS-SAMR" data-ng-model="newSurvey.MSSAMR"> MS-SAMR
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" id="inlineCheckbox19" data-ng-value="MS-KILE" name="MS-KILE" data-ng-model="newSurvey.MSKILE"> MS-KILE
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" id="inlineCheckbox20" data-ng-value="MS-PAC" name="MS-PAC" data-ng-model="newSurvey.MSPAC"> MS-PAC
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" id="inlineCheckbox31" data-ng-value="MS-KKDCP" name="MS-KKDCP" data-ng-model="newSurvey.MSKKDCP"> MS-KKDCP
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" id="inlineCheckbox12" data-ng-value="MS-DVRD" name="MS-DVRD" data-ng-model="newSurvey.MSDVRD"> MS-DVRD
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" id="inlineCheckbox23" data-ng-value="MS-DVRJ" name="MS-DVRJ" data-ng-model="newSurvey.MSDVRJ"> MS-DVRJ
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" id="inlineCheckbox24" data-ng-value="MS-OAPX" name="MS-OAPX" data-ng-model="newSurvey.MSOAPX"> MS-OAPX
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" id="inlineCheckbox25" data-ng-value="MS-ECS" name="MS-ECS" data-ng-model="newSurvey.MSECS"> MS-ECS
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" id="inlineCheckbox26" data-ng-value="MS-ADFSPIP" name="MS-ADFSPIP" data-ng-model="newSurvey.MSADFSPIP"> MS-ADFSPIP
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" id="inlineCheckbox27" data-ng-value="MS-MDM" name="MS-MDM" data-ng-model="newSurvey.MSMDM"> MS-MDM
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" id="inlineCheckbox28" data-ng-value="MS-MDE" name="MS-MDE" data-ng-model="newSurvey.MSMDE"> MS-MDE
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" id="inlineCheckbox29" data-ng-value="MS-SMBD" name="MS-SMBD" data-ng-model="newSurvey.MSSMBD"> MS-SMBD
+				</label>
+				<div class="clearfix"></div>
+				<label for="other">Other</label>
+				<input type="text" class="form-control" name="other" data-ng-model="newSurvey.other">
+            </div>
+            <div class="form-group">
+                <label for="questionNine">9. Please provide your feedback for our Test Suites, PTM, and/or Open Source.</label>
+                <textarea name="questionNine" class="form-control" cols="30" rows="10" data-ng-model="newSurvey.questionNine"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="questionTen">10. Any additional feedback that might help us improve future events? (content, venue, etc.)</label>
+                <textarea name="questionTen" class="form-control" cols="30" rows="10" data-ng-model="newSurvey.questionTen"></textarea>
             </div>
             <input type="submit" class="btn btn-primary" style="margin: 5px" data-ng-click="createSurvey(newSurvey); hide(); thankYouShow()">
         </form>
