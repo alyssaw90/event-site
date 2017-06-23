@@ -218,7 +218,7 @@ eventsApp
 		reloadOnSearch: false,
 		// controller: 'surveyController',
 		data: {
-			pageTitle: 'Extend Paris 2017 Event Suvey - Microsoft Plugfests and Events'
+			pageTitle: 'Redmond Protocol Plugfest 2017 Event Suvey - Microsoft Plugfests and Events'
 		}
 	})
 	.when('/admin/slideshow', {
