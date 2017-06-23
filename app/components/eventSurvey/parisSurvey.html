@@ -1,4 +1,4 @@
-<main role="presentation" class="grid white-bg mobileWrapper clearfix ng-cloak" data-ng-controller="surveyController">
+<main role="presentation" class="grid white-bg mobileWrapper clearfix ng-cloak" data-ng-controller="surveyController" id="top">
     <section ng-show="thankYouHide" class="thankYouSection container">
         <h1>Thank you for the feedback!</h1>
     </section>
@@ -492,7 +492,7 @@
                 <label for="questionTen">10. Any additional feedback that might help us improve future events? (content, venue, etc.)</label>
                 <textarea name="questionTen" class="form-control" data-ng-model="newSurvey.questionTen"></textarea>
             </div>
-            <input type="submit" class="btn btn-primary" style="margin: 5px" data-ng-click="createSurvey(newSurvey); hide(); thankYouShow()">
+            <input type="submit" class="btn btn-primary" style="margin: 5px" data-ng-click="createSurvey(newSurvey); hide(); thankYouShow(); goToTop();">
         </form>
         <p>Privacy notice: Microsoft is committed to protecting your privacy. Collection and use of the personal information your provide on this form will be governed by the practices set forth in the <a href="www.microsoft.com/privacy">Microsoft Privacy Statement</a></p>
     </section>

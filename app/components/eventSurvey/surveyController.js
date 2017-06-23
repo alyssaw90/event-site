@@ -2,7 +2,7 @@
 
 const swal = require('sweetalert');
 const surveyController = (app) => {
-    app.controller('surveyController', ['$scope', '$http','surveyRESTResource', '$location', '$window', ($scope, $http, resource, $location)=> {
+    app.controller('surveyController', ['$scope', '$http','surveyRESTResource', '$location', '$window', '$anchorScroll', ($scope, $http, resource, $location, $anchorScroll)=> {
         
         $scope.newSurvey = {};
         $scope.hide=true
@@ -23,36 +23,16 @@ const surveyController = (app) => {
             }).then(function (response){
                     // alert('submitted')
                     // $scope.newSurvey={}
-                    console.log(response.status)
-                    console.log(response.data)
-                }, function(err){
-                    console.log(err)
-                })
-            // console.log(newSurveyData)
-            // createSurveyREST.createSurvey(newSurveyData, (err, data) => {
-            //     console.log('this is working!!! :D')
-            //     if(err){
-            //         // console.log(err)
-            //         swal({
-            //             title: 'There was a problem submitting your form',
-            //             text: err,
-            //             type: 'warning',
-            //             confirmButtonColor: '#DD6B55',
-            //             confirmButtonText: 'Ok',
-            //             customClass: 'sweet-alert-hide-input'
-            //         });
-            //     } 
-                
-            //     if(data.status=="success") {
-            //         swal({
-            //             title:'Form submitted',
-            //             type: 'success'
-            //         })
-            //         $location.url('/')
-            //     }
+                console.log(response.status)
+                console.log(response.data)
+            }, function(err){
+                console.log(err)
+            })
+        }
 
-                
-            // })
+        $scope.goToTop = () => {
+            $location.hash('top');
+            $anchorScroll();
         }
     }])
 }
