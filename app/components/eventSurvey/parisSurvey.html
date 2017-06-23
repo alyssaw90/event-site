@@ -4,7 +4,7 @@
     </section>
     <section ng-show="hide" class="surveySection container">
         <h1>Redmond Interoperability Plugfest 2017</h1>
-        <h4>Please fill out the following survey if you attended the Redmond Interoperability Plugest 2017 event. All answers are annonymous.</h4>
+        <h4>Please fill out the following survey if you attended the Redmond Interoperability Plugest 2017 event. All answers are anonymous.</h4>
         <form method="post" name="surveyForm" id="surveyForm" enctype="multipart/form-data">
             <div class="row" id="nameOrg">
                 <div class="col-sm-6">
@@ -379,6 +379,10 @@
             </div>
             <div class="form-group">
                 <label for="ratingQuestionEight">8. Which protocols are you implementing? (list as many as you wish)</label>
+                <div class="clearfix"></div>
+                <label class="checkbox-inline">
+				    <input type="checkbox" id="inlineCheckbox29" data-ng-value="MS-SMBD" name="MS-SMBD" data-ng-model="newSurvey.MSSMBD"> MS-SMBD
+				</label>
 				<div class="clearfix"></div>
                 <label for="">File Server:
                     <div class="clearfix"></div>
@@ -403,9 +407,6 @@
                     <label class="checkbox-inline">
                         <input type="checkbox" id="inlineCheckbox7" data-ng-value="MS-SQOS" name="MS-SQOS" data-ng-model="newSurvey.MSQOS"> MS-SQOS
                     </label>
-                    <label class="checkbox-inline">
-					    <input type="checkbox" id="inlineCheckbox29" data-ng-value="MS-SMBD" name="MS-SMBD" data-ng-model="newSurvey.MSSMBD"> MS-SMBD
-				    </label>
                 </label>
                 <label for="">AD Family:
                     <div class="clearfix"></div>
@@ -492,7 +493,7 @@
                 <label for="questionTen">10. Any additional feedback that might help us improve future events? (content, venue, etc.)</label>
                 <textarea name="questionTen" class="form-control" data-ng-model="newSurvey.questionTen"></textarea>
             </div>
-            <input type="submit" class="btn btn-primary" style="margin: 5px" data-ng-click="createSurvey(newSurvey); hide(); thankYouShow(); goToTop();">
+            <input type="submit" name="Submit" value="Submit" class="btn btn-primary" style="margin: 5px" data-ng-click="createSurvey(newSurvey); hide(); thankYouShow(); goToTop();">
         </form>
         <p>Privacy notice: Microsoft is committed to protecting your privacy. Collection and use of the personal information your provide on this form will be governed by the practices set forth in the <a href="www.microsoft.com/privacy">Microsoft Privacy Statement</a></p>
     </section>
