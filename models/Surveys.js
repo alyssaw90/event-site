@@ -15,7 +15,7 @@ module.exports = function(sql, DataTypes) {
         questionTwoOfficeSpeakers: DataTypes.STRING,
         questionTwoDataTalks: DataTypes.STRING,
         questionTwoDataSpeakers: DataTypes.STRING,
-        questionsTwoDocumenation: DataTypes.STRING,
+        questionsTwoDocumentation: DataTypes.STRING,
         questionThree: DataTypes.TEXT,
         questionFour: DataTypes.TEXT,
         questionFiveIOLab: DataTypes.STRING,
