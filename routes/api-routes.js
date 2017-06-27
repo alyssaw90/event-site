@@ -139,12 +139,6 @@ module.exports = (router) => {
         let eventObj = {};
         let startYear;
         cityArr = upcomingEvents[i].eventLocation.split(',');
-        
-        /*cityArr = upcomingEvents[i].eventLocation.split('_');
-        
-        for (let index = 0, j = cityArr.length; index < j; index++) {
-          cityArr[index] = cityArr[index].charAt(0).toUpperCase() + cityArr[index].slice(1);
-        }*/
 
         city = cityArr[0];
         //create dates for future-events page
@@ -246,7 +240,6 @@ module.exports = (router) => {
         MSMDE: req.body.MSMDE,
         MSSMBD: req.body.MSSMBD,
         others: req.body.other,
-        // questionEight: req.body.MSSMB12 || req.body.MSFSRVP || req.body.MSSWN || req.body.MSDFSC || req.body.RSVD || req.body.MSFSA || req.body.MSSQOS || req.body.MSADA || req.body.MSADSC, 
         questionNine: req.body.questionNine,
         questionTen: req.body.questionTen,
         ipAddress: req.headers['x-forwarded-for'] || 
@@ -254,14 +247,6 @@ module.exports = (router) => {
           req.socket.remoteAddress ||
           req.connection.socket.remoteAddress
       })
-      
-      // .catch( (err) => {
-      //   let errorMsg = ``;
-      //   for (let i =0, j = err.errors.length; i < j; i++) {
-      //     errorMsg += err.errors[i].message + `\n`;
-      //   }
-      //   res.status(500).send(errorMsg);
-      // })
     })
   })
 
@@ -338,7 +323,7 @@ module.exports = (router) => {
     });
   });
 
-  //route to get all files and delete files
+  //route to get all files
   router.get('/files', (req, res) => {
     fs.readdir('uploads/', (err, data) => {
       if (err) {
@@ -354,6 +339,7 @@ module.exports = (router) => {
     })
   })
 
+  //route to post new files and delete files
   router.post('/files', (req, res) => {
     let filesToDelete = [];
     for (let key in req.body) {
@@ -590,7 +576,6 @@ module.exports = (router) => {
       })
     })
     .then( (event) => {
-      // let userName = req.user.unique_name || req.user.email;
       return event.update({
             lastModifiedBy: req.body.event.lastModifiedBy,
             showOnHeader: req.body.event.showOnHeader,
@@ -766,9 +751,7 @@ module.exports = (router) => {
   router.post('/addspeakers',  (req, res) => {
     models.sql.sync()
     .then( () => {
-      // let userName = req.user.unique_name || req.user.email;
       let speakerEmail = req.body.newMsTeamEmail ? req.body.newMsTeamEmail : 'plugfests@microsoft.com';
-      // let speakerHeadshot = req.body.headshot ? req.body.headshot : 'placeholder-headshot.jpg';
       Speaker.create({
         lastModifiedBy: req.body.lastModifiedBy,
         firstName: req.body.newFirstName,
@@ -795,7 +778,6 @@ module.exports = (router) => {
       })
     })
     .then( (speaker) => {
-      // let userName = req.user.unique_name || req.user.email;
       let speakerEmail = req.body.email ? req.body.email : 'plugfests@microsoft.com';
       return speaker.update({
         lastModifiedBy: req.body.lastModifiedBy,
