@@ -7,11 +7,18 @@
             </div>
         </div>
     </section>
+    <section class="eventBanner" data-ng-controller="FutureEventsCtrl" data-ng-init="getUpcomingEvent()">
+        <span data-ng-repeat="upcomingEvent in upcomingEvents | limitTo:3" class="eventBannerInfo">
+            <span>{{upcomingEvent.eventName}}</span>
+            <span>{{upcomingEvent.eventLocation}}</span>
+            <span>{{upcomingEvent.eventStartDate | date: 'MMM'}} {{upcomingEvent.eventStartDate | date: 'd'}} - {{upcomingEvent.eventEndDate | date: 'd'}}, {{upcomingEvent.eventEndDate | date: 'yyyy'}}</span>
+        </span>
+        
+    </section>
     <section class="aboutInteropEvents container">
         <div class="row">
             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                 <span class="fa fa-university fa-3x" aria-hidden="true">
-                    <!--<img src="app/css/img/Podium.png" alt="">-->
                 </span>
                 <h2>Learn</h2>
                 <p>New features, product updates, and protocol changes delivered by Microsoft engineers are a key aspect to any Interop Developer event. Attend to learn a new skill or to get the latest developer information.</p>
@@ -79,7 +86,7 @@
             </slick>
         </div>
     </section>
-    <section class="upcomingEvents" data-ng-controller="FutureEventsCtrl" data-ng-init="getUpcomingEvents()">
+     <section class="upcomingEvents" data-ng-controller="FutureEventsCtrl" data-ng-init="getUpcomingEvents()">
         <div class="container">
             <h1>Upcoming Events</h1>
             <div class="row eventsRow">
