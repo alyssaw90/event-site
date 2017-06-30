@@ -1,4 +1,4 @@
-<header class="ng-cloak" role="navigation" aria-label="header menu">
+<header class="ng-cloak" role="navigation" aria-label="header menu" data-ng-controller="FutureEventsCtrl">
 	<nav class="navbar navbar-default">
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -19,8 +19,17 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="/events" title="Navigate to Events page" aria-label="Events">Events</a></li>
-				<!--<li><a href="#">Event Resources</a></li>-->
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Events <span class="caret"></span></a>
+					<ul class="dropdown-menu" data-ng-init="getUpcomingEvent()">
+						<li>
+							<a href="/events" title="Navigate to Events page" aria-label="Events">All Events</a>
+						</li>
+						<li data-ng-repeat="upcomingEvent in upcomingEvents">
+							<a href="/{{upcomingEvent.eventUrl}}" title="Navigate to {{upcomingEvent.eventName}}" aria-label="{{upcomingEvent.eventName}}">{{upcomingEvent.eventName}}</a>
+						</li>
+					</ul>
+				</li>	
 				<li><a href="/meet-the-team" title="Navigate to Meet the Team page" aria-label="Team">Team</a></li>
 				<li><a href="latest-news" title="Naviage to News page" aria-label="News">News</a></li>
 			</ul>
