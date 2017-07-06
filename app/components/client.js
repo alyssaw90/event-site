@@ -213,14 +213,14 @@ eventsApp
       pageTitle: 'Latest News Page - Interop Dev Events'
     }
 	})
-	.when('/survey', {
-		templateUrl: '/app/components/eventSurvey/parisSurvey.html',
-		reloadOnSearch: false,
-		// controller: 'surveyController',
-		data: {
-			pageTitle: 'Redmond Protocol Plugfest 2017 Event Suvey - Microsoft Plugfests and Events'
-		}
-	})
+	// .when('/survey', {
+	// 	templateUrl: '/app/components/eventSurvey/parisSurvey.html',
+	// 	reloadOnSearch: false,
+	// 	// controller: 'surveyController',
+	// 	data: {
+	// 		pageTitle: 'Redmond Protocol Plugfest 2017 Event Suvey - Microsoft Plugfests and Events'
+	// 	}
+	// })
 	.when('/admin/slideshow', {
 		templateUrl: '/app/components/admin/editSlideshow/editSlideshowTemplate.html',
 		reloadOnSearch: false,
