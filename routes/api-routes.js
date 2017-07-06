@@ -155,7 +155,6 @@ module.exports = (router) => {
           eventDates = 'TBD';
           eventMonth = '';
         }
-        console.log(eventDates)
         //make dates for header
         if (upcomingEvents[i].eventStartDate === null) {
           startYear = 'TBD';
