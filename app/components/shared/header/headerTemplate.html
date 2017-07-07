@@ -10,7 +10,7 @@
 				<span class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="https://www.microsoft.com/en-us/" id="microsoftLogo" title="Navigate to Microsoft home page" aria-label="Microsoft Home">
-				<img src="app/css/img/Microsoft-logo_rgb_c-wht.png" alt="Microsoft Logo">
+				<img src="app/css/img/Microsoft-logo_rgb_c-wht-crop.png" alt="Microsoft Logo">
 			</a>
 			<p class="navbar-brand" id="pipe">|</p>
 			<a class="navbar-brand" href="/" title="Navigate to Home page" aria-label="home" id="homeLink">Interop Dev Events</a>
@@ -26,7 +26,10 @@
 							<a href="/events" title="Navigate to Events page" aria-label="Events">All Events</a>
 						</li>
 						<li data-ng-repeat="upcomingEvent in upcomingEvents">
-							<a href="/{{upcomingEvent.eventUrl}}" title="Navigate to {{upcomingEvent.eventName}}" aria-label="{{upcomingEvent.eventName}}">{{upcomingEvent.eventName}}</a>
+							<a href="/{{upcomingEvent.eventUrl}}" title="Navigate to {{upcomingEvent.eventName}}" aria-label="{{upcomingEvent.eventName}}">
+								<span>{{upcomingEvent.city}}</span>
+								<span>{{upcomingEvent.startYear}}</span>
+							</a>
 						</li>
 					</ul>
 				</li>	
