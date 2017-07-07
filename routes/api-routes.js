@@ -99,12 +99,9 @@ module.exports = (router) => {
       return Event.findAll({
         where: {
           eventEndDate: {
-              $or: {
-                $gte: new Date(new Date().getTime() - 24 * 60 * 60 * 1000),
-                $eq: null,
-                /* jshint ignore:start */
-                $eq: new Date(new Date().getFullYear().toString())
-                /* jshint ignore:end */
+            $or: {
+              $gte: new Date(new Date().getTime() - 24 * 60 * 60 * 1000),
+              $eq: null
             }
           },
           isPublished: true
