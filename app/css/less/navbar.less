@@ -14,9 +14,9 @@
 
     #microsoftLogo {
         // padding-right: 0px;
-        padding: 1px;
+        padding: 12px;
         img {
-            height: 50px;
+            height: 28px;
         }
     }
 
@@ -41,6 +41,29 @@
                 font-family: 'Segoe UI SemiBold';
             }
             a:focus {
+                color: #002050;
+            }
+        }
+
+        .open {
+            a {
+                color: #fff;
+            }
+
+            a:focus,
+            a:hover {
+                background-color: #0078D7;
+                color: #002050;
+            }
+        }
+    }
+
+    .dropdown-menu {
+        background-color: #0078D7;
+        border: 1px solid #0078D7;
+        li {
+            a:hover {
+                background-color: none;
                 color: #002050;
             }
         }
