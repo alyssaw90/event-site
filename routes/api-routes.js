@@ -99,9 +99,9 @@ module.exports = (router) => {
       return Event.findAll({
         where: {
           eventEndDate: {
-              $or: {
-                $gte: new Date(new Date().getTime() - 24 * 60 * 60 * 1000),
-                $eq: null
+            $or: {
+              $gte: new Date(new Date().getTime() - 24 * 60 * 60 * 1000),
+              $eq: null
             }
           },
           isPublished: true
@@ -175,6 +175,8 @@ module.exports = (router) => {
         eventObj.eventHeaderImage = upcomingEvents[i].eventHeaderImage;
         eventObj.showOnHeader = upcomingEvents[i].showOnHeader;
         eventObj.eventRegistrationLink = upcomingEvents[i].eventRegistrationLink;
+        eventObj.eventStartDate = upcomingEvents[i].eventStartDate;
+        eventObj.eventEndDate = upcomingEvents[i].eventEndDate;
 
 
         outputArr.push(eventObj)
