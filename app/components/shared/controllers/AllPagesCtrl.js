@@ -4,7 +4,7 @@ const jQuery = require('jquery');
 
 const AllPagesCtrl = (app) => {
 
-	app.controller('AllPagesCtrl', ['$scope', '$location', '$route', '$rootScope', '$cookies', ($scope, $location, $route, $rootScope, $cookies) => {
+	app.controller('AllPagesCtrl', ['$scope', '$location', '$route', '$rootScope', ($scope, $location, $route, $rootScope) => {
 		$scope.showSlider = false;
 		$scope.announceOnViewChange;
 		$scope.currentPath = $location.path();

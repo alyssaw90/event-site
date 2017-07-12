@@ -7,17 +7,12 @@
   <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/ >
   <!-- CSS -->
-  <!--<link rel="stylesheet" type="text/css" href="/app/css/kickstart.css" media="all" />-->
-  <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="/node_modules/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="/app/css/slick.css">
   <!--<link rel="stylesheet" href="/app/css/slick-theme.css">-->
   <link rel="stylesheet" type="text/css" href="/app/css/custom.build.min.css" media="all" />
   <link rel="stylesheet" type="text/css" href="/node_modules/bootstrap-sweetalert/dist/sweetalert.css">
-  <!-- Azure Analytics -->
-  <script type="text/javascript">  var appInsights = window.appInsights || function (config) { function r(config) { t[config] = function () { var i = arguments; t.queue.push(function () { t[config].apply(t, i) }) } } var t = { config: config }, u = document, e = window, o = "script", s = u.createElement(o), i, f; for (s.src = config.url || "//az416426.vo.msecnd.net/scripts/a/ai.0.js", u.getElementsByTagName(o)[0].parentNode.appendChild(s), t.cookie = u.cookie, t.queue = [], i = ["Event", "Exception", "Metric", "PageView", "Trace"]; i.length;) r("track" + i.pop()); return r("setAuthenticatedUserContext"), r("clearAuthenticatedUserContext"), config.disableExceptionTracking || (i = "onerror", r("_" + i), f = e[i], e[i] = function (config, r, u, e, o) { var s = f && f(config, r, u, e, o); return s !== !0 && t["_" + i](config, r, u, e, o), s }), t }({ instrumentationKey: "8413289d-2420-4296-9d99-b586b65f4516" }); window.appInsights = appInsights; appInsights.trackPageView();</script>
 </head>
 <body role="document" data-ng-controller="AllPagesCtrl" data-all-pages-directive data-ng-cloak>
   <a id="screenreader-summary" aria-live="polite" tabindex="-1" data-ng-bind="announceOnViewChange"></a>
@@ -29,13 +24,11 @@
   </div>
   <div class="grid flex footer-at-bottom foot" id="ngFooter" data-ng-include="'/app/components/shared/footer/footerView.html'"></div>
   <!-- JavaScript -->
-  <script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.min.js"></script>
-  <script src="/node_modules/tinymce/tinymce.min.js"></script>
-  <!-- <script type="text/javascript" src="/node_modules/angular-ui-tinymce/dist/tinymce.min.js"></script> -->
-  <script src="//code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.jssocials/1.2.1/jssocials.min.js"></script>
   <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="/node_modules/dist/js/bootstrap.min.js" type="text/css"></script>
   <script charset="UTF-8" type="text/javascript" src="//ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0&s=1"></script>
   <script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.13/js/adal.min.js"></script>
   <script src="/node_modules/slick-carousel/slick/slick.js"></script>
