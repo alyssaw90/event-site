@@ -10,7 +10,7 @@ require('angular-touch');
 require('angular-carousel');
 require('ng-page-title');
 require('angular-sanitize');
-require('angular-google-analytics');
+// require('angular-google-analytics');
 require('ng-file-upload');
 require('angular-resource');
 require('angular-cookies');
@@ -27,7 +27,7 @@ require('angular-slick-carousel');
 // import * as adal from './shared/methods/adal.js';
 import * as AdalAngular from './shared/methods/adal-angular.js';
 
-const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize', 'angular-google-analytics', 'ngFileUpload', 'ngResource', 'ngCookies', 'base64', 'ngAnimate', 'ui.bootstrap', 'ui.tinymce', 'ui.sortable', 'mwl.confirm', 'ngMessages', `ngPassword`, 'AdalAngular', 'slickCarousel']);
+const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize', /*'angular-google-analytics',*/'ngFileUpload', 'ngResource', 'ngCookies', 'base64', 'ngAnimate', 'ui.bootstrap', 'ui.tinymce', 'ui.sortable', 'mwl.confirm', 'ngMessages', `ngPassword`, 'AdalAngular', 'slickCarousel']);
 
 //directives
 require('./shared/directives/allPagesDirective.js')(eventsApp);
@@ -99,11 +99,11 @@ require('./eventSurvey/surveyRESTResource.js')(eventsApp);
 require('./admin/editFiles/fileSearch.js')(eventsApp);
 
 eventsApp
-.config(['$routeProvider', '$locationProvider', 'AnalyticsProvider', '$httpProvider', 'adalAuthenticationServiceProvider', function ($routeProvider, $locationProvider, AnalyticsProvider, $httpProvider, adalProvider) {
+.config(['$routeProvider', '$locationProvider', /*'AnalyticsProvider', */'$httpProvider', 'adalAuthenticationServiceProvider', function ($routeProvider, $locationProvider, /*AnalyticsProvider,*/ $httpProvider, adalProvider) {
 
 	//Enable Google Analytics
-	AnalyticsProvider
-	.setAccount('UA-74698663-1');
+	// AnalyticsProvider
+	// .setAccount('UA-74698663-1');
 
 	//enable cross origin for jsonp
 	$httpProvider.defaults.useXDomain = true;
@@ -340,9 +340,9 @@ eventsApp
   
 
 }])
-.run(['$rootScope', '$location', '$anchorScroll', '$routeParams', '$http', 'Analytics', '$cookies', '$timeout', ($rootScope, $location, $anchorScroll, $routeParams, $http, Analytics, $cookies, $timeout) => {
+.run(['$rootScope', '$location', '$anchorScroll', '$routeParams', '$http', /*'Analytics',*/ '$cookies', '$timeout', ($rootScope, $location, $anchorScroll, $routeParams, $http,/*Analytics,*/ $cookies, $timeout) => {
 	//start Google analytics
-	Analytics.pageView();
+	// Analytics.pageView();
 
 	// function followHashRoute() {
 	// 	let anchor = $location.hash();
