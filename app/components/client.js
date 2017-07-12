@@ -12,7 +12,6 @@ require('ng-page-title');
 require('angular-sanitize');
 require('ng-file-upload');
 require('angular-resource');
-require('angular-cookies');
 require('angular-base64');
 require('angular-animate');
 require('angular-ui-bootstrap');
@@ -26,7 +25,7 @@ require('angular-slick-carousel');
 // import * as adal from './shared/methods/adal.js';
 import * as AdalAngular from './shared/methods/adal-angular.js';
 
-const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize', 'ngFileUpload', 'ngResource', 'ngCookies', 'base64', 'ngAnimate', 'ui.bootstrap', 'ui.tinymce', 'ui.sortable', 'mwl.confirm', 'ngMessages', `ngPassword`, 'AdalAngular', 'slickCarousel']);
+const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize', 'ngFileUpload', 'ngResource','base64', 'ngAnimate', 'ui.bootstrap', 'ui.tinymce', 'ui.sortable', 'mwl.confirm', 'ngMessages', `ngPassword`, 'AdalAngular', 'slickCarousel']);
 
 //directives
 require('./shared/directives/allPagesDirective.js')(eventsApp);
