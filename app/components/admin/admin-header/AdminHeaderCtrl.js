@@ -3,7 +3,7 @@ const swal = require('sweetalert');
 
 const AdminHeaderCtrl = (app) => {
 
-	app.controller('AdminHeaderCtrl', ['$scope', '$log', '$cookies', '$window', '$location', ($scope, $log, $cookies, $window, $location) => {
+	app.controller('AdminHeaderCtrl', ['$scope', '$log', '$window', '$location', ($scope, $log, $window, $location) => {
 
     // $scope.showAccountButton = $cookies.get(`strategy`) === `basic` || $cookies.get(`interopAdmin`) === `true` ? true : false;
 
