@@ -316,14 +316,14 @@ eventsApp
 	  instance: 'https://login.microsoftonline.com/',
 	  tenant: 'interopevents.onmicrosoft.com',
 	  clientId: '4fd1444e-c61a-4859-ad90-d8f7cb3b12c9',
-	//   redirectUri: 'http://localhost:3000/admin/edit-event',
+	  redirectUri: 'http://localhost:3000/admin/edit-event',
 	//   redirectUri: 'http://interopevents-development.azurewebsites.net/admin/edit-event',
 	//   redirectUri: 'http://interopevents-staging.azurewebsites.net/admin/edit-event',
-	  redirectUri: 'https://interopevents.com/admin/edit-event',
-	//   postLogoutRedirectUri: 'http://localhost:3000/admin/login',
+	//   redirectUri: 'https://interopevents.com/admin/edit-event',
+	  postLogoutRedirectUri: 'http://localhost:3000/admin/login',
 	//   postLogoutRedirectUri: 'http://interopevents-development.azurewebsites.net/admin/login',
 	//   postLogoutRedirectUri: 'http://interopevents-staging.azurewebsites.net/admin/login',
-		postLogoutRedirectUri: 'https://interopevents.com/admin/login',
+		// postLogoutRedirectUri: 'https://interopevents.com/admin/login',
 
 	  //cacheLocation: 'localStorage',
 	  anonymousEndpoints: [
