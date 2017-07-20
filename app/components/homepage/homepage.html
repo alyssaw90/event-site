@@ -101,7 +101,7 @@
                             <div class="eventText">
                                 <a href="/{{upcomingEvent.eventUrl}}" class="eventUrl" title="Navigate to {{upcomingEvent.eventName}} event page" aria-label="{{upcomingEvent.eventName}}, {{upcomingEvent.eventLocation}}, {{upcomingEvent.headerEventDates}}"><h2>{{upcomingEvent.eventName}}</h2></a>
                                 <h4>{{upcomingEvent.eventLocation}}</h4>
-                                <h4>{{upcomingEvent.eventDates}}</h4>
+                                <h4>{{upcomingEvent.eventStartDate | date: 'MMMM'}} {{upcomingEvent.eventStartDate | date: 'd'}} - {{upcomingEvent.eventEndDate | date: 'd'}} {{upcomingEvent.eventStartDate | date: 'yyyy'}}</h4>
                                 <h4>{{upcomingEvent.eventTechnicalTopics}}</h4>
                             </div>
 
