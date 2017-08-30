@@ -602,6 +602,7 @@ module.exports = (router) => {
             eventCountry: req.body.event.eventCountry,
             eventHeaderImage: req.body.event.eventHeaderImage,
             eventContinent: req.body.event.eventContinent,
+            eventLocation: req.body.event.eventLocation,
             eventAboutTabText: req.body.event.eventAboutTabText,
             eventVenueName: req.body.event.eventVenueName,
             eventVenueAddress: req.body.event.eventVenueAddressLine1,
