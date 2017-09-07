@@ -24,7 +24,15 @@ const PastEventsCtrl = (app) => {
 												<td>Shanghai, China</td>
 												<td>Office Developer Opportunity, Data Platform, OData, Open Specifications, Office Add-ins + APIs</td>
 												<td><a href="https://channel9.msdn.com/Events/Open-Specifications-Plugfests/Shanghai-Interop-Dev-Days">Videos</a>, <a href="/shanghai2015">Event Page</a></td>
-											</tr><tr>
+											</tr>
+											<tr>
+												<td>SNIA Storage Developer Conference 2015</td>
+												<td>September 20-24, 2015</td>
+												<td>Santa Clara, CA</td>
+												<td>File Systems, Software Defined Storage, SMB, Security, Performance, and more</td>
+												<td><a href="https://www.snia.org/events/storage-developer/webcasts">Related Materials</a></td>
+											</tr>
+											<tr>
 												<td>Redmond Interoperability Protocols Plugfest 2015</td>
 												<td>June 22-26, 2015</td>
 												<td>Redmond, WA</td>
