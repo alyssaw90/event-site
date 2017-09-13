@@ -94,18 +94,18 @@
             <h1>Upcoming Events</h1>
             <div class="row eventsRow">
                 <div class="col-xs-12 col-sm-12 col-md-12" data-ng-repeat="upcomingEvent in upcomingEvents">
-                    <div class="upcomingEventBox">
+                    <div class="upcomingEventBox" ng-click="go(upcomingEvent)" title="Navigate to {{upcomingEvent.eventName}} event page" aria-label="{{upcomingEvent.eventName}}, {{upcomingEvent.eventLocation}}, {{upcomingEvent.headerEventDates}}">
                         <div class="eventPhoto" data-ng-style="{'background-image': 'url(/uploads/{{upcomingEvent.eventHeaderImage}})'}">
                         </div>
                         <div class="eventInfo">
                             <div class="eventText">
-                                <a href="/{{upcomingEvent.eventUrl}}" class="eventUrl" title="Navigate to {{upcomingEvent.eventName}} event page" aria-label="{{upcomingEvent.eventName}}, {{upcomingEvent.eventLocation}}, {{upcomingEvent.headerEventDates}}"><h2>{{upcomingEvent.eventName}}</h2></a>
+                                <h2>{{upcomingEvent.eventName}}</h2>
                                 <h4>{{upcomingEvent.eventLocation}}</h4>
                                 <h4>{{upcomingEvent.eventStartDate | date: 'MMMM'}} {{upcomingEvent.eventStartDate | date: 'd'}} - {{upcomingEvent.eventEndDate | date: 'd'}} {{upcomingEvent.eventStartDate | date: 'yyyy'}}</h4>
                                 <h4>{{upcomingEvent.eventTechnicalTopics}}</h4>
                             </div>
 
-                            <a href="{{upcomingEvent.eventRegistrationLink}}" class="btn eventRegistrationButton" title="Navigate to registration page" aria-label="{{upcomingEvent.eventName}} Registration Link">Register</a>
+                            <a ng-href="{{upcomingEvent.eventRegistrationLink}}" class="btn eventRegistrationButton" title="Navigate to registration page" aria-label="{{upcomingEvent.eventName}} Registration Link">Register</a>
                         </div>
                     </div>
                 </div>
