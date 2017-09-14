@@ -66,12 +66,29 @@
         background-color: #0078D7;
         border: 1px solid #0078D7;
         li {
+            a {
+                color: #fff !important;
+            }
             a:hover {
                 background-color: none;
                 color: #002050;
             }
         }
     }
+
+    .navbar-toggle {
+        border: none;
+
+        .icon-bar {
+            background-color: #fff
+        }
+    }
+
+    .navbar-toggle:hover, 
+    .navbar-toggle:focus {
+        background-color: transparent;
+    }
+
 
     @media all and (max-width: 767px) {
         #homeMobileLink {
@@ -83,4 +100,4 @@
             display: none;
         }
     }
-}
+}  
