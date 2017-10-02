@@ -314,7 +314,11 @@
 				<div class="form-group" role="presentation">
 					<label for="edited-event-description">Event Inforamtion - Please insert raw HTML only (required)</label>
 					<textarea class="form-control" data-ng-model="editedEvent.event.eventAboutTabText" name="edited-event-description" style="min-height: 200px" data-ng-required="required">
-	      	</textarea>	      	
+	      			</textarea>	      	
+				</div>
+				<div class="form-group" role="presentation">
+					<label for="editedEventPreReqs">Event Pre-Requisites - Please insert raw HTML only</label>
+					<textarea name="editedEventPreReqs" class="form-control" data-ng-model="editedEvent.event.eventPreReqs" style="min-height:200px;"></textarea>
 				</div>
 				<div class="form-group" role="presentation">
 		    	<label for="editedEventVenueName">Venue Name</label>
