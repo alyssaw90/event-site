@@ -49,6 +49,14 @@
 					<div data-ng-repeat="tab in events.tabs | orderBy: 'tabNumber'" id="{{urlify(tab.tabTitle)}}" class="tab-content clearfix eventTabDiv" data-ng-bind-html="tab.tabContent" ></div>
 				</div>
 			</section>
+			<section class="eventPreReqs" data-ng-if="events.event.eventPreReqs">
+				<div class="container">
+					<h2>Pre-Requisites</h2>
+					<div class="eventPreReqsText" data-ng-bind-html="events.event.eventPreReqs">
+						{{events.event.eventPreReqs}}
+					</div>
+				</div>
+			</section>
 			<section class="eventHackathon" data-ng-if="events.event.eventHackathon">
 				<div class="container">
 					<h2>Hackathon</h2>
