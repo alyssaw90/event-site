@@ -14,7 +14,7 @@
 					<h2>{{event.eventName}}</h2>
 					<a data-ng-href="{{event.eventRegistrationLink}}" class="btn registerButton">Register</a>
 				</a>-->
-				<div class="eventBox" data-ng-style="{'background-image': 'url(/uploads/{{upcomingEvent.eventHeaderImage}})'}" ng-click="go(upcomingEvent)" title="Navigate to {{upcomingEvent.eventName}} event page" aria-label="{{upcomingEvent.eventName}}, {{upcomingEvent.eventLocation}}, {{upcomingEvent.headerEventDates}}">
+				<div class="eventBox" data-ng-style="{'background-image': 'url(/uploads/{{upcomingEvent.eventHeaderImage}})'}" ng-click="go(upcomingEvent)" title="Navigate to {{upcomingEvent.eventName}} event page" aria-label="{{upcomingEvent.eventName}}, {{upcomingEvent.eventLocation}}, {{upcomingEvent.headerEventDates}}" data-ng-if="upcomingEvent.eventLanguage == en || null">
                 	<div class="eventText">
                     	<h4 class="eventUrl">{{upcomingEvent.eventName}}</h4>
                         <a data-ng-if="upcomingEvent.eventRegistrationLink" class="eventRegistrationLink" data-ng-href="{{upcomingEvent.eventRegistrationLink}}" title="Navigate to registration page" aria-label="{{upcomingEvent.eventName}} Registartion Link">Register</a>

@@ -177,6 +177,7 @@ module.exports = (router) => {
         eventObj.eventRegistrationLink = upcomingEvents[i].eventRegistrationLink;
         eventObj.eventStartDate = upcomingEvents[i].eventStartDate;
         eventObj.eventEndDate = upcomingEvents[i].eventEndDate;
+        eventObj.eventLanguage = upcomingEvents[i].eventLanguage;
 
 
         outputArr.push(eventObj)
