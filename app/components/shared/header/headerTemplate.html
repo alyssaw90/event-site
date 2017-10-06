@@ -27,7 +27,7 @@
 							<a href="/events" title="Navigate to Events page" aria-label="Events" data-toggle="collapse" data-target=".navbar-collapse">All Events</a>
 						</li>
 						<li data-ng-repeat="upcomingEvent in upcomingEvents">
-							<a href="/{{upcomingEvent.eventUrl}}" title="Navigate to {{upcomingEvent.eventName}}" aria-label="{{upcomingEvent.eventName}}" data-toggle="collapse" data-target=".navbar-collapse">
+							<a href="/{{upcomingEvent.eventUrl}}" title="Navigate to {{upcomingEvent.eventName}}" aria-label="{{upcomingEvent.eventName}}" data-toggle="collapse" data-target=".navbar-collapse" data-ng-if="upcomingEvent.eventLanguage == 'en'">
 								<span>{{upcomingEvent.city}}</span>
 								<span>{{upcomingEvent.startYear}}</span>
 							</a>
