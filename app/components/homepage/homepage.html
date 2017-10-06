@@ -94,7 +94,7 @@
             <h1>Upcoming Events</h1>
             <div class="row eventsRow">
                 <div class="col-xs-12 col-sm-12 col-md-12" data-ng-repeat="upcomingEvent in upcomingEvents">
-                    <div class="upcomingEventBox" ng-click="go(upcomingEvent)" title="Navigate to {{upcomingEvent.eventName}} event page" aria-label="{{upcomingEvent.eventName}}, {{upcomingEvent.eventLocation}}, {{upcomingEvent.headerEventDates}}" data-ng-if="upcomingEvent.eventLanguage == en || null">
+                    <div class="upcomingEventBox" ng-click="go(upcomingEvent)" title="Navigate to {{upcomingEvent.eventName}} event page" aria-label="{{upcomingEvent.eventName}}, {{upcomingEvent.eventLocation}}, {{upcomingEvent.headerEventDates}}" data-ng-if="upcomingEvent.eventLanguage === 'en'">
                         <div class="eventPhoto" data-ng-style="{'background-image': 'url(/uploads/{{upcomingEvent.eventHeaderImage}})'}">
                         </div>
                         <div class="eventInfo">
