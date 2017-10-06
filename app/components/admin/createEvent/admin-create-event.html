@@ -44,8 +44,8 @@
 					</div>
 				</div>
 				<div class="form-group" role="presentation">
-					<label for="newEventLanguage">Display Language</label>
-					<select name="newEventLanguage" ng-model="newEvent.newEventLanguage">
+					<label for="newEventLanguage">Display Language (required)</label>
+					<select name="newEventLanguage" ng-model="newEvent.newEventLanguage" class="form-control">
 						<option ng-repeat="(code, language) in languageCodes" value="{{code}}">{{language}}</option>
 					</select>
 				</div>
