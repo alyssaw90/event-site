@@ -44,8 +44,8 @@
 					</div>
 				</div>
 				<div class="form-group" role="presentation">
-					<label for="newEventLanguage">Display Language</label>
-					<select name="newEventLanguage" ng-model="newEvent.newEventLanguage">
+					<label for="newEventLanguage">Display Language (required)</label>
+					<select name="newEventLanguage" ng-model="newEvent.newEventLanguage" class="form-control">
 						<option ng-repeat="(code, language) in languageCodes" value="{{code}}">{{language}}</option>
 					</select>
 				</div>
@@ -123,8 +123,12 @@
 					</label>-->
 				<!--</div>				-->
 				<div class="form-group" role="presentation">
-				<label for="new-event-description">Event Inforamtion - Please insert raw HTML only (required)</label>
+					<label for="new-event-description">Event Inforamtion - Please insert raw HTML only (required)</label>
 						<textarea class="form-control" data-ng-model="newEvent.eventAboutTabText" name="new-event-description" data-ng-required="true" style="min-height:200px;"></textarea>
+				</div>
+				<div class="form-group" role="presentation">
+					<label for="newEventPreReqs">Event Pre-Requisites - Please insert raw HTML only</label>
+					<textarea name="newEventPreReqs" class="form-control" data-ng-model="newEvent.eventPreReqs" name="newEventPreReqs" style="min-height:200px;"></textarea>
 				</div>
 				<div class="form-group" role="presentation">
 	    		<label for="newEventVenueName">Venue Name</label>

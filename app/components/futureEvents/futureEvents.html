@@ -9,15 +9,15 @@
 	<section class="events container" data-ng-controller="FutureEventsCtrl" data-ng-init="getUpcomingEvents()" aria-role="presentation">
 		<h1>Upcoming Events</h1>
 		<div class="row eventBoxRow">
-			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" data-ng-repeat="event in upcomingEvents">
+			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" data-ng-repeat="upcomingEvent in upcomingEvents" data-ng-if="upcomingEvent.eventLanguage === 'en'">
 				<!--<a href="/{{event.eventUrl}}" class="eventBox" data-ng-style="{'background-image': 'url(/uploads/{{event.eventHeaderImage}})'}">
 					<h2>{{event.eventName}}</h2>
 					<a data-ng-href="{{event.eventRegistrationLink}}" class="btn registerButton">Register</a>
 				</a>-->
-				<div class="eventBox" data-ng-style="{'background-image': 'url(/uploads/{{event.eventHeaderImage}})'}">
+				<div class="eventBox" data-ng-style="{'background-image': 'url(/uploads/{{upcomingEvent.eventHeaderImage}})'}" ng-click="go(upcomingEvent)" title="Navigate to {{upcomingEvent.eventName}} event page" aria-label="{{upcomingEvent.eventName}}, {{upcomingEvent.eventLocation}}, {{upcomingEvent.headerEventDates}}" >
                 	<div class="eventText">
-                    	<a class="eventUrl" href="/{{event.eventUrl}}" title="Navigate to {{event.eventName}} event page" aria-label="{{event.eventName}}, {{event.eventLocation}}, {{event.headerEventDates}}"><h4>{{event.eventName}}</h4></a>
-                        <a data-ng-if="event.eventRegistrationLink" class="eventRegistrationLink" data-ng-href="{{event.eventRegistrationLink}}" title="Navigate to registration page" aria-label="{{event.eventName}} Registartion Link">Register</a>
+                    	<h4 class="eventUrl">{{upcomingEvent.eventName}}</h4>
+                        <a data-ng-if="upcomingEvent.eventRegistrationLink" class="eventRegistrationLink" data-ng-href="{{upcomingEvent.eventRegistrationLink}}" title="Navigate to registration page" aria-label="{{upcomingEvent.eventName}} Registartion Link">Register</a>
                 	</div>
                 </div>
 				<!--<div class="eventBox">

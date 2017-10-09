@@ -19,23 +19,23 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="/" title="Navigate to Home page" aria-label="Home" id="homeMobileLink">Home</a></li>
+				<li><a href="/" title="Navigate to Home page" aria-label="Home" id="homeMobileLink" data-toggle="collapse" data-target=".navbar-collapse">Home</a></li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Events <span class="caret"></span></a>
 					<ul class="dropdown-menu" data-ng-init="getUpcomingEvent()">
 						<li>
-							<a href="/events" title="Navigate to Events page" aria-label="Events">All Events</a>
+							<a href="/events" title="Navigate to Events page" aria-label="Events" data-toggle="collapse" data-target=".navbar-collapse">All Events</a>
 						</li>
 						<li data-ng-repeat="upcomingEvent in upcomingEvents">
-							<a href="/{{upcomingEvent.eventUrl}}" title="Navigate to {{upcomingEvent.eventName}}" aria-label="{{upcomingEvent.eventName}}">
+							<a href="/{{upcomingEvent.eventUrl}}" title="Navigate to {{upcomingEvent.eventName}}" aria-label="{{upcomingEvent.eventName}}" data-toggle="collapse" data-target=".navbar-collapse" data-ng-if="upcomingEvent.eventLanguage == 'en'">
 								<span>{{upcomingEvent.city}}</span>
 								<span>{{upcomingEvent.startYear}}</span>
 							</a>
 						</li>
 					</ul>
 				</li>	
-				<li><a href="/meet-the-team" title="Navigate to Meet the Team page" aria-label="Team">Team</a></li>
-				<li><a href="latest-news" title="Naviage to News page" aria-label="News">News</a></li>
+				<li><a href="/meet-the-team" title="Navigate to Meet the Team page" aria-label="Team" data-toggle="collapse" data-target=".navbar-collapse">Team</a></li>
+				<li><a href="latest-news" title="Naviage to News page" aria-label="News" data-toggle="collapse" data-target=".navbar-collapse">News</a></li>
 			</ul>
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->

@@ -177,6 +177,7 @@ module.exports = (router) => {
         eventObj.eventRegistrationLink = upcomingEvents[i].eventRegistrationLink;
         eventObj.eventStartDate = upcomingEvents[i].eventStartDate;
         eventObj.eventEndDate = upcomingEvents[i].eventEndDate;
+        eventObj.eventLanguage = upcomingEvents[i].eventLanguage;
 
 
         outputArr.push(eventObj)
@@ -551,7 +552,8 @@ module.exports = (router) => {
         eventHackathonImg: req.body.newEventHackathonImg,
         eventWorkshopImg: req.body.newEventWorkshopImg,
         eventIOLabImg: req.body.newEventIOLabImg,
-        eventVenueInfo: req.body.newEventVenueInfo
+        eventVenueInfo: req.body.newEventVenueInfo, 
+        eventPreReqs: req.body.eventPreReqs
       })
       .catch( (err) => {
         console.log(err)
@@ -619,7 +621,8 @@ module.exports = (router) => {
             eventHackathonImg: req.body.event.eventHackathonImg,
             eventWorkshopImg: req.body.event.eventWorkshopImg,
             eventIOLabImg: req.body.event.eventIOLabImg,
-            eventVenueInfo: req.body.event.eventVenueInfo
+            eventVenueInfo: req.body.event.eventVenueInfo,
+            eventPreReqs: req.body.event.eventPreReqs
       })
       .then((updatedEvent) => {
         res.end(updatedEvent.eventUrl);
