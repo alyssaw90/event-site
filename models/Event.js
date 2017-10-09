@@ -51,7 +51,8 @@ module.exports = (sql, DataTypes) => {
     eventWorkshopImg: DataTypes.STRING,
     eventIOLabImg: DataTypes.STRING,
     eventVenueInfo: DataTypes.TEXT, 
-    eventPreReqs: DataTypes.TEXT
+    eventPreReqs: DataTypes.TEXT,
+    startDate: DataTypes.STRING
   },
   {
     hasTrigger: true,
