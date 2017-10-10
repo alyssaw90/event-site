@@ -101,7 +101,7 @@
                             <div class="eventText">
                                 <h2>{{upcomingEvent.eventName}}</h2>
                                 <h4>{{upcomingEvent.eventLocation}}</h4>
-                                <h4>{{upcomingEvent.eventStartDate | date: 'MMMM'}} {{upcomingEvent.eventStartDate | date: 'd'}} - {{upcomingEvent.eventEndDate | date: 'd'}} {{upcomingEvent.eventStartDate | date: 'yyyy'}}</h4>
+                                <h4>{{upcomingEvent.eventStartDate | date: 'MMMM'}} {{upcomingEvent.eventStartDate | date: 'd' : 'UTC'}} - {{upcomingEvent.eventEndDate | date: 'd' : 'UTC'}} {{upcomingEvent.eventStartDate | date: 'yyyy'}}</h4>
                                 <h4>{{upcomingEvent.eventTechnicalTopics}}</h4>
                             </div>
 
