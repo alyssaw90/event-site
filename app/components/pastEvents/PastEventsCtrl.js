@@ -291,7 +291,7 @@ const PastEventsCtrl = (app) => {
 											</tr><tr>
 												<td>Exchange Protocols Overview Event</td>
 												<td>September 21-22, 2010</td>
-												<td>24</td>
+												<td>-</td>
 												<td>Exchange Protocol specifications, including Exchange RPC, ROPS, Fast Transfer, Incremental Change Synchronization, Protocol Object Model, Notifications, Exchange Web Services, Exchange Active Sync, and other topics</td>
 												<td> - </td>
 											</tr><tr>
@@ -313,7 +313,7 @@ const PastEventsCtrl = (app) => {
 												<td>SMB and SMB2 and other file sharing protocol specifications</td>
 												<td> - </td>
 											</tr><tr>
-												<td>Microsoft Certificate DirectAccess Protocols 2010 Plugfest</td>
+												<td>Microsoft Certificate and DirectAccess Protocols 2010 Plugfest</td>
 												<td>April 12-15, 2010</td>
 												<td> - </td>
 												<td>Certificate and IPSec protocol specifications</td>
@@ -366,7 +366,7 @@ const PastEventsCtrl = (app) => {
 													<td>DII Workshop on Public Sector Interoperability</td>
 													<td>June 30, 2009</td>
 													<td>Berlin, Germany</td>
-													<td>Document interoperability and related topics. 2nd annual event</td>
+													<td>Document interoperability and related topics - 2nd annual event</td>
 													<td><a href="https://msdn.microsoft.com/openspecifications/dn767917#tile=event063009">Summary and photos</a></td>
 												</tr><tr>
 													<td>Microsoft File Sharing Protocols 2009 Plugfest</td>
@@ -375,7 +375,7 @@ const PastEventsCtrl = (app) => {
 													<td>SMB and SMB2 and other file sharing protocol specification</td>
 													<td> - </td>
 												</tr><tr>
-													<td>DII Workshop on Open XML / UOF Translator</td>
+													<td>DII Workshop on Open XML /  	UOF Translator</td>
 													<td>May 25, 2009</td>
 													<td>Beijing, China</td>
 													<td>Open XML/UOF translator project work led by Beihang University at <a href="http://uof-translator.sourceforge.net/">http://uof-translator.sourceforge.net/</a> and related topics</td>
@@ -423,12 +423,12 @@ const PastEventsCtrl = (app) => {
 													<td>October 23-24, 2008</td>
 													<td>Redmond, WA</td>
 													<td>Document format test library, validation tools, Open XML interoperability and related topics</td>
-													<td><a href="https://msdn.microsoft.com/openspecifications/dn786371#tile=event102308">Summary and downloads</a></td>
+													<td><a href="https://msdn.microsoft.com/openspecifications/dn786371#tile=event102308">Summary</a></td>
 												</tr><tr>
 													<td>DII Workshop by wipse (Windows + Services Consortium)</td>
 													<td>July 30, 2008</td>
 													<td>Tokyo, Japan</td>
-													<td>Open XML standard interoperability verification lab on multiple-companies products</td>
+													<td>Open XML standard interoperability verification lab on products from several software companies</td>
 													<td><a href="https://msdn.microsoft.com/openspecifications/dn786371#tile=event073008">Summary</a></td>
 												</tr><tr>
 													<td>DII Workshop on ODF 1.1</td>
@@ -452,7 +452,7 @@ const PastEventsCtrl = (app) => {
 													<td>DII Workshop on Translation Tools</td>
 													<td>March 12, 2008</td>
 													<td>Seoul, Korea</td>
-													<td>Open XML, DAISY and ODF translation tool showcase , Open XML PowerShell tools available at <a href="http://www.codeplex.com/PowerTools">http://www.codeplex.com/PowerTools</a></td>
+													<td>Open XML, DAISY and ODF translation tool showcase, Open XML PowerShell tools available at <a href="http://www.codeplex.com/PowerTools">http://www.codeplex.com/PowerTools</a></td>
 													<td><a href="https://msdn.microsoft.com/openspecifications/dn786371#tile=event031208">Summary and video</a></td>
 												</tr><tr>
 													<td>DII Workshop at the Microsoft and Novell Interoperability Lab</td>
