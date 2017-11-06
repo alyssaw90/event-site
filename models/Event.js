@@ -22,8 +22,8 @@ module.exports = (sql, DataTypes) => {
       }
     },
     eventLocation:  DataTypes.STRING,
-    eventState: DataTypes.TEXT,
-    eventCountry: DataTypes.TEXT,
+    // eventState: DataTypes.TEXT,
+    // eventCountry: DataTypes.TEXT,
     eventContinent: {
       type: DataTypes.ENUM('North America', 'South America', 'Africa', 'Asia', 'Europe', 'Oceania'),
       defaultValue: `North America`
