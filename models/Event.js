@@ -45,7 +45,7 @@ module.exports = (sql, DataTypes) => {
     eventHackathon: DataTypes.TEXT,
     eventIOLab: DataTypes.TEXT,
     eventWorkshop: DataTypes.TEXT,
-    eventAgenda: DataTypes.TEXT,
+    // eventAgenda: DataTypes.TEXT,
     eventAccommodationImg: DataTypes.STRING,
     eventHackathonImg: DataTypes.STRING,
     eventWorkshopImg: DataTypes.STRING,
