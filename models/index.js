@@ -59,7 +59,7 @@ let sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.
 });*/
 
 //load models
-let models = ['Speaker', 'Event', 'EventTab', 'User', 'EventSpeakersAsscs', 'MsUser', 'Surveys'];
+let models = ['Speaker', 'Event', 'EventTab', 'EventSpeakersAsscs', 'Surveys'];
 
 models.forEach(function(model) {
   module.exports[model] = sql.import(__dirname + '/' + model);
