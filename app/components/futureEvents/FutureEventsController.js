@@ -3,7 +3,7 @@ const jQuery = require('jquery');
 import * as customFunctions from '../shared/methods/common-functions.js';
 
 const FutureEventsCtrl = (app) => {
-	app.controller('FutureEventsCtrl', ['$scope', '$http', 'futureEventsRESTResource', `$rootScope`, ($scope, $http, resource, $rootScope) => {
+	app.controller('FutureEventsCtrl', ['$scope', '$http', 'futureEventsRESTResource', `$rootScope`, '$window', '$location', ($scope, $http, resource, $rootScope, $window, $location) => {
 		$scope.errors = [];
 		$scope.futureEvents = [];
 		$scope.slides = [];
@@ -13,19 +13,19 @@ const FutureEventsCtrl = (app) => {
 
 		let FutureEvents = resource();
 		// console.log(FutureEvents.getFutureEvents);
-
 		$scope.getUpcomingEvents = () => {
 			let imageCount = 0;
 
 			FutureEvents.getFutureEvents( (err, data) => {
 				// console.log(data.data)
-        if (err) {
-          return $scope.errors.push({msg: 'could not retrieve future events'});
-        };
+				if (err) {
+					return $scope.errors.push({msg: 'could not retrieve future events'});
+				};
 				$scope.futureEvents = [];
 				$scope.upcomingEvents = data.data
 				$scope.slides = [];
 				let events = data.data
+				console.log($scope.upcomingEvents)
 
         // for (let i = 0, len = events.length; i < len; i++) {
         // 	let testObj = {city: events[i].city, dates: events[i].eventDates};
@@ -49,7 +49,7 @@ const FutureEventsCtrl = (app) => {
         
         // $scope.imageCount = imageCount;
         // $scope.futureEvents = data;
-      })		
+      		})		
 		};
 
 		$rootScope.$watch(`latestDbChangeMadeTime`, () => {
@@ -97,7 +97,11 @@ const FutureEventsCtrl = (app) => {
 			$this.parent().css('border', '');
 		};
 	
-
+		$scope.go = (upcomingEvent) => {
+			// $window.location.href = url;
+			// $location.path('/' + upcomingEvent.eventRegistrationLink)
+			$location.path('/' + upcomingEvent.eventUrl)
+		}
 	}])
 }
 

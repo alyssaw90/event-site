@@ -8,11 +8,11 @@
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-position: 100% 30%;
-		height: 500px;
+		height: 400px;
 		color: #fff;
 
 		.gradient {
-			height: 500px;
+			height: 400px;
 			background: linear-gradient(to right, black, transparent);
 
 			.bannerText {
@@ -25,7 +25,7 @@
 					font-size: 24px;
 					font-family: 'Segoe UI SemiLight';
 				}
-				margin-top: 15%;
+				margin-top: 11%;
 				.eventRegistrationButton {
 					background-color: #0078d7;
 					color: #fff;
@@ -42,7 +42,7 @@
 		.eventBanner {
 			.gradient {
 				.bannerText {
-					margin-top: 17%;
+					margin-top: 14%;
 				}
 			}
 		}
@@ -52,7 +52,7 @@
 		.eventBanner {
 			.gradient {
 				.bannerText {
-					margin-top: 23%;
+					margin-top: 18%;
 				}
 			}
 		}
@@ -62,7 +62,7 @@
 		.eventBanner {
 			.gradient {
 				.bannerText {
-					margin-top: 28%;
+					margin-top: 20%;
 					// text-align: center;
 				}
 			}
@@ -73,7 +73,7 @@
 		.eventBanner {
 			.gradient {
 				.bannerText {
-					margin-top: 35%;
+					margin-top: 26%;
 				}
 			}
 		}
@@ -83,13 +83,16 @@
 		.eventBanner {
 			.gradient {
 				.bannerText {
-					margin-top: 40%;
+					margin-top: 33%;
 				}
 			}
 		}
 	}
 
 	.eventAgenda {
+		.mobileAgenda {
+			display: none;
+		}
 		// /*---------------------------------
 		// 	TABS
 		// -----------------------------------*/
@@ -166,6 +169,12 @@
 			}
 		}
 	}
+
+	.eventInfo {
+		.eventInfoText {
+			margin-bottom: 40px;
+		}
+	}
 	
 	section:nth-of-type(odd) {
 		background-color: #e6e6e6;
@@ -193,11 +202,34 @@
 		h2 {
 			text-align: center;
 		}
+
+		.eventAgenda {
+
+			.desktopAgenda {
+				display: none;
+			}
+	
+			.mobileAgenda {
+				display: block;
+			}
+		}
+
 	}
 
 	@media all and (min-width: 320px) and (max-width: 479px) {
 		h2 {
 			text-align: center;
+		}
+
+		.eventAgenda {
+			
+			.desktopAgenda {
+				display: none;
+			}
+				
+			.mobileAgenda {
+				display: block;
+			}
 		}
 
 		.venueInfo,
@@ -217,271 +249,3 @@
 		}
 	}
 }
-
-
-
-
-
-
-// /*---------------------------------
-// 	TABS
-// -----------------------------------*/
-// ul.tabs{
-// 	margin:10px 0 -1px 0;
-// 	padding:0;
-// 	width:100%;
-// 	border-bottom:1px solid #e5e5e5;
-// 	float:left;
-// 	font-size:0;
-// }
-
-// ul.tabs.left {
-// 	text-align:left;
-// }
-// ul.tabs.center {
-// 	text-align:center;
-// }
-// ul.tabs.right {
-// 	text-align:right;
-// }
-// ul.tabs.right li {
-// 	margin:0 0 0 -2px;
-// }
-
-// ul.tabs li{
-// 	font-size:14px;
-// 	list-style-type:none;
-// 	margin:0 -2px 0 0;
-// 	padding:0;
-// 	display:inline-block;
-// 	*display:inline;/*IE ONLY*/
-// 	position:relative;
-// 	top:0;
-// 	left:0;
-// 	*top:1px;/*IE 7 ONLY*/
-// 	zoom:1;
-// }
-
-// ul.tabs li a {
-// 	text-decoration:none;
-// 	color:#666;
-// 	display:inline-block;
-// 	padding:9px 15px;
-// 	position: relative;
-// 	top:0;
-// 	left:0;
-// 	line-height:100%;
-// 	background:#f5f5f5;
-// 	-webkit-box-shadow: inset 0 -3px 3px rgba(0,0,0,0.03);
-// 	-moz-box-shadow: inset 0 -3px 3px rgba(0,0,0,0.03);
-// 	box-shadow: inset 0 -3px 3px rgba(0,0,0,0.03);
-// 	border:1px solid #e5e5e5;
-// 	border-bottom:0;
-// 	font-size:0.9em;
-// 	zoom:1;
-// }
-
-// ul.tabs li a:hover {
-// 	background:#fff;
-// }
-
-// ul.tabs li.current a {
-// 	position:relative;
-// 	top:1px;
-// 	left:0;
-// 	background:#fff;
-// 	-webkit-box-shadow: none;
-// 	-moz-box-shadow: none;
-// 	box-shadow: none;
-// 	color:#222;
-// }
-
-// 	.tab-content{
-// 		border:1px solid #efefef;
-// 		border:1px solid #e5e5e5;
-// 		background:#fff;
-// 		clear:both;
-// 		padding:20px;
-// 		margin:0 0 40px 0;
-// 	}
-// ////////////////////////////////////////////
-
-// .event-header {
-// 	text-align: center;
-// 	width: 100%;
-// 	display: block;
-// }
-
-// .event-header img {
-// 	max-width: 100%;
-// 	margin-top: 1%;
-// 	margin-bottom: 1%;
-// }
-
-// .event-tabs {
-// 	max-width: 100%;
-// }
-
-// .event-tabs span {
-// 	font-size: 1em;
-// }
-
-// #taipei2016-chinese-curriculum img {
-// 	display: block;
-// 	margin-top: 20px;
-// 	margin-bottom: 20px;
-// }
-
-// #taipei2016-english-curriculum img {
-// 	display: block;
-// 	margin-top: 20px;
-// 	margin-bottom: 20px;
-// }
-
-// #taipei2016-chinese-curriculum figcaption {
-// 	font-weight: bold;
-// }
-
-// #taipei2016-english-curriculum figcaption {
-// 	font-weight: bold;
-// }
-
-// #taipei2016-chinese-curriculum ol li {
-// 	font-size: 1.05em;
-// }
-
-// #taipei2016-english-curriculum ol li {
-// 	font-size: 1.05em;
-// }
-
-// #taipei2016-chinese-curriculum th {
-// 	text-align: left;
-// }
-
-// #taipei2016-english-curriculum th {
-// 	text-align: left;
-// }
-
-// .indentP p {
-//  text-indent: 50px;
-// }
-
-// #taipei2016-curriculum-welcome-cn {
-// 	min-height: 700px;
-// }
-
-// #taipei2016-curricilum-welcome-en {
-// 	min-height: 700px;
-// }
-
-// .scheduleTable tr td:first-child {
-// 	width: 8%;
-// }
-
-// .scheduleTable tr td:nth-child(3) {
-// 	width: 8%;
-// }
-
-// .scheduleTable tr td:nth-child(5) {
-// 	width: 8%;
-// }
-
-// .scheduleTable th {
-// 	font-size: 1.5em;
-// }
-
-// .scheduleTable td {
-// 	font-size: 1.2em;
-// }
-
-// .scheduleTableTextOnly th {
-// 	font-size: 1.5em;
-// }
-
-// .scheduleTableTextOnly td {
-// 	font-size: 1.2em;
-// }
-
-// .redmond2016ScheduleTable  tr td:first-child {
-// 	width: 8%;
-// }
-
-// .redmond2016ScheduleTable  tr td:nth-child(4) {
-// 	width: 8%;
-// }
-
-// .redmond2016ScheduleTable  tr td:nth-child(6) {
-// 	width: 8%;
-// }
-
-// .medGrayBackground {
-// 	background-color: #bfbfbf
-// }
-
-// .darkBlueBackground {
-// 	background-color: #0072c6;
-// }
-
-// .lightGreenBackground {
-// 	background-color: #c6e0b4;
-// }
-
-// .lightBlueBackground {
-// 	background-color: #ddebf7;
-// }
-
-// .lightOrangeBackground {
-// 	background-color: #ffc000;
-// }
-
-// .lightPinkBackground {
-// 	background-color: #ff99ff;
-// }
-
-// .lightYellowBackground {
-// 	background-color: #ffe699;
-// }
-
-// .lightGrayBackground {
-// 	background-color: #d9d9d9;
-// }
-
-// .lightOrangeBackground {
-// 	background-color: #fce4d6;
-// }
-
-// .medOrangeBackground {
-// 	background-color: #ffc000;
-// }
-
-// .tableWithVerticalLines {
-// 	border: solid 1px #000;
-// }
-
-// .tableWithVerticalLines td {
-// 	border-right: solid 1px #000; 
-// 	border-left: solid 1px #000;
-// }
-
-// .tableWithBorders td {
-// 	border: solid 1px #000;
-// }
-// .tableWithBorders:first-child(td) {
-// 	font-weight: bold;
-// }
-
-// .tableWithBorders tr {
-// 	border: solid 1px #000;
-// }
-
-// .tableFirstRowBold {
-// 	margin-top: 8px;
-// }
-
-// .blue-border {
-// 	border: 1px solid #337ab7;
-// }
-
-// .beijingRegistration2016Button {
-// 	height: 37px;
-// }

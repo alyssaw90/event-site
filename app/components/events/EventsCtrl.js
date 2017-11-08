@@ -20,6 +20,7 @@ const EventsCtrl = (app) => {
 				};
 				$scope.events = data.data;
 				$scope.event = $scope.events.event;
+				console.log($scope.event)
 				$rootScope.lang = $scope.events.eventLanguage || 'en';
 				$scope.headerImage = '/uploads/' + $scope.events.event.eventHeaderImage;
 				$scope.eventInformation = $sce.trustAsHtml($scope.event.eventAboutTabText)	

@@ -99,12 +99,9 @@ module.exports = (router) => {
       return Event.findAll({
         where: {
           eventEndDate: {
-              $or: {
-                $gte: new Date(new Date().getTime() - 24 * 60 * 60 * 1000),
-                $eq: null,
-                /* jshint ignore:start */
-                $eq: new Date(new Date().getFullYear().toString())
-                /* jshint ignore:end */
+            $or: {
+              $gte: new Date(new Date().getTime() - 24 * 60 * 60 * 1000),
+              $eq: null
             }
           },
           isPublished: true
@@ -172,6 +169,9 @@ module.exports = (router) => {
         eventObj.eventHeaderImage = upcomingEvents[i].eventHeaderImage;
         eventObj.showOnHeader = upcomingEvents[i].showOnHeader;
         eventObj.eventRegistrationLink = upcomingEvents[i].eventRegistrationLink;
+        eventObj.eventStartDate = upcomingEvents[i].eventStartDate;
+        eventObj.eventEndDate = upcomingEvents[i].eventEndDate;
+        eventObj.eventLanguage = upcomingEvents[i].eventLanguage;
 
 
         outputArr.push(eventObj)
@@ -199,7 +199,7 @@ module.exports = (router) => {
         questionTwoOfficeSpeakers: req.body.officeSpeakers,
         questionTwoDataTalks: req.body.dataTalks,
         questionTwoDataSpeakers: req.body.dataSpeakers,
-        questionsTwoDocumenation: req.body.documentation,
+        questionsTwoDocumentation: req.body.documentation,
         questionThree: req.body.questionThree,
         questionFour: req.body.questionFour,
         questionFiveIOLab: req.body.IOLab,
@@ -538,7 +538,8 @@ module.exports = (router) => {
         eventHackathonImg: req.body.newEventHackathonImg,
         eventWorkshopImg: req.body.newEventWorkshopImg,
         eventIOLabImg: req.body.newEventIOLabImg,
-        eventVenueInfo: req.body.newEventVenueInfo
+        eventVenueInfo: req.body.newEventVenueInfo, 
+        eventPreReqs: req.body.eventPreReqs
       })
       .catch( (err) => {
         console.log(err)
@@ -588,6 +589,7 @@ module.exports = (router) => {
             eventCountry: req.body.event.eventCountry,
             eventHeaderImage: req.body.event.eventHeaderImage,
             eventContinent: req.body.event.eventContinent,
+            eventLocation: req.body.event.eventLocation,
             eventAboutTabText: req.body.event.eventAboutTabText,
             eventVenueName: req.body.event.eventVenueName,
             eventVenueAddress: req.body.event.eventVenueAddressLine1,
@@ -604,7 +606,8 @@ module.exports = (router) => {
             eventHackathonImg: req.body.event.eventHackathonImg,
             eventWorkshopImg: req.body.event.eventWorkshopImg,
             eventIOLabImg: req.body.event.eventIOLabImg,
-            eventVenueInfo: req.body.event.eventVenueInfo
+            eventVenueInfo: req.body.event.eventVenueInfo,
+            eventPreReqs: req.body.event.eventPreReqs
       })
       .then((updatedEvent) => {
         res.end(updatedEvent.eventUrl);

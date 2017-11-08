@@ -7,10 +7,10 @@ const passport = require('passport');
 const clc = require('cli-color');
 const compression = require('compression');
 const cookieParser = require('cookie-parser');
-const session = require('express-session');
+// const session = require('express-session');
 const models = require('./models');
 const bodyParser = require('body-parser');
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
+// const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const apiRoutes = express.Router();
 const authRoutes = express.Router();
 const catchAllRoutes = express.Router();
@@ -30,18 +30,18 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 app.use(compression());
-app.use(cookieParser(process.env.SESSION_SECRET))
-app.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    maxAge: 1000*60*60*8,
-    unset: 'destroy',
-    store: new SequelizeStore({
-        db: models.sql
-    }),
-    proxy: true
-}))
+// app.use(cookieParser(process.env.SESSION_SECRET))
+// app.use(session({
+//     secret: process.env.SESSION_SECRET,
+//     resave: false,
+//     saveUninitialized: false,
+//     maxAge: 1000*60*60*8,
+//     unset: 'destroy',
+//     store: new SequelizeStore({
+//         db: models.sql
+//     }),
+//     proxy: true
+// }))
 
 // Pull in the Azure AD bearer passport strategy
 const OIDCBearerStrategy = require('passport-azure-ad').BearerStrategy;

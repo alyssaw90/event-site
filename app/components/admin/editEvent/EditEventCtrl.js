@@ -124,6 +124,7 @@ const EditEventCtrl = (app) => {
         $scope.editedEvent.event.eventIOLab = data.data.event.eventIOLab;
         $scope.editedEvent.event.eventWorkshop = data.data.event.eventWorkshop;
         $scope.editedEvent.event.eventVenueAddress = data.data.event.eventVenueAddress;
+        $scope.editedEvent.event.eventLocation = data.data.event.eventLocation;
         //assign id to use in associating new tabs
         $scope.newTab.eventId =  $scope.editedEvent.event.id;
         $scope.currentEventUrl = data.data.event.eventUrl;

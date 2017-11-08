@@ -10,10 +10,8 @@ require('angular-touch');
 require('angular-carousel');
 require('ng-page-title');
 require('angular-sanitize');
-require('angular-google-analytics');
 require('ng-file-upload');
 require('angular-resource');
-require('angular-cookies');
 require('angular-base64');
 require('angular-animate');
 require('angular-ui-bootstrap');
@@ -27,7 +25,7 @@ require('angular-slick-carousel');
 // import * as adal from './shared/methods/adal.js';
 import * as AdalAngular from './shared/methods/adal-angular.js';
 
-const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize', 'angular-google-analytics', 'ngFileUpload', 'ngResource', 'ngCookies', 'base64', 'ngAnimate', 'ui.bootstrap', 'ui.tinymce', 'ui.sortable', 'mwl.confirm', 'ngMessages', `ngPassword`, 'AdalAngular', 'slickCarousel']);
+const eventsApp = angular.module('eventsApp', ['ngRoute', 'ngAria', 'ngTouch', 'angular-carousel', 'ngPageTitle', 'ngSanitize', 'ngFileUpload', 'ngResource','base64', 'ngAnimate', 'ui.bootstrap', 'ui.tinymce', 'ui.sortable', 'mwl.confirm', 'ngMessages', `ngPassword`, 'AdalAngular', 'slickCarousel']);
 
 //directives
 require('./shared/directives/allPagesDirective.js')(eventsApp);
@@ -99,11 +97,7 @@ require('./eventSurvey/surveyRESTResource.js')(eventsApp);
 require('./admin/editFiles/fileSearch.js')(eventsApp);
 
 eventsApp
-.config(['$routeProvider', '$locationProvider', 'AnalyticsProvider', '$httpProvider', 'adalAuthenticationServiceProvider', function ($routeProvider, $locationProvider, AnalyticsProvider, $httpProvider, adalProvider) {
-
-	//Enable Google Analytics
-	AnalyticsProvider
-	.setAccount('UA-74698663-1');
+.config(['$routeProvider', '$locationProvider', '$httpProvider', 'adalAuthenticationServiceProvider', function ($routeProvider, $locationProvider,  $httpProvider, adalProvider) {
 
 	//enable cross origin for jsonp
 	$httpProvider.defaults.useXDomain = true;
@@ -213,14 +207,14 @@ eventsApp
       pageTitle: 'Latest News Page - Interop Dev Events'
     }
 	})
-	.when('/survey', {
-		templateUrl: '/app/components/eventSurvey/parisSurvey.html',
-		reloadOnSearch: false,
-		// controller: 'surveyController',
-		data: {
-			pageTitle: 'Redmond Protocol Plugfest 2017 Event Suvey - Microsoft Plugfests and Events'
-		}
-	})
+	// .when('/survey', {
+	// 	templateUrl: '/app/components/eventSurvey/parisSurvey.html',
+	// 	reloadOnSearch: false,
+	// 	// controller: 'surveyController',
+	// 	data: {
+	// 		pageTitle: 'Redmond Protocol Plugfest 2017 Event Suvey - Microsoft Plugfests and Events'
+	// 	}
+	// })
 	.when('/admin/slideshow', {
 		templateUrl: '/app/components/admin/editSlideshow/editSlideshowTemplate.html',
 		reloadOnSearch: false,
@@ -323,13 +317,13 @@ eventsApp
 	  tenant: 'interopevents.onmicrosoft.com',
 	  clientId: '4fd1444e-c61a-4859-ad90-d8f7cb3b12c9',
 	//   redirectUri: 'http://localhost:3000/admin/edit-event',
-	//   redirectUri: 'http://interopevents-development.azurewebsites.net/admin/edit-event',
+	  redirectUri: 'http://interopevents-development.azurewebsites.net/admin/edit-event',
 	//   redirectUri: 'http://interopevents-staging.azurewebsites.net/admin/edit-event',
-	  redirectUri: 'https://interopevents.com/admin/edit-event',
+	//   redirectUri: 'https://interopevents.com/admin/edit-event',
 	//   postLogoutRedirectUri: 'http://localhost:3000/admin/login',
-	//   postLogoutRedirectUri: 'http://interopevents-development.azurewebsites.net/admin/login',
+	  postLogoutRedirectUri: 'http://interopevents-development.azurewebsites.net/admin/login',
 	//   postLogoutRedirectUri: 'http://interopevents-staging.azurewebsites.net/admin/login',
-		postLogoutRedirectUri: 'https://interopevents.com/admin/login',
+		// postLogoutRedirectUri: 'https://interopevents.com/admin/login',
 
 	  //cacheLocation: 'localStorage',
 	  anonymousEndpoints: [
@@ -338,96 +332,5 @@ eventsApp
   	}, $httpProvider)
 
   
-
-}])
-.run(['$rootScope', '$location', '$anchorScroll', '$routeParams', '$http', 'Analytics', '$cookies', '$timeout', ($rootScope, $location, $anchorScroll, $routeParams, $http, Analytics, $cookies, $timeout) => {
-	//start Google analytics
-	Analytics.pageView();
-
-	// function followHashRoute() {
-	// 	let anchor = $location.hash();
-	// 	$timeout(function() {
-	// 		if (anchor) {
-	// 			// angular.element(`ul.tabs a[href="#${anchor}"]`).triggerHandler('click');
-	// 			// tab hashtag identification and auto-focus
-	// 			let hashLink = '#' + $location.hash();
-	// 			let hashDivs = jQuery(hashLink);
-	// 	  	let wantedTag = window.location.hash;
-	// 	  	if (wantedTag != "") {
-	// 			// This code can and does fail, hard, killing the entire app.
-	// 			// Esp. when used with the jQuery.Address project.
-	// 					let allTabs = angular.element("ul.tabs a[href^=" + wantedTag + "]").parents('ul.tabs').find('li');
-	// 					let defaultTab = allTabs.filter('.current').find('a').attr('href');
-	// 					jQuery(defaultTab).hide();
-	// 					allTabs.removeClass('current');
-	// 					angular.element("ul.tabs a[href^=" + wantedTag + "]").parent().addClass('current');
-	// 					angular.element("#" + wantedTag.replace('#','')).show();
-	// 					$anchorScroll();
-	// 			}
-	// 		}
-			
-	// 	}, 1100);
-	// }
-
-	// //when the route starts with /admin, call the /api/user/checklogin route to check if the user is logged in and redirect them to the login page if they aren't
-	// if ( /\/admin.*$/.test($location.path()) ) {
-	// 	$http.get('/api/user/checklogin')
-	// 	// console.log(userInfo.isAuthenticated)
-	// 	.then( function successCallback(data) {
-    //  	 	$rootScope.isAuthenticated = true;
-	// 		  console.log(data)
-	// 		if ($location.path() === `/admin/login`) {
-	// 			$location.path(`/admin/edit-event`);
-	// 		}
-	// 	}, function errorCallback(data){
-	// 		$rootScope.isAuthenticated = false;
-    //   		$cookies.remove('interopAdmin');
-	// 		$location.path('/admin/login');
-	// 	})
-	// }
-	
-	// $rootScope.$on('$viewContentLoaded', () => {
-	// 	followHashRoute();
-	// 	$rootScope.showAccountButton = $cookies.get(`strategy`) === `basic` || $cookies.get(`interopAdmin`) === `true` ? true : false;
-	// 		// document.getElementById('screenreader-summary').trigger('focus');
-			
-	// 		// $anchorScroll(anchor);
-		
-	// });
-
-	// $rootScope.$on( '$routeChangeStart', function(event, next, current) { 
-		
-	// 	followHashRoute();
-	// 	//when the route starts with /admin, call the /api/user/checklogin route to check if the user is logged in and redirect them to the login page if they aren't
-	// 	if ( /\/admin.*$/.test($location.path()) ) {
-	// 		$http.get('/api/user/checklogin')
-	// 		.then(function successCallback(data){
-    //     		$rootScope.isAuthenticated = true;
-	// 			if ($location.path() === `/admin/login`) {
-	// 				$location.path(`/admin/edit-event`);
-	// 			}
-	// 		}, function errorCallback(data){
-	// 			$rootScope.isAuthenticated = false;
-    //     		$cookies.remove('interopAdmin');
-	// 			$location.path('/admin/login');
-	// 		})
-	// 	}
-	// });
-
-	// $rootScope.$on('$routeUpdate', () => {
-	// 	followHashRoute();
-		
-	// });
-
-// 	$rootScope.$on('$routeChangeSuccess', (newRoute, oldRoute) => { 
-// 		$rootScope.showAccountButton = $cookies.get(`strategy`) === `basic` || $cookies.get(`interopAdmin`) === `true` ? true : false;
-// 		// scroll the window to the top when a new page is opened
-//     $anchorScroll();
-//     //if the path is the root, 
-//  		/*if ($location.path() == '/') {
-//       $rootScope.hideSlider = true;
-//     };
-// */
-//  	});
 
 }])

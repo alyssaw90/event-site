@@ -3,7 +3,7 @@ const jQuery = require('jquery');
 
 const UserLoggingCtrl = (app) => {
 
-	app.controller('UserLoggingCtrl', ['$scope', '$base64', '$cookies', '$timeout', '$location', '$rootScope', '$window', 'adalAuthenticationService', ($scope, $base64, $cookies, $timeout, $location, $rootScope, $window, adalAuthenticationService) => {
+	app.controller('UserLoggingCtrl', ['$scope', '$base64', '$timeout', '$location', '$rootScope', '$window', 'adalAuthenticationService', ($scope, $base64, $timeout, $location, $rootScope, $window, adalAuthenticationService) => {
 
     $scope.login = function() {
       adalAuthenticationService.login();
