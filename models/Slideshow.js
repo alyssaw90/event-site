@@ -1,3 +1,5 @@
+//REMOVE ENTIRE FILE
+
 // // Slideshow name model
 // 'use strict';
 

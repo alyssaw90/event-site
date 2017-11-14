@@ -1,43 +1,45 @@
-'use strict';
-import * as customFunctions from '../methods/common-functions.js';
-const jQuery = require('jquery');
+//REMOVE ENTIRE FILE
 
-const hamburgerMenuDirective = (app) => {
-	app.directive('hamburgerMenuDirective', ['$timeout', ($timeout) => {
-			const hamburgerMenuDirectiveDefinitionObject = {
-				restrict: 'A',
-				scope: true,
-				link: ($scope, $element, $attrs) => {
+// 'use strict';
+// import * as customFunctions from '../methods/common-functions.js';
+// const jQuery = require('jquery');
 
-					$timeout( () => {
-					 	let $hamburgerIcon = jQuery('.hamburger-icon');
-					 	let $mobileWrapper = jQuery('.mobileWrapper');
-					 	let $hiddenDiv = jQuery('.hidden-div');
+// const hamburgerMenuDirective = (app) => {
+// 	app.directive('hamburgerMenuDirective', ['$timeout', ($timeout) => {
+// 			const hamburgerMenuDirectiveDefinitionObject = {
+// 				restrict: 'A',
+// 				scope: true,
+// 				link: ($scope, $element, $attrs) => {
 
-						$element.click( (e) => {
-							$hiddenDiv.animate({width: 'toggle'});
-							$mobileWrapper.toggleClass('grayedOut');
-							$hamburgerIcon.toggleClass('rotate-90');
-							$mobileWrapper.find('*').css('pointer-events', 'none');
-						});
+// 					$timeout( () => {
+// 					 	let $hamburgerIcon = jQuery('.hamburger-icon');
+// 					 	let $mobileWrapper = jQuery('.mobileWrapper');
+// 					 	let $hiddenDiv = jQuery('.hidden-div');
 
-						$mobileWrapper.click( (e) => {
+// 						$element.click( (e) => {
+// 							$hiddenDiv.animate({width: 'toggle'});
+// 							$mobileWrapper.toggleClass('grayedOut');
+// 							$hamburgerIcon.toggleClass('rotate-90');
+// 							$mobileWrapper.find('*').css('pointer-events', 'none');
+// 						});
 
-							if ($hiddenDiv.is(':visible') && e.target !== $hiddenDiv) {
-								$hiddenDiv.animate({width: 'toggle'});
-								$mobileWrapper.toggleClass('grayedOut');
-								$hamburgerIcon.toggleClass('rotate-90');
-								$mobileWrapper.find('*').css('pointer-events', 'auto');
-								return false;
-							}
-						});
+// 						$mobileWrapper.click( (e) => {
+
+// 							if ($hiddenDiv.is(':visible') && e.target !== $hiddenDiv) {
+// 								$hiddenDiv.animate({width: 'toggle'});
+// 								$mobileWrapper.toggleClass('grayedOut');
+// 								$hamburgerIcon.toggleClass('rotate-90');
+// 								$mobileWrapper.find('*').css('pointer-events', 'auto');
+// 								return false;
+// 							}
+// 						});
 						
-					});
+// 					});
 
-				}
-			};
-	  	return hamburgerMenuDirectiveDefinitionObject
-		}])
-};
+// 				}
+// 			};
+// 	  	return hamburgerMenuDirectiveDefinitionObject
+// 		}])
+// };
 
-module.exports = hamburgerMenuDirective;;
+// module.exports = hamburgerMenuDirective;;

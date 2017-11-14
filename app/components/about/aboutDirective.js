@@ -1,12 +1,14 @@
-'use strict';
-import * as customFunctions from '../shared/methods/common-functions.js';
-const jQuery = require('jquery');
+//REMOVE ENTIRE FILE
 
-const aboutDirecive = (app) => {
-	app.directive('aboutDirecive', [function() {
-		const aboutDireciveDefinitionObject = {};
-  return aboutDireciveDefinitionObject
-	}])
-};
+// 'use strict';
+// import * as customFunctions from '../shared/methods/common-functions.js';
+// const jQuery = require('jquery');
 
-module.exports = aboutDirecive;
+// const aboutDirecive = (app) => {
+// 	app.directive('aboutDirecive', [function() {
+// 		const aboutDireciveDefinitionObject = {};
+//   return aboutDireciveDefinitionObject
+// 	}])
+// };
+
+// module.exports = aboutDirecive;

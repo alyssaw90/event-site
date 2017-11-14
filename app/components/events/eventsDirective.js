@@ -1,3 +1,5 @@
+//This directive makes using tabs for the agenda possible. DO NOT REMOVE
+
 'use strict';
 import * as customFunctions from '../shared/methods/common-functions.js';
 const jQuery = require('jquery');

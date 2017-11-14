@@ -250,13 +250,14 @@ module.exports = (router) => {
     })
   })
 
+  //REMOVE ROUTE
   //route to send Bing Map API key to front end
   router.route('/bingmapkey')
   .get( (req, res) => {
     res.json(process.env.BING_MAP_API_KEY);
   });
 
-
+  //REMOVE ROUTE
   //get all events for edit events tab
   router.get('/mapevents', (req, res) => {
     models.sql.sync()
@@ -361,6 +362,7 @@ module.exports = (router) => {
     res.end();
   })
 
+  //REMOVE ROUTE
   //route to send slides related to a slideshow
   router.get('/slideshow/:slideName', (req, res) => {
     models.sql.sync()
@@ -378,6 +380,8 @@ module.exports = (router) => {
       res.json(slides);
     })
   });
+
+  //REMOVE ROUTE
   //route to get all slides
   router.get('/allslides', (req, res) => {
     models.sql.sync()
@@ -389,6 +393,7 @@ module.exports = (router) => {
     })
   });
 
+  //REMOVE ROUTE
   //route to set homepage slides
   router.post('/sethomepageslides', (req, res) => {
     models.sql.sync()
@@ -415,6 +420,7 @@ module.exports = (router) => {
     });
   });
 
+  //REMOVE ROUTE
  // route to add slide to homepage slides
   router.post('/addslide',  (req, res) => {
     models.sql.sync()
@@ -429,6 +435,7 @@ module.exports = (router) => {
     });
   });
 
+  //REMOVE ROUTE
 // route to delete slides from admin portal
   router.post('/deleteslide',  (req, res) => {
     models.sql.sync()
@@ -449,11 +456,13 @@ module.exports = (router) => {
     })
   });
 
+  //REMOVE ROUTE
   //verify login
   router.get('/user/checklogin',  (req, res) => {
     res.json({msg: `logged in`});
   });
 
+  //REMOVE ROUTE
   //get user info
   router.get(`/user/accountinfo`,  (req, res) => {
     res.json({user: req.user});
@@ -732,6 +741,7 @@ module.exports = (router) => {
     })
   })
 
+  //REMOVE ROUTE
 // route to edit speakers on events
   router.post('/editeventspeakers',  (req, res) => {
     models.sql.sync()

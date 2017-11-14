@@ -1,3 +1,5 @@
+//REMOVE ENTIRE FILE
+
 // // Microsoft user model
 // // Determines if user is and admin or not
 // // Will not need this model after login flow is redone.

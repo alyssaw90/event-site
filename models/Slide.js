@@ -1,3 +1,5 @@
+//REMOVE ENTIRE FILE
+
 // // Slide model
 // // Stores uploaded slides for slideshows
 // 'use strict';

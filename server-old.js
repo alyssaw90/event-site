@@ -1,3 +1,5 @@
+// REMOVE ENTIRE FILE
+
 /*This file initializes the ExpressJS server, routes, and node modules.*/
 
 'use strict';
