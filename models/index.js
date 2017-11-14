@@ -59,19 +59,20 @@ let sql = new Sql(process.env.DB_DEV_NAME, process.env.DB_DEV_USER, process.env.
 }); */
 
 //load models
-let models = ['Speaker', 'Event', 'EventTab', 'User', 'Slideshow', 'EventSpeakersAsscs', 'Slide', 'SlideshowSlideAssc', 'MsUser', 'Surveys'];
+let models = ['Speaker', 'Event', 'EventTab', 'EventSpeakersAsscs', 'Surveys'];
 
 models.forEach(function(model) {
     module.exports[model] = sql.import(__dirname + '/' + model);
 });
 //create model associations
 sql.sync()
-sql.models.Event.belongsToMany(sql.models.Speaker, { through: sql.models.EventSpeakersAsscs });
-sql.models.Speaker.belongsToMany(sql.models.Event, { through: sql.models.EventSpeakersAsscs });
-sql.models.Event.belongsToMany(sql.models.EventTab, { through: 'EventsTabsAccsc' });
-sql.models.EventTab.belongsToMany(sql.models.Event, { through: 'EventsTabsAccsc' });
-sql.models.Slide.belongsToMany(sql.models.Slideshow, { through: sql.models.SlideshowSlideAssc });
-sql.models.Slideshow.belongsToMany(sql.models.Slide, { through: sql.models.SlideshowSlideAssc });
+sql.models.Event.belongsToMany(sql.models.Speaker, {through: sql.models.EventSpeakersAsscs});
+sql.models.Speaker.belongsToMany(sql.models.Event, {through: sql.models.EventSpeakersAsscs});
+sql.models.Event.belongsToMany(sql.models.EventTab, {through: 'EventsTabsAccsc'});
+sql.models.EventTab.belongsToMany(sql.models.Event, {through: 'EventsTabsAccsc'});
+// sql.models.Slide.belongsToMany(sql.models.Slideshow, {through: sql.models.SlideshowSlideAssc});
+// sql.models.Slideshow.belongsToMany(sql.models.Slide, {through: sql.models.SlideshowSlideAssc});
+
 
 
 //export connection
