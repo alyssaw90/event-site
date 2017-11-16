@@ -8,7 +8,7 @@
     </section>
     <section class="events container" data-ng-controller="FutureEventsCtrl" data-ng-init="getUpcomingEvents()" aria-role="presentation">
         <h1>Upcoming Events</h1>
-        <div data-ng-if="!upcomingEvents">
+        <div data-ng-if="upcomingEvents.length === 0">
             <h4>No upcoming events found.</h4>
         </div>
         <div class="row eventBoxRow">
