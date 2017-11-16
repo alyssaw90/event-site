@@ -92,7 +92,7 @@
     <section class="upcomingEvents">
         <div class="container">
             <h1>Upcoming Events</h1>
-            <div class="eventText" data-ng-if="!upcomingEvents">
+            <div class="eventText" data-ng-if="upcomingEvents.length === 0">
                 <h4>No upcoming events found.</h4>
                 <a href="/events" class="moreInfoLink">You can see all events on the events page.</a>
                 </span>
