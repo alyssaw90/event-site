@@ -7,7 +7,7 @@
             </div>
         </div>
     </section>
-    <section class="upcomingEventBanner" data-ng-if="upcomingEvents">
+    <section class="upcomingEventBanner" data-ng-if="upcomingEvents.length !== 0">
         <span data-ng-repeat="upcomingEvent in upcomingEvents | limitTo:4" class="eventBannerInfo" role="presentation" data-ng-if="upcomingEvent.eventName">
             <a href="/{{upcomingEvent.eventUrl}}" title="Navigate to page for {{upcomingEvent.city}} {{upcomingEvent.headerEventDates}} event" aria-label="{{upcomingEvent.city}} {{upcomingEvent.headerEventDates}}">
                 <span>{{upcomingEvent.city}}</span>
