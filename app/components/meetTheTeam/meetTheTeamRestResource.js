@@ -11,7 +11,7 @@ const meetTheTeamRESTResource = (app) => {
 		return function(callback) {
 			return {
 				getMeetTheTeamSpeakers: function(callback) {
-					$http.get('/api/getTeam')
+					$http.get('/consumer/getTeam')
 					.then(function successCallback(data){
 						return callback(null, data)
 					}, function errorCallback(data){

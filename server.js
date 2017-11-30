@@ -15,6 +15,7 @@ const apiRoutes = express.Router();
 const authRoutes = express.Router();
 const catchAllRoutes = express.Router();
 const auth = express.Router()
+const consumerRoutes = express.Router()
 process.env.SECRET_KEY = process.env.SECRET_KEY || 'change this change this change this!!!';
 let port = process.env.PORT || 3000;
 let time = new Date();
@@ -23,6 +24,7 @@ console.log(secretKeyReminder);
 
 require('./routes/api-routes')(apiRoutes);
 require('./routes/auth.js')(auth, passport)
+require('./routes/consumer-routes.js')(consumerRoutes);
 require('./routes/catch-all-routes.js')(catchAllRoutes);
 
 // Configure requests parser
@@ -69,6 +71,7 @@ app.use((req, res, next) => {
 app.use(express.static(__dirname + '/'))
 // use the apiRoutes with /api/ as its root
 app.use('/api/', apiRoutes);
+app.use('/consumer/', consumerRoutes);
 //use the root for the catch all route, this must be the last routes file in the list above
 app.use('/', catchAllRoutes);
 // Error handling
