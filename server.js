@@ -15,16 +15,16 @@ const adminRoutes = express.Router();
 const apiRoutes = express.Router();
 const authRoutes = express.Router();
 const catchAllRoutes = express.Router();
-const auth = express.Router()
+const auth = express.Router();
 process.env.SECRET_KEY = process.env.SECRET_KEY || 'change this change this change this!!!';
 let port = process.env.PORT || 3000;
 let time = new Date();
 let secretKeyReminder = process.env.SECRET_KEY === 'change this change this change this!!!' ? clc.black.bgRed(`process.env.SECRET_KEY is not secure, change your SECRET_KEY!!!`) : clc.black.bgGreen(`Your SECRET_KEY is secure. You don't need to change your SECRET_KEY`);
 console.log(secretKeyReminder);
-
-require('./routes/admin-routes')(adminRoutes);
+// TODO: Uncomment to enable admin-routes
+// require('./routes/admin-routes')(adminRoutes);
 require('./routes/api-routes')(apiRoutes);
-require('./routes/auth.js')(auth, passport)
+require('./routes/auth.js')(auth, passport);
 require('./routes/catch-all-routes.js')(catchAllRoutes);
 
 // Configure requests parser
@@ -60,7 +60,7 @@ passport.use(new OIDCBearerStrategy({
     "validateIssuer": false,
 }, function(token, done) {
     return done(null, token, null);
-}))
+}));
 
 // set header to prevent Clickjacking and Cross-Site Request Forgery (CSRF) attacks
 app.use((req, res, next) => {
@@ -68,8 +68,8 @@ app.use((req, res, next) => {
     return next();
 });
 // use the root directory as the source of static files
-app.use(express.static(__dirname + '/'))
-    // use the apiRoutes with /api/ as its root
+app.use(express.static(__dirname + '/'));
+// use the apiRoutes with /api/ as its root
 app.use('/api/', apiRoutes);
 // use the adminRoutes with /api/ as its root
 app.use('/api/', adminRoutes);
@@ -77,10 +77,10 @@ app.use('/api/', adminRoutes);
 app.use('/', catchAllRoutes);
 // Error handling
 app.use((err, req, res, next) => {
-        console.error(err.stack);
-        res.status(500).send('Something broke!');
-    })
-    // listen to the port and log when the server has started
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
+});
+// listen to the port and log when the server has started
 app.listen(port, () => {
     console.log(clc.cyanBright('server started on port ' + port + ' at ' + time));
-})
+});
