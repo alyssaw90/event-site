@@ -41,7 +41,8 @@ module.exports = function(router, passport) {
         extended: true
     }));
 
-    router.route('/user')
+    // DEPRECATED - route /user
+    /* router.route('/user')
         .get(isLoggedIn, (req, res) => {
             let user = {};
             models.sql.sync()
@@ -138,9 +139,10 @@ module.exports = function(router, passport) {
                         msg: `user updated`
                     });
                 });
-        });
+        }); */
 
-    router.delete(`/user/:slug`, isLoggedInAdmin, (req, res) => {
+    // DEPRECATED - route /user/:slug
+    /* router.delete(`/user/:slug`, isLoggedInAdmin, (req, res) => {
         models.sql.sync()
             .then(() => {
                 return User.findOne({
@@ -153,9 +155,10 @@ module.exports = function(router, passport) {
                 userToDelete.destroy();
                 res.end();
             });
-    });
+    }); */
 
-    router.route(`/allusers`)
+    // DEPRECATED - route /allusers
+    /* router.route(`/allusers`)
         .get(isLoggedInAdmin, (req, res) => {
             let output = {};
             models.sql.sync()
@@ -186,9 +189,10 @@ module.exports = function(router, passport) {
                     }
                     res.json(output);
                 });
-        });
+        }); */
 
-    router.route('/msusers')
+    // DEPRECATED - route /msusers
+    /* router.route('/msusers')
         .post(isLoggedInAdmin, (req, res) => {
             models.sql.sync()
                 .then(() => {
@@ -211,8 +215,10 @@ module.exports = function(router, passport) {
                     });
                     res.end();
                 });
-        });
-    router.delete(`/msusers/:slug`, isLoggedInAdmin, (req, res) => {
+        }); */
+
+    // DEPRECATED - route /msusers/:slug
+    /* router.delete(`/msusers/:slug`, isLoggedInAdmin, (req, res) => {
         models.sql.sync()
             .then(() => {
                 return MsUser.findOne({
@@ -225,10 +231,10 @@ module.exports = function(router, passport) {
                 msUserToDelete.destroy();
                 res.end();
             });
-    });
+    }); */
 
-
-    router.get('/login', passport.authenticate('basic', {
+    // DEPRECATED - route /login
+    /* router.get('/login', passport.authenticate('basic', {
         session: true
     }), (req, res) => {
         let userJSON = {
@@ -253,22 +259,22 @@ module.exports = function(router, passport) {
             req.session.cookie.maxAge = 1000 * 60 * 60;
             res.status('200').end();
         });
-    });
+    }); */
 
-    router.get(`/azurelogin`, passport.authenticate(`provider`, {
+    // DEPRECATED - route /azurelogin
+    /* router.get(`/azurelogin`, passport.authenticate(`provider`, {
         successRedirect: `/admin/redirect`
-    }));
+    })); */
 
     // router.get(`/.auth/login/aad/callback`, passport.authenticate(`provider`, { successRedirect: `/admin/redirect`, failureRedirect: `/admin/login` }), function (req, res) { 
     //   res.redirect(`/`); 
     // });
 
-
-    router.get('/logout', function(req, res) {
+    // DEPRECATED - route /logout
+    /* router.get('/logout', function(req, res) {
         req.logout();
         res.json({
             msg: 'logged off'
         });
-    });
-
+    }); */
 };
