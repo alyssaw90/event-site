@@ -336,7 +336,8 @@ module.exports = (router) => {
         });
     });
 
-    /* router.post('/files', (req, res) => {
+    // route to delete files
+    router.post('/files', (req, res) => {
         let filesToDelete = [];
         for (let key in req.body) {
             if (req.body[key]) {
@@ -356,7 +357,7 @@ module.exports = (router) => {
         });
         res.end();
     });
- */
+
     //route to send slides related to a slideshow
     /* router.get('/slideshow/:slideName', (req, res) => {
         models.sql.sync()
@@ -462,7 +463,7 @@ module.exports = (router) => {
     }); */
 
     //get all speakers for editing
-    /* router.get('/speakers', (req, res) => {
+    router.get('/speakers', (req, res) => {
         models.sql.sync()
             .then(() => {
                 Speaker.findAll()
@@ -470,10 +471,10 @@ module.exports = (router) => {
                         res.json(data);
                     });
             });
-    }); */
+    });
 
     //get all events for edit events tab
-    /* router.get('/allevents', (req, res) => {
+    router.get('/allevents', (req, res) => {
         models.sql.sync()
             .then(() => {
                 return Event.findAll();
@@ -481,10 +482,10 @@ module.exports = (router) => {
             .then((events) => {
                 res.json(events);
             });
-    }); */
+    });
 
     //route for uploading files
-    /* router.post('/multer', multipartMiddleware, (req, res) => {
+    router.post('/multer', multipartMiddleware, (req, res) => {
         let tmpFilename = req.files.file.path.slice(8);
         let newFilename = req.files.file.size + '-' + req.files.file.originalFilename;
         fs.readdir('uploads/', (err, data) => {
@@ -497,18 +498,18 @@ module.exports = (router) => {
             }
         });
         res.end('File uploaded.');
-    }); */
+    });
 
     //route for uploading files with tinymce
-    /* router.post('/tinymceUpload', (req, res) => {
+    router.post('/tinymceUpload', (req, res) => {
         let imageBuffer = new Buffer(req.body.base64String, 'base64');
         fs.writeFile(`uploads/${req.body.fileName}`, imageBuffer, (err) => {
             res.end('file saved');
         });
-    }); */
+    });
 
     // create new event
-    /* router.post('/createevent', (req, res, next) => {
+    router.post('/createevent', (req, res, next) => {
         // let userName = req.user.unique_name || req.user.email;
         // console.log(req.user.sub)
         models.sql.sync()
@@ -565,10 +566,65 @@ module.exports = (router) => {
                             });
                     });
             });
-    }); */
+    });
+    
+    // route to edit event in admin portal event section
+    router.post('/editevent',  (req, res, next) => {
+        console.log(clc.red(req.body.event.showOnHeader))
+        models.sql.sync()
+        .then( () => {
+          return Event.findOne({
+            where: {
+              id: req.body.event.id 
+            }
+          })
+        })
+        .then( (event) => {
+          // let userName = req.user.unique_name || req.user.email;
+          return event.update({
+                lastModifiedBy: req.body.event.lastModifiedBy,    
+                showOnHeader: req.body.event.showOnHeader,    
+                isPublished: req.body.event.isPublished,    
+                eventName: req.body.event.eventName,    
+                eventUrl: req.body.event.eventUrl,    
+                eventRegistrationLink: req.body.event.eventRegistrationLink,    
+                eventStartDate: req.body.event.eventStartDate,    
+                eventEndDate: req.body.event.eventEndDate,    
+                eventCountry: req.body.event.eventCountry,    
+                eventHeaderImage: req.body.event.eventHeaderImage,    
+                eventContinent: req.body.event.eventContinent,    
+                eventLocation: req.body.event.eventLocation,    
+                eventAboutTabText: req.body.event.eventAboutTabText,    
+                eventVenueName: req.body.event.eventVenueName,    
+                eventVenueAddress: req.body.event.eventVenueAddressLine1,    
+                eventParkingInfo: req.body.event.eventParkingInfo,    
+                eventVenueImg: req.body.event.eventVenueImg,    
+                eventTechnicalTopics: req.body.eventTechnicalTopics,    
+                eventLanguage: req.body.newEventLanguage,    
+                eventAccommodations: req.body.event.eventAccommodations,    
+                eventHackathon: req.body.event.eventHackathon,    
+                eventIOLab: req.body.event.eventIOLab,    
+                eventWorkshop: req.body.event.eventWorkshop,    
+                eventAgenda: req.body.event.eventAgenda,    
+                eventAccommodationImg: req.body.event.eventAccommodationImg,    
+                eventHackathonImg: req.body.event.eventHackathonImg,    
+                eventWorkshopImg: req.body.event.eventWorkshopImg,    
+                eventIOLabImg: req.body.event.eventIOLabImg,
+                eventVenueInfo: req.body.event.eventVenueInfo,
+                eventPreReqs: req.body.event.eventPreReqs
+          })
+          .then((updatedEvent) => {
+            res.end(updatedEvent.eventUrl);
+          })
+          .catch((err) => {
+            console.log(err);
+            res.status(500).json({msg: `there was a problem updating your event`});
+          })
+        })
+      });    
 
     // route to delete event on admin portal event page
-    /* router.delete(`/deleteevent/:slug`, (req, res) => {
+    router.delete(`/deleteevent/:slug`, (req, res) => {
         models.sql.sync()
             .then(() => {
                 return Event.findOne({
@@ -584,10 +640,10 @@ module.exports = (router) => {
             .catch((err) => {
                 res.json(err);
             });
-    }); */
+    });
 
     // route to edit event tabs
-    /* router.post('/edittab', (req, res, next) => {
+    router.post('/edittab', (req, res, next) => {
         models.sql.sync()
             .then(() => {
                 return EventTab.findOne({
@@ -607,10 +663,10 @@ module.exports = (router) => {
                         res.json(newTab);
                     });
             });
-    }); */
+    });
 
     // route to edit tab order for events
-    /* router.post('/newtaborder', (req, res) => {
+    router.post('/newtaborder', (req, res) => {
         models.sql.sync()
             .then(() => {
                 return EventTab.findAll({
@@ -635,10 +691,10 @@ module.exports = (router) => {
                 });
                 res.end();
             });
-    }); */
+    });
 
     // route to add a tab to event
-    /* router.post('/addtab', (req, res) => {
+    router.post('/addtab', (req, res) => {
         models.sql.sync()
             .then(() => {
                 return EventTab.create({
@@ -662,10 +718,10 @@ module.exports = (router) => {
                         res.end();
                     });
             });
-    }); */
+    });
 
     // route to delete a tab from events
-    /* router.delete('/deletetab/:slug', (req, res) => {
+    router.delete('/deletetab/:slug', (req, res) => {
         models.sql.sync()
             .then(() => {
                 return EventTab.findOne({
@@ -678,10 +734,10 @@ module.exports = (router) => {
                 tab.destroy();
                 res.end();
             });
-    }); */
+    });
 
     // route to edit speakers on events
-    /* router.post('/editeventspeakers', (req, res) => {
+    router.post('/editeventspeakers', (req, res) => {
         models.sql.sync()
             .then(() => {
                 return Event.findOne({
@@ -698,10 +754,10 @@ module.exports = (router) => {
                 }
                 res.end();
             });
-    }); */
+    });
 
-    //route to create speakers
-    /* router.post('/addspeakers', (req, res) => {
+    // route to create speakers
+    router.post('/addspeakers', (req, res) => {
         models.sql.sync()
             .then(() => {
                 // let userName = req.user.unique_name || req.user.email;
@@ -721,9 +777,10 @@ module.exports = (router) => {
                 });
                 res.end();
             });
-    }); */
+    });
+
     //route to edit speakers
-    /* router.post('/editspeaker', (req, res) => {
+    router.post('/editspeaker', (req, res) => {
         models.sql.sync()
             .then(() => {
                 return Speaker.findOne({
@@ -751,9 +808,10 @@ module.exports = (router) => {
             .then((editedSpeaker) => {
                 res.json(editedSpeaker);
             });
-    }); */
+    });
 
-    /* router.delete(`/deletespeaker/:slug`, (req, res) => {
+    // route to delete speakers
+    router.delete(`/deletespeaker/:slug`, (req, res) => {
         models.sql.sync()
             .then(() => {
                 return Speaker.findOne({
@@ -766,7 +824,7 @@ module.exports = (router) => {
                 speaker.destroy();
                 res.end();
             });
-    }); */
+    });
 
     //show all images
     router.get('/showimages', function(req, res) {
@@ -791,8 +849,8 @@ module.exports = (router) => {
         });
     });
 
-    /*Get events including unpublished content from URL path/slug */
-    /* router.route('/fulllist/:slug')
+    // Get events including unpublished content from URL path/slug
+    router.route('/fulllist/:slug')
         .get((req, res) => {
             //create an eventInfo object to hold the values for the event to be rendered
             let eventInfo = {};
@@ -824,7 +882,7 @@ module.exports = (router) => {
                             });
                     }
                 });
-        }); */
+        });
 
     /*Get published events from URL path/slug to display and either send the event if there is one or set isEvent to false to show 404 page THIS ROUTE MUST BE LAST */
     /* router.route('/:slug')

@@ -11,7 +11,7 @@ const editSpeakerRESTResource = (app) => {
 
 				createSpeaker: function(resourceData, callback) {
 				
-          $http.post('/api/editspeaker', resourceData)
+          $http.post('/admin/editspeaker', resourceData)
           .then(function successCallback(data){
             callback(null, data)
           }, function errorCallback(data){
@@ -21,7 +21,7 @@ const editSpeakerRESTResource = (app) => {
           // .error(customFunctions.handleError(callback));
         },
 				deleteSpeaker: (resourceData, callback) => {				
-          $http.delete(`/api/deletespeaker/${resourceData}`)
+          $http.delete(`/admin/deletespeaker/${resourceData}`)
           .then(function successCallback(data){
             callback(null, data)
           }, function errorCallback(data){
