@@ -345,8 +345,9 @@ module.exports = (router) => {
             });
     });
 
+    // MOVED TO admin-routes.js - /files (get)
     //route to get all files and delete files
-    router.get('/files', (req, res) => {
+    /* router.get('/files', (req, res) => {
         fs.readdir('uploads/', (err, data) => {
             if (err) {
                 console.log(clc.white.bgRed('Error: '), err);
@@ -359,7 +360,7 @@ module.exports = (router) => {
             }
             res.json(outputArr);
         });
-    });
+    }); */
 
     router.post('/files', (req, res) => {
         let filesToDelete = [];
@@ -592,62 +593,7 @@ module.exports = (router) => {
             });
     });
 
-    // route to edit event in admin portal event section
-    router.post('/editevent', (req, res, next) => {
-        console.log(clc.red(req.body.event.showOnHeader));
-        models.sql.sync()
-            .then(() => {
-                return Event.findOne({
-                    where: {
-                        id: req.body.event.id
-                    }
-                });
-            })
-            .then((event) => {
-                // let userName = req.user.unique_name || req.user.email;
-                return event.update({
-                        lastModifiedBy: req.body.event.lastModifiedBy,
-                        showOnHeader: req.body.event.showOnHeader,
-                        isPublished: req.body.event.isPublished,
-                        eventName: req.body.event.eventName,
-                        eventUrl: req.body.event.eventUrl,
-                        eventRegistrationLink: req.body.event.eventRegistrationLink,
-                        eventStartDate: req.body.event.eventStartDate,
-                        eventEndDate: req.body.event.eventEndDate,
-                        eventCountry: req.body.event.eventCountry,
-                        eventHeaderImage: req.body.event.eventHeaderImage,
-                        eventContinent: req.body.event.eventContinent,
-                        eventLocation: req.body.event.eventLocation,
-                        eventAboutTabText: req.body.event.eventAboutTabText,
-                        eventVenueName: req.body.event.eventVenueName,
-                        eventVenueAddress: req.body.event.eventVenueAddressLine1,
-                        eventParkingInfo: req.body.event.eventParkingInfo,
-                        eventVenueImg: req.body.event.eventVenueImg,
-                        eventTechnicalTopics: req.body.eventTechnicalTopics,
-                        eventLanguage: req.body.newEventLanguage,
-                        eventAccommodations: req.body.event.eventAccommodations,
-                        eventHackathon: req.body.event.eventHackathon,
-                        eventIOLab: req.body.event.eventIOLab,
-                        eventWorkshop: req.body.event.eventWorkshop,
-                        eventAgenda: req.body.event.eventAgenda,
-                        eventAccommodationImg: req.body.event.eventAccommodationImg,
-                        eventHackathonImg: req.body.event.eventHackathonImg,
-                        eventWorkshopImg: req.body.event.eventWorkshopImg,
-                        eventIOLabImg: req.body.event.eventIOLabImg,
-                        eventVenueInfo: req.body.event.eventVenueInfo,
-                        eventPreReqs: req.body.event.eventPreReqs
-                    })
-                    .then((updatedEvent) => {
-                        res.end(updatedEvent.eventUrl);
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                        res.status(500).json({
-                            msg: `there was a problem updating your event`
-                        });
-                    });
-            });
-    });
+    // route /addspeakers moved to admin-routes.js
 
     // route to delete event on admin portal event page
     router.delete(`/deleteevent/:slug`, (req, res) => {

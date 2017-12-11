@@ -22,7 +22,7 @@ let time = new Date();
 let secretKeyReminder = process.env.SECRET_KEY === 'change this change this change this!!!' ? clc.black.bgRed(`process.env.SECRET_KEY is not secure, change your SECRET_KEY!!!`) : clc.black.bgGreen(`Your SECRET_KEY is secure. You don't need to change your SECRET_KEY`);
 console.log(secretKeyReminder);
 // TODO: Uncomment to enable admin-routes
-// require('./routes/admin-routes')(adminRoutes);
+require('./routes/admin-routes')(adminRoutes);
 require('./routes/api-routes')(apiRoutes);
 require('./routes/auth.js')(auth, passport);
 require('./routes/catch-all-routes.js')(catchAllRoutes);
