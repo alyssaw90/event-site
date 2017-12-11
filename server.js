@@ -72,7 +72,7 @@ app.use(express.static(__dirname + '/'));
 // use the apiRoutes with /api/ as its root
 app.use('/api/', apiRoutes);
 // use the adminRoutes with /api/ as its root
-app.use('/api/', adminRoutes);
+app.use('/admin/', adminRoutes);
 //use the root for the catch all route, this must be the last routes file in the list above
 app.use('/', catchAllRoutes);
 // Error handling

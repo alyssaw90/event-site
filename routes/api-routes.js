@@ -347,20 +347,21 @@ module.exports = (router) => {
 
     // MOVED TO admin-routes.js - /files (get)
     //route to get all files and delete files
-    /* router.get('/files', (req, res) => {
-        fs.readdir('uploads/', (err, data) => {
-            if (err) {
-                console.log(clc.white.bgRed('Error: '), err);
-            }
-            let outputArr = [];
-            for (let i = 0, len = data.length; i < len; i++) {
-                if (data[i] !== '.gitignore') {
-                    outputArr.push(data[i]);
-                }
-            }
-            res.json(outputArr);
-        });
-    }); */
+    // router.get('/files', (req, res) => {
+    //     fs.readdir('uploads/', (err, data) => {
+    //         if (err) {
+    //             console.log(clc.white.bgRed('Error: '), err);
+    //         }
+    //         let outputArr = [];
+    //         for (let i = 0, len = data.length; i < len; i++) {
+    //             if (data[i] !== '.gitignore') {
+    //                 outputArr.push(data[i]);
+    //             }
+    //         }
+    //         console.log(outputArr)
+    //         res.json(outputArr);
+    //     });
+    // });
 
     router.post('/files', (req, res) => {
         let filesToDelete = [];

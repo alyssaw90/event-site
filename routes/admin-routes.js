@@ -769,7 +769,7 @@ module.exports = (router) => {
     }); */
 
     //show all images
-    /* router.get('/showimages', function(req, res) {
+    router.get('/showimages', function(req, res) {
         fs.readdir('uploads', function(err, files) {
             let imagesArr = [];
             if (err) {
@@ -789,7 +789,7 @@ module.exports = (router) => {
             }
             res.json(imagesArr);
         });
-    }); */
+    });
 
     /*Get events including unpublished content from URL path/slug */
     /* router.route('/fulllist/:slug')
