@@ -11,7 +11,7 @@ const surveyRESTResource = (app) => {
 
 				createSurvey: function(resourceData, callback) {
 				
-          $http.post('/api/survey', resourceData)
+          $http.post('/consumer/survey', resourceData)
 			.then(function successCallback(data){
 				callback(data)
 			}, function errorCallback(data){
