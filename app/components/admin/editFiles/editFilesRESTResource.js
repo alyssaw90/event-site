@@ -9,7 +9,7 @@ const editFilesRESTResource = (app) => {
 		return (callback) => {
 			return {
 				getAllFiles: (callback) => {
-					$http.get('/api/files')
+					$http.get('/admin/files')
 					.then(function successCallback(data){
 						callback(null, data)
 					}, function errorCallback(data){
@@ -18,7 +18,7 @@ const editFilesRESTResource = (app) => {
 				},
 
 				deleteFiles: (files, callback) => {
-					$http.post('/api/files', files)
+					$http.post('/admin/files', files)
 					.then(function successCallback(data){
 						callback(null, data)
 					}, function errorCallback(data){
