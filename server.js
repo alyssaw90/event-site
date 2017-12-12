@@ -12,7 +12,7 @@ const models = require('./models');
 const bodyParser = require('body-parser');
 // const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const adminRoutes = express.Router();
-const apiRoutes = express.Router();
+// const apiRoutes = express.Router();
 const authRoutes = express.Router();
 const catchAllRoutes = express.Router();
 const auth = express.Router()
@@ -24,7 +24,7 @@ let secretKeyReminder = process.env.SECRET_KEY === 'change this change this chan
 console.log(secretKeyReminder);
 // TODO: Uncomment to enable admin-routes
 require('./routes/admin-routes')(adminRoutes);
-require('./routes/api-routes')(apiRoutes);
+// require('./routes/api-routes')(apiRoutes);
 require('./routes/auth.js')(auth, passport)
 require('./routes/consumer-routes.js')(consumerRoutes);
 require('./routes/catch-all-routes.js')(catchAllRoutes);
@@ -72,7 +72,7 @@ app.use((req, res, next) => {
 // use the root directory as the source of static files
 app.use(express.static(__dirname + '/'));
 // use the apiRoutes with /api/ as its root
-app.use('/api/', apiRoutes);
+// app.use('/api/', apiRoutes);
 // use the adminRoutes with /api/ as its root
 app.use('/admin/', adminRoutes);
 app.use('/consumer/', consumerRoutes);
