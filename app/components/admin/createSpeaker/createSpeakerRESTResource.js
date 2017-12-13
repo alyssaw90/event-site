@@ -11,7 +11,7 @@ const createSpeakerRESTResource = (app) => {
 
 				createSpeaker: function(resourceData, callback) {
 				
-          $http.post('/api/addspeakers', resourceData)
+          $http.post('/admin/addspeakers', resourceData)
 			.then(function successCallback(data){
 				callback(data)
 			}, function errorCallback(data){

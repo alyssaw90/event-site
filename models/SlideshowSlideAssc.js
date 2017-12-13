@@ -1,14 +1,14 @@
-// Slideshow position model
+// // Slideshow position model
 
-'use strict';
+// 'use strict';
 
-module.exports = function(sql, DataTypes) {
+// module.exports = function(sql, DataTypes) {
 
-	return sql.define('SlideshowSlideAssc', {
-		sortPosition: DataTypes.INTEGER
-	},
-	{
-		hasTrigger: true,
-	});
+// 	return sql.define('SlideshowSlideAssc', {
+// 		sortPosition: DataTypes.INTEGER
+// 	},
+// 	{
+// 		hasTrigger: true,
+// 	});
 	
-};
+// };

@@ -9,7 +9,7 @@ const editEventRESTResource = (app) => {
 		return function(resourceName, callback) {
 			return {
 				getSingleEvent: (resourceName, callback) => {
-					$http.get('/api/fulllist/' + resourceName)
+					$http.get('/admin/fulllist/' + resourceName)
           .then(function successCallback(data){
             callback(null, data)
           }, function errorCallback(data){
@@ -19,7 +19,7 @@ const editEventRESTResource = (app) => {
 
 				editEvent: (resourceData, callback) => {
 				
-          $http.post('/api/editevent', resourceData)
+          $http.post('/admin/editevent', resourceData)
           .then(function successCallback(data){
             callback(null, data)
           }, function errorCallback(data){
@@ -27,7 +27,7 @@ const editEventRESTResource = (app) => {
           })
         },
         deleteEvent: (resourceData, callback) => {				
-          $http.delete(`/api/deleteevent/${resourceData}`)
+          $http.delete(`/admin/deleteevent/${resourceData}`)
           .then(function successCallback(data){
             callback(null, data)
           }, function errorCallback(data){
@@ -36,7 +36,7 @@ const editEventRESTResource = (app) => {
         },
         editTab: (resourceData, callback) => {
 				
-          $http.post('/api/edittab', resourceData)
+          $http.post('/admin/edittab', resourceData)
           .then(function successCallback(data){
             callback(null, data)
           }, function errorCallback(data){
@@ -46,7 +46,7 @@ const editEventRESTResource = (app) => {
 
         editSpeakers: (resourceData, callback) => {
 				
-          $http.post('/api/editeventspeakers', resourceData)
+          $http.post('/admin/editeventspeakers', resourceData)
           .then(function successCallback(data){
             callback(null, data)
           }, function errorCallback(data){
@@ -56,7 +56,7 @@ const editEventRESTResource = (app) => {
 
         addTab: (resourceData, callback) => {
 				
-          $http.post('/api/addtab', resourceData)
+          $http.post('/admin/addtab', resourceData)
           .then(function successCallback(data){
             callback(null, data)
           }, function errorCallback(data){
@@ -66,7 +66,7 @@ const editEventRESTResource = (app) => {
 
         deleteTab: (resourceData, callback) => {
 				
-          $http.delete('/api/deletetab/' + resourceData)
+          $http.delete('/admin/deletetab/' + resourceData)
           .then(function successCallback(data){
             callback(null, data)
           }, function errorCallback(data){
@@ -75,7 +75,7 @@ const editEventRESTResource = (app) => {
         },
 
         newTabOrder: (resourceData, callback) => {
-          $http.post('/api/newtaborder', resourceData)
+          $http.post('/admin/newtaborder', resourceData)
           .then(function successCallback(data){
             callback(null, data)
           }, function errorCallback(data){

@@ -10,7 +10,7 @@ const eventsRESTResource = (app) => {
 		return function(resourceName, callback) {
 			return {
 				getEvents: function(resourceName, callback) {
-					$http.get('/api/' + resourceName)
+					$http.get('/consumer/' + resourceName)
 					.then(function successCallback(data){
 						return callback(null, data);
 					}, function errorCallback(data){
