@@ -38,7 +38,7 @@ const EditSpeakerController = (app) => {
          speaker.headshot = $rootScope.editedSpeakerImg.size + '-' + $rootScope.editedSpeakerImg.name;
       }
       EditSpeakerResource.createSpeaker(speaker, (err, data) => {
-        console.log(` DATA :: `, data);
+        // console.log(` DATA :: `, data);
         if (err) {
           return $scope.errors.push({msg: 'could not save speaker'});
         }

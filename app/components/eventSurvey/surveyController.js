@@ -23,8 +23,8 @@ const surveyController = (app) => {
             }).then(function (response){
                     // alert('submitted')
                     // $scope.newSurvey={}
-                console.log(response.status)
-                console.log(response.data)
+                // console.log(response.status)
+                // console.log(response.data)
             }, function(err){
                 console.log(err)
             })
