@@ -20,7 +20,7 @@ const EventsCtrl = (app) => {
 				};
 				$scope.events = data.data;
 				$scope.event = $scope.events.event;
-				console.log($scope.event)
+				// console.log($scope.event)
 				$rootScope.lang = $scope.events.eventLanguage || 'en';
 				$scope.headerImage = '/uploads/' + $scope.events.event.eventHeaderImage;
 				$scope.eventInformation = $sce.trustAsHtml($scope.event.eventAboutTabText)	
@@ -65,8 +65,8 @@ const EventsCtrl = (app) => {
 		$scope.urlify = customFunctions.urlify;
 		//if there is no event found, show the 404 page
 		if ($scope.events) {
-			console.log($scope.events)
-			console.log($scope.show404)
+			// console.log($scope.events)
+			// console.log($scope.show404)
 			$scope.show404 = true;
 		}
 

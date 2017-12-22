@@ -9,7 +9,7 @@ const createEventRESTResource = (app) => {
 		return (resourceName, callback) => {
 			return {
 				getAllEvents: (callback) => {
-					$http.get('/api/allevents')
+					$http.get('/admin/allevents')
 					.then(function successCallback(data){
 						callback(null, data)
 					}, function errorCallback(data){
@@ -17,7 +17,7 @@ const createEventRESTResource = (app) => {
 					})
 				},
 				getAllSpeakers: (callback) => {
-					$http.get('/api/speakers')
+					$http.get('/admin/speakers')
 					.then(function successCallback(data){
 						callback(null, data)
 					}, function errorCallback(data){
@@ -25,7 +25,7 @@ const createEventRESTResource = (app) => {
 					})
 				},
 				createEvent: (resourceData, callback) => {
-          $http.post('/api/createevent', resourceData)
+          $http.post('/admin/createevent', resourceData)
 		  			.then(function successCallback(data){
 						callback(null, data)
 					}, function errorCallback(data){

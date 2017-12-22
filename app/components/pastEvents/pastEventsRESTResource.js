@@ -11,7 +11,7 @@ const pastEventsRESTResource = (app) => {
 		return function(callback) {
 			return {
 				getPastEvents: (callback) => {
-					$http.get('/api/published-past-events')
+					$http.get('/consumer/published-past-events')
 					.then(function successCallback(data){
 						return callback(null, data);
 					}, function errorCallback(data){

@@ -25,7 +25,7 @@ const FutureEventsCtrl = (app) => {
 				$scope.upcomingEvents = data.data
 				$scope.slides = [];
 				let events = data.data
-				console.log($scope.upcomingEvents)
+				// console.log($scope.upcomingEvents)
 
         // for (let i = 0, len = events.length; i < len; i++) {
         // 	let testObj = {city: events[i].city, dates: events[i].eventDates};

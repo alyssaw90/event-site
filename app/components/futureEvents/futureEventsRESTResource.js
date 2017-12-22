@@ -11,7 +11,7 @@ const futureEventsRESTResource = (app) => {
 		return (callback) => {
 			return {
 				getFutureEvents: (callback) => {
-					$http.get('/api/futureEventsData')
+					$http.get('/consumer/futureEventsData')
 					.then(function successCallback(data){
 						return callback(null, data);
 					}, function errorCallback(data){
