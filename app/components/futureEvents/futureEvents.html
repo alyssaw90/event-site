@@ -1,41 +1,44 @@
 <main class="ng-cloak" aria-role="presentation">
-	<section class="eventsBanner" aria-role="presentation">
-		<div class="gradient">
-			<div class="container">
-				<h1>Upcoming and Past Events</h1>
-			</div>
-		</div>
-	</section>
-	<section class="events container" data-ng-controller="FutureEventsCtrl" data-ng-init="getUpcomingEvents()" aria-role="presentation">
-		<h1>Upcoming Events</h1>
-		<div class="row eventBoxRow">
-			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" data-ng-repeat="upcomingEvent in upcomingEvents" data-ng-if="upcomingEvent.eventLanguage === 'en'">
-				<!--<a href="/{{event.eventUrl}}" class="eventBox" data-ng-style="{'background-image': 'url(/uploads/{{event.eventHeaderImage}})'}">
+    <section class="eventsBanner" aria-role="presentation">
+        <div class="gradient">
+            <div class="container">
+                <h1>Upcoming and Past Events</h1>
+            </div>
+        </div>
+    </section>
+    <section class="events container" data-ng-controller="FutureEventsCtrl" data-ng-init="getUpcomingEvents()" aria-role="presentation">
+        <h1>Upcoming Events</h1>
+        <div data-ng-if="upcomingEvents.length === 0">
+            <h4>No upcoming events found.</h4>
+        </div>
+        <div class="row eventBoxRow">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" data-ng-repeat="upcomingEvent in upcomingEvents" data-ng-if="upcomingEvent.eventLanguage === 'en'">
+                <!--<a href="/{{event.eventUrl}}" class="eventBox" data-ng-style="{'background-image': 'url(/uploads/{{event.eventHeaderImage}})'}">
 					<h2>{{event.eventName}}</h2>
 					<a data-ng-href="{{event.eventRegistrationLink}}" class="btn registerButton">Register</a>
 				</a>-->
-				<div class="eventBox" data-ng-style="{'background-image': 'url(/uploads/{{upcomingEvent.eventHeaderImage}})'}" ng-click="go(upcomingEvent)" title="Navigate to {{upcomingEvent.eventName}} event page" aria-label="{{upcomingEvent.eventName}}, {{upcomingEvent.eventLocation}}, {{upcomingEvent.headerEventDates}}" >
-                	<div class="eventText">
-                    	<h4 class="eventUrl">{{upcomingEvent.eventName}}</h4>
+                <div class="eventBox" data-ng-style="{'background-image': 'url(/uploads/{{upcomingEvent.eventHeaderImage}})'}" ng-click="go(upcomingEvent)" title="Navigate to {{upcomingEvent.eventName}} event page" aria-label="{{upcomingEvent.eventName}}, {{upcomingEvent.eventLocation}}, {{upcomingEvent.headerEventDates}}">
+                    <div class="eventText">
+                        <h4 class="eventUrl">{{upcomingEvent.eventName}}</h4>
                         <a data-ng-if="upcomingEvent.eventRegistrationLink" class="eventRegistrationLink" data-ng-href="{{upcomingEvent.eventRegistrationLink}}" title="Navigate to registration page" aria-label="{{upcomingEvent.eventName}} Registartion Link">Register</a>
-                	</div>
+                    </div>
                 </div>
-				<!--<div class="eventBox">
+                <!--<div class="eventBox">
 					<img src="/uploads/{{event.eventHeaderImage}}" alt="Event Header Image">
 				</div>-->
-			</div>
-		</div>
-	</section>
-	<section class="past container" data-ng-controller="PastEventsCtrl" data-ng-init="getPastEvents()">
-		<h1>Past Events</h1>
-		<h4>Please select a year to view past events.</h4>
-      	<select name="yearDropdown" id="yearDropdown" class="form-control" ng-options="pastEvent as pastEvent.year for pastEvent in pastEvents" ng-model="pastEvent">
+            </div>
+        </div>
+    </section>
+    <section class="past container" data-ng-controller="PastEventsCtrl" data-ng-init="getPastEvents()">
+        <h1>Past Events</h1>
+        <h4>Please select a year to view past events.</h4>
+        <select name="yearDropdown" id="yearDropdown" class="form-control" ng-options="pastEvent as pastEvent.year for pastEvent in pastEvents" ng-model="pastEvent">
         	<option value="selectYear">Select a Year</option>
       	</select>
-      	<h5>Year: {{pastEvent.year}}</h5>
-      	<div ng-if="!pastEvent.year">
-        	<h6>No information available, please select a year.</h6>
-      	</div>
-      	<div ng-bind-html="pastEvent.calendarHtml" class="table-responsive"></div>
-	</section>
+        <h5>Year: {{pastEvent.year}}</h5>
+        <div ng-if="!pastEvent.year">
+            <h6>No information available, please select a year.</h6>
+        </div>
+        <div ng-bind-html="pastEvent.calendarHtml" class="table-responsive"></div>
+    </section>
 </main>

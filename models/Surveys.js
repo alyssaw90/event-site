@@ -59,5 +59,5 @@ module.exports = function(sql, DataTypes) {
         questionNine: DataTypes.TEXT,
         questionTen: DataTypes.TEXT,
         ipAddress: DataTypes.STRING
-    })
-}
+    });
+};

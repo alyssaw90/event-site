@@ -16,19 +16,19 @@ module.exports = function (sql, DataTypes) {
     },
     isPublished: DataTypes.BOOLEAN,
     lastModifiedBy: DataTypes.STRING,
-    newsletterSubscription: DataTypes.BOOLEAN,
+    // newsletterSubscription: DataTypes.BOOLEAN,
     speakerDescription: DataTypes.TEXT,
     showOnMeetTheTeamPage: DataTypes.BOOLEAN,
     meetTheTeamPageOrder: DataTypes.INTEGER,
     msTeamTitle: DataTypes.STRING,
     showOnHomePage: DataTypes.BOOLEAN,
-    headShot: DataTypes.TEXT,
-    company: DataTypes.STRING,
-    address: DataTypes.STRING,
-    country: DataTypes.STRING,
-    interestId: DataTypes.INTEGER,
-    allowNotifications: DataTypes.BOOLEAN,
-    allowPersonalInfoSharing: DataTypes.BOOLEAN
+    headShot: DataTypes.TEXT
+    // company: DataTypes.STRING,
+    // address: DataTypes.STRING,
+    // country: DataTypes.STRING,
+    // interestId: DataTypes.INTEGER,
+    // allowNotifications: DataTypes.BOOLEAN,
+    // allowPersonalInfoSharing: DataTypes.BOOLEAN
   },
   {
     getterMethods: {

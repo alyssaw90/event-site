@@ -10,7 +10,7 @@ const adminPageRESTResource = (app) => {
 			return {
 
 				addTinymceFile: (resourceData, callback) => {
-          $http.post('/api/tinymceUpload', resourceData)
+          $http.post('/admin/tinymceUpload', resourceData)
 		  .then(function successCallback(data){
 			  callback(null, data)
 		  }, function errorCallback(data){

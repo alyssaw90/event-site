@@ -14,7 +14,7 @@ const AdminPageCtrl = (app) => {
       if (file) {
         // Upload.rename(file, 'AAAAA.jpg');
         file.upload = Upload.upload({
-          url: '../api/multer',
+          url: '../admin/multer',
           headers: {
             'enctype': 'multipart/form-data'
           },
@@ -77,7 +77,7 @@ const AdminPageCtrl = (app) => {
           let fileName =  `${time}-${file.name}`;
           let fileLocation = `/uploads/${fileName}`;
           reader.onloadend = (e) => {
-          console.log(`File Location :::: `, fileLocation);
+          // console.log(`File Location :::: `, fileLocation);
             let base64String = e.target.result.split(',')[1];
             addTinymceFile({
               base64String: base64String,
@@ -121,7 +121,7 @@ const AdminPageCtrl = (app) => {
       paste_data_images: true,
       inline: false,
       toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | forecolor backcolor | link image | spellchecker',
-      image_list: '/api/showimages',
+      image_list: '/admin/showimages',
       image_advtab: true,
       content_css: [
         '//fast.fonts.net/cssapi/e6dc9b99-64fe-4292-ad98-6974f93cd2a2.css',
